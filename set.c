@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.208 2003/09/20 20:09:14 thyssen Exp $
+ * $Id: set.c,v 1.209 2003/09/26 08:17:54 steink Exp $
  */
 
 #include "config.h"
@@ -2488,6 +2488,11 @@ extern void CommandSetTurn( char *sz ) {
     CancelCubeAction();
     fNextTurn = FALSE;
     ms.anDice[ 0 ] = ms.anDice[ 1 ] = 0;
+
+#if USE_TIMECONTROL
+    CheckGameClock(&ms, 0);
+    HitGameClock(&ms);
+#endif
 
     UpdateSetting( &ms.fTurn );
 

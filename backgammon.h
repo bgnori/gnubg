@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.260 2003/09/20 20:08:21 thyssen Exp $
+ * $Id: backgammon.h,v 1.261 2003/09/26 08:17:53 steink Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -207,12 +207,12 @@ typedef struct _timecontrol {
     int nMoveAllowance;		/* Time allowance per move */
     int nPenalty;		/* Point penalty for timing out.  May be 0. */
 
-    char *szNext;
 	/* Next time control for the player whose time runs out. 
 	   NULL means reiterate same */
-    char *szNextB; 
+    char *szNext;
 	/* The other guy's next time control
 	   NULL means no change to his time control*/
+    char *szNextB; 
 } timecontrol;
    
 typedef struct _tcnode {
@@ -230,7 +230,8 @@ typedef struct _playerclock {
 typedef struct _gameclock {
    playerclock pc[2];
    struct timeval pausedtime;
-   int fPaused; 
+	/* whose clock is running, 0,1 or -1(paused) */
+   int fPlayer; 
 } gameclock;
     
 #endif
