@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.5 2003/08/24 20:40:29 oysteijo Exp $
+ * $Id: gtktoolbar.c,v 1.6 2003/08/25 10:40:46 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -98,30 +98,6 @@ image_from_xpm_d ( char **xpm, GtkWidget *pw ) {
   return gtk_pixmap_new( ppm, mask );
 
 }
-
-
-static GtkWidget *
-button_from_image ( GtkWidget *pwImage ) {
-
-  GtkWidget *pw = gtk_button_new ();
-
-  gtk_container_add ( GTK_CONTAINER ( pw ), pwImage );
-
-  return pw;
-
-}
-  
-static GtkWidget *
-toggle_button_from_image ( GtkWidget *pwImage ) {
-
-  GtkWidget *pw = gtk_toggle_button_new ();
-
-  gtk_container_add ( GTK_CONTAINER ( pw ), pwImage );
-
-  return pw;
-
-}
-  
 
 static GtkWidget *
 toggle_button_from_images( GtkWidget *pwImageOff,
@@ -395,12 +371,12 @@ ToolbarNew ( void ) {
 #else
   pwToolbar = gtk_toolbar_new ( GTK_ORIENTATION_HORIZONTAL,
                                 GTK_TOOLBAR_BOTH );
-#endif /* ! USE_GTK2 */
   gtk_toolbar_set_space_style ( GTK_TOOLBAR ( pwToolbar ),
                           GTK_TOOLBAR_SPACE_LINE );
 
   gtk_toolbar_set_button_relief( GTK_TOOLBAR( pwToolbar ), 
 		  GTK_RELIEF_NONE);
+#endif /* ! USE_GTK2 */
 
   gtk_box_pack_start( GTK_BOX( vbox_toolbar ), pwToolbar, 
                       FALSE, FALSE, 0 );
@@ -476,8 +452,10 @@ ToolbarNew ( void ) {
 
   
   gtk_toolbar_append_space(GTK_TOOLBAR(pwToolbar));
+#if !USE_GTK2
   gtk_toolbar_set_button_relief( GTK_TOOLBAR( pwToolbar ), 
 		  GTK_RELIEF_NONE);
+#endif
   
   /* Take/accept button */
   TB_BUTTON_ADD(ptw->pwTake, stock_ok_xpm, _("Accept"), ButtonClickedYesNo,

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.390 2003/08/24 20:40:29 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.391 2003/08/25 10:40:45 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3350,13 +3350,13 @@ extern void GTKOutputNew( void ) {
 
 static GtkWidget *pwEntry;
 
+#if 0
 static void NumberOK( GtkWidget *pw, int *pf ) {
 
     *pf = gtk_spin_button_get_value_as_int( GTK_SPIN_BUTTON( pwEntry ) );
     
     gtk_widget_destroy( gtk_widget_get_toplevel( pw ) );
 }
-#if 0
 extern int 
 GTKReadNumber( char *szTitle, char *szPrompt, int nDefault,
                int nMin, int nMax, int nInc ) {

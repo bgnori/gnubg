@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.72 2003/08/25 09:30:19 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.73 2003/08/25 10:40:46 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1848,7 +1848,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.72 2003/08/25 09:30:19 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.73 2003/08/25 10:40:46 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2647,11 +2647,6 @@ extern void BoardPreferences( GtkWidget *pwBoard ) {
     
     pwDialog = GTKCreateDialog( _("GNU Backgammon - Appearance"), DT_QUESTION,
 			     GTK_SIGNAL_FUNC( BoardPrefsOK ), bd );
-
-    ppm = gdk_pixmap_new( bd->drawing_area->window, 108 * 3, 82 * 3, -1 );
-    fUpdate = TRUE;
-    Preview( &rdAppearance );
-    fUpdate = FALSE;
     
 #if USE_BOARD3D
 	colourDialog3d = Create3dColourDialog(bd->drawing_area3d->window, pwDialog);
