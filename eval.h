@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.4 2000/01/07 05:27:16 gtw Exp $
+ * $Id: eval.h,v 1.5 2000/01/08 21:30:17 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -106,7 +106,7 @@ extern int EvalCacheResize( int cNew );
 extern int EvalCacheStats( int *pc, int *pcLookup, int *pcHit );
 
 extern int GenerateMoves( movelist *pml, int anBoard[ 2 ][ 25 ],
-			  int n0, int n1 );
+			  int n0, int n1, int fPartial );
 extern int FindBestMoves( movelist *pml, float ar[][ NUM_OUTPUTS ], int nPlies,
 			  int nDice0, int nDice1, int anBoard[ 2 ][ 25 ],
 			  int c, float d );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.2 2000/01/03 17:52:23 gtw Exp $
+ * $Id: rollout.c,v 1.3 2000/01/08 21:30:17 gtw Exp $
  */
 
 #include "config.h"
@@ -37,7 +37,7 @@ static int FindBestBearoff( int anBoard[ 2 ][ 25 ], int nDice0, int nDice1,
     unsigned long cBestRolls;
     movelist ml;
 
-    GenerateMoves( &ml, anBoard, nDice0, nDice1 );
+    GenerateMoves( &ml, anBoard, nDice0, nDice1, FALSE );
     
     ml.rBestScore = -99999.9;
     cBestRolls = -1;

@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1999
  *
- * $Id: show.c,v 1.5 2000/01/03 17:52:23 gtw Exp $
+ * $Id: show.c,v 1.6 2000/01/08 21:30:17 gtw Exp $
  */
 
 #include "config.h"
@@ -42,11 +42,10 @@ extern void CommandShowBoard( char *sz ) {
 
 #if !X_DISPLAY_MISSING
     if( fX )
-	GameSetBoard( &ewnd, an, TRUE, "", "", 0, 0, 0, 0, 0 );
+	GameSet( &ewnd, an, TRUE, "", "", 0, 0, 0, -1, -1 );
     else
 #endif
 	puts( DrawBoard( szOut, an, TRUE, ap ) );
-
 }
 
 extern void CommandShowCache( char *sz ) {
