@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.219 2003/04/05 18:02:05 thyssen Exp $
+ * $Id: backgammon.h,v 1.220 2003/04/05 18:42:59 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -890,6 +890,7 @@ extern void CommandAccept( char * ),
     CommandSetSoundSystemNormal ( char * ),
     CommandSetSoundSystemWindows ( char * ),
     CommandSetSoundSoundAgree ( char * ),
+    CommandSetSoundSoundAnalysisFinished ( char * ),
     CommandSetSoundSoundBotDance ( char * ),
     CommandSetSoundSoundBotWinGame ( char * ),
     CommandSetSoundSoundBotWinMatch ( char * ),

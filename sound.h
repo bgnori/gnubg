@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sound.h,v 1.5 2002/09/14 15:33:40 gtw Exp $
+ * $Id: sound.h,v 1.6 2003/04/05 18:43:01 thyssen Exp $
  */
 
 #ifndef _SOUND_H_
@@ -45,6 +45,7 @@ typedef enum _gnubgsound {
   SOUND_BOT_DANCE,
   SOUND_BOT_WIN_GAME,
   SOUND_BOT_WIN_MATCH,
+  SOUND_ANALYSIS_FINISHED,
   /* number of sounds */
   NUM_SOUNDS
 } gnubgsound;
@@ -56,6 +57,7 @@ typedef enum _soundsystem {
   SOUND_SYSTEM_NAS,
   SOUND_SYSTEM_NORMAL,
   SOUND_SYSTEM_WINDOWS,
+
   NUM_SOUND_SYSTEMS
 } soundsystem;
 

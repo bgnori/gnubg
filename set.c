@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.181 2003/04/05 18:02:05 thyssen Exp $
+ * $Id: set.c,v 1.182 2003/04/05 18:42:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -3863,6 +3863,13 @@ extern void
 CommandSetSoundSoundAgree ( char *sz ) {
 
   SetSound ( SOUND_AGREE, NextToken ( &sz ) );
+
+}
+
+extern void
+CommandSetSoundSoundAnalysisFinished ( char *sz ) {
+
+  SetSound ( SOUND_ANALYSIS_FINISHED, NextToken ( &sz ) );
 
 }
 

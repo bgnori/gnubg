@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.101 2003/04/05 18:02:04 thyssen Exp $
+ * $Id: analysis.c,v 1.102 2003/04/05 18:42:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -37,6 +37,7 @@
 #include "positionid.h"
 #include "rollout.h"
 #include "analysis.h"
+#include "sound.h"
 
 #include "i18n.h"
 
@@ -1046,6 +1047,9 @@ extern void CommandAnalyseGame( char *sz ) {
   if( fX )
     GTKUpdateAnnotations();
 #endif
+
+  playSound( SOUND_ANALYSIS_FINISHED );
+
 }
 
 
@@ -1086,6 +1090,9 @@ extern void CommandAnalyseMatch( char *sz ) {
   if( fX )
       GTKUpdateAnnotations();
 #endif
+
+  playSound( SOUND_ANALYSIS_FINISHED );
+
 }
 
 extern void CommandAnalyseSession( char *sz ) {

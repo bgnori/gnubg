@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.406 2003/04/05 18:02:04 thyssen Exp $
+ * $Id: gnubg.c,v 1.407 2003/04/05 18:42:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -1324,6 +1324,8 @@ command cER = {
 }, acSetSoundSound[] = {
   { "agree", CommandSetSoundSoundAgree, 
     N_("Agree"), szOPTFILENAME, &cFilename },
+  { "analysisfinished", CommandSetSoundSoundAnalysisFinished, 
+    N_("Analysis is finished"), szOPTFILENAME, &cFilename },
   { "botfans", CommandSetSoundSoundBotDance, 
     N_("Bot fans"), szOPTFILENAME, &cFilename },
   { "botwinsgame", CommandSetSoundSoundBotWinGame, 
