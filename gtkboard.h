@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.19 2001/11/09 18:26:05 gtw Exp $
+ * $Id: gtkboard.h,v 1.20 2002/03/16 23:58:25 gtw Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -70,11 +70,11 @@ typedef struct _BoardData {
 	*pm_x_key, *pm_o_key;
     GdkBitmap *bm_mask, *bm_dice_mask, *bm_cube_mask, *bm_key_mask;
     guchar *rgba_x, *rgba_o, *rgba_x_key, *rgba_o_key, *rgb_points, *rgb_empty,
-	*rgb_saved, *rgb_temp, *rgb_temp_saved, *rgb_bar;
+	*rgb_saved, *rgb_temp, *rgb_temp_saved, *rgb_bar0, *rgb_bar1;
     short *ai_refract[ 2 ];
     GdkFont *cube_font;
     gboolean translucent, labels, usedicearea, permit_illegal, beep_illegal,
-	higher_die_first, playing, computer_turn;
+	higher_die_first, playing, computer_turn, wood;
     animation animate_computer_moves;
     int animate_speed;
     gdouble aarColour[ 2 ][ 4 ]; /* RGBA for each player */
