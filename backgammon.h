@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.112 2002/03/16 19:05:59 thyssen Exp $
+ * $Id: backgammon.h,v 1.113 2002/03/17 16:12:36 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -288,6 +288,7 @@ extern int CompareNames( char *sz0, char *sz1 );
 extern int SetToggle( char *szName, int *pf, char *sz, char *szOn,
 		       char *szOff );
 extern void ShowBoard( void );
+extern void SetMatchID ( char *szMatchID );
 extern char*
 FormatCubePosition ( char *sz, cubeinfo *pci );
 extern char *FormatPrompt( void );
@@ -500,6 +501,7 @@ extern void CommandAccept( char * ),
     CommandSetEvalCubedecision ( char * ),
     CommandSetEgyptian( char * ),
     CommandSetJacoby( char * ),
+    CommandSetMatchID ( char * ),
     CommandSetMET( char * ),
     CommandSetJacoby( char * ),
     CommandSetNackgammon( char * ),
