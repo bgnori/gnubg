@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.1 2003/07/26 11:01:04 thyssen Exp $
+ * $Id: gtktoolbar.c,v 1.2 2003/07/26 11:05:02 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -345,7 +345,7 @@ ToolbarNew ( void ) {
 #else
   ptw->pwTake =
     button_from_image ( image_from_xpm_d ( tb_yes_xpm,
-                                           toolbar ) );
+                                           pwToolbar ) );
 #endif
 
   gtk_signal_connect( GTK_OBJECT( ptw->pwTake ), "clicked",
@@ -366,7 +366,7 @@ ToolbarNew ( void ) {
 #else
   ptw->pwDrop =
     button_from_image ( image_from_xpm_d ( tb_no_xpm,
-                                           toolbar ) );
+                                           pwToolbar ) );
 #endif
 
   gtk_signal_connect( GTK_OBJECT( ptw->pwDrop ), "clicked",
@@ -475,7 +475,7 @@ ToolbarNew ( void ) {
 #else
   ptw->pwStop =
     button_from_image ( image_from_xpm_d ( tb_stop_xpm,
-                                           toolbar ) );
+                                           pwToolbar ) );
 #endif
   gtk_container_add( GTK_CONTAINER( ptw->pwStopParent ), ptw->pwStop );
 
