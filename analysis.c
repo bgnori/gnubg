@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.18 2001/04/14 12:43:15 thyssen Exp $
+ * $Id: analysis.c,v 1.19 2001/04/14 16:11:46 thyssen Exp $
  */
 
 #include "config.h"
@@ -1225,7 +1225,7 @@ DumpStatcontext ( statcontext *psc, int fCompleteAnalysis,
     rt[ i ] = GetRating ( psc->arErrorCheckerplay[ i ][ 0 ] /
                           psc->anUnforcedMoves[ i ] );
 
-  printf ( "Checker play rating:\t\t%-15s\t%-15s\n\n",
+  printf ( "Checker play rating:\t\t%-15s\t\t%-15s\n\n",
            aszRating[ rt [ 0 ] ], aszRating[ rt [ 1 ] ] );
 
   printf ( "\nCube decisions statistics:\n\n" );
@@ -1366,7 +1366,7 @@ DumpStatcontext ( statcontext *psc, int fCompleteAnalysis,
                           psc->arErrorCheckerplay[ i ][ 0 ] /
                           psc->anUnforcedMoves[ i ] );
 
-  printf ( "Overall rating:\t\t\t%-15s\t%-15s\n\n",
+  printf ( "Overall rating:\t\t\t%-15s\t\t%-15s\n\n",
            aszRating[ rt [ 0 ] ], aszRating[ rt [ 1 ] ] );
 
   if ( ! fCompleteAnalysis )
