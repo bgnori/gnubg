@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.89 2002/01/06 15:41:33 thyssen Exp $
+ * $Id: gtkgame.c,v 1.90 2002/01/06 17:37:37 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4533,6 +4533,8 @@ GTKRolloutStatPage ( const rolloutstat *prs,
   GtkWidget *pw;
   GtkWidget *pwWin, *pwCube, *pwHit, *pwBearoff, *pwClosedOut;
 
+  GtkWidget *psw;
+
   /* Create notebook pages */
 
   pw = gtk_vbox_new ( FALSE, 0 );
@@ -4567,14 +4569,23 @@ GTKRolloutStatPage ( const rolloutstat *prs,
   gtk_box_pack_start( GTK_BOX( pw ), pwNotebook, FALSE, FALSE, 0 );
   */
 
+  psw = gtk_scrolled_window_new ( NULL, NULL );
+
+  gtk_scrolled_window_set_policy ( GTK_SCROLLED_WINDOW ( psw ),
+				   GTK_POLICY_NEVER,
+				   GTK_POLICY_AUTOMATIC );
+
   gtk_box_pack_start ( GTK_BOX ( pw ), pwWin, FALSE, FALSE, 0 );
   gtk_box_pack_start ( GTK_BOX ( pw ), pwCube, FALSE, FALSE, 0 );
   gtk_box_pack_start ( GTK_BOX ( pw ), pwBearoff, FALSE, FALSE, 0 );
   gtk_box_pack_start ( GTK_BOX ( pw ), pwClosedOut, FALSE, FALSE, 0 );
   gtk_box_pack_start ( GTK_BOX ( pw ), pwHit, FALSE, FALSE, 0 );
 
+  gtk_scrolled_window_add_with_viewport (
+      GTK_SCROLLED_WINDOW ( psw), pw);
 
-  return pw;
+
+  return psw;
   
 }
 
@@ -4602,6 +4613,8 @@ GTKViewRolloutStatistics(GtkWidget *widget, gpointer data){
 
   pwDialog = CreateDialog ( "Rollout statistics", FALSE,
 			    NULL, NULL );
+
+  gtk_window_set_default_size( GTK_WINDOW( pwDialog ), 0, 400 );
 
   /* Create notebook pages */
 
