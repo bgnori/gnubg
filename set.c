@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.103 2002/06/27 19:40:06 thyssen Exp $
+ * $Id: set.c,v 1.104 2002/06/30 13:11:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -294,7 +294,8 @@ extern void CommandSetAutoBearoff( char *sz ) {
 extern void CommandSetAutoAnalysis( char *sz ) {
 
     SetToggle( "automatic analysis", &fAutoAnalysis, sz, 
-               _("Will analyse match during play"), 
+               _("Will analyse match during play\n"
+                 "WARNING: EXTREMELY BUGGY!!! USE AT OWN RISK!!!"), 
                _("Will not analyse match during play") );
 }
 
