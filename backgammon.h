@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.129 2002/06/01 11:18:16 thyssen Exp $
+ * $Id: backgammon.h,v 1.130 2002/06/02 16:32:30 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -417,7 +417,7 @@ extern char *pcProgress;
 extern char *aszVersion[], *szHomeDirectory, *szDataDirectory;
 
 extern char *aszSkillType[], *aszSkillTypeAbbr[], *aszLuckType[],
-    *aszLuckTypeAbbr[];
+    *aszLuckTypeAbbr[], *aszSkillTypeCommand[], *aszLuckTypeCommand[];
 
 extern command acDatabase[], acNew[], acSave[], acSetAutomatic[],
     acSetCube[], acSetEvaluation[], acSetPlayer[], acSetRNG[], acSetRollout[],
