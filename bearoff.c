@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.30 2004/01/30 09:33:48 uid68519 Exp $
+ * $Id: bearoff.c,v 1.31 2004/02/16 20:57:19 uid65656 Exp $
  */
 
 #include "config.h"
@@ -282,10 +282,11 @@ static void GenerateBearoff( unsigned char *p, int nId ) {
 
 static unsigned char *HeuristicDatabase( void (*pfProgress)( int ) ) {
 
-    unsigned char *p = malloc( 54264 * 64 );
+    unsigned char *pm = malloc( 40 + 54264 * 64 );
+    unsigned char *p = pm ? pm + 40 : NULL;
     int i;
     
-    if( !p )
+    if( !pm )
 	return NULL;
 
     p[ 0 ] = p[ 1 ] = 0xFF;
@@ -298,7 +299,7 @@ static unsigned char *HeuristicDatabase( void (*pfProgress)( int ) ) {
 	    pfProgress( i );
     }
 
-    return p;
+    return pm;
 }
 
 
