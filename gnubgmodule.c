@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.6 2003/07/15 17:50:54 hb Exp $
+ * $Id: gnubgmodule.c,v 1.7 2003/07/28 19:34:45 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -885,6 +885,8 @@ PythonInitialise( const char *argv0, const char *szDir ) {
 
   Py_SetProgramName( (char *) argv0 );
   Py_Initialize();
+
+  PySys_SetArgv( 1, (char **) &argv0 );
 
   /* ensure that python know about our gnubg module */
   Py_InitModule( "gnubg", gnubgMethods );

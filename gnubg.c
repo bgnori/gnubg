@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.452 2003/07/28 18:23:48 ace Exp $
+ * $Id: gnubg.c,v 1.453 2003/07/28 19:34:45 thyssen Exp $
  */
 
 #include "config.h"
@@ -2611,6 +2611,11 @@ extern void HandleCommand( char *sz, command *ac ) {
         else if ( *sz == '>' ) {
 
           while ( *sz == '>' )
+            ++sz;
+
+          /* leading white space confuses Python :-) */
+
+          while ( isspace( *sz ) )
             ++sz;
 
 #if USE_PYTHON
