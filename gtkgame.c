@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.70 2001/08/30 14:07:54 gtw Exp $
+ * $Id: gtkgame.c,v 1.71 2001/09/10 16:52:04 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -893,12 +893,12 @@ static void CreateAnnotationWindow( void ) {
     gtk_container_add( GTK_CONTAINER( pwAnnotation ),
 		       pwPaned = gtk_vpaned_new() );
     
-    gtk_paned_add1( GTK_PANED( pwPaned ),
-		    pwAnalysis = gtk_label_new( NULL ) );
+    gtk_paned_pack1( GTK_PANED( pwPaned ),
+		     pwAnalysis = gtk_label_new( NULL ), TRUE, FALSE );
     
-    gtk_paned_add2( GTK_PANED( pwPaned ),
-                    pHbox = gtk_hbox_new(FALSE, 0));
-
+    gtk_paned_pack2( GTK_PANED( pwPaned ),
+		     pHbox = gtk_hbox_new( FALSE, 0 ), FALSE, TRUE );
+    
     pwCommentary = gtk_text_new( NULL, NULL ) ;
 
     gtk_text_set_word_wrap( GTK_TEXT( pwCommentary ), TRUE );
@@ -1499,7 +1499,7 @@ static void SetAnnotation( moverecord *pmr ) {
     if( !pwAnalysis )
 	pwAnalysis = gtk_label_new( "No analysis available." );
     
-    gtk_paned_add1( GTK_PANED( pwParent ), pwAnalysis );
+    gtk_paned_pack1( GTK_PANED( pwParent ), pwAnalysis, TRUE, FALSE );
     gtk_widget_show_all( pwAnalysis );
 }
 
