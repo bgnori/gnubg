@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.110 2004/07/04 09:48:20 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.111 2004/07/07 09:51:49 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1966,7 +1966,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.110 2004/07/04 09:48:20 thyssen Exp $\n"
+          "    $Id: gtkprefs.c,v 1.111 2004/07/07 09:51:49 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -3419,7 +3419,7 @@ ParseBoardDesigns ( const char *szFile, const int fDeletable ) {
     return NULL;
 
   pxpc = xmlCreateFileParserCtxt ( pch );
-  g_free ( pch );
+  free ( pch );
   if ( ! pxpc )
     return NULL;
 
