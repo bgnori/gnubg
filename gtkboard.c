@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.148 2003/10/01 16:38:55 jsegrave Exp $
+ * $Id: gtkboard.c,v 1.149 2003/10/02 09:58:05 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2463,7 +2463,14 @@ static gint board_set( Board *board, const gchar *board_text,
 	return 0;
 
 	if( bd->turn != old_turn )
+	{
+#if USE_BOARD3D
+		/* Make sure flag shadow is correct if players are swapped when resigned */
+		if (bd->resigned)
+			updateFlagOccPos(bd);
+#endif
 	  redrawNeeded = 1;
+	}
 
     if( bd->doubled != old_doubled || 
         bd->cube != old_cube ||
