@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.408 2003/04/08 19:38:16 thyssen Exp $
+ * $Id: gnubg.c,v 1.409 2003/04/25 18:30:27 thyssen Exp $
  */
 
 #include "config.h"
@@ -725,6 +725,8 @@ command cER = {
     { "match", CommandLoadMatch, 
       N_("Read a saved match from a file"), szFILENAME,
       &cFilename },
+    { "position", CommandLoadPosition, 
+      N_("Read a saved position from a file"), szFILENAME, &cFilename },
     { "weights", CommandNotImplemented, 
       N_("Read neural net weights from a file"),
       szOPTFILENAME, &cFilename },

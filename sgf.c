@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.70 2003/04/07 19:23:52 thyssen Exp $
+ * $Id: sgf.c,v 1.71 2003/04/25 18:30:27 thyssen Exp $
  */
 
 #include "config.h"
@@ -1269,6 +1269,61 @@ extern void CommandLoadGame( char *sz ) {
 
     }
 }
+
+
+extern void 
+CommandLoadPosition( char *sz ) {
+
+    list *pl;
+    char szCharset[ 80 ] = "ISO-8859-1";
+
+    sz = NextToken( &sz );
+    
+    if( !sz || !*sz ) {
+	outputl( _("You must specify a file to load from (see `help load "
+		 "position').") );
+	return;
+    }
+
+    if( ( pl = LoadCollection( sz ) ) ) {
+	if( ms.gs == GAME_PLAYING && fConfirm ) {
+	    if( fInterrupt )
+		return;
+	    
+	    if( !GetInputYN( _("Are you sure you want to load a saved position, "
+			     "and discard the match in progress? ") ) )
+		return;
+	}
+
+#if USE_GTK
+	if( fX )
+	    GTKFreeze();
+#endif
+	
+	FreeMatch();
+	ClearMatch();
+	
+	/* FIXME if pl contains multiple games, ask which one to load */
+
+	RestoreGame( pl->plNext->p, szCharset );
+	
+	FreeGameTreeSeq( pl );
+
+	UpdateSettings();
+	
+#if USE_GTK
+	if( fX ){
+	    GTKThaw();
+	    GTKSet(ap);
+        }
+
+        setDefaultFileName ( sz, PATH_SGF );
+
+#endif
+
+    }
+}
+
 
 extern void CommandLoadMatch( char *sz ) {
 

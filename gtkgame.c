@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.339 2003/04/13 07:52:27 thyssen Exp $
+ * $Id: gtkgame.c,v 1.340 2003/04/25 18:30:27 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -313,6 +313,7 @@ static void ImportSnowieTxt( gpointer *p, guint n, GtkWidget *pw );
 static void LoadCommands( gpointer *p, guint n, GtkWidget *pw );
 static void LoadGame( gpointer *p, guint n, GtkWidget *pw );
 static void LoadMatch( gpointer *p, guint n, GtkWidget *pw );
+static void LoadPosition( gpointer *p, guint n, GtkWidget *pw );
 static void NewMatch( gpointer *p, guint n, GtkWidget *pw );
 static void NewWeights( gpointer *p, guint n, GtkWidget *pw );
 static void SaveGame( gpointer *p, guint n, GtkWidget *pw );
@@ -2222,6 +2223,7 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ N_("/_File/_Open/_Game..."), NULL, LoadGame, 0, NULL },
 	{ N_("/_File/_Open/_Match or session..."), "<control>O", 
           LoadMatch, 0, NULL },
+	{ N_("/_File/_Open/_Position..."), NULL, LoadPosition, 0, NULL },
 	{ N_("/_File/_Save"), NULL, NULL, 0, "<Branch>" },
 	{ N_("/_File/_Save/_Game..."), NULL, SaveGame, 0, NULL },
 	{ N_("/_File/_Save/_Match or session..."), "<control>S", 
@@ -3451,6 +3453,15 @@ static void LoadMatch( gpointer *p, guint n, GtkWidget *pw ) {
 
   char *sz = getDefaultPath ( PATH_SGF );
   FileCommand( _("Open match or session"), sz, "load match", "sgf", 0 );
+  if ( sz ) 
+    free ( sz );
+
+}
+
+static void LoadPosition( gpointer *p, guint n, GtkWidget *pw ) {
+
+  char *sz = getDefaultPath ( PATH_SGF );
+  FileCommand( _("Open position"), sz, "load position", "sgf", 0 );
   if ( sz ) 
     free ( sz );
 
