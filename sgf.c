@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.86 2003/10/06 19:34:57 hb Exp $
+ * $Id: sgf.c,v 1.87 2003/10/12 13:14:09 thyssen Exp $
  */
 
 #include "config.h"
@@ -1405,7 +1405,9 @@ static void RestoreGame( list *pl, char *szCharset ) {
 	ms.gc.pc[0].tc.timing = ms.gc.pc[1].tc.timing =  TC_UNKNOWN;
 #endif
     if( pmr->g.fResigned ) {
-	ms.fTurn = ms.fMove = -1;
+      /* setting fTurn = fMove = -1 results in the board being
+         inverted when shown. /jth 2003-10-12 
+         ms.fTurn = ms.fMove = -1; */
 	
 	pmrResign = calloc( 1, sizeof( pmrResign ->r ) );
 	pmrResign->mt = MOVE_RESIGN;
