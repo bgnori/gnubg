@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.74 2002/09/11 15:13:12 thyssen Exp $
+ * $Id: gtkboard.c,v 1.75 2002/09/11 15:21:04 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4555,7 +4555,7 @@ static void board_init( Board *board ) {
     bd->usedicearea = FALSE;
     bd->permit_illegal = FALSE;
     bd->beep_illegal = TRUE;
-    bd->higher_die_first = FALSE;
+    bd->higher_die_first = TRUE;
     bd->animate_computer_moves = ANIMATE_SLIDE;
     bd->animate_speed = 4;
     bd->arLight[ 0 ] = -0.55667;
