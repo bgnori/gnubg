@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.301 2002/09/19 13:45:28 gtw Exp $
+ * $Id: gnubg.c,v 1.302 2002/09/19 15:13:01 gtw Exp $
  */
 
 #include "config.h"
@@ -970,7 +970,7 @@ command cER = {
   { "esd", CommandSetSoundSystemESD, N_("Use ESD sound system"), NULL, NULL },
   { "nas", CommandSetSoundSystemNAS, N_("Use NAS sound system"), NULL, NULL },
   { "normal", CommandSetSoundSystemNormal, 
-    N_("Play sounds to /dev/audio"), NULL, NULL },
+    N_("Play sounds to /dev/dsp or /dev/audio"), NULL, NULL },
   { "windows", CommandSetSoundSystemWindows, 
     N_("Use MS Windows API for playing sounds"), NULL, NULL },
   { NULL, NULL, NULL, NULL, NULL }    
@@ -1339,7 +1339,7 @@ char *aszVersion[] = {
 #   if HAVE_NAS
     N_("  NAS sound system"),
 #   endif
-    N_("  /dev/audio"),
+    N_("  /dev/dsp"),
 #   ifdef WIN32
     N_("  MS Windows sound system"),
 #   endif

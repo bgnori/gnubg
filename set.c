@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.123 2002/09/18 19:18:52 gtw Exp $
+ * $Id: set.c,v 1.124 2002/09/19 15:13:01 gtw Exp $
  */
 
 #include "config.h"
@@ -2846,12 +2846,12 @@ CommandSetSoundSystemNormal ( char *sz ) {
 #ifndef WIN32
 
   ssSoundSystem = SOUND_SYSTEM_NORMAL;
-  outputl ( _("GNU Backgammon will play sounds to /dev/audio" ) );
+  outputl ( _("GNU Backgammon will play sounds to /dev/dsp" ) );
 
 #else
 
   outputl ( _("GNU Backgammon was compiled without support for "
-              "playing sounds to /dev/audio" ) );
+              "playing sounds to /dev/dsp" ) );
 
 #endif
 
