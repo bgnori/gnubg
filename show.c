@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.163 2003/08/26 16:58:38 hb Exp $
+ * $Id: show.c,v 1.164 2003/09/02 23:57:10 kaoru Exp $
  */
 
 #include "config.h"
@@ -1327,9 +1327,12 @@ extern void CommandShowVersion( char *sz ) {
 
     outputc( '\n' );
 
-    outputl( _("GNU Backgammon was written by Joseph Heled, Øystein Johansen, "
-	     "David Montgomery,\nJim Segrave, Jørn Thyssen and Gary Wong.\n\n"
-	     "Special thanks to:") );
+    /* To avoid gnubg.pot include non US-ASCII char. */
+    outputf( _("GNU Backgammon was written by %s, %s, %s\n%s, %s and %s.\n\n"),
+	       "Joseph Heled", "Øystein Johansen", "David Montgomery",
+	       "Jim Segrave", "Jørn Thyssen", "Gary Wong");
+
+    outputl( _("Special thanks to:") );
 
     cCol = 80;
 
