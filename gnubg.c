@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.515 2003/12/29 19:20:55 uid65656 Exp $
+ * $Id: gnubg.c,v 1.516 2003/12/29 19:41:51 uid65656 Exp $
  */
 
 #include "config.h"
@@ -3966,7 +3966,6 @@ HintChequer( char *sz ) {
   char szBuf[ 1024 ];
   int n = ParseNumber ( &sz );
   int anMove[ 8 ];
-#endif
   moverecord *pmr;
   unsigned char auch[ 10 ];
   int fHasMoved;
