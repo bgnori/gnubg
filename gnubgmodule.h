@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.8 2005/01/02 12:06:30 Superfly_Jon Exp $
+ * $Id: gnubgmodule.h,v 1.9 2005/01/02 13:48:45 jsegrave Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
@@ -33,7 +33,7 @@
 #undef HAVE_FSTAT
 #include <Python.h>
 #undef HAVE_FSTAT
-#define HAVE_FSTAT _HAVE_FSTAT
+#include "config.h"
 
 extern void
 PythonInitialise( const char *szDir );

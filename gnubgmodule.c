@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.43 2005/01/02 12:06:30 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.44 2005/01/02 13:48:45 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2320,7 +2320,7 @@ PythonInitialise( const char *szDir ) {
 
   char *pch;
 	static char workingDir[BIG_PATH];
-    _getcwd(workingDir, _MAX_PATH);
+    getcwd(workingDir, PATH_MAX);
 
 #if WIN32
 {	/* Setup python to look in the pythonlib directory if present */
