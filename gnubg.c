@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.520 2004/01/03 13:35:08 uid65656 Exp $
+ * $Id: gnubg.c,v 1.521 2004/01/19 10:20:06 uid68519 Exp $
  */
 
 #include "config.h"
@@ -2514,6 +2514,10 @@ extern void UpdateSettings( void ) {
     UpdateSetting( &ms.gs );
     
     ShowBoard();
+
+#if USE_BOARD3D
+	RestrictiveRedraw();
+#endif
 }
 
 /* handle turning a setting on / off

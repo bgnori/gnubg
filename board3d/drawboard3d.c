@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.18 2004/01/16 09:42:15 uid68519 Exp $
+* $Id: drawboard3d.c,v 1.19 2004/01/19 10:20:07 uid68519 Exp $
 */
 
 #include <math.h>
@@ -3530,7 +3530,6 @@ void RestrictiveDrawPiece(BoardData* bd, int pos, int depth)
 {
 	float newPos[3];
 	getPiecePos(pos, depth, fClockwise, newPos);
-
 	RestrictiveDrawFrame(newPos, PIECE_HOLE, PIECE_HOLE, PIECE_DEPTH);
 }
 

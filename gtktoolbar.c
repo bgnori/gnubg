@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.9 2004/01/01 11:49:31 uid65656 Exp $
+ * $Id: gtktoolbar.c,v 1.10 2004/01/19 10:20:07 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -514,7 +514,7 @@ ToolbarNew ( void ) {
   gtk_toolbar_append_space(GTK_TOOLBAR(pwToolbar));
   
   /* reset button */
-  TB_BUTTON_ADD(ptw->pwReset, stock_undo_xpm, _("Undo"), ShowBoard,
+  TB_BUTTON_ADD(ptw->pwReset, stock_undo_xpm, _("Undo"), Undo,
 		  NULL, 
                   _("Undo moves"),
 		  NULL) ;

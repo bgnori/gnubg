@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.10 2004/01/16 09:42:15 uid68519 Exp $
+* $Id: widget3d.c,v 1.11 2004/01/19 10:20:07 uid68519 Exp $
 */
 
 #include <config.h>
@@ -117,6 +117,8 @@ static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *notused, B
 	glViewport(0, 0, width, height);
 	SetupViewingVolume3d(bd, &rdAppearance);
 
+	RestrictiveRedraw();
+
 #if HAVE_GTKGLEXT
 	gdk_gl_drawable_gl_end(gldrawable);
 	/*** OpenGL END ***/
@@ -186,10 +188,10 @@ static gboolean expose_event(GtkWidget *widget, GdkEventExpose *event, BoardData
 		{
 			RestrictiveRender(bd);
 		}
-		else
+		else if (numRestrictFrames < 0)
 		{
-			numRestrictFrames = 0;
 			Draw(bd);
+			numRestrictFrames = 0;
 		}
 	}
 
