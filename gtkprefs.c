@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.38 2002/09/18 21:12:53 gtw Exp $
+ * $Id: gtkprefs.c,v 1.39 2002/09/24 17:02:42 gtw Exp $
  */
 
 #include "config.h"
@@ -744,7 +744,7 @@ static GtkWidget *GeneralPage( BoardData *bd ) {
     gtk_widget_set_usize ( GTK_WIDGET ( pwScale ), 100, -1 );
 #endif
     gtk_scale_set_draw_value( GTK_SCALE( pwScale ), FALSE );
-    gtk_scale_set_digits( GTK_SCALE( pwScale ), 0 );
+    gtk_scale_set_digits( GTK_SCALE( pwScale ), 2 );
 
     gtk_box_pack_start( GTK_BOX( pwBox ),
 			gtk_label_new( _("Chequer shape:") ),
