@@ -1,9 +1,8 @@
 /*
  * acconfig.h
  *
- * by Gary Wong, 1999, 2000
+ * by Gary Wong, 1999, 2000, 2001
  *
- * $Id: acconfig.h,v 1.6 2001/02/22 16:43:21 gtw Exp $
  */
 
 /* Installation directory (used to determine PKGDATADIR below). */
