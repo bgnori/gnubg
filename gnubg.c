@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.491 2003/09/12 18:06:36 kaoru Exp $
+ * $Id: gnubg.c,v 1.492 2003/09/12 19:03:32 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1669,6 +1669,9 @@ command cER = {
       N_("Synonym for `set matchequitytable'"), szFILENAME, &cFilename },
     { "output", NULL, N_("Modify options for formatting results"), NULL,
       acSetOutput },
+    { "panels", CommandSetDisplayPanels, 
+      N_("Display game list, annotation and message panels/windows"), 
+	 szONOFF, &cOnOff }, 
     { "path", NULL, N_("Set default path when saving, loading, importing, "
       "and exporting files."), NULL, acSetPath },
     { "player", CommandSetPlayer, N_("Change options for one or both "
@@ -5552,6 +5555,7 @@ extern void CommandSaveSettings( char *szParam ) {
        RefreshGeometries ();
 #endif
 
+    fprintf( pf, "set panels %s\n", fDisplayPanels ? "yes" : "no");
     for ( i = 0; i < NUM_WINDOWS; ++i )
         fprintf ( pf, 
                   "set geometry %s width %d\n"

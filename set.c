@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.205 2003/09/02 10:34:39 Superfly_Jon Exp $
+ * $Id: set.c,v 1.206 2003/09/12 19:03:32 jsegrave Exp $
  */
 
 #include "config.h"
@@ -4607,4 +4607,22 @@ extern void CommandSetLang( char *sz ) {
 		"The new setting will only take effect on the next start "
 		"of gnubg." ), sz );
 
+}
+
+extern void CommandSetDisplayPanels( char *sz ) {
+
+  SetToggle ("panels", &fDisplayPanels, sz, 
+  _("Game list, Annotation and Message panels/windows will be displayed."),
+  _("Game list, Annotation and Message panels/windows will not be displayed.")
+	     );
+
+#if USE_GUI && USE_GTK
+  if (fX) {
+    if (fDisplayPanels) 
+      ShowAllPanels (0, 0, 0);
+    else
+      HideAllPanels (0, 0, 0);
+  }
+#endif
+    
 }

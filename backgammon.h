@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.257 2003/09/12 17:14:03 jsegrave Exp $
+ * $Id: backgammon.h,v 1.258 2003/09/12 19:03:33 jsegrave Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -684,7 +684,12 @@ extern int fReadingCommand;
 extern void HandleInput( char* sz );
 #endif
 #endif
-
+#if USE_GUI
+#if USE_GTK
+extern void HideAllPanels ( gpointer *p, guint n, GtkWidget *pw );
+extern void ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw );
+#endif
+#endif
 
 #if HAVE_LIBREADLINE
 extern int fReadline;
@@ -929,6 +934,7 @@ extern void CommandAccept( char * ),
     CommandSetDelay( char * ),
     CommandSetDice( char * ),
     CommandSetDisplay( char * ),
+    CommandSetDisplayPanels( char *),
     CommandSetEvalCandidates( char * ),
     CommandSetEvalCubeful( char * ),
     CommandSetEvalDeterministic( char * ),
@@ -1196,6 +1202,7 @@ extern void CommandAccept( char * ),
     CommandShowDelay( char * ),
     CommandShowDice( char * ),
     CommandShowDisplay( char * ),
+    CommandShowDisplayPanels( char * ),
     CommandShowEngine( char * ),
     CommandShowEvaluation( char * ),
     CommandShowExport ( char * ),
@@ -1250,6 +1257,8 @@ extern void CommandAccept( char * ),
 
 
 extern int fTutor, fTutorCube, fTutorChequer, nTutorSkillCurrent;
+
+extern int fDisplayPanels;
 
 extern int GiveAdvice ( skilltype Skill );
 extern skilltype TutorSkill;

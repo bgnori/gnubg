@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.167 2003/09/12 17:14:02 jsegrave Exp $
+ * $Id: show.c,v 1.168 2003/09/12 19:03:32 jsegrave Exp $
  */
 
 #include "config.h"
@@ -2373,3 +2373,7 @@ extern void CommandShowTCTutorial( char *sz ) {
 #endif
 
 
+extern void CommandShowDisplayPanels( char *sz ) {
+  outputf( _("Game list, Annotation and Message panels/windows "
+             "will%s be displayed."), fDisplayPanels ? "": " not");
+}
