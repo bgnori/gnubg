@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.127 2003/07/03 15:21:32 jsegrave Exp $
+ * $Id: gtkboard.c,v 1.128 2003/07/21 21:05:32 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -140,10 +140,10 @@ write_points ( gint points[ 28 ], const gint turn, const gint nchequers,
 
   /* Board */
   for( i = 0; i < 24; i++ ) {
-    if ( anBoard[ turn > 0 ][ i ] )
-      points[ i + 1 ] = turn * anBoard[ turn > 0 ][ i ];
-    if ( anBoard[ turn <= 0 ][ i ] )
-      points[ 24 - i ] = -turn * anBoard[ turn <= 0 ][ i ];
+    if ( anBoard[ 1 ][ i ] )
+      points[ i + 1 ] = anBoard[ 1 ][ i ];
+    if ( anBoard[ 0 ][ i ] )
+      points[ 24 - i ] = -anBoard[ 0 ][ i ];
   }
 
   /* Player on bar */
@@ -155,8 +155,8 @@ write_points ( gint points[ 28 ], const gint turn, const gint nchequers,
     anOff[ 1 ] -= anBoard[ 1 ][ i ];
   }
     
-  points[ 26 ] = anOff[ turn >= 0  ] * turn;
-  points[ 27 ] = - anOff[ turn < 0 ] * turn;
+  points[ 26 ] = anOff[ 0 ];
+  points[ 27 ] = -anOff[ 1 ];
 
 }
 
