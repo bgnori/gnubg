@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.37 2002/07/01 19:00:31 thyssen Exp $
+ * $Id: html.c,v 1.38 2002/07/04 18:29:49 thyssen Exp $
  */
 
 #include "config.h"
@@ -795,7 +795,7 @@ printPointGNU ( FILE *pf, const char *szImageDir, const char *szExtension,
     /* player 0 owns the point */
 
     sprintf ( sz, "b-%c%c-x%d", fColor ? 'g' : 'r', fUp ? 'd' : 'u',
-              ( iPoint0 >= 11 ) ? 11 : iPoint0 );
+              iPoint0 );
     sprintf ( szAlt, "%1xX", iPoint0 );
     
   }
@@ -804,8 +804,7 @@ printPointGNU ( FILE *pf, const char *szImageDir, const char *szExtension,
     /* player 1 owns the point */
 
     sprintf ( sz, "b-%c%c-o%d", fColor ? 'g' : 'r', fUp ? 'd' : 'u',
-              ( iPoint1 >= 11 ) ?
-              11 : iPoint1 );
+              iPoint1 );
     sprintf ( szAlt, "%1xO", iPoint1 );
 
   }
@@ -937,8 +936,8 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   /* right bearoff tray */
 
   fputs ( "<td rowspan=\"2\">", pf );
-  if ( acOff[ 0 ] ) 
-    sprintf ( sz, "b-roff-x%d", acOff[ 0 ] );
+  if ( acOff[ 1 ] ) 
+    sprintf ( sz, "b-roff-x%d", acOff[ 1 ] );
   else
     strcpy ( sz, "b-roff" );
   printImage ( pf, szImageDir, sz, szExtension, "|" );
@@ -1247,7 +1246,7 @@ HTMLBoardHeader ( FILE *pf, const matchstate *pms,
 
     fprintf ( pf,
               _(" %s doubles to %d"),
-              gettext ( aszColorName[ ! pms->fMove ] ),
+              gettext ( aszColorName[ pms->fMove ] ),
               pms->nCube * 2
             );
 
@@ -1391,7 +1390,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.37 $";
+  const char szVersion[] = "$Revision: 1.38 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1640,10 +1639,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
 
     if ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) {
 
-      if ( arDouble[ OUTPUT_TAKE ] > arDouble[ OUTPUT_DROP ] )
-        r = arDouble[ OUTPUT_DROP ] - arDouble[ OUTPUT_NODOUBLE ];
-      else
-        r = arDouble[ OUTPUT_TAKE ] - arDouble[ OUTPUT_NODOUBLE ];    
+      r = arDouble[ OUTPUT_TAKE ] - arDouble[ OUTPUT_DROP ];
 
       fprintf ( pf, " (%+7.3f)!", r );
       
@@ -1655,12 +1651,8 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
     }
     else {
 
-      if ( arDouble[ OUTPUT_TAKE ] > arDouble[ OUTPUT_DROP ] )
-        r = eq2mwc ( arDouble[ OUTPUT_DROP ], pci ) - 
-          eq2mwc ( arDouble[ OUTPUT_NODOUBLE ], pci );
-      else
-        r = eq2mwc ( arDouble[ OUTPUT_TAKE ], pci ) - 
-          eq2mwc ( arDouble[ OUTPUT_NODOUBLE ], pci );
+      r = eq2mwc ( arDouble[ OUTPUT_TAKE ], pci ) - 
+        eq2mwc ( arDouble[ OUTPUT_DROP ], pci );
 
       fprintf ( pf, " (%+6.3f%%)!", 100.0f * r );
       
@@ -1686,10 +1678,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
 
     if ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) {
 
-      if ( arDouble[ OUTPUT_TAKE ] > arDouble[ OUTPUT_DROP ] )
-        r = arDouble[ OUTPUT_DROP ] - arDouble[ OUTPUT_NODOUBLE ];
-      else
-        r = arDouble[ OUTPUT_TAKE ] - arDouble[ OUTPUT_NODOUBLE ];    
+      r = arDouble[ OUTPUT_DROP ] - arDouble[ OUTPUT_TAKE ];
 
       fprintf ( pf, " (%+7.3f)!", r );
       
@@ -1701,12 +1690,8 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
     }
     else {
 
-      if ( arDouble[ OUTPUT_TAKE ] > arDouble[ OUTPUT_DROP ] )
-        r = eq2mwc ( arDouble[ OUTPUT_DROP ], pci ) - 
-          eq2mwc ( arDouble[ OUTPUT_NODOUBLE ], pci );
-      else
-        r = eq2mwc ( arDouble[ OUTPUT_TAKE ], pci ) - 
-          eq2mwc ( arDouble[ OUTPUT_NODOUBLE ], pci );
+      r = eq2mwc ( arDouble[ OUTPUT_DROP ], pci ) - 
+          eq2mwc ( arDouble[ OUTPUT_TAKE ], pci );
 
       fprintf ( pf, " (%+6.3f%%)!", 100.0f * r );
       
@@ -2925,7 +2910,7 @@ static void ExportGameHTML ( FILE *pf, list *plGame, const char *szImageDir,
     for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) {
 
       pmr = pl->p;
-      
+
       switch( pmr->mt ) {
 
       case MOVE_GAMEINFO:
