@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.43 2002/12/12 22:04:14 thyssen Exp $
+ * $Id: database.c,v 1.44 2003/03/13 20:39:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -392,7 +392,7 @@ extern void CommandDatabaseGenerate( char *sz ) {
   ProgressStart( _("Generating database...") );
   
   while( ( !n || c <= n ) && !fInterrupt ) {
-    InitBoard( anBoardGenerate );
+    InitBoard( anBoardGenerate, bgvDefault );
 	
     do {    
 	if( !( ++c % 10 ) )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.210 2003/03/09 08:25:45 thyssen Exp $
+ * $Id: backgammon.h,v 1.211 2003/03/13 20:41:22 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -142,6 +142,7 @@ typedef struct _movegameinfo {
 	nPoints, /* how many points were scored by the winner */
 	fResigned, /* the game was ended by resignation */
 	nAutoDoubles; /* how many automatic doubles were rolled */
+    bgvariation bgv;
     statcontext sc;
 } movegameinfo;
 
@@ -251,6 +252,7 @@ typedef struct _matchstate {
     int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn, fResigned,
 	fResignationDeclined, fDoubled, cGames, fMove, fCubeOwner, fCrawford,
 	fPostCrawford, nMatchTo, anScore[ 2 ], nCube, cBeavers;
+    bgvariation bgv;
     gamestate gs;
 } matchstate;
 
@@ -356,7 +358,7 @@ extern player ap[ 2 ];
 extern char *GetInput( char *szPrompt );
 extern int GetInputYN( char *szPrompt );
 extern void HandleCommand( char *sz, command *ac );
-extern void InitBoard( int anBoard[ 2 ][ 25 ] );
+extern void InitBoard( int anBoard[ 2 ][ 25 ], const bgvariation bgv );
 extern char *NextToken( char **ppch );
 extern int NextTurn( int fPlayNext );
 extern void TurnDone( void );
