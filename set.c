@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.97 2002/04/19 16:17:01 thyssen Exp $
+ * $Id: set.c,v 1.98 2002/05/12 11:23:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -459,11 +459,21 @@ extern void CommandSetAppearance( char *sz ) {
 		 "interface." );
 }
 
-extern void CommandSetConfirm( char *sz ) {
+extern void CommandSetConfirmNew( char *sz ) {
     
-    SetToggle( "confirm", &fConfirm, sz, "Will ask for confirmation before "
+    SetToggle( "confirm new", &fConfirm, sz, 
+               "Will ask for confirmation before "
 	       "aborting games in progress.", "Will not ask for confirmation "
 	       "before aborting games in progress." );
+}
+
+extern void CommandSetConfirmSave( char *sz ) {
+    
+    SetToggle( "confirm save", &fConfirmSave, sz, 
+               "Will ask for confirmation before "
+	       "overwriting existing files.", 
+               "Will not ask for confirmation "
+	       "overwriting existing files." );
 }
 
 extern void CommandSetCubeCentre( char *sz ) {

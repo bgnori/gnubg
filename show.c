@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.87 2002/04/13 13:45:57 oysteijo Exp $
+ * $Id: show.c,v 1.88 2002/05/12 11:23:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -365,6 +365,14 @@ extern void CommandShowConfirm( char *sz ) {
     else
 	outputl( "GNU Backgammon will not ask for confirmation "
 	       "before aborting games in progress." );
+
+    if( fConfirmSave )
+	outputl( "GNU Backgammon will ask for confirmation before "
+	       "overwriting existing files." );
+    else
+	outputl( "GNU Backgammon will not ask for confirmation "
+	       "overwriting existing files." );
+
 }
 
 extern void CommandShowCopying( char *sz ) {

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.141 2002/05/04 21:17:31 joseph Exp $
+ * $Id: gtkgame.c,v 1.142 2002/05/12 11:27:40 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -153,7 +153,8 @@ typedef enum _gnubgcommand {
     CMD_SET_AUTO_MOVE,
     CMD_SET_AUTO_ROLL,
     CMD_SET_CLOCKWISE,
-    CMD_SET_CONFIRM,
+    CMD_SET_CONFIRM_NEW,
+    CMD_SET_CONFIRM_SAVE,
     CMD_SET_CUBE_USE,
     CMD_SET_DISPLAY,
     CMD_SET_EGYPTIAN,
@@ -209,7 +210,8 @@ static togglecommand atc[] = {
     { &fAutoMove, CMD_SET_AUTO_MOVE },
     { &fAutoRoll, CMD_SET_AUTO_ROLL },
     { &fClockwise, CMD_SET_CLOCKWISE },
-    { &fConfirm, CMD_SET_CONFIRM },
+    { &fConfirm, CMD_SET_CONFIRM_NEW },
+    { &fConfirmSave, CMD_SET_CONFIRM_SAVE },
     { &fCubeUse, CMD_SET_CUBE_USE },
     { &fDisplay, CMD_SET_DISPLAY },
     { &fEgyptian, CMD_SET_EGYPTIAN },
@@ -269,7 +271,8 @@ static char *aszCommands[ NUM_CMDS ] = {
     "set automatic move",
     "set automatic roll",
     "set clockwise",
-    "set confirm",
+    "set confirm new",
+    "set confirm save",
     "set cube use",
     "set display",
     "set egyptian",
