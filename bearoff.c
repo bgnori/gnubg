@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.25 2003/12/29 19:27:49 uid65656 Exp $
+ * $Id: bearoff.c,v 1.26 2003/12/29 20:06:02 uid65656 Exp $
  */
 
 #include "config.h"
@@ -1913,6 +1913,7 @@ BearoffInit ( const char *szFilename, const char *szDir,
 
   /* create cache */
 
+#if 0
   if ( ! pbc->fInMemory ) {
     if ( ! ( pbc->ph = (hash *) malloc ( sizeof ( hash ) ) ) ||
          HashCreate ( pbc->ph, anCacheSize[ pbc->bt ], ahcmp[ pbc->bt ] ) < 0 )
@@ -1920,6 +1921,8 @@ BearoffInit ( const char *szFilename, const char *szDir,
   }
   else
     pbc->ph = NULL;
+#endif
+  pbc->ph = NULL;
   
   pbc->nReads = 0;
   
@@ -2226,7 +2229,7 @@ ReadBearoffOneSidedExact ( bearoffcontext *pbc, const unsigned int nPosID,
       return -1;
     }
 
-    if ( ! pbc->fInMemory ) {
+    if ( ! pbc->fInMemory && pbc->ph ) {
       /* add to cache */
       hashentryonesided *phe = 
         (hashentryonesided *) malloc ( sizeof ( hashentryonesided ) );
