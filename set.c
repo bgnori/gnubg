@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.33 2000/10/24 10:47:53 thyssen Exp $
+ * $Id: set.c,v 1.34 2000/10/24 14:20:27 gtw Exp $
  */
 
 #include "config.h"
@@ -598,13 +598,16 @@ extern void CommandSetPlayerName( char *sz ) {
 	return;
     }
 
+    if( strlen( pch ) > 31 )
+	pch[ 31 ] = 0;
+    
     if( ( *pch == '0' || *pch == '1' ) && !pch[ 1 ] ) {
 	outputf( "`%c' is not a legal name.\n", *pch );
 
 	return;
     }
 
-    if( !strncasecmp( pch, "both", strlen( pch ) ) ) {
+    if( !strcasecmp( pch, "both" ) ) {
 	outputl( "`both' is a reserved word; you can't call a player "
 		 "that.\n" );
 
@@ -618,9 +621,6 @@ extern void CommandSetPlayerName( char *sz ) {
 	return;
     }
 
-    if( strlen( pch ) > 31 )
-	pch[ 31 ] = 0;
-    
     strcpy( ap[ iPlayerSet ].szName, pch );
 
     outputf( "Player %d is now known as `%s'.\n", iPlayerSet, pch );
