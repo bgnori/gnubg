@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.22 2002/02/04 15:32:20 gtw Exp $
+ * $Id: guile.c,v 1.23 2002/02/05 15:38:46 gtw Exp $
  */
 
 #include "config.h"
@@ -41,6 +41,10 @@
 #include "guile.h"
 #include "positionid.h"
 #include "rollout.h"
+
+#if HAVE_SCM_SELECT_MODULE && !HAVE_SCM_SET_CURRENT_MODULE
+#define scm_set_current_module scm_select_module
+#endif
 
 static SCM BoardToSCM( int anBoard[ 2 ][ 25 ] ) {
 
