@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.130 2002/06/02 16:32:30 thyssen Exp $
+ * $Id: backgammon.h,v 1.131 2002/06/15 17:11:10 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -406,6 +406,7 @@ getDefaultFileName ( const pathformat f );
 extern char *
 getDefaultPath ( const pathformat f );
 
+extern char *GetLuckAnalysis( matchstate *pms, float rLuck );
 
 #ifdef WIN32
 extern void WinCopy( char *szOut );
@@ -470,13 +471,16 @@ extern void CommandAccept( char * ),
     CommandExportGameLaTeX( char * ),
     CommandExportGamePDF( char * ),
     CommandExportGamePostScript( char * ),
+    CommandExportGameText( char * ),
     CommandExportMatchMat( char * ),
     CommandExportMatchHtml( char * ),
     CommandExportMatchLaTeX( char * ),
     CommandExportMatchPDF( char * ),
     CommandExportMatchPostScript( char * ),
+    CommandExportMatchText( char * ),
     CommandExportPositionEPS( char * ),
     CommandExportPositionHtml( char * ),
+    CommandExportPositionText( char * ),
     CommandExternal( char * ),
     CommandHelp( char * ),
     CommandHint( char * ),
