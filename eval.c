@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.255 2003/09/19 19:00:33 thyssen Exp $
+ * $Id: eval.c,v 1.256 2003/09/22 16:24:04 thyssen Exp $
  */
 
 #include "config.h"
@@ -6246,7 +6246,7 @@ getMoneyPoints ( float aaarPoints[ 2 ][ 7 ][ 2 ],
   /* calculate average cubeless value of games won */
 
   for ( i = 0; i < 2; i++ )
-    arCLV[ i ] = 1.0 + aarRates[ i ][ 0 ] + aarRates[ i ][ 1 ];
+    arCLV[ i ] = 1.0 + aarRates[ i ][ 0 ] + 2.0f * aarRates[ i ][ 1 ];
 
     /* calculate points */
     
