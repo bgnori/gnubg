@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.114 2003/07/16 10:27:27 thyssen Exp $
+ * $Id: rollout.c,v 1.115 2003/07/17 10:31:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -1310,7 +1310,7 @@ GeneralCubeDecisionR ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   cubeinfo (* apci[2]) = { &aci[ 0 ], &aci[ 1 ] };
 
 
-  int i, cGames;
+  int cGames;
   int afCubeDecTop[] = { FALSE, FALSE }; /* no cube decision in 
                                             iTurn = 0 */
   int (* apCubeDecTop[2]) = { afCubeDecTop, afCubeDecTop};
