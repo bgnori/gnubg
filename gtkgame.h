@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.28 2001/12/16 11:55:37 thyssen Exp $
+ * $Id: gtkgame.h,v 1.29 2001/12/19 22:13:49 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -73,6 +73,9 @@ GTKProgressValue ( int fValue );
 extern void GTKDumpStatcontext( statcontext *psc, char *szTitle );
 extern void GTKEval( char *szOutput );
 extern void GTKHint( movelist *pml );
+extern void GTKDoubleHint( char *sz );
+extern void GTKTakeHint( float arDouble[], int fMWC, int fBeaver,
+			 cubeinfo *pci );
 extern void GTKRollout( int c, char asz[][ 40 ], int cGames );
 extern void GTKRolloutRow( int i );
 

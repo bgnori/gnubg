@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.177 2001/12/16 11:56:18 thyssen Exp $
+ * $Id: gnubg.c,v 1.178 2001/12/19 22:13:49 gtw Exp $
  */
 
 #include "config.h"
@@ -2154,15 +2154,10 @@ extern void CommandHint( char *sz ) {
 	    GetCubeActionSz ( arDouble, szBuf, &ci, fOutputMWC, FALSE );
 
 #if USE_GTK
-	    /*
-	      if ( fX ) {
-	      
-	      GTKHint( cube action );
-	      
-	      return;
-	      
-	      }
-	    */
+	    if ( fX ) {
+		GTKDoubleHint( szBuf );
+		return;
+	    }
 #endif
 	    outputl ( szBuf );
 	    
@@ -2186,17 +2181,14 @@ extern void CommandHint( char *sz ) {
 			                            &esEvalCube.ec ) < 0 )
 		return;
 
-        FindCubeDecision ( arDouble, aarOutput, &ci );  
+        FindCubeDecision ( arDouble, aarOutput, &ci );
+	
 #if USE_GTK
-	/*
-	  if ( fX ) {
-	  
-	  GTKHint( take decision );
-	  
-	  return;
-	  
-	  }
-	*/
+	if ( fX ) {
+	    GTKTakeHint( arDouble, ms.nMatchTo && fOutputMWC,
+			 !ms.nMatchTo && ms.cBeavers < nBeavers, &ci );
+	    return;
+	}
 #endif
 	
 	outputl ( "Take decision:\n" );
