@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.17 2004/03/31 09:51:55 Superfly_Jon Exp $
+ * $Id: render.h,v 1.18 2004/04/02 09:40:40 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -92,6 +92,7 @@ typedef enum _PieceTextureType
 
 extern void FindTexture(TextureInfo** textureInfo, char* file);
 extern void FindNamedTexture(TextureInfo** textureInfo, char* name);
+extern int MaterialCompare(Material* pMat1, Material* pMat2);
 
 #endif
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.60 2004/03/31 09:51:52 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.61 2004/04/02 09:40:40 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -271,6 +271,9 @@ extern void InitBoardPreview(BoardData *bd);
 /* Functions for 3d board */
 extern void InitGTK3d(int *argc, char ***argv);
 extern void Init3d();
+extern void InitBoard3d(BoardData *bd);
+extern void freeEigthPoints(float ****boardPoints, int accuracy);
+extern void SetupVisual();
 extern void SetupViewingVolume3d(BoardData *bd);
 extern void DisplayCorrectBoardType(BoardData* bd);
 extern void SetupLight3d(BoardData *bd, renderdata* prd);

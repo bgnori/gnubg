@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.27 2004/03/31 09:51:50 Superfly_Jon Exp $
+ * $Id: export.c,v 1.28 2004/04/02 09:40:40 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -171,6 +171,7 @@ void GenerateImage3d(renderdata *prd, const char* szName,
 	CopyAppearance(&rd);
 	CopySettings3d(bd, &bdpw);
 	bdpw.rd = &rd;
+	rd.nSize = nSize;
 
 	if (!(puch = (unsigned char *) malloc (nSizeX * nSizeY * nSize * nSize * 3)))
 	{

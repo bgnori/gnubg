@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.15 2004/03/31 09:51:57 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.16 2004/04/02 09:40:40 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -290,8 +290,7 @@ static void RenderPreview(Material* pMat, unsigned char* buf)
 	glReadPixels(0, 0, PREVIEW_WIDTH, PREVIEW_HEIGHT, GL_RGB, GL_UNSIGNED_BYTE, buf);
 
 	gdk_gl_pixmap_unref(glpixmap);
-	/* Removed next line as causes OpenGL errors, (hope it's not needed...)
-	gdk_gl_context_unref(glPixmapContext);	*/
+	gdk_gl_context_unref(glPixmapContext);
 }
 
 #endif

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.20 2004/03/31 09:51:57 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.21 2004/04/02 09:40:40 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -84,7 +84,6 @@ typedef struct _diceTest
 } diceTest;
 
 /* Setup functions */
-void InitBoard3d(BoardData *bd);
 void InitGL(BoardData *bd);
 
 /* font functions */
@@ -142,7 +141,6 @@ void AddGameData(GraphData* pgd, int game, statcontext *psc);
 void TidyGraphData(GraphData* pgd);
 
 /* Misc functions */
-void SetupVisual();
 void SetTexture(BoardData* bd, Material* pMat, const char* filename, TextureFormat format);
 void GetTexture(BoardData* bd, Material* pMat);
 void SetupSimpleMatAlpha(Material* pMat, float r, float g, float b, float a);
@@ -167,7 +165,6 @@ float ***Alloc3d(int x, int y, int z);
 void Free3d(float ***array, int x, int y);
 int LoadTexture(Texture* texture, const char* Filename, TextureFormat format);
 void CheckOpenglError();
-void freeEigthPoints(float ****boardPoints, int accuracy);
 
 typedef int idleFunc(BoardData* bd);
 void setIdleFunc(BoardData* bd, idleFunc* pFun);
