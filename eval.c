@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.207 2002/12/23 18:58:49 thyssen Exp $
+ * $Id: eval.c,v 1.208 2002/12/24 11:27:22 thyssen Exp $
  */
 
 #include "config.h"
@@ -2292,7 +2292,7 @@ EvaluatePositionFull( int anBoard[ 2 ][ 25 ], float arOutput[],
     for( i = 0; i < NUM_OUTPUTS; i++ )
       arOutput[ i ] = 0.0;
 
-    fUseReduction = pec->nReduced && ( nPlies == ( pec->nPlies - 1 ) );
+    fUseReduction = pec->nReduced && ( nPlies == 1 ) && ( pec->nPlies > 0 );
 
     if ( fUseReduction ) {
       nReductionGroup = (nReductionGroup + 1) % pec->nReduced;
@@ -5676,7 +5676,7 @@ EvaluatePositionCubeful3( int anBoard[ 2 ][ 25 ],
 
     MakeCubePos ( aciCubePos, cci, fTop, aci, TRUE );
 
-    fUseReduction = pec->nReduced && ( nPlies == ( pec->nPlies - 1 ) );
+    fUseReduction = pec->nReduced && ( nPlies == 1 ) && ( pec->nPlies > 0 );
 
     if ( fUseReduction ) {
       nReductionGroup = (nReductionGroup + 1) % pec->nReduced;
