@@ -1,6 +1,6 @@
-## $Id: Makefile.am,v 1.72 2002/11/25 19:49:49 thyssen Exp $
+## $Id: Makefile.am,v 1.73 2002/11/29 22:58:14 thyssen Exp $
 if USE_EXT
-SUBDIRS = intl lib doc ext met po m4 xpm sounds
+SUBDIRS = intl lib doc ext met po m4 xpm sounds boards
 else
 SUBDIRS = intl lib doc met po m4 xpm sounds
 endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.184 2002/11/28 02:47:27 gtw Exp $
+ * $Id: backgammon.h,v 1.185 2002/11/29 22:56:06 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -89,10 +89,6 @@ typedef struct _windowgeometry {
 } windowgeometry;
 
 /* predefined board designs */
-
-#if USE_GTK
-GList *plBoardDesigns;
-#endif
 
 extern windowgeometry awg[ NUM_WINDOWS ];
 

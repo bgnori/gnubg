@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.340 2002/11/28 02:47:27 gtw Exp $
+ * $Id: gnubg.c,v 1.341 2002/11/29 22:56:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -3339,11 +3339,6 @@ extern void PromptForExit( void ) {
     playSound ( SOUND_EXIT );
     SoundWait();
 
-#if USE_GTK
-    if ( fX )
-      free_board_designs ( plBoardDesigns );
-#endif
-
     EvalShutdown ();
     
     exit( EXIT_SUCCESS );
@@ -6141,13 +6136,6 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     ListCreate( &lMatch );
     IniStatcontext( &scMatch );
     
-    /* read board designs */
-
-#if USE_GTK
-    if ( fX )
-      plBoardDesigns = read_board_designs ();
-#endif
-
     /* setup readline */
     
 #if USE_GTK
