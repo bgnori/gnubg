@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.17 2001/10/29 15:14:17 gtw Exp $
+ * $Id: gtkboard.h,v 1.18 2001/11/01 15:47:29 gtw Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -89,6 +89,7 @@ typedef struct _BoardData {
 	dice_roll[ 2 ]; /* roll showing on the off-board dice */
     gint cube_owner; /* -1 = bottom, 0 = centred, 1 = top */
     gint clockwise; /* last drawn orientation */
+    gint qedit_point; /* used to remember last point in quick edit mode */
     move *all_moves, *valid_move;
     movelist move_list;
 
