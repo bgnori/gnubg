@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.39 2004/05/07 17:59:16 Superfly_Jon Exp $
+ * $Id: dice.c,v 1.40 2004/05/08 09:11:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -912,7 +912,7 @@ getDiceRandomDotOrg ( void ) {
     strcpy( szHostname, "www.random.org:80" );
 
     if ( ( h = ExternalSocket( &psa, &cb, szHostname ) ) < 0 ) {
-      outputerr ( szHostname );
+      SockErr ( szHostname );
       return -1;
     }
 
@@ -923,14 +923,14 @@ getDiceRandomDotOrg ( void ) {
 #else
     if ( ( connect( h, psa, cb ) ) < 0 ) {
 #endif /* WIN32 */
-      outputerr( szHostname );
+      SockErr( szHostname );
       return -1;
     }
 
     /* read next set of numbers */
 
     if ( ExternalWrite( h, szHTTP, strlen ( szHTTP ) + 1 ) < 0 ) {
-      outputerr( szHTTP );
+      SockErr( szHTTP );
       closesocket( h );
       return -1;
     }
@@ -944,7 +944,7 @@ getDiceRandomDotOrg ( void ) {
 #else
 	if ( ! ( nBytesRead = read( h, acBuf, sizeof ( acBuf ) ) ) ) {
 #endif
-      outputerr( "reading data" );
+      SockErr( "reading data" );
       closesocket( h );
       return -1;
     }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.234 2004/05/07 17:59:16 Superfly_Jon Exp $
+ * $Id: set.c,v 1.235 2004/05/08 09:11:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1347,7 +1347,7 @@ extern void CommandSetPlayerExternal( char *sz ) {
     pch = strcpy( malloc( strlen( sz ) + 1 ), sz );
     
     if( ( h = ExternalSocket( &psa, &cb, sz ) ) < 0 ) {
-	outputerr( pch );
+	SockErr( pch );
 	free( pch );
 	return;
     }
@@ -1367,7 +1367,7 @@ extern void CommandSetPlayerExternal( char *sz ) {
 	    continue;
 	}
 	
-	outputerr( pch );
+	SockErr( pch );
 	closesocket( h );
 	free( psa );
 	free( pch );
@@ -2466,7 +2466,7 @@ extern void CommandSetScore( char *sz ) {
     if( ms.gs < GAME_OVER && plGame && 
         ( pmr = (moverecord *) plGame->plNext->p ) &&
         ( pmgi = &pmr->g ) ) {
-	assert( pmr == MOVE_GAMEINFO );
+	assert( pmr->mt == MOVE_GAMEINFO );
 	pmgi->anScore[ 0 ] = ms.anScore[ 0 ];
 	pmgi->anScore[ 1 ] = ms.anScore[ 1 ];
 	pmgi->fCrawfordGame = ms.fCrawford;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.40 2004/05/07 17:59:16 Superfly_Jon Exp $
+ * $Id: external.c,v 1.41 2004/05/08 09:11:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -133,9 +133,6 @@ void OutputWin32SocketError(const char* action)
 	outputerrf(_("Windows socket error (%s):\n%s"), action, (LPCTSTR)lpMsgBuf);
 	LocalFree(lpMsgBuf);
 }
-#define SockErr OutputWin32SocketError
-#else
-#define SockErr outputerr
 #endif
 
 extern int ExternalSocket( struct sockaddr **ppsa, int *pcb, char *sz ) {
@@ -621,6 +618,8 @@ extern void CommandExternal( char *sz ) {
 	ExternalUnbind( sz );
 	return;
       }
+      outputf( _("Waiting for a connection from %s...\n"), sz);
+
       // Must set length when using windows
       saLen = sizeof(struct sockaddr);
       while( ( hPeer = accept( h, (struct sockaddr*)&saRemote, &saLen ) ) < 0 ) {

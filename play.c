@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.251 2004/05/07 14:27:29 thyssen Exp $
+ * $Id: play.c,v 1.252 2004/05/08 09:11:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1566,7 +1566,14 @@ extern int ComputerTurn( void ) {
 	  return ms.fTurn == fTurnOrig ? -1 : 0;
       }
 #endif
-      
+#define ERROR_START "Error ("
+	  if (!strncmp(szResponse, ERROR_START, strlen(ERROR_START)))
+	  {
+	      outputl(szResponse);
+	      fComputerDecision = FALSE;
+	      return -1;
+	  }
+
       if( ms.fDoubled ) {
 	  fComputerDecision = TRUE;
 	  

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.h,v 1.8 2004/03/18 23:29:14 oysteijo Exp $
+ * $Id: external.h,v 1.9 2004/05/08 09:11:07 Superfly_Jon Exp $
  */
 
 #ifndef _EXTERNAL_H_
@@ -59,6 +59,12 @@ typedef struct _extcmd {
 extern int ExternalSocket( struct sockaddr **ppsa, int *pcb, char *sz );
 extern int ExternalRead( int h, char *pch, int cch );
 extern int ExternalWrite( int h, char *pch, int cch );
+#ifdef WIN32
+extern void OutputWin32SocketError(const char* action);
+#define SockErr OutputWin32SocketError
+#else
+#define SockErr outputerr
+#endif
 
 /* Parser functions */
 
