@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.132 2003/01/15 20:00:24 gtw Exp $
+ * $Id: show.c,v 1.133 2003/01/17 02:57:28 gtw Exp $
  */
 
 #include "config.h"
@@ -746,6 +746,12 @@ extern void CommandShowMatchInfo( char *sz ) {
 
     if( mi.pchComment )
 	outputf( "\n%s\n", mi.pchComment );    
+}
+
+extern void CommandShowMatchLength( char *sz ) {
+    
+    outputf( nDefaultLength == 1 ? _("New matches default to %d point.\n") :
+	     _("New matches default to %d points.\n"), nDefaultLength );
 }
 
 extern void CommandShowNackgammon( char *sz ) {

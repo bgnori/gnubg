@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.197 2003/01/10 18:21:42 thyssen Exp $
+ * $Id: backgammon.h,v 1.198 2003/01/17 02:57:27 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -269,7 +269,7 @@ extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     fCubeUse, fNackgammon, fDisplay, fAutoBearoff, fShowProgress,
     nBeavers, fOutputMWC, fEgyptian, fOutputWinPC, fOutputMatchPC, fJacoby,
     fOutputRawboard, fAnnotation, cAnalysisMoves, fAnalyseCube,
-    fAnalyseDice, fAnalyseMove, fRecord, fMessage;
+    fAnalyseDice, fAnalyseMove, fRecord, fMessage, nDefaultLength;
 extern int fInvertMET;
 extern int fConfirm, fConfirmSave;
 extern float rAlpha, rAnneal, rThreshold, arLuckLevel[ LUCK_VERYGOOD + 1 ],
@@ -742,6 +742,7 @@ extern void CommandAccept( char * ),
     CommandSetMatchComment( char * ),
     CommandSetMatchDate( char * ),
     CommandSetMatchEvent( char * ),
+    CommandSetMatchLength( char * ),
     CommandSetMatchPlace( char * ),
     CommandSetMatchRating( char * ),
     CommandSetMatchRound( char * ),
@@ -893,8 +894,9 @@ extern void CommandAccept( char * ),
     CommandShowKleinman( char * ),
     CommandShowMarketWindow( char * ),
     CommandShowMatchInfo( char * ),
-    CommandShowNackgammon( char * ),
+    CommandShowMatchLength( char * ),
     CommandShowMatchEquityTable( char * ),
+    CommandShowNackgammon( char * ),
     CommandShowOneChequer ( char * ),
     CommandShowOneSidedRollout ( char * ),
     CommandShowOutput( char * ),

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.165 2003/01/15 20:00:24 gtw Exp $
+ * $Id: set.c,v 1.166 2003/01/17 02:57:28 gtw Exp $
  */
 
 #include "config.h"
@@ -2494,6 +2494,22 @@ extern void CommandSetMatchDate( char *sz ) {
 extern void CommandSetMatchEvent( char *sz ) {
 
     SetMatchInfo( &mi.pchEvent, sz, _("Match event") );
+}
+
+extern void CommandSetMatchLength( char *sz ) {
+
+    int n = ParseNumber( &sz );
+
+    if( n < 1 ) {
+	outputl( _("You must specify a valid match length (1 or longer).") );
+
+	return;
+    }
+
+    nDefaultLength = n;
+
+    outputf( n == 1 ? _("New matches will default to %d point.\n") :
+	     _("New matches will default to %d points.\n"), n );
 }
 
 extern void CommandSetMatchPlace( char *sz ) {
