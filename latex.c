@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.15 2002/06/02 16:34:22 thyssen Exp $
+ * $Id: latex.c,v 1.16 2002/06/06 20:14:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -525,7 +525,7 @@ extern void CommandExportGameLaTeX( char *sz ) {
       return;
 
     if( !sz || !*sz ) {
-	outputl( _("You must specify a file to export to (see `help export"
+	outputl( _("You must specify a file to export to (see `help export "
 		 "game latex').") );
 	return;
     }
