@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.282 2002/08/18 14:21:59 thyssen Exp $
+ * $Id: gnubg.c,v 1.283 2002/08/22 17:35:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -386,6 +386,8 @@ command cER = {
     { "move", CommandAnalyseMove, 
       N_("Compute analysis and annotate the current "
       "move"), NULL, NULL },
+	{ "marked", CommandAnalyseMarked,
+	  N_("Re-analyse marked moves "), NULL, NULL },
     { "session", CommandAnalyseSession, 
       N_("Compute analysis and annotate every "
       "game in the session"), NULL, NULL },
@@ -2873,9 +2875,13 @@ extern void CommandHint( char *sz ) {
 	GetMatchStateCubeInfo( &ci, &ms );
 
 #if USE_GTK
-        fHasMoved = GTKGetMove ( anMove );
-        if ( fHasMoved )
-          MoveKey ( ms.anBoard, anMove, auch );
+        if ( fX ) {
+           fHasMoved = GTKGetMove ( anMove );
+           if ( fHasMoved )
+              MoveKey ( ms.anBoard, anMove, auch );
+        }
+        else
+           fHasMoved = FALSE;
 #else
         fHasMoved = FALSE;
 #endif /* ! USE_GTK */
