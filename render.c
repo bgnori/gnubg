@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.6 2002/12/16 15:28:21 gtw Exp $
+ * $Id: render.c,v 1.7 2002/12/17 01:02:28 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -160,7 +160,7 @@ static void CopyAreaRotateClip( unsigned char *puchDest, int nDestStride,
 				int xSrc, int ySrc, int cx, int cy,
 				int nTheta ) {
 
-    int x, nSrcPixelStride, nSrcRowStride;
+    int x, nSrcPixelStride = 0, nSrcRowStride = 0;
     
     if( !( nTheta %= 4 ) )
 	return CopyAreaClip( puchDest, nDestStride, xDest, yDest, cxDest,

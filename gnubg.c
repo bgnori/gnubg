@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.354 2002/12/16 23:10:31 thyssen Exp $
+ * $Id: gnubg.c,v 1.355 2002/12/17 01:02:28 oysteijo Exp $
  */
 
 #include "config.h"
@@ -278,7 +278,7 @@ rolloutcontext rcRollout =
 
 /* parameters for `eval' and `hint' */
 
-#define EVALSETUP { \
+#define EVALSETUP  { \
   /* evaltype */ \
   EVAL_EVAL, \
   /* evalcontext */ \
@@ -303,6 +303,7 @@ rolloutcontext rcRollout =
     }, \
     { FALSE, 0, 0, TRUE, 0.0 }, /* truncate cube decision */ \
     { FALSE, 0, 0, TRUE, 0.0 }, /* truncate chequerplay */ \
+    MOVEFILTER , MOVEFILTER , \
     FALSE, /* cubeful */ \
     FALSE, /* variance reduction */ \
     FALSE, /* initial position */ \
@@ -318,7 +319,6 @@ rolloutcontext rcRollout =
     0 /* seed */ \
   } \
 } 
-
 
 
 evalsetup esEvalChequer = EVALSETUP;
@@ -407,7 +407,7 @@ static char szDICE[] = N_("<die> <die>"),
     szOPTSEED[] = N_("[seed]"),
     szOPTSIZE[] = N_("[size]"),
     szOPTVALUE[] = N_("[value]"),
-    szPATH[] = N_("<path>"),
+    /* szPATH[] = N_("<path>"), */
     szPLAYER[] = N_("<player>"),
     szPLAYEROPTRATING[] = N_("<player> [rating]"),
     szPLIES[] = N_("<plies>"),

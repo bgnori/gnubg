@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.269 2002/12/15 22:23:36 thyssen Exp $
+ * $Id: gtkgame.c,v 1.270 2002/12/17 01:02:28 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3862,7 +3862,6 @@ extern void SetEvalChequer( gpointer *p, guint n, GtkWidget *pw ) {
 
     evalcontext ec;
     GtkWidget *pwDialog, *pwEval;
-    GtkWidget *pwMoveFilter;
     int fOK;
     movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
     

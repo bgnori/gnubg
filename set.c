@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.157 2002/12/16 23:13:07 thyssen Exp $
+ * $Id: set.c,v 1.158 2002/12/17 01:02:28 oysteijo Exp $
  */
 
 #include "config.h"
@@ -79,8 +79,7 @@ static rng *rngSet;
 movefilter *aamfSet[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
 
 
-static char szEQUITY[] = N_ ("<equity>"),
-    szFILENAME[] = N_ ("<filename>"),
+static char szFILENAME[] = N_ ("<filename>"),
     szNAME[] = N_ ("<name>"),
     szNUMBER[] = N_ ("<number>"),
     szONOFF[] = N_ ("on|off"),

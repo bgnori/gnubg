@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.122 2002/12/12 22:02:56 thyssen Exp $
+ * $Id: show.c,v 1.123 2002/12/17 01:02:28 oysteijo Exp $
  */
 
 #include "config.h"
@@ -100,8 +100,6 @@ ShowMoveFilters ( const movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] 
 static void 
 ShowEvaluation( const evalcontext *pec ) {
   
-  int  i;
-
   outputf( _("        %d-ply evaluation.\n"
              "        %d%% speed.\n"
              "        %s evaluations.\n"),
@@ -273,7 +271,7 @@ ShowRollout ( const rolloutcontext *prc ) {
     ShowMoveFilters ( prc->aamfLate );
   }
   else {
-    outputf ( _("Move filter:\n"), nLate );
+    outputf ( _("Move filter:\n") );
     ShowMoveFilters ( prc->aamfChequer );
   }
 

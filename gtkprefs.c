@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.54 2002/12/15 19:40:10 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.55 2002/12/17 01:02:28 oysteijo Exp $
  */
 
 #include "config.h"
@@ -825,10 +825,7 @@ WriteDesign ( gpointer data, gpointer user_data ) {
 static void
 DesignSave ( GtkWidget *pw, gpointer data ) {
 
-  gchar *szXML;
   gchar *szFile;
-  gchar *szDir;
-  int rc;
   FILE *pf;
   GList **pplBoardDesigns = (GList **) data;
   time_t t;
@@ -852,7 +849,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.54 2002/12/15 19:40:10 thyssen Exp $\n"
+          "    $Id: gtkprefs.c,v 1.55 2002/12/17 01:02:28 oysteijo Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -974,7 +971,6 @@ static void
 DesignAdd ( GtkWidget *pw, gpointer data ) {
 
   BoardData bd;
-  gchar *sz;
   float rElevation;
   float rAzimuth;
   boarddesign *pbde;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.1 2002/12/12 21:59:32 thyssen Exp $
+ * $Id: gtkmovefilter.c,v 1.2 2002/12/17 01:02:28 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -139,7 +139,7 @@ static int
 equal_movefilters ( movefilter aamf1[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ],
                     movefilter aamf2[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] ) {
 
-  int i, j;
+  int i;
 
   for ( i = 0; i < MAX_FILTER_PLIES; ++i )
     if ( ! equal_movefilter ( i, aamf1[ i ], aamf2[ i ] ) )
@@ -315,7 +315,6 @@ MoveFilterSetup ( movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ],
   GtkWidget *pwvbox;
   GtkWidget *pwMenu;
   GtkWidget *pwItem;
-  GtkWidget *pw;
   int *pi;
 
   pwSetup = gtk_vbox_new ( FALSE, 4 );
@@ -470,11 +469,11 @@ static void
 ClickButton ( GtkWidget *pw, movefilterwidget *pmfw ) {
 
   int fOK;
-  GtkWidget *pwDialog, *pwEval;
+  GtkWidget *pwDialog;
   GtkWidget *pwMoveFilterSetup;
   movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
 
-
+  return;
   memcpy ( aamf, pmfw->pmf, sizeof ( aamf ) );
   pwMoveFilterSetup = MoveFilterSetup( aamf, &fOK );
 
