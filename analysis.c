@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.36 2001/06/17 17:37:31 thyssen Exp $
+ * $Id: analysis.c,v 1.37 2001/07/17 16:15:22 oysteijo Exp $
  */
 
 #include "config.h"
@@ -295,7 +295,9 @@ AnalyzeGame ( list *plGame ) {
 			rCost;
 		}
 	    }
-	    
+
+	    fFirstMove = 0;
+ 
 	    break;
 	    
 	case MOVE_DOUBLE:
