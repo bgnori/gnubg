@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.134 2002/04/19 16:26:31 thyssen Exp $
+ * $Id: gtkgame.c,v 1.135 2002/04/20 13:56:33 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5954,6 +5954,15 @@ static GtkWidget
 
 }
 
+static void invertMETlocal( GtkWidget *pw, gpointer data){
+
+    if(fInvertMET)
+      UserCommand( "set invert met off" );
+    else
+      UserCommand( "set invert met on" );
+}
+
+
 extern void GTKShowMatchEquityTable( int n ) {
 
     int i;
@@ -5962,12 +5971,14 @@ extern void GTKShowMatchEquityTable( int n ) {
                                         FALSE, NULL, NULL );
     GtkWidget *pwNotebook = gtk_notebook_new ();
     
-    
+    GtkWidget *pwInvertButton = gtk_button_new_with_label("Invert table"); 
     
     gtk_container_set_border_width( GTK_CONTAINER( pwNotebook ), 4 );
     
     gtk_container_add( GTK_CONTAINER( DialogArea( pwDialog, DA_MAIN ) ),
                        pwNotebook );
+    gtk_container_add( GTK_CONTAINER( DialogArea( pwDialog, DA_BUTTONS ) ),
+		       pwInvertButton );
 
     gtk_notebook_append_page ( GTK_NOTEBOOK ( pwNotebook ),
                                GTKWriteMET ( aafMET, n, n, FALSE ),
@@ -5990,6 +6001,8 @@ extern void GTKShowMatchEquityTable( int n ) {
     gtk_window_set_default_size( GTK_WINDOW( pwDialog ), 500, 300 );
     gtk_window_set_transient_for( GTK_WINDOW( pwDialog ),
 				  GTK_WINDOW( pwMain ) );
+    gtk_signal_connect( GTK_OBJECT( pwInvertButton ), "clicked",
+			GTK_SIGNAL_FUNC( invertMETlocal ), NULL );
     gtk_signal_connect( GTK_OBJECT( pwDialog ), "destroy",
 			GTK_SIGNAL_FUNC( gtk_main_quit ), NULL );
     
