@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.12 2002/04/20 17:45:13 thyssen Exp $
+ * $Id: latex.c,v 1.13 2002/05/12 11:21:01 thyssen Exp $
  */
 
 #include "config.h"
@@ -513,6 +513,9 @@ extern void CommandExportGameLaTeX( char *sz ) {
 	return;
     }
     
+    if ( ! confirmOverwrite ( sz, fConfirmSave ) )
+      return;
+
     if( !sz || !*sz ) {
 	outputl( "You must specify a file to export to (see `help export"
 		 "game latex')." );
@@ -548,6 +551,9 @@ extern void CommandExportMatchLaTeX( char *sz ) {
 		 "match latex')." );
 	return;
     }
+
+    if ( ! confirmOverwrite ( sz, fConfirmSave ) )
+      return;
 
     if( !strcmp( sz, "-" ) )
 	pf = stdout;

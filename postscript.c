@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.14 2002/04/20 10:41:29 thyssen Exp $
+ * $Id: postscript.c,v 1.15 2002/05/12 11:21:01 thyssen Exp $
  */
 
 #include "config.h"
@@ -990,6 +990,9 @@ static void ExportGameGeneral( int f, char *sz ) {
 	return;
     }
 
+    if ( ! confirmOverwrite ( sz, fConfirmSave ) )
+      return;
+
     if( !strcmp( sz, "-" ) ) {
 	if( f ) {
 	    outputl( "PDF files may not be written to standard output ("
@@ -1043,6 +1046,9 @@ static void ExportMatchGeneral( int f, char *sz ) {
 		 "match %s').\n", f ? "pdf" : "postscript" );
 	return;
     }
+
+    if ( ! confirmOverwrite ( sz, fConfirmSave ) )
+      return;
 
     if( !strcmp( sz, "-" ) ) {
 	if( f ) {
@@ -1099,6 +1105,9 @@ extern void CommandExportPositionEPS( char *sz ) {
 		 "position eps')." );
 	return;
     }
+
+    if ( ! confirmOverwrite ( sz, fConfirmSave ) )
+      return;
 
     if( !strcmp( sz, "-" ) )
 	pf = stdout;

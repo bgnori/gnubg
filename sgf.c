@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.39 2002/05/05 12:26:10 thyssen Exp $
+ * $Id: sgf.c,v 1.40 2002/05/12 11:20:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -1380,6 +1380,9 @@ extern void CommandSaveGame( char *sz ) {
 	return;
     }
 
+    if ( ! confirmOverwrite ( sz, fConfirmSave ) )
+      return;
+
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
     else if( !( pf = fopen( sz, "w" ) ) ) {
@@ -1412,6 +1415,9 @@ extern void CommandSaveMatch( char *sz ) {
 		 "match')." );
 	return;
     }
+
+    if ( ! confirmOverwrite ( sz, fConfirmSave ) )
+      return;
 
     if( !strcmp( sz, "-" ) )
 	pf = stdout;

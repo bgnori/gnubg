@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.21 2002/04/29 16:37:19 thyssen Exp $
+ * $Id: html.c,v 1.22 2002/05/12 11:24:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -1267,7 +1267,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.21 $";
+  const char szVersion[] = "$Revision: 1.22 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2906,6 +2906,9 @@ extern void CommandExportGameHtml( char *sz ) {
 	return;
     }
 
+    if ( ! confirmOverwrite ( sz, fConfirmSave ) )
+      return;
+
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
     else if( !( pf = fopen( sz, "w" ) ) ) {
@@ -3021,6 +3024,9 @@ extern void CommandExportMatchHtml( char *sz ) {
       aszLinks[ 2 ] = ( i < nGames - 1 ) ? HTMLFilename ( sz, i + 1 ) : NULL;
       aszLinks[ 3 ] = HTMLFilename ( sz, nGames - 1 );
 
+      if ( !i && ! confirmOverwrite ( sz, fConfirmSave ) )
+        return;
+
       if( !strcmp( szCurrent, "-" ) )
 	pf = stdout;
       else if( !( pf = fopen( szCurrent, "w" ) ) ) {
@@ -3073,6 +3079,9 @@ extern void CommandExportPositionHtml( char *sz ) {
 		 "position html')." );
 	return;
     }
+
+    if ( ! confirmOverwrite ( sz, fConfirmSave ) )
+      return;
 
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
