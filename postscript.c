@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.3 2001/06/18 14:53:03 gtw Exp $
+ * $Id: postscript.c,v 1.4 2001/07/19 15:16:19 gtw Exp $
  */
 
 #include "config.h"
@@ -704,7 +704,7 @@ static void ExportGamePostScript( FILE *pf, list *plGame ) {
 	    PrintPostScriptCubeAnalysis( pf, &msExport, pmr->n.fPlayer,
 					 pmr->n.arDouble, &pmr->n.esDouble );
 	    
-	    Consume( pf, 10 );
+	    Advance( pf, 10 );
 	    FormatMove( sz, msExport.anBoard, pmr->n.anMove );
 	    RequestFont( pf, FONT_RM, 10 );
 	    fprintf( pf, fPDF ? "1 0 0 1 %d %d Tm (%d%d%s: %s%s) Tj\n" :
