@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.18 2000/02/17 00:48:00 gtw Exp $
+ * $Id: set.c,v 1.19 2000/05/04 12:28:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -35,6 +35,8 @@ static command acSetEvaluation[] = {
       "for deep evaluation", NULL },
     { "plies", CommandSetEvalPlies, "Choose how many plies the `eval' and "
       "`hint' commands look ahead", NULL },
+    { "reduced", CommandSetEvalReduced,
+      "...Find a suitable text here...", NULL },
     { "tolerance", CommandSetEvalTolerance, "Control the equity range "
       "of moves for deep evaluation", NULL },
     { NULL, NULL, NULL, NULL }
@@ -448,6 +450,44 @@ extern void CommandSetEvalPlies( char *sz ) {
     pecSet->nPlies = n;
 
     printf( "%s will use %d ply evaluation.\n", szSet, pecSet->nPlies );
+}
+
+extern void CommandSetEvalReduced( char *sz ) {
+
+    int n = ParseNumber( &sz );
+
+    if( ( n < 0 ) || ( n > 21 ) ) {
+	printf( "You must specify a valid number -- "
+		"try `help set %sevaluation reduced'.\n", szSetCommand );
+
+	return;
+    }
+
+    if ( pecSet->nPlies < 2 ) {
+
+      puts ( "Command has no effect for 0 and 1 ply evaluations.\n" );
+      return;
+
+    }
+
+    if ( n == 21 ) 
+      pecSet->nReduced = 0;
+    else
+      pecSet->nReduced = n;
+
+    if ( n <= 7 )
+      pecSet->nReduced = 7;
+    else if ( n <= 11 )
+      pecSet->nReduced = 11;
+    else
+      pecSet->nReduced = 14;
+
+    printf( "%s will use %.0f%% speed %d ply evaluation.\n", 
+	    szSet, 
+	    (pecSet->nReduced) ? 100. * pecSet->nReduced / 21.0 : 100.,
+	    pecSet->nPlies );
+
+
 }
 
 extern void CommandSetEvalTolerance( char *sz ) {
