@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.19 2004/01/03 11:30:06 uid68519 Exp $
+ * $Id: htmlimages.c,v 1.20 2004/01/06 12:30:36 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -160,8 +160,8 @@ static void DrawPips(unsigned char *auchDest, int nStride,
 		for (ix = 0; ix < 3; ix++)
 		{
 			if (afPip[iy * 3 + ix])
-				CopyArea(auchDest + (int)((1.5 * (ix + 1)) * ss * 3) +
-					(int)((1.5 * (iy + 1)) * ss * nStride), nStride,
+				CopyArea(auchDest + (int)(1.5 * (ix + 1) * ss) * 3 +
+					((int)(1.5 * (iy + 1) * ss) * nStride), nStride,
 					auchPip, ss * 3, ss, ss);
 		}
 	}
