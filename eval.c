@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.104 2001/10/11 19:53:08 thyssen Exp $
+ * $Id: eval.c,v 1.105 2001/10/16 16:11:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -3919,7 +3919,7 @@ GetCubeActionSz ( float arDouble[ 4 ], char *szOutput, cubeinfo *pci,
               arDouble[ iBest ],
               arDouble [ iBest ] - arDouble [ iOptimal ] );
   else
-    sprintf ( pc, "%-20s: %+6.2f%%   (%+6.2f%%)\n",
+    sprintf ( pc, "%-20s: %6.2f%%   (%+6.2f%%)\n",
               aszCubeString[ iBest ][ pci->fCubeOwner != -1 ],
               100.0 * eq2mwc ( arDouble[ iBest ], pci ),
               100.0 * eq2mwc ( arDouble[ iBest ], pci ) - 
@@ -3936,7 +3936,7 @@ GetCubeActionSz ( float arDouble[ 4 ], char *szOutput, cubeinfo *pci,
               arDouble[ iWorst ],
               arDouble [ iWorst ] - arDouble [ iOptimal ] );
   else
-    sprintf ( pc, "%-20s: %+6.2f%%   (%+6.2f%%)\n\n",
+    sprintf ( pc, "%-20s: %6.2f%%   (%+6.2f%%)\n\n",
               aszCubeString[ iWorst ][ pci->fCubeOwner != -1 ],
               100.0 * eq2mwc ( arDouble[ iWorst ], pci ),
               100.0 * eq2mwc ( arDouble[ iWorst ], pci ) - 
