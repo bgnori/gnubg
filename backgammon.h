@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.81 2001/04/18 17:11:26 gtw Exp $
+ * $Id: backgammon.h,v 1.82 2001/04/30 19:26:24 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -240,7 +240,7 @@ extern int GetInputYN( char *szPrompt );
 extern void HandleCommand( char *sz, command *ac );
 extern void InitBoard( int anBoard[ 2 ][ 25 ] );
 extern char *NextToken( char **ppch );
-extern void NextTurn( void );
+extern int NextTurn( int fPlayNext );
 extern void TurnDone( void );
 extern void AddMoveRecord( void *pmr );
 extern void ApplyMoveRecord( moverecord *pmr );
@@ -250,6 +250,7 @@ extern void AddGame( moverecord *pmr );
 extern void ChangeGame( list *plGameNew );
 extern void CalculateBoard( void );
 extern void CancelCubeAction( void );
+extern int ComputerTurn( void );
 extern void FreeMatch( void );
 extern int ParseNumber( char **ppch );
 extern int ParsePlayer( char *sz );
@@ -340,6 +341,10 @@ extern void CommandAccept( char * ),
     CommandAnnotateInteresting( char * ),
     CommandAnnotateLucky( char * ),
     CommandAnnotateUnlucky( char * ),
+    CommandAnnotateVeryBad( char * ),
+    CommandAnnotateVeryGood( char * ),
+    CommandAnnotateVeryLucky( char * ),
+    CommandAnnotateVeryUnlucky( char * ),
     CommandCopy ( char * ),
     CommandDatabaseDump( char * ),
     CommandDatabaseExport( char * ),
