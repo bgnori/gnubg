@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.67 2004/07/16 13:46:05 thyssen Exp $
+ * $Id: text.c,v 1.68 2004/07/16 13:53:10 thyssen Exp $
  */
 
 #include "config.h"
@@ -233,15 +233,17 @@ TextPrologue ( FILE *pf, const matchstate *pms, const int iGame ) {
            ap[ 0 ].szName, pms->anScore[ 0 ],
            ap[ 1 ].szName, pms->anScore[ 1 ] );
 
-  if ( pms->nMatchTo > 0 ) 
+  if ( pms->nMatchTo > 0 ) {
     fprintf( pf,
              ngettext( " (match to %d point)", 
                        " (match to %d points)",
                        pms->nMatchTo ),
-             pms->nMatchTo,
-             pms->fCrawford ? 
-             _(", Crawford game") : ( pms->fPostCrawford ?
-					 _(", post-Crawford play") : ""));
+             pms->nMatchTo );
+    if ( pms->fCrawford )
+       fputs( _(", Crawford game"), pf );
+    if ( pms->fPostCrawford )
+       fputs( _(", post-Crawford play"), pf );
+  }
 
   fputs( "\n", pf );
 
@@ -262,7 +264,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.67 $";
+  const char szVersion[] = "$Revision: 1.68 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
