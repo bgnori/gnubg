@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.14 2000/01/10 18:48:36 gtw Exp $
+ * $Id: gnubg.c,v 1.15 2000/01/11 00:17:31 gtw Exp $
  */
 
 #include "config.h"
@@ -713,7 +713,7 @@ extern void CommandRollout( char *sz ) {
 	return;
     }
 
-    if( ( c = Rollout( an, ar, arStdDev, 1, 500, 1296 ) ) < 0 )
+    if( ( c = Rollout( an, ar, arStdDev, 0, 7, 1296 ) ) < 0 )
 	return;
 
     printf( "Result (after %d trials):\n\n"
