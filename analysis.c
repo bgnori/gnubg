@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.153 2004/02/12 10:31:27 uid68519 Exp $
+ * $Id: analysis.c,v 1.154 2004/02/15 15:54:50 uid68519 Exp $
  */
 
 #include "config.h"
@@ -190,7 +190,7 @@ LuckNormal ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
              const cubeinfo *pci, const evalcontext *pec ) {
   
   int anBoardTemp[ 2 ][ 25 ], i, j;
-  float aar[ 6 ][ 6 ], ar[ NUM_OUTPUTS ], rMean = 0.0f;
+  float aar[ 6 ][ 6 ], ar[ NUM_ROLLOUT_OUTPUTS ], rMean = 0.0f;
   cubeinfo ciOpp;
   movelist ml;
 
