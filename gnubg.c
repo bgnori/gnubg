@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.281 2002/08/18 12:42:09 thyssen Exp $
+ * $Id: gnubg.c,v 1.282 2002/08/18 14:21:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -176,7 +176,7 @@ int fInvertMET = FALSE;
 int fConfirmSave = TRUE;
 int fTutor = FALSE, fTutorCube = TRUE, fTutorChequer = TRUE;
 int fTutorAnalysis = FALSE;
-int fMessage = TRUE;
+int fMessage = FALSE;
 
 skilltype TutorSkill = SKILL_DOUBTFUL;
 int nTutorSkillCurrent = 0;
