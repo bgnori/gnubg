@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.98 2002/12/13 19:38:34 gtw Exp $
+ * $Id: gtkboard.c,v 1.99 2002/12/13 21:32:17 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -34,7 +34,6 @@
 
 #include "backgammon.h"
 #include "drawboard.h"
-#include "gdkgetrgb.h"
 #include "gtkboard.h"
 #include "gtkgame.h"
 #include "gtk-multiview.h"
