@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.5.2.7 2000/02/15 01:53:43 thyssen Exp $
+ * $Id: eval.h,v 1.5.2.8 2000/05/05 07:51:58 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -98,14 +98,11 @@ typedef struct _cubeinfo {
    *   [ 1 ] = gammon price for player 1,
    *   [ 2 ] = backgammon price for player 0,
    *   [ 3 ] = backgammon price for player 1,
-   * arTakePoint: take points for current cube;
-   *   [ i ] take point for current cube for player i.
    *
    */
 
   int nCube, fCubeOwner, fMove;
   float arGammonPrice[ 4 ];
-  float arTakePoint[ 2 ];
 } cubeinfo;
 
 
