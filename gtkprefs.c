@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.50 2002/12/11 02:21:18 gtw Exp $
+ * $Id: gtkprefs.c,v 1.51 2002/12/11 02:33:39 gtw Exp $
  */
 
 #include "config.h"
@@ -107,7 +107,7 @@ static boarddesign *pbdeSelected = NULL;
 extern GList *
 read_board_designs ( void ) {
 
-  return ParseBoardDesigns ( "boards/boards.xml" );
+  return ParseBoardDesigns ( "boards.xml" );
 }
 
 static void
