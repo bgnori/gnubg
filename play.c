@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.130 2002/07/04 20:07:46 thyssen Exp $
+ * $Id: play.c,v 1.131 2002/07/04 20:20:33 thyssen Exp $
  */
 
 #include "config.h"
@@ -3339,8 +3339,6 @@ FixMatchState ( matchstate *pms, const moverecord *pmr ) {
   switch ( pmr->mt ) {
   case MOVE_NORMAL:
     if ( pms->fTurn != pmr->n.fPlayer ) {
-      printf ( "fix move normal %d %d %d...\n",
-               pms->fMove, pms->fTurn, pmr->n.fPlayer );
       /* previous moverecord is missing */
       SwapSides ( pms->anBoard );
       pms->fMove = pms->fTurn = pmr->n.fPlayer;
@@ -3349,7 +3347,6 @@ FixMatchState ( matchstate *pms, const moverecord *pmr ) {
   case MOVE_DOUBLE:
     if ( pms->fTurn != pmr->d.fPlayer ) {
       /* previous record is missing: this must be an normal double */
-      printf ( "fix move doubloe...\n");
       SwapSides ( pms->anBoard );
       pms->fMove = pms->fTurn = pmr->d.fPlayer;
     }
