@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.136 2003/08/13 16:23:29 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.137 2003/08/13 17:10:26 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1598,12 +1598,31 @@ gboolean button_press_event(GtkWidget *board, GdkEventButton *event, BoardData* 
 	    /* Clicked on cube; double. */
 	    bd->drag_point = -1;
 	    
-			if(editing)
-				GTKSetCube(NULL, 0, NULL);
-			else if (bd->doubled)
-				UserCommand("take");
-			else
-				UserCommand("double");
+            if(editing)
+              GTKSetCube(NULL, 0, NULL);
+            else if (bd->doubled) {
+              switch( event->button ) {
+              case 1:
+                /* left */
+                UserCommand( "take" );
+                break;
+              case 2:
+                /* center */
+                if ( ! bd->match_to )
+                  UserCommand( "redouble" );
+                else
+                  UserCommand( "take" );
+                break;
+              case 3:
+              default:
+                /* right */
+                UserCommand( "drop" );
+                break;
+
+              }
+            }
+            else
+              UserCommand("double");
 	    
 	    return TRUE;
 
@@ -1619,7 +1638,7 @@ gboolean button_press_event(GtkWidget *board, GdkEventButton *event, BoardData* 
 
 		bd->drag_point = -1;
 		if (bd->resigned && !editing)
-			UserCommand("accept");
+                  UserCommand(event->button == 1 ? "accept" : "reject" );
 
 		return TRUE;
 
