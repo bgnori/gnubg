@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.132 2002/04/15 19:53:43 thyssen Exp $
+ * $Id: gtkgame.c,v 1.133 2002/04/16 16:34:37 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -115,6 +115,7 @@ typedef enum _gnubgcommand {
     CMD_EVAL,
     CMD_HELP,
     CMD_HINT,
+    CMD_INVERT_MATCHEQUITYTABLE,
     CMD_LIST_GAME,
     CMD_NEW_GAME,
     CMD_NEW_SESSION,
@@ -228,6 +229,7 @@ static char *aszCommands[ NUM_CMDS ] = {
     "eval",
     "help",
     "hint",
+    "invert matchequitytable",
     "list game",
     "new game",
     "new session",
@@ -2504,6 +2506,8 @@ extern int InitGTK( int *argc, char ***argv ) {
 	  NULL },
 	{ "/_Analyse/M_atch equity table", NULL, Command,
 	  CMD_SHOW_MATCHEQUITYTABLE, NULL },
+	{ "/_Analyse/Invert match equity table", NULL, Command,
+	  CMD_INVERT_MATCHEQUITYTABLE, NULL },
 	{ "/_Analyse/-", NULL, NULL, 0, "<Separator>" },
 	{ "/_Analyse/Evaluation engine", NULL, Command,
 	  CMD_SHOW_ENGINE, NULL },
@@ -6529,6 +6533,8 @@ extern void GTKSet( void *p ) {
 	    pif, CMD_SHOW_STATISTICS_SESSION ), TRUE );
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
 	    pif, CMD_SHOW_MATCHEQUITYTABLE ), TRUE );
+	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
+	    pif, CMD_INVERT_MATCHEQUITYTABLE ), TRUE );
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
 	    pif, CMD_SHOW_ENGINE ), TRUE );
 	
