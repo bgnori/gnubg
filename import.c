@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.62 2003/05/04 20:37:43 thyssen Exp $
+ * $Id: import.c,v 1.63 2003/05/19 19:33:57 thyssen Exp $
  */
 
 #include "config.h"
@@ -2633,7 +2633,7 @@ ParseSnowieTxt( char *sz,
 
   c = 0;
   i = 0;
-  pc = strtok( sz, ";" );
+  pc = strsep( &sz, ";" );
   while ( pc ) {
 
     switch( c ) {
@@ -2654,14 +2654,17 @@ ParseSnowieTxt( char *sz,
       *pfTurn = atoi( pc );
       break;
     case 5:
-      /* player names */
-      memset( aszPlayer[ *pfTurn ], 0, 32 );
-      strncpy( aszPlayer[ *pfTurn ], pc, 31 );
-      break;
     case 6:
       /* player names */
-      memset( aszPlayer[ ! *pfTurn ], 0, 32 );
-      strncpy( aszPlayer[ ! *pfTurn ], pc, 31 );
+      j = *pfTurn;
+      if ( c == 6 )
+        j = ! j;
+
+      memset( aszPlayer[ j ], 0, 32 );
+      if ( *pc )
+        strncpy( aszPlayer[ j ], pc, 31 );
+      else
+        sprintf( aszPlayer[ j ], "Player %d", j );
       break;
     case 7:
       /* Crawford Game */
@@ -2711,7 +2714,8 @@ ParseSnowieTxt( char *sz,
       break;
     }
 
-    pc = strtok( NULL, ";" );
+    pc = 
+    pc = strsep( &sz, ";" );
 
     ++c;
     if ( c == 40 )
