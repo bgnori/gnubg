@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.28 2004/03/23 10:20:41 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.29 2004/03/29 14:33:02 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -279,6 +279,29 @@ void FindTexture(TextureInfo** textureInfo, char* file)
 			return;
 		}
 	}
+	{	/* Not in texture list, see if old texture on disc */
+		char *szFile = PathSearch( file, szDataDirectory );
+		if (szFile)
+		{
+			int len = strlen(file);
+			/* Add entry for unknown texture */
+			TextureInfo text;
+			strcpy(text.file, file);
+			if (len > 4 && !stricmp(&file[len - 4], ".png"))
+				text.format = TF_PNG;
+			else
+				text.format = TF_BMP;
+			strcpy(text.name, file);
+			text.type = TT_NONE;	/* Don't show in lists */
+
+			ListAdd(&textures, &text);
+			*textureInfo = (TextureInfo*)ListGet(&textures, ListSize(&textures) - 1);
+
+			free( szFile );
+			return;
+		}
+	}
+
 	*textureInfo = 0;
 	/* Only warn user if textures.txt file has been loaded */
 	if (ListSize(&textures) > 0)
