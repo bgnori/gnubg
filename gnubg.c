@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.9 2000/01/03 17:52:23 gtw Exp $
+ * $Id: gnubg.c,v 1.10 2000/01/05 02:33:44 gtw Exp $
  */
 
 #include "config.h"
@@ -67,7 +67,7 @@ int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn = -1, fDisplay = TRUE,
     fResigned = FALSE, fMove = -1, nPliesEval = 1, anScore[ 2 ] = { 0, 0 },
     cGames = 0, fDoubled = FALSE, nCube = 1, fCubeOwner = -1,
     fAutoRoll = TRUE, nMatchTo = 0, fJacoby = TRUE, fCrawford = FALSE,
-    fPostCrawford = FALSE;
+    fPostCrawford = FALSE, fAutoCrawford = TRUE;
 
 player ap[ 2 ] = {
     { "O", PLAYER_GNU, 0 },
@@ -123,6 +123,8 @@ static command acDatabase[] = {
 }, acSet[] = {
     { "autobearoff", CommandSetAutoBearoff, "Automatically bear off as many "
       "chequers as possible", NULL },
+    { "autocrawford", CommandSetAutoCrawford, "Enable the Crawford game "
+      "based on match score", NULL },
     { "autogame", CommandSetAutoGame, "Select whether to start new games "
       "after wins", NULL },
     { "automove", CommandSetAutoMove, "Select whether forced moves will be "
@@ -400,8 +402,8 @@ extern void HandleCommand( char *sz, command *ac ) {
 
     cch = strlen( pch );
 
-    if( ac == acTop && ( isdigit( *pch ) || !strncasecmp( pch, "bar",
-							  cch ) ) ) {
+    if( ac == acTop && ( isdigit( *pch ) ||
+			 !strncasecmp( pch, "bar/", cch > 4 ? 4 : cch ) ) ) {
 	if( pch + cch < sz )
 	    pch[ cch ] = ' ';
 	

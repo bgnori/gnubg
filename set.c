@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.6 2000/01/03 17:52:23 gtw Exp $
+ * $Id: set.c,v 1.7 2000/01/05 02:33:44 gtw Exp $
  */
 
 #include "config.h"
@@ -79,8 +79,8 @@ static void SetRNG( rng rngNew, char *szSeed ) {
 
 	}
 	    
-	rngCurrent = rngNew;
-	CommandSetSeed( szSeed );
+	if( ( rngCurrent = rngNew ) != RNG_MANUAL )
+	    CommandSetSeed( szSeed );
     }
 }
 
@@ -89,6 +89,13 @@ extern void CommandSetAutoBearoff( char *sz ) {
     SetToggle( "autobearoff", &fAutoBearoff, sz, "Will automatically bear "
 	       "off as many chequers as possible.", "Will not automatically "
 	       "bear off chequers." );
+}
+
+extern void CommandSetAutoCrawford( char *sz ) {
+
+    SetToggle( "autocrawford", &fAutoCrawford, sz, "Will enable the "
+	       "Crawford game according to match score.", "Will not "
+	       "enable the Crawford game according to match score." );
 }
 
 extern void CommandSetAutoGame( char *sz ) {
@@ -423,10 +430,9 @@ extern void CommandSetSeed( char *sz ) {
 
 	InitRNGSeed( n );
 	printf( "Seed set to %d.\n", n );
-    } else {
-	InitRNG();
-	puts( "Seed initialised by system clock." );
-    }
+    } else
+	puts( InitRNG() ? "Seed initialised from system random data." :
+	      "Seed initialised by system clock." );
 }
 
 extern void CommandSetTurn( char *sz ) {
