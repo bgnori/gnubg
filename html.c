@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.88 2003/01/22 18:26:06 gtw Exp $
+ * $Id: html.c,v 1.89 2003/02/23 15:02:19 oysteijo Exp $
  */
 
 #include "config.h"
@@ -1854,7 +1854,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.88 $";
+  const char szVersion[] = "$Revision: 1.89 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1935,7 +1935,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.88 $";
+  const char szVersion[] = "$Revision: 1.89 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -4018,8 +4018,9 @@ CommandExportPositionGammOnLine ( char *sz ) {
     FILE *pf;
     int fHistory;
     moverecord *pmr = getCurrentMoveRecord ( &fHistory );
-    int iMove;
-	
+    int iMove, i = 0;
+    char szClipboard[8192]; 
+    
     sz = NextToken( &sz );
     
     if( ms.gs == GAME_NONE ) {
@@ -4097,9 +4098,21 @@ CommandExportPositionGammOnLine ( char *sz ) {
     }
 
     HTMLEpilogueComment ( pf );
-
+    
     if( pf != stdout )
 	fclose( pf );
+    
+#ifdef WIN32
+    /* rewind(pf); */
+    
+    pf = fopen( sz, "r");  /* why doesn't rewind(pf) work? */
+    
+    while ( (szClipboard[i] = fgetc(pf)) != EOF )
+	    i++;
+    szClipboard[i]= '\0';
+    WinCopy( szClipboard );
+    fclose( pf );
+#endif
 
 }
 
