@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.l,v 1.2 2003/12/31 22:53:38 uid65656 Exp $
+ * $Id: external_l.l,v 1.3 2004/05/07 19:14:02 thyssen Exp $
  */
 
 #include <string.h>
@@ -37,20 +37,22 @@ void escapes(const char *cp, char *tp);
 %%
 
 \"[^\"]*\"	{
-			char buf[100];
+			char *buf = malloc( strlen( exttext ) + 1 );
 
 			exttext[strlen(exttext)-1] = '\0';
 			escapes(exttext+1, buf);
 			extlval.sval = (char *) strdup(buf);
+                        free( buf );
                         BEGIN(INITIAL);
 			return STRING;
 		}
 \'[^\']*\'	{
-			char buf[100];
+			char *buf = malloc( strlen( exttext ) + 1 );
 
 			exttext[strlen(exttext)-1] = '\0';
 			escapes(exttext+1, buf);
 			extlval.sval = (char *) strdup(buf);
+                        free( buf );
                         BEGIN(0);
 			return STRING;
 		}
@@ -70,10 +72,11 @@ no              { return OFF; }
 off             { return OFF; }
 
 board:[A-Za-z0-9]+:[A-Za-z0-9]+(:-?[0-9]+)+  { 
-			char buf[100];
+			char *buf = malloc( strlen( exttext ) + 1 );
 
 			escapes(exttext, buf);
 			extlval.sval = (char *) strdup(buf);
+                        free( buf );
                         return AFIBSBOARD; 
                 }
 
