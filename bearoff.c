@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.24 2003/08/13 11:52:26 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.25 2003/12/29 19:27:49 uid65656 Exp $
  */
 
 #include "config.h"
@@ -1116,8 +1116,8 @@ BearoffDumpTwoSided ( bearoffcontext *pbc, int anBoard[ 2 ][ 25 ], char *sz ) {
   };
 
   sprintf ( strchr ( sz, 0 ),
-            "             Player       Opponent\n"
-            "Position %12d  %12d\n\n", 
+            _("             Player       Opponent\n"
+            "Position %12d  %12d\n\n"), 
             nUs, nThem );
 
   if( ReadTwoSidedBearoff ( pbc, iPos, ar, NULL ) )
@@ -1224,7 +1224,7 @@ BearoffDumpOneSided ( bearoffcontext *pbc, int anBoard[ 2 ][ 25 ], char *sz ) {
   /* mean rolls */
 
   sprintf ( sz = strchr ( sz, 0 ),
-            "Mean\t%7.3f\t%7.3f\t\t",
+            _("Mean\t%7.3f\t%7.3f\t\t"),
             ar[ 0 ][ 0 ], ar[ 1 ][ 0 ] );
 
   if ( pbc->fGammon )
@@ -1239,7 +1239,7 @@ BearoffDumpOneSided ( bearoffcontext *pbc, int anBoard[ 2 ][ 25 ], char *sz ) {
   /* std. dev */
 
   sprintf ( sz = strchr ( sz, 0 ),
-            "Std dev\t%7.3f\t%7.3f\t\t",
+            _("Std dev\t%7.3f\t%7.3f\t\t"),
             ar[ 0 ][ 1 ], ar[ 1 ][ 1 ] );
 
   if ( pbc->fGammon )
