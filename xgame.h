@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.h,v 1.4 2000/01/13 16:50:10 gtw Exp $
+ * $Id: xgame.h,v 1.5 2000/01/19 17:01:12 gtw Exp $
  */
 
 #ifndef _GAME_H_
@@ -60,6 +60,11 @@ typedef struct _gamedata {
     int nForced, nCrawford; /* unused */
     int nRedoubles; /* number of instant redoubles allowed */
 } gamedata;
+
+/* Flag set to indicate re-entrant calls (i.e. processing a new X event
+   before an old one has completed).  It would be nicer if this was part of
+   gamedata, but never mind... */
+extern int fBusy;
 
 extern extwindowclass ewcGame;
 

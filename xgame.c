@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.c,v 1.10 2000/01/16 18:50:33 gtw Exp $
+ * $Id: xgame.c,v 1.11 2000/01/19 17:01:12 gtw Exp $
  */
 
 #include "config.h"
@@ -114,6 +114,8 @@ extwindowspec aewsStats[] = {
     { "move", &ewcText, aedStatsTextC, NULL, STATS_MOVE },
     { "board", &ewcText, aedStatsTextPlainC, NULL, STATS_BOARD }
 };
+
+int fBusy = FALSE;
 
 static unsigned int nSeed = 1; /* for rand_r */
 #define RAND ( ( (unsigned int) rand_r( &nSeed ) ) & RAND_MAX )
@@ -410,7 +412,11 @@ static int DiceHandler( extwindow *pewnd, XEvent *pxev ) {
 	break;
 	
     case ButtonPress:
-	CommandRoll( NULL );
+	if( fBusy )
+	    XBell( pewnd->pdsp, 100 );
+	else
+	    CommandRoll( NULL );
+	
 	break;
 	
     case ExtPreCreateNotify:

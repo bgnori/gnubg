@@ -16,11 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.12 2000/01/15 17:38:21 gtw Exp $
+ * $Id: eval.c,v 1.13 2000/01/19 17:01:12 gtw Exp $
  */
 
 #include "config.h"
 
+#if HAVE_ALLOCA_H
+#include <alloca.h>
+#endif
 #include <assert.h>
 #include <cache.h>
 #include <errno.h>
@@ -69,7 +72,9 @@ static int anEscapes[ 0x1000 ];
 static neuralnet nnContact, nnBPG, nnRace;
 static unsigned char *pBearoff1 = NULL, *pBearoff2;
 static cache cEval;
-volatile int fInterrupt = FALSE;
+volatile int fInterrupt = FALSE, fAction = FALSE;
+void ( *fnAction )( void ) = NULL;
+
 static float arGammonPrice[ 4 ] = { 1.0, 1.0, 1.0, 1.0 };
 
 static evalcontext ecBasic = { 0, 0, 0 };
@@ -1131,7 +1136,8 @@ static int EvaluatePositionFull( int anBoard[ 2 ][ 25 ], float arOutput[],
 		if( fInterrupt ) {
 		    errno = EINTR;
 		    return -1;
-		}
+		} else if( fAction )
+		    fnAction();
 	    
 		FindBestMovePlied( anMove, n0, n1, anBoardNew, pec, 0 );
 

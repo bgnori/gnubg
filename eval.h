@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.8 2000/01/15 17:38:21 gtw Exp $
+ * $Id: eval.h,v 1.9 2000/01/19 17:01:12 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -86,7 +86,8 @@ typedef struct _move {
     float rScore, *pEval;
 } move;
 
-extern volatile int fInterrupt;
+extern volatile int fInterrupt, fAction;
+extern void ( *fnAction )( void );
 
 typedef struct _movelist {
     int cMoves; /* and current move when building list */
@@ -102,7 +103,7 @@ typedef enum _positionclass {
     CLASS_BEAROFF1, /* One-sided bearoff database */
     CLASS_RACE,     /* Race neural network */
     CLASS_CONTACT,  /* Contact neural network */
-    CLASS_BPG,      /* On Bar, Back game, or Prime */
+    CLASS_BPG       /* On Bar, Back game, or Prime */
 } positionclass;
 
 #define N_CLASSES (CLASS_BPG + 1)
