@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.7 2000/11/17 15:44:08 gtw Exp $
+ * $Id: guile.c,v 1.8 2001/02/07 17:59:49 gtw Exp $
  */
 
 #include "config.h"
@@ -239,6 +239,27 @@ static SCM evaluate_position( SCM sBoard, SCM sCube, SCM sEvalContext ) {
     return s;
 }
 
+static SCM gnubg_command( SCM sCommand ) {
+
+    int cch;
+    char *sz;
+
+    SCM_ASSERT( SCM_ROSTRINGP( sCommand ), sCommand, SCM_ARG1,
+		"gnubg-command" );
+
+    cch = strlen( SCM_ROCHARS( sCommand ) );
+    /* FIXME use alloca if we can */    
+    strcpy( sz = malloc( cch + 1 ), SCM_ROCHARS( sCommand ) );
+
+    fInterrupt = FALSE;
+    HandleCommand( sz, acTop );
+    ResetInterrupt();
+
+    free( sz );
+    
+    return SCM_UNSPECIFIED;
+}
+
 static SCM position_id_to_board( SCM sPosID ) {
 
     char sz[ 15 ];
@@ -328,6 +349,7 @@ extern int GuileInitialise( char *szDir ) {
     scm_make_gsubr( "cube-info-money", 3, 2, 0, cube_info_money );
     scm_make_gsubr( "current-board", 0, 0, 0, current_board );
     scm_make_gsubr( "evaluate-position", 1, 2, 0, evaluate_position );
+    scm_make_gsubr( "gnubg-command", 1, 0, 0, gnubg_command );
     scm_make_gsubr( "position-id->board", 1, 0, 0, position_id_to_board );
     scm_make_gsubr( "rollout-position", 1, 7, 0, rollout_position );
     
