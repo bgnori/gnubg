@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.239 2004/06/16 12:02:59 Superfly_Jon Exp $
+ * $Id: set.c,v 1.240 2004/07/16 09:28:27 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -798,7 +798,7 @@ extern void CommandSetCubeCentre( char *sz ) {
     
     AddMoveRecord( pmr );
     
-    outputl( _("The cube has been centred (either player may double).") );
+    outputl( _("The cube has been centred.") );
     
 #if USE_GUI
     if( fX )
