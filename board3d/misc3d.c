@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.9 2003/08/29 09:41:41 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.10 2003/09/04 10:12:37 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -192,7 +192,7 @@ void setMaterial(Material* pMat)
 	glMaterialfv(GL_FRONT, GL_AMBIENT, pMat->ambientColour);
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, pMat->diffuseColour);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, pMat->specularColour);
-	glMateriali(GL_FRONT, GL_SHININESS, pMat->shininess);
+	glMateriali(GL_FRONT, GL_SHININESS, pMat->shine);
 
 	if (pMat->pTexture)
 	{
@@ -1622,7 +1622,7 @@ void SetupMat(Material* pMat, float r, float g, float b, float dr, float dg, flo
 	pMat->specularColour[1] = sg;
 	pMat->specularColour[2] = sb;
 	pMat->specularColour[3] = a;
-	pMat->shininess = shin;
+	pMat->shine = shin;
 
 	pMat->alphaBlend = (a != 1) && (a != 0);
 

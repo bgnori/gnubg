@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.9 2003/09/01 09:21:02 Superfly_Jon Exp $
+ * $Id: renderprefs.c,v 1.10 2003/09/04 10:12:36 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -169,9 +169,9 @@ static int SetMaterial(Material* pMat, char *sz)
 		*pch = 0;
 
 	if (sz)
-		pMat->shininess = atoi(sz);
+		pMat->shine = atoi(sz);
 	else
-		pMat->shininess = 128;
+		pMat->shine = 128;
 
 	if (sz)
 		sz += strlen(sz) + 1;
@@ -225,9 +225,9 @@ static int SetMaterialDice(Material* pMat, char *sz, int* flag)
 		*pch = 0;
 
 	if (sz)
-		pMat->shininess = atoi(sz);
+		pMat->shine = atoi(sz);
 	else
-		pMat->shininess = 128;
+		pMat->shine = 128;
 
 	if (sz)
 		sz += strlen(sz) + 1;
@@ -626,7 +626,7 @@ char *WriteMaterial(Material* pMat)
 		(int)(pMat->specularColour[0] * 0xFF),
 		(int)(pMat->specularColour[1] * 0xFF),
 		(int)(pMat->specularColour[2] * 0xFF),
-		pMat->shininess,
+		pMat->shine,
 		(int)((pMat->ambientColour[3] + .001f) * 100));
 	if (pMat->textureInfo)
 	{

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.10 2003/08/13 15:51:31 Superfly_Jon Exp $
+ * $Id: render.h,v 1.11 2003/09/04 10:12:36 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -74,7 +74,7 @@ typedef struct _Material
 	float ambientColour[4];
 	float diffuseColour[4];
 	float specularColour[4];
-	int shininess;
+	int shine;
 	int alphaBlend;
 	TextureInfo* textureInfo;
 	Texture* pTexture;
