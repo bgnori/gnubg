@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.70 2003/08/14 22:25:36 joseph Exp $
+ * $Id: import.c,v 1.71 2003/08/22 15:13:44 jsegrave Exp $
  */
 
 #include "config.h"
@@ -2258,7 +2258,8 @@ static void ImportTMGGame( FILE *pf, int i, int nLength, int n0, int n1,
       TMG_WIN_GAMMON = 15,
       TMG_WIN_BACKGAMMON = 16,
       TMG_OUT_OF_TIME = 17,
-      TMG_TABLE_STAKE = 19 } tmgrecordtype;
+      TMG_TABLE_STAKE = 19,
+      TMG_OUT_OF_TIME_1 } tmgrecordtype;
     tmgrecordtype trt;
     
     InitBoard( ms.anBoard, ms.bgv );
@@ -2473,7 +2474,7 @@ static void ImportTMGGame( FILE *pf, int i, int nLength, int n0, int n1,
           break;
 
         case TMG_OUT_OF_TIME:
-
+	case TMG_OUT_OF_TIME_1:
           /* ignore ??? */
           break;
 

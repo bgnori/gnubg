@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.466 2003/08/21 18:27:14 thyssen Exp $
+ * $Id: gnubg.c,v 1.467 2003/08/22 15:13:44 jsegrave Exp $
  */
 
 #include "config.h"
@@ -3825,7 +3825,10 @@ extern void PromptForExit( void ) {
 
     static int fExiting;
 #if USE_BOARD3D
-	BoardData* bd = BOARD(pwBoard)->board_data;
+	BoardData* bd;
+	
+	if (fX)
+	  bd = BOARD(pwBoard)->board_data;
 #endif
 
     if( !fExiting && fInteractive && fConfirm && ms.gs == GAME_PLAYING ) {
@@ -3841,7 +3844,8 @@ extern void PromptForExit( void ) {
     }
 
 #if USE_BOARD3D
-	if (rdAppearance.fDisplayType == DT_3D)
+    
+    if ((rdAppearance.fDisplayType == DT_3D) && fX)
 	{	/* Stop any 3d animations */
 		StopIdle3d(bd);
 	}
@@ -3851,7 +3855,7 @@ extern void PromptForExit( void ) {
 
 #if USE_BOARD3D
 	if (rdAppearance.fDisplayType == DT_3D && rdAppearance.closeBoardOnExit
-		&& rdAppearance.fHinges)
+		&& rdAppearance.fHinges && fX)
 		CloseBoard3d(bd);
 	else
 #endif
@@ -3875,6 +3879,7 @@ extern void PromptForExit( void ) {
     Shutdown();
     
 #if USE_BOARD3D
+    if (fX)
 	Tidy3dObjects(bd, TRUE);
 #endif
 
