@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.466 2004/03/15 12:08:19 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.467 2004/03/15 12:32:10 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7638,7 +7638,6 @@ extern void GTKShowVersion( void ) {
 		*pwOK, *pwPrompt, *pwImage, *pwButton;
 	GtkRcStyle *ps = gtk_rc_style_new();
 	char PromptStr[255];
-	int i;
 	GtkAccelGroup *pag = gtk_accel_group_new();
 
 	if( pwDialog )
@@ -7850,7 +7849,7 @@ credits creditList[] =
 extern void GTKCommandShowCredits(void)
 {
 	extern char *aszCredits[];
-	GtkWidget *pwDialog, *pwBox, *pwHBox, *pwPrompt,
+	GtkWidget *pwDialog, *pwBox, *pwHBox,
 		*pwList = gtk_list_new(),
 		*pwScrolled = gtk_scrolled_window_new( NULL, NULL );
 	int i;
