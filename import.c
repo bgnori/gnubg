@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.37 2002/11/28 02:44:22 gtw Exp $
+ * $Id: import.c,v 1.38 2002/12/18 18:08:26 thyssen Exp $
  */
 
 #include "config.h"
@@ -1022,6 +1022,17 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
 	    if( *pch++ == '\t' ) {
 		/* we have a move! */
 		if( anRoll[ 0 ] ) {
+
+                    /* check for
+                     * 1	43:  
+                     * 1	43:             <---- check for this line
+                     * 1	43: 13/9, 13/10 
+                     */
+
+                    if ( *(pch+4) == '\n' || !*(pch+4) )
+                       continue;
+                  
+                
 		    pmr = malloc( sizeof( pmr->n ) );
 		    pmr->n.mt = MOVE_NORMAL;
 		    pmr->n.sz = szComment;
@@ -1091,6 +1102,12 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
 				/* Apparently SGG files can contain spurious
 				   duplicate moves -- the only thing we can
 				   do is ignore them. */
+
+                                /* this catches:
+                                   1	43: 
+                                   1	43: 13/9, 13/10
+                                   1	43: 13/9, 13/10 */
+
 				anRoll[ 0 ] = 0;
 				continue;
 			    }
