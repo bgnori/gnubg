@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: texture3d.c,v 1.1.2.1 2003/06/11 11:39:14 Superfly_Jon Exp $
+* $Id: texture3d.c,v 1.1.2.2 2003/07/07 11:23:58 Superfly_Jon Exp $
 */
 
 #include <stdlib.h>
@@ -27,7 +27,7 @@
 
 #pragma pack(1)
 
-/* BMP file header structure */
+/* DIB file header structure */
 typedef struct		
 {
 	unsigned short	bfType;		/* Magic number for file */
@@ -37,7 +37,7 @@ typedef struct
 	unsigned int	bfOffBits;	/* Offset to bitmap data */
 } BITMAPFILEHEADER;
 
-/* BMP file info structure */
+/* DIB file info structure */
 typedef struct
 {
 	unsigned int	biSize;			/* Size of info header */

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.13.4.7 2003/06/24 09:09:33 Superfly_Jon Exp $
+ * $Id: render.c,v 1.13.4.8 2003/07/07 11:23:57 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -115,7 +115,6 @@ renderdata rdDefault = {
 	0,	/* Animate roll */
 	0,	/* Animate flag */
 	0,	/* Close board on exit */
-	0,	/* Debug draw time */
 	36,	/* Curve accuracy */
 	LT_POSITIONAL, /* light source type */
 	{0, 2, 3.5f},	/* x,y,z pos of light source */
