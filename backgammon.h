@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.274 2004/02/04 18:02:17 uid68519 Exp $
+ * $Id: backgammon.h,v 1.275 2004/02/14 19:32:22 uid65656 Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -875,6 +875,7 @@ extern void CommandAccept( char * ),
     CommandLoadGame( char * ),
     CommandLoadMatch( char * ),
     CommandLoadPosition( char * ),
+    CommandLoadPython( char * ),
     CommandMove( char * ),
     CommandMWC2Eq( char * ),
     CommandNewGame( char * ),
