@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.232 2002/06/27 17:07:40 thyssen Exp $
+ * $Id: gnubg.c,v 1.233 2002/06/28 20:13:04 thyssen Exp $
  */
 
 #include "config.h"
@@ -500,6 +500,9 @@ command cER = {
     { "postscript", CommandExportMatchPostScript, N_("Records a log of the "
       "session in PostScript format"), szFILENAME, &cFilename },
     { "ps", CommandExportMatchPostScript, NULL, szFILENAME, &cFilename },
+    { "text", CommandExportMatchText,
+      N_("Records a log of the session in text format"),
+      szFILENAME, &cFilename },
     { NULL, NULL, NULL, NULL, NULL }
 }, acExport[] = {
     { "database", CommandDatabaseExport, 
