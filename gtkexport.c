@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.18 2003/08/13 11:52:27 Superfly_Jon Exp $
+ * $Id: gtkexport.c,v 1.19 2003/08/14 22:25:36 joseph Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -228,7 +228,7 @@ SetExportCommands ( const exportsetup *pexsOrig,
   CHECKFLAG ( pexsOrig, pexsNew, afMovesParameters[ 1 ], 
               "moves parameters rollout" );
 
-  for ( i = 0; i <= SKILL_VERYGOOD; ++i ) {
+  for ( i = 0; i < N_SKILLS; ++i ) {
     if ( i == SKILL_NONE ) {
       CHECKFLAG ( pexsOrig, pexsNew, afMovesDisplay[ i ], 
                   "moves display unmarked" );
@@ -248,7 +248,7 @@ SetExportCommands ( const exportsetup *pexsOrig,
   CHECKFLAG ( pexsOrig, pexsNew, afCubeParameters[ 1 ], 
               "cube parameters rollout" );
 
-  for ( i = 0; i <= SKILL_VERYGOOD; ++i ) {
+  for ( i = 0; i < N_SKILLS; ++i ) {
     if ( i == SKILL_NONE ) {
       CHECKFLAG ( pexsOrig, pexsNew, afCubeDisplay[ i ], 
                   "cube display unmarked" );
@@ -439,18 +439,19 @@ GTKShowExport ( exportsetup *pexs ) {
     N_("Show for moves marked 'bad'"),
     N_("Show for moves marked 'doubtful'"),
     N_("Show for unmarked moves"),
-    N_("Show for moves marked 'interesting'"),
-    N_("Show for moves marked 'good'"),
-    N_("Show for moves marked 'very good'") };
+/*     N_("Show for moves marked 'interesting'"), */
+/*     N_("Show for moves marked 'good'"), */
+/*     N_("Show for moves marked 'very good'")  */
+  };
 
   char *aszCubeDisplay[] = {
     N_("Show for cube decisions marked 'very bad'"),
     N_("Show for cube decisions marked 'bad'"),
     N_("Show for cube decisions marked 'doubtful'"),
     N_("Show for unmarked cube decisions"),
-    N_("Show for cube decisions marked 'interesting'"),
-    N_("Show for cube decisions marked 'good'"),
-    N_("Show for cube decisions marked 'very good'"),
+/*     N_("Show for cube decisions marked 'interesting'"), */
+/*     N_("Show for cube decisions marked 'good'"), */
+/*     N_("Show for cube decisions marked 'very good'"), */
     N_("Show for actual cube decisions"),
     N_("Show for missed doubles"),
     N_("Show for close cube decisions") };

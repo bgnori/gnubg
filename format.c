@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.2 2003/08/13 11:52:27 Superfly_Jon Exp $
+ * $Id: format.c,v 1.3 2003/08/14 22:25:36 joseph Exp $
  */
 
 #include "config.h"
@@ -750,7 +750,7 @@ OutputCubeAnalysisFull ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                                  arDouble[ OUTPUT_TAKE ],
                                  pci ) );
     
-    if ( stDouble != SKILL_NONE )
+    if ( badSkill(stDouble) )
       sprintf ( pc = strchr ( sz, 0 ), " [%s]", 
                 gettext ( aszSkillType[ stDouble ] ) );
     
@@ -770,7 +770,7 @@ OutputCubeAnalysisFull ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                                  arDouble[ OUTPUT_TAKE ],
                                  pci ) );
 
-    if ( stTake != SKILL_NONE )
+    if ( badSkill(stTake) )
       sprintf ( pc = strchr ( sz, 0 ), " [%s]", 
                 gettext ( aszSkillType[ stTake ] ) );
     
@@ -790,7 +790,7 @@ OutputCubeAnalysisFull ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                                  arDouble[ OUTPUT_DROP ],
                                  pci ) );
 
-    if ( stTake != SKILL_NONE )
+    if ( badSkill(stTake) )
       sprintf ( pc = strchr ( sz, 0 ), " [%s]", 
                 gettext ( aszSkillType[ stTake ] ) );
     
@@ -817,21 +817,21 @@ OutputCubeAnalysisFull ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                                  arDouble[ OUTPUT_NODOUBLE ], 
                                  pci ) );
 
-    if ( stDouble != SKILL_NONE )
+    if ( badSkill(stDouble) )
       sprintf ( pc = strchr ( sz, 0 ), " [%s]", 
                 gettext ( aszSkillType[ stDouble ] ) );
 
   }
 
-  if ( ( stDouble != SKILL_NONE || stTake != SKILL_NONE ) && ! fAnno ) {
+  if ( ( badSkill(stDouble) || badSkill(stTake) ) && ! fAnno ) {
     
-    if ( stDouble != SKILL_NONE ) {
+    if ( badSkill(stDouble) ) {
       sprintf ( pc = strchr ( sz, 0 ), _("Alert: double decision marked %s"),
                 gettext ( aszSkillType[ stDouble ] ) );
       strcat ( sz, "\n" );
     }
 
-    if ( stTake != SKILL_NONE ) {
+    if ( badSkill(stTake) ) {
       sprintf ( pc = strchr ( sz, 0 ), _("Alert: take decision marked %s"),
                 gettext ( aszSkillType[ stTake ] ) );
       strcat ( sz, "\n" );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.69 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: import.c,v 1.70 2003/08/14 22:25:36 joseph Exp $
  */
 
 #include "config.h"
@@ -1388,7 +1388,7 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
                       pmr->d.mt = MOVE_TAKE;
                       pmr->d.sz = szComment;
                       pmr->d.fPlayer = fPlayer;
-					  pmr->d.st = SKILL_NONE;
+		      pmr->d.st = SKILL_NONE;
 		      if( !LinkToDouble( pmr ) ) {
 			outputl( _( "Beaver record found but doesn't follow a double" ) );
 						free (pmr);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.21 2003/08/13 11:52:25 Superfly_Jon Exp $
+ * $Id: analysis.h,v 1.22 2003/08/14 22:25:36 joseph Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -29,9 +29,17 @@ typedef enum _lucktype {
 } lucktype;
 
 typedef enum _skilltype {
-    SKILL_VERYBAD, SKILL_BAD, SKILL_DOUBTFUL, SKILL_NONE,
-    SKILL_INTERESTING, SKILL_GOOD, SKILL_VERYGOOD
+  SKILL_VERYBAD,
+  SKILL_BAD,
+  SKILL_DOUBTFUL,
+  SKILL_NONE,
+  SKILL_GOOD,
+  /* SKILL_INTERESTING, SKILL_VERYGOOD */
 } skilltype;
+
+extern int badSkill(skilltype st);
+
+#define N_SKILLS (SKILL_GOOD + 1)
 
 typedef struct _statcontext {
   int fMoves, fCube, fDice; /* which statistics have been computed? */
@@ -45,7 +53,7 @@ typedef struct _statcontext {
   int anTake[ 2 ];
   int anPass[ 2 ];
 
-  int anMoves[ 2 ][ SKILL_VERYGOOD + 1 ];
+  int anMoves[ 2 ][ N_SKILLS ];
 
   int anLuck[ 2 ][ LUCK_VERYGOOD + 1 ];
 
