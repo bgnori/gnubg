@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.31 2003/03/30 16:37:51 thyssen Exp $
+ * $Id: postscript.c,v 1.31.2.1 2003/07/11 16:55:33 hb Exp $
  */
 
 #include "config.h"
@@ -143,7 +143,7 @@ static void PostScriptEscape( FILE *pf, unsigned char *pchIn ) {
     free( sz );
 }
 
-static void StartPage( FILE *pf ) {
+static void PSStartPage( FILE *pf ) {
 
     iPage++;
     fn = FONT_NONE;
@@ -179,7 +179,7 @@ static void StartPage( FILE *pf ) {
 		 ( cxPage - 451 ) / 2, ( cyPage - 648 ) / 2 );
 }
 
-static void EndPage( FILE *pf ) {
+static void PSEndPage( FILE *pf ) {
 
     if( fPDF ) {
 	long cb;
@@ -227,8 +227,8 @@ static void Ensure( FILE *pf, int cy ) {
     assert( cy <= 648 );
     
     if( y < cy ) {
-	EndPage( pf );
-	StartPage( pf );
+	PSEndPage( pf );
+	PSStartPage( pf );
     }
 }
 
@@ -248,8 +248,8 @@ static void Advance( FILE *pf, int cy ) {
 static void Skip( FILE *pf, int cy ) {
 
     if( y < cy ) {
-	EndPage( pf );
-	StartPage( pf );
+	PSEndPage( pf );
+	PSStartPage( pf );
     } else if( y != 648 )
 	Consume( pf, cy );
 }
@@ -452,7 +452,7 @@ static void PostScriptPrologue( FILE *pf, int fEPS, char *szTitle ) {
     
     iPage = 0;
     
-    StartPage( pf );
+    PSStartPage( pf );
 }
 
 static void DrawPostScriptPoint( FILE *pf, int i, int fPlayer, int c ) {
@@ -1243,7 +1243,7 @@ static void PostScriptEpilogue( FILE *pf ) {
     int i;
     long lXRef;
     
-    EndPage( pf );
+    PSEndPage( pf );
 
     if( fPDF ) {
 	StartObject( pf, idPages );
