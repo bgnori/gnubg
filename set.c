@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.246 2004/10/26 19:11:35 oysteijo Exp $
+ * $Id: set.c,v 1.247 2004/11/15 11:17:40 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -105,7 +105,9 @@ movefilter *aamfSet[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
 
 static char szFILENAME[] = N_ ("<filename>"),
     szNAME[] = N_ ("<name>"),
+#if defined(REDUCTION_CODE)
     szNUMBER[] = N_ ("<number>"),
+#endif
     szONOFF[] = N_ ("on|off"),
     szPLIES[] = N_ ("<plies>"),
     szSTDDEV[] = N_ ("<std dev>"),

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.89 2004/10/05 16:13:00 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.90 2004/11/15 11:17:40 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -107,8 +107,8 @@ extern void GTKRegenerateGames( void );
 extern void GTKFreeze( void );
 extern void GTKThaw( void );
 
-extern void GTKSuspendInput( monitor *pm );
-extern void GTKResumeInput( monitor *pm );
+extern void GTKSuspendInput();
+extern void GTKResumeInput();
 
 #if USE_TIMECONTROL
 extern void GTKUpdateClock();

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.44 2004/09/09 11:22:36 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.45 2004/11/15 11:17:40 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -1983,8 +1983,7 @@ void RollDice3d(BoardData *bd)
 
 	if (bd->rd->animateRoll)
 	{
-		monitor m;
-		SuspendInput( &m );
+		SuspendInput();
 		animStartTime = get_time();
 
 		bd->shakingDice = 1;
@@ -2002,14 +2001,13 @@ void RollDice3d(BoardData *bd)
 				firstFrame = 1;
 		}
 		gtk_main();
-		ResumeInput( &m );
+		ResumeInput();
 	}
 }
 
 void AnimateMove3d(BoardData *bd)
 {
-	monitor m;
-	SuspendInput( &m );
+	SuspendInput();
 	slide_move = 0;
 	bd->moving = 1;
 
@@ -2018,7 +2016,7 @@ void AnimateMove3d(BoardData *bd)
 	stopNextTime = 0;
 	setIdleFunc(bd, idleAnimate);
 	gtk_main();
-	ResumeInput( &m );
+	ResumeInput();
 }
 
 int idleWaveFlag(BoardData* bd)

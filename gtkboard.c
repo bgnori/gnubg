@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.190 2004/09/10 09:37:33 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.191 2004/11/15 11:17:40 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3126,7 +3126,6 @@ static gint board_slide_timeout( gpointer p ) {
 extern void board_animate( Board *board, int move[ 8 ], int player ) {
 
     int n;
-    monitor m;
 #if USE_BOARD3D
     BoardData *bd = board->board_data;
 #endif
@@ -3159,9 +3158,9 @@ extern void board_animate( Board *board, int move[ 8 ], int player ) {
 			     board );
 
     while( !animation_finished ) {
-	SuspendInput( &m );
+	SuspendInput();
 	gtk_main_iteration();
-	ResumeInput( &m );
+	ResumeInput();
     }
 }
 }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.261 2004/10/26 19:11:35 oysteijo Exp $
+ * $Id: play.c,v 1.262 2004/11/15 11:17:40 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2471,7 +2471,6 @@ static skilltype GoodDouble (int fisRedouble, moverecord *pmr )
   int      fAnalyseCubeSave = fAnalyseCube;
   evalcontext *pec;
   evalsetup   *pes;
-  monitor m;
   evalsetup es;
 
   /* reasons that doubling is not an issue */
@@ -2505,11 +2504,11 @@ static skilltype GoodDouble (int fisRedouble, moverecord *pmr )
   /* Give hint on cube action */
 
 
-  SuspendInput ( &m );
+  SuspendInput();
 
   ProgressStart( _("Considering cube action...") );
   if (GeneralCubeDecisionE( aarOutput, ms.anBoard, &ci, pec, pes) < 0 ) {
-    ResumeInput ( &m );
+    ResumeInput();
     ProgressEnd();
     fAnalyseCube = fAnalyseCubeSave;
     return (SKILL_NONE);;
@@ -2521,7 +2520,7 @@ static skilltype GoodDouble (int fisRedouble, moverecord *pmr )
   ec2es ( &es, pec );
   UpdateStoredCube ( aarOutput, aarOutput /* whatever */, &es, &ms );
 
-  ResumeInput ( &m );
+  ResumeInput();
 	    
   /* store cube decision for annotation */
 
@@ -2673,7 +2672,6 @@ static skilltype ShouldDrop (int fIsDrop, moverecord *pmr) {
 	int      fAnalyseCubeSave = fAnalyseCube;
 	evalcontext *pec;
 	evalsetup   *pes;
-    monitor m;
     evalsetup es;
 
 	/* reasons that doubling is not an issue */
@@ -2703,11 +2701,11 @@ static skilltype ShouldDrop (int fIsDrop, moverecord *pmr) {
 
 	/* Give hint on cube action */
 
-        SuspendInput ( &m );
+	SuspendInput();
 	ProgressStart( _("Considering cube action...") );
 	if ( GeneralCubeDecisionE( aarOutput, ms.anBoard, &ci, pec, pes) < 0) {
 	  ProgressEnd();
-          ResumeInput ( &m );
+	  ResumeInput();
 	  fAnalyseCube = fAnalyseCubeSave;
 	  return (SKILL_NONE);
 	}
@@ -2719,8 +2717,8 @@ static skilltype ShouldDrop (int fIsDrop, moverecord *pmr) {
                            aarOutput, /* whatever */
                            &es, &ms );
 
-	ProgressEnd();
-        ResumeInput ( &m );
+        ProgressEnd();
+        ResumeInput();
 	    
         /* store cube decision for annotation */
 
@@ -2951,7 +2949,6 @@ static skilltype GoodMove (moverecord *pmr) {
   matchstate msx;
   int        fAnalyseMoveSaved = fAnalyseMove;
   evalsetup *pesCube, *pesChequer;
-  monitor m;
 
   /* should never happen, but if it does, tutoring
    * is a non-starter
@@ -2973,14 +2970,14 @@ static skilltype GoodMove (moverecord *pmr) {
     pesChequer = &esEvalChequer;
   }
 
-  SuspendInput ( &m );
+  SuspendInput();
   ProgressStart( _("Considering move...") );
   if (AnalyzeMove ( pmr, &msx, plGame, NULL, pesChequer, pesChequer,
                     fTutorAnalysis ? aamfAnalysis : aamfEval, 
 		    FALSE, NULL ) < 0) {
     fAnalyseMove = fAnalyseMoveSaved;
     ProgressEnd();
-    ResumeInput ( &m );
+    ResumeInput();
     return SKILL_NONE;
   }
 
@@ -2991,7 +2988,7 @@ static skilltype GoodMove (moverecord *pmr) {
   UpdateStoredMoves ( &pmr->ml, &ms );
 
   ProgressEnd ();
-  ResumeInput ( &m );
+  ResumeInput();
 
   return pmr->n.stMove;
 }

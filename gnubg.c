@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.593 2004/11/05 14:46:21 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.594 2004/11/15 11:17:40 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -7192,20 +7192,20 @@ extern void outputresume( void ) {
 }
 
 /* Temporarily ignore TTY/GUI input. */
-extern void SuspendInput( monitor *pm ) {
+extern void SuspendInput() {
 
 #if USE_GTK
     if ( fX )
-       GTKSuspendInput( pm );
+       GTKSuspendInput();
 #endif
 }
 
 /* Resume input (must match a previous SuspendInput). */
-extern void ResumeInput( monitor *pm ) {
+extern void ResumeInput() {
 
 #if USE_GTK
     if ( fX )
-       GTKResumeInput( pm );
+       GTKResumeInput();
 #endif
 }
 
@@ -7345,14 +7345,13 @@ static void CallbackProgress( void ) {
 
 #if USE_GTK
     if( fX ) {
-	monitor m;
-    
-	SuspendInput( &m );
+
+	SuspendInput();
     
 	while( gtk_events_pending() )
 	    gtk_main_iteration();
 	
-	ResumeInput( &m );
+	ResumeInput();
     }
 #endif
 

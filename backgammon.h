@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.298 2004/11/05 14:46:21 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.299 2004/11/15 11:17:40 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -129,15 +129,6 @@ extern int PanelShowing(gnubgwindow window);
 
 extern int GetPanelSize();
 extern void SetPanelWidth(int size);
-
-typedef struct _monitor {
-#if USE_GTK
-    int fGrab;
-    int idSignal;
-#else
-	int dummy;
-#endif
-} monitor;
 
 typedef struct _command {
   /* Command name (NULL indicates end of list) */
@@ -660,9 +651,9 @@ extern void outputoff( void );
 extern void outputon( void );
 
 /* Temporarily ignore TTY/GUI input. */
-extern void SuspendInput( monitor* pm );
+extern void SuspendInput();
 /* Resume input (must match a previous SuspendInput). */
-extern void ResumeInput( monitor* pm );
+extern void ResumeInput();
 
 extern void ProgressStart( char* sz );
 extern void ProgressStartValue( char* sz, int iMax );
