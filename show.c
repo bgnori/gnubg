@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.70 2001/10/29 15:14:56 gtw Exp $
+ * $Id: show.c,v 1.71 2001/11/02 18:10:31 gtw Exp $
  */
 
 #include "config.h"
@@ -322,7 +322,7 @@ extern void CommandShowClockwise( char *sz ) {
 
 static void ShowCommands( command *pc, char *szPrefix ) {
 
-    char sz[ 64 ], *pch;
+    char sz[ 128 ], *pch;
 
     strcpy( sz, szPrefix );
     pch = strchr( sz, 0 );
@@ -333,7 +333,7 @@ static void ShowCommands( command *pc, char *szPrefix ) {
 
 	strcpy( pch, pc->sz );
 
-	if( pc->pc ) {
+	if( pc->pc && pc->pc != pc ) {
 	    strcat( sz, " " );
 	    ShowCommands( pc->pc, sz );
 	} else
