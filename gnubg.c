@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.293 2002/09/14 00:40:13 gtw Exp $
+ * $Id: gnubg.c,v 1.294 2002/09/14 16:25:00 gtw Exp $
  */
 
 #include "config.h"
@@ -5377,7 +5377,7 @@ static RETSIGTYPE SoundChild ( int n ) {
 static void real_main( void *closure, int argc, char *argv[] ) {
 
     char ch, *pch, *pchCommands = NULL, *pchScript = NULL;
-    int n, nNewWeights = 0, fNoRC = FALSE, fNoBearoff = FALSE;
+    int n, nNewWeights = 0, fNoRC = FALSE, fNoBearoff = FALSE, fQuiet = FALSE;
     int i, j;
     static struct option ao[] = {
 	{ "datadir", required_argument, NULL, 'd' },
@@ -5525,7 +5525,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 
 	    break;
 	case 'q': /* quiet */
-	    fSound = FALSE;
+	    fQuiet = TRUE;
 	    break;
 	case 'r': /* no-rc */
 	    fNoRC = TRUE;
@@ -5679,6 +5679,9 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     
     if( !fNoRC )
 	LoadRCFiles();
+
+    if( fQuiet )
+	fSound = FALSE;
     
     if( optind < argc && *argv[ optind ] )
        CommandLoadMatch( argv[ optind ] );
