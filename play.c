@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.223 2003/09/12 17:14:02 jsegrave Exp $
+ * $Id: play.c,v 1.224 2003/09/12 23:28:45 jsegrave Exp $
  */
 
 #include "config.h"
@@ -405,6 +405,9 @@ printf("ApplyMoveRecord(%d, %d.%d): state:%d, turn: %d, ts0: (%d.%d), ts1: (%d.%
 	    outputx();
 	}
 	break;
+#else
+    case MOVE_TIME:
+      break;
 #endif
     }
 

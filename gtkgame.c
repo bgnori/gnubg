@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.423 2003/09/12 19:03:33 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.424 2003/09/12 23:28:45 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -384,8 +384,6 @@ static guint idOutput, idProgress;
 static list lOutput;
 int fTTY = TRUE;
 int fGUISetWindowPos = TRUE;
-
-int fDisplayPanels = TRUE;
 
 static guint nStdin, nDisabledCount = 1;
 
