@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.5 2002/07/27 17:13:19 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.6 2002/07/29 15:59:45 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -418,18 +418,7 @@ MoveListMove ( GtkWidget *pw, hintdata *phd ) {
 static void
 MoveListCopy ( GtkWidget *pw, hintdata *phd ) {
 
-#ifdef WIN32
-
-  char *pc = NULL; /* write me */
-
-  if ( pc )
-    WinCopy ( pc );
-
-#else /* WIN32 */
-
   UserCommand ( "xcopy" );
-
-#endif /* ! WIN32 */
 
 }
 
