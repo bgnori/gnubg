@@ -32,42 +32,52 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.5 2000/12/16 23:57:21 oysteijo Exp $
+ * $Id: positionid.c,v 1.6 2001/01/17 22:15:46 gtw Exp $
  */
 
 #include <assert.h>
 #include <errno.h>
 #include "positionid.h"
 
-static void AddBit( int b, unsigned char **ppuch, int *piBit ) {
+static inline void
+addBits(unsigned char auchKey[10], int bitPos, int nBits)
+{
+  int const k = bitPos / 8;
+  int const r = (bitPos & 0x7);
 
-    if( b )
-        **ppuch |= 1 << *piBit;
+  unsigned int b = (((unsigned int)0x1 << nBits) - 1) << r;
 
-    if( ++*piBit > 7 ) {
-        *piBit = 0;
-        ++*ppuch;
-    }
+  auchKey[k] |= b;
+
+  if( k < 8 ) {
+    auchKey[k+1] |= b >> 8;
+    auchKey[k+2] |= b >> 16;
+  } else if( k == 8 ) {
+    auchKey[k+1] |= b >> 8;
+  }
 }
 
-extern void PositionKey( int anBoard[ 2 ][ 25 ],
-                         unsigned char auchKey[ 10 ] ) {
-    
-    unsigned char *puch;
-    int i, j, iBit = 0, iChequer;
-    
-    for( puch = auchKey; puch < &auchKey[ 10 ]; puch++ )
-        *puch = 0;
-    
-    puch = auchKey;
+extern void
+PositionKey(int anBoard[2][25], unsigned char auchKey[10])
+{
+  int i, iBit = 0;
+  const int* j;
 
-    for( i = 0; i < 2; i++ )
-        for( j = 0; j < 25; j++ ) {
-            for( iChequer = 0; iChequer < anBoard[ i ][ j ]; iChequer++ )
-                AddBit( 1, &puch, &iBit );
+  memset(auchKey, 0, 10 * sizeof(*auchKey));
 
-            AddBit( 0, &puch, &iBit );
-        }    
+  for(i = 0; i < 2; ++i) {
+    const int* const b = anBoard[i];
+    for(j = b; j < b + 25; ++j) {
+      int const nc = *j;
+
+      if( nc ) {
+        addBits(auchKey, iBit, nc);
+        iBit += nc + 1;
+      } else {
+        ++iBit;
+      }
+    }
+  }
 }
 
 extern char *PositionIDFromKey( unsigned char auchKey[ 10 ] ) {
