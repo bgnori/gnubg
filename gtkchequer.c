@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.9 2002/09/08 20:37:59 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.10 2002/10/07 19:32:56 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -469,6 +469,8 @@ CreateMoveListTools ( hintdata *phd ) {
   int i;
   char *sz;
 
+  GtkTooltips *pt = gtk_tooltips_new ();
+
   phd->pwRollout = pwRollout;
   phd->pwRolloutSettings = pwRolloutSettings;
   phd->pwEval = pwEval;
@@ -495,7 +497,7 @@ CreateMoveListTools ( hintdata *phd ) {
 
   for ( i = 0; i < 5; ++i ) {
 
-    sz = g_strdup_printf ( "%d", i );
+    sz = g_strdup_printf ( "%d", i ); /* string is freed by set_data_full */
     pwply = gtk_button_new_with_label ( sz );
 
     gtk_box_pack_start ( GTK_BOX ( phd->pwEvalPly ), pwply, TRUE, TRUE, 0 );
@@ -504,6 +506,10 @@ CreateMoveListTools ( hintdata *phd ) {
                         GTK_SIGNAL_FUNC( MoveListEvalPly ), phd );
 
     gtk_object_set_data_full ( GTK_OBJECT ( pwply ), "user_data", sz, free );
+
+    sz = g_strdup_printf ( _("Evaluate play on cubeful %d-ply"), i );
+    gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwply, sz, sz );
+    g_free ( sz );
 
   }
 
@@ -550,6 +556,36 @@ CreateMoveListTools ( hintdata *phd ) {
                       GTK_SIGNAL_FUNC( MoveListMove ), phd );
   gtk_signal_connect( GTK_OBJECT( pwCopy ), "clicked",
                       GTK_SIGNAL_FUNC( MoveListCopy ), phd );
+
+  /* tool tips */
+
+  gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwRollout,
+                         _("Rollout cube decision with current settings"),
+                         _("Rollout cube decision with current settings") );
+
+  gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwEval,
+                         _("Evaluate cube decision with current settings"),
+                         _("Evaluate cube decision with current settings") );
+
+  gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwRolloutSettings,
+                         _("Modify rollout settings"),
+                         _("Modify rollout settings") );
+
+  gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwEvalSettings,
+                         _("Modify evaluation settings"),
+                         _("Modify evaluation settings") );
+
+  gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwMWC,
+                         _("Toggle output as MWC or equity"),
+                         _("Toggle output as MWC or equity") );
+
+  gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwCopy,
+                         _("Copy selected moves to clipboard"),
+                         _("Copy selected moves to clipboard") );
+
+  gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwMove,
+                         _("Move the selected move"),
+                         _("Move the selected move") );
 
 
   return pwTools;
