@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.18 2003/07/08 21:04:07 hb Exp $
+ * $Id: gtktheory.c,v 1.19 2003/07/12 13:30:58 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -664,9 +664,9 @@ GTKShowTheory ( const int fActivePage ) {
   int *pi;
 
   static char *aszTitles[] = {
-    N_(""),
+    "",
     N_("Dead cube"),
-    N_("") /* N_("Live cube") */,
+    "" /* N_("Live cube") */,
     N_("Fully live")
   };
   gchar *asz[ 4 ];
