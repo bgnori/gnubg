@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.27 2003/05/03 08:38:01 thyssen Exp $
+ * $Id: drawboard.c,v 1.28 2003/05/29 11:31:27 thyssen Exp $
  */
 
 #include "config.h"
@@ -1024,7 +1024,8 @@ extern int ParseFIBSBoard( char *pch, int anBoard[ 2 ][ 25 ],
 
     *pfCubeOwner = fCanDouble != fOppCanDouble ? fCanDouble : -1;
 
-    *pfDoubled = *pfDoubled != 0;
+    /* Negative values here show resignations now. -- Rod */
+    /* *pfDoubled = *pfDoubled != 0; */
 
     return 0;
 }
