@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.21 2003/07/25 14:37:07 thyssen Exp $
+ * $Id: bearoff.c,v 1.22 2003/07/27 12:45:21 oysteijo Exp $
  */
 
 #include "config.h"
@@ -28,8 +28,6 @@
 #include <assert.h>
 #include <errno.h>
 #include <math.h>
-
-#include <glib/gutils.h>
 
 #if HAVE_FCNTL_H
 #include <fcntl.h>
@@ -58,6 +56,10 @@
 #define BINARY 0
 #endif
 
+#ifndef HAVE_DIRNAME
+extern char *
+dirname ( const char *filename );
+#endif
 
 typedef struct _hashentryonesided {
   unsigned int nPosID;
@@ -774,7 +776,6 @@ BearoffEvalHypergammon ( bearoffcontext *pbc,
 
 }
 
-
 static int 
 ReadSconyers15x15( bearoffcontext *pbc,
                    const unsigned int iPos,
@@ -823,11 +824,7 @@ ReadSconyers15x15( bearoffcontext *pbc,
             if( pbc->szDir )
               free( pbc->szDir );
 
-#if ! defined(HAVE_DIRNAME) && ! defined(HAVE_LIBGEN_H)
-            pbc->szDir = (char *) g_path_get_dirname( (const gchar *) pch );
-#else
             pbc->szDir = dirname( pch );
-#endif
 
             free( pch );
             free( pch2 );
