@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.302 2002/09/19 15:13:01 gtw Exp $
+ * $Id: gnubg.c,v 1.303 2002/09/19 17:49:16 gtw Exp $
  */
 
 #include "config.h"
@@ -5106,8 +5106,36 @@ extern void outputerr( char *sz ) {
     perror( sz );
     
 #if USE_GTK
-    if( fX )
-	GTKOutputErr( sz );
+    if( fX ) {
+	char *pch = g_strdup_printf( "%s: %s", sz, strerror( errno ) );
+	GTKOutputErr( pch );
+	g_free( pch );
+    }
+#endif
+}
+
+/* Write an error message, fprintf() style */
+extern void outputerrf( char *sz, ... ) {
+
+    va_list val;
+
+    va_start( val, sz );
+    outputerrv( sz, val );
+    va_end( val );
+}
+
+/* Write an error message, vfprintf() style */
+extern void outputerrv( char *sz, va_list val ) {
+
+    vfprintf( stderr, sz, val );
+    putc( '\n', stderr );
+    
+#if USE_GTK
+    if( fX ) {
+	char *pch = g_strdup_vprintf( sz, val );
+	GTKOutputErr( pch );
+	g_free( pch );
+    }
 #endif
 }
 

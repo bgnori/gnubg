@@ -1,4 +1,4 @@
-$Id: TODO,v 1.257 2002/09/19 13:45:28 gtw Exp $
+$Id: TODO,v 1.258 2002/09/19 17:49:31 gtw Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -53,7 +53,7 @@ duplication of effort and to make sure our changes merge easily.
 ** Finish supervised training, and allow people to submit training data via
   web.
 ** Make output*() functions wrap words, and pause before scrolling (as in
-  gdb).  Make sure output to stderr is available when using GTK.
+  gdb).
 ** Allow resuming interrupted rollouts, and extending completed rollouts.
 ** Add a command "show moves" which shows a list of legal moves, like hint
   does, but without evaluating them.

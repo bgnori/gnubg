@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.3 2002/09/18 19:18:52 gtw Exp $
+ * $Id: record.c,v 1.4 2002/09/19 17:49:16 gtw Exp $
  */
 
 #include "config.h"
@@ -70,7 +70,7 @@ extern int RecordReadItem( FILE *pf, char *pch, playerrecord *ppr ) {
     do {
 	if( ch == EOF ) {
 	    if( feof( pf ) )
-		fprintf( stderr, "%s: invalid record file\n", pch );
+		outputerrf( "%s: invalid record file", pch );
 	    else
 		outputerr( pch );
 	    return -1;
@@ -96,7 +96,7 @@ extern int RecordReadItem( FILE *pf, char *pch, playerrecord *ppr ) {
 	    if( ferror( pf ) )
 		outputerr( pch );
 	    else
-		fprintf( stderr, "%s: invalid record file\n", pch );
+		outputerrf( "%s: invalid record file", pch );
 	    
 	    return -1;
 	}
