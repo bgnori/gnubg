@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.291 2003/01/10 15:39:00 gtw Exp $
+ * $Id: gtkgame.c,v 1.292 2003/01/10 18:45:05 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3736,7 +3736,7 @@ static void EvalChanged ( GtkWidget *pw, evalwidget *pew ) {
   for ( i = 0; i < NUM_SETTINGS; i++ ) {
 
     fEval = ! cmp_evalcontext ( &aecSettings[ i ], &ecCurrent );
-    fMoveFilter = aecSettings[ i ].nPlies &&
+    fMoveFilter = ! aecSettings[ i ].nPlies ||
       ( ! pew->fMoveFilter || 
         equal_movefilters ( pew->pmf, 
                             aaamfMoveFilterSettings[ aiSettingsMoveFilter[ i ] ] ) );
