@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: eval.c,v 1.1.1.1.2.1 1999/12/15 01:45:15 gtw Exp $
  */
 
 #include "config.h"
@@ -786,13 +786,18 @@ extern positionclass ClassifyPosition( int anBoard[ 2 ][ 25 ] ) {
     return CLASS_BEAROFF2;
 }
 
+#define RACE
+
 static void EvalRace( int anBoard[ 2 ][ 25 ], float arOutput[] ) {
-    
+#if defined( RACE )
+    raceProbs( anBoard, arOutput );
+#else    
     float arInput[ NUM_INPUTS ];
 
     CalculateInputs( anBoard, arInput );
     
     NeuralNetEvaluate( &nnRace, arInput, arOutput );
+#endif
 }
 
 static void EvalContact( int anBoard[ 2 ][ 25 ], float arOutput[] ) {
