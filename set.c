@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.202 2003/08/20 17:23:32 thyssen Exp $
+ * $Id: set.c,v 1.203 2003/08/24 09:06:20 thyssen Exp $
  */
 
 #include "config.h"
@@ -440,8 +440,8 @@ static void SetSkillThreshold( skilltype lt, char *sz ) {
     double r = ParseReal( &sz );
     char *szCommand = gettext ( aszSkillTypeCommand[ lt ] );
 
-    if( r <= 0.0 ) {
-	outputf( _("You must specify a positive number for the threshold (see "
+    if( r < 0.0 ) {
+	outputf( _("You must specify a semi-positive number for the threshold (see "
 		 "`help set analysis\nthreshold %s').\n"), szCommand );
 	return;
     }
