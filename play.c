@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.171 2003/01/17 02:57:28 gtw Exp $
+ * $Id: play.c,v 1.172 2003/01/28 06:42:07 jsegrave Exp $
  */
 
 #include "config.h"
@@ -3554,6 +3554,7 @@ static skilltype ShouldDouble ( void ) {
 		ms.anDice[ 0 ]         || 
 		ms.fDoubled || 
 		ms.fResigned ||
+                ! fCubeUse ||
 		(ap[ ms.fTurn ].pt != PLAYER_HUMAN )) {
 
       return (SKILL_NONE);
