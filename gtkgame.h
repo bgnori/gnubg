@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.93 2005/02/10 18:46:30 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.94 2005/02/17 17:05:36 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -49,7 +49,8 @@ typedef enum _dialogtype {
 } dialogtype;
 
 typedef enum _filedialogtype { 
-  FDT_NONE=0, FDT_SAVE, FDT_EXPORT, FDT_IMPORT, FDT_EXPORT_FULL
+  FDT_NONE=0, FDT_SAVE, FDT_EXPORT, FDT_IMPORT, FDT_EXPORT_FULL,
+  FDT_NONE_OPEN, FDT_NONE_SAVE
 } filedialogtype;
 
 typedef enum _warnings { 
@@ -93,7 +94,7 @@ extern GtkWidget *pwOldGrab;
 extern int lastImportType, lastExportType;
 extern int fEndDelay;
 
-extern void ShowGameWindow( void );
+extern gboolean ShowGameWindow( void );
 
 extern void GTKAddMoveRecord( moverecord *pmr );
 extern void GTKPopMoveRecord( moverecord *pmr );
@@ -216,7 +217,9 @@ GTKReadNumber( char *szTitle, char *szPrompt, int nDefault,
                int nMin, int nMax, int nInc );
 
 extern void GTKFileCommand( char *szPrompt, char *szDefault, char *szCommand,
-                            char *szPath, filedialogtype fdt );
+                            char *szPath, filedialogtype fdt, pathformat pathFormat );
+extern void GTKFileCommand24( char *szPrompt, char *szDefault, char *szCommand,
+                              char *szPath, filedialogtype fdt, pathformat pathId);
 extern char 
 *SelectFile( char *szTitle, char *szDefault, char *szPath, 
              filedialogtype fdt );

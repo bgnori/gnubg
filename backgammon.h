@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.301 2005/02/15 18:13:01 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.302 2005/02/17 17:05:36 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -469,7 +469,7 @@ typedef enum _pathformat {
   PATH_EPS, PATH_GAM, PATH_HTML, PATH_LATEX, PATH_MAT, PATH_OLDMOVES,
   PATH_PDF, PATH_PNG, PATH_POS, PATH_POSTSCRIPT, PATH_SGF, PATH_SGG, PATH_TEXT, 
   PATH_MET, PATH_TMG, PATH_BKG, PATH_SNOWIE_TXT,
-  NUM_PATHS } 
+  NUM_PATHS, PATH_NULL } 
 pathformat;
 
 extern char aaszPaths[ NUM_PATHS ][ 2 ][ BIG_PATH ];

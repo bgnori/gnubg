@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.14 2004/10/12 08:41:24 joseph Exp $
+ * $Id: gtktoolbar.c,v 1.15 2005/02/17 17:05:36 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -201,7 +201,7 @@ OpenClicked( GtkWidget *pw, gpointer unused ) {
   char *sz = getDefaultPath ( PATH_SGF );
 
   GTKFileCommand(_("Open match, session, game or position"), 
-		   sz, "load match", "sgf", FDT_NONE);
+		   sz, "load match", "sgf", FDT_NONE_OPEN, PATH_SGF);
   if ( sz ) 
     free ( sz );
 }
@@ -211,7 +211,7 @@ SaveClicked( GtkWidget *pw, gpointer unused ) {
 
   char *sz = getDefaultFileName ( PATH_SGF );
   GTKFileCommand(_("Save match, session, game or position"), 
-		   sz, "save", "sgf", FDT_SAVE);
+		   sz, "save", "sgf", FDT_SAVE, PATH_SGF);
   if ( sz ) 
     free ( sz );
 }
@@ -228,7 +228,7 @@ ImportClicked( GtkWidget *pw, gpointer unused ) {
 		sz = getDefaultPath(impTypes[lastImportType]);
 
 	GTKFileCommand(_("Import match, session, game or position"), 
-		   sz, "import", "N", FDT_IMPORT);
+		   sz, "import", "N", FDT_IMPORT, impTypes[lastImportType]);
 
 	if (sz)
 		free(sz);
@@ -246,7 +246,7 @@ ExportClicked( GtkWidget *pw, gpointer unused ) {
 		sz = getDefaultPath(expTypes[lastExportType]);
 
 	GTKFileCommand(_("Export match, session, game or position"), 
-		   sz, "export", "N", FDT_EXPORT_FULL);
+		   sz, "export", "N", FDT_EXPORT_FULL, expTypes[lastExportType]);
 
 	if (sz)
 		free(sz);

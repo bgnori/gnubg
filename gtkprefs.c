@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.118 2005/02/10 18:46:30 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.119 2005/02/17 17:05:36 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1969,7 +1969,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.118 2005/02/10 18:46:30 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.119 2005/02/17 17:05:36 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2390,7 +2390,7 @@ static void ExportDesign ( GtkWidget *pw, gpointer data )
 	renderdata rdNew;
 
 	if (!( pch = szFile = 
-         SelectFile( _("Export Design"), NULL, NULL, FDT_NONE ) ) )
+         SelectFile( _("Export Design"), NULL, NULL, FDT_NONE_SAVE ) ) )
 		return;
 
 	szFile = NextToken( &szFile );
@@ -2474,7 +2474,7 @@ static void ImportDesign ( GtkWidget *pw, gpointer data )
 	gint num_added;
 
 	if ( !( pch = szFile = 
-         SelectFile( _("Export Design"), NULL, NULL, FDT_NONE ) ) )
+         SelectFile( _("Export Design"), NULL, NULL, FDT_NONE_OPEN ) ) )
 		return;
 
 	szFile = NextToken( &szFile );

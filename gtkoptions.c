@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.22 2005/02/08 16:37:45 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.23 2005/02/17 17:05:36 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1663,7 +1663,7 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
       break;
     case 8:
       GTKFileCommand( _("Select file with dice"), NULL, 
-                      "set rng file", NULL, 0 );
+                      "set rng file", NULL, FDT_NONE_OPEN, PATH_NULL );
       break;
     default:
       break;
