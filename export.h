@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.1 2002/02/03 15:00:40 thyssen Exp $
+ * $Id: export.h,v 1.2 2002/02/07 21:59:29 thyssen Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -73,6 +73,6 @@ typedef struct _exportsetup {
 
 } exportsetup;
 
-extern exportsetup ecsExport;
+extern exportsetup exsExport;
 
 #endif
