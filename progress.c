@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.15 2004/02/05 18:07:02 uid65656 Exp $
+ * $Id: progress.c,v 1.16 2004/03/23 10:17:58 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -768,7 +768,8 @@ GTKRolloutProgressStart( const cubeinfo *pci, const int n,
   *pp = prp;
   prp->prs = (rolloutstat *) aars;
   prp->n = n;
-    
+  fInterrupt = FALSE;
+
   prp->pwRolloutDialog = 
     GTKCreateDialog( _("GNU Backgammon - Rollout"), DT_INFO,
                      NULL, NULL );
