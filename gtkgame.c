@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.542 2005/03/30 17:45:51 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.543 2005/03/31 20:05:01 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -9238,10 +9238,11 @@ FullScreenMode( gpointer *p, guint n, GtkWidget *pw ) {
 		gtk_widget_hide(pwProgress);
 
 		showingPanels = ArePanelsShowing();
-		HideAllPanels(NULL, 0, NULL);
 
 		showIDs = bd->rd->fShowIDs;
 		bd->rd->fShowIDs = 0;
+
+		HideAllPanels(NULL, 0, NULL);
 
 /* How can I maximize the window ?? */
 #if USE_GTK2
@@ -9284,6 +9285,7 @@ FullScreenMode( gpointer *p, guint n, GtkWidget *pw ) {
 #endif
 		if (showingPanels)
 			ShowAllPanels(NULL, 0, NULL);
+
 	}
 	UpdateSetting(&bd->rd->fShowIDs);
 }
