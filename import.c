@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.38 2002/12/18 18:08:26 thyssen Exp $
+ * $Id: import.c,v 1.39 2002/12/18 18:33:00 thyssen Exp $
  */
 
 #include "config.h"
@@ -300,6 +300,7 @@ static void ParseMatMove( char *sz, int iPlayer ) {
     char *pch;
     moverecord *pmr;
     int i, c;
+    static int fBeaver = FALSE;
     
     sz += strspn( sz, " \t" );
 
@@ -312,6 +313,19 @@ static void ParseMatMove( char *sz, int iPlayer ) {
     
     if( sz[ 0 ] >= '1' && sz[ 0 ] <= '6' && sz[ 1 ] >= '1' && sz[ 1 ] <= '6' &&
 	sz[ 2 ] == ':' ) {
+
+        if ( fBeaver ) {
+          /* look likes the previous beaver was taken */
+          pmr = malloc( sizeof( pmr->d ) );
+          pmr->d.mt = MOVE_TAKE;
+          pmr->d.sz = NULL;
+          pmr->d.fPlayer = iPlayer;
+          pmr->d.esDouble.et = EVAL_NONE;
+          pmr->d.st = SKILL_NONE;
+          AddMoveRecord( pmr );
+        }
+        fBeaver = FALSE;
+
         pmr = malloc( sizeof( pmr->n ) );
         pmr->n.mt = MOVE_NORMAL;
 	pmr->n.sz = NULL;
@@ -365,7 +379,9 @@ static void ParseMatMove( char *sz, int iPlayer ) {
 	}
     }
 	
-    if( !strncasecmp( sz, "double", 6 ) ) {
+    if( !strncasecmp( sz, "double", 6 ) || 
+        !strncasecmp( sz, "beavers", 7 ) ||
+        !strncasecmp( sz, "raccoons", 7 ) ) {
 	pmr = malloc( sizeof( pmr->d ) );
 	pmr->d.mt = MOVE_DOUBLE;
 	pmr->d.sz = NULL;
@@ -373,6 +389,7 @@ static void ParseMatMove( char *sz, int iPlayer ) {
 	pmr->d.esDouble.et = EVAL_NONE;
 	pmr->d.st = SKILL_NONE;
 	AddMoveRecord( pmr );
+        fBeaver = !strncasecmp( sz, "beavers", 6 );
     } else if( !strncasecmp( sz, "take", 4 ) ) {
 	pmr = malloc( sizeof( pmr->d ) );
 	pmr->d.mt = MOVE_TAKE;
