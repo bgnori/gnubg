@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.370 2003/01/10 18:21:42 thyssen Exp $
+ * $Id: gnubg.c,v 1.371 2003/01/12 12:23:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -5892,6 +5892,9 @@ ProgressStartValue ( char *sz, int iMax ) {
 
 extern void
 ProgressValue ( int iValue ) {
+
+  if ( !fShowProgress )
+    return;
 
   iProgressValue = iValue;
 
