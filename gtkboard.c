@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.149 2003/10/02 09:58:05 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.150 2003/10/09 09:28:23 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1776,6 +1776,7 @@ gboolean button_press_event(GtkWidget *board, GdkEventButton *event, BoardData* 
                  always return legal moves */
               assert(FALSE);
             }
+            playSound( SOUND_CHEQUER );
           }
 
           return TRUE;
