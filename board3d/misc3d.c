@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.41 2004/06/01 08:24:05 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.42 2004/06/06 10:52:55 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -800,7 +800,7 @@ void initDT(diceTest* dt, int x, int y, int z)
 	dt->side[2] = 2;
 	dt->side[3] = 4;
 
-	/* Simulate rotations to determine actually dice position */
+	/* Simulate rotations to determine actual dice position */
 	while (x--)
 	{
 		int temp = dt->top;
