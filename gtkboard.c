@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.22 2001/03/12 16:10:56 gtw Exp $
+ * $Id: gtkboard.c,v 1.23 2001/03/13 17:24:16 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1410,7 +1410,7 @@ static gint board_set( Board *board, const gchar *board_text ) {
 	board_redraw_dice( bd->drawing_area, bd, 1 );
 	board_redraw_cube( bd->drawing_area, bd );
     }
-    
+
     return 0;
 }
 
