@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.c,v 1.6 2002/11/27 22:37:41 gtw Exp $
+ * $Id: gtktexi.c,v 1.7 2002/11/30 16:14:40 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -527,7 +527,7 @@ static void Err( void *pv, const char *msg, ... ) {
 #endif
 }
 
-xmlSAXHandler xsaxScan = {
+static xmlSAXHandler xsaxScan = {
     NULL, /* internalSubset */
     NULL, /* isStandalone */
     NULL, /* hasInternalSubset */
