@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.c,v 1.17 2001/09/26 16:32:22 gtw Exp $
+ * $Id: xgame.c,v 1.18 2001/12/10 16:02:11 gtw Exp $
  */
 
 #include "config.h"
@@ -834,14 +834,14 @@ extern void RunExt( void ) {
     /* FIXME F_SETOWN is a BSDism... use SIOCSPGRP if necessary. */
     fnAction = HandleXAction;
 
-#if FASYNC
-    /* BSD FASYNC-style I/O notification */
+#if O_ASYNC
+    /* BSD O_ASYNC-style I/O notification */
     {
 	int n;
 	
 	if( ( n = fcntl( ConnectionNumber( pdsp ), F_GETFL ) ) != -1 ) {
 	    fcntl( ConnectionNumber( pdsp ), F_SETOWN, getpid() );
-	    fcntl( ConnectionNumber( pdsp ), F_SETFL, n | FASYNC );
+	    fcntl( ConnectionNumber( pdsp ), F_SETFL, n | O_ASYNC );
 	}
     }
 #else
