@@ -16,10 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gdkgetrgb.c,v 1.5 2001/04/02 19:23:46 gtw Exp $
+ * $Id: gdkgetrgb.c,v 1.6 2001/10/31 15:57:40 gtw Exp $
  */
 
-#include <gdk/gdk.h>
+#include <gtk/gtk.h>
 #include "gdkgetrgb.h"
 
 void
@@ -39,10 +39,7 @@ gdk_get_rgb_image( GdkDrawable *drawable,
     GdkVisual *visual;
     int r, g, b, dwidth, dheight;
 
-#if WIN32
-    /* The Win32 port of GDK doesn't support gdk_window_get_geometry() on
-       pixmaps; fortunately, GDK 1.3 supplies gdk_drawable_get_size() to
-       do the same thing. */
+#if GTK_CHECK_VERSION(1,3,0)
     gdk_drawable_get_size( drawable, &dwidth, &dheight );
 #else
     gdk_window_get_geometry( drawable, NULL, NULL, &dwidth, &dheight, NULL );

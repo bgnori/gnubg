@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.166 2001/10/30 16:12:42 gtw Exp $
+ * $Id: gnubg.c,v 1.167 2001/10/31 15:57:40 gtw Exp $
  */
 
 #include "config.h"
@@ -3624,9 +3624,10 @@ extern int GetInputYN( char *szPrompt ) {
 }
 
 /* Like strncpy, except it does the right thing */
-extern char *strcpyn( char *szDest, char *szSrc, int cch ) {
+extern char *strcpyn( char *szDest, const char *szSrc, int cch ) {
 
-    char *pchDest = szDest, *pchSrc = szSrc;
+    char *pchDest = szDest;
+    const char *pchSrc = szSrc;
 
     if( cch-- < 1 )
 	return szDest;

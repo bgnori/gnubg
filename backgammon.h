@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.100 2001/10/29 15:15:20 gtw Exp $
+ * $Id: backgammon.h,v 1.101 2001/10/31 15:57:40 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -294,7 +294,7 @@ extern void PortableSignalRestore( int nSignal, psighandler *p );
 extern RETSIGTYPE HandleInterrupt( int idSignal );
 
 /* Like strncpy, except it does the right thing */
-extern char *strcpyn( char *szDest, char *szSrc, int cch );
+extern char *strcpyn( char *szDest, const char *szSrc, int cch );
 
 /* Write a string to stdout/status bar/popup window */
 extern void output( char *sz );
