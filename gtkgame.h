@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.39 2002/03/22 15:23:48 gtw Exp $
+ * $Id: gtkgame.h,v 1.40 2002/05/22 17:49:47 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -113,6 +113,8 @@ GTKResignHint( float arOutput[], float rEqBefore, float rEqAfter,
 extern void GTKSaveSettings( void );
 extern void GTKSetCube( gpointer *p, guint n, GtkWidget *pw );
 extern void GTKHelp( char *sz );
+extern void 
+GTKShowPath( void );
 
 extern int fTTY;
 
