@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.5.4.6 2003/06/19 15:47:31 Superfly_Jon Exp $
+ * $Id: render.h,v 1.5.4.7 2003/06/24 09:09:33 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -36,6 +36,10 @@ typedef enum _woodtype {
 typedef enum _displaytype {
     DT_2D, DT_3D
 } displaytype;
+
+typedef enum _lighttype {
+    LT_POSITIONAL, LT_DIRECTIONAL
+} lighttype;
 #endif
 
 typedef struct _renderdata {
@@ -68,6 +72,12 @@ typedef struct _renderdata {
 	int closeBoardOnExit;	/* Animate board close on quit */
 	int debugTime;	/* Show average drawing time */
 	int curveAccuracy;	/* Round curve approximation accuracy */
+	lighttype lightType;	/* Positional/Directional light source */
+	float lightPos[3];	/* x,y,z pos of light source */
+	int lightLevels[3];	/* amibient/diffuse/specular light levels */
+	int showMoveIndicator;
+	int boardAngle;	/* Angle board is tilted at */
+	int testSkewFactor;	/* Debug FOV adjustment */
 #endif
 } renderdata;
 

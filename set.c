@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.183.4.1 2003/06/10 19:05:51 Superfly_Jon Exp $
+ * $Id: set.c,v 1.183.4.2 2003/06/24 09:09:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -704,7 +704,7 @@ extern void CommandSetAppearance( char *sz ) {
     if( fX )
 	BoardPreferencesStart( pwBoard );
 #endif
-    
+
     while( ParseKeyValue( &sz, apch ) )
 	RenderPreferencesParam( &rdAppearance, apch[ 0 ], apch[ 1 ] );
 

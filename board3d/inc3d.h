@@ -18,31 +18,30 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.1.2.6 2003/06/19 15:47:31 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.1.2.7 2003/06/24 09:09:33 Superfly_Jon Exp $
 */
 
 #include "config.h"
+#include <gtk/gtk.h>
 
+//#undef USE_GTK
 #if USE_GTK
 	#define BUILDING_LIB 1
 
-	#include <gtk/gtk.h>
-	#include "../eval.h"
+	#include "eval.h"
 
 #else
 	#define USE_GLUT
 
-#define AlphaBlend ab
-
+	#define AlphaBlend ab
 	/* Comment out next line to switch test harness off */
 	#define TEST
 	/* Comment out next line to remove glut library (needed for debug font) */
 	#define USE_GLUT_FONT
 
-	#include <gtk/gtk.h>
-	#include "../eval.h"
-	#include "../renderprefs.h"
-#define g_print(a)     ((void)0)
+	#include "eval.h"
+	#include "renderprefs.h"
+	#define g_print(a)     ((void)0)
 #endif
 
 #include "gtkboard.h"
@@ -92,8 +91,6 @@ typedef struct _diceTest
 extern int fClockwise; /* Player 1 moves clockwise */
 extern int fGUIDiceArea; /* Show dice below board */
 
-extern BoardData* pCurBoard;
-
 /* Setup functions */
 void InitBoard3d(BoardData *bd);
 void InitialPos(BoardData *bd);
@@ -101,7 +98,6 @@ void EmptyPos(BoardData *bd);
 void CloseBoard(BoardData* bd);
 void TidyBoard(BoardData *bd);
 void InitGL();
-void SetupLight(BoardData * bd);
 
 /* Drawing functions */
 void drawBoard(BoardData* bd);
@@ -131,7 +127,7 @@ void updateMovingPieceOccPos(BoardData* bd);
 void updateDiceOccPos(BoardData *bd);
 void setDicePos(BoardData* bd);
 
-typedef int idleFunc(void);
+typedef int idleFunc(BoardData* bd);
 
 void stopIdleFunc();
 void setIdleFunc(idleFunc* pFun);

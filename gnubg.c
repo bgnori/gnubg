@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.420.2.4 2003/06/16 07:11:38 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.420.2.5 2003/06/24 09:09:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4683,8 +4683,6 @@ SaveEvalSetupSettings( FILE *pf, char *sz, evalsetup *pes ) {
 
 
 extern void CommandSaveSettings( char *szParam ) {
-
-    char szTemp[ 1024 ];
     FILE *pf;
     int i, cCache; 
     char *szFile;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.346.2.2 2003/06/11 11:44:00 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.346.2.3 2003/06/24 09:09:33 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -831,6 +831,16 @@ static void GameListSelectRow( GtkCList *pcl, gint y, gint x,
        ms.gs = GAME_PLAYING;
        ms.anDice[ 0 ] = pmr->n.anRoll[ 0 ];
        ms.anDice[ 1 ] = pmr->n.anRoll[ 1 ];
+
+#if USE_BOARD3D
+	/* If in 3d mode don't roll the dice */
+    if (rdAppearance.fDisplayType == DT_3D)
+	{
+		BoardData *bd = BOARD( pwBoard )->board_data;
+		bd->dice[0]=ms.anDice[ 0 ];
+		bd->dice[1]=ms.anDice[ 1 ];
+	}
+#endif
    }
 
     UpdateSetting( &ms.nCube );
