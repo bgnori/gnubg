@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.436 2003/07/16 10:26:11 thyssen Exp $
+ * $Id: gnubg.c,v 1.437 2003/07/16 12:57:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -3999,7 +3999,6 @@ CommandRollout( char *sz ) {
 	apCubeDecTop[ i ] = &false;
       }
 
-      
       RolloutProgressStart( &ci, c, aars, &rcRollout, asz, &p );
 
       if( ( cGames = 
@@ -4015,38 +4014,42 @@ CommandRollout( char *sz ) {
 
       /* save in current movelist */
 
-      for (i = 0; i < c; ++i) {
-	
-	move *pm = apMoves[ i ];
-	/* it was the =1 =2 notation */
-
-	cubeinfo cix;
-
-	memcpy( &cix, &ci, sizeof( cubeinfo ) );
-	cix.fMove = ! cix.fMove;
-
-	/* Score for move:
-	   rScore is the primary score (cubeful/cubeless)
-	   rScore2 is the secondary score (cubeless) */
-            
-	if ( pm->esMove.rc.fCubeful ) {
-	  if ( cix.nMatchTo )
-	    pm->rScore = 
-	      mwc2eq ( pm->arEvalMove[ OUTPUT_CUBEFUL_EQUITY ], &cix );
-	  else
-	    pm->rScore = pm->arEvalMove[ OUTPUT_CUBEFUL_EQUITY ];
-	}
-	else
-	  pm->rScore = pm->arEvalMove[ OUTPUT_EQUITY ];
-            
-	pm->rScore2 = pm->arEvalMove[ OUTPUT_EQUITY ];
-
+      if ( fOpponent ) {
+        for (i = 0; i < c; ++i) {
+          
+          move *pm = apMoves[ i ];
+          /* it was the =1 =2 notation */
+          
+          cubeinfo cix;
+          
+          memcpy( &cix, &ci, sizeof( cubeinfo ) );
+          cix.fMove = ! cix.fMove;
+          
+          /* Score for move:
+             rScore is the primary score (cubeful/cubeless)
+             rScore2 is the secondary score (cubeless) */
+          
+          if ( pm->esMove.rc.fCubeful ) {
+            if ( cix.nMatchTo )
+              pm->rScore = 
+                mwc2eq ( pm->arEvalMove[ OUTPUT_CUBEFUL_EQUITY ], &cix );
+            else
+              pm->rScore = pm->arEvalMove[ OUTPUT_CUBEFUL_EQUITY ];
+          }
+          else
+            pm->rScore = pm->arEvalMove[ OUTPUT_EQUITY ];
+          
+          pm->rScore2 = pm->arEvalMove[ OUTPUT_EQUITY ];
+          
+        }
+        
+        /* bring up Hint-dialog with chequerplay rollout */
+        CommandHint( NULL );
+      
       }
-    
-    }
 
-    /* bring up Hint-dialog with chequerplay rollout */
-    CommandHint( NULL );
+
+    }
 
 }
 
