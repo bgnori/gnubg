@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.202 2002/07/29 18:55:27 thyssen Exp $
+ * $Id: gtkgame.c,v 1.203 2002/07/30 15:21:35 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7221,7 +7221,7 @@ static GtkWidget* OptionsPage( optionswidget *pow)
   pow->pwConfStart = gtk_check_button_new_with_label (_("Starting new game"));
   gtk_box_pack_start (GTK_BOX (pwVBox2), pow->pwConfStart, FALSE, FALSE, 0);
 
-  pow->pwConfOverwrite = gtk_check_button_new_with_label (_("Overwriteing existing files"));
+  pow->pwConfOverwrite = gtk_check_button_new_with_label (_("Overwriting existing files"));
   gtk_box_pack_start (GTK_BOX (pwVBox2), pow->pwConfOverwrite, FALSE, FALSE, 0);
 
   pwAdvbutton = gtk_button_new_with_label (_("Advanced option..."));
