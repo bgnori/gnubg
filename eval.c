@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.169 2002/08/07 18:38:59 thyssen Exp $
+ * $Id: eval.c,v 1.170 2002/08/08 19:38:35 thyssen Exp $
  */
 
 #include "config.h"
@@ -7015,7 +7015,7 @@ CopyMoveList ( movelist *pmlDest, const movelist *pmlSrc ) {
 extern int
 isCloseCubedecision ( const float arDouble[] ) {
   
-  const float rThr = 0.10;
+  const float rThr = 0.25;
 
   /* too good positions */
 
