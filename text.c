@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.22 2002/10/12 12:38:04 thyssen Exp $
+ * $Id: text.c,v 1.23 2002/10/21 17:21:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -283,6 +283,21 @@ OutputEquity ( const float r, const cubeinfo *pci, const int f ) {
       sprintf ( sz, "%6.4f", 
                 f ? eq2mwc ( r, pci ) : se_eq2mwc ( r, pci ) );
   }
+
+  return sz;
+
+}
+
+
+extern char *
+OutputMoneyEquity ( const float ar[], const int f ) {
+
+  static char sz[ 9 ];
+
+  sprintf ( sz, f ? "%+7.3f" : "%7.3f", 
+            2.0 * ar[ OUTPUT_WIN ] - 1.0
+            + ar[ OUTPUT_WINGAMMON ] + ar[ OUTPUT_WINBACKGAMMON] 
+            - ar[ OUTPUT_LOSEGAMMON ] - ar[ OUTPUT_LOSEBACKGAMMON] );
 
   return sz;
 
@@ -630,7 +645,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.22 $";
+  const char szVersion[] = "$Revision: 1.23 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -838,10 +853,20 @@ OutputCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
     break;
   }
 
-  sprintf ( pc = strchr ( sz, 0 ), " %s %s\n",
-            ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) ?
-            _("cubeless equity") : _("cubeless MWC"),
-            OutputEquity ( aarOutput[ 0 ][ OUTPUT_EQUITY ], pci, TRUE ) );
+  if ( pci->nMatchTo ) 
+    sprintf ( pc = strchr ( sz, 0 ), " %s %s (%s: %s)\n",
+              ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) ?
+              _("cubeless equity") : _("cubeless MWC"),
+              OutputEquity ( aarOutput[ 0 ][ OUTPUT_EQUITY ], pci, TRUE ),
+              _("Money"), 
+              OutputMoneyEquity ( aarOutput[ 0 ], TRUE ) );
+  else
+    sprintf ( pc = strchr ( sz, 0 ), " %s %s\n",
+              ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) ?
+              _("cubeless equity") : _("cubeless MWC"),
+              OutputMoneyEquity ( aarOutput[ 0 ], TRUE ) );
+
+
 
 
   /* Output percentags for evaluations */

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.67 2002/10/14 18:28:45 thyssen Exp $
+ * $Id: html.c,v 1.68 2002/10/21 17:21:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -1564,7 +1564,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.67 $";
+  const char szVersion[] = "$Revision: 1.68 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1833,11 +1833,19 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
   }
 
   /* cubeless equity */
-  
-  fprintf ( pf, " %s</td><td>%s</td><td>&nbsp;</td>\n",
-            ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) ?
-            _("cubeless equity") : _("cubeless MWC"),
-            OutputEquity ( aarOutput[ 0 ][ OUTPUT_EQUITY ], pci, TRUE ) );
+
+  if ( pci->nMatchTo ) 
+    fprintf ( pf, " %s</td><td>%s</td><td>(%s: %s)</td>\n",
+              ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) ?
+              _("cubeless equity") : _("cubeless MWC"),
+              OutputEquity ( aarOutput[ 0 ][ OUTPUT_EQUITY ], pci, TRUE ),
+              _("Money"), 
+              OutputMoneyEquity ( aarOutput[ 0 ], TRUE ) );
+  else
+    fprintf ( pf, " %s</td><td>%s</td><td>&nbsp;</td>\n",
+              ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) ?
+              _("cubeless equity") : _("cubeless MWC"),
+              OutputMoneyEquity ( aarOutput[ 0 ], TRUE ) );
 
 
   fprintf ( pf, "</tr>\n" );
