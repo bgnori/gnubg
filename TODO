@@ -1,4 +1,4 @@
-$Id: TODO,v 1.294 2003/05/19 19:51:40 thyssen Exp $
+$Id: TODO,v 1.295 2003/05/19 19:54:32 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -196,7 +196,7 @@ details.
   or execute it.  Also use gtk_label_set_markup style markup in the help
   window.
 *** Make open/save/import/export dialogs larger to accomodate very long
-  filenames (or save the geometry)
+  filenames *and* save the geometry)
 
 ** Deprecated functions:
   Once GTK+ 2.0 is released, remove references to the following deprecated
