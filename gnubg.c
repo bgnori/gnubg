@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.428 2003/07/10 11:54:59 thyssen Exp $
+ * $Id: gnubg.c,v 1.429 2003/07/10 12:56:28 thyssen Exp $
  */
 
 #include "config.h"
@@ -1703,6 +1703,9 @@ command cER = {
       N_("Display auxiliary match information"), NULL, NULL },
     { "matchlength", CommandShowMatchLength,
       N_("Show default match length"), NULL, NULL },
+    { "matchresult", CommandShowMatchResult,
+      N_("Show the actual and luck adjusted result for each game "
+         "and the entire match"), NULL, NULL },
     { "met", CommandShowMatchEquityTable, 
       N_("Synonym for `show matchequitytable'"), szOPTVALUE, NULL },
     { "onechequer", CommandShowOneChequer, 
