@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.26 2003/08/20 17:23:32 thyssen Exp $
+ * $Id: analysis.h,v 1.27 2003/08/28 17:24:30 thyssen Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -128,7 +128,8 @@ extern float
 relativeFibsRating(float r, int n);
 
 extern float
-absoluteFibsRating ( const float r, const int n, const float rOffset );
+absoluteFibsRating ( const float rChequer, const float rCube, 
+                     const int n, const float rOffset );
 
 #define CHEQUERPLAY  0
 #define CUBEDECISION 1

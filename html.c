@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.137 2003/08/20 17:23:32 thyssen Exp $
+ * $Id: html.c,v 1.138 2003/08/28 17:24:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -169,7 +169,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( _("\n" 
              "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.137 2003/08/20 17:23:32 thyssen Exp $ */\n"
+             "/* $Id: html.c,v 1.138 2003/08/28 17:24:30 thyssen Exp $ */\n"
              "/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
@@ -1913,7 +1913,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.137 $";
+  const char szVersion[] = "$Revision: 1.138 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1994,7 +1994,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.137 $";
+  const char szVersion[] = "$Revision: 1.138 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3404,7 +3404,8 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
           if ( psc->anCloseCube[ i ] + psc->anUnforcedMoves[ i ] )
             fprintf( pf, "%6.1f", 
-                     absoluteFibsRating( aaaar[ COMBINED ][ PERMOVE ][ i ][ NORMALISED ], 
+                     absoluteFibsRating( aaaar[ CHEQUERPLAY ][ PERMOVE ][ i ][ NORMALISED ], 
+                                         aaaar[ CUBEDECISION ][ PERMOVE ][ i ][ NORMALISED ], 
                                          pms->nMatchTo, rRatingOffset ) );
           else
             fputs( _("n/a"), pf );

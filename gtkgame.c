@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.400 2003/08/27 18:42:53 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.401 2003/08/28 17:24:30 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -8070,7 +8070,8 @@ static void OverallStats(const statcontext *psc, const matchstate *pms)
         
           if ( psc->anCloseCube[ i ] + psc->anUnforcedMoves[ i ] )
             sprintf( sz, "%.1f", 
-                     absoluteFibsRating( aaaar[ COMBINED ][ PERMOVE ][ i ][ NORMALISED ], 
+                     absoluteFibsRating( aaaar[ CHEQUERPLAY ][ PERMOVE ][ i ][ NORMALISED ], 
+                                         aaaar[ CUBEDECISION ][ PERMOVE ][ i ][ NORMALISED ], 
                                          pms->nMatchTo, rRatingOffset ) );
           else
             strcpy( sz, _("n/a") );
