@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.7 2003/09/04 10:12:37 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.8 2003/10/03 09:22:07 Superfly_Jon Exp $
 */
 
 #include <GL/gl.h>
@@ -378,8 +378,8 @@ void AddWidgets(GdkWindow* pixWind, GtkWidget *window)
 
 	xppm = gdk_pixmap_new(pixWind, PREVIEW_WIDTH, PREVIEW_HEIGHT, -1);
 	CreatePreview();
-	pwPreview = gtk_pixmap_new(xppm, NULL),
-		gtk_table_attach_defaults(GTK_TABLE (table), pwPreview, 0, 2, 4, 5);
+	pwPreview = gtk_pixmap_new(xppm, NULL);
+	gtk_table_attach_defaults(GTK_TABLE (table), pwPreview, 0, 2, 4, 5);
 }
 
 static gboolean cancel( GtkWidget *pw, GdkEvent *pev, void* arg )
