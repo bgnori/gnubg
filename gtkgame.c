@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.517 2004/10/12 10:23:57 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.518 2004/10/14 16:29:13 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -439,8 +439,6 @@ int fGUISetWindowPos = TRUE;
 int frozen = FALSE;
 
 static guint nStdin, nDisabledCount = 1;
-int lastImportType = -1;
-int lastExportType = -1;
 
 static char *szCopied; /* buffer holding copied data */
 

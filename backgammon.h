@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.296 2004/10/12 08:41:23 joseph Exp $
+ * $Id: backgammon.h,v 1.297 2004/10/14 16:29:12 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -972,6 +972,7 @@ extern void CommandAccept( char * ),
     CommandSetEvalCubedecision ( char * ),
     CommandSetEvalMoveFilter ( char * ),
     CommandSetEgyptian( char * ),
+    CommandSetExportFileType(char *sz),
     CommandSetExportIncludeAnnotations ( char * ),
     CommandSetExportIncludeAnalysis ( char * ),
     CommandSetExportIncludeStatistics ( char * ),
@@ -1039,6 +1040,7 @@ extern void CommandAccept( char * ),
     CommandSetGUIShowEPCs( char * ),
     CommandSetGUIDragTargetHelp( char * ),
     CommandSetGUIUseStatsPanel( char * ),
+    CommandSetImportFileType(char *sz),
     CommandSetInvertMatchEquityTable( char * ),
     CommandSetJacoby( char * ),
     CommandSetLang( char * ),
