@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.436 2003/09/30 07:02:27 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.437 2003/10/07 11:07:23 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7177,6 +7177,8 @@ extern void GTKCubeHint( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
     gtk_widget_grab_focus( DialogArea( pwHint, DA_OK ) );
     
     setWindowGeometry ( pwHint, &awg[ WINDOW_HINT ] );
+    
+    gtk_window_set_default_size(GTK_WINDOW(pwHint), 400, 300);
     
     gtk_object_weakref( GTK_OBJECT( pwHint ), DestroyHint, NULL );
 
