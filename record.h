@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.h,v 1.1 2002/09/17 21:06:14 gtw Exp $
+ * $Id: record.h,v 1.2 2002/09/18 18:45:26 gtw Exp $
  */
 
 #ifndef RECORD_H
@@ -29,13 +29,9 @@ typedef enum _expaverage {
 typedef struct _playerrecord {
     char szName[ 32 ];
     int cGames;
-    float arErrorCheckerplay[ NUM_AVG ];
-    float arErrorMissedDoubleDP[ NUM_AVG ];
-    float arErrorMissedDoubleTG[ NUM_AVG ];
-    float arErrorWrongDoubleDP[ NUM_AVG ];
-    float arErrorWrongDoubleTG[ NUM_AVG ];
-    float arErrorWrongTake[ NUM_AVG ];
-    float arErrorWrongPass[ NUM_AVG ];
+    float arErrorChequerplay[ NUM_AVG ];
+    float arErrorCube[ NUM_AVG ];
+    float arErrorCombined[ NUM_AVG ];
     float arLuck[ NUM_AVG ];
 } playerrecord;
 
