@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.393 2003/08/25 21:26:07 thyssen Exp $
+ * $Id: gtkgame.c,v 1.394 2003/08/25 21:39:29 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3823,6 +3823,9 @@ extern void GTKNew( void ){
  		        pwPage = NewWidget(&nw));
 
   gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
+
+  gtk_signal_connect( GTK_OBJECT( pwDialog ), "destroy",
+                      GTK_SIGNAL_FUNC( gtk_main_quit ), NULL );
   
   gtk_widget_show_all( pwDialog );
 
