@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.h,v 1.2 2002/02/05 15:46:07 gtw Exp $
+ * $Id: external.h,v 1.3 2003/07/11 17:29:24 hb Exp $
  */
 
 #ifndef _EXTERNAL_H_
@@ -24,15 +24,21 @@
 
 #if HAVE_SOCKETS
 
+#ifndef WIN32
+
 #if HAVE_SYS_SOCKET_H
 #include <sys/types.h>
 #include <sys/socket.h>
-#endif
+#endif /* #if HAVE_SYS_SOCKET_H */
+
+#else /* #ifndef WIN32 */
+#include <winsock.h>
+#endif /* #ifndef WIN32 */
 
 extern int ExternalSocket( struct sockaddr **ppsa, int *pcb, char *sz );
 extern int ExternalRead( int h, char *pch, int cch );
 extern int ExternalWrite( int h, char *pch, int cch );
 
-#endif
+#endif /* #if HAVE_SOCKETS */
 
-#endif
+#endif /* #ifndef _EXTERNAL_H_ */
