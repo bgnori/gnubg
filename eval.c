@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.176 2002/10/04 21:35:35 thyssen Exp $
+ * $Id: eval.c,v 1.177 2002/10/04 21:38:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -2026,7 +2026,7 @@ ClassifyPosition( int anBoard[ 2 ][ 25 ] )
   }
 
 
-  if ( ( nBack < 5 && nOppBack < 5 ) || ( fBearoffOS < 0 ) ) {
+  if ( ( nBack < 6 && nOppBack < 6 ) || ( fBearoffOS < 0 ) ) {
     /* small bear off database */
 
     if( PositionBearoff( anBoard[ 0 ], 6 ) > 923 ||
