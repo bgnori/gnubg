@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.34 2000/10/12 22:21:29 gtw Exp $
+ * $Id: play.c,v 1.35 2000/10/13 16:39:08 gtw Exp $
  */
 
 #include "config.h"
@@ -96,6 +96,7 @@ static void NewGame( void ) {
 
     if( anDice[ 0 ] == anDice[ 1 ] && nCube < MAX_CUBE ) {
 	if( !nMatchTo && nCube < ( 1 << cAutoDoubles ) && fCubeUse ) {
+	    /* FIXME we need a moverecord type for automatic doubles... */
 	    outputf( "The cube is now at %d.\n", nCube <<= 1 );
 	    UpdateSetting( &nCube );
 	}
@@ -283,8 +284,14 @@ static int ComputerTurn( void ) {
         ShowBoard();
     }
     
-    /* FIXME save move */
-    return FindPubevalMove( anDice[ 0 ], anDice[ 1 ], anBoard );
+    pmn = malloc( sizeof( *pmn ) );
+    pmn->mt = MOVE_NORMAL;
+    pmn->anRoll[ 0 ] = anDice[ 0 ];
+    pmn->anRoll[ 1 ] = anDice[ 1 ];
+    pmn->fPlayer = fTurn;
+    ListInsert( plGame, pmn );
+    
+    return FindPubevalMove( anDice[ 0 ], anDice[ 1 ], anBoard, pmn->anMove );
 
   default:
     assert( FALSE );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.22 2000/10/11 17:48:17 joseph Exp $
+ * $Id: eval.h,v 1.23 2000/10/13 16:39:08 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -174,7 +174,8 @@ FindBestMove( int anMove[ 8 ], int nDice0, int nDice1,
               int anBoard[ 2 ][ 25 ], cubeinfo *pci, evalcontext *pec );
 
 extern int 
-FindPubevalMove( int nDice0, int nDice1, int anBoard[ 2 ][ 25 ] );
+FindPubevalMove( int nDice0, int nDice1, int anBoard[ 2 ][ 25 ],
+		 int anMove[ 8 ] );
 
 extern int 
 TrainPosition( int anBoard[ 2 ][ 25 ], float arDesired[] );
