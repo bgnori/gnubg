@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.66 2002/10/12 12:38:04 thyssen Exp $
+ * $Id: html.c,v 1.67 2002/10/14 18:28:45 thyssen Exp $
  */
 
 #include "config.h"
@@ -1406,7 +1406,7 @@ HTMLBoardHeader ( FILE *pf, const matchstate *pms,
 
     fprintf ( pf,
               _(" %s to play %d%d"),
-              gettext ( aaszColorName[ het ][ pms->fTurn ] ),
+              gettext ( aaszColorName[ het ][ pms->fMove ] ),
               pms->anDice[ 0 ], pms->anDice[ 1 ] 
             );
 
@@ -1416,7 +1416,7 @@ HTMLBoardHeader ( FILE *pf, const matchstate *pms,
 
     fprintf ( pf,
               _(" %s doubles to %d"),
-              gettext ( aaszColorName[ het ][ pms->fTurn ] ),
+              gettext ( aaszColorName[ het ][ pms->fMove ] ),
               pms->nCube * 2
             );
 
@@ -1426,7 +1426,7 @@ HTMLBoardHeader ( FILE *pf, const matchstate *pms,
 
     fprintf ( pf,
               _(" %s onroll, cube decision?"),
-              gettext ( aaszColorName[ het ][ pms->fTurn ] ) );
+              gettext ( aaszColorName[ het ][ pms->fMove ] ) );
 
 
   fputs ( "</p>\n", pf );
@@ -1564,7 +1564,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.66 $";
+  const char szVersion[] = "$Revision: 1.67 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
