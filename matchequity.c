@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.c,v 1.1.2.1 2000/01/31 08:02:23 thyssen Exp $
+ * $Id: matchequity.c,v 1.1.2.2 2000/02/15 01:52:57 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -71,6 +71,17 @@ CalcMatchEq () {
       ( (i-4 >=0) ? afBtilde[ i-4 ] : 1.0 )
       + (1.0 - GAMMONRATE) * 0.5 * 
       ( (i-2 >=0) ? afBtilde[ i-2 ] : 1.0 );
+
+    /*
+     * add 1.5% at 1-away, 2-away for the free drop
+     * add 0.4% at 1-away, 4-away for the free drop
+     */
+
+    if ( i == 1 )
+      afBtilde[ i ] -= 0.015;
+
+    if ( i == 3 )
+      afBtilde[ i ] -= 0.004;
 
   }
 
