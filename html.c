@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.56 2002/08/11 15:59:15 thyssen Exp $
+ * $Id: html.c,v 1.57 2002/08/13 20:22:45 thyssen Exp $
  */
 
 #include "config.h"
@@ -1554,7 +1554,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.56 $";
+  const char szVersion[] = "$Revision: 1.57 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -3303,7 +3303,7 @@ extern void CommandExportMatchHtml( char *sz ) {
     FILE *pf;
     list *pl;
     int nGames;
-    char *aszLinks[ 4 ];
+    char *aszLinks[ 4 ], *filenames[4];
     char *szCurrent;
     int i, j;
 
@@ -3324,17 +3324,33 @@ extern void CommandExportMatchHtml( char *sz ) {
     for( pl = lMatch.plNext, i = 0; pl != &lMatch; pl = pl->plNext, i++ ) {
 
       szCurrent = HTMLFilename ( sz, i );
-      aszLinks[ 0 ] = basename ( HTMLFilename ( sz, 0 ) );
-      aszLinks[ 1 ] = ( i > 0 ) ? 
-        basename ( HTMLFilename ( sz, i - 1 ) ): NULL;
-      aszLinks[ 2 ] = ( i < nGames - 1 ) ? 
-        basename ( HTMLFilename ( sz, i + 1 ) ) : NULL;
-      aszLinks[ 3 ] = basename ( HTMLFilename ( sz, nGames - 1 ) );
+	  filenames[0] = HTMLFilename ( sz, 0 );
+      aszLinks[ 0 ] = basename ( filenames[ 0 ] );
+	  filenames[ 1 ] = aszLinks[ 1 ] = NULL;
+	  if (i > 0) {
+		filenames[ 1 ] = HTMLFilename ( sz, i - 1 );
+		aszLinks[ 1 ]  = basename ( filenames[ 1 ] );
+	  }
+		
+	  filenames[ 2 ] = aszLinks[ 2 ] = NULL;
+	  if (i < nGames - 1) {
+		filenames[ 2 ] = HTMLFilename ( sz, i + 1 );
+		aszLinks[ 2 ]  = basename ( filenames[ 2 ] );
+	  }
 
+
+	  
+	  filenames[ 3 ] = HTMLFilename ( sz, nGames - 1 );
+	  aszLinks[ 3 ] = basename ( filenames[ 3 ] );
       if ( !i ) {
 
-        if ( ! confirmOverwrite ( sz, fConfirmSave ) )
+        if ( ! confirmOverwrite ( sz, fConfirmSave ) ) {
+		  for ( j = 0; j < 4; j++ )
+			free (filenames [ j ] );
+
+		  free ( szCurrent );
           return;
+		}
 
         setDefaultFileName ( sz, PATH_HTML );
 
@@ -3345,6 +3361,10 @@ extern void CommandExportMatchHtml( char *sz ) {
 	pf = stdout;
       else if( !( pf = fopen( szCurrent, "w" ) ) ) {
 	perror( szCurrent );
+		for ( j = 0; j < 4; j++ )
+		  free (filenames [ j ] );
+
+		free ( szCurrent );
 	return;
       }
 
@@ -3356,8 +3376,8 @@ extern void CommandExportMatchHtml( char *sz ) {
                        aszLinks );
 
       for ( j = 0; j < 4; j++ )
-        if ( aszLinks[ j ] )
-          free ( aszLinks[ j ] );
+        free (filenames [ j ] );
+
       free ( szCurrent );
 
       if( pf != stdout )
