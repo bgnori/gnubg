@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.cpp,v 1.12 2004/07/03 13:26:04 thyssen Exp $
+* $Id: font3d.cpp,v 1.13 2004/07/03 23:42:54 thyssen Exp $
 */
 
 #include "config.h"
@@ -29,9 +29,9 @@
 /* Using ftgl in a static libaray */
 #define FTGL_LIBRARY_STATIC
 
-#include "FTGL/FTGLPolygonFont.h"
-#include "FTGL/FTGLOutlineFont.h"
-#include "FTGL/FTFont.h"
+#include "FTGLPolygonFont.h"
+#include "FTGLOutlineFont.h"
+#include "FTFont.h"
 
 /* Avoid FTGLOutlineFont::Render() as expensive to call repeatedly */
 class MyOutlineFont : public FTGLOutlineFont
