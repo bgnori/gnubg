@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.126.2.2 2003/06/11 11:44:00 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.126.2.3 2003/06/11 12:38:28 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1194,7 +1194,7 @@ static void board_quick_edit( GtkWidget *board, BoardData *bd,
 
     if( !dragging && ( n == 26 || n == 27 ) ) {
 	/* click on bearoff tray in edit mode -- bear off all chequers */
-	for( i = 0; i < 26; i++ ) {
+	for( i = 0; i < 28; i++ ) {
 	    bd->points[ i ] = 0;
 	    board_invalidate_point( bd, i );
 	}
