@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.13 2003/12/29 22:16:32 uid65656 Exp $
+ * $Id: progress.c,v 1.14 2004/01/16 09:41:39 uid68519 Exp $
  */
 
 #include "config.h"
@@ -108,15 +108,15 @@ formatDelta( const time_t t ) {
   static char sz[ 128 ];
 
   if ( t < 60 ) 
-    sprintf( sz, "%ds", t );
+    sprintf( sz, "%ds", (int)t );
   else if ( t < 60 * 60 )
-    sprintf( sz, "%dm%02ds", t / 60, t % 60 );
+    sprintf( sz, "%dm%02ds", (int)t / 60, (int)t % 60 );
   else if ( t < 60 * 60 * 60 )
-    sprintf( sz, "%dh%02dm%02ds", t / 3600, ( t % 3600 ) / 60, t % 60 );
+    sprintf( sz, "%dh%02dm%02ds", (int)t / 3600, ( (int)t % 3600 ) / 60, (int)t % 60 );
   else 
     sprintf( sz, "%dd%02dh%02dm%02ds", 
-             t / 216000, ( t % 216000 ) / 3600, ( t % 3600 ) / 60,
-             t % 60 );
+             (int)t / 216000, ( (int)t % 216000 ) / 3600, ( (int)t % 3600 ) / 60,
+             (int)t % 60 );
 
   return sz;
 

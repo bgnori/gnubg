@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.174 2004/01/02 11:16:35 uid65656 Exp $
+ * $Id: show.c,v 1.175 2004/01/16 09:41:39 uid68519 Exp $
  */
 
 #include "config.h"
@@ -1131,7 +1131,6 @@ CommandShowOneChequer ( char *sz ) {
   float arSigma[ 2 ];
   int i, j;
   float r;
-  float aarProb[ 2 ][ 100 ];
 
   if( !*sz && ms.gs == GAME_NONE ) {
     outputl( _("No position specified and no game in progress.") );
