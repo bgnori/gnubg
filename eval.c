@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.57 2000/10/24 13:37:40 thyssen Exp $
+ * $Id: eval.c,v 1.58 2000/10/24 13:47:57 thyssen Exp $
  */
 
 #include "config.h"
@@ -5223,7 +5223,7 @@ extern char *FormatEval ( char *sz, evaltype et, evalsetup es ) {
 
   switch ( et ) {
   case EVAL_NONE:
-    sz[ 0 ] = "\0";
+    strcpy ( sz, "" );
     break;
   case EVAL_EVAL:
     sprintf ( sz, "%s %1i-ply", 
