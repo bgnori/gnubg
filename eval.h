@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.111 2003/06/12 19:00:45 thyssen Exp $
+ * $Id: eval.h,v 1.112 2003/06/14 10:38:02 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -275,6 +275,18 @@ typedef struct _movelist {
     float rBestScore;
     move *amMoves;
 } movelist;
+
+/* cube efficiencies */
+
+extern float rOSCubeX;
+extern float rRaceFactorX;
+extern float rRaceCoefficientX;
+extern float rRaceMax;
+extern float rRaceMin;
+extern float rCrashedX;
+extern float rContactX;
+
+/* position classes */
 
 typedef enum _positionclass {
     CLASS_OVER = 0,     /* Game already finished */
