@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.20 2000/08/13 15:57:41 thyssen Exp $
+ * $Id: eval.h,v 1.21 2000/10/08 12:28:59 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -110,11 +110,13 @@ typedef struct _cubeinfo {
 
 } cubeinfo;
 
+#define NORM_SCORE(n) ( nMatchTo - ( n ) ) 
+
 
 extern volatile int fInterrupt, fAction;
 extern int fMove, fCubeOwner, fJacoby, fCrawford;
 extern int fPostCrawford, nMatchTo, anScore[ 2 ], fBeavers;
-extern int nCube;
+extern int nCube, fOutputMWC;
 extern float rCubeX;
 
 extern void ( *fnAction )( void );
@@ -238,15 +240,16 @@ extern int
 EvaluatePositionCubeful( int anBoard[ 2 ][ 25 ], float arCfOutput[],
                          cubeinfo *pci, evalcontext *pec, int nPlies );
 
-extern float
-GetDoublePointDeadCube ( float arOutput [ 5 ],
-                         int   anScore[ 2 ], int nMatchTo,
-                         cubeinfo *pci );
-
 extern int
 GetDPEq ( int *pfCube, float *prDPEq, cubeinfo *pci );
 
 extern int 
-GetCubeActionSz ( float arDouble[ 4 ], char *szOutput );
+GetCubeActionSz ( float arDouble[ 4 ], char *szOutput, cubeinfo *pci );
 
+extern float
+mwc2eq ( float rMwc, cubeinfo *ci );
+
+extern float
+eq2mwc ( float rEq, cubeinfo *ci );
+ 
 #endif
