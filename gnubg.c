@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.478 2003/08/29 18:38:12 jsegrave Exp $
+ * $Id: gnubg.c,v 1.479 2003/08/31 19:38:43 thyssen Exp $
  */
 
 #include "config.h"
@@ -2644,12 +2644,16 @@ extern void HandleCommand( char *sz, command *ac ) {
           if ( *sz ) {
             /* expression specified -- evalute it */
 
+            StartPythonHandleX();
             PyRun_SimpleString( sz );
+            StopPythonHandleX();
           }
           else {
             /* no expresision -- start python shell */
+            StartPythonHandleX();
             PyRun_SimpleString( "import sys; print 'Python', sys.version" );
             PyRun_AnyFile( stdin, NULL );
+            StopPythonHandleX();
           }
 #if USE_GTK
 	    if( fX )
@@ -3175,7 +3179,8 @@ extern void CommandEval( char *sz ) {
 
     ProgressStart( _("Evaluating position...") );
     if( !DumpPosition( an, szOutput, &esEvalCube.ec, &ci,
-                       fOutputMWC, fOutputWinPC, n ) ) {
+                       fOutputMWC, fOutputWinPC, n, 
+                       MatchIDFromMatchState( &ms ) ) ) {
 	ProgressEnd();
 #if USE_GTK
 	if( fX )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.123 2003/08/18 22:21:30 joseph Exp $
+ * $Id: eval.h,v 1.124 2003/08/31 19:38:43 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -411,7 +411,7 @@ ThorpCount( int anBoard[ 2 ][ 25 ], int *pnLeader, int *pnTrailer );
 extern int 
 DumpPosition( int anBoard[ 2 ][ 25 ], char *szOutput,
               const evalcontext* pec, cubeinfo* pci, int fOutputMWC,
-	      int fOutputWinPC, int fOutputInvert );
+	      int fOutputWinPC, int fOutputInvert, const char *szMatchID );
 
 extern void 
 SwapSides( int anBoard[ 2 ][ 25 ] );
