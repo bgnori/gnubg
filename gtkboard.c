@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.89 2002/09/22 19:38:32 thyssen Exp $
+ * $Id: gtkboard.c,v 1.90 2002/09/24 21:33:36 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2158,8 +2158,6 @@ static gint board_set( Board *board, const gchar *board_text ) {
 	gtk_widget_queue_draw( bd->drawing_area );	
     }
     
-    bd->clockwise = fClockwise;
-    
     return 0;
 }
 
@@ -3639,6 +3637,8 @@ static void board_draw( GtkWidget *widget, BoardData *bd ) {
     }
 #undef buf
 #undef empty
+    
+    bd->clockwise = fClockwise;
 
     gdk_gc_unref( gc );
 }
