@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1997-1999
  *
- * $Id: xgame.c,v 1.7 2000/01/08 21:30:17 gtw Exp $
+ * $Id: xgame.c,v 1.8 2000/01/12 17:05:34 gtw Exp $
  */
 
 #include "config.h"
@@ -207,7 +207,7 @@ extern int StatsConfirm( extwindow *pewnd ) {
 
     if( psd->pm && psd->pm->cMoves == psd->ml.cMaxMoves &&
 	psd->pm->cPips == psd->ml.cMaxPips ) {
-	FormatMove( sz, NULL, psd->pm->anMove );
+	FormatMove( sz, psd->pgd->anBoardOld, psd->pm->anMove );
     
 	CommandMove( sz ); /* FIXME output from this command (if any) looks a
 			      bit grotty, because no linefeed was typed after
