@@ -50,7 +50,7 @@ extern long int getrandom ( void ) {
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: userrng.c,v 1.2 1999/12/15 03:07:34 thyssen Exp $
+ * $Id: userrng.c,v 1.2.2.1 2000/02/01 04:12:27 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -60,7 +60,7 @@ extern long int getrandom ( void ) {
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#include <strings.h>
+#include <string.h>
 
 extern void setseed ( unsigned long int seed );
 extern long int getrandom ( void );

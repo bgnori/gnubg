@@ -3,7 +3,20 @@
  *
  * by Gary Wong, 1997-1999
  *
- * $Id: xgame.h,v 1.3 2000/01/08 21:30:17 gtw Exp $
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of version 2 of the GNU General Public License as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ * $Id: xgame.h,v 1.3.2.1 2000/02/01 04:12:27 thyssen Exp $
  */
 
 #ifndef _GAME_H_
@@ -47,6 +60,11 @@ typedef struct _gamedata {
     int nForced, nCrawford; /* unused */
     int nRedoubles; /* number of instant redoubles allowed */
 } gamedata;
+
+/* Flag set to indicate re-entrant calls (i.e. processing a new X event
+   before an old one has completed).  It would be nicer if this was part of
+   gamedata, but never mind... */
+extern int fBusy;
 
 extern extwindowclass ewcGame;
 
