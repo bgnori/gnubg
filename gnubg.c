@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.393 2003/03/20 20:10:32 thyssen Exp $
+ * $Id: gnubg.c,v 1.394 2003/03/21 16:14:04 gtw Exp $
  */
 
 #include "config.h"
@@ -173,6 +173,9 @@ matchstate ms = {
     { 0, 0 }, /* anScore */
     1, /* nCube */
     0, /* cBeavers */
+    VARIATION_STANDARD, /*bgv */
+    TRUE, /* fCubeUse */
+    TRUE, /* fJacoby */
     GAME_NONE /* gs */
 };
 matchinfo mi;
