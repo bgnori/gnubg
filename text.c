@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.57 2003/08/31 13:16:20 thyssen Exp $
+ * $Id: text.c,v 1.58 2003/09/01 19:19:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -241,7 +241,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.57 $";
+  const char szVersion[] = "$Revision: 1.58 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -552,9 +552,11 @@ TextAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
 
     fputs ( "\n", pf );
 
-    TextPrintCubeAnalysis ( pf, pms, pmr );
-
-    TextPrintMoveAnalysis ( pf, pms, pmr );
+    if ( exsExport.fIncludeAnalysis ) {
+      TextPrintCubeAnalysis ( pf, pms, pmr );
+    
+      TextPrintMoveAnalysis ( pf, pms, pmr );
+    }
 
     break;
 
@@ -572,7 +574,8 @@ TextAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
                 ap[ pmr->d.fPlayer ].szName,
                 ( pmr->mt == MOVE_TAKE ) ? _("accepts") : _("rejects") );
     
-    TextPrintCubeAnalysis ( pf, pms, pmr );
+    if ( exsExport.fIncludeAnalysis )
+      TextPrintCubeAnalysis ( pf, pms, pmr );
 
     break;
 
@@ -853,7 +856,8 @@ static void ExportGameText ( FILE *pf, list *plGame,
         
       }
 
-      TextPrintComment ( pf, pmr );
+      if ( exsExport.fIncludeAnnotation )
+        TextPrintComment ( pf, pmr );
 
       ApplyMoveRecord ( &msExport, plGame, pmr );
 
@@ -1035,7 +1039,8 @@ extern void CommandExportPositionText( char *sz ) {
 
       TextAnalysis ( pf, &ms, pmr );
 
-      TextPrintComment ( pf, pmr );
+      if ( exsExport.fIncludeAnnotation )
+        TextPrintComment ( pf, pmr );
 
     }
     

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.142 2003/08/31 13:16:20 thyssen Exp $
+ * $Id: html.c,v 1.143 2003/09/01 19:19:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -171,7 +171,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( _("\n" 
              "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.142 2003/08/31 13:16:20 thyssen Exp $ */\n"
+             "/* $Id: html.c,v 1.143 2003/09/01 19:19:14 thyssen Exp $ */\n"
              "/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
@@ -1808,7 +1808,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.142 $";
+  const char szVersion[] = "$Revision: 1.143 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1889,7 +1889,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.142 $";
+  const char szVersion[] = "$Revision: 1.143 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2777,11 +2777,13 @@ HTMLAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
     // HTMLRollAlert ( pf, pms, pmr, szImageDir, szExtension );
 
-    HTMLPrintCubeAnalysis ( pf, pms, pmr, szImageDir, szExtension, 
-                            het, hecss );
+    if ( exsExport.fIncludeAnalysis ) {
+      HTMLPrintCubeAnalysis ( pf, pms, pmr, szImageDir, szExtension, 
+                              het, hecss );
 
-    HTMLPrintMoveAnalysis ( pf, pms, pmr, szImageDir, szExtension, 
-                            het, hecss );
+      HTMLPrintMoveAnalysis ( pf, pms, pmr, szImageDir, szExtension, 
+                              het, hecss );
+    }
 
     break;
 
@@ -2804,8 +2806,9 @@ HTMLAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
                 ap[ pmr->d.fPlayer ].szName,
                 ( pmr->mt == MOVE_TAKE ) ? _("accepts") : _("rejects") );
 
-    HTMLPrintCubeAnalysis ( pf, pms, pmr, szImageDir, szExtension, 
-                            het, hecss );
+    if ( exsExport.fIncludeAnalysis )
+      HTMLPrintCubeAnalysis ( pf, pms, pmr, szImageDir, szExtension, 
+                              het, hecss );
 
     break;
 
@@ -3294,7 +3297,8 @@ static void ExportGameHTML ( FILE *pf, list *plGame, const char *szImageDir,
         
       }
 
-      HTMLPrintComment ( pf, pmr, hecss );
+      if ( exsExport.fIncludeAnnotation )
+        HTMLPrintComment ( pf, pmr, hecss );
 
       ApplyMoveRecord ( &msExport, plGame, pmr );
 
@@ -3670,7 +3674,8 @@ extern void CommandExportPositionHtml( char *sz ) {
                      exsExport.szHTMLPictureURL, exsExport.szHTMLExtension,
                      exsExport.het, exsExport.hecss );
 
-      HTMLPrintComment ( pf, pmr, exsExport.hecss );
+      if ( exsExport.fIncludeAnnotation )
+        HTMLPrintComment ( pf, pmr, exsExport.hecss );
 
     }
     
