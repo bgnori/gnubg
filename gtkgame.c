@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.492 2004/05/07 14:26:24 thyssen Exp $
+ * $Id: gtkgame.c,v 1.493 2004/05/07 17:58:12 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -9226,7 +9226,7 @@ extern void GTKDumpStatcontext( int game )
 	for (i = 0; i < numStatGames; i++)
 	{
 		list *plGame = pl->p;
-		movegameinfo *pmgi = plGame->plNext->p;
+		xmovegameinfo *pmgi = plGame->plNext->p;
 		AddGameData(&gd, i, &pmgi->sc);
 		pl = pl->plNext;
 	}
