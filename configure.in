@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-AC_REVISION($Revision: 1.118 $)
+AC_REVISION($Revision: 1.119 $)
 AC_INIT(GNU Backgammon,0.14.1,bug-gnubg@gnu.org,gnubg)
 AC_CONFIG_SRCDIR(gnubg.c)
 AM_INIT_AUTOMAKE
@@ -314,7 +314,7 @@ if test "$no_gtk" != "yes"; then
     if test "$no_gtk2" != "yes"; then
       PKG_CHECK_MODULES(GTKEXTRA, gtkextra-2.0, AC_DEFINE(USE_GTKEXTRA,2,[Define to 1 or 2 if you have the gtkextra-1 or -2 library, as appropriate.]),nada=)
     else
-      AC_CHECK_LIB(gtkextra,gtk_sheet_new,gtkextra_1=yes)
+      AM_PATH_GTK_EXTRA(,gtkextra_1=yes)
       if test "$gtkextra_1" = "yes"; then
         AC_DEFINE(USE_GTKEXTRA,1)
 	GTKEXTRA_LIBS=-lgtkextra
