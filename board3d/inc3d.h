@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.15 2004/01/27 09:44:34 uid68519 Exp $
+* $Id: inc3d.h,v 1.16 2004/02/02 09:50:59 uid68519 Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -38,11 +38,13 @@
 #include <gtk/gtk.h>
 #endif
 
+#ifdef _MSC_VER
+	#define AlphaBlend ab
+#endif
 #ifdef USE_MSDEV_TEST_HARNESS
 	#define USE_GLUT
 	#define USE_GLUT_FONT
 
-	#define AlphaBlend ab
 	#define gtk_main_quit() 0
 	#define gtk_main() 0
 	#define g_print(a) 0

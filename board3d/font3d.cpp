@@ -18,10 +18,10 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.cpp,v 1.5 2003/12/29 11:03:32 uid68519 Exp $
+* $Id: font3d.cpp,v 1.6 2004/02/02 09:50:59 uid68519 Exp $
 */
 
-#if USE_MSDEV_TEST_HARNESS
+#if _MSC_VER
 #include <gl/gl.h>
 #endif
 
