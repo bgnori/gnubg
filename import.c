@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.55 2003/03/30 16:37:51 thyssen Exp $
+ * $Id: import.c,v 1.56 2003/03/30 18:34:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -2583,7 +2583,7 @@ ParseSnowieTxt( char *sz,
  * 7           1 = Crawford game
  * 8,9         Scores for player 0, 1
  * 10          Cube value
- * 11          Cube owner 1 = player on roll, 2 = centred, -1 opponent
+ * 11          Cube owner 1 = player on roll, 0 = centred, -1 opponent
  * 12          Chequers on bar for player on roll
  * 13..36      Points 1..24 from player on roll's point of view
  *            0 = empty, positive nos. for player on roll, negative
