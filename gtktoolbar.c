@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.8 2003/09/29 07:35:44 Superfly_Jon Exp $
+ * $Id: gtktoolbar.c,v 1.9 2004/01/01 11:49:31 uid65656 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -324,6 +324,7 @@ ToolbarUpdate ( GtkWidget *pwToolbar,
   gtk_widget_set_sensitive ( ptw->pwExport,  plGame != NULL);
   gtk_widget_set_sensitive ( ptw->pwResign, fPlaying  && !fEdit);
   gtk_widget_set_sensitive ( ptw->pwHint, fPlaying  && !fEdit);
+  gtk_widget_set_sensitive ( ptw->pwEdit, plGame != NULL );
 
   return c;
 
