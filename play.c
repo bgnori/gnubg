@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.92 2001/10/27 14:56:58 thyssen Exp $
+ * $Id: play.c,v 1.93 2001/10/27 20:53:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -674,6 +674,42 @@ extern int ComputerTurn( void ) {
       cubedecision cd;
 
       /* Consider cube action */
+
+      /* 
+       * We may get here in three different scenarios: 
+       * (1) normal double by opponent: fMove != fTurn and fCubeOwner is
+       *     either -1 (centered cube) or = fMove.
+       * (2) beaver by opponent: fMove = fTurn and fCubeOwner = !
+       *     fMove
+       * (3) raccoon by opponent: fMove != fTurn and fCubeOwner =
+       *     fTurn.
+       *
+       */
+
+      if ( ms.fMove != ms.fTurn && ms.fCubeOwner == ms.fTurn ) {
+
+        /* raccoon: consider this a normal double, i.e. 
+             fCubeOwner = fMove */
+        
+        SetCubeInfo ( &ci, ci.nCube,
+                      ci.fMove, ci.fMove,
+                      ci.nMatchTo, ci.anScore, ci.fCrawford,
+                      ci.fJacoby, ci.fBeavers );
+
+      }
+      
+      if ( ms.fMove == ms.fTurn && ms.fCubeOwner != ms.fMove ) {
+
+        /* opponent beavered: consider this a normal double by me */
+
+        SetCubeInfo ( &ci, ci.nCube,
+                      ci.fMove, ci.fMove,
+                      ci.nMatchTo, ci.anScore, ci.fCrawford,
+                      ci.fJacoby, ci.fBeavers );
+
+      }
+
+      /* Evaluate cube decision */
 
       if ( GeneralCubeDecision ( "Computer player",
                                  aarOutput, aarStdDev,
