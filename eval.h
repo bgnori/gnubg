@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.103 2003/01/06 20:07:34 thyssen Exp $
+ * $Id: eval.h,v 1.104 2003/03/03 19:20:29 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -239,6 +239,7 @@ extern bearoffcontext *pbc1;
 extern bearoffcontext *pbc2;
 extern bearoffcontext *pbcOS;
 extern bearoffcontext *pbcTS;
+extern bearoffcontext *apbcHyper[ 3 ];
 
 typedef struct _movelist {
     int cMoves; /* and current move when building list */
@@ -266,6 +267,26 @@ typedef enum _positionclass {
 #define CFMONEY(arEquity,pci) \
    ( ( (pci)->fCubeOwner == -1 ) ? arEquity[ 2 ] : \
    ( ( (pci)->fCubeOwner == (pci)->fMove ) ? arEquity[ 1 ] : arEquity[ 3 ] ) )
+
+
+/* enumeration of variations of backgammon
+   (starting position and/or special rules) */
+
+typedef enum _bgvariation {
+  VARIATION_STANDARD,      /* standard backgammon */
+  VARIATION_NACKGAMMON,    /* standard backgammon with nackgammon starting
+                            position */
+  VARIATION_HYPERGAMMON_1, /* 1-chequer hypergammon */
+  VARIATION_HYPERGAMMON_2, /* 2-chequer hypergammon */
+  VARIATION_HYPERGAMMON_3, /* 3-chequer hypergammon */
+  NUM_VARIATIONS
+} bgvariation;
+
+extern bgvariation bgv;
+
+extern int anChequers[ NUM_VARIATIONS ];
+extern char *aszVariations[ NUM_VARIATIONS ];
+extern char *aszVariationCommands[ NUM_VARIATIONS ];
 
 
 extern int

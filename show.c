@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.136 2003/01/25 16:57:24 thyssen Exp $
+ * $Id: show.c,v 1.137 2003/03/03 19:17:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -769,15 +769,6 @@ extern void CommandShowMatchLength( char *sz ) {
     
     outputf( nDefaultLength == 1 ? _("New matches default to %d point.\n") :
 	     _("New matches default to %d points.\n"), nDefaultLength );
-}
-
-extern void CommandShowNackgammon( char *sz ) {
-
-    if( fNackgammon )
-	outputl( _("New games will use the Nackgammon starting position.") );
-    else
-	outputl( _("New games will use the standard backgammon starting "
-	      "position.") );
 }
 
 extern void CommandShowPipCount( char *sz ) {
@@ -1960,5 +1951,13 @@ CommandShowRolls ( char *sz ) {
 #endif
 
   CommandNotImplemented( NULL );
+
+}
+
+
+extern void
+CommandShowVariation( char *sz ) {
+
+  outputf( _("You are playing: %s\n"), aszVariations[ bgv ] );
 
 }

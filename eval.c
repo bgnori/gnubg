@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.219 2003/01/27 15:32:17 gtw Exp $
+ * $Id: eval.c,v 1.220 2003/03/03 19:20:28 thyssen Exp $
  */
 
 #include "config.h"
@@ -271,6 +271,7 @@ bearoffcontext *pbcOS = NULL;
 bearoffcontext *pbcTS = NULL;
 bearoffcontext *pbc1 = NULL;
 bearoffcontext *pbc2 = NULL;
+bearoffcontext *apbcHyper[ 3 ] = { NULL, NULL, NULL };
 
 static cache cEval;
 static int cCache;
@@ -279,6 +280,31 @@ void ( *fnAction )( void ) = NULL, ( *fnTick )( void ) = NULL;
 static int iTick;
 static float rCubeX = 2.0/3.0;
 int fEgyptian = FALSE;
+
+/* variation of backgammon used by gnubg */
+
+bgvariation bgv = VARIATION_STANDARD;
+
+/* the number of chequers for the variations */
+
+int anChequers[ NUM_VARIATIONS ] = { 15, 15, 1, 2, 3 };
+
+char *aszVariations[ NUM_VARIATIONS ] = {
+  N_("Standard backgammon"),
+  N_("Standard backgammon with Nackgammon starting position"),
+  N_("1-chequer hypergammon"),
+  N_("2-chequer hypergammon"),
+  N_("3-chequer hypergammon") 
+};
+
+char *aszVariationCommands[ NUM_VARIATIONS ] = {
+  "standard", 
+  "nackgammon", 
+  "1-chequer-hypergammon",
+  "2-chequer-hypergammon",
+  "3-chequer-hypergammon"
+};
+
 
 cubeinfo ciCubeless = { 1, 0, 0, 0, { 0, 0 }, FALSE, FALSE, FALSE,
 			      { 1.0, 1.0, 1.0, 1.0 } };

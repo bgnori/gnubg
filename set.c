@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.172 2003/02/21 23:39:42 jsegrave Exp $
+ * $Id: set.c,v 1.173 2003/03/03 19:17:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -1178,19 +1178,6 @@ extern void CommandSetGUIWindowPositions( char *sz ) {
     NoGUI();
 }
 #endif
-
-extern void CommandSetNackgammon( char *sz ) {
-    
-    SetToggle( "nackgammon", &fNackgammon, sz, _("New games will use the "
-	       "Nackgammon starting position."), _("New games will use the "
-	       "standard backgammon starting position.") );
-
-#if USE_GUI
-    if( fX && ms.gs == GAME_NONE )
-	ShowBoard();
-#endif
-}
-
 
 extern void
 CommandSetPlayerMoveFilter ( char *sz ) {
@@ -3956,3 +3943,57 @@ CommandSetExportPNGSize ( char *sz ) {
 
 
 }
+
+
+static void
+SetVariation( const bgvariation bgvx ) {
+
+  bgv = bgvx;
+  CommandShowVariation( NULL );
+
+#if USE_GUI
+    if( fX && ms.gs == GAME_NONE )
+	ShowBoard();
+#endif
+
+}
+
+
+extern void
+CommandSetVariation1ChequerHypergammon( char *sz ) {
+
+  CommandNotImplemented( NULL );
+  SetVariation( VARIATION_HYPERGAMMON_1 );
+
+}
+
+extern void
+CommandSetVariation2ChequerHypergammon( char *sz ) {
+
+  CommandNotImplemented( NULL );
+  SetVariation( VARIATION_HYPERGAMMON_2 );
+
+}
+
+extern void
+CommandSetVariation3ChequerHypergammon( char *sz ) {
+
+  CommandNotImplemented( NULL );
+  SetVariation( VARIATION_HYPERGAMMON_3 );
+
+}
+
+extern void
+CommandSetVariationNackgammon( char *sz ) {
+
+  SetVariation( VARIATION_NACKGAMMON );
+
+}
+
+extern void
+CommandSetVariationStandard( char *sz ) {
+
+  SetVariation( VARIATION_STANDARD );
+
+}
+
