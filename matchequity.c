@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.27 2002/05/12 16:11:25 thyssen Exp $
+* $Id: matchequity.c,v 1.28 2002/06/01 17:49:00 thyssen Exp $
 */
 
 #include <stdio.h>
@@ -50,6 +50,7 @@ extern double erf( double x );
 
 #include "eval.h"
 #include "matchequity.h"
+#include "i18n.h"
 
 typedef struct _parameter {
 
@@ -1380,6 +1381,8 @@ static int readMET ( metdata *pmd, const char *szFileName,
 
   /* initialise data */
 
+  PushLocale ( "C" );
+
   initMD ( pmd );
 
   /* fetch information from xml doc */
@@ -1480,6 +1483,8 @@ static int readMET ( metdata *pmd, const char *szFileName,
 #endif
 
  finish:
+
+  PopLocale ();
 
   if ( doc )
     xmlFreeDoc ( doc );
