@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.7 2003/07/26 20:47:43 thyssen Exp $
+ * $Id: htmlimages.c,v 1.8 2003/07/26 23:22:48 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -161,6 +161,7 @@ extern void CommandExportHTMLImages( char *sz ) {
     RenderArrows( &rd, auchArrow[0], auchArrow[1], s * ARROW_SIZE * 4 );
 #endif /* HAVE_LIBART */
 
+    /* cubes and dices are rendered a bit smaller */
 
     rd.nSize = ss;
 
