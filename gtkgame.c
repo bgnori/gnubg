@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.348 2003/06/23 22:25:42 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.349 2003/06/24 00:05:38 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5050,8 +5050,8 @@ static void SetRolloutsOK( GtkWidget *pw, rolloutwidget *prw ) {
 
   prw->rcRollout.fStopOnSTD = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(
                                             prw->prwGeneral->pwDoSTDStop));
-  prw->rcRollout.nMinimumGames = (unsigned int) gtk_spin_button_get_value (GTK_SPIN_BUTTON (prw->prwGeneral->pwMinGames));
-  prw->rcRollout.rStdLimit = gtk_spin_button_get_value (GTK_SPIN_BUTTON (prw->prwGeneral->pwMaxError));
+  prw->rcRollout.nMinimumGames = (unsigned int) gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (prw->prwGeneral->pwMinGames));
+  prw->rcRollout.rStdLimit = gtk_spin_button_get_value_as_float (GTK_SPIN_BUTTON (prw->prwGeneral->pwMaxError));
 
   /* get all the evaluations out of the widgets */
   for (i = 0; i < 4; ++i) {
