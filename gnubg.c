@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.597 2005/02/07 17:53:23 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.598 2005/02/08 16:36:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -7239,12 +7239,12 @@ static void CallbackProgress( void ) {
 #if USE_GTK
     if( fX ) {
 
-	SuspendInput();
+	GTKDisallowStdin();
     
 	while( gtk_events_pending() )
 	    gtk_main_iteration();
 	
-	ResumeInput();
+	GTKAllowStdin();
     }
 #endif
 
