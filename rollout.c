@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.125 2003/07/31 11:37:24 jsegrave Exp $
+ * $Id: rollout.c,v 1.126 2003/08/01 08:47:01 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1159,7 +1159,7 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
         ajiJSD[ alt ].rJSD = ajiJSD[ alt ].rEquity / denominator;
         
         if ((rcRollout.fStopMoveOnJsd || rcRollout.fStopOnJsd) &&
-            (i >= rcRollout.nMinimumJsdGames)) {
+            (i >= (rcRollout.nMinimumJsdGames - 1))) {
           if (ajiJSD[ alt ].rJSD > rcRollout.rJsdLimit) {
             /* This move is no longer worth rolling out */
 
@@ -1216,7 +1216,7 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
       }
 
     /* see if we can quit because the answers are good enough */
-    if (rcRollout.fStopOnSTD && ( i >= rcRollout.nMinimumGames)) {
+    if (rcRollout.fStopOnSTD && ( i >= (rcRollout.nMinimumGames - 1))) {
       err_too_big = 0;
 
       for (alt = 0; alt < alternatives; ++alt) {
