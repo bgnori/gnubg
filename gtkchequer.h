@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.h,v 1.3 2002/08/03 15:05:05 thyssen Exp $
+ * $Id: gtkchequer.h,v 1.4 2002/09/08 20:37:59 thyssen Exp $
  */
 
 #ifndef _GTKCHEQUER_H_
@@ -28,6 +28,7 @@ typedef struct _hintdata {
   GtkWidget *pwEval, *pwEvalSettings;       /* evaluation buttons */
   GtkWidget *pwMove; /* move button */
   GtkWidget *pwCopy; /* copy button */
+  GtkWidget *pwEvalPly; /* predefined eval buttons */
   movelist *pml;
   int fButtonsValid;
   int fDestroyOnMove;
