@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.3 2002/11/24 10:58:16 thyssen Exp $
+ * $Id: bearoff.c,v 1.4 2002/11/24 11:23:17 thyssen Exp $
  */
 
 #include "config.h"
@@ -434,13 +434,6 @@ BearoffEval ( bearoffcontext *pbc, int anBoard[ 2 ][ 25 ], float arOutput[] ) {
     break;
 
   }
-
-  printf ( "%f %f %f %f %f\n", 
-           arOutput[ 0 ],
-           arOutput[ 1 ],
-           arOutput[ 2 ],
-           arOutput[ 3 ],
-           arOutput[ 4 ] );
 
   return 0;
 }
@@ -1194,9 +1187,10 @@ ReadBearoffOneSidedExact ( bearoffcontext *pbc, const unsigned int nPosID,
       if ( arGammonProb )
         memcpy ( arGammonProb, arGP, sizeof ( float ) * 32 );
 
-      if ( ar )
-        /* FIXME */
-        memset ( ar, 0, 4 * sizeof ( float ) );
+      if ( ar ) {
+        AverageRolls ( arP, ar );
+        AverageRolls ( arGP, ar + 2 );
+      }
 
     }
 
@@ -1295,9 +1289,10 @@ ReadBearoffOneSidedExact ( bearoffcontext *pbc, const unsigned int nPosID,
       if ( arGammonProb )
         memcpy ( arGammonProb, arGP, sizeof ( float ) * 32 );
 
-      if ( ar )
-        /* FIXME */
-        memset ( ar, 0, 4 * sizeof ( float ) );
+      if ( ar ) {
+        AverageRolls ( arP, ar );
+        AverageRolls ( arGP, ar + 2 );
+      }
 
     }
     else {
@@ -1338,10 +1333,10 @@ ReadBearoffOneSidedExact ( bearoffcontext *pbc, const unsigned int nPosID,
       if ( arGammonProb )
         memcpy ( arGammonProb, arGP, sizeof ( float ) * 32 );
 
-      if ( ar )
-        /* FIXME */
-        memset ( ar, 0, 4 * sizeof ( float ) );
-
+      if ( ar ) {
+        AverageRolls ( arP, ar );
+        AverageRolls ( arGP, ar + 2 );
+      }
 
     }
       

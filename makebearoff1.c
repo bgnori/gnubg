@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff1.c,v 1.1 2002/11/24 10:19:13 thyssen Exp $
+ * $Id: makebearoff1.c,v 1.2 2002/11/24 11:21:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -57,10 +57,11 @@ PrintPre ( FILE *pf ) {
          " * along with this program; if not, write to the Free Software\n"
          " * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
          " *\n"
-         " * $Id: makebearoff1.c,v 1.1 2002/11/24 10:19:13 thyssen Exp $\n"
+         " * $Id: makebearoff1.c,v 1.2 2002/11/24 11:21:24 thyssen Exp $\n"
          " */\n"
          "\n\n\n"
-         "#include <stdio.h>\n\n"
+         "#include <stdio.h>\n"
+         "#include <stdlib.h>\n\n"
          "#include \"config.h\"\n"
          "#include \"bearoff.h\"\n\n\n",
          pf );
@@ -205,6 +206,8 @@ main ( int argc, char **argv ) {
     fclose ( pfOut );
   if ( pfIn != stdin )
     fclose ( pfIn );
+
+  return 0;
 
 }
 
