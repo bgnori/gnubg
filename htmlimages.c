@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.26 2004/04/30 17:33:58 Superfly_Jon Exp $
+ * $Id: htmlimages.c,v 1.27 2004/07/11 13:31:27 kaoru Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -38,6 +38,10 @@
 
 #if HAVE_UNISTD_H
 #include <unistd.h>
+#endif
+
+#if HAVE_MALLOC_H
+#include <malloc.h>
 #endif
 
 #if HAVE_LIBART
