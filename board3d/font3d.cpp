@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.cpp,v 1.2 2003/08/13 11:52:29 Superfly_Jon Exp $
+* $Id: font3d.cpp,v 1.3 2003/08/29 09:41:41 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -84,6 +84,13 @@ public:
 		fonts[mode]->Render(text);
 	}
 
+	void printRightAlign(const char* text, int mode)
+	{
+		glScalef(size, size, 1);
+		glTranslatef(-getTextLen(text), 0, 0);
+		fonts[mode]->Render(text);
+	}
+
 	void printHorVertAlign(const char* text, int mode)
 	{
 		glTranslatef(0, -height / 2.0f, 0);
@@ -123,6 +130,11 @@ extern "C" void glPrintPointNumbers(BoardData* bd, const char *text, int mode)
 extern "C" void glPrintCube(BoardData* bd, const char *text, int mode)
 {
 	((font*)bd->cubeFont)->printHorVertAlign(text, mode);
+}
+
+extern "C" void glPrintNumbersRA(BoardData* bd, const char *text, int mode)
+{	/* Right aligned numbers */
+	((font*)bd->numberFont)->printRightAlign(text, mode);
 }
 
 #else

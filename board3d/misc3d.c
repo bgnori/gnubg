@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.8 2003/08/25 09:30:20 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.9 2003/08/29 09:41:41 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -39,7 +39,6 @@ double animStartTime = 0;
 int stopNextTime;
 int slide_move;
 extern int convert_point( int i, int player );
-extern void BuildFont(BoardData* bd);
 extern void setupFlag(BoardData* bd);
 extern void setupDicePaths(BoardData* bd, Path dicePaths[2]);
 extern void waveFlag(BoardData* bd, float wag);

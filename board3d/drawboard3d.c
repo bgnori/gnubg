@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.5 2003/08/25 09:30:19 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.6 2003/08/29 09:41:41 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -65,18 +65,10 @@ void drawCornerEigth(float ***boardPoints, float radius, int accuracy);
 void calculateEigthPoints(float ****boardPoints, float radius, int accuracy);
 void freeEigthPoints(float ***boardPoints, int accuracy);
 
-/* font functions */
-void glPrintPointNumbers(BoardData* bd, const char *text, int mode);
-void glPrintCube(BoardData* bd, const char *text, int mode);
-float getFontHeight(BoardData* bd);
-void KillFont(BoardData* bd);
-
 /* Other functions */
 void initPath(Path* p, float start[3]);
 void addPathSegment(Path* p, PathType type, float point[3]);
 void initDT(diceTest* dt, int x, int y, int z);
-float ***Alloc3d(int x, int y, int z);
-void Free3d(float ***array, int x, int y);
 
 /* Clipping planes */
 #define zNear .1f

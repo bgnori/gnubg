@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.3 2003/08/17 00:45:33 jsegrave Exp $
+* $Id: gtkcolour3d.c,v 1.4 2003/08/29 09:41:41 Superfly_Jon Exp $
 */
 
 #include <GL/gl.h>
@@ -72,10 +72,8 @@ unsigned char auch[PREVIEW_WIDTH * PREVIEW_HEIGHT * 3];
 extern void InitGL(BoardData *bd);
 extern void SetupMat(Material* pMat, float r, float g, float b, float dr, float dg, float db, float sr, float sg, float sb, int shin, float a);
 extern void setMaterial(Material* pMat);
-extern void CheckOpenglError();
 extern void UpdatePreview(GtkWidget **ppw);
 extern void RenderPreview(Material* pMat, unsigned char* buf);
-extern int LoadTexture(Texture* texture, const char* Filename, TextureFormat format);
 extern BoardData bd3d;
 
 int previewLightLevels[3];
