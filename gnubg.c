@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.274 2002/08/09 18:50:07 thyssen Exp $
+ * $Id: gnubg.c,v 1.275 2002/08/10 11:39:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -6104,7 +6104,7 @@ extern int GiveAdvice( skilltype Skill ) {
 	return GetAdviceAnswer( sz );
 }
 
-#ifndef HAVE_BASENAME
+#if ! defined(HAVE_BASENAME) && ! defined (HAVE_LIBGEN_H)
 
 /*
  * Basename copied from glibc-2.2. for users without glibc.
