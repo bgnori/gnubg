@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.100 2002/12/15 22:20:04 thyssen Exp $
+ * $Id: gtkboard.c,v 1.101 2002/12/16 16:27:06 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -252,14 +252,16 @@ static gboolean board_expose( GtkWidget *drawing_area, GdkEventExpose *event,
     if( cx <= 0 || cy <= 0 )
 	return TRUE;
     
-    puch = g_alloca( cx * cy * 3 );
+    puch = malloc( cx * cy * 3 );
 
     RenderArea( bd, puch, x, y, cx, cy );
 
     /* FIXME use dithalign */
     gdk_draw_rgb_image( drawing_area->window, bd->gc_copy, x, y, cx, cy,
 			GDK_RGB_DITHER_MAX, puch, cx * 3 );
-
+    
+    free(puch);
+    
     return TRUE;
 }
 
