@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.1.2.11 2003/07/29 10:37:53 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.1.2.12 2003/07/30 12:21:05 Superfly_Jon Exp $
 */
 
 #include <gtk/gtk.h>
@@ -71,7 +71,6 @@ typedef struct _diceTest
 void InitBoard3d(BoardData *bd);
 void InitBoardPreview(BoardData *bd);
 void InitGL(BoardData *bd);
-void SetupLight3d(BoardData *bd);
 
 /* Drawing functions */
 void drawBoard(BoardData* bd);
