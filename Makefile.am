@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.133 2004/04/28 18:44:22 thyssen Exp $
+## $Id: Makefile.am,v 1.134 2004/05/07 06:20:04 thyssen Exp $
 
 localedir = $(datadir)/locale
 
@@ -189,7 +189,7 @@ distcheck-hook:
 
 EXTRA_DIST = userrng.c copying.awk gnubgtest sgf.l sgf.y gnubg.6 gnubg.scm \
 	gnubg.gtkrc credits.sh erf.c xboard.c xboard.h xgame.c xgame.h \
-	ABOUT-NLS boards.xml external_l.l external_y.y \
+	ABOUT-NLS boards.xml external_l.l external_y.y gnubg.sql \
 	$(BOARD3D_TEXTURE_FILES)
 
 DISTCLEANFILES=gnubg.wd
