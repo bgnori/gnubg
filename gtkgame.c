@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.136 2002/04/20 17:44:30 thyssen Exp $
+ * $Id: gtkgame.c,v 1.137 2002/04/21 19:57:30 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -181,6 +181,7 @@ typedef enum _gnubgcommand {
     CMD_SHOW_THORP,
     CMD_SHOW_VERSION,
     CMD_SHOW_WARRANTY,
+    CMD_SWAP_PLAYERS,
     CMD_TAKE,
     CMD_TRAIN_DATABASE,
     CMD_TRAIN_TD,
@@ -296,6 +297,7 @@ static char *aszCommands[ NUM_CMDS ] = {
     "show thorp",
     "show version",
     "show warranty",
+    "swap players",
     "take",
     "train database",
     "train td"
@@ -2505,6 +2507,8 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ "/_Game/De_cline resignation", NULL, Command, CMD_DECLINE, NULL },
 	{ "/_Game/-", NULL, NULL, 0, "<Separator>" },
 	{ "/_Game/Play computer turn", NULL, Command, CMD_PLAY, NULL },
+	{ "/_Game/-", NULL, NULL, 0, "<Separator>" },
+	{ "/_Game/Swap players", NULL, Command, CMD_SWAP_PLAYERS, NULL },
 	{ "/_Game/-", NULL, NULL, 0, "<Separator>" },
 	{ "/_Game/Next roll", "Page_Down", Command, CMD_NEXT_ROLL, NULL },
 	{ "/_Game/Previous roll", "Page_Up", Command, CMD_PREV_ROLL, NULL },
