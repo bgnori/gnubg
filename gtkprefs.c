@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.96 2004/03/08 09:02:43 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.97 2004/03/12 10:56:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1116,6 +1116,9 @@ void toggle_display_type(GtkWidget *widget, BoardData* bd)
 
 	if (previewType == DT_3D)
 	{
+		/* Make sure 3d code is initialized */
+		Init3d();
+
 		if (!DoAcceleratedCheck(bd->drawing_area3d))
 			gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwQuickDraw), 1);
 	}			
@@ -1920,7 +1923,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.96 2004/03/08 09:02:43 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.97 2004/03/12 10:56:07 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"

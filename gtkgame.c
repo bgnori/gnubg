@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.464 2004/03/04 10:54:54 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.465 2004/03/12 10:56:07 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3020,7 +3020,7 @@ extern int InitGTK( int *argc, char ***argv ) {
 	return FALSE;
     
 #if USE_BOARD3D
-	/* Initialize openGL widget */
+	/* Initialize openGL widget library */
 	InitGTK3d(argc, argv);
 #endif
 

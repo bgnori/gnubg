@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.540 2004/03/04 10:54:54 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.541 2004/03/12 10:56:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -8055,8 +8055,11 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     SetDefaultTC();
 #endif
 #if USE_BOARD3D
-	if (fX)
-		Default3dSettings();
+	/* If using 3d board initilize 3d widget */
+	if (rdAppearance.fDisplayType == DT_3D)
+		Init3d();
+	/* If no 3d settings loaded, set appearance to first design */
+	Default3dSettings();
 #endif
 
 #if USE_GTK

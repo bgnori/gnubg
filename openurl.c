@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.6 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: openurl.c,v 1.7 2004/03/12 10:56:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -25,10 +25,12 @@
 #include <stdio.h>
 #include <string.h>
 
+#if USE_GTK
 #include <gtk/gtk.h>
 #include <gdk/gdkprivate.h>
 #if !GTK_CHECK_VERSION(1,3,10)
 #include <stdlib.h>
+#endif
 #endif
 
 #include "openurl.h"

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.16 2004/02/02 09:50:59 uid68519 Exp $
+* $Id: inc3d.h,v 1.17 2004/03/12 10:56:07 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -162,7 +162,7 @@ int finishedPath(Path* p);
 void updateHingeOccPos(BoardData* bd);
 void getProjectedPieceDragPos(int x, int y, float pos[3]);
 void updateMovingPieceOccPos(BoardData* bd);
-void LoadTextureInfo();
+void LoadTextureInfo(int FirstPass);
 GList *GetTextureList(int type);
 int IsSet(int flags, int bit);
 float Dist2d(float a, float b);
