@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.10 2002/03/17 13:27:25 thyssen Exp $
+ * $Id: positionid.c,v 1.11 2002/03/17 14:23:56 thyssen Exp $
  */
 
 #include <assert.h>
@@ -481,8 +481,6 @@ MatchID ( const int nCube, const int fCubeOwner, const int fMove,
   SetBits ( auchKey, 14, 15, nMatchTo & 0x8FFF );
   SetBits ( auchKey, 29, 15, anScore[ 0 ] & 0x8FFF );
   SetBits ( auchKey, 44, 15, anScore[ 1 ] & 0x8FFF );
-
-  dumpKey ( auchKey, 8 );
 
   return MatchIDFromKey ( auchKey );
 
