@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.53 2000/11/14 15:26:37 gtw Exp $
+ * $Id: backgammon.h,v 1.54 2000/11/17 15:44:08 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -224,7 +224,7 @@ extern void CancelCubeAction( void );
 extern void FreeMatch( void );
 extern int ParseNumber( char **ppch );
 extern int ParsePlayer( char *sz );
-extern int ParsePosition( int an[ 2 ][ 25 ], char **ppch );
+extern int ParsePosition( int an[ 2 ][ 25 ], char **ppch, char *pchDesc );
 extern double ParseReal( char **ppch );
 extern int SetToggle( char *szName, int *pf, char *sz, char *szOn,
 		       char *szOff );

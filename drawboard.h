@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.h,v 1.4 2000/01/14 20:44:37 gtw Exp $
+ * $Id: drawboard.h,v 1.5 2000/11/17 15:44:08 gtw Exp $
  */
 
 #ifndef _DRAWBOARD_H_
@@ -24,6 +24,9 @@
 
 extern char *DrawBoard( char *pch, int anBoard[ 2 ][ 25 ], int fRoll,
 			char *asz[] );
+/* Fill the buffer pch with a representation of the move anMove, assuming
+   the board looks like anBoard.  pch must have room for 28 characters plus
+   a trailing 0 (consider the move `bar/24* 23/22* 21/20* 19/18*'). */
 extern char *FormatMove( char *pch, int anBoard[ 2 ][ 25 ], int anMove[ 8 ] );
 extern char *FormatMovePlain( char *pch, int anBoard[ 2 ][ 25 ],
 			      int anMove[ 8 ] );

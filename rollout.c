@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.22 2000/11/14 15:26:38 gtw Exp $
+ * $Id: rollout.c,v 1.23 2000/11/17 15:44:08 gtw Exp $
  */
 
 #include "config.h"
@@ -303,9 +303,9 @@ static int VarRednRollout( int anBoard[ 2 ][ 25 ], float arOutput[],
   return 0;
 }
 
-extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
-                    int nTruncate, int cGames, int fVarRedn,
-                    cubeinfo *pci, evalcontext *pec ) {
+extern int Rollout( int anBoard[ 2 ][ 25 ], char *sz, float arOutput[],
+		    float arStdDev[], int nTruncate, int cGames, int fVarRedn,
+                    cubeinfo *pci, evalcontext *pec, int fInvert ) {
 
   int i, j, anBoardEval[ 2 ][ 25 ];
   float ar[ NUM_ROLLOUT_OUTPUTS ];
@@ -328,11 +328,6 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
   for( i = 0; i < NUM_ROLLOUT_OUTPUTS; i++ )
     arResult[ i ] = arVariance[ i ] = arMu[ i ] = 0.0f;
 
-#if USE_GTK
-  if( fX )
-    GTKRollout( cGames );
-#endif
-    
   for( i = 0; i < cGames; i++ ) {
     memcpy( &anBoardEval[ 0 ][ 0 ], &anBoard[ 0 ][ 0 ],
             sizeof( anBoardEval ) );
@@ -351,7 +346,10 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
 
     if( fInterrupt )
 	    break;
-	
+
+    if( fInvert )
+	InvertEvaluation( ar );
+    
     ar[ OUTPUT_EQUITY ] = ar[ OUTPUT_WIN ] * 2.0 - 1.0 +
 	    ar[ OUTPUT_WINGAMMON ] +
 	    ar[ OUTPUT_WINBACKGAMMON ] -
@@ -385,24 +383,20 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
 	
     if( fShowProgress ) {
 #if USE_GTK
-	    if( fX ) {
-        if( GTKRolloutUpdate( arMu, arSigma, i, cGames ) ) {
-          fInterrupt = TRUE;
-          return -1;
-        }
-	    } else
+	if( fX ) {
+	    if( GTKRolloutUpdate( arMu, arSigma, i, cGames ) ) {
+		fInterrupt = TRUE;
+		return -1;
+	    }
+	} else
 #endif
-        {
-          outputf( "W=%5.3f Wg=%5.3f Wbg=%5.3f Lg=%5.3f Lbg=%5.3f "
-                   "Eq=%+6.3f+/-%5.3f n=%d\r", arMu[ OUTPUT_WIN ],
-                   arMu[ OUTPUT_WINGAMMON ],
-                   arMu[ OUTPUT_WINBACKGAMMON ],
-                   arMu[ OUTPUT_LOSEGAMMON ],
-                   arMu[ OUTPUT_LOSEBACKGAMMON ],
-                   arMu[ OUTPUT_EQUITY ],
-                   arSigma[ OUTPUT_EQUITY ], i + 1 );
-          fflush( stdout );
-        }
+	    {
+		outputf( "%28s %5.3f %5.3f %5.3f %5.3f %5.3f (%6.3f) %5.3f "
+			 "%5d\r", sz, arMu[ 0 ], arMu[ 1 ], arMu[ 2 ],
+			 arMu[ 3 ], arMu[ 4 ], arMu[ 5 ], arSigma[ 5 ],
+			 i + 1 );
+		fflush( stdout );
+	    }
     }
   }
 

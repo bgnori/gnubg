@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.9 2000/11/07 15:19:46 gtw Exp $
+ * $Id: gtkgame.h,v 1.10 2000/11/17 15:44:08 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -43,7 +43,8 @@ extern void GTKOutput( char *sz );
 extern void GTKOutputX( void );
 extern void GTKOutputNew( void );
 extern void GTKHint( movelist *pml );
-extern void GTKRollout( int c );
+extern void GTKRollout( int c, char asz[][ 40 ], int cGames );
+extern void GTKRolloutRow( int i );
 extern int GTKRolloutUpdate( float arMu[], float arSigma[], int i, int c );
 extern void GTKRolloutDone( void );
 extern void GTKSet( void *p );

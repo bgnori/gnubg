@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.11 2000/11/14 15:26:37 gtw Exp $
+ * $Id: database.c,v 1.12 2000/11/17 15:44:08 gtw Exp $
  */
 
 #include "config.h"
@@ -35,7 +35,7 @@
 #include "rollout.h"
 
 #if HAVE_LIBGDBM
-static char *szDatabase = "gnubg.gdbm"; /* FIXME */
+static char *szDatabase = "gnubg.gdbm";
 
 extern void CommandDatabaseDump( char *sz ) {
     
@@ -95,71 +95,72 @@ extern void CommandDatabaseDump( char *sz ) {
 
 extern void CommandDatabaseRollout( char *sz ) {
 
-  GDBM_FILE pdb;
-  datum dKey, dValue;
-  dbevaluation *pev;
-  int i, c = 0, anBoardEval[ 2 ][ 25 ];
-  float arOutput[ NUM_ROLLOUT_OUTPUTS ];
-  void *p;
+    GDBM_FILE pdb;
+    datum dKey, dValue;
+    dbevaluation *pev;
+    int i, c = 0, anBoardEval[ 2 ][ 25 ];
+    float arOutput[ NUM_ROLLOUT_OUTPUTS ];
+    void *p;
     
-  if( !( pdb = gdbm_open( szDatabase, 0, GDBM_WRITER, 0, NULL ) ) ) {
-    fprintf( stderr, "%s: %s\n", szDatabase, gdbm_strerror( gdbm_errno ) );
+    if( !( pdb = gdbm_open( szDatabase, 0, GDBM_WRITER, 0, NULL ) ) ) {
+	fprintf( stderr, "%s: %s\n", szDatabase, gdbm_strerror( gdbm_errno ) );
         
-    return;
-  }
-
-  dKey = gdbm_firstkey( pdb );
-
-  while( dKey.dptr ) {
-    dValue = gdbm_fetch( pdb, dKey );
-
-    pev = (dbevaluation *) dValue.dptr;
-
-    if( pev->c < nRollouts /* FIXME */ ) {
+	return;
+    }
+    
+    dKey = gdbm_firstkey( pdb );
+    
+    while( dKey.dptr ) {
+	dValue = gdbm_fetch( pdb, dKey );
+	
+	pev = (dbevaluation *) dValue.dptr;
+	
+	if( pev->c < nRollouts /* FIXME */ ) {
 	    c++;
 	    
 	    PositionFromKey( anBoardEval, (unsigned char *) dKey.dptr );
-
+	
 	    /* FIXME if position has some existing rollouts, merge them */
 	    
 	    /* FIXME allow user to change these parameters */
-	    if( ( pev->c = Rollout( anBoardEval, arOutput, NULL,
-                              nRolloutTruncate, nRollouts, fVarRedn,
-                              &ciCubeless, &ecRollout ) ) > 0 ) {
-        for( i = 0; i < NUM_OUTPUTS; i++ )
-          pev->asEq[ i ] = arOutput[ i ] * 0xFFFF;
-
-        pev->t = time( NULL );
+	    if( ( pev->c = Rollout( anBoardEval, PositionIDFromKey(
+		(unsigned char *) dKey.dptr ), arOutput, NULL,
+				    nRolloutTruncate, nRollouts, fVarRedn,
+				    &ciCubeless, &ecRollout, FALSE ) ) > 0 ) {
+		for( i = 0; i < NUM_OUTPUTS; i++ )
+		    pev->asEq[ i ] = arOutput[ i ] * 0xFFFF;
+		
+		pev->t = time( NULL );
 	    } else {
-        for( i = 0; i < NUM_OUTPUTS; i++ )
-          pev->asEq[ i ] = 0;
-
-        pev->c = 0;
-        pev->t = 0;
+		for( i = 0; i < NUM_OUTPUTS; i++ )
+		    pev->asEq[ i ] = 0;
+		
+		pev->c = 0;
+		pev->t = 0;
 	    }
-
+	    
 	    gdbm_store( pdb, dKey, dValue, GDBM_REPLACE );
-    }
-
-    free( pev );
-
-    p = dKey.dptr;
-
-    if( fInterrupt ) {
+	}
+	
+	free( pev );
+	
+	p = dKey.dptr;
+	
+	if( fInterrupt ) {
 	    free( p );
 	    break;
+	}
+	
+	dKey = gdbm_nextkey( pdb, dKey );
+	
+	free( p );
     }
-
-    dKey = gdbm_nextkey( pdb, dKey );
-
-    free( p );
-  }
-
-  if( !fInterrupt && !c )
-    outputl( "There are no unevaluated positions in the database to roll "
-             "out." );
-
-  gdbm_close( pdb );
+    
+    if( !fInterrupt && !c )
+	outputl( "There are no unevaluated positions in the database to roll "
+		 "out." );
+    
+    gdbm_close( pdb );
 }
 
 extern void CommandDatabaseGenerate( char *sz ) {
