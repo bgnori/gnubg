@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.74 2003/07/23 16:36:20 jsegrave Exp $
+ * $Id: sgf.c,v 1.75 2003/08/04 09:23:11 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1083,38 +1083,37 @@ static void RestoreNode( list *pl, char *szCharset ) {
 	    fPlayer = pp->ach[ 0 ] == 'B';
 	    
 	    if( !strcmp( pch, "double" ) ) {
+	        moverecord *prev;
+
 		pmr = calloc( 1, sizeof( pmr->d ) );
 		pmr->mt = MOVE_DOUBLE;
 		pmr->d.sz = NULL;
 		pmr->d.fPlayer = fPlayer;
+		if( ! LinkToDouble( pmr ) ) {
+		  pmr->d.nAnimals = 0;
 		pmr->d.CubeDecPtr = &pmr->d.CubeDec;
 		pmr->d.CubeDecPtr->esDouble.et = EVAL_NONE;
+		}
 	    } else if( !strcmp( pch, "take" ) ) {
-		moverecord *pmrDouble;
-
 		pmr = calloc( 1, sizeof( pmr->d ) );
 		pmr->mt = MOVE_TAKE;
 		pmr->d.sz = NULL;
 		pmr->d.fPlayer = fPlayer;
-		if ((pmrDouble = FindTheDouble()) == 0) {
+		pmr->d.st = SKILL_NONE;
+		if (!LinkToDouble( pmr ) ) {
 		  free (pmr);
 		  continue;
 		}
-		pmr->d.CubeDecPtr = pmrDouble->d.CubeDecPtr;
-		pmr->d.st = SKILL_NONE;
 	    } else if( !strcmp( pch, "drop" ) ) {
-		moverecord *pmrDouble;
-
 		pmr = calloc( 1, sizeof( pmr->d ) );
 		pmr->mt = MOVE_DROP;
 		pmr->d.sz = NULL;
 		pmr->d.fPlayer = fPlayer;
-		if ((pmrDouble = FindTheDouble()) == 0) {
+		pmr->d.st = SKILL_NONE;
+		if (!LinkToDouble( pmr ) ) {
 		  free (pmr);
 		  continue;
 		}
-		pmr->d.CubeDecPtr = pmrDouble->d.CubeDecPtr;
-		pmr->d.st = SKILL_NONE;
 	    } else {
 		pmr = calloc( 1, sizeof( pmr->n ) );
 		pmr->mt = MOVE_NORMAL;

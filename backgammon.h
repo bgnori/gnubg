@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.238 2003/07/27 13:28:24 oysteijo Exp $
+ * $Id: backgammon.h,v 1.239 2003/08/04 09:23:11 jsegrave Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -164,6 +164,8 @@ typedef struct _movedouble {
     movetype mt;
     char *sz;
     int fPlayer;
+    int nAnimals;    /* 0 in match play, even numbers are doubles, raccoons
+                        odd numbers are beavers, aardvarken, etc. */
     cubedecisiondata *CubeDecPtr;
     cubedecisiondata  CubeDec;
     skilltype st;
@@ -383,7 +385,7 @@ extern char *NextTokenGeneral( char **ppch, const char *szTokens );
 extern int NextTurn( int fPlayNext );
 extern void TurnDone( void );
 extern void AddMoveRecord( void *pmr );
-extern moverecord *FindTheDouble( void );
+extern moverecord *LinkToDouble( moverecord *pmr);
 extern void ApplyMoveRecord( matchstate *pms, list *plGame, moverecord *pmr );
 extern void SetMoveRecord( void *pmr );
 extern void ClearMoveRecord( void );
