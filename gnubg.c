@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.6 1999/12/20 06:25:35 gtw Exp $
+ * $Id: gnubg.c,v 1.7 1999/12/21 00:57:49 gtw Exp $
  */
 
 #include "config.h"
@@ -63,10 +63,11 @@ char szDefaultPrompt[] = "(\\p) ",
 static int fInteractive;
 
 int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn = -1, fDisplay = TRUE,
-    fAutoGame = TRUE, fAutoMove = FALSE, fResigned = FALSE, fMove = -1,
-    nPliesEval = 1, anScore[ 2 ] = { 0, 0 }, cGames = 0, fDoubled = FALSE,
-    nCube = 1, fCubeOwner = -1, fAutoRoll = TRUE, nMatchTo = -1,
-    fJacoby, fCrawford, fPostCrawford;
+    fAutoBearoff = FALSE, fAutoGame = TRUE, fAutoMove = FALSE,
+    fResigned = FALSE, fMove = -1, nPliesEval = 1, anScore[ 2 ] = { 0, 0 },
+    cGames = 0, fDoubled = FALSE, nCube = 1, fCubeOwner = -1,
+    fAutoRoll = TRUE, nMatchTo = 0, fJacoby = FALSE, fCrawford = FALSE,
+    fPostCrawford = FALSE;
 
 player ap[ 2 ] = {
     { "O", PLAYER_GNU, 0 },
@@ -120,6 +121,8 @@ static command acDatabase[] = {
     { "user", CommandSetRNGUser, "Specify an external generator", NULL },
     { NULL, NULL, NULL, NULL }
 }, acSet[] = {
+    { "autobearoff", CommandSetAutoBearoff, "Automatically bear off as many "
+      "chequers as possible", NULL },
     { "autogame", CommandSetAutoGame, "Select whether to start new games "
       "after wins", NULL },
     { "automove", CommandSetAutoMove, "Select whether forced moves will be "

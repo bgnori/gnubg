@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1999
  *
- * $Id: backgammon.h,v 1.5 1999/12/20 06:25:35 gtw Exp $
+ * $Id: backgammon.h,v 1.6 1999/12/21 00:57:49 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -57,9 +57,9 @@ typedef union _moverecord {
 
 extern char *aszGameResult[], szDefaultPrompt[], *szPrompt;
 
-extern int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn, fDisplay, fAutoGame,
-    fAutoMove, fResigned, fMove, fDoubled, nPliesEval, anScore[ 2 ], cGames,
-    nCube, fCubeOwner, fAutoRoll, nMatchTo, fJacoby, fCrawford,
+extern int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn, fDisplay, fAutoBearoff,
+    fAutoGame, fAutoMove, fResigned, fMove, fDoubled, nPliesEval, anScore[ 2 ],
+    cGames, nCube, fCubeOwner, fAutoRoll, nMatchTo, fJacoby, fCrawford,
     fPostCrawford;
 
 extern list lMatch, *plGame; /* (list of) list of moverecords */
@@ -102,6 +102,7 @@ extern void CommandAccept( char * ),
     CommandRollout( char * ),
     CommandSaveMatch( char * ),
     CommandSaveWeights( char * ),
+    CommandSetAutoBearoff( char * ),
     CommandSetAutoGame( char * ),
     CommandSetAutoMove( char * ),
     CommandSetAutoRoll( char * ),
