@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.67 2003/03/13 20:38:42 thyssen Exp $
+ * $Id: sgf.c,v 1.68 2003/03/19 18:08:49 thyssen Exp $
  */
 
 #include "config.h"
@@ -1811,7 +1811,7 @@ static void SaveGame( FILE *pf, list *plGame ) {
       fputs( "RU[", pf );
       
       if( pmr->g.fCrawford )
-	fputs( "RU[Crawford", pf );
+	fputs( "Crawford", pf );
       if( pmr->g.fCrawfordGame )
         fputs( ":CrawfordGame", pf );
       if( pmr->g.fJacoby )
