@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.76 2002/08/01 18:41:25 thyssen Exp $
+ * $Id: analysis.c,v 1.77 2002/08/01 19:22:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -1168,7 +1168,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
       for ( i = 0 ; i < 2; i++ )
         rt[ i ] = GetRating ( aaaar[ CHEQUERPLAY ][ PERMOVE ][ i ][ NORMALISED ] );
       
-      sprintf ( szTemp, _("Checker play rating:\t\t%-20s\t%-20s\n\n"),
+      sprintf ( szTemp, _("Checker play rating:\t\t%-23.23s\t%-23.23s\n\n"),
                 psc->anUnforcedMoves[ 0 ] ? 
                 gettext ( aszRating[ rt [ 0 ] ] ) : _("n/a"), 
                 psc->anUnforcedMoves[ 1 ] ? 
@@ -1279,7 +1279,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
         rt[ i ] = getLuckRating ( psc->arLuck[ i ][ 0 ] /
                                   psc->anTotalMoves[ i ] );
 
-      sprintf ( szTemp, _("Luck rating:\t\t\t%-15s\t\t%-15s\n\n"),
+      sprintf ( szTemp, _("Luck rating:\t\t\t%-23.23s\t%-23.23s\n\n"),
                 psc->anTotalMoves[ 0 ] ?
                 gettext ( aszLuckRating[ rt [ 0 ] ] ) : _("n/a"),
                 psc->anTotalMoves[ 1 ] ?
@@ -1490,7 +1490,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
       for ( i = 0 ; i < 2; i++ )
         rt[ i ] = GetRating ( aaaar[ CUBEDECISION ][ PERMOVE ][ i ][ NORMALISED ] );
       
-      sprintf ( szTemp, _("\nCube decision rating:\t\t%-20s\t%-20s\n\n"),
+      sprintf ( szTemp, _("\nCube decision rating:\t\t%-23.23s\t%-23.23s\n\n"),
                 psc->anTotalCube[ 0 ] ?
                 gettext ( aszRating[ rt [ 0 ] ] ) : _("n/a"), 
                 psc->anTotalCube[ 1 ] ?
@@ -1590,7 +1590,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
   for ( i = 0 ; i < 2; i++ )
     rt[ i ] = GetRating ( aaaar[ COMBINED ][ PERMOVE ][ i ][ NORMALISED ] );
       
-  sprintf ( szTemp, _("Overall rating:\t\t\t%-20s\t%-20s\n\n"),
+  sprintf ( szTemp, _("Overall rating:\t\t\t%-23.23s\t%-23.23s\n\n"),
             ( psc->anUnforcedMoves[ 0 ] + psc->anTotalCube[ 0 ] ) ?
             gettext ( aszRating[ rt [ 0 ] ] ) : _("n/a"), 
             ( psc->anUnforcedMoves[ 1 ] + psc->anTotalCube[ 1 ] ) ?
