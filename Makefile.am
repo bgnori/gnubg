@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.84 2002/12/13 21:12:23 gtw Exp $
+## $Id: Makefile.am,v 1.85 2002/12/13 22:03:29 gtw Exp $
 if USE_EXT
 SUBDIRS = intl lib doc ext met po m4 xpm sounds
 else
@@ -126,6 +126,8 @@ distcheck-hook:
 EXTRA_DIST = userrng.c copying.awk gnubgtest sgf.l sgf.y gnubg.6 gnubg.scm \
 	gnubg.gtkrc credits.sh erf.c xboard.c xboard.h xgame.c xgame.h \
 	ABOUT-NLS boards.xml
+
+DISTCLEANFILES=gnubg.wd
 
 br1.c:	makebearoff makebearoff1
 	if [ ! -f br1.c ]; then \
