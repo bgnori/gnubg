@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.19 2003/01/03 18:19:11 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.20 2003/01/09 15:32:59 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -472,12 +472,22 @@ MoveListMove ( GtkWidget *pw, hintdata *phd ) {
   char szMove[ 40 ];
   int i;
   GtkWidget *pwMoves = phd->pwMoves;
+  int anBoard[ 2 ][ 25 ];
   
   assert( GTK_CLIST( pwMoves )->selection );
   
   i = GPOINTER_TO_INT( GTK_CLIST( pwMoves )->selection->data );
   memcpy ( &m, (move * ) gtk_clist_get_row_data( GTK_CLIST( pwMoves ), i ),
            sizeof ( move ) );
+
+  memcpy ( anBoard, ms.anBoard, sizeof ( anBoard ) );
+  ApplyMove ( anBoard, m.anMove, FALSE );
+
+  if ( ! ms.fMove )
+    SwapSides ( anBoard );
+
+  sprintf ( szMove, "show board %s", PositionID ( anBoard ) );
+  UserCommand ( szMove );
   
   if ( phd->fDestroyOnMove )
     /* Destroy widget on exit */
