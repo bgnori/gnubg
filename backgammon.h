@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.212 2003/03/14 20:34:15 oysteijo Exp $
+ * $Id: backgammon.h,v 1.213 2003/03/20 20:09:31 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -143,6 +143,7 @@ typedef struct _movegameinfo {
 	fResigned, /* the game was ended by resignation */
 	nAutoDoubles; /* how many automatic doubles were rolled */
     bgvariation bgv;
+    int fCubeUse;
     statcontext sc;
 } movegameinfo;
 
@@ -253,6 +254,8 @@ typedef struct _matchstate {
 	fResignationDeclined, fDoubled, cGames, fMove, fCubeOwner, fCrawford,
 	fPostCrawford, nMatchTo, anScore[ 2 ], nCube, cBeavers;
     bgvariation bgv;
+    int fCubeUse;
+    int fJacoby;
     gamestate gs;
 } matchstate;
 
