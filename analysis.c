@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.23 2001/04/18 17:11:26 gtw Exp $
+ * $Id: analysis.c,v 1.24 2001/04/18 17:59:51 gtw Exp $
  */
 
 #include "config.h"
@@ -119,6 +119,8 @@ static skilltype Skill( float r ) {
 	return SKILL_VERYBAD;
     else if( r <= -arSkillLevel[ SKILL_BAD ] )
 	return SKILL_BAD;
+    else if( r <= -arSkillLevel[ SKILL_DOUBTFUL ] )
+	return SKILL_DOUBTFUL;
     else
 	return SKILL_NONE;
 }

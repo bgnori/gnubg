@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.130 2001/04/18 17:11:26 gtw Exp $
+ * $Id: gnubg.c,v 1.131 2001/04/18 17:59:51 gtw Exp $
  */
 
 #include "config.h"
@@ -155,7 +155,7 @@ float rAlpha = 0.1f, rAnneal = 0.3f, rThreshold = 0.1f,
     }, arSkillLevel[] = {
 	0.16f, /* SKILL_VERYBAD */
 	0.08f, /* SKILL_BAD */
-	0, /* SKILL_DOUBTFUL */
+	0.04f, /* SKILL_DOUBTFUL */
 	0, /* SKILL_NONE */
 	0, /* SKILL_INTERESTING */
 	0.02f, /* SKILL_GOOD */
