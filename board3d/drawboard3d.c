@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.1.2.11 2003/07/07 11:23:57 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.1.2.12 2003/07/08 07:35:01 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -1596,9 +1596,6 @@ void drawTable(BoardData* bd)
 
 	glPopMatrix();
 
-	if (bd->State == BOARD_OPEN)
-		tidyEdges(bd);
-
 	if (rdAppearance.showMoveIndicator)
 		showMoveIndicator(bd);
 }
@@ -2855,6 +2852,9 @@ void drawBoard(BoardData* bd)
 	/* Draw things in correct order so transparency works correctly */
 	/* First pieces, then dice, then moving pieces */
 	drawPieces(bd);
+
+	if (bd->State == BOARD_OPEN)
+		tidyEdges(bd);
 
 	if (DiceShowing(bd))
 		drawDie(bd);

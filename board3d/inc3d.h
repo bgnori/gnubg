@@ -18,29 +18,24 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.1.2.9 2003/07/07 11:23:57 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.1.2.10 2003/07/08 07:35:01 Superfly_Jon Exp $
 */
 
 #include <gtk/gtk.h>
 #include "config.h"
 
-//#undef USE_GTK
-#if USE_GTK
-	#define BUILDING_LIB 1
-#else
+//#define USE_MSDEV_TEST_HARNESS
+#ifdef USE_MSDEV_TEST_HARNESS
+	#undef USE_GTK
 	#define USE_GLUT
-
-	#define AlphaBlend ab
-	/* Comment out next line to switch test harness off */
-	#define TEST
 	/* Comment out next line to remove glut library (needed for debug font) */
 	#define USE_GLUT_FONT
-
-typedef struct _monitor {
-	int dummy;
-} monitor;
-
-	#define g_print(a)     ((void)0)
+	/* Comment out next line to switch test harness off */
+	#define TEST
+	#define AlphaBlend ab
+	#define gtk_main_quit() 0
+	#define gtk_main() 0
+	#define g_print(a) 0
 #endif
 
 #include "eval.h"

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.42.2.9 2003/07/07 11:23:55 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.42.2.10 2003/07/08 07:35:01 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -309,7 +309,7 @@ extern int BoardPoint3d(BoardData *bd, int x, int y, int point);
 extern int MouseMove3d(BoardData *bd, int x, int y);
 extern void ReadBoard3d(BoardData* bd, GtkWidget *widget, unsigned char* buf);
 extern void Tidy3dObjects(BoardData* bd);
-extern void TestPerformance3d(GtkWidget *pw, BoardData* bd);
+extern int TestPerformance3d(BoardData* bd);
 extern void testSet3dSetting(BoardData* bd, renderdata *prd, int testRow);
 extern void CopySettings3d(BoardData* from, BoardData* to);
 
