@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.79 2002/08/04 10:00:24 thyssen Exp $
+ * $Id: eval.h,v 1.80 2002/08/04 17:08:26 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -435,5 +435,10 @@ ScoreMove( move *pm, cubeinfo *pci, evalcontext *pec, int nPlies );
 extern void
 CopyMoveList ( movelist *pmlDest, const movelist *pmlSrc );
 
+extern int
+isCloseCubedecision ( const float arDouble[] );
+
+extern int
+isMissedDouble ( float arDouble[], int fDouble, cubeinfo *pci );
 
 #endif

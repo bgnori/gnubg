@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.13 2002/07/24 16:37:57 thyssen Exp $
+ * $Id: analysis.h,v 1.14 2002/08/04 17:13:01 thyssen Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -40,6 +40,7 @@ typedef struct _statcontext {
   int anTotalMoves[ 2 ];
 
   int anTotalCube[ 2 ];
+  int anCloseCube[ 2 ];
   int anDouble[ 2 ];
   int anTake[ 2 ];
   int anPass[ 2 ];
