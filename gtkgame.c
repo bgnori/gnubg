@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.293 2003/01/11 10:34:04 thyssen Exp $
+ * $Id: gtkgame.c,v 1.294 2003/01/11 22:13:18 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -8705,7 +8705,7 @@ static void RecordErase( GtkWidget *pw, recordwindowinfo *prwi ) {
     char sz[ 64 ];
     
     gtk_clist_get_text( GTK_CLIST( prwi->pwList ), prwi->nRow, 0, &pch );
-    sprintf( sz, "record erase %s", pch );
+    sprintf( sz, "record erase \"%s\"", pch );
     UserCommand( sz );
     gtk_clist_remove( GTK_CLIST( prwi->pwList ), prwi->nRow );
 }
