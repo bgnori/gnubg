@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.46 2002/07/21 20:55:13 thyssen Exp $
+ * $Id: html.c,v 1.47 2002/07/24 16:47:41 thyssen Exp $
  */
 
 #include "config.h"
@@ -1512,7 +1512,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.46 $";
+  const char szVersion[] = "$Revision: 1.47 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1927,7 +1927,6 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
   if ( pes->et == EVAL_ROLLOUT && exsExport.fCubeDetailProb ) {
 
     char asz[ 2 ][ 1024 ];
-    char sz[ 1024 ];
     cubeinfo aci[ 2 ];
 
     for ( i = 0; i < 2; i++ ) {

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.10 2002/07/23 15:55:27 thyssen Exp $
+ * $Id: text.c,v 1.11 2002/07/24 16:47:41 thyssen Exp $
  */
 
 #include "config.h"
@@ -625,7 +625,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.10 $";
+  const char szVersion[] = "$Revision: 1.11 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -749,7 +749,6 @@ OutputCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   float r;
 
   int fActual, fClose, fMissed;
-  int fDisplay;
   int fAnno = FALSE;
 
   float arDouble[ 4 ];
