@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.45 2002/06/02 16:36:28 thyssen Exp $
+ * $Id: sgf.c,v 1.46 2002/06/22 14:49:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -827,6 +827,8 @@ static void RestoreTree( list *pl, int fRoot ) {
 static void RestoreGame( list *pl ) {
 
     moverecord *pmr, *pmrResign;
+
+    PushLocale ( "C" );
     
     InitBoard( ms.anBoard );
 
@@ -866,6 +868,9 @@ static void RestoreGame( list *pl ) {
 
 	AddMoveRecord( pmrResign );
     }
+
+    PopLocale ();
+
 }
 
 extern void CommandLoadGame( char *sz ) {
