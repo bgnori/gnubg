@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.199 2003/08/04 09:23:11 jsegrave Exp $
+ * $Id: play.c,v 1.200 2003/08/11 22:57:26 joseph Exp $
  */
 
 #include "config.h"
@@ -167,9 +167,9 @@ static void PlayMove( matchstate *pms, int anMove[ 8 ], int fPlayer ) {
     SwapSides( pms->anBoard );    
 }
 
-static void ApplyGameOver( matchstate *pms, list *plGame ) {
+static void ApplyGameOver(matchstate *pms, const list* plGame ) {
 
-    movegameinfo *pmgi = plGame->plNext->p;
+    movegameinfo* pmgi = plGame->plNext->p;
 
     assert( pmgi->mt == MOVE_GAMEINFO );
 
@@ -180,7 +180,7 @@ static void ApplyGameOver( matchstate *pms, list *plGame ) {
     pms->cGames++;
 }
 
-extern void ApplyMoveRecord( matchstate *pms, list *plGame, moverecord *pmr ) {
+extern void ApplyMoveRecord( matchstate *pms, const list* plGame, moverecord *pmr ) {
 
     int n;
     movegameinfo *pmgi = plGame->plNext->p;

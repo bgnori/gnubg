@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.247 2003/07/27 12:29:31 thyssen Exp $
+ * $Id: eval.c,v 1.248 2003/08/11 22:57:25 joseph Exp $
  */
 
 #include "config.h"
@@ -6047,15 +6047,12 @@ cmp_evalsetup ( const evalsetup *pes1, const evalsetup *pes2 ) {
   /* The two evaltypes are identical */
 
   switch ( pes1->et ) {
-  case EVAL_NONE:
-    return 0;
-    break;
-  case EVAL_EVAL:
-    return cmp_evalcontext ( &pes1->ec, &pes2->ec );
-    break;
-  case EVAL_ROLLOUT:
-    return cmp_rolloutcontext ( &pes1->rc, &pes2->rc );
-    break;
+  case EVAL_NONE:    return 0;
+
+  case EVAL_EVAL:    return cmp_evalcontext ( &pes1->ec, &pes2->ec );
+
+  case EVAL_ROLLOUT: return cmp_rolloutcontext ( &pes1->rc, &pes2->rc );
+
   default:
     assert ( FALSE );
   }

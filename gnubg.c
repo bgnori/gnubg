@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.454 2003/08/05 14:46:22 jsegrave Exp $
+ * $Id: gnubg.c,v 1.455 2003/08/11 22:57:25 joseph Exp $
  */
 
 #include "config.h"
@@ -2236,7 +2236,7 @@ extern int ParsePosition( int an[ 2 ][ 25 ], char **ppch, char *pchDesc ) {
 
        *ppch = NULL;
        
-       return CheckPosition ( an );
+       return CheckPosition(an) ? 0 : -1;
     }
 
     if( *pch == '=' ) {
@@ -2266,7 +2266,7 @@ extern int ParsePosition( int an[ 2 ][ 25 ], char **ppch, char *pchDesc ) {
 	return 1;
     }
 
-    if( PositionFromID( an, pch ) ) {
+    if( !PositionFromID( an, pch ) ) {
 	outputl( _("Illegal position.") );
 	return -1;
     }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.76 2003/08/07 17:57:19 thyssen Exp $
+ * $Id: sgf.c,v 1.77 2003/08/11 22:57:26 joseph Exp $
  */
 
 #include "config.h"
@@ -2139,9 +2139,9 @@ static void SaveGame( FILE *pf, list *plGame ) {
 
 	    if( pmr->d.CubeDecPtr->esDouble.et != EVAL_NONE )
 		WriteDoubleAnalysis( pf, pmr->d.CubeDecPtr->arDouble,
-							 pmr->d.CubeDecPtr->aarOutput, 
-							 pmr->d.CubeDecPtr->aarStdDev,
-							 &pmr->d.CubeDecPtr->esDouble );
+				     pmr->d.CubeDecPtr->aarOutput, 
+				     pmr->d.CubeDecPtr->aarStdDev,
+				     &pmr->d.CubeDecPtr->esDouble );
 	    
 	    WriteSkill( pf, pmr->d.st );
 	    
@@ -2152,9 +2152,9 @@ static void SaveGame( FILE *pf, list *plGame ) {
 
 	    if( pmr->d.CubeDecPtr->esDouble.et != EVAL_NONE )
 		WriteDoubleAnalysis( pf, pmr->d.CubeDecPtr->arDouble,
-							 pmr->d.CubeDecPtr->aarOutput, 
-							 pmr->d.CubeDecPtr->aarStdDev,
-							 &pmr->d.CubeDecPtr->esDouble );
+				     pmr->d.CubeDecPtr->aarOutput, 
+				     pmr->d.CubeDecPtr->aarStdDev,
+				     &pmr->d.CubeDecPtr->esDouble );
 	    
 	    WriteSkill( pf, pmr->d.st );
 	    
@@ -2165,9 +2165,9 @@ static void SaveGame( FILE *pf, list *plGame ) {
 
 	    if( pmr->d.CubeDecPtr->esDouble.et != EVAL_NONE )
 		WriteDoubleAnalysis( pf, pmr->d.CubeDecPtr->arDouble,
-							 pmr->d.CubeDecPtr->aarOutput,
-							 pmr->d.CubeDecPtr->aarStdDev,
-							 &pmr->d.CubeDecPtr->esDouble );
+				     pmr->d.CubeDecPtr->aarOutput,
+				     pmr->d.CubeDecPtr->aarStdDev,
+				     &pmr->d.CubeDecPtr->esDouble );
 	    
 	    WriteSkill( pf, pmr->d.st );
 	    
