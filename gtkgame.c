@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.392 2003/08/25 19:26:52 joseph Exp $
+ * $Id: gtkgame.c,v 1.393 2003/08/25 21:26:07 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -283,7 +283,7 @@ static char *aszCommands[ NUM_CMDS ] = {
     "train td",
     "xcopy"
 };
-enum { TOGGLE_GAMELIST, TOGGLE_ANNOTATION, TOGGLE_MESSAGE };
+enum { TOGGLE_GAMELIST = NUM_CMDS + 1, TOGGLE_ANNOTATION, TOGGLE_MESSAGE };
 
 #if ENABLE_TRAIN_MENU
 static void DatabaseExport( gpointer *p, guint n, GtkWidget *pw );
