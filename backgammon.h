@@ -16,11 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.22 2000/02/03 16:42:58 gtw Exp $
+ * $Id: backgammon.h,v 1.23 2000/02/04 17:06:04 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
 #define _BACKGAMMON_H_
+
+#include <list.h>
+#include "eval.h"
 
 #if !X_DISPLAY_MISSING
 #include <ext.h>
@@ -29,8 +32,6 @@ extern extwindow ewnd;
 extern int fX, nDelay;
 extern event evNextTurn;
 #endif
-
-#include "eval.h"
 
 #define MAX_CUBE ( 1 << 12 )
 
