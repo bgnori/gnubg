@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.153 2001/10/05 14:34:39 gtw Exp $
+ * $Id: gnubg.c,v 1.154 2001/10/09 14:30:35 gtw Exp $
  */
 
 #include "config.h"
@@ -2375,7 +2375,9 @@ static void ExportGameJF( FILE *pf, list *plGame, int iGame,
 	    strcpy( sz, " Takes" ); /* FIXME beavers? */
 	    break;
 	case MOVE_DROP:
-	    strcpy( sz, " Drops" );
+            sprintf( sz, " Drops%sWins %d point%s",
+                   (i & 1) ? "\n      " : "                       ",
+                   nFileCube / 2, (nFileCube == 2) ? "" :"s" );
 	    if( anScore )
 		anScore[ ( i + 1 ) & 1 ] += nFileCube / 2;
 	    break;
@@ -2406,7 +2408,7 @@ static void ExportGameJF( FILE *pf, list *plGame, int iGame,
 	    fputs( sz, pf );
 	    fputc( '\n', pf );
 	} else
-	    fprintf( pf, "%3d) %-28s", ( i >> 1 ) + 1, sz );
+	    fprintf( pf, "%3d) %-27s ", ( i >> 1 ) + 1, sz );
 
         if ( pmr->mt == MOVE_DROP ) {
           fputc( '\n', pf );
