@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.30 2004/01/30 09:33:50 uid68519 Exp $
+ * $Id: positionid.c,v 1.31 2004/02/12 10:31:27 uid68519 Exp $
  */
 
 #include "config.h"
@@ -337,8 +337,8 @@ static int PositionF( const int fBits, const int n, const int r ) {
 
 extern 
 unsigned int PositionBearoff( const int anBoard[],
-                              const int nPoints,
-                              const int nChequers ) {
+                              int nPoints,
+                              int nChequers ) {
 
     int i, fBits, j;
 
@@ -371,8 +371,8 @@ static int PositionInv( int nID, int n, int r ) {
         PositionInv( nID - nC, n - 1, r - 1 ) : PositionInv( nID, n - 1, r );
 }
 
-extern void PositionFromBearoff( int anBoard[], const unsigned int usID,
-                                 const int nPoints, const int nChequers ) {
+extern void PositionFromBearoff( int anBoard[], unsigned int usID,
+                                 int nPoints, int nChequers ) {
     
     int fBits = PositionInv( usID, nChequers + nPoints, nPoints );
     int i, j;

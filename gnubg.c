@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.532 2004/02/09 13:02:30 uid68519 Exp $
+ * $Id: gnubg.c,v 1.533 2004/02/12 10:31:27 uid68519 Exp $
  */
 
 #include "config.h"
@@ -6717,7 +6717,7 @@ extern void outputl( const char *sz ) {
 }
     
 /* Write a character to stdout/status bar/popup window */
-extern void outputc( char ch ) {
+extern void outputc( const char ch ) {
 
     char sz[ 2 ] = { ch, 0 };
     
@@ -7391,6 +7391,10 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #endif
 #if USE_GTK
     GtkWidget *pwSplash = NULL;
+#endif
+
+#if defined(_MSC_VER) && HAVE_LIBXML2
+	xmlMemSetup(free, malloc, realloc, strdup);
 #endif
 
 #if !WIN32

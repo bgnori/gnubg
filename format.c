@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.9 2004/01/01 19:31:10 uid65656 Exp $
+ * $Id: format.c,v 1.10 2004/02/12 10:31:27 uid68519 Exp $
  */
 
 #include "config.h"
@@ -751,9 +751,9 @@ extern char *
 OutputCubeAnalysisFull ( const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                          const float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                          const evalsetup* pes, const cubeinfo* pci,
-                         const int fDouble, const int fTake,
-                         const skilltype stDouble,
-                         const skilltype stTake ) {
+                         int fDouble, int fTake,
+                         skilltype stDouble,
+                         skilltype stTake ) {
 
   float r;
 

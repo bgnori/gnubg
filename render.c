@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.30 2004/01/30 09:33:50 uid68519 Exp $
+ * $Id: render.c,v 1.31 2004/02/12 10:31:27 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -274,7 +274,7 @@ static void CopyAreaClip( unsigned char *puchDest, int nDestStride,
     if( cx <= 0 || cy <= 0 )
 	return;
 
-    return CopyArea( puchDest + yDest * nDestStride + xDest * 3, nDestStride,
+    CopyArea( puchDest + yDest * nDestStride + xDest * 3, nDestStride,
 		     puchSrc + ySrc * nSrcStride + xSrc * 3, nSrcStride,
 		     cx, cy );
 }
@@ -288,8 +288,11 @@ extern void CopyAreaRotateClip( unsigned char *puchDest, int nDestStride,
     int x, nSrcPixelStride = 0, nSrcRowStride = 0;
     
     if( !( nTheta %= 4 ) )
-	return CopyAreaClip( puchDest, nDestStride, xDest, yDest, cxDest,
+	{
+		CopyAreaClip( puchDest, nDestStride, xDest, yDest, cxDest,
 			     cyDest, puchSrc, nSrcStride, xSrc, ySrc, cx, cy );
+		return;
+	}
 
     puchSrc += ySrc * nSrcStride + xSrc * 3;
     

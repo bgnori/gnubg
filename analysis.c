@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.152 2004/01/01 19:29:24 uid65656 Exp $
+ * $Id: analysis.c,v 1.153 2004/02/12 10:31:27 uid68519 Exp $
  */
 
 #include "config.h"
@@ -270,7 +270,7 @@ static lucktype Luck( float r ) {
 }
 
 extern skilltype
-Skill( float const r )
+Skill( float r )
 {
   if( r < -arSkillLevel[ SKILL_VERYBAD ] )
     return SKILL_VERYBAD;
@@ -1458,7 +1458,7 @@ IniStatcontext ( statcontext *psc ) {
 
 
 extern float
-relativeFibsRating ( const float r, const int n )
+relativeFibsRating ( float r, int n )
 {
   float const x = - 2000.0 / sqrt ( 1.0 * n ) * log10 ( 1.0 / r - 1.0 );
 
@@ -1899,7 +1899,7 @@ updateStatisticsMatch ( list *plMatch ) {
 
 
 
-extern int getLuckRating ( const float rLuck ) {
+extern int getLuckRating ( float rLuck ) {
 
   if ( rLuck < -0.10 )
     return 0;
