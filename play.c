@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.114 2002/03/19 21:45:33 thyssen Exp $
+ * $Id: play.c,v 1.115 2002/03/22 15:25:34 gtw Exp $
  */
 
 #include "config.h"
@@ -2335,6 +2335,7 @@ extern void ChangeGame( list *plGameNew ) {
     
 #if USE_GTK
     if( fX ) {
+	GTKFreeze();
 	GTKClearMoveRecord();
 
 	for( pl = plGame->plNext; pl->p; pl = pl->plNext ) {
@@ -2343,6 +2344,7 @@ extern void ChangeGame( list *plGameNew ) {
 	}
 
 	GTKSetGame( GameIndex( plGame ) );
+	GTKThaw();
     }
 #endif
     
