@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.46 2001/02/26 23:58:40 gtw Exp $
+ * $Id: set.c,v 1.47 2001/03/09 16:02:14 gtw Exp $
  */
 
 #include "config.h"
@@ -986,6 +986,27 @@ extern void CommandSetSeed( char *sz ) {
 	outputl( InitRNG( NULL, TRUE ) ?
 		 "Seed initialised from system random data." :
 		 "Seed initialised by system clock." );
+}
+
+extern void CommandSetTrainingAlpha( char *sz ) {
+
+    float r = ParseReal( &sz );
+
+    if( r <= 0.0f || r > 1.0f ) {
+	outputl( "You must specify a value for alpha which is greater than\n"
+		 "zero, and no more than one." );
+	return;
+    }
+
+    rAlpha = r;
+    outputf( "Alpha set to %f.\n", r );
+}
+
+extern void CommandSetTrainingAnneal( char *sz ) {
+
+    SetToggle( "training anneal", &fAnneal, sz,
+	       "Will reduce alpha as training progresses.",
+	       "Will not reduce alpha as training progresses." );
 }
 
 extern void CommandSetTurn( char *sz ) {
