@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.h,v 1.5 2000/01/19 17:01:12 gtw Exp $
+ * $Id: xgame.h,v 1.6 2000/02/19 23:25:26 gtw Exp $
  */
 
 #ifndef _GAME_H_
@@ -71,7 +71,7 @@ extern extwindowclass ewcGame;
 /* FIXME these shouldn't be part of the interface... Board windows should
    send client messages to their owners instead */
 extern int StatsConfirm( extwindow *pewnd );
-extern int StatsMove( extwindow *pewnd, int nSource, int nDest, int fHit );
+extern int StatsMove( extwindow *pewnd );
 
 extern void GameRedrawDice( extwindow *pewnd, gamedata *pgd, int x, int y,
 			     int fColour, int i );

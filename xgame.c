@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.c,v 1.12 2000/01/31 17:53:33 gtw Exp $
+ * $Id: xgame.c,v 1.13 2000/02/19 23:25:26 gtw Exp $
  */
 
 #include "config.h"
@@ -255,7 +255,7 @@ static void StatsUpdateBoardID( extwindow *pewnd, statsdata *psd,
 			      PositionID( anBoard ), 15 );
 }
 
-extern int StatsMove( extwindow *pewnd, int nSource, int nDest, int fHit ) {
+extern int StatsMove( extwindow *pewnd ) {
 
     char sz[ 40 ], *pch = "Illegal move";
     statsdata *psd = pewnd->pv;
