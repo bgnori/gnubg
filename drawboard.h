@@ -16,11 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.h,v 1.7 2001/02/13 18:22:43 gtw Exp $
+ * $Id: drawboard.h,v 1.8 2001/07/26 14:44:47 gtw Exp $
  */
 
 #ifndef _DRAWBOARD_H_
 #define _DRAWBOARD_H_
+
+extern int fClockwise; /* Player 1 moves clockwise */
 
 extern char *DrawBoard( char *pch, int anBoard[ 2 ][ 25 ], int fRoll,
                         char *asz[] );

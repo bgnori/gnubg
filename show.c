@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.65 2001/05/23 15:12:29 thyssen Exp $
+ * $Id: show.c,v 1.66 2001/07/26 14:44:47 gtw Exp $
  */
 
 #include "config.h"
@@ -302,6 +302,16 @@ extern void CommandShowCache( char *sz ) {
     outputc( '\n' );
 }
 
+extern void CommandShowClockwise( char *sz ) {
+
+    if( fClockwise )
+	outputl( "Player 1 moves clockwise (and player 0 moves "
+		 "anticlockwise)." );
+    else
+	outputl( "Player 1 moves anticlockwise (and player 0 moves "
+		 "clockwise)." );
+}
+
 static void ShowCommands( command *pc, char *szPrefix ) {
 
     char sz[ 64 ], *pch;
@@ -428,6 +438,14 @@ extern void CommandShowEvaluation( char *sz ) {
 
 }
 
+extern void CommandShowEgyptian( char *sz ) {
+
+    if ( fEgyptian )
+      outputl( "Sessions are played with the Egyptian rule." );
+    else
+      outputl( "Sessions are played without the Egyptian rule." );
+
+}
 
 extern void CommandShowJacoby( char *sz ) {
 
