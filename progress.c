@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.8 2003/09/02 23:57:10 kaoru Exp $
+ * $Id: progress.c,v 1.9 2003/10/03 17:16:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -945,7 +945,7 @@ TextRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
 
   /* To avoid *.po include \r. */
   outputf( _("Rollout: %d/%d trials"), iGame, prc->nTrials );
-  outputl( "      \r" );
+  output( "      \r" );
   fflush( stdout );
 
 }
