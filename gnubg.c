@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.529 2004/02/04 18:02:17 uid68519 Exp $
+ * $Id: gnubg.c,v 1.530 2004/02/06 09:37:48 uid68519 Exp $
  */
 
 #include "config.h"
@@ -4158,7 +4158,7 @@ Shutdown( void ) {
    and a game is in progress, then we ask the user if they're sure. */
 extern void PromptForExit( void ) {
 
-    static int fExiting;
+    static int fExiting = FALSE;
 #if USE_BOARD3D
 	BoardData* bd = NULL;
 	
@@ -4210,8 +4210,6 @@ extern void PromptForExit( void ) {
     
     SoundWait();
 
-    Shutdown();
-    
 #if USE_BOARD3D
 	if (fX)
 		Tidy3dObjects(bd, TRUE);
@@ -4228,7 +4226,10 @@ extern void PromptForExit( void ) {
         }
 #endif /* HAVE_READLINE */
 
-    exit( EXIT_SUCCESS );
+	if (gtk_main_level() == 1)
+		gtk_main_quit();
+	else
+		exit( EXIT_SUCCESS );
 }
 
 extern void CommandNotImplemented( char *sz ) {
