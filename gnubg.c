@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.168 2001/10/31 15:59:46 gtw Exp $
+ * $Id: gnubg.c,v 1.169 2001/11/01 15:47:56 gtw Exp $
  */
 
 #include "config.h"
@@ -107,6 +107,10 @@ event evNextTurn;
 
 #ifdef WIN32
 #include<windows.h>
+#endif
+
+#if defined(MSDOS) || defined(__MSDOS__) || defined(WIN32)
+#define NO_BACKSLASH_ESCAPES 1
 #endif
 
 #if USE_GUI
@@ -322,7 +326,7 @@ command cFilename = {
     { "dump", CommandDatabaseDump, "List the positions in the database",
       NULL, NULL },
     { "export", CommandDatabaseExport, "Write the positions in the database "
-      "to a portable format", NULL, NULL },
+      "to a portable format", szFILENAME, &cFilename },
     { "generate", CommandDatabaseGenerate, "Generate database positions by "
       "self-play", szOPTVALUE, NULL },
     { "import", CommandDatabaseImport, "Merge positions into the database",
@@ -373,7 +377,7 @@ command cFilename = {
     { NULL, NULL, NULL, NULL, NULL }
 }, acExport[] = {
     { "database", CommandDatabaseExport, "Write the positions in the database "
-      "to a portable format", NULL, NULL },
+      "to a portable format", szFILENAME, &cFilename },
     { "game", NULL, "Record a log of the game so far to a file", NULL,
       acExportGame },
     { "match", NULL, "Record a log of the match so far to a file", NULL,
@@ -876,8 +880,12 @@ extern char *NextToken( char **ppch ) {
 		/* literal */
 		*pchSave++ = **ppch;
 	    break;
-	    
+
+#if NO_BACKSLASH_ESCAPES
+	case '%':
+#else
 	case '\\':
+#endif
 	    /* backslash */
 	    if( chQuote == '\'' )
 		/* literal */
@@ -890,7 +898,11 @@ extern char *NextToken( char **ppch ) {
 		    *pchSave++ = **ppch;
 		else {
 		    /* end of string -- the backlash doesn't quote anything */
+#if NO_BACKSLASH_ESCAPES
+		    *pchSave++ = '%';
+#else
 		    *pchSave++ = '\\';
+#endif
 		    fEnd = TRUE;
 		}
 	    }
@@ -2535,6 +2547,8 @@ extern void CommandLoadCommands( char *sz ) {
 
     FILE *pf;
 
+    sz = NextToken( &sz );
+    
     if( !sz || !*sz ) {
 	outputl( "You must specify a file to load from (see `help load "
 		 "commands')." );
@@ -2552,6 +2566,8 @@ extern void CommandImportJF( char *sz ) {
 
     FILE *pf;
 
+    sz = NextToken( &sz );
+    
     if( ms.gs != GAME_PLAYING ) {
 	outputl( "There must be a game in progress to import a Jellyfish "
                  "position." );
@@ -2578,6 +2594,8 @@ extern void CommandImportMat( char *sz ) {
 
     FILE *pf;
     
+    sz = NextToken( &sz );
+    
     if( !sz || !*sz ) {
 	outputl( "You must specify a match file to import (see `help "
 		 "import mat')." );
@@ -2595,6 +2613,8 @@ extern void CommandImportOldmoves( char *sz ) {
 
     FILE *pf;
     
+    sz = NextToken( &sz );
+    
     if( !sz || !*sz ) {
 	outputl( "You must specify an oldmoves file to import (see `help "
 		 "import oldmoves')." );
@@ -2611,6 +2631,8 @@ extern void CommandImportOldmoves( char *sz ) {
 extern void CommandImportSGG( char *sz ) {
 
     FILE *pf;
+    
+    sz = NextToken( &sz );
     
     if( !sz || !*sz ) {
 	outputl( "You must specify an SGG file to import (see `help "
@@ -2714,6 +2736,8 @@ extern void CommandExportGameGam( char *sz ) {
     
     FILE *pf;
 
+    sz = NextToken( &sz );
+    
     if( !plGame ) {
 	outputl( "No game in progress (type `new game' to start one)." );
 	return;
@@ -2745,6 +2769,8 @@ extern void CommandExportMatchMat( char *sz ) {
     list *pl;
 
     /* FIXME what should be done if nMatchTo == 0? */
+    
+    sz = NextToken( &sz );
     
     if( !plGame ) {
 	outputl( "No game in progress (type `new game' to start one)." );
@@ -3067,6 +3093,8 @@ extern void CommandSaveSettings( char *szParam ) {
 
 extern void CommandSaveWeights( char *sz ) {
 
+    sz = NextToken( &sz );
+    
     if( !sz || !*sz )
 	sz = GNUBG_WEIGHTS;
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.31 2001/10/30 16:14:12 gtw Exp $
+ * $Id: sgf.c,v 1.32 2001/11/01 15:47:56 gtw Exp $
  */
 
 #include "config.h"
@@ -809,6 +809,8 @@ extern void CommandLoadGame( char *sz ) {
 
     list *pl;
 
+    sz = NextToken( &sz );
+    
     if( !sz || !*sz ) {
 	outputl( "You must specify a file to load from (see `help load "
 		 "game')." );
@@ -854,6 +856,8 @@ extern void CommandLoadMatch( char *sz ) {
 
     list *pl;
 
+    sz = NextToken( &sz );
+    
     if( !sz || !*sz ) {
 	outputl( "You must specify a file to load from (see `help load "
 		 "match')." );
@@ -1280,6 +1284,8 @@ extern void CommandSaveGame( char *sz ) {
 
     FILE *pf;
 
+    sz = NextToken( &sz );
+    
     if( !plGame ) {
 	outputl( "No game in progress (type `new game' to start one)." );
 	return;
@@ -1309,6 +1315,8 @@ extern void CommandSaveMatch( char *sz ) {
     FILE *pf;
     list *pl;
 
+    sz = NextToken( &sz );
+    
     if( !plGame ) {
 	outputl( "No game in progress (type `new game' to start one)." );
 	return;

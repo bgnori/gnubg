@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.7 2001/10/29 15:11:58 gtw Exp $
+ * $Id: postscript.c,v 1.8 2001/11/01 15:47:56 gtw Exp $
  */
 
 #include "config.h"
@@ -937,6 +937,8 @@ static void ExportGameGeneral( int f, char *sz ) {
 
     FILE *pf;
 
+    sz = NextToken( &sz );
+    
     if( !plGame ) {
 	outputl( "No game in progress (type `new game' to start one)." );
 	return;
@@ -987,6 +989,8 @@ static void ExportMatchGeneral( int f, char *sz ) {
     FILE *pf;
     list *pl;
 
+    sz = NextToken( &sz );
+    
     if( !plGame ) {
 	outputl( "No game in progress (type `new game' to start one)." );
 	return;

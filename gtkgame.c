@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.81 2001/10/31 15:57:40 gtw Exp $
+ * $Id: gtkgame.c,v 1.82 2001/11/01 15:47:56 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2745,7 +2745,7 @@ static void FileCommand( char *szPrompt, char *szCommand ) {
 #else
 	char sz[ 1024 ];
 #endif
-	sprintf( sz, "%s %s", szCommand, pch );
+	sprintf( sz, "%s \"%s\"", szCommand, pch );
 	UserCommand( sz );
 
 	g_free( pch );
