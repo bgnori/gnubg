@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.1.2.6 2003/06/17 08:28:24 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.1.2.7 2003/06/18 07:06:27 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -2806,9 +2806,9 @@ void TidyShadows()
 	freeOccluder(&Occluders[OCC_PIECE]);
 }
 
-void SetShadowDimness(BoardData* bd, int percent)
+void SetShadowDimness3d()
 {
-	dim = (bd->LightDiffuse * (100 - percent)) / 100;
+	dim = (pCurBoard->LightDiffuse * (100 - rdAppearance.shadowDarkness)) / 100;
 }
 
 void RotateClosingBoard(BoardData* bd)

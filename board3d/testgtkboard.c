@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: testgtkboard.c,v 1.1.2.3 2003/06/16 07:11:39 Superfly_Jon Exp $
+* $Id: testgtkboard.c,v 1.1.2.4 2003/06/18 07:06:27 Superfly_Jon Exp $
 */
 
 #include <memory.h>
@@ -208,6 +208,7 @@ setDicePos(bd);
 
 #if !BUILDING_LIB
 	InitialPos(bd);
+	SetShadowDimness(bd, 50);
 #endif
 
 	bd->fovAngle = 45.0f;
@@ -215,8 +216,6 @@ setDicePos(bd);
 
 	bd->resigned = 0;
 	SetupMat(&bd->flagMat, 1, 1, 1, 1, 1, 1, 1, 1, 1, 50, 0);
-
-	SetShadowDimness(bd, 50);
 
 	bd->DragTargetHelp = 0;
 }

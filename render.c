@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.13.4.4 2003/06/17 08:20:19 Superfly_Jon Exp $
+ * $Id: render.c,v 1.13.4.5 2003/06/18 07:06:27 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -110,6 +110,7 @@ renderdata rdDefault = {
 #if USE_BOARD3D
 	, DT_3D,	/* Display type */
 	FALSE,	/* Show shadows */
+	50,	/* Shadow darkness */
 	1,	/* Test skin */
 	0,	/* Animate roll */
 	0,	/* Animate flag */

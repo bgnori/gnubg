@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.3.4.5 2003/06/17 08:20:19 Superfly_Jon Exp $
+ * $Id: renderprefs.c,v 1.3.4.6 2003/06/18 07:06:27 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -281,6 +281,11 @@ extern void RenderPreferencesParam( renderdata *prd, char *szParam,
 #if USE_BOARD3D
     else if( !strncasecmp( szParam, "boardshadows", c ) )
 		prd->showShadows = toupper( *szValue ) == 'Y';
+    else if( !strncasecmp( szParam, "shadowdarkness", c ) )
+	{
+		prd->shadowDarkness = atoi(szValue);
+		SetShadowDimness3d();
+	}
     else if( !strncasecmp( szParam, "testskin", c ) )
 		prd->skin3d = atoi( szValue );
     else if( !strncasecmp( szParam, "animateroll", c ) )
@@ -435,6 +440,7 @@ extern char *RenderPreferencesCommand( renderdata *prd, char *sz ) {
 #if USE_BOARD3D
 		 "boardtype=%c "
 		 "boardshadows=%c "
+		 "shadowdarkness=%d "
 		 "testskin=%d "
 		 "animateroll=%c "
 		 "animateflag=%c "
@@ -461,6 +467,7 @@ extern char *RenderPreferencesCommand( renderdata *prd, char *sz ) {
 #if USE_BOARD3D
 		prd->fDisplayType == DT_2D ? '2' : '3',
 		prd->showShadows ? 'y' : 'n',
+		prd->shadowDarkness,
 		prd->skin3d,
 		prd->animateRoll ? 'y' : 'n',
 		prd->animateFlag ? 'y' : 'n',

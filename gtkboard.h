@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.42.2.4 2003/06/16 07:11:38 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.42.2.5 2003/06/18 07:06:27 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -230,6 +230,7 @@ extern void RollDice3d();
 extern void AnimateMove3d();
 extern void ShowFlag3d();
 extern void StopIdle3d();
+extern void SetShadowDimness3d();
 
 extern void PlaceMovingPieceRotation(int dest, int src);
 extern void SetMovingPieceRotation(int pt);
