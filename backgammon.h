@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.253 2003/09/05 22:55:50 hb Exp $
+ * $Id: backgammon.h,v 1.254 2003/09/10 19:30:39 jsegrave Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -69,6 +69,9 @@ typedef RETSIGTYPE (*psighandler)( int );
 #include <stdlib.h>
 #define BIG_PATH _MAX_PATH
 #else
+#ifdef HAVE_LIMITS_H
+#include <limits.h>
+#endif
 #define BIG_PATH PATH_MAX
 #endif
 
