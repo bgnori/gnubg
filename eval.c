@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.191 2002/11/27 17:47:40 jsegrave Exp $
+ * $Id: eval.c,v 1.192 2002/11/27 20:05:18 thyssen Exp $
  */
 
 #include "config.h"
@@ -4695,7 +4695,7 @@ Cl2CfMoney ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci ) {
         rEq = 1.0; /* gammons don't count: rW = 1 */
       else
         rEq = rW + 
-          ( rW - 1.0 ) * ( arOutput[ 0 ] - 1.0 ) / ( rTG - 1.0 ) ;
+          ( 1.0  - rW ) * ( arOutput[ 0 ] - 1.0 ) / ( rTG - 1.0 ) ;
     }
 
   }
