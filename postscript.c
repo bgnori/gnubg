@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.10 2002/03/19 18:17:03 oysteijo Exp $
+ * $Id: postscript.c,v 1.11 2002/03/19 21:48:15 thyssen Exp $
  */
 
 #include "config.h"
@@ -25,6 +25,7 @@
 #include <ctype.h>
 #include <dynarray.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.35 2001/12/16 11:57:46 thyssen Exp $
+ * $Id: database.c,v 1.36 2002/03/19 21:48:15 thyssen Exp $
  */
 
 #include "config.h"
@@ -27,6 +27,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "backgammon.h"
 #include "dice.h"
