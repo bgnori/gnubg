@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.26 2003/10/01 08:39:04 Superfly_Jon Exp $
+ * $Id: render.c,v 1.27 2003/10/14 10:04:11 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -172,6 +172,7 @@ renderdata rdDefault = {
 	0,	/* Plan view */
 	3,	/* Dice size */
 	0,	/* Rounded edges */
+	1,	/* Background in trays */
 	PT_ROUNDED,	/* Piece type */
 	PTT_ALL,	/* Piece texture type */
 	/* Default 3d colours - black+white, should never be used -

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.13 2003/09/22 11:03:08 Superfly_Jon Exp $
+ * $Id: render.h,v 1.14 2003/10/14 10:04:11 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -134,6 +134,7 @@ typedef struct _renderdata {
 	int planView;	/* Ortho view? */
 	float diceSize;	/* How big are the dice */
 	int roundedEdges;	/* Rounded board edges? */
+	int bgInTrays;	/* Rounded board edges? */
 	PieceType pieceType;	/* Different piece models */
 	PieceTextureType pieceTextureType;	/* Different piece texture types */
 

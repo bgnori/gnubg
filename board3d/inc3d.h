@@ -18,12 +18,10 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.12 2003/09/18 10:49:30 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.13 2003/10/14 10:04:12 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
-
-#include <gtk/gtk.h>
 
 #ifdef TRUE
 #undef TRUE
@@ -36,13 +34,13 @@
 #include <stdio.h>
 #include "i18n.h"
 
-/*#define USE_MSDEV_TEST_HARNESS*/
+#if USE_GTK
+#include <gtk/gtk.h>
+#endif
+
 #ifdef USE_MSDEV_TEST_HARNESS
-	#undef USE_GTK
 	#define USE_GLUT
 	#define USE_GLUT_FONT
-	/* Comment out next line to switch test harness off */
-	#define TEST
 
 	#define AlphaBlend ab
 	#define gtk_main_quit() 0

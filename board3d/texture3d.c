@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: texture3d.c,v 1.5 2003/10/07 11:08:32 Superfly_Jon Exp $
+* $Id: texture3d.c,v 1.6 2003/10/14 10:04:12 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -189,9 +189,7 @@ unsigned char *LoadDIBTexture(FILE *fp, int *width, int *height)
 	return bits;
 }
 
-#include "config.h"
-
-#ifdef HAVE_LIBPNG
+#if HAVE_LIBPNG
 
 #include <png.h>
 
