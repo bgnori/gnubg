@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.24 2002/07/27 17:03:38 thyssen Exp $
+ * $Id: guile.c,v 1.25 2002/07/28 21:14:53 thyssen Exp $
  */
 
 #include "config.h"
@@ -32,6 +32,7 @@
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif
+#include <string.h>
 
 #include "backgammon.h"
 #include "eval.h"
