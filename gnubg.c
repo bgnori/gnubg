@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.434 2003/07/14 08:09:42 thyssen Exp $
+ * $Id: gnubg.c,v 1.435 2003/07/15 14:13:51 hb Exp $
  */
 
 #include "config.h"
@@ -6709,7 +6709,6 @@ static RETSIGTYPE SoundChild ( int n ) {
 static char *
 ChangeDisk( const char *szMsg, const int fChange, const char *szMissingFile ) {
 
-  int implement_me = 0;
   char *pch;
   char *pchToken;
 
