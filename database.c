@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.2 2000/01/03 17:52:23 gtw Exp $
+ * $Id: database.c,v 1.3 2000/01/14 20:44:37 gtw Exp $
  */
 
 #include "config.h"
@@ -123,8 +123,8 @@ extern void CommandDatabaseEvaluate( char *sz ) {
 	    /* FIXME if position has some existing rollouts, merge them */
 	    
 	    /* FIXME allow user to change these parameters */
-	    if( ( pev->c = Rollout( anBoardEval, arOutput, NULL, 0, 7, 144 ) )
-		> 0 ) {
+	    if( ( pev->c = Rollout( anBoardEval, arOutput, NULL, 0, 7, 144,
+				    FALSE ) ) > 0 ) {
 		for( i = 0; i < NUM_OUTPUTS; i++ )
 		    pev->asEq[ i ] = arOutput[ i ] * 0xFFFF;
 

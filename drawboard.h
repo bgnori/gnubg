@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.h,v 1.3 2000/01/13 16:50:09 gtw Exp $
+ * $Id: drawboard.h,v 1.4 2000/01/14 20:44:37 gtw Exp $
  */
 
 #ifndef _DRAWBOARD_H_
@@ -25,6 +25,8 @@
 extern char *DrawBoard( char *pch, int anBoard[ 2 ][ 25 ], int fRoll,
 			char *asz[] );
 extern char *FormatMove( char *pch, int anBoard[ 2 ][ 25 ], int anMove[ 8 ] );
+extern char *FormatMovePlain( char *pch, int anBoard[ 2 ][ 25 ],
+			      int anMove[ 8 ] );
 extern int ParseMove( char *pch, int an[ 8 ] );
 
 #endif
