@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.h,v 1.4 2003/08/13 11:52:27 Superfly_Jon Exp $
+ * $Id: external.h,v 1.5 2003/12/31 22:43:08 uid65656 Exp $
  */
 
 #ifndef _EXTERNAL_H_
@@ -35,9 +35,37 @@
 #include <winsock.h>
 #endif /* #ifndef WIN32 */
 
+typedef enum _cmdtype  {
+  COMMAND_NONE = 0,
+  COMMAND_FIBSBOARD = 1,
+  COMMAND_EVALUATION = 2
+} cmdtype;
+
+
+typedef struct _extcmd {
+  cmdtype ct;
+  
+  /* evalcontext */
+  int nPlies;
+  float rNoise;
+  int fDeterministic;
+  int fCubeful;
+  int nReduced;
+
+  /* fibs board */
+  char *szFIBSBoard;
+} extcmd;
+
+static extcmd cmd;
+
 extern int ExternalSocket( struct sockaddr **ppsa, int *pcb, char *sz );
 extern int ExternalRead( int h, char *pch, int cch );
 extern int ExternalWrite( int h, char *pch, int cch );
+
+/* Parser functions */
+
+extern void ( *ExtErrorHandler )( char *szMessage, char *szNear, 
+                                  int fParseError );
 
 #endif /* #if HAVE_SOCKETS */
 

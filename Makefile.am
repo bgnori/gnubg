@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.120 2003/12/29 22:14:34 uid65656 Exp $
+## $Id: Makefile.am,v 1.121 2003/12/31 22:43:08 uid65656 Exp $
 
 localedir = $(datadir)/locale
 
@@ -92,7 +92,8 @@ COMMON_SOURCES = backgammon.h gnubg.c getopt.h getopt.c getopt1.c eval.h \
 	onechequer.c onechequer.h path.c path.h render.c render.h \
 	htmlimages.c speed.c renderprefs.c renderprefs.h \
 	boardpos.c boardpos.h progress.c progress.h format.c format.h \
-	formatgs.c formatgs.h boarddim.h timer.c $(LIBGEN_SOURCES)
+	formatgs.c formatgs.h boarddim.h timer.c $(LIBGEN_SOURCES) \
+	external_y.y external_l.l
 COMMON_DEPS = @LIBOBJS@ lib/libevent.a
 
 bin_PROGRAMS = gnubg makebearoff makehyper
@@ -174,7 +175,7 @@ distcheck-hook:
 
 EXTRA_DIST = userrng.c copying.awk gnubgtest sgf.l sgf.y gnubg.6 gnubg.scm \
 	gnubg.gtkrc credits.sh erf.c xboard.c xboard.h xgame.c xgame.h \
-	ABOUT-NLS boards.xml gnubg.py
+	ABOUT-NLS boards.xml gnubg.py external_l.l external_y.y
 
 DISTCLEANFILES=gnubg.wd
 
