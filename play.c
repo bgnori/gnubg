@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.148 2002/08/08 18:52:34 thyssen Exp $
+ * $Id: play.c,v 1.149 2002/08/10 11:28:28 thyssen Exp $
  */
 
 #include "config.h"
@@ -1055,14 +1055,20 @@ extern int ComputerTurn( void ) {
           case TOOGOODRE_PASS:
           case NODOUBLE_BEAVER:
           case NO_REDOUBLE_BEAVER:
+
+            /* better leave cube where it is: no op */
+            break;
+
           case OPTIONAL_DOUBLE_BEAVER:
           case OPTIONAL_DOUBLE_TAKE:
           case OPTIONAL_REDOUBLE_TAKE:
           case OPTIONAL_DOUBLE_PASS:
           case OPTIONAL_REDOUBLE_PASS:
 
-            /* better leave cube where it is: no op */
-            break;
+            if ( ap [ ms.fTurn ].esCube.et == EVAL_EVAL &&
+                 ap [ ms.fTurn ].esCube.ec.nPlies == 0 )
+              /* double if 0-ply */
+              CommandDouble ( NULL );
 
           default:
 
