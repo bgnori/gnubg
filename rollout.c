@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.54 2002/01/06 15:43:24 thyssen Exp $
+ * $Id: rollout.c,v 1.55 2002/01/24 20:09:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -991,7 +991,7 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
 
         }
 
-        aar[ ici ][ OUTPUT_EQUITY ] = Utility ( aar[ ici ], &aciLocal [ ici ]);
+        aar[ ici ][ OUTPUT_EQUITY ] = Utility ( aar[ ici ], &aci [ ici ]);
       
         for( j = 0; j < NUM_ROLLOUT_OUTPUTS; j++ ) {
 	  float rMuNew, rDelta;
