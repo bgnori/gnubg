@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.52 2001/03/16 15:18:04 gtw Exp $
+ * $Id: show.c,v 1.53 2001/03/19 15:53:25 gtw Exp $
  */
 
 #include "config.h"
@@ -169,7 +169,7 @@ extern void CommandShowCache( char *sz ) {
 
     int c, cLookup, cHit;
 
-    EvalCacheStats( &c, &cLookup, &cHit );
+    EvalCacheStats( &c, NULL, &cLookup, &cHit );
 
     outputf( "%d cache entries have been used.  %d lookups, %d hits",
 	    c, cLookup, cHit );
@@ -397,9 +397,11 @@ extern void CommandShowRollout( char *sz ) {
     ShowEvaluation( &ecRollout );
 
     outputf( "%d game%s will be played per rollout, truncating after %d "
-	    "pl%s.\nLookahead variance reduction is %sabled.\n",
-	    nRollouts, nRollouts == 1 ? "" : "s", nRolloutTruncate,
-	    nRolloutTruncate == 1 ? "y" : "ies", fVarRedn ? "en" : "dis" );
+	     "pl%s.\nLookahead variance reduction is %sabled.\n"
+	     "The base seed for rollout dice generation is %u.\n",
+	     nRollouts, nRollouts == 1 ? "" : "s", nRolloutTruncate,
+	     nRolloutTruncate == 1 ? "y" : "ies", fVarRedn ? "en" : "dis",
+	     nRolloutSeed );
 }
 
 extern void CommandShowScore( char *sz ) {
@@ -642,18 +644,18 @@ extern void CommandShowMatchEquityTable ( char *sz ) {
 
 extern void CommandShowOutput( char *sz ) {
 
-    outputf( "Match equities will be shown as %s.\n", fOutputMatchPC ?
-	    "percentages" : "probabilities" );
+    outputf( "Match winning chances will be shown as %s.\n", fOutputMatchPC ?
+	     "percentages" : "probabilities" );
 
     if ( fOutputMWC )
-	outputl( "Output shown in MWC (match winning chance) "
+	outputl( "Match equities shown in MWC (match winning chance) "
 	      "(match play only)." ); 
     else
-	outputl( "Output shown in EMG (normalized money game equity) "
+	outputl( "Match equities shown in EMG (normalized money game equity) "
 	      "(match play only)." ); 
 
-    outputf( "Winning chances will be shown as %s.\n", fOutputWinPC ?
-	    "percentages" : "probabilities" );
+    outputf( "Game winning chances will be shown as %s.\n", fOutputWinPC ?
+	     "percentages" : "probabilities" );
 
 #if USE_GUI
     if( !fX )
