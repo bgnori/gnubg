@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.130 2002/10/15 15:40:24 thyssen Exp $
+ * $Id: set.c,v 1.131 2002/10/16 17:33:33 thyssen Exp $
  */
 
 #include "config.h"
@@ -3164,19 +3164,19 @@ CommandSetPriorityAboveNormal ( char *sz ) {
 }
 
 extern void
-CommandSetPriorityHigh ( char *sz ) {
+CommandSetPriorityHighest ( char *sz ) {
 
   Win32SetPriority ( THREAD_PRIORITY_HIGHEST, 
                      "highest priority" );
 
 }
 
-extern void
-CommandSetPriorityRealtime ( char *sz ) {
+extern void 
+CommandSetPriorityTimeCritical ( char *sz ) {
 
-  Win32SetPriority ( THREAD_PRIORITY_TIME_CRITIAL, 
+  Win32SetPriority ( THREAD_PRIORITY_TIME_CRITICAL,
                      "time critical" );
-
-}
+      
+}     
 
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.165 2002/10/14 19:13:59 thyssen Exp $
+ * $Id: backgammon.h,v 1.166 2002/10/16 17:33:33 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -747,8 +747,8 @@ extern void CommandAccept( char * ),
     CommandSetPriorityBelowNormal ( char * ),
     CommandSetPriorityNormal ( char * ),
     CommandSetPriorityAboveNormal ( char * ),
-    CommandSetPriorityHigh ( char * ),
-    CommandSetPriorityRealtime ( char * ),
+    CommandSetPriorityHighest ( char * ),
+    CommandSetPriorityTimeCritical ( char * ),
     CommandSetPrompt( char * ),
     CommandSetRecord( char * ),
     CommandSetRNG( char * ),
@@ -872,5 +872,15 @@ extern int fTutorAnalysis;
 extern char *
 basename ( const char *filename );
 #endif
+
+#if GTK_CHECK_VERSION(1,3,0)
+#define GNUBG_CHARSET "UTF-8"
+#else
+#define GNUBG_CHARSET "ISO-8859-1"
+#endif
+
+extern char *
+Convert ( const char *sz, 
+          const char *szSourceCharset, const char *szDestCharset );
 
 #endif
