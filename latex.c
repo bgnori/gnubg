@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.7 2001/11/01 15:47:56 gtw Exp $
+ * $Id: latex.c,v 1.8 2001/11/06 15:52:58 gtw Exp $
  */
 
 #include "config.h"
@@ -380,6 +380,7 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 	    break;
 	    
 	case MOVE_NORMAL:
+	    msExport.fTurn = msExport.fMove = pmr->n.fPlayer;
 	    if( fTook )
 		/* no need to print board following a double/take */
 		fTook = FALSE;
@@ -404,7 +405,7 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 		    continue;
 
 		putc( i == pmr->n.iMove ? '*' : ' ', pf );
-		FormatMoveHint( sz, msExport.anBoard, &pmr->n.ml, i,
+		FormatMoveHint( sz, &msExport, &pmr->n.ml, i,
 				i != pmr->n.iMove ||
 				i != pmr->n.ml.cMoves - 1 );
 		fputs( sz, pf );
