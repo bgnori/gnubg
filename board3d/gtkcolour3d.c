@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.19 2005/02/07 17:45:41 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.20 2005/03/30 15:40:41 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -187,7 +187,7 @@ void UpdateColourPreview(void *arg)
 		return;
 
 	if (useOpacity)
-		opacityValue = padjOpacity->value / 100.0f;
+		opacityValue = (float)padjOpacity->value / 100.0f;
 
 	gtk_colour_picker_get_colour(GTK_COLOUR_PICKER(pcpAmbient), ambient);
 	gtk_colour_picker_get_colour(GTK_COLOUR_PICKER(pcpDiffuse), diffuse);
