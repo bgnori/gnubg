@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.1.2.5 2003/08/06 09:03:36 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.1.2.6 2003/08/13 10:49:29 Superfly_Jon Exp $
 */
 
 #include <GL/gl.h>
@@ -73,7 +73,7 @@ extern void setMaterial(Material* pMat);
 extern void CheckOpenglError();
 extern void UpdatePreview(GtkWidget **ppw);
 extern void RenderPreview(Material* pMat, unsigned char* buf);
-extern int LoadTexture(Texture* texture, const char* Filename);
+extern int LoadTexture(Texture* texture, const char* Filename, TextureFormat format);
 extern BoardData bd3d;
 
 int previewLightLevels[3];
@@ -115,7 +115,7 @@ static void Draw(Material* pMat)
 		char buf[100];
 		strcpy(buf, TEXTURE_PATH);
 		strcat(buf, pMat->textureInfo->file);
-		LoadTexture(&texture, buf);
+		LoadTexture(&texture, buf, pMat->textureInfo->format);
 
 		gluQuadricTexture(qobj, GL_TRUE);
 

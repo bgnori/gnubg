@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.3.4.17 2003/08/06 09:03:36 Superfly_Jon Exp $
+ * $Id: renderprefs.c,v 1.3.4.18 2003/08/13 10:49:28 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -520,6 +520,8 @@ extern void RenderPreferencesParam( renderdata *prd, char *szParam,
 		prd->boardAngle = atoi(szValue);
     else if( !strncasecmp( szParam, "skewfactor", c ) )
 		prd->testSkewFactor = atoi(szValue);
+    else if( !strncasecmp( szParam, "planview", c ) )
+		prd->planView = toupper( *szValue ) == 'Y';
     else if( !strncasecmp( szParam, "dicesize", c ) )
 		prd->diceSize = atof(szValue);
     else if( !strncasecmp( szParam, "roundededges", c ) )
@@ -663,6 +665,7 @@ extern char *RenderPreferencesCommand( renderdata *prd, char *sz ) {
 		"moveindicator=%c "
 		"boardangle=%d "
 		"skewfactor=%d "
+		"planview=%c "
 		"dicesize=%f "
 		"roundededges=%c "
 		"piecetype=%d "
@@ -713,6 +716,7 @@ extern char *RenderPreferencesCommand( renderdata *prd, char *sz ) {
 		prd->showMoveIndicator ? 'y' : 'n',
 		prd->boardAngle,
 		prd->testSkewFactor,
+		prd->planView ? 'y' : 'n',
 		prd->diceSize,
 		prd->roundedEdges ? 'y' : 'n',
 		prd->pieceType,

@@ -18,11 +18,12 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.1.2.13 2003/08/06 09:03:36 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.1.2.14 2003/08/13 10:49:29 Superfly_Jon Exp $
 */
 
 #include <gtk/gtk.h>
 #include "config.h"
+#include <stdio.h>
 
 //#define USE_MSDEV_TEST_HARNESS
 #ifdef USE_MSDEV_TEST_HARNESS
@@ -79,13 +80,14 @@ float getBoardHeight();
 void calculateBackgroundSize(BoardData *bd, int viewport[4]);
 
 // Misc functions
-void SetTexture(BoardData* bd, Material* pMat, const char* filename);
+void SetTexture(BoardData* bd, Material* pMat, const char* filename, TextureFormat format);
 void SetupSimpleMatAlpha(Material* pMat, float r, float g, float b, float a);
 void SetupSimpleMat(Material* pMat, float r, float g, float b);
 void SetupMat(Material* pMat, float r, float g, float b, float dr, float dg, float db, float sr, float sg, float sb, int shin, float a);
 void setMaterial(Material* pMat);
 void SetColour(float r, float g, float b, float a);
-unsigned char *LoadDIBitmap(const char *filename, int *width, int *height);
+unsigned char *LoadDIBTexture(FILE* fp, int *width, int *height);
+unsigned char *LoadPNGTexture(FILE *fp, int *width, int *height);
 float randRange(float range);
 void setupPath(BoardData *bd, Path* p, float* pRotate, int fClockwise, int fromPoint, int fromDepth, int toPoint, int toDepth);
 int movePath(Path* p, float d, float* pRotate, float v[3]);

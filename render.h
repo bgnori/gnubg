@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.5.4.13 2003/08/06 09:03:36 Superfly_Jon Exp $
+ * $Id: render.h,v 1.5.4.14 2003/08/13 10:49:28 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -51,6 +51,11 @@ typedef struct _Texture
 #define FILENAME_SIZE 15
 #define NAME_SIZE 20
 
+typedef enum _TextureFormat
+{
+	TF_BMP, TF_PNG, TF_COUNT
+} TextureFormat;
+
 typedef enum _TextureType
 {
 	TT_NONE = 1, TT_GENERAL = 2, TT_PIECE = 4, TT_HINGE = 8, TT_DISABLED = 16, TT_COUNT = 3
@@ -61,6 +66,7 @@ typedef struct _TextureInfo
 	char file[FILENAME_SIZE + 1];
 	char name[NAME_SIZE + 1];
 	TextureType type;
+	TextureFormat format;
 } TextureInfo;
 
 typedef struct _Material
@@ -120,6 +126,7 @@ typedef struct _renderdata {
 	int showMoveIndicator;
 	int boardAngle;	/* Angle board is tilted at */
 	int testSkewFactor;	/* Debug FOV adjustment */
+	int planView;	/* Ortho view? */
 	float diceSize;	/* How big are the dice */
 	int roundedEdges;	/* Rounded board edges? */
 	PieceType pieceType;
