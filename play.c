@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.193 2003/07/13 02:24:41 jsegrave Exp $
+ * $Id: play.c,v 1.194 2003/07/16 10:29:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -802,6 +802,7 @@ extern int ComputerTurn( void ) {
       float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
       rolloutstat aarsStatistics[ 2 ][ 2 ];
       cubedecision cd;
+      void *p;
 
       /* Consider cube action */
 
@@ -841,10 +842,9 @@ extern int ComputerTurn( void ) {
 
       /* Evaluate cube decision */
       ProgressStart( _("Considering cube action...") );
-      if ( GeneralCubeDecision ( _("Computer player"),
-                                 aarOutput, aarStdDev, aarsStatistics,
-                                 ms.anBoard,
-                                 &ci, &ap [ ms.fTurn ].esCube) < 0 ) {
+      if ( GeneralCubeDecision ( aarOutput, aarStdDev, aarsStatistics,
+                                 ms.anBoard, &ci, &ap [ ms.fTurn ].esCube,
+                                 NULL, NULL ) < 0 ) {
 	  ProgressEnd();
 	  return -1;
       }
@@ -1050,10 +1050,9 @@ extern int ComputerTurn( void ) {
 
           /* Consider cube action */
 	  ProgressStart( _("Considering cube action...") );
-          if ( GeneralCubeDecision ( _("Computer player"),
-                                     aarOutput, aarStdDev, aarsStatistics,
-                                     ms.anBoard,
-                                     &ci, &ap [ ms.fTurn ].esCube) < 0 ) {
+          if ( GeneralCubeDecision ( aarOutput, aarStdDev, aarsStatistics,
+                                     ms.anBoard, &ci, &ap [ ms.fTurn ].esCube,
+                                     NULL, NULL ) < 0 ) {
 	      ProgressEnd();
 	      return -1;
 	  }
