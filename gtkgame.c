@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.519 2004/10/26 19:11:35 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.520 2004/11/03 19:48:39 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5009,7 +5009,7 @@ static GtkWidget *EvalWidget( evalcontext *pec, movefilter *pmf,
 		       pew->pwUsePrune = gtk_check_button_new_with_label(
 			   _("Use neural net pruning") ) );
     gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pew->pwUsePrune ),
-				  pec->fCubeful );
+				  pec->fUsePrune );
     /* FIXME This needs a tool tip */
 
 #endif
