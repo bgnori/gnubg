@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.32 2002/08/16 18:46:21 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.33 2002/09/09 19:25:29 thyssen Exp $
  */
 
 #include "config.h"
@@ -594,12 +594,10 @@ extern void BoardPreferencesDone( GtkWidget *pwBoard ) {
 
 	if( GTK_WIDGET_VISIBLE( bd->dice_area ) && !bd->usedicearea ) {
 	    gtk_widget_hide( bd->dice_area );
-	    gtk_widget_show_all( bd->rolldouble );
 	}
 
-	if( GTK_WIDGET_VISIBLE( bd->rolldouble ) && bd->usedicearea ) {
+	if( ! GTK_WIDGET_VISIBLE( bd->dice_area ) && bd->usedicearea ) {
 	    gtk_widget_show_all( bd->dice_area );
-	    gtk_widget_hide( bd->rolldouble );
 	}
 	
 	gtk_widget_queue_draw( bd->drawing_area );
