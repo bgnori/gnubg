@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.h,v 1.1 2002/12/12 21:59:32 thyssen Exp $
+ * $Id: gtkmovefilter.h,v 1.2 2003/01/06 19:51:25 thyssen Exp $
  */
 
 #ifndef _GTKMOVEFILTER_H_
@@ -24,7 +24,8 @@
 
 extern GtkWidget *
 MoveFilterWidget ( movefilter *pmf, 
-                   int *pfOK );
+                   int *pfOK,
+                   GtkSignalFunc pfChanged, gpointer userdata );
 
 extern void
 SetMovefilterCommands ( const char *sz,
@@ -33,5 +34,9 @@ SetMovefilterCommands ( const char *sz,
 
 extern void
 MoveFilterOK ( GtkWidget *pw, GtkWidget *pwMoveFilter );
+
+extern void
+MoveFilterSetPredefined ( GtkWidget *pwMoveFilter, 
+                          const int i );
 
 #endif /* _GTKMOVEFILTER_H_ */
