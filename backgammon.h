@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.141 2002/07/25 17:08:39 thyssen Exp $
+ * $Id: backgammon.h,v 1.142 2002/07/25 19:08:44 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -416,6 +416,8 @@ extern int fReadline;
 
 extern int
 AnalyzeMove ( moverecord *pmr, matchstate *pms, statcontext *psc,
+              evalsetup *pesChequer,
+              evalsetup *pesCube,
               int fUpdateStatistics );
 
 extern int

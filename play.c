@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.138 2002/07/25 17:20:12 thyssen Exp $
+ * $Id: play.c,v 1.139 2002/07/25 19:08:44 thyssen Exp $
  */
 
 #include "config.h"
@@ -2068,7 +2068,7 @@ static skilltype ShouldDrop( moverecord *pmr ) {
 
 	fAnalyseCube = TRUE;
 	memcpy ( &msx, &ms, sizeof ( matchstate ) );
-	AnalyzeMove ( pmr, &msx, NULL, FALSE );
+	AnalyzeMove ( pmr, &msx, NULL, &esEvalChequer, &esEvalCube, FALSE );
 	fAnalyseCube = fAnalyseCubeSave;
 
 	return pmr->d.st;
@@ -2239,7 +2239,7 @@ static skilltype GoodMove (movenormal *p) {
 	 /* ensure we're analyzing moves */
 	 fAnalyseMove = 1;
 	 memcpy ( &msx, &ms, sizeof ( matchstate ) );
-	 AnalyzeMove ( pmr, &msx, NULL, FALSE );
+	 AnalyzeMove ( pmr, &msx, NULL, &esEvalChequer, &esEvalCube, FALSE );
 	 fAnalyseMove = fAnalyseMoveSaved;
 
      return pmr->n.stMove;
@@ -3229,7 +3229,7 @@ static skilltype ShouldTake ( moverecord *pmr ) {
 
 	fAnalyseCube = TRUE;
 	memcpy ( &msx, &ms, sizeof ( matchstate ) );
-	AnalyzeMove ( pmr, &msx, NULL, FALSE );
+	AnalyzeMove ( pmr, &msx, NULL, &esEvalChequer, &esEvalCube, FALSE );
 	fAnalyseCube = fAnalyseCubeSave;
 
 	return pmr->d.st;
