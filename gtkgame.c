@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.477 2004/03/24 20:03:58 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.478 2004/03/25 11:04:16 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7858,8 +7858,8 @@ static void AddTitle(GtkWidget* pwBox, char* Title)
 {
 	GtkRcStyle *ps = gtk_rc_style_new();
 	GtkWidget* pwTitle = gtk_label_new(Title),
-		*pwHBox = gtk_hbox_new( FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(pwBox), pwHBox, FALSE, FALSE, 0);
+		*pwHBox = gtk_hbox_new( TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(pwBox), pwHBox, FALSE, FALSE, 4);
 
 #if GTK_CHECK_VERSION(1,3,10)
 	ps->font_desc = pango_font_description_new();
@@ -7912,9 +7912,13 @@ static credEntry ceAuthors[] = {{"Joseph Heled", 0}, {"Øystein Johansen", 0},
 	{"Jørn Thyssen", 0}, {"Gary Wong", 0}, {0, 0} };
 
 static credEntry ceContrib[] ={
-	{"Holger Bochnig", 0},
-	{"Stein Kulseth", 0},
 	{"Olivier Baur", 0},
+	{"Holger Bochnig", 0},
+	{"Nis Jorgensen", 0},
+	{"TAKAHASHI Kaoru", 0},
+	{"Stein Kulseth", 0},
+	{"Mike Petch", 0},
+	{"Rod Roark", 0},
 	{0, 0}};
 
 static credEntry ceSupport[] = {{"Øystein Johansen", N_("Web Pages")},
@@ -7937,8 +7941,8 @@ static credEntry ceTranslations[] = {
 credits creditList[] =
 {
 	{N_("Developers"), ceAuthors},
-	{N_("Translations"), ceTranslations},
 	{N_("Code Contributors"), ceContrib},
+	{N_("Translations"), ceTranslations},
 	{N_("Support"), ceSupport},
 	{0, 0}
 };
