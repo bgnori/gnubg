@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.119 2002/12/01 17:28:25 thyssen Exp $
+ * $Id: show.c,v 1.120 2002/12/06 20:11:36 thyssen Exp $
  */
 
 #include "config.h"
@@ -387,11 +387,12 @@ extern void CommandShowAnalysis( char *sz ) {
                "Analysis will be performed with the "
              "following evaluation parameters:") );
   outputl( _("    Chequer play:") );
-    ShowEvalSetup ( &esAnalysisChequer );
-    outputl( _("    Cube decisions:") );
-    ShowEvalSetup ( &esAnalysisCube );
+  ShowEvalSetup ( &esAnalysisChequer );
+  outputl( _("    Cube decisions:") );
+  ShowEvalSetup ( &esAnalysisCube );
 
-    
+  outputl( _("    Luck analysis:") );
+  ShowEvaluation ( &ecLuck );
 
 }
 
