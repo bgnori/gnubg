@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.132 2002/03/09 18:52:56 thyssen Exp $
+ * $Id: eval.c,v 1.133 2002/03/17 13:26:39 thyssen Exp $
  */
 
 #include "config.h"
@@ -2725,15 +2725,6 @@ EvaluatePositionFull( int anBoard[ 2 ][ 25 ], float arOutput[],
   }
 
   return 0;
-}
-
-static int LogCube( int n ) {
-
-    int i;
-
-    for( i = 0; ; i++ )
-	if( n <= ( 1 << i ) )
-	    return i;
 }
 
 static int 
