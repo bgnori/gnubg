@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.127 2001/04/16 17:02:54 gtw Exp $
+ * $Id: gnubg.c,v 1.128 2001/04/17 15:49:55 oysteijo Exp $
  */
 
 #include "config.h"
@@ -568,8 +568,7 @@ command acAnalyse[] = {
     { "analyze", NULL, NULL, NULL, acAnalyse },
     { "annotate", NULL, "Record notes about a game", NULL, acAnnotate },
     { "beaver", CommandRedouble, "Synonym for `redouble'", NULL, NULL },
-    { "copy", CommandCopy, "Copy current position to clipboard", NULL,
-      NULL },
+    { "copy", CommandCopy, "Copy current position to clipboard", NULL, NULL },
     { "database", NULL, "Manipulate a database of positions", NULL,
       acDatabase },
     { "decline", CommandDecline, "Decline a resignation", NULL, NULL },
