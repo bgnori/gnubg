@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.96 2002/04/12 19:52:56 oysteijo Exp $
+ * $Id: set.c,v 1.97 2002/04/19 16:17:01 thyssen Exp $
  */
 
 #include "config.h"
@@ -2265,3 +2265,20 @@ CommandSetExportCubeDisplayMissed ( char *sz ) {
 }
     
      
+extern void
+CommandSetInvertMatchEquityTable ( char *sz ) {
+
+  int fOldInvertMET = fInvertMET;
+
+  if( SetToggle( "invert matchequitytable", &fInvertMET, sz,
+                 "Match equity table will be used inverted.",
+                 "Match equity table will not be use inverted." ) >= 0 )
+    UpdateSetting( &fInvertMET );
+
+  if ( fOldInvertMET != fInvertMET )
+    invertMET ();
+
+
+}
+
+
