@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.2 2003/03/30 16:37:52 thyssen Exp $
+ * $Id: speed.c,v 1.3 2004/06/26 14:54:53 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -56,7 +56,10 @@ extern void CommandCalibrate( char *sz ) {
 	}
     }
 
-    irandinit( &rc, FALSE );
+    rc.randrsl[ 0 ] = time( NULL );
+    for( i = 0; i < RANDSIZ; i++ )
+        rc.randrsl[ i ] = rc.randrsl[ 0 ];
+    irandinit( &rc, TRUE);
 
 #if USE_GTK
     if( fX )
