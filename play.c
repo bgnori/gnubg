@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.109 2002/02/14 17:19:55 oysteijo Exp $
+ * $Id: play.c,v 1.110 2002/03/14 17:46:22 oysteijo Exp $
  */
 
 #include "config.h"
@@ -506,19 +506,9 @@ static void ResetDelayTimer( void ) {
 
 extern void AddGame( moverecord *pmr ) {
    
-#if WIN32 && USE_GTK
-    char sz[ 32 ];
-    
-    if( fX ) {
-        sprintf( sz, "Game %d: %d-%d", pmr->g.i + 1, pmr->g.anScore[ 0 ],
-                 pmr->g.anScore[ 1 ] );
-        GTKAddGame( sz );
-    }
-#endif
- 
     assert( pmr->mt == MOVE_GAMEINFO );
 
-#if !WIN32 && USE_GTK
+#if USE_GTK
     if( fX )
 	GTKAddGame( pmr );
 #endif
