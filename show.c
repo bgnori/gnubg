@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.86 2002/03/30 23:51:36 thyssen Exp $
+ * $Id: show.c,v 1.87 2002/04/13 13:45:57 oysteijo Exp $
  */
 
 #include "config.h"
@@ -56,10 +56,12 @@ static void ShowEvaluation( evalcontext *pec ) {
              "        %d move search candidate%s.\n"
              "        %0.3g cubeless search tolerance.\n"
              "        %d%% speed.\n"
+             "        %s pruning at 1-ply for moves.\n"
              "        %s evaluations.\n",
              pec->nPlies, pec->nSearchCandidates, pec->nSearchCandidates == 1 ?
              "" : "s", pec->rSearchTolerance,
              (pec->nReduced) ? 100 / pec->nReduced : 100,
+             pec->fNoOnePlyPrune ? "No" : "Normal",
              pec->fCubeful ? "Cubeful" : "Cubeless" );
 
     if( pec->rNoise )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.3 2002/03/16 19:09:59 thyssen Exp $
+ * $Id: gtktheory.c,v 1.4 2002/04/13 13:45:57 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -94,7 +94,7 @@ static void
 ResetTheory ( GtkWidget *pw, theorywidget *ptw ) {
 
   float aarRates[ 2 ][ 2 ];
-  evalcontext ec = { 0, FALSE, 0, 0, TRUE, 0.0, 0.0 };
+  evalcontext ec = { 0, FALSE, 0, 0, TRUE, FALSE, 0.0, 0.0 };
   float arOutput[ NUM_OUTPUTS ];
 
   int i,j;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.119 2002/04/04 19:03:11 thyssen Exp $
+ * $Id: play.c,v 1.120 2002/04/13 13:45:57 oysteijo Exp $
  */
 
 #include "config.h"
@@ -941,7 +941,7 @@ extern int ComputerTurn( void ) {
 
       if( ClassifyPosition( ms.anBoard ) <= CLASS_RACE ) {
 
-          evalcontext ecResign = { 0, FALSE, 0, 0, TRUE, 0.0, 0.0 };
+          evalcontext ecResign = { 0, FALSE, 0, 0, TRUE, FALSE, 0.0, 0.0 };
           evalsetup esResign;
 
           esResign.et = EVAL_EVAL;

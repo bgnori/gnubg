@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.205 2002/04/08 16:10:19 thyssen Exp $
+ * $Id: gnubg.c,v 1.206 2002/04/13 13:45:57 oysteijo Exp $
  */
 
 #include "config.h"
@@ -184,17 +184,17 @@ float rAlpha = 0.1f, rAnneal = 0.3f, rThreshold = 0.1f,
 	0.04f /* SKILL_VERYGOOD	*/
     };
 
-evalcontext ecTD = { 8, FALSE, 0, 0, TRUE, 0.16, 0.0 };
+evalcontext ecTD = { 8, FALSE, 0, 0, TRUE, FALSE, 0.16, 0.0 };
 
 rolloutcontext rcRollout =
 { 
   {
-      { 8, FALSE, 0, 0, TRUE, 0.16, 0.0 }, /* player 0 cube decision */
-      { 8, FALSE, 0, 0, TRUE, 0.16, 0.0 } /* player 1 cube decision */
+      { 8, FALSE, 0, 0, TRUE, FALSE, 0.16, 0.0 }, /* player 0 cube decision */
+      { 8, FALSE, 0, 0, TRUE, FALSE, 0.16, 0.0 } /* player 1 cube decision */
   }, 
   {
-      { 8, FALSE, 0, 0, TRUE, 0.16, 0.0 }, /* player 0 chequerplay */
-      { 8, FALSE, 0, 0, TRUE, 0.16, 0.0 } /* player 1 chequerplay */
+      { 8, FALSE, 0, 0, TRUE, FALSE, 0.16, 0.0 }, /* player 0 chequerplay */
+      { 8, FALSE, 0, 0, TRUE, FALSE, 0.16, 0.0 } /* player 1 chequerplay */
   }, 
   FALSE, /* cubeful */
   FALSE, /* variance reduction */
@@ -211,16 +211,16 @@ rolloutcontext rcRollout =
   /* evaltype */ \
   EVAL_EVAL, \
   /* evalcontext */ \
-  { 8, FALSE, 0, 0, TRUE, 0.16, 0.0 }, \
+  { 8, FALSE, 0, 0, TRUE, FALSE, 0.16, 0.0 }, \
   /* rolloutcontext */ \
   { \
     { \
-      { 8, FALSE, 0, 0, TRUE, 0.16, 0.0 }, /* player 0 cube decision */ \
-      { 8, FALSE, 0, 0, TRUE, 0.16, 0.0 } /* player 1 cube decision */ \
+      { 8, FALSE, 0, 0, TRUE, FALSE, 0.16, 0.0 }, /* player 0 cube decision */ \
+      { 8, FALSE, 0, 0, TRUE, FALSE, 0.16, 0.0 } /* player 1 cube decision */ \
     }, \
     { \
-      { 8, FALSE, 0, 0, TRUE, 0.16, 0.0 }, /* player 0 chequerplay */ \
-      { 8, FALSE, 0, 0, TRUE, 0.16, 0.0 } /* player 1 chequerplay */ \
+      { 8, FALSE, 0, 0, TRUE, FALSE, 0.16, 0.0 }, /* player 0 chequerplay */ \
+      { 8, FALSE, 0, 0, TRUE, FALSE, 0.16, 0.0 } /* player 1 chequerplay */ \
     }, \
     FALSE, /* cubeful */ \
     FALSE, /* variance reduction */ \
