@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.47 2000/10/26 14:19:19 gtw Exp $
+ * $Id: play.c,v 1.48 2000/11/01 15:08:56 gtw Exp $
  */
 
 #include "config.h"
@@ -1395,12 +1395,9 @@ extern void CommandRedouble( char *sz ) {
 	return;
     }
 
-    nCube <<= 1;
-    UpdateSetting( &nCube );    
-
     if( fDisplay )
 	outputf( "%s accepts and immediately redoubles to %d.\n",
-		ap[ fTurn ].szName, nCube << 1 );
+		ap[ fTurn ].szName, nCube << 2 );
     
     fCubeOwner = !fMove;
     UpdateSetting( &fCubeOwner );
@@ -1588,14 +1585,15 @@ extern void CommandTake( char *sz ) {
 	return;
     }
 
+    if( fDisplay )
+	outputf( "%s accepts the cube at %d.\n", ap[ fTurn ].szName,
+		 nCube << 1 );
+    
     pmr = malloc( sizeof( pmr->t ) );
     pmr->mt = MOVE_TAKE;
     pmr->t.fPlayer = fTurn;
     AddMoveRecord( pmr );
 
-    if( fDisplay )
-	outputf( "%s accepts the cube at %d.\n", ap[ fTurn ].szName, nCube );
-    
     UpdateSetting( &nCube );
     UpdateSetting( &fCubeOwner );
     
