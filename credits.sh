@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.113 2004/04/16 20:04:31 thyssen Exp $
+# $Id: credits.sh,v 1.114 2004/04/20 15:57:22 thyssen Exp $
 # 
 
 column < /dev/null || exit 0
@@ -122,6 +122,7 @@ Giulio De Marco
 John Marttila
 Alix Martin
 William Maslen
+Joachim Matussek
 Thomas Meyer
 Daniel Murphy
 Magnar Naustdalslid
