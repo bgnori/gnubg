@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.32 2000/10/08 12:20:31 thyssen Exp $
+ * $Id: play.c,v 1.33 2000/10/12 15:21:35 gtw Exp $
  */
 
 #include "config.h"
@@ -1141,9 +1141,10 @@ extern void CommandTake( char *sz ) {
     
     fDoubled = FALSE;
 
-    fCubeOwner = !fMove;
+    fTurn = fCubeOwner = !fMove;
+    UpdateSetting( &fTurn );
     UpdateSetting( &fCubeOwner );
-    
+
     pmt = malloc( sizeof( *pmt ) );
     *pmt = MOVE_TAKE;
     ListInsert( plGame, pmt );
