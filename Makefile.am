@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.131 2004/04/16 20:04:00 thyssen Exp $
+## $Id: Makefile.am,v 1.132 2004/04/18 08:55:10 thyssen Exp $
 
 localedir = $(datadir)/locale
 
@@ -97,7 +97,7 @@ COMMON_SOURCES = backgammon.h gnubg.c getopt.h getopt.c getopt1.c eval.h \
 	boardpos.c boardpos.h progress.c progress.h format.c format.h \
 	formatgs.c formatgs.h boarddim.h timer.c $(LIBGEN_SOURCES) \
 	external_y.y external_l.l external_y.h openurl.c openurl.h \
-	mec.h mec.c
+	mec.h mec.c relational.h relational.c
 COMMON_DEPS = @LIBOBJS@ lib/libevent.a
 
 bin_PROGRAMS = gnubg makebearoff makehyper
