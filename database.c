@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.7 2000/02/02 21:20:16 gtw Exp $
+ * $Id: database.c,v 1.8 2000/03/06 17:28:51 gtw Exp $
  */
 
 #include "config.h"
@@ -88,7 +88,7 @@ extern void CommandDatabaseDump( char *sz ) {
     }
 
     if( !c )
-	puts( "There database is empty." );
+	puts( "The database is empty." );
 
     gdbm_close( pdb );
 }
@@ -278,7 +278,6 @@ extern void CommandDatabaseTrain( char *sz ) {
 
     gdbm_close( pdb );
 }
-
 #else
 static void NoGDBM( void ) {
 
