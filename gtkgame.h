@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.76 2003/09/29 07:38:07 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.77 2004/01/16 09:42:15 uid68519 Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -52,9 +52,11 @@ typedef enum _filedialogtype {
 } filedialogtype;
 
 typedef enum _warnings { 
-  WARN_FULLSCREEN_EXIT=0, WARN_NUM_WARNINGS
+  WARN_FULLSCREEN_EXIT=0, WARN_QUICKDRAW_MODE, WARN_SET_SHADOWS, 
+	  WARN_UNACCELERATED, WARN_NUM_WARNINGS
 } warnings;
 
+extern void GTKShowWarning(warnings warning);
 extern char* warningStrings[WARN_NUM_WARNINGS];
 extern char* warningNames[WARN_NUM_WARNINGS];
 extern int warningEnabled[WARN_NUM_WARNINGS];

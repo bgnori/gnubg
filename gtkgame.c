@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.453 2004/01/04 10:06:41 uid65656 Exp $
+ * $Id: gtkgame.c,v 1.454 2004/01/16 09:42:15 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -142,12 +142,20 @@ extern gint gtk_option_menu_get_history (GtkOptionMenu *option_menu) {
 #endif
 
 char* warningStrings[WARN_NUM_WARNINGS] =
-{N_("Press escape to exit full screen mode")};
+{
+	N_("Press escape to exit full screen mode"),
+	N_("This option will speed up the 3d drawing for slow machines.\n"
+		"Several options will be disabled, so only select this option if performance is poor"
+		"\n\n ** This option isn't finished and is only available for testing **"),
+	N_("Drawing shadows is only supported on the latest graphics cards\n"
+		"Disable this option if performance is poor"),
+	N_("No hardware accelerated graphics card found, performance may be slow\n")
+};
 
 char* warningNames[WARN_NUM_WARNINGS] =
-{N_("fullscreenexit")};
+{N_("fullscreenexit"), N_("quickdraw"), N_("shadows"), N_("unaccelerated")};
 
-int warningEnabled[WARN_NUM_WARNINGS] = {TRUE};
+int warningEnabled[WARN_NUM_WARNINGS] = {TRUE, TRUE, TRUE, TRUE};
 
 /* Enumeration to be used as index to the table of command strings below
    (since GTK will only let us put integers into a GtkItemFactoryEntry,

@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.13 2003/12/01 11:02:02 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.14 2004/01/16 09:42:15 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1458,6 +1458,18 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
 	    g_free( sz );
 	}
     }
+
+#if USE_BOARD3D
+	if (rdAppearance.fDisplayType == DT_3D)
+	{
+		if (rdAppearance.quickDraw)
+		{	/* Target help and dice below board disabled in quick draw mode */
+			gtk_widget_set_sensitive(pow->pwUseDiceIcon, 0);
+			gtk_widget_set_sensitive(pow->pwDragTargetHelp, 0);
+		}
+	}
+#endif
+		
     gtk_widget_show_all( pwm );
     gtk_option_menu_set_menu( GTK_OPTION_MENU( pow->pwLangMenu ), pwm );
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.14 2003/10/14 10:04:11 Superfly_Jon Exp $
+ * $Id: render.h,v 1.15 2004/01/16 09:42:15 uid68519 Exp $
  */
 
 #ifndef _RENDER_H_
@@ -125,6 +125,7 @@ typedef struct _renderdata {
 	int animateRoll;	/* Animate dice rolls */
 	int animateFlag;	/* Animate resignation flag */
 	int closeBoardOnExit;	/* Animate board close on quit */
+	int quickDraw;	/* Cut down 3d drawing to improve performance */
 	int curveAccuracy;	/* Round curve approximation accuracy */
 	lighttype lightType;	/* Positional/Directional light source */
 	float lightPos[3];	/* x,y,z pos of light source */

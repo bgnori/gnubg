@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.9 2003/11/27 10:08:53 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.10 2004/01/16 09:42:15 uid68519 Exp $
 */
 
 #include <config.h>
@@ -31,6 +31,7 @@
 #include "shadow.h"
 #include "renderprefs.h"
 #include "backgammon.h"
+#include "gtkgame.h"
 
 #if HAVE_GTKGLEXT
 #include <gtk/gtkgl.h>
@@ -41,9 +42,6 @@
 #if HAVE_GTKGLEXT
 GdkGLConfig *glconfig;
 #endif
-
-int checkAccelerated = 0;
-void DoAcceleratedCheck(GtkWidget* board);
 
 guint idleId = 0;
 idleFunc *pIdleFun;
@@ -180,7 +178,20 @@ static gboolean expose_event(GtkWidget *widget, GdkEventExpose *event, BoardData
 #endif
 	CheckOpenglError();
 
-	Draw(bd);
+	if (!bd->quickDraw)
+		Draw(bd);
+	else
+	{	/* Quick drawing mode */
+		if (numRestrictFrames > 0)
+		{
+			RestrictiveRender(bd);
+		}
+		else
+		{
+			numRestrictFrames = 0;
+			Draw(bd);
+		}
+	}
 
 #if HAVE_GTKGLEXT
 	gdk_gl_drawable_swap_buffers(gldrawable);
@@ -349,18 +360,15 @@ int CheckAccelerated(GtkWidget* board)
 
 #endif
 
-void DoAcceleratedCheck(GtkWidget* board)
+int DoAcceleratedCheck(GtkWidget* board)
 {
-	if (checkAccelerated == 0)
-	{
-		if (!CheckAccelerated(board))
-		{	/* Display warning message as performance will be bad */
-			outputl("No hardware accelerated graphics card found, ");
-			outputl("performance may be slow.\n");
-			outputx();
-		}
-		checkAccelerated = 1;
+	if (!CheckAccelerated(board))
+	{	/* Display warning message as performance will be bad */
+		GTKShowWarning(WARN_UNACCELERATED);
+		return 0;
 	}
+	else
+		return 1;
 }
 
 /* Drawing direct to pixmap */

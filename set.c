@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.215 2003/12/29 19:32:21 uid65656 Exp $
+ * $Id: set.c,v 1.216 2004/01/16 09:42:15 uid68519 Exp $
  */
 
 #include "config.h"
@@ -705,6 +705,9 @@ extern void CommandSetClockwise( char *sz ) {
                _("Player 1 moves anticlockwise (and "
                  "player 0 moves clockwise).") );
     
+#if USE_BOARD3D
+	RestrictiveRedraw();
+#endif
 #if USE_GUI
     if( fX )
 	ShowBoard();
@@ -945,6 +948,9 @@ extern void CommandSetDice( char *sz ) {
 
     outputf( _("The dice have been set to %d and %d.\n"), n0, n1 );
 
+#if USE_BOARD3D
+	RestrictiveRedraw();
+#endif
 #if USE_GUI
     if( fX )
 	ShowBoard();
@@ -2684,7 +2690,7 @@ extern void CommandSetWarning( char *sz )
 
 static void PrintWarning(int warning)
 {
-	char buf[100];
+	char buf[1024];
 	sprintf(buf, _("Warning %s (%s) is %s"), warningNames[warning], warningStrings[warning],
 		warningEnabled[warning] ? "on" : "off");
 	outputl(buf);

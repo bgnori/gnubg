@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.238 2003/12/29 22:59:19 uid65656 Exp $
+ * $Id: play.c,v 1.239 2004/01/16 09:42:15 uid68519 Exp $
  */
 
 #include "config.h"
@@ -500,6 +500,10 @@ CalculateBoard( void )
 
         
   } while( pl != plLastMove );
+
+#if USE_BOARD3D
+	RestrictiveRedraw();
+#endif
 }
 
 static void FreeMoveRecord( moverecord *pmr ) {
@@ -806,7 +810,6 @@ static int NewGame( void ) {
 
     moverecord *pmr;
     int fError;
-    list *pl;
     
     if( !fRecord && !ms.nMatchTo && lMatch.plNext->p ) {
 	/* only recording the active game of a session; discard any others */
@@ -821,7 +824,11 @@ static int NewGame( void ) {
 
 	PopGame( lMatch.plNext->p, TRUE );
     }
-    
+
+#if USE_BOARD3D
+	RestrictiveRedraw();
+#endif
+
     InitBoard( ms.anBoard, ms.bgv );
 
     ClearMoveRecord();

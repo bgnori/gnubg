@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.13 2003/10/14 10:04:12 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.14 2004/01/16 09:42:15 uid68519 Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -56,6 +56,10 @@
 
 /* Define relative sizes of objects from arbitrary unit .05 */
 #define base_unit .05f
+
+/* Piece/point size */
+#define PIECE_HOLE (base_unit * 3.0f)
+#define PIECE_DEPTH base_unit
 
 /* Scale textures by this amount */
 #define TEXTURE_SCALE (10.0f / base_unit)
@@ -102,6 +106,29 @@ void SetupPerspVolume(BoardData* bd, int viewport[4]);
 float getBoardWidth();
 float getBoardHeight();
 void calculateBackgroundSize(BoardData *bd, int viewport[4]);
+
+typedef struct _ClipBox
+{
+	float x;
+	float y;
+	float xx;
+	float yy;
+} ClipBox;
+
+#define MAX_FRAMES 10
+extern ClipBox cb[MAX_FRAMES];
+extern int numRestrictFrames;
+
+void RestrictiveRender(BoardData *bd);
+void RestrictiveDrawFrame(float pos[3], float width, float height, float depth);
+void RestrictiveDraw(ClipBox* pCb, float pos[3], float width, float height, float depth);
+void EnlargeCurrentToBox(ClipBox* pOtherCb);
+
+extern void getPiecePos(int point, int pos, int swap, float v[3]);
+
+/* Clipping planes */
+#define zNear .1f
+#define zFar 70
 
 /* Graph functions*/
 typedef struct _GraphData

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.28 2004/01/02 18:28:08 uid65655 Exp $
+ * $Id: render.c,v 1.29 2004/01/16 09:42:15 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -163,6 +163,7 @@ renderdata rdDefault = {
 	0,	/* Animate roll */
 	0,	/* Animate flag */
 	0,	/* Close board on exit */
+	0,	/* Quick draw */
 	36,	/* Curve accuracy */
 	LT_POSITIONAL, /* light source type */
 	{0, 2, 3.5f},	/* x,y,z pos of light source */
