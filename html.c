@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.8 2002/02/22 17:44:53 oysteijo Exp $
+ * $Id: html.c,v 1.9 2002/03/23 17:48:38 thyssen Exp $
  */
 
 #include "config.h"
@@ -32,6 +32,7 @@
 #include "export.h"
 #include "eval.h"
 #include "positionid.h"
+#include "matchid.h"
 
 
 #define STYLESHEET \
@@ -429,8 +430,9 @@ printHTMLBoard ( FILE *pf, matchstate *pms, int fTurn,
   /* position ID */
 
   printImage ( pf, szImageDir, "b-indent", szExtension, "" );
-  fprintf ( pf, "PositionID: <tt>%s</tt><br />\n",
-            PositionID ( pms->anBoard ) );
+  fprintf ( pf, "Position ID: <tt>%s</tt> Match ID: <tt>%s</tt><br />\n",
+            PositionID ( pms->anBoard ),
+            MatchIDFromMatchState ( pms ) );
 
   /* pip counts */
 
@@ -609,7 +611,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szID[] = "$Id: html.c,v 1.8 2002/02/22 17:44:53 oysteijo Exp $";
+  const char szID[] = "$Id: html.c,v 1.9 2002/03/23 17:48:38 thyssen Exp $";
 
   time ( &t );
 
