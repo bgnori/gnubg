@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.562 2004/05/08 10:05:53 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.563 2004/05/10 19:37:33 thyssen Exp $
  */
 
 #include "config.h"
@@ -110,6 +110,7 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "onechequer.h"
 #include "relational.h"
 #include "credits.h"
+#include "external.h"
 
 #ifdef WIN32
 #ifdef HAVE_SOCKETS

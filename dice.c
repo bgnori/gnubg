@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.40 2004/05/08 09:11:07 Superfly_Jon Exp $
+ * $Id: dice.c,v 1.41 2004/05/10 19:37:44 thyssen Exp $
  */
 
 #include "config.h"
@@ -57,8 +57,6 @@
 #ifndef WIN32
 #include <errno.h>
 #include <sys/types.h>
-
-#define closesocket close
 
 #if HAVE_SYS_SOCKET_H
 #include <sys/socket.h>

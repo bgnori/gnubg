@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.235 2004/05/08 09:11:07 Superfly_Jon Exp $
+ * $Id: set.c,v 1.236 2004/05/10 19:37:44 thyssen Exp $
  */
 
 #include "config.h"
@@ -38,8 +38,6 @@
 
 #if HAVE_SOCKETS
 #ifndef WIN32
-
-#define closesocket close
 
 #if HAVE_SYS_SOCKET_H
 #include <sys/types.h>

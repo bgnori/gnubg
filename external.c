@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.41 2004/05/08 09:11:07 Superfly_Jon Exp $
+ * $Id: external.c,v 1.42 2004/05/10 19:37:44 thyssen Exp $
  */
 
 #include "config.h"
@@ -30,7 +30,6 @@
 #endif /* #if HAVE_UNISTD_H */
 
 #ifndef WIN32
-#define closesocket close
 
 #include <assert.h>
 #include <errno.h>
