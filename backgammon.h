@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.125 2002/04/21 19:56:04 thyssen Exp $
+ * $Id: backgammon.h,v 1.126 2002/04/22 09:03:17 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -66,6 +66,8 @@ typedef RETSIGTYPE (*psighandler)( int );
 #define MAX_CUBE ( 1 << 12 )
 #define MAX_CUBE_STR "4096"
 
+#if USE_GTK
+
 /* position of windows: main window, game list, and annotation */
 
 typedef struct _windowgeometry {
@@ -74,6 +76,8 @@ typedef struct _windowgeometry {
 } windowgeometry;
 
 extern windowgeometry wgMain, wgGame, wgAnnotation;
+
+#endif
 
 
 typedef struct _command {

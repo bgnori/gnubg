@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.210 2002/04/21 19:56:04 thyssen Exp $
+ * $Id: gnubg.c,v 1.211 2002/04/22 09:03:17 thyssen Exp $
  */
 
 #include "config.h"
@@ -271,10 +271,13 @@ player ap[ 2 ] = {
     { "user", PLAYER_HUMAN, EVALSETUP, EVALSETUP } 
 };
 
+#if USE_GTK
 
 windowgeometry wgMain = { 0, 0, -1, -1 };
 windowgeometry wgAnnotation = { 250, 200, -1, -1 };
 windowgeometry wgGame = { 0, 400, -1, -1 };
+
+#endif
 
 
 /* Usage strings */
