@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.254 2003/08/31 19:38:43 thyssen Exp $
+ * $Id: eval.c,v 1.255 2003/09/19 19:00:33 thyssen Exp $
  */
 
 #include "config.h"
@@ -6649,12 +6649,16 @@ getPercent ( const cubedecision cd,
     return -1.0;
     break;
 
+  case TOOGOODRE_TAKE:
+  case TOOGOOD_TAKE:
+    /* never correct to double */
+    return -1.0;
+    break;
+
   case NODOUBLE_TAKE:
   case NODOUBLE_BEAVER:
   case NO_REDOUBLE_TAKE:
   case NO_REDOUBLE_BEAVER:
-  case TOOGOODRE_TAKE:
-  case TOOGOOD_TAKE:
 
     /* how many doubles should be dropped before it is correct to double */
 
@@ -6667,9 +6671,16 @@ getPercent ( const cubedecision cd,
   case TOOGOODRE_PASS:
 
     /* how many doubles should be taken before it is correct to double */
-    return 
-      ( arDouble[ OUTPUT_NODOUBLE ] - arDouble[ OUTPUT_DROP ] ) /
-      (arDouble[ OUTPUT_TAKE ] - arDouble[ OUTPUT_DROP ] );
+    if ( arDouble[ OUTPUT_NODOUBLE ] > arDouble[ OUTPUT_TAKE ] ) 
+      /* strange match play scenario 
+         (see 3-ply eval on cAmgACAAGAAA/4HPkAUgzW8EBMA):
+         never correct to double! */
+      return -1.0;
+    else
+      return 
+        ( arDouble[ OUTPUT_NODOUBLE ] - arDouble[ OUTPUT_DROP ] ) /
+        (arDouble[ OUTPUT_TAKE ] - arDouble[ OUTPUT_DROP ] );
+
     break;
 
   default:
