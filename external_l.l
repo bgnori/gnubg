@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.l,v 1.5 2004/05/18 14:42:14 Superfly_Jon Exp $
+ * $Id: external_l.l,v 1.6 2004/05/20 14:52:24 Superfly_Jon Exp $
  */
 
 #include <string.h>
@@ -40,12 +40,10 @@ NUMSTR -?[0-9]+
 
 (\"[^\"]*\")|(\'[^\']*\')	{
 			char *buf = malloc( strlen( exttext ) + 1 );
-
 			exttext[strlen(exttext)-1] = '\0';
 			escapes(exttext+1, buf);
-			extlval.sval = (char *) strdup(buf);
-                        free( buf );
-                        BEGIN(INITIAL);
+			extlval.sval = buf;
+			BEGIN(INITIAL);
 			return STRING;
 		}
 
@@ -64,12 +62,10 @@ off             { return OFF; }
 
 board:[[:alnum:]]+:[[:alnum:]]+(:{NUMSTR})+  { 
 			char *buf = malloc( strlen( exttext ) + 1 );
-
 			escapes(exttext, buf);
-			extlval.sval = (char *) strdup(buf);
-                        free( buf );
-                        return AFIBSBOARD; 
-                }
+			extlval.sval = buf;
+			return AFIBSBOARD; 
+		}
 
 
 (#.*)?\\?\n	{ prc_lineno++;	}   /* newline is ignored */
@@ -78,10 +74,8 @@ board:[[:alnum:]]+:[[:alnum:]]+(:{NUMSTR})+  {
 
 [^=;:, \t\r\n]+	{
 			char *buf = malloc( strlen( exttext ) + 1 );
-
 			escapes(exttext, buf);
-			extlval.sval = (char *) strdup(buf);
-                        free( buf );
+			extlval.sval = buf;
 			return STRING;
 		}
 
@@ -131,3 +125,10 @@ void escapes(const char *cp, char *tp)
     *tp = '\0';
 }
 
+void ExtStartParse(const char* szCommand)
+{
+	YY_BUFFER_STATE buf_state;
+	buf_state = ext_scan_string(szCommand);
+	extparse();
+	ext_delete_buffer(buf_state);
+}

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_y.y,v 1.3 2004/05/18 14:42:14 Superfly_Jon Exp $
+ * $Id: external_y.y,v 1.4 2004/05/20 14:52:25 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -73,14 +73,14 @@ reset_command  : /* empty */ {
  
 cmdfibsboard   : AFIBSBOARD { 
   ec.ct = COMMAND_FIBSBOARD;
-  g_free( ec.szFIBSBoard );
-  ec.szFIBSBoard = g_strdup( $1 );
+  free( ec.szFIBSBoard );
+  ec.szFIBSBoard = $1;
 }
                ;
 
 fibsboard      : AFIBSBOARD { 
-  g_free( ec.szFIBSBoard );
-  ec.szFIBSBoard = g_strdup( $1 );
+  free( ec.szFIBSBoard );
+  ec.szFIBSBoard = $1;
 }
                ;
 
@@ -143,6 +143,7 @@ reset_command() {
   ec.fDeterministic = 1;
   ec.fCubeful = 0;
   ec.nReduced = 0;
+  free(ec.szFIBSBoard);
   ec.szFIBSBoard = NULL;
 
 }

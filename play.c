@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.252 2004/05/08 09:11:07 Superfly_Jon Exp $
+ * $Id: play.c,v 1.253 2004/05/20 14:52:28 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -834,9 +834,11 @@ void DiceRolled()
 		bd->diceShown = DICE_ROLLING;
 		ShowBoard();
 	}
-        if ( ! fX )
+	if ( ! fX )
+#else
+	if (fDisplay)
 #endif
-          ShowBoard();
+		ShowBoard();
 
 }
 
@@ -978,6 +980,9 @@ static int NewGame( void ) {
 static void ShowAutoMove( int anBoard[ 2 ][ 25 ], int anMove[ 8 ] ) {
 
     char sz[ 40 ];
+
+	if (!fDisplay)
+		return;
 
     if( anMove[ 0 ] == -1 )
 	outputf( _("%s cannot move.\n"), ap[ ms.fTurn ].szName );
