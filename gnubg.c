@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.288 2002/09/05 17:44:13 thyssen Exp $
+ * $Id: gnubg.c,v 1.289 2002/09/08 19:45:38 thyssen Exp $
  */
 
 #include "config.h"
@@ -767,6 +767,8 @@ command cER = {
       szPLAYER, acSetRolloutPlayer }, 
     { "rng", CommandSetRolloutRNG, N_("Specify the random number "
       "generator algorithm for rollouts"), NULL, acSetRNG },
+    { "rotate", CommandSetRolloutRotate, 
+      N_("Rotate the first two rolls"), szONOFF, &cOnOff },
     { "seed", CommandSetRolloutSeed, N_("Specify the base pseudo-random seed "
       "to use for rollouts"), szOPTSEED, NULL },
     { "trials", CommandSetRolloutTrials, N_("Control how many rollouts to "
@@ -3832,11 +3834,13 @@ SaveRolloutSettings ( FILE *pf, char *sz, rolloutcontext *prc ) {
   fprintf ( pf,
             "%s cubeful %s\n"
             "%s varredn %s\n"
+            "%s rotate %s\n"
 	    "%s initial %s\n"
             "%s truncation %d\n"
             "%s trials %d\n",
             sz, prc->fCubeful ? "on" : "off",
             sz, prc->fVarRedn ? "on" : "off",
+            sz, prc->fRotate ? "on" : "off",
 	    sz, prc->fInitial ? "on" : "off",
             sz, prc->nTruncate,
             sz, prc->nTrials );

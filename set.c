@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.120 2002/09/06 17:12:40 thyssen Exp $
+ * $Id: set.c,v 1.121 2002/09/08 19:53:53 thyssen Exp $
  */
 
 #include "config.h"
@@ -1396,6 +1396,21 @@ extern void CommandSetRolloutVarRedn( char *sz ) {
 
     prcSet->fVarRedn = f;
 }
+
+
+extern void
+CommandSetRolloutRotate ( char *sz ) {
+
+  int f = prcSet->fRotate;
+
+  SetToggle ( "rollout rotate", &f, sz,
+              _("Will rotate first two rolls of rollout"),
+              _("Will not rotate first two rolls of rollout") );
+
+  prcSet->fRotate = f;
+
+}
+  
 
     
 extern void 
