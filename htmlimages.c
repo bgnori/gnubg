@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.20 2004/01/06 12:30:36 uid68519 Exp $
+ * $Id: htmlimages.c,v 1.21 2004/01/26 07:36:02 uid68075 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -777,7 +777,7 @@ static void TidyObjects()
 		free(asRefract[i]);
 }
 
-extern void CommandExportHTMLImages(char *sz)
+extern void CommandExportHTMLImages( char *sz )
 {
 	szFile = GetFilenameBase(sz);
 	if (!szFile)
@@ -791,10 +791,10 @@ extern void CommandExportHTMLImages(char *sz)
 	TidyObjects();
 }
 
-#else
-extern void CommandExportHTMLImages( char * )
+#else /* not HAVE_LIBPNG */
+extern void CommandExportHTMLImages( char *sz )
 {
 	outputl( _("This installation of GNU Backgammon was compiled without\n"
 		"support for writing HTML images.") );
 }
-#endif
+#endif /* not HAVE_LIBPNG */
