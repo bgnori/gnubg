@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.h,v 1.12 2002/03/23 13:59:02 thyssen Exp $
+ * $Id: matchequity.h,v 1.13 2002/03/23 14:47:10 thyssen Exp $
  */
 
 
@@ -48,10 +48,19 @@ typedef struct _metinfo {
 /* current match equity table used by gnubg */
 
 extern float aafMET [ MAXSCORE ][ MAXSCORE ];
-
 extern float aafMETPostCrawford[ 2 ][ MAXSCORE ];
 
+
 extern metinfo miCurrent;
+
+
+extern float
+getME ( const int nScore0, const int nScore1, const int nMatchTo,
+        const int fPlayer,
+        const int nPoints, const int fWhoWins,
+        const int fCrawford,
+        float aafMET[ MAXSCORE ][ MAXSCORE ],
+        float aafMETPostCrawford[ 2 ][ MAXSCORE ] );
 
 /* Initialise match equity table */
 
