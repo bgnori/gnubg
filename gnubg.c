@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.292.2.1 2002/09/12 21:26:52 gtw Exp $
+ * $Id: gnubg.c,v 1.292.2.2 2002/09/13 23:08:03 gtw Exp $
  */
 
 #include "config.h"
@@ -1284,6 +1284,7 @@ command cER = {
 
 static int iProgressMax, iProgressValue, fInProgress;
 static char *pcProgress;
+static psighandler shInterruptOld;
 
 char *aszVersion[] = {
     "GNU Backgammon " VERSION,
@@ -3028,8 +3029,22 @@ extern void PromptForExit( void ) {
 	}
     }
 
+#if USE_GTK
+    if( fX ) {
+	g_list_foreach( gtk_window_list_toplevels(), (GFunc) gtk_widget_hide,
+			NULL );
+	
+	while( gtk_events_pending() )
+	    gtk_main_iteration();
+    }
+#endif
+    
+    if( fInteractive )
+	PortableSignalRestore( SIGINT, &shInterruptOld );
+    
     playSound ( SOUND_EXIT );
-
+    SoundWait();
+    
     exit( EXIT_SUCCESS );
 }
 
@@ -5275,7 +5290,7 @@ static RETSIGTYPE HandleIO( int idSignal ) {
 #endif
 
 #if USE_SOUND
-    SoundSIGIO();
+    SoundSIGIO( idSignal );
 #endif
 }
 #endif
@@ -5621,7 +5636,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     if( fTTY )
 #endif
 	if( fInteractive ) {
-	    PortableSignal( SIGINT, HandleInterrupt, NULL, FALSE );
+	    PortableSignal( SIGINT, HandleInterrupt, &shInterruptOld, FALSE );
 	    
 #if HAVE_LIBREADLINE
 	    rl_readline_name = "gnubg";
@@ -5643,8 +5658,22 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #if ( USE_GUI || USE_SOUND ) && defined(SIGIO)
     if( fX )
 	PortableSignal( SIGIO, HandleIO, NULL, TRUE );
+
 #endif
 
+
+#ifdef SIGIO
+# if USE_GUI
+    if( fX )
+	PortableSignal( SIGIO, HandleIO, NULL, TRUE );
+#  if USE_SOUND
+    else
+#  endif
+# endif
+# if USE_SOUND
+	PortableSignal( SIGIO, SoundSIGIO, NULL, TRUE );
+# endif
+#endif
 
     fnTick = CallbackProgress;
     
