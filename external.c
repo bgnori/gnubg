@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.15 2002/09/18 19:18:51 gtw Exp $
+ * $Id: external.c,v 1.16 2002/11/01 18:53:45 thyssen Exp $
  */
 
 #include "config.h"
@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include <string.h>
 #if HAVE_SYS_SOCKET_H
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
