@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.64 2001/03/26 15:36:52 gtw Exp $
+ * $Id: play.c,v 1.65 2001/03/29 16:25:05 gtw Exp $
  */
 
 #include "config.h"
@@ -994,11 +994,12 @@ extern void NextTurn( void ) {
 	   * "auto roll" is on;
 	   * they haven't already rolled;
 	   * they haven't just been doubled;
+	   * somebody hasn't just resigned;
 	   * at least one of the following:
 	     - cube use is disabled;
 	     - it's the Crawford game;
 	     - the cube is dead. */
-	if( fAutoRoll && !anDice[ 0 ] && !fDoubled &&
+	if( fAutoRoll && !anDice[ 0 ] && !fDoubled && !fResigned &&
 	    ( !fCubeUse || fCrawford ||
 	      ( fCubeOwner >= 0 && fCubeOwner != fTurn ) ||
 	      ( nMatchTo > 0 && anScore[ fTurn ] + nCube >= nMatchTo ) ) )
