@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.161 2002/11/11 18:26:47 joseph Exp $
+ * $Id: play.c,v 1.162 2002/11/27 02:10:14 gtw Exp $
  */
 
 #include "config.h"
@@ -591,7 +591,8 @@ extern void AddGame( moverecord *pmr ) {
 static int NewGame( void ) {
 
     moverecord *pmr;
-
+    int fError;
+    
     if( !fRecord && !ms.nMatchTo && lMatch.plNext->p ) {
 	/* only recording the active game of a session; discard any others */
 	if( fConfirm ) {
@@ -635,10 +636,11 @@ static int NewGame( void ) {
     UpdateSetting( &ms.fTurn );
     
  reroll:
-    RollDice( ms.anDice, rngCurrent );
+    fError = RollDice( ms.anDice, rngCurrent );
+    
     playSound ( SOUND_ROLL );
 
-    if( fInterrupt ) {
+    if( fInterrupt || fError ) {
 	PopMoveRecord( plGame->plNext );
 
 	free( plGame );
