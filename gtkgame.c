@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.264 2002/12/01 17:28:25 thyssen Exp $
+ * $Id: gtkgame.c,v 1.265 2002/12/03 22:47:24 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -73,6 +73,7 @@
 #include "positionid.h"
 #include "record.h"
 #include "i18n.h"
+#include "path.h"
 
 #define GNUBGMENURC ".gnubgmenurc"
 

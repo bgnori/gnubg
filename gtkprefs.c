@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.44 2002/12/01 17:52:32 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.45 2002/12/03 22:47:24 jsegrave Exp $
  */
 
 #include "config.h"
@@ -40,8 +40,7 @@
 #include "gtkgame.h"
 #include "gtkprefs.h"
 #include "i18n.h"
-
-
+#include "path.h"
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846

@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.32 2002/11/11 18:26:47 joseph Exp $
+* $Id: matchequity.c,v 1.33 2002/12/03 22:47:23 jsegrave Exp $
 */
 
 #include <stdio.h>
@@ -31,6 +31,7 @@
 
 #include "config.h"
 #include "list.h"
+#include "path.h"
 
 #if HAVE_LIBXML2
 #include <libxml/tree.h>

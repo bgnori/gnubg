@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.74 2002/11/29 23:09:55 thyssen Exp $
+## $Id: Makefile.am,v 1.75 2002/12/03 22:47:24 jsegrave Exp $
 if USE_EXT
 SUBDIRS = intl lib doc ext met po m4 xpm sounds boards
 else
@@ -33,7 +33,7 @@ COMMON_SOURCES = backgammon.h gnubg.c getopt.h getopt.c getopt1.c eval.h \
 	postscript.c html.c export.h matchid.c matchid.h i18n.c i18n.h text.c \
 	export.c sound.h record.c record.h osr.c osr.h \
         bearoffgammon.c bearoffgammon.h bearoff.c bearoff.h br1.c \
-  	onechequer.c onechequer.h
+  	onechequer.c onechequer.h path.c path.h
 COMMON_DEPS = @LIBOBJS@ lib/libevent.a
 
 bin_PROGRAMS = gnubg
@@ -79,7 +79,7 @@ check_PROGRAMS = erftest
 makebearoff_SOURCES = makebearoff.c eval.h eval.c positionid.h positionid.c \
 	pub_eval.c matchequity.c matchequity.h matchid.h matchid.c \
 	i18n.c i18n.h getopt.c getopt.h getopt1.c osr.c osr.h \
-        bearoffgammon.c bearoffgammon.h bearoff.c bearoff.h
+        bearoffgammon.c bearoffgammon.h bearoff.c bearoff.h path.c path.h
 makebearoff_LDADD = -Llib -levent $(COMMON_LIBS)
 makebearoff_DEPENDENCIES = lib/libevent.a
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.94 2002/12/01 17:28:25 thyssen Exp $
+ * $Id: eval.h,v 1.95 2002/12/03 22:47:23 jsegrave Exp $
  */
 
 #ifndef _EVAL_H_
@@ -250,8 +250,6 @@ typedef enum _positionclass {
    ( ( (pci)->fCubeOwner == (pci)->fMove ) ? arEquity[ 1 ] : arEquity[ 3 ] ) )
 
 
-extern char *PathSearch( const char *szFile, const char *szDir );
-			      
 extern int
 EvalInitialise( char *szWeights, char *szWeightsBinary,
 		int fNoBearoff, 
@@ -499,8 +497,5 @@ locateMove ( int anBoard[ 2 ][ 25 ],
 extern int
 MoveKey ( int anBoard[ 2 ][ 25 ], const int anMove[ 8 ], 
           unsigned char auch[ 10 ] );
-
-extern int 
-PathOpen( const char *szFile, const char *szDir, const int f );
 
 #endif
