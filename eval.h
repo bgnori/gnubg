@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.125 2004/02/24 10:20:47 uid68519 Exp $
+ * $Id: eval.h,v 1.126 2004/07/04 12:26:40 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -568,6 +568,11 @@ getCurrentGammonRates ( float aarRates[ 2 ][ 2 ],
                         int anBoard[ 2 ][ 25 ],
                         cubeinfo *pci,
                         evalcontext *pec );
+
+extern void
+calculate_gammon_rates( float aarRates[ 2 ][ 2 ],
+                        float arOutput[],
+                        cubeinfo *pci );
 
 extern void
 getMoneyPoints ( float aaarPoints[ 2 ][ 7 ][ 2 ],

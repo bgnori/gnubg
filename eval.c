@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.260 2004/06/04 21:01:30 thyssen Exp $
+ * $Id: eval.c,v 1.261 2004/07/04 12:26:31 thyssen Exp $
  */
 
 #include "config.h"
@@ -6194,28 +6194,11 @@ cmp_rolloutcontext ( const rolloutcontext *prc1, const rolloutcontext *prc2 ) {
 
 }
 
-/*
- * Get current gammon rates
- *
- * Input:
- *   anBoard: current board
- *   pci: current cubeinfo
- *   pec: eval context
- *
- * Output:
- *   aarRates: gammon and backgammon rates (first index is player)
- *
- */
 
-extern int
-getCurrentGammonRates ( float aarRates[ 2 ][ 2 ],
+extern void
+calculate_gammon_rates( float aarRates[ 2 ][ 2 ],
                         float arOutput[],
-                        int anBoard[ 2 ][ 25 ],
-                        cubeinfo *pci,
-                        evalcontext *pec ) {
-
-  if( EvaluatePosition( anBoard, arOutput, pci, pec ) < 0 )
-      return -1;
+                        cubeinfo *pci ) {
 
   if ( arOutput[ OUTPUT_WIN ] > 0.0 ) {
     aarRates[ pci->fMove ][ 0 ] =
@@ -6240,6 +6223,33 @@ getCurrentGammonRates ( float aarRates[ 2 ][ 2 ],
   else {
     aarRates[ ! pci->fMove ][ 0 ] = aarRates[ ! pci->fMove ][ 1 ] = 0;
   }
+
+}
+
+/*
+ * Get current gammon rates
+ *
+ * Input:
+ *   anBoard: current board
+ *   pci: current cubeinfo
+ *   pec: eval context
+ *
+ * Output:
+ *   aarRates: gammon and backgammon rates (first index is player)
+ *
+ */
+
+extern int
+getCurrentGammonRates ( float aarRates[ 2 ][ 2 ],
+                        float arOutput[],
+                        int anBoard[ 2 ][ 25 ],
+                        cubeinfo *pci,
+                        evalcontext *pec ) {
+
+  if( EvaluatePosition( anBoard, arOutput, pci, pec ) < 0 )
+      return -1;
+
+  calculate_gammon_rates( aarRates, arOutput, pci );
 
   return 0;
 
