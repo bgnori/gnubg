@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.26 2003/10/06 18:33:19 hb Exp $
+ * $Id: gtktheory.c,v 1.27 2003/11/30 08:57:57 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -459,10 +459,10 @@ TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
 #if WIN32
   /* Windows fonts come out smaller than you ask for, for some reason... */
   pf = gdk_font_load( "-b&h-lucidatypewriter-medium-r-normal-sans-14-"
-                      "*-*-*-m-*-iso8859-1" );
+                      "*-*-*-m-*-*" );
 #else
   pf = gdk_font_load( "-b&h-lucidatypewriter-medium-r-normal-sans-12-"
-                      "*-*-*-m-*-iso8859-1" );
+                      "*-*-*-m-*-*" );
 #endif
 
   gtk_text_freeze( GTK_TEXT( ptw->pwGammonPrice ) );
