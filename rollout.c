@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.25 2001/02/07 18:00:05 gtw Exp $
+ * $Id: rollout.c,v 1.26 2001/02/13 18:20:26 gtw Exp $
  */
 
 #include "config.h"
@@ -389,10 +389,9 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], char *sz, float arOutput[],
 	
     if( fShowProgress ) {
 #if USE_GTK
-	if( fX ) {
-	    if( GTKRolloutUpdate( arMu, arSigma, i, cGames ) )
-		return -1;
-	} else
+	if( fX )
+	    GTKRolloutUpdate( arMu, arSigma, i, cGames );
+	else
 #endif
 	    {
 		outputf( "%28s %5.3f %5.3f %5.3f %5.3f %5.3f (%6.3f) %5.3f "
