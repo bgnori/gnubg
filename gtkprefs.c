@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.114 2004/10/25 08:45:49 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.115 2004/11/02 21:38:42 mormegil Exp $
  */
 
 #include "config.h"
@@ -185,14 +185,10 @@ free_board_designs ( GList *pl ) {
 
 }
 
-#endif /* HAVE_LIBXML2 */
-
-#if HAVE_LIBXML2
 static void DesignSelect( GtkCList *pw, gint nRow, gint nCol,
 			  GdkEventButton *pev, gpointer unused );
 static void DesignUnselect( GtkCList *pw, gint nRow, gint nCol,
 			  GdkEventButton *pev, gpointer unused );
-#endif
 
 void ParsePreferences(boarddesign *pbde, renderdata* prdNew)
 {
@@ -223,6 +219,7 @@ static boarddesign* FindDesign (renderdata* prdDesign)
 	}
 	return NULL;
 }
+#endif /* HAVE_LIBXML2 */
 
 void SetTitle()
 {	/* Update dialog title to include design name + author */
@@ -1972,7 +1969,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.114 2004/10/25 08:45:49 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.115 2004/11/02 21:38:42 mormegil Exp $\n"
           "\n"
           " -->\n"
           "\n"
