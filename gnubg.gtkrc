@@ -18,7 +18,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: gnubg.gtkrc,v 1.5 2004/06/09 20:17:27 thyssen Exp $
+# $Id: gnubg.gtkrc,v 1.6 2004/06/10 14:53:19 Superfly_Jon Exp $
 #
 # style <name> [= <name>]
 # {
@@ -113,6 +113,12 @@ widget_class "*" style "default"
 #	{
 #	}
 #
+# if you simply want all blunders/errors/doubtful moves and cube
+# decisions marked, use the gamelist-any-blunder etc. Then if either
+# the cube or the chequer player is a blunder, the
+# gamelist-any-blunder settings will be used, otherwise if either is
+# an error, the error setting is used, etc. So you get the worst of
+# either type of mistake as the choice of settings
 
 style "gamelist-chequer-blunder" = "default"
 {
@@ -159,6 +165,12 @@ widget "*.gnubg-gamelist-cube-doubtful" style "gamelist-cube-doubtful"
 
 widget "*.gnubg-gamelist-luck-good" style "gamelist-luck-good"
 widget "*.gnubg-gamelist-luck-bad" style "gamelist-luck-bad"
+
+# uncomment these to use the cube indications for all errors
+
+# widget "*.gnubg-gamelist-any-blunder" style "gamelist-cube-blunder"
+# widget "*.gnubg-gamelist-any-error" style "gamelist-cube-error"
+# widget "*.gnubg-gamelist-any-doubtful" style "gamelist-cube-doubtful"
 
 #
 # Styles for match equity table
