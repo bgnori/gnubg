@@ -18,15 +18,11 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.19 2004/04/06 11:36:54 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.20 2005/02/07 17:45:41 Superfly_Jon Exp $
 */
 
 #include <config.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
-#if !WIN32
-#include <GL/glx.h>
-#endif
+#include "glincl.h"
 #include "inc3d.h"
 #include "shadow.h"
 #include "renderprefs.h"

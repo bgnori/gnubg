@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: shadow.c,v 1.6 2004/05/10 09:29:02 Superfly_Jon Exp $
+* $Id: shadow.c,v 1.7 2005/02/07 17:45:41 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -27,7 +27,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include "matrix.h"
-#include <GL/gl.h>
+#include "glincl.h"
 #include "inc3d.h"
 #include "shadow.h"
 

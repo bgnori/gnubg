@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.39 2004/09/09 11:22:36 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.40 2005/02/07 17:45:41 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -26,8 +26,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <memory.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include "glincl.h"
 #include "inc3d.h"
 #include "matrix.h"
 #include "shadow.h"

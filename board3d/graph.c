@@ -18,15 +18,11 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.9 2004/04/30 17:35:40 Superfly_Jon Exp $
+* $Id: graph.c,v 1.10 2005/02/07 17:45:41 Superfly_Jon Exp $
 */
 
 #include <config.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
-#if !WIN32
-#include <GL/glx.h>
-#endif
+#include "glincl.h"
 #if HAVE_GTKGLEXT
 #include <gtk/gtkgl.h>
 #include <gtk/gtkglwidget.h>

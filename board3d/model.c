@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: model.c,v 1.5 2004/03/31 09:51:57 Superfly_Jon Exp $
+* $Id: model.c,v 1.6 2005/02/07 17:45:41 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -26,7 +26,7 @@
 #include <assert.h>
 #include <math.h>
 #include "matrix.h"
-#include <GL/gl.h>
+#include "glincl.h"
 #include "inc3d.h"
 #include "shadow.h"
 
