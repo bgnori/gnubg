@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.78 2004/01/19 10:20:07 uid68519 Exp $
+ * $Id: gtkgame.h,v 1.79 2004/02/25 17:03:38 uid68519 Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -197,5 +197,7 @@ extern void GTKAddTimeControl( char *szName) ;
 extern void GTKRemoveTimeControl( char *szName) ;
 extern void GTKCheckTimeControl( char *szName) ;
 #endif
+
+extern void SetToolbarStyle(int value);
 
 #endif

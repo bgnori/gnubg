@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.11 2004/02/06 09:41:03 uid68519 Exp $
+ * $Id: gtktoolbar.c,v 1.12 2004/02/25 17:03:38 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -339,11 +339,6 @@ ToolbarNew ( void ) {
 	 *
 	 * For GTK 2.0 there should be _real_ stock icons, so the 
 	 * the user cab change the theme
-	 *
-	 * The toolbar style should be user optional. Icons only or Text
-	 * only or both text and icons.
-	 * 
-	 * Several other bugs.....
 	 * 
 	 */
 

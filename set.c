@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.217 2004/02/24 10:24:04 uid68519 Exp $
+ * $Id: set.c,v 1.218 2004/02/25 17:03:38 uid68519 Exp $
  */
 
 #include "config.h"
@@ -2493,6 +2493,18 @@ extern void CommandSetTrainingThreshold( char *sz ) {
 	outputf( _("Error threshold set to %f.\n"), r );
     else
 	outputl( _("Error threshold disabled.") );
+}
+
+extern void CommandSetToolbar( char *sz )
+{
+	int n = ParseNumber( &sz );
+
+	if (n != 0 && n != 1 && n != 2)
+	{
+		outputl(_("You must specify either 0, 1 or 2"));
+		return;
+	}
+	SetToolbarStyle(n);
 }
 
 extern void CommandSetTurn( char *sz ) {
