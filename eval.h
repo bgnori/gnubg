@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.5.2.5 2000/02/03 11:10:54 thyssen Exp $
+ * $Id: eval.h,v 1.5.2.6 2000/02/07 03:21:54 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -87,8 +87,25 @@ typedef struct _evalcontext {
 
 
 typedef struct _cubeinfo {
+
+  /* 
+   * nCube: the value of the cube,
+   * fCubeOwner: the owner of the cube,
+   * fMove: the player for which we are
+   *        calculating equity for,
+   * arGammonPrice: the gammon prices;
+   *   [ 0 ] = gammon price for player 0,
+   *   [ 1 ] = gammon price for player 1,
+   *   [ 2 ] = backgammon price for player 0,
+   *   [ 3 ] = backgammon price for player 1,
+   * arTakePoint: take points for current cube;
+   *   [ i ] take point for current cube for player i.
+   *
+   */
+
   int nCube, fCubeOwner, fMove;
   float arGammonPrice[ 4 ];
+  float arTakePoint[ 2 ];
 } cubeinfo;
 
 
