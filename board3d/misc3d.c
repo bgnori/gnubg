@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.36 2004/04/20 13:37:09 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.37 2004/05/07 09:33:25 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2232,6 +2232,9 @@ void RemoveTexture(Material* pMat)
 void ClearTextures(BoardData* bd)
 {
 	int i;
+	if (!bd->numTextures)
+		return;
+
 	MakeCurrent3d(bd->drawing_area3d);
 
 	for (i = 0; i < bd->numTextures; i++)
