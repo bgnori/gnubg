@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.111 2003/07/13 02:24:41 jsegrave Exp $
+ * $Id: rollout.c,v 1.112 2003/07/13 18:17:11 jsegrave Exp $
  */
 
 #include "config.h"
@@ -925,7 +925,7 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ], char asz[][ 40 ],
   int		ii;
   int     err_too_big;
   double	v, s;
-  int nFirstTrial;
+  unsigned int nFirstTrial;
   evalsetup *pes;
   rolloutcontext *prc;
   rolloutstat *prs;
