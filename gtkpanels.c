@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.1 2004/09/10 09:37:33 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.2 2004/09/13 12:43:12 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -133,10 +133,11 @@ void UpdateTheoryData(BoardData* bd, int UpdateType, int points[2][25])
 			PipCount(points, anPip);
 
 			diff = anPip[0] - anPip[1];
-			if (diff != 0)
-    			pc = g_strdup_printf("%c%d", (diff > 0) ? '+' : '-', abs(anPip[0] - anPip[1]));
+			if (diff == 0)
+    			pc = g_strdup_printf(_("equal"));
 			else
-    			pc = g_strdup_printf("%d", abs(anPip[0] - anPip[1]));
+    			pc = g_strdup_printf("%d %s", abs(anPip[0] - anPip[1]),
+    				(diff > 0) ? _("ahead") : _("behind"));
 
 			gtk_clist_set_text(GTK_CLIST(pwTheoryList), 0, 1, pc);
 
