@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.126 2002/05/27 19:33:08 thyssen Exp $
+ * $Id: play.c,v 1.127 2002/05/27 21:24:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -625,6 +625,8 @@ static int NewGame( void ) {
 
 	free( plGame );
 	ListDelete( lMatch.plPrev );
+
+        plLastMove = NULL;
 
 	return -1;
     }
@@ -2592,8 +2594,13 @@ static void CommandNextGame( char *sz ) {
 	return;
     }
 
-    for( pl = lMatch.plNext; pl->p != plGame; pl = pl->plNext )
+    for( pl = lMatch.plNext; pl->p != plGame && pl != &lMatch; 
+         pl = pl->plNext )
 	;
+
+    if ( pl->p != plGame )
+      /* current game not found */
+      return;
     
     for( ; n && pl->plNext->p; n--, pl = pl->plNext )
 	;
@@ -2726,8 +2733,13 @@ static void CommandPreviousGame( char *sz ) {
 	return;
     }
     
-    for( pl = lMatch.plNext; pl->p != plGame; pl = pl->plNext )
+    for( pl = lMatch.plNext; pl->p != plGame && pl != &lMatch; 
+         pl = pl->plNext )
 	;
+    
+    if ( pl->p != plGame )
+      /* current game not found */
+      return;
     
     for( ; n && pl->plPrev->p; n--, pl = pl->plPrev )
 	;
