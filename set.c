@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.212 2003/10/23 22:56:41 jsegrave Exp $
+ * $Id: set.c,v 1.213 2003/11/03 18:54:32 hb Exp $
  */
 
 #include "config.h"
@@ -4718,7 +4718,7 @@ extern void CommandSetLang( char *sz ) {
 
     if( ! strcmp( sz, szLang ) ) {
 	outputf( _("The current language preference is already set to "
-		   "%s."), sz );
+		   "%s.\n"), sz );
 	return;
     }
 
@@ -4727,7 +4727,7 @@ extern void CommandSetLang( char *sz ) {
     outputf( _( "The language preference has been set to `%s'.\n"
 		"Please remember to save settings.\n"
 		"The new setting will only take effect on the next start "
-		"of gnubg." ), sz );
+		"of gnubg.\n" ), sz );
 
 }
 
