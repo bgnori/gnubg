@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.6 2003/09/15 01:53:33 hb Exp $
+* $Id: widget3d.c,v 1.7 2003/09/15 07:21:38 Superfly_Jon Exp $
 */
 
 #include <config.h>
@@ -367,8 +367,6 @@ void DoAcceleratedCheck(GtkWidget* board)
 /* Drawing direct to pixmap */
 
 GdkGLContext *glPixmapContext = NULL;
-
-unsigned char testbuf[ BOARD_WIDTH * 3 * BOARD_HEIGHT * 3 * 3 ];
 
 void SetupPreview(BoardData* bd, renderdata* prd)
 {
