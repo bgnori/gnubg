@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.28 2002/09/14 16:54:38 thyssen Exp $
+ * $Id: gtkboard.h,v 1.29 2002/09/14 17:53:06 thyssen Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -74,7 +74,6 @@ typedef struct _BoardData {
     GtkWidget *toolbar, *vbox_toolbar;
     GtkWidget *roll;
     GtkWidget *take, *drop, *redouble;
-    GtkWidget *agree, *decline;
     GtkWidget *vbox_ids;
     GtkWidget *pipcount0, *pipcount1;
     GdkGC *gc_and, *gc_or, *gc_copy, *gc_cube;
