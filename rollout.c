@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.100 2003/04/03 20:31:43 thyssen Exp $
+ * $Id: rollout.c,v 1.101 2003/04/04 18:46:22 thyssen Exp $
  */
 
 #include "config.h"
@@ -800,6 +800,22 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
     return 0;
 }
 
+
+static int
+isHyperGammon( const bgvariation bgv ) {
+
+  if ( bgv == VARIATION_HYPERGAMMON_1 )
+    return 1;
+  if ( bgv == VARIATION_HYPERGAMMON_2 )
+    return 1;
+  if ( bgv == VARIATION_HYPERGAMMON_3 )
+    return 1;
+
+  return 0;
+
+}
+
+
 extern int
 RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
                 float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
@@ -975,7 +991,8 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
 	  aarSigma[ ici ][ j ] = sqrt( aarVariance[ ici ][ j ] / ( i + 1 ) );
         }
 
-        SanityCheck( anBoardOrig, aarMu[ ici ] );
+        if ( ! isHyperGammon( aci[ ici ].bgv ) )
+          SanityCheck( anBoardOrig, aarMu[ ici ] );
 
       }
       
