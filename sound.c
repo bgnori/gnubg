@@ -20,13 +20,14 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.24 2003/09/12 13:35:24 steink Exp $
+ * $Id: sound.c,v 1.25 2004/01/26 18:26:57 uid65656 Exp $
  */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 #include <assert.h>
+#include <sys/types.h>
 #if HAVE_SYS_AUDIOIO_H
 #include <sys/audioio.h>
 #endif
@@ -44,7 +45,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/time.h>
-#include <sys/types.h>
 #include <unistd.h>
 
 #if HAVE_ESD

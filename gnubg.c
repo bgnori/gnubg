@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.521 2004/01/19 10:20:06 uid68519 Exp $
+ * $Id: gnubg.c,v 1.522 2004/01/26 18:26:57 uid65656 Exp $
  */
 
 #include "config.h"
@@ -7471,7 +7471,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     textdomain (PACKAGE);
     bind_textdomain_codeset( PACKAGE, GNUBG_CHARSET );
 			     
-#if HAVE_NL_LANGINFO
+#if HAVE_LANGINFO_CODESET
  {
    char *cs = nl_langinfo( CODESET );
    char *cset;
