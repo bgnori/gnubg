@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.62 2002/02/07 16:00:30 gtw Exp $
+ * $Id: eval.h,v 1.63 2002/02/13 20:03:52 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -359,5 +359,11 @@ cmp_evalcontext ( const evalcontext *pec1, const evalcontext *pec2 );
 
 extern int
 cmp_rolloutcontext ( const rolloutcontext *prc1, const rolloutcontext *prc2 );
+
+extern char 
+*GetCubeRecommendation ( const cubedecision cd );
+
+extern cubedecision
+FindBestCubeDecision ( float arDouble[], cubeinfo *pci );
 
 #endif

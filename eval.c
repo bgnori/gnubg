@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.129 2002/02/08 22:28:44 gtw Exp $
+ * $Id: eval.c,v 1.130 2002/02/13 20:03:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -69,9 +69,6 @@ EvaluatePositionCubeful1( int anBoard[ 2 ][ 25 ], float *prOutput,
                           float arClOutput[ NUM_OUTPUTS ],
                           cubeinfo *pci, evalcontext *pec, 
                           int nPlies, int fCheckAutoRedoubles);
-
-static cubedecision
-FindBestCubeDecision ( float arDouble[], cubeinfo *pci );
 
 static float
 Cl2CfMoney ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci );
@@ -3925,7 +3922,7 @@ extern void EvalStatus( char *szOutput ) {
 }
 
 
-static char 
+extern char 
 *GetCubeRecommendation ( const cubedecision cd ) {
 
   switch ( cd ) {
@@ -4360,8 +4357,8 @@ SetCubeInfo ( cubeinfo *pci, int nCube, int fCubeOwner, int fMove,
 	SetCubeInfoMoney( pci, nCube, fCubeOwner, fMove, fJacoby, fBeavers );
 }
 
-
-static cubedecision
+ 
+extern cubedecision
 FindBestCubeDecision ( float arDouble[], cubeinfo *pci ) {
 
 /*
