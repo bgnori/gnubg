@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.259 2002/07/27 17:11:51 thyssen Exp $
+ * $Id: gnubg.c,v 1.260 2002/07/28 23:16:21 oysteijo Exp $
  */
 
 #include "config.h"
@@ -288,6 +288,8 @@ exportsetup exsExport = {
   { TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE },
 
   NULL, /* HTML url to pictures */
+  NULL, /* HTML type */
+  NULL  /* HTML extension */
 
 };
 
@@ -339,7 +341,8 @@ static char szDICE[] = N_("<die> <die>"),
     szTRIALS[] = N_("<trials>"),
     szVALUE[] = N_("<value>"),
     szMATCHID[] = N_("<matchid>"),
-    szURL[] = N_("<URL>");
+    szURL[] = N_("<URL>"),
+    szType[] = N_("<type>");
 
 command cER = {
     /* dummy command used for evaluation/rollout parameters */
@@ -769,6 +772,8 @@ command cER = {
 }, acSetExportHTML[] = {
   { "pictureurl", CommandSetExportHTMLPictureURL,
     N_("set URL to pictures used in HTML export"), szURL, NULL },
+  { "type", CommandSetExportHTMLType,
+    N_("set type of HTML boards used in HTML export"), szType, NULL },
   { NULL, NULL, NULL, NULL, NULL }    
 }, acSetExportMovesDisplay[] = {
   { "verybad", CommandSetExportMovesDisplayVeryBad,
@@ -3973,6 +3978,14 @@ extern void CommandSaveSettings( char *szParam ) {
       fprintf ( pf, "set export html pictureurl  %s\n",
                 exsExport.szHTMLPictureURL );
 
+    if ( *exsExport.szHTMLType != '"' &&
+       strchr ( exsExport.szHTMLType, ' ' ) )
+       fprintf ( pf, "set export html type \"%s\"\n",
+                  exsExport.szHTMLType );
+    else
+      fprintf ( pf, "set export html type  %s\n",
+                exsExport.szHTMLType );
+
     /* invert settings */
 
     fprintf ( pf, 
@@ -5306,6 +5319,8 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     /* initalize some html export options */
 
     exsExport.szHTMLPictureURL = strdup ( "html-images/" );
+    exsExport.szHTMLType = strdup ( "gnu" );
+    exsExport.szHTMLExtension = strdup ( "png" );
 
     /* init met */
     

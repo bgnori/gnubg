@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.47 2002/07/24 16:47:41 thyssen Exp $
+ * $Id: html.c,v 1.48 2002/07/28 23:16:21 oysteijo Exp $
  */
 
 #include "config.h"
@@ -1512,7 +1512,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.47 $";
+  const char szVersion[] = "$Revision: 1.48 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -3233,8 +3233,8 @@ extern void CommandExportGameHtml( char *sz ) {
     }
 
     ExportGameHTML( pf, plGame,
-                     exsExport.szHTMLPictureURL, "png", 
-                    "gnu", 
+                     exsExport.szHTMLPictureURL, exsExport.szHTMLExtension, 
+                    exsExport.szHTMLType, 
                     aszColorNameGNU,
                     getGameNumber ( plGame ), FALSE, 
                     NULL );
@@ -3346,8 +3346,8 @@ extern void CommandExportMatchHtml( char *sz ) {
       }
 
       ExportGameHTML ( pf, pl->p, 
-                       exsExport.szHTMLPictureURL, "png",
-                       "gnu", 
+                       exsExport.szHTMLPictureURL, exsExport.szHTMLExtension,
+                       exsExport.szHTMLType, 
                        aszColorNameGNU,
                        i, i == nGames - 1,
                        aszLinks );
@@ -3400,13 +3400,13 @@ extern void CommandExportPositionHtml( char *sz ) {
                       getMoveNumber ( plGame, pmr ) - 1 );
 
     printHTMLBoard( pf, &ms, ms.fTurn,
-                    exsExport.szHTMLPictureURL, "png",
-                    "gnu" );
+                    exsExport.szHTMLPictureURL, exsExport.szHTMLExtension,
+                    exsExport.szHTMLType );
 
     if( pmr )
       HTMLAnalysis ( pf, &ms, pmr,
-                     exsExport.szHTMLPictureURL, "png",
-                     "gnu" );
+                     exsExport.szHTMLPictureURL, exsExport.szHTMLExtension,
+                     exsExport.szHTMLType );
     
     HTMLEpilogue ( pf, &ms, NULL );
 

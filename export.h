@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.8 2002/07/22 18:40:24 thyssen Exp $
+ * $Id: export.h,v 1.9 2002/07/28 23:16:21 oysteijo Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -57,7 +57,8 @@ typedef struct _exportsetup {
   /* For example, frames/non frames for HTML. */
 
   char *szHTMLPictureURL;
-
+  char *szHTMLType;
+  char *szHTMLExtension;
 
 } exportsetup;
 

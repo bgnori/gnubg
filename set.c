@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.107 2002/07/27 10:51:47 thyssen Exp $
+ * $Id: set.c,v 1.108 2002/07/28 23:16:21 oysteijo Exp $
  */
 
 #include "config.h"
@@ -2307,6 +2307,48 @@ CommandSetExportCubeDisplayMissed ( char *sz ) {
              _("Do not export missed cube decisions.") );
 
 }
+
+extern void 
+CommandSetExportHTMLType ( char *sz ) {
+
+  if ( ! sz || ! *sz ) {
+    outputl ( _("You must specify a HTML type. "
+              "See 'help set export html type'.") );
+    return;
+  }
+
+  if ( exsExport.szHTMLType )       /* FIXME Should not free intil we know  */
+    free ( exsExport.szHTMLType );  /* it's a valid string */ 
+
+  sz = NextToken ( &sz );
+
+  if ( ! strcmp ( sz, "fibs2html" ) )
+    {
+     exsExport.szHTMLType = strdup ( sz );
+     exsExport.szHTMLExtension = "gif";
+    } 
+  else if ( ! strcmp ( sz, "bbs" ) )
+    {
+     exsExport.szHTMLType = strdup ( sz );
+     exsExport.szHTMLExtension = "gif";
+    } 
+  else if ( ! strcmp ( sz, "gnu" ) )
+    {
+     exsExport.szHTMLType = strdup ( sz );
+     exsExport.szHTMLExtension = "png";
+    } 
+  else
+    {
+     outputf ( _("unknown board type\n") );
+     return;
+    }
+
+  outputf ( _("HTML export type is now: \n"
+            "%s\n"), 
+            exsExport.szHTMLType );
+
+}
+
 
 extern void 
 CommandSetExportHTMLPictureURL ( char *sz ) {

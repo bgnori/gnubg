@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.98 2002/07/25 17:10:18 thyssen Exp $
+ * $Id: show.c,v 1.99 2002/07/28 23:16:21 oysteijo Exp $
  */
 
 #include "config.h"
@@ -1371,11 +1371,15 @@ CommandShowExport ( char *sz ) {
 
   outputl ( _("\nHTML options:\n") );
 
+  outputf ( _("- HTML export type used in export\n"
+            "\t%s\n"),
+            exsExport.szHTMLType ? exsExport.szHTMLType :
+            _("not defined") );
+
   outputf ( _("- URL to pictures used in export\n"
             "\t%s\n"),
             exsExport.szHTMLPictureURL ? exsExport.szHTMLPictureURL :
             _("not defined") );
-
 
   outputl ( "\n" );
 
