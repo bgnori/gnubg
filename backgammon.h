@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.166 2002/10/16 17:33:33 thyssen Exp $
+ * $Id: backgammon.h,v 1.167 2002/10/21 16:50:41 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -873,10 +873,14 @@ extern char *
 basename ( const char *filename );
 #endif
 
-#if GTK_CHECK_VERSION(1,3,0)
-#define GNUBG_CHARSET "UTF-8"
+#if USE_GTK
+#  if GTK_CHECK_VERSION(1,3,0) || defined (WIN32)
+#    define GNUBG_CHARSET "UTF-8"
+#  else
+#    define GNUBG_CHARSET "ISO-8859-1"
+#  endif
 #else
-#define GNUBG_CHARSET "ISO-8859-1"
+#  define GNUBG_CHARSET "ISO-8859-1"
 #endif
 
 extern char *
