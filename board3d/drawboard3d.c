@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.10 2003/09/22 11:03:08 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.11 2003/10/07 11:08:32 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -3476,6 +3476,8 @@ void preDraw3d(BoardData* bd)
 		gluQuadricTexture(bd->qobj, GL_FALSE);
 	}
 
+	if (bd->boardPoints)
+		freeEigthPoints(bd->boardPoints, bd->curveAccuracy);
 	calculateEigthPoints(&bd->boardPoints, BOARD_FILLET, bd->curveAccuracy);
 
 	preDrawPiece(bd, transparentPieces);

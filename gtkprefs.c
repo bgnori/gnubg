@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.83 2003/10/03 09:21:51 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.84 2003/10/07 11:08:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -178,7 +178,7 @@ free_board_design ( gpointer data, gpointer user_data ) {
   g_free ( pbde->szAuthor );
   g_free ( pbde->szBoardDesign );
 
-  g_free ( data );
+  free ( data );
 
 }
 
@@ -1905,7 +1905,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.83 2003/10/03 09:21:51 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.84 2003/10/07 11:08:32 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
