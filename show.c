@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.154 2003/07/10 12:56:28 thyssen Exp $
+ * $Id: show.c,v 1.155 2003/07/10 13:02:41 thyssen Exp $
  */
 
 #include "config.h"
@@ -2277,11 +2277,6 @@ CommandShowMatchResult( char *sz ) {
   list *pl;
   float r;
 
-  if ( ms.nMatchTo ) {
-    outputl( _("This command has not been implemented for match play!") );
-    return;
-  }
-
   updateStatisticsMatch ( &lMatch );
 
   outputf( _("Actual and luck adjusted results for %s\n\n"),
@@ -2295,12 +2290,20 @@ CommandShowMatchResult( char *sz ) {
       
       psc = &pmgi->sc;
       
-      if ( psc->fDice ) 
-        outputf( "%4d   %+9.3f   %+9.3f\n",
-                 n, 
-                 psc->arActualResult[ 0 ],
-                 psc->arActualResult[ 0 ] - 
-                 psc->arLuck[ 0 ][ 1 ] + psc->arLuck[ 1 ][ 1 ] );
+      if ( psc->fDice ) {
+        if ( ms.nMatchTo ) 
+          outputf( "%4d   %8.2f%%    %8.2f%%\n",
+                   n,
+                   100.0 * ( 0.5f + psc->arActualResult[ 0 ] ),
+                   100.0 * ( 0.5f + psc->arActualResult[ 0 ] - 
+                             psc->arLuck[ 0 ][ 1 ] + psc->arLuck[ 1 ][ 1 ] ) );
+        else
+          outputf( "%4d   %+9.3f   %+9.3f\n",
+                   n, 
+                   psc->arActualResult[ 0 ],
+                   psc->arActualResult[ 0 ] - 
+                   psc->arLuck[ 0 ][ 1 ] + psc->arLuck[ 1 ][ 1 ] );
+      }
       else
         outputf( _("%d   no info avaiable\n"), n );
       
@@ -2316,10 +2319,15 @@ CommandShowMatchResult( char *sz ) {
       
   }
 
-  outputf( _("Sum    %+9.3f   %+9.3f\n"),
-           arSum[ 0 ], arSum[ 1 ] );
+  if ( ms.nMatchTo )
+    outputf( _("Final  %8.2f%%   %8.2f%%\n"),
+             100.0 * ( 0.5f + arSum[ 0 ] ),
+             100.0 * ( 0.5f + arSum[ 1 ] ) );
+  else
+    outputf( _("Sum    %+9.3f   %+9.3f\n"),
+             arSum[ 0 ], arSum[ 1 ] );
 
-  if ( n ) {
+  if ( n && ! ms.nMatchTo ) {
     outputf( _("Ave.   %+9.3f   %+9.3f\n"),
              arSum[ 0 ] / n , arSum[ 1 ] / n );
     outputf( _("95%%CI  %9.3f   %9.3f\n" ),
