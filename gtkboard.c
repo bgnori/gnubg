@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.173 2004/04/08 14:24:05 thyssen Exp $
+ * $Id: gtkboard.c,v 1.174 2004/04/20 08:50:36 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2595,7 +2595,8 @@ static gint board_set( Board *board, const gchar *board_text,
 		{	/* Dice not on board */
 			bd->x_dice[ 0 ] = bd->x_dice[ 1 ] = -DIE_WIDTH - 3;
 
-			if (bd->diceRoll[ 0 ] == 0 && old_dice[0] > 0)
+			if ((bd->diceRoll[ 0 ] == 0 && old_dice[0] > 0) &&
+				(bd->diceRoll[ 1 ] == 0 && old_dice[1] > 0))
 			{
 				bd->diceShown = DICE_BELOW_BOARD;
 				/* Keep showing shaken values */
