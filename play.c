@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.237 2003/11/19 18:15:36 jsegrave Exp $
+ * $Id: play.c,v 1.238 2003/12/29 22:59:19 uid65656 Exp $
  */
 
 #include "config.h"
@@ -877,11 +877,6 @@ static int NewGame( void ) {
 
 	free( plGame );
 	ListDelete( lMatch.plPrev );
-
-        for ( pl = lMatch.plNext; pl != &lMatch; pl = pl->plNext )
-          plGame = pl->p;
-
-        plLastMove = plGame->plPrev;
 
 	return -1;
     }
