@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.197 2002/03/23 17:45:03 thyssen Exp $
+ * $Id: gnubg.c,v 1.198 2002/03/29 20:02:08 thyssen Exp $
  */
 
 #include "config.h"
@@ -163,6 +163,7 @@ int fDisplay = TRUE, fAutoBearoff = FALSE, fAutoGame = TRUE, fAutoMove = FALSE,
     fOutputMatchPC = TRUE, fOutputRawboard = FALSE, 
     fAnnotation = FALSE, cAnalysisMoves = 20, fAnalyseCube = TRUE,
     fAnalyseDice = TRUE, fAnalyseMove = TRUE, fRecord = TRUE;
+int fAutoAnalysis = FALSE;
 
 int fNextTurn = FALSE, fComputing = FALSE;
 
@@ -513,6 +514,8 @@ command cER = {
       acSetAnalysisThreshold },
     { NULL, NULL, NULL, NULL, NULL }    
 }, acSetAutomatic[] = {
+    { "analysis", CommandSetAutoAnalysis, "Analyse moves during match -- "
+      "a.k.a. tutor-mode", szONOFF, &cOnOff },
     { "bearoff", CommandSetAutoBearoff, "Automatically bear off as many "
       "chequers as possible", szONOFF, &cOnOff },
     { "crawford", CommandSetAutoCrawford, "Enable the Crawford game "
@@ -3240,13 +3243,16 @@ extern void CommandSaveSettings( char *szParam ) {
                 save the settings in tty mode  */
 #endif
     
-    fprintf( pf, "set automatic bearoff %s\n"
+    fprintf( pf, 
+             "set automatic analysis %s\n"
+             "set automatic bearoff %s\n"
 	     "set automatic crawford %s\n"
 	     "set automatic doubles %d\n"
 	     "set automatic game %s\n"
 	     "set automatic move %s\n"
 	     "set automatic roll %s\n"
 	     "set beavers %d\n",
+	     fAutoAnalysis ? "on" : "off",
 	     fAutoBearoff ? "on" : "off",
 	     fAutoCrawford ? "on" : "off",
 	     cAutoDoubles,
