@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.191 2003/07/22 14:31:18 jsegrave Exp $
+ * $Id: set.c,v 1.192 2003/07/25 20:14:15 ace Exp $
  */
 
 #include "config.h"
@@ -546,7 +546,7 @@ extern void CommandSetAutoDoubles( char *sz ) {
 
     if( n > 12 ) {
 	outputl( _("Please specify a smaller limit (up to 12 automatic "
-	      "doubles.") );
+	      "doubles).") );
 	return;
     }
 	
@@ -1578,7 +1578,7 @@ extern void CommandSetRolloutLate ( char *sz ) {
 
 extern void CommandSetRolloutLateEnable ( char *sz ) {
 
-  SetToggle( "separate evaluation for later plays", &prcSet->fLateEvals, sz,
+  SetToggle( "separate evaluation for later plies", &prcSet->fLateEvals, sz,
 		 _("Use different evaluation for later moves of rollout."),
 		 _("Do not change evaluations during rollout.") );
 }
