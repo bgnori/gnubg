@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.54 2002/03/31 20:40:39 thyssen Exp $
+ * $Id: analysis.c,v 1.55 2002/04/04 17:26:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -1339,4 +1339,30 @@ CommandShowStatisticsGame ( char *sz ) {
 
     DumpStatcontext ( szOutput, &pmgi->sc, "Statistics for current game");
     outputl( szOutput );
+}
+
+
+extern void CommandAnalyseMove ( char *sz ) {
+
+  matchstate msx;
+
+  if( ms.gs == GAME_NONE ) {
+    outputl( "No game in progress (type `new game' to start one)." );
+    return;
+  }
+    
+
+  if ( plLastMove && plLastMove->plNext && plLastMove->plNext->p ) {
+
+    /* analyse move */
+
+    memcpy ( &msx, &ms, sizeof ( matchstate ) );
+    AnalyzeMove ( plLastMove->plNext->p, &msx, NULL, FALSE );
+
+    GTKUpdateAnnotations();
+
+  }
+  else
+    outputl ( "Sorry, cannot analyse move!" );
+
 }
