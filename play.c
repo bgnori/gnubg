@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.86 2001/10/11 20:39:27 thyssen Exp $
+ * $Id: play.c,v 1.87 2001/10/21 16:46:49 thyssen Exp $
  */
 
 #include "config.h"
@@ -672,13 +672,6 @@ extern int ComputerTurn( void ) {
         return -1;
 
       cd = FindCubeDecision ( arDouble, aarOutput, &ci );
-
-#ifdef OLDCODE
-      if ( EvaluatePositionCubeful ( ms.anBoard, arDouble, arOutput, &ci,
-                                     &ap [ ms.fTurn ].esCube.ec,
-                                     ap [ ms.fTurn ].esCube.ec.nPlies ) < 0 )
-        return -1;
-#endif
 
       fComputerDecision = TRUE;
 
