@@ -16,17 +16,20 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: i18n.c,v 1.1 2002/06/01 17:34:58 thyssen Exp $
+ * $Id: i18n.c,v 1.2 2002/06/01 19:13:31 thyssen Exp $
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
+#include <assert.h>
 
 #include "i18n.h"
 
+#define MAX_STACK 30
 
-static char **aszLocaleStack;
+static char *aszLocaleStack [ MAX_STACK ];
 static int iLocale = -1;
 
 void PushLocale ( const char *locale ) {
@@ -35,12 +38,16 @@ void PushLocale ( const char *locale ) {
 
   char *pc;
 
-  aszLocaleStack = (char **) malloc ( sizeof ( char *) );
+  if ( iLocale > MAX_STACK - 1 ) {
+     printf ( "stack out of bounds in PushLocale\n" );
+     assert ( FALSE );
+  }
+
+  ++iLocale;
 
   pc = setlocale ( LC_ALL, NULL );
   
-  *aszLocaleStack = strdup ( pc );
-  iLocale++;
+  aszLocaleStack [ iLocale ] = strdup ( pc );
 
   setlocale ( LC_ALL, locale );
 
@@ -57,8 +64,7 @@ void PopLocale ( void ) {
 
   setlocale ( LC_ALL, aszLocaleStack[ iLocale ] );
 
-  free ( *aszLocaleStack );
-  free ( aszLocaleStack );
+  free ( aszLocaleStack[ iLocale ] );
   iLocale--;
 
 #endif
