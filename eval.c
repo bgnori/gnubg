@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.208 2002/12/24 11:27:22 thyssen Exp $
+ * $Id: eval.c,v 1.209 2002/12/25 15:47:08 thyssen Exp $
  */
 
 #include "config.h"
@@ -459,6 +459,12 @@ movefilter aaamfMoveFilterSettings[ NUM_MOVEFILTER_SETTINGS ][ MAX_FILTER_PLIES 
     { { 7, 6, 0.2 }, { 0, 0, 0 }, { 2, 4, 0.1 }, { 0, 0, 0.0 } } }
 };
 
+
+char *aszDoubleTypes[ NUM_DOUBLE_TYPES ] = {
+  N_("Double"),
+  N_("Beaver"),
+  N_("Raccoon")
+};
 
 
 static void ComputeTable0( void )
@@ -6706,4 +6712,50 @@ equal_movefilters ( movefilter aamf1[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ],
 
 }
 
+
+/*
+ * Categorise double into normal, beaver, or raccoon.
+ * 
+ * The function is called before ApplyMoveRecord:
+ *
+ * fDoubled = FALSE:
+ *
+ *    the previous moverecord was not a MOVE_DOUBLE,
+ *    hence this is a normal double.
+ *
+ * fDoubled = TRUE:
+ *
+ *    The previous moverecord was a MOVE_DOUBLE
+ *    so it's either a beaver or a raccoon
+ *
+ *    Beaver: fTurn != fMove (the previous doubler was the player on roll
+ *                            so the redouble must be a beaver)
+ *    Raccoon: fTurn == fMove and/or fCubeOwner != fMove
+ *
+ *
+ */
+
+extern doubletype
+DoubleType ( const int fDoubled, const int fMove, const int fTurn ) {
+
+  if ( fDoubled ) {
+
+    /* beaver or raccoon */
+
+    if(  fTurn != fMove )
+      /* beaver */
+      return DT_BEAVER;
+    else
+      /* raccoon */
+      return DT_RACCOON;
+
+  }
+  else 
+    /* normal double */
+    return DT_NORMAL;
+
+  /* code unreachable */
+  return DT_NORMAL;
+
+}
 

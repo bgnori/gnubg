@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.100 2002/12/23 18:58:49 thyssen Exp $
+ * $Id: eval.h,v 1.101 2002/12/25 15:47:08 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -153,6 +153,22 @@ typedef enum _cubedecision {
   OPTIONAL_DOUBLE_PASS,
   OPTIONAL_REDOUBLE_PASS
 } cubedecision;
+
+typedef enum _doubletype {
+  DT_NORMAL,
+  DT_BEAVER,
+  DT_RACCOON,
+  NUM_DOUBLE_TYPES
+} doubletype;
+
+typedef enum _taketype {
+  TT_NA,
+  TT_NORMAL,
+  TT_BEAVER
+} taketype;
+
+extern char *aszDoubleTypes[ NUM_DOUBLE_TYPES ];
+
 
 /*
  * prefined settings
@@ -510,6 +526,7 @@ equal_movefilters ( movefilter aamf1[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ],
                     movefilter aamf2[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] );
 
 
-
+extern doubletype
+DoubleType ( const int fDoubled, const int fMove, const int fTurn );
 
 #endif
