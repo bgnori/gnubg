@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.44 2000/10/24 10:56:13 thyssen Exp $
+ * $Id: play.c,v 1.45 2000/10/24 14:20:39 gtw Exp $
  */
 
 #include "config.h"
@@ -739,9 +739,6 @@ extern void NextTurn( void ) {
 			       ap[ fTurn ].pt == PLAYER_HUMAN ) )
 	ShowBoard();
 
-    if( fTurn == fMove )
-	fResigned = 0;
-
     /* We have reached a safe point to check for interrupts.  Until now,
        the board could have been in an inconsistent state. */
     if( fInterrupt )
@@ -838,6 +835,8 @@ extern void CommandDecline( char *sz ) {
 
 	return;
     }
+
+    fResigned = FALSE;
 
     if( fDisplay )
 	outputf( "%s declines the %s.\n", ap[ fTurn ].szName,
@@ -1394,6 +1393,9 @@ extern void CommandResign( char *sz ) {
 	return;
     }
 
+    /* FIXME cancel cube action?  or refuse resignations while doubled?
+     or treat resignations while doubled as drops? */
+    
     if( ( pch = NextToken( &sz ) ) ) {
 	cch = strlen( pch );
 
@@ -1421,6 +1423,8 @@ extern void CommandResign( char *sz ) {
 	outputf( "%s offers to resign a %s.\n", ap[ fTurn ].szName,
 		aszGameResult[ fResigned - 1 ] );
 
+    fTurn = !fTurn;
+    
     TurnDone();
 }
 
