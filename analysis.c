@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.26 2001/04/27 11:15:50 thyssen Exp $
+ * $Id: analysis.c,v 1.27 2001/04/27 14:52:17 oysteijo Exp $
  */
 
 #include "config.h"
@@ -1109,10 +1109,10 @@ DumpStatcontext ( statcontext *psc, char * sz ) {
                             + psc->arErrorWrongDoubleDP[ i ][ 0 ]
                             + psc->arErrorWrongDoubleTG[ i ][ 0 ]
                             + psc->arErrorWrongTake[ i ][ 0 ]
-                            + psc->arErrorWrongPass[ i ][ 0 ] ) /
-                          psc->anTotalCube[ i ] +
-                          psc->arErrorCheckerplay[ i ][ 0 ] /
-                          psc->anUnforcedMoves[ i ] );
+                            + psc->arErrorWrongPass[ i ][ 0 ]
+                            + psc->arErrorCheckerplay[ i ][ 0 ]  ) /
+                         ( psc->anTotalCube[ i ] +
+                          psc->anUnforcedMoves[ i ] ) );
 
   printf ( "Overall rating:\t\t\t%-15s\t\t%-15s\n\n",
            aszRating[ rt [ 0 ] ], aszRating[ rt [ 1 ] ] );
