@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.26 2001/04/10 20:36:53 gtw Exp $
+ * $Id: database.c,v 1.27 2001/10/25 21:54:38 gtw Exp $
  */
 
 #include "config.h"
@@ -36,6 +36,14 @@
 #include "rollout.h"
 
 #if HAVE_LIBGDBM
+
+#if !HAVE_GDBM_ERRNO && HAVE_IMP_GDBM_ERRNO
+/* Kludge to access gdbm_errno in Windows DLLs that won't let us use
+   gdbm_errno directly. */
+extern gdbm_error *_imp__gdbm_errno;
+#define gdbm_errno (*_imp__gdbm_errno)
+#endif
+
 static char *szDatabase = "gnubg.gdbm";
 
 extern void CommandDatabaseDump( char *sz ) {
