@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.15 2000/06/12 16:54:49 gtw Exp $
+ * $Id: rollout.c,v 1.16 2000/06/19 18:50:03 oysteijo Exp $
  */
 
 #include "config.h"
@@ -314,7 +314,7 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
 	rt = BASIC;
     
     for( i = 0; i < NUM_ROLLOUT_OUTPUTS; i++ )
-	arResult[ i ] = arVariance[ i ] = 0.0f;
+	arResult[ i ] = arVariance[ i ] = arMu[ i ] = 0.0f;
     
     for( i = 0; i < cGames; i++ ) {
 	memcpy( &anBoardEval[ 0 ][ 0 ], &anBoard[ 0 ][ 0 ],
