@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.71 2003/08/22 15:13:44 jsegrave Exp $
+ * $Id: import.c,v 1.72 2003/08/23 08:33:25 thyssen Exp $
  */
 
 #include "config.h"
@@ -2259,7 +2259,7 @@ static void ImportTMGGame( FILE *pf, int i, int nLength, int n0, int n1,
       TMG_WIN_BACKGAMMON = 16,
       TMG_OUT_OF_TIME = 17,
       TMG_TABLE_STAKE = 19,
-      TMG_OUT_OF_TIME_1 } tmgrecordtype;
+      TMG_OUT_OF_TIME_1 = 22 } tmgrecordtype;
     tmgrecordtype trt;
     
     InitBoard( ms.anBoard, ms.bgv );
@@ -2455,6 +2455,12 @@ static void ImportTMGGame( FILE *pf, int i, int nLength, int n0, int n1,
             pmr->r.sz = NULL;
             pmr->r.fPlayer = ! fPlayer;
             pmr->r.nResigned = atoi ( pch ) / ms.nCube;
+            if ( ! pmr->r.nResigned )
+              /* handle cases where the TMG file says "wins 1 point"
+                 but where the cube value is 2 or more. Typically the
+                 last game of a match */
+              pmr->r.nResigned = 1;
+              
             pmr->r.esResign.et = EVAL_NONE;
             
             AddMoveRecord( pmr );
