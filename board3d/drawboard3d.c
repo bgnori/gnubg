@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.1.2.9 2003/06/24 09:09:33 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.1.2.10 2003/06/25 09:35:15 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -638,7 +638,7 @@ void drawDCNumbers(BoardData* bd, int mode, diceTest* dt)
 				glDisable(GL_DEPTH_TEST);
 
 			glPushMatrix();
-			glTranslatef(0, 0, depth + !nice * LIFT_OFF);
+			glTranslatef(0, 0, depth + !nice * LIFT_OFF * 2);
 
 			glPrintCube(sides[side], mode);
 
@@ -1410,16 +1410,16 @@ void showMoveIndicator(BoardData* bd)
 	if (!fClockwise)
 	{
 		if (bd->turn == 1)
-			glTranslatef(TOTAL_WIDTH - TRAY_WIDTH + EDGE_WIDTH, (EDGE_HEIGHT - ARROW_SIZE) / 2.0f, BASE_DEPTH + EDGE_DEPTH);
+			glTranslatef(TOTAL_WIDTH - TRAY_WIDTH, (EDGE_HEIGHT - ARROW_SIZE) / 2.0f, BASE_DEPTH + EDGE_DEPTH);
 		else
-			glTranslatef(TOTAL_WIDTH - TRAY_WIDTH + EDGE_WIDTH, TOTAL_HEIGHT - EDGE_HEIGHT + (EDGE_HEIGHT - ARROW_SIZE) / 2.0f, BASE_DEPTH + EDGE_DEPTH);
+			glTranslatef(TOTAL_WIDTH - TRAY_WIDTH, TOTAL_HEIGHT - EDGE_HEIGHT + (EDGE_HEIGHT - ARROW_SIZE) / 2.0f, BASE_DEPTH + EDGE_DEPTH);
 	}
 	else
 	{
 		if (bd->turn == 1)
-			glTranslatef(TRAY_WIDTH - EDGE_WIDTH, (EDGE_HEIGHT + ARROW_SIZE) / 2.0f, BASE_DEPTH + EDGE_DEPTH);
+			glTranslatef(TRAY_WIDTH, (EDGE_HEIGHT + ARROW_SIZE) / 2.0f, BASE_DEPTH + EDGE_DEPTH);
 		else
-			glTranslatef(TRAY_WIDTH - EDGE_WIDTH, TOTAL_HEIGHT - EDGE_HEIGHT + (EDGE_HEIGHT + ARROW_SIZE) / 2.0f, BASE_DEPTH + EDGE_DEPTH);
+			glTranslatef(TRAY_WIDTH, TOTAL_HEIGHT - EDGE_HEIGHT + (EDGE_HEIGHT + ARROW_SIZE) / 2.0f, BASE_DEPTH + EDGE_DEPTH);
 		glRotatef(180, 0, 0, 1);
 	}
 	glBegin(GL_QUADS);
@@ -1831,7 +1831,7 @@ void drawPointPick(BoardData* bd, int point)
 */	}
 }
 
-int board_point(BoardData *bd, int x, int y, int point)
+int BoardPoint3d(BoardData *bd, int x, int y, int point)
 {	/* Identify if anything is below point (x,y) */
 	GLint viewport[4];
 	#define BUFSIZE 512
@@ -2833,7 +2833,7 @@ void MakeShadowModel(BoardData* bd)
 	updateFlagOccPos(bd);
 }
 
-void preDrawThings(BoardData* bd)
+void preDraw3d(BoardData* bd)
 {
 	int transparentPieces = (bd->checkerMat[0].alphaBlend) || (bd->checkerMat[1].alphaBlend);
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.346.2.3 2003/06/24 09:09:33 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.346.2.4 2003/06/25 09:35:14 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7456,7 +7456,7 @@ extern void GTKSet( void *p ) {
 #if USE_BOARD3D
 	/* If in 3d mode may need to update sizes */
     if (rdAppearance.fDisplayType == DT_3D)
-		SetupViewingVolume3d();
+		SetupViewingVolume3d(bd);
 #endif
 	}
     } else if( p == &fGUIShowIDs ) {

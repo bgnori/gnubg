@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.64.4.9 2003/06/24 15:58:16 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.64.4.10 2003/06/25 09:35:14 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1302,7 +1302,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.64.4.9 2003/06/24 15:58:16 thyssen Exp $\n"
+          "    $Id: gtkprefs.c,v 1.64.4.10 2003/06/25 09:35:14 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -1767,7 +1767,7 @@ extern void BoardPreferencesDone( GtkWidget *pwBoard ) {
 	if (rdAppearance.fDisplayType == DT_3D)
 		updateOccPos(bd);
 	else
-		StopIdle3d();
+		StopIdle3d(bd);
 #endif
     }
 }
@@ -1796,7 +1796,7 @@ static void GetPrefs ( renderdata *prd ) {
 	if (newAccuracy != prd->curveAccuracy)
 	{
 		prd->curveAccuracy = newAccuracy;
-		preDraw3d();
+		preDraw3d(bd);
 	}
 	prd->lightType = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(pwLightSource) ) ? LT_POSITIONAL : LT_DIRECTIONAL;
 	prd->lightPos[0] = gtk_range_get_value(GTK_RANGE(pwLightPosX));
@@ -1810,7 +1810,7 @@ static void GetPrefs ( renderdata *prd ) {
 	prd->showMoveIndicator = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(pwMoveIndicator));
 	prd->boardAngle = gtk_range_get_value(GTK_RANGE(pwBoardAngle));
 	prd->testSkewFactor = gtk_range_get_value(GTK_RANGE(pwSkewFactor));
-	SetupViewingVolume3d();
+	SetupViewingVolume3d(bd);
 #endif
     prd->fLabels = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pwLabels ) );
     prd->fHinges = gtk_toggle_button_get_active(

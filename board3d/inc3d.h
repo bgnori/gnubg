@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.1.2.7 2003/06/24 09:09:33 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.1.2.8 2003/06/25 09:35:15 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -101,10 +101,7 @@ void InitGL();
 
 /* Drawing functions */
 void drawBoard(BoardData* bd);
-int board_point(BoardData *bd, int x, int y, int point);
-void SetupViewingVolume();
 void SetupPerspVolume(BoardData* bd, int viewport[4]);
-void preDrawThings(BoardData* bd);
 float getBoardWidth();
 float getBoardHeight();
 void calculateBackgroundSize(BoardData *bd, int viewport[4]);
@@ -129,5 +126,4 @@ void setDicePos(BoardData* bd);
 
 typedef int idleFunc(BoardData* bd);
 
-void stopIdleFunc();
-void setIdleFunc(idleFunc* pFun);
+void setIdleFunc(BoardData* bd, idleFunc* pFun);
