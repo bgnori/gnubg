@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.64.4.17 2003/07/31 10:40:11 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.64.4.18 2003/07/31 16:24:35 thyssen Exp $
  */
 
 #include "config.h"
@@ -124,7 +124,7 @@ void UpdateColPreviews();
 int GetPreviewId();
 void UpdateColPreview(int ID);
 void SetPreviewLightLevel(int levels[3]);
-#endif;
+#endif
 
 #if HAVE_LIBXML2
 
@@ -1016,11 +1016,7 @@ void toggle_display_type(GtkWidget *widget, BoardData* bd)
 	int i;
 	int state = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
 	int numPages = 
-#ifdef USE_GTK2
-		gtk_notebook_get_n_pages(GTK_NOTEBOOK(pwNotebook));
-#else
 		g_list_length(GTK_NOTEBOOK(pwNotebook)->children);
-#endif
 	/* Show pages with correct 2d/3d settings */
 	for (i = numPages - 1; i >= NUM_NONPREVIEW_PAGES; i--)
 		gtk_notebook_remove_page(GTK_NOTEBOOK(pwNotebook), i);
@@ -1720,7 +1716,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.64.4.17 2003/07/31 10:40:11 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.64.4.18 2003/07/31 16:24:35 thyssen Exp $\n"
           "\n"
           " -->\n"
           "\n"
