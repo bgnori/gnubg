@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.32 2004/04/02 16:36:32 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.33 2004/04/26 16:07:27 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -831,17 +831,16 @@ void drawDice2(BoardData* bd, int num)
 	else
 		z = ((int)bd->dicePos[num][2] + 45) / 90;
 
+	if (value == 0)
+		return;	/* No value to show */
+		
 	value--;	/* Zero based for array access */
 	glRotatef(90.0f * rotDice[value][0], 1, 0, 0);
 	glRotatef(90.0f * rotDice[value][1], 0, 1, 0);
 
-	if (value >= 0)
-		initDT(&dt, rotDice[value][0], rotDice[value][1], z);
-	else
-	{
-		g_print("no value on dice?\n");
-		return;
-	}
+	/* DT = dice test, use to work out which way up the dice is */
+	initDT(&dt, rotDice[value][0], rotDice[value][1], z);
+
 	blend = pDiceMat->alphaBlend;
 
 	if (blend)
