@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.28 2003/08/18 15:38:15 thyssen Exp $
+ * $Id: external.c,v 1.29 2003/08/18 15:39:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -447,7 +447,7 @@ extern void CommandExternal( char *sz ) {
                               &rEqBefore, &rEqAfter );
 
 	  /* if opponent gives up equity by resigning */
-          f( fabs(rEqAfter - rEqBefore) <= epsilon )
+          if( fabs(rEqAfter - rEqBefore) <= epsilon )
 	    strcpy( szResponse, "accept" );
 	  else
 	    strcpy( szResponse, "reject" );
