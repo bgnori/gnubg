@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.189 2002/11/24 14:44:13 thyssen Exp $
+ * $Id: eval.c,v 1.190 2002/11/24 14:50:53 thyssen Exp $
  */
 
 #include "config.h"
@@ -3124,7 +3124,7 @@ GenerateMoves( movelist *pml, int anBoard[ 2 ][ 25 ],
 static int FindBestMovePlied( int anMove[ 8 ], int nDice0, int nDice1,
 			      int anBoard[ 2 ][ 25 ], cubeinfo *pci,
 			      evalcontext *pec, int nPlies ) {
-  int i, j = 0, iPly;
+  int i, iPly;
   movelist ml;
 #if __GNUC__
   move amCandidates[ pec->nSearchCandidates ];
@@ -3389,6 +3389,8 @@ ThorpCount( int anBoard[ 2 ][ 25 ], int *pnLeader, int *pnTrailer ) {
   *pnTrailer += anBoard[0][0];
   *pnTrailer -= anCovered[0];
   
+  return 0;
+
 }
   
   
