@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.3.4.13 2003/07/31 10:40:12 Superfly_Jon Exp $
+ * $Id: renderprefs.c,v 1.3.4.14 2003/08/01 07:43:52 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -191,10 +191,8 @@ static int SetMaterial(Material* pMat, char *sz)
 	if (pch)
 	{
 		sz += strlen(sz) + 1;
-		if (sz)
-		{
+		if (sz && *sz)
 			FindTexture(&pMat->textureInfo, sz);
-		}
 	}
 
 	return 0;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.42.2.15 2003/07/31 10:40:11 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.42.2.16 2003/08/01 07:43:52 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -280,6 +280,7 @@ extern void SetupViewingVolume3d(BoardData *bd, renderdata* prd);
 extern void DisplayCorrectBoardType();
 extern void CreateBoard3d(BoardData* bd, GtkWidget** drawing_area);
 extern void SetupLight3d(BoardData *bd, renderdata* prd);
+extern void DoAcceleratedCheck(GtkWidget* board);
 
 extern void *CreatePreviewBoard3d(BoardData* bd, GdkPixmap *ppm);
 extern void RollDice3d(BoardData *bd);
@@ -298,7 +299,7 @@ extern void testSet3dSetting(BoardData* bd, const renderdata *prd);
 extern void CopySettings3d(BoardData* from, BoardData* to);
 extern void MakeCurrent3d(GtkWidget *widget);
 extern void GetTextures(BoardData* bd);
-void ClearTextures(BoardData* bd, int glValid);
+extern void ClearTextures(BoardData* bd, int glValid);
 
 extern void PlaceMovingPieceRotation(BoardData* bd, int dest, int src);
 extern void SetMovingPieceRotation(BoardData* bd, int pt);

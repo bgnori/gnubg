@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.64.4.18 2003/07/31 16:24:35 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.64.4.19 2003/08/01 07:43:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1016,12 +1016,16 @@ void toggle_display_type(GtkWidget *widget, BoardData* bd)
 	int i;
 	int state = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
 	int numPages = 
-		g_list_length(GTK_NOTEBOOK(pwNotebook)->children);
+	g_list_length(GTK_NOTEBOOK(pwNotebook)->children);
 	/* Show pages with correct 2d/3d settings */
 	for (i = numPages - 1; i >= NUM_NONPREVIEW_PAGES; i--)
 		gtk_notebook_remove_page(GTK_NOTEBOOK(pwNotebook), i);
 
 	previewType = state ? DT_3D : DT_2D;
+
+	if (previewType == DT_3D)
+		DoAcceleratedCheck(bd->drawing_area3d);
+
 	AddPages(bd, pwNotebook);
 
 	ShowLightWidgets(state);
@@ -1716,7 +1720,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.64.4.18 2003/07/31 16:24:35 thyssen Exp $\n"
+          "    $Id: gtkprefs.c,v 1.64.4.19 2003/08/01 07:43:52 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"

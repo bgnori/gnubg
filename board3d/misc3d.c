@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.1.2.14 2003/07/31 10:40:12 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.1.2.15 2003/08/01 07:43:52 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -125,7 +125,6 @@ void InitGL(BoardData *bd)
 
 	/* Nice hints */
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
 	/* Default blend function for alpha-blending */

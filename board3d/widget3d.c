@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.1.2.18 2003/07/31 16:25:24 thyssen Exp $
+* $Id: widget3d.c,v 1.1.2.19 2003/08/01 07:43:52 Superfly_Jon Exp $
 */
 
 #include <GL/gl.h>
@@ -41,7 +41,7 @@
 GdkGLConfig *glconfig;
 #endif
 
-static int checkAccelerated = 1;
+int checkAccelerated = 0;
 void DoAcceleratedCheck(GtkWidget* board);
 
 guint idleId = 0;
@@ -149,8 +149,6 @@ void realize(GtkWidget *widget, BoardData* bd)
 	gdk_gl_drawable_gl_end(gldrawable);
 	/*** OpenGL END ***/
 #endif
-	if (checkAccelerated)
-		DoAcceleratedCheck(widget);
 }
 
 void CheckOpenglError()
@@ -321,7 +319,6 @@ int CheckAccelerated(GtkWidget* board)
 	g_print("Renderer: %s\n", renderer);
 	g_print("Version: %s\n", version);
 */
-	checkAccelerated = 0;
 
 	if (!dc)
 		g_print("No DC found.\n");
@@ -360,11 +357,15 @@ int CheckAccelerated(GtkWidget* board)
 
 void DoAcceleratedCheck(GtkWidget* board)
 {
-	if (!CheckAccelerated(board))
-	{	/* Display warning message as performance will be bad */
-		outputl("No hardware accelerated graphics card found, ");
-		outputl("performance may be slow.\n");
-		outputx();
+	if (checkAccelerated == 0)
+	{
+		if (!CheckAccelerated(board))
+		{	/* Display warning message as performance will be bad */
+			outputl("No hardware accelerated graphics card found, ");
+			outputl("performance may be slow.\n");
+			outputx();
+		}
+		checkAccelerated = 1;
 	}
 }
 
