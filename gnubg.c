@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.550 2004/04/18 08:56:42 thyssen Exp $
+ * $Id: gnubg.c,v 1.551 2004/04/19 20:56:01 thyssen Exp $
  */
 
 #include "config.h"
@@ -9138,7 +9138,7 @@ CommandClearHint( char *sz ) {
 
 extern int
 EPC( int anBoard[ 2 ][ 25 ], float *arEPC, float *arMu, float *arSigma, 
-     int *pfSource, const int fOnlyRace ) {
+     int *pfSource, const int fOnlyBearoff ) {
 
   const float x = ( 2 * 3 + 3 * 4 + 4 * 5 + 4 * 6 + 6 * 7 +
                     5* 8  + 4 * 9 + 2 * 10 + 2 * 11 + 1 * 12 + 
@@ -9198,7 +9198,7 @@ EPC( int anBoard[ 2 ][ 25 ], float *arEPC, float *arMu, float *arSigma,
     return 0;
 
   }
-  else {
+  else if ( ! fOnlyBearoff ) {
 
     /* one-sided rollout */
 
@@ -9206,10 +9206,6 @@ EPC( int anBoard[ 2 ][ 25 ], float *arEPC, float *arMu, float *arSigma,
     float arMux[ 2 ];
     float ar[ 5 ];
     int i;
-
-    if ( fOnlyRace && 
-         ClassifyPosition( anBoard, VARIATION_STANDARD ) > CLASS_RACE )
-      return -1;
 
     raceProbs ( anBoard, nTrials, ar, arMux );
 
