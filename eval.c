@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.98 2001/06/17 10:16:32 thyssen Exp $
+ * $Id: eval.c,v 1.99 2001/07/26 14:43:17 gtw Exp $
  */
 
 #include "config.h"
@@ -267,6 +267,7 @@ static int cCache;
 volatile int fInterrupt = FALSE, fAction = FALSE;
 void ( *fnAction )( void ) = NULL;
 static float rCubeX = 2.0/3.0;
+int fEgyptian = FALSE;
 
 cubeinfo ciCubeless = { 1, 0, 0, 0, { 0, 0 }, FALSE, FALSE, FALSE,
 			      { 1.0, 1.0, 1.0, 1.0 } };
@@ -2972,8 +2973,16 @@ static int LegalMove( int anBoard[ 2 ][ 25 ], int iSrc, int nPips ) {
 
     int i, nBack = 0, iDest = iSrc - nPips;
 
-    if( iDest >= 0 )
-	return ( anBoard[ 0 ][ 23 - iDest ] < 2 );
+    if( iDest >= 0 ) { /* Here we can do the Chris rule check */
+        if( fEgyptian ) {
+            if( anBoard[ 0 ][ 23 - iDest ] < 2 ) {
+                return ( anBoard[ 1 ][ iDest ] < 5 );
+            };
+            return ( 0 );
+        } else {
+            return ( anBoard[ 0 ][ 23 - iDest ] < 2 );
+        }
+    }
 
     /* otherwise, attempting to bear off */
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.50 2001/06/15 18:02:48 thyssen Exp $
+ * $Id: eval.h,v 1.51 2001/07/26 14:43:17 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -158,6 +158,8 @@ extern volatile int fInterrupt, fAction;
 extern void ( *fnAction )( void );
 extern cubeinfo ciCubeless;
 extern char *aszEvalType[ EVAL_ROLLOUT + 1 ];
+extern int fEgyptian;
+
 
 typedef struct _movelist {
     int cMoves; /* and current move when building list */
