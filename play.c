@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.94 2001/10/29 15:12:21 gtw Exp $
+ * $Id: play.c,v 1.95 2001/10/29 16:06:57 gtw Exp $
  */
 
 #include "config.h"
@@ -512,7 +512,7 @@ extern void AddGame( moverecord *pmr ) {
     ms.cGames++;
 }
 
-static void NewGame( void ) {
+static int NewGame( void ) {
 
     moverecord *pmr;
     
@@ -552,7 +552,7 @@ static void NewGame( void ) {
 	free( plGame );
 	ListDelete( lMatch.plPrev );
 
-	return;
+	return -1;
     }
     
     if( fDisplay ) {
@@ -594,6 +594,8 @@ static void NewGame( void ) {
 
     ResetDelayTimer();
 #endif
+
+    return 0;
 }
 
 static void ShowAutoMove( int anBoard[ 2 ][ 25 ], int anMove[ 8 ] ) {
@@ -1354,7 +1356,8 @@ extern int NextTurn( int fPlayNext ) {
 	outputx();
 	
 	if( fAutoGame ) {
-	    NewGame();
+	    if( NewGame() < 0 )
+		return -1;
 	    
 	    if( ap[ ms.fTurn ].pt == PLAYER_HUMAN )
 		ShowBoard();
