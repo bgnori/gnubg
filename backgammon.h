@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.242 2003/08/14 22:25:36 joseph Exp $
+ * $Id: backgammon.h,v 1.243 2003/08/15 02:20:47 joseph Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -465,7 +465,7 @@ extern int ComputerTurn( void );
 extern void ClearMatch( void );
 extern void FreeMatch( void );
 extern void SetMatchDate( matchinfo *pmi );
-extern int GetMatchStateCubeInfo( cubeinfo *pci, matchstate *pms );
+extern int GetMatchStateCubeInfo( cubeinfo* pci, const matchstate* pms);
 extern int ParseHighlightColour( char *sz );
 extern int ParseNumber( char **ppch );
 extern int ParsePlayer( char *sz );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.121 2003/08/14 23:58:38 joseph Exp $
+ * $Id: eval.h,v 1.122 2003/08/15 02:20:47 joseph Exp $
  */
 
 #ifndef _EVAL_H_
@@ -372,8 +372,7 @@ EvaluatePerfectCubeful ( int anBoard[ 2 ][ 25 ], float arEquity[],
                          const bgvariation bgv );
 
 extern void
-InvertEvaluationR ( float ar[ NUM_ROLLOUT_OUTPUTS],
-                    cubeinfo *pci );
+InvertEvaluationR ( float ar[ NUM_ROLLOUT_OUTPUTS], const cubeinfo* pci);
 
 extern void 
 InvertEvaluation( float ar[ NUM_OUTPUTS ] );
@@ -410,7 +409,7 @@ ThorpCount( int anBoard[ 2 ][ 25 ], int *pnLeader, int *pnTrailer );
 
 extern int 
 DumpPosition( int anBoard[ 2 ][ 25 ], char *szOutput,
-              evalcontext *pec, cubeinfo *pci, int fOutputMWC,
+              const evalcontext* pec, cubeinfo* pci, int fOutputMWC,
 	      int fOutputWinPC, int fOutputInvert );
 
 extern void 
@@ -505,14 +504,21 @@ se_eq2mwc ( const float rEq, const cubeinfo *ci );
 extern char 
 *FormatEval ( char *sz, evalsetup *pes );
 
+/* For some reason, gcc complains when 2d non-const array is passed as
+   const array
+*/
+#define GCCCONSTAHACK (const float (*)[NUM_ROLLOUT_OUTPUTS])
+
 extern cubedecision
 FindCubeDecision ( float arDouble[],
-                   float aarOutput[][ NUM_ROLLOUT_OUTPUTS ], cubeinfo *pci );
+                   const float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
+		   const cubeinfo *pci );
 
 extern int
 GeneralCubeDecisionE ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                        int anBoard[ 2 ][ 25 ],
-                       cubeinfo *pci, evalcontext *pec, evalsetup *pes );
+                       const cubeinfo* pci, const evalcontext* pec,
+		       const evalsetup* pes );
 
 extern int
 GeneralEvaluationE ( float arOutput [ NUM_ROLLOUT_OUTPUTS ],
@@ -552,7 +558,7 @@ extern char
 
 extern cubedecision
 FindBestCubeDecision ( float arDouble[], 
-                       float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                       const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                        const cubeinfo *pci );
 
 extern int
@@ -577,8 +583,8 @@ getMatchPoints ( float aaarPoints[ 2 ][ 4 ][ 2 ],
 extern void
 getCubeDecisionOrdering ( int aiOrder[ 3 ],
                           float arDouble[ 4 ], 
-                          float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
-                          cubeinfo *pci );
+                          const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                          const cubeinfo* pci );
 
 extern float
 getPercent ( const cubedecision cd,
@@ -598,7 +604,7 @@ isCloseCubedecision ( const float arDouble[] );
 
 extern int
 isMissedDouble ( float arDouble[], 
-                 float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                 const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                  const int fDouble, 
                  const cubeinfo *pci );
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.132 2003/08/14 22:25:36 joseph Exp $
+ * $Id: html.c,v 1.133 2003/08/15 02:20:48 joseph Exp $
  */
 
 #include "config.h"
@@ -169,7 +169,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( _("\n" 
              "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.132 2003/08/14 22:25:36 joseph Exp $ */\n"
+             "/* $Id: html.c,v 1.133 2003/08/15 02:20:48 joseph Exp $ */\n"
              "/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
@@ -1913,7 +1913,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.132 $";
+  const char szVersion[] = "$Revision: 1.133 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1994,7 +1994,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.132 $";
+  const char szVersion[] = "$Revision: 1.133 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2071,8 +2071,8 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
 
   fActual = fDouble > 0;
   fClose = isCloseCubedecision ( arDouble ); 
-  fMissed = 
-    fDouble > -1 && isMissedDouble ( arDouble, aarOutput, fDouble, pci );
+  fMissed =  fDouble > -1 &&
+    isMissedDouble ( arDouble, GCCCONSTAHACK aarOutput, fDouble, pci );
 
   fDisplay = 
     ( fActual && exsExport.afCubeDisplay[ EXPORT_CUBE_ACTUAL ] ) ||
@@ -2299,7 +2299,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
 
   }
 
-  getCubeDecisionOrdering ( ai, arDouble, aarOutput, pci );
+  getCubeDecisionOrdering ( ai, arDouble, GCCCONSTAHACK aarOutput, pci );
 
   for ( i = 0; i < 3; i++ ) {
 
@@ -2326,7 +2326,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
 
   /* cube decision */
 
-  cd = FindBestCubeDecision ( arDouble, aarOutput, pci );
+  cd = FindBestCubeDecision ( arDouble, GCCCONSTAHACK aarOutput, pci );
 
   fprintf ( pf,
             "<tr><td colspan=\"2\">%s</td>"

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.52 2003/08/14 22:25:36 joseph Exp $
+ * $Id: text.c,v 1.53 2003/08/15 02:20:48 joseph Exp $
  */
 
 #include "config.h"
@@ -240,7 +240,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.52 $";
+  const char szVersion[] = "$Revision: 1.53 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -275,10 +275,10 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
 static void
 TextPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
-                             float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
-                             float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                             const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                             const float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                              int fPlayer,
-                             evalsetup *pes, cubeinfo *pci,
+                             const evalsetup* pes, const cubeinfo* pci,
                              int fDouble, int fTake,
                              skilltype stDouble,
                              skilltype stTake ) {
@@ -291,11 +291,11 @@ TextPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
   if ( pes->et == EVAL_NONE ) return; /* no evaluation */
   if ( ! GetDPEq ( NULL, NULL, pci ) ) return; /* cube not available */
 
-  FindCubeDecision ( arDouble, aarOutput, pci );
+  FindCubeDecision ( arDouble, GCCCONSTAHACK aarOutput, pci );
 
   fActual = fDouble;
   fClose = isCloseCubedecision ( arDouble ); 
-  fMissed = isMissedDouble ( arDouble, aarOutput, fDouble, pci );
+  fMissed = isMissedDouble ( arDouble, GCCCONSTAHACK aarOutput, fDouble, pci );
 
   fDisplay = 
     ( fActual && exsExport.afCubeDisplay[ EXPORT_CUBE_ACTUAL ] ) ||
@@ -346,7 +346,8 @@ TextPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
     /* cube analysis from move */
 
     TextPrintCubeAnalysisTable ( pf, pmr->n.arDouble, 
-                                 pmr->n.aarOutput, pmr->n.aarStdDev,
+                                 GCCCONSTAHACK pmr->n.aarOutput,
+				 GCCCONSTAHACK pmr->n.aarStdDev,
                                  pmr->n.fPlayer,
                                  &pmr->n.esDouble, &ci, FALSE, -1,
                                  pmr->n.stCube, SKILL_NONE );
@@ -356,8 +357,8 @@ TextPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
   case MOVE_DOUBLE:
 
     TextPrintCubeAnalysisTable ( pf, pmr->d.CubeDecPtr->arDouble, 
-                                 pmr->d.CubeDecPtr->aarOutput, 
-								 pmr->d.CubeDecPtr->aarStdDev,
+                                 GCCCONSTAHACK pmr->d.CubeDecPtr->aarOutput, 
+				 GCCCONSTAHACK pmr->d.CubeDecPtr->aarStdDev,
                                  pmr->d.fPlayer,
                                  &pmr->d.CubeDecPtr->esDouble, 
 								 &ci, TRUE, -1,
@@ -371,8 +372,8 @@ TextPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
     /* cube analysis from double, {take, drop, beaver} */
 
     TextPrintCubeAnalysisTable ( pf, pmr->d.CubeDecPtr->arDouble, 
-                                 pmr->d.CubeDecPtr->aarOutput, 
-								 pmr->d.CubeDecPtr->aarStdDev,
+                                 GCCCONSTAHACK pmr->d.CubeDecPtr->aarOutput, 
+				 GCCCONSTAHACK pmr->d.CubeDecPtr->aarStdDev,
                                  pmr->d.fPlayer,
                                  &pmr->d.CubeDecPtr->esDouble, 
 								 &ci, TRUE, 

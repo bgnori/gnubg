@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.26 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: latex.c,v 1.27 2003/08/15 02:20:48 joseph Exp $
  */
 
 #include "config.h"
@@ -346,10 +346,10 @@ static void PrintLaTeXComment( FILE *pf, unsigned char *pch ) {
 }
 
 static void 
-PrintLaTeXCubeAnalysis( FILE *pf, matchstate *pms, int fPlayer,
-                        float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
-                        float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
-                        evalsetup *pes ) { 
+PrintLaTeXCubeAnalysis( FILE *pf, const matchstate* pms, int fPlayer,
+                        const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                        const float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                        const evalsetup *pes ) { 
   
     cubeinfo ci;
 
@@ -422,7 +422,8 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 		PrintLaTeXBoard( pf, &msExport, pmr->n.fPlayer );
 	    
 	    PrintLaTeXCubeAnalysis( pf, &msExport, pmr->n.fPlayer,
-				    pmr->n.aarOutput, pmr->n.aarStdDev,
+				    GCCCONSTAHACK pmr->n.aarOutput,
+				    GCCCONSTAHACK pmr->n.aarStdDev,
                                     &pmr->n.esDouble );
             /* FIXME: output cube skill */
 
@@ -455,10 +456,10 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 	case MOVE_DOUBLE:
 	    PrintLaTeXBoard( pf, &msExport, pmr->d.fPlayer );
 
-	    PrintLaTeXCubeAnalysis( pf, &msExport, pmr->d.fPlayer,
-                                    pmr->d.CubeDecPtr->aarOutput, 
-                                    pmr->d.CubeDecPtr->aarStdDev, 
-                                    &pmr->d.CubeDecPtr->esDouble );
+	    PrintLaTeXCubeAnalysis(pf, &msExport, pmr->d.fPlayer,
+				   GCCCONSTAHACK pmr->d.CubeDecPtr->aarOutput, 
+				   GCCCONSTAHACK pmr->d.CubeDecPtr->aarStdDev, 
+				   &pmr->d.CubeDecPtr->esDouble );
 
 	    /* FIXME what about beavers? */
 	    fprintf( pf, "\\begin{center}%s %s%s\\end{center}\n\n",
