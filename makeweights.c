@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.6 2002/06/01 17:36:40 thyssen Exp $
+ * $Id: makeweights.c,v 1.7 2002/12/13 07:11:37 jsegrave Exp $
  */
 
 #include "config.h"
@@ -33,17 +33,41 @@
 
 #include "eval.h" /* for WEIGHTS_VERSION */
 
+static void 
+usage (char *prog) {
+  fprintf (stderr, "Usage: %s [ -f filename]\n"
+	   "  -f filename  Output to file instead of stdout\n",
+	   prog);
+
+  exit (1);
+}
+
 extern int main( int argc, char *argv[] ) {
 
     neuralnet nn;
     char szFileVersion[ 16 ];
     static float ar[ 2 ] = { WEIGHTS_MAGIC_BINARY, WEIGHTS_VERSION_BINARY };
     int c;
-#ifdef STDOUT_FILENO 
-    FILE *output;
-#else
-#define output stdout
-#endif
+    FILE *output = stdout;
+
+    switch (argc) {
+    case 1:
+      break;
+
+    case 3:
+      if (strcmp (argv[1], "-f") != 0)
+	usage (argv[0]);
+
+      if ((output = fopen (argv[2], "wb")) == 0) {
+	perror ("Can't open output file");
+	exit (1);
+      }
+	
+      break;
+
+    default:
+      usage (argv[0]);
+    }
 
     /* i18n */
 
@@ -68,12 +92,6 @@ extern int main( int argc, char *argv[] ) {
       return EXIT_FAILURE;
     }
 
-#ifdef STDOUT_FILENO
-    if( !( output = fdopen( STDOUT_FILENO, "wb" ) ) ) {
-	perror( "(stdout)" );
-	return EXIT_FAILURE;
-    }
-#endif
 	
     fwrite( ar, sizeof( ar[ 0 ] ), 2, output );
 
