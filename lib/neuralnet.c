@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.17 2002/04/27 06:16:23 oysteijo Exp $
+ * $Id: neuralnet.c,v 1.18 2002/05/04 20:44:35 joseph Exp $
  */
 
 #include "config.h"
@@ -278,21 +278,27 @@ extern void *NeuralNetCreateDirect( neuralnet *pnn, void *p ) {
    ( (float *) p ) += pnn->cHidden;
    pnn->arOutputThreshold = p;
    ( (float *) p ) += pnn->cOutput;
- 
+
+   pnn->savedBase = malloc( pnn->cHidden * sizeof( float ) ); 
+   pnn->savedIBase = malloc( pnn->cInput * sizeof( float ) ); 
+
    return p;
 }
 
-extern int NeuralNetDestroy( neuralnet *pnn ) {
+extern int
+NeuralNetDestroy( neuralnet *pnn )
+{
+  if( !pnn->fDirect ) {
+    free( pnn->arHiddenWeight ); pnn->arHiddenWeight = 0;
+    free( pnn->arOutputWeight ); pnn->arOutputWeight = 0;
+    free( pnn->arHiddenThreshold ); pnn->arHiddenThreshold = 0;
+    free( pnn->arOutputThreshold ); pnn->arOutputThreshold = 0;
+  }
 
-    if( !pnn->fDirect ) {
-      free( pnn->arHiddenWeight ); pnn->arHiddenWeight = 0;
-      free( pnn->arOutputWeight ); pnn->arOutputWeight = 0;
-      free( pnn->arHiddenThreshold ); pnn->arHiddenThreshold = 0;
-      free( pnn->arOutputThreshold ); pnn->arOutputThreshold = 0;
-      free(pnn->savedBase); pnn->savedBase = 0;
-      free(pnn->savedIBase); pnn->savedIBase = 0;
-    }
-    return 0;
+  free(pnn->savedBase); pnn->savedBase = 0;
+  free(pnn->savedIBase); pnn->savedIBase = 0;
+  
+  return 0;
 }
 
 static int Evaluate( neuralnet *pnn, float arInput[], float ar[],
