@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.186 2002/02/07 16:00:30 gtw Exp $
+ * $Id: gnubg.c,v 1.187 2002/02/21 16:33:22 gtw Exp $
  */
 
 #include "config.h"
@@ -3328,6 +3328,11 @@ extern void CommandSaveSettings( char *szParam ) {
 	perror( sz );
     else
 	outputl( "Settings saved." );
+
+#if USE_GTK
+    if( fX )
+	GTKSaveSettings();
+#endif
 }
 
 extern void CommandSaveWeights( char *sz ) {
