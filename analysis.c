@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.146 2003/10/18 09:26:07 thyssen Exp $
+ * $Id: analysis.c,v 1.147 2003/11/05 00:35:10 jsegrave Exp $
  */
 
 #include "config.h"
@@ -671,10 +671,17 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
     doubletype dt;
     taketype tt;
     const movegameinfo *pmgi = (movegameinfo *) plGame->plNext->p;
+    int    is_initial_position = 1;
 
     /* analyze this move */
 
     FixMatchState ( pms, pmr );
+
+    if ((pms->anBoard[0][5]  != 5) || (pms->anBoard[1][5]  != 5) ||
+	(pms->anBoard[0][12] != 5) || (pms->anBoard[1][12] != 5) ||
+	(pms->anBoard[0][8]  != 3) || (pms->anBoard[1][8]  != 3) ||
+	(pms->anBoard[0][23] != 2) || (pms->anBoard[1][23] != 2))
+      is_initial_position = 1;
 
     switch( pmr->mt ) {
     case MOVE_GAMEINFO:
@@ -704,8 +711,8 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
       
 	/* cube action? */
       
-	if ( fAnalyseCube && pmgi->fCubeUse && !fFirstMove &&
-	     GetDPEq ( NULL, NULL, &ci ) ) {
+	if ( ! is_initial_position && fAnalyseCube && 
+	     pmgi->fCubeUse && !fFirstMove && GetDPEq ( NULL, NULL, &ci ) ) {
           
           if ( cmp_evalsetup ( pesCube, &pmr->n.esDouble ) > 0 ) {
             

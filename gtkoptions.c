@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.10 2003/10/28 21:11:12 jsegrave Exp $
+ * $Id: gtkoptions.c,v 1.11 2003/11/05 00:35:10 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1780,8 +1780,9 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
   /* language preference */
 
   n = gtk_option_menu_get_history( GTK_OPTION_MENU( pow->pwLangMenu ) );
-  if ( n >= 0 && ( n < sizeof( aaszLang ) / sizeof( aaszLang[0] ) ) ) {
-    if ( strcmp( szLang, aaszLang[ n ][ 1 ] ) ) {
+  if ( n >= 0 && ( n < sizeof( aaszLang ) / sizeof( aaszLang[0] ) ) &&
+       aaszLang[1]) {
+    if (aaszLang[ n ][ 1 ] &&  strcmp( szLang, aaszLang[ n ][ 1 ] ) ) {
       sprintf( sz, "set lang %s", aaszLang[ n ][ 1 ] );
       UserCommand( sz );
     }
