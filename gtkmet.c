@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.6 2003/07/08 21:04:06 hb Exp $
+ * $Id: gtkmet.c,v 1.7 2003/07/21 14:02:20 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -238,7 +238,7 @@ static void invertMETlocal( GtkWidget *pw, metwidget *pmw ){
 
 static void loadMET ( GtkWidget *pw, metwidget *pmw ) {
 
-  SetMET ( NULL, 0, NULL );
+  SetMET ( NULL, NULL );
 
   UpdateAllTables ( pmw );
 
