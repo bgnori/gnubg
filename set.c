@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.171 2003/01/24 20:12:41 gtw Exp $
+ * $Id: set.c,v 1.172 2003/02/21 23:39:42 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1089,6 +1089,16 @@ extern void CommandSetGUIShowIDs( char *sz ) {
 		     "board."),
 		   _("The position and match IDs will not be shown.") ) )
 	UpdateSetting( &fGUIShowIDs );
+}
+
+extern void CommandSetGUIDragTargetHelp( char *sz ) {
+
+    if( SetToggle( "gui dragtargethelp", &fGUIDragTargetHelp, sz,
+		   _("The target help while dragging a chequer will "
+		     "be shown."),
+		   _("The target help while dragging a chequer will "
+		     "not be shown.") ) )
+	UpdateSetting( &fGUIDragTargetHelp );
 }
 
 extern void CommandSetGUIShowPips( char *sz ) {

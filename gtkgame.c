@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.306 2003/01/27 15:04:49 gtw Exp $
+ * $Id: gtkgame.c,v 1.307 2003/02/21 23:39:42 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7948,7 +7948,7 @@ typedef struct _optionswidget {
 
   GtkWidget *pwIllegal, *pwUseDiceIcon, *pwShowIDs, *pwShowPips,
       *pwAnimateNone, *pwAnimateBlink, *pwAnimateSlide, *pwBeepIllegal,
-      *pwHigherDieFirst, *pwSetWindowPos;
+      *pwHigherDieFirst, *pwSetWindowPos, *pwDragTargetHelp;
   GtkAdjustment *padjSpeed;
 } optionswidget;   
 
@@ -8415,6 +8415,16 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
     gtk_signal_connect( GTK_OBJECT( pow->pwAnimateNone ), "toggled",
 			GTK_SIGNAL_FUNC( ToggleAnimation ), pwSpeed );
     ToggleAnimation( pow->pwAnimateNone, pwSpeed );
+
+    pow->pwDragTargetHelp = gtk_check_button_new_with_label(
+	_("Show target help when dragging a chequer") );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pow->pwDragTargetHelp ),
+				  fGUIDragTargetHelp );
+    gtk_box_pack_start( GTK_BOX( pwvbox ), pow->pwDragTargetHelp, FALSE, FALSE, 0 );
+    gtk_tooltips_set_tip( ptt, pow->pwDragTargetHelp,
+			  _("The possible target points for a move will be "
+			    "indicated by coloured rectangles when a chequer "
+			    "has been dragged a short distance."), NULL );
 
     pow->pwDisplay = gtk_check_button_new_with_label (
 	_("Display computer moves"));
@@ -9084,6 +9094,8 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
 	       "set gui highdiefirst %s" )
   CHECKUPDATE( pow->pwSetWindowPos, fGUISetWindowPos,
 	       "set gui windowpositions %s" )
+  CHECKUPDATE( pow->pwDragTargetHelp, fGUIDragTargetHelp,
+	       "set gui dragtargethelp %s" )
 
   if( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pow->pwAnimateNone ) )
       && animGUI != ANIMATE_NONE )

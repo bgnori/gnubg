@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.381 2003/01/30 17:58:09 thyssen Exp $
+ * $Id: gnubg.c,v 1.382 2003/02/21 23:39:42 jsegrave Exp $
  */
 
 #include "config.h"
@@ -870,6 +870,8 @@ command cER = {
       szONOFF, NULL },
     { "dicearea", CommandSetGUIDiceArea,
       N_("Show dice icon when human player on roll"), szONOFF, NULL },
+    { "dragtargethelp", CommandSetGUIDragTargetHelp,
+      N_("Show target help while dragging a chequer"), szONOFF, NULL },
     { "highdiefirst", CommandSetGUIHighDieFirst,
       N_("Show the higher die on the left"), szONOFF, NULL },
     { "illegal", CommandSetGUIIllegal,
@@ -4654,14 +4656,16 @@ extern void CommandSaveSettings( char *szParam ) {
 	     "set gui highdiefirst %s\n"
 	     "set gui illegal %s\n"
 	     "set gui showids %s\n"
-	     "set gui showpips %s\n",
+	     "set gui showpips %s\n"
+	     "set gui dragtargethelp %s\n",
 	     aszAnimation[ animGUI ], nGUIAnimSpeed,
 	     fGUIBeep ? "on" : "off",
 	     fGUIDiceArea ? "on" : "off",
 	     fGUIHighDieFirst ? "on" : "off",
 	     fGUIIllegal ? "on" : "off",
 	     fGUIShowIDs ? "on" : "off",
-	     fGUIShowPips ? "on" : "off" );
+	     fGUIShowPips ? "on" : "off",
+	     fGUIDragTargetHelp ? "on" : "off" );
 #endif
     
     fprintf( pf, "set jacoby %s\n", fJacoby ? "on" : "off" );
