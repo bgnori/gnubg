@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.51 2001/07/26 14:43:17 gtw Exp $
+ * $Id: eval.h,v 1.52 2001/10/07 17:56:42 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -329,4 +329,13 @@ extern int
 GeneralEvaluationEPlied ( float arOutput [ NUM_ROLLOUT_OUTPUTS ],
                           int anBoard[ 2 ][ 25 ],
                           cubeinfo *pci, evalcontext *pec, int nPlies );
+
+extern int 
+EvaluatePositionCubeful3( int anBoard[ 2 ][ 25 ],
+                          float arOutput[ NUM_OUTPUTS ],
+                          float arCubeful[],
+                          cubeinfo aciCubePos[], int cci, 
+                          cubeinfo *pciMove,
+                          evalcontext *pec, int nPlies, int fTop );
+
 #endif
