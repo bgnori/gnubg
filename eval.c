@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.161 2002/07/14 16:36:22 thyssen Exp $
+ * $Id: eval.c,v 1.162 2002/07/16 11:52:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -4142,6 +4142,13 @@ GetCubeActionSz ( float arDouble[ 4 ], char *szOutput, cubeinfo *pci,
 
   cd = FindBestCubeDecision ( arDouble, pci );
 
+  if ( cd == NOT_AVAILABLE ) {
+
+    strcpy ( szOutput, "Cube not available\n" );
+    return 0;
+
+  }
+
   /* write string with cube action */
 
   if( fOutputInvert )
@@ -4217,9 +4224,8 @@ GetCubeActionSz ( float arDouble[ 4 ], char *szOutput, cubeinfo *pci,
 
   default:
 
-    iOptimal = OUTPUT_OPTIMAL;
-    iOptimal = OUTPUT_OPTIMAL;
-    iOptimal = OUTPUT_OPTIMAL;
+    /* code not reachable; NOT_AVAILABLE is handled outside switch */
+    assert ( FALSE );
 
     break;
 
