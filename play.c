@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.82 2001/05/23 15:17:35 thyssen Exp $
+ * $Id: play.c,v 1.83 2001/08/23 14:58:48 gtw Exp $
  */
 
 #include "config.h"
@@ -1698,6 +1698,18 @@ extern void CommandNewGame( char *sz ) {
     else
 	if( !ComputerTurn() )
 	    TurnDone();
+}
+
+extern void ClearMatch( void ) {
+
+    ms.nMatchTo = 0;
+
+    ms.cGames = ms.anScore[ 0 ] = ms.anScore[ 1 ] = 0;
+    ms.fMove = ms.fTurn = -1;
+    ms.fCrawford = FALSE;
+    ms.fPostCrawford = FALSE;
+    ms.gs = GAME_NONE;
+    IniStatcontext( &scMatch );
 }
 
 extern void FreeMatch( void ) {

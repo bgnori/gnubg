@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.26 2001/05/23 15:12:48 thyssen Exp $
+ * $Id: sgf.c,v 1.27 2001/08/23 14:58:48 gtw Exp $
  */
 
 #include "config.h"
@@ -792,29 +792,6 @@ static void RestoreGame( list *pl ) {
 
 	AddMoveRecord( pmrResign );
     }
-}
-
-static void ClearMatch( void ) {
-
-    ms.nMatchTo = 0;
-
-    ms.cGames = ms.anScore[ 0 ] = ms.anScore[ 1 ] = 0;
-    ms.fMove = ms.fTurn = -1;
-    ms.fCrawford = FALSE;
-    ms.fPostCrawford = FALSE;
-    ms.gs = GAME_NONE;
-    IniStatcontext( &scMatch );
-}
-
-static void UpdateSettings( void ) {
-
-    UpdateSetting( &ms.nCube );
-    UpdateSetting( &ms.fCubeOwner );
-    UpdateSetting( &ms.fTurn );
-    UpdateSetting( &ms.nMatchTo );
-    UpdateSetting( &ms.fCrawford );
-
-    ShowBoard();
 }
 
 extern void CommandLoadGame( char *sz ) {
