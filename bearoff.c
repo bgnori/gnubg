@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.20 2003/07/10 19:53:15 hb Exp $
+ * $Id: bearoff.c,v 1.21 2003/07/25 14:37:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -898,7 +898,7 @@ ReadSconyers15x15( bearoffcontext *pbc,
 
   /* Each position uses 16 bytes (4 floats of 4 bytes each) */
 
-  printf( "modified lPos %ld\n", lPos ); 
+  /* printf( "modified lPos %ld\n", lPos ); */
 
   lPos *= 16L;
 
