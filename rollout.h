@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.15 2002/03/14 17:47:37 oysteijo Exp $
+ * $Id: rollout.h,v 1.16 2002/05/27 19:31:14 thyssen Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -46,7 +46,10 @@ typedef struct _rolloutstat {
 
   /* Chequer hit statistics (dimension is move number) */
   
-  int acHit[ MAXHIT ]; /* number of hits */
+  /* Opponent closed out */
+
+  int nOpponentHit;
+  int rOpponentHitMove;
 
   /* Average loss of pips in bear-off */
 
@@ -56,7 +59,7 @@ typedef struct _rolloutstat {
   /* Opponent closed out */
 
   int nOpponentClosedOut;
-  int nOpponentClosedOutMove;
+  int rOpponentClosedOutMove;
 
   /* FIXME: add more stuff */
 
