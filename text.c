@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.1 2002/06/15 17:13:28 thyssen Exp $
+ * $Id: text.c,v 1.2 2002/06/15 17:42:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -229,7 +229,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.1 $";
+  const char szVersion[] = "$Revision: 1.2 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1215,7 +1215,7 @@ extern void CommandExportGameText( char *sz ) {
     if( pf != stdout )
 	fclose( pf );
 
-    // setDefaultFileName ( sz, PATH_TEXT );
+    setDefaultFileName ( sz, PATH_TEXT );
     
 }
 
@@ -1253,7 +1253,7 @@ extern void CommandExportMatchText( char *sz ) {
         if ( ! confirmOverwrite ( sz, fConfirmSave ) )
           return;
 
-        // setDefaultFileName ( sz, PATH_TEXT );
+        setDefaultFileName ( sz, PATH_TEXT );
 
       }
 
@@ -1294,6 +1294,15 @@ extern void CommandExportPositionText( char *sz ) {
 	return;
     }
 
+
+    if ( ! plLastMove || ! plLastMove->plNext || ! plLastMove->plNext->p ) {
+
+      outputl ( "Sorry, cannot export move!" );
+      return;
+
+    }
+
+
     if ( ! confirmOverwrite ( sz, fConfirmSave ) )
       return;
 
@@ -1320,7 +1329,7 @@ extern void CommandExportPositionText( char *sz ) {
     if( pf != stdout )
 	fclose( pf );
 
-    // setDefaultFileName ( sz, PATH_TEXT );
+    setDefaultFileName ( sz, PATH_TEXT );
 
 }
 
