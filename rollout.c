@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.62 2002/03/14 17:47:37 oysteijo Exp $
+ * $Id: rollout.c,v 1.63 2002/03/19 18:17:04 oysteijo Exp $
  */
 
 #include "config.h"
@@ -104,7 +104,7 @@ static int
 FindBestBearoff( int anBoard[ 2 ][ 25 ], int nDice0, int nDice1,
                  float ar[ NUM_OUTPUTS ] ) {
 
-  int i, j, anBoardTemp[ 2 ][ 25 ], iMinRolls;
+  int i, j, anBoardTemp[ 2 ][ 25 ], iMinRolls = 0;
   unsigned long cBestRolls;
   movelist ml;
 
@@ -231,7 +231,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
   evalcontext ec;
 
   positionclass pc, pcBefore;
-  int nPipsBefore, nPipsAfter, nPipsDice;
+  int nPipsBefore = 0, nPipsAfter, nPipsDice;
   int anPips [ 2 ];
   int afClosedBoard[ 2 ];
 

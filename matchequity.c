@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.17 2002/03/18 22:01:17 gtw Exp $
+* $Id: matchequity.c,v 1.18 2002/03/19 18:17:04 oysteijo Exp $
 */
 
 #include <stdio.h>
@@ -1383,12 +1383,10 @@ extern void
 InitMatchEquity ( const char *szFileName ) {
 
   int i,j;
-
   metdata md;
 
-  static int fTableLoaded = FALSE;
-
 #ifdef HAVE_LIBXML2
+  static int fTableLoaded = FALSE;
 
   /*
    * Read match equity table from XML file

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.192 2002/03/18 17:29:20 oysteijo Exp $
+ * $Id: gnubg.c,v 1.193 2002/03/19 18:17:04 oysteijo Exp $
  */
 
 #include "config.h"
@@ -1299,7 +1299,7 @@ extern void ResetInterrupt( void ) {
     }
 }
 
-#if USE_GUI
+#if USE_GUI && HAVE_FORK
 static int fChildDied;
 
 static RETSIGTYPE HandleChild( int n ) {
@@ -1527,16 +1527,14 @@ extern void InitBoard( int anBoard[ 2 ][ 25 ] ) {
 	anBoard[ 0 ][ 22 ] = anBoard[ 1 ][ 22 ] = 2;
 }
 
-#if USE_GTK
+#if USE_GTK && HAVE_GDK_GDKX_H
 static unsigned long nLastRequest;
 static guint nUpdate;
 
 static gint UpdateBoard( gpointer p ) {
 
     /* we've waited long enough -- force this update */
-#if HAVE_GDK_GDKX_H
     nLastRequest = LastKnownRequestProcessed( GDK_DISPLAY() );
-#endif
     
     ShowBoard();
 
@@ -4315,7 +4313,7 @@ extern RETSIGTYPE HandleInterrupt( int idSignal ) {
     fInterrupt = TRUE;
 }
 
-#if USE_GUI
+#if USE_GUI && defined(SIGIO)
 static RETSIGTYPE HandleIO( int idSignal ) {
 
     /* NB: It is safe to write to fAction even if it cannot be read

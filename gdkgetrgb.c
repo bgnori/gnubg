@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gdkgetrgb.c,v 1.6 2001/10/31 15:57:40 gtw Exp $
+ * $Id: gdkgetrgb.c,v 1.7 2002/03/19 18:17:03 oysteijo Exp $
  */
 
 #include <gtk/gtk.h>
@@ -37,7 +37,7 @@ gdk_get_rgb_image( GdkDrawable *drawable,
     guchar *p;
     guint32 pixel;
     GdkVisual *visual;
-    int r, g, b, dwidth, dheight;
+    int r = 0, g = 0 , b = 0, dwidth, dheight;
 
 #if GTK_CHECK_VERSION(1,3,0)
     gdk_drawable_get_size( drawable, &dwidth, &dheight );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.33 2002/01/31 19:16:16 thyssen Exp $
+ * $Id: sgf.c,v 1.34 2002/03/19 18:17:04 oysteijo Exp $
  */
 
 #include "config.h"
@@ -525,7 +525,7 @@ static void RestoreNode( list *pl ) {
     property *pp, *ppDA = NULL, *ppA = NULL, *ppC = NULL;
     moverecord *pmr = NULL;
     char *pch;
-    int i, fPlayer, fSetBoard = FALSE, an[ 25 ];
+    int i, fPlayer = 0, fSetBoard = FALSE, an[ 25 ];
     skilltype st = SKILL_NONE;
     lucktype lt = LUCK_NONE;
     float rLuck = ERR_VAL;

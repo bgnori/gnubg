@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.116 2002/03/16 19:08:33 thyssen Exp $
+ * $Id: gtkgame.c,v 1.117 2002/03/19 18:17:03 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -636,7 +636,7 @@ static moverecord *GameListLookupMove( int i ) {
 static void GameListSelectRow( GtkCList *pcl, gint y, gint x,
 			       GdkEventButton *pev, gpointer p ) {
     gamelistrow *pglr;
-    moverecord *pmr, *pmrPrev;
+    moverecord *pmr, *pmrPrev = NULL;
     list *pl;
     int i, iPrev;
     
@@ -2406,7 +2406,7 @@ extern GtkWidget *CreateDialog( char *szTitle, int fQuestion, GtkSignalFunc pf,
     GdkPixmap *ppm;
     GtkWidget *pwDialog = gtk_dialog_new(),
 	*pwOK = gtk_button_new_with_label( "OK" ),
-	*pwCancel,
+	*pwCancel = gtk_button_new_with_label( "Cancel" ),
 	*pwHbox = gtk_hbox_new( FALSE, 0 ),
 	*pwButtons = gtk_hbutton_box_new(),
 	*pwPixmap;
@@ -2432,7 +2432,6 @@ extern GtkWidget *CreateDialog( char *szTitle, int fQuestion, GtkSignalFunc pf,
 			GTK_SIGNAL_FUNC( OK ), p );
 
     if( fQuestion ) {
-	pwCancel = gtk_button_new_with_label( "Cancel" );
 	gtk_container_add( GTK_CONTAINER( pwButtons ), pwCancel );
 	gtk_signal_connect_object( GTK_OBJECT( pwCancel ), "clicked",
 				   GTK_SIGNAL_FUNC( gtk_widget_destroy ),

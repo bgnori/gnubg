@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.8 2001/11/06 15:52:58 gtw Exp $
+ * $Id: latex.c,v 1.9 2002/03/19 18:17:04 oysteijo Exp $
  */
 
 #include "config.h"
@@ -120,7 +120,7 @@ static void LaTeXEpilogue( FILE *pf ) {
 
 static void DrawLaTeXPoint( FILE *pf, int i, int fPlayer, int c ) {
 
-    int j, x, y;
+    int j, x, y = 0;
 
     if( i < 6 )
 	x = 320 - 20 * i;

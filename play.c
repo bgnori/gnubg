@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.112 2002/03/18 22:01:17 gtw Exp $
+ * $Id: play.c,v 1.113 2002/03/19 18:17:04 oysteijo Exp $
  */
 
 #include "config.h"
@@ -630,8 +630,10 @@ extern int ComputerTurn( void ) {
   movenormal *pmn;
   cubeinfo ci;
   float arDouble[ 4 ], arOutput[ NUM_OUTPUTS ], rDoublePoint;
+#if HAVE_SOCKETS
   char szBoard[ 256 ], szResponse[ 256 ];
   int i, c, fTurnOrig;
+#endif
 
   if( fAction )
       fnAction();

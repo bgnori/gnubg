@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.9 2001/11/06 15:54:52 gtw Exp $
+ * $Id: postscript.c,v 1.10 2002/03/19 18:17:03 oysteijo Exp $
  */
 
 #include "config.h"
@@ -406,7 +406,7 @@ static void PostScriptPrologue( FILE *pf, int fEPS, char *szTitle ) {
 
 static void DrawPostScriptPoint( FILE *pf, int i, int fPlayer, int c ) {
 
-    int j, x, y;
+    int j, x, y = 0;
 
     if( i < 6 )
 	x = 320 - 20 * i;
