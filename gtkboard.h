@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.65 2004/05/24 08:03:52 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.66 2004/09/10 09:37:33 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -324,6 +324,9 @@ extern void RestrictiveDrawBoardNumbers(BoardData* bd);
 #endif
 
 extern int animate_player, *animate_move_list, animation_finished;
+
+enum TheoryTypes{TT_PIPCOUNT = 1, TT_EPC = 2, TT_RETURNHITS = 4, TT_KLEINCOUNT = 8};
+void UpdateTheoryData(BoardData* bd, int UpdateTypes, int points[2][25]);
 
 extern void read_board( BoardData *bd, gint points[ 2 ][ 25 ] );
 extern void update_position_id( BoardData *bd, gint points[ 2 ][ 25 ] );

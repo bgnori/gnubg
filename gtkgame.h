@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.86 2004/08/25 17:49:47 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.87 2004/09/10 09:37:33 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -56,6 +56,25 @@ typedef enum _warnings {
 	  WARN_UNACCELERATED, WARN_NUM_WARNINGS
 } warnings;
 
+#define NUM_CMD_HISTORY 10
+struct CommandEntryData_T
+{
+	GtkWidget *pwEntry, *pwHelpText, *cmdEntryCombo;
+	int showHelp;
+	char* cmdHistory[NUM_CMD_HISTORY];
+	int numHistory;
+	int completing;
+	int modal;
+	char* cmdString;
+};
+
+extern gboolean CommandKeyPress(GtkWidget *widget, GdkEventKey *event, struct CommandEntryData_T *pData);
+extern void CommandTextChange(GtkEntry *entry, struct CommandEntryData_T *pData);
+extern void CommandOK( GtkWidget *pw, struct CommandEntryData_T *pData );
+extern void ShowHelpToggled(GtkWidget *widget, struct CommandEntryData_T *pData);
+extern gboolean CommandFocusIn(GtkWidget *widget, GdkEventFocus *event, struct CommandEntryData_T *pData);
+extern void PopulateCommandHistory(struct CommandEntryData_T *pData);
+
 extern void GTKShowWarning(warnings warning);
 extern char* warningStrings[WARN_NUM_WARNINGS];
 extern char* warningNames[WARN_NUM_WARNINGS];
@@ -64,6 +83,8 @@ extern int warningEnabled[WARN_NUM_WARNINGS];
 extern GtkWidget *pwMain, *pwMenuBar;
 extern GtkWidget *pwToolbar;
 extern GtkTooltips *ptt;
+extern GtkAccelGroup *pagMain;
+extern GtkWidget *pwMessageText, *pwPanelVbox, *pwAnalysis, *pwCommentary;
 
 extern GtkWidget *pwGrab;
 extern GtkWidget *pwOldGrab;
@@ -148,6 +169,8 @@ extern void GTKMatchInfo( void );
 extern void GTKShowBuildInfo(void);
 extern void GTKCommandShowCredits(void);
 extern void GTKShowScoreSheet(void);
+extern void SwapBoardToPanel(int ToPanel);
+extern void CommentaryChanged( GtkWidget *pw, void *p );
 
 extern void SetEvaluation( gpointer *p, guint n, GtkWidget *pw );
 extern void SetRollouts( gpointer *p, guint n, GtkWidget *pw );
@@ -213,3 +236,4 @@ GTKShowManual( void );
 #endif
 
 extern void GetStyleFromRCFile(GtkStyle** ppStyle, char* name, GtkStyle* psBase);
+extern void ToggleDockPanels( gpointer *p, guint n, GtkWidget *pw );
