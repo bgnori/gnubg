@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.78 2002/09/14 17:53:05 thyssen Exp $
+ * $Id: gtkboard.c,v 1.79 2002/09/15 11:53:40 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4534,18 +4534,19 @@ static void ButtonClickedYesNo( GtkWidget *pw, char *sz ) {
 }
 
 
-static GtkWidget *
+extern GtkWidget *
 image_from_xpm_d ( char **xpm, GtkWidget *pw ) {
 
-    GdkPixmap *ppm;
+  GdkPixmap *ppm;
+  GdkBitmap *mask;
 
-    ppm = gdk_pixmap_colormap_create_from_xpm_d( NULL,
-            gtk_widget_get_colormap( pw ), NULL, NULL,
+  ppm = gdk_pixmap_colormap_create_from_xpm_d( NULL,
+                 gtk_widget_get_colormap( pw ), &mask, NULL,
                                                xpm );
-    if ( ! ppm )
-      return NULL;
-
-    return gtk_pixmap_new( ppm, NULL );
+  if ( ! ppm )
+    return NULL;
+  
+  return gtk_pixmap_new( ppm, mask );
 
 }
 

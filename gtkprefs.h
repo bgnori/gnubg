@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.h,v 1.3 2001/01/16 18:38:53 gtw Exp $
+ * $Id: gtkprefs.h,v 1.4 2002/09/15 11:55:22 thyssen Exp $
  */
 
 #ifndef _GTKPREFS_H_
@@ -30,5 +30,11 @@ extern void BoardPreferencesParam( GtkWidget *pwBoard, char *szParam,
 extern char *BoardPreferencesCommand( GtkWidget *pwBoard, char *sz );
 extern void BoardPreferencesStart( GtkWidget *pwBoard );
 extern void BoardPreferencesDone( GtkWidget *pwBoard );
+
+extern GList *
+read_board_designs ( void );
+
+extern void
+free_board_designs ( GList *pl );
 
 #endif

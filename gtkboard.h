@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.29 2002/09/14 17:53:06 thyssen Exp $
+ * $Id: gtkboard.h,v 1.30 2002/09/15 11:53:40 thyssen Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -58,6 +58,9 @@ extern gint game_set( Board *board, gint points[ 2 ][ 25 ], int roll,
 extern gint game_set_old_dice( Board *board, gint die0, gint die1 );
 extern void board_set_playing( Board *board, gboolean f );
 extern void board_animate( Board *board, int move[ 8 ], int player );
+
+extern GtkWidget *
+image_from_xpm_d ( char **xpm, GtkWidget *pw );
 
 typedef enum _animation {
     ANIMATE_NONE, ANIMATE_BLINK, ANIMATE_SLIDE
