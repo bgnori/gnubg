@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.73 2002/09/09 19:38:46 gtw Exp $
+ * $Id: gtkboard.c,v 1.74 2002/09/11 15:13:12 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4770,7 +4770,8 @@ static void board_init( Board *board ) {
 
 #if USE_GTK2
     bd->reset = 
-      button_from_image ( gtk_image_new_from_stock ( GTK_STOCK_UNDO, 16 ) );
+      button_from_image ( gtk_image_new_from_stock ( GTK_STOCK_UNDO, 
+                                                     GTK_ICON_SIZE_SMALL_TOOLBAR ) );
 #else
     bd->reset = 
       button_from_image ( image_from_xpm_d ( stock_undo_16_xpm, 
@@ -4805,7 +4806,8 @@ static void board_init( Board *board ) {
     bd->stopparent = gtk_hbox_new( 0, FALSE );
 #if USE_GTK2
     bd->stop =
-      button_from_image ( gtk_image_new_from_stock ( GTK_STOCK_STOP, 16 ) );
+      button_from_image ( gtk_image_new_from_stock ( GTK_STOCK_STOP, 
+                                                     GTK_ICON_SIZE_SMALL_TOOLBAR ) );
 #else
     bd->stop =
       button_from_image ( image_from_xpm_d ( stock_stop_16_xpm, 
