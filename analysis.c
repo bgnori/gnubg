@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.55 2002/04/04 17:26:06 thyssen Exp $
+ * $Id: analysis.c,v 1.56 2002/04/04 17:59:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -458,11 +458,11 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, statcontext *psc,
 	    ApplyMove( anBoardMove, pmr->n.anMove, FALSE );
 	    PositionKey ( anBoardMove, auch );
 	  
-	    if( pmr->n.ml.cMoves )
-		free( pmr->n.ml.amMoves );
-	  
             if ( cmp_evalsetup ( &esAnalysisChequer, 
                                  &pmr->n.esChequer ) > 0 ) {
+
+              if( pmr->n.ml.cMoves )
+		free( pmr->n.ml.amMoves );
 	  
               /* find best moves */
 	  
@@ -621,12 +621,12 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, statcontext *psc,
 
         GetMatchStateCubeInfo ( &ci, pms );
 
-          if ( cmp_evalsetup ( &esAnalysisCube, &pmr->n.esDouble ) >= 0 ) {
-            nResign =
-              getResignation ( pmr->r.arResign, ms.anBoard, 
-                               &ci, &esAnalysisCube );
-
-          }
+        if ( cmp_evalsetup ( &esAnalysisCube, &pmr->r.esResign ) > 0 ) {
+          nResign =
+            getResignation ( pmr->r.arResign, pms->anBoard, 
+                             &ci, &esAnalysisCube );
+          
+        }
 
         getResignEquities ( pmr->r.arResign, &ci, pmr->r.nResigned,
                             &rBefore, &rAfter );
