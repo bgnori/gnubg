@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.411 2003/05/18 10:56:35 thyssen Exp $
+ * $Id: gnubg.c,v 1.412 2003/05/18 11:37:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -5867,6 +5867,10 @@ extern void output( const char *sz ) {
 #endif
     pch = Convert( sz, szTerminalCharset, GNUBG_CHARSET );
     fputs( pch, stdout );
+
+    if( !isatty( STDOUT_FILENO ) ) 
+       fflush( stdout );
+
     free( pch );
 }
 
@@ -6004,9 +6008,6 @@ extern void outputx( void ) {
     if( cOutputDisabled || cOutputPostponed )
 	return;
 
-    if( fTTY )
-       fflush( stdout );
-    
 #if USE_GTK
     if( fX )
 	GTKOutputX();
