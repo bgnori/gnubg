@@ -1,4 +1,4 @@
-$Id: TODO,v 1.299 2003/08/13 11:52:24 Superfly_Jon Exp $
+$Id: TODO,v 1.300 2004/06/10 14:53:19 Superfly_Jon Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -164,8 +164,6 @@ details.
   gtk_vpaned_motion and sets paned->min_position.
 ** Optionally merge the game record and annotation windows into one big
   paned window (suggested by Jeremie Petit).
-** Use different styles for moves in the game window, depending on the
-  annotation.
 ** When a long string is displayed in the status bar, the main window
   grows to accomodate it -- not very pretty.  A Layout or Viewport widget
   might be able to fix this.  (Fixed under GTK+ 2.0.)
