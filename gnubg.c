@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.545 2004/04/04 08:48:23 thyssen Exp $
+ * $Id: gnubg.c,v 1.546 2004/04/05 06:49:15 thyssen Exp $
  */
 
 #include "config.h"
@@ -4823,6 +4823,7 @@ CommandLoadPython( char * sz ) {
   return;
 #else
   FILE *pf;
+  char *pch;
 
   sz = NextToken( &sz );
     
@@ -4831,12 +4832,17 @@ CommandLoadPython( char * sz ) {
                "python').") );
     return;
   }
+
+  pch = PathSearch( sz, NULL );
   
-  if( ( pf = fopen( sz, "r" ) ) ) {
-    PyRun_AnyFile( pf, sz );
+  if( ( pf = fopen( pch, "r" ) ) ) {
+    PyRun_AnyFile( pf, pch );
     fclose( pf );
   } else
     outputerr( sz );
+
+  free( pch );
+
 #endif
 }
 
