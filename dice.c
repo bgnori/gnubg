@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.35 2004/04/22 19:13:20 thyssen Exp $
+ * $Id: dice.c,v 1.36 2004/04/22 20:54:20 thyssen Exp $
  */
 
 #include "config.h"
@@ -836,8 +836,10 @@ extern void *InitRNG( int *pnSeed, int *pfInitFrom,
     /* Mersenne-Twister */
     rngctx->mti = N + 1;
 
+#if HAVE_LIBGMP
     /* BBS */
     rngctx->fZInit = FALSE;
+#endif /* HAVE_LIBGMP */
 
     /* common */
     rngctx->c = 0;
