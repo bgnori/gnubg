@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.35 2001/09/19 15:03:54 gtw Exp $
+ * $Id: gtkboard.c,v 1.36 2001/09/19 17:09:39 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1483,6 +1483,15 @@ static gint board_set( Board *board, const gchar *board_text ) {
     board_redraw_dice( bd->drawing_area, bd, 1 );
     board_redraw_cube( bd->drawing_area, bd );
 
+    if( fClockwise != bd->clockwise ) {
+	/* This is complete overkill, but we need to recalculate the
+	   board pixmap if the points are numbered and the direction
+	   changes. */
+	board_free_pixmaps( bd );
+	board_create_pixmaps( pwBoard, bd );
+	gtk_widget_queue_draw( bd->drawing_area );	
+    }
+    
     bd->clockwise = fClockwise;
     
 #if WIN32
