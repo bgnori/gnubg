@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.90 2001/10/26 14:43:45 gtw Exp $
+ * $Id: play.c,v 1.91 2001/10/27 13:19:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -377,6 +377,8 @@ extern void AddMoveRecord( void *pv ) {
 	break;
 	
     case MOVE_NORMAL:
+        assert( pmr->n.esChequer.et >= EVAL_NONE &&
+                pmr->n.esChequer.et <= EVAL_ROLLOUT );
         assert( pmr->n.esDouble.et >= EVAL_NONE &&
                 pmr->n.esDouble.et <= EVAL_ROLLOUT );
 	assert( pmr->n.fPlayer >= 0 && pmr->n.fPlayer <= 1 );
