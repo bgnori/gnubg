@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.149 2002/08/10 11:28:28 thyssen Exp $
+ * $Id: play.c,v 1.150 2002/08/13 17:00:29 gtw Exp $
  */
 
 #include "config.h"
@@ -1045,8 +1045,6 @@ extern int ComputerTurn( void ) {
             fComputerDecision = FALSE;
             return 0;
             
-            break;
-
           case NODOUBLE_TAKE:
           case TOOGOOD_TAKE:
           case NO_REDOUBLE_TAKE:
@@ -1066,10 +1064,15 @@ extern int ComputerTurn( void ) {
           case OPTIONAL_REDOUBLE_PASS:
 
             if ( ap [ ms.fTurn ].esCube.et == EVAL_EVAL &&
-                 ap [ ms.fTurn ].esCube.ec.nPlies == 0 )
-              /* double if 0-ply */
-              CommandDouble ( NULL );
-
+                 ap [ ms.fTurn ].esCube.ec.nPlies == 0 ) {
+		/* double if 0-ply */
+		fComputerDecision = TRUE;
+		CommandDouble ( NULL );
+		fComputerDecision = FALSE;
+		return 0;
+	    }
+	    break;
+	    
           default:
 
             assert ( FALSE );
