@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.142 2002/05/12 11:27:40 thyssen Exp $
+ * $Id: gtkgame.c,v 1.143 2002/05/12 11:29:50 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2661,8 +2661,11 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ "/_Settings/Cache...", NULL, SetCache, 0, NULL },
 	{ "/_Settings/Clockwise movement", NULL, Command, CMD_SET_CLOCKWISE,
 	  "<CheckItem>" },
-	{ "/_Settings/_Confirmation", NULL, Command, CMD_SET_CONFIRM,
-	  "<CheckItem>" },
+	{ "/_Settings/_Confirmation", NULL, NULL, 0, "<Branch>" },
+	{ "/_Settings/_Confirmation/_Starting new game", NULL, Command, 
+          CMD_SET_CONFIRM_NEW, "<CheckItem>" },
+	{ "/_Settings/_Confirmation/_Overwriting existing files", NULL, 
+          Command, CMD_SET_CONFIRM_SAVE, "<CheckItem>" },
 	{ "/_Settings/De_lay...", NULL, SetDelay, 0, NULL },
 	{ "/_Settings/_Dice generation", NULL, NULL, 0, "<Branch>" },
 	{ "/_Settings/_Dice generation/_ANSI", NULL, Command, CMD_SET_RNG_ANSI,
