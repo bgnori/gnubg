@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.148 2002/08/05 18:15:25 thyssen Exp $
+ * $Id: backgammon.h,v 1.149 2002/08/06 19:23:52 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -78,8 +78,13 @@ typedef enum _gnubgwindow {
 } gnubgwindow;
 
 typedef struct _windowgeometry {
+#if USE_GTK
   gint nWidth, nHeight;
   gint nPosX, nPosY;
+#else
+  int nWidth, nHeight;
+  int nPosX, nPosY;
+#endif
 } windowgeometry;
 
 extern windowgeometry awg[ NUM_WINDOWS ];
