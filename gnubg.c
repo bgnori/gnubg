@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.159 2001/10/22 17:20:15 thyssen Exp $
+ * $Id: gnubg.c,v 1.160 2001/10/22 18:56:18 thyssen Exp $
  */
 
 #include "config.h"
@@ -2102,6 +2102,7 @@ extern void CommandHint( char *sz ) {
 			                            &esEvalCube.ec ) < 0 )
 		return;
 
+        FindCubeDecision ( arDouble, aarOutput, &ci );  
 #if USE_GTK
 	/*
 	  if ( fX ) {
