@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.147 2001/08/24 15:23:03 gtw Exp $
+ * $Id: gnubg.c,v 1.148 2001/08/27 14:42:16 gtw Exp $
  */
 
 #include "config.h"
@@ -126,7 +126,7 @@ int fReadline = TRUE;
 #endif
 
 #ifndef HUGE_VALF
-#define HUGE_VALF (-1e38)
+#define HUGE_VALF 1e38
 #endif
 
 char szDefaultPrompt[] = "(\\p) ",
@@ -2516,33 +2516,33 @@ extern void CommandImportMat( char *sz ) {
 		     "and discard the game in progress? " ) )
 	return;
     
-#if USE_GTK
-	if( fX )
-	    GTKFreeze();
-#endif
-	
-	FreeMatch();
-	ClearMatch();
-	
-	if( ( pf = fopen( sz, "r" ) ) ) {
-	    ImportMat( pf, sz );
-	    fclose( pf );
-	} else
-	    perror( sz );
-
-	UpdateSettings();
-	
-#if USE_GTK
-	if( fX ){
-	    GTKThaw();
-	    GTKSet(ap);
-        }
-#endif
+    if( ( pf = fopen( sz, "r" ) ) ) {
+	ImportMat( pf, sz );
+	fclose( pf );
+    } else
+	perror( sz );
 }
 
 extern void CommandImportOldmoves( char *sz ) {
 
-    CommandNotImplemented( sz ); /* FIXME */
+    FILE *pf;
+    
+    if( !sz || !*sz ) {
+	outputl( "You must specify an oldmoves file to import (see `help "
+		 "import oldmoves')." );
+	return;
+    }
+
+    if( ms.gs == GAME_PLAYING && fConfirm &&
+	!GetInputYN( "Are you sure you want to load a saved match, "
+		     "and discard the game in progress? " ) )
+	return;
+    
+    if( ( pf = fopen( sz, "r" ) ) ) {
+	ImportOldmoves( pf, sz );
+	fclose( pf );
+    } else
+	perror( sz );
 }
 
 extern void CommandCopy( char *sz ) {
