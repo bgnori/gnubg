@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.488 2004/04/30 17:37:46 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.489 2004/05/07 05:50:12 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -8160,7 +8160,7 @@ ReportBug( gpointer *p, guint n, GtkWidget *pwEvent ) {
 #endif /* HAVE_SYS_UTSNAME_H */
 
 	sprintf( sz, "http://savannah.gnu.org/bugs/?func=additem&group=gnubg"
-		     "&release_id="	"108"
+		     "&release_id="	"109"
 		     "&custom_tf1="	__DATE__
 		     "&platform_version_id=%s", pchOS );
  	OpenURL( sz );
