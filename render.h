@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.1 2002/12/11 02:21:19 gtw Exp $
+ * $Id: render.h,v 1.2 2002/12/13 19:38:34 gtw Exp $
  */
 
 #ifndef _RENDER_H_
@@ -62,6 +62,9 @@ typedef struct _renderimages {
     
 extern void RenderInitialise( void );
     
+extern void CopyArea( unsigned char *puchDest, int nDestStride,
+		      unsigned char *puchSrc, int nSrcStride,
+		      int cx, int cy );
 extern void AlphaBlend( unsigned char *puchDest, int nDestStride,
 			unsigned char *puchBack, int nBackStride,
 			unsigned char *puchFore, int nForeStride,
@@ -71,6 +74,14 @@ extern void RefractBlend( unsigned char *puchDest, int nDestStride,
 			  unsigned char *puchFore, int nForeStride,
 			  unsigned short *psRefract, int nRefractStride,
 			  int cx, int cy );
+extern void RefractBlendClip( unsigned char *puchDest, int nDestStride,
+			      int xDest, int yDest, int cxDest, int cyDest,
+			      unsigned char *puchBack, int nBackStride,
+			      int xBack, int yBack,
+			      unsigned char *puchFore, int nForeStride,
+			      int xFore, int yFore,
+			      unsigned short *psRefract, int nRefractStride,
+			      int cx, int cy );
 extern void RenderBoard( renderdata *prd, unsigned char *puch, int nStride );
 extern void RenderChequers( renderdata *prd, unsigned char *puch0,
 			    unsigned char *puch1, unsigned short *psRefract0,
@@ -90,7 +101,8 @@ extern void FreeImages( renderimages *pri );
     
 extern void CalculateArea( renderdata *prd, unsigned char *puch, int nStride,
 			   renderimages *pri, int anBoard[ 2 ][ 25 ],
-			   int anDice[ 2 ], int anDicePosition[ 2 ][ 2 ],
+			   int anOff[ 2 ], int anDice[ 2 ],
+			   int anDicePosition[ 2 ][ 2 ],
 			   int fDiceColour, int anCubePosition[ 2 ],
 			   int nLogCube, int nCubeOrientation,
 			   int x, int y, int cx, int cy );
