@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.13 2001/02/07 17:58:45 gtw Exp $
+ * $Id: database.c,v 1.14 2001/02/08 21:12:20 gtw Exp $
  */
 
 #include "config.h"
@@ -178,7 +178,7 @@ extern void CommandDatabaseGenerate( char *sz ) {
 	  return;
       }
   } else
-      n = INT_MAX;
+      n = 0;
       
   if( !( pdb = gdbm_open( szDatabase, 0, GDBM_WRCREAT, 0666, NULL ) ) ) {
     fprintf( stderr, "%s: %s\n", szDatabase, gdbm_strerror( gdbm_errno ) );
@@ -186,7 +186,7 @@ extern void CommandDatabaseGenerate( char *sz ) {
     return;
   }
 
-  while( c <= n && !fInterrupt ) {
+  while( ( !n || c <= n ) && !fInterrupt ) {
     InitBoard( anBoardGenerate );
 	
     do {    
@@ -221,8 +221,8 @@ extern void CommandDatabaseGenerate( char *sz ) {
 	dValue.dsize = sizeof ev;
 	
 	gdbm_store( pdb, dKey, dValue, GDBM_INSERT );
-    } while( c <= n && !fInterrupt && ClassifyPosition( anBoardGenerate ) >
-             CLASS_PERFECT );
+    } while( ( !n || c <= n ) && !fInterrupt &&
+	     ClassifyPosition( anBoardGenerate ) > CLASS_PERFECT );
   }
 
   gdbm_close( pdb );
