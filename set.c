@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.106 2002/07/25 17:10:18 thyssen Exp $
+ * $Id: set.c,v 1.107 2002/07/27 10:51:47 thyssen Exp $
  */
 
 #include "config.h"
@@ -1152,6 +1152,19 @@ extern void CommandSetRNGMersenne( char *sz ) {
     SetRNG( RNG_MERSENNE, sz );
 }
 
+extern void CommandSetRNGRandomDotOrg( char *sz ) {
+
+#if HAVE_SOCKETS
+    SetRNG( RNG_RANDOM_DOT_ORG, sz );
+#else
+    outputl( _("This installation of GNU Backgammon was compiled without "
+               "support for sockets needed for fetching\n"
+               "random numbers from <www.random.org>") );
+#endif
+
+}
+
+
 extern void CommandSetRNGUser( char *sz ) {
 
 #if HAVE_LIBDL
@@ -1558,8 +1571,9 @@ extern void CommandSetSeed( char *sz ) {
 
     int n;
     
-    if( rngCurrent == RNG_MANUAL ) {
-	outputl( _("You can't set a seed if you're using manual dice generation.") );
+    if( rngCurrent == RNG_MANUAL || rngCurrent == RNG_RANDOM_DOT_ORG ) {
+	outputl( _("You can't set a seed "
+                   "if you're using manual dice generation or random.org") );
 	return;
     }
 

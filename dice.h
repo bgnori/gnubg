@@ -16,14 +16,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.10 2002/06/02 16:33:09 thyssen Exp $
+ * $Id: dice.h,v 1.11 2002/07/27 10:55:42 thyssen Exp $
  */
 
 #ifndef _DICE_H_
 #define _DICE_H_
 
 typedef enum _rng {
-    RNG_ANSI, RNG_BSD, RNG_ISAAC, RNG_MANUAL, RNG_MD5, RNG_MERSENNE, RNG_USER
+    RNG_ANSI, RNG_BSD, RNG_ISAAC, RNG_MANUAL, RNG_MD5, RNG_MERSENNE, 
+    RNG_RANDOM_DOT_ORG, RNG_USER
 } rng;
 
 extern char *aszRNG[];

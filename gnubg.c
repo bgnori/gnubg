@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.257 2002/07/25 17:09:22 thyssen Exp $
+ * $Id: gnubg.c,v 1.258 2002/07/27 10:51:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -703,6 +703,9 @@ command cER = {
     { "mersenne", CommandSetRNGMersenne, 
       N_("Use the Mersenne Twister generator"),
       szOPTSEED, NULL },
+    { "random.org", CommandSetRNGRandomDotOrg, 
+      N_("Use random numbers fetched fromk <www.random.org>"),
+      NULL, NULL },
     { "user", CommandSetRNGUser, 
       N_("Specify an external generator"), szOPTSEED, NULL,},
     { NULL, NULL, NULL, NULL, NULL }
@@ -3425,6 +3428,7 @@ extern void CommandCopy (char *sz)
   puts (DrawBoard (szOut, ms.anBoard, ms.fMove, aps,
 			  MatchIDFromMatchState (&ms)));
 #endif
+
 }
 
 #ifdef WIN32
@@ -3601,6 +3605,9 @@ SaveRNGSettings ( FILE *pf, char *sz, rng rngCurrent ) {
 	break;
     case RNG_MERSENNE:
 	fprintf( pf, "%s rng mersenne\n", sz );
+	break;
+    case RNG_RANDOM_DOT_ORG:
+        fprintf( pf, "%s rng random.org\n", sz );
 	break;
     case RNG_USER:
 	/* don't save user RNGs */
