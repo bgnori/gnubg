@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.486 2003/09/05 17:23:31 thyssen Exp $
+ * $Id: gnubg.c,v 1.487 2003/09/06 18:14:13 kaoru Exp $
  */
 
 #include "config.h"
@@ -3746,7 +3746,7 @@ HintChequer( char *sz ) {
 
   if ( memcmp ( &sm.ms, &ms, sizeof ( matchstate ) ) ) {
 
-    ProgressStart( _("Considering moves...") );
+    ProgressStart( _("Considering move...") );
     if( FindnSaveBestMoves( &ml, ms.anDice[ 0 ], ms.anDice[ 1 ],
                             ms.anBoard, 
                             fHasMoved ? auch : NULL, 
