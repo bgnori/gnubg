@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.2 2002/10/21 16:32:05 thyssen Exp $
+ * $Id: osr.c,v 1.3 2002/10/26 13:08:07 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -332,7 +332,7 @@ static void
 FindBestMoveOSR4 ( int anBoard[ 24 ], const int nDice, int *pnOut ) {
 
   int nd = 4;
-  int i, n;
+  int i, n = 0;
   int first, any;
   int lc;
 
