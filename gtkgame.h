@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.69 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.70 2003/08/16 08:46:59 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -81,8 +81,8 @@ extern void GTKDisallowStdin( void );
 extern void GTKDelay( void );
 extern void ShowList( char *asz[], char *szTitle );
 
-extern GtkWidget *GTKCreateDialog( char *szTitle, dialogtype dt, GtkSignalFunc pf,
-				void *p );
+extern GtkWidget *GTKCreateDialog( const char *szTitle, const dialogtype dt, 
+                                   GtkSignalFunc pf, void *p );
 extern GtkWidget *DialogArea( GtkWidget *pw, dialogarea da );
     
 extern int GTKGetInputYN( char *szPrompt );
@@ -99,8 +99,8 @@ extern void
 GTKProgressValue ( int fValue );
 extern void GTKBearoffProgress( int i );
 
-extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
-				char *szTitle );
+extern void GTKDumpStatcontext( const statcontext *psc, const matchstate *pms,
+				const char *szTitle, const int fIsMatch );
 extern void GTKEval( char *szOutput );
 extern void 
 GTKHint( movelist *pmlOrig, const int iMove );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.133 2003/08/15 02:20:48 joseph Exp $
+ * $Id: html.c,v 1.134 2003/08/16 08:49:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -169,7 +169,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( _("\n" 
              "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.133 2003/08/15 02:20:48 joseph Exp $ */\n"
+             "/* $Id: html.c,v 1.134 2003/08/16 08:49:58 thyssen Exp $ */\n"
              "/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
@@ -1913,7 +1913,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.133 $";
+  const char szVersion[] = "$Revision: 1.134 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1994,7 +1994,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.133 $";
+  const char szVersion[] = "$Revision: 1.134 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2950,6 +2950,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
   };
 
   int fCalc;
+  const int fIsMatch = iGame < 0;
 
   getMWCFromError ( psc, aaaar );
 
@@ -3379,17 +3380,21 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
                                    psc->arLuck[ 1 ][ 1 ] + 
                                    psc->arLuck[ 0 ][ 1 ] ) );
 
-      if ( r > 0.0f && r < 1.0f ) {
-        float rRating = relativeFibsRating( r, pms->nMatchTo );
-        printStatTableRow( pf,
-                           _("Relative FIBS rating"),
-                           "%.2f",
-                           rRating / 2.0f, -rRating / 2.0f );
+      if ( fIsMatch ) {
+
+        if ( r > 0.0f && r < 1.0f ) {
+          float rRating = relativeFibsRating( r, pms->nMatchTo );
+          char sz[ 10 ];
+          sprintf( sz, "%.2f", rRating );
+          printStatTableRow( pf,
+                             _("FIBS rating difference"),
+                             "%s", sz, "" );
+        }
+        else
+          printStatTableRow( pf,
+                             _("FIBS rating difference"),
+                             "%s", _("n/a"), _("n/a") );
       }
-      else
-        printStatTableRow( pf,
-                           _("Relative FIBS rating"),
-                           "%s", _("n/a"), _("n/a") );
 
     }
     else {
@@ -3407,7 +3412,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
                          psc->arActualResult[ 1 ] - 
                          psc->arLuck[ 1 ][ 1 ] + psc->arLuck[ 0 ][ 1 ] );
 
-      if ( psc->nGames > 1 ) {
+      if ( fIsMatch && psc->nGames > 1 ) {
         printStatTableRow( pf,
                            _("Advantage (actual) in ppg"),
                            "%+.3f",
