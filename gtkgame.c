@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.446 2003/11/26 22:12:57 hb Exp $
+ * $Id: gtkgame.c,v 1.447 2003/11/29 09:15:09 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -63,6 +63,10 @@
 
 #ifdef WIN32
 #include <windows.h>
+#endif
+
+#if HAVE_SYS_UTSNAME_H
+#include <sys/utsname.h>
 #endif
 
 #include "glib.h"
@@ -7649,25 +7653,10 @@ ShowManualWeb( gpointer *p, guint n, GtkWidget *pwEvent ) {
 static void
 ReportBug( gpointer *p, guint n, GtkWidget *pwEvent ) {
 
-	char *pchOS = "109", sz[ 1024 ];
+	char *pchOS = "109";
+        char sz[ 1024 ];
 
-#ifdef LINUX
-	/* Linux */
-	pchOS = "101";
-#else
-#ifdef SOLARIS
-	/* Solaris */
-	pchOS = "102";
-#else
-#ifdef FREEBSD
-	/* FreeBSD */
-	pchOS = "103";
-#else
-#ifdef __APPLE__
-	/* Mac OS X */
-	pchOS = "112";
-#else
-#ifdef WIN32
+#if WIN32
 
 	OSVERSIONINFO VersionInfo;
 
@@ -7732,11 +7721,30 @@ ReportBug( gpointer *p, guint n, GtkWidget *pwEvent ) {
 			}
 			break;
 	}
-#endif /* WIN32 */
-#endif /* __APPLE__ */
-#endif /* FREEBSD */
-#endif /* SOLARIS */
-#endif /* Linux */
+#elif HAVE_SYS_UTSNAME_H /* WIN32 */
+
+ {
+   struct utsname u;
+
+   if ( uname( &u ) )
+     pchOS = "";
+   else {
+
+     if ( ! strcasecmp( u.sysname, "linux" ) )
+       pchOS = "101";
+     else if ( ! strcasecmp( u.sysname, "sunos" ) )
+       pchOS = "102";
+     else if ( ! strcasecmp( u.sysname, "freebsd" ) )
+       pchOS = "103";
+     else if ( ! strcasecmp( u.sysname, "rhapsody" ) ||
+               ! strcasecmp( u.sysname, "darwin" ) ) 
+       pchOS = "112";
+
+   }
+
+ }
+
+#endif /* HAVE_SYS_UTSNAME_H */
 
 	sprintf( sz, "http:///savannah.gnu.org/bugs/?func=additem&group=gnubg"
 		     "&release_id="	"104"
