@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.229 2004/04/22 19:11:50 thyssen Exp $
+ * $Id: set.c,v 1.230 2004/04/22 20:53:28 thyssen Exp $
  */
 
 #include "config.h"
@@ -166,7 +166,7 @@ SetSeed ( const rng rngx, void *rngctx, char *sz ) {
 	    return;
 	}
 
-	InitRNGSeed( n, rngx );
+	InitRNGSeed( n, rngx, rngctx );
 	outputf( _("Seed set to %d.\n"), n );
 #endif /* HAVE_LIBGMP */
     } else 
