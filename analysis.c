@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.107 2003/06/06 09:51:50 thyssen Exp $
+ * $Id: analysis.c,v 1.108 2003/06/09 15:21:15 thyssen Exp $
  */
 
 #include "config.h"
@@ -894,7 +894,7 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
       psc->fDice = fAnalyseDice;
     }
   
-    return 0;
+    return fInterrupt ? -1 : 0;
 }
 
 
@@ -1077,8 +1077,10 @@ extern void CommandAnalyseMatch( char *sz ) {
   IniStatcontext( &scMatch );
   
   for( pl = lMatch.plNext; pl != &lMatch; pl = pl->plNext ) {
+
       if( AnalyzeGame( pl->p ) < 0 ) {
 	  /* analysis incomplete; erase partial summary */
+        
 	  IniStatcontext( &scMatch );
 	  break;
       }
