@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.319 2003/03/09 10:25:48 thyssen Exp $
+ * $Id: gtkgame.c,v 1.320 2003/03/10 20:31:38 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -9729,6 +9729,8 @@ extern void GTKRecordShow( FILE *pfIn, char *szFile, char *szPlayer ) {
     else if( !f )
 	outputl( _("No player records found.") );
 
+    fclose( pfIn );    
+
     if( f ) {
 	gtk_clist_sort( GTK_CLIST( pwList ) );
 	
@@ -9746,7 +9748,6 @@ extern void GTKRecordShow( FILE *pfIn, char *szFile, char *szPlayer ) {
 	GTKAllowStdin();
     }
     
-    fclose( pfIn );    
 }
 
 static void UpdateMatchinfo( const char *pch, char *szParam, char **ppch ) {
