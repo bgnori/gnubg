@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.89 2001/01/16 18:36:05 gtw Exp $
+ * $Id: gnubg.c,v 1.90 2001/01/17 22:15:19 gtw Exp $
  */
 
 #include "config.h"
@@ -120,8 +120,8 @@ int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn = -1, fDisplay = TRUE,
     fAutoBearoff = FALSE, fAutoGame = TRUE, fAutoMove = FALSE,
     fResigned = FALSE, nPliesEval = 1, fAutoCrawford = 1,
     fAutoRoll = TRUE, cGames = 0, fDoubled = FALSE, cAutoDoubles = 0,
-    fCubeUse = TRUE, fNackgammon = FALSE, fVarRedn = FALSE,
-    nRollouts = 1296, nRolloutTruncate = 7, fNextTurn = FALSE,
+    fCubeUse = TRUE, fNackgammon = FALSE, fVarRedn = TRUE,
+    nRollouts = 36, nRolloutTruncate = 7, fNextTurn = FALSE,
     fConfirm = TRUE, fShowProgress, fMove, fCubeOwner, fJacoby = TRUE,
     fCrawford = FALSE, fPostCrawford = FALSE, nMatchTo, anScore[ 2 ],
     fBeavers = 1, nCube, fOutputMWC = TRUE, fOutputWinPC = FALSE,
