@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.60 2002/03/21 19:42:48 oysteijo Exp $
+ * $Id: gtkboard.c,v 1.61 2002/03/22 15:24:48 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4434,6 +4434,7 @@ static void board_init( Board *board ) {
 
     bd->translucent = TRUE;
     bd->wood = WOOD_ALDER;
+    bd->hinges = TRUE;
     bd->labels = FALSE;
     bd->usedicearea = TRUE;
     bd->permit_illegal = FALSE;
