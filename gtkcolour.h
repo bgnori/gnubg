@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.h,v 1.2 2003/08/13 11:52:27 Superfly_Jon Exp $
+ * $Id: gtkcolour.h,v 1.3 2004/03/08 09:02:43 Superfly_Jon Exp $
  */
 
 #ifndef _GTKCOLOUR_H_
@@ -42,6 +42,8 @@ typedef struct UpdateDetails_T
 	int opacity;
 	TextureType texture;
 } UpdateDetails;
+
+GtkWidget* gtk_colour_picker_new3d(GtkWidget** parentPreview, GdkWindow* pixWind, Material* pMat, int opacity, int texture);
 #endif
 
 #define GTK_TYPE_COLOUR_PICKER (gtk_colour_picker_get_type())
@@ -64,6 +66,10 @@ struct _GtkColourPicker {
     GtkWidget *pwColourSel, *pwDraw;
     GdkPixmap *ppm;
     gdouble arOrig[ 4 ];
+    gdouble arColour[ 4 ];
+    int hasOpacity;
+    GtkSignalFunc func;
+    void *data;
 };
 
 struct _GtkColourPickerClass {
@@ -71,7 +77,7 @@ struct _GtkColourPickerClass {
 };
 
 extern GtkType gtk_colour_picker_get_type( void );
-extern GtkWidget *gtk_colour_picker_new( void );
+extern GtkWidget *gtk_colour_picker_new(GtkSignalFunc func, void *data);
 extern void gtk_colour_picker_set_has_opacity_control(
     GtkColourPicker *pcp, gboolean f );
 extern void gtk_colour_picker_set_colour( GtkColourPicker *pcp,
