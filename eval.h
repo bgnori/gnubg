@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.54 2001/10/17 16:43:31 thyssen Exp $
+ * $Id: eval.h,v 1.55 2001/10/17 17:11:55 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -202,7 +202,8 @@ EvaluatePosition( int anBoard[ 2 ][ 25 ], float arOutput[],
                   cubeinfo *pci, evalcontext *pec );
 
 extern void
-InvertEvaluationR ( float ar[ NUM_ROLLOUT_OUTPUTS] );
+InvertEvaluationR ( float ar[ NUM_ROLLOUT_OUTPUTS],
+                    cubeinfo *pci );
 
 extern void 
 InvertEvaluation( float ar[ NUM_OUTPUTS ] );
