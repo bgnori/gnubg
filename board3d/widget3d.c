@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.12 2004/01/29 11:30:22 uid68519 Exp $
+* $Id: widget3d.c,v 1.13 2004/02/12 10:20:53 uid68519 Exp $
 */
 
 #include <config.h>
@@ -186,7 +186,6 @@ static gboolean expose_event(GtkWidget *widget, GdkEventExpose *event, BoardData
 	{	/* Quick drawing mode */
 		if (numRestrictFrames > 0)
 		{
-//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			RestrictiveRender(bd);
 		}
 		else if (numRestrictFrames < 0)
