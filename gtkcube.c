@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.34 2003/08/31 13:15:05 thyssen Exp $
+ * $Id: gtkcube.c,v 1.35 2003/09/02 00:03:16 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1016,7 +1016,7 @@ CreateCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   pchd->mt = mt;
   pchd->ms = ms;
   
-  pchd->pw = pw = gtk_hbox_new ( 4, FALSE );
+  pchd->pw = pw = gtk_hbox_new ( FALSE, 2 );
 
   switch ( mt ) {
 
@@ -1052,7 +1052,7 @@ CreateCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   gtk_box_pack_start ( GTK_BOX ( pw ), pchd->pwFrame, FALSE, FALSE, 0 );
 
 
-  pwx = gtk_vbox_new ( 0, FALSE );
+  pwx = gtk_vbox_new ( FALSE, 0 );
 
   gtk_box_pack_start ( GTK_BOX ( pwx ), pw, FALSE, FALSE, 0 );
 
