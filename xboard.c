@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xboard.c,v 1.15 2000/03/07 22:47:05 gtw Exp $
+ * $Id: xboard.c,v 1.15.2.1 2000/07/13 15:56:33 gtw Exp $
  */
 
 #include "config.h"

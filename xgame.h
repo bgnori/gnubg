@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.h,v 1.6 2000/02/19 23:25:26 gtw Exp $
+ * $Id: xgame.h,v 1.6.2.1 2000/07/13 15:56:33 gtw Exp $
  */
 
 #ifndef _GAME_H_
@@ -78,5 +78,5 @@ extern void GameRedrawDice( extwindow *pewnd, gamedata *pgd, int x, int y,
 extern int GameSet( extwindow *pewnd, int anBoard[ 2 ][ 25 ], int fRoll,
 		    char *szPlayer, char *szOpp, int nMatchTo,
 		    int nScore, int nOpponent, int nDice0, int nDice1 );
-
+extern void RunExt( void );
 #endif
