@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.146 2002/04/04 19:05:29 thyssen Exp $
+ * $Id: eval.c,v 1.147 2002/04/07 20:30:11 thyssen Exp $
  */
 
 #include "config.h"
@@ -7382,6 +7382,56 @@ getCubeDecisionOrdering ( int aiOrder[ 3 ],
     assert ( FALSE );
 
     break;
+
+  }
+
+}
+
+
+
+extern float
+getPercent ( const cubedecision cd,
+             const float arDouble[] ) {
+
+  switch ( cd ) {
+
+  case DOUBLE_TAKE:
+  case DOUBLE_BEAVER:
+  case DOUBLE_PASS:
+  case REDOUBLE_TAKE:
+  case REDOUBLE_PASS:
+  case NODOUBLE_DEADCUBE:
+  case NO_REDOUBLE_DEADCUBE:
+    /* correct cube action */
+    return -1.0;
+    break;
+
+  case NODOUBLE_TAKE:
+  case NODOUBLE_BEAVER:
+  case NO_REDOUBLE_TAKE:
+  case NO_REDOUBLE_BEAVER:
+  case TOOGOODRE_TAKE:
+  case TOOGOOD_TAKE:
+
+    /* how many doubles should be dropped before it is correct to double */
+
+    return 
+      ( arDouble[ OUTPUT_NODOUBLE ] - arDouble[ OUTPUT_TAKE ] ) /
+      (arDouble[ OUTPUT_DROP ] - arDouble[ OUTPUT_TAKE ] );
+    break;
+
+  case TOOGOOD_PASS:
+  case TOOGOODRE_PASS:
+
+    /* how many doubles should be taken before it is correct to double */
+    return 
+      ( arDouble[ OUTPUT_NODOUBLE ] - arDouble[ OUTPUT_DROP ] ) /
+      (arDouble[ OUTPUT_TAKE ] - arDouble[ OUTPUT_DROP ] );
+    break;
+
+  default:
+
+    assert ( FALSE );
 
   }
 

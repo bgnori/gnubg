@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.68 2002/04/04 19:02:07 thyssen Exp $
+ * $Id: eval.h,v 1.69 2002/04/07 20:30:11 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -414,5 +414,9 @@ getMatchPoints ( float aaarPoints[ 2 ][ 4 ][ 2 ],
 extern void
 getCubeDecisionOrdering ( int aiOrder[ 3 ], 
                           float arDouble[ 4 ], cubeinfo *pci );
+
+extern float
+getPercent ( const cubedecision cd,
+             const float arDouble[] );
 
 #endif
