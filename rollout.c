@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.120 2003/07/21 11:50:54 jsegrave Exp $
+ * $Id: rollout.c,v 1.121 2003/07/22 14:31:18 jsegrave Exp $
  */
 
 #include "config.h"
@@ -892,6 +892,16 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
   memcpy (&rcRolloutSave, &rcRollout, sizeof (rcRollout));
   if (alternatives < 2)
     rcRollout.fStopMoveOnJsd = 0;
+
+  /* make sure cube decisions are rolled out cubeful */
+  if (fCubeRollout) {
+	rcRollout.fCubeful = rcRollout.aecCubeTrunc.fCubeful =
+	  rcRollout.aecChequerTrunc.fCubeful = 1;
+	for (i = 0; i < 2; ++i) 
+	  rcRollout.aecCube[ i ].fCubeful = rcRollout.aecChequer[ i ].fCubeful =
+	  rcRollout.aecCubeLate[ i ].fCubeful = 
+		rcRollout.aecChequerLate[ i] .fCubeful = 1;
+  }
 
   /* initialise internal variables and figure out what the first 
      trial will be */

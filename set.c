@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.190 2003/07/18 14:05:36 jsegrave Exp $
+ * $Id: set.c,v 1.191 2003/07/22 14:31:18 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1712,7 +1712,7 @@ extern void CommandSetRolloutJsdLimit ( char *sz ) {
 
     outputf ( 
   _("Rollouts (or rollouts of moves) may  stop when the equity is more "
-   "than %5.f joint standard deviatons from the best move being rolled out\n"),
+ "than %5.3f joint standard deviations from the best move being rolled out\n"),
 	      r);
 }
 
