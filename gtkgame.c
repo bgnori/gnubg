@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.437 2003/10/07 11:07:23 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.438 2003/10/12 09:49:52 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6790,6 +6790,7 @@ extern void SetRollouts( gpointer *p, guint n, GtkWidget *pwIgnore ) {
     RPTrunc;
   char sz[ 256 ];
   int  i;
+  const float epsilon = 1.0e-6;
 
   memcpy (&rw.rcRollout, &rcRollout, sizeof (rcRollout));
   rw.prwGeneral = &RPGeneral;
@@ -7008,7 +7009,7 @@ extern void SetRollouts( gpointer *p, guint n, GtkWidget *pwIgnore ) {
       UserCommand( sz );
     }
 
-    if( rw.rcRollout.rStdLimit != rcRollout.rStdLimit ) {
+    if( fabs( rw.rcRollout.rStdLimit - rcRollout.rStdLimit ) > epsilon ) {
       lisprintf( sz, "set rollout limit maxerr %5.4f", rw.rcRollout.rStdLimit );
       UserCommand( sz );
     }
@@ -7030,7 +7031,7 @@ extern void SetRollouts( gpointer *p, guint n, GtkWidget *pwIgnore ) {
       UserCommand( sz );
     }
 
-    if( rw.rcRollout.rJsdLimit != rcRollout.rJsdLimit ) {
+    if( fabs( rw.rcRollout.rJsdLimit - rcRollout.rJsdLimit ) > epsilon ) {
       lisprintf( sz, "set rollout jsd limit %5.4f", rw.rcRollout.rJsdLimit );
       UserCommand( sz );
     }
