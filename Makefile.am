@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.106 2003/07/16 10:32:10 thyssen Exp $
+## $Id: Makefile.am,v 1.107 2003/07/26 11:01:03 thyssen Exp $
 if USE_EXT
 SUBDIRS = intl lib doc ext met po m4 xpm sounds
 else
@@ -81,7 +81,7 @@ gnubg_SOURCES = $(COMMON_SOURCES) gtkboard.c gtkboard.h gtkgame.c gtkgame.h \
 	gtkcolour.h gtksplash.c gtksplash.h gtkrolls.c gtkrolls.h \
         openurl.c openurl.h gtktempmap.c gtktempmap.h \
 	gtkbearoff.c gtkbearoff.h gtkoptions.h gtkoptions.c \
-	gtkpath.c gtkpath.h \
+	gtkpath.c gtkpath.h gtktoolbar.h gtktoolbar.c \
 	$(BR1_SOURCES) $(SOUND_SOURCES) $(FONT_SOURCES) $(PYTHON_SOURCES)
 gnubg_LDADD = @GTK_LIBS@ $(COMMON_LIBS) $(SOUND_LIBS) $(PNG_LIBS) @LIBART_LIBS@
 gnubg_DEPENDENCIES = $(COMMON_DEPS)

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.67 2003/07/21 14:02:20 hb Exp $
+ * $Id: gtkgame.h,v 1.68 2003/07/26 11:01:04 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -48,6 +48,7 @@ typedef enum _dialogtype {
 } dialogtype;
 
 extern GtkWidget *pwMain, *pwMenuBar;
+extern GtkWidget *pwToolbar;
 extern GtkTooltips *ptt;
 
 extern GtkWidget *pwGrab;

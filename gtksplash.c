@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.6 2003/01/22 16:16:09 gtw Exp $
+ * $Id: gtksplash.c,v 1.7 2003/07/26 11:01:04 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -33,7 +33,7 @@
 #include "backgammon.h"
 #include "eval.h"
 #include "gtksplash.h"
-#include "gtkboard.h"
+#include "gtktoolbar.h"
 #include "i18n.h"
 
 #if GTK_CHECK_VERSION(2,0,0)
