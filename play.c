@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.240 2004/01/20 09:09:12 uid68519 Exp $
+ * $Id: play.c,v 1.241 2004/02/06 09:41:03 uid68519 Exp $
  */
 
 #include "config.h"
@@ -3672,6 +3672,9 @@ CommandNext( char* sz )
     return;
   }
     
+#if USE_BOARD3D
+	RestrictiveRedraw();
+#endif
   n = 1;
 
   if( ( pch = NextToken( &sz ) ) ) {
@@ -3827,6 +3830,10 @@ extern void CommandPrevious( char *sz ) {
 	return;
     }
     
+#if USE_BOARD3D
+	RestrictiveRedraw();
+#endif
+
 	n = 1;
 
     if( ( pch = NextToken( &sz ) ) ) {
