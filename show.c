@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.175 2004/01/16 09:41:39 uid68519 Exp $
+ * $Id: show.c,v 1.176 2004/02/03 10:29:04 uid68519 Exp $
  */
 
 #include "config.h"
@@ -60,6 +60,8 @@
 #include "gtkbearoff.h"
 #elif USE_EXT
 #include "xgame.h"
+#else
+#include <glib.h>
 #endif
 
 extern char *aszCopying[], *aszWarranty[]; /* from copying.c */

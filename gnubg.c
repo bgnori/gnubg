@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.525 2004/02/02 09:50:59 uid68519 Exp $
+ * $Id: gnubg.c,v 1.526 2004/02/03 10:29:04 uid68519 Exp $
  */
 
 #include "config.h"
@@ -131,9 +131,10 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include <ext.h>
 #include <extwin.h>
 #include "xgame.h"
-
 extwindow ewnd;
 event evNextTurn;
+#else
+#include <glib.h>
 #endif
 
 #if USE_TIMECONTROL
