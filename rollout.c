@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.38 2001/06/15 16:58:21 thyssen Exp $
+ * $Id: rollout.c,v 1.39 2001/06/15 17:20:02 thyssen Exp $
  */
 
 #include "config.h"
@@ -902,39 +902,6 @@ GeneralEvaluation ( char *sz,
   }
 
   return 0;
-}
-
-
-extern int
-GeneralEvaluationE ( float arOutput [ NUM_ROLLOUT_OUTPUTS ],
-                     int anBoard[ 2 ][ 25 ],
-                     cubeinfo *pci, evalcontext *pec ) {
-
-  float arCf [ NUM_CUBEFUL_OUTPUTS ];
-
-  if ( pec->fCubeful ) {
-
-    if ( EvaluatePositionCubeful2 ( anBoard, arOutput, arCf,
-                                    pci, pec, pec->nPlies, pec->nPlies,
-                                    TRUE, pci ) )
-      return -1;
-
-    arOutput[ OUTPUT_EQUITY ] = Utility ( arOutput, pci );
-    arOutput[ OUTPUT_CUBEFUL_EQUITY ] = arCf[ OUTPUT_OPTIMAL ];
-
-  } 
-  else {
-
-    if ( EvaluatePosition ( anBoard, arOutput, pci, pec ) )
-      return -1;
-
-    arOutput[ OUTPUT_EQUITY ] = Utility ( arOutput, pci );
-    arOutput[ OUTPUT_CUBEFUL_EQUITY ] = 0.0f;
-
-  }
-
-  return 0;
-
 }
 
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.10 2001/06/15 16:58:21 thyssen Exp $
+ * $Id: rollout.h,v 1.11 2001/06/15 17:20:02 thyssen Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -46,11 +46,6 @@ GeneralEvaluation ( char *sz,
                     float arStdDev[ NUM_ROLLOUT_OUTPUTS ], 
                     int anBoard[ 2 ][ 25 ],
                     cubeinfo *pci, evalsetup *pes );
-
-extern int
-GeneralEvaluationE ( float arOutput[ NUM_ROLLOUT_OUTPUTS ], 
-                     int anBoard[ 2 ][ 25 ],
-                     cubeinfo *pci, evalcontext *pec );
 
 extern int
 GeneralEvaluationR ( char *sz,
