@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.30 2004/03/31 09:51:57 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.31 2004/04/01 09:16:13 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -288,7 +288,7 @@ void FindTexture(TextureInfo** textureInfo, char* file)
 			/* Add entry for unknown texture */
 			TextureInfo text;
 			strcpy(text.file, file);
-			if (len > 4 && !stricmp(&file[len - 4], ".png"))
+			if (len > 4 && !strcasecmp(&file[len - 4], ".png"))
 				text.format = TF_PNG;
 			else
 				text.format = TF_BMP;
