@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.33 2001/11/27 23:08:54 gtw Exp $
+ * $Id: database.c,v 1.34 2001/12/10 16:01:21 gtw Exp $
  */
 
 #include "config.h"
@@ -315,17 +315,15 @@ extern void CommandDatabaseRollout( char *sz ) {
 	    PositionFromKey( anBoardEval, (unsigned char *) dKey.dptr );
 	
 	    /* FIXME if position has some existing rollouts, merge them */
-	    
-	    /* FIXME allow user to change these parameters */
-	    if( ( pev->c = Rollout( anBoardEval, PositionIDFromKey(
-		(unsigned char *) dKey.dptr ), arOutput, NULL,
-				    rcRollout.nTruncate,
-				    rcRollout.nTrials, rcRollout.fVarRedn,
-				    &ciCubeless, &ecRollout, FALSE ) ) > 0 ) {
+
+	    if( !GeneralEvaluationR( PositionIDFromKey(
+		(unsigned char *) dKey.dptr ), arOutput, NULL, anBoardEval,
+				     &ciCubeless, &rcRollout ) ) {
+		pev->c = rcRollout.nTrials;
+		pev->t = time( NULL );
+
 		for( i = 0; i < NUM_OUTPUTS; i++ )
 		    pev->asEq[ i ] = arOutput[ i ] * 0xFFFF;
-		
-		pev->t = time( NULL );
 	    } else {
 		for( i = 0; i < NUM_OUTPUTS; i++ )
 		    pev->asEq[ i ] = 0;
