@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.5.4.8 2003/07/07 11:23:57 Superfly_Jon Exp $
+ * $Id: render.h,v 1.5.4.9 2003/07/09 10:20:55 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -66,7 +66,6 @@ typedef struct _renderdata {
 	displaytype fDisplayType;	/* 2d or 3d display */
 	int showShadows;	/* Show 3d shadows */
 	int shadowDarkness;	/* How dark are shadows */
-	int skin3d;	/* Test skin number */
 	int animateRoll;	/* Animate dice rolls */
 	int animateFlag;	/* Animate resignation flag */
 	int closeBoardOnExit;	/* Animate board close on quit */

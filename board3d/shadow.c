@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: shadow.c,v 1.1.2.4 2003/07/07 11:23:58 Superfly_Jon Exp $
+* $Id: shadow.c,v 1.1.2.5 2003/07/09 10:20:57 Superfly_Jon Exp $
 */
 
 #include <assert.h>
@@ -100,7 +100,7 @@ void draw_shadow_volume_to_stencil(BoardData* bd)
 	/* First clear the stencil buffer */
 	glClear(GL_STENCIL_BUFFER_BIT);
 
-	/* Disable colour buffer lighting and don't update depth buffer */
+	/* Disable drawing to colour buffer, lighting and don't update depth buffer */
 	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
 	glDisable(GL_LIGHTING);
 	glDepthMask(GL_FALSE);
@@ -121,9 +121,9 @@ void draw_shadow_volume_to_stencil(BoardData* bd)
 		draw_shadow_volume_extruded_edges(&bd->Occluders[i], *bd->shadow_light_position, GL_QUADS);
 
 	/* Enable colour buffer, lighting and depth buffer */
-	glDepthMask(GL_TRUE);
 	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
 	glEnable(GL_LIGHTING);
+	glDepthMask(GL_TRUE);
 }
 
 void shadowDisplay(void (*drawScene)(BoardData*), BoardData* bd)

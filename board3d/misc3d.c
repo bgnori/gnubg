@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.1.2.9 2003/07/08 07:35:01 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.1.2.10 2003/07/09 10:20:57 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -969,12 +969,12 @@ void EmptyPos(BoardData *bd)
 {	/* All checkers home */
 	int ip[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,-15};
 	memcpy(bd->points, ip, sizeof(bd->points));
+	updatePieceOccPos(bd);
 }
 
 void CloseBoard3d(BoardData* bd)
 {
 	EmptyPos(bd);
-	updatePieceOccPos(bd);
 	bd->State = BOARD_CLOSED;
 	/* Turn off most things so they don't interfere when board closed/opening */
 	bd->cube_use = 0;

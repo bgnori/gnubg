@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.126.2.10 2003/07/08 07:35:00 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.126.2.11 2003/07/09 10:20:54 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2781,6 +2781,7 @@ extern void board_free_pixmaps( BoardData *bd ) {
 }
 
 #if USE_BOARD3D
+
 void DisplayCorrectBoardType()
 {
 	BoardData* bd = BOARD(pwBoard )->board_data;

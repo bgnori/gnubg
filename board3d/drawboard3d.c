@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.1.2.12 2003/07/08 07:35:01 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.1.2.13 2003/07/09 10:20:56 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -2797,7 +2797,7 @@ void MakeShadowModel(BoardData* bd)
 		float lip = radius - discradius;
 		float height = PIECE_DEPTH - 2 * lip;
 
-		addCylinder(&bd->Occluders[OCC_PIECE], 0, 0, lip, PIECE_HOLE / 2.0f, height, rdAppearance.curveAccuracy);
+		addCylinder(&bd->Occluders[OCC_PIECE], 0, 0, lip, PIECE_HOLE / 2.0f - LIFT_OFF, height, rdAppearance.curveAccuracy);
 	}
 	for (i = OCC_PIECE; i < OCC_PIECE + 30; i++)
 	{

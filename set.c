@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.183.4.2 2003/06/24 09:09:33 Superfly_Jon Exp $
+ * $Id: set.c,v 1.183.4.3 2003/07/09 10:20:55 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -709,8 +709,8 @@ extern void CommandSetAppearance( char *sz ) {
 	RenderPreferencesParam( &rdAppearance, apch[ 0 ], apch[ 1 ] );
 
 #if USE_GTK
-    if( fX )
-	BoardPreferencesDone( pwBoard );	    
+	if( fX )
+		BoardPreferencesDone( pwBoard );	    
 #endif
 }
 

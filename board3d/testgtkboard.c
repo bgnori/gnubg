@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: testgtkboard.c,v 1.1.2.8 2003/07/07 11:23:58 Superfly_Jon Exp $
+* $Id: testgtkboard.c,v 1.1.2.9 2003/07/09 10:20:57 Superfly_Jon Exp $
 */
 
 #include <memory.h>
@@ -253,7 +253,6 @@ void CopyTexture(BoardData* from, BoardData* to, Material* fromMat, Material* to
 		i++;
 
 	sprintf(textureFile, TEXTURE_PATH"%s", from->textureName[i]);
-
 	SetTexture(to, toMat, textureFile);
 }
 

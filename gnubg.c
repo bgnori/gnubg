@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.420.2.7 2003/07/07 11:23:53 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.420.2.8 2003/07/09 10:20:53 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3585,8 +3585,10 @@ extern void PromptForExit( void ) {
     }
 
 #if USE_BOARD3D
-	/* Stop any 3d animations */
-	StopIdle3d(bd);
+	if (rdAppearance.fDisplayType == DT_3D)
+	{	/* Stop any 3d animations */
+		StopIdle3d(bd);
+	}
 #endif
 
     playSound ( SOUND_EXIT );
