@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.32 2001/11/01 15:47:56 gtw Exp $
+ * $Id: database.c,v 1.33 2001/11/27 23:08:54 gtw Exp $
  */
 
 #include "config.h"
@@ -419,7 +419,7 @@ extern void CommandDatabaseGenerate( char *sz ) {
 	if( rThreshold ) {
 	    float ar[ NUM_OUTPUTS ], r0, r1;
 	    static evalcontext ec0 = { 0, FALSE, 0, 0, TRUE, 0.16, 0.0 },
-		ec1 = { 8, FALSE, 0, 0, TRUE, 0.16, 0.0 };
+		ec1 = { 8, FALSE, 1, 0, TRUE, 0.16, 0.0 };
 		
 	    if( EvaluatePosition( anBoardGenerate, ar, &ciCubeless, &ec0 )
 		< 0 )
