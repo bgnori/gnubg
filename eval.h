@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.32 2000/11/29 16:36:34 gtw Exp $
+ * $Id: eval.h,v 1.33 2001/01/31 15:31:13 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -123,9 +123,6 @@ typedef struct _cubeinfo {
     float arGammonPrice[ 4 ];
 } cubeinfo;
 
-#define NORM_SCORE(n) ( nMatchTo - ( n ) ) 
-
-
 extern volatile int fInterrupt, fAction;
 extern void ( *fnAction )( void );
 extern cubeinfo ciCubeless;
@@ -164,10 +161,6 @@ EvalInitialise( char *szWeights, char *szWeightsBinary,
 
 extern int 
 EvalSave( char *szWeights );
-
-extern void 
-SetGammonPrice( float rGammon, float rLoseGammon,
-                float rBackgammon, float rLoseBackgammon );
 
 extern int 
 EvaluatePosition( int anBoard[ 2 ][ 25 ], float arOutput[],
