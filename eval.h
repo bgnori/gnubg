@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.116 2003/07/18 14:05:35 jsegrave Exp $
+ * $Id: eval.h,v 1.117 2003/07/27 12:28:53 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -482,12 +482,6 @@ EvaluatePositionCubeful( int anBoard[ 2 ][ 25 ], float arCfOutput[],
 
 extern int
 GetDPEq ( int *pfCube, float *prDPEq, const cubeinfo *pci );
-
-extern int 
-GetCubeActionSz ( float arDouble[ 4 ], 
-                  float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
-                  char *szOutput, cubeinfo *pci,
-		  int fOutputMWC, int fOutputInvert );
 
 extern float
 mwc2eq ( const float rMwc, const cubeinfo *ci );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.376 2003/07/26 11:01:04 thyssen Exp $
+ * $Id: gtkgame.c,v 1.377 2003/07/27 12:29:15 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -78,6 +78,7 @@
 #include "sound.h"
 #include "gtkoptions.h"
 #include "gtktoolbar.h"
+#include "format.h"
 
 #define GNUBGMENURC ".gnubgmenurc"
 

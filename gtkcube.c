@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.28 2003/07/23 14:17:06 jsegrave Exp $
+ * $Id: gtkcube.c,v 1.29 2003/07/27 12:26:57 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -41,6 +41,7 @@
 #include "gtkcube.h"
 #include "i18n.h"
 #include "progress.h"
+#include "format.h"
 
 
 
@@ -807,9 +808,7 @@ GetContent ( cubehintdata *pchd ) {
   pc = OutputCubeAnalysis ( pchd->aarOutput,
                             pchd->aarStdDev,
                             pchd->pes,
-                            &ci,
-                            -1, -1,
-                            SKILL_NONE, SKILL_NONE );
+                            &ci );
 
   return pc;
 

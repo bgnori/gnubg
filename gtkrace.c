@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.5 2003/07/08 21:04:07 hb Exp $
+ * $Id: gtkrace.c,v 1.6 2003/07/27 12:29:15 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -40,6 +40,7 @@
 #include "i18n.h"
 #include "onechequer.h"
 #include "osr.h"
+#include "format.h"
 
 #if !HAVE_ERF
 extern double erf( double x );

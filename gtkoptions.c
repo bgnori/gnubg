@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.5 2003/07/21 17:07:38 jsegrave Exp $
+ * $Id: gtkoptions.c,v 1.6 2003/07/27 12:26:57 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -41,6 +41,7 @@
 #include "sound.h"
 #include "drawboard.h"
 #include "matchequity.h"
+#include "format.h"
 
 typedef struct _optionswidget {
 
