@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.80 2001/11/06 15:53:49 gtw Exp $
+ * $Id: set.c,v 1.81 2001/11/07 16:32:23 gtw Exp $
  */
 
 #include "config.h"
@@ -73,9 +73,10 @@ static char szEQUITY[] = "<equity>",
 command acSetEvaluation[] = {
     { "candidates", CommandSetEvalCandidates, "Limit the number of moves "
       "for deep evaluation", szNUMBER, NULL },
-    { "cubeful", CommandSetEvalCubeful, "Cubeful evaluations", szONOFF, NULL },
+    { "cubeful", CommandSetEvalCubeful, "Cubeful evaluations", szONOFF,
+      &cOnOff },
     { "deterministic", CommandSetEvalDeterministic, "Specify whether added "
-      "noise is determined by position", szONOFF, NULL },
+      "noise is determined by position", szONOFF, &cOnOff },
     { "noise", CommandSetEvalNoise, "Distort evaluations with noise",
       szSTDDEV, NULL },
     { "plies", CommandSetEvalPlies, "Choose how many plies to look ahead",
@@ -1714,10 +1715,6 @@ CommandSetEvalParamType ( char *sz ) {
 
   case 'e':
     pesSet->et = EVAL_EVAL;
-    break;
-
-  case 'n':
-    pesSet->et = EVAL_NONE;
     break;
 
   default:
