@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkbearoff.c,v 1.9 2003/12/29 20:21:49 uid65656 Exp $
+ * $Id: gtkbearoff.c,v 1.10 2005/02/08 16:37:45 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -282,6 +282,10 @@ GTKShowBearoff( const matchstate *pms ) {
 
   pwDialog = GTKCreateDialog( _("Bearoff Databases"), 
                               DT_INFO, NULL, NULL );
+
+  gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
+  gtk_window_set_transient_for( GTK_WINDOW( pwDialog ),
+                                  GTK_WINDOW( pwMain ) );
 
   pwv = gtk_vbox_new ( FALSE, 8 );
   gtk_container_set_border_width ( GTK_CONTAINER ( pwv ), 8);

@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.19 2004/10/26 23:24:42 oysteijo Exp $
+ * $Id: gtktempmap.c,v 1.20 2005/02/08 16:37:45 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -532,7 +532,9 @@ GTKShowTempMap( const matchstate ams[], const int n,
 
   pwDialog = GTKCreateDialog( _("Sho Sengoku Temperature Map - "
                              "Distribution of rolls"), DT_INFO, NULL, NULL );
-
+  gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
+  gtk_window_set_transient_for( GTK_WINDOW( pwDialog ),
+                                  GTK_WINDOW( pwMain ) );
 
   ptmw = (tempmapwidget *) g_malloc( sizeof ( tempmapwidget ) );
   ptmw->fShowBestMove = FALSE;

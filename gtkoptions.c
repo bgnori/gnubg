@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.21 2004/07/10 14:40:22 kaoru Exp $
+ * $Id: gtkoptions.c,v 1.22 2005/02/08 16:37:45 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1946,6 +1946,9 @@ GTKSetOptions( void ) {
 
   pwDialog = GTKCreateDialog( _("GNU Backgammon - General options"), DT_QUESTION,
 			     GTK_SIGNAL_FUNC( OptionsOK ), &ow );
+  gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
+  gtk_window_set_transient_for( GTK_WINDOW( pwDialog ),
+                                  GTK_WINDOW( pwMain ) );
   gtk_container_add( GTK_CONTAINER( DialogArea( pwDialog, DA_MAIN ) ),
  		        pwOptions = OptionsPages( &ow ) );
   gtk_widget_show_all( pwDialog );
