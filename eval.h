@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.39 2001/03/26 22:13:24 joseph Exp $
+ * $Id: eval.h,v 1.40 2001/03/27 05:19:56 joseph Exp $
  */
 
 #ifndef _EVAL_H_
@@ -140,7 +140,6 @@ typedef enum _positionclass {
     CLASS_BEAROFF2, /* Two-sided bearoff database */
     CLASS_BEAROFF1, /* One-sided bearoff database */
     CLASS_RACE, /* Race neural network */
-    CLASS_BPG, /* On Bar, Back game, or Prime */
     CLASS_CONTACT /* Contact neural network */
 } positionclass;
 
