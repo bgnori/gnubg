@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.470 2004/03/16 16:55:45 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.471 2004/03/18 10:58:56 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -982,17 +982,23 @@ static GtkWidget *PixmapButton( GdkColormap *pcmap, char **xpm,
 
 static void DeleteAnnotation( void )
 {
-	woPanel[WINDOW_ANNOTATION].showing = FALSE;
-	gtk_widget_hide ( woPanel[WINDOW_ANNOTATION].pwWin );
+	if (woPanel[WINDOW_ANNOTATION].showing)
+	{
+		woPanel[WINDOW_ANNOTATION].showing = FALSE;
+		gtk_widget_hide ( woPanel[WINDOW_ANNOTATION].pwWin );
+	}
 	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(gtk_item_factory_get_widget(pif,
 			  "/Windows/Commentary")), FALSE);
 }
 
 static gboolean DeleteGame( void )
 {
-	getWindowGeometry(&woPanel[WINDOW_GAME]);
-	woPanel[WINDOW_GAME].showing = FALSE;
-	gtk_widget_hide( woPanel[WINDOW_GAME].pwWin);
+	if (woPanel[WINDOW_GAME].showing)
+	{
+		getWindowGeometry(&woPanel[WINDOW_GAME]);
+		woPanel[WINDOW_GAME].showing = FALSE;
+		gtk_widget_hide( woPanel[WINDOW_GAME].pwWin);
+	}
 	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(gtk_item_factory_get_widget(pif,
 			  "/Windows/Game record")), FALSE);
 
@@ -1039,18 +1045,24 @@ static void CommentaryChanged( GtkWidget *pw, void *p ) {
 
 static void DeleteMessage ( void )
 {
-	getWindowGeometry(&woPanel[WINDOW_MESSAGE]);
-	woPanel[WINDOW_MESSAGE].showing = FALSE;
-	gtk_widget_hide ( woPanel[WINDOW_MESSAGE].pwWin );
+	if (woPanel[WINDOW_MESSAGE].showing)
+	{
+		getWindowGeometry(&woPanel[WINDOW_MESSAGE]);
+		woPanel[WINDOW_MESSAGE].showing = FALSE;
+		gtk_widget_hide ( woPanel[WINDOW_MESSAGE].pwWin );
+	}
 	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(gtk_item_factory_get_widget(pif,
 			  "/Windows/Message")), FALSE);
 }
 
 static void DeleteAnalysis( void )
 {
-	getWindowGeometry(&woPanel[WINDOW_ANNOTATION]);
-	woPanel[WINDOW_ANALYSIS].showing = FALSE;
-	gtk_widget_hide(woPanel[WINDOW_ANALYSIS].pwWin);
+	if (woPanel[WINDOW_ANNOTATION].showing)
+	{
+		getWindowGeometry(&woPanel[WINDOW_ANNOTATION]);
+		woPanel[WINDOW_ANALYSIS].showing = FALSE;
+		gtk_widget_hide(woPanel[WINDOW_ANALYSIS].pwWin);
+	}
 	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(gtk_item_factory_get_widget(pif,
 			  "/Windows/Analysis")), FALSE);
 }
