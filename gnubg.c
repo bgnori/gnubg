@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.429 2003/07/10 12:56:28 thyssen Exp $
+ * $Id: gnubg.c,v 1.430 2003/07/10 19:53:15 hb Exp $
  */
 
 #include "config.h"
@@ -79,6 +79,8 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #if HAVE_ICONV
 #include <iconv.h>
 #endif
+
+#include <glib/gutils.h>
 
 #include "analysis.h"
 #include "backgammon.h"
@@ -7724,13 +7726,16 @@ basename (const char *filename)
 extern char *
 dirname( const char *filename ) {
 
-   int implement_me = 0;
-   assert ( implement_me );
+#if __GLIBC__
+    return (char *) g_path_get_dirname( (const gchar *) filename );
+#else
+    int implement_me = 0;
+    assert ( implement_me );
+#endif /* #if __GLIBC__ */
 
 }
 
 #endif /* ! HAVE_DIRNAME */
-
 
 extern char *
 Convert ( const char *sz, 

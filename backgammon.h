@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.230 2003/07/10 13:03:22 thyssen Exp $
+ * $Id: backgammon.h,v 1.231 2003/07/10 19:53:15 hb Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1027,6 +1027,11 @@ extern int EvalCmp ( const evalcontext *, const evalcontext *, const int);
 #ifndef HAVE_BASENAME
 extern char *
 basename ( const char *filename );
+#endif
+
+#ifndef HAVE_DIRNAME
+extern char *
+dirname ( const char *filename );
 #endif
 
 #if USE_GTK

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.19 2003/07/10 08:44:15 thyssen Exp $
+ * $Id: bearoff.c,v 1.20 2003/07/10 19:53:15 hb Exp $
  */
 
 #include "config.h"
@@ -28,6 +28,9 @@
 #include <assert.h>
 #include <errno.h>
 #include <math.h>
+
+#include <glib/gutils.h>
+
 #if HAVE_FCNTL_H
 #include <fcntl.h>
 #endif
@@ -41,7 +44,6 @@
 #if HAVE_LIBGEN_H
 #include <libgen.h>
 #endif
-
 
 #include "positionid.h"
 #include "eval.h"
@@ -820,9 +822,13 @@ ReadSconyers15x15( bearoffcontext *pbc,
           
             if( pbc->szDir )
               free( pbc->szDir );
-          
+
+#if ! defined(HAVE_DIRNAME) && ! defined(HAVE_LIBGEN_H)
+            pbc->szDir = (char *) g_path_get_dirname( (const gchar *) pch );
+#else
             pbc->szDir = dirname( pch );
-          
+#endif
+
             free( pch );
             free( pch2 );
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.156 2003/07/10 13:05:00 thyssen Exp $
+ * $Id: show.c,v 1.157 2003/07/10 19:53:16 hb Exp $
  */
 
 #include "config.h"
@@ -48,6 +48,7 @@
 #if USE_GTK
 #include "gtkboard.h"
 #include "gtkgame.h"
+#include "gtkpath.h"
 #include "gtktheory.h"
 #include "gtkrace.h"
 #include "gtkexport.h"
