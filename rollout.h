@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.12 2001/12/16 11:49:32 thyssen Exp $
+ * $Id: rollout.h,v 1.13 2002/01/06 15:43:24 thyssen Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -29,21 +29,34 @@
 #endif
 
 #define MAXHIT 50 /* for statistics */
+#define STAT_MAXCUBE 10
 
 typedef struct _rolloutstat {
 
   /* Regular win statistics (dimension is cube turns) */
 
-  int acWin[ 10 ], acWinGammon[ 10 ], acWinBackgammon[ 10 ]; 
+  int acWin[ STAT_MAXCUBE ];
+  int acWinGammon[ STAT_MAXCUBE ];
+  int acWinBackgammon[ STAT_MAXCUBE ]; 
 
   /* Cube statistics (dimension is cube turns) */
 
-  int acDoubleDrop[ 10 ]; /* # of Double, drop */
-  int acDoubleTake[ 10 ]; /* # of Double, takes */
+  int acDoubleDrop[ STAT_MAXCUBE ]; /* # of Double, drop */
+  int acDoubleTake[ STAT_MAXCUBE ]; /* # of Double, takes */
 
   /* Chequer hit statistics (dimension is move number) */
   
   int acHit[ MAXHIT ]; /* number of hits */
+
+  /* Average loss of pips in bear-off */
+
+  int nBearoffMoves; /* number of moves with bearoff */
+  int nBearoffPipsLost; /* number of pips lost in these moves */
+
+  /* Opponent closed out */
+
+  int nOpponentClosedOut;
+  int nOpponentClosedOutMove;
 
   /* FIXME: add more stuff */
 
