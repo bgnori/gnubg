@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.224 2003/05/29 19:13:33 thyssen Exp $
+ * $Id: backgammon.h,v 1.225 2003/06/14 10:37:02 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -698,6 +698,13 @@ extern void CommandAccept( char * ),
     CommandSetCubeOwner( char * ),
     CommandSetCubeUse( char * ),
     CommandSetCubeValue( char * ),
+    CommandSetCubeEfficiencyOS( char * ),
+    CommandSetCubeEfficiencyRaceFactor( char * ),
+    CommandSetCubeEfficiencyRaceCoefficient( char * ),
+    CommandSetCubeEfficiencyRaceMax( char * ),
+    CommandSetCubeEfficiencyRaceMin( char * ),
+    CommandSetCubeEfficiencyCrashed( char * ),
+    CommandSetCubeEfficiencyContact( char * ),
     CommandSetDelay( char * ),
     CommandSetDice( char * ),
     CommandSetDisplay( char * ),
@@ -938,6 +945,7 @@ extern void CommandAccept( char * ),
     CommandShowCopying( char * ),
     CommandShowCrawford( char * ),
     CommandShowCube( char * ),
+    CommandShowCubeEfficiency( char * ),
     CommandShowDelay( char * ),
     CommandShowDice( char * ),
     CommandShowDisplay( char * ),
