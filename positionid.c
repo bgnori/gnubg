@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.22 2002/10/21 16:32:53 thyssen Exp $
+ * $Id: positionid.c,v 1.23 2002/11/06 17:33:27 joseph Exp $
  */
 
 #include <assert.h>
@@ -382,4 +382,23 @@ extern void PositionFromBearoff( int anBoard[], const unsigned int usID,
         else
             anBoard[ j ]++;
     }
+}
+
+extern unsigned short
+PositionIndex(int g, int anBoard[6])
+{
+  int i, fBits;
+  int j = g - 1;
+
+  for(i = 0; i < g; i++ )
+    j += anBoard[ i ];
+
+  fBits = 1 << j;
+    
+  for(i = 0; i < g; i++) {
+    j -= anBoard[ i ] + 1;
+    fBits |= ( 1 << j );
+  }
+
+  return PositionF( fBits, 15, g );
 }
