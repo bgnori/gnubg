@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.262 2002/07/31 14:45:59 oysteijo Exp $
+ * $Id: gnubg.c,v 1.263 2002/07/31 15:30:59 oysteijo Exp $
  */
 
 #include "config.h"
@@ -918,6 +918,7 @@ command cER = {
     NULL, NULL },
   { "verybad", CommandSetTutorSkillVeryBad, N_("Warn about `very bad' play"),
     NULL, NULL },
+  { NULL, NULL, NULL, NULL, NULL }    
 }, acSetTutor[] = {
   { "mode", CommandSetTutorMode, N_("Give advice on possible errors"),
     szONOFF, &cOnOff },
