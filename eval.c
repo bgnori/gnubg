@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.22 2000/03/06 17:29:08 gtw Exp $
+ * $Id: eval.c,v 1.23 2000/03/07 17:07:27 gtw Exp $
  */
 
 #include "config.h"
@@ -1751,7 +1751,7 @@ extern int TrainPosition( int anBoard[ 2 ][ 25 ], float arDesired[] ) {
   CalculateInputs( anBoard, arInput );
 
   NeuralNetTrain( nn, arInput, arOutput, arDesired,
-		  2.0 / pow( 100.0 + nn.nTrained, 0.25 ) );
+		  2.0 / pow( 100.0 + nn->nTrained, 0.25 ) );
 
   return 0;
 }
