@@ -18,42 +18,48 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: timer.c,v 1.2 2003/08/13 11:52:29 Superfly_Jon Exp $
+* $Id: timer.c,v 1.3 2003/08/14 11:03:43 Superfly_Jon Exp $
 */
+
+#include <time.h>
 
 #ifdef WIN32
 #include "windows.h"
 
 double perFreq = 0;
 
-void setup_timer()
+int setup_timer()
 {
 	LARGE_INTEGER freq;
-	if (QueryPerformanceFrequency(&freq) == 0)
-	{
-		MessageBox(0, "Timer not supported", "Error", MB_OK);
-		perFreq = 1;
+	if (!QueryPerformanceFrequency(&freq))
+	{	/* Timer not supported */
+		return 0;
 	}
 	else
+	{
 		perFreq = ((double)freq.QuadPart) / 1000;
+		return 1;
+	}
 }
 
 double get_time()
-{
+{	/* Return elapsed time in milliseconds */
 	LARGE_INTEGER time;
 
-	if (perFreq == 0)
-		setup_timer();
+	if (!perFreq)
+	{
+		if (!setup_timer())
+			return clock() / 1000.0;
+	}
 
 	QueryPerformanceCounter(&time);
 	return time.QuadPart / perFreq;
 }
 
 #else
-#include <time.h>
 
 double get_time()
-{
+{	/* Return elapsed time in milliseconds */
 	return clock() / 1000.0;
 }
 

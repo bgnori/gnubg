@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.3 2003/08/13 16:23:29 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.4 2003/08/14 11:03:42 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -99,6 +99,7 @@ void SetupLight3d(BoardData *bd, renderdata* prd)
 	memcpy(bd->shadow_light_position, lp, sizeof(float[4]));
 }
 
+#if !GL_VERSION_1_2
 /* Determine if a particular extension is supported */
 int extensionSupported(const char *extension)
 {
@@ -129,8 +130,6 @@ int extensionSupported(const char *extension)
   return 0;
 }
 
-#if !GL_VERSION_1_2
-int useSepSpecular;
 #ifndef GL_EXT_separate_specular_color
 #define GL_EXT_separate_specular_color      1
 
@@ -183,8 +182,7 @@ void InitGL(BoardData *bd)
 #if GL_VERSION_1_2
 	glLightModeli(GL_LIGHT_MODEL_COLOR_CONTROL, GL_SEPARATE_SPECULAR_COLOR);
 #else
-	useSepSpecular = extensionSupported("GL_EXT_separate_specular_color");
-	if (useSepSpecular)
+	if (extensionSupported("GL_EXT_separate_specular_color"))
 		glLightModeli(GL_LIGHT_MODEL_COLOR_CONTROL_EXT, GL_SEPARATE_SPECULAR_COLOR_EXT);
 #endif
 }

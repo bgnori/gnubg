@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.458 2003/08/13 20:39:36 thyssen Exp $
+ * $Id: gnubg.c,v 1.459 2003/08/14 11:03:42 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3627,7 +3627,9 @@ HintTake( void ) {
 
   static cubeinfo ci;
   static float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+#if USE_GTK
   static float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+#endif
   static float arDouble[ 4 ];
 
   /* Give hint on take decision */
