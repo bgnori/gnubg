@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.138 2002/03/23 17:25:03 thyssen Exp $
+ * $Id: eval.c,v 1.139 2002/03/24 17:17:58 oysteijo Exp $
  */
 
 #include "config.h"
@@ -6087,7 +6087,7 @@ EvaluatePositionCubeful2( int anBoard[ 2 ][ 25 ],
     alloca( cci * NUM_ROLLOUT_OUTPUTS * sizeof float );
   cubeinfo ( *aciOpp ) = alloca ( cci * sizeof cubeinfo );
 #else
-  float aar[ 10 ][ NUM_ROLLOUTS_OUTPUTS ];
+  float aar[ 10 ][ NUM_ROLLOUT_OUTPUTS ];
   cubeinfo aciOpp[ 10 ];
 #endif
 
