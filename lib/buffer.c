@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1996-2000
  *
- * $Id: buffer.c,v 1.3 2000/01/19 17:01:59 gtw Exp $
+ * $Id: buffer.c,v 1.4 2000/01/31 17:52:54 gtw Exp $
  */
 
 #include "config.h"
@@ -225,7 +225,7 @@ int BufferWritef( buffer *pb, char *szFormat, ... ) {
 
     va_list val;
     /* FIXME this is terrible... there's no limit on the vsprintf()
-       buffer size!! */
+       buffer size!!  If vsnprintf() is available, we can do better. */
 #if __GNUC__
     char sz[ FifoRemaining( &pb->fWrite ) > 65536 ?
 	   FifoRemaining( &pb->fWrite ) : 65536 ];
