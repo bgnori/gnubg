@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.3 2002/06/01 20:13:31 thyssen Exp $
+ * $Id: gtkexport.c,v 1.4 2002/06/06 20:47:00 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -224,16 +224,13 @@ extern void
 GTKShowExport ( exportsetup *pexs ) {
 
   GtkWidget *pwDialog;
-  GtkWidget *pwNotebook;
 
   GtkWidget *pwVBox;
-  GtkWidget *pwHBox;
   GtkWidget *pwFrame;
   GtkWidget *pwTable;
   GtkWidget *pwTableX;
-  GtkWidget *pwAlign;
   
-  GtkWidget *pw, *pwx;
+  GtkWidget *pw;
 
   char *aszInclude[] = {
     N_("Annotations"), 
@@ -262,8 +259,7 @@ GTKShowExport ( exportsetup *pexs ) {
     N_("Show missed doubles"),
     N_("Show close cube decisions") };
 
-  int i, j, k;
-  char sz[ 256 ];
+  int i;
 
   exportwidget *pew;
 
