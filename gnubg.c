@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.474 2003/08/26 16:58:37 hb Exp $
+ * $Id: gnubg.c,v 1.475 2003/08/27 14:05:07 jsegrave Exp $
  */
 
 #include "config.h"
@@ -166,7 +166,8 @@ int fReadline = TRUE;
 #define SIGIO SIGPOLL /* The System V equivalent */
 #endif
 
-char szLang[] = "system";
+/* CommandSetLang trims the selection to 31 max and copies */
+char szLang[32] = "system";
 
 char szDefaultPrompt[] = "(\\p) ",
     *szPrompt = szDefaultPrompt;
@@ -3283,6 +3284,7 @@ extern void CommandHelp( char *sz ) {
 		outputf( "%-15s\t%s\n", pc->sz, gettext ( pc->szHelp ) );
     }
 }
+
 
 extern char *FormatMoveHint( char *sz, matchstate *pms, movelist *pml,
 			     int i, int fRankKnown,
@@ -6920,12 +6922,15 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     {
 	/* set language */
 
-	char szFile[ 4096 ], szTemp[ 4096 ], *pch;
+	char *szFile, szTemp[ 4096 ], *pch;
 	FILE *pf;
 
 	outputoff();
     
-	sprintf( szFile, "%s/.gnubgautorc", szHomeDirectory );
+#define AUTORC "/.gnubgautorc"
+
+	szFile = malloc (1 + strlen(szHomeDirectory)+strlen(AUTORC));
+	sprintf( szFile, "%s%s", szHomeDirectory, AUTORC );
 
 	if( ( pf = fopen( szFile, "r" ) ) ) {
 
@@ -6955,10 +6960,13 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 	    fclose( pf );
 	}
     
+	free (szFile);
 
 	if ( szLang && *szLang && strcmp( "system", szLang ) ) {
-	    sprintf( szTemp, "LANG=%s", szLang );
-	    putenv( szTemp );
+          char *lang = malloc (1 + strlen ("LANG=") + strlen (optarg));
+          assert (lang != 0);
+          sprintf (lang, "LANG=%s", optarg);
+          putenv (lang);
 	}
 
 	outputon();
