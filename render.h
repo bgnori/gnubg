@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.5.4.5 2003/06/18 07:06:27 Superfly_Jon Exp $
+ * $Id: render.h,v 1.5.4.6 2003/06/19 15:47:31 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -67,6 +67,7 @@ typedef struct _renderdata {
 	int animateFlag;	/* Animate resignation flag */
 	int closeBoardOnExit;	/* Animate board close on quit */
 	int debugTime;	/* Show average drawing time */
+	int curveAccuracy;	/* Round curve approximation accuracy */
 #endif
 } renderdata;
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.126.2.5 2003/06/16 07:11:38 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.126.2.6 2003/06/19 15:47:31 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4050,7 +4050,7 @@ extern GtkWidget *board_dice_widget( Board *board ) {
     return pw;	    
 }
 
-InitBoardData()
+void InitBoardData()
 {	/* Initialize some settings on new game start */
 	BoardData* bd = BOARD(pwBoard)->board_data;
 

@@ -18,10 +18,13 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.1.2.7 2003/06/18 07:06:27 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.1.2.8 2003/06/19 15:47:31 Superfly_Jon Exp $
 */
 
 #include "config.h"
+
+#include "gtkgame.h"
+#include "positionid.h"
 
 #include <stdlib.h>
 #include <GL/gl.h>
@@ -30,7 +33,6 @@
 #include <assert.h>
 
 #if HAVE_GTKGLEXT
-
 #include <gtk/gtk.h>
 
 #if USE_GTK2
@@ -39,6 +41,7 @@
 #include <gtkgl/gtkglarea.h>
 #endif
 
+#include "shadow.h"
 #include "backgammon.h"
 #include "sound.h"
 #include "renderprefs.h"
@@ -794,11 +797,7 @@ gboolean motion_notify_event(GtkWidget *widget, GdkEventMotion *event, gpointer 
 
 	if (fGUIDragTargetHelp && !editing)
 	{
-		gint iDestPoints[4];
-		gint i, ptx, pty, ptcx, ptcy;
-		GdkColor *TargetHelpColor;
-		
-		if ((ap[ pCurBoard->drag_colour == -1 ? 0 : 1 ].pt == PLAYER_HUMAN)		/* not for computer turn */
+		if ((ap[pCurBoard->drag_colour == -1 ? 0 : 1].pt == PLAYER_HUMAN)		/* not for computer turn */
 			&& (pCurBoard->drag_point != board_point(pCurBoard, x, y, -1)))	/* dragged to different ponit */
 		{
 			pCurBoard->DragTargetHelp = LegalDestPoints(pCurBoard, pCurBoard->iTargetHelpPoints);
@@ -868,6 +867,11 @@ void CreateBoard3d(BoardData* bd, GtkWidget** drawing_area)
 	InitBoard3d(pCurBoard);
 
 	widget = *drawing_area;
+}
+
+void preDraw3d()
+{
+	preDrawThings(pCurBoard);
 }
 
 int InitGTK3d(int *argc, char ***argv)

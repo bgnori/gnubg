@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.1.2.5 2003/06/17 08:20:19 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.1.2.6 2003/06/19 15:47:31 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -32,11 +32,7 @@
 #else
 	#define USE_GLUT
 
-//#define _RENDER_H_
 #define AlphaBlend ab
-#define _BEAROFF_H_
-typedef struct _bearoffcontext { int a;
-} bearoffcontext;
 
 	/* Comment out next line to switch test harness off */
 	#define TEST
@@ -128,13 +124,12 @@ float randRange(float range);
 void setupPath(BoardData *bd, Path* p, float* pRotate, int fClockwise, int fromPoint, int fromDepth, int toPoint, int toDepth);
 int movePath(Path* p, float d, float* pRotate, float v[3]);
 int finishedPath(Path* p);
-void SetSkin(BoardData *bd, int num);
-void updatePieceOccPos(BoardData* bd);
 void updateHingeOccPos(BoardData* bd);
-void SetShadowDimness(BoardData* bd, int percent);
 double get_time();
 void getProjectedPieceDragPos(int x, int y, float pos[3]);
 void updateMovingPieceOccPos(BoardData* bd);
+void updateDiceOccPos(BoardData *bd);
+void setDicePos(BoardData* bd);
 
 typedef int idleFunc(void);
 

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: testgtkboard.c,v 1.1.2.4 2003/06/18 07:06:27 Superfly_Jon Exp $
+* $Id: testgtkboard.c,v 1.1.2.5 2003/06/19 15:47:31 Superfly_Jon Exp $
 */
 
 #include <memory.h>
@@ -26,20 +26,10 @@
 #include "inc3d.h"
 #include <string.h>
 
-#if BUILDING_LIB
 #define PATH "Data//"
-#else
-#define PATH "..//Data//"
-#endif
 
 void DeleteTexture(Texture* texture);
 int LoadTexture(Texture* texture, const char* Filename);
-void setDicePos(BoardData* bd);
-
-#if !BUILDING_LIB
-int fClockwise; /* Player 1 moves clockwise */
-int fGUIDiceArea; /* Show dice below board */
-#endif
 
 int DiceBelowBoard(BoardData *bd)
 {
@@ -103,6 +93,12 @@ void SetTexture(BoardData *bd, Material* pMat, const char* filename)
 			pMat->pTexture = &bd->textureList[i];
 			return;
 		}
+	}
+
+	if (bd->numTextures == MAX_TEXTURES - 1)
+	{
+		g_print("Error: Too many textures loaded...\n");
+		return;
 	}
 
 	/* Not found - Load new texture */
@@ -190,9 +186,6 @@ void InitBoard3d(BoardData *bd)
 setDicePos(bd);
 	SetupSimpleMat(&bd->gap, 0, 0, 0);
 
-	/* Set initial curve accuracy */
-	bd->step_accuracy = 36;
-
 	bd->numTextures = 0;
 	for (i = 0; i < MAX_TEXTURES; i++)
 		bd->textureList[i].texID = 0;
@@ -208,7 +201,10 @@ setDicePos(bd);
 
 #if !BUILDING_LIB
 	InitialPos(bd);
-	SetShadowDimness(bd, 50);
+	SetShadowDimness3d();
+
+	/* Set initial curve accuracy */
+	rdAppearance.curveAccuracy = 36;
 #endif
 
 	bd->fovAngle = 45.0f;
