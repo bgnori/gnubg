@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.66 2001/07/26 14:44:47 gtw Exp $
+ * $Id: show.c,v 1.67 2001/08/27 18:59:11 pdferguson Exp $
  */
 
 #include "config.h"
@@ -210,9 +210,9 @@ extern void CommandShowAnalysis( char *sz ) {
 	     arLuckLevel[ LUCK_BAD ], arLuckLevel[ LUCK_VERYBAD ] );
 
     outputl( "\n"
-             "The analysis will be perform with the "
-             "following evaluation paremters:" );
-    outputl( "    Chequer play:" );
+               "Analysis will be performed with the "
+             "following evaluation parameters:" );
+  outputl( "    Chequer play:" );
     ShowEvalSetup ( &esAnalysisChequer );
     outputl( "    Cube decisions:" );
     ShowEvalSetup ( &esAnalysisCube );
