@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.21 2003/08/13 11:52:27 Superfly_Jon Exp $
+ * $Id: export.h,v 1.22 2003/12/29 11:28:33 uid68519 Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -81,9 +81,9 @@ typedef struct _exportsetup {
   char *szHTMLExtension;
   htmlexportcss hecss;
 
-  /* png */
-
+  /* sizes */
   int nPNGSize;
+  int nHtmlSize;
 
 } exportsetup;
 

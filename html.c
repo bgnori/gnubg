@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.152 2003/11/30 11:51:11 thyssen Exp $
+ * $Id: html.c,v 1.153 2003/12/29 11:28:33 uid68519 Exp $
  */
 
 #include "config.h"
@@ -171,7 +171,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-           "/* $Id: html.c,v 1.152 2003/11/30 11:51:11 thyssen Exp $ */\n",
+           "/* $Id: html.c,v 1.153 2003/12/29 11:28:33 uid68519 Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -837,7 +837,8 @@ printHTMLBoardF2H ( FILE *pf, matchstate *pms, int fTurn,
   fprintf ( pf, "<p>\n" );
   printImage ( pf, szImageDir, "b-indent", szExtension, "", 
                hecss, HTML_EXPORT_TYPE_FIBS2HTML );
-  printImage ( pf, szImageDir, fTurn ? "b-hitop" : "b-lotop", szExtension,
+  sprintf ( sz, "b-%stop%s", fTurn ? "hi" : "lo", fClockwise ? "" : "r");
+  printImage ( pf, szImageDir, sz, szExtension,
                fTurn ? "+-13-14-15-16-17-18-+---+-19-20-21-22-23-24-+" :
                "+-12-11-10--9--8--7-+---+--6--5--4--3--2--1-+",
                hecss, HTML_EXPORT_TYPE_FIBS2HTML );
@@ -1095,7 +1096,8 @@ printHTMLBoardF2H ( FILE *pf, matchstate *pms, int fTurn,
 
   printImage ( pf, szImageDir, "b-indent", szExtension, "", 
                hecss, HTML_EXPORT_TYPE_FIBS2HTML );
-  printImage ( pf, szImageDir, fTurn ? "b-lobot" : "b-hibot", szExtension,
+  sprintf ( sz, "b-%sbot%s", fTurn ? "lo" : "hi", fClockwise ? "" : "r");
+  printImage ( pf, szImageDir, sz, szExtension,
                fTurn ?
                "+-12-11-10--9--8--7-+---+--6--5--4--3--2--1-+" :
                "+-13-14-15-16-17-18-+---+-19-20-21-22-23-24-+", 
@@ -1216,7 +1218,8 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   fputs ( "<tr>", pf );
   fputs ( "<td colspan=\"15\">", pf );
 
-  printImage ( pf, szImageDir, fTurn ? "b-hitop" : "b-lotop", szExtension,
+  sprintf ( sz, "b-%stop%s", fTurn ? "hi" : "lo", fClockwise ? "" : "r");
+  printImage ( pf, szImageDir, sz, szExtension,
                fTurn ? "+-13-14-15-16-17-18-+---+-19-20-21-22-23-24-+" :
                "+-12-11-10--9--8--7-+---+--6--5--4--3--2--1-+",
                hecss, HTML_EXPORT_TYPE_GNU );
@@ -1230,7 +1233,8 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
 
   fputs ( "<td rowspan=\"2\">", pf );
   if ( fClockwise )
-    sprintf ( sz, "b-loff-x%d", acOff[ 1 ] );
+    /* Use roff as loff not generated (and probably not needed) */
+    sprintf ( sz, "b-roff-x%d", acOff[ 1 ] );
   else
     strcpy ( sz, "b-loff-x0" );
   printImage ( pf, szImageDir, sz, szExtension, "|", 
@@ -1448,7 +1452,8 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
 
   fputs ( "<td rowspan=\"2\">", pf );
   if ( fClockwise )
-    sprintf ( sz, "b-loff-o%d", acOff[ 0 ] );
+    /* Use roff as loff not generated (and probably not needed) */
+    sprintf ( sz, "b-roff-o%d", acOff[ 0 ] );
   else
     strcpy ( sz, "b-loff-o0" );
   printImage ( pf, szImageDir, sz, szExtension, "|", 
@@ -1540,7 +1545,8 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
 
   fputs ( "<tr>", pf );
   fputs ( "<td colspan=\"15\">", pf );
-  printImage ( pf, szImageDir, fTurn ? "b-lobot" : "b-hibot", szExtension,
+  sprintf ( sz, "b-%sbot%s", fTurn ? "lo" : "hi", fClockwise ? "" : "r");
+  printImage ( pf, szImageDir, sz, szExtension,
                fTurn ?
                "+-12-11-10--9--8--7-+---+--6--5--4--3--2--1-+" :
                "+-13-14-15-16-17-18-+---+-19-20-21-22-23-24-+", 
@@ -1806,7 +1812,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.152 $";
+  const char szVersion[] = "$Revision: 1.153 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1887,7 +1893,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.152 $";
+  const char szVersion[] = "$Revision: 1.153 $";
   int iMajor, iMinor;
   char *pc;
 

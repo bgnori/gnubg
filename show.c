@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.170 2003/11/03 11:55:15 Superfly_Jon Exp $
+ * $Id: show.c,v 1.171 2003/12/29 11:28:33 uid68519 Exp $
  */
 
 #include "config.h"
@@ -1807,6 +1807,9 @@ CommandShowExport ( char *sz ) {
             "\t%s\n"),
             exsExport.szHTMLPictureURL ? exsExport.szHTMLPictureURL :
             _("not defined") );
+
+  outputf ( _("- size of exported Html pictures: %dx%d\n"),
+            exsExport.nHtmlSize * BOARD_WIDTH, exsExport.nHtmlSize * BOARD_HEIGHT );
 
   /* PNG options */
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.213 2003/11/03 18:54:32 hb Exp $
+ * $Id: set.c,v 1.214 2003/12/29 11:28:33 uid68519 Exp $
  */
 
 #include "config.h"
@@ -4459,7 +4459,23 @@ CommandSetCheatPlayerRoll( char *sz ) {
 
 }
 
+extern void
+CommandSetExportHtmlSize ( char *sz ) {
 
+    int n;
+    
+    if( ( n = ParseNumber( &sz ) ) < 1 || n > 20 ) {
+	outputl( _("You must specify a size between 1 and 20.") );
+	return;
+    }
+
+    exsExport.nHtmlSize = n;
+
+    outputf ( _("Size of generated Html images are %dx%d pixels\n"),
+              n * BOARD_WIDTH, n * BOARD_HEIGHT );
+
+
+}
 
 extern void
 CommandSetExportPNGSize ( char *sz ) {
