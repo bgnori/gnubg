@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.61 2001/03/19 15:59:29 gtw Exp $
+ * $Id: play.c,v 1.62 2001/03/20 15:13:50 gtw Exp $
  */
 
 #include "config.h"
@@ -355,7 +355,7 @@ static guint nTimeout, fDelaying;
 static gint DelayTimeout( gpointer p ) {
 
     if( fDelaying )
-	gtk_main_quit();
+	fEndDelay = TRUE;
 
     nTimeout = 0;
     

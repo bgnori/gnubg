@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.15 2001/03/19 15:58:36 gtw Exp $
+ * $Id: gtkgame.h,v 1.16 2001/03/20 15:13:50 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -30,6 +30,8 @@ typedef enum _dialogarea {
 } dialogarea;
 
 extern GtkWidget *pwMain;
+
+extern int fEndDelay;
 
 extern void ShowGameWindow( void );
 

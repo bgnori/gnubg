@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.36 2001/03/19 15:58:36 gtw Exp $
+ * $Id: gtkgame.c,v 1.37 2001/03/20 15:13:50 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -353,17 +353,33 @@ extern void GTKDisallowStdin( void ) {
     }
 }
 
+int fEndDelay;
+
 extern void GTKDelay( void ) {
 
-    gtk_grab_add( pwGrab );
+    int f;
+    
     GTKDisallowStdin();
-    while( !fInterrupt && !gtk_main_iteration_do( TRUE ) )
-	;
+    
+    while( !fInterrupt && !fEndDelay ) {
+	if( ( f = !GTK_WIDGET_HAS_GRAB( pwGrab ) ) )
+	    gtk_grab_add( pwGrab );
+	
+	gtk_main_iteration();
+
+	if( f )
+	    gtk_grab_remove( pwGrab );
+    }
+    
+    fEndDelay = FALSE;
+    
     GTKAllowStdin();
-    gtk_grab_remove( pwGrab );
 }
 
 extern void HandleXAction( void ) {
+
+    int f;
+    
     /* It is safe to execute this function with SIGIO unblocked, because
        if a SIGIO occurs before fAction is reset, then the I/O it alerts
        us to will be processed anyway.  If one occurs after fAction is reset,
@@ -373,8 +389,9 @@ extern void HandleXAction( void ) {
 
     /* Grab events so that the board window knows this is a re-entrant
        call, and won't allow commands like roll, move or double. */
-    gtk_grab_add( pwGrab );
-
+    if( ( f = !GTK_WIDGET_HAS_GRAB( pwGrab ) ) )
+	gtk_grab_add( pwGrab );
+    
     /* Don't check stdin here; readline isn't ready yet. */
     GTKDisallowStdin();
     
@@ -386,7 +403,8 @@ extern void HandleXAction( void ) {
 
     GTKAllowStdin();
 
-    gtk_grab_remove( pwGrab );
+    if( f )
+	gtk_grab_remove( pwGrab );
 }
 
 /* TRUE if gnubg is automatically setting the state of a menu item. */
