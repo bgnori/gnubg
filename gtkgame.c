@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.208 2002/08/01 19:29:10 thyssen Exp $
+ * $Id: gtkgame.c,v 1.209 2002/08/03 15:05:05 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1382,7 +1382,7 @@ static void SetAnnotation( moverecord *pmr ) {
 
               gtk_box_pack_start( GTK_BOX( pwAnalysis ), 
                                   CreateMoveList( &pmr->n.ml, &pmr->n.iMove,
-                                                  TRUE ),
+                                                  TRUE, FALSE ),
                                   TRUE, TRUE, 0 );
 	    }
 
@@ -4580,7 +4580,7 @@ extern void GTKHint( movelist *pmlOrig ) {
     pml->amMoves = malloc( pmlOrig->cMoves * sizeof( move ) );
     memcpy( pml->amMoves, pmlOrig->amMoves, pmlOrig->cMoves * sizeof( move ) );
 
-    pwMoves = CreateMoveList( pml, NULL, TRUE );
+    pwMoves = CreateMoveList( pml, NULL, TRUE,TRUE );
 
     /* create dialog */
     

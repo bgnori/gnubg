@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.7 2002/07/31 18:05:30 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.8 2002/08/03 15:05:05 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -399,19 +399,24 @@ MoveListCopyData ( hintdata *phd ) {
 static void
 MoveListMove ( GtkWidget *pw, hintdata *phd ) {
 
-  move *pm;
-  char move[ 40 ];
+  move m;
+  char szMove[ 40 ];
   int i;
   GtkWidget *pwMoves = phd->pwMoves;
   
   assert( GTK_CLIST( pwMoves )->selection );
   
   i = GPOINTER_TO_INT( GTK_CLIST( pwMoves )->selection->data );
-  pm = gtk_clist_get_row_data( GTK_CLIST( pwMoves ), i );
+  memcpy ( &m, (move * ) gtk_clist_get_row_data( GTK_CLIST( pwMoves ), i ),
+           sizeof ( move ) );
   
-  FormatMove( move, ms.anBoard, pm->anMove );
-  UserCommand( move );
-  
+  if ( phd->fDestroyOnMove )
+    /* Destroy widget on exit */
+    gtk_widget_destroy( gtk_widget_get_toplevel( pw ) );
+
+  FormatMove( szMove, ms.anBoard, m.anMove );
+  UserCommand( szMove );
+
 }
 
 
@@ -561,7 +566,8 @@ CheckHintButtons( hintdata *phd ) {
 
 
 extern GtkWidget *
-CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid ) {
+CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid,
+                const int fDestroyOnMove ) {
 
     static char *aszTitle[] = {
 	N_("Rank"), 
@@ -590,6 +596,7 @@ CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid ) {
     phd->piHighlight = piHighlight;
     phd->pml = pml;
     phd->fButtonsValid = fButtonsValid;
+    phd->fDestroyOnMove = fDestroyOnMove;
     phd->pwMove = NULL;
 
     for ( i = 0; i < 11; i++ )

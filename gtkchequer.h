@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.h,v 1.2 2002/07/27 17:13:19 thyssen Exp $
+ * $Id: gtkchequer.h,v 1.3 2002/08/03 15:05:05 thyssen Exp $
  */
 
 #ifndef _GTKCHEQUER_H_
@@ -30,11 +30,13 @@ typedef struct _hintdata {
   GtkWidget *pwCopy; /* copy button */
   movelist *pml;
   int fButtonsValid;
+  int fDestroyOnMove;
   int *piHighlight;
 } hintdata;
 
 extern GtkWidget *
-CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid );
+CreateMoveList( movelist *pml, int *piHighlight, 
+                const int fButtonsValid, const int fDestroyOnMove );
 
 extern int 
 CheckHintButtons( hintdata *phd );
