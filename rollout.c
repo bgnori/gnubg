@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.4 2000/01/11 00:17:31 gtw Exp $
+ * $Id: rollout.c,v 1.5 2000/01/11 01:15:19 gtw Exp $
  */
 
 #include "config.h"
@@ -234,7 +234,7 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
 		arVariance[ i ] -= cGames * arOutput[ i ] * arOutput[ i ];
 		if( arVariance[ i ] < 0.0 )
 		    arVariance[ i ] = 0.0;
-		arStdDev[ i ] = sqrt( arVariance[ i ] / ( cGames - 1 ) );
+		arStdDev[ i ] = sqrt( arVariance[ i ] ) / ( cGames - 1 );
 	    }
 	}
     }
