@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.264 2002/07/31 17:19:25 thyssen Exp $
+ * $Id: gnubg.c,v 1.265 2002/08/01 17:25:55 thyssen Exp $
  */
 
 #include "config.h"
@@ -4918,7 +4918,8 @@ extern void outputresume( void ) {
 extern void SuspendInput( monitor *pm ) {
 
 #if USE_GTK
-    GTKSuspendInput( pm );
+    if ( fX )
+       GTKSuspendInput( pm );
 #endif
 }
 
@@ -4926,7 +4927,8 @@ extern void SuspendInput( monitor *pm ) {
 extern void ResumeInput( monitor *pm ) {
 
 #if USE_GTK
-    GTKResumeInput( pm );
+    if ( fX )
+       GTKResumeInput( pm );
 #endif
 }
 
