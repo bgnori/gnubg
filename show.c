@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.93 2002/06/06 20:36:45 thyssen Exp $
+ * $Id: show.c,v 1.94 2002/06/06 20:46:48 gtw Exp $
  */
 
 #include "config.h"
@@ -195,8 +195,6 @@ static void ShowPaged( char **ppch ) {
 }
 
 extern void CommandShowAnalysis( char *sz ) {
-
-    int i;
 
     outputl( fAnalyseCube ? _("Cube action will be analysed.") :
 	     _("Cube action will not be analysed.") );
@@ -438,7 +436,7 @@ extern void CommandShowCube( char *sz ) {
 	outputf( _("The cube is at %d, and is centred."), ms.nCube );
     else
 	outputf( _("The cube is at %d, and is owned by %s."), 
-                 ap[ ms.fCubeOwner ].szName, ms.nCube );
+                 ms.nCube, ap[ ms.fCubeOwner ].szName );
 }
 
 extern void CommandShowDice( char *sz ) {
