@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.52 2002/03/17 02:58:03 gtw Exp $
+ * $Id: gtkboard.c,v 1.53 2002/03/17 03:06:39 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -568,15 +568,22 @@ static gboolean board_expose( GtkWidget *board, GdkEventExpose *event,
 }
 
 static void board_expose_point( GtkWidget *board, BoardData *bd, int n ) {
+
+    int x, y, cx, cy;
     
     if( bd->board_size <= 0 )
 	return;
 
+    point_area( bd, n, &x, &y, &cx, &cy );
+    
 #if GTK_CHECK_VERSION(2,0,0)
     {
 	GdkRectangle r;
 	
-	point_area( bd, n, &r.x, &r.y, &r.width, &r.height );
+	r.x = x;
+	r.y = y;
+	r.width = cx;
+	r.height = y;
 	
 	gdk_window_invalidate_rect( board->window, &r, FALSE );
     }
@@ -585,8 +592,10 @@ static void board_expose_point( GtkWidget *board, BoardData *bd, int n ) {
 	GdkEventExpose event;
     
 	event.count = 0;
-	point_area( bd, n, &event.area.x, &event.area.y, &event.area.width,
-		    &event.area.height );
+	event.area.x = x;
+	event.area.y = y;
+	event.area.width = cx;
+	event.area.height = y;
 	
 	board_expose( board, &event, bd );
     }
