@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.528 2004/02/03 18:18:22 uid68519 Exp $
+ * $Id: gnubg.c,v 1.529 2004/02/04 18:02:17 uid68519 Exp $
  */
 
 #include "config.h"
@@ -3106,7 +3106,7 @@ static void DisplayAnalysis( moverecord *pmr ) {
 extern void ShowBoard( void ) {
 
     char szBoard[ 2048 ];
-    char sz[ 32 ], szCube[ 32 ], szPlayer0[ 35 ], szPlayer1[ 35 ],
+    char sz[ 32 ], szCube[ 32 ], szPlayer0[ MAX_NAME_LEN + 3 ], szPlayer1[ MAX_NAME_LEN + 3 ],
 	szScore0[ 35 ], szScore1[ 35 ], szMatch[ 35 ];
 #if USE_TIMECONTROL
     char szTime0[20], szTime1[20];
@@ -4941,7 +4941,7 @@ extern void CommandCopy (char *sz)
 {
   char *aps[7] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
   char szOut[2048];
-  char szCube[32], szPlayer0[35], szPlayer1[35],
+  char szCube[32], szPlayer0[MAX_NAME_LEN + 3], szPlayer1[MAX_NAME_LEN + 3],
     szScore0[35], szScore1[35], szMatch[35];
   char szRolled[ 32 ];
   int anBoardTemp[ 2 ][ 25 ];

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.456 2004/01/29 11:30:22 uid68519 Exp $
+ * $Id: gtkgame.c,v 1.457 2004/02/04 18:02:17 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5975,7 +5975,7 @@ static void PlayersOK( GtkWidget *pw, playerswidget *pplw ) {
 
     for( i = 0; i < 2; i++ ) {
 	strcpyn( pplw->ap[ i ].szName, gtk_entry_get_text(
-	    GTK_ENTRY( pplw->apwName[ i ] ) ), 32 );
+	    GTK_ENTRY( pplw->apwName[ i ] ) ), MAX_NAME_LEN );
 	
 	for( j = 0; j < 4; j++ )
 	    if( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(

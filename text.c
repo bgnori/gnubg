@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.63 2004/01/21 21:28:08 uid65656 Exp $
+ * $Id: text.c,v 1.64 2004/02/04 18:02:18 uid68519 Exp $
  */
 
 #include "config.h"
@@ -54,7 +54,7 @@ printTextBoard ( FILE *pf, const matchstate *pms ) {
 
   int anBoard[ 2 ][ 25 ];
   char szBoard[ 2048 ];
-  char sz[ 32 ], szCube[ 32 ], szPlayer0[ 35 ], szPlayer1[ 35 ],
+  char sz[ 32 ], szCube[ 32 ], szPlayer0[ MAX_NAME_LEN + 3 ], szPlayer1[ MAX_NAME_LEN + 3 ],
     szScore0[ 35 ], szScore1[ 35 ], szMatch[ 35 ];
 #if USE_TIMECONTROL
     char szTime0[20], szTime1[20];
@@ -262,7 +262,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.63 $";
+  const char szVersion[] = "$Revision: 1.64 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.35 2004/01/01 22:03:45 uid65655 Exp $
+ * $Id: external.c,v 1.36 2004/02/04 18:02:17 uid68519 Exp $
  */
 
 #include "config.h"
@@ -362,7 +362,7 @@ ExtParse( const char *szCommand ) {
 static char *
 ExtEvaluation( extcmd *pec ) {
 
-  char szName[ 32 ], szOpp[ 32 ];
+  char szName[ MAX_NAME_LEN ], szOpp[ MAX_NAME_LEN ];
   int anBoard[ 2 ][ 25 ], anBoardOrig[ 2 ][ 25 ], nMatchTo, anScore[ 2 ],
     anDice[ 2 ], nCube, fCubeOwner, fDoubled, fTurn, fCrawford,
     anMove[ 8 ];
@@ -425,7 +425,7 @@ ExtEvaluation( extcmd *pec ) {
 static char *
 ExtFIBSBoard( extcmd *pec ) {
 
-  char szName[ 32 ], szOpp[ 32 ];
+  char szName[ MAX_NAME_LEN ], szOpp[ MAX_NAME_LEN ];
   int anBoard[ 2 ][ 25 ], anBoardOrig[ 2 ][ 25 ], nMatchTo, anScore[ 2 ],
     anDice[ 2 ], nCube, fCubeOwner, fDoubled, fTurn, fCrawford,
     anMove[ 8 ];

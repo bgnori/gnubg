@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.273 2004/01/30 09:33:48 uid68519 Exp $
+ * $Id: backgammon.h,v 1.274 2004/02/04 18:02:17 uid68519 Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -137,9 +137,11 @@ typedef enum _playertype {
     PLAYER_EXTERNAL, PLAYER_HUMAN, PLAYER_GNU, PLAYER_PUBEVAL
 } playertype;
 
+#define MAX_NAME_LEN 32
+
 typedef struct _player {
   /* For all player types: */
-  char szName[ 32 ];
+  char szName[ MAX_NAME_LEN ];
 
   playertype pt;
 

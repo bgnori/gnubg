@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.h,v 1.7 2000/07/13 16:25:26 gtw Exp $
+ * $Id: xgame.h,v 1.8 2004/02/04 18:02:18 uid68519 Exp $
  */
 
 #ifndef _GAME_H_
@@ -43,7 +43,7 @@ typedef struct _gamedata {
     int fCubeOwner; /* -1 = bottom, 0 = centred, 1 = top */ 
     
     /* remainder is from FIBS board: data */
-    char szName[ 32 ], szNameOpponent[ 32 ];
+    char szName[ MAX_NAME_LEN ], szNameOpponent[ MAX_NAME_LEN ];
     int nMatchTo, nScore, nScoreOpponent;
     int anBoard[ 28 ]; /* 0 and 25 are the bars */
     int fTurn; /* -1 is X, 1 is O, 0 if game over */
