@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.44 2001/11/01 15:46:49 gtw Exp $
+ * $Id: analysis.c,v 1.45 2001/12/10 20:49:10 thyssen Exp $
  */
 
 #include "config.h"
@@ -376,7 +376,7 @@ AnalyzeMove ( moverecord *pmr ) {
 		pmr->d.st = Skill( rSkill = -arDouble[ OUTPUT_TAKE ] -
 				   -arDouble[ OUTPUT_DROP ] );
 	      
-		rCost = msAnalyse.nMatchTo ? eq2mwc( rCost, &ci ) -
+		rCost = msAnalyse.nMatchTo ? eq2mwc( rSkill, &ci ) -
 		    eq2mwc( 0.0f, &ci ) : msAnalyse.nCube * rSkill;
 	      
 		psc->anCubeWrongTake[ pmr->d.fPlayer ]++;
@@ -403,7 +403,7 @@ AnalyzeMove ( moverecord *pmr ) {
 		pmr->d.st = Skill( rSkill = -arDouble[ OUTPUT_DROP ] -
 				   -arDouble[ OUTPUT_TAKE ] );
 	      
-		rCost = msAnalyse.nMatchTo ? eq2mwc( rCost, &ci ) -
+		rCost = msAnalyse.nMatchTo ? eq2mwc( rSkill, &ci ) -
 		    eq2mwc( 0.0f, &ci ) : msAnalyse.nCube * rSkill;
 	      
 		psc->anCubeWrongPass[ pmr->d.fPlayer ]++;
