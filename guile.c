@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.12 2001/03/19 15:57:40 gtw Exp $
+ * $Id: guile.c,v 1.13 2001/03/27 19:47:52 gtw Exp $
  */
 
 #include "config.h"
@@ -437,7 +437,6 @@ extern int GuileInitialise( char *szDir ) {
     scm_sysintern( "CLASS_BEAROFF2", SCM_MAKINUM( CLASS_BEAROFF2 ) );
     scm_sysintern( "CLASS_BEAROFF1", SCM_MAKINUM( CLASS_BEAROFF1 ) );
     scm_sysintern( "CLASS_RACE", SCM_MAKINUM( CLASS_RACE ) );
-    scm_sysintern( "CLASS_BPG", SCM_MAKINUM( CLASS_BPG ) );
     scm_sysintern( "CLASS_CONTACT", SCM_MAKINUM( CLASS_CONTACT ) );
     
     scm_make_gsubr( "board->position-id", 1, 0, 0, board_to_position_id );
