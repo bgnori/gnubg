@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.217 2002/05/23 21:39:29 thyssen Exp $
+ * $Id: gnubg.c,v 1.218 2002/05/29 19:24:25 thyssen Exp $
  */
 
 #include "config.h"
@@ -1066,6 +1066,9 @@ char *aszVersion[] = {
 #endif
 #if HAVE_SOCKETS
     "External players supported.",
+#endif
+#if HAVE_LIBXML2
+    "XML match equity files supported.",
 #endif
     NULL
 };
