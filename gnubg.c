@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.204 2002/04/05 17:06:49 oysteijo Exp $
+ * $Id: gnubg.c,v 1.205 2002/04/08 16:10:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -3542,7 +3542,7 @@ extern void CommandSaveSettings( char *szParam ) {
     if( errno )
       perror( szFile );
     else
-      outputf( "Settings saved to %s.",
+      outputf( "Settings saved to %s.\n",
                ( ! strcmp ( szFile, "-" ) ) ? "standard output stream" :
                szFile );
     free ( szFile );
