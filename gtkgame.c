@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.9 2000/10/20 18:53:01 gtw Exp $
+ * $Id: gtkgame.c,v 1.10 2000/10/21 09:15:53 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -847,7 +847,7 @@ extern void GTKHint( movelist *pml ) {
     }
     
     for( i = 0; i < pml->cMoves; i++ ) {
-	float *ar = pml->amMoves[ i ].pEval;
+	float *ar = pml->amMoves[ i ].arEvalMove;
 
 	gtk_clist_append( GTK_CLIST( pwMoves ), aszEmpty );
 	
