@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.10.2.6 2000/02/03 11:10:54 thyssen Exp $
+ * $Id: play.c,v 1.10.2.7 2000/05/13 08:54:37 thyssen Exp $
  */
 
 #include "config.h"
@@ -177,7 +177,8 @@ static int ComputerTurn( void ) {
 	  /* consider doubling */
 	  
 	  if ( ( ( fCubeOwner == fTurn ) || ( fCubeOwner < 0 ) )
-	       && ( ! fCrawford ) && ( fCubeUse ) && ( ! anDice[0] ) ) {
+	       && ( ! fCrawford ) && ( fCubeUse ) && ( ! anDice[0] ) 
+	       && ( nMatchTo - anScore [ fTurn ] > nCube ) ) {
 
 	    gettimeofday ( &tv0, NULL );
 
