@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.3 2003/05/30 19:28:51 thyssen Exp $
+ * $Id: gtktempmap.c,v 1.4 2003/06/01 11:06:13 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -85,6 +85,7 @@ CalcTempMapEquities( evalcontext *pec, matchstate *pms, cubeinfo *pci,
   int anBoard[ 2 ][ 25 ];
   int aaan[ 6 ][ 6 ][ 8 ];
   float aar[ 6 ][ 6 ];
+  cubeinfo ci;
 
   /* calculate equities */
 
@@ -93,11 +94,13 @@ CalcTempMapEquities( evalcontext *pec, matchstate *pms, cubeinfo *pci,
   for ( i = 0; i < 6; ++i )
     for ( j = 0; j <= i; ++j ) {
 
+      memcpy( &ci, pci, sizeof ci );
+
       /* find best move */
 
       memcpy ( anBoard, pms->anBoard, sizeof ( anBoard ) );
 
-      if ( FindBestMove ( aaan[ i ][ j ], i + 1, j + 1, anBoard, pci, pec,
+      if ( FindBestMove ( aaan[ i ][ j ], i + 1, j + 1, anBoard, &ci, pec,
                           defaultFilters ) < 0 ) {
         ProgressEnd();
         return -1;
@@ -106,8 +109,9 @@ CalcTempMapEquities( evalcontext *pec, matchstate *pms, cubeinfo *pci,
       /* evaluate resulting position */
 
       SwapSides ( anBoard );
+      ci.fMove = ! ci.fMove;
 
-      if ( GeneralEvaluationE ( arOutput, anBoard, pci, pec ) < 0 ) {
+      if ( GeneralEvaluationE ( arOutput, anBoard, &ci, pec ) < 0 ) {
         ProgressEnd();
         return -1;
       }
