@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.22 2005/02/21 23:23:08 jsegrave Exp $
+ * $Id: neuralnet.c,v 1.23 2005/02/25 11:34:24 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -384,6 +384,7 @@ extern int NeuralNetCreate( neuralnet *pnn, int cInput, int cHidden,
 
     return 0;
 }
+#if HAVE_MMAP
 extern void *NeuralNetCreateDirect( neuralnet *pnn, void *p ) {
  
    float *fp;
@@ -425,6 +426,7 @@ extern void *NeuralNetCreateDirect( neuralnet *pnn, void *p ) {
 
    return fp;
 }
+#endif
 
 extern int
 NeuralNetDestroy( neuralnet *pnn )
@@ -442,9 +444,12 @@ NeuralNetDestroy( neuralnet *pnn )
   return 0;
 }
 
-static int EvaluateOld( neuralnet *pnn, float arInput[], float ar[],
+static int Evaluate( neuralnet *pnn, float arInput[], float ar[],
                         float arOutput[], float *saveAr ) {
 
+#if HAVE_LIBATLAS
+	return EvaluateBlas( pnn, arInput, ar, arOutput, saveAr );
+#else
     int i, j;
     float *prWeight;
 
@@ -491,14 +496,13 @@ static int EvaluateOld( neuralnet *pnn, float arInput[], float ar[],
 
     return 0;
 
+#endif /* HAVE_LIBATLAS */
 }
 
-static int Evaluate( neuralnet *pnn, float arInput[], float ar[],
+#if HAVE_LIBATLAS
+static int EvaluateBlas( neuralnet *pnn, float arInput[], float ar[],
 		     float arOutput[], float *saveAr ) {
 
-#if !HAVE_LIBATLAS
-    return EvaluateOld( pnn, arInput, ar, arOutput, saveAr );
-#else /* HAVE_LIBATLAS */
     int i;
 
     /* BLAS implementation */
@@ -541,14 +545,16 @@ static int Evaluate( neuralnet *pnn, float arInput[], float ar[],
     for( i = 0; i < pnn->cOutput; i++ )
 	arOutput[ i ] = sigmoid( -pnn->rBetaOutput * arOutput[ i ] );
 
-#endif /* HAVE_LIBATLAS */
-
     return 0;
 }
+#endif /* HAVE_LIBATLAS */
 
-static int EvaluateFromBaseOld( neuralnet *pnn, float arInputDif[], float ar[],
+static int EvaluateFromBase( neuralnet *pnn, float arInputDif[], float ar[],
 		     float arOutput[] ) {
 
+#if HAVE_LIBATLAS
+	EvaluateFromBaseBlas( pnn, arInputDif, ar, arOutput );
+#else
     int i, j;
     float *prWeight;
 
@@ -595,15 +601,13 @@ static int EvaluateFromBaseOld( neuralnet *pnn, float arInputDif[], float ar[],
 
     return 0;
 
+#endif /* HAVE_LIBATLAS */
 }
 
-
-static int EvaluateFromBase( neuralnet *pnn, float arInputDif[], float ar[],
+#if HAVE_LIBATLAS
+static int EvaluateFromBaseBlas( neuralnet *pnn, float arInputDif[], float ar[],
 		     float arOutput[] ) {
 
-#if !HAVE_LIBATLAS
-    return EvaluateFromBaseOld( pnn, arInputDif, ar, arOutput );
-#else /* HAVE_LIBATLAS */
     int i;
 
     /* BLAS implementation */
@@ -637,10 +641,9 @@ static int EvaluateFromBase( neuralnet *pnn, float arInputDif[], float ar[],
     for( i = 0; i < pnn->cOutput; i++ )
 	arOutput[ i ] = sigmoid( -pnn->rBetaOutput * arOutput[ i ] );
     
-#endif /* HAVE_LIBATLAS */
-
     return 0;
 }
+#endif /* HAVE_LIBATLAS */
 
 extern int NeuralNetEvaluate( neuralnet *pnn, float arInput[],
 			      float arOutput[], NNEvalType t ) {
