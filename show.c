@@ -1,7 +1,7 @@
 /*
  * show.c
  *
- * by Gary Wong, 1999
+ * by Gary Wong <gtw@gnu.org>, 1999, 2000, 2001.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of version 2 of the GNU General Public License as
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.45 2001/02/08 16:38:47 gtw Exp $
+ * $Id: show.c,v 1.46 2001/02/13 18:24:17 gtw Exp $
  */
 
 #include "config.h"
@@ -344,9 +344,12 @@ extern void CommandShowPlayer( char *sz ) {
 		"  Type: ", i, ap[ i ].szName );
 
 	switch( ap[ i ].pt ) {
+	case PLAYER_EXTERNAL:
+	    outputl( "external\n" );
+	    break;
 	case PLAYER_GNU:
 	    outputf( "gnubg:\n" );
-	    ShowEvaluation( &ap[ i ].ec );
+	    ShowEvaluation( &ap[ i ].pd.ec );
 	    break;
 	case PLAYER_PUBEVAL:
 	    outputl( "pubeval\n" );

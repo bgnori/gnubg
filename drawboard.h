@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.h,v 1.6 2000/12/16 23:57:21 oysteijo Exp $
+ * $Id: drawboard.h,v 1.7 2001/02/13 18:22:43 gtw Exp $
  */
 
 #ifndef _DRAWBOARD_H_
@@ -31,5 +31,17 @@ extern char *FormatMove( char *pch, int anBoard[ 2 ][ 25 ], int anMove[ 8 ] );
 extern char *FormatMovePlain( char *pch, int anBoard[ 2 ][ 25 ],
                               int anMove[ 8 ] );
 extern int ParseMove( char *pch, int an[ 8 ] );
+/* Fill the buffer pch with a FIBS "boardstyle 3" description of the game. */
+extern char *FIBSBoard( char *pch, int anBoard[ 2 ][ 25 ], int fRoll,
+			char *szPlayer, char *szOpp, int nMatchTo,
+			int nScore, int nOpponent, int nDice0, int nDice1,
+			int nCube, int fCubeOwner, int fDoubled, int fTurn,
+			int fCrawford );
+/* Read a FIBS "boardstyle 3" description from pch. */
+extern int ParseFIBSBoard( char *pch, int anBoard[ 2 ][ 25 ],
+			   char *szPlayer, char *szOpp, int *pnMatchTo,
+			   int *pnScore, int *pnScoreOpponent,
+			   int anDice[ 2 ], int *pnCube, int *pfCubeOwner,
+			   int *pfDoubled, int *pfTurn, int *pfCrawford );
 
 #endif
