@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.92 2002/10/07 19:04:14 thyssen Exp $
+ * $Id: gtkboard.c,v 1.93 2002/10/09 19:45:16 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -726,11 +726,11 @@ update_pipcount ( BoardData *bd, gint points[ 2 ][ 25 ] ) {
 
     f = ( bd->turn > 0 );
     
-    pc = g_strdup_printf ( "%d", anPip[ !f ] );
+    pc = g_strdup_printf ( "%d (%+d)", anPip[ !f ], anPip[ !f ] - anPip[ f ] );
     gtk_label_set_text ( GTK_LABEL ( bd->pipcount0 ), pc );
     g_free ( pc );
     
-    pc = g_strdup_printf ( "%d", anPip[ f ] );
+    pc = g_strdup_printf ( "%d (%+d)", anPip[ f ], anPip[ f ] - anPip[ ! f ] );
     gtk_label_set_text ( GTK_LABEL ( bd->pipcount1 ), pc );
     g_free ( pc );
 
@@ -2000,10 +2000,27 @@ static gint board_set( Board *board, const gchar *board_text ) {
 				   bd->score_opponent );
 	gtk_spin_button_set_value( GTK_SPIN_BUTTON( bd->score1 ),
 				   bd->score );
-	sprintf( buf, "%d", bd->score_opponent );
-	gtk_label_set_text( GTK_LABEL( bd->lscore0 ), buf );
-	sprintf( buf, "%d", bd->score );
-	gtk_label_set_text( GTK_LABEL( bd->lscore1 ), buf );
+
+        if ( bd->match_to ) {
+
+          sprintf( buf, "%d (%d-away)", bd->score_opponent,
+                   bd->match_to - bd->score_opponent );
+          gtk_label_set_text( GTK_LABEL( bd->lscore0 ), buf );
+          sprintf( buf, "%d (%d-away)", bd->score,
+                   bd->match_to - bd->score );
+          gtk_label_set_text( GTK_LABEL( bd->lscore1 ), buf );
+
+        }
+        else {
+
+          /* money game */
+
+          sprintf( buf, "%d", bd->score_opponent );
+          gtk_label_set_text( GTK_LABEL( bd->lscore0 ), buf );
+          sprintf( buf, "%d", bd->score );
+          gtk_label_set_text( GTK_LABEL( bd->lscore1 ), buf );
+
+        }
 
 	gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( bd->crawford ),
 				      bd->crawford_game );
