@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.383 2003/03/02 15:07:19 thyssen Exp $
+ * $Id: gnubg.c,v 1.384 2003/03/02 15:58:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -7411,3 +7411,24 @@ Convert ( const char *sz,
 
 }
 
+
+extern void
+TextToClipboard( const char *sz ) {
+
+#if USE_GTK
+  if ( fX ) {
+    printf ( "pyf\n" );
+    GTKTextToClipboard( sz );
+    return;
+  }
+#else
+#  if WIN32
+  WinCopy ( sz );
+#  else
+  /* no clipboard: just write string */
+  outputl( sz );
+#  endif
+#endif
+
+
+}

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.90 2003/03/02 11:59:48 thyssen Exp $
+ * $Id: html.c,v 1.91 2003/03/02 16:01:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -1854,7 +1854,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.90 $";
+  const char szVersion[] = "$Revision: 1.91 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1935,7 +1935,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.90 $";
+  const char szVersion[] = "$Revision: 1.91 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -4101,17 +4101,20 @@ CommandExportPositionGammOnLine ( char *sz ) {
     if( pf != stdout )
 	fclose( pf );
     
-#ifdef WIN32
-    /* rewind(pf); */
+    /* copy contents onto clipboard */
+
+    if ( pf != stdout ) {
     
-    pf = fopen( sz, "r");  /* why doesn't rewind(pf) work? */
+       pf = fopen( sz, "r");  /* why doesn't rewind(pf) work? */
     
-    while ( (szClipboard[i] = fgetc(pf)) != EOF )
-	    i++;
-    szClipboard[i]= '\0';
-    WinCopy( szClipboard );
-    fclose( pf );
-#endif
+       while ( (szClipboard[i] = fgetc(pf)) != EOF )
+   	    i++;
+       szClipboard[i]= '\0';
+
+       TextToClipboard(szClipboard);
+       fclose( pf );
+    
+    }
 
 }
 
