@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.527 2004/02/03 16:51:30 uid68519 Exp $
+ * $Id: gnubg.c,v 1.528 2004/02/03 18:18:22 uid68519 Exp $
  */
 
 #include "config.h"
@@ -7341,7 +7341,10 @@ char* getenvvalue(char* str)
 	static char ret[1024];
 	*ret = '\0';
 	explode(str, ret);
-	return ret;
+	if (*ret)
+		return ret;
+	else
+		return NULL;
 }
 
 #endif /* WIN32 */
@@ -7392,7 +7395,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #if !WIN32
 	szHomeDirectory = getenv( "HOME" );
 #else
-	szHomeDirectory = getenvvalue( "HOME" );
+	szHomeDirectory = getenvvalue( "%HOME%" );
 #endif
 	if (!szHomeDirectory)
 		szHomeDirectory = ".";
