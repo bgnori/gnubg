@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.120 2002/04/13 13:45:57 oysteijo Exp $
+ * $Id: play.c,v 1.121 2002/04/17 19:00:39 thyssen Exp $
  */
 
 #include "config.h"
@@ -1921,22 +1921,22 @@ extern void CommandAnnotateUnlucky( char *sz ) {
 
 extern void CommandAnnotateVeryBad( char *sz ) {
 
-    AnnotateMove( SKILL_BAD );
+    AnnotateMove( SKILL_VERYBAD );
 }
 
 extern void CommandAnnotateVeryGood( char *sz ) {
 
-    AnnotateMove( SKILL_GOOD );
+    AnnotateMove( SKILL_VERYGOOD );
 }
 
 extern void CommandAnnotateVeryLucky( char *sz ) {
 
-    AnnotateRoll( LUCK_GOOD );
+    AnnotateRoll( LUCK_VERYGOOD );
 }
 
 extern void CommandAnnotateVeryUnlucky( char *sz ) {
 
-    AnnotateRoll( LUCK_BAD );
+    AnnotateRoll( LUCK_VERYBAD );
 }
 
 extern void CommandDecline( char *sz ) {
