@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.156 2002/10/10 20:15:29 thyssen Exp $
+ * $Id: play.c,v 1.157 2002/10/12 09:04:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -2993,14 +2993,15 @@ static void CommandNextRoll( char *sz ) {
 
     CalculateBoard();
 
-    FixMatchState ( &ms, pmr );
-
     ms.gs = GAME_PLAYING;
     ms.fMove = ms.fTurn = pmr->n.fPlayer;
 	
     ms.anDice[ 0 ] = pmr->n.anRoll[ 0 ];
     ms.anDice[ 1 ] = pmr->n.anRoll[ 1 ];
     
+    if ( plLastMove->plNext && plLastMove->plNext->p )
+      FixMatchState ( &ms, plLastMove->plNext->p );
+
     UpdateGame( FALSE );
 }
 
@@ -3132,7 +3133,9 @@ extern void CommandNext( char *sz ) {
     
     UpdateGame( FALSE );
 
-    FixMatchState ( &ms, plLastMove->p );
+    if ( plLastMove->plNext && plLastMove->plNext->p )
+      FixMatchState ( &ms, plLastMove->plNext->p );
+
     SetMoveRecord( plLastMove->p );
 }
 
@@ -3222,11 +3225,11 @@ static void CommandPreviousRoll( char *sz ) {
 
     CalculateBoard();
     
-    FixMatchState ( &ms, pmr );
-
     ms.anDice[ 0 ] = 0;
     ms.anDice[ 1 ] = 0;
     
+    FixMatchState ( &ms, pmr );
+
     UpdateGame( FALSE );
 }
 
@@ -3315,7 +3318,9 @@ extern void CommandPrevious( char *sz ) {
 
     UpdateGame( FALSE );
 
-    FixMatchState ( &ms, plLastMove->p );
+    if ( plLastMove->plNext && plLastMove->plNext->p )
+      FixMatchState ( &ms, plLastMove->plNext->p );
+
     SetMoveRecord( plLastMove->p );
 }
 
