@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.186 2004/06/30 18:48:01 thyssen Exp $
+ * $Id: gtkboard.c,v 1.187 2004/07/11 07:33:27 kaoru Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -574,7 +574,9 @@ ReturnHits( int anBoard[ 2 ][ 25 ] ) {
       for ( j = 0; j <= i; ++j )
         n += ( aiDiceHit[ i ][ j ] > 0 ) * ( 2 - ( i == j ) );
 
-    sprintf( strchr( pch, 0 ), _("(no hit: %d rolls)"), 36 - n );
+    sprintf( strchr( pch, 0 ),
+	     ngettext("(no hit: %d roll)", "(no hit: %d rolls)", (36 - n) ),
+	     36 - n );
     return pch;
   }
 
