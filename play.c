@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.137 2002/07/25 17:16:53 thyssen Exp $
+ * $Id: play.c,v 1.138 2002/07/25 17:20:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -2380,7 +2380,7 @@ CommandMove( char *sz ) {
 			sizeof( pmn->anMove ) );
 
 		if ( fTutor && !GiveAdvice ( GoodMove( pmn ) )) {
-                  free ( pmr ); /* garbage collect */
+                  free ( pmn ); /* garbage collect */
                   return;
                 }
 
