@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.243 2002/07/16 11:49:17 thyssen Exp $
+ * $Id: gnubg.c,v 1.244 2002/07/16 17:39:28 gtw Exp $
  */
 
 #include "config.h"
@@ -4719,6 +4719,22 @@ extern void outputresume( void ) {
 
     if( !--cOutputPostponed )
 	outputx();
+}
+
+/* Temporarily ignore TTY/GUI input. */
+extern void SuspendInput( monitor *pm ) {
+
+#if USE_GTK
+    GTKSuspendInput( pm );
+#endif
+}
+
+/* Resume input (must match a previous SuspendInput). */
+extern void ResumeInput( monitor *pm ) {
+
+#if USE_GTK
+    GTKResumeInput( pm );
+#endif
 }
 
 extern void ProgressStart( char *sz ) {

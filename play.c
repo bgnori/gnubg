@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.133 2002/07/14 16:29:34 thyssen Exp $
+ * $Id: play.c,v 1.134 2002/07/16 17:39:29 gtw Exp $
  */
 
 #include "config.h"
@@ -109,7 +109,8 @@ autoAnalyseMove ( void *p, const matchstate *pms ) {
   matchstate msx;
   moverecord *pmr = p;
   int f;
-
+  monitor m;
+  
   if ( ! p ) 
     return;
 
@@ -138,10 +139,10 @@ autoAnalyseMove ( void *p, const matchstate *pms ) {
   /* tutor-mode */
 
   if ( fAutoAnalysis && f ) {
-
-    memcpy ( &msx, pms, sizeof ( matchstate ) );
-    AnalyzeMove ( pmr, &msx, NULL, FALSE );
-    
+      SuspendInput( &m );
+      memcpy ( &msx, pms, sizeof ( matchstate ) );
+      AnalyzeMove ( pmr, &msx, NULL, FALSE );
+      ResumeInput( &m );
   }
 
 }
