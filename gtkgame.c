@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.147 2002/05/22 19:13:37 thyssen Exp $
+ * $Id: gtkgame.c,v 1.148 2002/05/26 10:28:41 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5924,7 +5924,7 @@ GTKRolloutUpdate( float aarMu[][ NUM_ROLLOUT_OUTPUTS ],
 
           if ( ! ms.nMatchTo ) 
             /* money game */
-            sprintf( sz, "%+6.3f", aarSigma[ j ][ i ] );
+            sprintf( sz, "%+7.4f", aarSigma[ j ][ i ] );
           else if ( fOutputMWC )
             /* match play (mwc) */
             sprintf( sz, "%7.3f%%", 100.0f * aarSigma[ j ][ i ] );
