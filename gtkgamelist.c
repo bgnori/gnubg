@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.8 2004/06/17 10:21:22 Superfly_Jon Exp $
+* $Id: gtkgamelist.c,v 1.9 2004/06/28 09:24:45 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -118,7 +118,7 @@ void GameListSelectRow(GtkCList *pcl, gint y, gint x, GdkEventButton *pev, gpoin
     else
     	pmrPrev = pglr->apmr[(pglr->fCombined) ? 0 : x - 1];
 
-    if (!pmr)
+    if (!pmr && !pmrPrev)
     	return;
 
     for( pl = plGame->plPrev; pl != plGame; pl = pl->plPrev ) {
