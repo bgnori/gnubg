@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.425 2003/07/05 08:54:26 joseph Exp $
+ * $Id: gnubg.c,v 1.426 2003/07/08 19:19:50 grob Exp $
  */
 
 #include "config.h"
@@ -1368,6 +1368,8 @@ command cER = {
     N_("Play sounds to /dev/dsp or /dev/audio"), NULL, NULL },
   { "windows", CommandSetSoundSystemWindows, 
     N_("Use MS Windows API for playing sounds"), NULL, NULL },
+  { "quicktime", CommandSetSoundSystemQuickTime, 
+    N_("Use Apple QuickTime API for playing sounds"), NULL, NULL },
   { NULL, NULL, NULL, NULL, NULL }    
 }, acSetSoundSound[] = {
   { "agree", CommandSetSoundSoundAgree, 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.226 2003/06/23 21:46:52 jsegrave Exp $
+ * $Id: backgammon.h,v 1.227 2003/07/08 19:19:49 grob Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -904,6 +904,7 @@ extern void CommandAccept( char * ),
     CommandSetSoundSystemNAS ( char * ),
     CommandSetSoundSystemNormal ( char * ),
     CommandSetSoundSystemWindows ( char * ),
+    CommandSetSoundSystemQuickTime ( char * ),
     CommandSetSoundSoundAgree ( char * ),
     CommandSetSoundSoundAnalysisFinished ( char * ),
     CommandSetSoundSoundBotDance ( char * ),

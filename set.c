@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.185 2003/06/23 21:46:52 jsegrave Exp $
+ * $Id: set.c,v 1.186 2003/07/08 19:19:50 grob Exp $
  */
 
 #include "config.h"
@@ -3877,6 +3877,23 @@ CommandSetSoundSystemWindows ( char *sz ) {
 
   outputl ( _("GNU Backgammon was compiled without support for "
               "the MS Windows sound system" ) );
+
+#endif
+
+}
+
+extern void
+CommandSetSoundSystemQuickTime ( char *sz ) {
+
+#ifdef __APPLE__
+
+  ssSoundSystem = SOUND_SYSTEM_QUICKTIME;
+  outputl ( _("GNU Backgammon will use the Apple QuickTime sound system" ) );
+
+#else
+
+  outputl ( _("GNU Backgammon was compiled without support for "
+              "the Apple QuickTime sound system" ) );
 
 #endif
 
