@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.9 2000/07/25 17:45:04 gtw Exp $
+ * $Id: dice.c,v 1.10 2001/01/16 18:40:23 gtw Exp $
  */
 
 #include "config.h"
@@ -55,6 +55,10 @@
 #include "mt19937int.h"
 #include "isaac.h"
 
+#if USE_GTK
+#include "gtkgame.h"
+#endif
+
 rng rngCurrent = RNG_MERSENNE;
 
 static randctx rc;
@@ -77,6 +81,16 @@ static int GetManualDice( int anDice[ 2 ] ) {
   char *sz, *pz;
   int i;
 
+#if USE_GTK
+  if( fX ) {
+      if( GTKGetManualDice( anDice ) ) {
+	  fInterrupt = 1;
+	  return -1;
+      } else
+	  return 0;
+  }
+#endif
+  
   for (;;) {
   TryAgain:
       if( fInterrupt ) {

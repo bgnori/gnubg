@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.11 2001/01/04 15:29:37 gtw Exp $
+ * $Id: gtkgame.h,v 1.12 2001/01/16 18:40:23 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -60,6 +60,7 @@ extern void GTKRolloutRow( int i );
 extern int GTKRolloutUpdate( float arMu[], float arSigma[], int i, int c );
 extern void GTKRolloutDone( void );
 extern void GTKSet( void *p );
+extern int GTKGetManualDice( int an[ 2 ] );
 
 extern int fTTY;
 
