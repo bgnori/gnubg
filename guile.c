@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.23 2002/02/05 15:38:46 gtw Exp $
+ * $Id: guile.c,v 1.24 2002/07/27 17:03:38 thyssen Exp $
  */
 
 #include "config.h"
@@ -297,10 +297,11 @@ static SCM evaluate_position( SCM sBoard, SCM sCube, SCM sEvalContext ) {
 static SCM evaluate_position_cubeful( SCM sBoard, SCM sCube,
 				      SCM sEvalContext ) {
     int i, anBoard[ 2 ][ 25 ], n;
-    float ar[ NUM_OUTPUTS ], arCube[ NUM_CUBEFUL_OUTPUTS ];
+    float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], arCube[ NUM_CUBEFUL_OUTPUTS ];
     SCM s;
     cubeinfo ci;
     psighandler sh;
+    evalcontext ec = { 0, TRUE, 0, 0, TRUE, FALSE, 0.0, 0.0 };
     
     SCMToBoard( sBoard, anBoard );
     
@@ -312,7 +313,7 @@ static SCM evaluate_position_cubeful( SCM sBoard, SCM sCube,
     SCMToCubeInfo( sCube, &ci );
 
     PortableSignal( SIGINT, HandleInterrupt, &sh, FALSE );
-    n = EvaluatePositionCubeful( anBoard, arCube, ar, &ci, NULL, 0 );
+    n = GeneralCubeDecisionE ( aarOutput, anBoard, &ci, &ec );
     PortableSignalRestore( SIGINT, &sh );
     if( fInterrupt ) {
 	raise( SIGINT );
@@ -321,6 +322,8 @@ static SCM evaluate_position_cubeful( SCM sBoard, SCM sCube,
     
     if( n < 0 )
 	return SCM_BOOL_F; /* FIXME throw error? */
+
+    FindCubeDecision ( arCube, aarOutput, &ci );
     
     s = scm_make_vector( SCM_MAKINUM( NUM_CUBEFUL_OUTPUTS ), SCM_UNSPECIFIED );
     for( i = 0; i < NUM_CUBEFUL_OUTPUTS; i++ )
