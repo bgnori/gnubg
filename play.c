@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.191 2003/06/09 15:25:21 thyssen Exp $
+ * $Id: play.c,v 1.191.2.1 2003/06/10 19:05:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -48,6 +48,7 @@
 #include "rollout.h"
 #include "i18n.h"
 #include "sound.h"
+#include "renderprefs.h"
 
 char *aszGameResult[] = { 
   N_ ("single game"), 
@@ -167,7 +168,7 @@ static void PlayMove( matchstate *pms, int anMove[ 8 ], int fPlayer ) {
     SwapSides( pms->anBoard );    
 }
 
-static void ApplyGameOver( matchstate *pms, list *plGame ) {
+static void ApplyGameOver( matchstate *pms ) {
 
     movegameinfo *pmgi = plGame->plNext->p;
 
@@ -259,7 +260,7 @@ extern void ApplyMoveRecord( matchstate *pms, list *plGame, moverecord *pmr ) {
 	pmgi->fWinner = !pmr->d.fPlayer;
 	pmgi->fResigned = FALSE;
 	
-	ApplyGameOver( pms, plGame );
+	ApplyGameOver( pms );
 	break;
 
     case MOVE_NORMAL:
@@ -284,7 +285,7 @@ extern void ApplyMoveRecord( matchstate *pms, list *plGame, moverecord *pmr ) {
 	    pmgi->nPoints = pms->nCube * n;
 	    pmgi->fWinner = pmr->n.fPlayer;
 	    pmgi->fResigned = FALSE;
-	    ApplyGameOver( pms, plGame );
+	    ApplyGameOver( pms );
 	}
 	
 	break;
@@ -295,7 +296,7 @@ extern void ApplyMoveRecord( matchstate *pms, list *plGame, moverecord *pmr ) {
 	pmgi->fWinner = !pmr->r.fPlayer;
 	pmgi->fResigned = TRUE;
 	
-	ApplyGameOver( pms, plGame );
+	ApplyGameOver( pms );
 	break;
 	
     case MOVE_SETBOARD:
@@ -657,8 +658,6 @@ static int NewGame( void ) {
     
  reroll:
     fError = RollDice( ms.anDice, rngCurrent );
-    
-    playSound ( SOUND_ROLL );
 
     if( fInterrupt || fError ) {
 	PopMoveRecord( plGame->plNext );
@@ -706,6 +705,8 @@ static int NewGame( void ) {
     AddMoveRecord( pmr );
     UpdateSetting( &ms.fTurn );
     UpdateSetting( &ms.gs );
+    /* Play sound after initial dice decided */
+    playSound ( SOUND_ROLL );
     
 #if USE_GUI
     if( fX && fDisplay )

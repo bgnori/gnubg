@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.224 2003/05/29 19:13:33 thyssen Exp $
+ * $Id: backgammon.h,v 1.224.4.1 2003/06/10 19:05:50 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -283,18 +283,6 @@ extern int nThreadPriority;
 extern int fCheat;
 extern int afCheatRoll[ 2 ];
 extern int fGotoFirstGame;
-
-/* GUI settings. */
-#if USE_GTK
-typedef enum _animation {
-    ANIMATE_NONE, ANIMATE_BLINK, ANIMATE_SLIDE
-} animation;
-    
-extern animation animGUI;
-extern int nGUIAnimSpeed, fGUIBeep, fGUIDiceArea, fGUIHighDieFirst,
-    fGUIIllegal, fGUIShowIDs, fGUIShowPips, fGUISetWindowPos,
-    fGUIDragTargetHelp;
-#endif
 
 typedef enum _pathformat {
   PATH_EPS, PATH_GAM, PATH_HTML, PATH_LATEX, PATH_MAT, PATH_OLDMOVES,

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.5 2003/05/23 16:04:59 hb Exp $
+ * $Id: render.h,v 1.5.4.1 2003/06/10 19:05:51 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -31,6 +31,12 @@ typedef enum _woodtype {
     WOOD_EBONY, WOOD_FIR, WOOD_MAPLE, WOOD_OAK, WOOD_PINE, WOOD_REDWOOD,
     WOOD_WALNUT, WOOD_WILLOW, WOOD_PAINT
 } woodtype;
+
+#if BOARD3D
+typedef enum _displaytype {
+    DT_2D, DT_3D
+} displaytype;
+#endif
 
 typedef struct _renderdata {
     woodtype wt;
@@ -52,6 +58,13 @@ typedef struct _renderdata {
     int fHinges; /* TRUE if hinges should be drawn */
     int fLabels; /* TRUE if point numbers should be drawn */
     int fClockwise; /* orientation for board point numbers */
+#if BOARD3D
+	displaytype fDisplayType;	/* 2d or 3d display */
+	int showShadows;	/* Show 3d shadows */
+	int skin3d;	/* Test skin number */
+	int animateRoll;	/* Animate dice rolls */
+	int animateFlag;	/* Animate resignation flag */
+#endif
 } renderdata;
 
 typedef struct _renderimages {

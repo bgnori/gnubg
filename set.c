@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.183 2003/05/24 10:24:49 hb Exp $
+ * $Id: set.c,v 1.183.4.1 2003/06/10 19:05:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1076,7 +1076,7 @@ extern void CommandSetGUIAnimationSpeed( char *sz ) {
 
     if( n < 0 || n > 7 ) {
 	outputl( _("You must specify a speed between 0 and 7 -- try "
-		   "`help set seed'.") );
+		   "`help set speed'.") );
 
 	return;
     }

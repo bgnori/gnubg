@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.420 2003/06/09 21:24:29 thyssen Exp $
+ * $Id: gnubg.c,v 1.420.2.1 2003/06/10 19:05:50 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -6910,6 +6910,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #if USE_GTK
     if( fX ) {
       
+	UpdateGlobalSetting();
 	RunGTK( pwSplash );
 
         EvalShutdown();
