@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.181 2002/07/17 15:32:24 thyssen Exp $
+ * $Id: gtkgame.c,v 1.182 2002/07/17 17:38:25 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4182,6 +4182,8 @@ static void AnalysisOK( GtkWidget *pw, analysiswidget *paw ) {
 	
   char sz[128]; 
 
+  gtk_widget_hide( gtk_widget_get_toplevel( pw ) );
+  
   sprintf(sz, "set analysis moves %s",
     gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( paw->pwMoves ) ) ?
        "on" : "off" );
