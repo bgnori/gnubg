@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.91 2002/12/09 20:24:24 thyssen Exp $
+ * $Id: analysis.c,v 1.92 2002/12/09 20:34:17 thyssen Exp $
  */
 
 #include "config.h"
@@ -189,8 +189,6 @@ LuckNormal ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
       }
       else
         aar[ i ][ j ] = - ar[ OUTPUT_EQUITY ];
-
-      printf ( "LuckNormal: %d %d %f\n", i , j, aar[ i ][ j ] );
 
       rMean += ( i == j ) ? aar[ i ][ j ] : aar[ i ][j ] * 2.0f;
 
