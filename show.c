@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.171 2003/12/29 11:28:33 uid68519 Exp $
+ * $Id: show.c,v 1.172 2003/12/29 19:20:02 uid65656 Exp $
  */
 
 #include "config.h"
@@ -2100,9 +2100,9 @@ extern void
 CommandShowVariation( char *sz ) {
 
   if ( ms.gs != GAME_NONE )
-    outputf( _("You are playing: %s\n"), aszVariations[ ms.bgv ] );
+    outputf( _("You are playing: %s\n"), gettext( aszVariations[ ms.bgv ] ) );
 
-  outputf( _("Default variation is: %s\n"), aszVariations[ bgvDefault ] );
+  outputf( _("Default variation is: %s\n"), gettext( aszVariations[ bgvDefault ] ) );
 
 }
 
