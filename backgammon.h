@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.20 2000/02/01 00:09:37 gtw Exp $
+ * $Id: backgammon.h,v 1.21 2000/02/02 21:20:16 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -80,7 +80,8 @@ extern int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn, fDisplay, fAutoBearoff,
     fAutoGame, fAutoMove, fResigned, fMove, fDoubled, anScore[ 2 ],
     cGames, nCube, fCubeOwner, fAutoRoll, nMatchTo, fJacoby, fCrawford,
     fPostCrawford, fAutoCrawford, cAutoDoubles, fCubeUse, fNackgammon,
-    fVarRedn, nRollouts, nRolloutTruncate, fNextTurn, fConfirm;
+    fVarRedn, nRollouts, nRolloutTruncate, fNextTurn, fConfirm,
+    fShowProgress;
 
 extern evalcontext ecEval, ecRollout, ecTD;
 

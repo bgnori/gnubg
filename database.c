@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.6 2000/01/31 17:52:16 gtw Exp $
+ * $Id: database.c,v 1.7 2000/02/02 21:20:16 gtw Exp $
  */
 
 #include "config.h"
@@ -180,7 +180,7 @@ extern void CommandDatabaseGenerate( char *sz ) {
 	InitBoard( anBoardGenerate );
 	
 	do {    
-	    if( !( ++c % 100 ) ) {
+	    if( !( ++c % 100 ) && fShowProgress ) {
 		printf( "%6d\r", c );
 		fflush( stdout );
 	    }
@@ -242,7 +242,7 @@ extern void CommandDatabaseTrain( char *sz ) {
 	    pev = (dbevaluation *) dValue.dptr;
 
 	    if( pev->c >= 72 /* FIXME */ ) {
-		if( !( ++c % 100 ) ) {
+		if( !( ++c % 100 ) && fShowProgress ) {
 		    printf( "%6d\r", c );
 		    fflush( stdout );
 		}

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.17 2000/01/31 17:51:59 gtw Exp $
+ * $Id: play.c,v 1.18 2000/02/02 21:20:16 gtw Exp $
  */
 
 #include "config.h"
@@ -658,7 +658,7 @@ extern void CommandNewGame( char *sz ) {
 	    if( pch && ( *pch == 'n' || *pch == 'N' ) )
 		return;
 
-	    puts( "Please answer 'y' or 'n'." );
+	    puts( "Please answer `y' or `n'." );
 	}
 
 	/* The last game of the match should always be the current one. */
