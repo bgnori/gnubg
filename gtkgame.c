@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.365 2003/07/18 23:09:02 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.366 2003/07/19 07:15:30 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -519,19 +519,26 @@ extern void GTKSuspendInput( monitor *pm ) {
 
 extern void GTKResumeInput( monitor *pm ) {
     
-    GTKAllowStdin();
+  int i;
 
-    if (GrabStackPointer > 0) {
-      if ((GrabStack[GrabStackPointer - 1 ].owner == pm) &&
-	  (GrabStack[GrabStackPointer - 1 ].id == pm->idSignal)) {
+  GTKAllowStdin();
 
-	gtk_signal_disconnect( GTK_OBJECT( pwGrab ), pm->idSignal );
-	--GrabStackPointer;
-      }
+  /* go backwards down the stack looking for this signal's entry 
+     if found, disconnect the signal and trim the stack back
+     this should cope with grab owners who disappear without 
+     cleaning up
+     */
+  for (i = GrabStackPointer - 1; i >= 0; --i) {
+    if ((GrabStack[ i ].owner == pm) &&
+	  (GrabStack[ i ].id == pm->idSignal)) {
+
+      gtk_signal_disconnect( GTK_OBJECT( pwGrab ), pm->idSignal );
+      GrabStackPointer = i;
     }
+  }
 
-    if( pm->fGrab )
-      gtk_grab_remove( pwGrab );
+  if( pm->fGrab )
+    gtk_grab_remove( pwGrab );
     
 }
 
