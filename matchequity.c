@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.39 2003/09/04 16:26:12 thyssen Exp $
+* $Id: matchequity.c,v 1.40 2003/09/05 20:46:44 thyssen Exp $
 */
 
 #include <stdio.h>
@@ -1683,10 +1683,15 @@ InitMatchEquity ( const char *szFileName, const char *szDir ) {
 
       /* FIXME: implement better extension of post-Crawford table */
 
-      for ( i = 0; i < md.mi.nLength; i++ )
+      /* Note that the post Crawford table is extended from
+         n - 1 as the  post Crawford table of a n match equity table
+         might not include the post Crawford equity at n-away, since
+         the first "legal" post Crawford score is n-1. */
+
+      for ( i = 0; i < md.mi.nLength - 1; i++ )
         aafMETPostCrawford[ j ][ i ] = md.aarMETPostCrawford[ j ][ i ];
 
-      initPostCrawfordMET ( aafMETPostCrawford[ j ], md.mi.nLength, 
+      initPostCrawfordMET ( aafMETPostCrawford[ j ], md.mi.nLength - 1, 
                             GAMMONRATE, 0.015, 0.004 );
 
     }
