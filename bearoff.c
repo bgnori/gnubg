@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.27 2004/01/16 09:41:39 uid68519 Exp $
+ * $Id: bearoff.c,v 1.28 2004/01/19 23:02:08 uid65656 Exp $
  */
 
 #include "config.h"
@@ -2065,11 +2065,26 @@ GetDistCompressed ( bearoffcontext *pbc, const unsigned int nPosID ) {
     puch[ 1 ] << 8 |
     puch[ 2 ] << 16 |
     puch[ 3 ] << 24;
-  
+
   nz = puch[ 4 ];
   ioff = puch[ 5 ];
   nzg = puch[ 6 ];
   ioffg = puch[ 7 ];
+
+  /* Sanity checks */
+
+  if ( iOffset < 0 || iOffset > 0 || 
+       nz > 32 || ioff > 32 || 
+       nzg > 32 || ioffg > 32) {
+    fprintf( stderr, 
+             "The bearoff file '%s' is likely to be corrupted.\n"
+             "Please check that the MD5 sum is the same as documented "
+             "in the GNU Backgammon manual.\n"
+             "Offset %ld, dist size %u (offset %u), "
+             "gammon dist size %u (offset %u)\n",
+             pbc->szFilename, iOffset, nz, ioff, nzg, ioffg );
+    assert( FALSE );
+  }
 
   /* read prob + gammon probs */
   
