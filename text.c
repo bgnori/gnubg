@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.62 2003/10/11 16:02:52 thyssen Exp $
+ * $Id: text.c,v 1.63 2004/01/21 21:28:08 uid65656 Exp $
  */
 
 #include "config.h"
@@ -37,7 +37,9 @@
 #include "positionid.h"
 #include "matchid.h"
 #include "record.h"
+#if USE_TIMECONTROL
 #include "timecontrol.h"
+#endif
 
 #include "i18n.h"
 
@@ -260,7 +262,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.62 $";
+  const char szVersion[] = "$Revision: 1.63 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
