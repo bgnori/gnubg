@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.c,v 1.14 2000/07/13 16:25:26 gtw Exp $
+ * $Id: xgame.c,v 1.15 2000/07/31 20:29:29 gtw Exp $
  */
 
 #include "config.h"
@@ -29,6 +29,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#if HAVE_STROPTS_H
+#include <stropts.h>
+#endif
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -764,7 +767,6 @@ extern void RunExt( void ) {
     XSizeHints xsh;
     char *pch;
     event ev;
-    int n;
     
     XrmInitialize();
     
@@ -824,10 +826,21 @@ extern void RunExt( void ) {
 
     /* FIXME F_SETOWN is a BSDism... use SIOCSPGRP if necessary. */
     fnAction = HandleXAction;
-    if( ( n = fcntl( ConnectionNumber( pdsp ), F_GETFL ) ) != -1 ) {
-        fcntl( ConnectionNumber( pdsp ), F_SETOWN, getpid() );
-        fcntl( ConnectionNumber( pdsp ), F_SETFL, n | FASYNC );
+
+#if FASYNC
+    /* BSD FASYNC-style I/O notification */
+    {
+	int n;
+	
+	if( ( n = fcntl( ConnectionNumber( pdsp ), F_GETFL ) ) != -1 ) {
+	    fcntl( ConnectionNumber( pdsp ), F_SETOWN, getpid() );
+	    fcntl( ConnectionNumber( pdsp ), F_SETFL, n | FASYNC );
+	}
     }
+#else
+    /* System V SIGPOLL-style I/O notification */
+    ioctl( ConnectionNumber( pdsp ), I_SETSIG, S_RDNORM );
+#endif
     
 #if HAVE_LIBREADLINE
     fReadingCommand = TRUE;

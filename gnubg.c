@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.50 2000/07/31 17:58:10 gtw Exp $
+ * $Id: gnubg.c,v 1.51 2000/07/31 20:29:29 gtw Exp $
  */
 
 #include "config.h"
@@ -94,10 +94,14 @@ event evNextTurn;
 #if USE_GUI
 int fX = TRUE; /* use X display */
 int nDelay = 0;
-static int fNeedPrompt = FALSE;
+int fNeedPrompt = FALSE;
 #if HAVE_LIBREADLINE
 int fReadingCommand;
 #endif
+#endif
+
+#ifndef SIGIO
+#define SIGIO SIGPOLL /* The System V equivalent */
 #endif
 
 char szDefaultPrompt[] = "(\\p) ",
@@ -591,7 +595,7 @@ static void PortableSignalRestore( int nSignal, psighandler *p ) {
 
 /* Reset the SIGINT handler, on return to the main command loop.  Notify
    the user if processing had been interrupted. */
-static void ResetInterrupt( void ) {
+extern void ResetInterrupt( void ) {
     
     if( fInterrupt ) {
 	outputl( "(Interrupted)" );
@@ -1103,7 +1107,7 @@ extern void CommandHint( char *sz ) {
    etc.  If stdin is not a TTY, this should always exit immediately (to
    avoid enless loops on EOF).  If stdin is a TTY, and fConfirm is set,
    and a game is in progress, then we ask the user if they're sure. */
-static void PromptForExit( void ) {
+extern void PromptForExit( void ) {
 
     static int fExiting;
     
@@ -1497,7 +1501,7 @@ static char **CompleteKeyword( char *szText, int iStart, int iEnd ) {
     return completion_matches( szText, GenerateKeywords );
 }
 #else
-static void Prompt( void ) {
+extern void Prompt( void ) {
 
     if( !fInteractive )
 	return;
@@ -1613,7 +1617,11 @@ extern void UserCommand( char *szCommand ) {
 
     ResetInterrupt();
     
+#if USE_GTK
     if( nNextTurn )
+#else
+    if( evNextTurn.fPending )
+#endif
 	Prompt();
     else
 	fNeedPrompt = TRUE;

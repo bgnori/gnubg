@@ -3,11 +3,13 @@
  *
  * by Gary Wong, 1996-2000
  *
- * $Id: event.h,v 1.3 2000/07/28 17:11:10 gtw Exp $
+ * $Id: event.h,v 1.4 2000/07/31 20:29:29 gtw Exp $
  */
 
 #ifndef _EVENT_H_
 #define _EVENT_H_
+
+#include "config.h"
 
 #include <list.h>
 #if defined HAVE_SYS_TIME_H || !defined HAVE_CONFIG_H
