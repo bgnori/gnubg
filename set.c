@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.66 2001/05/17 22:21:23 thyssen Exp $
+ * $Id: set.c,v 1.67 2001/05/18 14:48:12 gtw Exp $
  */
 
 #include "config.h"
@@ -1252,8 +1252,8 @@ CommandSetRolloutPlayer ( char *sz ) {
     int i;
 
     if( !pch ) {
-	outputf( "You must specify a player -- try\n"
-                 " `help set %s player'.", szSet );
+	outputf( "You must specify a player -- try `help set %s player'.\n",
+		 szSetCommand );
 	
 	return;
     }
@@ -1291,11 +1291,9 @@ CommandSetRolloutPlayer ( char *sz ) {
     }
     
     outputf( "Unknown player `%s' -- try\n"
-             "`help set %s player'.\n", pch );
+             "`help set %s player'.\n", pch, szSetCommand );
 }
 
-
-    
 extern void CommandSetScore( char *sz ) {
 
     int n0, n1;

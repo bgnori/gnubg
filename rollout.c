@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.30 2001/05/17 22:13:30 thyssen Exp $
+ * $Id: rollout.c,v 1.31 2001/05/18 14:48:12 gtw Exp $
  */
 
 #include "config.h"
@@ -24,6 +24,7 @@
 #include <errno.h>
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "backgammon.h"
@@ -441,8 +442,6 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
                       float aarOutput[][ NUM_ROLLOUT_OUTPUTS ], 
                       int iTurn, int iGame,
                       cubeinfo aci[], int cci, rolloutcontext *prc ) {
-
-  positionclass pc;
   int anDice [ 2 ];
   cubeinfo *pciLocal, *pci;
   cubedecision cd;

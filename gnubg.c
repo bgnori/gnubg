@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.135 2001/05/17 22:31:47 thyssen Exp $
+ * $Id: gnubg.c,v 1.136 2001/05/18 14:48:12 gtw Exp $
  */
 
 #include "config.h"
@@ -2723,17 +2723,17 @@ extern void CommandSaveSettings( char *szParam ) {
 #endif
 	     fDisplay ? "on" : "off" );
 
-    sprintf( szTemp, "set evaluation chequerplay", i );
+    sprintf( szTemp, "set evaluation chequerplay" );
     SaveEvalSetupSettings ( pf, szTemp, &etEvalChequer, &esEvalChequer );
 
-    sprintf( szTemp, "set evaluation cubedecision", i );
+    sprintf( szTemp, "set evaluation cubedecision" );
     SaveEvalSetupSettings ( pf, szTemp, &etEvalCube, &esEvalCube );
 
-    sprintf( szTemp, "set analysis chequerplay", i );
+    sprintf( szTemp, "set analysis chequerplay" );
     SaveEvalSetupSettings ( pf, szTemp, 
                             &etAnalysisChequer, &esAnalysisChequer );
 
-    sprintf( szTemp, "set analysis cubedecision", i );
+    sprintf( szTemp, "set analysis cubedecision" );
     SaveEvalSetupSettings ( pf, szTemp, &etAnalysisCube, &esAnalysisCube );
 
     fprintf( pf, "set jacoby %s\n", fJacoby ? "on" : "off" );
