@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.50 2001/12/16 11:49:32 thyssen Exp $
+ * $Id: rollout.c,v 1.51 2001/12/16 12:13:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -990,6 +990,9 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
 
   /* print statistics */
 
+#if 0
+  /* FIXME: make output prettier -- and move to GTKRollout*. */
+
   for ( ici = 0; ici < cci; ici++ ) {
     outputf ( "\n\n rollout no %d\n", ici );
     for ( i = 0; i < 2; i++ ) {
@@ -1000,6 +1003,7 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
     }
 
   }
+#endif
 
   return cGames;
 }
