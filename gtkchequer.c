@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.57 2004/06/16 13:57:50 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.58 2004/06/17 10:21:22 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -139,6 +139,8 @@ UpdateMoveList ( const hintdata *phd ) {
     {	/* Get highlight style first time in */
       GtkStyle *psMoves = gtk_widget_get_style( pwMoves );
       GetStyleFromRCFile(&psHighlight, "move-done", psMoves);
+      /* Use correct background colour when selected */
+      memcpy(&psHighlight->bg[GTK_STATE_SELECTED], &psMoves->bg[GTK_STATE_SELECTED], sizeof(GdkColor));
     }
     for ( i = 0; i < pml->cMoves; i++ )
       gtk_clist_set_row_style( GTK_CLIST( pwMoves ), i, i == *piHighlight ?
