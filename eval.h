@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.99 2002/12/21 21:26:56 thyssen Exp $
+ * $Id: eval.h,v 1.100 2002/12/23 18:58:49 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -97,7 +97,7 @@ typedef struct _evalcontext {
        classes */
     unsigned int fCubeful : 1; /* cubeful evaluation */
     unsigned int nPlies : 3;
-    unsigned int nReduced : 2; /* this will need to be expanded if we add
+    unsigned int nReduced : 3; /* this will need to be expanded if we add
 				  support for nReduced != 3 */
     unsigned int fDeterministic : 1;
     float        rNoise; /* standard deviation */
