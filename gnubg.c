@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.229 2002/06/24 16:31:16 thyssen Exp $
+ * $Id: gnubg.c,v 1.230 2002/06/24 16:47:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -3765,6 +3765,14 @@ extern void CommandSaveSettings( char *szParam ) {
 
     fprintf ( pf, "set export move number %d\n", exsExport.nMoves );
 
+    fprintf ( pf,
+              "set export moves parameters evaluation %s\n"
+              "set export moves parameters rollout %s\n"
+              "set export moves probabilities %s\n",
+              exsExport.afMovesParameters[ 0 ],
+              exsExport.afMovesParameters[ 1 ],
+              exsExport.fMovesDetailProb );
+
     for ( i = 0; i <= SKILL_VERYGOOD; i++ ) {
       if ( i == SKILL_NONE ) 
         fprintf ( pf, "set export moves display unmarked %s\n", 
@@ -3774,6 +3782,14 @@ extern void CommandSaveSettings( char *szParam ) {
                   aszSkillTypeCommand[ i ], 
                   exsExport.afMovesDisplay[ i ] ? "yes" : "no" );
     }
+
+    fprintf ( pf,
+              "set export cube parameters evaluation %s\n"
+              "set export cube parameters rollout %s\n"
+              "set export cube probabilities %s\n",
+              exsExport.afCubeParameters[ 0 ],
+              exsExport.afCubeParameters[ 1 ],
+              exsExport.fCubeDetailProb );
 
     for ( i = 0; i <= SKILL_VERYGOOD; i++ ) {
       if ( i == SKILL_NONE )
