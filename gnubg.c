@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.237 2002/07/04 16:01:53 oysteijo Exp $
+ * $Id: gnubg.c,v 1.238 2002/07/04 16:52:11 thyssen Exp $
  */
 
 #include "config.h"
@@ -3577,7 +3577,7 @@ extern void CommandSaveSettings( char *szParam ) {
 
     char szTemp[ 1024 ];
     FILE *pf;
-    int i; /* , cCache; */
+    int i, cCache; 
     char *szFile;
 
     szParam = NextToken ( &szParam );
@@ -3682,10 +3682,10 @@ extern void CommandSaveSettings( char *szParam ) {
 	     fAutoMove ? "on" : "off",
 	     fAutoRoll ? "on" : "off",
 	     nBeavers );
-#if 0
+//#if 0
     EvalCacheStats( NULL, &cCache, NULL, NULL );
     fprintf( pf, "set cache %d\n", cCache );
-#endif
+//#endif
     fprintf( pf, "set clockwise %s\n"
 	     "set confirm new %s\n"
 	     "set confirm save %s\n"
