@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.32 2001/11/01 15:47:56 gtw Exp $
+ * $Id: sgf.c,v 1.33 2002/01/31 19:16:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -793,6 +793,7 @@ static void RestoreGame( list *pl ) {
 	pmrResign = malloc( sizeof( pmrResign ->r ) );
 	pmrResign->mt = MOVE_RESIGN;
 	pmrResign->r.sz = NULL;
+        pmrResign->r.esResign.et = EVAL_NONE;
 	pmrResign->r.fPlayer = !pmr->g.fWinner;
 	pmrResign->r.nResigned = pmr->g.nPoints / ms.nCube;
 
