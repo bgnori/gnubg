@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.1 2002/11/24 14:46:17 thyssen Exp $
+ * $Id: gtkrace.c,v 1.2 2002/12/07 20:37:55 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -402,7 +402,7 @@ OSRPage ( int anBoard[ 2 ][ 25 ], racewidget *prw ) {
   int i;
   char *asz[ 6 ];
   const char *aszTitle[] = {
-    N_(""),
+    "",
     N_("Win"),
     N_("W g"),
     N_("W bg"),
