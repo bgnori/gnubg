@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.360 2002/12/22 12:42:55 oysteijo Exp $
+ * $Id: gnubg.c,v 1.361 2002/12/25 16:30:29 thyssen Exp $
  */
 
 #include "config.h"
@@ -456,7 +456,19 @@ command cER = {
 }, cHighlightColour = {
     /* dummy command used for highlight colour names */
     NULL, NULL, NULL, NULL, &cHighlightColour
+}, acAnalyseClear[] = {
+    { "game", CommandAnalyseClearGame, 
+      N_("Clear analysis for this game"), NULL, NULL },
+    { "match", CommandAnalyseClearMatch, 
+      N_("Clear analysis for entire match"), NULL, NULL },
+    { "session", CommandAnalyseClearMatch, 
+      N_("Clear analysis for entire session"), NULL, NULL },
+    { "move", CommandAnalyseClearMove, 
+      N_("Clear analysis for this move"), NULL, NULL },
+    { NULL, NULL, NULL, NULL, NULL }
 }, acAnalyse[] = {
+    { "clear", NULL, 
+      N_("Clear previous analysis"), NULL, acAnalyseClear },
     { "game", CommandAnalyseGame, 
       N_("Compute analysis and annotate current game"),
       NULL, NULL },
