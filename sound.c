@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.29 2004/04/02 16:36:32 Superfly_Jon Exp $
+ * $Id: sound.c,v 1.30 2004/04/04 07:43:41 thyssen Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -65,6 +65,10 @@
 
 #if HAVE_NAS
 #include <audio/audiolib.h>
+#endif
+
+#if HAVE_AUDIOFILE
+#include <audiofile.h>
 #endif
 
 #ifdef WIN32
