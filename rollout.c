@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.45 2001/10/18 20:45:40 thyssen Exp $
+ * $Id: rollout.c,v 1.46 2001/10/23 08:38:10 thyssen Exp $
  */
 
 #include "config.h"
@@ -640,6 +640,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
       
     }
 
+/*
   printf ( "rollout %i %f %f %f %f %f %f %f\n",
            iGame,
            aarOutput[ 0 ][ 0 ],
@@ -649,6 +650,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
            aarOutput[ 0 ][ 4 ],
            aarOutput[ 0 ][ 5 ],
            aarOutput[ 0 ][ 6 ] );
+ */
            
 
     return 0;
