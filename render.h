@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.5.4.2 2003/06/11 11:44:00 Superfly_Jon Exp $
+ * $Id: render.h,v 1.5.4.3 2003/06/16 07:11:38 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -64,6 +64,7 @@ typedef struct _renderdata {
 	int skin3d;	/* Test skin number */
 	int animateRoll;	/* Animate dice rolls */
 	int animateFlag;	/* Animate resignation flag */
+	int closeBoardOnExit;	/* Animate board close on quit */
 #endif
 } renderdata;
 

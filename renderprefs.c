@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.3.4.3 2003/06/13 08:57:08 Superfly_Jon Exp $
+ * $Id: renderprefs.c,v 1.3.4.4 2003/06/16 07:11:38 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -278,7 +278,7 @@ extern void RenderPreferencesParam( renderdata *prd, char *szParam,
     else if( !strncasecmp( szParam, "translucent", c ) )
 	/* deprecated option "translucent"; ignore */
 	;
-#ifdef USE_BOARD3D
+#if USE_BOARD3D
     else if( !strncasecmp( szParam, "boardshadows", c ) )
 		prd->showShadows = toupper( *szValue ) == 'Y';
     else if( !strncasecmp( szParam, "testskin", c ) )
@@ -287,6 +287,8 @@ extern void RenderPreferencesParam( renderdata *prd, char *szParam,
 		prd->animateRoll = toupper( *szValue ) == 'Y';
     else if( !strncasecmp( szParam, "animateflag", c ) )
 		prd->animateFlag = toupper( *szValue ) == 'Y';
+    else if( !strncasecmp( szParam, "closeboard", c ) )
+		prd->closeBoardOnExit = toupper( *szValue ) == 'Y';
     else if( !strncasecmp( szParam, "boardtype", c ) )
 		prd->fDisplayType = *szValue == '2' ? DT_2D : DT_3D;
 #endif
@@ -434,6 +436,7 @@ extern char *RenderPreferencesCommand( renderdata *prd, char *sz ) {
 		 "testskin=%d "
 		 "animateroll=%c "
 		 "animateflag=%c "
+		 "closeboard=%c "
 #endif
 	     "labels=%c wood=%s hinges=%c "
 	     "light=%0.0f;%0.0f shape=%0.1f " 
@@ -458,6 +461,7 @@ extern char *RenderPreferencesCommand( renderdata *prd, char *sz ) {
 		prd->skin3d,
 		prd->animateRoll ? 'y' : 'n',
 		prd->animateFlag ? 'y' : 'n',
+		prd->closeBoardOnExit ? 'y' : 'n',
 #endif
              /* labels ... */
              prd->fLabels ? 'y' : 'n',

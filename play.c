@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.191.2.2 2003/06/13 08:57:08 Superfly_Jon Exp $
+ * $Id: play.c,v 1.191.2.3 2003/06/16 07:11:38 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1613,7 +1613,13 @@ extern int NextTurn( int fPlayNext ) {
 #if USE_GUI
 	if( fX ) {
 	    if( fDisplay )
-		ShowBoard();
+		{
+#if USE_BOARD3D
+			if (ms.fResigned && rdAppearance.fDisplayType == DT_3D)
+				StopIdle3d();	/* Stop flag waving */
+#endif
+			ShowBoard();
+		}
 	    else
 		outputx();
 	}

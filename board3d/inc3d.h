@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.1.2.2 2003/06/13 08:57:08 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.1.2.3 2003/06/16 07:11:39 Superfly_Jon Exp $
 */
 
 /* Comment next lines to use glut, gtkglarea or gtkglext */
@@ -124,6 +124,7 @@ void calculateBackgroundSize(BoardData *bd, int viewport[4]);
 
 // Misc functions
 void SetupSimpleMatAlpha(Material* pMat, float r, float g, float b, float a);
+void SetupSimpleMat(Material* pMat, float r, float g, float b);
 void setMaterial(Material* pMat);
 void SetColour(float r, float g, float b, float a);
 unsigned char *LoadDIBitmap(const char *filename, int *width, int *height);

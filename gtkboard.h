@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.42.2.3 2003/06/13 08:57:08 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.42.2.4 2003/06/16 07:11:38 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -209,6 +209,10 @@ typedef struct _BoardData {
 	/* Angle of board display */
 	float fovAngle;	/* y-field of view angle 0-90 */
 	float boardAngle;	/* angle board is rotated at 0-90 */
+
+	int iTargetHelpPoints[4];	/* Drag target position */
+	int DragTargetHelp;
+
 #endif
 } BoardData;
 
@@ -227,6 +231,8 @@ extern void AnimateMove3d();
 extern void ShowFlag3d();
 extern void StopIdle3d();
 
+extern void PlaceMovingPieceRotation(int dest, int src);
+extern void SetMovingPieceRotation(int pt);
 extern void updateOccPos(BoardData* bd);
 extern void updateHingeOccPos(BoardData* bd);
 extern void updateFlagOccPos(BoardData* bd);
