@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.10 2002/09/06 16:51:47 thyssen Exp $
+ * $Id: export.h,v 1.11 2002/09/23 20:27:31 thyssen Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -25,6 +25,16 @@
 #define EXPORT_CUBE_ACTUAL   7
 #define EXPORT_CUBE_MISSED   8
 #define EXPORT_CUBE_CLOSE    9
+
+
+typedef enum _htmlexporttype {
+  HTML_EXPORT_TYPE_GNU,
+  HTML_EXPORT_TYPE_BBS,
+  HTML_EXPORT_TYPE_FIBS2HTML,
+  NUM_HTML_EXPORT_TYPES
+} htmlexporttype;
+
+extern char *aszHTMLExportType[];
 
 typedef struct _exportsetup {
 
@@ -57,7 +67,7 @@ typedef struct _exportsetup {
   /* For example, frames/non frames for HTML. */
 
   char *szHTMLPictureURL;
-  char *szHTMLType;
+  htmlexporttype het;
   char *szHTMLExtension;
 
 } exportsetup;
