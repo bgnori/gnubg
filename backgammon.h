@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.145 2002/07/28 23:16:21 oysteijo Exp $
+ * $Id: backgammon.h,v 1.146 2002/07/29 18:55:27 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -703,6 +703,13 @@ extern void CommandAccept( char * ),
     CommandSetTrainingAnneal( char * ),
     CommandSetTrainingThreshold( char * ),
     CommandSetTurn( char * ),
+    CommandSetTutorCube( char * ),
+    CommandSetTutorEval( char *sz ),
+    CommandSetTutorChequer( char * ),
+    CommandSetTutorMode( char * ),  
+    CommandSetTutorSkillDoubtful( char *sz ),
+    CommandSetTutorSkillBad( char *sz ), 
+    CommandSetTutorSkillVeryBad( char *sz ),
     CommandShowAnalysis( char * ),
     CommandShowAutomatic( char * ),
     CommandShowBoard( char * ),
@@ -743,6 +750,7 @@ extern void CommandAccept( char * ),
     CommandShowThorp( char * ),
     CommandShowTraining( char * ),
     CommandShowTurn( char * ),
+    CommandShowTutor( char * ), 
     CommandShowVersion( char * ),
     CommandShowWarranty( char * ),
     CommandSwapPlayers ( char * ),
@@ -751,10 +759,9 @@ extern void CommandAccept( char * ),
     CommandXCopy ( char * );
 
 
-extern int fTutor;
-extern void CommandSetTutor( char * ),
-  CommandShowTutor( char * );
+extern int fTutor, fTutorCube, fTutorChequer, nTutorSkillCurrent;
 
 extern int GiveAdvice ( skilltype Skill );
-
+extern skilltype TutorSkill;
+extern int fTutorAnalysis;
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.99 2002/07/28 23:16:21 oysteijo Exp $
+ * $Id: show.c,v 1.100 2002/07/29 18:55:27 thyssen Exp $
  */
 
 #include "config.h"
@@ -1440,11 +1440,56 @@ CommandShowPath ( char *sz ) {
 
 extern void CommandShowTutor( char *sz ) {
 
+  char *level;
+
   if( fTutor )
 	outputl( _("Warnings are given for \'doubtful\', \'bad\', or "
 			   "\'very bad\' moves.") );
   else
 	outputl( _("No warnings are given for \'doubtful\', \'bad\', or "
 			   "\'very bad\' moves.") );
+
+  if( fTutorCube )
+	outputl( _("Warnings are given for \'doubtful\', \'bad\', or "
+			   "\'very bad\' cube decisions.") );
+  else
+	outputl( _("No warnings are given for \'doubtful\', \'bad\', or "
+			   "\'very bad\' cube decisions.") );
+
+  if( fTutorChequer )
+	outputl( _("Warnings are given for \'doubtful\', \'bad\', or "
+			   "\'very bad\' chequer moves.") );
+  else
+	outputl( _("No warnings are given for \'doubtful\', \'bad\', or "
+			   "\'very bad\' chequer moves.") );
+  
+  if (fTutorAnalysis)
+outputl(_("Tutor mode evaluates moves using the same settings as Analysis.") );
+  else
+	outputl(
+	_("Tutor mode evaluates moves using the same settings as Evaluation.") );
+
+
+  switch (TutorSkill) {
+  default:
+  case SKILL_DOUBTFUL:
+	level = _("doubtful");
+	break;
+
+  case SKILL_BAD:
+	level = _("bad");
+	break;
+
+  case SKILL_VERYBAD:
+	level = _("very bad");
+	break;
+  }
+
+  if ( TutorSkill == SKILL_VERYBAD )
+     outputf( _("Warnings are given for '%s' play.\n"), level );
+  else
+     outputf( _("Warnings are given for '%s' or worse plays.\n"), level );
+
 }
+
 
