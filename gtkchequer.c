@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.47 2003/08/31 16:10:29 hb Exp $
+ * $Id: gtkchequer.c,v 1.48 2003/10/04 14:40:54 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -147,7 +147,7 @@ UpdateMoveList ( const hintdata *phd ) {
 
   if( piHighlight && *piHighlight >= 0 ) {
     GtkStyle *ps;
-    GtkStyle *psMoves = gtk_rc_get_style( pwMoves );
+    GtkStyle *psMoves = gtk_widget_get_style( pwMoves );
 
     if ( psMoves && ( ps = gtk_style_copy( psMoves ) ) ) {
     
@@ -157,7 +157,7 @@ UpdateMoveList ( const hintdata *phd ) {
         ps->fg[ GTK_STATE_SELECTED ].green = Highlightrgb[1];
       ps->fg[ GTK_STATE_NORMAL ].blue = ps->fg[ GTK_STATE_ACTIVE ].blue =
         ps->fg[ GTK_STATE_SELECTED ].blue = Highlightrgb[2];
-      
+
       for ( i = 0; i < pml->cMoves; i++ )
 	gtk_clist_set_row_style( GTK_CLIST( pwMoves ), i, i == *piHighlight ?
 				 ps : NULL );
@@ -166,7 +166,7 @@ UpdateMoveList ( const hintdata *phd ) {
 
     }
   }
-    
+
   /* update storedmoves global struct */
 
   UpdateStoredMoves ( pml, &ms );
@@ -864,6 +864,8 @@ CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid,
      aszTemp[ i ] = gettext ( aszTitle[ i ] );
 
     pwMoves = gtk_clist_new_with_titles( 11, aszTemp );
+
+    gtk_widget_ensure_style( GTK_WIDGET( pwMoves ) );
 
     /* This function should only be called when the game state matches
        the move list. */
