@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.259 2004/10/05 16:13:00 Superfly_Jon Exp $
+ * $Id: play.c,v 1.260 2004/10/11 00:04:51 nall Exp $
  */
 
 #include "config.h"
@@ -2314,6 +2314,30 @@ CommandAnnotateResign ( char *sz ) {
 extern void CommandAnnotateBad( char *sz ) {
 
     AnnotateMove( SKILL_BAD );
+}
+
+extern void CommandAnnotateAddComment( char *sz ) {
+
+    moverecord *pmr;
+
+    if (!plLastMove || !plLastMove->plNext ||
+		(!( pmr = plLastMove->plNext->p))) {
+	outputl( _("You must select a move to which to add the comment.") );
+	return;
+    }
+
+    if( pmr->sz )
+	free( pmr->sz );
+
+    pmr->sz = strdup(sz);
+    
+    outputl( _("Commentary for this move added.") );
+
+#if USE_GTK
+  if( fX )
+    GTKUpdateAnnotations();
+#endif
+
 }
 
 extern void CommandAnnotateClearComment( char *sz ) {

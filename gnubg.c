@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.586 2004/10/07 11:24:06 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.587 2004/10/11 00:04:51 nall Exp $
  */
 
 #include "config.h"
@@ -571,6 +571,7 @@ player ap[ 2 ] = {
 /* Usage strings */
 static char szDICE[] = N_("<die> <die>"),
     szCOMMAND[] = N_("<command>"),
+    szCOMMENT[] = N_("<comment>"),
     szER[] = N_("evaluation|rollout"), 
     szFILENAME[] = N_("<filename>"),
     szKEYVALUE[] = N_("[<key>=<value> ...]"),
@@ -700,6 +701,7 @@ command cER = {
       NULL, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acAnnotateMove[] = {
+    { "comment", CommandAnnotateAddComment, N_("Add commentary about a move"), szCOMMENT, NULL },
     { "bad", CommandAnnotateBad, N_("Mark as bad"), NULL, NULL },
     { "clear", CommandAnnotateClearSkill, 
       N_("Remove annotations"), NULL, NULL },
