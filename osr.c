@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.7 2003/03/30 16:37:51 thyssen Exp $
+ * $Id: osr.c,v 1.8 2003/05/12 18:41:01 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -846,7 +846,8 @@ bgProb ( const int anBoard[ 25 ],
 
 extern void
 raceProbs ( int anBoard[ 2 ][ 25 ], const int nGames,
-            float arOutput[ NUM_OUTPUTS ] ) {
+            float arOutput[ NUM_OUTPUTS ],
+            float arMu[ 2 ] ) {
   
   int an[ 2 ][ 25 ];
   float aarProbs[ 2 ][ MAX_PROBS ];
@@ -886,7 +887,7 @@ raceProbs ( int anBoard[ 2 ][ 25 ], const int nGames,
        prob. the opponent doesn't bear off in i rolls */
     
     w += aarProbs[ 1 ][ i ] * s;
-    
+
   }
 
   arOutput[ OUTPUT_WIN ] = min ( w, 1.0f );
@@ -930,5 +931,19 @@ raceProbs ( int anBoard[ 2 ][ 25 ], const int nGames,
   arOutput[ OUTPUT_LOSEGAMMON ] = min ( arG[ 0 ], 1.0f );
   arOutput[ OUTPUT_WINBACKGAMMON ] = min ( arBG[ 1 ], 1.0f );
   arOutput[ OUTPUT_LOSEBACKGAMMON ] = min ( arBG[ 0 ], 1.0f );
+
+  /* calculate average number of rolls to bear off */
+
+  if ( arMu ) {
+
+
+    for ( i = 0; i < 2; ++i ) {
+      arMu[ i ] = 0.0f;
+      for ( j = 0; j < MAX_PROBS; ++j )
+        arMu[ i ] += 1.0 * j * aarProbs[ i ][ j ];
+
+    }
+
+  }
 
 }

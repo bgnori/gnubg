@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.h,v 1.1 2002/10/18 09:56:00 thyssen Exp $
+ * $Id: osr.h,v 1.2 2003/05/12 18:41:01 thyssen Exp $
  */
 
 #ifndef _OSR_H_
@@ -24,7 +24,8 @@
 
 extern void
 raceProbs ( int anBoard[ 2 ][ 25 ], const int nGames,
-            float arOutput[ NUM_OUTPUTS ] );
+            float arOutput[ NUM_OUTPUTS ],
+            float arMu[ 2 ] );
 
 
 #endif /* _OSR_H_ */
