@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.90 2002/12/06 20:14:06 thyssen Exp $
+ * $Id: analysis.c,v 1.91 2002/12/09 20:24:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -106,8 +106,12 @@ LuckFirst ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
                                 (evalcontext *) pec ) < 0 )
         return ERR_VAL;
 
-      if ( pec->fCubeful )
-        aar[ i ][ j ] = - ar[ OUTPUT_CUBEFUL_EQUITY ];
+      if ( pec->fCubeful ) {
+        if ( pci->nMatchTo )
+          aar[ i ][ j ] = - mwc2eq ( ar[ OUTPUT_CUBEFUL_EQUITY ], &ciOpp );
+        else
+          aar[ i ][ j ] = - ar[ OUTPUT_CUBEFUL_EQUITY ];
+      }
       else
         aar[ i ][ j ] = - ar[ OUTPUT_EQUITY ];
 
@@ -133,8 +137,12 @@ LuckFirst ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
                                 (evalcontext *) pec ) < 0 )
         return ERR_VAL;
 
-      if ( pec->fCubeful )
-        aar[ i ][ j ] = ar[ OUTPUT_CUBEFUL_EQUITY ];
+      if ( pec->fCubeful ) {
+        if ( pci->nMatchTo )
+          aar[ i ][ j ] = mwc2eq ( ar[ OUTPUT_CUBEFUL_EQUITY ], &ciOpp );
+        else
+          aar[ i ][ j ] = ar[ OUTPUT_CUBEFUL_EQUITY ];
+      }
       else
         aar[ i ][ j ] = ar[ OUTPUT_EQUITY ];
 
@@ -173,10 +181,16 @@ LuckNormal ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
                                 (evalcontext *) pec ) < 0 )
         return ERR_VAL;
 
-      if ( pec->fCubeful )
-        aar[ i ][ j ] = - ar[ OUTPUT_CUBEFUL_EQUITY ];
+      if ( pec->fCubeful ) {
+        if ( pci->nMatchTo )
+          aar[ i ][ j ] = - mwc2eq ( ar[ OUTPUT_CUBEFUL_EQUITY ], &ciOpp );
+        else
+          aar[ i ][ j ] = - ar[ OUTPUT_CUBEFUL_EQUITY ];
+      }
       else
         aar[ i ][ j ] = - ar[ OUTPUT_EQUITY ];
+
+      printf ( "LuckNormal: %d %d %f\n", i , j, aar[ i ][ j ] );
 
       rMean += ( i == j ) ? aar[ i ][ j ] : aar[ i ][j ] * 2.0f;
 
