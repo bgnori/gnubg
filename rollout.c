@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.106 2003/07/07 09:34:29 grob Exp $
+ * $Id: rollout.c,v 1.107 2003/07/07 10:34:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -91,15 +91,16 @@ static int RolloutDice( int iTurn, int iGame, int cGames,
                             const rng rngx,
                             const int fRotate ) {
 
+  static int nSkip;
+
+  if( !iGame )
+    nSkip = 0;
+
   if ( fInitial && !iTurn ) {
       /* rollout of initial position: no doubles allowed */
       if( fRotate ) {
-	  static int nSkip;
 	  int j;
       
-	  if( !iGame )
-	      nSkip = 0;
-
 	  for( ; ; nSkip++ ) {
 	      j = aaanPermutation[ 0 ][ 0 ][ ( iGame + nSkip ) % 36 ];
 	      
@@ -109,7 +110,7 @@ static int RolloutDice( int iTurn, int iGame, int cGames,
 	      if( anDice[ 0 ] != anDice[ 1 ] )
 		  break;
 	  }
-	  
+
 	  return 0;
       } else {
 	  int n;
@@ -129,7 +130,7 @@ static int RolloutDice( int iTurn, int iGame, int cGames,
 	  k; /* 36**i */
       
       for( i = 0, j = 0, k = 1; i < 6 && i <= iTurn; i++, k *= 36 )
-	  j = aaanPermutation[ i ][ iTurn ][ ( iGame / k + j ) % 36 ];
+	  j = aaanPermutation[ i ][ iTurn ][ ( ( iGame + nSkip ) / k + j ) % 36 ];
       
       anDice[ 0 ] = j / 6 + 1;
       anDice[ 1 ] = j % 6 + 1;
