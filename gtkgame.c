@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.192 2002/07/24 16:50:09 thyssen Exp $
+ * $Id: gtkgame.c,v 1.193 2002/07/25 15:04:56 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4680,12 +4680,7 @@ extern void GTKRollout( int c, char asz[][ 40 ], int cGames,
     int i;
     GtkWidget *pwVbox;
     GtkWidget *pwButtons,
-#ifdef WIN32
-        *pwCopy = gtk_button_new_with_label( _("Copy rollout results") );
-#else
-        *pwCopy = gtk_button_new_with_label( _("Dump rollout results") );
-#endif    
-    GtkWidget *pwViewStat = gtk_button_new_with_label ( _("View statistics") );
+          *pwViewStat = gtk_button_new_with_label ( _("View statistics") );
 
     pwRolloutDialog = CreateDialog( _("GNU Backgammon - Rollout"), FALSE, NULL,
 				    NULL );
@@ -4698,15 +4693,11 @@ extern void GTKRollout( int c, char asz[][ 40 ], int cGames,
     /* Buttons */
 
     pwButtons = DialogArea( pwRolloutDialog, DA_BUTTONS );
-    gtk_container_add( GTK_CONTAINER( pwButtons ), pwCopy );
 
     if ( ars )
       gtk_container_add( GTK_CONTAINER( pwButtons ), pwViewStat );
 
-    /* Setup signals */
-
-    gtk_signal_connect( GTK_OBJECT( pwCopy ), "clicked",
-			GTK_SIGNAL_FUNC( GTKDumpRolloutResults ), NULL );
+    /* Setup signal */
 
     gtk_signal_connect( GTK_OBJECT( pwViewStat ), "clicked",
 			GTK_SIGNAL_FUNC( GTKViewRolloutStatistics ),
@@ -4763,41 +4754,6 @@ extern void GTKRollout( int c, char asz[][ 40 ], int cGames,
         gtk_main_iteration();
     GTKAllowStdin();
 }
-
-extern void GTKDumpRolloutResults(GtkWidget *widget, gpointer data) {
-
-    /* FIXME - This function should also dump the rollout settings? Which?
-               At least the number of trials.  */
-
-    char sz[4096];           
-    char szL[40];           
-    gchar *szTemp;
-    int i, j;
-
-    sprintf( sz, _("                              Win    W(g)   W(bg)  L(g)"
-        "   L(bg) Equity  Cubeful\n") );
-   
-    for ( j = 0; j < GTK_CLIST(pwRolloutResult)->rows ; j++){
-       for ( i = 0; i < 8 ; i++) {
-           gtk_clist_get_text (GTK_CLIST( pwRolloutResult ), j, i, &szTemp);
-           if (i == 0) 
-              sprintf( szL, "%28.28s", szTemp);
-           else if ( i < OUTPUT_EQUITY + 1 )
-              sprintf( szL, "%7.7s", szTemp); 
-           else 
-              sprintf( szL, "%8.8s", szTemp); 
-
-           strcat(sz , szL);
-       }
-       strcat( sz , "\n" );
-    }
-#ifdef WIN32
-    WinCopy( sz );
-#else
-    printf("%s", sz);
-#endif
-}
-
 
 /*
  * Make pages with statistics.
