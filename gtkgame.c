@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.27 2001/02/13 18:24:50 gtw Exp $
+ * $Id: gtkgame.c,v 1.28 2001/02/22 16:44:24 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -32,7 +32,9 @@
 #endif
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
+#if HAVE_GDK_GDKX_H
 #include <gdk/gdkx.h> /* for ConnectionNumber GTK_DISPLAY -- get rid of this */
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

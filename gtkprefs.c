@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.4 2001/01/16 18:38:53 gtw Exp $
+ * $Id: gtkprefs.c,v 1.5 2001/02/22 16:44:24 gtw Exp $
  */
 
 #include "config.h"
@@ -32,6 +32,10 @@
 #include "gtkboard.h"
 #include "gtkgame.h"
 #include "gtkprefs.h"
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 static GtkAdjustment *apadj[ 2 ], *paAzimuth, *paElevation,
     *apadjCoefficient[ 2 ], *apadjExponent[ 2 ], *apadjPoint[ 2 ],
@@ -262,9 +266,13 @@ static void BoardPrefsOK( GtkWidget *pw, BoardData *bd ) {
 	sqrt( 1.0 - bd->arLight[ 2 ] * bd->arLight[ 2 ] );
     bd->arLight[ 1 ] = sinf( paAzimuth->value / 180 * M_PI ) *
 	sqrt( 1.0 - bd->arLight[ 2 ] * bd->arLight[ 2 ] );
-    
-    bd->translucent = fTranslucent;
 
+#if HAVE_XCOPYPLANE
+    bd->translucent = fTranslucent;
+#else
+    /* bd->translucent must always be true; leave it alone. */
+#endif
+    
     gtk_widget_destroy( gtk_widget_get_toplevel( pw ) );
 
     BoardPreferencesCommand( bd->widget, sz );
@@ -423,7 +431,12 @@ extern void BoardPreferencesParam( GtkWidget *pwBoard, char *szParam,
 					&bd->aSpeckle[ 0 ] );
     else if( !g_strncasecmp( szParam, "translucent", c ) )
 	/* translucent=bool */
+#if HAVE_XCOPYPLANE
 	bd->translucent = toupper( *szValue ) == 'Y';
+#else
+        /* bd->translucent must always be true; silently ignore changes. */
+        ;
+#endif
     else if( !g_strncasecmp( szParam, "light", c ) ) {
 	/* light=azimuth;elevation */
 	float rAzimuth, rElevation;
