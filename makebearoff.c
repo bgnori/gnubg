@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.13 2002/11/26 17:25:21 jsegrave Exp $
+ * $Id: makebearoff.c,v 1.14 2002/11/27 12:26:03 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1112,7 +1112,7 @@ usage ( char *arg0 ) {
 static void
 version ( void ) {
 
-  printf ( "makebearoff $Revision: 1.13 $\n" );
+  printf ( "makebearoff $Revision: 1.14 $\n" );
 
 }
 
@@ -1288,10 +1288,10 @@ extern int main( int argc, char **argv ) {
                 "Number of chequers           : %12d\n"
                 "Calculate equities           : %s\n"
                 "Write header                 : %s\n"
-                "Number of one-sided positions: %'12d\n"
-                "Total number of positions    : %'12d\n"
-                "Size of resulting file       : %'12d bytes\n"
-                "Size of hash                 : %'12d bytes\n"
+                "Number of one-sided positions: %12d\n"
+                "Total number of positions    : %12d\n"
+                "Size of resulting file       : %12d bytes\n"
+                "Size of hash                 : %12d bytes\n"
                 "Reuse old bearoff database   : %s %s\n"),
               nTSP, nTSC,
               fCubeful ? _("cubeless and cubeful") : _("cubeless only"),
