@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.309 2003/03/02 12:06:01 thyssen Exp $
+ * $Id: gtkgame.c,v 1.310 2003/03/02 14:33:49 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2646,6 +2646,10 @@ extern void RunGTK( GtkWidget *pwSplash ) {
     gtk_widget_show_all( pwMain );
     
     DestroySplash ( pwSplash );
+
+    /* force update of board; needed to display board correctly if user
+       has special settings, e.g., clockwise or nackgammon */
+    ShowBoard();
 
     gtk_main();
 }
