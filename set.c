@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.141 2002/11/22 20:10:31 gtw Exp $
+ * $Id: set.c,v 1.142 2002/11/23 03:01:56 gtw Exp $
  */
 
 #include "config.h"
@@ -3541,22 +3541,22 @@ static void SetPriority( int n ) {
        
     if( n < -19 ) {
 	tp = THREAD_PRIORITY_TIME_CRITICAL;
-	pch = _N("time critical");
+	pch = N_("time critical");
     } else if( n < -10 ) {
 	tp = THREAD_PRIORITY_HIGHEST;
-	pch = _N("highest");
+	pch = N_("highest");
     } else if( n < 0 ) {
 	tp = THREAD_PRIORITY_ABOVE_NORMAL;
-	pch = _N("above normal");
+	pch = N_("above normal");
     } else if( !n ) {
 	tp = THREAD_PRIORITY_NORMAL;
-	pch = _N("normal");
+	pch = N_("normal");
     } else if( n < 19 ) {
 	tp = THREAD_PRIORITY_BELOW_NORMAL;
-	pch = _N("below normal");
+	pch = N_("below normal");
     } else {
 	tp = THREAD_PRIORITY_IDLE;
-	pch = _N("idle");
+	pch = N_("idle");
     }
 
     if ( SetThreadPriority(GetCurrentThread(), tp ) ) {
