@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.9 2002/12/20 19:51:57 gtw Exp $
+ * $Id: render.c,v 1.10 2003/01/18 16:25:32 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2003,7 +2003,7 @@ static void DrawChequers( renderdata *prd, unsigned char *puch, int nStride,
 			  int x, int y, int cx, int cy ) {
     int i, c, yChequer;
 
-    c = ( !n || n == 25 ) ? 3 : 5;
+    c = ( !iPoint || iPoint == 25 ) ? 3 : 5;
     yChequer = aaanPositions[ prd->fClockwise ][ iPoint ][ 1 ] * prd->nSize;
     
     for( i = 0; i < n; i++ ) {
