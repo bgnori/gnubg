@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.14 2000/01/16 18:50:33 gtw Exp $
+ * $Id: set.c,v 1.15 2000/02/01 00:09:38 gtw Exp $
  */
 
 #include "config.h"
@@ -219,6 +219,13 @@ extern void CommandSetCache( char *sz ) {
     else
 	printf( "The position cache has been sized to %d entr%s.\n", n,
 		n == 1 ? "y" : "ies" );
+}
+
+extern void CommandSetConfirm( char *sz ) {
+    
+    SetToggle( "confirm", &fConfirm, sz, "Will ask for confirmation before "
+	       "aborting games in progress.", "Will not ask for confirmation "
+	       "before aborting games in progress." );
 }
 
 extern void CommandSetCubeCentre( char *sz ) {

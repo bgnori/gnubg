@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.28 2000/02/01 00:03:26 gtw Exp $
+ * $Id: gnubg.c,v 1.29 2000/02/01 00:09:37 gtw Exp $
  */
 
 #include "config.h"
@@ -190,6 +190,8 @@ static command acDatabase[] = {
     { "board", CommandSetBoard, "Set up the board in a particular "
       "position", NULL },
     { "cache", CommandSetCache, "Set the size of the evaluation cache", NULL },
+    { "confirm", CommandSetConfirm, "Ask for confirmation before aborting "
+      "a game in progress", NULL },
     { "crawford", CommandSetCrawford, 
       "Set whether this is the Crawford game", NULL },
     { "cube", NULL, "Set the cube owner and/or value", acSetCube },

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.19 2000/01/31 17:53:33 gtw Exp $
+ * $Id: backgammon.h,v 1.20 2000/02/01 00:09:37 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -138,11 +138,10 @@ extern void CommandAccept( char * ),
     CommandSetAutoGame( char * ),
     CommandSetAutoMove( char * ),
     CommandSetAutoRoll( char * ),
-    CommandSetJacoby( char * ),
-    CommandSetCrawford( char * ),
-    CommandSetPostCrawford( char * ),
     CommandSetBoard( char * ),
     CommandSetCache( char * ),
+    CommandSetConfirm( char * ),
+    CommandSetCrawford( char * ),
     CommandSetCubeCentre( char * ),
     CommandSetCubeOwner( char * ),
     CommandSetCubeUse( char * ),
@@ -154,6 +153,7 @@ extern void CommandAccept( char * ),
     CommandSetEvalPlies( char * ),
     CommandSetEvalTolerance( char * ),
     CommandSetEvaluation( char * ),
+    CommandSetJacoby( char * ),
     CommandSetNackgammon( char * ),
     CommandSetPlayerEvaluation( char * ),
     CommandSetPlayerGNU( char * ),
@@ -162,6 +162,7 @@ extern void CommandAccept( char * ),
     CommandSetPlayerPlies( char * ),
     CommandSetPlayerPubeval( char * ),
     CommandSetPlayer( char * ),
+    CommandSetPostCrawford( char * ),
     CommandSetPrompt( char * ),
     CommandSetRNGAnsi( char * ),
     CommandSetRNGBsd( char * ),
