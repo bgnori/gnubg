@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.56 2002/12/22 10:58:57 thyssen Exp $
+ * $Id: gtkgame.h,v 1.57 2002/12/27 15:07:17 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -67,7 +67,7 @@ extern void GTKSuspendInput( monitor *pm );
 extern void GTKResumeInput( monitor *pm );
 
 extern int InitGTK( int *argc, char ***argv );
-extern void RunGTK( void );
+extern void RunGTK( GtkWidget *pwSplash );
 extern void GTKAllowStdin( void );
 extern void GTKDisallowStdin( void );
 extern void GTKDelay( void );

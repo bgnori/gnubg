@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.282 2002/12/26 12:50:21 thyssen Exp $
+ * $Id: gtkgame.c,v 1.283 2002/12/27 15:07:17 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -73,6 +73,7 @@
 #include "path.h"
 #include "gtkmovefilter.h"
 #include "gtkmet.h"
+#include "gtksplash.h"
 
 #define GNUBGMENURC ".gnubgmenurc"
 
@@ -2537,7 +2538,7 @@ extern int InitGTK( int *argc, char ***argv ) {
     return TRUE;
 }
 
-extern void RunGTK( void ) {
+extern void RunGTK( GtkWidget *pwSplash ) {
 
     GTKSet( &ms.fCubeOwner );
     GTKSet( &ms.nCube );
@@ -2545,6 +2546,9 @@ extern void RunGTK( void ) {
     GTKSet( &ms.fTurn );
     GTKSet( &ms.gs );
     
+    PushSplash ( pwSplash, 
+                 _("Rendering"), _("Board"), 0 );
+
     ShowBoard();
 
     GTKAllowStdin();
@@ -2580,6 +2584,8 @@ extern void RunGTK( void ) {
     
     gtk_widget_show_all( pwMain );
     
+    DestroySplash ( pwSplash );
+
     gtk_main();
 }
 
