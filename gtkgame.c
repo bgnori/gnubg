@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.524 2004/11/15 11:17:40 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.525 2004/11/15 14:26:20 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -539,6 +539,7 @@ extern void GTKSuspendInput()
 		grabIdSignal = gtk_signal_connect_after(GTK_OBJECT(pwGrab),
 				"key-press-event", GTK_SIGNAL_FUNC(gtk_true), NULL);
 	}
+
 	/* Don't check stdin here; readline isn't ready yet. */
 	GTKDisallowStdin();
 	suspendCount++;
@@ -550,10 +551,11 @@ extern void GTKResumeInput()
 	suspendCount--;
 	if (suspendCount == 0)
 	{
-		gtk_signal_disconnect(GTK_OBJECT(pwGrab), grabIdSignal);
-		gtk_grab_remove(grabbedWidget);
-		if (pwGrab != grabbedWidget)
-			g_print("** Problem in widget grabbing! **\n");
+		if (GTK_IS_WIDGET(grabbedWidget) && GTK_WIDGET_HAS_GRAB(grabbedWidget))
+		{
+			gtk_signal_disconnect(GTK_OBJECT(grabbedWidget), grabIdSignal);
+			gtk_grab_remove(grabbedWidget);
+		}
 	}
 
 	GTKAllowStdin();
