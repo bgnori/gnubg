@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.77 2002/02/06 15:03:45 gtw Exp $
+ * $Id: show.c,v 1.78 2002/03/02 23:43:20 gtw Exp $
  */
 
 #include "config.h"
@@ -504,7 +504,7 @@ extern void CommandShowPlayer( char *sz ) {
 
 	switch( ap[ i ].pt ) {
 	case PLAYER_EXTERNAL:
-	    outputl( "external\n" );
+	    outputf( "external: %s\n\n", ap[ i ].szSocket );
 	    break;
 	case PLAYER_GNU:
 	    outputf( "gnubg:\n" );
