@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.103 2003/04/08 20:54:33 thyssen Exp $
+ * $Id: analysis.c,v 1.104 2003/05/04 20:50:08 thyssen Exp $
  */
 
 #include "config.h"
@@ -688,10 +688,9 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
       
     case MOVE_DOUBLE:
 
-        if ( afAnalysePlayers && ! afAnalysePlayers[ pmr->d.fPlayer ] )
-          /* we do not analyse this player */
-          break;
-      
+      /* always analyse MOVE_DOUBLEs as they are shared with the subsequent
+         MOVE_TAKEs or MOVE_DROPs. */
+
         dt = DoubleType ( pms->fDoubled, pms->fMove, pms->fTurn );
 
         if ( dt != DT_NORMAL )
