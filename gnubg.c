@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.111 2001/03/26 15:36:00 gtw Exp $
+ * $Id: gnubg.c,v 1.112 2001/03/29 16:28:12 gtw Exp $
  */
 
 #include "config.h"
@@ -330,6 +330,8 @@ command acDatabase[] = {
 }, acSet[] = {
     { "annotation", CommandSetAnnotation, "Select whether move analysis and "
       "commentary are shown", szONOFF, NULL },
+    { "appearance", CommandSetColours, "Modify the look and feel of the "
+      "graphical interface", szKEYVALUE, NULL },
     { "automatic", NULL, "Perform certain functions without user input",
       NULL, acSetAutomatic },
     { "beavers", CommandSetBeavers, 
@@ -339,8 +341,8 @@ command acDatabase[] = {
       "position", szPOSITION, NULL },
     { "cache", CommandSetCache, "Set the size of the evaluation cache",
       szSIZE, NULL },
-    { "colours", CommandSetColours, "Modify the appearance of the board",
-      szKEYVALUE, NULL },
+    { "colours", CommandSetColours, "Synonym for `set appearance'", NULL,
+      NULL },
     { "confirm", CommandSetConfirm, "Ask for confirmation before aborting "
       "a game in progress", szONOFF, NULL },
     { "crawford", CommandSetCrawford, 
