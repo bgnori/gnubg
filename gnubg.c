@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.253 2002/07/22 16:30:21 thyssen Exp $
+ * $Id: gnubg.c,v 1.254 2002/07/23 15:55:27 thyssen Exp $
  */
 
 #include "config.h"
@@ -2421,7 +2421,7 @@ extern char *FormatMoveHint( char *sz, matchstate *pms, movelist *pml,
     if ( i ) 
       sprintf ( pc = strchr ( sz, 0 ),
                 " (%s)\n",
-                OutputEquityDiff ( rEqTop, rEq, &ci ) );
+                OutputEquityDiff ( rEq, rEqTop, &ci ) );
     else
       strcat ( sz, "\n" );
 
