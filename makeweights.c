@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.4 2001/01/11 21:18:57 gtw Exp $
+ * $Id: makeweights.c,v 1.5 2002/03/31 22:41:04 thyssen Exp $
  */
 
 #include "config.h"
@@ -24,6 +24,7 @@
 #include <neuralnet.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif
