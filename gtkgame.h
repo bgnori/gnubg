@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.90 2004/11/15 11:17:40 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.91 2005/01/04 09:27:34 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -191,10 +191,10 @@ extern void
 GTKNew ( void );
 
 extern void
-setWindowGeometry(windowobject* pwo);
+RefreshGeometries ( void );
 
 extern void
-RefreshGeometries ( void );
+setWindowGeometry(gnubgwindow window);
 
 extern int
 GTKGetMove ( int anMove[ 8 ] );
@@ -240,3 +240,14 @@ extern void GtkShowQuery(RowSet* pRow);
 
 extern void GetStyleFromRCFile(GtkStyle** ppStyle, char* name, GtkStyle* psBase);
 extern void ToggleDockPanels( gpointer *p, guint n, GtkWidget *pw );
+extern void DisplayWindows();
+extern int DockedPanelsShowing();
+extern int ArePanelsShowing();
+extern int ArePanelsDocked();
+extern int IsPanelDocked(gnubgwindow window);
+extern int GetPanelWidth(gnubgwindow panel);
+extern void SetPanelWidget(gnubgwindow window, GtkWidget* pWin);
+extern GtkWidget* GetPanelWidget(gnubgwindow window);
+extern void PanelShow(gnubgwindow panel);
+extern void PanelHide(gnubgwindow panel);
+extern int IsPanelShowVar(gnubgwindow panel, void *p);

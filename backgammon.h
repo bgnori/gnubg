@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.299 2004/11/15 11:17:40 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.300 2005/01/04 09:27:34 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -102,25 +102,6 @@ typedef struct _windowgeometry {
   int nWidth, nHeight;
   int nPosX, nPosY;
 } windowgeometry;
-
-typedef void (*panelFun)();
-
-typedef struct _windowobject {
-	char* winName;
-	int showing;
-	int docked;
-	int dockable;
-	int undockable;
-#if USE_GTK
-	panelFun showFun;
-	panelFun hideFun;
-	GtkWidget* pwWin;
-#endif
-	windowgeometry wg;
-} windowobject;
-
-extern windowobject woPanel[NUM_WINDOWS];
-extern int fDisplayPanels;
 
 extern void SaveWindowSettings(FILE* pf);
 extern void HidePanel(gnubgwindow window);
@@ -465,7 +446,7 @@ extern int fNextTurn, fComputing;
 
 /* User settings. */
 extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
-    fCubeUse, fDisplay, fDockPanels, fAutoBearoff, fShowProgress,
+    fCubeUse, fDisplay, fAutoBearoff, fShowProgress,
     nBeavers, fJacoby,
     fOutputRawboard, cAnalysisMoves, fAnalyseCube,
     fAnalyseDice, fAnalyseMove, fRecord,

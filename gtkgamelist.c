@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.11 2004/10/05 16:13:00 Superfly_Jon Exp $
+* $Id: gtkgamelist.c,v 1.12 2005/01/04 09:27:34 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -418,15 +418,17 @@ extern void GTKSetMoveRecord( moverecord *pmr ) {
 	if (!frozen)
 		SetAnnotation( pmr );
 
-    if( woPanel[WINDOW_HINT].pwWin ) {
-
 #ifdef UNDEF
-	hintdata *phd = gtk_object_get_user_data( GTK_OBJECT( woPanel[WINDOW_HINT].pwWin ) );
-
-	phd->fButtonsValid = FALSE;
-	CheckHintButtons( phd );
+{
+	GtkWidget* pwWin = GetPanelWidget(WINDOW_HINT);
+    if (pwWin)
+	{
+		hintdata *phd = gtk_object_get_user_data(GTK_OBJECT(pwWin));
+		phd->fButtonsValid = FALSE;
+		CheckHintButtons(phd);
+	}
+}
 #endif
-    }
     
 	if (yCurrent != -1 && xCurrent != -1)
 	{

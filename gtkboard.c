@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.191 2004/11/15 11:17:40 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.192 2005/01/04 09:27:34 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3560,11 +3560,7 @@ void board_edit( BoardData *bd ) {
     
     if( f ) {
 	/* Close hint window */
-    if( woPanel[WINDOW_HINT].pwWin )
-	{
-	  gtk_widget_destroy( woPanel[WINDOW_HINT].pwWin );
-	  woPanel[WINDOW_HINT].pwWin = NULL;
-	}
+	DestroyPanel(WINDOW_HINT);
 
 	/* Entering edit mode: enable entry fields for names and scores */
 	gtk_multiview_set_current( GTK_MULTIVIEW( bd->mname0 ), bd->name0 );
