@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.21 2003/05/24 10:24:50 hb Exp $
+ * $Id: sound.c,v 1.21.2.1 2003/05/30 14:35:38 grob Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -865,11 +865,11 @@ play_file_child(soundcache *psc, const char *filename) {
         char *args[4];
         char command[4096];
 
-#if USE_GTK
-        g_snprintf(command, sizeof(command), szSoundCommand, filename);
-#else
-	sprintf( command, szSoundCommand, filename );
-#endif
+    #if USE_GTK
+            g_snprintf(command, sizeof(command), szSoundCommand, filename);
+    #else
+            sprintf( command, szSoundCommand, filename );
+    #endif
 	
         args[0] = "sh";
         args[1] = "-c";
@@ -925,9 +925,9 @@ play_file_child(soundcache *psc, const char *filename) {
 	char *pch;
 	if( ( pch = can_play_audio() ) ) {
 	    play_audio_file(psc,filename, pch);
-#ifndef SIGIO
-	    _exit(0);
-#endif
+    #ifndef SIGIO
+                _exit(0);
+    #endif
 	}
     }
 #else
@@ -959,13 +959,13 @@ play_file(soundcache *psc, const char *filename) {
 
   int pid;
 
-#ifdef SIGIO
-  if( ssSoundSystem == SOUND_SYSTEM_NORMAL) {
-      /* we can play directly without forking */
-      play_file_child( psc, filename );
-      return;
-  }
-#endif
+    #ifdef SIGIO
+    if( ssSoundSystem == SOUND_SYSTEM_NORMAL) {
+        /* we can play directly without forking */
+        play_file_child( psc, filename );
+        return;
+    }
+    #endif
   
   /* fork, so we don't have to wait for the sound to finish */
   pid = fork();
