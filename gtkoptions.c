@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.14 2004/01/16 09:42:15 uid68519 Exp $
+ * $Id: gtkoptions.c,v 1.15 2004/01/28 11:06:27 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1463,9 +1463,8 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
 	if (rdAppearance.fDisplayType == DT_3D)
 	{
 		if (rdAppearance.quickDraw)
-		{	/* Target help and dice below board disabled in quick draw mode */
+		{	/* Dice below board disabled in quick draw mode - for now */
 			gtk_widget_set_sensitive(pow->pwUseDiceIcon, 0);
-			gtk_widget_set_sensitive(pow->pwDragTargetHelp, 0);
 		}
 	}
 #endif

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.22 2004/01/27 09:44:34 uid68519 Exp $
+* $Id: misc3d.c,v 1.23 2004/01/28 11:06:27 uid68519 Exp $
 */
 
 #include <math.h>
@@ -1665,8 +1665,13 @@ void RestrictiveRender(BoardData *bd)
 			numRestrictFrames--;
 		else
 		{
-			freezeRestrict = 0;
-			break;
+			if (numRestrictFrames > 1)
+				numRestrictFrames--;
+			else
+			{
+				freezeRestrict = 0;
+				break;
+			}
 		}
 	}
 }
@@ -1723,9 +1728,6 @@ void RestrictiveEndMouseMove(BoardData *bd, int pos, int depth)
 		EnlargeCurrentToBox(&lastCb);
 
 	freezeRestrict = 0;
-
-	if (numRestrictFrames > 1)
-		numRestrictFrames = -1;
 }
 
 void updateDicePos(Path* path, DiceRotation *diceRot, float dist, float pos[3])

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.91 2004/01/27 09:44:22 uid68519 Exp $
+ * $Id: gtkprefs.c,v 1.92 2004/01/28 11:06:27 uid68519 Exp $
  */
 
 #include "config.h"
@@ -1093,8 +1093,7 @@ static void BoardPrefsOK( GtkWidget *pw, BoardData *bd ) {
 	if (rdAppearance.fDisplayType == DT_3D)
 	{	/* Make sure main drawing area's context is current */
 		if (rdAppearance.quickDraw)
-		{	/* Disable drag help and dice below board too */
-			fGUIDragTargetHelp = 0;
+		{	/* Disable dice below board - for now */
 			fGUIDiceArea = 0;
 		}
 		MakeCurrent3d(bd->drawing_area3d);
@@ -1974,7 +1973,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.91 2004/01/27 09:44:22 uid68519 Exp $\n"
+          "    $Id: gtkprefs.c,v 1.92 2004/01/28 11:06:27 uid68519 Exp $\n"
           "\n"
           " -->\n"
           "\n"
