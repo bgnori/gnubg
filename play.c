@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.23 2000/04/10 21:24:38 gtw Exp $
+ * $Id: play.c,v 1.24 2000/07/10 16:42:18 gtw Exp $
  */
 
 #include "config.h"
@@ -145,16 +145,19 @@ static int ComputerTurn( void ) {
 	    pmn->anRoll[ 0 ] = anDice[ 0 ];
 	    pmn->anRoll[ 1 ] = anDice[ 1 ];
 	    pmn->fPlayer = fTurn;
-	    ListInsert( plGame, pmn );
 
 	    /* Don't use the global board for this call, to avoid
 	       race conditions with updating the board and aborting the
 	       move with an interrupt. */
 	    memcpy( anBoardMove, anBoard, sizeof( anBoardMove ) );
 	    if( FindBestMove( pmn->anMove, anDice[ 0 ], anDice[ 1 ],
-			      anBoardMove, &ap[ fTurn ].ec ) < 0 )
+			      anBoardMove, &ap[ fTurn ].ec ) < 0 ) {
+		free( pmn );
 		return -1;
-
+	    }
+	    
+	    ListInsert( plGame, pmn );
+	    
 	    memcpy( anBoard, anBoardMove, sizeof( anBoardMove ) );
 	    
 	    return 0;
