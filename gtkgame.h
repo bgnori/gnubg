@@ -16,11 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.59 2003/01/17 17:56:33 gtw Exp $
+ * $Id: gtkgame.h,v 1.60 2003/01/17 21:46:31 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
 #define _GTKGAME_H_
+
+#include <stdio.h>
 
 #include "backgammon.h"
 #include "rollout.h"
@@ -118,6 +120,10 @@ extern void GTKSet( void *p );
 extern void GTKUpdateAnnotations( void );
 extern int GTKGetManualDice( int an[ 2 ] );
 extern void GTKShowVersion( void );
+extern void GTKShowCalibration( void );
+extern void *GTKCalibrationStart( void ),
+    GTKCalibrationUpdate( void *context, float rEvalsPerSec ),
+    GTKCalibrationEnd( void *context );
 extern void GTKDumpRolloutResults(GtkWidget *widget, gpointer data);
 extern void GTKViewRolloutStatistics(GtkWidget *widget, gpointer data);
 #ifdef WIN32

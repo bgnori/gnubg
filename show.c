@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.133 2003/01/17 02:57:28 gtw Exp $
+ * $Id: show.c,v 1.134 2003/01/17 21:46:31 gtw Exp $
  */
 
 #include "config.h"
@@ -548,6 +548,22 @@ extern void CommandShowCache( char *sz ) {
 	outputc( '.' );
 
     outputc( '\n' );
+}
+
+extern void CommandShowCalibration( char *sz ) {
+
+#if USE_GTK
+    if( fX ) {
+	GTKShowCalibration();
+	return;
+    }
+#endif
+    
+    if( rEvalsPerSec > 0 )
+	outputf( _("Evaluation speed has been set to %.0f evaluations per "
+		   "second.\n"), rEvalsPerSec );
+    else
+	outputl( _("No evaluation speed has been recorded." ) );
 }
 
 extern void CommandShowClockwise( char *sz ) {

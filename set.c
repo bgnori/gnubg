@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.166 2003/01/17 02:57:28 gtw Exp $
+ * $Id: set.c,v 1.167 2003/01/17 21:46:31 gtw Exp $
  */
 
 #include "config.h"
@@ -625,6 +625,28 @@ extern void CommandSetCache( char *sz ) {
 	outputf( _("The position cache has been sized to %d entries.\n"), n );
     }
 
+}
+
+extern void CommandSetCalibration( char *sz ) {
+
+    float r;
+
+    if( !sz || !*sz ) {
+	rEvalsPerSec = -1.0f;
+	outputl( _("The evaluation speed has been cleared.") );
+	return;
+    }
+    
+    if( ( r = ParseReal( &sz ) ) <= 2.0f ) {
+	outputl( _("If you give a parameter to `set calibration', it must "
+		   "be a legal number of evaluations per second.") );
+	return;
+    }
+
+    rEvalsPerSec = r;
+
+    outputf( _("The speed estimate has been set to %.0f static "
+	       "evaluations per second.\n"), rEvalsPerSec );
 }
 
 extern void CommandSetClockwise( char *sz ) {
