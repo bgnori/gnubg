@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.21 2003/01/09 16:42:37 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.22 2003/01/10 18:22:23 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -293,18 +293,14 @@ ShowMove ( hintdata *phd, const int f ) {
     if ( ! ms.fMove )
       SwapSides ( anBoard );
 
-    sz = g_strdup_printf ( "show board %s", PositionID ( anBoard ) );
+    sz = g_strdup_printf ( "show fullboard %s", PositionID ( anBoard ) );
     UserCommand( sz );
     g_free ( sz );
 
   }
   else {
-    
-    memcpy ( anBoard, ms.anBoard, sizeof ( anBoard ) );
-    if ( ! ms.fMove )
-      SwapSides ( anBoard );
 
-    sz = g_strdup_printf ( "show board %s", PositionID ( anBoard ) );
+    sz = g_strdup ( "show board" );
     UserCommand( sz );
     g_free ( sz );
 
@@ -497,7 +493,7 @@ MoveListMove ( GtkWidget *pw, hintdata *phd ) {
   if ( ! ms.fMove )
     SwapSides ( anBoard );
 
-  sprintf ( szMove, "show board %s", PositionID ( anBoard ) );
+  sprintf ( szMove, "show fullboard %s", PositionID ( anBoard ) );
   UserCommand ( szMove );
   
   if ( phd->fDestroyOnMove )

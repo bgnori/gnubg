@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.369 2003/01/10 15:39:00 gtw Exp $
+ * $Id: gnubg.c,v 1.370 2003/01/10 18:21:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -1438,6 +1438,8 @@ command cER = {
       "engine"), NULL, NULL },
     { "evaluation", CommandShowEvaluation, N_("Display evaluation settings "
       "and statistics"), NULL, NULL },
+    { "fullboard", CommandShowFullBoard, 
+      N_("Redisplay the board position"), szOPTPOSITION, NULL },
     { "gammonvalues", CommandShowGammonValues, N_("Show gammon values"),
       NULL, NULL },
     { "egyptian", CommandShowEgyptian,
