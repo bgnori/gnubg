@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.13 2005/01/05 08:53:44 Superfly_Jon Exp $
+ * $Id: relational.c,v 1.14 2005/01/11 16:45:19 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -26,6 +26,7 @@
 #include "config.h"
 #endif
 
+#include <assert.h>
 #include <glib.h>
 
 #include "i18n.h"
