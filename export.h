@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.15 2002/12/15 22:07:33 thyssen Exp $
+ * $Id: export.h,v 1.16 2002/12/16 23:09:39 thyssen Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -44,8 +44,6 @@ typedef enum _htmlexportcss {
 extern char *aszHTMLExportType[];
 extern char *aszHTMLExportCSS[];
 extern char *aszHTMLExportCSSCommand[];
-
-extern int nPNGSize;
 
 typedef struct _exportsetup {
 
@@ -82,6 +80,10 @@ typedef struct _exportsetup {
   htmlexporttype het;
   char *szHTMLExtension;
   htmlexportcss hecss;
+
+  /* png */
+
+  int nPNGSize;
 
 } exportsetup;
 

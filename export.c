@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.5 2002/12/15 22:07:33 thyssen Exp $
+ * $Id: export.c,v 1.6 2002/12/16 23:09:39 thyssen Exp $
  */
 
 #include "config.h"
@@ -53,9 +53,6 @@
 #endif 
 
 /* size of html images in steps of 108x72 */
-
-int nPNGSize = 2;
-
 
 static void
 ExportGameEquityEvolution ( FILE *pf, list *plGame, 
@@ -539,12 +536,12 @@ CommandExportPositionPNG ( char *sz ) {
   bd = BOARD ( pwBoard )->board_data;
 
   memcpy ( &rd, &bd->rd, sizeof ( renderdata ) );
-  rd.nSize = nPNGSize;
+  rd.nSize = exsExport.nPNGSize;
 
   RenderImages ( &rd, &ri );
 
   GenerateImage ( &ri, &rd, ms.anBoard, sz, 
-                  nPNGSize, 108, 72, 0, 0, 
+                  exsExport.nPNGSize, 108, 72, 0, 0, 
                   ms.fMove, ms.fTurn, fCubeUse, ms.anDice, ms.nCube,
                   ms.fDoubled );
 
