@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.137 2001/05/21 14:46:03 gtw Exp $
+ * $Id: gnubg.c,v 1.138 2001/05/23 15:02:18 gtw Exp $
  */
 
 #include "config.h"
@@ -335,16 +335,31 @@ command acAnalyse[] = {
       "format", szFILENAME, NULL },
     { "latex", CommandExportGameLaTeX, "Records a log of the game in LaTeX "
       "format", szFILENAME, NULL },
+    { "postscript", CommandExportGamePostScript, "Records a log of the game "
+      "in PostScript format", szFILENAME, NULL },
+    { "ps", CommandExportGamePostScript, NULL, szFILENAME, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acExportMatch[] = {
     { "mat", CommandExportMatchMat, "Records a log of the match in .mat "
       "format", szFILENAME, NULL },
     { "latex", CommandExportMatchLaTeX, "Records a log of the match in LaTeX "
       "format", szFILENAME, NULL },
+    { "postscript", CommandExportMatchPostScript, "Records a log of the match "
+      "in PostScript format", szFILENAME, NULL },
+    { "ps", CommandExportMatchPostScript, NULL, szFILENAME, NULL },
+    { NULL, NULL, NULL, NULL, NULL }
+}, acExportPosition[] = {
+    { "eps", CommandNotImplemented, "Save the current position in "
+      "Encapsulated PostScript format", szFILENAME, NULL },
+    { "pos", CommandNotImplemented, "Save the current position in .pos "
+      "format", szFILENAME, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acExportSession[] = {
     { "latex", CommandExportMatchLaTeX, "Records a log of the session in "
       "LaTeX format", szFILENAME, NULL },
+    { "postscript", CommandExportMatchPostScript, "Records a log of the "
+      "session in PostScript format", szFILENAME, NULL },
+    { "ps", CommandExportMatchPostScript, NULL, szFILENAME, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acExport[] = {
     { "database", CommandDatabaseExport, "Write the positions in the database "
@@ -353,7 +368,8 @@ command acAnalyse[] = {
       acExportGame },
     { "match", NULL, "Record a log of the match so far to a file", NULL,
       acExportMatch },
-    /* FIXME export position */
+    { "position", NULL, "Write the current position to a file", NULL,
+      acExportPosition },
     { "session", NULL, "Record a log of the session so far to a file", NULL,
       acExportSession },
     { NULL, NULL, NULL, NULL, NULL }
