@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.594 2004/11/15 11:17:40 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.595 2005/01/02 12:06:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -8169,7 +8169,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     PushSplash( pwSplash,
                 _("Initialising"), _("Python"), 500 );
 #  endif
-    PythonInitialise( argv[ 0 ], szDataDirectory );
+    PythonInitialise( szDataDirectory );
 #endif
 
 #if USE_GTK

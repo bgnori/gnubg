@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.7 2004/10/05 16:13:00 Superfly_Jon Exp $
+ * $Id: gnubgmodule.h,v 1.8 2005/01/02 12:06:30 Superfly_Jon Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
@@ -36,7 +36,7 @@
 #define HAVE_FSTAT _HAVE_FSTAT
 
 extern void
-PythonInitialise( const char *arg0, const char *szDir );
+PythonInitialise( const char *szDir );
 
 extern void
 PythonShutdown();
