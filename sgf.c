@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.10 2001/01/30 15:54:01 gtw Exp $
+ * $Id: sgf.c,v 1.11 2001/02/13 18:23:43 gtw Exp $
  */
 
 #include "config.h"
@@ -641,7 +641,10 @@ extern void CommandSaveGame( char *sz ) {
 
     FILE *pf;
 
-    /* FIXME give error if no game in progress */
+    if( !plGame ) {
+	outputl( "No game in progress (type `new game' to start one)." );
+	return;
+    }
     
     if( !sz || !*sz ) {
 	outputl( "You must specify a file to save to (see `help save"
@@ -667,7 +670,10 @@ extern void CommandSaveMatch( char *sz ) {
     FILE *pf;
     list *pl;
 
-    /* FIXME give error if no game in progress */
+    if( !plGame ) {
+	outputl( "No game in progress (type `new game' to start one)." );
+	return;
+    }
     
     /* FIXME what should be done if nMatchTo == 0? */
     
