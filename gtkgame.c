@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.434 2003/09/29 07:38:07 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.435 2003/09/29 07:58:36 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2469,7 +2469,6 @@ extern int InitGTK( int *argc, char ***argv ) {
     GtkWidget *pwVboxRight;
 #endif
     static GtkItemFactoryEntry aife[] = {
-	{ N_("/_Edit/Copy as"), NULL, NULL, 0, "<Branch>" },
 	{ N_("/_File"), NULL, NULL, 0, "<Branch>" },
 	{ N_("/_File/_New"), "<control>N", NewDialog, 0, NULL },
 #if 0
