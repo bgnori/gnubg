@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.499 2003/09/29 07:38:07 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.500 2003/10/02 09:56:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -756,8 +756,10 @@ command cER = {
       NULL, acExportSession },
     { NULL, NULL, NULL, NULL, NULL }
 }, acFirst[] = {
-  { "game", CommandFirstGame, 
+  { "game", CommandFirstGame,
     N_("Goto first game of the match or session"), NULL, NULL },
+  { "move", CommandFirstMove,
+    N_("Goto first move of the current game"), NULL, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acImport[] = {
     { "bkg", CommandImportBKG, N_("Import from Hans Berliner's BKG format"),

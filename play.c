@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.227 2003/09/26 19:18:44 jsegrave Exp $
+ * $Id: play.c,v 1.228 2003/10/02 09:56:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1970,7 +1970,8 @@ static void AnnotateMove( skilltype st ) {
 
     moverecord *pmr;
 
-    if( !( pmr = plLastMove->plNext->p ) ) {
+    if (!plLastMove || !plLastMove->plNext ||
+		(!( pmr = plLastMove->plNext->p))) {
 	outputl( _("You must select a move to annotate first.") );
 	return;
     }
@@ -2074,7 +2075,8 @@ static void AnnotateRoll( lucktype lt ) {
 
     moverecord *pmr;
 
-    if( !( pmr = plLastMove->plNext->p ) ) {
+    if (!plLastMove || !plLastMove->plNext ||
+		(!( pmr = plLastMove->plNext->p))) {
 	outputl( _("You must select a move to annotate first.") );
 	return;
     }
@@ -2171,7 +2173,8 @@ extern void CommandAnnotateClearComment( char *sz ) {
 
     moverecord *pmr;
 
-    if( !( pmr = plLastMove->plNext->p ) ) {
+    if (!plLastMove || !plLastMove->plNext ||
+		(!( pmr = plLastMove->plNext->p))) {
 	outputl( _("You must select a move to clear the comment from.") );
 	return;
     }
@@ -3268,8 +3271,14 @@ extern void ChangeGame( list *plGameNew ) {
 #if USE_GTK
     list *pl;
 #endif
+
+	if (!plGame)
+	{
+		outputl( _("No game in progress (type `new game' to start one).") );
+		return;
+	}
     
-    plLastMove = ( plGame = plGameNew )->plNext;
+	plLastMove = ( plGame = plGameNew )->plNext;
     
 #if USE_GTK
     if( fX ) {
@@ -3327,6 +3336,12 @@ static void CommandNextGame( char *sz ) {
 	return;
 
     ChangeGame( pl->p );
+}
+
+extern void
+CommandFirstMove( char *sz ) {
+
+  ChangeGame( plGame );
 }
 
 extern void
