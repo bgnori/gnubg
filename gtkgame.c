@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.439 2003/10/13 11:41:48 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.440 2003/10/29 12:30:46 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1184,12 +1184,12 @@ static GtkWidget *CreateGameWindow( void ) {
     GdkColormap *pcmap;
     gint nMaxWidth; 
 
-#include "prevgame.xpm"
-#include "prevmove.xpm"
-#include "nextmove.xpm"
-#include "nextgame.xpm"
-#include "prevmarked.xpm"
-#include "nextmarked.xpm"
+#include "xpm/prevgame.xpm"
+#include "xpm/prevmove.xpm"
+#include "xpm/nextmove.xpm"
+#include "xpm/nextgame.xpm"
+#include "xpm/prevmarked.xpm"
+#include "xpm/nextmarked.xpm"
 
     pcmap = gtk_widget_get_colormap( pwMain );
 #if USE_OLD_LAYOUT 
@@ -2807,7 +2807,7 @@ extern int InitGTK( int *argc, char ***argv ) {
 
 #if USE_GTK2
     {
-#include "gnu.xpm"
+#include "xpm/gnu.xpm"
 	GtkIconFactory *pif = gtk_icon_factory_new();
 
 	gtk_icon_factory_add_default( pif );
@@ -3132,8 +3132,8 @@ extern GtkWidget *GTKCreateDialog( const char *szTitle, const dialogtype dt,
     pwPixmap = gtk_image_new_from_stock( aszStockItem[ dt ],
 					 GTK_ICON_SIZE_DIALOG );
 #else
-#include "gnu.xpm"
-#include "question.xpm"
+#include "xpm/gnu.xpm"
+#include "xpm/question.xpm"
     GdkPixmap *ppm;
     
     ppm = gdk_pixmap_colormap_create_from_xpm_d( NULL,
@@ -3317,7 +3317,7 @@ extern int GtkTutor ( char *sz ) {
     GtkWidget *pwHint;
     GtkAccelGroup *pag;
 
-#include "question.xpm"
+#include "xpm/question.xpm"
 
 	pwTutorDialog = gtk_dialog_new();
 	pwOK = gtk_button_new_with_label( _("Play Anyway") );
@@ -8304,11 +8304,11 @@ static void AddNavigation(GtkWidget* pvbox)
     char sz[128];
     list *pl;
 
-#include "prevgame.xpm"
-#include "prevmove.xpm"
-#include "nextmove.xpm"
-#include "nextgame.xpm"
-#include "allgames.xpm"
+#include "xpm/prevgame.xpm"
+#include "xpm/prevmove.xpm"
+#include "xpm/nextmove.xpm"
+#include "xpm/nextgame.xpm"
+#include "xpm/allgames.xpm"
 
 	pcmap = gtk_widget_get_colormap( pwMain );
 
