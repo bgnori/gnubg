@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.115 2003/09/12 13:35:22 steink Exp $
+## $Id: Makefile.am,v 1.116 2003/09/15 02:12:10 hb Exp $
 if USE_EXT
 EXT_DIR=ext
 else
@@ -96,7 +96,7 @@ COMMON_SOURCES = backgammon.h gnubg.c getopt.h getopt.c getopt1.c eval.h \
 	onechequer.c onechequer.h path.c path.h render.c render.h \
 	htmlimages.c speed.c renderprefs.c renderprefs.h \
 	boardpos.c boardpos.h progress.c progress.h format.c format.h \
-	formatgs.c formatgs.h $(LIBGEN_SOURCES)
+	formatgs.c formatgs.h boarddim.h $(LIBGEN_SOURCES)
 COMMON_DEPS = @LIBOBJS@ lib/libevent.a
 
 bin_PROGRAMS = gnubg makebearoff makehyper
