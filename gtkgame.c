@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.199 2002/07/27 17:13:59 thyssen Exp $
+ * $Id: gtkgame.c,v 1.200 2002/07/27 17:23:43 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1837,8 +1837,6 @@ MainSelectionReceived ( GtkWidget *pw, GtkSelectionData *data,
 
   szCopied = strdup ( data->data );
 
-  printf ( "data \"%s\"\n", szCopied );
-  
 }
 
 
