@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.93 2002/12/23 23:06:15 gtw Exp $
+ * $Id: rollout.c,v 1.94 2003/01/07 15:12:28 gtw Exp $
  */
 
 #include "config.h"
@@ -580,8 +580,8 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
           /* Find best move */
 
-          if ( pecChequer[ pci->fMove ]->nPlies &&
-               prc->fCubeful == pecChequer[ pci->fMove ]->fCubeful )
+          if ( pecChequer[ pci->fMove ]->nPlies ||
+               prc->fCubeful != pecChequer[ pci->fMove ]->fCubeful )
 
             /* the user requested n-ply (n>0). Another call to
                FindBestMove is required */
