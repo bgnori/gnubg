@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.480 2003/08/31 22:55:11 jsegrave Exp $
+ * $Id: gnubg.c,v 1.481 2003/08/31 23:12:04 jsegrave Exp $
  */
 
 #include "config.h"
@@ -2643,22 +2643,22 @@ extern void HandleCommand( char *sz, command *ac ) {
 #endif
           if ( *sz ) {
             /* expression specified -- evalute it */
-#if USE_GUI
+#ifdef ndef
             StartPythonHandleX();
 #endif
             PyRun_SimpleString( sz );
-#if USE_GUI
+#ifdef ndef
             StopPythonHandleX();
 #endif
           }
           else {
-#if USE_GUI
+#ifdef ndef
             /* no expresision -- start python shell */
             StartPythonHandleX();
 #endif
             PyRun_SimpleString( "import sys; print 'Python', sys.version" );
             PyRun_AnyFile( stdin, NULL );
-#if USE_GUI
+#ifdef ndef
             StopPythonHandleX();
 #endif
           }
