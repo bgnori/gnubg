@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.108 2003/01/30 16:14:17 thyssen Exp $
+ * $Id: gtkboard.c,v 1.109 2003/01/30 16:19:35 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1227,7 +1227,7 @@ static gboolean board_pointer( GtkWidget *board, GdkEvent *event,
 
           int anBoard[ 2 ][ 25 ];
           
-          read_board ( bd, anBoard );
+          memcpy ( anBoard, ms.anBoard, sizeof anBoard );
 
           bd->drag_colour = bd->turn;
           bd->drag_point = -1;
