@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.38 2002/07/04 18:29:49 thyssen Exp $
+ * $Id: html.c,v 1.39 2002/07/04 19:58:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -1390,7 +1390,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.38 $";
+  const char szVersion[] = "$Revision: 1.39 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2789,12 +2789,6 @@ extern void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
                           100.0 * ( 1.0 - r ) );
 
       printStatTableRow ( pf,
-                          _( "Relative rating"),
-                          "%6.2f",
-                          relativeFibsRating ( r, pms->nMatchTo ),
-                          relativeFibsRating ( 1.0 - r, pms->nMatchTo ) );
-
-      printStatTableRow ( pf,
                           _( "Guestimated abs. rating"),
                           "%6.2f",
                           absoluteFibsRating ( ar[ 0 ], pms->nMatchTo ),
@@ -2910,6 +2904,8 @@ static void ExportGameHTML ( FILE *pf, list *plGame, const char *szImageDir,
     for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) {
 
       pmr = pl->p;
+
+      FixMatchState ( &msExport, pmr );
 
       switch( pmr->mt ) {
 
