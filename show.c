@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.43 2001/01/16 18:36:05 gtw Exp $
+ * $Id: show.c,v 1.44 2001/01/31 15:39:20 gtw Exp $
  */
 
 #include "config.h"
@@ -26,6 +26,7 @@
 #endif
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -182,6 +183,32 @@ extern void CommandShowCache( char *sz ) {
 	outputc( '.' );
 
     outputc( '\n' );
+}
+
+static void ShowCommands( command *pc, char *szPrefix ) {
+
+    char sz[ 64 ], *pch;
+
+    strcpy( sz, szPrefix );
+    pch = strchr( sz, 0 );
+
+    for( ; pc->sz; pc++ ) {
+	if( !pc->szHelp )
+	    continue;
+
+	strcpy( pch, pc->sz );
+
+	if( pc->pc ) {
+	    strcat( sz, " " );
+	    ShowCommands( pc->pc, sz );
+	} else
+	    outputl( sz );
+    }
+}
+
+extern void CommandShowCommands( char *sz ) {
+
+    ShowCommands( acTop, "" );
 }
 
 extern void CommandShowConfirm( char *sz ) {

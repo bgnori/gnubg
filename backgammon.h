@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.59 2001/01/19 20:20:35 gtw Exp $
+ * $Id: backgammon.h,v 1.60 2001/01/31 15:39:20 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -52,7 +52,7 @@ typedef struct _command {
     char *sz; /* Command name (NULL indicates end of list) */
     void ( *pf )( char * ); /* Command handler; NULL to use default
 			       subcommand handler */
-    char *szHelp, *szUsage; /* Documentation */
+    char *szHelp, *szUsage; /* Documentation; NULL for abbreviations */
     struct _command *pc; /* List of subcommands (NULL if none) */
 } command;
 
@@ -377,6 +377,7 @@ extern void CommandAccept( char * ),
     CommandShowBoard( char * ),
     CommandShowBeavers( char * ),
     CommandShowCache( char * ),
+    CommandShowCommands( char * ),
     CommandShowConfirm( char * ),
     CommandShowCopying( char * ),
     CommandShowCrawford( char * ),
