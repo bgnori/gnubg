@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.169 2004/03/16 11:30:17 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.170 2004/03/22 09:11:04 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2296,10 +2296,13 @@ void RollDice2d(BoardData* bd)
 
 static void SetCrawfordToggle(BoardData* bd)
 {
-	gtk_signal_handler_block(GTK_OBJECT(bd->crawford), crawford_id);
-	gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( bd->crawford ),
+	if (bd->crawford_game != gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(bd->crawford)))
+	{
+		gtk_signal_handler_block(GTK_OBJECT(bd->crawford), crawford_id);
+		gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( bd->crawford ),
 				      bd->crawford_game );
-	gtk_signal_handler_unblock(GTK_OBJECT(bd->crawford), crawford_id);
+		gtk_signal_handler_unblock(GTK_OBJECT(bd->crawford), crawford_id);
+	}
 }
 
 static gint board_set( Board *board, const gchar *board_text,
@@ -3347,13 +3350,6 @@ void board_edit( BoardData *bd ) {
 
 	outputpostpone();
 
-	if (crawford != bd->crawford_game)
-	{
-		sprintf( sz, "set crawford %s", crawford ? "on" : "off" );
-		UserCommand( sz );
-		SetCrawfordToggle(bd);
-	}
-
 	/* NB: these comparisons are case-sensitive, and do not use
 	   CompareNames(), so that the user can modify the case of names. */
 	if( strcmp( pch0, ap[ 0 ].szName ) ) {
@@ -3407,6 +3403,13 @@ void board_edit( BoardData *bd ) {
           sprintf( sz, "set score %d %d", anScoreNew[ 0 ],
                    anScoreNew[ 1 ] );
           UserCommand( sz );
+	}
+
+	if (crawford != bd->crawford_game)
+	{
+		sprintf( sz, "set crawford %s", crawford ? "on" : "off" );
+		UserCommand( sz );
+		SetCrawfordToggle(bd);
 	}
 
 	outputresume();
