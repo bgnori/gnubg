@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.10 2002/12/08 11:29:08 thyssen Exp $
+ * $Id: bearoff.c,v 1.11 2002/12/08 12:09:01 thyssen Exp $
  */
 
 #include "config.h"
@@ -444,7 +444,6 @@ BearoffCubeful ( bearoffcontext *pbc,
     if ( ! pbc->fCubeful )
       return -1;
     else {
-      ReadExactBearoff ( pbc, iPos, ar, aus );
       return ReadTwoSidedBearoff ( pbc, iPos, ar, aus );
     }
 
