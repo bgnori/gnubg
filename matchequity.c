@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.15 2002/03/14 20:05:29 thyssen Exp $
+* $Id: matchequity.c,v 1.16 2002/03/15 20:16:41 thyssen Exp $
 */
 
 #include <stdio.h>
@@ -35,6 +35,7 @@
 #if HAVE_LIBXML2
 #include <libxml/tree.h>
 #include <libxml/parser.h>
+#include <libxml/catalog.h>
 #endif
 
 #if !HAVE_ERF
@@ -1400,8 +1401,13 @@ extern int readMET ( metdata *pmd, const char *szFileName ) {
     xmlLoadCatalog ( pc );
   xmlLoadCatalog ( "./met/catalog" );
   xmlLoadCatalog ( "./catalog" );
-       
-  if ( ! xmlCatalogGetSystem ( "met.dtd" ) ) {
+
+  pc = xmlCatalogResolve ( doc->intSubset->ExternalID, 
+                           doc->intSubset->SystemID );
+  fError = ! pc;
+  free ( pc );
+
+  if ( fError ) {
 
     printf ( "met DTD not found\n" );
     fError = 1;
