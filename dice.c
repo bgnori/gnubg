@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.36 2004/04/22 20:54:20 thyssen Exp $
+ * $Id: dice.c,v 1.37 2004/04/22 20:57:02 thyssen Exp $
  */
 
 #include "config.h"
@@ -839,6 +839,7 @@ extern void *InitRNG( int *pnSeed, int *pfInitFrom,
 #if HAVE_LIBGMP
     /* BBS */
     rngctx->fZInit = FALSE;
+    mpz_init( rngctx->nz );
 #endif /* HAVE_LIBGMP */
 
     /* common */
