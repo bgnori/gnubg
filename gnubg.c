@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.187 2002/02/21 16:33:22 gtw Exp $
+ * $Id: gnubg.c,v 1.188 2002/03/14 16:50:21 gtw Exp $
  */
 
 #include "config.h"
@@ -1989,6 +1989,11 @@ extern void CommandHelp( char *sz ) {
     command *pc, *pcFull;
     char szCommand[ 128 ], szUsage[ 128 ], *szHelp;
     
+#if USE_GTK && GTK_CHECK_VERSION(2,0,0)
+    if( fX )
+	return GTKHelp( sz );
+#endif
+    
     if( !( pc = FindHelpCommand( &cTop, sz, szCommand, szUsage ) ) ) {
 	outputf( "No help available for topic `%s' -- try `help' for a list "
 		 "of topics.\n", sz );
@@ -2013,7 +2018,7 @@ extern void CommandHelp( char *sz ) {
 		break;
 	    }
     }
-	
+
     if( szHelp ) {
 	outputf( "%s- %s\n\nUsage: %s", szCommand, szHelp, szUsage );
 
