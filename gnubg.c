@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.517 2003/12/29 20:11:18 uid65656 Exp $
+ * $Id: gnubg.c,v 1.518 2004/01/01 19:32:57 uid65656 Exp $
  */
 
 #include "config.h"
@@ -2969,6 +2969,42 @@ extern int GetMatchStateCubeInfo( cubeinfo* pci, const matchstate* pms ) {
 			pms->fJacoby, nBeavers, pms->bgv );
 }
 
+#if USE_TIMECONTROL
+
+static void
+DisplayTimeAnalysis( const movetime *pmt, const matchstate *pms ) {
+
+  cubeinfo ci;
+
+  if ( pmt->es.et == EVAL_NONE )
+    /* no analysis */
+    return ;
+
+  GetMatchStateCubeInfo ( &ci, pms );
+
+  outputf( _("Time penalty: %s loses %d points\n"), 
+           ap[ pmt->fPlayer ].szName, pmt->nPoints );
+
+  outputf( _("%-30.30s %s\n"), 
+           _("Equity before time penalty:"),
+           OutputMWC( pmt->aarOutput[ 0 ][ OUTPUT_CUBEFUL_EQUITY ], 
+                      &ci, TRUE ) );
+
+  outputf( _("%-30.30s %s\n"), 
+           _("Equity after time penalty:"),
+           OutputMWC( pmt->aarOutput[ 1 ][ OUTPUT_CUBEFUL_EQUITY ], 
+                      &ci, TRUE ) );
+
+  outputf( _("%-30.30s %s\n"), 
+           _("Lose from penalty:"),
+           OutputMWCDiff( pmt->aarOutput[ 0 ][ OUTPUT_CUBEFUL_EQUITY ] , 
+                          pmt->aarOutput[ 1 ][ OUTPUT_CUBEFUL_EQUITY ], 
+                          &ci ) );
+
+}
+
+#endif /* USE_TIMECONTROL */
+
 static void
 DisplayCubeAnalysis( const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
 		     const float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
@@ -3052,6 +3088,15 @@ static void DisplayAnalysis( moverecord *pmr ) {
 		     pmr->sd.anDice[ 1 ], GetLuckAnalysis( &ms,
 							   pmr->sd.rLuck ) );
 	break;
+
+#if USE_TIMECONTROL
+    case MOVE_TIME:
+
+      DisplayTimeAnalysis( &pmr->t, &ms );
+
+      break;
+
+#endif /* USE_TIMECONTROL */
 	
     default:
 	break;
