@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.cpp,v 1.1.2.3 2003/06/13 09:52:32 Superfly_Jon Exp $
+* $Id: font3d.cpp,v 1.1.2.4 2003/06/16 19:35:52 thyssen Exp $
 */
 
 #include "../config.h"
@@ -26,7 +26,7 @@
 /* Duplicate definition of base_unit as including inc3d.h caused problems */
 #define base_unit .05f
 
-#if HAVE_FREETYPE
+#if HAVE_FTGL
 
 #include "FTGLPolygonFont.h"
 #include "FTGLOutlineFont.h"

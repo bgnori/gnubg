@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.1.2.3 2003/06/16 07:11:39 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.1.2.4 2003/06/16 19:38:29 thyssen Exp $
 */
 
 #include <math.h>
@@ -31,8 +31,8 @@
 #include "matrix.h"
 #include "shadow.h"
 
-#if BUILDING_LIB
-#include "../renderprefs.h"
+#ifdef BUILDING_LIB
+#include "renderprefs.h"
 #endif
 
 // My logcube - more than 32 then return 0 (show 64)
