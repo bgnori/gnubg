@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.350 2002/12/12 22:01:49 thyssen Exp $
+ * $Id: gnubg.c,v 1.351 2002/12/15 17:48:33 thyssen Exp $
  */
 
 #include "config.h"
@@ -751,10 +751,10 @@ command cER = {
       acSetEvalParam },
     { "limit", CommandSetAnalysisLimit, N_("Specify the maximum number of "
       "possible moves analysed"), szOPTLIMIT, NULL },
-    { "luckanalysis", CommandSetAnalysisLuckAnalysis,
-      N_("Specify parameters for the luck analysis"), NULL, acSetEvaluation },
     { "luck", CommandSetAnalysisLuck, N_("Select whether dice rolls will be "
       "analysed"), szONOFF, &cOnOff },
+    { "luckanalysis", CommandSetAnalysisLuckAnalysis,
+      N_("Specify parameters for the luck analysis"), NULL, acSetEvaluation },
     { "movefilter", CommandSetAnalysisMoveFilter, 
       N_("Set parameters for choosing moves to evaluate"), 
       szFILTER, NULL},
