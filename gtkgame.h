@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.30 2002/01/06 15:41:33 thyssen Exp $
+ * $Id: gtkgame.h,v 1.31 2002/02/03 10:33:43 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -101,6 +101,10 @@ extern void GTKViewRolloutStatistics(GtkWidget *widget, gpointer data);
 #ifdef WIN32
 extern void GTKWinCopy( GtkWidget *widget, gpointer data);
 #endif
+extern void
+GTKResignHint( float arOutput[], float rEqBefore, float rEqAfter,
+               cubeinfo *pci, int fMWC );
+    
 extern int fTTY;
 
 #endif
