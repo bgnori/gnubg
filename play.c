@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.13 2000/01/12 21:55:03 gtw Exp $
+ * $Id: play.c,v 1.14 2000/01/15 17:38:21 gtw Exp $
  */
 
 #include "config.h"
@@ -87,7 +87,7 @@ static int ComputerTurn( void ) {
 	if( fResigned ) {
 	    float ar[ NUM_OUTPUTS ];
 
-	    EvaluatePosition( anBoard, ar, ap[ fTurn ].nPlies );
+	    EvaluatePosition( anBoard, ar, &ap[ fTurn ].ec );
 
 	    if( -fResigned <= Utility ( ar ) ) {
 		CommandAgree( NULL );
@@ -107,8 +107,8 @@ static int ComputerTurn( void ) {
 	    pmn->anRoll[ 1 ] = anDice[ 1 ];
 	    pmn->fPlayer = fTurn;
 	    ListInsert( plGame, pmn );
-	    return FindBestMove( ap[ fTurn ].nPlies, pmn->anMove, anDice[ 0 ],
-				 anDice[ 1 ], anBoard );
+	    return FindBestMove( pmn->anMove, anDice[ 0 ], anDice[ 1 ],
+				 anBoard, &ap[ fTurn ].ec );
 	}
 
     case PLAYER_PUBEVAL:

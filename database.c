@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.3 2000/01/14 20:44:37 gtw Exp $
+ * $Id: database.c,v 1.4 2000/01/15 17:38:21 gtw Exp $
  */
 
 #include "config.h"
@@ -93,7 +93,7 @@ extern void CommandDatabaseDump( char *sz ) {
     gdbm_close( pdb );
 }
 
-extern void CommandDatabaseEvaluate( char *sz ) {
+extern void CommandDatabaseRollout( char *sz ) {
 
     GDBM_FILE pdb;
     datum dKey, dValue;
@@ -115,7 +115,7 @@ extern void CommandDatabaseEvaluate( char *sz ) {
 
 	pev = (dbevaluation *) dValue.dptr;
 
-	if( pev->c < 144 /* FIXME */ ) {
+	if( pev->c < nRollouts /* FIXME */ ) {
 	    c++;
 	    
 	    PositionFromKey( anBoardEval, (unsigned char *) dKey.dptr );
@@ -123,8 +123,9 @@ extern void CommandDatabaseEvaluate( char *sz ) {
 	    /* FIXME if position has some existing rollouts, merge them */
 	    
 	    /* FIXME allow user to change these parameters */
-	    if( ( pev->c = Rollout( anBoardEval, arOutput, NULL, 0, 7, 144,
-				    FALSE ) ) > 0 ) {
+	    if( ( pev->c = Rollout( anBoardEval, arOutput, NULL,
+				    nRolloutTruncate, nRollouts, fVarRedn,
+				    &ecRollout ) ) > 0 ) {
 		for( i = 0; i < NUM_OUTPUTS; i++ )
 		    pev->asEq[ i ] = arOutput[ i ] * 0xFFFF;
 
@@ -186,8 +187,8 @@ extern void CommandDatabaseGenerate( char *sz ) {
 	    
 	    RollDice( anDiceGenerate );
 
-	    FindBestMove( 0, NULL, anDiceGenerate[ 0 ], anDiceGenerate[ 1 ],
-			  anBoardGenerate );
+	    FindBestMove( NULL, anDiceGenerate[ 0 ], anDiceGenerate[ 1 ],
+			  anBoardGenerate, NULL );
 
 	    if( fInterrupt )
 		break;
@@ -207,8 +208,8 @@ extern void CommandDatabaseGenerate( char *sz ) {
 	    dValue.dsize = sizeof ev;
 
 	    gdbm_store( pdb, dKey, dValue, GDBM_INSERT );
-	    /* FIXME can stop as soon as perfect */
-	} while( !fInterrupt && !GameStatus( anBoardGenerate ) );
+	} while( !fInterrupt && ClassifyPosition( anBoardGenerate ) >
+		 CLASS_PERFECT );
     }
 
     gdbm_close( pdb );
