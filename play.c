@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.232 2003/10/18 12:46:59 Superfly_Jon Exp $
+ * $Id: play.c,v 1.233 2003/11/03 11:55:15 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3568,7 +3568,7 @@ static void ShowMark( moverecord *pmr ) {
 #endif
     /* Show the dice roll, if the chequer play is marked but the cube
        decision is not. */
-    if( pmr->mt == MOVE_NORMAL && pmr->n.stCube == SKILL_NONE &&
+    if( pmr->mt == MOVE_NORMAL && (pmr->n.stCube == SKILL_NONE || pmr->n.stCube == SKILL_GOOD) &&
 	pmr->n.stMove != SKILL_NONE ) {
 	ms.gs = GAME_PLAYING;
 	ms.fMove = ms.fTurn = pmr->n.fPlayer;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.264 2003/10/23 22:56:41 jsegrave Exp $
+ * $Id: backgammon.h,v 1.265 2003/11/03 11:55:11 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -481,7 +481,7 @@ extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     fCubeUse, fDisplay, fAutoBearoff, fShowProgress,
     nBeavers, fJacoby,
     fOutputRawboard, fAnnotation, cAnalysisMoves, fAnalyseCube,
-    fAnalyseDice, fAnalyseMove, fRecord, fMessage, fGameList, nDefaultLength;
+    fAnalyseDice, fAnalyseMove, fRecord, fMessage, fAnalysis, fGameList, nDefaultLength;
 extern int fInvertMET;
 extern int fConfirm, fConfirmSave;
 extern float rAlpha, rAnneal, rThreshold, arLuckLevel[ LUCK_VERYGOOD + 1 ],

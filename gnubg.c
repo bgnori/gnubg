@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.504 2003/10/23 22:56:41 jsegrave Exp $
+ * $Id: gnubg.c,v 1.505 2003/11/03 11:55:12 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -219,6 +219,7 @@ int fTutor = FALSE, fTutorCube = TRUE, fTutorChequer = TRUE;
 int fTutorAnalysis = FALSE;
 int fDisplayPanels = TRUE;
 int fMessage = FALSE;
+int fAnalysis = FALSE;
 int fGameList = FALSE;
 int nThreadPriority = 0;
 int fCheat = FALSE;
