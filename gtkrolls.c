@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.2 2003/01/28 16:06:51 gtw Exp $
+ * $Id: gtkrolls.c,v 1.3 2003/03/29 12:48:20 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -217,7 +217,6 @@ RollsTree ( const int n, evalcontext *pec, matchstate *pms ) {
 
   GtkTreeModel *pm;
   GtkWidget *ptv;
-  GtkTreeViewColumn *ptvc;
   int i;
   GtkCellRenderer *renderer;
   static char *aszColumn[] = {
@@ -285,8 +284,6 @@ GTKShowRolls ( const gint nDepth, evalcontext *pec, matchstate *pms ) {
   GtkWidget *pwDialog = CreateDialog( _("Distribution of rolls"),
                                       DT_INFO, NULL, NULL );
   GtkWidget *pw, *vbox, *hbox;
-  GtkAdjustment *padj;
-  GtkTreeModel *ptm;
 
   rollswidget *prw = g_malloc ( sizeof ( rollswidget ) );
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.397 2003/03/28 17:28:19 thyssen Exp $
+ * $Id: gnubg.c,v 1.398 2003/03/29 12:47:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -4449,6 +4449,8 @@ SaveRNGSettings ( FILE *pf, char *sz, rng rngCurrent ) {
 	break;
     case RNG_FILE:
         fprintf( pf, "%s rng file %s\n", sz, szDiceFilename );
+	break;
+    default:
 	break;
     }
 
