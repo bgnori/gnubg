@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.9 2001/05/23 16:28:27 gtw Exp $
+ * $Id: rollout.h,v 1.10 2001/06/15 16:58:21 thyssen Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -65,11 +65,6 @@ GeneralCubeDecision ( char *sz,
                       float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                       int anBoard[ 2 ][ 25 ],
                       cubeinfo *pci, evalsetup *pes );
-
-extern int
-GeneralCubeDecisionE ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
-                       int anBoard[ 2 ][ 25 ],
-                       cubeinfo *pci, evalcontext *pec );
 
 extern int
 GeneralCubeDecisionR ( char *sz, 

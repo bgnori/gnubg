@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.37 2001/05/23 16:37:43 gtw Exp $
+ * $Id: rollout.c,v 1.38 2001/06/15 16:58:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -995,38 +995,6 @@ GeneralCubeDecision ( char *sz,
   return 0;
 }
 
-extern int
-GeneralCubeDecisionE ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
-                       int anBoard[ 2 ][ 25 ],
-                       cubeinfo *pci, evalcontext *pec ) {
-
-  float arCf [ 4 ];
-  int i;
-
-  if ( EvaluatePositionCubeful2 ( anBoard, aarOutput[ 0 ], arCf,
-                                  pci, pec, pec->nPlies, pec->nPlies,
-                                  TRUE, pci ) )
-    return -1;
-
-  /* copy cubeless winning chances 
-     FIXME: EvalPosCF2 should return both */
-
-  for ( i = 0; i < OUTPUT_EQUITY; i++ )
-    aarOutput[ 1 ][ i ] = aarOutput[ 0 ][ i ];
-
-  /* Calculate equity */
-
-  for ( i = 0; i < 2; i++ )
-    aarOutput[ i ][ OUTPUT_EQUITY ] = Utility ( aarOutput[ i ], pci );
-
-  /* Assign cubeful equity */
-
-  aarOutput[ 0 ][ OUTPUT_CUBEFUL_EQUITY ] = arCf[ OUTPUT_NODOUBLE ];
-  aarOutput[ 1 ][ OUTPUT_CUBEFUL_EQUITY ] = arCf[ OUTPUT_TAKE ];
-
-  return 0;
-
-}
 
 extern int
 GeneralCubeDecisionR ( char *sz, 
