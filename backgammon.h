@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.271 2004/01/01 17:59:43 uid65656 Exp $
+ * $Id: backgammon.h,v 1.272 2004/01/03 13:35:08 uid65656 Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1349,7 +1349,8 @@ extern void
 ShowBearoff( char* sz, matchstate* pms, bearoffcontext* pbc );
 
 extern int
-EPC( int anBoard[ 2 ][ 25 ], float arEPC[ 2 ], int *pfSource );
+EPC( int anBoard[ 2 ][ 25 ], float *arEPC, float *arMu, float *arSigma, 
+     int *pfSource );
 
 extern char *
 ShowEPC( int anBoard[ 2 ][ 25 ] );
