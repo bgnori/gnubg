@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.32 2003/10/06 19:34:57 hb Exp $
+ * $Id: analysis.h,v 1.33 2004/01/01 17:59:29 uid65656 Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -96,6 +96,13 @@ typedef struct {
   float arVarianceActual[ 2 ];
   float arVarianceLuckAdj[ 2 ];
   int nGames;
+
+#if USE_TIMECONTROL
+  /* time control */
+
+  int anTimePenalties[ 2 ];
+  float aarTimeLoss[ 2 ][ 2 ];
+#endif /* USE_TIMECONTROL */
 
 } statcontext;
 

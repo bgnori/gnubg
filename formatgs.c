@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: formatgs.c,v 1.9 2003/10/18 09:26:07 thyssen Exp $
+ * $Id: formatgs.c,v 1.10 2004/01/01 17:59:29 uid65656 Exp $
  */
 
 #include "config.h"
@@ -607,6 +607,44 @@ formatGS( const statcontext *psc, const matchstate *pms,
 
 
       }
+
+      /* time penalties */
+
+#if USE_TIMECONTROL
+
+      if ( psc->anTimePenalties[ 0 ] || psc->anTimePenalties[ 1 ] ) {
+        
+        int j;
+
+        /* show time penalty statistics */
+
+        /* number of penalties */
+
+        aasz = g_malloc( 3 * sizeof ( *aasz ) );
+        aasz[ 0 ] = g_strdup( _("Number of time penalties" ) );
+      
+        for ( j = 0; j < 2; ++j ) 
+          aasz[ j + 1 ] = 
+            g_strdup_printf( "%d", psc->anTimePenalties[ j ] );
+        
+        list = g_list_append( list, aasz );
+
+        /* loss */
+
+        aasz = g_malloc( 3 * sizeof ( *aasz ) );
+
+        aasz[ 0 ] = g_strdup( _("Loss from time pen. (total)") );
+
+        for ( i = 0; i < 2; ++i )
+          aasz[ i + 1 ] = errorRate( -psc->aarTimeLoss[ i ][ 0 ],
+                                     -psc->aarTimeLoss[ i ][ 1 ], pms );
+        
+        list = g_list_append( list, aasz );
+
+
+      }
+
+#endif /* TIME_CONTROL */      
 
 
     }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.270 2003/12/29 20:11:18 uid65656 Exp $
+ * $Id: backgammon.h,v 1.271 2004/01/01 17:59:43 uid65656 Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -423,6 +423,11 @@ typedef struct _movetime {
     struct timeval tl[2];
     int fPlayer;
     int nPoints;
+
+    /* evaluation of loss */
+    float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+    float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+    evalsetup es;
 } movetime;
 #endif
 
