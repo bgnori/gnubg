@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.424 2003/09/12 23:28:45 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.425 2003/09/13 05:01:26 kaoru Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1864,14 +1864,13 @@ static void SetAnnotation( moverecord *pmr ) {
                               SkillMenu( pmr->n.stMove, "move" ),
 			      FALSE, FALSE, 4 );
 	    strcpy( sz, _("Moved ") );
-	    FormatMove( sz + 6, ms.anBoard, pmr->n.anMove );
+	    FormatMove( sz + strlen(_("Moved ")), ms.anBoard, pmr->n.anMove );
 	    gtk_box_pack_end( GTK_BOX( pwBox ),
 			      gtk_label_new( sz ), FALSE, FALSE, 0 );
 
 #endif
-
 	    strcpy( sz, _("Moved ") );
-	    FormatMove( sz + 6, ms.anBoard, pmr->n.anMove );
+	    FormatMove( sz + strlen(_("Moved ")), ms.anBoard, pmr->n.anMove );
 
 #if ANALYSIS_HORIZONTAL
 	    gtk_table_attach_defaults( GTK_TABLE( pwBox ),
