@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.155 2004/02/12 10:30:11 uid68519 Exp $
+ * $Id: html.c,v 1.156 2004/02/16 09:52:30 uid68519 Exp $
  */
 
 #include "config.h"
@@ -173,7 +173,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-           "/* $Id: html.c,v 1.155 2004/02/12 10:30:11 uid68519 Exp $ */\n",
+           "/* $Id: html.c,v 1.156 2004/02/16 09:52:30 uid68519 Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1194,8 +1194,8 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
                     const char *szImageDir, const char *szExtension,
                     const htmlexportcss hecss ) {
 
-  char sz[ 100 ];
-  char szAlt[ 100 ];
+  char sz[ 1000 ];
+  char szAlt[ 1000 ];
   int i, j;
 
   int anBoard[ 2 ][ 25 ];
@@ -1269,10 +1269,17 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   fputs ( "<td>", pf );
 
   if ( ! pms->fCubeOwner )
+  {
     sprintf ( sz, "b-ct-%d", pms->nCube );
+    sprintf ( szAlt, "|%2d&nbsp;|", pms->nCube );
+  }
   else
+  {
     strcpy ( sz, "b-ct" );
-  printImage ( pf, szImageDir, sz, szExtension, "", 
+    strcpy ( szAlt, "|&nbsp;&nbsp;&nbsp;|" );
+  }
+
+  printImage ( pf, szImageDir, sz, szExtension, szAlt,
                hecss, HTML_EXPORT_TYPE_GNU );
 
   fputs ( "</td>", pf );
@@ -1317,9 +1324,14 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
 
   sprintf ( sz, "b-bar-o%d", anBoard[ 1 ][ 24 ] );
   if ( anBoard[ 1 ][ 24 ] )
-    sprintf ( szAlt, "|%1X&nbsp;|", anBoard[ 1 ][ 24 ] );
+    sprintf ( szAlt, "|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+					"|&nbsp;%1XX|"
+					"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|",
+					anBoard[ 1 ][ 24 ] );
   else
-    strcpy ( szAlt, "|&nbsp;&nbsp;&nbsp;|" );
+    strcpy ( szAlt, "|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+					"|&nbsp;&nbsp;&nbsp;|"
+					"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|");
   printImage ( pf, szImageDir, sz, szExtension, szAlt, 
                hecss, HTML_EXPORT_TYPE_GNU );
 
@@ -1353,8 +1365,8 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
     
     sprintf ( sz, "b-midl-x%d%d", 
               pms->anDice[ 0 ], pms->anDice[ 1 ] );
-    sprintf ( szAlt, "&nbsp;&nbsp;%d%d&nbsp;&nbsp;", 
-              pms->anDice[ 0 ], pms->anDice[ 1 ] );
+    sprintf ( szAlt, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d&nbsp;%d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+		pms->anDice[ 0 ], pms->anDice[ 1 ] );
     
     printImage ( pf, szImageDir, sz, szExtension, szAlt, 
                  hecss, HTML_EXPORT_TYPE_GNU );
@@ -1366,8 +1378,8 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
     
     sprintf ( sz, "b-midl-c%d", 
               2 * pms->nCube );
-    sprintf ( szAlt, "&nbsp;[%d]&nbsp;&nbsp;", 2 * pms->nCube );
-    
+    sprintf ( szAlt, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%d]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+		2 * pms->nCube );
     printImage ( pf, szImageDir, sz, szExtension, szAlt, 
                  hecss, HTML_EXPORT_TYPE_GNU );
     
@@ -1377,7 +1389,7 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
     /* player 0 on roll */
     
     printImage ( pf, szImageDir, "b-midl", szExtension, 
-                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", 
+                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", 
                  hecss, HTML_EXPORT_TYPE_GNU );
     
   }
@@ -1387,12 +1399,18 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   /* centered cube */
 
   if ( pms->fCubeOwner == -1 && ! pms->fDoubled )
+  {
     sprintf ( sz, "b-midc-%d", pms->nCube );
+    sprintf ( szAlt, "|%2d&nbsp;|", pms->nCube );
+  }
   else
+  {
     strcpy ( sz, "b-midc" );
+	strcpy(szAlt, "|&nbsp;&nbsp;&nbsp;|");
+  }
 
   fputs ( "<td>", pf );
-  printImage ( pf, szImageDir, sz, szExtension, "|", 
+  printImage ( pf, szImageDir, sz, szExtension, szAlt, 
                hecss, HTML_EXPORT_TYPE_GNU );
   fputs ( "</td>", pf );
 
@@ -1406,7 +1424,7 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
 
     sprintf ( sz, "b-midr-o%d%d", 
               pms->anDice[ 0 ], pms->anDice[ 1 ] );
-    sprintf ( szAlt, "&nbsp;&nbsp;%d%d&nbsp;&nbsp;", 
+    sprintf ( szAlt, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d&nbsp;%d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
               pms->anDice[ 0 ], pms->anDice[ 1 ] );
     
     printImage ( pf, szImageDir, sz, szExtension, szAlt, 
@@ -1419,7 +1437,8 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
     
     sprintf ( sz, "b-midr-c%d", 
               2 * pms->nCube );
-    sprintf ( szAlt, "&nbsp;[%d]&nbsp;&nbsp;", 2 * pms->nCube );
+    sprintf ( szAlt, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[%d]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+		2 * pms->nCube );
     
     printImage ( pf, szImageDir, sz, szExtension, szAlt, 
                  hecss, HTML_EXPORT_TYPE_GNU );
@@ -1430,7 +1449,7 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
     /* player 1 on roll */
     
     printImage ( pf, szImageDir, "b-midr", szExtension, 
-                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", 
+                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", 
                  hecss, HTML_EXPORT_TYPE_GNU );
     
   }
@@ -1488,10 +1507,11 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   fputs ( "<td>", pf );
 
   sprintf ( sz, "b-bar-x%d", anBoard[ 0 ][ 24 ] );
-  if ( anBoard[ 0 ][ 24 ] )
-    sprintf ( szAlt, "|%1X&nbsp;|", anBoard[ 0 ][ 24 ] );
+  if ( pms->fCubeOwner == 1 )
+    sprintf ( szAlt, "|%2d&nbsp;|", pms->nCube );
   else
     strcpy ( szAlt, "|&nbsp;&nbsp;&nbsp;|" );
+
   printImage ( pf, szImageDir, sz, szExtension, szAlt, 
                hecss, HTML_EXPORT_TYPE_GNU );
 
@@ -1539,7 +1559,17 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
     sprintf ( sz, "b-cb-%d", pms->nCube );
   else
     strcpy ( sz, "b-cb" );
-  printImage ( pf, szImageDir, sz, szExtension, "", 
+
+  if ( anBoard[ 0 ][ 24 ] )
+    /* text for alt tag - bottom bar piece */
+    sprintf ( szAlt, "|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+				"|&nbsp;%1XO|"
+				"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|",
+				anBoard[ 0 ][ 24 ] );
+  else
+    strcpy(szAlt, "");
+
+  printImage ( pf, szImageDir, sz, szExtension, szAlt,
                hecss, HTML_EXPORT_TYPE_GNU );
 
   fputs ( "</td>", pf );
@@ -1820,7 +1850,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.155 $";
+  const char szVersion[] = "$Revision: 1.156 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1901,7 +1931,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.155 $";
+  const char szVersion[] = "$Revision: 1.156 $";
   int iMajor, iMinor;
   char *pc;
 
