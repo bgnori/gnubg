@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.22 2003/09/15 12:55:27 hb Exp $
+ * $Id: render.c,v 1.23 2003/09/15 17:53:53 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -611,7 +611,7 @@ static void RenderFramePainted( renderdata *prd, unsigned char *puch,
     diffuse = 0.8 * prd->arLight[ 2 ] + 0.2;
     specular = pow( prd->arLight[ 2 ], 20 ) * 0.6;
 
-    FillArea( puch, nStride, prd->nSize * BOARD_WIDTH, prd->nSize * BOARD_HEIGHT /*81?*/,
+    FillArea( puch, nStride, prd->nSize * BOARD_WIDTH, prd->nSize * ( BOARD_HEIGHT - 1 ),
 	      clamp( specular * 0x100 +
 		     diffuse * prd->aanBoardColour[ 1 ][ 0 ] ),
 	      clamp( specular * 0x100 +
