@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.88 2002/09/19 16:59:08 gtw Exp $
+ * $Id: gtkboard.c,v 1.89 2002/09/22 19:38:32 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -716,18 +716,21 @@ update_pipcount ( BoardData *bd, gint points[ 2 ][ 25 ] ) {
 
   int anPip[ 2 ];
   char *pc;
+  int f;
 
   if ( bd->show_pips ) {
 
     /* show pip count */
 
     PipCount ( points, anPip );
+
+    f = ( bd->turn > 0 );
     
-    pc = g_strdup_printf ( "%d", anPip[ 0 ] );
+    pc = g_strdup_printf ( "%d", anPip[ !f ] );
     gtk_label_set_text ( GTK_LABEL ( bd->pipcount0 ), pc );
     g_free ( pc );
     
-    pc = g_strdup_printf ( "%d", anPip[ 1 ] );
+    pc = g_strdup_printf ( "%d", anPip[ f ] );
     gtk_label_set_text ( GTK_LABEL ( bd->pipcount1 ), pc );
     g_free ( pc );
 
