@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.185 2002/11/29 22:56:06 thyssen Exp $
+ * $Id: backgammon.h,v 1.186 2002/12/04 20:55:52 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -274,6 +274,7 @@ extern int fConfirm, fConfirmSave;
 extern float rAlpha, rAnneal, rThreshold, arLuckLevel[ LUCK_VERYGOOD + 1 ],
     arSkillLevel[ SKILL_VERYGOOD + 1 ];
 extern int nThreadPriority;
+extern int fCheat;
 
 typedef enum _pathformat {
   PATH_EPS, PATH_GAM, PATH_HTML, PATH_LATEX, PATH_MAT, PATH_OLDMOVES,
@@ -637,6 +638,7 @@ extern void CommandAccept( char * ),
     CommandSetBoard( char * ),
     CommandSetBeavers( char * ),
     CommandSetCache( char * ),
+    CommandSetCheat ( char * ),
     CommandSetClockwise( char * ),
     CommandSetConfirmNew( char * ),
     CommandSetConfirmSave( char * ),
@@ -921,6 +923,12 @@ basename ( const char *filename );
 extern char *
 Convert ( const char *sz, 
           const char *szSourceCharset, const char *szDestCharset );
+
+extern void
+OptimumRoll ( int anBoard[ 2 ][ 25 ], 
+              const cubeinfo *pci, const evalcontext *pec,
+              const int fBest, int *pnDice0, int *pnDice1 );
+
 
 
 typedef struct _highlightcolour {

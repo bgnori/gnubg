@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.151 2002/11/30 13:23:46 jsegrave Exp $
+ * $Id: set.c,v 1.152 2002/12/04 20:56:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -3686,4 +3686,14 @@ extern void CommandSetPriorityNormal ( char *sz ) {
 extern void CommandSetPriorityTimeCritical ( char *sz ) {
 
     SetPriority( -20 );
+}
+
+
+extern void
+CommandSetCheat ( char *sz ) {
+
+  SetToggle( "cheat", &fCheat, sz, 
+             _("Allow GNU Backgammon to manipulate the dice."),
+             _("Disallow GNU Backgammon to manipulate the dice.") );
+
 }
