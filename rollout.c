@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.20 2000/08/13 09:57:48 thyssen Exp $
+ * $Id: rollout.c,v 1.21 2000/10/23 16:41:20 gtw Exp $
  */
 
 #include "config.h"
@@ -420,12 +420,16 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
     for( i = 0; i < NUM_ROLLOUT_OUTPUTS; i++ )
 	    arStdDev[ i ] = arSigma[ i ];	
 
-  if( fShowProgress ) {
-    for( i = 0; i < 72; i++ )
-	    outputc( ' ' );
+  if( fShowProgress
+#if USE_GTK
+      && !fX
+#endif
+      ) {
+      for( i = 0; i < 72; i++ )
+	  outputc( ' ' );
 
-    outputc( '\r' );
-    fflush( stdout );
+      outputc( '\r' );
+      fflush( stdout );
   }
     
   return cGames;
