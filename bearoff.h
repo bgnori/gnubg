@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.11 2003/08/13 11:52:26 Superfly_Jon Exp $
+ * $Id: bearoff.h,v 1.12 2004/03/29 07:44:17 thyssen Exp $
  */
 
 #ifndef _BEAROFF_H_
@@ -138,5 +138,8 @@ extern int
 BearoffHyper( bearoffcontext *pbc,
               const unsigned int iPos,
               float arOutput[], float arEquity[] );
+
+extern bearoffcontext *
+BearoffAlloc( void );
 
 #endif /* _BEAROFF_H_ */

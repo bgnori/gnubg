@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.31 2004/02/16 20:57:19 uid65656 Exp $
+ * $Id: bearoff.c,v 1.32 2004/03/29 07:44:17 thyssen Exp $
  */
 
 #include "config.h"
@@ -1437,7 +1437,7 @@ isExactBearoff ( const char ac[ 8 ] ) {
 }
 
 
-bearoffcontext *
+extern bearoffcontext *
 BearoffAlloc( void ) {
 
   bearoffcontext *pbc;
