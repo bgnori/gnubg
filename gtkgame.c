@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.90 2002/01/06 17:37:37 thyssen Exp $
+ * $Id: gtkgame.c,v 1.91 2002/01/12 16:46:14 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4767,8 +4767,14 @@ extern void GTKShowMatchEquityTable( int n ) {
     
     gtk_container_add( GTK_CONTAINER( DialogArea( pwDialog, DA_MAIN ) ),
 		       pwBox );
-    gtk_box_pack_start( GTK_BOX( pwBox ), gtk_label_new( szMET[ metCurrent ] ),
+    gtk_box_pack_start( GTK_BOX( pwBox ), gtk_label_new( miCurrent.szName ),
 			FALSE, FALSE, 4 );
+    gtk_box_pack_start( GTK_BOX( pwBox ),
+                        gtk_label_new( miCurrent.szFileName ),
+                        FALSE, FALSE, 4 );
+    gtk_box_pack_start( GTK_BOX( pwBox ),
+                        gtk_label_new( miCurrent.szDescription ),
+                        FALSE, FALSE, 4 );
     gtk_box_pack_start( GTK_BOX( pwBox ), pwScrolledWindow, TRUE, TRUE, 0 );
     
     gtk_scrolled_window_set_policy( GTK_SCROLLED_WINDOW( pwScrolledWindow ),

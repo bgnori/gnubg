@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.73 2001/11/09 18:26:05 gtw Exp $
+ * $Id: show.c,v 1.74 2002/01/12 16:46:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -773,7 +773,9 @@ extern void CommandShowMatchEquityTable ( char *sz ) {
 #endif
 
   output ( "Match equity table: " );
-  outputl( szMET[ metCurrent ] );
+  outputl( miCurrent.szName );
+  outputf( "(%s)\n", miCurrent.szFileName );
+  outputl( miCurrent.szDescription );
   outputl( "" );
   
   /* Write column headers */
