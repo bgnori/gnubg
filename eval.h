@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.88 2002/10/28 20:39:41 thyssen Exp $
+ * $Id: eval.h,v 1.89 2002/10/31 21:08:37 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -97,20 +97,22 @@ typedef struct _evalcontext {
 typedef struct _rolloutcontext {
 
   evalcontext aecCube[ 2 ], aecChequer [ 2 ]; /* evaluation parameters */
-
+  evalcontext aecCubeLate[ 2 ], aecChequerLate [ 2 ]; /* ... for later moves */
+  evalcontext aecCubeTrunc, aecChequerTrunc; /* ... at truncation point */
   unsigned int fCubeful : 1; /* Cubeful rollout */
   unsigned int fVarRedn : 1; /* variance reduction */
   unsigned int fInitial: 1;  /* roll out as opening position */
   unsigned int fRotate : 1;  /* rotate dice of first two rolls */
-    
+  unsigned int fLateEvals; /* enable different evals for later moves */
+  unsigned int fDoTruncate; /* enable truncated rollouts */
   unsigned short nTruncate; /* truncation */
   unsigned int nTrials; /* number of rollouts */
-
   unsigned int fTruncBearoff2 : 1; /* cubeless rollout: trunc at BEAROFF2 */
   unsigned int fTruncBearoffOS: 1; /* cubeless rollout: trunc at BEAROFF_OS */
-
+  unsigned short nLate; /* switch evaluations on move nLate of game */
   rng rngRollout;
   int nSeed;
+
 } rolloutcontext;
 
 
