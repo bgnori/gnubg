@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.9 2003/09/06 13:08:15 thyssen Exp $
+ * $Id: gtkrace.c,v 1.10 2003/09/08 03:10:17 kaoru Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -539,7 +539,7 @@ OSRPage ( int anBoard[ 2 ][ 25 ], racewidget *prw ) {
   float ar0[ 2 ] = { 0, 0 };
   char *pch;
   const char *aszTitle[] = {
-    "",
+    NULL,
     N_("Win"),
     N_("W g"),
     N_("W bg"),
@@ -582,7 +582,7 @@ OSRPage ( int anBoard[ 2 ][ 25 ], racewidget *prw ) {
   g_free( pch );
 
   for ( i = 0; i < 6; ++i )
-    asz[ i ] = gettext ( aszTitle[ i ] );
+    asz[ i ] = aszTitle[ i ] ? gettext ( aszTitle[ i ] ) :  "";
 
   prw->pwOutput = gtk_clist_new_with_titles( 6, asz );
   gtk_box_pack_start ( GTK_BOX ( pwvbox ), 
