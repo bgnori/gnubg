@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.117 2002/08/07 18:43:22 thyssen Exp $
+ * $Id: set.c,v 1.118 2002/08/18 08:39:47 thyssen Exp $
  */
 
 #include "config.h"
@@ -310,6 +310,16 @@ extern void CommandSetAnnotation( char *sz ) {
 	>= 0 )
 	/* Force an update, even if the setting has not changed. */
 	UpdateSetting( &fAnnotation );
+}
+
+extern void CommandSetMessage( char *sz ) {
+
+    if( SetToggle( "message", &fMessage, sz,
+		   _("Show window with messages"),
+		   _("Do not show window with message.") )
+	>= 0 )
+	/* Force an update, even if the setting has not changed. */
+	UpdateSetting( &fMessage );
 }
 
 extern void CommandSetAutoBearoff( char *sz ) {
@@ -2615,6 +2625,18 @@ CommandSetGeometryMain ( char *sz ) {
   gwSet = WINDOW_MAIN;
   szSet = "main";
   szSetCommand = "main";
+
+  HandleCommand ( sz, acSetGeometryValues );
+
+}
+
+
+extern void
+CommandSetGeometryMessage ( char *sz ) {
+
+  gwSet = WINDOW_MESSAGE;
+  szSet = "message";
+  szSetCommand = "message";
 
   HandleCommand ( sz, acSetGeometryValues );
 
