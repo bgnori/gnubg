@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.2 2002/11/24 14:43:31 thyssen Exp $
+ * $Id: bearoff.h,v 1.3 2002/12/01 15:42:42 thyssen Exp $
  */
 
 #ifndef _BEAROFF_H_
@@ -83,6 +83,11 @@ BearoffDist ( bearoffcontext *pbc, const unsigned int nPosID,
               float ar[ 4 ],
               unsigned short int ausProb[ 32 ], 
               unsigned short int ausGammonProb[ 32 ] );
+
+extern int
+BearoffCubeful ( bearoffcontext *pbc,
+                 const unsigned int iPos,
+                 float ar[ 4 ] );
 
 extern void
 BearoffClose ( bearoffcontext *pbc );
