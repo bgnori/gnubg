@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.101 2002/02/07 16:00:30 gtw Exp $
+ * $Id: gtkgame.c,v 1.102 2002/02/14 17:19:55 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1786,7 +1786,27 @@ static void SelectGame( GtkWidget *pw, void *p ) {
 }
 
 static int fGameMenuUsed;
+#if WIN32
+extern void GTKAddGame( char *sz ) {
 
+    GtkWidget *pw = gtk_menu_item_new_with_label( sz ),
+        *pwMenu = gtk_option_menu_get_menu( GTK_OPTION_MENU( pom ) );
+    
+    if( !ms.cGames )
+        /* Delete the "(no game)" item. */
+        gtk_container_foreach( GTK_CONTAINER( pwMenu ),
+                               (GtkCallback) MenuDelete, pwMenu );
+
+    gtk_signal_connect( GTK_OBJECT( pw ), "activate",
+                        GTK_SIGNAL_FUNC( SelectGame ),
+                        GINT_TO_POINTER( ms.cGames ) );
+    
+    gtk_widget_show( pw );
+    gtk_menu_append( GTK_MENU( pwMenu ), pw );
+    
+    GTKSetGame( ms.cGames );
+}
+#else
 extern void GTKAddGame( moverecord *pmr ) {
 
     GtkWidget *pw,
@@ -1819,7 +1839,7 @@ extern void GTKAddGame( moverecord *pmr ) {
     
     GTKSetGame( c );
 }
-
+#endif
 /* Delete i and subsequent games. */
 extern void GTKPopGame( int i ) {
 
@@ -1848,6 +1868,7 @@ extern void GTKSetGame( int i ) {
    player names change, or the score a game was started at is modified). */
 extern void GTKRegenerateGames( void ) {
 
+#if !WIN32
     list *pl, *plGame;
     int i = gtk_option_menu_get_history( GTK_OPTION_MENU( pom ) );
 
@@ -1862,6 +1883,7 @@ extern void GTKRegenerateGames( void ) {
     }
 
     GTKSetGame( i );
+#endif
 }
 
 /* The annotation for one or more moves has been modified.  We refresh

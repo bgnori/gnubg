@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.46 2002/02/07 16:00:30 gtw Exp $
+ * $Id: gtkboard.c,v 1.47 2002/02/14 17:19:55 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -54,16 +54,8 @@
 #define CLICK_TIME 200 /* minimum time in milliseconds before a drag to the
 			  same point is considered a real drag rather than a
 			  click */
-
-#if WIN32
-/* The Win32 port of GDK wants clip masks to be inverted, for some reason... */
-#define MASK_INVISIBLE 0
-#define MASK_VISIBLE 1
-#else
 #define MASK_INVISIBLE 1
 #define MASK_VISIBLE 0
-#endif
-
 
 static int positions[ 2 ][ 30 ][ 3 ] = { {
     { 51, 25, 7 },

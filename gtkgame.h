@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.33 2002/02/06 15:03:25 gtw Exp $
+ * $Id: gtkgame.h,v 1.34 2002/02/14 17:19:55 oysteijo Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -40,8 +40,11 @@ extern void GTKAddMoveRecord( moverecord *pmr );
 extern void GTKPopMoveRecord( moverecord *pmr );
 extern void GTKSetMoveRecord( moverecord *pmr );
 extern void GTKClearMoveRecord( void );
-
+#if WIN32
+extern void GTKAddGame( char *sz );
+#else
 extern void GTKAddGame( moverecord *pmr );
+#endif
 extern void GTKPopGame( int c );
 extern void GTKSetGame( int i );
 extern void GTKRegenerateGames( void );
