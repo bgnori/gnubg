@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.148 2003/11/06 13:19:34 jsegrave Exp $
+ * $Id: analysis.c,v 1.149 2003/11/08 19:57:33 jsegrave Exp $
  */
 
 #include "config.h"
@@ -623,6 +623,8 @@ updateStatcontext(statcontext*       psc,
      * update luck statistics for roll
      */
 
+
+    GetMatchStateCubeInfo ( &ci, pms );
     if ( fAnalyseDice && pmr->sd.rLuck != ERR_VAL ) {
 
       float r = pms->nMatchTo ?
