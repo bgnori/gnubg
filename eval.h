@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.19 2000/08/13 09:57:47 thyssen Exp $
+ * $Id: eval.h,v 1.20 2000/08/13 15:57:41 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -245,5 +245,8 @@ GetDoublePointDeadCube ( float arOutput [ 5 ],
 
 extern int
 GetDPEq ( int *pfCube, float *prDPEq, cubeinfo *pci );
+
+extern int 
+GetCubeActionSz ( float arDouble[ 4 ], char *szOutput );
 
 #endif
