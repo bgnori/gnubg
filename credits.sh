@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.118 2004/06/15 06:31:55 kaoru Exp $
+# $Id: credits.sh,v 1.119 2004/11/03 08:20:10 oysteijo Exp $
 # 
 
 column < /dev/null || exit 0
@@ -31,7 +31,7 @@ extra=/tmp/extra.$$
 
 cat > $authors <<EOF
 Joseph Heled
-Oeystein Johansen
+Oystein Johansen
 Jonathan Kinsey
 David Montgomery
 Jim Segrave
@@ -51,7 +51,7 @@ Rod Roark
 EOF
 
 cat > $support <<EOF
-Oeystein Johansen,Web Pages
+Oystein Johansen,Web Pages
 Achim Mueller,Manual
 Nardy Pillards,Web Pages
 Albert Silver,Tutorial
@@ -87,6 +87,7 @@ John Chuang
 Tristan Colgate
 Olivier Croisille
 Ned Cross
+Ian Curtis
 Bill Davidson
 Michael Depreli
 Ian Dunstan
