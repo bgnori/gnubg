@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.80 2002/11/13 17:06:23 thyssen Exp $
+ * $Id: html.c,v 1.81 2002/11/14 17:13:00 thyssen Exp $
  */
 
 #include "config.h"
@@ -73,7 +73,7 @@ static char *aaszStyleSheetClasses[ NUM_CLASSES ][ 2 ] = {
   { "moveheader", "background-color: #787878" },
   { "movenumber", "width: 2em; text-align: right" },
   { "moveply", "width: 5em; text-align: center" },
-  { "movemove", "width: 20em; text-align: left }" },
+  { "movemove", "width: 20em; text-align: left" },
 
   { "moveequity", "width: 10em; text-align: left" },
   { "movethemove", "background-color: #ffffcc" },
@@ -88,10 +88,10 @@ static char *aaszStyleSheetClasses[ NUM_CLASSES ][ 2 ] = {
   { "result", 
     "background-color: yellow; font-weight: bold; text-align: center; "
     "color: black; width: 40em; padding: 0.2em" },
-  { "tiny", "font-size: 25%%" },
+  { "tiny", "font-size: 25%" },
   { "cubedecision", "background-color: #ddddee; text-align: left" },
 
-  { "cubedecisionheader", "background-color: #89d0e2; text-align: center} " },
+  { "cubedecisionheader", "background-color: #89d0e2; text-align: center" },
   { "comment", "background-color: #449911; width: 39.5em; padding: 0.5em" },
   { "commentheader", 
     "background-color: #557711; font-weight: bold; text-align: center; "
@@ -1786,7 +1786,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.80 $";
+  const char szVersion[] = "$Revision: 1.81 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1867,7 +1867,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.80 $";
+  const char szVersion[] = "$Revision: 1.81 $";
   int iMajor, iMinor;
   char *pc;
 
