@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.19 2004/05/13 10:25:29 Superfly_Jon Exp $
+ * $Id: render.h,v 1.20 2004/05/19 08:43:52 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -147,6 +147,7 @@ typedef struct _renderdata {
 	PieceType pieceType;	/* Different piece models */
 	PieceTextureType pieceTextureType;	/* Different piece texture types */
 	int afDieColour3d[ 2 ]; /* TRUE means same colour as chequers */
+	int acrossCheq, downCheq; /* Split main board up to improve rendering */
 
 	Material ChequerMat[2];	/* Chequer colours */
 	Material DiceMat[2], DiceDotMat[2];

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.236 2004/05/10 19:37:44 thyssen Exp $
+ * $Id: set.c,v 1.237 2004/05/19 08:43:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -82,6 +82,11 @@
 
 #if USE_TIMECONTROL
 #include "timecontrol.h"
+#endif
+
+#if WIN32
+/* Needed for thread priority defines */
+#include <windows.h>
 #endif
 
 static int iPlayerSet, iPlayerLateSet;

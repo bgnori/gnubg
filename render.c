@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.37 2004/05/18 07:25:30 Superfly_Jon Exp $
+ * $Id: render.c,v 1.38 2004/05/19 08:43:52 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -184,6 +184,7 @@ renderdata rdDefault = {
 	PT_ROUNDED,	/* Piece type */
 	PTT_ALL,	/* Piece texture type */
     { TRUE, TRUE }, /* afDieColour3d */
+	0, 0,	/* Used at runtime */
 	/* Default 3d colours - black+white, should never be used -
 		if no 3d settings the first design will be used */
     {{{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, 100, 0, 0},
