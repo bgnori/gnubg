@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.424 2003/07/03 15:21:32 jsegrave Exp $
+ * $Id: gnubg.c,v 1.425 2003/07/05 08:54:26 joseph Exp $
  */
 
 #include "config.h"
@@ -7636,7 +7636,7 @@ Convert ( const char *sz,
 #if WIN32
     rc = iconv ( id, (const char **) &pchIn, &lIn, &pchOut, &l );
 #else
-    rc = iconv ( id, (const char **) &pchIn, &lIn, &pchOut, &l );
+    rc = iconv ( id, (ICONV_CONST char **) &pchIn, &lIn, &pchOut, &l );
 #endif
 
     if ( rc == -1 ) 
