@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.h,v 1.3 2004/10/05 16:13:00 Superfly_Jon Exp $
+ * $Id: relational.h,v 1.4 2004/11/05 14:46:22 Superfly_Jon Exp $
  */
 
 #ifndef _RELATIONAL_H_
@@ -34,5 +34,6 @@ extern void RelationalUpdatePlayerDetails(int player_id, const char* newName,
 										  const char* newNotes);
 extern int RunQuery(RowSet* pRow, char *sz);
 extern void FreeRowset(RowSet* pRow);
+extern void RelationalLinkNick(char* nick, char* env, char* player);
 
 #endif /* _RELATIONAL_H_ */

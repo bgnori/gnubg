@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.297 2004/10/14 16:29:12 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.298 2004/11/05 14:46:21 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -877,8 +877,11 @@ extern void CommandAccept( char * ),
     CommandRecordEraseAll( char * ),
     CommandRecordShow( char * ),
     CommandRelationalAddMatch( char * ),
+    CommandRelationalAddEnvironment( char * ),
     CommandRelationalErase( char * ),
+    CommandRelationalEraseEnv( char * ),
     CommandRelationalEraseAll( char * ),
+    CommandRelationalRenameEnv( char * ),
     CommandRelationalSelect( char * ),
     CommandRelationalShowEnvironments( char * ),
     CommandRelationalShowPlayers( char * ),
