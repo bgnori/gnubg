@@ -1,4 +1,4 @@
-<!--
+--
 
      catalog   
 
@@ -10,8 +10,8 @@
      is permitted in any medium provided the copyright notice and this
      permission notice are preserved.
 
-     $Id: catalog,v 1.1 2002/03/14 19:45:46 thyssen Exp $
+     $Id: catalog,v 1.2 2002/03/14 19:58:56 thyssen Exp $
 
- -->
+--
 
 SYSTEM "met.dtd" "met.dtd"
