@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.17 2000/06/12 16:54:49 gtw Exp $
+ * $Id: show.c,v 1.18 2000/06/13 17:48:32 gtw Exp $
  */
 
 #include "config.h"
@@ -380,7 +380,6 @@ extern void CommandShowThorp( char *sz ) {
 
   anMenLeft[0] = 0;
   anMenLeft[1] = 0;
-  for (x = 0; x < 25; x++)
   for (x = 0; x < 25; x++)
     {
       anMenLeft[0] += an[0][x];
