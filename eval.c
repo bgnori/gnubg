@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.7 2000/01/08 21:30:17 gtw Exp $
+ * $Id: eval.c,v 1.8 2000/01/09 06:14:20 thyssen Exp $
  */
 
 #include "config.h"
@@ -1695,8 +1695,7 @@ extern int DumpPosition( int anBoard[ 2 ][ 25 ], char *szOutput,
 	
 	sprintf( szOutput, ":\t%5.3f\t%5.3f\t%5.3f\t%5.3f\t%5.3f\t(%+6.3f)\n",
 	     arOutput[ 0 ], arOutput[ 1 ], arOutput[ 2 ], arOutput[ 3 ],
-	     arOutput[ 4 ], arOutput[ 0 ] * 2.0 - 1.0 + arOutput[ 1 ] +
-	     arOutput[ 2 ] - arOutput[ 3 ] - arOutput[ 4 ] );
+	     arOutput[ 4 ], Utility ( arOutput ) );
     }
 
     return 0;
