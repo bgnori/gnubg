@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.484 2003/09/04 10:07:27 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.485 2003/09/05 09:29:46 kaoru Exp $
  */
 
 #include "config.h"
@@ -8370,19 +8370,29 @@ extern void
 TextToClipboard( const char *sz ) {
 
 #if WIN32
+#if ENABLE_NLS
+  /* darty hack for Windows Japanese edition */
+  if ( !strncmp( "Japanese", setlocale(LC_ALL, NULL), 8 ) ) {
+    WinCopy( Convert( sz, "SHIFT_JIS", GNUBG_CHARSET ) );
+  }
+  else {
+    WinCopy ( sz );
+  }
+#else /* ENABLE_NLS */
   WinCopy ( sz );
-#else
-  
+#endif /* ! ENABLE_NLS */
+#else /* WIN32 */
+
 #if USE_GTK
   if ( fX ) {
     GTKTextToClipboard( sz );
     return;
   }
-#else
+#else /* USE_GTK */
   /* no clipboard: just write string */
   outputl( sz );
-#endif
-#endif
+#endif /* ! USE_GTK */
+#endif /* ! WIN32 */
 
 }
 
