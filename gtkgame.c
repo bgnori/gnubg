@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.111 2002/03/13 16:15:19 gtw Exp $
+ * $Id: gtkgame.c,v 1.112 2002/03/14 01:45:14 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1805,7 +1805,7 @@ extern void GTKAddGame( moverecord *pmr ) {
 	*pwMenu = gtk_option_menu_get_menu( GTK_OPTION_MENU( pom ) );
     GList *pl;
     int c;
-    char sz[ 32 ];
+    char sz[ 128 ];
     
     if( !fGameMenuUsed ) {
 	/* Delete the "(no game)" item. */
