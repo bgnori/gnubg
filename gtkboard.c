@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.82 2002/09/16 20:24:34 gtw Exp $
+ * $Id: gtkboard.c,v 1.83 2002/09/17 14:41:08 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4842,7 +4842,6 @@ static void board_init( Board *board ) {
                                                      GTK_ICON_SIZE_SMALL_TOOLBAR ) );
 #else
     bd->play = gtk_button_new_with_label ( _("Play" ) );
-                                             bd->toolbar ) );
 #endif
     gtk_signal_connect( GTK_OBJECT( bd->play ), "clicked",
 			GTK_SIGNAL_FUNC( ButtonClicked ), "play" );
