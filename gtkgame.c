@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.480 2004/03/29 07:49:00 thyssen Exp $
+ * $Id: gtkgame.c,v 1.481 2004/03/29 17:14:22 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6136,6 +6136,11 @@ static void SetPlayers( gpointer *p, guint n, GtkWidget *pw ) {
     if( fOK ) {
 	outputpostpone();
 
+	if (!CompareNames(apTemp[0].szName, ap[1].szName) && 
+		CompareNames(apTemp[0].szName, apTemp[1].szName))
+	{	/* Trying to swap names - change current name to avoid error */
+		sprintf(ap[1].szName, "_%s", apTemp[0].szName);
+	}
 	for( i = 0; i < 2; i++ ) {
 	    /* NB: this comparison is case-sensitive, and does not use
 	       CompareNames(), so that the user can modify the case of
