@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.215 2003/01/12 22:33:20 gtw Exp $
+ * $Id: eval.c,v 1.216 2003/01/21 19:55:38 gtw Exp $
  */
 
 #include "config.h"
@@ -2386,7 +2386,8 @@ EvalKey ( const evalcontext *pec, const int nPlies,
 
   /* Record the signature of important evaluation settings. */
   iKey = pec->nReduced | ( nPlies << 3 ) |
-    ( pec->fCubeful << 6 ) | ( ( (int) ( pec->rNoise * 1000 ) ) << 7 );
+      ( pec->fCubeful << 6 ) | ( ( (int) ( pec->rNoise * 1000 ) ) << 7 ) |
+      ( pci->fMove << 16 );
 
   /* In match play, the score and cube value and position are important. */
   if( pci->nMatchTo )
@@ -2397,16 +2398,15 @@ EvalKey ( const evalcontext *pec, const int nPlies,
       ( ( pci->fCubeOwner < 0 ? 2 :
           pci->fCubeOwner == pci->fMove ) << 29 ) ^
       ( pci->fCrawford << 31 );
-  else if ( pec->fCubeful )
-    /* in cubeful money games the position is important 
-       FIXME: jacoby and beavers does also matter, but we're running out
-       of bits */
+  else if( pec->fCubeful || fCubefulEquity )
+      /* in cubeful money games the cube position and rules are important. */
     iKey ^=
-      ( ( pci->fCubeOwner < 0 ? 2 :
-          pci->fCubeOwner == pci->fMove ) << 29 );
+	( ( pci->fCubeOwner < 0 ? 2 :
+	    pci->fCubeOwner == pci->fMove ) << 29 ) ^
+	( pci->fJacoby << 31 ) ^ ( pci->fBeavers << 28 );
 
   if( fCubefulEquity )
-      iKey = ~iKey;
+      iKey ^= 0x6a47b47e;
   
   return iKey;
 
@@ -2429,7 +2429,7 @@ EvaluatePositionCache( int anBoard[ 2 ][ 25 ], float arOutput[],
 	    fnTick();
     }
 
-    if( pecx->rNoise != 0.0f && !pecx->fDeterministic )
+    if( !cCache || ( pecx->rNoise != 0.0f && !pecx->fDeterministic ) )
 	/* non-deterministic noisy evaluations; cannot cache */
 	return EvaluatePositionFull( anBoard, arOutput, pci, pecx, nPlies,
 				     pc );
@@ -2437,7 +2437,7 @@ EvaluatePositionCache( int anBoard[ 2 ][ 25 ], float arOutput[],
     PositionKey( anBoard, ec.auchKey );
 
     ec.nEvalContext = EvalKey ( pecx, nPlies, pci, FALSE );
-
+    
 #if defined( GARY_CACHE )
     l = EvalCacheHash( &ec );
     
@@ -5673,7 +5673,7 @@ EvaluatePositionCubeful3( int anBoard[ 2 ][ 25 ],
   evalcache ec, *pecx;
   unsigned long l;
 
-  if( pec->rNoise != 0.0f && !pec->fDeterministic )
+  if( !cCache || ( pec->rNoise != 0.0f && !pec->fDeterministic ) )
       /* non-deterministic evaluation; never cache */
       return EvaluatePositionCubeful4( anBoard, arOutput, arCubeful,
 				       aciCubePos, cci, pciMove, pec,
