@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.269 2002/08/05 17:58:16 thyssen Exp $
+ * $Id: gnubg.c,v 1.270 2002/08/05 18:15:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -1013,7 +1013,7 @@ command cER = {
       "ready for commands"), szPROMPT, NULL },
     { "record", CommandSetRecord, N_("Set whether all games in a session are "
       "recorded"), szONOFF, &cOnOff },
-    { "rng", NULL, N_("Select the random number generator algorithm"), NULL,
+    { "rng", CommandSetRNG, N_("Select the random number generator algorithm"), NULL,
       acSetRNG },
     { "rollout", CommandSetRollout, N_("Control rollout parameters"),
       NULL, acSetRollout }, 
