@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.538 2005/03/05 22:58:49 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.539 2005/03/06 17:08:23 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2266,14 +2266,14 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ N_("/_Help/_Report bug"), NULL, ReportBug, 0, NULL },
 	{ N_("/_Help/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_Help/_About gnubg"), NULL, Command, CMD_SHOW_VERSION,
-#if GTK_CHECK_VERSION(2,0,0)
+#if GTK_CHECK_VERSION(2,6,0)
 		"<StockItem>", GTK_STOCK_ABOUT
 #else
 		NULL
 #endif
 	}
     };
-    int i;
+    
 #if __GNUC__
     char sz[ strlen( szHomeDirectory ) + 15 ];
 #elif HAVE_ALLOCA
