@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.30 2003/06/01 20:40:36 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.31 2003/06/01 20:52:48 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -736,7 +736,7 @@ CreateMoveListTools ( hintdata *phd ) {
                          _("Move the selected move") );
 
   gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwTempMap,
-                         _("Show Sho Sengoku Temperatur Map of position "
+                         _("Show Sho Sengoku Temperature Map of position "
                            "after selected move"),
                          "" );
 
