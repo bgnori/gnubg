@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.407 2003/04/05 18:42:59 thyssen Exp $
+ * $Id: gnubg.c,v 1.408 2003/04/08 19:38:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -645,7 +645,7 @@ command cER = {
     { "png", CommandExportPositionPNG, N_("Save the current position in "
       "Portable Network Graphics (PNG) format"), szFILENAME, &cFilename },
 #endif /* HAVE_LIBPNG */
-    { "pos", CommandNotImplemented, N_("Save the current position in .pos "
+    { "pos", CommandExportPositionJF, N_("Save the current position in .pos "
       "format"), szFILENAME, &cFilename },
     { "snowietxt", CommandExportPositionSnowieTxt,
       N_("Save the current position in Snowie .txt format"), 
@@ -4094,13 +4094,6 @@ extern void CommandImportJF( char *sz ) {
 
     sz = NextToken( &sz );
     
-    if( ms.gs != GAME_PLAYING ) {
-	outputl( _("There must be a game in progress to import a Jellyfish "
-                 "position.") );
-
-	return;
-    }
-
     if( !sz || !*sz ) {
 	outputl( _("You must specify a position file to import (see `help "
 		 "import pos').") );
