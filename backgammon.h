@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.213 2003/03/20 20:09:31 thyssen Exp $
+ * $Id: backgammon.h,v 1.214 2003/03/28 17:28:20 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -822,6 +822,7 @@ extern void CommandAccept( char * ),
     CommandSetRNGAnsi( char * ),
     CommandSetRNGBBS( char * ),
     CommandSetRNGBsd( char * ),
+    CommandSetRNGFile( char * ),
     CommandSetRNGIsaac( char * ),
     CommandSetRNGManual( char * ),
     CommandSetRNGMD5( char * ),
@@ -1011,6 +1012,12 @@ SetMatchInfo( char **ppch, char *sz, char *szMessage );
 
 extern void
 TextToClipboard ( const char * sz );
+
+#ifdef WIN32
+#define BIG_PATH _MAX_PATH
+#else
+#define BIG_PATH PATH_MAX
+#endif
 
 
 #endif

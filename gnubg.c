@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.396 2003/03/27 18:48:29 thyssen Exp $
+ * $Id: gnubg.c,v 1.397 2003/03/28 17:28:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -942,6 +942,8 @@ command cER = {
       szOPTMODULUSOPTSEED, NULL },
     { "bsd", CommandSetRNGBsd, N_("Use the BSD random() non-linear additive "
       "feedback generator"), szOPTSEED, NULL },
+    { "file", CommandSetRNGFile, 
+      N_("Read dice from file"), szFILENAME, NULL },
     { "isaac", CommandSetRNGIsaac, N_("Use the I.S.A.A.C. generator"), 
       szOPTSEED, NULL },
     { "manual", CommandSetRNGManual, 
@@ -4445,6 +4447,9 @@ SaveRNGSettings ( FILE *pf, char *sz, rng rngCurrent ) {
     case RNG_USER:
 	/* don't save user RNGs */
 	break;
+    case RNG_FILE:
+        fprintf( pf, "%s rng file %s\n", sz, szDiceFilename );
+	break;
     }
 
 }
@@ -6334,12 +6339,6 @@ static RETSIGTYPE SoundChild ( int n ) {
 }
 
 #endif /* HAVE_FORK */
-
-#ifdef WIN32
-#define BIG_PATH _MAX_PATH
-#else
-#define BIG_PATH PATH_MAX
-#endif
 
 static void real_main( void *closure, int argc, char *argv[] ) {
 

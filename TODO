@@ -1,4 +1,4 @@
-$Id: TODO,v 1.285 2003/03/19 18:39:19 thyssen Exp $
+$Id: TODO,v 1.286 2003/03/28 17:28:20 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -331,7 +331,6 @@ the rollouts off and come back later.
   can be displayed efficiently. (gary)
 ** We provide access to non-deterministic dice from random.org.  Add
   completely deterministic dice from noentropy.net as well.
-** option to read dice from file (similar to Jellyfish)
 
 * Bugs believed fixed:
 ** Save the results of rollouts/evaluations performed with hint during playing
