@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.462 2003/08/15 07:00:44 joseph Exp $
+ * $Id: gnubg.c,v 1.463 2003/08/16 21:35:58 joseph Exp $
  */
 
 #include "config.h"
@@ -4037,7 +4037,7 @@ CommandRollout( char *sz ) {
       float       (** apOutput)[ NUM_ROLLOUT_OUTPUTS ];
       float       (** apStdDev)[ NUM_ROLLOUT_OUTPUTS ];
       evalsetup   (** apes);
-      cubeinfo    (** apci);
+      const cubeinfo    (** apci);
       int         (** apCubeDecTop);
       move	  (** apMoves);
 
@@ -4054,7 +4054,7 @@ CommandRollout( char *sz ) {
       float       (*apOutput[10])[2][25];
       float       (*apStdDev[10])[2][25];
       evalsetup   (*apes[10]);
-      cubeinfo    (*apci[10]);
+      const cubeinfo    (*apci[10]);
       int         (*apCubeDecTop[10]);
       move        (*apMoves[10]);
 

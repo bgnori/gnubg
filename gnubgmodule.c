@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.12 2003/08/14 22:25:36 joseph Exp $
+ * $Id: gnubgmodule.c,v 1.13 2003/08/16 21:35:58 joseph Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1745,61 +1745,78 @@ PythonNavigate(PyObject* self, PyObject* args, PyObject* keywds)
 {
   int nextRecord = INT_MIN;
   int nextGame = INT_MIN;
-  int absolute = INT_MIN;
+  int gamesDif = 0;
+  int recordsDiff = 0;
   
-  static char* kwlist[] = {"next", "game", "absolute", 0};
+  static char* kwlist[] = {"next", "game", 0};
 
   if( ! lMatch.plNext ) {
     PyErr_SetString(PyExc_RuntimeError, "no active match");
     return 0;
   }
     
-  if( !PyArg_ParseTupleAndKeywords(args, keywds, "|iii", kwlist,
-				   &nextRecord, &nextGame, &absolute) )
+  if( !PyArg_ParseTupleAndKeywords(args, keywds, "|ii", kwlist,
+				   &nextRecord, &nextGame) )
     return 0;
 
+
+  PyObject* r = 0;
+  
   if( nextRecord == INT_MIN && nextGame == INT_MIN ) {
     /* no args, go to start */
     ChangeGame( lMatch.plNext->p );
-    Py_INCREF(Py_None);
-    return Py_None;
-  }
-  
-  if( nextGame != INT_MIN ) {
-    list* pl;
-    if( absolute ) {
-      if( nextGame < 0 ) {
-	PyErr_SetString(PyExc_RuntimeError, "negative game in absolute mode");
-	return 0;
-      }
-      pl = lMatch.plNext;
-    } else {
-      for( pl = lMatch.plNext; pl->p != plGame && pl != &lMatch; 
-         pl = pl->plNext )
-	;
+  } else {
 
-      assert( pl->p == plGame );
+    if( nextRecord != INT_MIN && nextRecord < 0 ) {
+      PyErr_SetString(PyExc_ValueError, "negative next record");
+      return 0;
     }
-    {
-      int n = nextGame;
-      if( n > 0 ) {
-	while( n > 0 && pl->plNext->p ) {
-	  pl = pl->plNext;
-	  --n;
-	}
-      } else if( n < 0 ) {
-	while( n < 0 && pl->plPrev->p ) {
-	  pl = pl->plPrev;
-	  ++n;
-	}
-      }
-      ChangeGame(pl->p);
-    }
-  }
   
-  if( nextRecord != INT_MIN ) {
-    
+    if( nextGame != INT_MIN && nextGame != 0 ) {
+      list* pl= lMatch.plNext;
+
+      for( ; pl->p != plGame && pl != &lMatch; pl = pl->plNext)
+	;	
+
+      {                                            assert( pl->p == plGame ); }
+      {
+	int n = nextGame;
+	if( n > 0 ) {
+	  while( n > 0 && pl->plNext->p ) {
+	    pl = pl->plNext;
+	    --n;
+	  }
+	} else if( n < 0 ) {
+	  while( n < 0 && pl->plPrev->p ) {
+	    pl = pl->plPrev;
+	    ++n;
+	  }
+	}
+	ChangeGame(pl->p);
+
+	gamesDif = abs(nextGame) - n;
+      }
+    }
+  
+    if( nextRecord != INT_MIN ) {
+      recordsDiff = nextRecord - InternalCommandNext(0, nextRecord);
+    }
+
+    if( recordsDiff || gamesDif ) {
+      r = Py_BuildValue("(ii)", recordsDiff, gamesDif);
+    }
   }
+  /* (HACK) */
+  if( ms.gs ==  GAME_NONE) {
+    ms.gs = GAME_PLAYING;
+  }
+
+  if( ! r ) {
+    Py_INCREF(Py_None);
+    r = Py_None;
+  }
+
+  return r;
 }
 
 

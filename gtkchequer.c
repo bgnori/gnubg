@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.41 2003/08/16 07:20:20 jsegrave Exp $
+ * $Id: gtkchequer.c,v 1.42 2003/08/16 21:35:58 joseph Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -190,13 +190,13 @@ MoveListRollout( GtkWidget *pw, hintdata *phd ) {
   {
 #if HAVE_ALLOCA
     move **ppm = alloca ( c * sizeof (move *));
-    cubeinfo **ppci = alloca ( c * sizeof (cubeinfo *));
+    const cubeinfo** ppci = alloca ( c * sizeof (cubeinfo *));
     asz = alloca( 40 * c );
 #else
     if( c > 10 )
 	c = 10;
     move *pm[10];
-    cubeinfo *pci[10];
+    const cubeinfo* pci[10];
 #endif
 
 
