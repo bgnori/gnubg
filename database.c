@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.34 2001/12/10 16:01:21 gtw Exp $
+ * $Id: database.c,v 1.35 2001/12/16 11:57:46 thyssen Exp $
  */
 
 #include "config.h"
@@ -317,7 +317,7 @@ extern void CommandDatabaseRollout( char *sz ) {
 	    /* FIXME if position has some existing rollouts, merge them */
 
 	    if( !GeneralEvaluationR( PositionIDFromKey(
-		(unsigned char *) dKey.dptr ), arOutput, NULL, anBoardEval,
+		(unsigned char *) dKey.dptr ), arOutput, NULL, NULL, anBoardEval,
 				     &ciCubeless, &rcRollout ) ) {
 		pev->c = rcRollout.nTrials;
 		pev->t = time( NULL );

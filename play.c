@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.99 2001/12/10 16:02:58 gtw Exp $
+ * $Id: play.c,v 1.100 2001/12/16 11:52:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -679,6 +679,7 @@ extern int ComputerTurn( void ) {
 
       float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
       float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+      rolloutstat aarsStatistics[ 2 ][ 2 ];
       cubedecision cd;
 
       /* Consider cube action */
@@ -720,7 +721,7 @@ extern int ComputerTurn( void ) {
       /* Evaluate cube decision */
 
       if ( GeneralCubeDecision ( "Computer player",
-                                 aarOutput, aarStdDev,
+                                 aarOutput, aarStdDev, aarsStatistics,
                                  ms.anBoard,
                                  &ci, &ap [ ms.fTurn ].esCube ) < 0 )
         return -1;
@@ -921,12 +922,13 @@ extern int ComputerTurn( void ) {
 
           float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
           float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+          rolloutstat aarsStatistics[ 2 ][ 2 ];
           cubedecision cd;
 
           /* Consider cube action */
 
           if ( GeneralCubeDecision ( "Computer player",
-                                     aarOutput, aarStdDev,
+                                     aarOutput, aarStdDev, aarsStatistics,
                                      ms.anBoard,
                                      &ci, &ap [ ms.fTurn ].esCube ) < 0 )
             return -1;
