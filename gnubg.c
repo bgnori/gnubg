@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.128 2001/04/17 15:49:55 oysteijo Exp $
+ * $Id: gnubg.c,v 1.129 2001/04/18 14:16:47 gtw Exp $
  */
 
 #include "config.h"
@@ -170,9 +170,7 @@ evalcontext ecRollout = { 0, 8, 0.16, 7, FALSE, 0.0, TRUE };
 
 #define DEFAULT_NET_SIZE 128
 
-storedmoves sm; /* sm.ml.amMoves is NULL, sm.anDice is [0,0].
-		 FIXME does ISO C actually guarantee the pointer will be
-		 NULL, if NULL is not filled with 0 bits? */
+storedmoves sm; /* sm.ml.amMoves is NULL, sm.anDice is [0,0] */
 
 player ap[ 2 ] = {
     { "gnubg", PLAYER_GNU, { 0, 8, 0.16, 7, FALSE, 0.0, TRUE } },
@@ -1357,10 +1355,16 @@ extern void ShowBoard( void ) {
     if( !fX ) {
 #endif
 	if( fOutputRawboard ) {
+	    if( !fMove )
+		SwapSides( anBoard );
+	    
 	    outputl( FIBSBoard( szBoard, anBoard, fMove, ap[ 1 ].szName,
 				ap[ 0 ].szName, nMatchTo, anScore[ 1 ],
 				anScore[ 0 ], anDice[ 0 ], anDice[ 1 ], nCube,
 				fCubeOwner, fDoubled, fTurn, fCrawford ) );
+	    if( !fMove )
+		SwapSides( anBoard );
+	    
 	    return;
 	}
 	
