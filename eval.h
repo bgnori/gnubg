@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.78 2002/07/16 11:53:40 thyssen Exp $
+ * $Id: eval.h,v 1.79 2002/08/04 10:00:24 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -128,6 +128,11 @@ typedef enum _cubedecision {
   NODOUBLE_DEADCUBE,     /* cube is dead (match play only) */
   NO_REDOUBLE_DEADCUBE,     /* cube is dead (match play only) */
   NOT_AVAILABLE, /* Cube not available */
+  OPTIONAL_DOUBLE_TAKE,
+  OPTIONAL_REDOUBLE_TAKE,
+  OPTIONAL_DOUBLE_BEAVER,
+  OPTIONAL_DOUBLE_PASS,
+  OPTIONAL_REDOUBLE_PASS
 } cubedecision;
 
 /*

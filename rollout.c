@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.77 2002/08/01 19:23:30 thyssen Exp $
+ * $Id: rollout.c,v 1.78 2002/08/04 10:03:28 thyssen Exp $
  */
 
 #include "config.h"
@@ -391,6 +391,11 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
           case TOOGOODRE_TAKE:
           case TOOGOODRE_PASS:
           case NO_REDOUBLE_BEAVER:
+          case OPTIONAL_DOUBLE_BEAVER:
+          case OPTIONAL_DOUBLE_TAKE:
+          case OPTIONAL_REDOUBLE_TAKE:
+          case OPTIONAL_DOUBLE_PASS:
+          case OPTIONAL_REDOUBLE_PASS:
           default:
 
             /* no op */
