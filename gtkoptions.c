@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.4 2003/07/18 19:32:09 hb Exp $
+ * $Id: gtkoptions.c,v 1.5 2003/07/21 17:07:38 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1485,7 +1485,7 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
   CHECKUPDATE(pow->pwOutputMWCpst,fOutputMatchPC, "set output matchpc %s")
 
   if(( n = pow->padjDigits->value ) != fOutputDigits ){
-    sprintf(sz, "set output digits %d", fOutputDigits );
+    sprintf(sz, "set output digits %d", n );
     UserCommand(sz); 
   }
   
