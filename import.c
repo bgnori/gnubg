@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.86 2004/02/09 21:55:49 uid65656 Exp $
+ * $Id: import.c,v 1.87 2004/02/19 14:05:35 uid68519 Exp $
  */
 
 #include "config.h"
@@ -254,16 +254,19 @@ ParseJF( FILE *fp,
   anDice[0] = nDie1;
   anDice[1] = nDie2;
 
-  anBoard[1][24] = anNew[0];
+	for( i = 0; i < 25; i++ )
+	{
+		if (anNew[ i + 1 ] < 0)
+			anBoard[ idx ][ i ] = -anNew[ i + 1 ];
+		else
+			anBoard[ idx ][ i ] = 0;
 
-  for( i = 0; i < 25; i++ ) {
-    anBoard[ idx ][ i ] = ( anNew[ i + 1 ]  < 0 ) ?  -anNew[ i + 1 ]  : 0;
-    anBoard[ ! idx ][ i ] = ( anNew[ 24 - i ]  > 0 ) ?
-	anNew[ 24 - i ]  : 0;
-  }
+		if (anNew[ 24 - i ] > 0)
+			anBoard[ !idx ][ i ] = anNew[ 24 - i ];
+		else
+			anBoard[ !idx ][ i ] = 0;
+	}
 
-  anBoard[0][ 24 ] =  -anNew[25];
-  
   SwapSides (anBoard);
 
   return 0;
