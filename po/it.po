@@ -12428,7 +12428,7 @@ msgid "Distribution of rolls"
 msgstr "Distribuzione dei lanci"
 
 msgid "Depth"
-msgstr "Profondit\xe0"
+msgstr "Profondità"
 
 msgid "Calculating equities for %s"
 msgstr "Calcolo le equities per %s"
@@ -12450,7 +12450,7 @@ msgstr "Inverti la direzione di gioco"
 
 msgid ""
 " */\n"
-"/* $Id: it.po,v 1.2 2003/08/13 22:10:48 jsegrave Exp $ */\n"
+"/* $Id: it.po,v 1.3 2003/08/15 12:59:43 hb Exp $ */\n"
 "/* This file is distributed as a part of the GNU Backgammon program. */\n"
 "/* Copying and distribution of verbatim and modified versions of this file "
 "*/\n"
