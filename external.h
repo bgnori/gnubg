@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.h,v 1.6 2003/12/31 22:53:38 uid65656 Exp $
+ * $Id: external.h,v 1.7 2004/03/11 11:12:56 Superfly_Jon Exp $
  */
 
 #ifndef _EXTERNAL_H_
@@ -55,8 +55,6 @@ typedef struct _extcmd {
   /* fibs board */
   char *szFIBSBoard;
 } extcmd;
-
-static extcmd cmd;
 
 extern int ExternalSocket( struct sockaddr **ppsa, int *pcb, char *sz );
 extern int ExternalRead( int h, char *pch, int cch );

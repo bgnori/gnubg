@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.37 2004/02/12 11:57:13 uid68519 Exp $
+ * $Id: external.c,v 1.38 2004/03/11 11:12:56 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -363,9 +363,8 @@ static char *
 ExtEvaluation( extcmd *pec ) {
 
   char szName[ MAX_NAME_LEN ], szOpp[ MAX_NAME_LEN ];
-  int anBoard[ 2 ][ 25 ], anBoardOrig[ 2 ][ 25 ], nMatchTo, anScore[ 2 ],
-    anDice[ 2 ], nCube, fCubeOwner, fDoubled, fTurn, fCrawford,
-    anMove[ 8 ];
+  int anBoard[ 2 ][ 25 ], nMatchTo, anScore[ 2 ],
+    anDice[ 2 ], nCube, fCubeOwner, fDoubled, fTurn, fCrawford;
   float arOutput[ NUM_ROLLOUT_OUTPUTS ];
   cubeinfo ci;
   int nScore, nScoreOpponent;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.c,v 1.6 2004/03/08 09:02:43 Superfly_Jon Exp $
+ * $Id: gtkcolour.c,v 1.7 2004/03/11 11:12:57 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -24,6 +24,7 @@
 #endif
 
 #include <gtk/gtk.h>
+#include <string.h>
 
 #include "gtkcolour.h"
 #include "i18n.h"
