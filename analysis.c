@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.24 2001/04/18 17:59:51 gtw Exp $
+ * $Id: analysis.c,v 1.25 2001/04/20 15:33:23 gtw Exp $
  */
 
 #include "config.h"
@@ -594,6 +594,10 @@ AnalyzeGame ( list *plGame ) {
 	i++;
     }
 
+    psc->fMoves = fAnalyseMove;
+    psc->fCube = fAnalyseCube;
+    psc->fDice = fAnalyseDice;
+    
     if ( fWinner != -1 )
 	anScore[ fWinner ] += nPoints;
 
@@ -603,7 +607,7 @@ AnalyzeGame ( list *plGame ) {
 #endif
 }
 
-static void
+extern void
 AddStatcontext ( statcontext *pscA, statcontext *pscB ) {
 
   /* pscB = pscB + pscA */
@@ -741,7 +745,7 @@ IniStatcontext ( statcontext *psc ) {
 
   int i, j;
 
-  psc->fComputed = FALSE;
+  psc->fMoves = psc->fCube = psc->fDice = FALSE;
   
   for ( i = 0; i < 2; i++ ) {
 

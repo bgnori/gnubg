@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.4 2001/04/18 17:11:26 gtw Exp $
+ * $Id: analysis.h,v 1.5 2001/04/20 15:33:23 gtw Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -32,7 +32,7 @@ typedef enum _skilltype {
 } skilltype;
 
 typedef struct _statcontext {
-  int fComputed;
+  int fMoves, fCube, fDice; /* which statistics have been computed? */
     
   int anUnforcedMoves[ 2 ];
   int anTotalMoves[ 2 ];
@@ -80,5 +80,6 @@ const char *aszRating [ RAT_EXTRA_TERRESTRIAL + 1 ];
 
 extern ratingtype GetRating ( const float rError );
 extern void IniStatcontext ( statcontext *psc );
+extern void AddStatcontext ( statcontext *pscA, statcontext *pscB );
 
 #endif
