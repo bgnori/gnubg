@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.13.2.1 2000/01/10 01:13:45 thyssen Exp $
+ * $Id: gnubg.c,v 1.13.2.2 2000/01/31 07:56:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -49,6 +49,7 @@
 #include "getopt.h"
 #include "positionid.h"
 #include "rollout.h"
+#include "matchequity.h"
 
 #if !X_DISPLAY_MISSING
 #include <ext.h>
@@ -1178,6 +1179,8 @@ extern int main( int argc, char *argv[] ) {
 			fNoWeights ? NULL : GNUBG_WEIGHTS_BINARY,
 			GNUBG_BEAROFF ) )
 	return EXIT_FAILURE;
+
+    CalcMatchEq ();
 
     if( ( pch = getenv( "LOGNAME" ) ) )
 	strcpy( ap[ 1 ].szName, pch );
