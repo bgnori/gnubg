@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.43 2001/08/27 14:43:17 gtw Exp $
+ * $Id: rollout.c,v 1.44 2001/10/18 07:54:26 thyssen Exp $
  */
 
 #include "config.h"
@@ -524,7 +524,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
             /* invert evaluations if required */
 
-            if ( iTurn & 1 ) InvertEvaluationR ( aarOutput[ ici ] );
+            if ( iTurn & 1 ) InvertEvaluationR ( aarOutput[ ici ], pci );
 
             break;
 
@@ -572,7 +572,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
           aarOutput[ ici ][ OUTPUT_CUBEFUL_EQUITY ] =
             aarOutput[ ici ][ OUTPUT_EQUITY ];
 
-          if ( iTurn & 1 ) InvertEvaluationR ( aarOutput[ ici ] );
+          if ( iTurn & 1 ) InvertEvaluationR ( aarOutput[ ici ], pci );
 
           *pf = FALSE;
           
@@ -613,7 +613,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
                            aanBoard[ ici ],
                            pci, &ec );
 
-      if ( iTurn & 1 ) InvertEvaluationR ( aarOutput[ ici ] );
+      if ( iTurn & 1 ) InvertEvaluationR ( aarOutput[ ici ], pci );
           
     }
 
