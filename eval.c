@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.96 2001/06/15 18:02:48 thyssen Exp $
+ * $Id: eval.c,v 1.97 2001/06/15 18:14:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -2660,8 +2660,8 @@ InvertEvaluationR ( float ar[ NUM_ROLLOUT_OUTPUTS] ) {
 
   /* invert equities */
 
-  ar [ OUTPUT_EQUITY ] = 1.0 - ar[ OUTPUT_EQUITY ];
-  ar [ OUTPUT_CUBEFUL_EQUITY ] = 1.0 - ar[ OUTPUT_CUBEFUL_EQUITY ];
+  ar [ OUTPUT_EQUITY ] = - ar[ OUTPUT_EQUITY ];
+  ar [ OUTPUT_CUBEFUL_EQUITY ] = - ar[ OUTPUT_CUBEFUL_EQUITY ];
 
 }
 
