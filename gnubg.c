@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.463 2003/08/16 21:35:58 joseph Exp $
+ * $Id: gnubg.c,v 1.464 2003/08/17 08:48:31 jsegrave Exp $
  */
 
 #include "config.h"
@@ -5028,7 +5028,7 @@ extern void CommandSaveSettings( char *szParam ) {
     FILE *pf;
     int i, cCache; 
     char *szFile;
-    char szTemp[ 1024 ];
+    char szTemp[ 4096 ];
     static char *aszWindow[] = {
 	"main", "game", "annotation", "hint", "message"
 #if USE_GTK
