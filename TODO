@@ -1,4 +1,4 @@
-$Id: TODO,v 1.252 2002/08/18 08:47:39 thyssen Exp $
+$Id: TODO,v 1.253 2002/08/30 16:35:14 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -237,6 +237,8 @@ click will both use the 'first' dice.
 ** The board should be updated before automatic analysis starts.  (Currently,
   if you interrupt the automatic analysis, the move will go into effect, but
   the board shown will be out of date.)
+** the move number shown when exporting positions to text or html is -1
+** the rollout window is a bit to small
 
 * Documentation:
 ** Complete the Texinfo manual.  Perhaps for now, only things that are
