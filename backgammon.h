@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.135 2002/07/14 22:44:20 thyssen Exp $
+ * $Id: backgammon.h,v 1.136 2002/07/16 11:49:41 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -415,9 +415,6 @@ getCurrentMoveRecord ( void );
 
 extern void
 UpdateStoredMoves ( const movelist *pml, const matchstate *pms );
-
-extern void
-CopyMoveList ( movelist *pmlDest, const movelist *pmlSrc );
 
 #ifdef WIN32
 extern void WinCopy( char *szOut );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.242 2002/07/14 22:46:45 thyssen Exp $
+ * $Id: gnubg.c,v 1.243 2002/07/16 11:49:17 thyssen Exp $
  */
 
 #include "config.h"
@@ -5745,26 +5745,4 @@ UpdateStoredMoves ( const movelist *pml, const matchstate *pms ) {
 
   sm.ms = *pms;
 
-}
-
-extern void
-CopyMoveList ( movelist *pmlDest, const movelist *pmlSrc ) {
-
-  if ( pmlDest == pmlSrc )
-    return;
-
-  pmlDest->cMoves = pmlSrc->cMoves;
-  pmlDest->cMaxMoves = pmlSrc->cMaxMoves;
-  pmlDest->cMaxPips = pmlSrc->cMaxPips;
-  pmlDest->iMoveBest = pmlSrc->iMoveBest;
-  pmlDest->rBestScore = pmlSrc->rBestScore;
-
-  if ( pmlSrc->cMoves ) {
-    pmlDest->amMoves = (move *) malloc ( pmlSrc->cMoves * sizeof ( move ) );
-    memcpy ( pmlDest->amMoves, pmlSrc->amMoves, 
-             pmlSrc->cMoves * sizeof ( move ) );
-  }
-  else
-    pmlDest->amMoves = NULL;
-	
 }
