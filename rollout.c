@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.107 2003/07/07 10:34:12 thyssen Exp $
+ * $Id: rollout.c,v 1.108 2003/07/08 11:16:20 jsegrave Exp $
  */
 
 #include "config.h"
@@ -993,7 +993,11 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
 	    aarVariance[ ici ][ j ] * ( 1.0 - 1.0 / i ) +
 	    ( i + 1 ) * rDelta * rDelta;
 	}
-	  
+	else {
+	  aarVariance[ ici ][ j ] = 0.0f;
+	  rDelta = 0;
+	}
+
 	aarMu[ ici ][ j ] = rMuNew;
 	  
 	if( j < OUTPUT_EQUITY ) {
