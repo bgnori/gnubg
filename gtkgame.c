@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.295 2003/01/13 17:54:36 thyssen Exp $
+ * $Id: gtkgame.c,v 1.296 2003/01/15 21:08:04 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2286,7 +2286,7 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ N_("/_Game/Set turn/1"), NULL, Command, CMD_SET_TURN_1,
 	  "/Game/Set turn/0" },
 	{ N_("/_Game/-"), NULL, NULL, 0, "<Separator>" },
-	{ N_("/_Game/Match information"), NULL, GTKMatchInfo, 0, NULL },
+	{ N_("/_Game/Match information..."), NULL, GTKMatchInfo, 0, NULL },
 	{ N_("/_Analyse"), NULL, NULL, 0, "<Branch>" },
 	{ N_("/_Analyse/_Evaluate"), "<control>E", Command, CMD_EVAL, NULL },
 	{ N_("/_Analyse/_Hint"), "<control>H", Command, CMD_HINT, NULL },
