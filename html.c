@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.96 2003/03/29 15:05:13 oysteijo Exp $
+ * $Id: html.c,v 1.97 2003/03/30 12:31:01 thyssen Exp $
  */
 
 #include "config.h"
@@ -1854,7 +1854,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.96 $";
+  const char szVersion[] = "$Revision: 1.97 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1935,7 +1935,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.96 $";
+  const char szVersion[] = "$Revision: 1.97 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2951,7 +2951,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       printStatTableRow2 ( pf,
                            _("Error rate (total)"), 
-                           "%+6.3f", "%+7.3f%",
+                           "%+6.3f", "%+7.3f%%",
                            -aaaar[ CHEQUERPLAY ][ TOTAL ][ PLAYER_0 ][ NORMALISED ],
                            -aaaar[ CHEQUERPLAY ][ TOTAL ][ PLAYER_0 ][ UNNORMALISED ] 
                            * 100.0f,
@@ -2961,7 +2961,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       printStatTableRow4 ( pf,
                            _("Error rate (pr. move)"), 
-                           "%+6.3f", "%+7.3f%",
+                           "%+6.3f", "%+7.3f%%",
                            psc->anUnforcedMoves[ 0 ],
                            -aaaar[ CHEQUERPLAY ][ PERMOVE ][ PLAYER_0 ][ NORMALISED ],
                            -aaaar[ CHEQUERPLAY ][ PERMOVE ][ PLAYER_0 ][ UNNORMALISED ] 
@@ -2976,7 +2976,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       printStatTableRow2 ( pf,
                            _("Error rate (total)"), 
-                           "%+6.3f", "%+7.3f%",
+                           "%+6.3f", "%+7.3f",
                            -aaaar[ CHEQUERPLAY ][ TOTAL ][ PLAYER_0 ][ NORMALISED ],
                            -aaaar[ CHEQUERPLAY ][ TOTAL ][ PLAYER_0 ][ UNNORMALISED ],
                            -aaaar[ CHEQUERPLAY ][ TOTAL ][ PLAYER_1 ][ NORMALISED ],
@@ -2984,7 +2984,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       printStatTableRow4 ( pf,
                            _("Error rate (pr. move)"), 
-                           "%+6.3f", "%+7.3f%",
+                           "%+6.3f", "%+7.3f",
                            psc->anUnforcedMoves[ 0 ],
                            -aaaar[ CHEQUERPLAY ][ PERMOVE ][ PLAYER_0 ][ NORMALISED ],
                            -aaaar[ CHEQUERPLAY ][ PERMOVE ][ PLAYER_0 ][ UNNORMALISED ],
@@ -3216,7 +3216,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       printStatTableRow2 ( pf,
                            _("Error rate (total)"), 
-                           "%+6.3f", "%+7.3f%",
+                           "%+6.3f", "%+7.3f%%",
                            -aaaar[ CUBEDECISION ][ TOTAL ][ PLAYER_0 ][ NORMALISED ],
                            -aaaar[ CUBEDECISION ][ TOTAL ][ PLAYER_0 ][ UNNORMALISED ] 
                            * 100.0f,
@@ -3226,7 +3226,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       printStatTableRow4 ( pf,
                            _("Error rate (per cube decision)"), 
-                           "%+6.3f", "%+7.3f%",
+                           "%+6.3f", "%+7.3f%%",
                            psc->anCloseCube[ 0 ],
                            -aaaar[ CUBEDECISION ][ PERMOVE ][ PLAYER_0 ][ NORMALISED ],
                            -aaaar[ CUBEDECISION ][ PERMOVE ][ PLAYER_0 ][ UNNORMALISED ] 
@@ -3241,7 +3241,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       printStatTableRow2 ( pf,
                            _("Error rate (total)"), 
-                           "%+6.3f", "%+7.3f%",
+                           "%+6.3f", "%+7.3f",
                            -aaaar[ CUBEDECISION ][ TOTAL ][ PLAYER_0 ][ NORMALISED ],
                            -aaaar[ CUBEDECISION ][ TOTAL ][ PLAYER_0 ][ UNNORMALISED ],
                            -aaaar[ CUBEDECISION ][ TOTAL ][ PLAYER_1 ][ NORMALISED ],
@@ -3249,7 +3249,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       printStatTableRow4 ( pf,
                            _("Error rate (per cube decision)"), 
-                           "%+6.3f", "%+7.3f%",
+                           "%+6.3f", "%+7.3f",
                            psc->anCloseCube[ 0 ],
                            -aaaar[ CUBEDECISION ][ PERMOVE ][ PLAYER_0 ][ NORMALISED ],
                            -aaaar[ CUBEDECISION ][ PERMOVE ][ PLAYER_0 ][ UNNORMALISED ],
