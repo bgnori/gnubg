@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.417.2.1 2003/05/30 14:33:05 grob Exp $
+ * $Id: gnubg.c,v 1.417.2.2 2003/05/31 11:32:39 thyssen Exp $
  */
 
 #include "config.h"
-
-#define PROCESSING_UNITS 1
 
 #if HAVE_ALLOCA_H
 #include <alloca.h>

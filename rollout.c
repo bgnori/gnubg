@@ -16,12 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.101.2.2 2003/05/31 10:25:23 thyssen Exp $
+ * $Id: rollout.c,v 1.101.2.3 2003/05/31 11:32:40 thyssen Exp $
  */
 
 #include "config.h"
 
-#define PROCESSING_UNITS 1
 #define SERIALIZE 0
 
 #if HAVE_ALLOCA_H
