@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.29 2003/07/11 17:29:24 hb Exp $
+ * $Id: dice.c,v 1.30 2003/07/17 19:59:12 hb Exp $
  */
 
 #include "config.h"
@@ -705,39 +705,53 @@ getDiceRandomDotOrg ( void ) {
 
     /* open socket */
 
-    strcpy ( szHostname, "www.random.org:80" );
+    strcpy( szHostname, "www.random.org:80" );
 
-    if ( ( h = ExternalSocket ( &psa, &cb, szHostname ) ) < 0 ) {
+    if ( ( h = ExternalSocket( &psa, &cb, szHostname ) ) < 0 ) {
       outputerr ( szHostname );
       return -1;
     }
 
     /* connect */
 
-    if ( ( connect ( h, psa, cb ) ) < 0 ) {
-      outputerr ( szHostname );
+#ifdef WIN32
+    if ( connect( (SOCKET) h, (const struct sockaddr*) psa, cb ) < 0 ) {
+#else
+    if ( ( connect( h, psa, cb ) ) < 0 ) {
+#endif /* WIN32 */
+      outputerr( szHostname );
       return -1;
     }
 
     /* read next set of numbers */
 
-    if ( ExternalWrite ( h, szHTTP, strlen ( szHTTP ) + 1 ) < 0 ) {
-      outputerr ( szHTTP );
-      close ( h );
+    if ( ExternalWrite( h, szHTTP, strlen ( szHTTP ) + 1 ) < 0 ) {
+      outputerr( szHTTP );
+      close( h );
       return -1;
     }
 
     /* read data from web-server */
 
-    if ( ! ( nBytesRead = read ( h, acBuf, sizeof ( acBuf ) ) ) ) {
-      outputerr ( "reading data" );
-      close ( h );
+#ifdef WIN32
+	/* reading from sockets doesn't work on Windows
+	   use recv instead */
+	if ( ! ( nBytesRead = recv( (SOCKET) h, acBuf, sizeof ( acBuf ), 0 ) ) ) {
+#else
+	if ( ! ( nBytesRead = read( h, acBuf, sizeof ( acBuf ) ) ) ) {
+#endif
+      outputerr( "reading data" );
+      close( h );
       return -1;
     }
 
     /* close socket */
 
+#ifdef WIN32
+    closesocket( (SOCKET) h ); 
+#else
     close ( h );
+#endif
 
     /* parse string */
 
@@ -753,7 +767,6 @@ getDiceRandomDotOrg ( void ) {
       }
 
     }
-
 
     nCurrent = 1;
     return anBuf[ 0 ];
