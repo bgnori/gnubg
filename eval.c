@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.196 2002/12/03 22:47:23 jsegrave Exp $
+ * $Id: eval.c,v 1.197 2002/12/04 20:00:31 thyssen Exp $
  */
 
 #include "config.h"
@@ -2454,6 +2454,7 @@ EvaluatePerfectCubeful ( int anBoard[ 2 ][ 25 ], float arEquity[] ) {
     return 0;
     break;
   default:
+    assert ( FALSE );
     break;
   }
 
@@ -5860,7 +5861,7 @@ EvaluatePositionCubeful3( int anBoard[ 2 ][ 25 ],
   } else {
     /* at leaf node; use static evaluation */
 
-    if ( pc <= CLASS_PERFECT && ! pciMove->nMatchTo ) {
+    if ( pc > CLASS_OVER && pc <= CLASS_PERFECT && ! pciMove->nMatchTo ) {
 
       EvaluatePerfectCubeful ( anBoard, arEquity );
 
@@ -5897,7 +5898,7 @@ EvaluatePositionCubeful3( int anBoard[ 2 ][ 25 ],
         /* cube available */
         if ( pciMove->nMatchTo )
           arCf[ ici ] = Cl2CfMatch ( arOutput, &aci[ ici ] );
-        else if ( pc <= CLASS_PERFECT )
+        else if ( pc > CLASS_OVER && pc <= CLASS_PERFECT )
           arCf[ ici ] = CFMONEY ( arEquity, &aci[ ici ] );
         else
           arCf[ ici ] = Cl2CfMoney ( arOutput, &aci[ ici ] );
@@ -5906,7 +5907,7 @@ EvaluatePositionCubeful3( int anBoard[ 2 ][ 25 ],
     /* find optimal of "no double" and "double" */
     
     GetECF3 ( arCubeful, cci, arCf, aci );
-    
+
   }
   
   return 0;
