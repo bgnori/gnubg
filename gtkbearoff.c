@@ -3,9 +3,6 @@
  *
  * by Joern Thyssen <jth@gnubg.org>, 2003
  *
- * Based on Sho Sengoku's Equity Temperature Map
- * http://www46.pair.com/sengoku/TempMap/English/TempMap.html
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of version 2 of the GNU General Public License as
  * published by the Free Software Foundation.
@@ -19,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkbearoff.c,v 1.5 2003/08/18 16:54:03 thyssen Exp $
+ * $Id: gtkbearoff.c,v 1.6 2003/08/23 08:36:06 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
