@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.504 2004/07/11 14:50:33 kaoru Exp $
+ * $Id: gtkgame.c,v 1.505 2004/07/30 21:14:19 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -9881,7 +9881,12 @@ extern void GTKResign( gpointer *p, guint n, GtkWidget *pw ) {
 static void 
 PythonShell( gpointer *p, guint n, GtkWidget *pw ) {
 
+#if WIN32
+  char *pch = g_strdup( ">import idlelib.PyShell; idlelib.PyShell.main()\n"
+);
+#else
   char *pch = g_strdup( ">import idle.PyShell; idle.PyShell.main()\n" );
+#endif
 
   UserCommand( pch );
 
