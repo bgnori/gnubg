@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.33 2003/12/31 22:43:08 uid65656 Exp $
+ * $Id: external.c,v 1.34 2003/12/31 22:53:38 uid65656 Exp $
  */
 
 #include "config.h"
@@ -333,7 +333,8 @@ extern int ExternalWrite( int h, char *pch, int cch ) {
 
 
 static void
-ErrorHandler( char *szMessage, char *szNear, int fParseError ) {
+ErrorHandler( const char *szMessage, const char *szNear, 
+              const int fParseError ) {
 
   fError = TRUE;
 
