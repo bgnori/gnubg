@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.206 2002/04/13 13:45:57 oysteijo Exp $
+ * $Id: gnubg.c,v 1.207 2002/04/16 16:17:53 thyssen Exp $
  */
 
 #include "config.h"
@@ -894,6 +894,12 @@ command cER = {
     { "warranty", CommandShowWarranty, "Various kinds of warranty you do "
       "not have", NULL, NULL },
     { NULL, NULL, NULL, NULL, NULL }    
+}, acInvert[] = {
+    { "matchequitytable", CommandInvertMatchEquityTable, 
+      "Invert match equity ", NULL, NULL },
+    { "met", CommandInvertMatchEquityTable, 
+      "alias for 'invert matchequitytable'", NULL, NULL },
+    { NULL, NULL, NULL, NULL, NULL }
 }, acTrain[] = {
     { "database", CommandDatabaseTrain, "Train the network from a database of "
       "positions", NULL, NULL },
@@ -927,6 +933,7 @@ command cER = {
     { "help", CommandHelp, "Describe commands", szOPTCOMMAND, NULL },
     { "hint", CommandHint,  "Give hints on cube action or best legal moves", 
       szOPTVALUE, NULL }, 
+    { "invert", NULL, "invert match equity tables, etc.", NULL, acInvert },
     { "import", NULL, "Import matches, games or positions from other programs",
       NULL, acImport },
     { "list", NULL, "Show a list of games or moves", NULL, acList },
