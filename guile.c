@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.16 2001/05/21 14:46:03 gtw Exp $
+ * $Id: guile.c,v 1.17 2001/08/23 14:59:37 gtw Exp $
  */
 
 #include "config.h"
@@ -481,8 +481,6 @@ static void LoadGuile( char *sz ) {
 
 extern int GuileInitialise( char *szDir ) {
 
-    char szPath[ PATH_MAX ];
-
     scm_sysintern( "CLASS_OVER", SCM_MAKINUM( CLASS_OVER ) );
     scm_sysintern( "CLASS_BEAROFF2", SCM_MAKINUM( CLASS_BEAROFF2 ) );
     scm_sysintern( "CLASS_BEAROFF1", SCM_MAKINUM( CLASS_BEAROFF1 ) );
@@ -524,6 +522,14 @@ extern int GuileInitialise( char *szDir ) {
 #endif
     
     if( szDir ) {
+#if __GNUC__
+	char szPath[ strlen( szDir ) + strlen( GNUBG_SCM ) + 2 ];
+#elif HAVE_ALLOCA
+	char *szPath = alloca( strlen( szDir ) + strlen( GNUBG_SCM ) + 2 );
+#else
+	char szPath[ 4096 ];
+#endif
+	
 	sprintf( szPath, "%s/" GNUBG_SCM, szDir );
 	if( !access( szPath, R_OK ) ) {
 	    LoadGuile( szPath );

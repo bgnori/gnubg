@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.99 2001/07/26 14:43:17 gtw Exp $
+ * $Id: eval.c,v 1.100 2001/08/23 14:59:37 gtw Exp $
  */
 
 #include "config.h"
@@ -412,7 +412,16 @@ static long EvalCacheHash( evalcache *pec ) {
 static int PathOpen( char *szFile, char *szDir, int f ) {
 
     int h, idFirstError = 0;
-    char szPath[ PATH_MAX ];
+#if __GNUC__
+    char szPath[ strlen( PKGDATADIR ) + ( szDir ? strlen( szDir ) : 0 ) +
+	       strlen( szFile ) + 2 ];
+#elif HAVE_ALLOCA
+    char *szPath = alloca( strlen( PKGDATADIR ) +
+			   ( szDir ? strlen( szDir ) : 0 ) +
+			   strlen( szFile ) + 2 );
+#else
+    char szPath[ 4096 ];
+#endif
     
     if( szDir ) {
 	sprintf( szPath, "%s/%s", szDir, szFile );
