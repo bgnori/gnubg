@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.264 2004/11/24 17:03:38 Superfly_Jon Exp $
+ * $Id: play.c,v 1.265 2005/02/10 10:33:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4272,8 +4272,6 @@ CommandRoll( char *sz ) {
                                                                   ms.bgv )
                                                 <= CLASS_BEAROFF1 &&
                                                 fAutoBearoff ) ) ) {
-
-    playSound ( SOUND_MOVE );
 
     pmr = NewMoveRecord();
 
