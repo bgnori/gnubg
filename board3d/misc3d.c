@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.26 2004/03/12 10:56:07 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.27 2004/03/15 11:13:25 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -544,6 +544,9 @@ void Set3dSettings(BoardData* bd, const renderdata *prd)
 	bd->bgInTrays = prd->bgInTrays;
 	bd->shadowDarkness = prd->shadowDarkness;
 	SetShadowDimness3d(bd);
+	if (prd->curveAccuracy != bd->curveAccuracy && bd->boardPoints)
+		/* Clear data as accuracy is changing */
+		freeEigthPoints(&bd->boardPoints, bd->curveAccuracy);
 	bd->curveAccuracy = prd->curveAccuracy;
 	bd->testSkewFactor = prd->testSkewFactor;
 	bd->boardAngle = prd->boardAngle;
@@ -1466,10 +1469,11 @@ void calculateEigthPoints(float ****boardPoints, float radius, int accuracy)
 	}
 }
 
-void freeEigthPoints(float ***boardPoints, int accuracy)
+void freeEigthPoints(float ****boardPoints, int accuracy)
 {
 	int corner_steps = (accuracy / 4) + 1;
-	Free3d(boardPoints, corner_steps, corner_steps);
+	Free3d(*boardPoints, corner_steps, corner_steps);
+	*boardPoints = 0;
 }
 
 void SetColour(float r, float g, float b, float a)

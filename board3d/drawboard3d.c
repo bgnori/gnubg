@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.25 2004/02/24 10:16:49 uid68519 Exp $
+* $Id: drawboard3d.c,v 1.26 2004/03/15 11:13:25 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -68,7 +68,6 @@ void QuarterCylinderSplayed(float radius, float len, int accuracy, Texture* text
 void QuarterCylinderSplayedRev(float radius, float len, int accuracy, Texture* texture);
 void drawCornerEigth(float ***boardPoints, float radius, int accuracy);
 void calculateEigthPoints(float ****boardPoints, float radius, int accuracy);
-void freeEigthPoints(float ***boardPoints, int accuracy);
 
 /* Other functions */
 void initPath(Path* p, float start[3]);
@@ -163,10 +162,7 @@ void Tidy3dObjects(BoardData* bd, int glValid)
 	}
 
 	if (bd->boardPoints)
-	{
-		freeEigthPoints(bd->boardPoints, bd->curveAccuracy);
-		bd->boardPoints = 0;
-	}
+		freeEigthPoints(&bd->boardPoints, bd->curveAccuracy);
 
 	TidyShadows(bd);
 
@@ -526,7 +522,7 @@ void renderCube(BoardData* bd, float size)
 	}
 	glPopMatrix();
 
-	freeEigthPoints(corner_points, bd->curveAccuracy);
+	freeEigthPoints(&corner_points, bd->curveAccuracy);
 }
 
 void preDrawDice(BoardData* bd)
@@ -3512,7 +3508,7 @@ void preDraw3d(BoardData* bd)
 	}
 
 	if (bd->boardPoints)
-		freeEigthPoints(bd->boardPoints, bd->curveAccuracy);
+		freeEigthPoints(&bd->boardPoints, bd->curveAccuracy);
 	calculateEigthPoints(&bd->boardPoints, BOARD_FILLET, bd->curveAccuracy);
 
 	preDrawPiece(bd);
