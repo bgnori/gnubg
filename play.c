@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.125 2002/05/23 21:25:16 thyssen Exp $
+ * $Id: play.c,v 1.126 2002/05/27 19:33:08 thyssen Exp $
  */
 
 #include "config.h"
@@ -2805,6 +2805,9 @@ extern void CommandPrevious( char *sz ) {
     if( ( pch = NextToken( &sz ) ) ) {
 	if( !strncasecmp( pch, "game", strlen( pch ) ) ) {
 	    CommandPreviousGame( sz );
+	    return;
+	} else if( !strncasecmp( pch, "rolled", strlen( pch ) ) ) {
+	    CommandPreviousRolled( sz );
 	    return;
 	} else if( !strncasecmp( pch, "roll", strlen( pch ) ) ) {
 	    CommandPreviousRoll( sz );
