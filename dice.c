@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.14 2002/06/01 18:41:01 thyssen Exp $
+ * $Id: dice.c,v 1.15 2002/06/02 16:33:09 thyssen Exp $
  */
 
 #include "config.h"
@@ -59,6 +59,18 @@
 #if USE_GTK
 #include "gtkgame.h"
 #endif
+
+
+char *aszRNG[] = {
+   N_ ("ANSI"),
+   N_ ("BSD"),
+   N_ ("ISAAC"),
+   N_ ("manual"),
+   N_ ("MD5"),
+   N_ ("Mersenne Twister"),
+   N_ ("user supplied")
+};
+
 
 rng rngCurrent = RNG_MERSENNE;
 
