@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.417 2003/09/08 17:38:29 hb Exp $
+ * $Id: gtkgame.c,v 1.418 2003/09/09 23:13:18 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -8306,8 +8306,12 @@ extern void GTKDumpStatcontext( int game )
 	/* modality */
 	if ( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pwUsePanels ) ) )
 	    gtk_window_set_default_size( GTK_WINDOW( pwStatDialog ), 0, 300 );
-	else
-	    gtk_window_set_default_size( GTK_WINDOW( pwStatDialog ), 0, 600 );
+	else {
+	    GtkRequisition req;
+	    gtk_widget_size_request( GTK_WIDGET( pwStatDialog ), &req );
+	    if ( req.height < 600 )
+		gtk_window_set_default_size( GTK_WINDOW( pwStatDialog ), 0, 600 );
+	}
 	gtk_window_set_modal( GTK_WINDOW( pwStatDialog ), TRUE );
 	gtk_window_set_transient_for( GTK_WINDOW( pwStatDialog ),
 								GTK_WINDOW( pwMain ) );
