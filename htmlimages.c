@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.25 2004/03/31 09:51:54 Superfly_Jon Exp $
+ * $Id: htmlimages.c,v 1.26 2004/04/30 17:33:58 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -117,7 +117,9 @@ static void Write(const char* name, unsigned char* img, int cx, int cy)
 
 static void DrawArrow(int side, int player)
 { /* side 0 = left, 1 = right */
+#if HAVE_LIBART
 	int x, y;
+#endif
 	int offset_x = 0;
 
 	memcpy( auchMidlb, auchBoard, BOARD_WIDTH * s * BOARD_HEIGHT * s * 3 );
