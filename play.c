@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.174 2003/02/17 18:55:33 jsegrave Exp $
+ * $Id: play.c,v 1.175 2003/02/25 14:02:42 jsegrave Exp $
  */
 
 #include "config.h"
@@ -3609,7 +3609,7 @@ static skilltype ShouldDouble ( void ) {
 	case DOUBLE_PASS:
 	case REDOUBLE_PASS:
 
- 	  rDeltaEquity = arDouble [OUTPUT_NODOUBLE] - arDouble [OUTPUT_NODOUBLE];
+	  rDeltaEquity = arDouble [OUTPUT_NODOUBLE] - arDouble [OUTPUT_DROP];
 	  break;
 
 	default:
