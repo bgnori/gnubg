@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.61 2001/04/17 22:17:09 gtw Exp $
+ * $Id: show.c,v 1.62 2001/04/27 09:43:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -56,7 +56,7 @@ static void ShowEvaluation( evalcontext *pec ) {
              "    %s evaluations.\n",
              pec->nPlies, pec->nSearchCandidates, pec->nSearchCandidates == 1 ?
              "" : "s", pec->rSearchTolerance,
-             (pec->nReduced) ? 100. * pec->nReduced / 21.0 : 100.,
+             (pec->nReduced) ? 100. / pec->nReduced : 100.,
              pec->fCubeful ? "Cubeful" : "Cubeless" );
 
     if( pec->rNoise )

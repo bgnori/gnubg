@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.62 2001/04/17 22:17:09 gtw Exp $
+ * $Id: set.c,v 1.63 2001/04/27 09:43:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -741,10 +741,11 @@ extern void CommandSetEvalReduced( char *sz ) {
     if ( n == 0 || n == 21 )
       pecSet->nReduced = 0;
     else
-      pecSet->nReduced = 7;
+      pecSet->nReduced = 3;
 
     outputf( "%s will use %d%% speed 2 ply evaluation.\n", 
-	     szSet, pecSet->nReduced ? 33 : 100 );
+	     szSet, 
+	     pecSet->nReduced ? 100.0f / pecSet->nReduced : 100 );
 
     if( pecSet->nPlies != 2 )
 	outputl( "(Note that this setting will have no effect until you "
