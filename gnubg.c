@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.64 2000/10/18 15:43:13 gtw Exp $
+ * $Id: gnubg.c,v 1.65 2000/10/20 18:53:29 gtw Exp $
  */
 
 #include "config.h"
@@ -388,9 +388,14 @@ command acDatabase[] = {
       "moves", NULL, NULL },
     { "load", NULL, "Read data from a file", NULL, acLoad },
     { "move", CommandMove, "Make a backgammon move", szMOVE, NULL },
+    { "n", CommandNext, NULL, NULL, NULL },
     { "new", NULL, "Start a new game, match or session", NULL, acNew },
+    { "next", CommandNext, "Step ahead within the game", NULL, NULL },
+    { "p", CommandPrevious, NULL, NULL, NULL },
     { "pass", CommandDrop, "Synonum for `drop'", NULL, NULL },
     { "play", CommandPlay, "Force the computer to move", NULL, NULL },
+    { "previous", CommandPrevious, "Step backward within the game", NULL,
+      NULL },
     { "quit", CommandQuit, "Leave GNU Backgammon", NULL, NULL },
     { "r", CommandRoll, NULL, NULL, NULL },
     { "redouble", CommandRedouble, "Accept the cube one level higher "
