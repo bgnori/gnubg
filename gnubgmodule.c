@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.33 2004/09/09 12:12:20 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.34 2004/09/29 18:13:00 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1791,7 +1791,7 @@ PythonMatch(PyObject* self IGNORE, PyObject* args, PyObject* keywds)
   }
   
   pmr = firstGame->plNext->p;
-  {                                       assert( pmr->mt == MOVE_GAMEINFO ); }
+  assert( pmr->mt == MOVE_GAMEINFO );
   g = &pmr->g;
 
   if( !PyArg_ParseTupleAndKeywords(args, keywds, "|iiii", kwlist,

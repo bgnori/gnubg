@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.582 2004/09/16 07:50:15 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.583 2004/09/29 18:13:00 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -570,9 +570,7 @@ player ap[ 2 ] = {
 
 /* Usage strings */
 static char szDICE[] = N_("<die> <die>"),
-#if USE_SOUND
     szCOMMAND[] = N_("<command>"),
-#endif
     szER[] = N_("evaluation|rollout"), 
     szFILENAME[] = N_("<filename>"),
     szKEYVALUE[] = N_("[<key>=<value> ...]"),
@@ -955,13 +953,28 @@ command cER = {
     { "environments", CommandRelationalShowEnvironments, 
       N_("Show the environments where the match can be logged"), 
       NULL, NULL },
+    { "details", CommandRelationalShowDetails, 
+      N_("Show details of the matches for a given player in the database"), 
+      szNAME, NULL },
+    { "players", CommandRelationalShowPlayers, 
+      N_("Show a list of all the players in the database"), 
+      NULL, NULL },
+    { "records", CommandRelationalShowRecords, 
+      N_("Show details of the database"), 
+      NULL, NULL },
     { NULL, NULL, NULL, NULL, NULL }    
 }, acRelational[] = {
     { "add", NULL, N_("Log to the external relational database"), NULL,
       acRelationalAdd },
+    { "erase", CommandRelationalErase, N_("Remove all statistics from one player "
+			"in the relational database"), szNAME, NULL },
+    { "eraseall", CommandRelationalEraseAll,
+      N_("Remove all player statistics in the relational database"), NULL, NULL },
     { "help", CommandRelationalHelp, 
       N_("Help and instructions for using and setting up "
          "the external relational database"), NULL, NULL },
+    { "select", CommandRelationalSelect, N_("Query the relational database"),
+      szCOMMAND, NULL },
     { "show", NULL, N_("Show information from the relational database"),
       NULL, acRelationalShow },
     { "test", CommandRelationalTest, 

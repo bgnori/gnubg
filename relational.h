@@ -16,26 +16,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.h,v 1.1 2004/04/18 08:57:09 thyssen Exp $
+ * $Id: relational.h,v 1.2 2004/09/29 18:13:00 Superfly_Jon Exp $
  */
 
 #ifndef _RELATIONAL_H_
 #define _RELATIONAL_H_
 
-#if HAVE_CONFIG_H
-#include "config.h"
-#if USE_PYTHON
-#undef HAVE_FSTAT
-#endif
-#endif
+typedef struct _RowSet
+{
+	int cols, rows;
+	char ***data;
+	int *widths;
+} RowSet;
 
-#if USE_PYTHON
-#include <Python.h>
-#if HAVE_CONFIG_H
-#undef HAVE_FSTAT
-#include "config.h"
-#endif
-#endif
+extern void RelationalUpdatePlayerDetails(int player_id, const char* newName,
+										  const char* newNotes);
+extern int RunQuery(RowSet* pRow, char *sz);
+extern void FreeRowset(RowSet* pRow);
 
 #endif /* _RELATIONAL_H_ */
-

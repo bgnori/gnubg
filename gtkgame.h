@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.87 2004/09/10 09:37:33 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.88 2004/09/29 18:13:00 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -26,6 +26,7 @@
 
 #include "backgammon.h"
 #include "rollout.h"
+#include "relational.h"
 
 #if !HAVE_GTK_OPTION_MENU_GET_HISTORY
 extern gint gtk_option_menu_get_history (GtkOptionMenu *option_menu);
@@ -232,6 +233,9 @@ extern void SetToolbarStyle(int value);
 
 extern void
 GTKShowManual( void );
+
+extern void GtkShowQuery(RowSet* pRow);
+extern void GtkShowRelational();
 
 #endif
 
