@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.h,v 1.3 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: gtktoolbar.h,v 1.4 2003/08/24 20:40:29 oysteijo Exp $
  */
 
 #ifndef _GTKTOOLBAR_H_
@@ -46,6 +46,9 @@ ToolbarUpdate ( GtkWidget *pwToolbar,
 
 extern int
 ToolbarIsEditing( GtkWidget *pwToolbar );
+
+extern void
+ToolbarActivateEdit( GtkWidget *pwToolbar );
 
 extern void
 ToolbarSetPlaying( GtkWidget *pwToolbar, const int f );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.70 2003/08/16 08:46:59 thyssen Exp $
+ * $Id: gtkgame.h,v 1.71 2003/08/24 20:40:29 oysteijo Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -46,6 +46,10 @@ typedef enum _dialogtype {
     DT_GNU,
     NUM_DIALOG_TYPES
 } dialogtype;
+
+typedef enum _filedialogtype { 
+  FDT_NONE=0, FDT_SAVE, FDT_EXPORT, FDT_IMPORT, FDT_EXPORT_FULL
+} filedialogtype;
 
 extern GtkWidget *pwMain, *pwMenuBar;
 extern GtkWidget *pwToolbar;
@@ -118,6 +122,7 @@ extern void *GTKCalibrationStart( void ),
     GTKCalibrationEnd( void *context );
 extern void GTKDumpRolloutResults(GtkWidget *widget, gpointer data);
 extern void GTKWinCopy( GtkWidget *widget, gpointer data);
+extern void GTKResign( gpointer *p, guint n, GtkWidget *pw);
 extern void
 GTKResignHint( float arOutput[], float rEqBefore, float rEqAfter,
                cubeinfo *pci, int fMWC );
@@ -140,6 +145,8 @@ GtkTutor ( char *sz );
 
 extern void
 GTKCopy ( void );
+extern void
+GTKNew ( void );
 
 extern void
 UpdateGeometry ( const gnubgwindow gw );
@@ -167,6 +174,6 @@ GTKReadNumber( char *szTitle, char *szPrompt, int nDefault,
                int nMin, int nMax, int nInc );
 
 extern void GTKFileCommand( char *szPrompt, char *szDefault, char *szCommand,
-                            char *szPath, int fExportSetting );
+                            char *szPath, filedialogtype fdt );
 
 #endif
