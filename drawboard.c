@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.17 2002/01/10 16:41:00 gtw Exp $
+ * $Id: drawboard.c,v 1.18 2002/01/17 16:54:57 oysteijo Exp $
  */
 
 #include "config.h"
@@ -292,7 +292,7 @@ static char *DrawBoardCls( char *sz, int anBoard[ 2 ][ 25 ], int fRoll,
     
     strcpy( pch, "    GNU Backgammon  Position ID: " );
 
-    pch += 30;
+    pch += 33;
 
     if( fRoll )
         strcpy( pch, PositionID( anBoard ) );
@@ -545,11 +545,11 @@ extern char *FormatMovePlain( char *sz, int anBoard[ 2 ][ 25 ],
         }
         
         if( i < 6 )
-            *pch++ = ' ';
+            *pch++ = ' '; 
     }
 
     *pch = 0;
-    
+
     return sz;
 }
 
