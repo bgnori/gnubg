@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.391 2003/03/14 20:34:15 oysteijo Exp $
+ * $Id: gnubg.c,v 1.392 2003/03/19 17:54:55 thyssen Exp $
  */
 
 #include "config.h"
@@ -6343,6 +6343,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 
 #ifdef WIN32
     char szInvokingDirectory[ BIG_PATH ];  /* current dir when GNUbg was started */
+    char *pc;
 #endif
 	char szQuoted[ BIG_PATH ];
 
@@ -6588,6 +6589,22 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     for ( i = 0; i < NUM_PATHS; i++ )
       for ( j = 0; j < 2; j++ )
         strcpy ( aaszPaths[ i ][ j ], "" );
+
+    /* special setup for a few paths */
+
+#if WIN32
+
+    if ( pc = getenv( "ProgramFiles" ) ) {
+
+      strcpy( aaszPaths[ PATH_SGG ][ 0 ], pc );
+      strcat( aaszPaths[ PATH_SGG ][ 0 ], "\\GamesGrid\\SaveGame\\" );
+
+      strcpy( aaszPaths[ PATH_TMG ][ 0 ], pc );
+      strcat( aaszPaths[ PATH_TMG ][ 0 ], "\\TMG\\SavedGames\\" );
+
+    }
+
+#endif
 
     /* initalize some html export options */
 
