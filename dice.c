@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.7 2000/07/13 16:25:26 gtw Exp $
+ * $Id: dice.c,v 1.8 2000/07/14 18:05:12 gtw Exp $
  */
 
 #include "config.h"
@@ -51,12 +51,15 @@
 
 #include "backgammon.h"
 #include "dice.h"
+#include "md5.h"
 #include "mt19937int.h"
 #include "isaac.h"
 
 rng rngCurrent = RNG_MERSENNE;
 
 static randctx rc;
+
+static md5_uint32 nMD5; /* the current MD5 seed */
 
 #if HAVE_LIBDL
 static void (*pfUserRNGSeed) (unsigned long int);
@@ -136,6 +139,10 @@ extern void InitRNGSeed( int n ) {
 	break;
     }
 
+    case RNG_MD5:
+	nMD5 = n;
+	break;
+    
     case RNG_MERSENNE:
 	sgenrand( n );
 	break;
@@ -207,6 +214,23 @@ extern int RollDice( int anDice[ 2 ] ) {
 	
     case RNG_MANUAL:
 	return GetManualDice( anDice );
+
+    case RNG_MD5: {
+	union _hash {
+	    char ach[ 16 ];
+	    md5_uint32 an[ 2 ];
+	} h;
+	
+	md5_buffer( (char *) &nMD5, sizeof nMD5, &h );
+
+	anDice[ 0 ] = h.an[ 0 ] / 715827882 + 1;
+	anDice[ 1 ] = h.an[ 1 ] / 715827882 + 1;
+
+	nMD5++;
+	
+	return 0;
+    }
+	
 	
     case RNG_MERSENNE:
 	anDice[ 0 ] = ( genrand() % 6 ) + 1;

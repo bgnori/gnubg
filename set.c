@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.23 2000/07/13 16:25:26 gtw Exp $
+ * $Id: set.c,v 1.24 2000/07/14 18:05:12 gtw Exp $
  */
 
 #include "config.h"
@@ -64,7 +64,7 @@ command acSetEvaluation[] = {
 static void SetRNG( rng rngNew, char *szSeed ) {
 
     static char *aszRNG[] = {
-	"ANSI", "BSD", "ISAAC", "manual", "Mersenne Twister",
+	"ANSI", "BSD", "ISAAC", "manual", "MD5", "Mersenne Twister",
 	"user supplied"
     };
     
@@ -721,6 +721,11 @@ extern void CommandSetRNGIsaac( char *sz ) {
 extern void CommandSetRNGManual( char *sz ) {
 
     SetRNG ( RNG_MANUAL, sz );
+}
+
+extern void CommandSetRNGMD5( char *sz ) {
+
+    SetRNG ( RNG_MD5, sz );
 }
 
 extern void CommandSetRNGMersenne( char *sz ) {

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.23 2000/07/13 16:25:26 gtw Exp $
+ * $Id: show.c,v 1.24 2000/07/14 18:05:12 gtw Exp $
  */
 
 #include "config.h"
@@ -347,7 +347,7 @@ extern void CommandShowPrompt( char *sz ) {
 extern void CommandShowRNG( char *sz ) {
 
   static char *aszRNG[] = {
-    "ANSI", "BSD", "ISAAC", "manual", "Mersenne Twister",
+    "ANSI", "BSD", "ISAAC", "manual", "MD5", "Mersenne Twister",
     "user supplied"
   };
 

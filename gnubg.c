@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.45 2000/07/13 16:25:26 gtw Exp $
+ * $Id: gnubg.c,v 1.46 2000/07/14 18:05:12 gtw Exp $
  */
 
 #include "config.h"
@@ -205,6 +205,7 @@ command acDatabase[] = {
       NULL },
     { "manual", CommandSetRNGManual, "Enter all dice rolls manually", NULL,
       NULL },
+    { "md5", CommandSetRNGMD5, "Use the MD5 generator", szOPTSEED, NULL },
     { "mersenne", CommandSetRNGMersenne, "Use the Mersenne Twister generator",
       szOPTSEED, NULL },
     { "user", CommandSetRNGUser, "Specify an external generator", szOPTSEED,
