@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.140 2003/09/02 21:46:00 hb Exp $
+ * $Id: analysis.c,v 1.141 2003/09/03 15:18:15 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -298,7 +298,7 @@ getMarketWindowDividerMWC( float* prMarketWindowDividerMWC, const matchstate* pm
 
     GetMatchStateCubeInfo ( &ci, pms );
 
-    getCurrentGammonRates( aarRates, arOutput, pms->anBoard,
+    getCurrentGammonRates( aarRates, arOutput, (void*)pms->anBoard,
 			   &ci, &ec );
 
     if( ci.nMatchTo ) {

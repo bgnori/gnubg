@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.cpp,v 1.3 2003/08/29 09:41:41 Superfly_Jon Exp $
+* $Id: font3d.cpp,v 1.4 2003/09/03 15:18:15 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -178,6 +178,11 @@ extern "C" void glPrintPointNumbers(BoardData* bd, const char *text, int mode)
 
 extern "C" void glPrintCube(BoardData* bd, const char *text, int mode)
 {
+	glutPrint(text, base_unit / 80);
+}
+
+extern "C" void glPrintNumbersRA(BoardData* bd, const char *text, int mode)
+{	/* Right aligned numbers */
 	glutPrint(text, base_unit / 80);
 }
 

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.5 2003/08/29 18:38:12 jsegrave Exp $
+* $Id: gtkcolour3d.c,v 1.6 2003/09/03 15:18:15 Superfly_Jon Exp $
 */
 
 #include <GL/gl.h>
@@ -342,7 +342,7 @@ void AddWidgets(GdkWindow* pixWind, GtkWidget *window)
 			       0 );
 	gtk_table_attach_defaults(GTK_TABLE (table), pcpSpecular, 3, 4, 0, 1);
 
-	label = gtk_label_new("Shineness:");
+	label = gtk_label_new("Shininess:");
 	gtk_table_attach_defaults(GTK_TABLE (table), label, 2, 3, 1, 2);
 	padjShine = GTK_ADJUSTMENT(gtk_adjustment_new(0, 0, 128, 1, 10, 0));
 	gtk_signal_connect_object( GTK_OBJECT( padjShine ),
