@@ -16,7 +16,7 @@
 -- along with this program; if not, write to the Free Software
 -- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 --
--- $Id: gnubg.sql,v 1.1 2004/04/04 15:16:36 thyssen Exp $
+-- $Id: gnubg.sql,v 1.2 2004/04/05 05:31:20 thyssen Exp $
 --
 
 DROP SCHEMA gnubg CASCADE;
@@ -170,13 +170,14 @@ CREATE TABLE gnubg.stat (
    ,time_penalty_loss_normalised      FLOAT   NOT NULL
    ,time_penalty_loss                 FLOAT   NOT NULL
    -- 
-   ,PRIMARY KEY (stat_id)
+   ,PRIMARY KEY (stat_id,person_id)
    ,FOREIGN KEY (person_id) REFERENCES gnubg.person (person_id)
       ON DELETE RESTRICT
 );
 
 CREATE UNIQUE INDEX istat ON gnubg.stat (
     stat_id
+   ,person_id
 );
 
 -- Table: match
@@ -216,7 +217,9 @@ CREATE TABLE gnubg.match (
       ON DELETE RESTRICT
    ,FOREIGN KEY (env_id1,person_id1) REFERENCES gnubg.player (env_id,person_id)
       ON DELETE RESTRICT
-   ,FOREIGN KEY (stat_id) REFERENCES gnubg.stat (stat_id)
+   ,FOREIGN KEY (stat_id,person_id0) REFERENCES gnubg.stat (stat_id,person_id)
+      ON DELETE CASCADE
+   ,FOREIGN KEY (stat_id,person_id1) REFERENCES gnubg.stat (stat_id,person_id)
       ON DELETE CASCADE
 );
 
