@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.74 2001/04/17 17:26:11 gtw Exp $
+ * $Id: play.c,v 1.75 2001/04/17 17:32:51 gtw Exp $
  */
 
 #include "config.h"
@@ -586,7 +586,7 @@ static void ShowAutoMove( int anBoard[ 2 ][ 25 ], int anMove[ 8 ] ) {
     char sz[ 40 ];
 
     if( anMove[ 0 ] == -1 )
-	outputf( "%s cannot move.", ap[ fTurn ].szName );
+	outputf( "%s cannot move.\n", ap[ fTurn ].szName );
     else
 	outputf( "%s moves %s.\n", ap[ fTurn ].szName,
 		 FormatMove( sz, anBoard, anMove ) );
