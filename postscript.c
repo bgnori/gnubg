@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.15 2002/05/12 11:21:01 thyssen Exp $
+ * $Id: postscript.c,v 1.16 2002/05/22 17:48:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -1016,6 +1016,9 @@ static void ExportGameGeneral( int f, char *sz ) {
     
     if( pf != stdout )
 	fclose( pf );
+
+    setDefaultFileName ( sz, f ? PATH_PDF : PATH_POSTSCRIPT );
+
 }
 
 extern void CommandExportGamePDF( char *sz ) {
@@ -1076,6 +1079,9 @@ static void ExportMatchGeneral( int f, char *sz ) {
     
     if( pf != stdout )
 	fclose( pf );
+
+    setDefaultFileName ( sz, f ? PATH_PDF : PATH_POSTSCRIPT );
+
 }
 
 extern void CommandExportMatchPDF( char *sz ) {
@@ -1126,4 +1132,7 @@ extern void CommandExportPositionEPS( char *sz ) {
 
     if( pf != stdout )
 	fclose( pf );
+
+    setDefaultFileName ( sz, PATH_EPS );
+
 }

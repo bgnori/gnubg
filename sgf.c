@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.40 2002/05/12 11:20:48 thyssen Exp $
+ * $Id: sgf.c,v 1.41 2002/05/22 17:44:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -1207,6 +1207,7 @@ static void WriteStatContext( FILE *pf, statcontext *psc ) {
     }
 }
 
+
 static void SaveGame( FILE *pf, list *plGame ) {
 
     list *pl;
@@ -1394,6 +1395,9 @@ extern void CommandSaveGame( char *sz ) {
     
     if( pf != stdout )
 	fclose( pf );
+
+    setDefaultFileName ( sz, PATH_SGF );
+
 }
 
 extern void CommandSaveMatch( char *sz ) {
@@ -1431,4 +1435,7 @@ extern void CommandSaveMatch( char *sz ) {
     
     if( pf != stdout )
 	fclose( pf );
+
+    setDefaultFileName ( sz, PATH_SGF );
+
 }
