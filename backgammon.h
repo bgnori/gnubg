@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.149 2002/08/06 19:23:52 thyssen Exp $
+ * $Id: backgammon.h,v 1.150 2002/08/08 19:03:01 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -786,4 +786,10 @@ extern int fTutor, fTutorCube, fTutorChequer, nTutorSkillCurrent;
 extern int GiveAdvice ( skilltype Skill );
 extern skilltype TutorSkill;
 extern int fTutorAnalysis;
+
+#ifndef HAVE_BASENAME
+extern char *
+basename ( const char *filename );
+#endif
+
 #endif

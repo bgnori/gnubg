@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.272 2002/08/08 18:49:41 thyssen Exp $
+ * $Id: gnubg.c,v 1.273 2002/08/08 19:03:01 thyssen Exp $
  */
 
 #include "config.h"
@@ -6096,3 +6096,17 @@ extern int GiveAdvice( skilltype Skill ) {
 	return GetAdviceAnswer( sz );
 }
 
+#ifndef HAVE_BASENAME
+
+/*
+ * Basename copied from glibc-2.2. for users without glibc.
+ */
+
+extern char *
+basename (const char *filename) 
+{ 
+  char *p1 = strrchr (filename, DIR_SEPARATOR); 
+  return p1 ? p1 + 1 : (char *) filename;
+} 
+
+#endif /* ! HAVE_BASENAME */
