@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.167 2002/07/01 19:01:30 thyssen Exp $
+ * $Id: gtkgame.c,v 1.168 2002/07/03 17:36:21 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4360,7 +4360,7 @@ static void SetEvalCommands( char *szPrefix, evalcontext *pec,
     }
 
     if( pec->rSearchTolerance != pecOrig->rSearchTolerance ) {
-	sprintf( sz, "%s tolerance %.3f", szPrefix, pec->rSearchTolerance );
+        lisprintf( sz, "%s tolerance %.3f", szPrefix, pec->rSearchTolerance );
 	UserCommand( sz );
     }
     
@@ -4381,7 +4381,7 @@ static void SetEvalCommands( char *szPrefix, evalcontext *pec,
     }
 
     if( pec->rNoise != pecOrig->rNoise ) {
-	sprintf( sz, "%s noise %.3f", szPrefix, pec->rNoise );
+	lisprintf( sz, "%s noise %.3f", szPrefix, pec->rNoise );
 	UserCommand( sz );
     }
     
