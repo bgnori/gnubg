@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.72 2002/10/21 21:00:52 thyssen Exp $
+ * $Id: html.c,v 1.73 2002/10/24 17:43:09 thyssen Exp $
  */
 
 #include "config.h"
@@ -344,8 +344,7 @@ printStatTableHeader ( FILE *pf, const htmlexportcss hecss,
   fprintf ( pf, 
             "<tr %s>\n"
             "<th colspan=\"3\" style=\"text-align: center\">", 
-            GetStyle ( CLASS_STATTABLEHEADER, hecss ),
-            pf );
+            GetStyle ( CLASS_STATTABLEHEADER, hecss ) );
   vfprintf ( pf, format, val );
   fputs ( "</th>\n</tr>\n", pf );
 
@@ -1712,7 +1711,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.72 $";
+  const char szVersion[] = "$Revision: 1.73 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1793,7 +1792,7 @@ HTMLEpilogueComment ( FILE *pf ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.72 $";
+  const char szVersion[] = "$Revision: 1.73 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -3744,7 +3743,7 @@ extern void CommandExportPositionHtml( char *sz ) {
 
 
 extern void
-CommandExportPositionGammOnline ( char *sz ) {
+CommandExportPositionGammOnLine ( char *sz ) {
 
 
     FILE *pf;
