@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.1 2002/12/11 02:21:19 gtw Exp $
+ * $Id: render.c,v 1.2 2002/12/11 17:01:14 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -34,6 +34,9 @@
 #include <stdlib.h>
 
 #include "render.h"
+
+extern unsigned char auchLuxiRB[], auchLuxiSB[], auchLuxiSR[];
+extern unsigned int cbLuxiRB, cbLuxiSB, cbLuxiSR;
 
 static randctx rc;
 #define RAND irand( &rc )
@@ -1239,9 +1242,8 @@ static void RenderLabels( renderdata *prd, unsigned char *puch, int nStride ) {
     FT_Face ftf;
     int i;
     FT_Glyph aftg[ 10 ];
-    
-    if( FT_New_Face( ftl, "/usr/X11R6/lib/X11/fonts/TTF/luxisb.ttf", 0,
-		     &ftf ) )
+
+    if( FT_New_Memory_Face( ftl, auchLuxiSB, cbLuxiSB, 0, &ftf ) )
 	return RenderBasicLabels( prd, puch, nStride );
     
     if( FT_Set_Pixel_Sizes( ftf, 0, prd->nSize ) )
@@ -1524,8 +1526,7 @@ extern void RenderChequerLabels( renderdata *prd, unsigned char *puch,
     FT_Glyph aftg[ 10 ];
     int fFreetype = FALSE;
     
-    if( !FT_New_Face( ftl, "/usr/X11R6/lib/X11/fonts/TTF/luxisr.ttf", 0,
-		      &ftf ) &&
+    if( !FT_New_Memory_Face( ftl, auchLuxiSR, cbLuxiSR, 0, &ftf ) &&
 	!FT_Set_Pixel_Sizes( ftf, 0, 2 * prd->nSize ) ) {
 	fFreetype = TRUE;
 	for( i = 0; i < 10; i++ ) {
@@ -1680,8 +1681,7 @@ extern void RenderCubeFaces( renderdata *prd, unsigned char *puch,
     FT_Glyph aftg[ 10 ], aftgSmall[ 10 ];
     int fFreetype = FALSE;
     
-    if( !FT_New_Face( ftl, "/usr/X11R6/lib/X11/fonts/TTF/luxirb.ttf", 0,
-		      &ftf ) &&
+    if( !FT_New_Memory_Face( ftl, auchLuxiRB, cbLuxiRB, 0, &ftf ) &&
 	!FT_Set_Pixel_Sizes( ftf, 0, 5 * prd->nSize ) ) {
 	fFreetype = TRUE;
 	
