@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.9 2003/01/08 20:53:20 thyssen Exp $
+ * $Id: export.c,v 1.10 2003/01/19 04:27:06 gtw Exp $
  */
 
 #include "config.h"
@@ -32,10 +32,6 @@
 #include <png.h>
 #endif
 
-#if USE_GTK
-#include <gtk/gtk.h>
-#endif /* USE_GTK */
-
 #include "analysis.h"
 #include "backgammon.h"
 #include "drawboard.h"
@@ -43,13 +39,9 @@
 #include "eval.h"
 #include "positionid.h"
 #include "render.h"
+#include "renderprefs.h"
 #include "matchid.h"
 #include "i18n.h"
-
-#if USE_GTK
-#include "gtkboard.h"
-#include "gtkgame.h"
-#endif 
 
 /* size of html images in steps of 108x72 */
 
@@ -516,9 +508,6 @@ CommandExportPositionPNG ( char *sz ) {
 
   renderimages ri;
   renderdata rd;
-#if USE_GTK
-  BoardData *bd;
-#endif
   
   sz = NextToken( &sz );
 
@@ -538,14 +527,7 @@ CommandExportPositionPNG ( char *sz ) {
 
   /* generate PNG image */
 
-#if USE_GTK
-  if ( fX ) {
-      bd = BOARD ( pwBoard )->board_data;
-
-      memcpy ( &rd, &bd->rd, sizeof ( renderdata ) );
-  } else
-#endif
-      memcpy( &rd, &rdDefault, sizeof rd );
+  memcpy( &rd, &rdAppearance, sizeof rd );
   
   rd.nSize = exsExport.nPNGSize;
 
