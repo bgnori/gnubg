@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.143 2002/03/28 21:11:45 thyssen Exp $
+ * $Id: eval.c,v 1.144 2002/03/30 23:58:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -4304,7 +4304,6 @@ extern int SetCubeInfoMatch( cubeinfo *pci, int nCube, int fCubeOwner,
 
       int nAway0 = pci->nMatchTo - pci->anScore[ 0 ] - 1;
       int nAway1 = pci->nMatchTo - pci->anScore[ 1 ] - 1;
-      int i;
 
       if ( ( ! nAway0 || ! nAway1 ) && ! fCrawford ) {
         if ( ! nAway0 )
