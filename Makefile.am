@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.121 2003/12/31 22:43:08 uid65656 Exp $
+## $Id: Makefile.am,v 1.122 2004/01/21 21:41:26 uid65656 Exp $
 
 localedir = $(datadir)/locale
 
@@ -28,7 +28,7 @@ endif
 
 ## timecontrol
 if USE_TIMECONTROL
-TIME_SOURCES = timecontrol.h timecontrol.c
+TIME_SOURCES = timecontrol.h timecontrol.c tctutorial.h
 else
 TIME_SOURCES =
 endif
