@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.432 2003/09/26 08:17:53 steink Exp $
+ * $Id: gtkgame.c,v 1.433 2003/09/26 16:51:19 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -757,7 +757,7 @@ static void Command( gpointer *p, guint iCommand, GtkWidget *widget ) {
 	
 #if USE_TIMECONTROL
     case CMD_SET_TC:
-	sprintf( sz, "%s %s", aszCommands[ iCommand ], p);
+	sprintf( sz, "%s %s", aszCommands[ iCommand ], (char*)p);
 	UserCommand( sz );
 	break;
 #endif
@@ -9596,10 +9596,9 @@ typedef struct _definetcwidget {
 
 static GtkWidget *DefineTCWidget( definetcwidget *pdtcw) 
 {
-  int i, j = 1 ;
-  GtkWidget *pwVbox, *pwHbox, *pwLabel, *pwEntry;
-  GtkWidget *pwSpin, *pwFrame, *pwVbox2; 
-  GtkWidget *pwMenu, *pwOptionMenu;
+  GtkWidget *pwVbox, *pwHbox, *pwLabel;
+  GtkWidget *pwFrame, *pwVbox2; 
+  GtkWidget *pwMenu;
 
   pwVbox = gtk_vbox_new(FALSE, 0);
   gtk_container_add( GTK_CONTAINER ( pwVbox ),

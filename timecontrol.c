@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: timecontrol.c,v 1.9 2003/09/26 08:17:55 steink Exp $
+ * $Id: timecontrol.c,v 1.10 2003/09/26 16:51:19 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -171,10 +171,11 @@ static timecontrol *findOrDeleteTimeControl( char *sz, int del )
 
     if (del)
     {
+    tcnode *next;
 #if USE_GTK
 	GTKRemoveTimeControl((*ppRefNode)->ptc->szName);
 #endif
-    tcnode *next=(*ppRefNode)->next;
+    next=(*ppRefNode)->next;
     free((*ppRefNode)->ptc->szName);
     free((*ppRefNode)->ptc->szNext);
     free((*ppRefNode)->ptc->szNextB);
@@ -213,10 +214,11 @@ static void setNameModified( )
 static void nameTimeControl( char *sz )
 {
     tcnode *pNode;
+	timecontrol *ptc;
 
     if (!sz || !*sz) return;
 
-    timecontrol *ptc = findTimeControl( sz );
+    ptc = findTimeControl( sz );
     if (!ptc || strcmp(ptc->szName, sz))
     {
 	ptc = calloc(sizeof(timecontrol), 1);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.209 2003/09/26 08:17:54 steink Exp $
+ * $Id: set.c,v 1.210 2003/09/26 16:51:19 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -77,6 +77,10 @@
 #include "i18n.h"
 
 #include "sound.h"
+
+#if USE_TIMECONTROL
+#include "timecontrol.h"
+#endif
 
 static int iPlayerSet, iPlayerLateSet;
 
