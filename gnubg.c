@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.418 2003/06/06 15:10:22 hb Exp $
+ * $Id: gnubg.c,v 1.419 2003/06/06 15:50:54 hb Exp $
  */
 
 #include "config.h"
@@ -7572,7 +7572,7 @@ Convert ( const char *sz,
 
   while ( lIn && ! fError ) {
 
-    rc = iconv ( id, (char **) &pchIn, &lIn, &pchOut, &l );
+    rc = iconv ( id, (const char **) &pchIn, &lIn, &pchOut, &l );
 
     if ( rc == -1 ) 
       switch ( errno ) {
