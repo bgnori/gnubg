@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.150 2002/05/27 19:42:26 thyssen Exp $
+ * $Id: gtkgame.c,v 1.151 2002/05/29 20:25:59 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4096,13 +4096,23 @@ static GtkWidget *EvalWidget( evalcontext *pec, int *pfOK ) {
     gtk_container_add( GTK_CONTAINER( pw3 ), pw );
 
     pew->padjSearchTolerance = GTK_ADJUSTMENT( gtk_adjustment_new(
-	pec->rSearchTolerance, 0, 1, 0.01, 0.01, 0.0 ) );
+	pec->rSearchTolerance, 0, 10, 0.01, 0.01, 0.0 ) );
 
     gtk_container_add( GTK_CONTAINER( pw ),
 		       gtk_label_new( "Search tolerance:" ) );
     gtk_container_add( GTK_CONTAINER( pw ),
 		       pew->pwSearchTolerance = gtk_spin_button_new(
 			   pew->padjSearchTolerance, 0.01, 3 ) );
+
+
+    pw = gtk_hbox_new( FALSE, 0 );
+    gtk_container_add( GTK_CONTAINER( pw3 ), pw );
+
+    gtk_container_add( GTK_CONTAINER( pw ),
+		       pew->pwNoOnePlyPrune = gtk_check_button_new_with_label(
+			   "No 1-ply pruning" ) );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pew->pwNoOnePlyPrune ),
+				  pec->fNoOnePlyPrune );
 
     /* reduced evaluation */
 
@@ -4119,11 +4129,6 @@ static GtkWidget *EvalWidget( evalcontext *pec, int *pfOK ) {
 			   "Reduced 2 ply evaluation" ) );
     gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pew->pwReduced ),
 				  pec->nReduced );
-    gtk_container_add( GTK_CONTAINER( pw4 ),
-		       pew->pwNoOnePlyPrune = gtk_check_button_new_with_label(
-			   "No 1-ply pruning" ) );
-    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pew->pwNoOnePlyPrune ),
-				  pec->fNoOnePlyPrune );
 
     /* cubeful */
     

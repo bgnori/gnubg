@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.73 2002/05/21 13:53:58 thyssen Exp $
+ * $Id: eval.h,v 1.74 2002/05/29 20:25:59 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -135,7 +135,8 @@ typedef enum _cubedecision {
  *
  */
 
-#define NUM_SETTINGS            6
+#define NUM_SETTINGS            7
+#define SETTINGS_WORLDCLASSPP   6
 #define SETTINGS_WORLDCLASS     5
 #define SETTINGS_ADVANCED       4
 #define SETTINGS_EXPERT         3
@@ -146,7 +147,7 @@ typedef enum _cubedecision {
 extern evalcontext aecSettings[ NUM_SETTINGS  ];
 extern const char *aszSettings[ NUM_SETTINGS ];
 
-#define NUM_SEARCHSPACES        6
+#define NUM_SEARCHSPACES        8
 
 extern const char *aszSearchSpaces[ NUM_SEARCHSPACES ];
 extern const int anSearchCandidates[ NUM_SEARCHSPACES ];
