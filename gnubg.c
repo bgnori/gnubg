@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.236 2002/07/04 15:55:08 oysteijo Exp $
+ * $Id: gnubg.c,v 1.237 2002/07/04 16:01:53 oysteijo Exp $
  */
 
 #include "config.h"
@@ -4985,8 +4985,8 @@ static void real_main( void *closure, int argc, char *argv[] ) {
             outputl( _("Sorry, this build does not support the -tty option"));
 #else
 	    fX = FALSE;
-	    break;
 #endif
+	    break;
 	case 'h': /* help */
             usage( argv[ 0 ] );
 	    exit( EXIT_SUCCESS );
