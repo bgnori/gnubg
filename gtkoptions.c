@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.1 2003/07/10 09:24:38 thyssen Exp $
+ * $Id: gtkoptions.c,v 1.2 2003/07/11 10:41:03 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1231,11 +1231,15 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
 
     pow->pwSconyers15x15Disk = 
       gtk_check_button_new_with_label( _("Enable use") );
+
+    /* FIXME: */
+    gtk_widget_set_sensitive( GTK_WIDGET( pow->pwSconyers15x15Disk ), FALSE );
+
     gtk_box_pack_start (GTK_BOX (pwb), pow->pwSconyers15x15Disk,
 			FALSE, FALSE, 0);
     gtk_tooltips_set_tip( ptt, pow->pwSconyers15x15Disk,
 			  _("Enable use of Hugh Sconyers' full 15x15 bearoff "
-                            "database in play, analisys, and evaluations. "
+                            "database in play, analysis, and evaluations. "
                             "This requires that you've copied the 44 files "
                             "onto your harddisk."), NULL );
     
@@ -1258,6 +1262,8 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
                       pow->pwPathSconyers15x15DiskModify = 
                       gtk_button_new_with_label( _("Modify") ),
                       FALSE, FALSE, 0 );
+    gtk_widget_set_sensitive( GTK_WIDGET( pow->pwPathSconyers15x15DiskModify ), 
+                              FALSE );
 
     gtk_object_set_data( GTK_OBJECT( pow->pwPathSconyers15x15DiskModify ),
                          "user_data", "set bearoff sconyers 15x15 disk path" );
