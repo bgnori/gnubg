@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.86 2002/12/15 22:08:07 thyssen Exp $
+## $Id: Makefile.am,v 1.87 2002/12/20 17:10:40 gtw Exp $
 if USE_EXT
 SUBDIRS = intl lib doc ext met po m4 xpm sounds
 else
@@ -53,7 +53,8 @@ COMMON_SOURCES = backgammon.h gnubg.c getopt.h getopt.c getopt1.c eval.h \
 	postscript.c html.c export.h matchid.c matchid.h i18n.c i18n.h text.c \
 	export.c sound.h record.c record.h osr.c osr.h \
         bearoffgammon.c bearoffgammon.h bearoff.c bearoff.h \
-	onechequer.c onechequer.h path.c path.h render.c render.h
+	onechequer.c onechequer.h path.c path.h render.c render.h \
+	htmlimages.c
 COMMON_DEPS = @LIBOBJS@ lib/libevent.a
 
 bin_PROGRAMS = gnubg makebearoff

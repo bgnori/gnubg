@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.16 2002/12/16 23:09:39 thyssen Exp $
+ * $Id: export.h,v 1.17 2002/12/20 17:10:40 gtw Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -97,6 +97,9 @@ getMoveNumber ( const list *plGame, const void *p );
 
 extern char *
 HTMLFilename ( const char *szBase, const int iGame );
+
+extern int WritePNG( const char *sz, unsigned char *puch, int nStride,
+		     const int nSizeX, const int nSizeY );
 
 /* misc. output routines used by text and HTML export */
 
