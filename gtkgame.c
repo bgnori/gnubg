@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.525 2004/11/15 14:26:20 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.526 2004/11/24 10:27:00 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4699,6 +4699,10 @@ typedef struct _evalwidget {
 
 static void EvalGetValues ( evalcontext *pec, evalwidget *pew ) {
 
+#if defined( REDUCTION_CODE )
+  GtkWidget *pwMenu, *pwItem;
+  int *pi;
+#endif
   pec->nPlies = pew->padjPlies->value;
   pec->fCubeful =
     gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON( pew->pwCubeful ) );
@@ -4841,6 +4845,8 @@ static GtkWidget *EvalWidget( evalcontext *pec, movefilter *pmf,
 
     GtkWidget *pwev;
 #if defined( REDUCTION_CODE )
+	GtkWidget *pw4;
+	char *pch;
     const char *aszReduced[] = {
       N_("No reduction"),
       NULL,
