@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.338 2002/11/27 17:47:39 jsegrave Exp $
+ * $Id: gnubg.c,v 1.339 2002/11/27 22:38:50 gtw Exp $
  */
 
 #include "config.h"
@@ -1533,6 +1533,9 @@ char *aszVersion[] = {
 #endif
 #if HAVE_LIBXML2
     N_("XML match equity files supported."),
+#endif
+#if HAVE_LIBGMP
+    N_("Long RNG seeds supported."),
 #endif
 #ifdef USE_SOUND
     N_("Sound systems supported:"),
