@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.66 2000/11/15 18:02:17 gtw Exp $
+ * $Id: eval.c,v 1.67 2000/11/17 15:42:24 gtw Exp $
  */
 
 #include "config.h"
@@ -829,12 +829,6 @@ CalculateHalfInputs( int anBoard[ 25 ],
     /* number of chequers this roll hits */
     int nChequers;
   } aRoll[ 21 ];
-    
-  /* FIXME consider -1.0 instead of 0.0, since null inputs do not
-       contribute to learning!
-
-       Tried that (Joseph). Does not work well.
-  */
     
   /* Points */
   for( i = 0; i < 25; i++ ) {
@@ -3439,14 +3433,12 @@ static void DumpContact( int anBoard[ 2 ][ 25 ], char *szOutput ) {
            "MOBILITY       \t%5.3f             \t%6.3f\n"
            "MOMENT2        \t%5.3f             \t%6.3f\n"
            "ENTER          \t%5.3f (%5.3f/12) \t%6.3f\n"
-					 
-					 "ENTER2         \t%5.3f \n"
-					 "TIMING         \t%5.3f \n"
-					 "BACKBONE       \t%5.3f \n"
-					 "BACKGAME       \t%5.3f \n"
-					 "BACKGAME1      \t%5.3f \n"
-					 "FREEPIP        \t%5.3f \n"
-           ,
+	   "ENTER2         \t%5.3f             \t%6.3f\n"
+	   "TIMING         \t%5.3f             \t%6.3f\n"
+	   "BACKBONE       \t%5.3f             \t%6.3f\n"
+	   "BACKGAME       \t%5.3f             \t%6.3f\n"
+	   "BACKGAME1      \t%5.3f             \t%6.3f\n"
+	   "FREEPIP        \t%5.3f             \t%6.3f\n",
            arInput[ I_OFF1 << 1 ], ardEdI[ I_OFF1 << 1 ],
            arInput[ I_OFF2 << 1 ], ardEdI[ I_OFF2 << 1 ],
            arInput[ I_OFF3 << 1 ], ardEdI[ I_OFF3 << 1 ],
@@ -3471,15 +3463,12 @@ static void DumpContact( int anBoard[ 2 ][ 25 ], char *szOutput ) {
            arInput[ I_MOMENT2 << 1 ], ardEdI[ I_MOMENT2 << 1 ],
            arInput[ I_ENTER << 1 ], arInput[ I_ENTER << 1 ] * 12.0,
 	         ardEdI[ I_ENTER << 1 ],
-
-					 arInput[ I_ENTER2 ],
-					 arInput[ I_TIMING ],
-					 arInput[ I_BACKBONE ],
-					 arInput[ I_BACKG ],
-					 arInput[ I_BACKG1 ],
-					 arInput[ I_FREEPIP ]
-
-           );
+	   arInput[ I_ENTER2 << 1 ], ardEdI[ I_ENTER2 << 1 ],
+	   arInput[ I_TIMING << 1 ], ardEdI[ I_TIMING << 1 ],
+	   arInput[ I_BACKBONE << 1 ], ardEdI[ I_BACKBONE << 1 ],
+	   arInput[ I_BACKG << 1 ], ardEdI[ I_BACKG << 1 ],
+	   arInput[ I_BACKG1 << 1 ], ardEdI[ I_BACKG1 << 1 ],
+	   arInput[ I_FREEPIP << 1 ], ardEdI[ I_FREEPIP << 1 ] );
 }
 
 static classdumpfunc acdf[ N_CLASSES ] = {
