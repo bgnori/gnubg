@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.c,v 1.3 2002/12/24 14:07:27 gtw Exp $
+ * $Id: gtkcolour.c,v 1.4 2002/12/24 15:36:42 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -29,8 +29,8 @@
 #include "i18n.h"
 
 #if !GTK_CHECK_VERSION(1,3,10)
-#define gtk_color_selection_set_has_opacity_control(p) \
-    gtk_color_selection_set_opacity(p)
+#define gtk_color_selection_set_has_opacity_control(p,f) \
+    gtk_color_selection_set_opacity(p,f)
 #define gtk_color_selection_get_has_opacity_control(p) \
     ( (p)->use_opacity )
 #endif
