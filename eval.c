@@ -1,3 +1,4 @@
+
 /*
  * eval.c
  *
@@ -16,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.141 2002/03/28 14:10:10 thyssen Exp $
+ * $Id: eval.c,v 1.142 2002/03/28 15:48:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -4302,32 +4303,32 @@ extern int SetCubeInfoMatch( cubeinfo *pci, int nCube, int fCubeOwner,
     {
       float rWin = 
         getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                pci->fMove, pci->nCube, pci->fMove, pci->fCrawford,
+                0, pci->nCube, 0, pci->fCrawford,
                 aafMET, aafMETPostCrawford );
 
       float rWinGammon = 
         getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                pci->fMove, 2 * pci->nCube, pci->fMove, pci->fCrawford,
+                0, 2 * pci->nCube, 0, pci->fCrawford,
                 aafMET, aafMETPostCrawford );
 
       float rWinBG = 
         getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                pci->fMove, 3 * pci->nCube, pci->fMove, pci->fCrawford,
+                0, 3 * pci->nCube, 0, pci->fCrawford,
                 aafMET, aafMETPostCrawford );
 
       float rLose = 
         getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                pci->fMove, pci->nCube, ! pci->fMove, pci->fCrawford,
+                0, pci->nCube, 1, pci->fCrawford,
                 aafMET, aafMETPostCrawford );
 
       float rLoseGammon = 
         getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                pci->fMove, 2 * pci->nCube, ! pci->fMove, pci->fCrawford,
+                0, 2 * pci->nCube, 1, pci->fCrawford,
                 aafMET, aafMETPostCrawford );
 
       float rLoseBG = 
         getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                pci->fMove, 3 * pci->nCube, ! pci->fMove, pci->fCrawford,
+                0, 3 * pci->nCube, 1, pci->fCrawford,
                 aafMET, aafMETPostCrawford );
 
       float rCenter = ( rWin + rLose ) / 2.0;
