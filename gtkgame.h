@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.46 2002/07/24 16:50:09 thyssen Exp $
+ * $Id: gtkgame.h,v 1.47 2002/07/27 17:13:59 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -130,6 +130,9 @@ extern int fTTY;
 
 extern int 
 GtkTutor ( char *sz );
+
+extern void
+GTKCopy ( void );
 
 
 #endif

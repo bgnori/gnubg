@@ -16,17 +16,18 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.h,v 1.1 2002/07/17 11:47:59 thyssen Exp $
+ * $Id: gtkchequer.h,v 1.2 2002/07/27 17:13:19 thyssen Exp $
  */
 
 #ifndef _GTKCHEQUER_H_
 #define _GTKCHEQUER_H_
 
 typedef struct _hintdata {
-  GtkWidget *pwMove; /* the entire dialog */
-  GtkWidget *pw;     /* the movelist */
+  GtkWidget *pwMoves;     /* the movelist */
   GtkWidget *pwRollout, *pwRolloutSettings; /* rollout buttons */
   GtkWidget *pwEval, *pwEvalSettings;       /* evaluation buttons */
+  GtkWidget *pwMove; /* move button */
+  GtkWidget *pwCopy; /* copy button */
   movelist *pml;
   int fButtonsValid;
   int *piHighlight;
