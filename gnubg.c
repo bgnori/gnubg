@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.380 2003/01/25 16:56:46 thyssen Exp $
+ * $Id: gnubg.c,v 1.381 2003/01/30 17:58:09 thyssen Exp $
  */
 
 #include "config.h"
@@ -7169,6 +7169,12 @@ getDefaultPath ( const pathformat f ) {
 
 }
 
+extern void
+InvalidateStoredMoves ( void ) {
+
+  sm.ms.nMatchTo = -1;
+
+}
 
 
 extern void
