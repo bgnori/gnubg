@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.h,v 1.1 2000/10/27 14:20:52 gtw Exp $
+ * $Id: guile.h,v 1.2 2000/11/13 15:55:49 gtw Exp $
  */
 
 #if USE_GUILE
@@ -24,7 +24,9 @@
 #ifndef _GUILE_H_
 #define _GUILE_H_
 
-extern int GuileInitialise( void );
+#define GNUBG_SCM "gnubg.scm"
+
+extern int GuileInitialise( char *szDir );
 
 #endif
 
