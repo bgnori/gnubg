@@ -18,11 +18,12 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.6 2005/01/04 09:27:34 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.7 2005/01/04 10:32:38 Superfly_Jon Exp $
 */
 
 #include "config.h"
 #include <stdlib.h>
+#include <ctype.h>
 #define GTK_ENABLE_BROKEN /* for GtkText */
 #include "backgammon.h"
 #include "gtkboard.h"

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.91 2005/01/04 09:27:34 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.92 2005/01/04 10:32:38 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -251,3 +251,5 @@ extern GtkWidget* GetPanelWidget(gnubgwindow window);
 extern void PanelShow(gnubgwindow panel);
 extern void PanelHide(gnubgwindow panel);
 extern int IsPanelShowVar(gnubgwindow panel, void *p);
+extern int SetMainWindowSize();
+extern void ShowHidePanel(gnubgwindow panel);
