@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.199 2002/12/06 03:28:28 gtw Exp $
+ * $Id: eval.c,v 1.200 2002/12/07 20:33:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -2434,7 +2434,7 @@ PerfectCubeful ( bearoffcontext *pbc,
   int n = Combination ( pbc->nPoints + pbc->nChequers, pbc->nPoints );
   unsigned int iPos = nUs * n + nThem;
 
-  BearoffCubeful ( pbc, iPos, arEquity );
+  BearoffCubeful ( pbc, iPos, arEquity, NULL );
 
 }
 
