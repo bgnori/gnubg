@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.h,v 1.18 2002/12/15 22:11:53 thyssen Exp $
+ * $Id: positionid.h,v 1.19 2003/03/30 16:37:51 thyssen Exp $
  */
 
 #ifndef _POSITIONID_H_
@@ -25,12 +25,20 @@
 extern void PositionKey( int anBoard[ 2 ][ 25 ], unsigned char auchKey[ 10 ] );
 extern char *PositionID( int anBoard[ 2 ][ 25 ] );
 extern char *PositionIDFromKey( unsigned char auchKey[ 10 ] );
-extern unsigned int PositionBearoff( const int anBoard[], const int n );
+
+extern 
+unsigned int PositionBearoff( const int anBoard[],
+                              const int nPoints,
+                              const int nChequers );
+
 extern void PositionFromKey( int anBoard[ 2 ][ 25 ],
                              unsigned char *puch );
 extern int PositionFromID( int anBoard[ 2 ][ 25 ], const char *szID );
-extern void PositionFromBearoff( int anBoard[ 6 ], const unsigned int usID,
-                                 const int n );
+
+extern void 
+PositionFromBearoff( int anBoard[], const unsigned int usID,
+                                 const int nPoints, const int nChequers );
+
 extern unsigned short PositionIndex(int g, int anBoard[6]);
 
 extern int 
@@ -42,7 +50,7 @@ CheckPosition( int anBoard[ 2 ][ 25 ] );
 extern void ClosestLegalPosition( int anBoard[ 2 ][ 25 ] );
 
 extern int
-Combination ( int n, int r );
+Combination ( const int n, const int r );
 
 extern int
 Base64( const char ch );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.36 2003/03/08 13:08:19 thyssen Exp $
+ * $Id: text.c,v 1.37 2003/03/30 16:37:52 thyssen Exp $
  */
 
 #include "config.h"
@@ -504,7 +504,7 @@ printTextBoard ( FILE *pf, const matchstate *pms ) {
     if( pms->anDice[ 0 ] )
       sprintf( sz, 
                _("Rolled %d%d"), pms->anDice[ 0 ], pms->anDice[ 1 ] );
-    else if( !GameStatus( anBoard ) )
+    else if( !GameStatus( anBoard, pms->bgv ) )
       strcpy( sz, _("On roll") );
     else
       sz[ 0 ] = 0;
@@ -659,7 +659,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.36 $";
+  const char szVersion[] = "$Revision: 1.37 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.30 2003/03/20 20:18:11 thyssen Exp $
+ * $Id: postscript.c,v 1.31 2003/03/30 16:37:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -834,7 +834,8 @@ PrintPostScriptCubeAnalysis( FILE *pf, matchstate *pms,
 	return;
     
     SetCubeInfo( &ci, pms->nCube, pms->fCubeOwner, fPlayer, pms->nMatchTo,
-		 pms->anScore, pms->fCrawford, pms->fJacoby, nBeavers );
+		 pms->anScore, pms->fCrawford, pms->fJacoby, nBeavers,
+                 pms->bgv );
     
     if( !GetDPEq( NULL, NULL, &ci ) )
 	/* No cube action possible */
@@ -1231,7 +1232,7 @@ static void ExportGamePostScript( FILE *pf, list *plGame ) {
 	ApplyMoveRecord( &msExport, plGame, pmr );
     }
     
-    if( ( GameStatus( msExport.anBoard ) ) )
+    if( ( GameStatus( msExport.anBoard, msExport.bgv ) ) )
 	/* FIXME print game result and statistics */
 	;
     

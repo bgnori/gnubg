@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.1 2003/01/17 21:46:31 gtw Exp $
+ * $Id: speed.c,v 1.2 2003/03/30 16:37:52 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -43,7 +43,7 @@ extern void CommandCalibrate( char *sz ) {
     clock_t c0, c1, c = 0;
     float ar[ NUM_OUTPUTS ];
 #if USE_GTK
-    void *pcc;
+    void *pcc = NULL;
 #endif
     
     if( sz && *sz ) {
@@ -95,7 +95,7 @@ extern void CommandCalibrate( char *sz ) {
 	}
 
 	for( i = 0; i < EVALS_PER_ITERATION; i++ ) {
-	    EvaluatePosition( aanBoard[ i ], ar, &ciCubeless, NULL );
+            EvaluatePosition( aanBoard[ i ], ar, &ciCubeless, NULL );
 	    if( fInterrupt )
 		break;
 	}

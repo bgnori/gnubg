@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.97 2003/03/30 12:31:01 thyssen Exp $
+ * $Id: html.c,v 1.98 2003/03/30 16:37:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -1854,7 +1854,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.97 $";
+  const char szVersion[] = "$Revision: 1.98 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1935,7 +1935,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.97 $";
+  const char szVersion[] = "$Revision: 1.98 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3339,7 +3339,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
     SetCubeInfo( &ci, pms->nCube, pms->fCubeOwner, 0,
                  pms->nMatchTo, pms->anScore, pms->fCrawford,
-                 pms->fJacoby, nBeavers );
+                 pms->fJacoby, nBeavers, pms->bgv );
 
     if ( pms->nMatchTo ) {
 

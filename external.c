@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.17 2002/12/12 22:08:38 thyssen Exp $
+ * $Id: external.c,v 1.18 2003/03/30 16:37:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -294,7 +294,7 @@ extern void CommandExternal( char *sz ) {
 	    /* FIXME could SwapSides( anBoard ) be necessary? */
 	    
 	    SetCubeInfo ( &ci, nCube, fCubeOwner, fTurn, nMatchTo, anScore,
-			  fCrawford, fJacoby, nBeavers );
+			  fCrawford, fJacoby, nBeavers, bgvDefault );
 
 	    memcpy( anBoardOrig, anBoard, sizeof( anBoard ) );
 

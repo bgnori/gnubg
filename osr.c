@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.6 2002/11/24 21:23:15 thyssen Exp $
+ * $Id: osr.c,v 1.7 2003/03/30 16:37:51 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -656,7 +656,7 @@ rollOSR ( const int nGames, const int anBoard[ 24 ], const int nOut,
     for ( i = 0; i < 6; ++i )
       antmp[ i ] = an[ 23 - i ];
 
-    getBearoffProbs ( PositionBearoff ( antmp, 6 ), anProb );
+    getBearoffProbs ( PositionBearoff ( antmp, 6, 15 ), anProb );
 
     for ( i = 0; i < 32; ++i )
       arProbs[ min ( n + i, nMaxProbs - 1 ) ] += anProb[ i ] / 65535.0f;
@@ -755,7 +755,7 @@ osp ( const int anBoard[ 25 ], const int nGames,
     for ( i = 0; i < MAX_PROBS; ++i )
       arProbs[ i ] = 0.0f;
 
-    getBearoffProbs ( PositionBearoff ( anBoard, 6 ), anProb );
+    getBearoffProbs ( PositionBearoff ( anBoard, 6, 15 ), anProb );
 
     for ( i = 0; i < 32; ++i ) {
       n = min ( i, MAX_PROBS - 1 );
@@ -805,7 +805,7 @@ bgProb ( const int anBoard[ 25 ],
       for ( i = 0; i < 6; ++i )
         antmp[ i ] = anBoard[ 5 - i ];
       
-      getBearoffProbs ( PositionBearoff ( antmp, 6 ), anProb );
+      getBearoffProbs ( PositionBearoff ( antmp, 6, 15 ), anProb );
 
       for ( i = 0; i < nMaxProbs; ++i ) {
 
