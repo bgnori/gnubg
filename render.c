@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.17 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: render.c,v 1.18 2003/08/13 16:33:45 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -108,7 +108,8 @@ renderdata rdDefault = {
     TRUE, /* fHinges */
     TRUE, /* fLabels */
     FALSE, /* fClockwise */
-    TRUE  /* dynamic labels */
+    TRUE,  /* dynamic labels */
+	1	/* Show move indicator */
 #if USE_BOARD3D
 	, DT_3D,	/* Display type */
 	FALSE,	/* Show shadows */
@@ -120,13 +121,13 @@ renderdata rdDefault = {
 	LT_POSITIONAL, /* light source type */
 	{0, 2, 3.5f},	/* x,y,z pos of light source */
 	{50, 70, 100},	/* amibient/diffuse/specular light levels */
-	1,	/* Show move indicator */
 	35,	/* Board angle */
 	20,	/* FOV skew factor */
 	0,	/* Plan view */
 	3,	/* Dice size */
 	0,	/* Rounded edges */
 	PT_ROUNDED,	/* Piece type */
+	/* Default 3d colours - black+white, should never be used */
     {{{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, 100, 0, 0},
 	 {{0, 0, 0, 1}, {0, 0, 0, 1}, {0, 0, 0, 1}, 100, 0, 0}},
     {{{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, 100, 0, 0},
