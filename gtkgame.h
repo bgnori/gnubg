@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.7 2000/10/16 15:38:44 gtw Exp $
+ * $Id: gtkgame.h,v 1.8 2000/10/23 16:42:00 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -24,6 +24,12 @@
 
 #include "backgammon.h"
 
+extern void ShowGameWindow( void );
+extern void GTKAddMoveRecord( moverecord *pmr );
+extern void GTKPopMoveRecord( moverecord *pmr );
+extern void GTKSetMoveRecord( moverecord *pmr );
+extern void GTKClearMoveRecord( void );
+extern int InitGTK( int *argc, char ***argv );
 extern void RunGTK( void );
 extern void ShowList( char *asz[], char *szTitle );
 extern int GTKGetInputYN( char *szPrompt );
@@ -36,6 +42,6 @@ extern int GTKRolloutUpdate( float arMu[], float arSigma[], int i, int c );
 extern void GTKRolloutDone( void );
 extern void GTKSet( void *p );
 
-extern int fGTKOutput, fTTY;
+extern int fTTY;
 
 #endif
