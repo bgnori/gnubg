@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.178 2002/07/16 17:39:29 gtw Exp $
+ * $Id: gtkgame.c,v 1.179 2002/07/16 23:13:36 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6582,8 +6582,7 @@ GTKRolloutUpdate( float aarMu[][ NUM_ROLLOUT_OUTPUTS ],
           if ( fCubeful ) {
             if ( ! ms.nMatchTo ) 
               /* money game */
-              sprintf( sz, "%+7.4f", aarMu[ j ][ i ] *
-                       aci[ j ].nCube / aci[ 0 ].nCube );
+              sprintf( sz, "%+7.4f", aarMu[ j ][ i ] );
             else if ( fOutputMWC )
               /* match play (mwc) */
               sprintf( sz, "%7.3f%%", 100.0f * aarMu[ j ][ i ] );
@@ -6627,8 +6626,7 @@ GTKRolloutUpdate( float aarMu[][ NUM_ROLLOUT_OUTPUTS ],
 
           if ( ! ms.nMatchTo ) 
             /* money game */
-            sprintf( sz, "%+7.4f", aarSigma[ j ][ i ] *
-                     aci[ j ].nCube / aci[ 0 ].nCube );
+            sprintf( sz, "%+7.4f", aarSigma[ j ][ i ] );
           else if ( fOutputMWC )
             /* match play (mwc) */
             sprintf( sz, "%7.3f%%", 100.0f * aarSigma[ j ][ i ] );
