@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.31 2002/06/15 17:14:58 thyssen Exp $
+ * $Id: html.c,v 1.32 2002/06/21 20:41:08 thyssen Exp $
  */
 
 #include "config.h"
@@ -1351,7 +1351,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.31 $";
+  const char szVersion[] = "$Revision: 1.32 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2342,6 +2342,7 @@ extern void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
   ratingtype rt[ 2 ];
   float ar[ 2 ];
   int ai[ 2 ];
+  float aar[ 2 ][ 2 ];
 
   const char *aszLuckRating[] = {
     N_("&quot;Haaa-haaa&quot;"),
@@ -2740,52 +2741,32 @@ extern void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       /* skill */
 
-      float r0, r1, rm, r, rd;
-
-      r0 = eq2mwc ( 1.0, &ci ); 
-      r1 = eq2mwc ( -1.0, &ci ); 
-      rm = (r0 + r1) / 2.0f;
-
-      r0 -= ar [ 0 ];
-      r1 += ar [ 1 ];
-
-      rd = r0 - r1;
-
-      if ( r0 < rm )
-        r = 1.0;
-      else if ( r1 > rm )
-        r = 0.0;
-      else
-        r = ( r0 - rm ) / rd;
+      getMWCFromError ( psc, aar );
 
       printStatTableRow ( pf,
-                          _( "Game winning chance with same skill"),
+                          _( "MWC against current opponent"),
                           "%6.2f%%",
-                          100.0f * r, 100.0f * ( 1.0 - r ) );
-
-
-      /* luck */
-
-      r0 = eq2mwc ( 1.0, &ci ); 
-      r1 = eq2mwc ( -1.0, &ci ); 
-      rm = (r0 + r1) / 2.0f;
-
-      r0 -= psc->arLuck[ 1 ][ 1 ];
-      r1 += psc->arLuck[ 0 ][ 1 ];
-
-      rd = r0 - r1;
-
-      if ( r0 < rm )
-        r = 1.0;
-      else if ( r1 > rm )
-        r = 0.0;
-      else
-        r = ( r0 - rm ) / rd;
+                          100.0 * aar[ 0 ][ 0 ], 
+                          100.0 * aar[ 1 ][ 0 ] );
 
       printStatTableRow ( pf,
-                          _( "Game winning chance with same luck"),
+                          _( "Relative rating"),
+                          "%6.2f",
+                          relativeFibsRating ( aar[ 0 ][ 0 ], pms->nMatchTo ),
+                          relativeFibsRating ( aar[ 1 ][ 0 ], pms->nMatchTo ) );
+
+      printStatTableRow ( pf,
+                          _( "MWC against perfect opponent"),
                           "%6.2f%%",
-                          100.0f * r, 100.0f * ( 1.0 - r ) );
+                          100.0 * aar[ 0 ][ 1 ], 
+                          100.0 * aar[ 1 ][ 1 ] );
+
+      printStatTableRow ( pf,
+                          _( "Relative rating"),
+                          "%6.2f",
+                          relativeFibsRating ( aar[ 0 ][ 1 ], pms->nMatchTo ),
+                          relativeFibsRating ( aar[ 1 ][ 1 ], pms->nMatchTo ) );
+
 
     }
   
