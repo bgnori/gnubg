@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.569 2004/06/06 10:59:25 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.570 2004/06/07 07:36:57 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3268,15 +3268,11 @@ extern void ShowBoard( void ) {
 #endif
     }
 #endif
-    
     if( ms.gs == GAME_NONE ) {
 #if USE_GUI
 	if( fX ) {
-	    /* Start with an empty board, so it's obvious no game is in progress */
 	    int anBoardTemp[ 2 ][ 25 ];
-	    int i;
-	    for( i = 0; i < 25; i++ )
-	      anBoardTemp[ 0 ][ i ] = anBoardTemp[ 1 ][ i ] = 0;
+	    InitBoard( anBoardTemp, ms.bgv );
 
 #if USE_GTK
 	    game_set( BOARD( pwBoard ), anBoardTemp, 0, ap[ 1 ].szName,
