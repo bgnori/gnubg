@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.60 2002/09/25 21:24:25 gtw Exp $
+ * $Id: sgf.c,v 1.61 2002/09/25 21:37:09 gtw Exp $
  */
 
 #include "config.h"
@@ -1682,6 +1682,9 @@ static void WriteStatContext( FILE *pf, statcontext *psc ) {
 
 static void WriteProperty( FILE *pf, char *szName, char *szValue ) {
 
+    if( !szValue || !*szValue )
+	return;
+    
     fputs( szName, pf );
     putc( '[', pf );
     WriteEscapedString( pf, szValue, FALSE );
