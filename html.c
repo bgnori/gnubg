@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.24 2002/05/26 10:48:50 thyssen Exp $
+ * $Id: html.c,v 1.25 2002/05/26 10:59:38 thyssen Exp $
  */
 
 #include "config.h"
@@ -1267,7 +1267,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.24 $";
+  const char szVersion[] = "$Revision: 1.25 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2050,8 +2050,9 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
       /*
        * Write row with move parameters 
        */
-
-      if ( exsExport.afMovesParameters [ pmr->n.ml.amMoves[ i ].esMove.et ] ) {
+  
+      if ( exsExport.afMovesParameters 
+              [ pmr->n.ml.amMoves[ i ].esMove.et - 1 ] ) {
 
         evalsetup *pes = &pmr->n.ml.amMoves[ i ].esMove;
 
