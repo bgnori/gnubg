@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.21 2002/08/07 18:40:38 thyssen Exp $
+ * $Id: postscript.c,v 1.22 2002/08/08 17:38:56 gtw Exp $
  */
 
 #include "config.h"
@@ -750,9 +750,9 @@ static void ExportGamePostScript( FILE *pf, list *plGame ) {
 	    fprintf( pf, fPDF ? "1 0 0 1 0 %d Tm (%s) Tj\n" :
 		     "0 %d moveto (%s) show\n", y, sz );
 
-	    RequestFont( pf, FONT_RM, 12 );
 	    Consume( pf, 12 );
 	    PlayerSymbol( pf, 8, 0 );
+	    RequestFont( pf, FONT_RM, 12 );
 	    fprintf( pf, fPDF ? "1 0 0 1 16 %d Tm (" : "16 %d moveto (",
 		     y );
 	    PostScriptEscape( pf, ap[ 0 ].szName );
@@ -760,6 +760,7 @@ static void ExportGamePostScript( FILE *pf, list *plGame ) {
 	    fputs( fPDF ? ") Tj\n" : ") show\n", pf );
 	    
 	    PlayerSymbol( pf, 225, 1 );
+	    RequestFont( pf, FONT_RM, 12 );
 	    fprintf( pf, fPDF ? "1 0 0 1 233 %d Tm (" : "233 %d moveto (",
 		     y );
 	    PostScriptEscape( pf, ap[ 1 ].szName );
