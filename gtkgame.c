@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.317 2003/03/09 08:31:36 thyssen Exp $
+ * $Id: gtkgame.c,v 1.318 2003/03/09 08:37:56 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6724,7 +6724,7 @@ extern void GTKShowVersion( void ) {
     
     gtk_box_pack_start( GTK_BOX( pwBox ), pwHBox, FALSE, FALSE, 0 );
 
-    for( i = 0; i < 5; i++ )
+    for( i = 0; i < 6; i++ )
 	gtk_container_add( GTK_CONTAINER( pwHBox ),
 			   gtk_label_new( TRANS( aszAuthors[ i ] ) ) );
     
