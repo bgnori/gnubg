@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.56 2001/02/22 16:43:21 gtw Exp $
+ * $Id: play.c,v 1.57 2001/03/12 16:09:20 gtw Exp $
  */
 
 #include "config.h"
@@ -921,9 +921,19 @@ extern void NextTurn( void ) {
 	return;
     
     if( ap[ fTurn ].pt == PLAYER_HUMAN ) {
-	if( fAutoRoll && !anDice[ 0 ] &&
-	    ( !fCubeUse || ( fCubeOwner >= 0 && fCubeOwner != fTurn &&
-			     !fDoubled ) ) )
+	/* Roll for them, if:
+
+	   * "auto roll" is on;
+	   * they haven't already rolled;
+	   * they haven't just been doubled;
+	   * at least one of the following:
+	     - cube use is disabled;
+	     - it's the Crawford game;
+	     - the cube is dead. */
+	if( fAutoRoll && !anDice[ 0 ] && !fDoubled &&
+	    ( !fCubeUse || fCrawford ||
+	      ( fCubeOwner >= 0 && fCubeOwner != fTurn ) ||
+	      ( nMatchTo > 0 && anScore[ fTurn ] + nCube >= nMatchTo ) ) )
 	    CommandRoll( NULL );
 	return;
     } else
