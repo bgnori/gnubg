@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.573 2004/07/11 07:33:27 kaoru Exp $
+ * $Id: gnubg.c,v 1.574 2004/07/19 07:55:56 thyssen Exp $
  */
 
 #include "config.h"
@@ -7814,7 +7814,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
       exit( EXIT_FAILURE );
     }
     if ( ! ( rngctxRollout = InitRNG( &rcRollout.nSeed, NULL, 
-                                      FALSE, rcRollout.rngRollout ) ) ) {
+                                      TRUE, rcRollout.rngRollout ) ) ) {
       printf( _("Failure setting up RNG for rollout.\n" ) );
       exit( EXIT_FAILURE );
     }
