@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.76 2001/04/13 16:25:39 gtw Exp $
+ * $Id: backgammon.h,v 1.77 2001/04/13 20:34:56 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -179,8 +179,8 @@ typedef union _moverecord {
 	char *sz;
     } a;
     movegameinfo g;
-    movedouble d;
-    movebasic t; /* take or drop */
+    movedouble d; /* cube decisions */
+    movebasic t; 
     movenormal n;
     moveresign r;
     movesetboard sb;
@@ -494,6 +494,7 @@ extern void CommandAccept( char * ),
     CommandShowRollout( char * ),
     CommandShowScore( char * ),
     CommandShowSeed( char * ),
+    CommandShowStatistics( char * ),
     CommandShowThorp( char * ),
     CommandShowTraining( char * ),
     CommandShowTurn( char * ),
