@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.514 2004/10/05 16:13:00 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.515 2004/10/06 09:04:30 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -9751,7 +9751,7 @@ static void RelationalQuery(GtkWidget *pw, GtkWidget *pwVbox)
 	RowSet r;
 	char *pch, *query;
 	pch = gtk_editable_get_chars( GTK_EDITABLE(pwQueryText), 0, -1 );
-	if (!strnicmp("select ", pch, strlen("select ")))
+	if (!strncasecmp("select ", pch, strlen("select ")))
 		query = pch + strlen("select ");
 	else
 		query = pch;
