@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.50 2001/03/14 22:15:04 gtw Exp $
+ * $Id: show.c,v 1.51 2001/03/15 15:48:37 gtw Exp $
  */
 
 #include "config.h"
@@ -574,6 +574,12 @@ extern void CommandShowGammonPrice ( char *sz ) {
   cubeinfo ci;
   int i;
 
+  if( gs != GAME_PLAYING ) {
+    outputl( "No game in progress (type `new game' to start one)." );
+
+    return;
+  }
+      
   SetCubeInfo ( &ci, nCube, fCubeOwner, fMove, nMatchTo, anScore,
 		fCrawford, fJacoby, fBeavers );
 
