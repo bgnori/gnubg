@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.4 2003/05/12 18:41:22 thyssen Exp $
+ * $Id: gtkrace.c,v 1.4.2.1 2003/07/09 18:55:02 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -639,7 +639,7 @@ GTKShowRace ( const int fActivePage, int anBoard[ 2 ][ 25 ] ) {
 
   /* create dialog */
 
-  pwDialog = CreateDialog ( _("GNU Backgammon - Race Theory"), DT_INFO,
+  pwDialog = GTKCreateDialog ( _("GNU Backgammon - Race Theory"), DT_INFO,
                             NULL, NULL );
 
   /* add notebook pages */

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.7 2003/01/11 10:34:05 thyssen Exp $
+ * $Id: gtkmovefilter.c,v 1.7.4.1 2003/07/09 18:55:02 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -498,7 +498,7 @@ ClickButton ( GtkWidget *pw, movefilterwidget *pmfw ) {
   memcpy ( aamf, pmfw->pmf, sizeof ( aamf ) );
   pwMoveFilterSetup = MoveFilterSetup( aamf, &fOK );
 
-  pwDialog = CreateDialog( _("GNU Backgammon - Move filter setup"), 
+  pwDialog = GTKCreateDialog( _("GNU Backgammon - Move filter setup"), 
                            DT_QUESTION,
                            GTK_SIGNAL_FUNC( MoveFilterSetupOK ), 
                            pwMoveFilterSetup );

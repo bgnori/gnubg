@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boardpos.c,v 1.1 2003/05/29 08:52:50 thyssen Exp $
+ * $Id: boardpos.c,v 1.1.2.1 2003/07/09 18:55:00 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -24,6 +24,7 @@
 #endif
 
 #include <assert.h>
+#include <stdlib.h>
 
 #include "boardpos.h"
 #include "i18n.h"
