@@ -1,4 +1,4 @@
-$Id: TODO,v 1.260 2002/09/22 20:53:30 thyssen Exp $
+$Id: TODO,v 1.261 2002/09/25 03:05:21 gtw Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -141,9 +141,6 @@ duplication of effort and to make sure our changes merge easily.
 ** Use a file selection widget for the socket in the player dialog.
 ** Would ShowList() look better if it used a text widget?  (Wait for
   GTK+ 2.0.)
-** During a rollout, the OK button should be the grab widget.  Can we
-  fix that by temporarily modifying pwGrab?  (Or maybe we should allow
-  the entire rollout dialog to be active, for copy/paste.)
 ** Enable and disable the take/drop/redouble/agree/decline etc. buttons
   and menu items when appropriate.
 ** Make some of the information below the board optional (suggested by Jeremie 
