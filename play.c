@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.239 2004/01/16 09:42:15 uid68519 Exp $
+ * $Id: play.c,v 1.240 2004/01/20 09:09:12 uid68519 Exp $
  */
 
 #include "config.h"
@@ -825,10 +825,6 @@ static int NewGame( void ) {
 	PopGame( lMatch.plNext->p, TRUE );
     }
 
-#if USE_BOARD3D
-	RestrictiveRedraw();
-#endif
-
     InitBoard( ms.anBoard, ms.bgv );
 
     ClearMoveRecord();
@@ -910,6 +906,10 @@ static int NewGame( void ) {
     assert( ms.anDice[ 1 ] != ms.anDice[ 0 ] );
 
     outputx();
+
+#if USE_BOARD3D
+	RestrictiveRedraw();
+#endif
     
     AddGame( pmr );
     
