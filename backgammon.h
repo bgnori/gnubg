@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.122 2002/04/16 16:17:53 thyssen Exp $
+ * $Id: backgammon.h,v 1.123 2002/04/19 16:19:09 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -229,6 +229,7 @@ extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     fOutputRawboard, fAnnotation, cAnalysisMoves, fAnalyseCube,
     fAnalyseDice, fAnalyseMove, fRecord;
 extern int fAutoAnalysis;
+extern int fInvertMET;
 extern float rAlpha, rAnneal, rThreshold, arLuckLevel[ LUCK_VERYGOOD + 1 ],
     arSkillLevel[ SKILL_VERYGOOD + 1 ];
 
@@ -439,7 +440,6 @@ extern void CommandAccept( char * ),
     CommandExternal( char * ),
     CommandHelp( char * ),
     CommandHint( char * ),
-    CommandInvertMatchEquityTable( char * ),
     CommandImportJF( char * ),
     CommandImportMat( char * ),
     CommandImportOldmoves( char * ),
@@ -551,6 +551,7 @@ extern void CommandAccept( char * ),
     CommandSetExportCubeDisplayClose ( char * ),
     CommandSetExportParametersEvaluation ( char * ),
     CommandSetExportParametersRollout ( char * ),
+    CommandSetInvertMatchEquityTable( char * ),
     CommandSetJacoby( char * ),
     CommandSetMatchID ( char * ),
     CommandSetMET( char * ),
