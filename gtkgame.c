@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.102 2002/02/14 17:19:55 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.103 2002/02/19 20:05:23 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -205,6 +205,7 @@ static togglecommand atc[] = {
     { &fAutoGame, CMD_SET_AUTO_GAME },
     { &fAutoMove, CMD_SET_AUTO_MOVE },
     { &fAutoRoll, CMD_SET_AUTO_ROLL },
+    { &fClockwise, CMD_SET_CLOCKWISE },
     { &fConfirm, CMD_SET_CONFIRM },
     { &fCubeUse, CMD_SET_CUBE_USE },
     { &fDisplay, CMD_SET_DISPLAY },
