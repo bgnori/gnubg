@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.35 2003/03/08 07:37:12 thyssen Exp $
+ * $Id: text.c,v 1.36 2003/03/08 13:08:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -123,7 +123,7 @@ OutputEvalContext ( const evalcontext *pec, const int fChequer ) {
   
   sprintf ( sz, _("%d-ply %s"), 
             pec->nPlies, 
-            pec->fCubeful ? _("cubeful") : _("cubeless") );
+            ( ! fChequer || pec->fCubeful ) ? _("cubeful") : _("cubeless") );
 
   if ( pec->nPlies == 2 ) 
     sprintf ( pc = strchr ( sz, 0 ),
@@ -659,7 +659,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.35 $";
+  const char szVersion[] = "$Revision: 1.36 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -891,6 +891,13 @@ OutputCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   strcat( sz, "\n" );
 
   /* equities */
+
+  strcat( sz, _("Cubeful equities:\n") );
+  if ( pes->et == EVAL_EVAL && exsExport.afCubeParameters[ 0 ] ) {
+    strcat( sz, "  " );
+    strcat( sz, OutputEvalContext( &pes->ec, FALSE ) );
+    strcat( sz, "\n" );
+  }
 
   getCubeDecisionOrdering ( ai, arDouble, aarOutput, pci );
 
