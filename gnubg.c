@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.494 2003/09/16 16:39:59 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.495 2003/09/17 09:48:22 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3334,6 +3334,7 @@ static command *FindHelpCommand( command *pcBase, char *sz,
 	return pc;
 }
 
+#if USE_GUI
 static char* CheckCommand(char *sz, command *ac)
 {
 	command *pc;
@@ -3434,6 +3435,7 @@ extern void ShowHelp(GtkWidget *pwText, char* pStr)
 	free(pTemp);
 	gtk_text_thaw(GTK_TEXT( pwText ));
 }
+#endif
 
 extern void CommandHelp( char *sz ) {
 

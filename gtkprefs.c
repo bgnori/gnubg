@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.78 2003/09/15 02:01:06 hb Exp $
+ * $Id: gtkprefs.c,v 1.79 2003/09/17 09:48:23 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1849,7 +1849,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.78 2003/09/15 02:01:06 hb Exp $\n"
+          "    $Id: gtkprefs.c,v 1.79 2003/09/17 09:48:23 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -1949,9 +1949,6 @@ DesignAddTitle ( boarddesign *pbde ) {
 
   gtk_signal_connect( GTK_OBJECT( pwDialog ), "destroy",
 			GTK_SIGNAL_FUNC( gtk_main_quit ), NULL );
-/*
-  gtk_signal_connect_after( GTK_OBJECT( pwEntry ), "activate",
-  GTK_SIGNAL_FUNC( StringOK ), &sz );*/
   
   gtk_widget_grab_focus( pwDesignAddTitle );
   gtk_widget_show_all( pwDialog );
