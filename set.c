@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.220 2004/03/18 23:29:14 oysteijo Exp $
+ * $Id: set.c,v 1.221 2004/03/19 12:24:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -511,7 +511,7 @@ extern void CommandSetAnnotation( char *sz ) {
     if( SetToggle( "annotation", &woPanel[WINDOW_ANNOTATION].showing, sz,
 		   _("Move analysis and commentary will be displayed."),
 		   _("Move analysis and commentary will not be displayed.") )
-	>= 0 )
+	!= TRUE )
 	/* Force an update, even if the setting has not changed. */
 	UpdateSetting(&woPanel[WINDOW_ANNOTATION].showing);
 }
@@ -521,7 +521,7 @@ extern void CommandSetMessage( char *sz ) {
     if( SetToggle( "message", &woPanel[WINDOW_MESSAGE].showing, sz,
 		   _("Show window with messages"),
 		   _("Do not show window with message.") )
-	>= 0 )
+	!= TRUE )
 	/* Force an update, even if the setting has not changed. */
 	UpdateSetting(&woPanel[WINDOW_MESSAGE].showing);
 }
@@ -531,7 +531,7 @@ extern void CommandSetGameList( char *sz ) {
     if( SetToggle( "gamelist", &woPanel[WINDOW_GAME].showing, sz,
 		   _("Show game window with moves"),
 		   _("Do not show game window with moves.") )
-	>= 0 )
+	!= TRUE )
 	/* Force an update, even if the setting has not changed. */
 	UpdateSetting(&woPanel[WINDOW_GAME].showing);
 }
@@ -541,7 +541,7 @@ extern void CommandSetAnalysisWindows( char *sz ) {
     if( SetToggle( "analysis window", &woPanel[WINDOW_ANALYSIS].showing, sz,
 		   _("Show window with analysis"),
 		   _("Do not show window with analysis.") )
-	>= 0 )
+	!= TRUE )
 	/* Force an update, even if the setting has not changed. */
 	UpdateSetting(&woPanel[WINDOW_ANALYSIS].showing);
 }
