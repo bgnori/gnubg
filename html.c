@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.140 2003/08/30 18:09:17 thyssen Exp $
+ * $Id: html.c,v 1.141 2003/08/30 18:24:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -107,7 +107,7 @@ static char *aaszStyleSheetClasses[ NUM_CLASSES ][ 2 ] = {
   { "cubedecision", "background-color: #ddddee; text-align: left;" },
   { "cubedecisionheader", 
     "background-color: #89d0e2; text-align: center; padding: 0.5em" },
-  { "comment", "background-color: ccffcc; width: 39.5em; padding: 0.5em" },
+  { "comment", "background-color: #ccffcc; width: 39.5em; padding: 0.5em" },
   { "commentheader", 
     "background-color: #6f9915; font-weight: bold; text-align: center; "
     "width: 40em; padding: 0.25em" },
@@ -171,7 +171,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( _("\n" 
              "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.140 2003/08/30 18:09:17 thyssen Exp $ */\n"
+             "/* $Id: html.c,v 1.141 2003/08/30 18:24:16 thyssen Exp $ */\n"
              "/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
@@ -1808,7 +1808,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.140 $";
+  const char szVersion[] = "$Revision: 1.141 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1889,7 +1889,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.140 $";
+  const char szVersion[] = "$Revision: 1.141 $";
   int iMajor, iMinor;
   char *pc;
 
