@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.290 2002/09/08 22:17:13 gtw Exp $
+ * $Id: gnubg.c,v 1.291 2002/09/12 02:36:00 gtw Exp $
  */
 
 #include "config.h"
@@ -3343,6 +3343,8 @@ static void LoadCommands( FILE *pf, char *szFile ) {
     
     char sz[ 2048 ], *pch;
 
+    outputpostpone();
+    
 #if USE_GUILE
     /* We have to be conservative with input buffering, because if there
        is a Guile escape in the file, we will want Guile to take over
@@ -3361,14 +3363,17 @@ static void LoadCommands( FILE *pf, char *szFile ) {
 
 	if( ferror( pf ) ) {
 	    perror( szFile );
+	    outputresume();
 	    return;
 	}
 	
 	if( fAction )
 	    fnAction();
 	
-	if( feof( pf ) || fInterrupt )
+	if( feof( pf ) || fInterrupt ) {
+	    outputresume();
 	    return;
+	}
 
 	if( *sz == '#' ) /* Comment */
 	    continue;
@@ -3411,6 +3416,8 @@ static void LoadCommands( FILE *pf, char *szFile ) {
 
 	/* FIXME handle NextTurn events? */
     }
+    
+    outputresume();
 }
 
 extern void CommandLoadCommands( char *sz ) {
