@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.9 2003/08/29 18:38:12 jsegrave Exp $
+* $Id: inc3d.h,v 1.10 2003/09/02 10:34:39 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -149,7 +149,7 @@ void setIdleFunc(BoardData* bd, idleFunc* pFun);
 
 #if HAVE_GTKGLEXT
 #include <gdk/gdkgltypes.h>
-GdkGLConfig *glconfig;
+extern GdkGLConfig *glconfig;
 #endif
 
 #endif

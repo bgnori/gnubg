@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.76 2003/09/01 09:20:17 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.77 2003/09/02 10:34:39 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1514,7 +1514,7 @@ static GtkWidget *GeneralPage( BoardData *bd ) {
 	gtk_scale_set_digits( GTK_SCALE( pwSkewFactor ), 0 );
 	gtk_box_pack_start(GTK_BOX(hBox), pwSkewFactor, FALSE, FALSE, 0);
 
-	pwPlanView = gtk_check_button_new_with_label ("Plan view");
+	pwPlanView = gtk_check_button_new_with_label (_("Plan view"));
 	gtk_tooltips_set_tip(ptt, pwPlanView, "Display the 3d board with a 2d overhead view", 0);
 	gtk_box_pack_start (GTK_BOX (pw), pwPlanView, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwPlanView), rdAppearance.planView);
@@ -1848,7 +1848,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.76 2003/09/01 09:20:17 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.77 2003/09/02 10:34:39 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.251 2003/08/31 13:14:31 thyssen Exp $
+ * $Id: backgammon.h,v 1.252 2003/09/02 10:34:39 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -864,6 +864,7 @@ extern void CommandAccept( char * ),
     CommandSetGUIShowIDs( char * ),
     CommandSetGUIShowPips( char * ),
     CommandSetGUIDragTargetHelp( char * ),
+    CommandSetGUIUseStatsPanel( char * ),
     CommandSetHighlight ( char * ),
     CommandSetHighlightColour ( char * ),
     CommandSetHighlightDark ( char * ),

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.47 2003/08/25 09:30:19 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.48 2003/09/02 10:34:39 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -53,7 +53,8 @@ typedef enum _animation {
 extern animation animGUI;
 extern int nGUIAnimSpeed, fGUIBeep, fGUIDiceArea, fGUIHighDieFirst,
     fGUIIllegal, fGUIShowIDs, fGUIShowGameInfo, fGUIShowPips, fGUISetWindowPos,
-    fGUIDragTargetHelp;
+    fGUIDragTargetHelp, fGUIUseStatsPanel;
+;
 
 typedef struct _Board {
     GtkVBox vbox;
