@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.363 2002/12/28 15:10:19 thyssen Exp $
+ * $Id: gnubg.c,v 1.364 2002/12/31 17:28:57 oysteijo Exp $
  */
 
 #include "config.h"
@@ -6384,9 +6384,9 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     PushSplash ( pwSplash, 
                  _("Initialising"), _("Board Images"), 500 );
 #endif    
-
+#if USE_GUI
     RenderInitialise();
-    
+#endif 
     if( ( pch = getenv( "LOGNAME" ) ) )
 	strcpy( ap[ 1 ].szName, pch );
     else if( ( pch = getenv( "USER" ) ) )
@@ -6501,7 +6501,9 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     fflush( stderr );
 
     if( pchCommands ) {
+#if USE_GTK
         DestroySplash ( pwSplash );
+#endif
 	CommandLoadCommands( pchCommands );
         EvalShutdown();
 	exit( EXIT_SUCCESS );
