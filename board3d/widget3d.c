@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.17 2004/04/02 11:13:41 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.18 2004/04/06 11:24:50 Superfly_Jon Exp $
 */
 
 #include <config.h>
@@ -178,10 +178,6 @@ static gboolean expose_event(GtkWidget *widget, GdkEventExpose *event, BoardData
 	if (!gdk_gl_drawable_gl_begin(gldrawable, gtk_widget_get_gl_context(widget)))
 		return TRUE;
 #else
-	/* Draw only last expose. */
-	if (event->count > 0)
-		return TRUE;
-
 	/* OpenGL functions can be called only if make_current returns true */
 	if (!gtk_gl_area_make_current(GTK_GL_AREA(widget)))
 		return TRUE;
