@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.86 2002/09/18 19:18:51 gtw Exp $
+ * $Id: gtkboard.c,v 1.87 2002/09/19 15:36:27 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -437,8 +437,7 @@ static void board_redraw_cube( GtkWidget *board, BoardData *bd ) {
     
     int x, y, orient;
 #if !USE_GTK2
-    int two_chars, lbearing[ 2 ], width[ 2 ], ascent[ 2 ], descent[ 2 ],
-	orient, n;
+    int two_chars, lbearing[ 2 ], width[ 2 ], ascent[ 2 ], descent[ 2 ], n;
     char cube_text[ 3 ];
 #endif
     
