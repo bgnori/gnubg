@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.13 2000/10/26 14:19:46 gtw Exp $
+ * $Id: gtkgame.c,v 1.14 2000/10/27 14:21:19 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -554,10 +554,23 @@ extern void GTKAddMoveRecord( moverecord *pmr ) {
 	sprintf( pch = sz, " (set board %s)",
 		 PositionIDFromKey( pmr->sb.auchKey ) );
 	break;
+
+    case MOVE_SETCUBEPOS:
+	fPlayer = -1;
+	if( pmr->scp.fCubeOwner < 0 )
+	    pch = " (set cube centre)";
+	else
+	    sprintf( pch = sz, " (set cube owner %s)",
+		     ap[ pmr->scp.fCubeOwner ].szName );
+	break;
+
+    case MOVE_SETCUBEVAL:
+	fPlayer = -1;
+	sprintf( pch = sz, " (set cube value %d)", pmr->scv.nCube );
+	break;
 	
     default:
-	fPlayer = -1;
-	pch = "FIXME";
+	assert( FALSE );
     }
 
     if( !GTK_CLIST( pwGameList )->rows || 
