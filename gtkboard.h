@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.42.2.19 2003/08/06 09:03:35 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.42.2.20 2003/08/07 08:38:32 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -257,6 +257,8 @@ typedef struct _BoardData {
 
 	float dim;
 	float shadow_light_position[4];
+
+	float ***boardPoints;	/* Used for rounded corners */
 
 	/* Textures */
 #define MAX_TEXTURES 10
