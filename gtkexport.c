@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.4 2002/06/06 20:47:00 gtw Exp $
+ * $Id: gtkexport.c,v 1.5 2002/07/04 18:54:27 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -105,7 +105,7 @@ ExportOK ( GtkWidget *pw, exportwidget *pew ) {
   pexs->fSide = 0;
   for ( i = 0; i < 2; i++ ) 
     pexs->fSide = pexs->fSide |
-      ( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pew->apwSide[ i ] ) )  >> i );
+      ( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pew->apwSide[ i ] ) )  << i );
 
   /* moves */
 
