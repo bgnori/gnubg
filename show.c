@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.150 2003/06/09 15:45:26 thyssen Exp $
+ * $Id: show.c,v 1.151 2003/06/14 10:39:09 thyssen Exp $
  */
 
 #include "config.h"
@@ -2085,5 +2085,21 @@ CommandShowCheat( char *sz ) {
            fCheat ? _("enabled") : _("disabled") );
   PrintCheatRoll( 0, afCheatRoll[ 0 ] );
   PrintCheatRoll( 1, afCheatRoll[ 1 ] );
+
+}
+
+
+extern void
+CommandShowCubeEfficiency( char *sz ) {
+
+
+  outputf( _("Parameters for cube evaluations:\n"
+             "Cube efficiency for crashed positions           : %7.4f\n"
+             "Cube efficiency for context positions           : %7.4f\n"
+             "Cube efficiency for one sided bearoff positions : %7.4f\n"
+             "Cube efficiency for race: x = pips * %.5f + %.5f\n"
+             "(min value %.4f, max value %.4f)\n"),
+           rCrashedX, rContactX, rOSCubeX,
+           rRaceFactorX, rRaceCoefficientX, rRaceMin, rRaceMax );
 
 }
