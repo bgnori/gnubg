@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.99 2002/12/25 16:31:39 thyssen Exp $
+ * $Id: analysis.c,v 1.100 2003/01/25 18:26:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -1168,7 +1168,7 @@ absoluteFibsRating ( const float r, const int n ) {
   /* error rate above 0.030 */
   /* use exponential interpolation */
 
-  return 500.0f + 1000.0f * exp ( 0.030f - 10.0 * r );
+  return 500.0f + 1000.0f * exp ( 0.30f - 10.0 * r );
 
 }
 
