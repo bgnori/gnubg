@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.87 2002/02/05 15:46:07 gtw Exp $
+ * $Id: set.c,v 1.88 2002/02/06 15:03:45 gtw Exp $
  */
 
 #include "config.h"
@@ -1198,6 +1198,16 @@ CommandSetRolloutPlayerCubedecision ( char *sz ) {
     HandleCommand ( sz, acSetEvaluation );
 }
 
+extern void CommandSetRolloutInitial( char *sz ) {
+    
+    int f = prcSet->fCubeful;
+    
+    SetToggle( "rollout initial", &f, sz, 
+               "Rollouts will be made as the initial position of a game.",
+	       "Rollouts will be made for normal (non-opening) positions." );
+
+    prcSet->fInitial = f;
+}
 
 extern void CommandSetRolloutSeed( char *sz ) {
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.76 2002/02/04 15:33:48 gtw Exp $
+ * $Id: show.c,v 1.77 2002/02/06 15:03:45 gtw Exp $
  */
 
 #include "config.h"
@@ -91,9 +91,11 @@ ShowRollout ( rolloutcontext *prc ) {
 
   outputf( "Lookahead variance reduction is %sabled.\n"
            "Cube%s rollout.\n"
+	   "Rollout as opening move %sabled.\n"
            "%s dice generator with seed %u.\n",
            prc->fVarRedn ? "en" : "dis",
            prc->fCubeful ? "ful" : "less",
+	   prc->fInitial ? "en" : "dis",
            aszRNG[ prc->rngRollout ], prc->nSeed );
 
   /* FIXME: more compact notation when aecCube = aecChequer etc. */
