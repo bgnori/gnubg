@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.c,v 1.7 2004/03/11 11:12:57 Superfly_Jon Exp $
+ * $Id: gtkcolour.c,v 1.8 2004/03/13 22:33:50 joseph Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -53,7 +53,7 @@ static void set_gc_colour( GdkGC *gc, GdkColormap *pcm, GdkColor *col ) {
 #endif
 }
 
-extern GtkWidget *gtk_colour_picker_new(GtkSignalFunc	func, void *data) {
+extern GtkWidget *gtk_colour_picker_new(ColorPickerFunc	func, void *data) {
 
     GtkColourPicker *pcp;
 
