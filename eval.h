@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.41 2001/04/02 19:23:01 gtw Exp $
+ * $Id: eval.h,v 1.42 2001/04/10 13:51:28 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -78,8 +78,10 @@ typedef struct _evalcontext {
     int nSearchCandidates;
     float rSearchTolerance;
     int nReduced;
-  /* cubeful evaluation */
-  int fCubeful;
+    /* cubeful evaluation */
+    int fCubeful;
+    float rNoise; /* standard deviation */
+    int fDeterministic;
 } evalcontext;
 
 typedef enum _evaltype {

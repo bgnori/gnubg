@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.57 2001/04/09 17:39:53 gtw Exp $
+ * $Id: set.c,v 1.58 2001/04/10 13:51:28 gtw Exp $
  */
 
 #include "config.h"
@@ -63,12 +63,17 @@ static char szEQUITY[] = "<equity>",
     szNAME[] = "<name>",
     szNUMBER[] = "<number>",
     szONOFF[] = "on|off",
-    szPLIES[] = "<plies>";
+    szPLIES[] = "<plies>",
+    szSTDDEV[] = "<std dev>";
     
 command acSetEvaluation[] = {
     { "candidates", CommandSetEvalCandidates, "Limit the number of moves "
       "for deep evaluation", szNUMBER, NULL },
     { "cubeful", CommandSetEvalCubeful, "Cubeful evaluations", szONOFF, NULL },
+    { "deterministic", CommandSetEvalDeterministic, "Specify whether added "
+      "noise is determined by position", szONOFF, NULL },
+    { "noise", CommandSetEvalNoise, "Distort evaluations with noise",
+      szSTDDEV, NULL },
     { "plies", CommandSetEvalPlies, "Choose how many plies the `eval' and "
       "`hint' commands look ahead", szPLIES, NULL },
     { "reduced", CommandSetEvalReduced,
@@ -567,6 +572,40 @@ CommandSetEvalCubeful( char *sz ) {
     sprintf( asz[ 1 ], "%s will use cubeless evaluation.\n", szSet );
     sprintf( szCommand, "%sevaluation cubeful", szSetCommand );
     SetToggle( szCommand, &pecSet->fCubeful, sz, asz[ 0 ], asz[ 1 ] );
+}
+
+extern void CommandSetEvalDeterministic( char *sz ) {
+
+    char asz[ 2 ][ 128 ], szCommand[ 64 ];
+    
+    sprintf( asz[ 0 ], "%s will use deterministic noise.\n", szSet );
+    sprintf( asz[ 1 ], "%s will use pseudo-random noise.\n", szSet );
+    sprintf( szCommand, "%sevaluation deterministic", szSetCommand );
+    SetToggle( szCommand, &pecSet->fDeterministic, sz, asz[ 0 ], asz[ 1 ] );
+
+    if( !pecSet->rNoise )
+	outputl( "(Note that this setting will have no effect unless you "
+		 "set noise to some non-zero value.)" );
+}
+
+extern void CommandSetEvalNoise( char *sz ) {
+    
+    double r = ParseReal( &sz );
+
+    if( r < 0.0 ) {
+	outputf( "You must specify a valid amount of noise to use -- "
+		"try `help set\n%sevaluation noise'.\n", szSetCommand );
+
+	return;
+    }
+
+    pecSet->rNoise = r;
+
+    if( pecSet->rNoise )
+	outputf( "%s will use noise with standard deviation %5.3f.\n",
+		 szSet, pecSet->rNoise );
+    else
+	outputf( "%s will use noiseless evaluations.\n", szSet );
 }
 
 extern void CommandSetEvalPlies( char *sz ) {

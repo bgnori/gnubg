@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.c,v 1.9 2001/04/06 13:32:52 thyssen Exp $
+ * $Id: matchequity.c,v 1.10 2001/04/10 13:51:28 gtw Exp $
  */
 
 #include <stdio.h>
@@ -959,7 +959,7 @@ ExtendMET ( int nMaxScore ) {
   static const float arStddevTable[] =
      { 0, 1.24, 1.27, 1.47, 1.50, 1.60, 1.61, 1.66, 1.68, 1.70, 1.72, 1.77 };
   
-  float rStddev0, rStddev1, rGames, rSigma, rProb;
+  float rStddev0, rStddev1, rGames, rSigma;
   int i,j;
   int nScore0, nScore1;
 

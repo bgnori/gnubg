@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.56 2001/04/09 17:39:53 gtw Exp $
+ * $Id: show.c,v 1.57 2001/04/10 13:51:28 gtw Exp $
  */
 
 #include "config.h"
@@ -53,11 +53,19 @@ static void ShowEvaluation( evalcontext *pec ) {
              "    %d move search candidate%s.\n"
              "    %0.3g cubeless search tolerance.\n"
              "    %.0f%% speed.\n"
-             "    %s evaluations.\n\n",
+             "    %s evaluations.\n",
              pec->nPlies, pec->nSearchCandidates, pec->nSearchCandidates == 1 ?
              "" : "s", pec->rSearchTolerance,
              (pec->nReduced) ? 100. * pec->nReduced / 21.0 : 100.,
              pec->fCubeful ? "Cubeful" : "Cubeless" );
+
+    if( pec->rNoise )
+	outputf( "    Noise standard deviation %5.3f", pec->rNoise );
+    else
+	output( "    Noiseless evaluations" );
+
+    outputl( pec->fDeterministic ? " (deterministic noise).\n" :
+	     " (pseudo-random noise).\n" );
 }
 
 static void ShowPaged( char **ppch ) {
