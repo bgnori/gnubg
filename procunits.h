@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: procunits.h,v 1.1.2.6 2003/07/09 18:55:03 hb Exp $
+ * $Id: procunits.h,v 1.1.2.7 2003/07/30 19:26:16 hb Exp $
  */
 
 #ifndef _PROCUNITS_H_
@@ -42,7 +42,7 @@
 
 #include "threadglobals.h"
 
-#define PU_DEBUG 0
+#define PU_DEBUG 1
 
 #define RPU_MSG_VERSION 0x0100
 
