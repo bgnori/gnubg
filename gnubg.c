@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.57 2000/10/12 15:21:06 gtw Exp $
+ * $Id: gnubg.c,v 1.58 2000/10/13 08:55:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -1094,30 +1094,42 @@ extern void CommandHint( char *sz ) {
 
     if( !anDice[ 0 ] && !fDoubled ) {
 
-      /* Give hint on cube action */
-
       SetCubeInfo ( &ci, nCube, fCubeOwner, fMove );
 
-      if ( EvaluatePositionCubeful ( anBoard, arDouble, &ci, &ecEval,
-                                     ecEval.nPlies ) < 0 )
-        return;
+      if ( GetDPEq ( NULL, NULL, &ci ) ) {
 
-      GetCubeActionSz ( arDouble, szTemp, &ci );
+	/* Give hint on cube action */
+
+	if ( EvaluatePositionCubeful ( anBoard, arDouble, &ci, &ecEval,
+				       ecEval.nPlies ) < 0 )
+	  return;
+
+        GetCubeActionSz ( arDouble, szTemp, &ci );
 
 #if USE_GTK
-      /*
-      if ( fX ) {
+	/*
+	  if ( fX ) {
+	  
+	  GTKHint( cube action );
 
-         GTKHint( cube action );
-
-         return;
+	  return;
+	  
+	  }
+	*/
+#endif
+	outputl ( szTemp );
+	
+	return;
 
       }
-      */
-#endif
-      outputl ( szTemp );
+      else {
 
-      return;
+        outputl( "You cannot double." );
+      
+        return;
+
+      }
+
     }
 
     if ( fDoubled ) {
