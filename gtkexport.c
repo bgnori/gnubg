@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.9 2002/08/07 19:07:52 thyssen Exp $
+ * $Id: gtkexport.c,v 1.10 2002/09/18 21:12:53 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -295,8 +295,8 @@ GTKShowExport ( exportsetup *pexs ) {
 
   /* create dialog */
 
-  pwDialog = CreateDialog ( _("GNU Backgammon - Export Settings"), TRUE, 
-                            GTK_SIGNAL_FUNC ( ExportOK ), pew );
+  pwDialog = CreateDialog ( _("GNU Backgammon - Export Settings"),
+			    DT_QUESTION, GTK_SIGNAL_FUNC ( ExportOK ), pew );
 
   pwTable = gtk_table_new ( 3, 2, FALSE );
   gtk_container_add ( GTK_CONTAINER ( DialogArea ( pwDialog, DA_MAIN ) ),

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.51 2002/09/18 19:18:51 gtw Exp $
+ * $Id: gtkgame.h,v 1.52 2002/09/18 21:12:53 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -34,6 +34,16 @@ typedef enum _dialogarea {
     DA_BUTTONS,
     DA_OK
 } dialogarea;
+
+typedef enum _dialogtype {
+    DT_INFO,
+    DT_QUESTION,
+    DT_AREYOUSURE,
+    DT_WARNING,
+    DT_ERROR,
+    DT_GNU,
+    NUM_DIALOG_TYPES
+} dialogtype;
 
 extern GtkWidget *pwMain, *pwMenuBar;
 
@@ -63,7 +73,7 @@ extern void GTKDisallowStdin( void );
 extern void GTKDelay( void );
 extern void ShowList( char *asz[], char *szTitle );
 
-extern GtkWidget *CreateDialog( char *szTitle, int fQuestion, GtkSignalFunc pf,
+extern GtkWidget *CreateDialog( char *szTitle, dialogtype dt, GtkSignalFunc pf,
 				void *p );
 extern GtkWidget *DialogArea( GtkWidget *pw, dialogarea da );
     

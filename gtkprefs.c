@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.37 2002/09/16 15:21:49 gtw Exp $
+ * $Id: gtkprefs.c,v 1.38 2002/09/18 21:12:53 gtw Exp $
  */
 
 #include "config.h"
@@ -1304,7 +1304,7 @@ extern void BoardPreferences( GtkWidget *pwBoard ) {
     fHinges = bd->hinges;
     anim = bd->animate_computer_moves;
     
-    pwDialog = CreateDialog( _("GNU Backgammon - Appearance"), TRUE,
+    pwDialog = CreateDialog( _("GNU Backgammon - Appearance"), DT_QUESTION,
 			     GTK_SIGNAL_FUNC( BoardPrefsOK ), bd );
 
     gtk_container_add( GTK_CONTAINER( DialogArea( pwDialog, DA_BUTTONS ) ),
