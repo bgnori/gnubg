@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.23 2003/01/22 18:29:43 gtw Exp $
+ * $Id: gtkchequer.c,v 1.24 2003/01/22 23:17:15 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -143,19 +143,9 @@ UpdateMoveList ( const hintdata *phd ) {
   /* highlight row */
 
   if( piHighlight && *piHighlight >= 0 ) {
-    GtkStyle *psblack, *ps;
-    gtk_widget_ensure_style( pwMoves );
-    psblack = gtk_style_copy( pwMoves->style );
-    ps = gtk_style_copy( pwMoves->style );
+    GtkStyle *ps;
 
-    /* 
-     * reset style 
-     * Necesary if we have reordered the list due to rollouts or evaluations
-     * and the highlighted move is shiftet 
-     */
-    
-    for ( i = 0; i < pml->cMoves; i++ )
-      gtk_clist_set_row_style( GTK_CLIST( pwMoves ), i, psblack );
+    ps = gtk_style_copy( gtk_rc_get_style( pwMoves ) );
     
     ps->fg[ GTK_STATE_NORMAL ].red = ps->fg[ GTK_STATE_ACTIVE ].red =
       ps->fg[ GTK_STATE_SELECTED ].red = Highlightrgb[0];
@@ -163,8 +153,10 @@ UpdateMoveList ( const hintdata *phd ) {
       ps->fg[ GTK_STATE_SELECTED ].green = Highlightrgb[1];
     ps->fg[ GTK_STATE_NORMAL ].blue = ps->fg[ GTK_STATE_ACTIVE ].blue =
       ps->fg[ GTK_STATE_SELECTED ].blue = Highlightrgb[2];
-    
-    gtk_clist_set_row_style( GTK_CLIST( pwMoves ), *piHighlight, ps );
+
+    for ( i = 0; i < pml->cMoves; i++ )
+	gtk_clist_set_row_style( GTK_CLIST( pwMoves ), i, i == *piHighlight ?
+				 ps : NULL );
     
     gtk_style_unref( ps );
   }
