@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.5 2001/08/24 15:23:26 gtw Exp $
+ * $Id: postscript.c,v 1.6 2001/10/26 14:43:00 gtw Exp $
  */
 
 #include "config.h"
@@ -934,8 +934,8 @@ static void ExportMatchGeneral( int f, char *sz ) {
     }
     
     if( !sz || !*sz ) {
-	outputl( "You must specify a file to export to (see `help export "
-		 "match postscript')." ); /* FIXME not necessarily PS */
+	outputf( "You must specify a file to export to (see `help export "
+		 "match %s\n').", f ? "pdf" : "postscript" );
 	return;
     }
 
