@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.502 2003/10/13 16:15:49 thyssen Exp $
+ * $Id: gnubg.c,v 1.503 2003/10/13 16:41:55 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -7076,7 +7076,7 @@ ChangeDisk( const char *szMsg, const int fChange, const char *szMissingFile ) {
 static char *
 getInstallDir( void ) {
 
-  char *pc;
+  char *pc = NULL;
   char buf[_MAX_PATH];
   DWORD buflen = _MAX_PATH;
   HKEY key;
@@ -7087,8 +7087,6 @@ getInstallDir( void ) {
                           (LPBYTE)buf, &buflen);
     if (res == ERROR_SUCCESS) 
       pc = strdup( buf );
-    else
-      pc = NULL;
 
     RegCloseKey(key);
     
