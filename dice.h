@@ -16,11 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: dice.h,v 1.2 1999/12/15 02:36:51 thyssen Exp $
  */
 
 #ifndef _DICE_H_
 #define _DICE_H_
+
+#include <sys/param.h>
 
 typedef enum _rng {
     RNG_ANSI, RNG_BSD, RNG_ISAAC, RNG_MANUAL, RNG_MERSENNE, RNG_USER
@@ -30,5 +32,17 @@ extern rng rngCurrent;
 
 extern void InitRNG( void ), InitRNGSeed( int n );
 extern void RollDice( int anDice[ 2 ] );
+extern void GetManualDice( int anDice[ 2 ] );
+
+void (*pfUserRNGSeed) (unsigned long int);
+long int (*pfUserRNGRandom) (void);
+void *pvUserRNGHandle;
+
+char szUserRNGSeed[ 32 ];
+char szUserRNGRandom[ 32 ];
+char szUserRNG[ MAXPATHLEN ];
+
+extern void UserRNGClose();
+extern int UserRNGOpen();
 
 #endif
