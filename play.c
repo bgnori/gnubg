@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.132 2002/07/08 07:55:12 thyssen Exp $
+ * $Id: play.c,v 1.133 2002/07/14 16:29:34 thyssen Exp $
  */
 
 #include "config.h"
@@ -3363,3 +3363,15 @@ FixMatchState ( matchstate *pms, const moverecord *pmr ) {
 }
 
 
+
+extern moverecord *
+getCurrentMoveRecord ( void ) {
+
+  /* FIXME: introduce a mrHint that "Hint" and "Eval" fills */
+
+  if ( plLastMove && plLastMove->plNext && plLastMove->plNext->p )
+    return plLastMove->plNext->p;
+  else
+    return NULL;
+
+}

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.133 2002/07/04 20:11:28 thyssen Exp $
+ * $Id: backgammon.h,v 1.134 2002/07/14 16:30:01 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -410,6 +410,9 @@ extern char *
 getDefaultPath ( const pathformat f );
 
 extern char *GetLuckAnalysis( matchstate *pms, float rLuck );
+
+extern moverecord *
+getCurrentMoveRecord ( void );
 
 #ifdef WIN32
 extern void WinCopy( char *szOut );
