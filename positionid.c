@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.6 2001/01/17 22:15:46 gtw Exp $
+ * $Id: positionid.c,v 1.7 2001/02/13 18:20:39 gtw Exp $
  */
 
 #include <assert.h>
@@ -150,7 +150,7 @@ static int CheckPosition( int anBoard[ 2 ][ 25 ] ) {
 
     /* Check for both players on the bar against closed boards */
     for( i = 0; i < 6; i++ )
-        if( anBoard[ 0 ][ i ] || anBoard[ 1 ][ i ] )
+        if( anBoard[ 0 ][ i ] < 2 || anBoard[ 1 ][ i ] < 2 )
             return 0;
 
     if( !anBoard[ 0 ][ 24 ] || !anBoard[ 1 ][ 24 ] )
