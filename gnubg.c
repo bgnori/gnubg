@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.167 2001/10/31 15:57:40 gtw Exp $
+ * $Id: gnubg.c,v 1.168 2001/10/31 15:59:46 gtw Exp $
  */
 
 #include "config.h"
@@ -3230,9 +3230,10 @@ static char **CompleteKeyword( const char *szText, int iStart, int iEnd ) {
 #else
     /* assume obselete version of readline */
     if( pcCompleteContext == &cFilename )
-	return completion_matches( szText, filename_completion_function );
+	return completion_matches( (char *) szText,
+				   filename_completion_function );
     else
-	return completion_matches( szText, GenerateKeywords );
+	return completion_matches( (char *) szText, GenerateKeywords );
 #endif
 }
 #endif
