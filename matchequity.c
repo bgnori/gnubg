@@ -19,12 +19,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.c,v 1.10 2001/04/10 13:51:28 gtw Exp $
+ * $Id: matchequity.c,v 1.11 2001/04/11 21:25:55 gtw Exp $
  */
 
 #include <stdio.h>
 #include <assert.h>
 #include <math.h>
+
+#if !HAVE_ERF
+extern double erf( double x );
+#endif
 
 #include "matchequity.h"
 
