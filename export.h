@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.4 2002/06/01 11:28:03 thyssen Exp $
+ * $Id: export.h,v 1.5 2002/06/15 17:14:58 thyssen Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -62,5 +62,14 @@ typedef struct _exportsetup {
 } exportsetup;
 
 extern exportsetup exsExport;
+
+extern int
+getGameNumber ( const list *plGame );
+
+extern int
+getMoveNumber ( const list *plGame, const void *p );
+
+extern char *
+HTMLFilename ( const char *szBase, const int iGame );
 
 #endif

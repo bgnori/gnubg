@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.30 2002/06/06 20:47:22 gtw Exp $
+ * $Id: html.c,v 1.31 2002/06/15 17:14:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -28,6 +28,7 @@
 #include <assert.h>
 #include <stdarg.h>
 
+#include "analysis.h"
 #include "backgammon.h"
 #include "drawboard.h"
 #include "export.h"
@@ -1350,7 +1351,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.30 $";
+  const char szVersion[] = "$Revision: 1.31 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2324,22 +2325,6 @@ HTMLAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
 }
 
-static int getLuckRating ( const float rLuck ) {
-
-  if ( rLuck < -0.10 )
-    return 0;
-  else if ( rLuck < -0.06 )
-    return 1;
-  else if ( rLuck < -0.02 )
-    return 2;
-  else if ( rLuck < +0.02 )
-    return 3;
-  else if ( rLuck < +0.06 )
-    return 4;
-  else
-    return 5;
-
-}
 
 /*
  * Dump statcontext
@@ -3026,7 +3011,7 @@ static void ExportGameHTML ( FILE *pf, list *plGame, const char *szImageDir,
  *
  */
 
-static int
+extern int
 getGameNumber ( const list *plGame ) {
 
   list *pl;
@@ -3053,7 +3038,7 @@ getGameNumber ( const list *plGame ) {
  *
  */
 
-static int
+extern int
 getMoveNumber ( const list *plGame, const void *p ) {
 
   list *pl;
@@ -3140,7 +3125,7 @@ extern void CommandExportGameHtml( char *sz ) {
  * 
  */
 
-static char *
+extern char *
 HTMLFilename ( const char *szBase, const int iGame ) {
 
   if ( ! iGame )
