@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.119 2003/07/20 22:02:54 jsegrave Exp $
+ * $Id: rollout.c,v 1.120 2003/07/21 11:50:54 jsegrave Exp $
  */
 
 #include "config.h"
@@ -130,7 +130,7 @@ static int RolloutDice( int iTurn, int iGame, int cGames,
 	  k; /* 36**i */
       
       for( i = 0, j = 0, k = 1; i < 6 && i <= iTurn; i++, k *= 36 )
-	  j = aaanPermutation[ i ][ iTurn ][ ( iGame / k + j ) % 36 ];
+	  j = aaanPermutation[ i ][ iTurn ][ ( (iGame + nSkip) / k + j ) % 36 ];
       
       anDice[ 0 ] = j / 6 + 1;
       anDice[ 1 ] = j % 6 + 1;
