@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.94 2003/01/07 15:12:28 gtw Exp $
+ * $Id: rollout.c,v 1.95 2003/01/10 02:06:47 joseph Exp $
  */
 
 #include "config.h"
@@ -415,7 +415,10 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
                              aanBoard[ ici ],
                              pci, &ecCubeless0ply );
 
-        if ( ! ( iTurn & 1 ) ) InvertEvaluationR ( aarOutput[ ici ], pci );
+	/* rollout result is for player on play (even iTurn).
+	   This point is pre play, so if opponent is on roll, invert */
+	
+        if ( iTurn & 1 ) InvertEvaluationR ( aarOutput[ ici ], pci );
 
         *pf = FALSE;
         cUnfinished--;
@@ -697,7 +700,6 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
         /* check if game is over */
 
         if ( pc == CLASS_OVER ) {
-
           GeneralEvaluationE ( aarOutput[ ici ],
                                aanBoard[ ici ],
                                pci, pecCube[ pci->fMove ] );
