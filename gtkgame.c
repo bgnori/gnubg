@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.483 2004/04/04 08:49:00 thyssen Exp $
+ * $Id: gtkgame.c,v 1.484 2004/04/06 10:42:01 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -396,7 +396,6 @@ static void SaveWeights( gpointer *p, guint n, GtkWidget *pw );
 static void SetAnalysis( gpointer *p, guint n, GtkWidget *pw );
 static void SetOptions( gpointer *p, guint n, GtkWidget *pw );
 static void SetPlayers( gpointer *p, guint n, GtkWidget *pw );
-static void ShowManual( gpointer *p, guint n, GtkWidget *pw );
 static void ReportBug( gpointer *p, guint n, GtkWidget *pw );
 static void ShowFAQ( gpointer *p, guint n, GtkWidget *pw );
 static void FinishMove( gpointer *p, guint n, GtkWidget *pw );

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.8 2004/04/04 08:48:23 thyssen Exp $
+ * $Id: openurl.c,v 1.9 2004/04/06 10:42:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -44,6 +44,8 @@
 #include "backgammon.h"
 
 
+#ifndef WIN32
+
 static int
 RunCommand( const gchar *szCmd ) {
 
@@ -56,6 +58,7 @@ RunCommand( const gchar *szCmd ) {
 
 }
 
+#endif
 
 
 extern void
