@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1999
  *
- * $Id: show.c,v 1.6 2000/01/08 21:30:17 gtw Exp $
+ * $Id: show.c,v 1.7 2000/01/10 18:49:12 gtw Exp $
  */
 
 #include "config.h"
@@ -82,20 +82,23 @@ extern void CommandShowDice( char *sz ) {
 
 extern void CommandShowPipCount( char *sz ) {
 
-    int an[ 2 ];
+    int anPips[ 2 ], an[ 2 ][ 25 ];
 
-    /* FIXME take a board argument */
+    if( !sz && !*sz && fTurn == -1 ) {
+	puts( "No position specified and no game in progress." );
+	return;
+    }
     
-    if( fTurn < 0 ) {
-	puts( "There must be a game in progress to see the pip count." );
+    if( ParsePosition( an, sz ) ) {
+	puts( "Illegal position." );
 
 	return;
     }
-
-    PipCount( anBoard, an );
+    
+    PipCount( an, anPips );
     
     printf( "The pip counts are: %s %d, %s %d.\n", ap[ fMove ].szName,
-	    an[ 1 ], ap[ !fMove ].szName, an[ 0 ] );
+	    anPips[ 1 ], ap[ !fMove ].szName, anPips[ 0 ] );
 }
 
 extern void CommandShowPlayer( char *sz ) {
