@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.333 2002/11/24 14:41:59 thyssen Exp $
+ * $Id: gnubg.c,v 1.334 2002/11/24 18:59:35 gtw Exp $
  */
 
 #include "config.h"
@@ -376,6 +376,7 @@ static char szDICE[] = N_("<die> <die>"),
     szMOVE[] = N_("<from> <to> ..."),
     szFILTER[] = N_ (
  "<ply> <num. to accept (0 = skip)> [<num. of extra moves to accept> <tolerance>]"),
+    szNAME[] = N_("<name>"),
     szONOFF[] = N_("on|off"),
     szOPTCOMMAND[] = N_("[command]"),
     szOPTFILENAME[] = N_("[filename]"),
@@ -660,6 +661,10 @@ command cER = {
 }, acRecord[] = {
     { "add", NULL, N_("Enter statistics into the player records"), NULL,
       acRecordAdd },
+    { "erase", CommandRecordErase, N_("Remove all statistics from one "
+				      "player's record"), szNAME, NULL },
+    { "eraseall", CommandRecordEraseAll,
+      N_("Remove all player record statistics"), NULL, NULL },
     { "show", CommandRecordShow, N_("View the player records"), szOPTNAME,
       &cRecordName },
     { NULL, NULL, NULL, NULL, NULL }    
