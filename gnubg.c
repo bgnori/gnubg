@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.150 2001/09/20 21:53:36 gtw Exp $
+ * $Id: gnubg.c,v 1.151 2001/09/21 15:08:59 gtw Exp $
  */
 
 #include "config.h"
@@ -383,6 +383,7 @@ command acAnalyse[] = {
       szFILENAME, NULL },
     { "pos", CommandImportJF, "Import a Jellyfish position file", szFILENAME,
       NULL },
+    { "sgg", CommandImportSGG, "Import an SGG match", szFILENAME, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acList[] = {
     { "game", CommandListGame, "Show the moves made in this game", NULL,
@@ -2542,6 +2543,28 @@ extern void CommandImportOldmoves( char *sz ) {
     
     if( ( pf = fopen( sz, "r" ) ) ) {
 	ImportOldmoves( pf, sz );
+	fclose( pf );
+    } else
+	perror( sz );
+}
+
+extern void CommandImportSGG( char *sz ) {
+
+    FILE *pf;
+    
+    if( !sz || !*sz ) {
+	outputl( "You must specify an SGG file to import (see `help "
+		 "import oldmoves')." );
+	return;
+    }
+
+    if( ms.gs == GAME_PLAYING && fConfirm &&
+	!GetInputYN( "Are you sure you want to load a saved match, "
+		     "and discard the game in progress? " ) )
+	return;
+    
+    if( ( pf = fopen( sz, "r" ) ) ) {
+	ImportSGG( pf, sz );
 	fclose( pf );
     } else
 	perror( sz );
