@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.101 2002/01/26 19:29:25 thyssen Exp $
+ * $Id: play.c,v 1.102 2002/01/28 18:37:03 gtw Exp $
  */
 
 #include "config.h"
@@ -849,7 +849,7 @@ extern int ComputerTurn( void ) {
 
     } else {
       int anBoardMove[ 2 ][ 25 ];
-      float rPlay, arResign[ NUM_OUTPUTS ];
+      float arResign[ NUM_ROLLOUT_OUTPUTS ];
       int nResign;
       static char achResign[ 3 ] = { 'n', 'g', 'b' };
       char ach[ 2 ];
