@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.22 2002/03/20 20:37:44 gtw Exp $
+ * $Id: gtkboard.h,v 1.23 2002/03/21 19:42:48 oysteijo Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -81,7 +81,7 @@ typedef struct _BoardData {
     short *ai_refract[ 2 ];
     GdkFont *cube_font;
     gboolean translucent, labels, usedicearea, permit_illegal, beep_illegal,
-	higher_die_first, playing, computer_turn;
+	higher_die_first, playing, computer_turn, hinges;
     animation animate_computer_moves;
     int animate_speed;
     gdouble aarColour[ 2 ][ 4 ]; /* RGBA for each player */
@@ -93,7 +93,7 @@ typedef struct _BoardData {
 			diameter is 6 of these units (and is 2 units thick) */
     gint drag_point, drag_colour, x_drag, y_drag, x_dice[ 2 ], y_dice[ 2 ],
 	dice_colour[ 2 ], cube_font_rotated, old_board[ 2 ][ 25 ],
-	drag_button, click_time, cube_use,
+	drag_button, click_time, cube_use, 
 	dice_roll[ 2 ]; /* roll showing on the off-board dice */
     gint cube_owner; /* -1 = bottom, 0 = centred, 1 = top */
     gint clockwise; /* last drawn orientation */

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.59 2002/03/21 18:12:11 gtw Exp $
+ * $Id: gtkboard.c,v 1.60 2002/03/21 19:42:48 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3244,7 +3244,8 @@ static void board_draw( GtkWidget *widget, BoardData *bd ) {
     else
 	board_draw_frame_wood( bd, gc );
 
-    board_draw_hinges( bd, gc );
+    if( bd->hinges )
+        board_draw_hinges( bd, gc );
     
     if( bd->labels )
 	board_draw_labels( bd );
