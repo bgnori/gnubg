@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.l,v 1.3 2004/05/07 19:14:02 thyssen Exp $
+ * $Id: external_l.l,v 1.4 2004/05/08 08:51:26 thyssen Exp $
  */
 
 #include <string.h>
@@ -86,10 +86,11 @@ board:[A-Za-z0-9]+:[A-Za-z0-9]+(:-?[0-9]+)+  {
 -?[0-9]+	{ extlval.number = atoi(exttext); return NUMBER; }
 
 [^=;:, \t\r\n]+	{
-			char buf[100];
+			char *buf = malloc( strlen( exttext ) + 1 );
 
 			escapes(exttext, buf);
 			extlval.sval = (char *) strdup(buf);
+                        free( buf );
 			return STRING;
 		}
 
