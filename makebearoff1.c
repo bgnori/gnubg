@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff1.c,v 1.3 2002/11/26 18:18:43 jsegrave Exp $
+ * $Id: makebearoff1.c,v 1.4 2002/11/30 11:36:35 thyssen Exp $
  */
 
 #include "config.h"
@@ -57,12 +57,15 @@ PrintPre ( FILE *pf ) {
          " * along with this program; if not, write to the Free Software\n"
          " * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
          " *\n"
-         " * $Id: makebearoff1.c,v 1.3 2002/11/26 18:18:43 jsegrave Exp $\n"
+         " * $Id: makebearoff1.c,v 1.4 2002/11/30 11:36:35 thyssen Exp $\n"
          " */\n"
          "\n\n\n"
          "#include <stdio.h>\n"
          "#include <stdlib.h>\n\n"
+         "#include <string.h>\n\n"
          "#include \"config.h\"\n"
+         "#include \"md5.h\"\n"
+         "#include \"i18n.h\"\n"
          "#include \"bearoff.h\"\n\n\n",
          pf );
 }
@@ -75,6 +78,19 @@ PrintCode ( FILE *pf ) {
           "BearoffInitBuiltin ( void ) {\n"
           "\n"
           "  bearoffcontext *pbc;\n"
+          "  static unsigned char achCorrect[ 16 ] = {\n"
+          "    0x3D, 0xC7, 0xB8, 0x33, 0xC4, 0x67, 0x08, 0x49, \n"
+          "    0xCE, 0xE0, 0x04, 0x79, 0xA9, 0xE2, 0x1B, 0x49 };\n"
+          "  unsigned char ach[ 16 ];\n"
+          "\n"
+          "     /* check that the file is OK */\n"
+          "\n"
+          "  md5_buffer ( acBearoff1, sizeof ( acBearoff1 ), ach );\n"
+          "  if ( memcmp ( ach, achCorrect, 16 )  ) {\n"
+          "    fprintf ( stderr, _(\"Built-in database is not valid!\n\") );\n"
+          "    return NULL;\n"
+          "  }\n"
+          "\n"
           "\n"
           "  if ( ! ( pbc = (bearoffcontext *) malloc ( sizeof ( bearoffcontext ) ) ) ) {\n"
           "    /* malloc failed */\n"
