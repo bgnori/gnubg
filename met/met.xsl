@@ -20,7 +20,7 @@
      along with this program; if not, write to the Free Software
       Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-     $Id: met.xsl,v 1.1 2002/03/10 17:01:50 thyssen Exp $
+     $Id: met.xsl,v 1.2 2003/07/06 16:25:56 thyssen Exp $
 
  -->     
 
@@ -109,7 +109,7 @@
 
         <tr>
         <th><![CDATA[&nbsp;]]></th>
-        <xsl:for-each select="row/me[position()=1]">
+        <xsl:for-each select="row[position()=1]/me">
         <th><xsl:number value="position()" />-away</th>
         </xsl:for-each>
         </tr>
