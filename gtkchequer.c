@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.2 2002/07/17 15:34:32 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.3 2002/07/21 19:36:10 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -469,7 +469,7 @@ static void HintGetSelection( GtkWidget *pw, GtkSelectionData *psd,
     qsort( an, c, sizeof( an[ 0 ] ), (cfunc) CompareInts );
 
     for( i = 0, pch = sz; i < c; i++, pch = strchr( pch, 0 ) )
-	FormatMoveHint( pch, &ms, phd->pml, an[ i ], TRUE );
+	FormatMoveHint( pch, &ms, phd->pml, an[ i ], TRUE, TRUE, TRUE );
         
     gtk_selection_data_set( psd, GDK_SELECTION_TYPE_STRING, 8,
 			    sz, strlen( sz ) );
