@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.34 2002/09/22 20:46:51 thyssen Exp $
+ * $Id: import.c,v 1.35 2002/09/23 19:38:28 thyssen Exp $
  */
 
 #include "config.h"
@@ -1024,12 +1024,7 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
                     szComment = NULL;
 
 		} else {
-
-                  /* The GamesGrid client usually saves the opponent as
-                     player 1. Since we generally want ourselves to
-                     be player 1 we negate ( *pch == '\t' ) */
-
-                    if( ! ( fPlayer = ! ( *pch == '\t' ) ) )
+		    if( ( fPlayer = *pch == '\t' ) )
 			pch++;
 
 		    if( *pch >= '1' && *pch <= '6' && pch[ 1 ] >= '1' &&
@@ -1245,11 +1240,8 @@ extern void ImportSGG( FILE *pf, char *szFilename ) {
     FreeMatch();
     ClearMatch();
 
-    /* Swap player names as the GamesGrid clients have ourselves as
-       player 0 and we want ourselves as player 1 */
-
-    strcpy( ap[ 0 ].szName, sz1 );
-    strcpy( ap[ 1 ].szName, sz0 );
+    strcpy( ap[ 0 ].szName, sz0 );
+    strcpy( ap[ 1 ].szName, sz1 );
     
     while( fgets( sz, 80, pf ) ) {
 	if( !ParseSGGGame( sz, &i, &n0, &n1, &fCrawford, &nLength ) )
@@ -1267,6 +1259,10 @@ extern void ImportSGG( FILE *pf, char *szFilename ) {
     }
 	
     UpdateSettings();
+
+    /* swap players */
+
+    CommandSwapPlayers ( NULL );
     
 #if USE_GTK
     if( fX ){
