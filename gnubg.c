@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.129 2001/04/18 14:16:47 gtw Exp $
+ * $Id: gnubg.c,v 1.130 2001/04/18 17:11:26 gtw Exp $
  */
 
 #include "config.h"
@@ -3489,7 +3489,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #endif
     
     ListCreate( &lMatch );
-    ClearSummary( &sMatch );
+    IniStatcontext( &scMatch );
     
 #if USE_GTK
     if( fTTY )

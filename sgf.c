@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.19 2001/04/16 17:02:55 gtw Exp $
+ * $Id: sgf.c,v 1.20 2001/04/18 17:11:27 gtw Exp $
  */
 
 #include "config.h"
@@ -205,7 +205,7 @@ static void RestoreRootNode( list *pl ) {
     pmgi->nPoints = 0;
     pmgi->fResigned = FALSE;
     pmgi->nAutoDoubles = 0;
-    ClearSummary( &pmgi->s );
+    IniStatcontext( &pmgi->sc );
     
     for( pl = pl->plNext; ( pp = pl->p ); pl = pl->plNext )
 	if( pp->ach[ 0 ] == 'M' && pp->ach[ 1 ] == 'I' )

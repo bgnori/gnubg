@@ -16,16 +16,24 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.3 2001/04/14 11:57:56 thyssen Exp $
+ * $Id: analysis.h,v 1.4 2001/04/18 17:11:26 gtw Exp $
  */
 
 #ifndef _ANALYSIS_H_
 #define _ANALYSIS_H_
 
-#include "backgammon.h"
+typedef enum _lucktype {
+    LUCK_VERYBAD, LUCK_BAD, LUCK_NONE, LUCK_GOOD, LUCK_VERYGOOD
+} lucktype;
+
+typedef enum _skilltype {
+    SKILL_VERYBAD, SKILL_BAD, SKILL_DOUBTFUL, SKILL_NONE,
+    SKILL_INTERESTING, SKILL_GOOD, SKILL_VERYGOOD
+} skilltype;
 
 typedef struct _statcontext {
-
+  int fComputed;
+    
   int anUnforcedMoves[ 2 ];
   int anTotalMoves[ 2 ];
 
@@ -68,17 +76,9 @@ typedef enum _ratingtype {
   RAT_EXPERT, RAT_WORLD_CLASS, RAT_EXTRA_TERRESTRIAL 
 } ratingtype;
 
-extern const char *aszRating [ RAT_EXTRA_TERRESTRIAL + 1 ];
+const char *aszRating [ RAT_EXTRA_TERRESTRIAL + 1 ];
 
-extern const float arThrsRating [ RAT_EXTRA_TERRESTRIAL + 1 ];
-
-extern int
-StatGame ( statcontext *pscStatGame, int *pfCompleteAnalysis );
-
-extern int
-StatMatch ( statcontext *pscStatMatch, int *pfCompleteAnalysis );
-
-extern ratingtype
-GetRating ( const float rError );
+extern ratingtype GetRating ( const float rError );
+extern void IniStatcontext ( statcontext *psc );
 
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.76 2001/04/17 17:37:49 gtw Exp $
+ * $Id: play.c,v 1.77 2001/04/18 17:11:27 gtw Exp $
  */
 
 #include "config.h"
@@ -35,6 +35,7 @@
 #include <unistd.h>
 #endif
 
+#include "analysis.h"
 #include "backgammon.h"
 #include "dice.h"
 #include "drawboard.h"
@@ -54,7 +55,7 @@ char *aszGameResult[] = { "single game", "gammon", "backgammon" },
     *aszLuckType[] = { "very unlucky", "unlucky", NULL, "lucky",
 		       "very lucky" };
 list lMatch, *plGame, *plLastMove;
-summary sMatch;
+statcontext scMatch;
 static int fComputerDecision = FALSE;
 
 #if USE_GTK
@@ -521,7 +522,7 @@ static void NewGame( void ) {
     pmr->g.nPoints = 0;
     pmr->g.fResigned = FALSE;
     pmr->g.nAutoDoubles = 0;
-    ClearSummary( &pmr->g.s );
+    IniStatcontext( &pmr->g.sc );
     AddMoveRecord( pmr );
         
     UpdateSetting( &nCube );
@@ -1659,19 +1660,6 @@ extern void CommandNewGame( char *sz ) {
 	    TurnDone();
 }
 
-extern void ClearSummary( summary *ps ) {
-
-    int i;
-    
-    memset( ps, 0, sizeof( *ps ) );
-
-    for( i = 0; i < 2; i++ ) {
-	ps->arCubeError[ i ] = -HUGE_VALF;
-	ps->arChequerError[ i ] = -HUGE_VALF;
-	ps->arLuck[ i ] = -HUGE_VALF;
-    }
-}
-
 extern void FreeMatch( void ) {
 
     list *plMatch;
@@ -1681,7 +1669,7 @@ extern void FreeMatch( void ) {
 	ListDelete( plMatch );
     }
 
-    ClearSummary( &sMatch );
+    IniStatcontext( &scMatch );
 }
 
 extern void CommandNewMatch( char *sz ) {
