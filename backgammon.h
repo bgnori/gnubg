@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.190 2002/12/15 22:04:15 thyssen Exp $
+ * $Id: backgammon.h,v 1.191 2002/12/16 23:10:31 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -713,6 +713,7 @@ extern void CommandAccept( char * ),
     CommandSetExportHTMLTypeGNU ( char * ),
     CommandSetExportParametersEvaluation ( char * ),
     CommandSetExportParametersRollout ( char * ),
+    CommandSetExportPNGSize ( char *),
     CommandSetGeometryAnnotation ( char * ),
     CommandSetGeometryGame ( char * ),
     CommandSetGeometryHint ( char * ),
@@ -728,7 +729,6 @@ extern void CommandAccept( char * ),
     CommandSetHighlightLight ( char * ),
     CommandSetHighlightMedium ( char * ),
     CommandSetHighlightColour ( char *),
-    CommandSetPNGSize ( char *),
     CommandSetInvertMatchEquityTable( char * ),
     CommandSetJacoby( char * ),
     CommandSetMatchAnnotator( char * ),

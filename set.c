@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.156 2002/12/15 22:06:05 thyssen Exp $
+ * $Id: set.c,v 1.157 2002/12/16 23:13:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -3692,7 +3692,7 @@ CommandSetCheat ( char *sz ) {
 
 
 extern void
-CommandSetPNGSize ( char *sz ) {
+CommandSetExportPNGSize ( char *sz ) {
 
     int n;
     
@@ -3701,7 +3701,7 @@ CommandSetPNGSize ( char *sz ) {
 	return;
     }
 
-    nPNGSize = n;
+    exsExport.nPNGSize = n;
 
     outputf ( "Size of generated PNG images are %dx%d pixels\n",
               n * 108, n * 72 );
