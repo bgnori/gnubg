@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.28 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: positionid.c,v 1.29 2003/08/18 22:21:30 joseph Exp $
  */
 
 #include <assert.h>
@@ -41,12 +41,8 @@
 #include <string.h>
 #include "positionid.h"
 
-static
-#if defined( __GNUC__ )
-inline
-#endif
-void
-addBits(unsigned char auchKey[10], int bitPos, int nBits)
+static inline void
+addBits(unsigned char auchKey[10], int const bitPos, int const nBits)
 {
   int const k = bitPos / 8;
   int const r = (bitPos & 0x7);
