@@ -18,9 +18,10 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.29 2004/03/19 18:20:41 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.30 2004/03/23 10:20:36 Superfly_Jon Exp $
 */
 
+#include "config.h"
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -1998,7 +1999,7 @@ else
 	setMaterial(&bd->boxMat);
 
 	if (!bd->bgInTrays)
-		drawSplitRect(EDGE_WIDTH, EDGE_HEIGHT, BASE_DEPTH, PIECE_HOLE, TOTAL_HEIGHT - EDGE_HEIGHT * 2, bd->boxMat.pTexture);
+		drawSplitRect(EDGE_WIDTH - LIFT_OFF, EDGE_HEIGHT, BASE_DEPTH, PIECE_HOLE, TOTAL_HEIGHT - EDGE_HEIGHT * 2, bd->boxMat.pTexture);
 
 	if (bd->State != BOARD_OPEN)
 	{	/* Back of board */

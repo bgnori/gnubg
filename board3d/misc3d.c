@@ -18,9 +18,10 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.27 2004/03/15 11:13:25 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.28 2004/03/23 10:20:41 Superfly_Jon Exp $
 */
 
+#include "config.h"
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
