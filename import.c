@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.76 2003/09/08 17:19:59 thyssen Exp $
+ * $Id: import.c,v 1.77 2003/09/11 16:51:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -600,9 +600,11 @@ static void ParseMatMove( char *sz, int iPlayer ) {
             
             /* check if move is valid */
             
-            if ( ! IsValidMove ( ms.anBoard, pmr->n.anMove ) )
+            if ( ! IsValidMove ( ms.anBoard, pmr->n.anMove ) ) {
               outputf ( _("WARNING: Invalid move: \"%s\" encountered\n"),
                         sz + 3 );
+              return;
+            }
             
             AddMoveRecord( pmr );
             
