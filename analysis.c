@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.132 2003/08/20 17:23:32 thyssen Exp $
+ * $Id: analysis.c,v 1.133 2003/08/27 08:03:14 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -39,6 +39,7 @@
 #include "analysis.h"
 #include "sound.h"
 #include "matchequity.h"
+#include "export.h"
 
 #include "i18n.h"
 
@@ -1881,8 +1882,7 @@ CommandShowStatisticsMatch ( char *sz ) {
 
 #if USE_GTK
     if ( fX ) {
-	GTKDumpStatcontext ( &scMatch, &ms, 
-                             _("Statistics for all games"), TRUE );
+	GTKDumpStatcontext ( 0 );
 	return;
     }
 #endif
@@ -1921,8 +1921,7 @@ CommandShowStatisticsGame ( char *sz )
     
 #if USE_GTK
   if ( fX ) {
-    GTKDumpStatcontext ( &pmgi->sc, &ms, 
-                         _("Statistics for current game"), FALSE );
+    GTKDumpStatcontext ( getGameNumber (plGame) + 1 );
     return;
   }
 #endif

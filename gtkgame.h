@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.71 2003/08/24 20:40:29 oysteijo Exp $
+ * $Id: gtkgame.h,v 1.72 2003/08/27 08:03:14 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -103,8 +103,7 @@ extern void
 GTKProgressValue ( int fValue );
 extern void GTKBearoffProgress( int i );
 
-extern void GTKDumpStatcontext( const statcontext *psc, const matchstate *pms,
-				const char *szTitle, const int fIsMatch );
+extern void GTKDumpStatcontext( int game );
 extern void GTKEval( char *szOutput );
 extern void 
 GTKHint( movelist *pmlOrig, const int iMove );
