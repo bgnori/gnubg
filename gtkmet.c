@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.4 2003/01/22 18:26:05 gtw Exp $
+ * $Id: gtkmet.c,v 1.5 2003/01/22 20:12:48 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -121,6 +121,7 @@ static GtkWidget
   GtkWidget *pwTable = gtk_sheet_new_browser( nRows, nCols, "" );
 #else
   GtkWidget *pwTable = gtk_table_new( nRows + 1, nCols + 1, TRUE );
+  GtkWidget *pw;
 #endif
   GtkWidget *pwBox = gtk_vbox_new( FALSE, 0 );
   mettable *pmt;
