@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.134 2002/03/18 22:01:17 gtw Exp $
+ * $Id: eval.c,v 1.135 2002/03/22 20:53:08 gtw Exp $
  */
 
 #include "config.h"
@@ -438,6 +438,46 @@ static long EvalCacheHash( evalcache *pec ) {
 	l = ( ( l << 8 ) % 8388593 ) ^ pec->auchKey[ i ];
 
     return l;    
+}
+
+/* Search for a readable file in szDir, ., and PKGDATADIR.  The
+   return string is malloc()ed. */
+extern char *PathSearch( const char *szFile, const char *szDir ) {
+
+    char *pch;
+    size_t cch;
+    
+    if( !szFile )
+	return NULL;
+
+    if( *szFile == '/' )
+	/* Absolute file name specified; don't bother searching. */
+	return strdup( szFile );
+
+    cch = szDir ? strlen( szDir ) : 0;
+    if( cch < strlen( PKGDATADIR ) )
+	cch = strlen( PKGDATADIR );
+
+    cch += strlen( szFile ) + 2;
+
+    if( !( pch = malloc( cch ) ) )
+	return NULL;
+
+    sprintf( pch, "%s/%s", szDir, szFile );
+    if( !access( pch, R_OK ) )
+	return realloc( pch, strlen( pch ) + 1 );
+
+    strcpy( pch, szFile );
+    if( !access( pch, R_OK ) )
+	return realloc( pch, strlen( pch ) + 1 );
+    
+    sprintf( pch, PKGDATADIR "/%s", szFile );
+    if( !access( pch, R_OK ) )
+	return realloc( pch, strlen( pch ) + 1 );
+
+    /* Return sz, so that a sensible error message can be given. */
+    strcpy( pch, szFile );
+    return realloc( pch, strlen( pch ) + 1 );
 }
 
 /* Open a file for reading with the search path "(szDir):.:(PKGDATADIR)". */

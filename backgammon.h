@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.114 2002/03/19 21:42:41 thyssen Exp $
+ * $Id: backgammon.h,v 1.115 2002/03/22 20:53:08 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -299,7 +299,6 @@ extern void UpdateSettings( void );
 extern void ResetInterrupt( void );
 extern void PromptForExit( void );
 extern void Prompt( void );
-
 extern void PortableSignal( int nSignal, RETSIGTYPE (*p)(int),
 			    psighandler *pOld, int fRestart );
 extern void PortableSignalRestore( int nSignal, psighandler *p );
@@ -364,7 +363,7 @@ extern void WinCopy( char *szOut );
 extern int iProgressMax, iProgressValue;
 extern char *pcProgress;
 
-extern char *aszVersion[], *szHomeDirectory;
+extern char *aszVersion[], *szHomeDirectory, *szDataDirectory;
 
 extern char *aszSkillType[], *aszSkillTypeAbbr[], *aszLuckType[],
     *aszLuckTypeAbbr[];

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.65 2002/03/09 18:52:56 thyssen Exp $
+ * $Id: eval.h,v 1.66 2002/03/22 20:53:08 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -208,7 +208,9 @@ typedef enum _positionclass {
 #define N_CLASSES (CLASS_CONTACT + 1)
 
 #define CLASS_PERFECT CLASS_BEAROFF2
-				      
+
+extern char *PathSearch( const char *szFile, const char *szDir );
+			      
 extern int 
 EvalInitialise( char *szWeights, char *szWeightsBinary,
                 char *szDatabase, char *szDir, int nSize,

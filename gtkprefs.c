@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.19 2002/03/21 19:42:48 oysteijo Exp $
+ * $Id: gtkprefs.c,v 1.20 2002/03/22 20:53:08 gtw Exp $
  */
 
 #include "config.h"
@@ -578,7 +578,7 @@ extern void BoardPreferences( GtkWidget *pwBoard ) {
 			      GeneralPage( bd ),
 			      gtk_label_new( "General" ) );
 
-    /* FIXME add settings for ambient light, and border and cube colours */
+    /* FIXME add settings for ambient light, and dice pip and cube colours */
     
     gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
     gtk_window_set_transient_for( GTK_WINDOW( pwDialog ),
