@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.169 2002/07/04 15:55:08 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.170 2002/07/04 20:03:44 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -681,6 +681,7 @@ static moverecord *GameListLookupMove( int i ) {
     return NULL;
 }
 
+
 static void GameListSelectRow( GtkCList *pcl, gint y, gint x,
 			       GdkEventButton *pev, gpointer p ) {
     gamelistrow *pglr;
@@ -730,7 +731,6 @@ static void GameListSelectRow( GtkCList *pcl, gint y, gint x,
        ms.anDice[ 0 ] = pmr->n.anRoll[ 0 ];
        ms.anDice[ 1 ] = pmr->n.anRoll[ 1 ];
    }
-
 
     UpdateSetting( &ms.nCube );
     UpdateSetting( &ms.fCubeOwner );
@@ -2042,7 +2042,7 @@ static void SetAnnotation( moverecord *pmr ) {
 	pmr = NULL;
 
     pmrAnnotation = pmr;
-    
+
     /* FIXME optimise by ignoring set if pmr is unchanged */
     
     if( pwAnalysis ) {
@@ -2454,6 +2454,7 @@ extern void GTKUpdateAnnotations( void ) {
 
     for( pl = plGame->plNext; pl->p; pl = pl->plNext ) {
 	GTKAddMoveRecord( pl->p );
+        FixMatchState ( &ms, pl->p );
 	ApplyMoveRecord( &ms, pl->p );
     }
 
@@ -7241,7 +7242,6 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
          N_("Cube decision rating"),
          N_("Overall rating"),
          N_("MWC against current opponent"),
-         N_("Relative rating"),
          N_("Guestimated abs. rating"),
   };
 
@@ -7279,7 +7279,7 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
   gtk_clist_set_column_title( GTK_CLIST( pwStats ), 1, (ap[0].szName));
   gtk_clist_set_column_title( GTK_CLIST( pwStats ), 2, (ap[1].szName));
 
-  for (i = 0; i < (33 + ( pms->nMatchTo != 0 ) * 3 ); i++) {
+  for (i = 0; i < (33 + ( pms->nMatchTo != 0 ) * 2 ); i++) {
     gtk_clist_append( GTK_CLIST( pwStats ), aszEmpty );
     gtk_clist_set_text( GTK_CLIST( pwStats ), i, 0, gettext ( aszLabels[i] ) );
   }
@@ -7472,11 +7472,6 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
     gtk_clist_set_text( GTK_CLIST( pwStats ), 33, 1, sz);
     sprintf ( sz, "%7.2f%%", 100.0 * (1.0 - r) );
     gtk_clist_set_text( GTK_CLIST( pwStats ), 33, 2, sz);
-
-    sprintf ( sz, "%7.2f", relativeFibsRating ( r, ms.nMatchTo ) );
-    gtk_clist_set_text( GTK_CLIST( pwStats ), 34, 1, sz);
-    sprintf ( sz, "%7.2f", relativeFibsRating ( 1.0 - r, ms.nMatchTo ) );
-    gtk_clist_set_text( GTK_CLIST( pwStats ), 34, 2, sz);
 
     sprintf ( sz, "%7.2f", absoluteFibsRating ( ar[ 0 ], ms.nMatchTo ) );
     gtk_clist_set_text( GTK_CLIST( pwStats ), 35, 1, sz);
