@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.296 2002/09/15 11:52:56 thyssen Exp $
+ * $Id: gnubg.c,v 1.297 2002/09/16 19:14:27 gtw Exp $
  */
 
 #include "config.h"
@@ -5243,9 +5243,16 @@ extern void Progress( void ) {
 static void CallbackProgress( void ) {
 
 #if USE_GTK
-    if( fX )
+    if( fX ) {
+	monitor m;
+    
+	SuspendInput( &m );
+    
 	while( gtk_events_pending() )
 	    gtk_main_iteration();
+	
+	ResumeInput( &m );
+    }
 #endif
     
     if( fInProgress && !iProgressMax )
@@ -5671,13 +5678,6 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #endif
 	}
     
-#if ( USE_GUI || USE_SOUND ) && defined(SIGIO)
-    if( fX )
-	PortableSignal( SIGIO, HandleIO, NULL, TRUE );
-
-#endif
-
-
 #ifdef SIGIO
 # if USE_GUI
     if( fX )
