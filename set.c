@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.216 2004/01/16 09:42:15 uid68519 Exp $
+ * $Id: set.c,v 1.217 2004/02/24 10:24:04 uid68519 Exp $
  */
 
 #include "config.h"
@@ -521,6 +521,26 @@ extern void CommandSetMessage( char *sz ) {
     if( SetToggle( "message", &fMessage, sz,
 		   _("Show window with messages"),
 		   _("Do not show window with message.") )
+	>= 0 )
+	/* Force an update, even if the setting has not changed. */
+	UpdateSetting( &fMessage );
+}
+
+extern void CommandSetGameList( char *sz ) {
+
+    if( SetToggle( "gamelist", &fGameList, sz,
+		   _("Show game window with moves"),
+		   _("Do not show game window with moves.") )
+	>= 0 )
+	/* Force an update, even if the setting has not changed. */
+	UpdateSetting( &fMessage );
+}
+
+extern void CommandSetAnalysisWindows( char *sz ) {
+
+    if( SetToggle( "analysis window", &fAnalysis, sz,
+		   _("Show window with analysis"),
+		   _("Do not show window with analysis.") )
 	>= 0 )
 	/* Force an update, even if the setting has not changed. */
 	UpdateSetting( &fMessage );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.275 2004/02/14 19:32:22 uid65656 Exp $
+ * $Id: backgammon.h,v 1.276 2004/02/24 10:24:04 uid68519 Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -923,6 +923,7 @@ extern void CommandAccept( char * ),
     CommandSetAnalysisThresholdVeryGood( char * ),
     CommandSetAnalysisThresholdVeryLucky( char * ),
     CommandSetAnalysisThresholdVeryUnlucky( char * ),
+    CommandSetAnalysisWindows ( char * ),
     CommandSetAnnotation( char * ),
     CommandSetAppearance( char * ),
     CommandSetAutoAnalysis( char * ),
@@ -1018,6 +1019,7 @@ extern void CommandAccept( char * ),
     CommandSetExportParametersRollout ( char * ),
     CommandSetExportPNGSize ( char *),
     CommandSetExportHtmlSize ( char *),
+    CommandSetGameList ( char * ),
     CommandSetGeometryAnnotation ( char * ),
     CommandSetGeometryGame ( char * ),
     CommandSetGeometryHint ( char * ),
