@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.116 2002/03/29 20:03:36 thyssen Exp $
+ * $Id: backgammon.h,v 1.117 2002/03/30 16:26:38 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -136,7 +136,8 @@ typedef struct _movenormal {
     int iMove; /* index into the movelist of the move that was made */
     lucktype lt;
     float rLuck; /* ERR_VAL means unknown */
-    skilltype st;
+    skilltype stMove;
+    skilltype stCube;
 } movenormal;
 
 typedef struct _moveresign {
@@ -377,20 +378,28 @@ extern command acDatabase[], acNew[], acSave[], acSetAutomatic[],
     acSetCube[], acSetEvaluation[], acSetPlayer[], acSetRNG[], acSetRollout[],
     acSet[], acShow[], acTrain[], acTop[], acSetMET[], acSetEvalParam[],
     acSetRolloutPlayer[], cOnOff, cFilename;
+extern command acAnnotateMove[];
 
 extern void CommandAccept( char * ),
     CommandAgree( char * ),
     CommandAnalyseGame( char * ),
     CommandAnalyseMatch( char * ),
     CommandAnalyseSession( char * ),
+    CommandAnnotateAccept ( char * ),
     CommandAnnotateBad( char * ),
     CommandAnnotateClearComment( char * ),
     CommandAnnotateClearLuck( char * ),
     CommandAnnotateClearSkill( char * ),
+    CommandAnnotateCube ( char * ),
+    CommandAnnotateDouble ( char * ),
     CommandAnnotateDoubtful( char * ),
+    CommandAnnotateDrop ( char * ),
     CommandAnnotateGood( char * ),
     CommandAnnotateInteresting( char * ),
     CommandAnnotateLucky( char * ),
+    CommandAnnotateMove ( char * ),
+    CommandAnnotateReject ( char * ),
+    CommandAnnotateResign ( char * ),
     CommandAnnotateUnlucky( char * ),
     CommandAnnotateVeryBad( char * ),
     CommandAnnotateVeryGood( char * ),
