@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.149 2003/10/11 16:02:51 thyssen Exp $
+ * $Id: html.c,v 1.150 2003/10/18 09:26:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -171,7 +171,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-           "/* $Id: html.c,v 1.149 2003/10/11 16:02:51 thyssen Exp $ */\n",
+           "/* $Id: html.c,v 1.150 2003/10/18 09:26:07 thyssen Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1805,7 +1805,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.149 $";
+  const char szVersion[] = "$Revision: 1.150 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1886,7 +1886,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.149 $";
+  const char szVersion[] = "$Revision: 1.150 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2935,28 +2935,28 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
   }
     
   /* overall rating */
-    
-  if( psc->fMoves && psc->fCube ) {
 
+  {
+    
     GList *list = formatGS( psc, pms, fIsMatch, FORMATGS_OVERALL );
     GList *pl;
-
+    
     printStatTableHeader ( pf, hecss, 
                            _( "Overall statistics" ) );
-
+  
     for ( pl = g_list_first( list ); pl; pl = g_list_next( pl ) ) {
       
       char **aasz = pl->data;
-
+      
       printStatTableRow( pf,
                          aasz[ 0 ], "%s", aasz[ 1 ], aasz[ 2 ] );
-
+      
     }
-
+    
     freeGS( list );
 
-
   }
+
 
   fprintf ( pf, "</table>\n" );
 

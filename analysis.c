@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.145 2003/10/12 10:28:00 thyssen Exp $
+ * $Id: analysis.c,v 1.146 2003/10/18 09:26:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -1554,25 +1554,26 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz,
 
   }
 
-  if ( psc->fCube && psc->fCube ) {
+  {
+
     GList *list = formatGS( psc, &ms, fIsMatch, FORMATGS_OVERALL );
     GList *pl;
-
+    
     strcat( szOutput, _("Overall statistics") );
     strcat( szOutput, "\n\n" );
-
+    
     for ( pl = g_list_first( list ); pl; pl = g_list_next( pl ) ) {
-
+      
       char **asz = pl->data;
-
+      
       sprintf( strchr( szOutput, 0 ),
                "%-31s %-23s %-23s\n",
                asz[ 0 ], asz[ 1 ], asz[ 2 ] );
-
+      
     }
-
+    
     strcat( szOutput, "\n\n" );
-
+    
     freeGS( list );
 
   }
