@@ -16,11 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.1 2003/07/12 13:27:42 thyssen Exp $
+ * $Id: gnubgmodule.h,v 1.2 2003/07/15 15:08:46 hb Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
 #define _PYTHONMODULE_H_
+
+#if USE_PYTHON
 
 #include <Python.h>
 extern PyMethodDef gnubgMethods[];
@@ -30,6 +32,8 @@ PythonInitialise( const char *arg0, const char *szDir );
 
 extern void
 PythonShutdown();
+
+#endif /* USE_PYTHON */
 
 #endif /* _PYTHONMODULE_H_ */
 
