@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.56 2002/12/23 17:55:01 gtw Exp $
+ * $Id: gtkprefs.c,v 1.57 2002/12/26 12:50:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -579,18 +579,25 @@ static GtkWidget *BorderPage( BoardData *bd ) {
 			FALSE, FALSE, 4 );
 
     pwWoodMenu = gtk_menu_new();
-    for( bw = 0; bw < WOOD_PAINT; bw++ )
+    for( bw = 0; bw < WOOD_PAINT; bw++ ) 
 	gtk_menu_shell_append( GTK_MENU_SHELL( pwWoodMenu ),
 			       gtk_menu_item_new_with_label( 
                                   gettext ( aszWood[ bw ] ) ) );
-	
+
     gtk_option_menu_set_menu( GTK_OPTION_MENU( pwWoodType ), pwWoodMenu );
     if( bd->rd.wt != WOOD_PAINT )
 	gtk_option_menu_set_history( GTK_OPTION_MENU( pwWoodType ),
 				     bd->rd.wt );
+
+#if GTK_CHECK_VERSION(2,0,0)
     gtk_signal_connect_object( GTK_OBJECT( pwWoodType ), "changed",
 			       GTK_SIGNAL_FUNC( UpdatePreview ),
 			       pwPreview + PI_BORDER );
+#else
+    gtk_signal_connect_object( GTK_OBJECT( pwWoodMenu ), "selection-done",
+			       GTK_SIGNAL_FUNC( UpdatePreview ),
+			       pwPreview + PI_BORDER );
+#endif
     
     gtk_box_pack_start( GTK_BOX( pw ),
 			pwWoodF = gtk_radio_button_new_with_label_from_widget(
@@ -1049,7 +1056,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.56 2002/12/23 17:55:01 gtw Exp $\n"
+          "    $Id: gtkprefs.c,v 1.57 2002/12/26 12:50:21 thyssen Exp $\n"
           "\n"
           " -->\n"
           "\n"
