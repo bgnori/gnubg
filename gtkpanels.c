@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.9 2005/02/10 10:38:39 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.10 2005/02/14 13:15:48 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -754,7 +754,7 @@ static void CreatePanel(gnubgwindow window, GtkWidget* pWidget, char* winTitle, 
 		gtk_container_add(GTK_CONTAINER(woPanel[window].pwWin), pWidget);
 		gtk_window_add_accel_group(GTK_WINDOW(woPanel[window].pwWin), pagMain);
 
-		gtk_signal_connect(GTK_OBJECT(woPanel[window].pwWin), "delete_event", woPanel[window].hideFun, NULL);
+		gtk_signal_connect(GTK_OBJECT(woPanel[window].pwWin), "delete_event", GTK_SIGNAL_FUNC(woPanel[window].hideFun), NULL);
 	}
 	else
 		woPanel[window].pwWin = pWidget;
