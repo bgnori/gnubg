@@ -16,13 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.29 2001/12/19 22:13:49 gtw Exp $
+ * $Id: gtkgame.h,v 1.30 2002/01/06 15:41:33 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
 #define _GTKGAME_H_
 
 #include "backgammon.h"
+#include "rollout.h"
 
 typedef enum _dialogarea {
     DA_MAIN,
@@ -76,7 +77,11 @@ extern void GTKHint( movelist *pml );
 extern void GTKDoubleHint( char *sz );
 extern void GTKTakeHint( float arDouble[], int fMWC, int fBeaver,
 			 cubeinfo *pci );
-extern void GTKRollout( int c, char asz[][ 40 ], int cGames );
+
+extern void
+GTKRollout( int c, char asz[][ 40 ], int cGames,
+	    rolloutstat ars[][ 2 ] );
+
 extern void GTKRolloutRow( int i );
 
 extern int
@@ -92,6 +97,7 @@ extern void GTKShowMatchEquityTable( int n );
 extern int GTKGetManualDice( int an[ 2 ] );
 extern void GTKShowVersion( void );
 extern void GTKDumpRolloutResults(GtkWidget *widget, gpointer data);
+extern void GTKViewRolloutStatistics(GtkWidget *widget, gpointer data);
 #ifdef WIN32
 extern void GTKWinCopy( GtkWidget *widget, gpointer data);
 #endif
