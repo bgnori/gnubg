@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1996-2000
  *
- * $Id: event.c,v 1.4 2000/07/28 17:11:10 gtw Exp $
+ * $Id: event.c,v 1.5 2003/07/03 15:21:33 jsegrave Exp $
  */
 
 #include "config.h"
@@ -16,6 +16,7 @@
 #include <list.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #if HAVE_UNISTD_H
 #include <unistd.h>

@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.9 2003/06/14 11:18:34 thyssen Exp $
+ * $Id: osr.c,v 1.10 2003/07/03 15:21:32 jsegrave Exp $
  */
 
 #include <stdio.h>
@@ -629,7 +629,6 @@ rollOSR ( const int nGames, const int anBoard[ 25 ], const int nOut,
 
   int anCounts [ nMaxGammonProbs ];
   int an[ 25 ];
-  int antmp[ 6 ];
   unsigned short int anProb[ 32 ];
   int i, n, m;
   int iGame;

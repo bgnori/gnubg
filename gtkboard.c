@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.126 2003/06/09 21:20:47 thyssen Exp $
+ * $Id: gtkboard.c,v 1.127 2003/07/03 15:21:32 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -83,6 +83,8 @@ static int intersects( int x0, int y0, int cx0, int cy0,
 	( x1 + cx1 > x0 ) && ( x1 < x0 + cx0 );
 }
 
+/* comment out unused static functions */
+# if 0
 static inline double ssqrt( double x ) {
 
     return x < 0.0 ? 0.0 : sqrt( x );
@@ -97,6 +99,9 @@ static inline guchar clamp( gint n ) {
     else
 	return n;
 }
+
+#endif
+
 
 static void board_beep( BoardData *bd ) {
 

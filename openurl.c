@@ -17,16 +17,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.2 2003/05/22 13:58:28 hb Exp $
+ * $Id: openurl.c,v 1.3 2003/07/03 15:21:32 jsegrave Exp $
  */
+
+#include "config.h"
 
 #include <stdio.h>
 #include <string.h>
 
 #include <gtk/gtk.h>
 #include <gdk/gdkprivate.h>
-
-#include "config.h"
 
 #include "openurl.h"
 #include "i18n.h"
@@ -36,6 +36,7 @@
 #include "shellapi.h"
 #endif /* WIN32 */
 
+#include "backgammon.h"
 
 extern void
 OpenURL( const char *szURL ) {
@@ -54,7 +55,7 @@ OpenURL( const char *szURL ) {
   pchCommand = g_strdup_printf( "mozilla \"%s\"", szURL );
 
   if ( ! g_spawn_command_line_async( pchCommand, &error ) ) {
-    outputerr( _("Error launching browser: %s\n"), error->message );
+    outputerrf( _("Error launching browser: %s\n"), error->message );
     g_error_free( error );
   }
 

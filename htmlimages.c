@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.4 2003/01/19 04:27:06 gtw Exp $
+ * $Id: htmlimages.c,v 1.5 2003/07/03 15:21:32 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -42,6 +42,8 @@
 #include "render.h"
 #include "renderprefs.h"
 
+#if HAVE_LIBPNG
+
 static void DrawPips( unsigned char *auchDest, int nStride,
 		      unsigned char *auchPip, int nPipStride,
 		      int nSize, int n ) {
@@ -62,6 +64,8 @@ static void DrawPips( unsigned char *auchDest, int nStride,
 			  ( 1 + 2 * iy ) * nSize * nStride, nStride,
 			  auchPip, nPipStride, nSize, nSize );
 }
+
+#endif
 		      
 extern void CommandExportHTMLImages( char *sz ) {
 

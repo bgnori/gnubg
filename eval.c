@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.241 2003/06/22 21:08:03 joseph Exp $
+ * $Id: eval.c,v 1.242 2003/07/03 15:21:32 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1986,6 +1986,7 @@ ClassifyPosition( int anBoard[ 2 ][ 25 ], const bgvariation bgv )
 
   }
 
+  return 0;   /* for fussy compilers */
 }
 
 static void
@@ -2116,6 +2117,7 @@ NNevalAction(positionclass p)
 
   /* never reached */
   assert(0);
+  return 0;   /* for the picky compiler */
 }
 
 /* side - side that potentially can win a backgammon */

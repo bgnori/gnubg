@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.16 2003/06/27 20:19:05 thyssen Exp $
+ * $Id: gtktheory.c,v 1.17 2003/07/03 15:21:32 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -256,7 +256,6 @@ TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
   float aaarPoints[ 2 ][ 7 ][ 2 ];
   float aaarPointsMatch[ 2 ][ 4 ][ 2 ];
 
-  char sz[ 255 ];
   int i, j, k;
   int afAutoRedouble[ 2 ];
   int afDead[ 2 ];
@@ -660,7 +659,7 @@ GTKShowTheory ( const int fActivePage ) {
   
   GtkWidget *pw, *pwx, *pwz;
 
-  int i, j, k;
+  int i, j;
   char sz[ 256 ];
   int *pi;
 
