@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.3 2000/01/05 02:34:55 gtw Exp $
+ * $Id: dice.h,v 1.4 2000/01/19 17:01:59 gtw Exp $
  */
 
 #ifndef _DICE_H_
@@ -34,14 +34,6 @@ extern int InitRNG( void );
 extern void InitRNGSeed( int n );
 extern void RollDice( int anDice[ 2 ] );
 extern void GetManualDice( int anDice[ 2 ] );
-
-void (*pfUserRNGSeed) (unsigned long int);
-long int (*pfUserRNGRandom) (void);
-void *pvUserRNGHandle;
-
-char szUserRNGSeed[ 32 ];
-char szUserRNGRandom[ 32 ];
-char szUserRNG[ MAXPATHLEN ];
 
 extern void UserRNGClose();
 extern int UserRNGOpen();

@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1996-2000
  *
- * $Id: event.c,v 1.2 2000/01/10 18:47:54 gtw Exp $
+ * $Id: event.c,v 1.3 2000/01/19 17:01:59 gtw Exp $
  */
 
 #include "config.h"
@@ -175,9 +175,13 @@ extern int EventPending( event *pev, int fPending ) {
 
 extern int InitEvents( void ) {
 
+#if HAVE_GETDTABLESIZE
     if( ( cDescriptors = getdtablesize() ) > FD_SETSIZE )
 	cDescriptors = FD_SETSIZE;
-
+#else
+    cDescriptors = OPEN_MAX > FD_SETSIZE ? FD_SETSIZE : OPEN_MAX;
+#endif
+    
     if( !( aapev = calloc( cDescriptors, sizeof( eventpair ) ) ) )
 	return -1;
     
