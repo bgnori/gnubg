@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.29 2002/11/26 16:14:05 gtw Exp $
+ * $Id: text.c,v 1.30 2002/11/28 02:47:28 gtw Exp $
  */
 
 #include "config.h"
@@ -654,7 +654,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.29 $";
+  const char szVersion[] = "$Revision: 1.30 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1440,7 +1440,7 @@ static void ExportGameText ( FILE *pf, list *plGame,
 
       case MOVE_GAMEINFO:
 
-        ApplyMoveRecord ( &msExport, pmr );
+        ApplyMoveRecord ( &msExport, plGame, pmr );
 
         TextPrologue( pf, &msExport, iGame );
 
@@ -1499,7 +1499,7 @@ static void ExportGameText ( FILE *pf, list *plGame,
 
       TextPrintComment ( pf, pmr );
 
-      ApplyMoveRecord ( &msExport, pmr );
+      ApplyMoveRecord ( &msExport, plGame, pmr );
 
     }
 

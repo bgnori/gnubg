@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.262 2002/11/27 22:37:05 gtw Exp $
+ * $Id: gtkgame.c,v 1.263 2002/11/28 02:47:28 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1923,7 +1923,7 @@ extern void GTKUpdateAnnotations( void ) {
     for( pl = plGame->plNext; pl->p; pl = pl->plNext ) {
 	GTKAddMoveRecord( pl->p );
         FixMatchState ( &ms, pl->p );
-	ApplyMoveRecord( &ms, pl->p );
+	ApplyMoveRecord( &ms, plGame, pl->p );
     }
 
     CalculateBoard();

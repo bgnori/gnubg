@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.24 2002/09/18 19:18:52 gtw Exp $
+ * $Id: postscript.c,v 1.25 2002/11/28 02:47:28 gtw Exp $
  */
 
 #include "config.h"
@@ -931,7 +931,7 @@ static void ExportGamePostScript( FILE *pf, list *plGame ) {
 	    break;
 	}
 
-	ApplyMoveRecord( &msExport, pmr );
+	ApplyMoveRecord( &msExport, plGame, pmr );
     }
     
     if( ( GameStatus( msExport.anBoard ) ) )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.183 2002/11/27 00:14:25 gtw Exp $
+ * $Id: backgammon.h,v 1.184 2002/11/28 02:47:27 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -344,7 +344,7 @@ extern char *NextToken( char **ppch );
 extern int NextTurn( int fPlayNext );
 extern void TurnDone( void );
 extern void AddMoveRecord( void *pmr );
-extern void ApplyMoveRecord( matchstate *pms, moverecord *pmr );
+extern void ApplyMoveRecord( matchstate *pms, list *plGame, moverecord *pmr );
 extern void SetMoveRecord( void *pmr );
 extern void ClearMoveRecord( void );
 extern void AddGame( moverecord *pmr );
@@ -459,10 +459,9 @@ extern int fReadline;
 #endif
 
 extern int
-AnalyzeMove ( moverecord *pmr, matchstate *pms, statcontext *psc,
-              evalsetup *pesChequer,
-              evalsetup *pesCube,
-              int fUpdateStatistics );
+AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
+              evalsetup *pesChequer, evalsetup *pesCube,
+	      int fUpdateStatistics );
 
 extern int
 confirmOverwrite ( const char *sz, const int f );

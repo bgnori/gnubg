@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.20 2002/09/18 19:18:51 gtw Exp $
+ * $Id: latex.c,v 1.21 2002/11/28 02:47:28 gtw Exp $
  */
 
 #include "config.h"
@@ -509,7 +509,7 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 	    break;
 	}
 
-	ApplyMoveRecord( &msExport, pmr );
+	ApplyMoveRecord( &msExport, plGame, pmr );
     }
     
     if( ( GameStatus( msExport.anBoard ) ) )

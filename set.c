@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.148 2002/11/27 17:47:40 jsegrave Exp $
+ * $Id: set.c,v 1.149 2002/11/28 02:47:28 gtw Exp $
  */
 
 #include "config.h"
@@ -117,8 +117,6 @@ command acSetEvaluation[] = {
 static void
 SetSeed ( const rng rngx, char *sz ) {
     
-    int n;
-
     if( rngx == RNG_MANUAL || rngx == RNG_RANDOM_DOT_ORG ) {
 	outputl( _("You can't set a seed "
                    "if you're using manual dice generation or random.org") );
@@ -133,6 +131,8 @@ SetSeed ( const rng rngx, char *sz ) {
 	else
 	    outputf( _("Seed set to %s.\n"), sz );
 #else
+	int n;
+
 	n = ParseNumber( &sz );
 
 	if( n < 0 ) {

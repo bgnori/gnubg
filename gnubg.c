@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.339 2002/11/27 22:38:50 gtw Exp $
+ * $Id: gnubg.c,v 1.340 2002/11/28 02:47:27 gtw Exp $
  */
 
 #include "config.h"
@@ -2537,6 +2537,7 @@ extern void ShowBoard( void ) {
 	}
     
 	if( ms.fResigned )
+	    /* FIXME it's not necessarily the player on roll that resigned */
 	    sprintf( strchr( sz, 0 ), _(", resigns %s"),
 		     gettext ( aszGameResult[ ms.fResigned - 1 ] ) );
 	
