@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.118 2003/07/26 17:20:20 thyssen Exp $
+ * $Id: html.c,v 1.119 2003/07/26 17:35:47 thyssen Exp $
  */
 
 #include "config.h"
@@ -1837,7 +1837,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.118 $";
+  const char szVersion[] = "$Revision: 1.119 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1918,7 +1918,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.118 $";
+  const char szVersion[] = "$Revision: 1.119 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3795,6 +3795,8 @@ OpenCSS( const char *sz ) {
 
   if ( !access( pchCSS, R_OK ) ) {
     /* file exists */
+    outputf( _("gnubg.css is not written since it already exist in \"%s\"\n"),
+             pchBase );
     pf = NULL;
   }
   else if ( ! ( pf = fopen( pchCSS, "w" ) ) ) {
