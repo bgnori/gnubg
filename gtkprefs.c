@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.106 2004/05/18 07:25:30 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.107 2004/05/18 13:55:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -388,8 +388,6 @@ void HingeChanged (GtkWidget *pw)
 static GtkWidget *ChequerPrefs3d( BoardData *bd)
 {
     GtkWidget *pw, *pwx, *vbox, *pwhbox, *dtPieceTypeFrame;
-	GList *glist;
-	int i;
 
     pwx = gtk_hbox_new ( FALSE, 0 );
 
@@ -1957,7 +1955,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.106 2004/05/18 07:25:30 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.107 2004/05/18 13:55:02 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
