@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.21 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: gtktheory.c,v 1.22 2003/08/13 17:43:30 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -660,9 +660,9 @@ GTKShowTheory ( const int fActivePage ) {
   int *pi;
 
   static char *aszTitles[] = {
-    "",
+    NULL,
     N_("Dead cube"),
-    "" /* N_("Live cube") */,
+    NULL /* N_("Live cube") */,
     N_("Fully live")
   };
   gchar *asz[ 4 ];
@@ -946,7 +946,7 @@ GTKShowTheory ( const int fActivePage ) {
                              gtk_label_new ( _("Market window") ) );
 
   for ( i = 0; i < 4; ++i )
-    asz[ i ] = gettext( aszTitles[ i ] );
+    asz[ i ] = aszTitles[ i ] ? gettext( aszTitles[ i ] ) : "";
 
   for ( i = 0; i < 2; ++i ) {
 
