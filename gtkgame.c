@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.344.2.4 2003/07/09 18:55:00 hb Exp $
+ * $Id: gtkgame.c,v 1.344.2.5 2003/07/23 18:43:50 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -77,6 +77,10 @@
 #include "record.h"
 #include "sound.h"
 
+#if PROCESSING_UNITS
+#include "procunits.h"
+#endif
+
 #define GNUBGMENURC ".gnubgmenurc"
 
 #if USE_GTK2
@@ -85,10 +89,6 @@
 
 #if !GTK_CHECK_VERSION(1,3,10)
 #define gtk_widget_get_parent(w) ((w)->parent)
-
-#if PROCESSING_UNITS
-#include "procunits.h"
-#endif
 
 #define gtk_style_get_font(s) ((s)->font)
 
