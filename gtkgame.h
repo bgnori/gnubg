@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.32 2002/02/04 15:33:28 gtw Exp $
+ * $Id: gtkgame.h,v 1.33 2002/02/06 15:03:25 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -71,6 +71,7 @@ extern void
 GTKProgressStartValue( char *sz, int iMax );
 extern void
 GTKProgressValue ( int fValue );
+extern void GTKBearoffProgress( int i );
 
 extern void GTKDumpStatcontext( statcontext *psc, char *szTitle );
 extern void GTKEval( char *szOutput );

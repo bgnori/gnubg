@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.99 2002/02/05 15:39:13 gtw Exp $
+ * $Id: gtkgame.c,v 1.100 2002/02/06 15:02:03 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5316,6 +5316,57 @@ extern void GTKShowVersion( void ) {
 			GTK_SIGNAL_FUNC( CommandShowWarranty ), NULL );
     
     gtk_widget_show_all( pwDialog );
+}
+
+static void GTKBearoffProgressCancel( void ) {
+
+#ifdef SIGINT
+    raise( SIGINT );
+#endif
+    exit( EXIT_FAILURE );
+}
+
+/* Show a dialog box with a progress bar to be used during initialisation
+   if a heuristic bearoff database must be created.  Most of gnubg hasn't
+   been initialised yet, so this function is restricted in many ways. */
+extern void GTKBearoffProgress( int i ) {
+
+    static GtkWidget *pwDialog, *pw, *pwAlign;
+
+    if( !pwDialog ) {
+	pwDialog = CreateDialog( "GNU Backgammon", FALSE, NULL, NULL );
+	gtk_window_set_wmclass( GTK_WINDOW( pwDialog ), "progress",
+				"Progress" );
+	gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
+	gtk_signal_connect( GTK_OBJECT( pwDialog ), "destroy",
+			    GTK_SIGNAL_FUNC( GTKBearoffProgressCancel ),
+			    NULL );
+
+	gtk_box_pack_start( GTK_BOX( DialogArea( pwDialog, DA_MAIN ) ),
+			    pwAlign = gtk_alignment_new( 0.5, 0.5, 1, 0 ),
+			    TRUE, TRUE, 8 );
+	gtk_container_add( GTK_CONTAINER( pwAlign ),
+			   pw = gtk_progress_bar_new() );
+	
+	gtk_progress_set_format_string( GTK_PROGRESS( pw ),
+					"Generating bearoff database (%p%%)" );
+	gtk_progress_set_show_text( GTK_PROGRESS( pw ), TRUE );
+	
+	gtk_widget_show_all( pwDialog );
+    }
+
+    gtk_progress_set_percentage( GTK_PROGRESS( pw ), i / 54264.0 );
+
+    if( i >= 54000 ) {
+	gtk_signal_disconnect_by_func(
+	    GTK_OBJECT( pwDialog ),
+	    GTK_SIGNAL_FUNC( GTKBearoffProgressCancel ), NULL );
+
+	gtk_widget_destroy( pwDialog );
+    }
+
+    while( gtk_events_pending() )
+	gtk_main_iteration();
 }
 
 static void UpdateToggle( gnubgcommand cmd, int *pf ) {

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.60 2002/01/31 19:28:02 thyssen Exp $
+ * $Id: eval.h,v 1.61 2002/02/06 15:02:03 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -98,7 +98,8 @@ typedef struct _rolloutcontext {
 
   unsigned int fCubeful : 1; /* Cubeful rollout */
   unsigned int fVarRedn : 1; /* variance reduction */
-
+  unsigned int fInitial: 1; /* roll out as opening position */
+    
   unsigned short nTruncate; /* truncation */
   unsigned short nTrials; /* number of rollouts */
 
@@ -187,7 +188,8 @@ typedef enum _positionclass {
 				      
 extern int 
 EvalInitialise( char *szWeights, char *szWeightsBinary,
-                char *szDatabase, char *szDir, int nSize, int fProgress );
+                char *szDatabase, char *szDir, int nSize,
+		void (*pfProgress)( int ) );
 
 extern void EvalStatus( char *szOutput );
 
