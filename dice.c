@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.17 2002/07/29 15:58:35 thyssen Exp $
+ * $Id: dice.c,v 1.18 2002/08/01 19:23:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -153,9 +153,9 @@ static int GetManualDice( int anDice[ 2 ] ) {
   }
 }
 
-extern void PrintRNGSeed( void ) {
+extern void PrintRNGSeed( const rng rngx ) {
 
-    switch( rngCurrent ) {
+    switch( rngx ) {
     case RNG_MD5:
 	outputf( _("The current seed is %u.\n"), nMD5 );
 	break;
@@ -177,9 +177,9 @@ extern void PrintRNGSeed( void ) {
     }
 }
 
-extern void InitRNGSeed( int n ) {
+extern void InitRNGSeed( int n, const rng rngx ) {
     
-    switch( rngCurrent ) {
+    switch( rngx ) {
     case RNG_ANSI:
 	srand( n );
 	break;
@@ -229,7 +229,7 @@ extern void InitRNGSeed( int n ) {
 
 /* Returns TRUE if /dev/urandom was available, or FALSE if system clock was
    used. */
-extern int InitRNG( int *pnSeed, int fSet ) {
+extern int InitRNG( int *pnSeed, int fSet, const rng rngx ) {
 
     int n, h, f = FALSE;
 
@@ -254,7 +254,7 @@ extern int InitRNG( int *pnSeed, int fSet ) {
 	*pnSeed = n;
 
     if( fSet )
-	InitRNGSeed( n );
+	InitRNGSeed( n, rngx );
 
     return f;
 }
@@ -366,9 +366,9 @@ getDiceRandomDotOrg ( void ) {
 #endif /* HAVE_SOCKETS */
 
 
-extern int RollDice( int anDice[ 2 ] ) {
+extern int RollDice( int anDice[ 2 ], const rng rngx ) {
 
-    switch( rngCurrent ) {
+    switch( rngx ) {
     case RNG_ANSI:
 	anDice[ 0 ] = ( rand() % 6 ) + 1;
 	anDice[ 1 ] = ( rand() % 6 ) + 1;

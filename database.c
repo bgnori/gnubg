@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.38 2002/06/01 18:40:19 thyssen Exp $
+ * $Id: database.c,v 1.39 2002/08/01 19:23:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -400,7 +400,7 @@ extern void CommandDatabaseGenerate( char *sz ) {
 	if( !( ++c % 10 ) )
 	    Progress();
 	    
-	RollDice( anDiceGenerate );
+	RollDice( anDiceGenerate, rngCurrent );
 
 	if( fInterrupt )
 	    break;

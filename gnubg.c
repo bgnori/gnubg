@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.265 2002/08/01 17:25:55 thyssen Exp $
+ * $Id: gnubg.c,v 1.266 2002/08/01 19:23:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -3696,7 +3696,7 @@ SaveRolloutSettings ( FILE *pf, char *sz, rolloutcontext *prc ) {
             sz, prc->nTruncate,
             sz, prc->nTrials );
 
-  /* SaveRNGSettings ( pf, sz, prc->rngRollout ); */
+  SaveRNGSettings ( pf, sz, prc->rngRollout );
 
   /* chequer play and cube decision evalcontexts */
 
@@ -4096,7 +4096,7 @@ extern void CommandTrainTD( char *sz ) {
 	    if( !( ++c % 100 ) )
 		Progress();
 	    
-	    RollDice( anDiceTrain );
+	    RollDice( anDiceTrain, rngCurrent );
 	    
 	    if( fInterrupt )
 		break;
@@ -5337,8 +5337,8 @@ static void real_main( void *closure, int argc, char *argv[] ) {
                 "details.\n"),
               VERSION );
     
-    InitRNG( NULL, TRUE );
-    InitRNG( &rcRollout.nSeed, FALSE );
+    InitRNG( NULL, TRUE, rngCurrent );
+    InitRNG( &rcRollout.nSeed, FALSE, rcRollout.rngRollout );
     /* we don't want rollouts to use the same seed as normal dice (which
        could happen if InitRNG had to use the current time as a seed) -- mix
        it up a little bit */

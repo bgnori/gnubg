@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.11 2002/07/27 10:55:42 thyssen Exp $
+ * $Id: dice.h,v 1.12 2002/08/01 19:23:30 thyssen Exp $
  */
 
 #ifndef _DICE_H_
@@ -31,10 +31,12 @@ extern char *aszRNG[];
 
 extern rng rngCurrent;
 
-extern int InitRNG( int *pnSeed, int fSet );
-extern void PrintRNGSeed( void );
-extern void InitRNGSeed( int n );
-extern int RollDice( int anDice[ 2 ] );
+extern int InitRNG( int *pnSeed, int fSet, const rng rngx );
+extern void PrintRNGSeed( const rng rngx );
+extern void InitRNGSeed( int n, const rng rngx );
+
+extern int 
+RollDice( int anDice[ 2 ], const rng rngx );
 
 extern void UserRNGClose();
 extern int UserRNGOpen();

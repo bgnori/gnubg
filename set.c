@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.109 2002/07/29 18:55:27 thyssen Exp $
+ * $Id: set.c,v 1.110 2002/08/01 19:23:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -1293,7 +1293,7 @@ extern void CommandSetRolloutSeed( char *sz ) {
 	prcSet->nSeed = n;
 	outputf( _("Rollout seed set to %d.\n"), n );
     } else
-	outputl( InitRNG( &prcSet->nSeed, FALSE ) ?
+        outputl( InitRNG( &prcSet->nSeed, FALSE, prcSet->rngRollout ) ?
 		 _("Rollout seed initialised from system random data.") :
 		 _("Rollout seed initialised by system clock.") );    
 }
@@ -1586,10 +1586,10 @@ extern void CommandSetSeed( char *sz ) {
 	    return;
 	}
 
-	InitRNGSeed( n );
+	InitRNGSeed( n, rngCurrent );
 	outputf( _("Seed set to %d.\n"), n );
     } else
-	outputl( InitRNG( NULL, TRUE ) ?
+	outputl( InitRNG( NULL, TRUE, rngCurrent ) ?
 		 _("Seed initialised from system random data.") :
 		 _("Seed initialised by system clock.") );
 }

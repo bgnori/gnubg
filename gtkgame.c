@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.206 2002/08/01 18:41:25 thyssen Exp $
+ * $Id: gtkgame.c,v 1.207 2002/08/01 19:23:30 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2774,7 +2774,7 @@ static void SetSeed( gpointer *p, guint k, GtkWidget *pw ) {
 
     int nRandom, n;
 
-    InitRNG( &nRandom, FALSE );
+    InitRNG( &nRandom, FALSE, rngCurrent );
     n = ReadNumber( _("GNU Backgammon - Seed"), _("Seed:"), abs( nRandom ), 0,
 		    INT_MAX, 1 );
 
