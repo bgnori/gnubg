@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.31 2002/08/16 17:09:04 gtw Exp $
+ * $Id: gtkprefs.c,v 1.32 2002/08/16 18:46:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -529,7 +529,11 @@ static GtkWidget *GeneralPage( BoardData *bd ) {
     padjSpeed = GTK_ADJUSTMENT( gtk_adjustment_new( bd->animate_speed, 0, 7,
 						    1, 1, 0 ) );
     pwScale = gtk_hscale_new( padjSpeed );
+#if GTK_CHECK_VERSION(2,0,0)
     gtk_widget_set_size_request( pwScale, 100, -1 );
+#else
+    gtk_widget_set_usize ( GTK_WIDGET ( pwScale ), 100, -1 );
+#endif
     gtk_scale_set_draw_value( GTK_SCALE( pwScale ), FALSE );
     gtk_scale_set_digits( GTK_SCALE( pwScale ), 0 );
 
