@@ -16,14 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.2 2002/12/28 15:10:19 thyssen Exp $
+ * $Id: gtksplash.c,v 1.3 2002/12/31 18:12:23 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-#define GTK_ENABLE_BROKEN /* for GtkText */
 #include <gtk/gtk.h>
 
 #include <stdio.h>
@@ -104,7 +103,7 @@ DestroySplash ( GtkWidget *pwSplash ) {
   if ( ! pwSplash )
     return;
   
-  usleep ( 1000 );
+  g_usleep ( 1000 );
 
   gtk_widget_destroy ( pwSplash );
 
@@ -130,6 +129,6 @@ PushSplash ( GtkWidget *pwSplash,
   while( gtk_events_pending() )
     gtk_main_iteration();
 
-  usleep ( nMuSec );
+  g_usleep ( nMuSec );
 
 }
