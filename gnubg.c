@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.384 2003/03/02 15:58:06 thyssen Exp $
+ * $Id: gnubg.c,v 1.385 2003/03/03 18:56:18 jsegrave Exp $
  */
 
 #include "config.h"
@@ -872,8 +872,10 @@ command cER = {
       szONOFF, NULL },
     { "dicearea", CommandSetGUIDiceArea,
       N_("Show dice icon when human player on roll"), szONOFF, NULL },
+#if	USE_GTK
     { "dragtargethelp", CommandSetGUIDragTargetHelp,
       N_("Show target help while dragging a chequer"), szONOFF, NULL },
+#endif
     { "highdiefirst", CommandSetGUIHighDieFirst,
       N_("Show the higher die on the left"), szONOFF, NULL },
     { "illegal", CommandSetGUIIllegal,
@@ -4823,9 +4825,9 @@ extern void CommandSaveSettings( char *szParam ) {
 
     /* geometries */
     /* "set gui windowpositions" must come first */
+#if USE_GTK
     fprintf( pf, "set gui windowpositions %s\n",
 	     fGUISetWindowPos ? "on" : "off" );
-#if USE_GTK
     if ( fX )
        RefreshGeometries ();
 #endif
