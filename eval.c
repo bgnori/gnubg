@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.36 2000/08/13 09:57:47 thyssen Exp $
+ * $Id: eval.c,v 1.37 2000/08/13 10:30:27 thyssen Exp $
  */
 
 #include "config.h"
@@ -3143,8 +3143,6 @@ EvaluatePositionCubeful1( int anBoard[ 2 ][ 25 ], float *prOutput,
                 ( rW + rL ) * ( rL - 0.5 * ( 1.0 - rCubeX ) ) /
                 ( rL * ( rW + rL - ( 1.0 - rCubeX ) ) );
 
-              printf ( "!beaver: %6.3f %6.3f\n", rOppk, rk );
-
             }
             else {
 
@@ -3157,8 +3155,6 @@ EvaluatePositionCubeful1( int anBoard[ 2 ][ 25 ], float *prOutput,
               rk =
                 ( rW + rL ) * ( rL - 0.25 * ( 1.0 - rCubeX ) ) /
                 ( rL * ( rW + rL - 0.5 * ( 1.0 - rCubeX ) ) );
-
-              printf ( "beaver: %6.3f %6.3f\n", rOppk, rk );
 
             }
           }
