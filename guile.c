@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.9 2001/02/13 18:21:20 gtw Exp $
+ * $Id: guile.c,v 1.10 2001/02/14 18:54:53 gtw Exp $
  */
 
 #include "config.h"
@@ -374,17 +374,21 @@ static SCM sInterrupt;
 
 extern int GuileStartIntHandler( void ) {
 
-    scm_sigaction( SCM_MAKINUM( SIGINT ), sInterrupt, SCM_MAKINUM( 0 ) );
-    scm_unmask_signals();
+    if( isatty( STDIN_FILENO ) ) {
+	scm_sigaction( SCM_MAKINUM( SIGINT ), sInterrupt, SCM_MAKINUM( 0 ) );
+	scm_unmask_signals();
+    }
     
     return 0;
 }
 
 extern int GuileEndIntHandler( void ) {
 
-    scm_mask_signals();
-    scm_sigaction( SCM_MAKINUM( SIGINT ), SCM_BOOL_F, SCM_MAKINUM( 0 ) );
-
+    if( isatty( STDIN_FILENO ) ) {
+	scm_mask_signals();
+	scm_sigaction( SCM_MAKINUM( SIGINT ), SCM_BOOL_F, SCM_MAKINUM( 0 ) );
+    }
+    
     return 0;
 }
 
