@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.21 2002/06/01 17:44:24 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.22 2002/06/01 18:58:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -621,7 +621,9 @@ static int SetColourSpeckle( char *sz, guchar anColour[], int *pnSpeckle ) {
 	anColour[ 2 ] = col.blue >> 8;
 	
 	if( pch ) {
+            PushLocale ( "C" );
 	    *pnSpeckle = atof( pch ) * 128;
+            PopLocale ();
 	    
 	    if( *pnSpeckle < 0 )
 		*pnSpeckle = 0;
