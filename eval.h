@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.109.4.2 2003/08/12 09:25:12 Superfly_Jon Exp $
+ * $Id: eval.h,v 1.109.4.3 2003/08/13 11:01:44 Superfly_Jon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -418,6 +418,9 @@ SwapSides( int anBoard[ 2 ][ 25 ] );
 
 extern int 
 GameStatus( int anBoard[ 2 ][ 25 ], const bgvariation bgv );
+
+extern void
+EvalCacheFlush(void);
 
 extern int 
 EvalCacheResize( int cNew );
