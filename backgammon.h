@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.88 2001/05/23 15:26:38 thyssen Exp $
+ * $Id: backgammon.h,v 1.89 2001/06/17 17:40:09 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -307,7 +307,10 @@ extern void outputoff( void );
 extern void outputon( void );
 
 extern void ProgressStart( char *sz );
+extern void ProgressStartValue( char *sz, int iMax );
 extern void Progress( void );
+extern void ProgressValue ( int iValue );
+extern void ProgressValueAdd ( int iValue );
 extern void ProgressEnd( void );
 
 #if USE_GUI
@@ -327,6 +330,9 @@ extern void HandleInput( char *sz );
 #if HAVE_LIBREADLINE
 extern int fReadline;
 #endif
+
+extern int iProgressMax, iProgressValue;
+extern char *pcProgress;
 
 extern char *aszVersion[];
 
