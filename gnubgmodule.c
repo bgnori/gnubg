@@ -16,22 +16,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.34 2004/09/29 18:13:00 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.35 2004/09/30 09:58:07 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
 #include "config.h"
+#endif
 #if USE_PYTHON
 #undef HAVE_FSTAT
-#endif
-#endif
-
-#if USE_PYTHON
 #include <Python.h>
-#if HAVE_CONFIG_H
-#undef HAVE_FSTAT
-#include "config.h"
-#endif
 
 #include <signal.h>
 #include <assert.h>
