@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.72 2000/10/26 14:20:07 gtw Exp $
+ * $Id: gnubg.c,v 1.73 2000/10/26 14:27:08 gtw Exp $
  */
 
 #include "config.h"
@@ -1308,6 +1308,7 @@ extern void CommandHint( char *sz ) {
 #if USE_GTK
       if( fX ) {
         GTKHint( &ml );
+	free( ml.amMoves );
         return;
       }
 #endif
