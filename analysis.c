@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.25 2001/04/20 15:33:23 gtw Exp $
+ * $Id: analysis.c,v 1.26 2001/04/27 11:15:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -449,8 +449,8 @@ AnalyzeGame ( list *plGame ) {
 		pmr->d.esDouble = esDouble;
 		memcpy( pmr->d.arDouble, arDouble, sizeof( arDouble ) );
 
-		psc->anTotalCube[ fPlayer ]++;
-		psc->anTake[ fPlayer ]++;
+		psc->anTotalCube[ ! fPlayer ]++;
+		psc->anTake[ ! fPlayer ]++;
 	    
 		if( -arDouble[ OUTPUT_TAKE ] < -arDouble[ OUTPUT_DROP ] ) {
 		    /* it was a drop */
@@ -460,9 +460,9 @@ AnalyzeGame ( list *plGame ) {
 		    rCost = nMatchToLocal ? eq2mwc( rCost, &ci ) -
 			eq2mwc( 0.0f, &ci ) : nCube * rSkill;
 		
-		    psc->anCubeWrongTake[ fPlayer ]++;
-		    psc->arErrorWrongTake[ fPlayer ][ 0 ] -= rSkill;
-		    psc->arErrorWrongTake[ fPlayer ][ 1 ] -= rCost;
+		    psc->anCubeWrongTake[ ! fPlayer ]++;
+		    psc->arErrorWrongTake[ ! fPlayer ][ 0 ] -= rSkill;
+		    psc->arErrorWrongTake[ ! fPlayer ][ 1 ] -= rCost;
 		} else
 		    pmr->d.st = Skill( 0.0f );
 	    }
@@ -481,8 +481,8 @@ AnalyzeGame ( list *plGame ) {
 		pmr->d.esDouble = esDouble;
 		memcpy( pmr->d.arDouble, arDouble, sizeof( arDouble ) );
 
-		psc->anTotalCube[ fPlayer ]++;
-		psc->anPass[ fPlayer ]++;
+		psc->anTotalCube[ ! fPlayer ]++;
+		psc->anPass[ ! fPlayer ]++;
 	    
 		if( -arDouble[ OUTPUT_DROP ] < -arDouble[ OUTPUT_TAKE ] ) {
 		    /* it was a take */
@@ -492,9 +492,9 @@ AnalyzeGame ( list *plGame ) {
 		    rCost = nMatchToLocal ? eq2mwc( rCost, &ci ) -
 			eq2mwc( 0.0f, &ci ) : nCube * rSkill;
 		
-		    psc->anCubeWrongPass[ fPlayer ]++;
-		    psc->arErrorWrongPass[ fPlayer ][ 0 ] -= rSkill;
-		    psc->arErrorWrongPass[ fPlayer ][ 1 ] -= rCost;
+		    psc->anCubeWrongPass[ ! fPlayer ]++;
+		    psc->arErrorWrongPass[ ! fPlayer ][ 0 ] -= rSkill;
+		    psc->arErrorWrongPass[ ! fPlayer ][ 1 ] -= rCost;
 		} else
 		    pmr->d.st = Skill( 0.0f );
 	    }
