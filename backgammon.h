@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.211 2003/03/13 20:41:22 thyssen Exp $
+ * $Id: backgammon.h,v 1.212 2003/03/14 20:34:15 oysteijo Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -515,10 +515,6 @@ UpdateStoredCube ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
 extern void
 InvalidateStoredMoves( void );
-
-#ifdef WIN32
-extern void WinCopy( char *szOut );
-#endif
 
 extern char *aszVersion[], *szHomeDirectory, *szDataDirectory,
     *szTerminalCharset;
