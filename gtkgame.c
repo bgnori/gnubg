@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.146 2002/05/22 18:56:47 thyssen Exp $
+ * $Id: gtkgame.c,v 1.147 2002/05/22 19:13:37 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5235,6 +5235,7 @@ extern void GTKRollout( int c, char asz[][ 40 ], int cGames,
     gtk_clist_column_titles_passive( GTK_CLIST( pwRolloutResult ) );
     
     pwRolloutProgress = gtk_progress_bar_new();
+    gtk_progress_set_show_text ( GTK_PROGRESS ( pwRolloutProgress ), TRUE );
 
     gtk_box_pack_start( GTK_BOX( pwVbox ), pwRolloutResult, TRUE, TRUE, 0 );
     gtk_box_pack_start( GTK_BOX( pwVbox ), pwRolloutProgress, FALSE, FALSE,
