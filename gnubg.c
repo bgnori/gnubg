@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.560 2004/05/07 14:26:00 thyssen Exp $
+ * $Id: gnubg.c,v 1.561 2004/05/08 09:28:11 thyssen Exp $
  */
 
 #include "config.h"
@@ -3553,7 +3553,7 @@ static char *FormatPromptConvert( void ) {
 
 extern void CommandEval( char *sz ) {
 
-    char szOutput[ 2048 ];
+    char szOutput[ 4096 ];
     int n, an[ 2 ][ 25 ];
     cubeinfo ci;
     

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.185 2004/05/07 14:28:04 thyssen Exp $
+ * $Id: show.c,v 1.186 2004/05/08 09:28:11 thyssen Exp $
  */
 
 #include "config.h"
@@ -2143,7 +2143,7 @@ CommandShowCubeEfficiency( char *sz ) {
 extern void
 CommandShowBearoff( char *sz ) {
 
-  char szTemp[ 2048 ];
+  char szTemp[ 4096 ];
 
 #if USE_GTK
   if ( fX ) {
