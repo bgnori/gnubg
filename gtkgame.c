@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.452 2004/01/01 19:32:57 uid65656 Exp $
+ * $Id: gtkgame.c,v 1.453 2004/01/04 10:06:41 uid65656 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2071,8 +2071,13 @@ static void SetAnnotation( moverecord *pmr ) {
             /* move */
 			      
 	    if( pmr->n.ml.cMoves ) 
+#if USE_OLD_LAYOUT
               pwMoveAnalysis = CreateMoveList( &pmr->n.ml, &pmr->n.iMove,
-                                               TRUE, FALSE );
+                                               TRUE, FALSE, TRUE );
+#else
+              pwMoveAnalysis = CreateMoveList( &pmr->n.ml, &pmr->n.iMove,
+                                               TRUE, FALSE, FALSE );
+#endif /* USE_OLD_LAYOUT */
 
 
             if ( pwMoveAnalysis && pwCubeAnalysis ) {
@@ -7363,8 +7368,6 @@ extern void GTKCubeHint( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
     
     gtk_window_set_default_size(GTK_WINDOW(pwHint), 400, 300);
     
-    gtk_object_weakref( GTK_OBJECT( pwHint ), DestroyHint, NULL );
-
     gtk_widget_show_all( pwHint );
 
 
@@ -7461,7 +7464,7 @@ extern void GTKWinCopy( GtkWidget *widget, gpointer data) {
 }
 
 extern void 
-GTKHint( movelist *pmlOrig, const int iMove ) {
+GTKHint( movelist *pmlOrig, const int iMove) {
 
     GtkWidget *pwButtons, *pwMoves;
     movelist *pml;
@@ -7477,7 +7480,7 @@ GTKHint( movelist *pmlOrig, const int iMove ) {
     memcpy( pml->amMoves, pmlOrig->amMoves, pmlOrig->cMoves * sizeof( move ) );
 
     n = iMove;
-    pwMoves = CreateMoveList( pml, ( n < 0 ) ? NULL : &n, TRUE, TRUE );
+    pwMoves = CreateMoveList( pml, ( n < 0 ) ? NULL : &n, TRUE, TRUE, TRUE );
 
     /* create dialog */
     
@@ -7496,6 +7499,7 @@ GTKHint( movelist *pmlOrig, const int iMove ) {
     gtk_window_set_default_size(GTK_WINDOW(pwHint), 400, 300);
 #endif
     gtk_widget_show_all( pwHint );
+
 }
 
 
