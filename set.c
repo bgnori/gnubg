@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.175 2003/03/13 20:35:34 thyssen Exp $
+ * $Id: set.c,v 1.176 2003/03/20 20:16:32 thyssen Exp $
  */
 
 #include "config.h"
@@ -524,7 +524,7 @@ extern void CommandSetAutoDoubles( char *sz ) {
 	    outputl( _("(Note that automatic doubles will have "
                        "no effect until you "
                        "start session play.)") );
-	else if( !fCubeUse )
+	else if( !ms.fCubeUse )
 	    outputl( _("(Note that automatic doubles will have no effect "
                        "until you "
                        "enable cube use --\nsee `help set cube use'.)") );
@@ -599,7 +599,7 @@ static int CheckCubeAllowed( void ) {
 	return -1;
     }
     
-    if( !fCubeUse ) {
+    if( !ms.fCubeUse ) {
 	outputl( _("The cube is disabled (see `help set cube use').") );
 	return -1;
     }
@@ -769,7 +769,7 @@ extern void CommandSetCubeUse( char *sz ) {
 		   _("Use of the doubling cube is disabled.") ) < 0 )
 	return;
 
-    if( !ms.nMatchTo && fJacoby && !fCubeUse )
+    if( !ms.nMatchTo && ms.fJacoby && !fCubeUse )
 	outputl( _("(Note that you'll have to disable the Jacoby rule "
                    "if you want gammons and\nbackgammons to be scored "
                    "-- see `help set jacoby').") );
@@ -786,6 +786,8 @@ extern void CommandSetCubeUse( char *sz ) {
 	UpdateSetting( &ms.fCubeOwner );
 	CancelCubeAction();
     }
+
+    ms.fCubeUse = fCubeUse;
 	
 #if USE_GUI
     if( fX )
@@ -2337,10 +2339,13 @@ extern void CommandSetJacoby( char *sz ) {
 		   _("Will not use the Jacoby rule for money sessions.") ) )
 	return;
 
-    if( fJacoby && !fCubeUse )
+    if( fJacoby && !ms.fCubeUse )
 	outputl( _("(Note that you'll have to enable the cube if you want "
 		 "gammons and backgammons\nto be scored -- see `help set "
 		 "cube use'.)") );
+
+    ms.fJacoby = fJacoby;
+
 }
 
 extern void CommandSetCrawford( char *sz ) {

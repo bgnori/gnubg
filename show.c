@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.139 2003/03/13 20:36:08 thyssen Exp $
+ * $Id: show.c,v 1.140 2003/03/20 20:16:32 thyssen Exp $
  */
 
 #include "config.h"
@@ -656,7 +656,7 @@ extern void CommandShowCube( char *sz ) {
 	return;
     }
     
-    if( !fCubeUse ) {
+    if( !ms.fCubeUse ) {
 	outputl( _("The doubling cube is disabled.") );
 	return;
     }
@@ -723,10 +723,17 @@ extern void CommandShowEgyptian( char *sz ) {
 
 extern void CommandShowJacoby( char *sz ) {
 
-    if ( fJacoby ) 
-      outputl( _("Money sessions are played with the Jacoby rule.") );
-    else
-      outputl( _("Money sessions are played without the Jacoby rule.") );
+  if ( ! ms.nMatchTo )
+    outputl( ms.fJacoby ? 
+             _("This money session is play with the Jacoby rule."
+               " Default is:") :
+             _("This money session is play without the Jacoby rule."
+               " Default is:") );
+
+  if ( fJacoby ) 
+    outputl( _("Money sessions are played with the Jacoby rule.") );
+  else
+    outputl( _("Money sessions are played without the Jacoby rule.") );
 
 }
 
@@ -872,7 +879,7 @@ extern void CommandShowScore( char *sz ) {
 					 _(", post-Crawford play") : ""));
     } 
     else {
-        if ( fJacoby )
+        if ( ms.fJacoby )
 	    outputl ( _(" (money session,\nwith Jacoby rule).") );
         else
 	    outputl ( _(" (money session,\nwithout Jacoby rule).") );

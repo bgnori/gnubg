@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.21 2002/11/28 02:47:28 gtw Exp $
+ * $Id: latex.c,v 1.22 2003/03/20 20:18:11 thyssen Exp $
  */
 
 #include "config.h"
@@ -356,7 +356,7 @@ PrintLaTeXCubeAnalysis( FILE *pf, matchstate *pms, int fPlayer,
 	return;
     
     SetCubeInfo( &ci, pms->nCube, pms->fCubeOwner, fPlayer, pms->nMatchTo,
-		 pms->anScore, pms->fCrawford, fJacoby, nBeavers );
+		 pms->anScore, pms->fCrawford, pms->fJacoby, nBeavers );
     
     if( !GetDPEq( NULL, NULL, &ci ) )
 	/* No cube action possible */

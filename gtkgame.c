@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.323 2003/03/14 20:43:27 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.324 2003/03/20 20:15:49 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -699,7 +699,7 @@ extern void GTKSetCube( gpointer *p, guint n, GtkWidget *pw ) {
     char sz[ 20 ]; /* "set cube value 4096" */
     GtkWidget *pwDialog, *pwCube;
 
-    if( ms.gs != GAME_PLAYING || ms.fCrawford || !fCubeUse )
+    if( ms.gs != GAME_PLAYING || ms.fCrawford || !ms.fCubeUse )
 	return;
 	
     pwDialog = CreateDialog( _("GNU Backgammon - Cube"),
