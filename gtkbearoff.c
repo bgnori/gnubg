@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkbearoff.c,v 1.4 2003/08/13 11:52:27 Superfly_Jon Exp $
+ * $Id: gtkbearoff.c,v 1.5 2003/08/18 16:54:03 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -76,8 +76,6 @@ ToggleWho( GtkWidget *pw, bearoffwidget *pbw ) {
 
   int f = 
     gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pbw->apwWho[ 0 ] ) );
-
-  printf( "toggle who...%d %d\n", f, pbw->ms.fMove );
 
   if ( f != pbw->ms.fMove ) {
     pbw->ms.fMove = f;
@@ -147,7 +145,6 @@ BearoffSet( bearoffwidget *pbw ) {
 
   gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pbw->apwRoll[ pbw->ms.anDice[ 0 ] > 0 ] ), TRUE );
   
-  printf( "dice...%d %d\n", pbw->ms.anDice[ 0 ], pbw->ms.anDice[ 1 ] );
   if ( pbw->ms.anDice[ 0 ] > 0 ) {
     for( i = 0; i < 2; ++i ) 
       gtk_option_menu_set_history( GTK_OPTION_MENU( pbw->apwDice[ i ] ),
