@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.26 2004/01/30 09:33:50 uid68519 Exp $
+ * $Id: sound.c,v 1.27 2004/03/15 17:45:54 Superfly_Jon Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -1089,7 +1089,8 @@ play_file_child(soundcache *psc, const char *filename) {
     case SOUND_SYSTEM_WINDOWS:
 
 #ifdef WIN32
-      PlaySound ( filename, NULL, SND_FILENAME | SND_ASYNC );
+      while (!PlaySound(filename, NULL, SND_FILENAME | SND_ASYNC | SND_NOSTOP | SND_NODEFAULT))
+        Sleep(1);	/* Wait (1ms) for previous sound to finish */
 #else
       assert ( FALSE );
 #endif
@@ -1226,6 +1227,14 @@ extern void SoundWait( void ) {
 	
 	return;
     }
+#endif
+#ifdef WIN32
+    case SOUND_SYSTEM_WINDOWS:
+    	/* Wait 1/10 of a second to make sure sound has started */
+    	Sleep(100);
+      while (!PlaySound(NULL, NULL, SND_FILENAME | SND_ASYNC | SND_NOSTOP | SND_NODEFAULT))
+        Sleep(1);	/* Wait (1ms) for previous sound to finish */
+      return;
 #endif
     default:
 	return;
