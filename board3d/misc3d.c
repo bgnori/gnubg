@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.10 2003/09/04 10:12:37 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.11 2003/09/11 11:30:54 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -65,6 +65,13 @@ void CheckNormal()
 	glBegin(GL_POINTS);
 		glVertex3f(norms[0], norms[1], norms[2]);
 	glEnd();
+}
+
+void CheckOpenglError()
+{
+	GLenum glErr = glGetError();
+	if (glErr != GL_NO_ERROR)
+		g_print("OpenGL Error: %s\n", gluErrorString(glErr));
 }
 
 void SetupLight3d(BoardData *bd, renderdata* prd)
