@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.43 2000/10/23 16:36:46 gtw Exp $
+ * $Id: play.c,v 1.44 2000/10/24 10:56:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -448,7 +448,7 @@ static int ComputerTurn( void ) {
 
       if ( fCubeUse && ! anDice[ 0 ] && GetDPEq ( NULL, NULL, &ci ) ) {
 
-        static evalcontext ecDH = { 1, 8, 0.16, 0, FALSE }; 
+        static evalcontext ecDH = { 1, 8, 0.16, 0, FALSE, FALSE }; 
         
         /* We have access to the cube */
 
