@@ -1,4 +1,4 @@
-$Id: TODO,v 1.281 2003/01/19 04:27:06 gtw Exp $
+$Id: TODO,v 1.282 2003/01/23 18:01:34 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -53,6 +53,10 @@ duplication of effort and to make sure our changes merge easily.
 *** Allow saving rollouts -- see Jim Segrave's message at
 <http://mail.gnu.org/archive/html/bug-gnubg/2003-01/msg00244.html> for
 details.
+*** An option to stop a rollout once the stderr error has reached some
+    arbitrary threshold
+*** Report equivalent number of games when using variance reduction
+*** Aborted rollouts show the full number of games in outputs
 ** Extend ParsePosition() to handle some sort of syntax like
   [8/5 6/5] (meaning the position after that move).  FIBS boardstyle 3 output
   might be nice, too.
