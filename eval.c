@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.172 2002/08/12 16:18:58 thyssen Exp $
+ * $Id: eval.c,v 1.173 2002/09/14 17:23:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -328,7 +328,7 @@ static randctx rc;
 
 const char *aszSettings[ NUM_SETTINGS ] = {
   N_ ("beginner"), 
-  N_ ("novice"), 
+  N_ ("casual play"), 
   N_ ("intermediate"), 
   N_ ("advanced"), 
   N_ ("expert"), 
@@ -336,8 +336,8 @@ const char *aszSettings[ NUM_SETTINGS ] = {
   N_ ("world class++") };
 
 evalcontext aecSettings[ NUM_SETTINGS ] = {
-  { 0, TRUE, 0, 0, TRUE, FALSE, 0.0 , 0.060 }, /* beginner */
-  { 0, TRUE, 0, 0, TRUE, FALSE, 0.0 , 0.050 }, /* novice */
+  { 0, TRUE, 0, 0, TRUE, FALSE, 0.0 , 0.060 }, /* casual play */
+  { 0, TRUE, 0, 0, TRUE, FALSE, 0.0 , 0.050 }, /* beginner */
   { 0, TRUE, 0, 0, TRUE, FALSE, 0.0 , 0.040 }, /* intermediate */
   { 0, TRUE, 0, 0, TRUE, FALSE, 0.0 , 0.015 }, /* advanced */
   { 0, TRUE, 0, 0, TRUE, FALSE, 0.0 , 0.0 },   /* expert */

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.14 2002/08/04 17:13:01 thyssen Exp $
+ * $Id: analysis.h,v 1.15 2002/09/14 17:23:13 thyssen Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -75,8 +75,9 @@ typedef struct _statcontext {
 } statcontext;
 
 typedef enum _ratingtype {
-  RAT_BEGINNER, RAT_NOVICE, RAT_INTERMEDIATE, RAT_ADVANCED,
-  RAT_EXPERT, RAT_WORLD_CLASS, RAT_EXTRA_TERRESTRIAL, RAT_UNDEFINED
+  RAT_AWFUL,
+  RAT_BEGINNER, RAT_CASUAL_PLAYER, RAT_INTERMEDIATE, RAT_ADVANCED,
+  RAT_EXPERT, RAT_WORLD_CLASS, RAT_SUPERNATURAL, RAT_UNDEFINED
 } ratingtype;
 
 const char *aszRating [ RAT_UNDEFINED + 1 ];

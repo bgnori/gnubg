@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.81 2002/08/16 19:05:13 thyssen Exp $
+ * $Id: analysis.c,v 1.82 2002/09/14 17:23:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -41,13 +41,14 @@
 #include "i18n.h"
 
 const char *aszRating [ RAT_UNDEFINED + 1 ] = {
+  N_("Awful!"), 
   N_("Beginner"), 
-  N_("Novice"), 
+  N_("Casual player"), 
   N_("Intermediate"), 
   N_("Advanced"), 
   N_("Expert"),
   N_("World class"), 
-  N_("Extra-terrestrial"), 
+  N_("Supernatural"), 
   N_("N/A") };
 
 const char *aszLuckRating[] = {
@@ -61,7 +62,7 @@ const char *aszLuckRating[] = {
 };
 
 static const float arThrsRating [ RAT_EXTRA_TERRESTRIAL + 1 ] = {
-  1e38, 0.030, 0.025, 0.020, 0.015, 0.010, 0.005 };
+  1e38, 0.060, 0.030, 0.025, 0.020, 0.015, 0.010, 0.005 };
 
 extern ratingtype
 GetRating ( const float rError ) {
