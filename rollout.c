@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.135 2003/10/24 10:10:47 jsegrave Exp $
+ * $Id: rollout.c,v 1.136 2003/10/24 21:19:03 jsegrave Exp $
  */
 
 #include "config.h"
@@ -148,9 +148,9 @@ void log_game_start (char *name, const cubeinfo *pci, int fCubeful,
 	   pci->fCubeOwner == 1 ? "b" : "c");
   fprintf (logfp, ";CV[%d]\n", pci->nCube);
   fprintf (logfp, ";AE[a:y]AW");
-  board_to_sgf (anBoard[0], 1);
+  board_to_sgf (anBoard[1],  1);
   fprintf (logfp, "AB");
-  board_to_sgf (anBoard[1], -1);
+  board_to_sgf (anBoard[0], -1);
   fprintf (logfp, "\n");
 }
 
