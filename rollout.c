@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.47 2001/10/29 15:12:35 gtw Exp $
+ * $Id: rollout.c,v 1.48 2001/11/01 19:23:45 gtw Exp $
  */
 
 #include "config.h"
@@ -448,7 +448,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
                       cubeinfo aci[], int afCubeDecTop[], int cci,
                       rolloutcontext *prc ) {
 
-  int anDice [ 2 ];
+  int anDice [ 2 ], cUnfinished = cci;
   cubeinfo *pci;
   cubedecision cd;
   int *pf, ici, i;
@@ -478,9 +478,8 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
     pfFinished[ ici ] = TRUE;
 
   memcpy ( pciLocal, aci, cci * sizeof (cubeinfo) );
-
-  while ( !nTruncate || iTurn < nTruncate ) {
-
+  
+  while ( ( !nTruncate || iTurn < nTruncate ) && cUnfinished ) {
     /* Cube decision */
 
     for ( ici = 0, pci = pciLocal, pf = pfFinished;
@@ -513,12 +512,9 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
         
           case DOUBLE_PASS:
           case REDOUBLE_PASS:
-
-            /* FIXME: we may check if all pfFinished are false,
-               in which case we are finished */
-
             *pf = FALSE;
-
+	    cUnfinished--;
+	    
             /* assign outputs */
 
             for ( i = 0; i <= OUTPUT_EQUITY; i++ )
@@ -585,7 +581,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
           if ( iTurn & 1 ) InvertEvaluationR ( aarOutput[ ici ], pci );
 
           *pf = FALSE;
-          
+          cUnfinished--;
         }
           
         /* Invert board and more */
