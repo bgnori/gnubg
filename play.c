@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.118 2002/03/30 16:27:58 thyssen Exp $
+ * $Id: play.c,v 1.119 2002/04/04 19:03:11 thyssen Exp $
  */
 
 #include "config.h"
@@ -884,6 +884,8 @@ extern int ComputerTurn( void ) {
         case REDOUBLE_TAKE:
         case NO_REDOUBLE_TAKE:
         case TOOGOODRE_TAKE:
+        case NODOUBLE_DEADCUBE:
+        case NO_REDOUBLE_DEADCUBE:
 
           CommandTake ( NULL );
           break;
