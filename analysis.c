@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.118 2003/07/25 18:30:40 thyssen Exp $
+ * $Id: analysis.c,v 1.119 2003/07/25 18:31:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -174,9 +174,6 @@ LuckFirst ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
       rMean += aar[ i ][ j ];
 
     }
-
-  printf( "%d %d %f %f %f\n", n0, n1, aar[ n0 ][ n1 ], aar[ n1 ][ n0 ],
-          rMean/30.0f );
 
   if ( n0 > n1 )
     return aar[ n0 ][ n1 ] - rMean / 30.0f;
