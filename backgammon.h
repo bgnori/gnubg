@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.237 2003/07/27 12:25:14 thyssen Exp $
+ * $Id: backgammon.h,v 1.238 2003/07/27 13:28:24 oysteijo Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1032,7 +1032,7 @@ basename ( const char *filename );
 
 #ifndef HAVE_DIRNAME
 extern char *
-dirname ( const char *filename );
+dirname ( char *filename );
 #endif
 
 #if USE_GTK

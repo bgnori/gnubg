@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.449 2003/07/27 12:45:20 oysteijo Exp $
+ * $Id: gnubg.c,v 1.450 2003/07/27 13:28:24 oysteijo Exp $
  */
 
 #include "config.h"
@@ -7992,7 +7992,7 @@ basename (const char *filename)
  */
 
 extern char *
-dirname (const char *path)
+dirname (char *path)
 {
   static const char dot[] = ".";
   char *last_slash;
