@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.16 2002/07/27 10:55:42 thyssen Exp $
+ * $Id: dice.c,v 1.17 2002/07/29 15:58:35 thyssen Exp $
  */
 
 #include "config.h"
@@ -34,6 +34,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include <assert.h>
 
 #if TIME_WITH_SYS_TIME
 #include <sys/time.h>
@@ -534,7 +535,3 @@ extern void UserRNGClose() {
 }
 
 #endif /* HAVE_LIBDL */
-
-
-
-
