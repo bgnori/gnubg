@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.68 2002/05/04 21:17:31 joseph Exp $
+ * $Id: rollout.c,v 1.69 2002/05/21 11:27:41 thyssen Exp $
  */
 
 #include "config.h"
@@ -832,11 +832,16 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
 	  aarResult[ ici ][ j ] += aar[ ici ][ j ];
 	  rMuNew = aarResult[ ici ][ j ] / ( i + 1 );
 	  
-	  rDelta = rMuNew - aarMu[ ici ][ j ];
+          if ( i ) {
+
+             /* for i=0 aarVariance is not defined */
+
+	     rDelta = rMuNew - aarMu[ ici ][ j ];
 	  
-	  aarVariance[ ici ][ j ] =
-            aarVariance[ ici ][ j ] * ( 1.0 - 1.0 / ( i + 1 ) ) +
-	      ( i + 2 ) * rDelta * rDelta;
+      	     aarVariance[ ici ][ j ] =
+               aarVariance[ ici ][ j ] * ( 1.0 - 1.0 / ( i + 1 ) ) +
+	         ( i + 2 ) * rDelta * rDelta;
+          }
 	  
 	  aarMu[ ici ][ j ] = rMuNew;
 	  
