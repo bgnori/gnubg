@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.317 2002/10/16 17:33:33 thyssen Exp $
+ * $Id: gnubg.c,v 1.318 2002/10/21 17:26:22 thyssen Exp $
  */
 
 #include "config.h"
@@ -1006,9 +1006,9 @@ command cER = {
     N_("Set priority to NORMAL_PRIORITY_CLASS"), NULL, NULL },
   { "abovenormal", CommandSetPriorityAboveNormal,
     N_("Set priority to ABOVE_NORMAL_PRIORITY_CLASS"), NULL, NULL },
-  { "high", CommandSetPriorityHighest, 
+  { "highest", CommandSetPriorityHighest, 
     N_("Set priority to HIGHEST_PRIORITY_CLASS"), NULL, NULL },
-  { "realtime", CommandSetPriorityTimeCritical,
+  { "timecritical", CommandSetPriorityTimeCritical,
     N_("Set priority to TIME_CRITICAL_PRIORITY_CLASS"), NULL, NULL },
   { NULL, NULL, NULL, NULL, NULL }
 #endif /* WIN32 */
