@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.133 2003/07/31 16:00:08 thyssen Exp $
+ * $Id: gtkboard.c,v 1.134 2003/08/03 17:16:28 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -539,7 +539,7 @@ ReturnHits( int anBoard[ 2 ][ 25 ] ) {
       break;
 
   if ( j >= 0 ) {
-    char *pch = g_malloc( 3 * ( j + 1 ) + 20 );
+    char *pch = g_malloc( 3 * ( j + 1 ) + 200 );
     strcpy( pch, "" );
     for ( i = 0; i <= j; ++i )
       if ( aiHit[ i ] )
