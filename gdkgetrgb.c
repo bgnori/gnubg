@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gdkgetrgb.c,v 1.2 2001/03/12 16:10:56 gtw Exp $
+ * $Id: gdkgetrgb.c,v 1.3 2001/03/29 16:26:54 gtw Exp $
  */
 
 #include <gdk/gdk.h>
@@ -114,4 +114,6 @@ gdk_get_rgb_image( GdkDrawable *drawable,
 
 	rgb_buf += rowstride;
     }
+
+    gdk_image_destroy( image );
 }
