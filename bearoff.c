@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.32 2004/03/29 07:44:17 thyssen Exp $
+ * $Id: bearoff.c,v 1.33 2004/04/29 18:45:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -2076,7 +2076,7 @@ GetDistCompressed ( bearoffcontext *pbc, const unsigned int nPosID ) {
 
   /* Sanity checks */
 
-  if ( iOffset < 0 || iOffset > 64 * nPos || 
+  if ( iOffset < 0 || ( iOffset > 64 * nPos && 64 * nPos > 0 ) || 
        nz > 32 || ioff > 32 || 
        nzg > 32 || ioffg > 32) {
     fprintf( stderr, 
