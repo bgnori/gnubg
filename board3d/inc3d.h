@@ -18,8 +18,10 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.7 2003/08/29 09:41:41 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.8 2003/08/29 12:37:09 jsegrave Exp $
 */
+#ifndef _INC3D_H_
+#define _INC3D_H_
 
 #include <gtk/gtk.h>
 #include "config.h"
@@ -136,3 +138,10 @@ void CheckOpenglError();
 
 typedef int idleFunc(BoardData* bd);
 void setIdleFunc(BoardData* bd, idleFunc* pFun);
+
+#if HAVE_GTKGLEXT
+#include <gdk/gdkgltypes.h>
+GdkGLConfig *glconfig;
+#endif
+
+#endif

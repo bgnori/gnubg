@@ -18,8 +18,11 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: shadow.h,v 1.2 2003/08/13 11:52:29 Superfly_Jon Exp $
+* $Id: shadow.h,v 1.3 2003/08/29 12:37:09 jsegrave Exp $
 */
+
+#ifndef _SHADOW_H_
+#define _SHADOW_H_
 
 extern void initOccluder(Occluder* Occ);
 extern void freeOccluder(Occluder* Occ);
@@ -41,3 +44,5 @@ extern void addWonkyCube(Occluder* pOcc, float x, float y, float z, float w, flo
 extern void addCylinder(Occluder* pOcc, float x, float y, float z, float r, float d, int a);
 extern void addHalfTube(Occluder* pOcc, float r, float h, int a);
 extern void addDice(Occluder* pOcc, float size);
+
+#endif

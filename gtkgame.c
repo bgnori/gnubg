@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.402 2003/08/29 09:41:40 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.403 2003/08/29 12:37:09 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -40,6 +40,7 @@
 #if HAVE_GDK_GDKX_H
 #include <gdk/gdkx.h> /* for ConnectionNumber GTK_DISPLAY -- get rid of this */
 #endif
+#include <gtk/gtktext.h>
 
 #if HAVE_STROPTS_H
 #include <stropts.h>  /* I_SETSIG, S_RDNORM under solaris */
@@ -8623,7 +8624,7 @@ extern void GTKDumpStatcontext( int game )
 	GtkWidget *pw;
 	list *pl;
 	int i;
-#endif;
+#endif
 	pwStatDialog = GTKCreateDialog( "", DT_INFO, NULL, NULL );
 
 	pwNotebook = gtk_notebook_new();
