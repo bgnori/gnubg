@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.128 2002/06/02 16:40:41 thyssen Exp $
+ * $Id: play.c,v 1.129 2002/06/27 19:12:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -877,7 +877,7 @@ extern int ComputerTurn( void ) {
           /* Note, this should not happen as the computer plays
              "perfectly"!! */
 
-          if ( arOutput[ OUTPUT_TAKE ] <= -1.0 )
+          if ( arDouble[ OUTPUT_TAKE ] <= -1.0 )
             /* drop beaver */
             CommandDrop ( NULL );
           else
