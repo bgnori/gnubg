@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.90 2002/03/14 20:02:56 thyssen Exp $
+ * $Id: set.c,v 1.91 2002/03/14 20:21:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -1775,6 +1775,8 @@ extern void CommandSetOutputWinPC( char *sz ) {
 }
 
 extern void CommandSetMET( char *sz ) {
+
+  sz = NextToken ( &sz );
 
   InitMatchEquity ( sz );
 
