@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.189 2002/03/14 20:00:27 thyssen Exp $
+ * $Id: gnubg.c,v 1.190 2002/03/16 19:05:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -714,7 +714,7 @@ command cER = {
       "engine", NULL, NULL },
     { "evaluation", CommandShowEvaluation, "Display evaluation settings "
       "and statistics", NULL, NULL },
-    { "gammonprice", CommandShowGammonPrice, "Show gammon price",
+    { "gammonvalues", CommandShowGammonValues, "Show gammon values",
       NULL, NULL },
     { "egyptian", CommandShowEgyptian,
       "See if the Egyptian rule is used in sessions", NULL, NULL },
