@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.67 2005/01/04 09:27:34 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.68 2005/02/07 17:51:32 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -26,8 +26,7 @@
 #include "backgammon.h"
 
 #if USE_BOARD3D
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include "board3d/glincl.h"
 #include "board3d/mylist.h"
 #endif
 
