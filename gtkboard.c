@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.187 2004/07/11 07:33:27 kaoru Exp $
+ * $Id: gtkboard.c,v 1.188 2004/07/14 10:56:29 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -133,7 +133,7 @@ static int intersects( int x0, int y0, int cx0, int cy0,
 
 void board_beep( BoardData *bd )
 {
-    if( fGUIIllegal )
+    if( fGUIIllegal && fGUIBeep)
 	gdk_beep();
 }
 
