@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.10 2002/03/21 23:06:42 gtw Exp $
+ * $Id: latex.c,v 1.11 2002/03/30 16:27:57 thyssen Exp $
  */
 
 #include "config.h"
@@ -410,13 +410,14 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 	    
 	    PrintLaTeXCubeAnalysis( pf, &msExport, pmr->n.fPlayer,
 				    pmr->n.arDouble, &pmr->n.esDouble );
+            /* FIXME: output cube skill */
 
 	    sprintf( sz, "%s %d%d%s: ", PlayerSymbol( pmr->n.fPlayer ),
 		     pmr->n.anRoll[ 0 ], pmr->n.anRoll[ 1 ],
 		     aszLuckTypeLaTeXAbbr[ pmr->n.lt ] );
 	    FormatMove( strchr( sz, 0 ), msExport.anBoard, pmr->n.anMove );
 	    fprintf( pf, "\\begin{center}%s%s\\end{center}\n\n", sz,
-		     aszSkillTypeAbbr[ pmr->n.st ] );
+		     aszSkillTypeAbbr[ pmr->n.stMove ] );
 
 	    /* FIXME use center and tabular environment instead of verbatim */
 	    fputs( "{\\footnotesize\\begin{verbatim}\n", pf );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.11 2002/03/28 12:14:50 thyssen Exp $
+ * $Id: html.c,v 1.12 2002/03/30 16:27:57 thyssen Exp $
  */
 
 #include "config.h"
@@ -637,7 +637,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szID[] = "$Id: html.c,v 1.11 2002/03/28 12:14:50 thyssen Exp $";
+  const char szID[] = "$Id: html.c,v 1.12 2002/03/30 16:27:57 thyssen Exp $";
 
   /* add links to other games */
 
@@ -1097,12 +1097,12 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
   /* print alerts */
 
-  if ( pmr->n.st <= SKILL_BAD || pmr->n.st > SKILL_NONE ) {
+  if ( pmr->n.stMove <= SKILL_BAD || pmr->n.stMove > SKILL_NONE ) {
 
     /* blunder or error */
 
     fprintf ( pf, "<p><span class=\"blunder\">Alert: %s move",
-              aszSkillType[ pmr->n.st ] );
+              aszSkillType[ pmr->n.stMove ] );
     
     if ( !pms->nMatchTo || ( pms->nMatchTo && ! fOutputMWC ) )
       fprintf ( pf, " (%+7.3f)</span></p>\n",

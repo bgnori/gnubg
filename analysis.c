@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.52 2002/03/28 23:30:51 thyssen Exp $
+ * $Id: analysis.c,v 1.53 2002/03/30 16:27:57 thyssen Exp $
  */
 
 #include "config.h"
@@ -430,6 +430,8 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, statcontext *psc,
           rSkill = pmr->n.arDouble[ OUTPUT_NODOUBLE ] -
             pmr->n.arDouble[ OUTPUT_OPTIMAL ];
 	      
+	    pmr->n.stCube = Skill( rSkill );
+
 	} else
           pmr->n.esDouble.et = EVAL_NONE;
 
@@ -477,13 +479,10 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, statcontext *psc,
 		    rChequerSkill = pmr->n.ml.amMoves[ pmr->n.iMove ].
 			rScore - pmr->n.ml.amMoves[ 0 ].rScore;
 		  
-		    if( rChequerSkill < rSkill )
-			rSkill = rChequerSkill;
-		  
 		    break;
 		}
 	  
-	    pmr->n.st = Skill( rSkill );
+	    pmr->n.stMove = Skill( rChequerSkill );
 	  
 	    if( cAnalysisMoves >= 2 &&
 		pmr->n.ml.cMoves > cAnalysisMoves ) {

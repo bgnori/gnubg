@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.34 2002/03/19 18:17:04 oysteijo Exp $
+ * $Id: sgf.c,v 1.35 2002/03/30 16:27:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -710,7 +710,9 @@ static void RestoreNode( list *pl ) {
 	    if( ppA )
 		RestoreMoveAnalysis( ppA, pmr->n.fPlayer, &pmr->n.ml,
 				     &pmr->n.iMove, &pmr->n.esChequer );
-	    pmr->n.st = st;
+            /* FIXME: separate st's */
+	    pmr->n.stMove = st;
+	    pmr->n.stCube = st;
 	    pmr->n.lt = fPlayer ? lt : LUCK_VERYGOOD - lt;
 	    pmr->n.rLuck = rLuck;
 	    break;
@@ -1193,7 +1195,8 @@ static void SaveGame( FILE *pf, list *plGame ) {
 				   pmr->n.iMove );
 
 	    WriteLuck( pf, pmr->n.fPlayer, pmr->n.rLuck, pmr->n.lt );
-	    WriteSkill( pf, pmr->n.st );
+            /* FIXME: separate skill for cube and move */
+	    WriteSkill( pf, pmr->n.stMove );
 	    
 	    break;
 	    
