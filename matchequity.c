@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.38 2003/08/13 11:52:28 Superfly_Jon Exp $
+* $Id: matchequity.c,v 1.39 2003/09/04 16:26:12 thyssen Exp $
 */
 
 #include <stdio.h>
@@ -190,6 +190,9 @@ initPostCrawfordMET ( float afMETPostCrawford[ MAXSCORE ],
       + (1.0 - rG) * 0.5 * 
       ( (i-2 >=0) ? afMETPostCrawford[ i-2 ] : 1.0 );
 
+    assert( afMETPostCrawford[ i ] >= 0.0f &&
+            afMETPostCrawford[ i ] <= 1.0f && 
+            "insane post crawford equity" );
     /*
      * add 1.5% at 1-away, 2-away for the free drop
      * add 0.4% at 1-away, 4-away for the free drop
@@ -198,9 +201,16 @@ initPostCrawfordMET ( float afMETPostCrawford[ MAXSCORE ],
     if ( i == 1 )
       afMETPostCrawford[ i ] -= rFD2;
 
+    assert( afMETPostCrawford[ i ] >= 0.0f &&
+            afMETPostCrawford[ i ] <= 1.0f && 
+            "insane post crawford equity(1)" );
+
     if ( i == 3 )
       afMETPostCrawford[ i ] -= rFD4;
 
+    assert( afMETPostCrawford[ i ] >= 0.0f &&
+            afMETPostCrawford[ i ] <= 1.0f && 
+            "insane post crawford equity(2)" );
   }
 
 
