@@ -28,7 +28,7 @@
  *
  *     gcc -DMEC_STANDALONE mec.c -o mec
  *
- * $Id: mec.c,v 1.1 2004/04/16 20:06:28 thyssen Exp $
+ * $Id: mec.c,v 1.2 2004/04/19 09:28:28 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -181,7 +181,7 @@ mec_pc( const float rGammonRate,
         const float rWinRate,
         float arMetPC[ MAXSCORE ] ) {
 
-  int i, j;
+  int i;
 
    /* match length */
 

@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.46 2004/04/16 20:06:01 thyssen Exp $
+* $Id: matchequity.c,v 1.47 2004/04/19 09:28:28 Superfly_Jon Exp $
 */
 
 #include <stdio.h>
@@ -1088,7 +1088,6 @@ initPostCrawfordMETFromParameters ( float afMETPostCrawford[ MAXSCORE ],
     float rWR = 0.5;
     list *pl;
     parameter *pp;
-    int i;
 
     /* obtain parameters */
 

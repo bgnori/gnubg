@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.157 2004/04/17 09:00:02 thyssen Exp $
+ * $Id: html.c,v 1.158 2004/04/19 09:28:28 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -173,7 +173,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-           "/* $Id: html.c,v 1.157 2004/04/17 09:00:02 thyssen Exp $ */\n",
+           "/* $Id: html.c,v 1.158 2004/04/19 09:28:28 Superfly_Jon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1850,7 +1850,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.157 $";
+  const char szVersion[] = "$Revision: 1.158 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1931,7 +1931,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.157 $";
+  const char szVersion[] = "$Revision: 1.158 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3101,7 +3101,7 @@ HTMLPrintMI( FILE *pf, const char *szTitle, const char *sz ) {
            "<td style=\"padding-right: 2em\">%s</td><td>", szTitle );
 
   ppch = g_strsplit( sz, "\n", -1 );
-  for ( i = 0; pchToken = ppch[ i ]; ++i ) {
+  for ( i = 0; (pchToken = ppch[ i ]) ; ++i ) {
     if ( i )
       fputs( "<br />\n", pf );
     fputs( pchToken, pf );
