@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.37 2000/08/13 09:57:47 thyssen Exp $
+ * $Id: backgammon.h,v 1.38 2000/10/08 12:23:46 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -163,6 +163,7 @@ extern command acDatabase[], acNew[], acSave[], acSetAutomatic[],
 
 extern void CommandAccept( char * ),
     CommandAgree( char * ),
+    CommandAnalysis ( char * ),
     CommandDatabaseDump( char * ),
     CommandDatabaseRollout( char * ),
     CommandDatabaseGenerate( char * ),
@@ -216,6 +217,7 @@ extern void CommandAccept( char * ),
     CommandSetEvaluation( char * ),
     CommandSetJacoby( char * ),
     CommandSetNackgammon( char * ),
+    CommandSetOutputMWC ( char * ),
     CommandSetPlayerEvaluation( char * ),
     CommandSetPlayerGNU( char * ),
     CommandSetPlayerHuman( char * ),
@@ -252,7 +254,10 @@ extern void CommandAccept( char * ),
     CommandShowDisplay( char * ),
     CommandShowEvaluation( char * ),
     CommandShowJacoby( char * ),
+    CommandShowGammonPrice( char * ),
     CommandShowNackgammon( char * ),
+    CommandShowMatchEquityTable( char * ),
+    CommandShowOutputMWC ( char * ),
     CommandShowPipCount( char * ),
     CommandShowPostCrawford( char * ),
     CommandShowPlayer( char * ),
