@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.15 2000/01/15 17:38:21 gtw Exp $
+ * $Id: backgammon.h,v 1.16 2000/01/16 00:56:12 joseph Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -101,7 +101,9 @@ extern void ShowBoard( void );
 extern void CommandAccept( char * ),
     CommandAgree( char * ),
     CommandDatabaseDump( char * ),
+#if HAVE_LIBGDBM
     CommandDatabaseRollout( char * ),
+#endif
     CommandDatabaseGenerate( char * ),
     CommandDatabaseTrain( char * ),
     CommandDecline( char * ),

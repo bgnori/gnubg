@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.19 2000/01/15 17:38:21 gtw Exp $
+ * $Id: gnubg.c,v 1.20 2000/01/16 00:56:12 joseph Exp $
  */
 
 #include "config.h"
@@ -91,8 +91,10 @@ player ap[ 2 ] = {
 static command acDatabase[] = {
     { "dump", CommandDatabaseDump, "List the positions in the database",
       NULL },
+#if HAVE_LIBGDBM
     { "rollout", CommandDatabaseRollout, "Evaluate positions in database "
       "for future training", NULL },
+#endif
     { "generate", CommandDatabaseGenerate, "Generate database positions by "
       "self-play", NULL },
     { "train", CommandDatabaseTrain, "Train the network from a database of "
