@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.17 2003/01/22 18:26:06 gtw Exp $
+ * $Id: sound.c,v 1.18 2003/01/23 22:41:01 gtw Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -822,8 +822,12 @@ play_file_child(soundcache *psc, const char *filename) {
         char *args[4];
         char command[4096];
 
+#if USE_GTK
         g_snprintf(command, sizeof(command), szSoundCommand, filename);
-        
+#else
+	sprintf( command, szSoundCommand, filename );
+#endif
+	
         args[0] = "sh";
         args[1] = "-c";
         args[2] = command;
