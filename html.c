@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.103 2003/04/08 20:54:34 thyssen Exp $
+ * $Id: html.c,v 1.104 2003/05/03 08:11:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -1850,7 +1850,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.103 $";
+  const char szVersion[] = "$Revision: 1.104 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1931,7 +1931,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.103 $";
+  const char szVersion[] = "$Revision: 1.104 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2189,9 +2189,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
               _("Money"), 
               OutputMoneyEquity ( aarOutput[ 0 ], TRUE ) );
   else
-    fprintf ( pf, " %s</td><td>%s</td><td>&nbsp;</td>\n",
-              ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) ?
-              _("cubeless equity") : _("cubeless MWC"),
+    fprintf ( pf, " cubeless equity</td><td>%s</td><td>&nbsp;</td>\n",
               OutputMoneyEquity ( aarOutput[ 0 ], TRUE ) );
 
 

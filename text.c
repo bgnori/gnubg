@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.38 2003/04/04 20:41:59 thyssen Exp $
+ * $Id: text.c,v 1.39 2003/05/03 08:11:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -659,7 +659,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.38 $";
+  const char szVersion[] = "$Revision: 1.39 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -871,9 +871,7 @@ OutputCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
               _("Money"), 
               OutputMoneyEquity ( aarOutput[ 0 ], TRUE ) );
   else
-    sprintf ( pc = strchr ( sz, 0 ), " %s %s\n",
-              ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) ?
-              _("cubeless equity") : _("cubeless MWC"),
+    sprintf ( pc = strchr ( sz, 0 ), " cubeless equity %s\n",
               OutputMoneyEquity ( aarOutput[ 0 ], TRUE ) );
 
 
