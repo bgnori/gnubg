@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.387 2003/03/05 11:29:57 jsegrave Exp $
+ * $Id: gnubg.c,v 1.388 2003/03/08 08:04:49 thyssen Exp $
  */
 
 #include "config.h"
@@ -7392,6 +7392,8 @@ extern char *
 Convert ( const char *sz, 
           const char *szDestCharset, const char *szSourceCharset ) {
 
+#if HAVE_ICONV
+
   iconv_t id;
   int lIn, lOut, l, rc, nUsed;
   const char *pchIn;
@@ -7465,6 +7467,12 @@ Convert ( const char *sz,
     outputerr ( "iconv_close" );
 
   return pchDest;
+
+#else /* HAVE_ICONV */
+
+  return strdup( sz );
+
+#endif /* ! HAVE_ICONV */
 
 }
 
