@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.16 2000/02/02 21:35:07 gtw Exp $
+ * $Id: set.c,v 1.17 2000/02/04 17:07:33 gtw Exp $
  */
 
 #include "config.h"
@@ -360,10 +360,13 @@ extern void CommandSetDelay( char *sz ) {
 	    return;
 	}
 
-	if( n )
+	if( n ) {
 	    printf( "All moves will be shown for at least %d millisecond%s.\n",
 		    n, n > 1 ? "s" : "" );
-	else
+	    if( !fDisplay )
+		puts( "(You will also need to use `set display' to turn "
+		      "board updates on -- see `help set display'.)" );
+	} else
 	    puts( "Moves will not be delayed." );
 	
 	nDelay = n;
