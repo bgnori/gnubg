@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.29 2002/06/04 07:11:46 thyssen Exp $
+ * $Id: html.c,v 1.30 2002/06/06 20:47:22 gtw Exp $
  */
 
 #include "config.h"
@@ -1350,7 +1350,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.29 $";
+  const char szVersion[] = "$Revision: 1.30 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2379,7 +2379,6 @@ extern void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
               "<th>%s</th><th>%s</th><th>%s</th>\n"
               "</tr>\n",
               _("Player"), 
-              iGame,
               ap[ 0 ].szName, ap[ 1 ].szName );
   }
   else {
