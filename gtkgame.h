@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.83 2004/06/04 17:51:03 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.84 2004/06/16 12:02:59 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -207,3 +207,5 @@ extern void
 GTKShowManual( void );
 
 #endif
+
+extern void GetStyleFromRCFile(GtkStyle** ppStyle, char* name, GtkStyle* psBase);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.187 2004/06/04 17:51:03 Superfly_Jon Exp $
+ * $Id: show.c,v 1.188 2004/06/16 12:02:59 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2060,15 +2060,6 @@ CommandShowGeometry ( char *sz )
 		output(szBuf);
 	}
 }
-
-extern void CommandShowHighlightColour ( char *sz ) {
-
-  outputf ( _("Moves will be highlighted in %s %s.\n"),
-              HighlightIntensity == 2 ? "dark" :
-              HighlightIntensity == 1 ? "medium" : "",
-			  HighlightColour->colourname);
-}
-
 
 
 #if USE_SOUND

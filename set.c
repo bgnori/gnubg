@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.238 2004/06/09 14:03:18 Superfly_Jon Exp $
+ * $Id: set.c,v 1.239 2004/06/16 12:02:59 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4017,75 +4017,6 @@ CommandSetGeometryPosY ( char *sz ) {
 
   }
 
-}
-
-int *Highlightrgb = HighlightColourTable[13].rgbs[0];
-
-extern void
-CommandSetHighlightColour ( char *sz ) {
-
-    char *pch = NextToken( &sz );
-    int i, j, n;
-
-    if( !pch ) {
-	outputf( _("You must specify a colour "
-			   "-- try `help set %s'.\n"), szSetCommand );
-	
-	return;
-    }
-
-  if( (i = ParseHighlightColour( pch )) < 0 ) {
-    outputf (_("Unknown colour '%s' -- try `help set %s colour'.\n"), 
-			 sz, szSetCommand );
-	return;
-  }
-
-  HighlightColour = &HighlightColourTable[i];
-  Highlightrgb = &HighlightColourTable[i].rgbs[HighlightIntensity][0];
-  if (i == 0) {
-	/* custom rgb */
-	for (j = 0; j < 3; ++j) {
-	  if (( n = ParseNumber( &sz ) ) == INT_MIN )
-		return;
-
-	  Highlightrgb[j] = n;
-	}
-  }
-}
-
-extern void
-CommandSetHighlight ( char *sz ) {
-
-  HandleCommand ( sz, acSetHighlightIntensity );
-
-}
-
-
-extern void
-CommandSetHighlightLight ( char *sz ) {
-
-    szSetCommand = "highlightcolour light";
-
-    HighlightIntensity = 0;
-    CommandSetHighlightColour ( sz );
-}
-
-extern void
-CommandSetHighlightMedium ( char *sz ) {
-
-    szSetCommand = "highlightcolour medium";
-    
-    HighlightIntensity = 1;
-    CommandSetHighlightColour ( sz );
-}
-
-extern void
-CommandSetHighlightDark ( char *sz ) {
-
-    szSetCommand = "highlightcolour dark";
-    
-    HighlightIntensity = 2;
-    CommandSetHighlightColour ( sz );
 }
 
 

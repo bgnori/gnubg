@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.55 2004/04/01 11:10:07 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.56 2004/06/16 12:02:59 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -132,33 +132,21 @@ UpdateMoveList ( const hintdata *phd ) {
   }
 
   /* highlight row */
-
-  if( piHighlight && *piHighlight >= 0 ) {
-    GtkStyle *ps;
-    GtkStyle *psMoves = gtk_widget_get_style( pwMoves );
-
-    if ( psMoves && ( ps = gtk_style_copy( psMoves ) ) ) {
-    
-      ps->fg[ GTK_STATE_NORMAL ].red = ps->fg[ GTK_STATE_ACTIVE ].red =
-        ps->fg[ GTK_STATE_SELECTED ].red = Highlightrgb[0];
-      ps->fg[ GTK_STATE_NORMAL ].green = ps->fg[ GTK_STATE_ACTIVE ].green =
-        ps->fg[ GTK_STATE_SELECTED ].green = Highlightrgb[1];
-      ps->fg[ GTK_STATE_NORMAL ].blue = ps->fg[ GTK_STATE_ACTIVE ].blue =
-        ps->fg[ GTK_STATE_SELECTED ].blue = Highlightrgb[2];
-
-      for ( i = 0; i < pml->cMoves; i++ )
-	gtk_clist_set_row_style( GTK_CLIST( pwMoves ), i, i == *piHighlight ?
-				 ps : NULL );
-      
-      gtk_style_unref( ps );
-
+  if( piHighlight && *piHighlight >= 0 )
+  {
+    static GtkStyle *psHighlight = NULL;
+    if (!psHighlight)
+    {	/* Get highlight style first time in */
+      GtkStyle *psMoves = gtk_widget_get_style( pwMoves );
+      GetStyleFromRCFile(&psHighlight, "move", psMoves);
     }
+    for ( i = 0; i < pml->cMoves; i++ )
+      gtk_clist_set_row_style( GTK_CLIST( pwMoves ), i, i == *piHighlight ?
+				 psHighlight : NULL );
   }
 
   /* update storedmoves global struct */
-
   UpdateStoredMoves ( pml, &ms );
-
 }
 
 
