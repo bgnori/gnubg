@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.58 2001/04/12 16:43:18 gtw Exp $
+ * $Id: show.c,v 1.59 2001/04/13 16:25:39 gtw Exp $
  */
 
 #include "config.h"
@@ -113,11 +113,21 @@ static void ShowPaged( char **ppch ) {
 }
 
 extern void CommandShowAnalysis( char *sz ) {
-    
-    if( cAnalysisMoves < 0 )
-	outputl( "Every legal move will be analysed." );
-    else
-	outputf( "Up to %d moves will be analysed.\n", cAnalysisMoves );
+
+    outputl( fAnalyseCube ? "Cube action will be analysed." :
+	     "Cube action will not be analysed." );
+
+    outputl( fAnalyseDice ? "Dice rolls will be analysed." :
+	     "Dice rolls will not be analysed." );
+
+    if( fAnalyseMove ) {
+	outputl( "Chequer play will be analysed." );
+	if( cAnalysisMoves < 0 )
+	    outputl( "Every legal move will be analysed." );
+	else
+	    outputf( "Up to %d moves will be analysed.\n", cAnalysisMoves );
+    } else
+	outputl( "Chequer play will not be analysed." );
 }
 
 extern void CommandShowAutomatic( char *sz ) {

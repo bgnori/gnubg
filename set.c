@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.59 2001/04/12 16:43:18 gtw Exp $
+ * $Id: set.c,v 1.60 2001/04/13 16:25:39 gtw Exp $
  */
 
 #include "config.h"
@@ -149,6 +149,14 @@ static void SetRNG( rng rngNew, char *szSeed ) {
     }
 }
 
+extern void CommandSetAnalysisCube( char *sz ) {
+
+    if( SetToggle( "analysis cube", &fAnalyseCube, sz,
+		   "Cube action will be analysed.",
+		   "Cube action will not be analysed." ) >= 0 )
+	UpdateSetting( &fAnalyseCube );
+}
+
 extern void CommandSetAnalysisLimit( char *sz ) {
     
     int n;
@@ -164,6 +172,26 @@ extern void CommandSetAnalysisLimit( char *sz ) {
 		 "it must be at least 2." );
 	return;
     }
+
+    if( !fAnalyseMove )
+	outputl( "(Note that no moves will be analysed until enable chequer "
+		 "play analysis -- see\n`help set analysis moves'.)" );
+}
+
+extern void CommandSetAnalysisLuck( char *sz ) {
+
+    if( SetToggle( "analysis luck", &fAnalyseDice, sz,
+		   "Dice rolls will be analysed.",
+		   "Dice rolls will not be analysed." ) >= 0 )
+	UpdateSetting( &fAnalyseDice );
+}
+
+extern void CommandSetAnalysisMoves( char *sz ) {
+
+    if( SetToggle( "analysis moves", &fAnalyseMove, sz,
+		   "Chequer play will be analysed.",
+		   "Chequer play will not be analysed." ) >= 0 )
+	UpdateSetting( &fAnalyseMove );
 }
 
 extern void CommandSetAnnotation( char *sz ) {
