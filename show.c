@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.102 2002/08/04 10:27:47 thyssen Exp $
+ * $Id: show.c,v 1.103 2002/08/05 15:45:51 oysteijo Exp $
  */
 
 #include "config.h"
@@ -1492,7 +1492,7 @@ outputl(_("Tutor mode evaluates moves using the same settings as Analysis.") );
 
 }
 
-
+#ifdef USE_GTK
 extern void
 CommandShowGeometry ( char *sz ) {
 
@@ -1519,3 +1519,4 @@ CommandShowGeometry ( char *sz ) {
             awg[ WINDOW_HINT ].nPosY );
 
 }
+#endif

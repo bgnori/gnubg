@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.51 2002/08/04 17:14:12 thyssen Exp $
+ * $Id: html.c,v 1.52 2002/08/05 15:45:51 oysteijo Exp $
  */
 
 #include "config.h"
@@ -1550,7 +1550,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.51 $";
+  const char szVersion[] = "$Revision: 1.52 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2612,12 +2612,10 @@ extern void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
       printStatTableRow2 ( pf, 
                            _( "Luck rate (pr. move)"), 
                            "%+6.3f", "%+7.3f%%",
-                           psc->anTotalMoves[ 0 ],
                            psc->arLuck[ 0 ][ 0 ] /
                            psc->anTotalMoves[ 0 ],
                            psc->arLuck[ 0 ][ 1 ] * 100.0f /
                            psc->anTotalMoves[ 0 ],
-                           psc->anTotalMoves[ 1 ],
                            psc->arLuck[ 1 ][ 0 ] /
                            psc->anTotalMoves[ 1 ],
                            psc->arLuck[ 1 ][ 1 ] * 100.0f /
