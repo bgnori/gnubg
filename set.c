@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.27 2000/08/13 09:57:48 thyssen Exp $
+ * $Id: set.c,v 1.28 2000/08/14 11:46:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -504,12 +504,9 @@ extern void CommandSetEvalReduced( char *sz ) {
 
     }
 
-    if ( n == 21 ) 
+    if ( n == 0 || n == 21 )
       pecSet->nReduced = 0;
-    else
-      pecSet->nReduced = n;
-
-    if ( n <= 7 )
+    else if ( n <= 7 )
       pecSet->nReduced = 7;
     else if ( n <= 11 )
       pecSet->nReduced = 11;
