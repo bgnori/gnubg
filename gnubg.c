@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.37 2000/05/09 09:19:30 thyssen Exp $
+ * $Id: gnubg.c,v 1.38 2000/06/08 20:46:13 oysteijo Exp $
  */
 
 #include "config.h"
@@ -241,6 +241,8 @@ static command acDatabase[] = {
       "and statistics", NULL },
     { "jacoby", CommandShowJacoby, 
       "See if the Jacoby rule is used in money sessions", NULL },
+    { "kleinmann", CommandShowKleinmann, "Calculate Kleinmann count at "
+      "current position", NULL },
     { "pipcount", CommandShowPipCount, "Count the number of pips each player "
       "must move to bear off", NULL },
     { "player", CommandShowPlayer, "View per-player options", NULL },

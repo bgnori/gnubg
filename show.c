@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.14 2000/05/04 12:28:40 thyssen Exp $
+ * $Id: show.c,v 1.15 2000/06/08 20:46:13 oysteijo Exp $
  */
 
 #include "config.h"
@@ -334,3 +334,29 @@ extern void CommandShowWarranty( char *sz ) {
 
     ShowPaged( aszWarranty );
 }
+
+extern void CommandShowKleinmann( char *sz ) {
+
+    int anPips[ 2 ], an[ 2 ][ 25 ];
+    float KC;
+
+    if( !sz && !*sz && fTurn == -1 ) {
+        puts( "No position specified and no game in progress." );
+        return;
+    }
+ 
+    if( ParsePosition( an, sz ) ) {
+        puts( "Illegal position." );
+
+        return;
+    }
+     
+    PipCount( an, anPips );
+ 
+    KC = KleinmannCount (anPips[1], anPips[0]);
+    if (KC == -1.0)
+        printf ("Pipcount unsuitable for Kleinmann Count.\n");
+    else
+        printf ("Cubeless Winning Chance: %f\n", KC);
+ }
+
