@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.92 2004/05/08 09:10:26 Superfly_Jon Exp $
+ * $Id: import.c,v 1.93 2004/05/27 17:08:22 thyssen Exp $
  */
 
 #include "config.h"
@@ -687,13 +687,17 @@ static void ParseMatMove( char *sz, int iPlayer ) {
 	if( ms.gs == GAME_PLAYING ) {
 	    /* Neither a drop nor a bearoff to win, so we presume the loser
 	       resigned. */
+            int n = atoi( sz + 4 );
             pmr = NewMoveRecord();
 	    pmr->mt = MOVE_RESIGN;
 	    pmr->fPlayer = !iPlayer;
-	    if( ( pmr->r.nResigned = atoi( sz + 4 ) / ms.nCube ) < 1 )
-		pmr->r.nResigned = 1;
-	    else if( pmr->r.nResigned > 3 )
-		pmr->r.nResigned = 3;
+            if ( n <= ms.nCube )
+               pmr->r.nResigned = 1;
+            else if ( n <= 2 * ms.nCube )
+               pmr->r.nResigned = 2;
+            else
+               pmr->r.nResigned = 3;
+
 	    AddMoveRecord( pmr );
 	}
     } else if( !fWarned ) {
