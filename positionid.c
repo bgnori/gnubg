@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.23 2002/11/06 17:33:27 joseph Exp $
+ * $Id: positionid.c,v 1.24 2002/11/11 18:26:47 joseph Exp $
  */
 
 #include <assert.h>
@@ -276,7 +276,7 @@ EqualKeys( const unsigned char auch0[ 10 ], const unsigned char auch1[ 10 ] ) {
     
     return 1;
 }
-
+ 
 extern int EqualBoards( int anBoard0[ 2 ][ 25 ], int anBoard1[ 2 ][ 25 ] ) {
 
     int i;

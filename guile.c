@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.27 2002/09/18 19:18:51 gtw Exp $
+ * $Id: guile.c,v 1.28 2002/11/11 18:26:47 joseph Exp $
  */
 
 #include "config.h"
@@ -303,7 +303,7 @@ static SCM evaluate_position_cubeful( SCM sBoard, SCM sCube,
     SCM s;
     cubeinfo ci;
     psighandler sh;
-    evalcontext ec = { 0, TRUE, 0, 0, TRUE, FALSE, 0.0, 0.0 };
+    evalcontext ec = { 0, TRUE, 0, 0, TRUE, FALSE, 0.0, 0.0, DEFAULT_FILTERS};
     
     SCMToBoard( sBoard, anBoard );
     

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.84 2002/10/31 21:10:35 thyssen Exp $
+ * $Id: rollout.c,v 1.85 2002/11/11 18:26:47 joseph Exp $
  */
 
 #include "config.h"
@@ -307,7 +307,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
   int aaanBoard[ 6 ][ 6 ][ 2 ][ 25 ];
   float aaar[ 6 ][ 6 ][ NUM_ROLLOUT_OUTPUTS ];
 
-  evalcontext ecCubeless0ply = { 0, FALSE, 0, 0, TRUE, FALSE, 0.0f, 0.0f };
+  evalcontext ecCubeless0ply = { 0, FALSE, 0, 0, TRUE, FALSE, 0.0f, 0.0f};
 
   /* local pointers to the eval contexts to use */
   evalcontext *pecCube[2], *pecChequer[2];
