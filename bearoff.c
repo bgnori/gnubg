@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.6 2002/12/03 22:47:24 jsegrave Exp $
+ * $Id: bearoff.c,v 1.7 2002/12/04 21:00:28 thyssen Exp $
  */
 
 #include "config.h"
@@ -289,6 +289,8 @@ ReadTwoSidedBearoff ( bearoffcontext *pbc,
       ( pc[ 2 * i ] | ( pc[ 2 * i + 1 ] ) << 8 ) / 32767.5f - 1.0f;
 
   return 0;
+
+  ++pbc->nReads;
 
 }
 
@@ -1342,6 +1344,8 @@ ReadBearoffOneSidedExact ( bearoffcontext *pbc, const unsigned int nPosID,
     }
       
   }
+
+  ++pbc->nReads;
 
 }
 
