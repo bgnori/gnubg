@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.13 2002/11/18 22:50:51 jsegrave Exp $
+ * $Id: gtkchequer.c,v 1.14 2002/11/20 19:19:26 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -144,8 +144,6 @@ UpdateMoveList ( const hintdata *phd ) {
 
   if( piHighlight && *piHighlight >= 0 ) {
     GtkStyle *psblack, *ps;
-    highlightcolour *HC = HighlightColour;
-	int				*rgb;
     gtk_widget_ensure_style( pwMoves );
     psblack = gtk_style_copy( pwMoves->style );
     ps = gtk_style_copy( pwMoves->style );
@@ -159,16 +157,12 @@ UpdateMoveList ( const hintdata *phd ) {
     for ( i = 0; i < pml->cMoves; i++ )
       gtk_clist_set_row_style( GTK_CLIST( pwMoves ), i, psblack );
     
-	if (HighlightIntensity == 2) { rgb = HC->dark; }
-    else if (HighlightIntensity == 1 ) { rgb = HC->medium; }
-	else rgb = HC->normal;
-
     ps->fg[ GTK_STATE_NORMAL ].red = ps->fg[ GTK_STATE_ACTIVE ].red =
-      ps->fg[ GTK_STATE_SELECTED ].red = rgb[0];
+      ps->fg[ GTK_STATE_SELECTED ].red = Highlightrgb[0];
     ps->fg[ GTK_STATE_NORMAL ].green = ps->fg[ GTK_STATE_ACTIVE ].green =
-      ps->fg[ GTK_STATE_SELECTED ].green = rgb[1];
+      ps->fg[ GTK_STATE_SELECTED ].green = Highlightrgb[1];
     ps->fg[ GTK_STATE_NORMAL ].blue = ps->fg[ GTK_STATE_ACTIVE ].blue =
-      ps->fg[ GTK_STATE_SELECTED ].blue = rgb[2];
+      ps->fg[ GTK_STATE_SELECTED ].blue = Highlightrgb[2];
     
     gtk_clist_set_row_style( GTK_CLIST( pwMoves ), *piHighlight, ps );
     

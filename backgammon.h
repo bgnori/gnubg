@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.177 2002/11/18 22:50:50 jsegrave Exp $
+ * $Id: backgammon.h,v 1.178 2002/11/20 19:19:26 jsegrave Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -509,7 +509,8 @@ extern command acDatabase[], acNew[], acSave[], acSetAutomatic[],
     acSetCube[], acSetEvaluation[], acSetPlayer[], acSetRNG[], 
     acSetRollout[], acSetRolloutLate[], acSetTruncation [], 
     acSet[], acShow[], acTrain[], acTop[], acSetMET[], acSetEvalParam[],
-    acSetRolloutPlayer[], acSetRolloutLatePlayer[], cOnOff, cFilename;
+    acSetRolloutPlayer[], acSetRolloutLatePlayer[], cOnOff, cFilename,
+    cHighlightColour;
 
 extern command acAnnotateMove[];
 extern command acSetExportParameters[];
@@ -710,8 +711,12 @@ extern void CommandAccept( char * ),
     CommandSetGeometryHeight ( char * ),
     CommandSetGeometryPosX ( char * ),
     CommandSetGeometryPosY ( char * ),
+    CommandSetHighlight ( char * ),
     CommandSetHighlightColour ( char * ),
-    CommandSetHighlightIntensity ( char * ),
+    CommandSetHighlightDark ( char * ),
+    CommandSetHighlightLight ( char * ),
+    CommandSetHighlightMedium ( char * ),
+    CommandSetHighlightColour ( char *),
     CommandSetInvertMatchEquityTable( char * ),
     CommandSetJacoby( char * ),
     CommandSetMatchAnnotator( char * ),
@@ -917,11 +922,12 @@ Convert ( const char *sz,
 
 
 typedef struct _highlightcolour {
-  int  normal[3], medium[3], dark[3];
+  int   rgbs[3][3];
   char *colourname;
 } highlightcolour;
 
 extern highlightcolour *HighlightColour, HighlightColourTable[];
 extern int HighlightIntensity;
+extern int *Highlightrgb;
 
 #endif
