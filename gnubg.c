@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.465 2003/08/20 17:21:31 thyssen Exp $
+ * $Id: gnubg.c,v 1.466 2003/08/21 18:27:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -1580,7 +1580,7 @@ command cER = {
       NULL, acSetBearoff },
     { "beavers", CommandSetBeavers, 
       N_("Set whether beavers are allowed in money game or not"), 
-      szONOFF, &cOnOff },
+      szVALUE, NULL },
     { "board", CommandSetBoard, N_("Set up the board in a particular "
       "position"), szPOSITION, NULL },
     { "cache", CommandSetCache, N_("Set the size of the evaluation cache"),
