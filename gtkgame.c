@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.302 2003/01/21 21:58:46 gtw Exp $
+ * $Id: gtkgame.c,v 1.303 2003/01/22 16:16:09 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -917,8 +917,10 @@ static void CreateMessageWindow( void ) {
 			  _("GNU Backgammon - Messages") );
 #if GTK_CHECK_VERSION(2,0,0)
     gtk_window_set_role( GTK_WINDOW( pwMessage ), "messages" );
+#if GTK_CHECK_VERSION(2,2,0)
     gtk_window_set_type_hint( GTK_WINDOW( pwMessage ),
 			      GDK_WINDOW_TYPE_HINT_UTILITY );
+#endif
 #endif
     
     setWindowGeometry ( pwMessage, &awg[ WINDOW_MESSAGE ] );
@@ -954,8 +956,10 @@ static void CreateAnnotationWindow( void ) {
 			  _("GNU Backgammon - Annotation") );
 #if GTK_CHECK_VERSION(2,0,0)
     gtk_window_set_role( GTK_WINDOW( pwAnnotation ), "annotation" );
+#if GTK_CHECK_VERSION(2,2,0)
     gtk_window_set_type_hint( GTK_WINDOW( pwAnnotation ),
 			      GDK_WINDOW_TYPE_HINT_UTILITY );
+#endif
 #endif
 
     setWindowGeometry ( pwAnnotation, &awg[ WINDOW_ANNOTATION ] );
@@ -1014,8 +1018,10 @@ static void CreateGameWindow( void ) {
 			  "Game record") );
 #if GTK_CHECK_VERSION(2,0,0)
     gtk_window_set_role( GTK_WINDOW( pwGame ), "game record" );
+#if GTK_CHECK_VERSION(2,2,0)
     gtk_window_set_type_hint( GTK_WINDOW( pwGame ),
 			      GDK_WINDOW_TYPE_HINT_UTILITY );
+#endif
 #endif
 
     setWindowGeometry ( pwGame, &awg[ WINDOW_GAME ] );
@@ -8552,7 +8558,13 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
 
     pow->pwSoundSettings = gtk_vbox_new( FALSE, 0 );
     gtk_container_add( GTK_CONTAINER( pwvbox ), pow->pwSoundSettings );
-    gtk_widget_set_sensitive( pow->pwSoundSettings, fSound );
+    gtk_widget_set_sensitive( pow->pwSoundSettings,
+#if USE_SOUND
+			      fSound
+#else
+			      FALSE
+#endif
+	);
 
     pwf = gtk_frame_new (_("Sound system"));
     gtk_box_pack_start (GTK_BOX (pow->pwSoundSettings), pwf, TRUE, TRUE, 0);
