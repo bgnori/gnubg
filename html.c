@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.26 2002/05/27 20:45:51 thyssen Exp $
+ * $Id: html.c,v 1.27 2002/06/01 11:26:46 thyssen Exp $
  */
 
 #include "config.h"
@@ -1267,7 +1267,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.26 $";
+  const char szVersion[] = "$Revision: 1.27 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2927,7 +2927,7 @@ extern void CommandExportGameHtml( char *sz ) {
                     NULL );
     */
     ExportGameHTML( pf, plGame,
-                    "./html-images", "png", 
+                     exsExport.szHTMLPictureURL, "png", 
                     "gnu", 
                     aszColorNameBBS,
                     getGameNumber ( plGame ), FALSE, 
@@ -3049,7 +3049,7 @@ extern void CommandExportMatchHtml( char *sz ) {
 #endif
 
       ExportGameHTML ( pf, pl->p, 
-                       "./html-images/", "png",
+                       exsExport.szHTMLPictureURL, "png",
                        "gnu", 
                        aszColorNameGNU,
                        i, i == nGames - 1,
@@ -3102,12 +3102,12 @@ extern void CommandExportPositionHtml( char *sz ) {
                       getMoveNumber ( plGame, plLastMove->plNext->p ) - 1 );
 
     printHTMLBoard( pf, &ms, ms.fTurn,
-                    "./html-images/", "png",
+                     exsExport.szHTMLPictureURL, "png",
                     "gnu" );
 
     if( plLastMove->plNext->p != NULL)
         HTMLAnalysis ( pf, &ms, plLastMove->plNext->p,
-                       "./html-images/", "png",
+                       exsExport.szHTMLPictureURL, "png",
                        "gnu" );
     
     HTMLEpilogue ( pf, &ms, NULL );
