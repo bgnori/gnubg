@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.51 2001/03/19 15:53:25 gtw Exp $
+ * $Id: set.c,v 1.52 2001/03/26 15:36:52 gtw Exp $
  */
 
 #include "config.h"
@@ -130,6 +130,16 @@ static void SetRNG( rng rngNew, char *szSeed ) {
 	
 	UpdateSetting( &rngCurrent );
     }
+}
+
+extern void CommandSetAnnotation( char *sz ) {
+
+    if( SetToggle( "annotation", &fAnnotation, sz,
+		   "Move analysis and commentary will be displayed.",
+		   "Move analysis and commentary will not be displayed." )
+	>= 0 )
+	/* Force an update, even if the setting has not changed. */
+	UpdateSetting( &fAnnotation );
 }
 
 extern void CommandSetAutoBearoff( char *sz ) {

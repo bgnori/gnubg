@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.69 2001/03/21 15:19:44 gtw Exp $
+ * $Id: backgammon.h,v 1.70 2001/03/26 15:36:52 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -109,16 +109,17 @@ typedef struct _movedouble {
 } movedouble;
 
 typedef struct _movenormal {
-  movetype mt;
-  int fPlayer;
-  int anRoll[ 2 ];
-  int anMove[ 8 ];
-  /* evaluation of cube action before this move */
-  float arDouble[ 4 ];
-  evaltype etDouble;
-  evalsetup esDouble;
-  /* evaluation of the moves */
-  movelist ml;
+    movetype mt;
+    int fPlayer;
+    int anRoll[ 2 ];
+    int anMove[ 8 ];
+    /* evaluation of cube action before this move */
+    float arDouble[ 4 ];
+    evaltype etDouble;
+    evalsetup esDouble;
+    /* evaluation of the moves */
+    movelist ml;
+    int iMove; /* index into the movelist of the move that was made */
 } movenormal;
 
 typedef struct _moveresign {
@@ -187,7 +188,8 @@ extern gamestate gs;
 extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     fCubeUse, fNackgammon, fVarRedn, nRollouts, nRolloutTruncate, fConfirm,
     fDisplay, fAutoBearoff, fShowProgress, fBeavers, fOutputMWC,
-    fOutputWinPC, fOutputMatchPC, fJacoby, fOutputRawboard, nRolloutSeed;
+    fOutputWinPC, fOutputMatchPC, fJacoby, fOutputRawboard, nRolloutSeed,
+    fAnnotation;
 extern float rAlpha, rAnneal, rThreshold;
 
 extern evalcontext ecEval, ecRollout, ecTD;
@@ -307,6 +309,7 @@ extern command acDatabase[], acNew[], acSave[], acSetAutomatic[],
 extern void CommandAccept( char * ),
     CommandAgree( char * ),
     CommandAnalysis ( char * ),
+    CommandCopy ( char * ),
     CommandDatabaseDump( char * ),
     CommandDatabaseExport( char * ),
     CommandDatabaseImport( char * ),
@@ -347,6 +350,7 @@ extern void CommandAccept( char * ),
     CommandSaveMatch( char * ),
     CommandSaveSettings( char * ),
     CommandSaveWeights( char * ),
+    CommandSetAnnotation( char * ),
     CommandSetAutoBearoff( char * ),
     CommandSetAutoCrawford( char * ),
     CommandSetAutoDoubles( char * ),
