@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.54 2002/03/17 16:15:34 thyssen Exp $
+ * $Id: gtkboard.c,v 1.55 2002/03/18 22:29:00 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -583,7 +583,7 @@ static void board_expose_point( GtkWidget *board, BoardData *bd, int n ) {
 	r.x = x;
 	r.y = y;
 	r.width = cx;
-	r.height = y;
+	r.height = cy;
 	
 	gdk_window_invalidate_rect( board->window, &r, FALSE );
     }
@@ -595,7 +595,7 @@ static void board_expose_point( GtkWidget *board, BoardData *bd, int n ) {
 	event.area.x = x;
 	event.area.y = y;
 	event.area.width = cx;
-	event.area.height = y;
+	event.area.height = cy;
 	
 	board_expose( board, &event, bd );
     }
