@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.104 2002/06/30 13:11:19 thyssen Exp $
+ * $Id: set.c,v 1.105 2002/07/24 16:46:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -2460,3 +2460,11 @@ CommandSetPathText ( char *sz ) {
 }
 
 
+extern void CommandSetTutor( char *sz) {
+
+  SetToggle ("tutor", &fTutor, sz,
+			 _("Warnings are given for \'doubtful\', \'bad\', or "
+			   "\'very bad\' moves."),
+			 _("No warnings are given for \'doubtful\', \'bad\', or "
+			   "\'very bad\' moves.") );
+}

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.96 2002/07/15 10:48:21 thyssen Exp $
+ * $Id: show.c,v 1.97 2002/07/24 16:46:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -1435,3 +1435,14 @@ CommandShowPath ( char *sz ) {
   }
 
 }
+
+extern void CommandShowTutor( char *sz ) {
+
+  if( fTutor )
+	outputl( _("Warnings are given for \'doubtful\', \'bad\', or "
+			   "\'very bad\' moves.") );
+  else
+	outputl( _("No warnings are given for \'doubtful\', \'bad\', or "
+			   "\'very bad\' moves.") );
+}
+
