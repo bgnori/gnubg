@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.25 2002/08/02 18:16:38 thyssen Exp $
+ * $Id: gtkboard.h,v 1.26 2002/08/03 09:58:53 thyssen Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -87,7 +87,9 @@ typedef struct _BoardData {
     int animate_speed;
     gdouble aarColour[ 2 ][ 4 ]; /* RGBA for each player */
     gdouble aarDiceColour[ 2 ][ 4 ]; /* color of dice for each player */
+    int afDieColor[ 2 ];
     gdouble aarDiceDotColour[ 2 ][ 4 ]; /* color of dice dot for each player */
+    gdouble arCubeColour[ 4 ]; /* color of cube */
     guchar aanBoardColour[ 4 ][ 4 ]; /* RGB(A) for background, border, pts */
     int aSpeckle[ 4 ]; /* speckle for background, border, pts */
     gfloat arRefraction[ 2 ], arCoefficient[ 2 ], arExponent[ 2 ];
