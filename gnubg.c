@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.13.2.8 2000/05/13 08:55:29 thyssen Exp $
+ * $Id: gnubg.c,v 1.13.2.9 2000/05/14 14:30:45 thyssen Exp $
  */
 
 #include "config.h"
@@ -934,7 +934,8 @@ extern void CommandHint( char *sz ) {
       SetCubeInfo ( &ci, nCube, fCubeOwner, fMove );
 
       EvaluatePositionCubeful( anBoard, arDouble, &ci, &ecEval,
-			       ecEval.nPlies ); 
+			       ecEval.nPlies, 
+			       EVAL_DOUBLE | EVAL_NODOUBLE ); 
       
       if ( fInterrupt )
 	return;
