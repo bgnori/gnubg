@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.6 2002/07/29 15:59:45 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.7 2002/07/31 18:05:30 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -636,6 +636,9 @@ CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid ) {
     gtk_selection_add_target( pwMoves, GDK_SELECTION_PRIMARY,
 			      GDK_SELECTION_TYPE_STRING, 0 );
     
+    gtk_object_set_data_full( GTK_OBJECT( pwHBox ), "user_data", 
+                              phd, free );
+
     HintSelect( pwMoves, 0, 0, NULL, phd );
     gtk_signal_connect( GTK_OBJECT( pwMoves ), "select-row",
 			GTK_SIGNAL_FUNC( HintSelect ), phd );
