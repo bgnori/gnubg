@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.17 2003/01/02 19:10:11 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.18 2003/01/02 23:20:45 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -37,6 +37,7 @@
 #include "backgammon.h"
 #include "drawboard.h"
 #include "eval.h"
+#include "positionid.h"
 #include "rollout.h"
 #include "gtkgame.h"
 #include "gtkchequer.h"
