@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.88 2001/04/15 10:36:29 thyssen Exp $
+ * $Id: eval.c,v 1.89 2001/04/16 17:02:54 gtw Exp $
  */
 
 #include "config.h"
@@ -4107,10 +4107,10 @@ EvaluatePositionCubeful( int anBoard[ 2 ][ 25 ], float arCfOutput[],
 
   /* Calculate cubeful equity. 
      
-     Output is: arCfOutput[ 0 ]: equity for optimal cube action,
-                arCfOutput[ 1 ]: equity for no double,
-                arCfOutput[ 2 ]: equity for double, take,
-                arCfOutput[ 3 ]: equity for double, pass.
+     Output is: arCfOutput[ OUTPUT_OPTIMAL ]: equity for optimal cube action,
+                arCfOutput[ OUTPUT_NODOUBLE ]: equity for no double,
+                arCfOutput[ OUTPUT_TAKE ]: equity for double, take,
+                arCfOutput[ OUTPUT_DROP ]: equity for double, pass.
 
                 arClOutput [ ]: cubeless evaluation.
 

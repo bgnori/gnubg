@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.59 2001/04/13 16:25:39 gtw Exp $
+ * $Id: show.c,v 1.60 2001/04/16 17:02:55 gtw Exp $
  */
 
 #include "config.h"
@@ -128,6 +128,21 @@ extern void CommandShowAnalysis( char *sz ) {
 	    outputf( "Up to %d moves will be analysed.\n", cAnalysisMoves );
     } else
 	outputl( "Chequer play will not be analysed." );
+
+    outputf( "\nAnalysis thresholds:\n"
+	     "  +%.3f very good\n"
+	     "  +%.3f good\n"
+	     "  -%.3f bad\n"
+	     "  -%.3f very bad\n"
+	     "\n"
+	     "  +%.3f very lucky\n"
+	     "  +%.3f lucky\n"
+	     "  -%.3f unlucky\n"
+	     "  -%.3f very unlucky\n",
+	     arSkillLevel[ SKILL_VERYGOOD ], arSkillLevel[ SKILL_GOOD ],
+	     arSkillLevel[ SKILL_BAD ], arSkillLevel[ SKILL_VERYBAD ],
+	     arLuckLevel[ LUCK_VERYGOOD ], arLuckLevel[ LUCK_GOOD ],
+	     arLuckLevel[ LUCK_BAD ], arLuckLevel[ LUCK_VERYBAD ] );
 }
 
 extern void CommandShowAutomatic( char *sz ) {
