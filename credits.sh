@@ -1,5 +1,6 @@
 #!/bin/sh
-# $Id: credits.sh,v 1.2 2001/03/26 15:35:22 gtw Exp $
+
+column < /dev/null || exit
 
 contributors=/tmp/cont.$$
 credit=/tmp/cred.$$
