@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.96 2003/01/11 10:00:41 thyssen Exp $
+ * $Id: rollout.c,v 1.97 2003/01/29 19:28:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -1532,7 +1532,8 @@ getResignation ( float arResign[ NUM_ROLLOUT_OUTPUTS ],
 
   if ( arResign [ OUTPUT_LOSEBACKGAMMON ] > 0.0f &&
        Utility ( ar, pci ) == rPlay )
-    return 3; /* resign backgammon */
+    /* resign backgammon */
+    return ( !pci->nMatchTo && pci->fJacoby && pci->fCubeOwner == -1 ) ? 1 : 3;
   else {
 
     /* worth trying to escape the backgammon */
@@ -1541,8 +1542,8 @@ getResignation ( float arResign[ NUM_ROLLOUT_OUTPUTS ],
 
     if ( arResign[ OUTPUT_LOSEGAMMON ] > 0.0f &&
          Utility ( ar, pci ) == rPlay )
-      return 2; /* resign gammon */
-
+      /* resign gammon */
+      return ( !pci->nMatchTo && pci->fJacoby && pci->fCubeOwner == -1 ) ? 1 : 2; 
     else {
 
       /* worth trying to escape gammon */
