@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: procunits.c,v 1.2.2.18 2003/07/23 18:46:08 hb Exp $
+ * $Id: procunits.c,v 1.2.2.19 2003/07/23 20:08:21 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3076,7 +3076,7 @@ static int RPU_ReadInternetAddress (struct sockaddr_in *inAddress, char *sz,
     char 		*szPort;
     struct hostent 	*phe = NULL;
 
-    memset( &inAddress, 0, sizeof( struct sockaddr_in ));
+    memset( inAddress, 0, sizeof( struct sockaddr_in ));
     inAddress->sin_family = AF_INET;
     
     /* scan for port, eg 192.168.0.1:1234 or host.gnu.org:1234 */
@@ -3993,9 +3993,17 @@ extern void * Thread_RemoteProcessingUnit (void *data)
                 
         /* create socket */
         rpuSocket = socket (AF_INET, SOCK_STREAM, 0);
+#ifdef WIN32
+    if (rpuSocket == INVALID_SOCKET) {
+#else
         if (rpuSocket == -1) {
+#endif /* WIN32 */
             outputerrf ("# (0x%x) RPU could not create socket (err=%d).\n", 
-                (int) pthread_self (), errno);
+#ifdef WIN32
+		(int) pthread_self (), GetLastError() );
+#else
+		(int) pthread_self (), errno);
+#endif /* WIN32 */
             outputerr ("socket_create");
             ppu->info.remote.fStop = TRUE;
         }
