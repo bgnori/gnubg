@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.102 2002/06/15 17:21:14 thyssen Exp $
+ * $Id: set.c,v 1.103 2002/06/27 19:40:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -2313,6 +2313,7 @@ CommandSetExportHTMLPictureURL ( char *sz ) {
   if ( exsExport.szHTMLPictureURL )
     free ( exsExport.szHTMLPictureURL );
 
+  sz = NextToken ( &sz );
   exsExport.szHTMLPictureURL = strdup ( sz );
 
   outputf ( _("URL for picture in HTML export is now: \n"
