@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1997-1999
  *
- * $Id: xboard.c,v 1.2 1999/12/16 02:51:09 gtw Exp $
+ * $Id: xboard.c,v 1.3 1999/12/17 01:13:44 gtw Exp $
  */
 
 #include "config.h"
@@ -334,7 +334,7 @@ static void BoardPointer( extwindow *pewnd, gamedata *pgd, XEvent *pxev ) {
 					pgd->anDice[ 0 ] :
 					pgd->anDice[ 1 ] ) * pgd->fDragColour;
 
-	    if( ( nDest < 0 ) || ( nDest > 25 ) )
+	    if( ( nDest <= 0 ) || ( nDest >= 25 ) )
 		/* bearing off */
 		nDest = pgd->fDragColour ? 26 : 27;
 	    
