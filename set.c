@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.163 2003/01/06 20:04:42 thyssen Exp $
+ * $Id: set.c,v 1.164 2003/01/09 20:47:37 thyssen Exp $
  */
 
 #include "config.h"
@@ -1611,7 +1611,7 @@ CommandSetRolloutBearoffTruncationExact ( char *sz ) {
 extern void
 CommandSetRolloutBearoffTruncationOS ( char *sz ) {
 
-  int f = prcSet->fTruncBearoff2;
+  int f = prcSet->fTruncBearoffOS;
 
   SetToggle ( "rollout bearofftruncation onesided", &f, sz,
               _("Will truncate *cubeless* rollouts when reaching"
@@ -1619,7 +1619,7 @@ CommandSetRolloutBearoffTruncationOS ( char *sz ) {
               _("Will not truncate *cubeless* rollouts when reaching"
                 " one-sided bearoff database") );
 
-  prcSet->fTruncBearoff2 = f;
+  prcSet->fTruncBearoffOS = f;
 
 
 }
