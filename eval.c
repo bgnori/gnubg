@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.264 2004/10/12 08:41:23 joseph Exp $
+ * $Id: eval.c,v 1.265 2004/10/14 11:57:11 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2541,12 +2541,13 @@ FindBestMovePlied( int anMove[ 8 ], int nDice0, int nDice1,
                    movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] );
 
 
-int nPruneMoves = 10;
+#define nPruneMoves 10
 
 static void
 FindBestMoveInEval(int nDice0, int nDice1, int anBoard[2][25], const cubeinfo* pci)
 {
   unsigned int i;
+  float rScore, rBestScore;
   movelist ml;
   GenerateMoves(&ml, anBoard, nDice0, nDice1, FALSE);
     
@@ -2588,6 +2589,7 @@ FindBestMoveInEval(int nDice0, int nDice1, int anBoard[2][25], const cubeinfo* p
 	  }
 
 #if !defined(GARY_CACHE) && defined(PRUNE_CACHE)
+{
 	  evalcache ec, *pec;
 	  long l;
 	  memcpy(ec.auchKey, pm->auch, sizeof(ec.auchKey));
@@ -2599,8 +2601,8 @@ FindBestMoveInEval(int nDice0, int nDice1, int anBoard[2][25], const cubeinfo* p
 #endif
 	    baseInputs(anBoard, arInput);
 	    {
-	      neuralnet* n =
-		(neuralnet* []){&nnpRace, &nnpCrashed, &nnpContact}[pc - CLASS_RACE];
+	      neuralnet* nets[] = {&nnpRace, &nnpCrashed, &nnpContact};
+	      neuralnet* n = nets[pc - CLASS_RACE];
 	      NeuralNetEvaluate(n, arInput, arOutput,
 				(i == 0) ?  NNEVAL_SAVE : NNEVAL_FROMBASE);
 	      SanityCheck(anBoard, arOutput);
@@ -2609,6 +2611,7 @@ FindBestMoveInEval(int nDice0, int nDice1, int anBoard[2][25], const cubeinfo* p
 	    memcpy( ec.ar, arOutput, sizeof(float) * NUM_OUTPUTS );
 	    CacheAdd(&cpEval, &ec, l);
 	  }
+}
 #endif
 	  pm->rScore = UtilityME(arOutput, pci);
 	  if( i < nPruneMoves ) {
@@ -2640,7 +2643,7 @@ FindBestMoveInEval(int nDice0, int nDice1, int anBoard[2][25], const cubeinfo* p
     }
 
     nContext[0] = nContext[1] = nContext[2] = 0;
-    float rBestScore = 99999.9;
+    rBestScore = 99999.9;
     for(i = 0; (int)i < ml.cMoves; i++) {
       int const j = use ? bmovesi[i] : i;
       const move* const pm = &ml.amMoves[j];
@@ -2668,7 +2671,7 @@ FindBestMoveInEval(int nDice0, int nDice1, int anBoard[2][25], const cubeinfo* p
 	  CacheAdd(&cEval, &ec, l);
 	}
 #endif
-	float rScore = UtilityME(arOutput, pci);
+	rScore = UtilityME(arOutput, pci);
 	if( rScore < rBestScore ) {
 	  rBestScore = rScore;
 	  ml.iMoveBest = j;
