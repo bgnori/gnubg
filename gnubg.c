@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.378 2003/01/22 18:26:05 gtw Exp $
+ * $Id: gnubg.c,v 1.379 2003/01/22 23:18:10 gtw Exp $
  */
 
 #include "config.h"
@@ -1101,24 +1101,26 @@ command cER = {
     N_("show very good moves"), szONOFF, &cOnOff },
   { NULL, NULL, NULL, NULL, NULL }    
 }, acSetExportCubeDisplay[] = {
-  { "verybad", CommandSetExportCubeDisplayVeryBad,
-    N_("show very bad moves"), szONOFF, &cOnOff },
-  { "bad", CommandSetExportCubeDisplayBad,
-    N_("show bad moves"), szONOFF, &cOnOff },
-  { "doubtful", CommandSetExportCubeDisplayDoubtful,
-    N_("show doubtful moves"), szONOFF, &cOnOff },
-  { "unmarked", CommandSetExportCubeDisplayUnmarked,
-    N_("show unmarked moves"), szONOFF, &cOnOff },
-  { "interesting", CommandSetExportCubeDisplayInteresting,
-    N_("show interesting moves"), szONOFF, &cOnOff },
-  { "good", CommandSetExportCubeDisplayGood,
-    N_("show good moves"), szONOFF, &cOnOff },
-  { "verygood", CommandSetExportCubeDisplayVeryGood,
-    N_("show very good moves"), szONOFF, &cOnOff },
   { "actual", CommandSetExportCubeDisplayActual,
-    N_("show very good moves"), szONOFF, &cOnOff },
+    N_("show very good cube decisions"), szONOFF, &cOnOff },
+  { "bad", CommandSetExportCubeDisplayBad,
+    N_("show bad cube decisions"), szONOFF, &cOnOff },
   { "close", CommandSetExportCubeDisplayClose,
-    N_("show very good moves"), szONOFF, &cOnOff },
+    N_("show close cube decisions"), szONOFF, &cOnOff },
+  { "doubtful", CommandSetExportCubeDisplayDoubtful,
+    N_("show doubtful cube decisions"), szONOFF, &cOnOff },
+  { "good", CommandSetExportCubeDisplayGood,
+    N_("show good cube decisions"), szONOFF, &cOnOff },
+  { "interesting", CommandSetExportCubeDisplayInteresting,
+    N_("show interesting cube decisions"), szONOFF, &cOnOff },
+  { "missed", CommandSetExportCubeDisplayMissed,
+    N_("show missed doubles"), szONOFF, &cOnOff },
+  { "unmarked", CommandSetExportCubeDisplayUnmarked,
+    N_("show unmarked cube decisions"), szONOFF, &cOnOff },
+  { "verybad", CommandSetExportCubeDisplayVeryBad,
+    N_("show very bad cube decisions"), szONOFF, &cOnOff },
+  { "verygood", CommandSetExportCubeDisplayVeryGood,
+    N_("show very good cube decisions"), szONOFF, &cOnOff },
   { NULL, NULL, NULL, NULL, NULL }    
 }, acSetExportInclude[] = {
   { "annotations", CommandSetExportIncludeAnnotations,
