@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.351 2003/07/06 11:51:03 thyssen Exp $
+ * $Id: gtkgame.c,v 1.352 2003/07/08 19:05:01 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5059,6 +5059,7 @@ static void SetRolloutsOK( GtkWidget *pw, rolloutwidget *prw ) {
     EvalOK(prw->prpwPages[i]->arpwEvCheq, prw->prpwPages[i]->arpwEvCheq);
   }
 
+
   EvalOK(prw->prpwTrunc->arpwEvCube, prw->prpwTrunc->arpwEvCube);
   EvalOK(prw->prpwTrunc->arpwEvCheq, prw->prpwTrunc->arpwEvCheq);
 
@@ -5555,7 +5556,24 @@ extern void SetRollouts( gpointer *p, guint n, GtkWidget *pwIgnore ) {
   if( fOK ) {
     outputpostpone();
 
+    if( rw.rcRollout.fCubeful != rcRollout.fCubeful ) {
+      sprintf( sz, "set rollout cubeful %s",
+               rw.rcRollout.fCubeful ? "on" : "off" );
+      UserCommand( sz );
+
+	  if (!rw.rcRollout.fCubeful) {
+		for (i = 0; i < 2; ++i) {
+		  /* turn off cubeful chequer for rollouts if cubeful is
+			 off on the main page */
+		  rw.rcRollout.aecChequer[i].fCubeful = 0;
+		  rw.rcRollout.aecChequerLate[i].fCubeful = 0;
+		}
+	  }
+    }
+
     for (i = 0; i < 2; ++i) {
+
+
       if (EvalCmp (&rw.rcRollout.aecCube[i], &rcRollout.aecCube[i], 1) ) {
         sprintf (sz, "set rollout player %d cubedecision", i);
         SetEvalCommands( sz, &rw.rcRollout.aecCube[i], 
