@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.24 2000/03/12 03:12:50 gtw Exp $
+ * $Id: eval.c,v 1.25 2000/04/10 21:24:38 gtw Exp $
  */
 
 #include "config.h"
@@ -337,7 +337,7 @@ extern int EvalInitialise( char *szWeights, char *szWeightsBinary,
 
     if( szWeightsBinary &&
 	( h = PathOpen( szWeightsBinary, szDir ) ) >= 0 &&
-	( pfWeights = fdopen( h, "r" ) ) ) {
+	( pfWeights = fdopen( h, "rb" ) ) ) {
 	if( fread( &r, sizeof r, 1, pfWeights ) < 1 ||
 	    r != WEIGHTS_MAGIC_BINARY ||
 	    fread( &r, sizeof r, 1, pfWeights ) < 1 ||

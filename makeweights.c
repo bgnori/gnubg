@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.2 2000/01/12 21:55:03 gtw Exp $
+ * $Id: makeweights.c,v 1.3 2000/04/10 21:24:38 gtw Exp $
  */
 
 #include "config.h"
@@ -24,6 +24,9 @@
 #include <neuralnet.h>
 #include <stdio.h>
 #include <stdlib.h>
+#if HAVE_UNISTD_H
+#include <unistd.h>
+#endif
 
 #include "eval.h" /* for WEIGHTS_VERSION */
 
@@ -33,6 +36,11 @@ extern int main( int argc, char *argv[] ) {
     char szFileVersion[ 16 ];
     static float ar[ 2 ] = { WEIGHTS_MAGIC_BINARY, WEIGHTS_VERSION_BINARY };
     int c;
+#ifdef STDOUT_FILENO 
+    FILE *output;
+#else
+#define output stdout
+#endif
     
     if( scanf( "GNU Backgammon %15s\n", szFileVersion ) != 1 ||
 	strcmp( szFileVersion, WEIGHTS_VERSION ) ) {
@@ -40,10 +48,17 @@ extern int main( int argc, char *argv[] ) {
 	return EXIT_FAILURE;
     }
 
-    fwrite( ar, sizeof( ar[ 0 ] ), 2, stdout );
+#ifdef STDOUT_FILENO
+    if( !( output = fdopen( STDOUT_FILENO, "wb" ) ) ) {
+	perror( "(stdout)" );
+	return EXIT_FAILURE;
+    }
+#endif
+	
+    fwrite( ar, sizeof( ar[ 0 ] ), 2, output );
     
     for( c = 0; !NeuralNetLoad( &nn, stdin ); c++ )
-	if( NeuralNetSaveBinary( &nn, stdout ) )
+	if( NeuralNetSaveBinary( &nn, output ) )
 	    return EXIT_FAILURE;
 
     fprintf( stderr, "%d nets converted\n", c );

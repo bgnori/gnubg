@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.22 2000/04/07 16:16:10 gtw Exp $
+ * $Id: play.c,v 1.23 2000/04/10 21:24:38 gtw Exp $
  */
 
 #include "config.h"
@@ -175,12 +175,9 @@ static int ComputerTurn( void ) {
 	return FindPubevalMove( anDice[ 0 ], anDice[ 1 ], anBoard );
 
     default:
+	assert( FALSE );
+	return -1;
     }
-    
-    abort();
-    
-    /* never reached, but fussy compilers might want a return value anyway */
-    return -1;
 }
 
 /* Try to automatically bear off as many chequers as possible.  Only do it
