@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.83 2001/11/05 17:56:18 gtw Exp $
+ * $Id: gtkgame.c,v 1.84 2001/11/06 15:54:39 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3719,7 +3719,7 @@ static void HintGetSelection( GtkWidget *pw, GtkSelectionData *psd,
     qsort( an, c, sizeof( an[ 0 ] ), (cfunc) CompareInts );
 
     for( i = 0, pch = sz; i < c; i++, pch = strchr( pch, 0 ) )
-	FormatMoveHint( pch, ms.anBoard, phd->pml, an[ i ], TRUE );
+	FormatMoveHint( pch, &ms, phd->pml, an[ i ], TRUE );
         
     gtk_selection_data_set( psd, GDK_SELECTION_TYPE_STRING, 8,
 			    sz, strlen( sz ) );
