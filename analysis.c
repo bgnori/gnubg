@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.128 2003/08/16 08:46:59 thyssen Exp $
+ * $Id: analysis.c,v 1.129 2003/08/16 09:05:15 thyssen Exp $
  */
 
 #include "config.h"
@@ -1767,15 +1767,15 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz,
     
     if ( ms.nMatchTo )
       sprintf ( strchr ( szOutput, 0 ),
-                "%-31s %7.2f%%                %7.2f%%\n"
-                "%-31s %7.2f%%                %7.2f%%\n",
+                "%-31s %+7.2f%%               %+7.2f%%\n"
+                "%-31s %+7.2f%%               %+7.2f%%\n",
                 _("Actual result"),
-                100.0 * ( 0.5f + psc->arActualResult[ 0 ] ),
-                100.0 * ( 0.5f + psc->arActualResult[ 1 ] ),
+                100.0 * psc->arActualResult[ 0 ],
+                100.0 * psc->arActualResult[ 1 ],
                 _("Luck adjusted result"),
-                100.0 * ( 0.5f + psc->arActualResult[ 0 ] - 
+                100.0 * ( psc->arActualResult[ 0 ] - 
                           psc->arLuck[ 0 ][ 1 ] + psc->arLuck[ 1 ][ 1 ] ),
-                100.0 * ( 0.5f + psc->arActualResult[ 1 ] - 
+                100.0 * ( psc->arActualResult[ 1 ] - 
                           psc->arLuck[ 1 ][ 1 ] + psc->arLuck[ 0 ][ 1 ] ) );
     else {
       sprintf ( strchr ( szOutput, 0 ), 

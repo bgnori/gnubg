@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.134 2003/08/16 08:49:58 thyssen Exp $
+ * $Id: html.c,v 1.135 2003/08/16 09:05:15 thyssen Exp $
  */
 
 #include "config.h"
@@ -169,7 +169,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( _("\n" 
              "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.134 2003/08/16 08:49:58 thyssen Exp $ */\n"
+             "/* $Id: html.c,v 1.135 2003/08/16 09:05:15 thyssen Exp $ */\n"
              "/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
@@ -1913,7 +1913,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.134 $";
+  const char szVersion[] = "$Revision: 1.135 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1994,7 +1994,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.134 $";
+  const char szVersion[] = "$Revision: 1.135 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3366,17 +3366,17 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       printStatTableRow( pf, 
                          _("Actual result"),
-                         "%.2f%%",
-                         100.0 * ( 0.5f + psc->arActualResult[ 0 ] ),
-                         100.0 * ( 0.5f + psc->arActualResult[ 1 ] ) );
+                         "%+.2f%%",
+                         100.0 * psc->arActualResult[ 0 ],
+                         100.0 * psc->arActualResult[ 1 ] );
 
       printStatTableRow( pf, 
                          _("Luck adjusted result"),
-                         "%.2f%%",
-                         100.0 * ( 0.5f + psc->arActualResult[ 0 ] - 
+                         "%+.2f%%",
+                         100.0 * ( psc->arActualResult[ 0 ] - 
                                    psc->arLuck[ 0 ][ 1 ] + 
                                    psc->arLuck[ 1 ][ 1 ] ),
-                         100.0 * ( 0.5f + psc->arActualResult[ 1 ] - 
+                         100.0 * ( psc->arActualResult[ 1 ] - 
                                    psc->arLuck[ 1 ][ 1 ] + 
                                    psc->arLuck[ 0 ][ 1 ] ) );
 

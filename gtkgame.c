@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.385 2003/08/16 08:46:59 thyssen Exp $
+ * $Id: gtkgame.c,v 1.386 2003/08/16 09:05:15 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7493,7 +7493,7 @@ extern void GTKDumpStatcontext( const statcontext *psc, const matchstate *pms,
 
     if ( pms->nMatchTo )
       for ( i = 0; i < 2; ++i ) {
-        sprintf( sz, "%.2f%%", 100.0 * ( 0.5f + psc->arActualResult[ i ] ) );
+        sprintf( sz, "%+.2f%%", 100.0 * psc->arActualResult[ i ] );
         gtk_clist_set_text( GTK_CLIST( pwStats ), irow, i + 1, sz);
       }
     else
@@ -7515,8 +7515,8 @@ extern void GTKDumpStatcontext( const statcontext *psc, const matchstate *pms,
         psc->arLuck[ 0 ][ 1 ] + psc->arLuck[ 1 ][ 1 ];
 
       for ( i = 0; i < 2; ++i ) {
-        sprintf( sz, "%.2f%%", 
-                 100.0 * ( 0.5f + psc->arActualResult[ i ] - 
+        sprintf( sz, "%+.2f%%", 
+                 100.0 * ( psc->arActualResult[ i ] - 
                            psc->arLuck[ i ][ 1 ] + psc->arLuck[ !i ][ 1 ] ) );
         gtk_clist_set_text( GTK_CLIST( pwStats ), irow, i + 1, sz);
       }
