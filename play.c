@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.201 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: play.c,v 1.202 2003/08/13 19:38:36 thyssen Exp $
  */
 
 #include "config.h"
@@ -3163,7 +3163,12 @@ static int MoveIsMarked (moverecord *pmr) {
 
 static void ShowMark( moverecord *pmr ) {
 
-	BoardData *bd = BOARD( pwBoard )->board_data;
+#if USE_GTK  
+     BoardData *bd = NULL;
+
+     if ( fX )
+       bd = BOARD( pwBoard )->board_data;
+#endif
     /* Show the dice roll, if the chequer play is marked but the cube
        decision is not. */
     if( pmr->mt == MOVE_NORMAL && pmr->n.stCube == SKILL_NONE &&
@@ -3174,10 +3179,16 @@ static void ShowMark( moverecord *pmr ) {
 	ms.anDice[ 0 ] = pmr->n.anRoll[ 0 ];
 	ms.anDice[ 1 ] = pmr->n.anRoll[ 1 ];
     }
-	/* Don't roll dice */
-	bd->diceShown = DICE_ON_BOARD;
-	/* Make sure dice are shown */
-	bd->diceRoll[0] = !ms.anDice[0];
+
+#if USE_GTK
+    if( fX ) {
+      /* Don't roll dice */
+      bd->diceShown = DICE_ON_BOARD;
+      /* Make sure dice are shown */
+      bd->diceRoll[0] = !ms.anDice[0];
+    }
+#endif
+
 }
 
 extern void CommandNext( char *sz ) {
@@ -3245,6 +3256,7 @@ extern void CommandNext( char *sz ) {
 	{
 	    /* didn't find the requested move, put things back */
 	    memcpy( &ms, &SaveMs, sizeof( matchstate ) );
+            plLastMove = orig_p;
 	    FixMatchState ( &ms, plLastMove->p );
 	    ApplyMoveRecord( &ms, plGame, plLastMove->p );
 	    return;
