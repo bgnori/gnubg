@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.53 2005/02/18 16:40:58 Superfly_Jon Exp $
+* $Id: matchequity.c,v 1.54 2005/02/18 16:46:31 Superfly_Jon Exp $
 */
 
 #include <stdio.h>
@@ -1411,7 +1411,8 @@ static int readMET ( metdata *pmd, const char *szFileName,
   dtd = xmlParseDTD(XML_PUBLIC_ID, NULL);
   if (!dtd) {
 	  pch = xmlCatalogResolvePublic(XML_PUBLIC_ID);
-	  dtd = xmlParseDTD(NULL, pch); 
+	  dtd = xmlParseDTD(NULL, pch);
+	  if (pch) free(pch);
   }
   if (!dtd) {
     printf ( _("Error resolving DTD for public ID %s"), XML_PUBLIC_ID );
