@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.201 2002/12/11 18:46:49 thyssen Exp $
+ * $Id: eval.c,v 1.202 2002/12/12 18:01:45 joseph Exp $
  */
 
 #include "config.h"
@@ -3104,7 +3104,7 @@ static int FindBestMovePlied( int anMove[ 8 ], int nDice0, int nDice1,
 	continue;
       }
 
-      if( ScoreMoves( &ml, pci, pec, 0 ) < 0 ) {
+      if( ScoreMoves( &ml, pci, pec, iPly ) < 0 ) {
 	return -1;
       }
 
