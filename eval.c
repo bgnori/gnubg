@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.56 2000/10/24 11:43:47 thyssen Exp $
+ * $Id: eval.c,v 1.57 2000/10/24 13:37:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -4398,8 +4398,6 @@ EvaluatePositionCubeful1( int anBoard[ 2 ][ 25 ], float *prOutput,
 
         SetCubeInfo ( pci, pci -> nCube * 2, 
                       pci -> fMove, pci -> fMove );
-
-        printf ("auto redouble...\n" );
 
       }
 
