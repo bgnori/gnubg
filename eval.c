@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.123 2002/01/24 18:20:51 thyssen Exp $
+ * $Id: eval.c,v 1.124 2002/01/24 19:21:10 gtw Exp $
  */
 
 #include "config.h"
@@ -3862,14 +3862,19 @@ static void StatusRace( char *sz ) {
     StatusNeuralNet( &nnRace, "Race", sz );
 }
 
+static void StatusCrashed( char *sz ) {
+
+    StatusNeuralNet( &nnContact, "Crashed", sz );
+}
+
 static void StatusContact( char *sz ) {
 
     StatusNeuralNet( &nnContact, "Contact", sz );
 }
 
 static classstatusfunc acsf[ N_CLASSES ] = {
-  NULL, StatusBearoff2, StatusBearoff1, StatusRace,
-  StatusContact, StatusContact
+  NULL, StatusBearoff2, StatusBearoff1, StatusRace, StatusCrashed,
+  StatusContact
 };
 
 extern void EvalStatus( char *szOutput ) {
