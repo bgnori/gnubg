@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.40 2002/12/19 19:29:39 thyssen Exp $
+ * $Id: import.c,v 1.41 2002/12/21 16:32:01 thyssen Exp $
  */
 
 #include "config.h"
@@ -1266,7 +1266,26 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
 			}
 		    }
 		}
-	    }
+	    } /* *pch++ == '\t' */
+            else {
+
+              /* check for automatic doubles:
+
+                 11: Automatic double
+              
+              */
+
+              if ( strstr ( pch, "Automatic double" ) ) {
+                ++pmgi->g.nAutoDoubles;
+                /* we've already called AddMoveRecord for pmgi, 
+                   so we manually update the cube value */
+                ms.nCube *= 2;
+              }
+
+
+            }
+            
+
 	} /* isdigit */
         else {
 
