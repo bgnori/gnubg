@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.1 2002/11/24 10:17:34 thyssen Exp $
+ * $Id: bearoff.c,v 1.2 2002/11/24 10:29:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -45,7 +45,6 @@
 #include "bearoff.h"
 #include "i18n.h"
 #include "bearoffgammon.h"
-#include "br1.h"
 
 #if WIN32
 #define BINARY O_BINARY

@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.3 2002/10/26 13:08:07 thyssen Exp $
+ * $Id: osr.c,v 1.4 2002/11/24 10:31:37 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -32,6 +32,7 @@
 #include "positionid.h"
 #include "osr.h"
 #include "mt19937int.h"
+#include "bearoff.h"
 
 #define MAX_PROBS        32
 #define MAX_GAMMON_PROBS 15
@@ -66,13 +67,10 @@ inline
 void
 getBearoffProbs(const unsigned int n, unsigned int aaProb[32])
 {
-  int i;
 
-  assert( pBearoff1 );
-  
-  for( i = 0; i < 32; i++ )
-    aaProb[ i ] = pBearoff1[ ( n << 6 ) | ( i << 1 ) ] +
-      ( pBearoff1[ ( n << 6 ) | ( i << 1 ) | 1 ] << 8 );
+  assert( pbc1 );
+  BearoffDist ( pbc1, n, NULL, NULL, NULL, aaProb, NULL );
+
 }
 
 
