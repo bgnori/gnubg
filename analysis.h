@@ -16,11 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.7 2001/10/19 16:17:45 oysteijo Exp $
+ * $Id: analysis.h,v 1.8 2002/04/20 10:43:59 thyssen Exp $
  */
 
 #ifndef _ANALYSIS_H_
 #define _ANALYSIS_H_
+
+#include <list.h>
 
 typedef enum _lucktype {
     LUCK_VERYBAD, LUCK_BAD, LUCK_NONE, LUCK_GOOD, LUCK_VERYGOOD
@@ -84,5 +86,11 @@ extern void AddStatcontext ( statcontext *pscA, statcontext *pscB );
 
 extern void
 DumpStatcontext ( char *szOutput, statcontext *psc, char * sz );
+
+extern void
+updateStatisticsGame ( list *plGame );
+
+extern void
+updateStatisticsMatch ( list *plMatch );
 
 #endif
