@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.127 2003/08/04 19:05:37 thyssen Exp $
+ * $Id: html.c,v 1.128 2003/08/04 19:20:15 thyssen Exp $
  */
 
 #include "config.h"
@@ -95,9 +95,9 @@ static char *aaszStyleSheetClasses[ NUM_CLASSES ][ 2 ] = {
   { "joker", "background-color: red; color: yellow" },
 
   { "stattable", 
-    "text-align: left; width: 40em; background-color: #c7c7c7; "
+    "text-align: left; width: 40em; background-color: #fff2cc; "
     "border: 0px; padding: 0px" },
-  { "stattableheader", "background-color: #787878" },
+  { "stattableheader", "background-color: #d15b34" },
   { "result", 
     "background-color: yellow; font-weight: bold; text-align: center; "
     "color: black; width: 40em; padding: 0.2em" },
@@ -105,9 +105,9 @@ static char *aaszStyleSheetClasses[ NUM_CLASSES ][ 2 ] = {
   { "cubedecision", "background-color: #ddddee; text-align: left;" },
   { "cubedecisionheader", 
     "background-color: #89d0e2; text-align: center; padding: 0.5em" },
-  { "comment", "background-color: #449911; width: 39.5em; padding: 0.5em" },
+  { "comment", "background-color: ccffcc; width: 39.5em; padding: 0.5em" },
   { "commentheader", 
-    "background-color: #557711; font-weight: bold; text-align: center; "
+    "background-color: #6f9915; font-weight: bold; text-align: center; "
     "width: 40em; padding: 0.25em" },
   { "number", 
     "text-align: center; font-weight: bold; font-size: 60%; "
@@ -169,7 +169,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( _("\n" 
              "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.127 2003/08/04 19:05:37 thyssen Exp $ */\n"
+             "/* $Id: html.c,v 1.128 2003/08/04 19:20:15 thyssen Exp $ */\n"
              "/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
@@ -1913,7 +1913,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.127 $";
+  const char szVersion[] = "$Revision: 1.128 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1994,7 +1994,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.127 $";
+  const char szVersion[] = "$Revision: 1.128 $";
   int iMajor, iMinor;
   char *pc;
 
