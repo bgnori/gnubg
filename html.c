@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.10 2002/03/23 19:11:43 thyssen Exp $
+ * $Id: html.c,v 1.11 2002/03/28 12:14:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -637,7 +637,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szID[] = "$Id: html.c,v 1.10 2002/03/23 19:11:43 thyssen Exp $";
+  const char szID[] = "$Id: html.c,v 1.11 2002/03/28 12:14:50 thyssen Exp $";
 
   /* add links to other games */
 
@@ -1970,6 +1970,58 @@ static void ExportGameHTML ( FILE *pf, list *plGame, const char *szImageDir,
     
 }
 
+/*
+ * get name number
+ *
+ * Input
+ *    plGame: the game for which the game number is requested
+ *
+ * Returns:
+ *    the game number
+ *
+ */
+
+static int
+getGameNumber ( const list *plGame ) {
+
+  list *pl;
+  int iGame;
+
+  for( pl = lMatch.plNext, iGame = 0; pl != &lMatch; 
+       pl = pl->plNext, iGame++ )
+    if ( pl->p == plGame ) return iGame;
+
+  return -1;
+
+}
+
+
+/*
+ * get move number
+ *
+ * Input
+ *    plGame: the game 
+ *    p: the move
+ *
+ * Returns:
+ *    the move number
+ *
+ */
+
+static int
+getMoveNumber ( const list *plGame, const void *p ) {
+
+  list *pl;
+  int iMove;
+
+  for( pl = plGame->plNext, iMove = 0; pl != plGame; 
+       pl = pl->plNext, iMove++ )
+    if ( p == pl->p ) return iMove;
+
+  return -1;
+
+}
+
 
 extern void CommandExportGameHtml( char *sz ) {
 
@@ -1997,7 +2049,7 @@ extern void CommandExportGameHtml( char *sz ) {
 
     ExportGameHTML( pf, plGame,
                     "http://fibs2html.sourceforge.net/images/", "gif",
-                    0, FALSE, 
+                    getGameNumber ( plGame ), FALSE, 
                     NULL );
 
     if( pf != stdout )
@@ -2135,9 +2187,11 @@ extern void CommandExportPositionHtml( char *sz ) {
 	return;
     }
 
-    HTMLPrologue ( pf, &ms, 0, NULL );
+    HTMLPrologue ( pf, &ms, getGameNumber ( plGame ), NULL );
 
-    HTMLBoardHeader ( pf, &ms, 0, 0 );
+    HTMLBoardHeader ( pf, &ms, 
+                      getGameNumber ( plGame ),
+                      getMoveNumber ( plGame, plLastMove->plNext->p ) - 1 );
 
     printHTMLBoard( pf, &ms, ms.fTurn,
                     "http://fibs2html.sourceforge.net/images/", "gif" );
