@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.82 2002/12/11 22:48:05 gtw Exp $
+## $Id: Makefile.am,v 1.83 2002/12/12 22:06:47 thyssen Exp $
 if USE_EXT
 SUBDIRS = intl lib doc ext met po m4 xpm sounds
 else
@@ -67,6 +67,7 @@ gnubg_SOURCES = $(COMMON_SOURCES) gtkboard.c gtkboard.h gtkgame.c gtkgame.h \
 	prevgame.xpm prevmove.xpm gtktheory.c gtktheory.h gtktexi.c gtktexi.h \
 	gtkexport.c gtkexport.h gtkcube.c gtkcube.h gtkchequer.c gtkchequer.h \
 	gtkrace.c gtkrace.h nextmarked.xpm prevmarked.xpm \
+	gtkmovefilter.c gtkmovefilter.h \
 	$(BR1_SOURCES) $(SOUND_SOURCES) $(FONT_SOURCES)
 gnubg_LDADD = @GTK_LIBS@ $(COMMON_LIBS) $(SOUND_LIBS)
 gnubg_DEPENDENCIES = $(COMMON_DEPS)

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.89 2002/12/11 18:40:46 thyssen Exp $
+ * $Id: rollout.c,v 1.90 2002/12/12 22:04:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -520,7 +520,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
               /* Find the best move for each roll on ply 0 only */
 
               if ( FindBestMove ( NULL, i + 1, j + 1, aaanBoard[ i ][ j ],
-                                  pci, NULL ) < 0 )
+                                  pci, NULL, defaultFilters ) < 0 )
                 return -1;
 
               SwapSides ( aaanBoard[ i ][ j ] );
@@ -556,7 +556,9 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
             FindBestMove( NULL, anDice[ 0 ], anDice[ 1 ],
                           aanBoard[ ici ], pci,
-                          pecChequer [ pci->fMove ] );
+                          pecChequer [ pci->fMove ],
+                          ( iTurn < nLateEvals ) ? 
+                          prc->aamfChequer : prc->aamfLate );
 
           else {
 
@@ -596,7 +598,9 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
               
           FindBestMove( NULL, anDice[ 0 ], anDice[ 1 ],
                         aanBoard[ ici ], pci,
-                        pecChequer [ pci->fMove ] );
+                        pecChequer [ pci->fMove ],
+                        ( iTurn < nLateEvals ) ? 
+                        prc->aamfChequer : prc->aamfLate );
 
         }
 

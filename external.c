@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.16 2002/11/01 18:53:45 thyssen Exp $
+ * $Id: external.c,v 1.17 2002/12/12 22:08:38 thyssen Exp $
  */
 
 #include "config.h"
@@ -325,7 +325,8 @@ extern void CommandExternal( char *sz ) {
 	    } else if( anDice[ 0 ] ) {
 		/* move */
 		if( FindBestMove( anMove, anDice[ 0 ], anDice[ 1 ],
-				  anBoard, &ci, &esEvalChequer.ec ) < 0 )
+				  anBoard, &ci, &esEvalChequer.ec,
+                                  aamfEval ) < 0 )
 		    break;
 
 		FormatMovePlain( szResponse, anBoardOrig, anMove );

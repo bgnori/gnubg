@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.165 2002/12/11 18:51:38 thyssen Exp $
+ * $Id: play.c,v 1.166 2002/12/12 22:04:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -1139,7 +1139,8 @@ extern int ComputerTurn( void ) {
       ProgressStart( _("Considering move...") );
       if( FindBestMove( pmn->anMove, ms.anDice[ 0 ], ms.anDice[ 1 ],
                         anBoardMove, &ci,
-			&ap[ ms.fTurn ].esChequer.ec ) < 0 ) {
+			&ap[ ms.fTurn ].esChequer.ec,
+                        ap[ ms.fTurn ].aamf ) < 0 ) {
 	  ProgressEnd();
 	  free( pmn );
 	  return -1;
@@ -2522,6 +2523,7 @@ static skilltype GoodMove (movenormal *p) {
   SuspendInput ( &m );
   ProgressStart( _("Considering move...") );
   if (AnalyzeMove ( pmr, &msx, plGame, NULL, pesChequer, pesChequer,
+                    fTutorAnalysis ? aamfAnalysis : aamfEval, 
 		    FALSE ) < 0) {
     fAnalyseMove = fAnalyseMoveSaved;
     ProgressEnd();
@@ -4051,7 +4053,7 @@ OptimumRoll ( int anBoard[ 2 ][ 25 ],
       
       /* Find the best move for each roll at ply 0 only. */
       if( FindBestMove( NULL, i + 1, j + 1, anBoardTemp, 
-                        (cubeinfo *) pci, NULL ) < 0 )
+                        (cubeinfo *) pci, NULL, defaultFilters ) < 0 )
         return;
       
       SwapSides( anBoardTemp );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.188 2002/12/11 18:43:11 thyssen Exp $
+ * $Id: backgammon.h,v 1.189 2002/12/12 22:01:49 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -118,6 +118,7 @@ typedef struct _player {
     playertype pt;
     /* For PLAYER_GNU: */
     evalsetup esChequer, esCube;
+    movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
     int h;
     /* For PLAYER_EXTERNAL: */
     char *szSocket;
@@ -292,6 +293,9 @@ extern evalcontext ecLuck;
 extern evalsetup esEvalCube, esEvalChequer;
 extern evalsetup esAnalysisCube, esAnalysisChequer;
 
+extern movefilter aamfEval[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
+extern movefilter aamfAnalysis[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
+
 extern rolloutcontext rcRollout;
 
 /* plGame is the list of moverecords representing the current game;
@@ -459,6 +463,7 @@ extern int fReadline;
 extern int
 AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
               evalsetup *pesChequer, evalsetup *pesCube,
+              movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ],
 	      int fUpdateStatistics );
 
 extern int
@@ -617,6 +622,7 @@ extern void CommandAccept( char * ),
     CommandSetAnalysisLimit( char * ),
     CommandSetAnalysisLuckAnalysis( char * ),
     CommandSetAnalysisLuck( char * ),
+    CommandSetAnalysisMoveFilter( char * ),
     CommandSetAnalysisMoves( char * ),
     CommandSetAnalysisThresholdBad( char * ),
     CommandSetAnalysisThresholdDoubtful( char * ),
@@ -666,6 +672,7 @@ extern void CommandAccept( char * ),
     CommandSetEvalParamEvaluation( char * ),
     CommandSetEvalChequerplay ( char * ),
     CommandSetEvalCubedecision ( char * ),
+    CommandSetEvalMoveFilter ( char * ),
     CommandSetEgyptian( char * ),
     CommandSetExportIncludeAnnotations ( char * ),
     CommandSetExportIncludeAnalysis ( char * ),
@@ -757,6 +764,7 @@ extern void CommandAccept( char * ),
     CommandSetPlayerGNU( char * ),
     CommandSetPlayerHuman( char * ),
     CommandSetPlayerName( char * ),
+    CommandSetPlayerMoveFilter( char * ),
     CommandSetPlayerPlies( char * ),
     CommandSetPlayerPubeval( char * ),
     CommandSetPlayer( char * ),
