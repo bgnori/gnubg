@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.64.4.24 2003/08/08 11:27:51 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.64.4.25 2003/08/11 09:17:26 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1741,11 +1741,6 @@ else
   gtk_adjustment_set_value ( GTK_ADJUSTMENT ( paElevation ),
                              rElevation );
 
-
-	/* Process changes before continuing */
-	while (gtk_events_pending ())
-		gtk_main_iteration ();
-
 	fUpdate = TRUE;
 
 	UpdatePreview(&pwPreview[PI_DESIGN]);
@@ -1837,7 +1832,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.64.4.24 2003/08/08 11:27:51 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.64.4.25 2003/08/11 09:17:26 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
