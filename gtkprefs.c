@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.29 2002/08/11 16:21:00 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.30 2002/08/12 19:46:54 gtw Exp $
  */
 
 #include "config.h"
@@ -919,9 +919,9 @@ static int SetColourARSS( gdouble aarColour[ 2 ][ 4 ],
 	*pch++ = 0;
 
     if( gdk_color_parse( sz, &col ) ) {
-	aarColour[ i ][ 0 ] = col.red / ( 256.0f * 255.0f );
-	aarColour[ i ][ 1 ] = col.green / ( 256.0f * 255.0f );
-	aarColour[ i ][ 2 ] = col.blue / ( 256.0f * 255.0f );
+	aarColour[ i ][ 0 ] = col.red / 65535.0f;
+	aarColour[ i ][ 1 ] = col.green / 65535.0f;
+	aarColour[ i ][ 2 ] = col.blue / 65535.0f;
 
         PushLocale ( "C" );
 
@@ -983,9 +983,9 @@ static int SetColourSSF( gdouble aarColour[ 2 ][ 4 ],
 	*pch++ = 0;
 
     if( gdk_color_parse( sz, &col ) ) {
-	aarColour[ i ][ 0 ] = col.red / ( 256.0f * 255.0f );
-	aarColour[ i ][ 1 ] = col.green / ( 256.0f * 255.0f );
-	aarColour[ i ][ 2 ] = col.blue / ( 256.0f * 255.0f );
+	aarColour[ i ][ 0 ] = col.red / 65535.0f;
+	aarColour[ i ][ 1 ] = col.green / 65535.0f;
+	aarColour[ i ][ 2 ] = col.blue / 65535.0f;
 
         PushLocale ( "C" );
 
@@ -1034,10 +1034,9 @@ static int SetColourX( gdouble arColour[ 4 ], char *sz ) {
 	*pch++ = 0;
 
     if( gdk_color_parse( sz, &col ) ) {
-
-	arColour[ 0 ] = col.red / ( 256.0f * 255.0f );
-	arColour[ 1 ] = col.green / ( 256.0f * 255.0f );
-	arColour[ 2 ] = col.blue / ( 256.0f * 255.0f );
+	arColour[ 0 ] = col.red / 65535.0f;
+	arColour[ 1 ] = col.green / 65535.0f;
+	arColour[ 2 ] = col.blue / 65535.0f;
 	return 0;
     }
 
