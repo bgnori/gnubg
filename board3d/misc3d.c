@@ -18,13 +18,14 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.32 2004/04/14 16:52:25 jsegrave Exp $
+* $Id: misc3d.c,v 1.33 2004/04/15 09:34:07 Superfly_Jon Exp $
 */
 
 #include "config.h"
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <io.h>
 #include <memory.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -253,9 +254,6 @@ GList *GetTextureList(int type)
 void FindNamedTexture(TextureInfo** textureInfo, char* name)
 {
 	list *pl;
-	if (textures.plNext == 0)
-	  return;
-
 	for (pl = textures.plNext; pl->p; pl = pl->plNext)
 	{
 		TextureInfo* text = (TextureInfo*)pl->p;
@@ -273,12 +271,8 @@ void FindNamedTexture(TextureInfo** textureInfo, char* name)
 
 void FindTexture(TextureInfo** textureInfo, char* file)
 {
-  list *pl = textures.plNext;
-	
-  if (pl == 0)
-    return;
-
-	for ( ; pl->p; pl = pl->plNext)
+	list *pl;
+	for (pl = textures.plNext; pl->p; pl = pl->plNext)
 	{
 		TextureInfo* text = (TextureInfo*)pl->p;
 		if (!strcasecmp(text->file, file))
@@ -289,7 +283,7 @@ void FindTexture(TextureInfo** textureInfo, char* file)
 	}
 	{	/* Not in texture list, see if old texture on disc */
 		char *szFile = PathSearch( file, szDataDirectory );
-		if (szFile)
+		if (szFile && !access(szFile, R_OK))
 		{
 			int len = strlen(file);
 			/* Add entry for unknown texture */
@@ -332,13 +326,7 @@ void LoadTextureInfo(int FirstPass)
 	else if (!ListEmpty(&textures))
 		return;	/* Ignore multiple calls after a successful load */
 
-	if (!(szFile = PathSearch( TEXTURE_FILE, szDataDirectory)))
-	{
-		if (!FirstPass)
-			g_print( "PathSearch failed!\n" );
-		return;
-	}
-
+	szFile = PathSearch( TEXTURE_FILE, szDataDirectory );
 	fp = fopen(szFile, "r");
 	free(szFile);
 	if (!fp)

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.15 2004/03/31 09:51:55 Superfly_Jon Exp $
+ * $Id: renderprefs.c,v 1.16 2004/04/15 09:34:07 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -213,13 +213,16 @@ static int SetMaterialCommon(Material* pMat, char *sz)
 
 static int SetMaterial(Material* pMat, char *sz)
 {
-	sz = (char*)SetMaterialCommon(pMat, sz);
-	pMat->textureInfo = 0;
-	pMat->pTexture = 0;
-	if (sz > 0)
+	if (fX)
 	{
-		FindTexture(&pMat->textureInfo, sz);
-		sz = 0;
+		sz = (char*)SetMaterialCommon(pMat, sz);
+		pMat->textureInfo = 0;
+		pMat->pTexture = 0;
+		if (sz > 0)
+		{
+			FindTexture(&pMat->textureInfo, sz);
+			sz = 0;
+		}
 	}
 	return (int)sz;
 }
