@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.116 2004/11/15 11:17:40 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.117 2005/02/10 10:32:18 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -72,7 +72,7 @@ static GtkWidget *apwColour[ 2 ], *apwBoard[ 4 ],
     *pwWood, *pwWoodType, *pwWoodMenu, *pwHinges, *pwLightTable, *pwMoveIndicator,
     *pwWoodF, *pwNotebook, *pwLabels, *pwDynamicLabels;
 #if HAVE_LIBXML2
-static GList *plBoardDesigns;
+static GList *plBoardDesigns = NULL;
 #endif
 #if USE_BOARD3D
 GtkWidget *pwBoardType, *pwShowShadows, *pwAnimateRoll, *pwAnimateFlag, *pwCloseBoard,
@@ -207,7 +207,7 @@ static boarddesign* FindDesign (renderdata* prdDesign)
 {
 	int i;
 	renderdata rdTest;
-	for (i = 0; i < g_list_length(plBoardDesigns) - 1; i++)
+	for (i = 0; i < (int)(g_list_length(plBoardDesigns) - 1); i++)
 	{
 		boarddesign *pbde = g_list_nth_data(plBoardDesigns, i + 1);
 		if (pbde)
@@ -1968,7 +1968,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.116 2004/11/15 11:17:40 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.117 2005/02/10 10:32:18 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
