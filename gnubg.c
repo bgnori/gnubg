@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.534 2004/02/14 19:32:22 uid65656 Exp $
+ * $Id: gnubg.c,v 1.535 2004/02/14 20:55:51 uid65655 Exp $
  */
 
 #include "config.h"
@@ -4745,6 +4745,10 @@ static void LoadCommands( FILE *pf, char *szFile ) {
 extern void
 CommandLoadPython( char * sz ) {
 
+#if !USE_PYTHON
+  output( _("This build of GNU Backgammon does not support Python"));
+  return;
+#else
   FILE *pf;
 
   sz = NextToken( &sz );
@@ -4760,7 +4764,7 @@ CommandLoadPython( char * sz ) {
     fclose( pf );
   } else
     outputerr( sz );
-  
+#endif
 }
 
 
