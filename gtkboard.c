@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.174 2004/04/20 08:50:36 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.175 2004/04/23 20:20:27 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -630,8 +630,8 @@ void update_pipcount ( BoardData *bd, gint points[ 2 ][ 25 ] ) {
     else {
       f = ( bd->turn > 0 );
       fl = arEPC[ 0 ] >= 100.0f || arEPC[ 1 ] >= 100.0f;
-      gtk_label_set_text ( GTK_LABEL ( bd->epclabel0 ), _("EPC: ") );
-      gtk_label_set_text ( GTK_LABEL ( bd->epclabel1 ), _("EPC: ") );
+      gtk_label_set_text ( GTK_LABEL ( bd->epclabel0 ), _("epc: ") );
+      gtk_label_set_text ( GTK_LABEL ( bd->epclabel1 ), _("epc: ") );
       pc = g_strdup_printf( fl ? "%.0f (%+.0f)" : "%.1f (%+.1f)", 
                            arEPC[ !f ], arEPC[ !f ] - arEPC[ f ] );
       gtk_label_set_text ( GTK_LABEL ( bd->epc0 ), pc );
