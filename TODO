@@ -1,4 +1,4 @@
-$Id: TODO,v 1.234 2002/04/29 21:38:03 thyssen Exp $
+$Id: TODO,v 1.235 2002/05/16 15:31:09 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -251,6 +251,8 @@ functions:
   two rollouts (one with player 0 on roll, and another with player 1 on roll)
   and average the two results. Instead gnubg should automagically perform both 
   rollouts and do the averaging.
+** When 'Allow dragging to illegal input' is selected, Two consecutive Button 1
+click will both use the 'first' dice.
 
 * Documentation:
 ** Complete the Texinfo manual.  Perhaps for now, only things that are
