@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.140 2003/09/06 09:42:06 thyssen Exp $
+ * $Id: gtkboard.c,v 1.141 2003/09/07 08:39:48 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -174,7 +174,7 @@ static void point_area( BoardData *bd, int n, int *px, int *py,
    the side, -1 = facing the bottom). */
 static void cube_position( BoardData *bd, int *px, int *py, int *porient ) {
 
-  CubePosition( bd->crawford_game, bd->cube_use, bd->doubled, bd->turn,
+  CubePosition( bd->crawford_game, bd->cube_use, bd->doubled,
                 bd->cube_owner, px, py, porient );
 
 }
@@ -2420,7 +2420,7 @@ static gint board_set( Board *board, const gchar *board_text,
 	int xCube, yCube;
 	redrawNeeded = 1;
 
-	bd->cube_owner = bd->can_double - bd->opponent_can_double;
+	bd->cube_owner = bd->opponent_can_double - bd->can_double;
 	bd->cube_use = cube_use;
 
 #if USE_BOARD3D
