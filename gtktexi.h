@@ -16,11 +16,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.h,v 1.3 2002/03/10 03:43:56 gtw Exp $
+ * $Id: gtktexi.h,v 1.4 2002/03/13 16:15:19 gtw Exp $
  */
 
 #ifndef _GTKTEXI_H_
 #define _GTKTEXI_H_
+
+#if HAVE_CONFIG_H
+#include <config.h>
+#else
+/* Compiling standalone; assume all dependencies are satisfied. */
+#define HAVE_LIBXML2 1
+#define USE_GTK2 1
+#endif
+
+#if HAVE_LIBXML2 && USE_GTK2
+
+#define HAVE_GTKTEXI 1
 
 #include <gtk/gtk.h>
 
@@ -55,4 +67,5 @@ extern int gtk_texi_render_node( GtkTexi *pw, char *szTag );
 
 G_END_DECLS
 
+#endif
 #endif
