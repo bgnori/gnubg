@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.5 2002/11/24 14:42:57 thyssen Exp $
+ * $Id: osr.c,v 1.6 2002/11/24 21:23:15 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -760,7 +760,7 @@ osp ( const int anBoard[ 25 ], const int nGames,
     for ( i = 0; i < 32; ++i ) {
       n = min ( i, MAX_PROBS - 1 );
       arProbs[ n ] += anProb[ i ] / 65535.0f;
-      printf ( "arProbs[%d]=%f\n", n, arProbs[n] );
+      /* printf ( "arProbs[%d]=%f\n", n, arProbs[n] ); */
     }
 
   }
