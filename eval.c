@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.68 2000/11/29 16:36:34 gtw Exp $
+ * $Id: eval.c,v 1.69 2000/12/26 15:19:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -4440,7 +4440,7 @@ EvaluatePositionCubeful1( int anBoard[ 2 ][ 25 ], float *prOutput,
         *prOutput += ( n0 == n1 ) ? r : 2.0 * r;
 
         for ( i = 0; i < NUM_OUTPUTS; i++ ) 
-          arClOutput[ i ] =
+          arClOutput[ i ] +=
             ( n0 == n1 ) ? arOutput[ i ] : 2.0 * arOutput[ i ];
 
       }
