@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.523 2004/01/30 09:33:48 uid68519 Exp $
+ * $Id: gnubg.c,v 1.524 2004/01/30 10:18:39 uid68519 Exp $
  */
 
 #include "config.h"
@@ -7349,7 +7349,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 
 	/* data directory: initialise to the path where gnubg is installed */
 	szDataDirectory = getInstallDir();
-	if (!strcmp(szHomeDirectory, "."))
+	if (!strcmp(szHomeDirectory, ".") && szDataDirectory)
 		szHomeDirectory = szDataDirectory;
 
 #endif /* WIN32 */
