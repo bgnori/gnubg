@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.343 2002/12/04 20:55:52 thyssen Exp $
+ * $Id: gnubg.c,v 1.344 2002/12/04 21:03:04 thyssen Exp $
  */
 
 #include "config.h"
@@ -91,6 +91,7 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "export.h"
 #include "i18n.h"
 #include "sound.h"
+#include "path.h"
 
 #if USE_GUILE
 #include <libguile.h>
@@ -109,7 +110,6 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include <ext.h>
 #include <extwin.h>
 #include "xgame.h"
-#include "path.h"
 
 extwindow ewnd;
 event evNextTurn;
