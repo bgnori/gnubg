@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.18.6.1 2003/05/30 14:35:38 grob Exp $
+ * $Id: neuralnet.c,v 1.18.6.2 2003/05/31 11:34:47 thyssen Exp $
  */
 
 #include "config.h"
@@ -787,7 +787,7 @@ extern int NeuralNetTrain( neuralnet *pnn, float arInput[], float arOutput[],
 #else
     float ar[ 1024 ], arOutputError[ 128 ], arHiddenError[ 1024 ];
 #endif
-#endif;
+#endif
     
     Evaluate( pnn, arInput, ar, arOutput, 0 );
 
