@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.3 2002/12/31 18:12:23 gtw Exp $
+ * $Id: gtksplash.c,v 1.4 2003/01/02 22:03:53 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -36,6 +36,13 @@
 #include "gtkboard.h"
 #include "i18n.h"
 
+#if GTK_CHECK_VERSION(2,0,0)
+#define USLEEP(x) g_usleep(x)
+#elif HAVE_USLEEP
+#define USLEEP(x) usleep(x)
+#else
+#define USLEEP(x)
+#endif
 
 typedef struct _gtksplash {
   GtkWidget *pwWindow;
@@ -103,7 +110,7 @@ DestroySplash ( GtkWidget *pwSplash ) {
   if ( ! pwSplash )
     return;
   
-  g_usleep ( 1000 );
+  USLEEP( 1000 );
 
   gtk_widget_destroy ( pwSplash );
 
@@ -129,6 +136,6 @@ PushSplash ( GtkWidget *pwSplash,
   while( gtk_events_pending() )
     gtk_main_iteration();
 
-  g_usleep ( nMuSec );
+  USLEEP( nMuSec );
 
 }
