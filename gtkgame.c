@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.127 2002/04/02 16:43:37 gtw Exp $
+ * $Id: gtkgame.c,v 1.128 2002/04/04 17:27:50 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -102,6 +102,7 @@ extern gint gtk_option_menu_get_history (GtkOptionMenu *option_menu) {
    sync with the string array! */
 typedef enum _gnubgcommand {
     CMD_AGREE,
+    CMD_ANALYSE_MOVE,
     CMD_ANALYSE_GAME,
     CMD_ANALYSE_MATCH,
     CMD_ANALYSE_SESSION,
@@ -214,6 +215,7 @@ static togglecommand atc[] = {
 
 static char *aszCommands[ NUM_CMDS ] = {
     "agree",
+    "analyse move",
     "analyse game",
     "analyse match",
     "analyse session",
@@ -2524,6 +2526,7 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ "/_Analyse/Rollout _cube decision", NULL, Command, CMD_ROLLOUT_CUBE,
 	  NULL },
 	{ "/_Analyse/-", NULL, NULL, 0, "<Separator>" },
+	{ "/_Analyse/Analyse move", NULL, Command, CMD_ANALYSE_MOVE, NULL },
 	{ "/_Analyse/Analyse game", NULL, Command, CMD_ANALYSE_GAME, NULL },
 	{ "/_Analyse/Analyse match", NULL, Command, CMD_ANALYSE_MATCH, NULL },
 	{ "/_Analyse/Analyse session", NULL, Command, CMD_ANALYSE_SESSION,
@@ -6534,6 +6537,9 @@ extern void GTKSet( void *p ) {
 	
 	enable_sub_menu( gtk_item_factory_get_widget( pif, "/Analyse" ),
 			 ms.gs == GAME_PLAYING );
+	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
+            pif, CMD_ANALYSE_MOVE ), 
+            plLastMove && plLastMove->plNext && plLastMove->plNext->p );
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
 	    pif, CMD_ANALYSE_GAME ), plGame != NULL );
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
