@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.112 2002/08/05 15:45:51 oysteijo Exp $
+ * $Id: set.c,v 1.113 2002/08/05 17:58:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -2559,7 +2559,6 @@ extern void CommandSetTutorSkillVeryBad( char * sz) {
 }
 
 
-#ifdef USE_GTK
 static gnubgwindow gwSet;
 
 extern void
@@ -2700,5 +2699,4 @@ CommandSetGeometryPosY ( char *sz ) {
 
 
 }
-#endif
 
