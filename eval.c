@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.29 2000/07/05 19:56:37 gtw Exp $
+ * $Id: eval.c,v 1.30 2000/07/12 16:15:50 gtw Exp $
  */
 
 #include "config.h"
@@ -196,7 +196,7 @@ void ( *fnAction )( void ) = NULL;
 
 static float arGammonPrice[ 4 ] = { 1.0, 1.0, 1.0, 1.0 };
 
-static evalcontext ecBasic = { 0, 0, 0, 0 };
+static evalcontext ecBasic = { 0, 0, 0, 0, TRUE };
 
 typedef struct _evalcache {
     unsigned char auchKey[ 10 ];
