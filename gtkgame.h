@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.23 2001/05/23 15:14:12 thyssen Exp $
+ * $Id: gtkgame.h,v 1.24 2001/06/17 17:42:10 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -65,6 +65,10 @@ extern void GTKOutputNew( void );
 extern void GTKProgressStart( char *sz );
 extern void GTKProgress( void );
 extern void GTKProgressEnd( void );
+extern void
+GTKProgressStartValue( char *sz, int iMax );
+extern void
+GTKProgressValue ( int fValue );
 
 extern void GTKDumpStatcontext( statcontext *psc, char *szTitle );
 extern void GTKEval( char *szOutput );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.62 2001/05/23 15:14:12 thyssen Exp $
+ * $Id: gtkgame.c,v 1.63 2001/06/17 17:42:10 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2260,6 +2260,37 @@ extern void GTKProgressStart( char *sz ) {
 	gtk_statusbar_push( GTK_STATUSBAR( pwStatus ), idProgress, sz );
 }
 
+
+extern void
+GTKProgressStartValue( char *sz, int iMax ) {
+
+  gtk_progress_set_activity_mode ( GTK_PROGRESS ( pwProgress ), FALSE );
+  gtk_progress_configure ( GTK_PROGRESS ( pwProgress ),
+                           0, 0, iMax );
+  gtk_progress_set_show_text( GTK_PROGRESS( pwProgress ), TRUE );
+  gtk_progress_set_format_string( GTK_PROGRESS( pwProgress ),
+				    "%v/%u (%p%%)" );
+
+  if( sz )
+    gtk_statusbar_push( GTK_STATUSBAR( pwStatus ), idProgress, sz );
+
+}
+
+
+extern void
+GTKProgressValue ( int iValue ) {
+
+  gtk_progress_configure ( GTK_PROGRESS ( pwProgress ),
+                           iValue, 0, iProgressMax );
+
+  GTKDisallowStdin();
+  while( gtk_events_pending() )
+    gtk_main_iteration();
+  GTKAllowStdin();    
+
+}
+
+
 extern void GTKProgress( void ) {
 
     static int i;
@@ -2276,6 +2307,7 @@ extern void GTKProgressEnd( void ) {
 
     gtk_progress_set_activity_mode( GTK_PROGRESS( pwProgress ), FALSE );
     gtk_progress_set_value( GTK_PROGRESS( pwProgress ), 0 );
+    gtk_progress_set_show_text( GTK_PROGRESS( pwProgress ), FALSE );
     gtk_statusbar_pop( GTK_STATUSBAR( pwStatus ), idProgress );
 }
 
