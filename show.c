@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.155 2003/07/10 13:02:41 thyssen Exp $
+ * $Id: show.c,v 1.156 2003/07/10 13:05:00 thyssen Exp $
  */
 
 #include "config.h"
@@ -2331,8 +2331,10 @@ CommandShowMatchResult( char *sz ) {
     outputf( _("Ave.   %+9.3f   %+9.3f\n"),
              arSum[ 0 ] / n , arSum[ 1 ] / n );
     outputf( _("95%%CI  %9.3f   %9.3f\n" ),
+             1.95996f *
              sqrt ( arSumSquared[ 0 ] / n - 
                     arSum[ 0 ] * arSum[ 0 ] / ( n * n ) ) / sqrt( n ),
+             1.95996f *
              sqrt ( arSumSquared[ 1 ] / n - 
                     arSum[ 1 ] * arSum[ 1 ] / ( n * n ) ) / sqrt( n ) );
   }
