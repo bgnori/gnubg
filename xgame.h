@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1997-1999
  *
- * $Id: xgame.h,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: xgame.h,v 1.2 2000/01/08 04:17:28 gtw Exp $
  */
 
 #ifndef _GAME_H_
@@ -16,6 +16,7 @@ typedef struct _gamedata {
     GC gcAnd, gcOr, gcCopy, gcCube;
     Pixmap pmBoard, pmX, pmO, pmMask, pmXDice, pmODice, pmDiceMask, pmXPip,
 	pmOPip, pmCube, pmCubeMask, pmSaved, pmTemp, pmTempSaved, pmPoint;
+    Window wndKey;
     int nBoardSize; /* basic unit of board size, in pixels -- a chequer's
 		       diameter is 6 of these units (and is 2 units thick) */
     XStandardColormap *pxscm;

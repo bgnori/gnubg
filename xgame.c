@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1997-1999
  *
- * $Id: xgame.c,v 1.5 2000/01/06 17:08:33 gtw Exp $
+ * $Id: xgame.c,v 1.6 2000/01/08 04:17:28 gtw Exp $
  */
 
 #include "config.h"
@@ -510,10 +510,14 @@ static int GameConfigure( extwindow *pewnd, gamedata *pgd,
 static int GamePreCreate( extwindow *pewnd ) {
 
     gamedata *pgd = malloc( sizeof( *pgd ) );
-
+    char *pchWindowID;
+    
     pewnd->pv = pgd;
     
     pgd->fDirection = -1;
+
+    pchWindowID = getenv( "WINDOWID" );
+    pgd->wndKey = pchWindowID ? atoi( pchWindowID ) : None;
     
     ExtWndCreate( &pgd->ewndBoard, &pewnd->eres, "main",
 		  &ewcBoard, pewnd->eres.rdb, NULL, pgd );
@@ -553,27 +557,45 @@ static int GameCreate( extwindow *pewnd, gamedata *pgd ) {
 
 static int GameHandler( extwindow *pewnd, XEvent *pxev ) {
 
+    gamedata *pgd = pewnd->pv;
+    
     switch( pxev->type ) {
     case ClientMessage:
+#if 0
+	/* Let xterm (or other client) know it should accept the focus
+	   on our behalf.  NB: seems to crash xterm! */
 	if( ( pxev->xclient.message_type ==
 	      XInternAtom( pewnd->pdsp, "WM_PROTOCOLS", False ) ) &&
 	    ( pxev->xclient.data.l[ 0 ] ==
-	      XInternAtom( pewnd->pdsp, "WM_TAKE_FOCUS", False ) ) )
-/*	    ExtSendEventHandler( &ewndTerm, pxev ); */ /* FIXME */
-	/* when starting, if $WINDOWID is set, try setting focus to
-	   that window (i.e. xterm) */
-	    
+	      XInternAtom( pewnd->pdsp, "WM_TAKE_FOCUS", False ) ) &&
+	      pgd->wndKey ) {
+	    pxev->xclient.window = pgd->wndKey;
+	    XSendEvent( pewnd->pdsp, pgd->wndKey, False, 0, pxev );
+	}
+#endif
 	break;
 
     case ConfigureNotify:
 	ExtHandler( pewnd, pxev );
-	return GameConfigure( pewnd, pewnd->pv, &pxev->xconfigure );
+	return GameConfigure( pewnd, pgd, &pxev->xconfigure );
 
     case KeyPress:
+    case KeyRelease:
 	/* FIXME handle undo/double/roll keys somewhere */
-/*	ExtSendEventHandler( &ewndTerm, pxev ); */ /* FIXME */
-	/* when starting, if $WINDOWID is set, try sending character to
-	   that window (i.e. xterm) */
+
+	if( pgd->wndKey ) {
+	    /* We're running under an xterm (or similar); forward keyboard
+	       input we can't process ourselves onto it.  Note that xterm
+	       by default will ignore `SendEvent's; other terminals
+	       (e.g. gnome-terminal) may accept them.  Ignore errors
+	       from XSendEvent (we could get `BadWindow's if the user
+	       has a bad $WINDOWID lying around). */
+	    ExtDspHandleNextError( ExtDspFind( pewnd->pdsp ), NULL );
+	    pxev->xkey.window = pgd->wndKey;
+	    pxev->xkey.subwindow = None;
+	    XSendEvent( pewnd->pdsp, pgd->wndKey, False, KeyPressMask |
+			KeyReleaseMask, pxev );
+	}
 	break;
 	
     case ExtPreCreateNotify:
@@ -581,7 +603,7 @@ static int GameHandler( extwindow *pewnd, XEvent *pxev ) {
 	break;
 
     case ExtCreateNotify:
-	GameCreate( pewnd, pewnd->pv );
+	GameCreate( pewnd, pgd );
 	break;
     }
 
@@ -686,7 +708,7 @@ extdefault aedGame[] = {
 };
 
 extwindowclass ewcGame = {
-    StructureNotifyMask, /* button? key? */
+    StructureNotifyMask | KeyPressMask | KeyReleaseMask,
     1, 1, 124, 96,
     GameHandler,
     "Game",
