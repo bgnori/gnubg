@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.276 2002/12/22 10:58:57 thyssen Exp $
+ * $Id: gtkgame.c,v 1.277 2002/12/22 12:42:55 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3951,7 +3951,7 @@ SetEvaluation ( gpointer *p, guint n, GtkWidget *pw ) {
 
 
     evalcontext ecChequer, ecCube;
-    GtkWidget *pwDialog, *pwEvalChequer, *pwEvalCube;
+    GtkWidget *pwDialog;
     GtkWidget *pwhbox, *pwFrame;
     GtkWidget *pwvbox;
     int fOK = FALSE;
