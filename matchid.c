@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.c,v 1.7 2004/02/11 09:33:10 uid68519 Exp $
+ * $Id: matchid.c,v 1.8 2004/02/24 10:14:41 uid68519 Exp $
  */
 
 #include <assert.h>
@@ -256,8 +256,8 @@ MatchFromID ( int anDice[ 2 ],
   unsigned char *pch = ach;
   int i;
 
+  memset(ach, 0, sizeof(ach));
   /* decode base64 into key */
-
   for( i = 0; i < 12 && szMatchID[ i ]; i++ )
     pch[ i ] = Base64( szMatchID[ i ] );
 
