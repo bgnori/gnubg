@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.153 2002/08/31 23:19:05 thyssen Exp $
+ * $Id: backgammon.h,v 1.154 2002/09/01 16:29:22 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -723,6 +723,29 @@ extern void CommandAccept( char * ),
     CommandSetRolloutVarRedn( char * ),
     CommandSetScore( char * ),
     CommandSetSeed( char * ),
+    CommandSetSoundEnable ( char * ),
+    CommandSetSoundSystemArtsc ( char * ),
+    CommandSetSoundSystemCommand ( char * ),
+    CommandSetSoundSystemESD ( char * ),
+    CommandSetSoundSystemNAS ( char * ),
+    CommandSetSoundSystemNormal ( char * ),
+    CommandSetSoundSystemWindows ( char * ),
+    CommandSetSoundSoundAgree ( char * ),
+    CommandSetSoundSoundBotDance ( char * ),
+    CommandSetSoundSoundBotWinGame ( char * ),
+    CommandSetSoundSoundBotWinMatch ( char * ),
+    CommandSetSoundSoundDouble ( char * ),
+    CommandSetSoundSoundDrop ( char * ),
+    CommandSetSoundSoundExit ( char * ),
+    CommandSetSoundSoundHumanDance ( char * ),
+    CommandSetSoundSoundHumanWinGame ( char * ),
+    CommandSetSoundSoundHumanWinMatch ( char * ),
+    CommandSetSoundSoundMove ( char * ),
+    CommandSetSoundSoundRedouble ( char * ),
+    CommandSetSoundSoundResign ( char * ),
+    CommandSetSoundSoundRoll ( char * ),
+    CommandSetSoundSoundStart ( char * ),
+    CommandSetSoundSoundTake ( char * ),
     CommandSetTrainingAlpha( char * ),
     CommandSetTrainingAnneal( char * ),
     CommandSetTrainingThreshold( char * ),
@@ -769,6 +792,7 @@ extern void CommandAccept( char * ),
     CommandShowRollout( char * ),
     CommandShowScore( char * ),
     CommandShowSeed( char * ),
+    CommandShowSound( char * ),
     CommandShowStatisticsGame( char * ),
     CommandShowStatisticsMatch( char * ),
     CommandShowStatisticsSession( char * ),

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.106 2002/08/18 08:40:09 thyssen Exp $
+ * $Id: show.c,v 1.107 2002/09/01 16:30:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -40,6 +40,7 @@
 #include "matchequity.h"
 #include "matchid.h"
 #include "i18n.h"
+#include "sound.h"
 
 #if USE_GTK
 #include "gtkboard.h"
@@ -1524,3 +1525,39 @@ CommandShowGeometry ( char *sz ) {
             awg[ WINDOW_MESSAGE ].nPosY );
 
 }
+
+
+#ifdef USE_SOUND
+
+extern void
+CommandShowSound ( char *sz ) {
+
+  int i;
+
+#if USE_GTK
+
+  if ( fX ) {
+    /* GTKSound(); */
+    /* return */;
+  }
+
+#endif /* USE_GTK */
+
+  outputf ( _("Sounds are enabled          : %s\n"
+              "Sound system                : %s\n"),
+            fSound ? _("yes") : _("no"),
+            gettext ( aszSoundSystem[ ssSoundSystem ] ) );
+
+  outputl ( _("Sounds for:") );
+
+  for ( i = 0; i < NUM_SOUNDS; ++i ) 
+    if ( ! *aszSound[ i ] )
+      outputf ( _("   %-30.30s : no sound\n"),
+                gettext ( aszSoundDesc[ i ] ) );
+    else
+      outputf ( _("   %-30.30s : \"%s\"\n"),
+                gettext ( aszSoundDesc[ i ] ),
+                aszSound[ i ] );
+}
+
+#endif /* USE_SOUND */
