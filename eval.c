@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.100 2001/08/23 14:59:37 gtw Exp $
+ * $Id: eval.c,v 1.101 2001/08/24 15:23:03 gtw Exp $
  */
 
 #include "config.h"
@@ -781,11 +781,14 @@ extern int EvalInitialise( char *szWeights, char *szWeightsBinary,
 	if( nnRace.cInput != NUM_RACE_INPUTS ||
 	    nnRace.cOutput != NUM_OUTPUTS )
 	    NeuralNetResize( &nnRace, NUM_RACE_INPUTS, nnRace.cHidden,
-			     NUM_OUTPUTS );	
-    } else
-	CreateWeights( nSize );    
-    
-    return 0;
+			     NUM_OUTPUTS );
+
+	return 0;
+    } else {
+	CreateWeights( nSize );
+
+	return 1;
+    }
 }
 
 extern int EvalSave( char *szWeights ) {
