@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.81 2002/10/04 16:02:16 thyssen Exp $
+ * $Id: rollout.c,v 1.82 2002/10/28 20:50:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -303,6 +303,8 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
   float arMean[ NUM_ROLLOUT_OUTPUTS ];
   int aaanBoard[ 6 ][ 6 ][ 2 ][ 25 ];
   float aaar[ 6 ][ 6 ][ NUM_ROLLOUT_OUTPUTS ];
+
+  evalcontext ecCubeless0ply = { 0, FALSE, 0, 0, TRUE, FALSE, 0.0f, 0.0f };
 
   if ( prc->fVarRedn ) {
 
@@ -648,7 +650,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 	      }
 
         }
-          
+
         /* Invert board and more */
 	
         SwapSides( aanBoard[ ici ] );
@@ -657,6 +659,28 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
                       ! pci->fMove, pci->nMatchTo,
                       pci->anScore, pci->fCrawford,
                       pci->fJacoby, pci->fBeavers );
+
+        /* check for truncation at bearoff databases */
+
+        if ( ( ( prc->fTruncBearoff2 && pc == CLASS_BEAROFF2 ) ||
+                    ( prc->fTruncBearoffOS && pc <= CLASS_BEAROFF_OS ) ) &&
+                  ! prc->fCubeful ) {
+          
+          /* cubeless rollout, requested to truncate at bearoff db */
+
+          GeneralEvaluationE ( aarOutput[ ici ],
+                               aanBoard[ ici ],
+                               pci, &ecCubeless0ply );
+
+          if ( ! ( iTurn & 1 ) ) InvertEvaluationR ( aarOutput[ ici ], pci );
+
+          *pf = FALSE;
+          cUnfinished--;
+
+        }
+        
+          
+
 
       }
     }
@@ -779,7 +803,7 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
   }
 
   if( ClassifyPosition( anBoard ) == CLASS_BEAROFF1 ) 
-    rt = BEAROFF;
+    rt = VARREDN; /* BEAROFF; */
   else if ( prc->fVarRedn )
     rt = VARREDN;
   else
