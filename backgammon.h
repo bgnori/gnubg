@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.162 2002/09/25 21:24:24 gtw Exp $
+ * $Id: backgammon.h,v 1.163 2002/10/07 20:08:47 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -442,6 +442,15 @@ extern int fReadingCommand;
 extern void HandleInput( char *sz );
 #endif
 #endif
+
+#ifdef WIN32
+#define DIR_SEPARATOR  '\\'
+#define DIR_SEPARATOR_S  "\\"
+#else
+#define DIR_SEPARATOR  '/'
+#define DIR_SEPARATOR_S  "/"
+#endif
+
 
 #if HAVE_LIBREADLINE
 extern int fReadline;
