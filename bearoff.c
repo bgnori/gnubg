@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.14 2003/01/08 19:32:28 thyssen Exp $
+ * $Id: bearoff.c,v 1.15 2003/01/08 22:33:56 joseph Exp $
  */
 
 #include "config.h"
@@ -1389,10 +1389,10 @@ AssignOneSided ( float arProb[ 32 ], float arGammonProb[ 32 ],
   float arx[ 64 ];
 
   if ( ausProb )
-    memcpy ( ausProb, ausProbx, sizeof ( ausProb ) );
+    memcpy ( ausProb, ausProbx, 32 * sizeof ( ausProb[0] ) );
 
   if ( ausGammonProb )
-    memcpy ( ausGammonProb, ausGammonProbx, sizeof ( ausGammonProbx ) );
+    memcpy ( ausGammonProb, ausGammonProbx, 32 * sizeof (ausGammonProbx[0]) );
 
   if ( ar || arProb || arGammonProb ) {
     for ( i = 0; i < 32; ++i ) 
