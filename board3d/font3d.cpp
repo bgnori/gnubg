@@ -18,14 +18,14 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.cpp,v 1.10 2004/06/01 08:24:05 Superfly_Jon Exp $
+* $Id: font3d.cpp,v 1.11 2004/06/30 20:37:39 thyssen Exp $
 */
 
 #include "config.h"
 #include "backgammon.h"
 #include "inc3d.h"
 
-#if HAVE_FTGL
+#if HAVE_LIBFTGL
 /* Using ftgl in a static libaray */
 #define FTGL_LIBRARY_STATIC
 
