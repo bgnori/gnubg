@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.80 2003/10/12 08:52:28 thyssen Exp $
+ * $Id: import.c,v 1.81 2003/10/28 12:02:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1762,6 +1762,7 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
       if ( pmr->r.nResigned > 3 )
         pmr->r.nResigned = 3;
       pmr->r.esResign.et = EVAL_NONE;
+      szComment = NULL;
 
       AddMoveRecord( pmr );
 
