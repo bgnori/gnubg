@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.242 2004/10/12 08:41:24 joseph Exp $
+ * $Id: set.c,v 1.243 2004/10/12 10:24:27 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4359,6 +4359,9 @@ static void SetPriority( int n ) {
 	tp = THREAD_PRIORITY_BELOW_NORMAL;
 	pch = N_("below normal");
     } else {
+	/* Lowest - set to idle prioirty but raise the thread priority
+	to make sure it runs instead of screen savers */
+	tp = THREAD_PRIORITY_HIGHEST;
 	pp = IDLE_PRIORITY_CLASS;
 	pch = N_("idle");
     }
