@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.111 2004/04/07 10:01:59 Superfly_Jon Exp $
+# $Id: credits.sh,v 1.112 2004/04/11 20:54:26 thyssen Exp $
 # 
 
 column < /dev/null || exit 0
@@ -43,6 +43,7 @@ cat > $contributors <<EOF
 Olivier Baur
 Holger Bochnig
 Nis Joergensen
+Petr Kadlec
 Kaoru Takahashi
 Stein Kulseth
 Mike Petch

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.100 2004/04/02 09:16:36 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.101 2004/04/11 20:54:26 thyssen Exp $
  */
 
 #include "config.h"
@@ -201,12 +201,12 @@ void SetTitle()
 
 	strcpy(title, _("GNU Backgammon - Appearance"));
 
-	pbdeSelected = 0;
 #if HAVE_LIBXML2
 {	/* Search for current settings in designs */
 	gchar *sz, *pch;
 	renderdata rdTest;
 	char *apch[ 2 ];
+	pbdeSelected = 0;
 	strcat(title, ": ");
 	for (i = 0; i < g_list_length(plBoardDesigns) - 1; i++)
 	{
@@ -1981,7 +1981,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.100 2004/04/02 09:16:36 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.101 2004/04/11 20:54:26 thyssen Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2817,8 +2817,10 @@ void ChangePage(GtkNotebook *notebook, GtkNotebookPage *page,
 			return;
 		}
 	}
+#if HAVE_LIBXML2
 	if (page_num == NUM_NONPREVIEW_PAGES)
 		ShowSelectedRow();
+#endif
 
 #if USE_BOARD3D
 	if (rdPrefs.fDisplayType == DT_3D && redrawChange)
