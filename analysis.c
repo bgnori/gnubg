@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.78 2002/08/04 17:13:01 thyssen Exp $
+ * $Id: analysis.c,v 1.79 2002/08/07 18:41:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -192,7 +192,7 @@ updateStatcontext ( statcontext *psc,
       psc->anTotalCube[ pmr->n.fPlayer ]++;
 
       if ( isCloseCubedecision ( arDouble ) || 
-           isMissedDouble ( arDouble, FALSE, &ci ) )
+           isMissedDouble ( arDouble, pmr->n.aarOutput, FALSE, &ci ) )
         psc->anCloseCube[ pmr->n.fPlayer ]++;
 	  
       if( arDouble[ OUTPUT_NODOUBLE ] <
