@@ -1,4 +1,4 @@
-$Id: TODO,v 1.239 2002/05/30 19:38:02 thyssen Exp $
+$Id: TODO,v 1.240 2002/06/01 11:32:34 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -248,8 +248,6 @@ functions:
   rollouts and do the averaging.
 ** When 'Allow dragging to illegal input' is selected, Two consecutive Button 1
 click will both use the 'first' dice.
-** The menu entries Save and Load Session are inoperant. Should they be removed
-or should they just be linked to Save and Load Match?
 
 * Documentation:
 ** Complete the Texinfo manual.  Perhaps for now, only things that are
