@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.583 2004/09/29 18:13:00 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.584 2004/09/30 09:56:55 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -219,7 +219,7 @@ windowobject woPanel[NUM_WINDOWS] =
 	/* game list */
 	{
 		"game",
-		TRUE, TRUE, TRUE, TRUE,
+		FALSE, TRUE, TRUE, TRUE,
 #if USE_GTK
 		ShowGameWindow, DeleteGame,
 		0,
