@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.37 2003/10/07 11:07:22 Superfly_Jon Exp $
+ * $Id: gtkcube.c,v 1.38 2004/01/29 15:26:13 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -923,7 +923,7 @@ CreateCubeAnalysisTools ( cubehintdata *pchd ) {
     gtk_signal_connect( GTK_OBJECT( pwply ), "clicked",
                         GTK_SIGNAL_FUNC( CubeAnalysisEvalPly ), pchd );
 
-    gtk_object_set_data_full ( GTK_OBJECT ( pwply ), "user_data", sz, free );
+    gtk_object_set_data_full ( GTK_OBJECT ( pwply ), "user_data", sz, g_free );
 
     sz = g_strdup_printf ( _("Evaluate play on cubeful %d-ply"), i );
     gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwply, sz, sz );

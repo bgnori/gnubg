@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.52 2004/01/19 10:20:07 uid68519 Exp $
+ * $Id: gtkchequer.c,v 1.53 2004/01/29 15:26:13 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -637,7 +637,7 @@ CreateMoveListTools ( hintdata *phd ) {
     gtk_signal_connect( GTK_OBJECT( pwply ), "clicked",
                         GTK_SIGNAL_FUNC( MoveListEvalPly ), phd );
 
-    gtk_object_set_data_full ( GTK_OBJECT ( pwply ), "user_data", sz, free );
+    gtk_object_set_data_full ( GTK_OBJECT ( pwply ), "user_data", sz, g_free );
 
     sz = g_strdup_printf ( _("Evaluate play on cubeful %d-ply"), i );
     gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwply, sz, sz );
