@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.52 2001/03/26 15:36:52 gtw Exp $
+ * $Id: set.c,v 1.53 2001/03/26 22:13:24 joseph Exp $
  */
 
 #include "config.h"
@@ -24,6 +24,13 @@
 #include <errno.h>
 #include <math.h>
 #if HAVE_SYS_SOCKET_H
+#include <sys/types.h>
+
+#if defined(sun)
+#define AF_LOCAL AF_UNIX
+#define PF_LOCAL PF_UNIX
+#endif
+
 #include <sys/socket.h>
 #include <sys/un.h>
 #endif
@@ -669,7 +676,7 @@ extern void CommandSetPlayerExternal( char *sz ) {
 				    here... but we didn't write the broken
 				    interface */
     
-    while( connect( h, (struct sockaddr *) &socsun, SUN_LEN( &socsun ) ) < 0 ) {
+    while( connect( h, (struct sockaddr *) &socsun, sizeof(socsun) ) < 0 ) {
 	if( errno == EINTR ) {
 	    if( fAction )
 		fnAction();

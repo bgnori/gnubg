@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.38 2001/03/21 15:19:44 gtw Exp $
+ * $Id: eval.h,v 1.39 2001/03/26 22:13:24 joseph Exp $
  */
 
 #ifndef _EVAL_H_
@@ -30,8 +30,8 @@
 #define TRUE 1
 #endif
 
-#define WEIGHTS_VERSION "0.10"
-#define WEIGHTS_VERSION_BINARY 0.10f
+#define WEIGHTS_VERSION "0.11"
+#define WEIGHTS_VERSION_BINARY 0.11f
 #define WEIGHTS_MAGIC_BINARY 472.3782f
 
 #define NUM_OUTPUTS 5
