@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.113 2002/03/19 18:17:04 oysteijo Exp $
+ * $Id: play.c,v 1.114 2002/03/19 21:45:33 thyssen Exp $
  */
 
 #include "config.h"
@@ -2862,10 +2862,12 @@ extern void CommandTake( char *sz ) {
 }
 
 extern void
-SetMatchID ( char *szMatchID ) {
+SetMatchID ( const char *szMatchID ) {
 
   int anScore[ 2 ], anDice[ 2 ];
   int nMatchTo, fCubeOwner, fMove, fCrawford, nCube;
+  int fTurn, fDoubled, fResigned;
+  gamestate gs;
 
   char szID[ 15 ];
 
@@ -2887,9 +2889,10 @@ SetMatchID ( char *szMatchID ) {
   else
     strcpy ( szID, "" );
 
-  if ( MatchFromID ( &nCube, &fCubeOwner, &fMove,
-                     &nMatchTo, anScore, &fCrawford, 
-                     anDice, szMatchID ) < 0 ) {
+  if ( MatchFromID ( anDice, &fTurn, &fResigned, &fDoubled, &fMove,
+                     &fCubeOwner, &fCrawford, 
+                     &nMatchTo, anScore, &nCube, (int *) &gs, 
+                     szMatchID ) < 0 ) {
 
     outputf( "Illegal match ID '%s'\n", szMatchID );
     outputx();
@@ -2943,9 +2946,11 @@ SetMatchID ( char *szMatchID ) {
   IniStatcontext( &pmr->g.sc );
   AddMoveRecord( pmr );
 
-  ms.gs = GAME_PLAYING;
+  ms.gs = gs;
   ms.fMove = fMove;
-  ms.fTurn = fMove;
+  ms.fTurn = fTurn;
+  ms.fResigned = fResigned;
+  ms.fDoubled = fDoubled;
   
   UpdateSetting( &ms.gs );
   UpdateSetting( &ms.nCube );
