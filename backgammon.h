@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.225 2003/06/14 10:37:02 thyssen Exp $
+ * $Id: backgammon.h,v 1.226 2003/06/23 21:46:52 jsegrave Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -530,7 +530,8 @@ extern char *aszSkillType[], *aszSkillTypeAbbr[], *aszLuckType[],
 
 extern command acDatabase[], acNew[], acSave[], acSetAutomatic[],
     acSetCube[], acSetEvaluation[], acSetPlayer[], acSetRNG[], 
-    acSetRollout[], acSetRolloutLate[], acSetTruncation [], 
+    acSetRollout[], acSetRolloutLate[], acSetRolloutLimit[], 
+    acSetTruncation [], 
     acSet[], acShow[], acTrain[], acTop[], acSetMET[], acSetEvalParam[],
     acSetRolloutPlayer[], acSetRolloutLatePlayer[], cOnOff, cFilename,
     cHighlightColour;
@@ -864,6 +865,10 @@ extern void CommandAccept( char * ),
     CommandSetRolloutChequerplay ( char * ),
     CommandSetRolloutCubeEqualChequer ( char * ),
     CommandSetRolloutInitial( char * ),
+    CommandSetRolloutLimit( char * ),
+    CommandSetRolloutLimitEnable( char * ),
+    CommandSetRolloutLimitMinGames( char * ),
+    CommandSetRolloutMaxError( char * ),
     CommandSetRolloutMoveFilter( char * ),
     CommandSetRolloutPlayer ( char * ),
     CommandSetRolloutPlayerChequerplay ( char * ),

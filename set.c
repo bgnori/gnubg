@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.184 2003/06/14 10:39:09 thyssen Exp $
+ * $Id: set.c,v 1.185 2003/06/23 21:46:52 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1599,6 +1599,53 @@ extern void CommandSetRolloutLatePlies ( char *sz ) {
 extern void CommandSetRolloutTruncation  ( char *sz ) {
 
   HandleCommand ( sz, acSetTruncation );
+}
+
+extern void CommandSetRolloutLimit ( char *sz ) {
+
+  HandleCommand ( sz, acSetRolloutLimit );
+
+}
+
+extern void CommandSetRolloutLimitEnable ( char *sz ) {
+
+  SetToggle( "stop when the STD's are small enough", &prcSet->fStopOnSTD, sz,
+	     _("Stop rollout when STD's are small enough"),
+	     _("Do not stop rollout based on STDs"));
+}
+
+extern void CommandSetRolloutLimitMinGames ( char *sz ) {
+
+  int n = ParseNumber( &sz );
+
+  if (n < 1) {
+    outputl( _("You must specify a valid minimum number of games to rollout"
+               "-- try 'help set rollout limit minimumgames'.") );
+    return;
+  }
+
+  prcSet->nMinimumGames = n;
+
+  outputf( _("After %d games, rollouts will stop if the STDs are small enough"
+	     ".\n"), n);
+}
+
+extern void CommandSetRolloutMaxError ( char *sz ) {
+
+    double r = ParseReal( &sz );
+
+    if( r < 0.0001 ) {
+      outputl( _("You must set a valid fraction for the ratio "
+		 "STD/value where rollouts can stop "
+		 "-- try 'help set rollout limit maxerror'." ) );
+      return;
+    }
+
+    prcSet->rStdLimit = r;
+
+    outputf ( _("Rollouts can stop when the ratio |STD/value| is less than"
+		"%5.4f for every value (win/gammon/backgammon/...equity\n"),
+	      r);
 }
 
 extern void CommandSetRollout ( char *sz ) {

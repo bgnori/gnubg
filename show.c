@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.151 2003/06/14 10:39:09 thyssen Exp $
+ * $Id: show.c,v 1.152 2003/06/23 21:46:52 jsegrave Exp $
  */
 
 #include "config.h"
@@ -301,6 +301,11 @@ ShowRollout ( const rolloutcontext *prc ) {
                 &prc->aecCubeTrunc, 0, 1, 0, 0 );
   }
 
+  if (prc->fStopOnSTD) {
+    outputf ( _("Rollouts may stop after %d games if the ratios |value/STD|\n"
+		"are all less than< %5.4f\n"), prc->nMinimumGames, 
+		prc->rStdLimit);
+  }
 }
 
 static void

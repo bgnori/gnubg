@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.112 2003/06/14 10:38:02 thyssen Exp $
+ * $Id: eval.h,v 1.113 2003/06/23 21:46:52 jsegrave Exp $
  */
 
 #ifndef _EVAL_H_
@@ -124,6 +124,9 @@ typedef struct _rolloutcontext {
   unsigned short nLate; /* switch evaluations on move nLate of game */
   rng rngRollout;
   int nSeed;
+  unsigned int fStopOnSTD;    /* stop when std's are small enough */
+  unsigned int nMinimumGames; /* but always do at least this many */
+  double       rStdLimit;     /* stop when abs( value / std ) < this */
 
 } rolloutcontext;
 
