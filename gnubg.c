@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.530 2004/02/06 09:37:48 uid68519 Exp $
+ * $Id: gnubg.c,v 1.531 2004/02/06 11:43:23 uid68519 Exp $
  */
 
 #include "config.h"
@@ -4226,9 +4226,11 @@ extern void PromptForExit( void ) {
         }
 #endif /* HAVE_READLINE */
 
+#if USE_GTK
 	if (gtk_main_level() == 1)
 		gtk_main_quit();
 	else
+#endif
 		exit( EXIT_SUCCESS );
 }
 
