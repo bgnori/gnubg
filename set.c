@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.183 2003/05/24 10:24:49 hb Exp $
+ * $Id: set.c,v 1.183.2.1 2003/07/21 17:50:05 hb Exp $
  */
 
 #include "config.h"
@@ -32,13 +32,20 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 #endif
+
+#ifndef WIN32
 #if HAVE_SYS_SOCKET_H
 #include <sys/types.h>
 #include <sys/socket.h>
-#endif
+#endif /* HAVE_SYS_SOCKET_H */
+#else /* WIN32 */
+#include <winsock.h>
+#endif /* WIN32 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -61,10 +68,6 @@
 #include "i18n.h"
 
 #include "sound.h"
-
-#ifdef WIN32
-#include<windows.h>
-#endif
 
 
 static int iPlayerSet, iPlayerLateSet;

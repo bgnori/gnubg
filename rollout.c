@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.101.2.7 2003/07/07 17:14:00 grob Exp $
+ * $Id: rollout.c,v 1.101.2.8 2003/07/21 17:50:04 hb Exp $
  */
 
 #include "config.h"
@@ -26,6 +26,7 @@
 #if HAVE_ALLOCA_H
 #include <alloca.h>
 #endif
+
 #include <errno.h>
 #include <isaac.h>
 #include <math.h>
@@ -34,6 +35,7 @@
 #include <string.h>
 #include <assert.h>
 #include <time.h>
+
 #if PROCESSING_UNITS
 #include <signal.h>
 #endif
@@ -42,9 +44,11 @@
 #include "dice.h"
 #include "drawboard.h" 
 #include "eval.h"
+
 #if USE_GTK
 #include "gtkgame.h"
 #endif
+
 #include "matchid.h"
 #include "positionid.h"
 #include "rollout.h"
@@ -928,7 +932,11 @@ CreateTask_BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
                     /* new args specific to processing units */
                       int gameSeed)
 {
+#if USE_GTK
+#if GTK_CHECK_VERSION(2,0,0)
     gdk_threads_init ();
+#endif /* GTK_CHECK_VERSION(2,0,0) */
+#endif /* USE_GTK */
     pu_task *pt = CreateTask (pu_task_rollout, FALSE);
     
     if (pt != NULL) {
