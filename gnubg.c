@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.99 2001/02/22 16:43:21 gtw Exp $
+ * $Id: gnubg.c,v 1.100 2001/02/23 18:13:36 gtw Exp $
  */
 
 #include "config.h"
@@ -2039,6 +2039,8 @@ extern void CommandNewWeights( char *sz ) {
 	n = DEFAULT_NET_SIZE;
 
     EvalNewWeights( n );
+
+    outputf( "A new neural net with %d hidden nodes has been created.\n", n );
 }
 
 extern void CommandSaveSettings( char *szParam ) {
@@ -2922,7 +2924,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 	      "Type \"show warranty\" for\n"
 	      "details." );
     
-    InitRNG();
+    InitRNG( NULL, TRUE );
 
     InitMatchEquity ( metCurrent );
     
