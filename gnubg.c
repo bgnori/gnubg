@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.95 2001/02/08 16:38:58 gtw Exp $
+ * $Id: gnubg.c,v 1.96 2001/02/12 19:29:25 gtw Exp $
  */
 
 #include "config.h"
@@ -2804,6 +2804,14 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 	case 't':
 	    /* silently ignore (if it was relevant, it was handled earlier). */
 	    break;
+	case 'w':
+#if USE_GTK
+	    if( fX )
+		fTTY = FALSE;
+#else
+	    /* silently ignore */
+#endif
+	    break;
 	default:
 	    usage( argv[ 0 ] );
 	    exit( EXIT_FAILURE );
@@ -2856,7 +2864,8 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #if USE_GTK
     if( fTTY )
 #endif
-	PortableSignal( SIGINT, HandleInterrupt, NULL );
+	if( fInteractive )
+	    PortableSignal( SIGINT, HandleInterrupt, NULL );
     
 #if USE_GUI
     PortableSignal( SIGIO, HandleIO, NULL );
