@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gdkgetrgb.c,v 1.3 2001/03/29 16:26:54 gtw Exp $
+ * $Id: gdkgetrgb.c,v 1.4 2001/03/30 21:01:14 gtw Exp $
  */
 
 #include <gdk/gdk.h>
@@ -73,9 +73,12 @@ gdk_get_rgb_image( GdkDrawable *drawable,
 	g = visual->green_shift + visual->green_prec - 8;
 	b = visual->blue_shift + visual->blue_prec - 8;
     }
-    
-    image = gdk_image_get( drawable, x, y, width, height );
 
+    gdk_error_trap_push();
+    image = gdk_image_get( drawable, x, y, width, height );
+    if( gdk_error_trap_pop() )
+	return;
+    
     for( ypix = 0; ypix < height; ypix++ ) {
 	p = rgb_buf;
 	
