@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-AC_REVISION($Revision: 1.131 $)
+AC_REVISION($Revision: 1.132 $)
 AC_INIT(GNU Backgammon,0.14.3-devel,bug-gnubg@gnu.org,gnubg)
 AC_CONFIG_SRCDIR(gnubg.c)
 AM_INIT_AUTOMAKE
@@ -508,6 +508,10 @@ if test "$with_board3d" != "no"; then
       PKG_CHECK_MODULES(FTGL, ftgl,
                         AC_DEFINE(HAVE_LIBFTGL,1,[Define if you have libftgl]),
                         no_ftgl="yes")
+      dnl automake can't pick up these, since the PKG_CHECK_MODULES macro
+      dnl has $1_LIBS.
+      AC_SUBST(FTGL_LIBS)
+      AC_SUBST(FTGL_CFLAGS)
 
       if test "$no_gtkgl" != "yes" -a "$no_ftgl" != "yes"; then
          no_board3d=
