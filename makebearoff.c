@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.11 2002/11/24 11:20:55 thyssen Exp $
+ * $Id: makebearoff.c,v 1.12 2002/11/25 12:20:14 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1112,7 +1112,7 @@ usage ( char *arg0 ) {
 static void
 version ( void ) {
 
-  printf ( "makebearoff $Revision: 1.11 $\n" );
+  printf ( "makebearoff $Revision: 1.12 $\n" );
 
 }
 
@@ -1205,7 +1205,7 @@ extern int main( int argc, char **argv ) {
               _("One-sided database:\n"
                 "Number of points                  : %12d\n"
                 "Number of chequers                : %12d\n"
-                "Number of positions               : %'12d\n"
+                "Number of positions               : %12d\n"
                 "Approximate by normal distribution: %s\n"
                 "Include gammon distributions      : %s\n"
                 "Use compression scheme            : %s\n"

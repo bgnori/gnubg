@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.144 2002/11/24 19:35:18 jsegrave Exp $
+ * $Id: set.c,v 1.145 2002/11/25 12:20:14 jsegrave Exp $
  */
 
 #include "config.h"
@@ -29,6 +29,7 @@
 #endif
 #include <math.h>
 #if HAVE_SYS_RESOURCE_H
+#include <sys/time.h>
 #include <sys/resource.h>
 #endif
 #if HAVE_SYS_SOCKET_H
