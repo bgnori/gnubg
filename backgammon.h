@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.58 2001/01/16 18:40:48 gtw Exp $
+ * $Id: backgammon.h,v 1.59 2001/01/19 20:20:35 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -232,6 +232,7 @@ extern int SetToggle( char *szName, int *pf, char *sz, char *szOn,
 		       char *szOff );
 extern void ShowBoard( void );
 extern char *FormatPrompt( void );
+extern char *FormatMoveHint( char *sz, movelist *pml, int i );
 extern void UpdateSetting( void *p );
 extern void ResetInterrupt( void );
 extern void PromptForExit( void );
