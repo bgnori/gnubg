@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.33 2000/10/12 15:21:35 gtw Exp $
+ * $Id: play.c,v 1.34 2000/10/12 22:21:29 gtw Exp $
  */
 
 #include "config.h"
@@ -178,7 +178,7 @@ static int ComputerTurn( void ) {
 
       /* Consider doubling */
 
-      if ( ! anDice[ 0 ] && GetDPEq ( NULL, NULL, &ci ) ) {
+      if ( fCubeUse && ! anDice[ 0 ] && GetDPEq ( NULL, NULL, &ci ) ) {
 
         static evalcontext ecDH = { 1, 8, 0.16, 0, FALSE }; 
         
