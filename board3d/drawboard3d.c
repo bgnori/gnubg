@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.37 2004/06/01 08:24:05 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.38 2004/06/07 07:31:58 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -822,8 +822,6 @@ void drawDice(BoardData* bd, int num)
 	SetupSimpleMat(&whiteMat, 1, 1, 1);
 
 	value = bd->diceRoll[num];
-	if (value == 0)
-		return;	/* No value to show */
 	value--;	/* Zero based for array access */
 
 	/* Get dice rotation */
@@ -2291,7 +2289,7 @@ else
 
 int DiceShowing(BoardData* bd)
 {
-	return (bd->diceShown == DICE_ON_BOARD ||
+	return ((bd->diceShown == DICE_ON_BOARD && bd->diceRoll[0]) ||
 		(bd->rd->fDiceArea && bd->diceShown == DICE_BELOW_BOARD));
 }
 
