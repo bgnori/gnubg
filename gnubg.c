@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.589 2004/10/14 16:29:12 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.590 2004/10/17 22:20:02 jsegrave Exp $
  */
 
 #include "config.h"
@@ -9363,7 +9363,6 @@ ShowEPC( int anBoard[ 2 ][ 25 ] ) {
 
 extern void CommandSetExportFileType(char *sz)
 {
-	int type;
 	int num = 0;
 
 	if (!sz || !*sz)
@@ -9387,7 +9386,6 @@ extern void CommandSetExportFileType(char *sz)
 
 extern void CommandSetImportFileType(char *sz)
 {
-	int type;
 	int num = 0;
 
 	if (!sz || !*sz)

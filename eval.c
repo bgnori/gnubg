@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.265 2004/10/14 11:57:11 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.266 2004/10/17 22:20:02 jsegrave Exp $
  */
 
 #include "config.h"
@@ -2566,7 +2566,7 @@ FindBestMoveInEval(int nDice0, int nDice1, int anBoard[2][25], const cubeinfo* p
     
     ((cubeinfo*)pci)->fMove = !pci->fMove;
     if( use ) {
-      positionclass evalClass;
+      positionclass evalClass = 0;
       float arInput[200];
       
       for(i = 0; (int)i < ml.cMoves; i++) {
@@ -2692,14 +2692,14 @@ EvaluatePositionFull( int anBoard[ 2 ][ 25 ], float arOutput[],
                       const cubeinfo* pci, const evalcontext* pec, int nPlies,
                       positionclass pc ) {
   int i, n0, n1;
-  int fUseReduction;
 #if defined( REDUCTION_CODE )
+  int fUseReduction, r;
   laRollList_t *rolls = NULL;
   laRollList_t *rollList = NULL;
 #endif
   float arVariationOutput[ NUM_OUTPUTS ];
   float rTemp;
-  int r, w
+  int w
 #if defined( REDUCTION_CODE )
     , sumW
 #endif
@@ -5981,11 +5981,11 @@ EvaluatePositionCubeful4( int anBoard[ 2 ][ 25 ],
 #endif
 
 #if defined( REDUCTION_CODE )
-  int fUseReduction;
+  int fUseReduction, ir;
   laRollList_t *rolls = NULL;
   laRollList_t *rollList = NULL;
 #endif
-  int ir, w
+  int w
 #if defined( REDUCTION_CODE )
     , sumW
 #endif
