@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.95 2003/01/10 02:06:47 joseph Exp $
+ * $Id: rollout.c,v 1.96 2003/01/11 10:00:41 thyssen Exp $
  */
 
 #include "config.h"
@@ -399,7 +399,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
         aarOutput[ ici ][ OUTPUT_CUBEFUL_EQUITY ] = 
           CFMONEY ( arEquity, pci );
 
-        if ( ! ( iTurn & 1 ) ) InvertEvaluationR ( aarOutput[ ici ], pci );
+        if ( iTurn & 1 ) InvertEvaluationR ( aarOutput[ ici ], pci );
 
         *pf = FALSE;
         cUnfinished--;
