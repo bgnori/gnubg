@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.26 2002/05/12 10:17:44 thyssen Exp $
+* $Id: matchequity.c,v 1.27 2002/05/12 16:11:25 thyssen Exp $
 */
 
 #include <stdio.h>
@@ -1560,7 +1560,7 @@ getGammonPrice ( float arGammonPrice[ 4 ],
   
   /* avoid division by zero */
       
-  if ( abs ( rWin - rCenter ) > epsilon ) {
+  if ( fabs ( rWin - rCenter ) > epsilon ) {
 
     arGammonPrice[ 0 ] = 
       ( rWinGammon - rCenter ) / ( rWin - rCenter ) - 1.0;
