@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.19 2004/01/19 10:20:07 uid68519 Exp $
+* $Id: drawboard3d.c,v 1.20 2004/01/26 10:13:56 uid68519 Exp $
 */
 
 #include <math.h>
@@ -3331,6 +3331,8 @@ void updatePieceOccPos(BoardData* bd)
 	{
 		for (j = 1; j <= abs(bd->points[i]); j++)
 		{
+			if (p > LAST_PIECE)
+				break;	/* Found all pieces */
 			getPiecePos(i, j, fClockwise, bd->Occluders[p].trans);
 
 			if (i == 26 || i == 27)
