@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.181 2002/10/28 20:50:16 thyssen Exp $
+ * $Id: eval.c,v 1.182 2002/10/29 01:31:43 joseph Exp $
  */
 
 #include "config.h"
@@ -2012,7 +2012,7 @@ ClassifyPosition( int anBoard[ 2 ][ 25 ] )
 	    }
 	  }
 	} else {
-	  if( ((int)tot - (1 + board[1])) <= (int)N ) {
+	  if( ((int)tot - (board[1] - 1)) <= (int)N ) {
 	    return CLASS_CRASHED;
 	  }
 	}
