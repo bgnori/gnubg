@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.168 2004/03/15 11:18:07 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.169 2004/03/16 11:30:17 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1662,7 +1662,8 @@ gboolean button_press_event(GtkWidget *board, GdkEventButton *event, BoardData* 
 		else if (bd->drag_point == POINT_RIGHT && bd->turn != 1)
 			UserCommand( "set turn 1" );
 
-		bd->drag_point = -1;
+		/* Avoid dragging after selection causing pieces to appear */
+		bd->drag_point = -2;
 		GTKSetDice( NULL, 0, NULL );
 		return TRUE;
 	}
