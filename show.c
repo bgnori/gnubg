@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.25 2000/07/25 17:45:04 gtw Exp $
+ * $Id: show.c,v 1.26 2000/07/31 17:58:10 gtw Exp $
  */
 
 #include "config.h"
@@ -386,14 +386,14 @@ extern void CommandShowScore( char *sz ) {
 	         " (match to %d points%s)\n",
                  nMatchTo,
 		 fCrawford ? 
-		 ", (Crawford game)" : ( fPostCrawford ?
-					 ", (post-Crawford play)" : ""));
+		 ", Crawford game" : ( fPostCrawford ?
+					 ", post-Crawford play" : ""));
     } 
     else {
         if ( fJacoby )
-	    outputl ( " (money session (with Jacoby rule))\n" );
+	    outputl ( " (money session, with Jacoby rule)\n" );
         else
-	    outputl ( " (money session (without Jacoby rule))\n" );
+	    outputl ( " (money session, without Jacoby rule)\n" );
     }
 
 }
