@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.442 2003/11/03 12:19:40 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.443 2003/11/04 09:54:53 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1078,15 +1078,15 @@ static void DeleteMessage ( void ) {
 #endif
 }
 
-#if !USE_OLD_LAYOUT
 static void DeleteAnalysis( void ) {
 
   fAnalysis = FALSE;
+#if !USE_OLD_LAYOUT
   gtk_widget_hide ( pwAnalysis->parent );
   gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(gtk_item_factory_get_widget(pif,
 			  "/Windows/Analysis")), FALSE);
-}
 #endif
+}
 
 static GtkWidget *CreateMessageWindow( void ) {
 
@@ -1363,14 +1363,14 @@ static void ShowMessage( void ) {
 #endif
 }
 
-#if !USE_OLD_LAYOUT
 static void ShowAnalysis( void ) {
     fAnalysis = TRUE;
+#if !USE_OLD_LAYOUT
     gtk_widget_show_all( pwAnalysis->parent );
   gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(gtk_item_factory_get_widget(pif,
 			  "/Windows/Analysis")), TRUE);
-}
 #endif
+}
 
 static int AddMoveRecordRow( void ) {
 
