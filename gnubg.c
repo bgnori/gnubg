@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.467 2003/08/22 15:13:44 jsegrave Exp $
+ * $Id: gnubg.c,v 1.468 2003/08/23 17:37:27 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1831,6 +1831,8 @@ command cER = {
     { "database", NULL, N_("Manipulate a database of positions"), NULL,
       acDatabase },
     { "decline", CommandDecline, N_("Decline a resignation"), NULL, NULL },
+    { "dicerolls", CommandDiceRolls, N_("Generate a list of rolls"), 
+      NULL, NULL },
     { "double", CommandDouble, N_("Offer a double"), NULL, NULL },
     { "drop", CommandDrop, N_("Decline an offered double"), NULL, NULL },
     { "eq2mwc", CommandEq2MWC,
@@ -8243,3 +8245,21 @@ TextToClipboard( const char *sz ) {
 }
 
 
+void 
+CommandDiceRolls (char *sz) {
+  int    n;
+  char	*pch;
+  int	 anDice[2];
+
+  if ( (pch = NextToken( &sz ) ) ) {
+    n = ParseNumber( &pch );
+
+    while (n-- > 0) {
+      RollDice( anDice, rngCurrent );
+
+      printf( "%d %d\n", anDice[ 0 ], anDice[ 1 ] );
+
+    }
+
+  }
+}
