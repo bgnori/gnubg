@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.312 2003/03/03 19:30:03 thyssen Exp $
+ * $Id: gtkgame.c,v 1.313 2003/03/04 15:33:41 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4031,8 +4031,12 @@ static GtkWidget *EvalWidget( evalcontext *pec, movefilter *pmf,
 
     gtk_container_add( GTK_CONTAINER( pw4 ), pew->pwReduced );
 
-    gtk_option_menu_set_history( GTK_OPTION_MENU( pew->pwReduced ), 
-                                 pec->nReduced );
+    /* UGLY fix for the fact the menu has entries only for values
+     * 0, 2, 3, 4 
+     */
+	gtk_option_menu_set_history( GTK_OPTION_MENU( pew->pwReduced ), 
+                                 (pec->nReduced < 2) ? 0 : 
+                                  pec->nReduced - 1 );
 
     /* cubeful */
     
