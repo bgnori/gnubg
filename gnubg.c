@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.294 2002/09/14 16:25:00 gtw Exp $
+ * $Id: gnubg.c,v 1.295 2002/09/14 17:09:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -3031,8 +3031,10 @@ extern void PromptForExit( void ) {
 
 #if USE_GTK
     if( fX ) {
+#if USE_GTK2
 	g_list_foreach( gtk_window_list_toplevels(), (GFunc) gtk_widget_hide,
 			NULL );
+#endif
 	
 	while( gtk_events_pending() )
 	    gtk_main_iteration();
@@ -3133,7 +3135,6 @@ CommandRollout( char *sz ) {
       return;
 
     }
-
 
 #if HAVE_ALLOCA
     aan = alloca( 50 * c * sizeof( int ) );
