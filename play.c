@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.181 2003/03/30 16:37:51 thyssen Exp $
+ * $Id: play.c,v 1.182 2003/03/30 18:43:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -348,7 +348,6 @@ extern void CalculateBoard( void ) {
 
 	assert( pl->p );
 
-        printf( "CB: %d\n", ((moverecord *) (pl->p))->mt );
 	ApplyMoveRecord( &ms, plGame, pl->p );
 
         if ( pl->plNext && pl->plNext->p )
@@ -2966,8 +2965,6 @@ static void UpdateGame( int fShowBoard ) {
     UpdateSetting( &ms.fTurn );
     UpdateSetting( &ms.gs );
 
-    printf ( "update game: %d %d\n", fShowBoard, fDisplay );
-    
 #if USE_GUI
     if( fX || ( fShowBoard && fDisplay ) )
 	ShowBoard();
