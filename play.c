@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.217 2003/08/31 22:55:11 jsegrave Exp $
+ * $Id: play.c,v 1.218 2003/09/05 22:55:50 hb Exp $
  */
 
 #include "config.h"
@@ -4280,4 +4280,35 @@ moverecord *LinkToDouble( moverecord *pmr) {
     pmr->d.nAnimals = 1 + prev->d.nAnimals;
 
   return pmr;
+}
+
+/*
+ * getFinalScore:
+ * fills anScore[ 2 ] with the final score of the match/session
+ */
+
+extern int
+getFinalScore( int* anScore )
+{
+	list* plGame;
+
+	/* find last game */
+	for( plGame = lMatch.plNext; plGame->plNext->p; plGame = plGame->plNext )
+		;
+
+	if ( plGame->p && ( (list *) plGame->p )->plNext &&
+	     ( (list *) plGame->p )->plNext->p &&
+	     ( (moverecord *) ( (list *) plGame->p )->plNext->p )->mt == MOVE_GAMEINFO &&
+	     ( (moverecord *) ( (list *) plGame->p )->plNext->p )->g.mt == MOVE_GAMEINFO
+	   )
+	{
+		anScore[ 0 ] = ( (moverecord *) ( (list *) plGame->p )->plNext->p )->g.anScore[ 0 ];
+		anScore[ 1 ] = ( (moverecord *) ( (list *) plGame->p )->plNext->p )->g.anScore[ 1 ];
+		if ( ( (moverecord *) ( (list *) plGame->p )->plNext->p )->g.fWinner != -1 )
+			anScore[ ( (moverecord *) ( (list *) plGame->p )->plNext->p )->g.fWinner ] +=
+				( (moverecord *) ( (list *) plGame->p )->plNext->p )->g.nPoints;
+		return TRUE;
+	}
+	
+	return FALSE;
 }

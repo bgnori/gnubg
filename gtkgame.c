@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.413 2003/09/04 16:32:15 hb Exp $
+ * $Id: gtkgame.c,v 1.414 2003/09/05 22:55:50 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -8026,8 +8026,17 @@ static void AddNavigation(GtkWidget* pvbox)
 
 	pm = gtk_menu_new();
 
-	sprintf(sz, _("All games: %s %d, %s %d"), ap[ 0 ].szName,
-		 ms.anScore[ 0 ], ap[ 1 ].szName, ms.anScore[ 1 ] );
+	{
+		int anFinalScore[ 2 ];
+
+		if ( getFinalScore( anFinalScore ) )
+			sprintf( sz, _("All games: %s %d, %s %d"), ap[ 0 ].szName,
+				 anFinalScore[ 0 ], ap[ 1 ].szName, anFinalScore[ 1 ] );
+		else
+			sprintf( sz, _("All games: %s, %s"), ap[ 0 ].szName,
+				 ap[ 1 ].szName );
+	}
+
 	pw = gtk_menu_item_new_with_label(sz);
 	gtk_menu_append(GTK_MENU(pm), pw);
 	gtk_signal_connect( GTK_OBJECT( pw ), "activate",
@@ -8176,8 +8185,8 @@ StatcontextCopy ( GtkWidget *pw, void *unused ) {
 extern void GTKDumpStatcontext( int game )
 {
 	GtkWidget *copyMenu, *menu_item, *pvbox;
-	int i;
 #if USE_BOARD3D
+	int i;
 	GraphData gd;
 	GtkWidget *pw;
 	list *pl;
