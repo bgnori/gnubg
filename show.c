@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.158 2003/07/27 12:26:28 thyssen Exp $
+ * $Id: show.c,v 1.159 2003/07/27 14:18:22 oysteijo Exp $
  */
 
 #include "config.h"
@@ -35,6 +35,7 @@
 #include "backgammon.h"
 #include "drawboard.h"
 #include "eval.h"
+#include "export.h"
 #include "format.h"
 #include "dice.h"
 #include "matchequity.h"
