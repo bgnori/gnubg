@@ -50,7 +50,7 @@ extern long int getrandom ( void ) {
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: userrng.c,v 1.1 1999/12/15 02:35:54 thyssen Exp $
+ * $Id: userrng.c,v 1.2 1999/12/15 03:07:34 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -100,7 +100,6 @@ extern long int getrandom ( void ) {
    * Return random number
    */
 
-  printf("anCurrent %i\n",anCurrent);
   if ( (anCurrent >= 0) && (anCurrent < BUFLENGTH) ) {
      i = anCurrent;
      anCurrent++;
