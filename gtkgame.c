@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.459 2004/02/09 13:06:44 uid68519 Exp $
+ * $Id: gtkgame.c,v 1.460 2004/02/09 13:09:39 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -601,7 +601,7 @@ extern void GTKSuspendInput( monitor *pm ) {
     gtk_grab_add( pwGrab );
     GrabStack[GrabStackPointer].owner = pm;
     GrabStack[GrabStackPointer++].id =
-      pm->idSignal = gtk_signal_connect_after( GTK_OBJECT( gtk_widget_get_toplevel(pwGrab) ),
+      pm->idSignal = gtk_signal_connect_after( GTK_OBJECT( pwGrab ),
 					       "key-press-event",
 					       GTK_SIGNAL_FUNC( gtk_true ),
 					       NULL );
