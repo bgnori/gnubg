@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.75 2002/07/17 11:52:52 thyssen Exp $
+ * $Id: rollout.c,v 1.76 2002/07/22 15:33:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -1482,7 +1482,7 @@ ScoreMoveRollout ( move *pm, cubeinfo *pci, rolloutcontext *prc ) {
 			( float (*)[ NUM_ROLLOUT_OUTPUTS ] ) arOutput,
 			( float (*)[ NUM_ROLLOUT_OUTPUTS ] ) arStdDev,
                         ( rolloutstat (*)[ 2 ]) arsStatistics,
-                        prc, pci, &fCubeDecTop, 1, TRUE ) < 0 )
+                        prc, &ci, &fCubeDecTop, 1, TRUE ) < 0 )
     return -1;
 
   /* copy results */
