@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.417.2.8 2003/07/24 19:12:05 hb Exp $
+ * $Id: gnubg.c,v 1.417.2.9 2003/07/25 19:22:30 hb Exp $
  */
 
 #include "config.h"
@@ -6131,8 +6131,23 @@ extern void outputv( const char *sz, va_list val ) {
 extern void outputerr( const char *sz ) {
 
     /* FIXME we probably shouldn't convert the charset of strerror() - yuck! */
-    
-    outputerrf( "%s: %s", sz, strerror( errno ) );
+#ifdef WIN32
+    LPVOID lpMsgBuf;
+    if ( ! errno ) {
+	FormatMessage( FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM |
+		       FORMAT_MESSAGE_IGNORE_INSERTS, NULL, GetLastError(),
+		       MAKELANGID( LANG_NEUTRAL, SUBLANG_DEFAULT ), (LPTSTR) &lpMsgBuf,
+		       0, NULL );
+	outputerrf( "%s: %s", sz, lpMsgBuf );
+    }
+    else
+#endif /* WIN32 */
+
+	outputerrf( "%s: %s", sz, strerror( errno ) );
+
+#ifdef WIN32
+    LocalFree( lpMsgBuf );
+#endif /* WIN32 */
 }
 
 /* Write an error message, fprintf() style */
