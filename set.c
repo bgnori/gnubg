@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.12 2000/01/15 17:38:21 gtw Exp $
+ * $Id: set.c,v 1.13 2000/01/16 01:00:40 gtw Exp $
  */
 
 #include "config.h"
@@ -801,6 +801,11 @@ extern void CommandSetTurn( char *sz ) {
 
     anDice[ 0 ] = anDice[ 1 ] = 0;
 
+#if !X_DISPLAY_MISSING
+    if( fX )
+	ShowBoard();
+#endif
+    
     printf( "`%s' is now on roll.\n", ap[ i ].szName );
 }
 
