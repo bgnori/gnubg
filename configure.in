@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 dnl
-dnl $Id: configure.in,v 1.26 2001/02/22 16:43:21 gtw Exp $
+dnl $Id: configure.in,v 1.27 2001/02/23 18:11:02 gtw Exp $
 
 AC_INIT(gnubg.c)
 AM_INIT_AUTOMAKE(gnubg,0.02)
@@ -123,6 +123,8 @@ else
   CFLAGS="$ac_save_CFLAGS"
   LIBS="$ac_save_LIBS"
 fi
+
+AM_CONDITIONAL(CROSS_COMPILING, test "$cross_compiling" = "yes")
 
 dnl Record installation paths.
 AC_DEFINE_DIR(DATADIR, datadir)
