@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.13 2002/09/14 16:21:51 gtw Exp $
+ * $Id: sound.c,v 1.14 2002/09/15 09:01:52 thyssen Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -32,7 +32,9 @@
 #endif
 #include <errno.h>
 #include <fcntl.h>
+#if HAVE_SYS_IOCTL_H
 #include <sys/ioctl.h>
+#endif
 #include <signal.h>
 #if HAVE_SYS_SOUNDCARD_H
 #include <sys/soundcard.h>
