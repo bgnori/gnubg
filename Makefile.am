@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.111 2003/08/13 11:52:24 Superfly_Jon Exp $
+## $Id: Makefile.am,v 1.112 2003/08/21 21:25:48 thyssen Exp $
 if USE_EXT
 EXT_DIR=ext
 else
@@ -54,11 +54,13 @@ BOARD3D_DIR=board3d
 BOARD3D_DEPS=board3d/libboard3d.a
 BOARD3D_LIBS=-L$(srcdir)/board3d -lboard3d @GTKGLEXT_LIBS@ @FTGL_LIBS@
 BOARD3D_INCS=@GTKGLEXT_CFLAGS@
+BOARD3DDATA=textures.txt 
 else
 BOARD3D_DIR=
 BOARD3D_DEPS=
 BOARD3D_LIBS=
 BOARD3D_INCS=
+BOARD3DDATA=
 endif
 
 
@@ -135,7 +137,7 @@ endif
 
 
 pkgdata_DATA = gnubg_ts0.bd gnubg.wd boards.xml @GTKDATA@ @GUILEDATA@ \
-	$(BR1DATA)
+	$(BR1DATA) $(BOARD3DDATA)
 
 man_MANS = gnubg.6
 
