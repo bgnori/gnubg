@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.14 2002/09/15 09:01:52 thyssen Exp $
+ * $Id: sound.c,v 1.15 2002/09/17 21:21:38 gtw Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -150,7 +150,7 @@ soundsystem ssSoundSystem = SOUND_SYSTEM_ARTSC;
 soundsystem ssSoundSystem = SOUND_SYSTEM_NAS;
 #  elif defined (WIN32)
 soundsystem ssSoundSystem = SOUND_SYSTEM_WINDOWS;
-#  elif 
+#  else
 soundsystem ssSoundSystem = SOUND_SYSTEM_NORMAL;
 #  endif
 
