@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.12 2001/09/21 15:08:59 gtw Exp $
+ * $Id: drawboard.c,v 1.13 2001/10/12 15:12:44 gtw Exp $
  */
 
 #include "config.h"
@@ -826,6 +826,8 @@ extern int ParseMove( char *pch, int an[ 8 ] ) {
     if( i < 8 )
 	an[ i ] = 0;
 
+    qsort( an, i >> 1, sizeof( int ) << 1, CompareMoves );
+    
     return i >> 1;
 }
 
