@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.114 2002/08/05 18:15:06 thyssen Exp $
+ * $Id: set.c,v 1.115 2002/08/06 17:41:41 gtw Exp $
  */
 
 #include "config.h"
@@ -1576,7 +1576,7 @@ extern void CommandSetSeed( char *sz ) {
 
     int n;
     
-    if( *rngSet == RNG_MANUAL || *rngSet == RNG_RANDOM_DOT_ORG ) {
+    if( rngCurrent == RNG_MANUAL || rngCurrent == RNG_RANDOM_DOT_ORG ) {
 	outputl( _("You can't set a seed "
                    "if you're using manual dice generation or random.org") );
 	return;
@@ -1591,10 +1591,10 @@ extern void CommandSetSeed( char *sz ) {
 	    return;
 	}
 
-	InitRNGSeed( n, *rngSet );
+	InitRNGSeed( n, rngCurrent );
 	outputf( _("Seed set to %d.\n"), n );
     } else
-	outputl( InitRNG( NULL, TRUE, *rngSet ) ?
+	outputl( InitRNG( NULL, TRUE, rngCurrent ) ?
 		 _("Seed initialised from system random data.") :
 		 _("Seed initialised by system clock.") );
 }
