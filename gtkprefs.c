@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.101 2004/04/11 20:54:26 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.102 2004/04/19 09:27:01 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1073,6 +1073,7 @@ static void BoardPrefsOK( GtkWidget *pw, GtkWidget *mainBoard ) {
 	redrawChange = FALSE;
 	rdPrefs.quickDraw = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(pwQuickDraw));
 
+	freeEigthPoints(&bd->boardPoints, bd->rd->curveAccuracy);
 	if (rdPrefs.fDisplayType == DT_3D)
 	{
 		/* Delete old objects */
@@ -1194,6 +1195,8 @@ void toggle_display_type(GtkWidget *widget, BoardData* bd)
 	{
 		/* Make sure 3d code is initialized */
 		Init3d();
+
+		DoAcceleratedCheck(bd->drawing_area3d);
 
 		updateDiceOccPos(bd);
 	}			
@@ -1981,7 +1984,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.101 2004/04/11 20:54:26 thyssen Exp $\n"
+          "    $Id: gtkprefs.c,v 1.102 2004/04/19 09:27:01 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
