@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.63 2000/11/02 19:43:22 thyssen Exp $
+ * $Id: eval.c,v 1.64 2000/11/10 18:50:42 gtw Exp $
  */
 
 #include "config.h"
@@ -1741,11 +1741,7 @@ EvalBearoff2( int anBoard[ 2 ][ 25 ], float arOutput[] )
 }
 
 /* Fill aaProb with one sided bearoff probabilities for position with id n */
-
-#if defined( __GNUC__ )
-inline
-#endif
-static void
+static inline void
 getBearoffProbs(int n, int aaProb[32])
 {
   int i;

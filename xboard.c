@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xboard.c,v 1.16 2000/07/13 16:25:26 gtw Exp $
+ * $Id: xboard.c,v 1.17 2000/11/10 18:50:42 gtw Exp $
  */
 
 #include "config.h"
@@ -28,10 +28,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <X11/Xutil.h>
-
-#ifndef HAVE_RAND_R
-#include <rand_r.h>
-#endif
 
 #include "backgammon.h"
 #include "xboard.h"
