@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.c,v 1.1.2.8 2000/05/21 14:52:11 thyssen Exp $
+ * $Id: matchequity.c,v 1.1.2.9 2000/05/22 08:10:47 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -408,7 +408,7 @@ GetTakePoint ( float arOutput [ 5 ],
 
 		
 		if ( arOutput[ 0 ] > 0.0 )
-			rG1 = arOutput[ 1 ] / arOutput[ 0 ] : 0.0;
+			rG1 = arOutput[ 1 ] / arOutput[ 0 ];
 		else
 			rG1 = 0.0;
 
