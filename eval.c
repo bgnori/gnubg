@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.248 2003/08/11 22:57:25 joseph Exp $
+ * $Id: eval.c,v 1.249 2003/08/13 06:07:23 joseph Exp $
  */
 
 #include "config.h"
@@ -4156,6 +4156,11 @@ extern char
 
 }
 
+extern void
+EvalCacheFlush(void)
+{
+  CacheFlush( & cEval );
+}
 
 extern int EvalCacheResize( int cNew ) {
 
