@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.341 2003/05/21 19:23:13 thyssen Exp $
+ * $Id: gtkgame.c,v 1.342 2003/05/22 13:58:28 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -71,6 +71,7 @@
 #include "gtktexi.h"
 #include "i18n.h"
 #include "matchequity.h"
+#include "openurl.h"
 #include "path.h"
 #include "positionid.h"
 #include "record.h"
