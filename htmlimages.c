@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.15 2003/11/19 17:00:27 hb Exp $
+ * $Id: htmlimages.c,v 1.16 2003/11/28 09:36:29 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -797,9 +797,9 @@ extern void CommandExportHTMLImages( char *sz ) {
       int dice_x = 3 * s * ( BEAROFF_WIDTH + 
                              3 * POINT_WIDTH + 
                              ( 6 * POINT_WIDTH + BAR_WIDTH ) * i )
-        - 3 * ss * DIE_WIDTH / 2;
+        - DIE_WIDTH / 2 *  3 * ss;
 
-      int dice_y = ( BOARD_HEIGHT / 2 * s - DIE_HEIGHT / 2 * ss ) * nStride;
+      int dice_y = ( s * BOARD_HEIGHT / 2 - ss * DIE_HEIGHT / 2 ) * nStride;
 
 	AlphaBlend( auchBoard + 
                     dice_x - 3 * ss * DIE_WIDTH +
