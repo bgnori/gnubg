@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.53 2004/01/29 15:26:13 uid68519 Exp $
+ * $Id: gtkchequer.c,v 1.54 2004/03/04 10:54:54 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -868,11 +868,7 @@ CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid,
     phd->fButtonsValid = fButtonsValid;
     phd->fDestroyOnMove = fDestroyOnMove;
     phd->pwMove = NULL;
-#if USE_OLD_LAYOUT
-    phd->fDetails = TRUE; /* always show details for old layout */
-#else
     phd->fDetails = fDetails;
-#endif
 
     if ( fDetails ) {
       for ( i = 0; i < 11; i++ )

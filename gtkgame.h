@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.79 2004/02/25 17:03:38 uid68519 Exp $
+ * $Id: gtkgame.h,v 1.80 2004/03/04 10:54:54 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -163,7 +163,7 @@ extern void
 GTKNew ( void );
 
 extern void
-UpdateGeometry ( const gnubgwindow gw );
+setWindowGeometry(windowobject* pwo);
 
 extern void
 RefreshGeometries ( void );
