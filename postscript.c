@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.18 2002/06/02 16:33:44 thyssen Exp $
+ * $Id: postscript.c,v 1.19 2002/07/04 20:04:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -733,6 +733,7 @@ static void ExportGamePostScript( FILE *pf, list *plGame ) {
 
     for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) {
 	pmr = pl->p;
+        FixMatchState ( &msExport, pmr );
 	switch( pmr->mt ) {
 	case MOVE_GAMEINFO:
 	    Ensure( pf, 26 );

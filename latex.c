@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.16 2002/06/06 20:14:58 thyssen Exp $
+ * $Id: latex.c,v 1.17 2002/07/04 20:04:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -383,6 +383,7 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 
     for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) {
 	pmr = pl->p;
+        FixMatchState ( &msExport, pmr );
 	switch( pmr->mt ) {
 	case MOVE_GAMEINFO:
             fputs ( "\\noindent{\\Large ", pf );
