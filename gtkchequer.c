@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.33 2003/07/13 02:24:40 jsegrave Exp $
+ * $Id: gtkchequer.c,v 1.34 2003/07/13 17:17:17 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -224,11 +224,12 @@ MoveListRollout( GtkWidget *pw, hintdata *phd ) {
 #endif
 
     GTKRolloutRow ( 0 );
-    ProgressStartValue( _("Rolling out positions"), 0 );
+
+    if ( fAction )
+      HandleXAction();
 
     if ( ScoreMoveRollout ( ppm, ppci, c ) < 0 ) {
       GTKRolloutDone ();
-      ProgressEnd ();
       return;
     }
     
@@ -255,7 +256,6 @@ MoveListRollout( GtkWidget *pw, hintdata *phd ) {
 
   UpdateMoveList ( phd );
 
-  ProgressEnd ();
 }
 
 
