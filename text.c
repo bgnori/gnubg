@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.15 2002/08/07 18:35:32 thyssen Exp $
+ * $Id: text.c,v 1.16 2002/08/12 16:18:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -186,8 +186,7 @@ OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc ) {
     sprintf ( pc = strchr ( sz, 0 ),
               prc->fCubeful ? 
               _("Full cubeful rollout") :
-              _("Full cubeless rollout"), 
-              prc->nTruncate );
+              _("Full cubeless rollout") );
 
   sprintf ( pc = strchr ( sz, 0 ),
             prc->fVarRedn ? _(" with var.redn.") : _(" without var.redn.") );
@@ -628,7 +627,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.15 $";
+  const char szVersion[] = "$Revision: 1.16 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );

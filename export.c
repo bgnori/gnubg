@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.1 2002/07/22 15:31:34 thyssen Exp $
+ * $Id: export.c,v 1.2 2002/08/12 16:18:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -58,7 +58,7 @@ ExportGameEquityEvolution ( FILE *pf, list *plGame,
   unsigned char auch[ 10 ];
   cubeinfo ci;
   int i;
-  int fEquity, fError, fLuck;
+  int fEquity = FALSE, fError = FALSE, fLuck = FALSE;
 
   PushLocale ( "C" );
 
@@ -243,6 +243,7 @@ ExportGameEquityEvolution ( FILE *pf, list *plGame,
       break;
 
     default:
+      break;
       
 
     }

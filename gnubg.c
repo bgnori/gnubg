@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.276 2002/08/12 12:12:35 thyssen Exp $
+ * $Id: gnubg.c,v 1.277 2002/08/12 16:18:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -2866,9 +2866,13 @@ extern void CommandHint( char *sz ) {
 
 	GetMatchStateCubeInfo( &ci, &ms );
 
+#if USE_GTK
         fHasMoved = GTKGetMove ( anMove );
         if ( fHasMoved )
           MoveKey ( ms.anBoard, anMove, auch );
+#else
+        fHasMoved = FALSE;
+#endif /* ! USE_GTK */
 
         if ( memcmp ( &sm.ms, &ms, sizeof ( matchstate ) ) ) {
 
