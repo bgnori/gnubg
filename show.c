@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.178 2004/03/04 10:54:54 Superfly_Jon Exp $
+ * $Id: show.c,v 1.179 2004/03/15 12:08:20 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -941,6 +941,22 @@ extern void CommandShowTurn( char *sz ) {
     if( ms.fResigned )
 	outputf( _("%s has offered to resign a %s.\n"), ap[ ms.fMove ].szName,
 		gettext ( aszGameResult[ ms.fResigned - 1 ] ) );
+}
+
+extern void CommandShowBuildInfo( char *sz )
+{
+#if USE_GTK
+	if( fX )
+		GTKShowBuildInfo();
+#endif
+}
+
+extern void CommandShowCredits( char *sz )
+{
+#if USE_GTK
+	if( fX )
+		GTKCommandShowCredits();
+#endif
 }
 
 extern void CommandShowWarranty( char *sz ) {

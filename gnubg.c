@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.541 2004/03/12 10:56:07 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.542 2004/03/15 12:08:19 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1828,6 +1828,8 @@ command cER = {
       N_("Lookup data in various bearoff databases "), NULL, NULL },
     { "board", CommandShowBoard, 
       N_("Redisplay the board position"), szOPTPOSITION, NULL },
+    { "buildinfo", CommandShowBuildInfo, 
+      N_("Display details of this build of gnubg"), NULL, NULL },
     { "cache", CommandShowCache, N_("Display statistics on the evaluation "
       "cache"), NULL, NULL },
     { "calibration", CommandShowCalibration,
@@ -1845,6 +1847,8 @@ command cER = {
       "of GNU Backgammon"), NULL, NULL },
     { "crawford", CommandShowCrawford, 
       N_("See if this is the Crawford game"), NULL, NULL },
+    { "credits", CommandShowCredits, 
+      N_("Display contributors to gnubg"), NULL, NULL },
     { "cube", CommandShowCube, N_("Display the current cube value and owner"),
       NULL, NULL },
     { "cubeefficiency", CommandShowCubeEfficiency, 
@@ -2083,6 +2087,9 @@ char *aszVersion[] = {
 #endif
 #if HAVE_LIBGMP
     N_("Long RNG seeds supported."),
+#endif
+#if USE_BOARD3D
+    N_("3d Boards supported."),
 #endif
 #if USE_SOUND
     N_("Sound systems supported."),

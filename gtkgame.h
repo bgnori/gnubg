@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.80 2004/03/04 10:54:54 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.81 2004/03/15 12:08:20 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -145,6 +145,8 @@ extern void GTKSetCube( gpointer *p, guint n, GtkWidget *pw );
 extern void GTKSetDice( gpointer *p, guint n, GtkWidget *pw );
 extern void GTKHelp( char *sz );
 extern void GTKMatchInfo( void );
+extern void GTKShowBuildInfo(void);
+extern void GTKCommandShowCredits(void);
 
 extern void SetEvaluation( gpointer *p, guint n, GtkWidget *pw );
 extern void SetRollouts( gpointer *p, guint n, GtkWidget *pw );
