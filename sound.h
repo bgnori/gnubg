@@ -16,12 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sound.h,v 1.1 2002/08/31 23:16:46 thyssen Exp $
+ * $Id: sound.h,v 1.2 2002/09/01 09:04:02 thyssen Exp $
  */
 
 #ifndef _SOUND_H_
 #define _SOUND_H_
 
+#ifdef USE_SOUND
 
 typedef enum _gnubgsound {
   /* start & exit of gnubg */
@@ -66,6 +67,12 @@ extern int fSound;
 
 extern void
 playSound ( const gnubgsound gs );
+
+#else /* USE_SOUND */
+
+#define playSound(a) 
+
+#endif
 
 
 #endif /* _SOUND_H_ */
