@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.60 2003/01/17 21:46:31 gtw Exp $
+ * $Id: gtkgame.h,v 1.61 2003/03/02 15:35:35 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -164,5 +164,8 @@ extern int
 GTKGetMove ( int anMove[ 8 ] );
 
 extern void GTKRecordShow( FILE *pfIn, char *sz, char *szPlayer );
+
+extern void
+GTKTextToClipboard( const char *sz );
 
 #endif

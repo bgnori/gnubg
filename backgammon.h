@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.206 2003/02/21 23:39:42 jsegrave Exp $
+ * $Id: backgammon.h,v 1.207 2003/03/02 15:34:31 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -997,6 +997,9 @@ extern int *Highlightrgb;
 
 extern void
 SetMatchInfo( char **ppch, char *sz, char *szMessage );
+
+extern void
+TextToClipboard ( const char * sz );
 
 
 #endif
