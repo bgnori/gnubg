@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: timer.c,v 1.3 2004/01/19 13:57:10 uid68519 Exp $
+* $Id: timer.c,v 1.4 2004/01/19 15:51:05 uid68519 Exp $
 */
 
 #include <time.h>
@@ -64,7 +64,7 @@ double get_time()
 	struct timeval tv;
 	gettimeofday(&tv, 0);
 
-	return tv->tv_sec * 1000 + tv->tv_usec / 1000;
+	return tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }
 
 #endif
