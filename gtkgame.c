@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.316 2003/03/05 14:28:52 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.317 2003/03/09 08:31:36 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -305,6 +305,7 @@ static void ImportOldmoves( gpointer *p, guint n, GtkWidget *pw );
 static void ImportPos( gpointer *p, guint n, GtkWidget *pw );
 static void ImportSGG( gpointer *p, guint n, GtkWidget *pw );
 static void ImportTMG( gpointer *p, guint n, GtkWidget *pw );
+static void ImportSnowieTxt( gpointer *p, guint n, GtkWidget *pw );
 static void LoadCommands( gpointer *p, guint n, GtkWidget *pw );
 static void LoadGame( gpointer *p, guint n, GtkWidget *pw );
 static void LoadMatch( gpointer *p, guint n, GtkWidget *pw );
@@ -2234,6 +2235,8 @@ extern int InitGTK( int *argc, char ***argv ) {
           NULL, ImportSGG, 0, NULL },
 	{ N_("/_File/_Import/._TrueMoneyGames .tmg match..."), 
           NULL, ImportTMG, 0, NULL },
+	{ N_("/_File/_Import/._Snowie .txt file..."), 
+          NULL, ImportSnowieTxt, 0, NULL },
 	{ N_("/_File/_Export"), NULL, NULL, 0, "<Branch>" },
 	{ N_("/_File/_Export/_Game"), NULL, NULL, 0, "<Branch>" },
 	{ N_("/_File/_Export/_Game/.gam..."), NULL, ExportGameGam, 0, NULL },
@@ -3488,6 +3491,15 @@ static void ImportTMG( gpointer *p, guint n, GtkWidget *pw ) {
 
   char *sz = getDefaultPath ( PATH_TMG );
   FileCommand( _("Import .tmg match"), sz, "import tmg", "tmg", 0 );
+  if ( sz ) 
+    free ( sz );
+
+}
+
+static void ImportSnowieTxt( gpointer *p, guint n, GtkWidget *pw ) {
+
+  char *sz = getDefaultPath ( PATH_SGF ); /* FIXME */
+  FileCommand( _("Import Snowie .txt"), sz, "import snowietxt", "txt", 0 );
   if ( sz ) 
     free ( sz );
 
@@ -6650,6 +6662,7 @@ extern void GTKShowVersion( void ) {
     int i;
     static char *aszAuthors[] = { "Joseph Heled", "Øystein Johansen",
 				  "David Montgomery",
+				  "Jim Segrave",
 				  "Jørn Thyssen", "Gary Wong" };
     extern char *aszCredits[];
 

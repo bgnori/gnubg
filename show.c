@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.137 2003/03/03 19:17:06 thyssen Exp $
+ * $Id: show.c,v 1.138 2003/03/09 08:31:36 thyssen Exp $
  */
 
 #include "config.h"
@@ -1260,7 +1260,7 @@ extern void CommandShowVersion( char *sz ) {
     outputc( '\n' );
 
     outputl( _("GNU Backgammon was written by Joseph Heled, Øystein Johansen, "
-	     "David Montgomery,\nJørn Thyssen and Gary Wong.\n\n"
+	     "David Montgomery,\nJim Segrave, Jørn Thyssen and Gary Wong.\n\n"
 	     "Special thanks to:") );
 
     cCol = 80;
