@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.13.2.2 2000/01/31 07:56:16 thyssen Exp $
+ * $Id: gnubg.c,v 1.13.2.3 2000/01/31 10:33:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -654,7 +654,7 @@ extern void CommandHint( char *sz ) {
     int i;
     char szMove[ 32 ];
     float aar[ 32 ][ NUM_OUTPUTS ];
-    float arDouble[ 4 ];
+    float arDouble[ 3 ];
     
     if( fTurn < 0 ) {
 	puts( "You must set up a board first." );
@@ -672,18 +672,20 @@ extern void CommandHint( char *sz ) {
 
       /* give hints on cube action */
 
-      EvaluateDouble ( nPliesEval, anBoard, arDouble );
+      if( EvaluatePositionCubeful( anBoard, nCube, fCubeOwner,
+				     fMove, arDouble, nPliesEval ) )
+	  return -1;
 
       if ( fInterrupt )
 	return;
       
       puts ( "Take decision:\n" );
-      printf ( "Equity for take: %+6.3f\n", -arDouble[ 1 ] );
+      printf ( "Equity for take: %+6.3f\n", -arDouble[ 2 ] );
       printf ( "Equity for pass: %+6.3f\n\n", -1.0 );
 
-      if ( ( arDouble[ 1 ] < 0 ) && ( ! nMatchTo ) )
+      if ( ( arDouble[ 2 ] < 0 ) && ( ! nMatchTo ) )
 	puts ( "Proper cube action: Beaver\n" );
-      else if ( arDouble[ 1 ] <= 1.0 )
+      else if ( arDouble[ 2 ] <= 1.0 )
 	puts ( "Proper cube action: Take\n" );
       else
 	puts ( "Proper cube action: Pass\n" );
