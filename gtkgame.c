@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.97 2002/02/04 15:33:28 gtw Exp $
+ * $Id: gtkgame.c,v 1.98 2002/02/04 20:03:16 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1953,7 +1953,7 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ "/_File/_Export/_Game/PostScript...", NULL, ExportGamePostScript, 0,
 	  NULL },
 	{ "/_File/_Export/_Match", NULL, NULL, 0, "<Branch>" },
-	{ "/_File/_Export/_Match/Html...", NULL, ExportMatchHtml, 0, NULL },
+	{ "/_File/_Export/_Match/HTML...", NULL, ExportMatchHtml, 0, NULL },
 	{ "/_File/_Export/_Match/LaTeX...", NULL, ExportMatchLaTeX, 0, NULL },
 	{ "/_File/_Export/_Match/.mat...", NULL, ExportMatchMat, 0, NULL },
 	{ "/_File/_Export/_Match/PDF...", NULL, ExportMatchPDF, 0, NULL },
