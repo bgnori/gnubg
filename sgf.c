@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.30 2001/10/29 15:15:20 gtw Exp $
+ * $Id: sgf.c,v 1.31 2001/10/30 16:14:12 gtw Exp $
  */
 
 #include "config.h"
@@ -378,7 +378,8 @@ static void RestoreDoubleAnalysis( property *pp,
 				   float ar[], evalsetup *pes ) {
     
     char *pch = pp->pl->plNext->p, ch;
-
+    int nPlies;
+    
     switch( *pch ) {
     case 'E':
 	/* EVAL_EVAL */
@@ -388,7 +389,9 @@ static void RestoreDoubleAnalysis( property *pp,
 	pes->ec.nReduced = 0;
 	
 	sscanf( pch + 1, "%f %f %f %f %d%c", &ar[ 0 ], &ar[ 1 ], &ar[ 2 ],
-		&ar[ 3 ], &pes->ec.nPlies, &ch );
+		&ar[ 3 ], &nPlies, &ch );
+
+	pes->ec.nPlies = nPlies;
 
 	pes->ec.fCubeful = ch == 'C';
 	break;
@@ -404,7 +407,7 @@ static void RestoreMoveAnalysis( property *pp, int fPlayer,
     list *pl = pp->pl->plNext;
     char *pch, ch;
     move *pm;
-    int i;
+    int i, nPlies;
     
     *piMove = atoi( pl->p );
 
@@ -449,9 +452,10 @@ static void RestoreMoveAnalysis( property *pp, int fPlayer,
 		    &pm->arEvalMove[ 0 ], &pm->arEvalMove[ 1 ],
 		    &pm->arEvalMove[ 2 ], &pm->arEvalMove[ 3 ],
 		    &pm->arEvalMove[ 4 ], &pm->rScore,
-		    &pm->esMove.ec.nPlies, &ch );
+		    &nPlies, &ch );
 	    pm->esMove.ec.fCubeful = ch == 'C';
-
+	    pm->esMove.ec.nPlies = nPlies;
+	    
 	    break;
 	    
 	default:
