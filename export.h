@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.3 2002/03/30 23:55:03 thyssen Exp $
+ * $Id: export.h,v 1.4 2002/06/01 11:28:03 thyssen Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -55,6 +55,8 @@ typedef struct _exportsetup {
   /* FIXME: add format specific options */
 
   /* For example, frames/non frames for HTML. */
+
+  char *szHTMLPictureURL;
 
 
 } exportsetup;
