@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.69 2002/08/03 09:58:53 thyssen Exp $
+ * $Id: gtkboard.c,v 1.70 2002/08/03 15:32:25 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1855,8 +1855,8 @@ static gint board_set( Board *board, const gchar *board_text ) {
 	gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( bd->crawford ),
 				      bd->crawford_game );
 	gtk_widget_set_sensitive( bd->crawford, bd->match_to > 1 &&
-				  ( bd->score == bd->match_to - 1 ||
-				    bd->score_opponent == bd->match_to - 1 ) );
+				  ( ( bd->score == bd->match_to - 1 ) ^
+				    ( bd->score_opponent == bd->match_to - 1 ) ));
 
 	read_board( bd, bd->old_board );
 	update_position_id( bd, bd->old_board );
@@ -2329,7 +2329,7 @@ extern gint game_set( Board *board, gint points[ 2 ][ 25 ], int roll,
 
     FIBSBoard( board_str, points, roll, name, opp_name, match, score,
 	       opp_score, die0, die1, ms.nCube, ms.fCubeOwner, ms.fDoubled,
-	       ms.fTurn, ms.fCrawford );
+	       ms.fTurn, ms.fCrawford);
     
     board_set( board, board_str );
     
