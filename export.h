@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.9 2002/07/28 23:16:21 oysteijo Exp $
+ * $Id: export.h,v 1.10 2002/09/06 16:51:47 thyssen Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -115,7 +115,8 @@ OutputCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                      evalsetup *pes, cubeinfo *pci,
                      int fDouble, int fTake,
                      skilltype stDouble,
-                     skilltype stTake );
+                     skilltype stTake,
+                     const int fPrintAlerts );
 
 
 #endif
