@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.391 2003/08/25 10:40:45 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.392 2003/08/25 19:26:52 joseph Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1441,29 +1441,41 @@ static void SkillMenuActivate( GtkWidget *pw, skilltype st ) {
     GTKUpdateAnnotations();
 }
 
-static GtkWidget *SkillMenu( skilltype stSelect, char *szAnno ) {
-
-    GtkWidget *pwMenu, *pwOptionMenu, *pwItem;
-    skilltype st;
+static GtkWidget*
+SkillMenu(skilltype stSelect, char* szAnno)
+{
+  GtkWidget* pwMenu = gtk_menu_new();
+  GtkWidget* pwOptionMenu;
+  skilltype st;
     
-    pwMenu = gtk_menu_new();
-    for( st = SKILL_VERYBAD; st < N_SKILLS; st++ ) {
-	gtk_menu_append( GTK_MENU( pwMenu ),
-			 pwItem = gtk_menu_item_new_with_label(
-			     aszSkillType[ st ] ? 
-                                gettext ( aszSkillType[ st ] ): "" ) );
-        gtk_object_set_user_data( GTK_OBJECT( pwItem ), szAnno );
-	gtk_signal_connect( GTK_OBJECT( pwItem ), "activate",
-			    GTK_SIGNAL_FUNC( SkillMenuActivate ),
-			    GINT_TO_POINTER( st ) );
+  for( st = SKILL_VERYBAD; st < N_SKILLS; st++ ) {
+    if( st == SKILL_GOOD ) {
+      continue;
     }
-    gtk_widget_show_all( pwMenu );
+    {
+      const char* l = aszSkillType[st] ? gettext(aszSkillType[st]) : "";
+      GtkWidget* pwItem = gtk_menu_item_new_with_label(l);
     
-    pwOptionMenu = gtk_option_menu_new();
-    gtk_option_menu_set_menu( GTK_OPTION_MENU( pwOptionMenu ), pwMenu );
-    gtk_option_menu_set_history( GTK_OPTION_MENU( pwOptionMenu ), stSelect );
+      gtk_menu_append( GTK_MENU( pwMenu ), pwItem);
+      gtk_object_set_user_data( GTK_OBJECT( pwItem ), szAnno );
+      gtk_signal_connect( GTK_OBJECT( pwItem ), "activate",
+			  GTK_SIGNAL_FUNC( SkillMenuActivate ),
+			  GINT_TO_POINTER( st ) );
+    }
+  }
+    
+  gtk_widget_show_all( pwMenu );
+    
+  pwOptionMenu = gtk_option_menu_new();
+  gtk_option_menu_set_menu( GTK_OPTION_MENU( pwOptionMenu ), pwMenu );
 
-    return pwOptionMenu;
+  /* show only bad skills */
+  if( stSelect == SKILL_GOOD ) {
+    stSelect = SKILL_NONE;
+  }
+  gtk_option_menu_set_history( GTK_OPTION_MENU( pwOptionMenu ), stSelect );
+
+  return pwOptionMenu;
 }
 
 
