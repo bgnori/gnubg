@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.29 2000/06/30 02:09:57 gtw Exp $
+ * $Id: backgammon.h,v 1.30 2000/07/05 19:57:36 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -133,6 +133,7 @@ extern void CommandAccept( char * ),
     CommandResign( char * ),
     CommandRoll( char * ),
     CommandRollout( char * ),
+    CommandSaveGame( char * ),
     CommandSaveMatch( char * ),
     CommandSaveWeights( char * ),
     CommandSetAutoBearoff( char * ),
@@ -185,15 +186,20 @@ extern void CommandAccept( char * ),
     CommandShowAutomatic( char * ),
     CommandShowBoard( char * ),
     CommandShowCache( char * ),
+    CommandShowConfirm( char * ),
     CommandShowCopying( char * ),
     CommandShowCrawford( char * ),
+    CommandShowCube( char * ),
     CommandShowDelay( char * ),
     CommandShowDice( char * ),
+    CommandShowDisplay( char * ),
     CommandShowEvaluation( char * ),
     CommandShowJacoby( char * ),
+    CommandShowNackgammon( char * ),
     CommandShowPipCount( char * ),
     CommandShowPostCrawford( char * ),
     CommandShowPlayer( char * ),
+    CommandShowPrompt( char * ),
     CommandShowRNG( char * ),
     CommandShowRollout( char * ),
     CommandShowScore( char * ),
