@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.27 2000/01/31 17:53:33 gtw Exp $
+ * $Id: gnubg.c,v 1.28 2000/02/01 00:03:26 gtw Exp $
  */
 
 #include "config.h"
@@ -1468,7 +1468,7 @@ static void usage( char *argv0 ) {
 "  -v, --version             Show version information and exit\n"
 "\n"
 "For more information, type `help' from within gnubg.\n"
-"Please report bugs to <gtw@gnu.org>.\n", argv0 );
+"Please report bugs to <bug-gnubg@gnu.org>.\n", argv0 );
 }
 
 extern int main( int argc, char *argv[] ) {
