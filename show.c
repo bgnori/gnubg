@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.8 2000/01/12 21:55:03 gtw Exp $
+ * $Id: show.c,v 1.9 2000/01/13 16:50:10 gtw Exp $
  */
 
 #include "config.h"
@@ -118,23 +118,6 @@ extern void CommandShowBoard( char *sz ) {
 	puts( DrawBoard( szOut, an, TRUE, ap ) );
 }
 
-extern void CommandShowCache( char *sz ) {
-
-    int c, cLookup, cHit;
-    
-    EvalCacheStats( &c, &cLookup, &cHit );
-
-    printf( "%d cache entries have been used.  %d lookups, %d hits",
-	    c, cLookup, cHit );
-
-    if( cLookup )
-	printf( " (%d%%).", ( cHit * 100 + cLookup / 2 ) / cLookup );
-    else
-	putchar( '.' );
-
-    putchar( '\n' );
-}
-
 extern void CommandShowCopying( char *sz ) {
 
     ShowPaged( aszCopying );
@@ -166,6 +149,25 @@ extern void CommandShowDice( char *sz ) {
     else
 	printf( "%s has rolled %d and %d.\n", ap[ fMove ].szName, anDice[ 0 ],
 		anDice[ 1 ] );
+}
+
+extern void CommandShowEvaluation( char *sz ) {
+
+    int c, cLookup, cHit;
+    
+    EvalCacheStats( &c, &cLookup, &cHit );
+
+    printf( "%d cache entries have been used.  %d lookups, %d hits",
+	    c, cLookup, cHit );
+
+    if( cLookup )
+	printf( " (%d%%).", ( cHit * 100 + cLookup / 2 ) / cLookup );
+    else
+	putchar( '.' );
+
+    putchar( '\n' );
+
+    /* FIXME show other things besides cache */
 }
 
 extern void CommandShowJacoby( char *sz ) {
