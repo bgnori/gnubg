@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.143 2003/09/01 19:19:14 thyssen Exp $
+ * $Id: html.c,v 1.144 2003/09/04 18:42:00 kaoru Exp $
  */
 
 #include "config.h"
@@ -169,10 +169,12 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
   else if ( hecss == HTML_EXPORT_CSS_EXTERNAL )
     /* write come comments in the file */
 
-    fputs( _("\n" 
-             "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.143 2003/09/01 19:19:14 thyssen Exp $ */\n"
-             "/* This file is distributed as a part of the "
+    fputs( "\n"
+           "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
+           "/* $Id: html.c,v 1.144 2003/09/04 18:42:00 kaoru Exp $ */\n",
+           pf );
+
+    fputs( _("/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
              "versions of this file */\n"
@@ -182,8 +184,8 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
            pf );
 
   for ( i = 0; i < NUM_CLASSES; ++i )
-    fprintf ( pf, 
-              ".%s { %s }\n", 
+    fprintf ( pf,
+              ".%s { %s }\n",
               aaszStyleSheetClasses[ i ][ 0 ],
               aaszStyleSheetClasses[ i ][ 1 ] );
 
@@ -1808,7 +1810,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.143 $";
+  const char szVersion[] = "$Revision: 1.144 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1889,7 +1891,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.143 $";
+  const char szVersion[] = "$Revision: 1.144 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2575,7 +2577,7 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
         float *ar = pmr->n.ml.amMoves[ i ].arEvalMove;
 
-        /* percentages */
+        /*,A (Bpercentages */
 
         if ( i == pmr->n.iMove )
           fprintf ( pf, "<tr %s>\n", 
