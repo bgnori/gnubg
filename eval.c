@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.156 2002/05/30 19:30:58 thyssen Exp $
+ * $Id: eval.c,v 1.157 2002/06/01 17:41:56 thyssen Exp $
  */
 
 #include "config.h"
@@ -56,6 +56,7 @@
 #include "positionid.h"
 #include "matchid.h"
 #include "matchequity.h"
+#include "i18n.h"
 
 #if WIN32
 #define BINARY O_BINARY
@@ -857,11 +858,16 @@ EvalInitialise( char *szWeights, char *szWeightsBinary,
 			 WEIGHTS_VERSION " is required,\nbut these weights "
 			 "are %s)\n", szWeights, szFileVersion );
 	    else {
+
+                PushLocale ( "C" );
+
 		if( !( fReadWeights =
 		       !NeuralNetLoad( &nnContact, pfWeights ) &&
 		       !NeuralNetLoad( &nnRace, pfWeights ) &&
 		       !NeuralNetLoad( &nnCrashed, pfWeights ) ) )
 		    perror( szWeights );
+
+                PopLocale ();
 
 		fclose( pfWeights );
 	    }
