@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.283 2002/08/22 17:35:50 thyssen Exp $
+ * $Id: gnubg.c,v 1.284 2002/08/22 18:00:15 thyssen Exp $
  */
 
 #include "config.h"
@@ -386,8 +386,6 @@ command cER = {
     { "move", CommandAnalyseMove, 
       N_("Compute analysis and annotate the current "
       "move"), NULL, NULL },
-	{ "marked", CommandAnalyseMarked,
-	  N_("Re-analyse marked moves "), NULL, NULL },
     { "session", CommandAnalyseSession, 
       N_("Compute analysis and annotate every "
       "game in the session"), NULL, NULL },
