@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.215 2003/08/29 18:38:12 jsegrave Exp $
+ * $Id: play.c,v 1.216 2003/08/31 13:16:54 thyssen Exp $
  */
 
 #include "config.h"
@@ -2145,9 +2145,6 @@ static skilltype GoodDouble (int fisRedouble, moverecord *pmr )
 
   cd = FindCubeDecision ( arDouble, GCCCONSTAHACK aarOutput, &ci );  
 
-  /* can copy only after it was filled */
-  memcpy ( pmr->d.CubeDecPtr->arDouble, arDouble, 4 * sizeof ( float ) );
-  
   switch ( cd ) {
 	case NODOUBLE_TAKE:
 	case NODOUBLE_BEAVER:
@@ -2332,8 +2329,6 @@ static skilltype ShouldDrop (int fIsDrop, moverecord *pmr) {
 	    
 	cd = FindCubeDecision ( arDouble, GCCCONSTAHACK aarOutput, &ci );  
 
-	memcpy ( pmr->d.CubeDecPtr->arDouble, arDouble, 4 * sizeof ( float ) );
-	
 	switch ( cd ) {
 	case DOUBLE_TAKE:
 	case DOUBLE_BEAVER:
@@ -4132,10 +4127,6 @@ getCurrentMoveRecord ( int *pfHistory ) {
         memcpy ( mrHint.n.aarOutput, sc.aarOutput, sizeof ( sc.aarOutput ) );
         memcpy ( mrHint.n.aarStdDev, sc.aarStdDev, sizeof ( sc.aarStdDev ) );
 
-        GetMatchStateCubeInfo( &ci, &ms );
-        FindCubeDecision ( mrHint.n.arDouble,
-			   GCCCONSTAHACK mrHint.n.aarOutput, &ci );
-
       }
       else {
         mrHint.n.esDouble.et = EVAL_NONE;
@@ -4158,10 +4149,6 @@ getCurrentMoveRecord ( int *pfHistory ) {
       memcpy ( mrHint.d.CubeDecPtr->aarStdDev, sc.aarStdDev, 
                sizeof ( sc.aarStdDev ) );
       
-      GetMatchStateCubeInfo( &ci, &ms );
-      FindCubeDecision ( mrHint.d.CubeDecPtr->arDouble, 
-			 GCCCONSTAHACK mrHint.d.CubeDecPtr->aarOutput, &ci );
-
       return &mrHint;
 
     }

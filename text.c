@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.56 2003/08/29 18:38:12 jsegrave Exp $
+ * $Id: text.c,v 1.57 2003/08/31 13:16:20 thyssen Exp $
  */
 
 #include "config.h"
@@ -241,7 +241,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.56 $";
+  const char szVersion[] = "$Revision: 1.57 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -275,7 +275,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
  */
 
 static void
-TextPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
+TextPrintCubeAnalysisTable ( FILE *pf, 
                              const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                              const float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                              int fPlayer,
@@ -286,7 +286,8 @@ TextPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
 
   int fActual, fClose, fMissed;
   int fDisplay;
-
+  float arDouble[ 4 ];
+  
   /* check if cube analysis should be printed */
 
   if ( pes->et == EVAL_NONE ) return; /* no evaluation */
@@ -346,7 +347,7 @@ TextPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
 
     /* cube analysis from move */
 
-    TextPrintCubeAnalysisTable ( pf, pmr->n.arDouble, 
+    TextPrintCubeAnalysisTable ( pf, 
                                  GCCCONSTAHACK pmr->n.aarOutput,
 				 GCCCONSTAHACK pmr->n.aarStdDev,
                                  pmr->n.fPlayer,
@@ -357,7 +358,7 @@ TextPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
 
   case MOVE_DOUBLE:
 
-    TextPrintCubeAnalysisTable ( pf, pmr->d.CubeDecPtr->arDouble, 
+    TextPrintCubeAnalysisTable ( pf, 
                                  GCCCONSTAHACK pmr->d.CubeDecPtr->aarOutput, 
 				 GCCCONSTAHACK pmr->d.CubeDecPtr->aarStdDev,
                                  pmr->d.fPlayer,
@@ -372,7 +373,7 @@ TextPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
 
     /* cube analysis from double, {take, drop, beaver} */
 
-    TextPrintCubeAnalysisTable ( pf, pmr->d.CubeDecPtr->arDouble, 
+    TextPrintCubeAnalysisTable ( pf, 
                                  GCCCONSTAHACK pmr->d.CubeDecPtr->aarOutput, 
 				 GCCCONSTAHACK pmr->d.CubeDecPtr->aarStdDev,
                                  pmr->d.fPlayer,
