@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.75 2003/09/26 08:17:54 steink Exp $
+ * $Id: gtkgame.h,v 1.76 2003/09/29 07:38:07 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -51,6 +51,14 @@ typedef enum _filedialogtype {
   FDT_NONE=0, FDT_SAVE, FDT_EXPORT, FDT_IMPORT, FDT_EXPORT_FULL
 } filedialogtype;
 
+typedef enum _warnings { 
+  WARN_FULLSCREEN_EXIT=0, WARN_NUM_WARNINGS
+} warnings;
+
+extern char* warningStrings[WARN_NUM_WARNINGS];
+extern char* warningNames[WARN_NUM_WARNINGS];
+extern int warningEnabled[WARN_NUM_WARNINGS];
+
 extern GtkWidget *pwMain, *pwMenuBar;
 extern GtkWidget *pwToolbar;
 extern GtkTooltips *ptt;
@@ -58,7 +66,7 @@ extern GtkTooltips *ptt;
 extern GtkWidget *pwGrab;
 extern GtkWidget *pwOldGrab;
 
-
+extern int lastImportType, lastExportType;
 extern int fEndDelay;
 
 extern void ShowGameWindow( void );
