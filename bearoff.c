@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.11 2002/12/08 12:09:01 thyssen Exp $
+ * $Id: bearoff.c,v 1.12 2002/12/18 17:40:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -615,7 +615,7 @@ BearoffStatus ( bearoffcontext *pbc, char *sz ) {
                     "   - up to %d chequers on %d points (%d positions)"
                     " per player\n"
                     "   - %s\n"
-                    "   - number of reads: %lld\n"),
+                    "   - number of reads: %lu\n"),
               pbc->fInMemory ?
               _("In memory 2-sided bearoff database evaluator") :
               _("On disk 2-sided bearoff database evaluator"),
@@ -637,7 +637,7 @@ BearoffStatus ( bearoffcontext *pbc, char *sz ) {
                     "%s"
                     "%s"
                     "   - %s\n"
-                    "   - number of reads: %lld\n"),
+                    "   - number of reads: %lu\n"),
               pbc->fInMemory ?
               _("In memory 1-sided bearoff database evaluator") :
               _("On disk 1-sided bearoff database evaluator"),
