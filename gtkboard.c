@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.96 2002/10/11 19:19:44 thyssen Exp $
+ * $Id: gtkboard.c,v 1.97 2002/12/11 02:21:18 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2695,7 +2695,7 @@ static float wood_hash( float r ) {
 }
 
 static void wood_pixel( float x, float y, float z, unsigned char auch[ 3 ],
-			BoardWood wood ) {
+			woodtype wood ) {
 
     float r;
     int grain, figure;

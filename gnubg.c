@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.346 2002/12/06 20:10:28 thyssen Exp $
+ * $Id: gnubg.c,v 1.347 2002/12/11 02:21:18 gtw Exp $
  */
 
 #include "config.h"
@@ -6130,6 +6130,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #if USE_GUILE
     GuileInitialise( szDataDirectory );
 #endif
+    RenderInitialise();
 
     if( ( pch = getenv( "LOGNAME" ) ) )
 	strcpy( ap[ 1 ].szName, pch );

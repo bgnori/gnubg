@@ -1,4 +1,4 @@
-$Id: TODO,v 1.269 2002/12/06 03:28:28 gtw Exp $
+$Id: TODO,v 1.270 2002/12/11 02:21:18 gtw Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -58,6 +58,8 @@ duplication of effort and to make sure our changes merge easily.
 ** Extend ParsePosition() to handle some sort of syntax like
   [8/5 6/5] (meaning the position after that move).  FIBS boardstyle 3 output
   might be nice, too.
+** When rolling out multiple decisions, add p-values (a la the equity
+  difference).
 ** Importing and exporting:
 *** Add missing export formats (FIBS oldmoves, .sgg, .pos).
 *** Make the .mat format identical to Jellyfish (things to check:
