@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.27 2003/04/12 12:41:13 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.28 2003/05/30 11:00:57 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -38,6 +38,7 @@
 #include "eval.h"
 #include "positionid.h"
 #include "rollout.h"
+#include "gtkboard.h"
 #include "gtkgame.h"
 #include "gtkchequer.h"
 #include "i18n.h"
@@ -284,9 +285,7 @@ ShowMove ( hintdata *phd, const int f ) {
     if ( ! ms.fMove )
       SwapSides ( anBoard );
 
-    sz = g_strdup_printf ( "show fullboard %s", PositionID ( anBoard ) );
-    UserCommand( sz );
-    g_free ( sz );
+    UpdateMove( ( BOARD( pwBoard ) )->board_data, anBoard );
 
   }
   else {

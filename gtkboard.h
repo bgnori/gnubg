@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.40 2003/05/29 19:16:03 thyssen Exp $
+ * $Id: gtkboard.h,v 1.41 2003/05/30 11:00:56 thyssen Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -114,9 +114,12 @@ extern void board_create_pixmaps( GtkWidget *board, BoardData *bd );
 extern void board_free_pixmaps( BoardData *bd );
 
 extern void
-DrawDie( GdkDrawable *pd, unsigned char *achDice[ 2 ], unsigned char *achPip[ 2 ],
+DrawDie( GdkDrawable *pd, 
+         unsigned char *achDice[ 2 ], unsigned char *achPip[ 2 ],
          const int s, GdkGC *gc, int x, int y, int fColour, int n );
 
+extern int
+UpdateMove( BoardData *bd, int anBoard[ 2 ][ 25 ] );
 
   
 #ifdef __cplusplus
