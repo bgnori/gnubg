@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.224 2003/09/12 23:28:45 jsegrave Exp $
+ * $Id: play.c,v 1.225 2003/09/13 22:35:34 kaoru Exp $
  */
 
 #include "config.h"
@@ -818,16 +818,20 @@ static int NewGame( void ) {
                ap[ 1 ].szName, ms.anDice[ 1 ] );
     }
 
-    if( ms.anDice[ 0 ] == ms.anDice[ 1 ] && ms.nCube < MAX_CUBE ) {
-	if( !ms.nMatchTo && ms.nCube < ( 1 << cAutoDoubles ) && ms.fCubeUse ) {
+    if( ms.anDice[ 0 ] == ms.anDice[ 1 ] ) {
+	if( !ms.nMatchTo && ms.nCube < ( 1 << cAutoDoubles ) &&
+          ms.fCubeUse && ms.nCube < MAX_CUBE ) {
 	    pmr->g.nAutoDoubles++;
 	    if( fDisplay )
 		outputf( _("The cube is now at %d.\n"), ms.nCube <<= 1 );
 	    UpdateSetting( &ms.nCube );
 	}
-	
+
 	goto reroll;
     }
+
+    assert( ms.nCube <= MAX_CUBE );
+    assert( ms.anDice[ 1 ] != ms.anDice[ 0 ] );
 
     outputx();
     
