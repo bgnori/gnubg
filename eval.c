@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.272 2004/11/24 10:25:16 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.273 2004/11/24 17:04:01 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2563,6 +2563,8 @@ static int
 ScoreMoves( movelist *pml, const cubeinfo* pci, const evalcontext* pec,
 	    int nPlies );
 
+#if !defined(REDUCTION_CODE)
+
 #define nPruneMoves 10
 static int cubefullPrune = 1;
 
@@ -2737,7 +2739,7 @@ FindBestMoveInEval(int const nDice0, int const nDice1, int anBoard[2][25],
   
   PositionFromKey(anBoard, ml.amMoves[ml.iMoveBest].auch);
 }
-
+#endif
 
 static int 
 EvaluatePositionFull( int anBoard[ 2 ][ 25 ], float arOutput[],
