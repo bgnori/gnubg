@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.112 2003/03/20 20:15:50 thyssen Exp $
+ * $Id: gtkboard.c,v 1.113 2003/03/31 18:05:43 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2939,6 +2939,12 @@ static void DrawAlphaImage( GdkDrawable *pd, int x, int y,
 					 GDK_RGB_DITHER_MAX, 0, 0 );
     g_object_unref( G_OBJECT( ppb ) );
 #else
+    /* according to the API documentation "mask" should be freed again,
+       when the image is freed, so no explicit call to "free" here 
+       <URL: http://developer.gnome.org/doc/API/2.0/gdk/gdk-Images.html#
+       gdk-image-new-bitmap>
+    */
+
     guchar *mask = malloc( ( cy ) * ( cx + 7 ) >> 3 );
     GdkImage *pi = gdk_image_new_bitmap( gdk_window_get_visual( pd ),
 					  mask, cx, cy );
