@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.24 2003/08/16 08:46:59 thyssen Exp $
+ * $Id: analysis.h,v 1.25 2003/08/16 09:24:47 thyssen Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -90,6 +90,7 @@ typedef struct {
   /* luck adjusted result */
 
   float arActualResult[ 2 ];
+  float arLuckAdj[ 2 ]; 
   float arVarianceActual[ 2 ];
   float arVarianceLuckAdj[ 2 ];
   int nGames;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.386 2003/08/16 09:05:15 thyssen Exp $
+ * $Id: gtkgame.c,v 1.387 2003/08/16 09:24:47 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7516,8 +7516,7 @@ extern void GTKDumpStatcontext( const statcontext *psc, const matchstate *pms,
 
       for ( i = 0; i < 2; ++i ) {
         sprintf( sz, "%+.2f%%", 
-                 100.0 * ( psc->arActualResult[ i ] - 
-                           psc->arLuck[ i ][ 1 ] + psc->arLuck[ !i ][ 1 ] ) );
+                 100.0 * psc->arLuckAdj[ i ] );
         gtk_clist_set_text( GTK_CLIST( pwStats ), irow, i + 1, sz);
       }
 
@@ -7535,9 +7534,7 @@ extern void GTKDumpStatcontext( const statcontext *psc, const matchstate *pms,
     }
     else {
       for ( i = 0; i < 2; ++i ) {
-        sprintf( sz, "%+.3f", 
-                 psc->arActualResult[ i ] - 
-                 psc->arLuck[ i ][ 1 ] + psc->arLuck[ !i ][ 1 ] );
+        sprintf( sz, "%+.3f",  psc->arLuckAdj[ i ] );
         gtk_clist_set_text( GTK_CLIST( pwStats ), irow, i + 1, sz);
         
         if( fIsMatch && psc->nGames > 1 ) {
@@ -7552,9 +7549,7 @@ extern void GTKDumpStatcontext( const statcontext *psc, const matchstate *pms,
           gtk_clist_set_text( GTK_CLIST( pwStats ), irow + 2, i + 1, sz );
 
           sprintf( sz, "%+.3f",
-                   ( psc->arActualResult[ i ] - 
-                     psc->arLuck[ i ][ 1 ] + psc->arLuck[ !i ][ 1 ] ) / 
-                   psc->nGames );
+                   psc->arLuckAdj[ i ] / psc->nGames );
           gtk_clist_set_text( GTK_CLIST( pwStats ), irow + 3, i + 1, sz );
           
           sprintf( sz, "%.3f",
