@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.7 2004/03/12 10:56:07 Superfly_Jon Exp $
+ * $Id: openurl.c,v 1.8 2004/04/04 08:48:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -44,6 +44,20 @@
 #include "backgammon.h"
 
 
+static int
+RunCommand( const gchar *szCmd ) {
+
+  if ( system( szCmd ) < 0 ) {
+     outputerr( _("Error launching browser\n") );
+     return -1;
+  }
+
+  return 0;
+
+}
+
+
+
 extern void
 OpenURL( const char *szURL ) {
 
@@ -53,40 +67,56 @@ OpenURL( const char *szURL ) {
 
 #else /* ! WIN32 */
 
-  /* FIXME: implement other browsers */
-
-#ifdef __APPLE__
-#define BROWSERCOMMAND "open %s"
-#else
-#define BROWSERCOMMAND "mozilla \"%s\""
-#endif
-
-#if GTK_CHECK_VERSION(1,3,10)
-
+  gchar *pchBrowser;
+  gchar **ppchCommands;
+  gchar *pchTemp;
   gchar *pchCommand;
-  GError *error = NULL;
+  const gchar *pch;
+  int i;
+  int rc;
 
-  pchCommand = g_strdup_printf( BROWSERCOMMAND, szURL );
+  /*
+   * Launch browser
+   *
+   * Respect $BROWSER
+   * (http://www.catb.org/~esr/BROWSER/index.html)
+   */
 
-  if ( ! g_spawn_command_line_async( pchCommand, &error ) ) {
-    outputerrf( _("Error launching browser: %s\n"), error->message );
-    g_error_free( error );
+  if ( ( pch = g_getenv( "BROWSER" ) ) )
+    /* found $BROWSER */
+    pchBrowser = g_strdup( pch );
+  else {
+    /* use default */
+#ifdef __APPLE__
+    pchBrowser = g_strdup( "open %s" );
+#else
+    pchBrowser = g_strdup( "mozilla \"%s\":lynx \"%s\"" );
+#endif
   }
 
-  g_free( pchCommand );
+  /* loop through commands */
 
-#else /* GTK 1.3 */
+  ppchCommands = g_strsplit( pchBrowser, ":", -1 );
 
-   
-  gchar *pchCommand;
-  pchCommand = g_strdup_printf( BROWSERCOMMAND, szURL );
+  for ( i = 0; pchCommand = ppchCommands[ i ]; ++i ) {
 
-  if ( system( pchCommand ) < 0 ) 
-     outputerr( _("Error launching browser\n") );
+    if ( ! strstr( pchCommand, "%s" ) ) {
+      /* no "%s" in string: add %s */
+      gchar *pch = g_strconcat( pchCommand, " \"%s\"", NULL );
+      pchTemp = g_strdup_printf( pch, szURL );
+      g_free( pch );
+    }
+    else
+      pchTemp = g_strdup_printf( pchCommand, szURL );
+    rc = RunCommand( pchTemp );
+    g_free( pchTemp );
 
-  g_free( pchCommand );
+    if ( !rc )
+      break;
 
-#endif /* ! GTK 1.3 */
+  }
+
+  g_strfreev( ppchCommands );
 
 #endif /* ! WIN32 */
 
