@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.65 2002/06/01 18:39:04 thyssen Exp $
+ * $Id: analysis.c,v 1.66 2002/06/15 17:16:02 thyssen Exp $
  */
 
 #include "config.h"
@@ -48,6 +48,16 @@ const char *aszRating [ RAT_UNDEFINED + 1 ] = {
   N_("World class"), 
   N_("Extra-terrestrial"), 
   N_("N/A") };
+
+const char *aszLuckRating[] = {
+  N_("Haaa-haaa"),
+  N_("Go to bed"), 
+  N_("Better luck next time"),
+  N_("None"),
+  N_("Good dice, man!"),
+  N_("Go to Las Vegas immediately"),
+  N_("Cheater :-)")
+};
 
 static const float arThrsRating [ RAT_EXTRA_TERRESTRIAL + 1 ] = {
   1e38, 0.030, 0.025, 0.020, 0.015, 0.010, 0.005 };
@@ -952,7 +962,7 @@ IniStatcontext ( statcontext *psc ) {
 }
 
 extern void
-DumpStatcontext ( char *szOutput, statcontext *psc, char * sz ) {
+DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
 
   int i;
   ratingtype rt[ 2 ];
@@ -1041,7 +1051,7 @@ DumpStatcontext ( char *szOutput, statcontext *psc, char * sz ) {
 	  rt[ i ] = GetRating ( psc->arErrorCheckerplay[ i ][ 0 ] /
 				psc->anUnforcedMoves[ i ] );
       
-      sprintf ( szTemp, _("Checker play rating:\t\t%-15s\t\t%-15s\n\n"),
+      sprintf ( szTemp, _("Checker play rating:\t\t%-20s\t%-20s\n\n"),
                 gettext ( aszRating[ rt [ 0 ] ] ), 
                 gettext ( aszRating[ rt [ 1 ] ] ) );
       strcat ( szOutput, szTemp);
@@ -1102,6 +1112,20 @@ DumpStatcontext ( char *szOutput, statcontext *psc, char * sz ) {
 		  psc->anTotalMoves[ 1 ] );
           strcat ( szOutput, szTemp);
       }
+
+      /* luck rating */
+
+
+      for ( i = 0; i < 2; i++ ) 
+        rt[ i ] = getLuckRating ( psc->arLuck[ i ][ 0 ] /
+                                  psc->anTotalMoves[ i ] );
+
+      sprintf ( szTemp, _("Luck rating:\t\t\t%-15s\t\t%-15s\n\n"),
+                gettext ( aszLuckRating[ rt [ 0 ] ] ), 
+                gettext ( aszLuckRating[ rt [ 1 ] ] ) );
+      strcat ( szOutput, szTemp);
+      
+
   }
 
   if( psc->fCube ) {
@@ -1232,7 +1256,7 @@ DumpStatcontext ( char *szOutput, statcontext *psc, char * sz ) {
 				  + psc->arErrorWrongPass[ i ][ 0 ] ) /
 				psc->anTotalCube[ i ] );
       
-      sprintf ( szTemp, _("\nCube decision rating:\t\t%-15s\t\t%-15s\n\n"),
+      sprintf ( szTemp, _("\nCube decision rating:\t\t%-20s\t%-20s\n\n"),
                 gettext ( aszRating[ rt [ 0 ] ] ), 
                 gettext ( aszRating[ rt [ 1 ] ] ) );
       strcat ( szOutput, szTemp);
@@ -1250,7 +1274,7 @@ DumpStatcontext ( char *szOutput, statcontext *psc, char * sz ) {
 				( psc->anTotalCube[ i ] +
 				  psc->anUnforcedMoves[ i ] ) );
       
-      sprintf ( szTemp, _("Overall rating:\t\t\t%-15s\t\t%-15s\n\n"),
+      sprintf ( szTemp, _("Overall rating:\t\t\t%-20s\t%-20s\n\n"),
                 gettext ( aszRating[ rt [ 0 ] ] ), 
                 gettext ( aszRating[ rt [ 1 ] ] ) );
       strcat ( szOutput, szTemp);
@@ -1442,3 +1466,19 @@ updateStatisticsMatch ( list *plMatch ) {
 
 
 
+extern int getLuckRating ( const float rLuck ) {
+
+  if ( rLuck < -0.10 )
+    return 0;
+  else if ( rLuck < -0.06 )
+    return 1;
+  else if ( rLuck < -0.02 )
+    return 2;
+  else if ( rLuck < +0.02 )
+    return 3;
+  else if ( rLuck < +0.06 )
+    return 4;
+  else
+    return 5;
+
+}
