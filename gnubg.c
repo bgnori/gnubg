@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.84 2000/11/21 17:56:32 gtw Exp $
+ * $Id: gnubg.c,v 1.85 2000/11/29 16:36:34 gtw Exp $
  */
 
 #include "config.h"
@@ -1662,7 +1662,7 @@ static void ExportGame( FILE *pf, list *plGame, int iGame, int anScore[ 2 ] ) {
 	case MOVE_NORMAL:
 	    sprintf( sz, "%d%d: ", pmr->n.anRoll[ 0 ], pmr->n.anRoll[ 1 ] );
 	    FormatMovePlain( sz + 4, anBoard, pmr->n.anMove );
-	    ApplyMove( anBoard, pmr->n.anMove );
+	    ApplyMove( anBoard, pmr->n.anMove, FALSE );
 	    SwapSides( anBoard );
 	    break;
 	case MOVE_DOUBLE:

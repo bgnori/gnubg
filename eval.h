@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.31 2000/11/15 18:02:17 gtw Exp $
+ * $Id: eval.h,v 1.32 2000/11/29 16:36:34 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -225,7 +225,7 @@ FindBestMoves( movelist *pml,
                int c, float d, cubeinfo *pci, evalcontext *pec );
 
 extern int 
-ApplyMove( int anBoard[ 2 ][ 25 ], int anMove[ 8 ] );
+ApplyMove( int anBoard[ 2 ][ 25 ], int anMove[ 8 ], int fCheckLegal );
 
 extern positionclass 
 ClassifyPosition( int anBoard[ 2 ][ 25 ] );

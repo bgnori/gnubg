@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.8 2000/11/15 18:02:17 gtw Exp $
+ * $Id: analysis.c,v 1.9 2000/11/29 16:36:34 gtw Exp $
  */
 
 #include "config.h"
@@ -180,7 +180,7 @@ AnalyzeGame ( list *plGame, int iGame ) {
         /* find auch for move */
 
         memcpy( anBoardMove, anBoard, sizeof( anBoardMove ) );
-        ApplyMove( anBoardMove, pmr->n.anMove );
+        ApplyMove( anBoardMove, pmr->n.anMove, FALSE );
         PositionKey ( anBoardMove, auch );
 
         /* find best moves */

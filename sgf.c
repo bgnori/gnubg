@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.8 2000/11/13 15:53:16 gtw Exp $
+ * $Id: sgf.c,v 1.9 2000/11/29 16:36:34 gtw Exp $
  */
 
 #include "config.h"
@@ -565,7 +565,7 @@ static void SaveGame( FILE *pf, list *plGame ) {
 		     pmr->n.anRoll[ 1 ] );
 	    WriteMove( pf, &pmr->n );
 	    putc( ']', pf );
-	    ApplyMove( anBoard, pmr->n.anMove );
+	    ApplyMove( anBoard, pmr->n.anMove, FALSE );
 	    
 	    nResult = GameStatus( anBoard );
 
