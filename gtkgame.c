@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.16 2000/11/07 15:18:33 gtw Exp $
+ * $Id: gtkgame.c,v 1.17 2000/11/10 18:47:06 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1335,6 +1335,8 @@ extern void GTKHint( movelist *pml ) {
 
     HintSelect( pwMoves, 0, 0, NULL, &hd );
     gtk_signal_connect( GTK_OBJECT( pwMoves ), "select-row",
+			GTK_SIGNAL_FUNC( HintSelect ), &hd );
+    gtk_signal_connect( GTK_OBJECT( pwMoves ), "unselect-row",
 			GTK_SIGNAL_FUNC( HintSelect ), &hd );
     
     gtk_window_set_default_size( GTK_WINDOW( pwDialog ), 0, 300 );
