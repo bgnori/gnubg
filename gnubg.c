@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.355 2002/12/17 01:02:28 oysteijo Exp $
+ * $Id: gnubg.c,v 1.356 2002/12/18 18:50:46 thyssen Exp $
  */
 
 #include "config.h"
@@ -3104,9 +3104,9 @@ extern void CommandHint( char *sz ) {
   movelist ml;
   int i;
   char szBuf[ 1024 ];
-  float arDouble[ 4 ], aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
-  float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
-  cubeinfo ci;
+  static float arDouble[ 4 ], aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+  static float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+  static cubeinfo ci;
   int n = ParseNumber ( &sz );
   int anMove[ 8 ];
   unsigned char auch[ 10 ];
