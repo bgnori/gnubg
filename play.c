@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.245 2004/02/17 10:52:19 uid68519 Exp $
+ * $Id: play.c,v 1.246 2004/03/29 07:50:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -2817,7 +2817,7 @@ static void DumpGameList(char *szOut, list *plGame) {
 	    sprintf( sz, "%d%d%-2s: %s", 
                      pmr->sd.anDice[ 0 ],
                      pmr->sd.anDice[ 1 ],
-                     aszLuckTypeAbbr[ pmr->n.lt ],
+                     aszLuckTypeAbbr[ pmr->sd.lt ],
                      _("Rolled") );
 	    break;
 	case MOVE_SETBOARD:
@@ -2850,6 +2850,9 @@ static void DumpGameList(char *szOut, list *plGame) {
 
 	i++;
     }
+
+    printf( "\n" );
+
 }
 
 extern void CommandListGame( char *sz ) {
