@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: i18n.h,v 1.2 2002/06/12 08:46:53 thyssen Exp $
+ * $Id: i18n.h,v 1.3 2002/12/06 16:25:19 gtw Exp $
  */
 
 #ifndef _I18N_H_
@@ -38,6 +38,7 @@
 # define gettext(Text) Text
 #define textdomain(Domain)
 #define bindtextdomain(Package, Directory)
+#define bind_textdomain_codeset(d,c)
 #endif
 #ifdef gettext_noop
 # define N_(String) gettext_noop (String)

@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.76 2002/12/06 03:28:28 gtw Exp $
+## $Id: Makefile.am,v 1.77 2002/12/06 16:22:46 gtw Exp $
 if USE_EXT
 SUBDIRS = intl lib doc ext met po m4 xpm sounds boards
 else
@@ -186,6 +186,7 @@ bearoff-database: makebearoff
 	@echo ' ** on the host system.'
 else
 gnubg_os0.bd: makebearoff
+	[ -s $(srcdir)/gnubg_os0.bd ] || \
 	./makebearoff -o 6 -s 7999999 -f $(srcdir)/gnubg_os0.bd
 
 bearoff-database: makebearoff
