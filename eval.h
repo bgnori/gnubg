@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.9 2000/01/19 17:01:12 gtw Exp $
+ * $Id: eval.h,v 1.10 2000/02/19 23:27:27 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -111,7 +111,7 @@ typedef enum _positionclass {
 #define CLASS_PERFECT CLASS_BEAROFF2
 
 extern int EvalInitialise( char *szWeights, char *szWeightsBinary,
-			   char *szDatabase );
+			   char *szDatabase, char *szDir );
 extern int EvalSave( char *szWeights );
 
 extern void SetGammonPrice( float rGammon, float rLoseGammon,
