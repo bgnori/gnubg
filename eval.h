@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.72 2002/05/04 21:17:31 joseph Exp $
+ * $Id: eval.h,v 1.73 2002/05/21 13:53:58 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -335,6 +335,12 @@ mwc2eq ( float rMwc, cubeinfo *ci );
 
 extern float
 eq2mwc ( float rEq, cubeinfo *ci );
+ 
+extern float
+se_mwc2eq ( const float rMwc, const cubeinfo *ci );
+
+extern float
+se_eq2mwc ( const float rEq, const cubeinfo *ci );
  
 extern char 
 *FormatEval ( char *sz, evalsetup *pes );
