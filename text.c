@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.25 2002/10/28 20:52:28 thyssen Exp $
+ * $Id: text.c,v 1.26 2002/11/01 19:22:44 thyssen Exp $
  */
 
 #include "config.h"
@@ -469,6 +469,7 @@ printTextBoard ( FILE *pf, const matchstate *pms ) {
   char sz[ 32 ], szCube[ 32 ], szPlayer0[ 35 ], szPlayer1[ 35 ],
     szScore0[ 35 ], szScore1[ 35 ], szMatch[ 35 ];
   char *apch[ 7 ] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
+  int anPips[ 2 ];
 
   memcpy ( anBoard, pms->anBoard, sizeof ( anBoard ) );
 
@@ -542,7 +543,11 @@ printTextBoard ( FILE *pf, const matchstate *pms ) {
   fputs ( DrawBoard( szBoard, anBoard, pms->fMove, apch,
                      MatchIDFromMatchState ( pms ) ),
           pf);
-  fputs ( "\n", pf );
+
+  PipCount ( anBoard, anPips );
+
+  fprintf ( pf, "Pip counts: O %d, X %d\n\n",
+            anPips[ 0 ], anPips[ 1 ] );
 
 }
 
@@ -651,7 +656,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.25 $";
+  const char szVersion[] = "$Revision: 1.26 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
