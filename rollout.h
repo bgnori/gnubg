@@ -16,11 +16,17 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.6 2001/05/17 22:13:30 thyssen Exp $
+ * $Id: rollout.h,v 1.7 2001/05/21 14:46:04 gtw Exp $
  */
 
 #ifndef _ROLLOUT_H_
 #define _ROLLOUT_H_
+
+#if __GNUC__ || HAVE_ALLOCA
+#define MAX_ROLLOUT_CUBEINFO (-1)
+#else
+#define MAX_ROLLOUT_CUBEINFO 16
+#endif
 
 extern int 
 Rollout( int anBoard[ 2 ][ 25 ], char *sz, float arOutput[], float arStdDev[],
