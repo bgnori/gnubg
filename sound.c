@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.38 2005/02/21 23:23:08 jsegrave Exp $
+ * $Id: sound.c,v 1.39 2005/03/26 00:21:31 jsegrave Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -609,12 +609,17 @@ static void play_audio_file(soundcache *psc, const char *file,
     pSound_ = pSoundCurrent = psc->pch;
     cbSound = psc->cb;
     hSound = fd;
-    
-#if O_ASYNC
+
+#if defined(O_ASYNC) || defined(__CYGWIN__)
     /* BSD O_ASYNC-style I/O notification */
     if( ( n = fcntl( fd, F_GETFL ) ) != -1 ) {
 	fcntl( fd, F_SETOWN, getpid() );
+#if !defined(__CYGWIN__)
 	fcntl( fd, F_SETFL, n | O_ASYNC | O_NONBLOCK );
+#else
+	fcntl( fd, F_SETFL, n | FASYNC | O_NONBLOCK );
+#endif
+
     }
 #else
     /* System V SIGPOLL-style I/O notification */

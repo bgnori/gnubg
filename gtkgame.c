@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.540 2005/03/11 18:26:00 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.541 2005/03/26 00:21:31 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2514,7 +2514,7 @@ extern void RunGTK( GtkWidget *pwSplash ) {
     
     if( fTTY ) {
 #ifdef ConnectionNumber /* FIXME use configure somehow to detect this */
-#if O_ASYNC
+#if defined(O_ASYNC) || defined(__CYGWIN__)
     /* BSD O_ASYNC-style I/O notification */
     {
 	int n;
@@ -2522,7 +2522,11 @@ extern void RunGTK( GtkWidget *pwSplash ) {
 	if( ( n = fcntl( ConnectionNumber( GDK_DISPLAY() ),
 			 F_GETFL ) ) != -1 ) {
 	    fcntl( ConnectionNumber( GDK_DISPLAY() ), F_SETOWN, getpid() );
+#if !defined(__CYGWIN__)
 	    fcntl( ConnectionNumber( GDK_DISPLAY() ), F_SETFL, n | O_ASYNC );
+#else
+	    fcntl( ConnectionNumber( GDK_DISPLAY() ), F_SETFL, n | FASYNC );
+#endif
 	}
     }
 #else
