@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.288 2004/06/04 17:50:56 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.289 2004/06/09 14:02:59 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -462,7 +462,7 @@ extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     nBeavers, fJacoby,
     fOutputRawboard, cAnalysisMoves, fAnalyseCube,
     fAnalyseDice, fAnalyseMove, fRecord,
-	nDefaultLength, nToolbarStyle;
+	nDefaultLength, nToolbarStyle, fStyledGamelist;
 extern int fInvertMET;
 extern int fConfirm, fConfirmSave;
 extern float rAlpha, rAnneal, rThreshold, arLuckLevel[ LUCK_VERYGOOD + 1 ],
@@ -1161,6 +1161,7 @@ extern void CommandAccept( char * ),
     CommandSetSoundSoundResign ( char * ),
     CommandSetSoundSoundRoll ( char * ),
     CommandSetSoundSoundStart ( char * ),
+    CommandSetStyledGameList ( char * ),
     CommandSetSoundSoundTake ( char * ),
 #if USE_TIMECONTROL
     CommandSetTCMove( char * ),

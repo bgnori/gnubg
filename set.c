@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.237 2004/05/19 08:43:52 Superfly_Jon Exp $
+ * $Id: set.c,v 1.238 2004/06/09 14:03:18 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -536,6 +536,18 @@ extern void CommandSetGameList( char *sz ) {
 	!= TRUE )
 	/* Force an update, even if the setting has not changed. */
 	UpdateSetting(&woPanel[WINDOW_GAME].showing);
+}
+
+extern void CommandSetStyledGameList( char *sz ) {
+
+    SetToggle( "styledgamelist", &fStyledGamelist, sz,
+		   _("Show colours in game window"),
+		   _("Do not show colours in game window.") );
+
+#if USE_GTK
+    if( fX )
+		GTKUpdateAnnotations();
+#endif
 }
 
 extern void CommandSetAnalysisWindows( char *sz ) {
