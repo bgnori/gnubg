@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.124 2003/07/27 15:28:03 oysteijo Exp $
+ * $Id: html.c,v 1.125 2003/08/03 16:52:02 thyssen Exp $
  */
 
 #include "config.h"
@@ -167,7 +167,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( _("\n" 
              "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.124 2003/07/27 15:28:03 oysteijo Exp $ */\n"
+             "/* $Id: html.c,v 1.125 2003/08/03 16:52:02 thyssen Exp $ */\n"
              "/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
@@ -1911,7 +1911,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.124 $";
+  const char szVersion[] = "$Revision: 1.125 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1992,7 +1992,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.124 $";
+  const char szVersion[] = "$Revision: 1.125 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2041,6 +2041,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
                              float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                              int fPlayer,
                              evalsetup *pes, cubeinfo *pci,
+                             const doubletype dt,
                              int fDouble, int fTake,
                              skilltype stDouble,
                              skilltype stTake,
@@ -2065,7 +2066,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
   /* check if cube analysis should be printed */
 
   if ( pes->et == EVAL_NONE ) return; /* no evaluation */
-  if ( ! GetDPEq ( NULL, NULL, pci ) ) return; /* cube not available */
+  if ( ! GetDPEq ( NULL, NULL, pci, dt ) ) return; /* cube not available */
 
   fActual = fDouble > 0;
   fClose = isCloseCubedecision ( arDouble ); 
@@ -2296,7 +2297,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
 
   }
 
-  getCubeDecisionOrdering ( ai, arDouble, aarOutput, pci );
+  getCubeDecisionOrdering ( ai, arDouble, aarOutput, pci, dt );
 
   for ( i = 0; i < 3; i++ ) {
 
@@ -2323,7 +2324,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
 
   /* cube decision */
 
-  cd = FindBestCubeDecision ( arDouble, aarOutput, pci );
+  cd = FindBestCubeDecision ( arDouble, aarOutput, pci, dt );
 
   fprintf ( pf,
             "<tr><td colspan=\"2\">%s</td>"
@@ -2332,7 +2333,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
             GetStyle( CLASS_CUBE_ACTION, hecss ),
             GetCubeRecommendation ( cd ) );
 
-  if ( ( r = getPercent ( cd, arDouble ) ) >= 0.0 )
+  if ( ( r = getPercent ( cd, dt, arDouble ) ) >= 0.0 )
     fprintf ( pf, " (%.1f%%)", 100.0f * r );
 
 
@@ -2428,6 +2429,7 @@ HTMLPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
                         const htmlexporttype het, const htmlexportcss hecss ) {
 
   cubeinfo ci;
+  doubletype dt = DoubleType( pms->fDoubled, pms->fMove, pms->fTurn );
 
   GetMatchStateCubeInfo ( &ci, pms );
 
@@ -2440,7 +2442,7 @@ HTMLPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
     HTMLPrintCubeAnalysisTable ( pf, pmr->n.arDouble, 
                                  pmr->n.aarOutput, pmr->n.aarStdDev,
                                  pmr->n.fPlayer,
-                                 &pmr->n.esDouble, &ci, FALSE, -1,
+                                 &pmr->n.esDouble, &ci, DT_NORMAL, FALSE, -1,
                                  pmr->n.stCube, SKILL_NONE, hecss );
 
     break;
@@ -2449,10 +2451,10 @@ HTMLPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
     HTMLPrintCubeAnalysisTable ( pf, pmr->d.CubeDecPtr->arDouble, 
                                  pmr->d.CubeDecPtr->aarOutput, 
-								 pmr->d.CubeDecPtr->aarStdDev,
+                                 pmr->d.CubeDecPtr->aarStdDev,
                                  pmr->d.fPlayer,
                                  &pmr->d.CubeDecPtr->esDouble, 
-								 &ci, TRUE, -1,
+                                 &ci, dt, TRUE, -1,
                                  pmr->d.st, SKILL_NONE, hecss );
 
     break;
@@ -2464,9 +2466,9 @@ HTMLPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
     HTMLPrintCubeAnalysisTable ( pf, pmr->d.CubeDecPtr->arDouble, 
                                  pmr->d.CubeDecPtr->aarOutput, 
-								 pmr->d.CubeDecPtr->aarStdDev,
+                                 pmr->d.CubeDecPtr->aarStdDev,
                                  pmr->d.fPlayer,
-                                 &pmr->d.CubeDecPtr->esDouble, &ci, TRUE, 
+                                 &pmr->d.CubeDecPtr->esDouble, &ci, dt, TRUE, 
                                  pmr->mt == MOVE_TAKE,
                                  SKILL_NONE, /* FIXME: skill from prev. cube */
                                  pmr->d.st, hecss );
@@ -2654,12 +2656,14 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
       if ( i ) 
         fprintf ( pf,
-                  "<td>%s (%s)</td>\n", 
+                  "<td %s>%s (%s)</td>\n", 
+                  GetStyle ( CLASS_MOVEEQUITY, hecss ),
                   OutputEquity ( rEq, &ci, TRUE ), 
                   OutputEquityDiff ( rEq, rEqTop, &ci ) );
       else
         fprintf ( pf,
-                  "<td>%s</td>\n", 
+                  "<td %s>%s</td>\n", 
+                  GetStyle ( CLASS_MOVEEQUITY, hecss ),
                   OutputEquity ( rEq, &ci, TRUE ) );
 
       /* end row */
