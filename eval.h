@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.49 2001/06/15 16:59:54 thyssen Exp $
+ * $Id: eval.h,v 1.50 2001/06/15 18:02:48 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -318,4 +318,13 @@ GeneralCubeDecisionE ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                        int anBoard[ 2 ][ 25 ],
                        cubeinfo *pci, evalcontext *pec );
 
+extern int
+GeneralEvaluationE ( float arOutput [ NUM_ROLLOUT_OUTPUTS ],
+                     int anBoard[ 2 ][ 25 ],
+                     cubeinfo *pci, evalcontext *pec );
+
+extern int
+GeneralEvaluationEPlied ( float arOutput [ NUM_ROLLOUT_OUTPUTS ],
+                          int anBoard[ 2 ][ 25 ],
+                          cubeinfo *pci, evalcontext *pec, int nPlies );
 #endif
