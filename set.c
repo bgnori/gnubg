@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.86 2002/02/04 15:31:59 gtw Exp $
+ * $Id: set.c,v 1.87 2002/02/05 15:46:07 gtw Exp $
  */
 
 #include "config.h"
@@ -31,7 +31,6 @@
 #if HAVE_SYS_SOCKET_H
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <sys/un.h>
 #endif
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,6 +42,7 @@
 #include "backgammon.h"
 #include "dice.h"
 #include "eval.h"
+#include "external.h"
 #if USE_GTK
 #include "gtkgame.h"
 #include "gtkprefs.h"
@@ -50,14 +50,6 @@
 #include "matchequity.h"
 #include "positionid.h"
 #include "drawboard.h"
-
-#if defined(AF_UNIX) && !defined(AF_LOCAL)
-#define AF_LOCAL AF_UNIX
-#define PF_LOCAL PF_UNIX
-#endif
-#ifndef SUN_LEN
-#define SUN_LEN(x) (sizeof *(x))
-#endif
 
 static int iPlayerSet;
 
@@ -867,8 +859,8 @@ extern void CommandSetPlayerExternal( char *sz ) {
     outputl( "This installation of GNU Backgammon was compiled without\n"
 	     "socket support, and does not implement external players." );
 #else
-    int h;
-    struct sockaddr_un socsun;
+    int h, cb;
+    struct sockaddr *psa;
        
     sz = NextToken( &sz );
     
@@ -878,25 +870,19 @@ extern void CommandSetPlayerExternal( char *sz ) {
 	return;
     }
 
-    if( ( h = socket( PF_LOCAL, SOCK_STREAM, 0 ) ) < 0 ) {
-	perror( "socket" );
+    if( ( h = ExternalSocket( &psa, &cb, sz ) ) < 0 ) {
+	perror( sz );
 	return;
     }
 
-    /* FIXME allow some syntax for TCP connections instead of AF_LOCAL */
-    
-    socsun.sun_family = AF_LOCAL;
-    strcpy( socsun.sun_path, sz ); /* yuck!  opportunities for buffer overflow
-				    here... but we didn't write the broken
-				    interface */
-    
-    while( connect( h, (struct sockaddr *) &socsun, sizeof(socsun) ) < 0 ) {
+    while( connect( h, psa, cb ) < 0 ) {
 	if( errno == EINTR ) {
 	    if( fAction )
 		fnAction();
 
 	    if( fInterrupt ) {
 		close( h );
+		free( psa );
 		return;
 	    }
 	    
@@ -905,11 +891,14 @@ extern void CommandSetPlayerExternal( char *sz ) {
 	
 	perror( sz );
 	close( h );
+	free( psa );
 	return;
     }
     
     ap[ iPlayerSet ].pt = PLAYER_EXTERNAL;
     ap[ iPlayerSet ].h = h;
+
+    free( psa );
 #endif
 }
 

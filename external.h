@@ -16,13 +16,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.h,v 1.1 2001/02/13 18:22:43 gtw Exp $
+ * $Id: external.h,v 1.2 2002/02/05 15:46:07 gtw Exp $
  */
 
 #ifndef _EXTERNAL_H_
 #define _EXTERNAL_H_
 
+#if HAVE_SOCKETS
+
+#if HAVE_SYS_SOCKET_H
+#include <sys/types.h>
+#include <sys/socket.h>
+#endif
+
+extern int ExternalSocket( struct sockaddr **ppsa, int *pcb, char *sz );
 extern int ExternalRead( int h, char *pch, int cch );
 extern int ExternalWrite( int h, char *pch, int cch );
+
+#endif
 
 #endif
