@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.99 2004/03/31 09:51:53 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.100 2004/04/02 09:16:36 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1981,7 +1981,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.99 2004/03/31 09:51:53 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.100 2004/04/02 09:16:36 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2726,8 +2726,10 @@ void AddPages(BoardData* bd, GtkWidget* pwNotebook)
 
 	gtk_widget_set_sensitive(frame3dOptions, rdPrefs.fDisplayType == DT_3D);
 
+#if !HAVE_GTKGLEXT
 	if (rdPrefs.fDisplayType == DT_3D)
 		SetupVisual();
+#endif
 #endif
 
 #if HAVE_LIBXML2
