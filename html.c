@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.150 2003/10/18 09:26:07 thyssen Exp $
+ * $Id: html.c,v 1.151 2003/11/01 13:43:56 thyssen Exp $
  */
 
 #include "config.h"
@@ -171,7 +171,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-           "/* $Id: html.c,v 1.150 2003/10/18 09:26:07 thyssen Exp $ */\n",
+           "/* $Id: html.c,v 1.151 2003/11/01 13:43:56 thyssen Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1229,10 +1229,10 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
 
 
   fputs ( "<td rowspan=\"2\">", pf );
-  if ( fClockwise && acOff[ 1 ] )
-    sprintf ( sz, "b-roff-x%d", acOff[ 1 ] );
+  if ( fClockwise )
+    sprintf ( sz, "b-loff-x%d", acOff[ 1 ] );
   else
-    strcpy ( sz, "b-roff" );
+    strcpy ( sz, "b-loff-x0" );
   printImage ( pf, szImageDir, sz, szExtension, "|", 
                hecss, HTML_EXPORT_TYPE_GNU );
   fputs ( "</td>", pf );
@@ -1290,10 +1290,10 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   /* right bearoff tray */
 
   fputs ( "<td rowspan=\"2\">", pf );
-  if ( ! fClockwise && acOff[ 1 ] )
+  if ( ! fClockwise )
     sprintf ( sz, "b-roff-x%d", acOff[ 1 ] );
   else
-    strcpy ( sz, "b-roff" );
+    strcpy ( sz, "b-roff-x0" );
   printImage ( pf, szImageDir, sz, szExtension, "|", 
                hecss, HTML_EXPORT_TYPE_GNU );
   fputs ( "</td>", pf );
@@ -1432,10 +1432,10 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
 
   fputs ( "<td>", pf );
   if ( ! fClockwise )
-    printImage ( pf, szImageDir, "b-midlb", szExtension, "|", 
+    printImage ( pf, szImageDir, "b-midrb", szExtension, "|", 
                  hecss, HTML_EXPORT_TYPE_GNU );
   else
-    printImage ( pf, szImageDir, fTurn ? "b-midlb-o" : "b-midlb-x", 
+    printImage ( pf, szImageDir, fTurn ? "b-midrb-o" : "b-midrb-x", 
                  szExtension, "|", hecss, HTML_EXPORT_TYPE_GNU );
   fputs ( "</td>", pf );
 
@@ -1447,10 +1447,10 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   fputs ( "<tr>", pf );
 
   fputs ( "<td rowspan=\"2\">", pf );
-  if ( fClockwise && acOff[ 0 ] ) 
-    sprintf ( sz, "b-roff-o%d", acOff[ 0 ] );
+  if ( fClockwise )
+    sprintf ( sz, "b-loff-o%d", acOff[ 0 ] );
   else
-    strcpy ( sz, "b-roff" );
+    strcpy ( sz, "b-loff-o0" );
   printImage ( pf, szImageDir, sz, szExtension, "|", 
                hecss, HTML_EXPORT_TYPE_GNU );
   fputs ( "</td>", pf );
@@ -1509,10 +1509,10 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   /* right bearoff tray */
 
   fputs ( "<td rowspan=\"2\">", pf );
-  if ( ! fClockwise && acOff[ 0 ] ) 
+  if ( ! fClockwise )
     sprintf ( sz, "b-roff-o%d", acOff[ 0 ] );
   else
-    strcpy ( sz, "b-roff" );
+    strcpy ( sz, "b-roff-o0" );
   printImage ( pf, szImageDir, sz, szExtension, "|", 
                hecss, HTML_EXPORT_TYPE_GNU );
   fputs ( "</td>", pf );
@@ -1805,7 +1805,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.150 $";
+  const char szVersion[] = "$Revision: 1.151 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1886,7 +1886,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.150 $";
+  const char szVersion[] = "$Revision: 1.151 $";
   int iMajor, iMinor;
   char *pc;
 
