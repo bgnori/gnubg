@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.65 2002/10/12 12:28:27 thyssen Exp $
+ * $Id: html.c,v 1.66 2002/10/12 12:38:04 thyssen Exp $
  */
 
 #include "config.h"
@@ -1564,7 +1564,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.65 $";
+  const char szVersion[] = "$Revision: 1.66 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -3116,7 +3116,8 @@ static void ExportGameHTML ( FILE *pf, list *plGame, const char *szImageDir,
 
         HTMLPrologue( pf, &msExport, iGame, aszLinks, het );
 
-        HTMLMatchInfo ( pf, &mi );
+        if ( exsExport.fIncludeMatchInfo )
+          HTMLMatchInfo ( pf, &mi );
 
         msOrig = msExport;
         pmgi = &pmr->g;
@@ -3476,7 +3477,8 @@ extern void CommandExportPositionHtml( char *sz ) {
 
     HTMLPrologue ( pf, &ms, getGameNumber ( plGame ), NULL, exsExport.het );
 
-    HTMLMatchInfo ( pf, &mi );
+    if ( exsExport.fIncludeMatchInfo )
+      HTMLMatchInfo ( pf, &mi );
 
     HTMLBoardHeader ( pf, &ms, exsExport.het,
                       getGameNumber ( plGame ),

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.11 2002/09/23 20:27:31 thyssen Exp $
+ * $Id: export.h,v 1.12 2002/10/12 12:40:53 thyssen Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -42,6 +42,7 @@ typedef struct _exportsetup {
   int fIncludeAnalysis;
   int fIncludeStatistics;
   int fIncludeLegend;
+  int fIncludeMatchInfo;
 
   /* display board: 0 (never), 1 (every move), 2 (every second move) etc */
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.312 2002/10/09 18:57:31 thyssen Exp $
+ * $Id: gnubg.c,v 1.313 2002/10/12 12:38:52 thyssen Exp $
  */
 
 #include "config.h"
@@ -272,6 +272,7 @@ exportsetup exsExport = {
   TRUE, /* include analysis */
   TRUE, /* include statistics */
   TRUE, /* include legend */
+  TRUE, /* include match information */
 
   1, /* display board for all moves */
   -1, /* both players */
@@ -898,6 +899,9 @@ command cER = {
     szONOFF, &cOnOff },
   { "legend", CommandSetExportIncludeLegend,
     N_("include a legend that describes the output of the export"), 
+    szONOFF, &cOnOff },
+  { "matchinfo", CommandSetExportIncludeMatchInfo,
+    N_("include information about the match" ),
     szONOFF, &cOnOff },
   { NULL, NULL, NULL, NULL, NULL }    
 }, acSetExportShow[] = {
@@ -4178,11 +4182,13 @@ extern void CommandSaveSettings( char *szParam ) {
               "set export include annotations %s\n"
               "set export include analysis %s\n"
               "set export include statistics %s\n"
-              "set export include legend %s\n",
+              "set export include legend %s\n"
+              "set export include matchinfo %s\n",
               exsExport.fIncludeAnnotation ? "yes" : "no",
               exsExport.fIncludeAnalysis ? "yes" : "no",
               exsExport.fIncludeStatistics ? "yes" : "no",
-              exsExport.fIncludeLegend ? "yes" : "no" );
+              exsExport.fIncludeLegend ? "yes" : "no",
+              exsExport.fIncludeMatchInfo ? "yes" : "no" );
 
     fprintf ( pf, "set export show board %d\n", exsExport.fDisplayBoard );
 

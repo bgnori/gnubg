@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.21 2002/10/09 21:01:51 thyssen Exp $
+ * $Id: text.c,v 1.22 2002/10/12 12:38:04 thyssen Exp $
  */
 
 #include "config.h"
@@ -630,7 +630,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.21 $";
+  const char szVersion[] = "$Revision: 1.22 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1410,7 +1410,8 @@ static void ExportGameText ( FILE *pf, list *plGame,
 
         TextPrologue( pf, &msExport, iGame );
 
-        TextMatchInfo ( pf, &mi );
+        if ( exsExport.fIncludeMatchInfo )
+          TextMatchInfo ( pf, &mi );
 
         msOrig = msExport;
         pmgi = &pmr->g;
@@ -1627,7 +1628,8 @@ extern void CommandExportPositionText( char *sz ) {
 
     TextPrologue ( pf, &ms, getGameNumber ( plGame ) );
 
-    TextMatchInfo ( pf, &mi );
+    if ( exsExport.fIncludeMatchInfo )
+      TextMatchInfo ( pf, &mi );
 
     TextBoardHeader ( pf, &ms, 
                       getGameNumber ( plGame ),

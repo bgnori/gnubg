@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.110 2002/09/25 21:24:25 gtw Exp $
+ * $Id: show.c,v 1.111 2002/10/12 12:39:36 thyssen Exp $
  */
 
 #include "config.h"
@@ -1321,6 +1321,9 @@ CommandShowExport ( char *sz ) {
   output ( _("- legend") );
   outputf ( "\r\t\t\t\t\t\t: %s\n\n",
             exsExport.fIncludeLegend ? _("yes") : _("no") );
+  output ( _("- match information") );
+  outputf ( "\r\t\t\t\t\t\t: %s\n\n",
+            exsExport.fIncludeMatchInfo ? _("yes") : _("no") );
 
   outputl ( _("Show: \n") );
   output ( _("- board" ) );
