@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.43 2001/11/09 18:26:05 gtw Exp $
+ * $Id: gtkboard.c,v 1.44 2001/12/10 16:06:06 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3423,6 +3423,8 @@ static void board_edit( GtkWidget *pw, BoardData *bd ) {
 	
 	outputpostpone();
 
+	/* NB: these comparisons are case-sensitive, and do not use
+	   CompareNames(), so that the user can modify the case of names. */
 	if( strcmp( pch0, ap[ 0 ].szName ) ) {
 	    sprintf( sz, "set player 0 name %s", pch0 );
 	    UserCommand( sz );
