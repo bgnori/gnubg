@@ -21,7 +21,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: database.py,v 1.10 2004/11/05 14:46:22 Superfly_Jon Exp $
+# $Id: database.py,v 1.11 2004/11/08 12:24:41 Superfly_Jon Exp $
 #
                                                                                   
 
@@ -592,7 +592,7 @@ class relational:
          played = int(row)
       stats.append(("Games played", played))
 
-      row = self.__runqueryvalue("SELECT * FROM match WHERE (nick_id0 = %d and result = 1)" \
+      row = self.__runqueryvalue("SELECT COUNT(*) FROM match WHERE (nick_id0 = %d and result = 1)" \
         " OR (nick_id1 = %d and result = -1)" % (nick_id, nick_id));
       if row == None:
          wins = 0
