@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.300 2005/01/04 09:27:34 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.301 2005/02/15 18:13:01 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -100,7 +100,7 @@ typedef enum _gnubgwindow {
 
 typedef struct _windowgeometry {
   int nWidth, nHeight;
-  int nPosX, nPosY;
+  int nPosX, nPosY, max;
 } windowgeometry;
 
 extern void SaveWindowSettings(FILE* pf);
@@ -1000,6 +1000,7 @@ extern void CommandAccept( char * ),
     CommandSetGeometryHeight ( char * ),
     CommandSetGeometryPosX ( char * ),
     CommandSetGeometryPosY ( char * ),
+    CommandSetGeometryMax ( char * ),
     CommandSetGotoFirstGame( char * ),
     CommandSetGUIAnimationBlink( char * ),
     CommandSetGUIAnimationNone( char * ),

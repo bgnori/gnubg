@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.10 2005/02/14 13:15:48 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.11 2005/02/15 18:13:01 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -662,11 +662,13 @@ static void GetGeometryString(char* buf, windowobject* pwo)
 	sprintf(buf, "set geometry %s width %d\n"
                   "set geometry %s height %d\n"
                   "set geometry %s xpos %d\n" 
-                  "set geometry %s ypos %d\n", 
+                  "set geometry %s ypos %d\n"
+                  "set geometry %s max %s\n",
                   pwo->winName, pwo->wg.nWidth,
                   pwo->winName, pwo->wg.nHeight,
                   pwo->winName, pwo->wg.nPosX,
-                  pwo->winName, pwo->wg.nPosY );
+                  pwo->winName, pwo->wg.nPosY,
+		  pwo->winName, pwo->wg.max ? "yes" : "no");
 }
 
 extern void SaveWindowSettings(FILE* pf)
@@ -717,11 +719,19 @@ extern void getWindowGeometry(gnubgwindow window)
 
 #if GTK_CHECK_VERSION(2,0,0)
 
+	if (GTK_WIDGET_REALIZED(pwo->pwWin))
+	{
+		GdkWindowState state = gdk_window_get_state(pwo->pwWin->window);
+		pwo->wg.max = ((state & GDK_WINDOW_STATE_MAXIMIZED) == GDK_WINDOW_STATE_MAXIMIZED);
+		if (pwo->wg.max)
+			return;	/* Could restore window to get correct restore size - just use previous for now */
+
   gtk_window_get_position ( GTK_WINDOW ( pwo->pwWin ),
                             &pwo->wg.nPosX, &pwo->wg.nPosY );
 
   gtk_window_get_size ( GTK_WINDOW ( pwo->pwWin ),
                         &pwo->wg.nWidth, &pwo->wg.nHeight );
+	}
 
 #else
 
@@ -733,6 +743,8 @@ extern void getWindowGeometry(gnubgwindow window)
 
   gdk_window_get_size ( pwo->pwWin->window,
                         &pwo->wg.nWidth, &pwo->wg.nHeight );
+
+  pwo->wg.max = FALSE;
 
 #endif /* ! GTK 2.0 */
 }
@@ -972,6 +984,10 @@ setWindowGeometry(gnubgwindow window)
                     ( pwo->wg.nPosX >= 0 ) ? pwo->wg.nPosX : 0, 
                     ( pwo->wg.nPosY >= 0 ) ? pwo->wg.nPosY : 0 );
 
+  if (pwo->wg.max)
+    gtk_window_maximize(GTK_WINDOW( pwo->pwWin ));
+
+
 #else
 
   gtk_window_set_default_size( GTK_WINDOW( pwo->pwWin ), 
@@ -1206,6 +1222,20 @@ CommandSetGeometryPosY ( char *sz ) {
 
   }
 
+}
+
+extern void
+CommandSetGeometryMax ( char *sz )
+{
+  int maxed = (strcasecmp(sz, "yes") == 0);
+  woPanel[pwoSetPanel].wg.max = maxed;
+  outputf ( maxed ? _("%s window maximised.\n") : _("%s window unmaximised.\n"),
+	  woPanel[pwoSetPanel].winName);
+
+#if USE_GTK
+    if ( fX )
+		setWindowGeometry(pwoSetPanel);
+#endif
 }
 
 extern void CommandSetDisplayPanels( char *sz ) {

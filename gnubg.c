@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.600 2005/02/14 13:14:58 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.601 2005/02/15 18:13:01 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1205,6 +1205,8 @@ command cER = {
     { "xpos", CommandSetGeometryPosX, N_("set x-position of window"),
       szVALUE, NULL },
     { "ypos", CommandSetGeometryPosY, N_("set y-position of window"),
+      szVALUE, NULL },
+    { "max", CommandSetGeometryMax, N_("set maximised state of window"),
       szVALUE, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acSetGeometry[] = {
