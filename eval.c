@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.261 2004/07/04 12:26:31 thyssen Exp $
+ * $Id: eval.c,v 1.262 2004/07/11 16:39:00 kaoru Exp $
  */
 
 #include "config.h"
@@ -686,15 +686,15 @@ EvalShutdown ( void ) {
 extern int
 EvalInitialise( char *szWeights, char *szWeightsBinary,
 		int fNoBearoff, 
-                char *szDir, int nSize,
-		void (*pfProgress)( int ) ) {
-
+		char *szDir, int nSize,
+		void (*pfProgress)( int ) )
+{
     FILE *pfWeights;
     int h, i, fReadWeights = FALSE;
     char szFileVersion[ 16 ];
     float r;
     static int fInitialised = FALSE;
-    
+
     if( !fInitialised ) {
 
       /* initialise table for sigmoid */
@@ -798,7 +798,7 @@ EvalInitialise( char *szWeights, char *szWeightsBinary,
 	    if( !fstat( h, &st ) &&
 		( p = mmap( NULL, st.st_size, PROT_READ | PROT_WRITE,
 			    MAP_PRIVATE, h, 0 ) ) ) {
-		( (float *) p ) += 2; /* skip magic number and version */
+		p = ( (float *) p ) + 2; /* skip magic number and version */
 		fReadWeights =
 		    ( p = NeuralNetCreateDirect( &nnContact, p ) ) &&
 		    ( p = NeuralNetCreateDirect( &nnRace, p ) ) &&
@@ -6037,7 +6037,7 @@ EvaluatePositionCubeful4( int anBoard[ 2 ][ 25 ],
           case CLASS_CONTACT:
           case CLASS_BEAROFF1:
           case CLASS_BEAROFF_OS:
-            /* approximate using Jørn's generalisation of 
+            /* approximate using Joern's generalisation of 
                Janowski's formulae */
             
             arCf[ ici ] = Cl2CfMatch ( arOutput, &aci[ ici ] );
