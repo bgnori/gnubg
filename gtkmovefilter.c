@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.6 2003/01/06 19:51:25 thyssen Exp $
+ * $Id: gtkmovefilter.c,v 1.7 2003/01/11 10:34:05 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -142,7 +142,7 @@ static void
 AcceptChanged ( GtkWidget *pw, movefiltersetupwidget *pmfsw ) {
 
   int fFound;
-  int i, j;
+  int i;
   movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
 
   /* see if current settings match a predefined one */

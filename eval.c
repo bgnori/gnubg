@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.213 2003/01/10 22:00:07 thyssen Exp $
+ * $Id: eval.c,v 1.214 2003/01/11 10:35:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -88,6 +88,14 @@ Cl2CfMatchUnavailable ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci );
 
 static float
 EvalEfficiency( int anBoard[2][25], positionclass pc );
+
+static int 
+EvaluatePositionCubeful4( int anBoard[ 2 ][ 25 ],
+                          float arOutput[ NUM_OUTPUTS ],
+                          float arCubeful[],
+                          cubeinfo aciCubePos[], int cci, 
+                          cubeinfo *pciMove,
+                          evalcontext *pec, int nPlies, int fTop );
 
 static int MaxTurns( int i );
 
@@ -5661,7 +5669,6 @@ EvaluatePositionCubeful3( int anBoard[ 2 ][ 25 ],
   int fAll = TRUE;
   evalcache ec, *pecx;
   unsigned long l;
-  int rc;
   
   PositionKey ( anBoard, ec.auchKey );
     
@@ -5719,7 +5726,7 @@ EvaluatePositionCubeful3( int anBoard[ 2 ][ 25 ],
 }
 
 
-extern int 
+static int 
 EvaluatePositionCubeful4( int anBoard[ 2 ][ 25 ],
                           float arOutput[ NUM_OUTPUTS ],
                           float arCubeful[],

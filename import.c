@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.45 2003/01/10 15:39:00 gtw Exp $
+ * $Id: import.c,v 1.46 2003/01/11 10:34:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -1637,8 +1637,6 @@ ParseTMGOptions ( const char *sz, matchinfo *pmi, int *pfCrawfordRule,
     "MaxRakeAbs:", "Startdate:", "Jacoby:", "AutoDistrib:", "Beavers:", 
     "Raccoons:", "Crawford:", "Cube:", "MaxCube:", "Length:", "MaxGames:",
     "Variant:", "PlayMoney:", NULL };
-  double arRating[ 2 ];
-  int anExp[ 2 ];
   char *pc;
   char szName[ 80 ];
 
@@ -1757,14 +1755,8 @@ static void ImportTMGGame( FILE *pf, int i, int nLength, int n0, int n1,
     char *pch;
     int c, fPlayer = 0, anRoll[ 2 ];
     moverecord *pmgi, *pmr;
-    char *szComment = NULL;
-    int fBeaver = FALSE;
-
-    int fPlayerOld, nMoveOld; 
-    int nMove = -1;
     int iMove;
     int j;
-    int fRecordType;
 
     typedef enum _tmgrecordtype {
       TMG_ROLL = 1,
