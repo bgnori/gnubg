@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.226 2004/04/14 20:41:58 thyssen Exp $
+ * $Id: set.c,v 1.227 2004/04/17 18:02:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -2871,6 +2871,9 @@ extern void CommandSetMET( char *sz ) {
 
   /* Cubeful evaluation get confused withh entries from another table */
   EvalCacheFlush();
+
+  /* clear hint */
+  CommandClearHint( NULL );
   
   outputf( _("GNU Backgammon will now use the %s match equity table.\n"),
            miCurrent.szName );
