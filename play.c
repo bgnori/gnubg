@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.182 2003/03/30 18:43:59 thyssen Exp $
+ * $Id: play.c,v 1.183 2003/04/04 20:16:02 thyssen Exp $
  */
 
 #include "config.h"
@@ -3910,12 +3910,6 @@ SetMatchID ( const char *szMatchID ) {
   ms.fResigned = fResigned;
   ms.fDoubled = fDoubled;
   
-  UpdateSetting( &ms.gs );
-  UpdateSetting( &ms.nCube );
-  UpdateSetting( &ms.fCubeOwner );
-  UpdateSetting( &ms.fTurn );
-  UpdateSetting( &ms.fCrawford );
-
   /* Set dice */
 
   if ( anDice[ 0 ] ) {
@@ -3951,6 +3945,20 @@ SetMatchID ( const char *szMatchID ) {
     CommandSetCubeValue ( sz );
 
   }
+
+  /* the following is needed to get resignations correct */
+
+  ms.gs = gs;
+  ms.fMove = fMove;
+  ms.fTurn = fTurn;
+  ms.fResigned = fResigned;
+  ms.fDoubled = fDoubled;
+  
+  UpdateSetting( &ms.gs );
+  UpdateSetting( &ms.nCube );
+  UpdateSetting( &ms.fCubeOwner );
+  UpdateSetting( &ms.fTurn );
+  UpdateSetting( &ms.fCrawford );
 
   /* set board to old value */
 
