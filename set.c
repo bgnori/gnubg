@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.243 2004/10/12 10:24:27 Superfly_Jon Exp $
+ * $Id: set.c,v 1.244 2004/10/21 14:59:50 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2935,7 +2935,8 @@ extern void CommandSetMET( char *sz ) {
              miCurrent.nLength, miCurrent.nLength );
 
   }
-
+  if (fInvertMET)
+    invertMET();
 }
 
 
@@ -3703,7 +3704,6 @@ CommandSetInvertMatchEquityTable ( char *sz ) {
 
   if ( fOldInvertMET != fInvertMET )
     invertMET ();
-
 
 }
 
