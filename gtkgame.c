@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.337 2003/04/08 20:54:34 thyssen Exp $
+ * $Id: gtkgame.c,v 1.338 2003/04/09 18:02:11 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7583,7 +7583,7 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
   gtk_clist_set_column_title( GTK_CLIST( pwStats ), 1, (ap[0].szName));
   gtk_clist_set_column_title( GTK_CLIST( pwStats ), 2, (ap[1].szName));
 
-  for (i = 0; i < (40 + ( pms->nMatchTo != 0 ) * 2 ); i++) {
+  for (i = 0; i < ( sizeof( aszLabels ) / sizeof( *aszLabels ) - ( pms->nMatchTo == 0 ) * 2 ); i++ ) {
     gtk_clist_append( GTK_CLIST( pwStats ), aszEmpty );
     gtk_clist_set_text( GTK_CLIST( pwStats ), i, 0, gettext ( aszLabels[i] ) );
   }
