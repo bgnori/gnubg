@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.2.2.1 2000/02/01 04:12:27 thyssen Exp $
+ * $Id: database.c,v 1.2.2.2 2000/02/03 11:10:54 thyssen Exp $
  */
 
 #include "config.h"
@@ -191,7 +191,7 @@ extern void CommandDatabaseGenerate( char *sz ) {
 		break;
 	    
 	    FindBestMove( NULL, anDiceGenerate[ 0 ], anDiceGenerate[ 1 ],
-			  anBoardGenerate, NULL );
+			  anBoardGenerate, NULL, NULL );
 
 	    if( fInterrupt )
 		break;
