@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.195 2002/03/22 20:47:48 gtw Exp $
+ * $Id: gnubg.c,v 1.196 2002/03/23 17:25:03 thyssen Exp $
  */
 
 #include "config.h"
@@ -78,6 +78,7 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "eval.h"
 #include "getopt.h"
 #include "positionid.h"
+#include "matchid.h"
 #include "rollout.h"
 #include "matchequity.h"
 #include "analysis.h"

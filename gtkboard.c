@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.62 2002/03/22 20:50:12 gtw Exp $
+ * $Id: gtkboard.c,v 1.63 2002/03/23 17:25:03 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -40,6 +40,7 @@
 #include "gtk-multiview.h"
 #include "gtkprefs.h"
 #include "positionid.h"
+#include "matchid.h"
 
 #if !GTK_CHECK_VERSION(1,3,10)
 #define gtk_style_get_font(s) ((s)->font)

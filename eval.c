@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.137 2002/03/23 14:53:32 thyssen Exp $
+ * $Id: eval.c,v 1.138 2002/03/23 17:25:03 thyssen Exp $
  */
 
 #include "config.h"
@@ -53,6 +53,7 @@
 
 #include "eval.h"
 #include "positionid.h"
+#include "matchid.h"
 #include "matchequity.h"
 
 #if WIN32
