@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.132 2002/06/15 17:21:14 thyssen Exp $
+ * $Id: backgammon.h,v 1.133 2002/07/04 20:11:28 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -305,6 +305,8 @@ extern void SetMoveRecord( void *pmr );
 extern void ClearMoveRecord( void );
 extern void AddGame( moverecord *pmr );
 extern void ChangeGame( list *plGameNew );
+extern void
+FixMatchState ( matchstate *pms, const moverecord *pmr );
 extern void CalculateBoard( void );
 extern void CancelCubeAction( void );
 extern int ComputerTurn( void );
@@ -473,12 +475,14 @@ extern void CommandAccept( char * ),
     CommandExportGamePDF( char * ),
     CommandExportGamePostScript( char * ),
     CommandExportGameText( char * ),
+    CommandExportGameEquityEvolution ( char * ),
     CommandExportMatchMat( char * ),
     CommandExportMatchHtml( char * ),
     CommandExportMatchLaTeX( char * ),
     CommandExportMatchPDF( char * ),
     CommandExportMatchPostScript( char * ),
     CommandExportMatchText( char * ),
+    CommandExportMatchEquityEvolution ( char * ),
     CommandExportPositionEPS( char * ),
     CommandExportPositionHtml( char * ),
     CommandExportPositionText( char * ),
