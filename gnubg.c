@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.309 2002/10/04 21:32:21 thyssen Exp $
+ * $Id: gnubg.c,v 1.310 2002/10/07 21:01:45 thyssen Exp $
  */
 
 #include "config.h"
@@ -111,14 +111,6 @@ event evNextTurn;
 
 #ifdef WIN32
 #include<windows.h>
-#endif
-
-#ifdef WIN32
-#define DIR_SEPARATOR  '\\'
-#define DIR_SEPARATOR_S  "\\"
-#else
-#define DIR_SEPARATOR  '/'
-#define DIR_SEPARATOR_S  "/"
 #endif
 
 #if defined(MSDOS) || defined(__MSDOS__) || defined(WIN32)
