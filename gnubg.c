@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.503 2003/10/13 16:41:55 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.504 2003/10/23 22:56:41 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1223,6 +1223,12 @@ command cER = {
     {"limit", CommandSetRolloutLimit,
      N_("Stop rollouts based on Standard Deviations"),
      NULL, acSetRolloutLimit },
+    {"log", CommandSetRolloutLogEnable,
+     N_("Enable recording of rolled out games"),
+     szONOFF, &cOnOff },
+    {"logfile", CommandSetRolloutLogFile,
+     N_("Set template file name for rollout .sgf files"),
+     szFILENAME, NULL },
     { "movefilter", CommandSetRolloutMoveFilter, 
       N_("Set parameters for choosing moves to evaluate"), 
       szFILTER, NULL},

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.211 2003/09/29 07:38:53 Superfly_Jon Exp $
+ * $Id: set.c,v 1.212 2003/10/23 22:56:41 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1587,6 +1587,25 @@ extern void CommandSetRolloutLate ( char *sz ) {
 
   HandleCommand ( sz, acSetRolloutLate );
 
+}
+
+extern void CommandSetRolloutLogEnable (char *sz) {
+  int f = log_rollouts;
+
+  SetToggle ( "rollout .sgf files", &f, sz, 
+	      _("Create an .sgf file for each game rolled out"),
+	      _("Do not create an .sgf file for each game rolled out") );
+
+  log_rollouts = f;
+}
+
+extern void CommandSetRolloutLogFile (char *sz) {
+   
+  if (log_file_name) {
+    free (log_file_name);
+  }
+   
+  log_file_name = strdup (sz);
 }
 
 extern void

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.263 2003/10/02 09:56:34 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.264 2003/10/23 22:56:41 jsegrave Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -520,6 +520,8 @@ extern rolloutcontext rcRollout;
 
 extern int fCubeEqualChequer, fPlayersAreSame, fTruncEqualPlayer0;
 
+extern int log_rollouts;
+extern char *log_file_name;
 
 /* The current match.
   A list of games. Each game is a list of moverecords.
@@ -1092,6 +1094,8 @@ extern void CommandAccept( char * ),
     CommandSetRolloutBearoffTruncationOS ( char * ),
     CommandSetRolloutCubedecision ( char * ),
     CommandSetRolloutLateCubedecision ( char * ),
+    CommandSetRolloutLogEnable ( char * ),
+    CommandSetRolloutLogFile ( char * ),
     CommandSetRolloutCubeful ( char * ),
     CommandSetRolloutChequerplay ( char * ),
     CommandSetRolloutCubeEqualChequer ( char * ),
