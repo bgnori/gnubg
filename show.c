@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.68 2001/10/25 20:05:02 thyssen Exp $
+ * $Id: show.c,v 1.69 2001/10/28 09:23:04 thyssen Exp $
  */
 
 #include "config.h"
@@ -197,6 +197,7 @@ extern void CommandShowAnalysis( char *sz ) {
     outputf( "\nAnalysis thresholds:\n"
 	     "  +%.3f very good\n"
 	     "  +%.3f good\n"
+	     "  -%.3f doubtful\n"
 	     "  -%.3f bad\n"
 	     "  -%.3f very bad\n"
 	     "\n"
@@ -205,6 +206,7 @@ extern void CommandShowAnalysis( char *sz ) {
 	     "  -%.3f unlucky\n"
 	     "  -%.3f very unlucky\n",
 	     arSkillLevel[ SKILL_VERYGOOD ], arSkillLevel[ SKILL_GOOD ],
+	     arSkillLevel[ SKILL_DOUBTFUL ], 
 	     arSkillLevel[ SKILL_BAD ], arSkillLevel[ SKILL_VERYBAD ],
 	     arLuckLevel[ LUCK_VERYGOOD ], arLuckLevel[ LUCK_GOOD ],
 	     arLuckLevel[ LUCK_BAD ], arLuckLevel[ LUCK_VERYBAD ] );
