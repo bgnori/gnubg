@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.531 2004/02/06 11:43:23 uid68519 Exp $
+ * $Id: gnubg.c,v 1.532 2004/02/09 13:02:30 uid68519 Exp $
  */
 
 #include "config.h"
@@ -5035,9 +5035,7 @@ CommandXCopy ( char *sz ) {
 
 #ifdef WIN32
 
-#if !USE_GTK
 #include <windows.h>
-#endif
 
 int CountLines(const char* buf)
 {
