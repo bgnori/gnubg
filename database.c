@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.29 2001/10/29 16:29:39 gtw Exp $
+ * $Id: database.c,v 1.30 2001/10/29 22:09:14 gtw Exp $
  */
 
 #include "config.h"
@@ -201,7 +201,7 @@ extern void CommandDatabaseImport( char *sz ) {
     int i, anBoard[ 2 ][ 25 ];
     unsigned char auchKey[ 10 ];
     
-    if( !( pdb = gdbm_open( szDatabase, 0, GDBM_WRITER, 0, NULL ) ) ) {
+    if( !( pdb = gdbm_open( szDatabase, 0, GDBM_WRCREAT, 0666, NULL ) ) ) {
 	fprintf( stderr, "%s: %s\n", szDatabase, gdbm_strerror( gdbm_errno ) );
         
 	return;
