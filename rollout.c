@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.101.2.8 2003/07/21 17:50:04 hb Exp $
+ * $Id: rollout.c,v 1.101.2.9 2003/07/22 17:47:40 hb Exp $
  */
 
 #include "config.h"
@@ -1292,7 +1292,7 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
   
   for( i = 0, j = 0; i < cGames || j < cGames;  ) {
   
-    pu_task *pt;
+    pu_task *pt = NULL;
     
     while (i < cGames && !TaskEngine_Full () && !fInterrupt) {
         /* create new tasks with the games to rollout */
