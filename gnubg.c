@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.63 2000/10/18 12:54:12 thyssen Exp $
+ * $Id: gnubg.c,v 1.64 2000/10/18 15:43:13 gtw Exp $
  */
 
 #include "config.h"
@@ -854,6 +854,11 @@ extern void ShowBoard( void ) {
 
     if( cOutputDisabled )
 	return;
+
+#if USE_GTK
+    if( fX && !fGTKOutput )
+	return;
+#endif
     
     if( fTurn == -1 ) {
 #if USE_GUI
@@ -2398,10 +2403,10 @@ extern int main( int argc, char *argv[] ) {
     rl_completion_entry_function = (Function *) NullGenerator;
 #endif
 
+    LoadRCFiles();
+    
     if( optind < argc )
        CommandLoadMatch( argv[ optind ] );
-
-    LoadRCFiles();
     
 #if USE_GTK
     if( fX ) {

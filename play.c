@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.37 2000/10/18 12:54:12 thyssen Exp $
+ * $Id: play.c,v 1.38 2000/10/18 15:43:13 gtw Exp $
  */
 
 #include "config.h"
@@ -891,7 +891,7 @@ extern void CommandNewGame( char *sz ) {
 	    TurnDone();
 }
 
-static void FreeMatch( void ) {
+extern void FreeMatch( void ) {
 
     list *plMatch;
 
