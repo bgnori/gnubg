@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.76 2002/06/27 17:47:41 thyssen Exp $
+ * $Id: eval.h,v 1.77 2002/07/14 16:36:22 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -161,7 +161,8 @@ typedef struct _move {
   /* scores for this move */
   float rScore, rScore2; 
   /* evaluation for this move */
-  float arEvalMove[ NUM_OUTPUTS ];
+  float arEvalMove[ NUM_ROLLOUT_OUTPUTS ];
+  float arEvalStdDev[ NUM_ROLLOUT_OUTPUTS ];
   evalsetup esMove;
 } move;
 
@@ -419,5 +420,11 @@ getCubeDecisionOrdering ( int aiOrder[ 3 ],
 extern float
 getPercent ( const cubedecision cd,
              const float arDouble[] );
+
+extern void
+RefreshMoveList ( movelist *pml );
+
+extern int 
+ScoreMove( move *pm, cubeinfo *pci, evalcontext *pec, int nPlies );
 
 #endif
