@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.33 2000/02/04 17:08:24 gtw Exp $
+ * $Id: gnubg.c,v 1.34 2000/02/16 21:53:40 gtw Exp $
  */
 
 #include "config.h"
@@ -63,6 +63,7 @@
 #if HAVE_LIBREADLINE
 #include <readline/history.h>
 #include <readline/readline.h>
+static int fReadingOther;
 #endif
 
 #include "backgammon.h"
@@ -86,7 +87,7 @@ int nDelay = 0;
 event evNextTurn;
 static int fNeedPrompt = FALSE;
 #if HAVE_LIBREADLINE
-static int fReadingCommand, fReadingOther;
+static int fReadingCommand;
 #endif
 #endif
 
@@ -1612,10 +1613,14 @@ extern char *GetInput( char *szPrompt ) {
     if( fInterrupt )
 	return NULL;
 
+    fReadingOther = TRUE;
+    
     while( !( sz = readline( szPrompt ) ) ) {
 	putchar( '\n' );
 	PromptForExit();
     }
+
+    fReadingOther = FALSE;
     
     if( fInterrupt )
 	return NULL;
