@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.69 2001/08/28 14:25:43 gtw Exp $
+ * $Id: gtkgame.c,v 1.70 2001/08/30 14:07:54 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1942,16 +1942,15 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ "/_Help/-", NULL, NULL, 0, "<Separator>" },
 	{ "/_Help/_About gnubg", NULL, Command, CMD_SHOW_VERSION, NULL }
     };
-    char *pch = getenv( "HOME" );
 #if __GNUC__
-    char sz[ strlen( pch ) + 14 ];
+    char sz[ strlen( szHomeDirectory ) + 14 ];
 #elif HAVE_ALLOCA
-    char *sz = alloca( strlen( pch ) + 14 );
+    char *sz = alloca( strlen( szHomeDirectory ) + 14 );
 #else
     char sz[ 4096 ];
 #endif
 
-    sprintf( sz, "%s/.gnubg.gtkrc", pch ? pch : "" );
+    sprintf( sz, "%s/.gnubg.gtkrc", szHomeDirectory );
     if( !access( sz, R_OK ) )
 	gtk_rc_add_default_file( sz );
     else if( !access( PKGDATADIR "/gnubg.gtkrc", R_OK ) )
