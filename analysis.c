@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.92 2002/12/09 20:34:17 thyssen Exp $
+ * $Id: analysis.c,v 1.93 2002/12/11 18:40:46 thyssen Exp $
  */
 
 #include "config.h"
@@ -64,7 +64,7 @@ const char *aszLuckRating[] = {
 static const float arThrsRating [ RAT_SUPERNATURAL + 1 ] = {
   1e38, 0.060, 0.030, 0.025, 0.020, 0.015, 0.010, 0.005 };
 
-evalcontext ecLuck = { 0, TRUE, 0, 0, TRUE, FALSE, 0.0, 0.0 };
+evalcontext ecLuck = { TRUE, 0, 0, TRUE, 0.0 };
 
 extern ratingtype
 GetRating ( const float rError ) {
