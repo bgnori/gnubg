@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.c,v 1.9 2004/02/25 09:16:53 uid68519 Exp $
+ * $Id: matchid.c,v 1.10 2005/02/10 10:31:43 Superfly_Jon Exp $
  */
 
 #include <assert.h>
@@ -117,7 +117,7 @@ extern char
 *MatchIDFromKey( unsigned char auchKey[ 9 ] ) {
 
     unsigned char *puch = auchKey;
-    static char szID[ 12 ];
+    static char szID[ 13 ];
     char *pch = szID;
     static char aszBase64[ 64 ] =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
