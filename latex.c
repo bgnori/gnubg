@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.11 2002/03/30 16:27:57 thyssen Exp $
+ * $Id: latex.c,v 1.12 2002/04/20 17:45:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "analysis.h"
 #include "backgammon.h"
 #include "drawboard.h"
 
@@ -376,6 +377,8 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
     matchstate msExport;
     int fTook = FALSE, i;
     char sz[ 1024 ];
+
+    updateStatisticsGame ( plGame );
 
     for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) {
 	pmr = pl->p;
