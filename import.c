@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.56 2003/03/30 18:34:42 thyssen Exp $
+ * $Id: import.c,v 1.57 2003/04/04 18:45:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -2598,7 +2598,6 @@ ImportSnowieTxt( FILE *pf ) {
 
   char sz[ 2048 ];
   char *pc;
-  char ch;
   int c;
   moverecord *pmr;
   movegameinfo *pmgi;
@@ -2630,8 +2629,7 @@ ImportSnowieTxt( FILE *pf ) {
 
   pc = sz;
   while ( ( c = fgetc ( pf ) ) > -1 ) {
-    if ( ! isspace ( ( ch = (char) c ) ) )
-      *pc++ = ch;
+    *pc++ = (char) c;
     if ( ( pc - sz ) == ( sizeof ( sz ) - 2 ) )
       break;
   }
