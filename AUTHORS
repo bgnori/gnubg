@@ -1,8 +1,8 @@
-$Id: AUTHORS,v 1.1 1999/12/15 01:17:34 gtw Exp $
+$Id: AUTHORS,v 1.2 1999/12/16 17:24:37 gtw Exp $
 
-The pre-release version 0.02 of GNU Backgammon was written by Gary Wong.
+The pre-release version 0.0 of GNU Backgammon was written by Gary Wong.
 
-It includes contributions (bug reports, comments, and patches) from:
+Since then, contributors (of bug reports, comments, and patches) include:
 
  Jeff Haferman
  Joseph Heled
@@ -11,8 +11,16 @@ It includes contributions (bug reports, comments, and patches) from:
  David Montgomery
  Dave Neary
  Petri Pitkänen
+ Jørn Thyssen
  Gary Wong
  Frank Worrell
+
+The current developers are:
+
+ Joseph Heled
+ Jakob Hilmer
+ Jørn Thyssen
+ Gary Wong
 
 Credit is also due to those who have published information about backgammon
 playing programs (references will appear here later).  GNU Backgammon has
