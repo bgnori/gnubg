@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.52 2002/08/05 15:45:51 oysteijo Exp $
+ * $Id: html.c,v 1.53 2002/08/06 19:38:41 thyssen Exp $
  */
 
 #include "config.h"
@@ -27,6 +27,7 @@
 #include <time.h>
 #include <assert.h>
 #include <stdarg.h>
+#include <libgen.h>
 
 #include "analysis.h"
 #include "backgammon.h"
@@ -1550,7 +1551,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.52 $";
+  const char szVersion[] = "$Revision: 1.53 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -3317,10 +3318,12 @@ extern void CommandExportMatchHtml( char *sz ) {
     for( pl = lMatch.plNext, i = 0; pl != &lMatch; pl = pl->plNext, i++ ) {
 
       szCurrent = HTMLFilename ( sz, i );
-      aszLinks[ 0 ] = HTMLFilename ( sz, 0 );
-      aszLinks[ 1 ] = ( i > 0 ) ? HTMLFilename ( sz, i - 1 ) : NULL;
-      aszLinks[ 2 ] = ( i < nGames - 1 ) ? HTMLFilename ( sz, i + 1 ) : NULL;
-      aszLinks[ 3 ] = HTMLFilename ( sz, nGames - 1 );
+      aszLinks[ 0 ] = basename ( HTMLFilename ( sz, 0 ) );
+      aszLinks[ 1 ] = ( i > 0 ) ? 
+        basename ( HTMLFilename ( sz, i - 1 ) ): NULL;
+      aszLinks[ 2 ] = ( i < nGames - 1 ) ? 
+        basename ( HTMLFilename ( sz, i + 1 ) ) : NULL;
+      aszLinks[ 3 ] = basename ( HTMLFilename ( sz, nGames - 1 ) );
 
       if ( !i ) {
 
