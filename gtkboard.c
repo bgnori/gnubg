@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.144 2003/09/15 02:01:06 hb Exp $
+ * $Id: gtkboard.c,v 1.145 2003/09/15 12:55:27 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -339,14 +339,14 @@ board_invalidate_labels( BoardData *bd ) {
   x = 0;
   y = 0;
   cx = BOARD_WIDTH * rdAppearance.nSize;
-  cy = POINTLABEL_HEIGHT * rdAppearance.nSize;
+  cy = BORDER_HEIGHT * rdAppearance.nSize;
 
   board_invalidate_rect( bd->drawing_area, x, y, cx, cy, bd );
 
   x = 0;
-  y = ( BOARD_HEIGHT - POINTLABEL_HEIGHT ) * rdAppearance.nSize;
+  y = ( BOARD_HEIGHT - BORDER_HEIGHT ) * rdAppearance.nSize;
   cx = BOARD_WIDTH * rdAppearance.nSize;
-  cy = POINTLABEL_HEIGHT * rdAppearance.nSize;
+  cy = BORDER_HEIGHT * rdAppearance.nSize;
 
   board_invalidate_rect( bd->drawing_area, x, y, cx, cy, bd );
 
