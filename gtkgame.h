@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.54 2002/09/25 21:24:24 gtw Exp $
+ * $Id: gtkgame.h,v 1.55 2002/12/21 23:01:50 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -134,8 +134,7 @@ extern void
 GTKShowPath( void );
 extern void GTKMatchInfo( void );
 
-extern void SetEvalChequer( gpointer *p, guint n, GtkWidget *pw );
-extern void SetEvalCube( gpointer *p, guint n, GtkWidget *pw );
+extern void SetEvaluation( gpointer *p, guint n, GtkWidget *pw );
 extern void SetRollouts( gpointer *p, guint n, GtkWidget *pw );
 
 extern void HintMove( GtkWidget *pw, GtkWidget *pwMoves );

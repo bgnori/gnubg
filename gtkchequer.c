@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.15 2002/12/11 18:38:04 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.16 2002/12/21 23:01:50 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -360,7 +360,7 @@ MoveListEvalPly ( GtkWidget *pw, hintdata *phd ) {
 static void
 MoveListEvalSettings ( GtkWidget *pw, void *unused ) {
 
-  SetEvalChequer ( NULL, 0, NULL );
+  SetEvaluation ( NULL, 0, NULL );
 
 }
 

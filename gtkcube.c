@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.18 2002/12/11 18:38:04 thyssen Exp $
+ * $Id: gtkcube.c,v 1.19 2002/12/21 23:01:50 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -722,7 +722,7 @@ CubeAnalysisEval ( GtkWidget *pw, cubehintdata *pchd ) {
 static void
 CubeAnalysisEvalSettings ( GtkWidget *pw, void *unused ) {
 
-  SetEvalCube ( NULL, 0, NULL );
+  SetEvaluation ( NULL, 0, NULL );
 
 }
 
