@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.11 2000/01/15 17:38:21 gtw Exp $
+ * $Id: show.c,v 1.12 2000/02/07 18:56:51 gtw Exp $
  */
 
 #include "config.h"
@@ -79,11 +79,7 @@ static void ShowPaged( char **ppch ) {
 	while( *ppch ) {
 	    puts( *ppch++ );
 	    if( ++i >= nRows - 1 ) {
-		fputs( "-- Press <return> to continue --", stdout );
-		
-		/* FIXME use better input handling */
-		while( ( ch = getchar() ) != '\n' && ch != EOF )
-		    ;
+		GetInput( "-- Press <return> to continue --" );
 		
 		if( fInterrupt )
 		    return;
