@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.39 2000/08/13 22:28:59 thyssen Exp $
+ * $Id: eval.c,v 1.40 2000/08/14 12:36:36 thyssen Exp $
  */
 
 #include "config.h"
@@ -2988,8 +2988,8 @@ EvaluatePositionCubeful( int anBoard[ 2 ][ 25 ], float arCfOutput[],
 
     /* nCube is doubled; Cube owner is opponent */
 
-    SetCubeInfo ( &ciD, 2 * pci -> nCube, ! fMove, fMove );
-    SetCubeInfo ( &ciR, 2 * pci -> nCube, ! fMove, ! fMove );
+    SetCubeInfo ( &ciD, 2 * pci -> nCube, ! pci -> fMove, pci -> fMove );
+    SetCubeInfo ( &ciR, 2 * pci -> nCube, ! pci -> fMove, ! pci -> fMove );
 
     if ( pc != CLASS_OVER && nPlies > 0 ) {
 
@@ -3095,6 +3095,8 @@ EvaluatePositionCubeful1( int anBoard[ 2 ][ 25 ], float *prOutput,
 
     SetCubeInfo ( &ciND, pci -> nCube, pci -> fCubeOwner,
                   ! pci -> fMove );
+
+    fDoubleBranch = 0;
 
     if ( fCube ) {
 
