@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.95 2002/03/30 23:54:18 thyssen Exp $
+ * $Id: set.c,v 1.96 2002/04/12 19:52:56 oysteijo Exp $
  */
 
 #include "config.h"
@@ -73,6 +73,9 @@ command acSetEvaluation[] = {
       szSTDDEV, NULL },
     { "plies", CommandSetEvalPlies, "Choose how many plies to look ahead",
       szPLIES, NULL },
+    { "nooneplyprune", CommandSetEvalNoOnePlyPrune,
+      "Control pruning of candidates at deep plied searches",
+      szONOFF, &cOnOff },
     { "reduced", CommandSetEvalReduced,
       "Control how thoroughly deep plies are searched", szNUMBER, NULL },
     { "tolerance", CommandSetEvalTolerance, "Control the equity range "
@@ -722,6 +725,18 @@ extern void CommandSetEvalDeterministic( char *sz ) {
     if( !pecSet->rNoise )
 	outputl( "(Note that this setting will have no effect unless you "
 		 "set noise to some non-zero value.)" );
+}
+
+extern void CommandSetEvalNoOnePlyPrune( char *sz ) {
+
+    char asz[ 2 ][ 128 ], szCommand[ 64 ];
+    int f = pecSet->fNoOnePlyPrune;
+    
+    sprintf( asz[ 0 ], "%s will not prune candidates at 1-ply.\n", szSet );
+    sprintf( asz[ 1 ], "%s will prune candidates at 1-ply.\n", szSet );
+    sprintf( szCommand, "%s nooneplyprune", szSetCommand );
+    SetToggle( szCommand, &f, sz, asz[ 0 ], asz[ 1 ] );
+    pecSet->fNoOnePlyPrune = f;
 }
 
 extern void CommandSetEvalNoise( char *sz ) {

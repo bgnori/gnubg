@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.147 2002/04/07 20:30:11 thyssen Exp $
+ * $Id: eval.c,v 1.148 2002/04/12 19:52:56 oysteijo Exp $
  */
 
 #include "config.h"
@@ -3509,26 +3509,28 @@ FindnSaveBestMoves( movelist *pml,
     /* larger threshold for 0-ply evaluations */
     if ( pec->nPlies == 0 && rTol < 0.25 )
       rTol = 0.25;
-
-    /* Eliminate moves whose scores are below the threshold. */
-    for( i = 0, j = 0; i < pml->cMoves; i++ ) {
-	if( pml->amMoves[ i ].rScore >= pml->rBestScore - rTol ) {
-	    if( i != j ) {
-		move m = pml->amMoves[ j ];
-		pml->amMoves[ j ] = pml->amMoves[ i ];
-		pml->amMoves[ i ] = m;
+    
+    if ( ! ( pec->fNoOnePlyPrune && ( iPly == 1 ) ) ) {
+        /* Eliminate moves whose scores are below the threshold. */
+        for( i = 0, j = 0; i < pml->cMoves; i++ ) {
+	    if( pml->amMoves[ i ].rScore >= pml->rBestScore - rTol ) {
+	        if( i != j ) {
+		    move m = pml->amMoves[ j ];
+		    pml->amMoves[ j ] = pml->amMoves[ i ];
+		    pml->amMoves[ i ] = m;
+	        }
+	        j++;
 	    }
-	    
-	    j++;
-	}
-    }
-
+        }
+    }       /* if ( ! (pec->fNoOnePlyPrune && ( iPly != 1 ) ) ) */
+    
     pml->iMoveBest = 0;
 
     /* Consider only those better than the threshold or as many as were
        requested, whichever is less */
-    pml->cMoves = ( j < ( pec->nSearchCandidates >> iPly ) ? j :
-                    ( pec->nSearchCandidates >> iPly ) );
+    if ( ! (pec->fNoOnePlyPrune && ( iPly == 1 ) ) ) 
+        pml->cMoves = ( j < ( pec->nSearchCandidates >> iPly ) ? j :
+                        ( pec->nSearchCandidates >> iPly ) );
 
     /* Calculate the full evaluations at the search depth requested */
     if( ScoreMoves( pml, pci, pec, iPly + 1 ) < 0 ) {
