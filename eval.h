@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.75 2002/05/30 19:30:58 thyssen Exp $
+ * $Id: eval.h,v 1.76 2002/06/27 17:47:41 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -345,13 +345,6 @@ se_eq2mwc ( const float rEq, const cubeinfo *ci );
  
 extern char 
 *FormatEval ( char *sz, evalsetup *pes );
-
-extern int 
-EvaluatePositionCubeful2( int anBoard[ 2 ][ 25 ],
-                          float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
-                          cubeinfo aci[], int cci,
-                          evalcontext *pec, int nPlies,
-                          int nPliesTop, int fDTTop, cubeinfo aciTop[] );
 
 extern cubedecision
 FindCubeDecision ( float arDouble[],
