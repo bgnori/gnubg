@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.304 2002/09/23 20:24:13 thyssen Exp $
+ * $Id: gnubg.c,v 1.305 2002/09/24 17:02:25 gtw Exp $
  */
 
 #include "config.h"
@@ -234,6 +234,7 @@ rolloutcontext rcRollout =
   FALSE, /* cubeful */
   FALSE, /* variance reduction */
   FALSE, /* initial position */
+  TRUE, /* rotate */
   7, /* truncation */
   36, /* number of trials */
   RNG_MERSENNE, /* RNG */
@@ -260,6 +261,7 @@ rolloutcontext rcRollout =
     FALSE, /* cubeful */ \
     FALSE, /* variance reduction */ \
     FALSE, /* initial position */ \
+    TRUE, /* rotate */ \
     7, /* truncation */ \
     36, /* number of trials */ \
     RNG_MERSENNE, /* RNG */ \
@@ -5106,11 +5108,14 @@ extern void outputv( char *sz, va_list val ) {
 /* Write an error message, perror() style */
 extern void outputerr( char *sz ) {
 
+#if USE_GTK
+    char *pchError = strerror( errno );
+#endif
     perror( sz );
     
 #if USE_GTK
     if( fX ) {
-	char *pch = g_strdup_printf( "%s: %s", sz, strerror( errno ) );
+	char *pch = g_strdup_printf( "%s: %s", sz, pchError );
 	GTKOutputErr( pch );
 	g_free( pch );
     }
