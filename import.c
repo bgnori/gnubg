@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.61 2003/05/02 17:37:44 oysteijo Exp $
+ * $Id: import.c,v 1.62 2003/05/04 20:37:43 thyssen Exp $
  */
 
 #include "config.h"
@@ -602,10 +602,33 @@ static void ParseMatMove( char *sz, int iPlayer ) {
              a resignation */
           int anDice[ 2 ] = { pmr->n.anRoll[ 0 ], pmr->n.anRoll[ 1 ] };
           movelist ml;
-	    
-          if ( GenerateMoves( &ml, ms.anBoard, 
-                              pmr->n.anRoll[ 0 ], pmr->n.anRoll[ 1 ], 
-                              FALSE ) ) {
+
+          switch ( GenerateMoves( &ml, ms.anBoard, 
+                                  pmr->n.anRoll[ 0 ], pmr->n.anRoll[ 1 ], 
+                                  FALSE ) ) {
+
+          case 0:
+
+            /* no legal moves; record the movenormal */
+
+            pmr->n.anMove[ 0 ] = pmr->n.anMove[ 1 ] = -1;
+            AddMoveRecord( pmr );
+
+            return;
+            break;
+
+          case 1:
+
+            /* forced move; record the movenormal */
+
+            memcpy( pmr->n.anMove, ml.amMoves[ 0 ].anMove, 
+                    sizeof ( pmr->n.anMove ) );
+            AddMoveRecord( pmr );
+            
+            return;
+            break;
+
+          default:
 
             /* legal moves; just record roll */
 
@@ -622,19 +645,12 @@ static void ParseMatMove( char *sz, int iPlayer ) {
             AddMoveRecord( pmr );
 
             return;
-
-          } else {
-
-            /* no legal moves; record the movenormal */
-
-            pmr->n.anMove[ 0 ] = pmr->n.anMove[ 1 ] = -1;
-            AddMoveRecord( pmr );
-
-            return;
+            break;
 
           }
 
-	}
+        }
+
     }
 	
     if( !strncasecmp( sz, "double", 6 ) || 
