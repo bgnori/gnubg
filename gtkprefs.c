@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.113 2004/10/19 16:34:42 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.114 2004/10/25 08:45:49 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -227,7 +227,6 @@ static boarddesign* FindDesign (renderdata* prdDesign)
 void SetTitle()
 {	/* Update dialog title to include design name + author */
 #if HAVE_LIBXML2
-	int i = 0;
 	boarddesign *pbde;
 #endif
 	char title[1024];
@@ -1730,8 +1729,6 @@ UseDesign ( void ) {
   int i, j;
   gdouble ar[ 4 ];
   gfloat rAzimuth, rElevation;
-  char *apch[ 2 ];
-  gchar *sz, *pch;
   renderdata newPrefs;
 #if USE_BOARD3D
   BoardData *bd = BOARD(pwPrevBoard)->board_data;
@@ -1975,7 +1972,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.113 2004/10/19 16:34:42 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.114 2004/10/25 08:45:49 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2561,8 +2558,6 @@ static void UpdateDesign( GtkWidget *pw, gpointer data )
 #if USE_BOARD3D
 	if (rdPrefs.fDisplayType == DT_3D)
 	{
-		char *apch[ 2 ];
-		gchar *sz, *pch;
 		/* Get current (2d) settings for design */
 		ParsePreferences(pbdeModified, &newPrefs);
 
@@ -2572,8 +2567,6 @@ static void UpdateDesign( GtkWidget *pw, gpointer data )
 	else
 #endif
 	{
-		char *apch[ 2 ];
-		gchar *sz, *pch;
 #if USE_BOARD3D
 		/* Get current (3d) design settings */
 		renderdata designPrefs;
