@@ -1,4 +1,3 @@
-
 /*
  * path.c
  * routines extracted from eval.c
@@ -17,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: path.c,v 1.3 2002/12/12 17:11:06 thyssen Exp $
+ * $Id: path.c,v 1.4 2003/01/03 17:01:47 gtw Exp $
  */
 
 #include "config.h"
@@ -83,10 +82,12 @@ extern char *PathSearch( const char *szFile, const char *szDir ) {
     if( !( pch = malloc( cch ) ) )
 	return NULL;
 
-    sprintf( pch, "%s/%s", szDir, szFile );
-    if( !access( pch, R_OK ) )
-	return realloc( pch, strlen( pch ) + 1 );
-
+    if( szDir ) {
+	sprintf( pch, "%s/%s", szDir, szFile );
+	if( !access( pch, R_OK ) )
+	    return realloc( pch, strlen( pch ) + 1 );
+    }
+    
     strcpy( pch, szFile );
     if( !access( pch, R_OK ) )
 	return realloc( pch, strlen( pch ) + 1 );
