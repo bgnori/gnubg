@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.26 2004/02/20 14:18:26 uid65656 Exp $
+ * $Id: gnubgmodule.c,v 1.27 2004/02/24 10:21:33 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -337,7 +337,7 @@ PythonCubeInfo(PyObject* self IGNORE, PyObject* args) {
   int anScore[ 2 ] = { ms.anScore[ 0 ], ms.anScore[ 1 ] };
   int fCrawford = ms.fCrawford;
   int fJacoby = ms.fJacoby;
-  int fBeavers = fBeavers;
+  int fBeavers = ms.cBeavers;
   bgvariation bgv = ms.bgv;
 
   if ( ! PyArg_ParseTuple( args, "|iiii(ii)iiii:cubeinfo", 
