@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.112 2003/07/13 18:17:11 jsegrave Exp $
+ * $Id: rollout.c,v 1.113 2003/07/14 22:11:18 thyssen Exp $
  */
 
 #include "config.h"
@@ -1317,9 +1317,9 @@ GeneralCubeDecisionR ( char *sz,
   { (rolloutstat (*)[2]) aarsStatistics[0], 
     (rolloutstat (*)[2]) aarsStatistics[1] };
   evalsetup (* apes[2]);
-  cubeinfo (* apci[2]) = { pci, pci };
-
   cubeinfo aci[ 2 ];
+  cubeinfo (* apci[2]) = { &aci[ 0 ], &aci[ 1 ] };
+
 
   char aach[ 2 ][ 40 ];
 
