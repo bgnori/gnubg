@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.48 2001/02/26 23:58:40 gtw Exp $
+ * $Id: show.c,v 1.49 2001/03/13 17:22:59 gtw Exp $
  */
 
 #include "config.h"
@@ -349,7 +349,7 @@ extern void CommandShowPlayer( char *sz ) {
 	    break;
 	case PLAYER_GNU:
 	    outputf( "gnubg:\n" );
-	    ShowEvaluation( &ap[ i ].pd.ec );
+	    ShowEvaluation( &ap[ i ].ec );
 	    break;
 	case PLAYER_PUBEVAL:
 	    outputl( "pubeval\n" );

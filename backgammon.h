@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.65 2001/03/12 16:10:00 gtw Exp $
+ * $Id: backgammon.h,v 1.66 2001/03/13 17:22:59 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -71,10 +71,8 @@ typedef enum _playertype {
 typedef struct _player {
     char szName[ 32 ];
     playertype pt;
-    union _playerdata {
-	evalcontext ec; /* PLAYER_GNU */
-	int h; /* PLAYER_EXTERNAL */
-    } pd;
+    evalcontext ec; /* PLAYER_GNU */
+    int h; /* PLAYER_EXTERNAL */
 } player;
 
 typedef enum _movetype {
@@ -254,6 +252,9 @@ extern void PortableSignal( int nSignal, RETSIGTYPE (*p)(int),
 			     psighandler *pOld );
 extern void PortableSignalRestore( int nSignal, psighandler *p );
 extern RETSIGTYPE HandleInterrupt( int idSignal );
+
+/* Like strncpy, except it does the right thing */
+extern char *strcpyn( char *szDest, char *szSrc, int cch );
 
 /* Write a string to stdout/status bar/popup window */
 extern void output( char *sz );
