@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.128 2003/08/04 19:20:15 thyssen Exp $
+ * $Id: html.c,v 1.129 2003/08/07 17:32:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -169,7 +169,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( _("\n" 
              "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.128 2003/08/04 19:20:15 thyssen Exp $ */\n"
+             "/* $Id: html.c,v 1.129 2003/08/07 17:32:05 thyssen Exp $ */\n"
              "/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
@@ -1913,7 +1913,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.128 $";
+  const char szVersion[] = "$Revision: 1.129 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1994,7 +1994,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.128 $";
+  const char szVersion[] = "$Revision: 1.129 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3358,7 +3358,6 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
     if ( pms->nMatchTo ) {
       float r = 0.5f + psc->arActualResult[ 0 ] - 
         psc->arLuck[ 0 ][ 1 ] + psc->arLuck[ 1 ][ 1 ];
-      float rRating = relativeFibsRating( r, pms->nMatchTo );
 
       printStatTableRow( pf, 
                          _("Actual result"),
@@ -3375,10 +3374,19 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
                          100.0 * ( 0.5f + psc->arActualResult[ 1 ] - 
                                    psc->arLuck[ 1 ][ 1 ] + 
                                    psc->arLuck[ 0 ][ 1 ] ) );
-      printStatTableRow( pf,
-                         _("Relative FIBS rating"),
-                         "%.2f",
-                         rRating / 2.0f, -rRating / 2.0f );
+
+      if ( r > 0.0f && r < 1.0f ) {
+        float rRating = relativeFibsRating( r, pms->nMatchTo );
+        printStatTableRow( pf,
+                           _("Relative FIBS rating"),
+                           "%.2f",
+                           rRating / 2.0f, -rRating / 2.0f );
+      }
+      else
+        printStatTableRow( pf,
+                           _("Relative FIBS rating"),
+                           "%s", _("n/a"), _("n/a") );
+
     }
     else {
 
