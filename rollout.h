@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.13 2002/01/06 15:43:24 thyssen Exp $
+ * $Id: rollout.h,v 1.14 2002/01/26 19:25:38 thyssen Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -61,6 +61,7 @@ typedef struct _rolloutstat {
   /* FIXME: add more stuff */
 
 } rolloutstat;
+
 
 
 extern int 
@@ -113,5 +114,21 @@ GeneralCubeDecisionR ( char *sz,
 extern char *
 printRolloutstat ( char *sz, const rolloutstat *prs,
                    const int cGames );
+
+/* Resignations */
+
+extern int
+getResignation ( float arResign[ NUM_ROLLOUT_OUTPUTS ],
+                 int anBoard[ 2 ][ 25 ],
+                 cubeinfo *pci, 
+                 evalsetup *pesResign );
+
+extern void
+getResignEquities ( float arResign[ NUM_ROLLOUT_OUTPUTS ],
+                    cubeinfo *pci, 
+                    int nResigned,
+                    float *prBefore, float *prAfter );
+
+
 
 #endif
