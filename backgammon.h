@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.261 2003/09/26 08:17:53 steink Exp $
+ * $Id: backgammon.h,v 1.262 2003/09/29 07:39:20 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1185,6 +1185,7 @@ extern void CommandAccept( char * ),
     CommandSetVariation1ChequerHypergammon( char * sz ),
     CommandSetVariation2ChequerHypergammon( char * sz ),
     CommandSetVariation3ChequerHypergammon( char * sz ),
+    CommandSetWarning( char * ),
     CommandShowAnalysis( char * ),
     CommandShowAutomatic( char * ),
     CommandShowBoard( char * ),
@@ -1249,6 +1250,7 @@ extern void CommandAccept( char * ),
     CommandShowTutor( char * ), 
     CommandShowVariation( char * ),
     CommandShowVersion( char * ),
+    CommandShowWarning( char * ),
     CommandShowWarranty( char * ),
     CommandSwapPlayers ( char * ),
     CommandTake( char * ),
