@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.87 2004/02/19 14:05:35 uid68519 Exp $
+ * $Id: import.c,v 1.88 2004/04/11 17:36:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -27,6 +27,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <glib.h>
 
 #include "backgammon.h"
 #include "drawboard.h"

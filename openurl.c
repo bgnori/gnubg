@@ -17,13 +17,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.9 2004/04/06 10:42:02 Superfly_Jon Exp $
+ * $Id: openurl.c,v 1.10 2004/04/11 17:36:19 thyssen Exp $
  */
 
 #include "config.h"
 
 #include <stdio.h>
 #include <string.h>
+#include <glib.h>
 
 #if USE_GTK
 #include <gtk/gtk.h>
