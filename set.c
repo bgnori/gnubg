@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.188 2003/07/15 17:53:55 hb Exp $
+ * $Id: set.c,v 1.189 2003/07/16 16:51:25 thyssen Exp $
  */
 
 #include "config.h"
@@ -2528,6 +2528,24 @@ extern void CommandSetBeavers( char *sz ) {
     else
 	outputl( _("No beavers allowed in money sessions.") );
 }
+
+extern void
+CommandSetOutputDigits( char *sz ) {
+
+  int n = ParseNumber( &sz );
+
+  if ( n < 0 || n > 6 ) {
+    outputl( _("You must specify a number between 1 and 6.\n") );
+    return;
+  }
+
+  fOutputDigits = n;
+
+  outputf( _("Probabilities and equities will be shown with %d digits "
+             "after the decimal separator\n"), fOutputDigits );
+
+}
+      
 
 extern void CommandSetOutputMatchPC( char *sz ) {
 

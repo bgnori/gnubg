@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.233 2003/07/16 10:26:11 thyssen Exp $
+ * $Id: backgammon.h,v 1.234 2003/07/16 16:50:21 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -278,7 +278,7 @@ extern int fNextTurn, fComputing;
 /* User settings. */
 extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     fCubeUse, fDisplay, fAutoBearoff, fShowProgress,
-    nBeavers, fOutputMWC, fOutputWinPC, fOutputMatchPC, fJacoby,
+    nBeavers, fOutputDigits, fOutputMWC, fOutputWinPC, fOutputMatchPC, fJacoby,
     fOutputRawboard, fAnnotation, cAnalysisMoves, fAnalyseCube,
     fAnalyseDice, fAnalyseMove, fRecord, fMessage, nDefaultLength;
 extern int fInvertMET;
@@ -817,6 +817,7 @@ extern void CommandAccept( char * ),
     CommandSetOutputMWC ( char * ),
     CommandSetOutputRawboard( char * ),
     CommandSetOutputWinPC( char * ),
+    CommandSetOutputDigits( char * ),
     CommandSetPathEPS( char * ),
     CommandSetPathSGF( char * ),
     CommandSetPathLaTeX( char * ),

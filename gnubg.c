@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.437 2003/07/16 12:57:14 thyssen Exp $
+ * $Id: gnubg.c,v 1.438 2003/07/16 16:50:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -197,6 +197,7 @@ int fDisplay = TRUE, fAutoBearoff = FALSE, fAutoGame = TRUE, fAutoMove = FALSE,
     fAnnotation = FALSE, cAnalysisMoves = 20, fAnalyseCube = TRUE,
     fAnalyseDice = TRUE, fAnalyseMove = TRUE, fRecord = TRUE,
     nDefaultLength = 7;
+int fOutputDigits = 3;
 int fCubeEqualChequer = TRUE, fPlayersAreSame = TRUE, 
 	fTruncEqualPlayer0 =TRUE;
 int fInvertMET = FALSE;
@@ -1031,6 +1032,9 @@ command cER = {
       N_("Record the round of the match within the event"), szOPTVALUE, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acSetOutput[] = {
+    { "digits", CommandSetOutputDigits,
+      N_("Control how many digits to be shown for probabilities "
+         "and percentages"), szVALUE, NULL },
     { "matchpc", CommandSetOutputMatchPC,
       N_("Show match equities as percentages (on) or probabilities (off)"),
       szONOFF, &cOnOff },
@@ -5114,11 +5118,13 @@ extern void CommandSaveSettings( char *szParam ) {
     fprintf( pf, "set output matchpc %s\n"
 	     "set output mwc %s\n"
 	     "set output rawboard %s\n"
-	     "set output winpc %s\n",
+	     "set output winpc %s\n"
+             "set output digits %d\n",
 	     fOutputMatchPC ? "on" : "off",
 	     fOutputMWC ? "on" : "off",
 	     fOutputRawboard ? "on" : "off",
-	     fOutputWinPC ? "on" : "off" );
+	     fOutputWinPC ? "on" : "off",
+             fOutputDigits );
     
     for( i = 0; i < 2; i++ ) {
 	fprintf( pf, "set player %d name %s\n", i, ap[ i ].szName );
