@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.139 2002/03/24 17:17:58 oysteijo Exp $
+ * $Id: eval.c,v 1.140 2002/03/26 17:02:58 oysteijo Exp $
  */
 
 #include "config.h"
@@ -4275,7 +4275,6 @@ extern int SetCubeInfoMoney( cubeinfo *pci, int nCube, int fCubeOwner,
 extern int SetCubeInfoMatch( cubeinfo *pci, int nCube, int fCubeOwner,
 			     int fMove, int nMatchTo, int anScore[ 2 ],
 			     int fCrawford ) {
-    int nScore0, nScore1;
     
     if( nCube < 1 || fCubeOwner < -1 || fCubeOwner > 1 || fMove < 0 ||
 	fMove > 1 || nMatchTo < 1 || anScore[ 0 ] >= nMatchTo ||
@@ -4297,9 +4296,6 @@ extern int SetCubeInfoMatch( cubeinfo *pci, int nCube, int fCubeOwner,
      * instead of recalculating it again and again, or cache it.
      */
               
-    nScore0 = nMatchTo - anScore[ 0 ];
-    nScore1 = nMatchTo - anScore[ 1 ];
-
     {
       float rWin = 
         getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
@@ -5518,9 +5514,6 @@ Cl2CfMatchUnavailable ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci ) {
 
   /* normalized score */
 
-  int nScore0 = pci->nMatchTo - pci->anScore[ pci->fMove ];
-  int nScore1 = pci->nMatchTo - pci->anScore[ ! pci->fMove ];
-
   float rG0, rBG0, rG1, rBG1;
   float arCP[ 2 ];
 
@@ -5646,9 +5639,6 @@ static float
 Cl2CfMatchCentered ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci ) {
 
   /* normalized score */
-
-  int nScore0 = pci->nMatchTo - pci->anScore[ pci->fMove ];
-  int nScore1 = pci->nMatchTo - pci->anScore[ ! pci->fMove ];
 
   float rG0, rBG0, rG1, rBG1;
   float arCP[ 2 ];

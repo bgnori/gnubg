@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.115 2002/03/22 15:25:34 gtw Exp $
+ * $Id: play.c,v 1.116 2002/03/26 17:02:58 oysteijo Exp $
  */
 
 #include "config.h"
@@ -42,6 +42,7 @@
 #include "external.h"
 #include "eval.h"
 #include "positionid.h"
+#include "matchid.h"
 #include "matchequity.h"
 #include "rollout.h"
 
