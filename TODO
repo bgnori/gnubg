@@ -1,4 +1,4 @@
-$Id: TODO,v 1.286 2003/03/28 17:28:20 thyssen Exp $
+$Id: TODO,v 1.287 2003/04/05 18:02:04 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -46,7 +46,6 @@ duplication of effort and to make sure our changes merge easily.
 *** Calculate "advantage" (i.e. luck-adjusted result): ppg in game stats
   for money; MWC in match stats for matches.  Save the results in pairwise
   player records. (gary)
-*** option to analyse one side only
 ** Finish saving positions and evaluations to databases.
 ** Finish supervised training, and allow people to submit training data via
   web.
@@ -85,7 +84,6 @@ details.
   commands which use other commands can provide sensible error handling. (gary)
 ** Kit Woolsey suggests adding an option for truncated rollouts: when
   truncating at n plies, take the mean of the (n-1) and n ply results.
-** Add a "go to start of match" command. (gary)
 ** The "play" command is broken in "load command" scripts.  Add subcommands
   like "play game", "play match" for finer control. (gary)
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.16 2003/01/19 04:27:06 gtw Exp $
+ * $Id: analysis.h,v 1.17 2003/04/05 18:02:04 thyssen Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -82,6 +82,8 @@ typedef enum _ratingtype {
 
 extern const char *aszRating [ RAT_UNDEFINED + 1 ];
 extern const char *aszLuckRating[ 7 ];
+
+extern int afAnalysePlayers[ 2 ];
 
 extern ratingtype GetRating ( const float rError );
 extern void IniStatcontext ( statcontext *psc );

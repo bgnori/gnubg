@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.185 2003/04/05 12:58:05 thyssen Exp $
+ * $Id: play.c,v 1.186 2003/04/05 18:02:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -2561,7 +2561,7 @@ static skilltype GoodMove (movenormal *p) {
   ProgressStart( _("Considering move...") );
   if (AnalyzeMove ( pmr, &msx, plGame, NULL, pesChequer, pesChequer,
                     fTutorAnalysis ? aamfAnalysis : aamfEval, 
-		    FALSE ) < 0) {
+		    FALSE, NULL ) < 0) {
     fAnalyseMove = fAnalyseMoveSaved;
     ProgressEnd();
     ResumeInput ( &m );
@@ -3056,6 +3056,13 @@ static void CommandNextGame( char *sz ) {
 	return;
 
     ChangeGame( pl->p );
+}
+
+extern void
+CommandFirstGame( char *sz ) {
+
+  ChangeGame( lMatch.plNext->p );
+
 }
 
 static void CommandNextRoll( char *sz ) {
