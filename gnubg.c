@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.433 2003/07/13 12:03:38 thyssen Exp $
+ * $Id: gnubg.c,v 1.434 2003/07/14 08:09:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -7234,7 +7234,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 
 #if USE_GUILE
     if( pchGuileScript ) {
-	scm_primitive_load( scm_makfrom0str( pchScript ) );
+	scm_primitive_load( scm_makfrom0str( pchGuileScript ) );
         Shutdown();
 	exit( EXIT_SUCCESS );
     }
