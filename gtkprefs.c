@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.17 2002/03/20 20:37:45 gtw Exp $
+ * $Id: gtkprefs.c,v 1.18 2002/03/20 20:50:12 gtw Exp $
  */
 
 #include "config.h"
@@ -210,8 +210,9 @@ static GtkWidget *BorderPage( BoardData *bd ) {
 			    GTK_RADIO_BUTTON( pwWood ), "Painted" ),
 			FALSE, FALSE, 0 );
 
-    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( bd->wood ? pwWood :
-						     pwWoodF ), TRUE );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( bd->wood != WOOD_PAINT ?
+						     pwWood : pwWoodF ),
+				  TRUE );
     
     for( i = 0; i < 3; i++ )
 	ar[ i ] = bd->aanBoardColour[ 1 ][ i ] / 255.0;
