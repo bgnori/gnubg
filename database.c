@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.25 2001/04/10 13:51:28 gtw Exp $
+ * $Id: database.c,v 1.26 2001/04/10 20:36:53 gtw Exp $
  */
 
 #include "config.h"
@@ -345,7 +345,8 @@ extern void CommandDatabaseGenerate( char *sz ) {
     InitBoard( anBoardGenerate );
 	
     do {    
-	Progress();
+	if( !( ++c % 10 ) )
+	    Progress();
 	    
 	RollDice( anDiceGenerate );
 
