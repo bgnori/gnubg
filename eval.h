@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.35 2001/03/09 16:02:14 gtw Exp $
+ * $Id: eval.h,v 1.36 2001/03/12 16:10:00 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -190,7 +190,7 @@ FindPubevalMove( int nDice0, int nDice1, int anBoard[ 2 ][ 25 ],
 
 extern int 
 TrainPosition( int anBoard[ 2 ][ 25 ], float arDesired[], float rAlpha,
-	       int fAnneal );
+	       float rAnneal );
 
 extern int 
 PipCount( int anBoard[ 2 ][ 25 ], int anPips[ 2 ] );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.19 2001/03/09 16:02:14 gtw Exp $
+ * $Id: database.c,v 1.20 2001/03/12 16:10:00 gtw Exp $
  */
 
 #include "config.h"
@@ -414,7 +414,7 @@ extern void CommandDatabaseTrain( char *sz ) {
 		
 		PositionFromKey( anBoardTrain, (unsigned char *) dKey.dptr );
 		
-		TrainPosition( anBoardTrain, arDesired, rAlpha, fAnneal );
+		TrainPosition( anBoardTrain, arDesired, rAlpha, rAnneal );
 	    }
 	    
 	    free( pev );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.64 2001/03/09 16:02:14 gtw Exp $
+ * $Id: backgammon.h,v 1.65 2001/03/12 16:10:00 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -189,8 +189,8 @@ extern gamestate gs;
 extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     fCubeUse, fNackgammon, fVarRedn, nRollouts, nRolloutTruncate, fConfirm,
     fDisplay, fAutoBearoff, fShowProgress, fBeavers, fOutputMWC,
-    fOutputWinPC, fOutputMatchPC, fJacoby, fOutputRawboard, fAnneal;
-extern float rAlpha;
+    fOutputWinPC, fOutputMatchPC, fJacoby, fOutputRawboard;
+extern float rAlpha, rAnneal;
 
 extern evalcontext ecEval, ecRollout, ecTD;
 
@@ -268,6 +268,10 @@ extern void outputv( char *sz, va_list val )
     __attribute__((format(printf,1,0)));
 /* Signifies that all output for the current command is complete */
 extern void outputx( void );
+/* Temporarily disable outputx() calls */
+extern void outputpostpone( void );
+/* Re-enable outputx() calls */
+extern void outputresume( void );
 /* Signifies that subsequent output is for a new command */
 extern void outputnew( void );
 /* Disable output */

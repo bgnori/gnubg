@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.76 2001/03/09 16:02:14 gtw Exp $
+ * $Id: eval.c,v 1.77 2001/03/12 16:10:00 gtw Exp $
  */
 
 #include "config.h"
@@ -2126,12 +2126,13 @@ EvalRace(int anBoard[ 2 ][ 25 ], float arOutput[])
 	  dummy[1-side][i] = 0;
 	}
 
-	if( PositionBearoff( dummy[ 0 ] ) > 923 ||
-	    PositionBearoff( dummy[ 1 ] ) > 923 ) {
-	  EvalBearoff1(dummy, p);
-	} else {
-	  EvalBearoff2(dummy, p);
-	}
+	if( pBearoff2 && PositionBearoff( dummy[ 0 ] ) < 924 &&
+	    PositionBearoff( dummy[ 1 ] ) < 924 )
+	    EvalBearoff2( dummy, p );
+	else if( pBearoff1 )
+	    EvalBearoff1( dummy, p );
+	else
+	    EvalRace( dummy, p );
 
 	if( side == 1 ) {
 	  arOutput[OUTPUT_WINBACKGAMMON] = p[0];
@@ -2612,7 +2613,7 @@ extern int GameStatus( int anBoard[ 2 ][ 25 ] ) {
 }
 
 extern int TrainPosition( int anBoard[ 2 ][ 25 ], float arDesired[],
-			  float rAlpha, int fAnneal ) {
+			  float rAlpha, float rAnneal ) {
 
     float arInput[ NUM_INPUTS ], arOutput[ NUM_OUTPUTS ];
 
@@ -2639,8 +2640,8 @@ extern int TrainPosition( int anBoard[ 2 ][ 25 ], float arDesired[],
     
     CalculateInputs( anBoard, arInput );
 
-    NeuralNetTrain( nn, arInput, arOutput, arDesired, fAnneal ? 20.0f *
-		    rAlpha / pow( 100.0 + nn->nTrained, 0.25 ) : rAlpha );
+    NeuralNetTrain( nn, arInput, arOutput, arDesired, rAlpha /
+		    pow( nn->nTrained / 1000.0 + 1.0, rAnneal ) );
     
     return 0;
 }
