@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.12 2002/11/25 12:20:14 jsegrave Exp $
+ * $Id: makebearoff.c,v 1.13 2002/11/26 17:25:21 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1112,7 +1112,7 @@ usage ( char *arg0 ) {
 static void
 version ( void ) {
 
-  printf ( "makebearoff $Revision: 1.12 $\n" );
+  printf ( "makebearoff $Revision: 1.13 $\n" );
 
 }
 
@@ -1210,7 +1210,7 @@ extern int main( int argc, char **argv ) {
                 "Include gammon distributions      : %s\n"
                 "Use compression scheme            : %s\n"
                 "Write header                      : %s\n"
-                "Size of cache                     : %'12d\n"
+                "Size of cache                     : %12d\n"
                 "Reuse old bearoff database        : %s %s\n"),
               nOS, 
               15, 
