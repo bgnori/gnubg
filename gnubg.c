@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.505 2003/11/03 11:55:12 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.506 2003/11/06 04:52:02 steink Exp $
  */
 
 #include "config.h"
@@ -511,6 +511,7 @@ static char szDICE[] = N_("<die> <die>"),
     szSETTC[] = N_("[<timecontrol>|off]"),
     szSETTCTYPE[] = N_("plain|bronstein|fischer|hourglass"),
     szSETTCTIME[] = N_("<time>"),
+    szSETTCTRANSITION[] = N_("<criterion> <time control>"),
     szSETTCPOINT[] = N_("<time per point>"),
     szSETTCMOVE[] = N_("<time per move>"),
     szSETTCMULT[] = N_("<factor>"),
@@ -1723,6 +1724,7 @@ command cER = {
     { "tcpenalty", CommandSetTCPenalty, N_("Set penalty type"), szSETTCPENALTY, NULL}, 
     { "tcpointtime", CommandSetTCPoint, N_("Set total time per point in match"), szSETTCPOINT, NULL}, 
     { "tctime", CommandSetTCTime, N_("Set total (added) time for entire match"), szSETTCTIME, NULL}, 
+    { "tctransition", CommandSetTCTransition, N_("Set time control transition"), szSETTCTRANSITION, NULL}, 
     { "tctype", CommandSetTCType, N_("Set time control type"), szSETTCTYPE, NULL}, 
     { "tcunname", CommandSetTCUnname, N_("Undefine a named time control setting"), szSETTCUNNAME, NULL}, 
     
