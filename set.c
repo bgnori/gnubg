@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.20 2000/06/30 02:09:57 gtw Exp $
+ * $Id: set.c,v 1.21 2000/07/05 19:53:35 gtw Exp $
  */
 
 #include "config.h"
@@ -527,7 +527,7 @@ extern void CommandSetNackgammon( char *sz ) {
     
     SetToggle( "nackgammon", &fNackgammon, sz, "New games will use the "
 	       "Nackgammon starting position.", "New games will use the "
-	       "standards backgammon starting position." );
+	       "standard backgammon starting position." );
 
 #if !X_DISPLAY_MISSING
     if( fX && fTurn == -1 )
