@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.224 2003/04/03 20:02:05 thyssen Exp $
+ * $Id: eval.c,v 1.225 2003/04/07 19:27:17 thyssen Exp $
  */
 
 #include "config.h"
@@ -114,7 +114,7 @@ enum {
   /* 23*4 (92) are needed */
 
   /* (0 <= k < 14), RI_OFF + k = */
-  /*                       1 if exactly k checkers are off, 0 otherwise */
+  /*                       1 if exactly k+1 checkers are off, 0 otherwise */
 
   RI_OFF = 92,
 
