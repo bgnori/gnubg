@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.127 2003/01/02 21:56:47 thyssen Exp $
+ * $Id: show.c,v 1.128 2003/01/06 20:05:34 thyssen Exp $
  */
 
 #include "config.h"
@@ -59,7 +59,7 @@ extern char *aszCopying[], *aszWarranty[]; /* from copying.c */
 
 static void ShowMoveFilter ( const movefilter *pmf, const int ply) {
   
-  if (pmf->Accept == 0) {
+  if (pmf->Accept < 0 ) {
 	outputf( _("Skip pruning for %d-ply moves.\n"), ply );
 	return;
   }
@@ -90,7 +90,7 @@ ShowMoveFilters ( const movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] 
   
     for ( j = 0; j <= i; ++j ) {
       outputf ( "        " );
-      ShowMoveFilter ( &aamf[i ][ j ], i );
+      ShowMoveFilter ( &aamf[i ][ j ], j );
     }
   }
 

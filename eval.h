@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.102 2003/01/05 21:00:21 joseph Exp $
+ * $Id: eval.h,v 1.103 2003/01/06 20:07:34 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -175,7 +175,9 @@ extern char *aszDoubleTypes[ NUM_DOUBLE_TYPES ];
  *
  */
 
-#define NUM_SETTINGS            6
+#define NUM_SETTINGS            8
+#define SETTINGS_GRANDMASTER    7
+#define SETTINGS_SUPREMO        6
 #define SETTINGS_WORLDCLASS     5
 #define SETTINGS_ADVANCED       4
 #define SETTINGS_EXPERT         3
@@ -184,6 +186,7 @@ extern char *aszDoubleTypes[ NUM_DOUBLE_TYPES ];
 #define SETTINGS_BEGINNER       0
 
 extern evalcontext aecSettings[ NUM_SETTINGS  ];
+extern int aiSettingsMoveFilter[ NUM_SETTINGS ];
 extern const char *aszSettings[ NUM_SETTINGS ];
 
 
