@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.97 2001/06/15 18:14:16 thyssen Exp $
+ * $Id: eval.c,v 1.98 2001/06/17 10:16:32 thyssen Exp $
  */
 
 #include "config.h"
@@ -4201,8 +4201,17 @@ extern cubedecision
 FindCubeDecision ( float arDouble[],
                    float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
                    cubeinfo *pci ) {
- 
-  GetDPEq ( NULL, &arDouble[ OUTPUT_DROP ], pci );
+
+  if ( pci->nMatchTo ) {
+
+    float r;
+  
+    GetDPEq ( NULL, &r, pci );
+    arDouble[ OUTPUT_DROP ] = mwc2eq ( r, pci );
+  }
+  else
+    GetDPEq ( NULL, &arDouble[ OUTPUT_DROP ], pci );
+
   arDouble[ OUTPUT_NODOUBLE ] = aarOutput[ 0 ][ OUTPUT_CUBEFUL_EQUITY ];
   arDouble[ OUTPUT_TAKE ] = aarOutput[ 1 ][ OUTPUT_CUBEFUL_EQUITY ];
 
