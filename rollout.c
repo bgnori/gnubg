@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.36 2001/05/23 16:28:27 gtw Exp $
+ * $Id: rollout.c,v 1.37 2001/05/23 16:37:43 gtw Exp $
  */
 
 #include "config.h"
@@ -946,8 +946,10 @@ GeneralEvaluationR ( char *sz,
                      cubeinfo *pci, rolloutcontext *prc ) {
 
   int fCubeDecTop = TRUE;
-
-  if ( RolloutGeneral ( anBoard, sz, arOutput, arStdDev,
+  
+  if ( RolloutGeneral ( anBoard, ( char (*)[ 40 ] ) sz,
+			( float (*)[ NUM_ROLLOUT_OUTPUTS ] ) arOutput,
+			( float (*)[ NUM_ROLLOUT_OUTPUTS ] ) arStdDev,
                         prc, pci, &fCubeDecTop, 1, FALSE ) < 0 )
     return -1;
 
