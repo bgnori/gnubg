@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.348 2002/12/11 18:43:11 thyssen Exp $
+ * $Id: gnubg.c,v 1.349 2002/12/11 21:59:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -5775,7 +5775,11 @@ CreateGnubgDirectory ( void ) {
 
     /* create the directory */
 
-    if ( mkdir ( sz, S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH ) < 0 ) {
+    if ( mkdir ( sz
+#ifndef WIN32
+                 , S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH 
+#endif
+                 ) < 0 ) {
       outputerr ( sz );
       free ( sz );
       return -1;
