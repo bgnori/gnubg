@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.255 2002/11/24 12:21:47 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.256 2002/11/24 14:54:08 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -165,6 +165,8 @@ typedef enum _gnubgcommand {
     CMD_SHOW_MARKETWINDOW,
     CMD_SHOW_MATCHEQUITYTABLE,
     CMD_SHOW_KLEINMAN,
+    CMD_SHOW_ONECHEQUER,
+    CMD_SHOW_ONESIDEDROLLOUT,
     CMD_SHOW_PIPCOUNT,
     CMD_SHOW_STATISTICS_GAME,
     CMD_SHOW_STATISTICS_MATCH,
@@ -230,6 +232,8 @@ static char *aszCommands[ NUM_CMDS ] = {
     "show marketwindow",
     "show matchequitytable",
     "show kleinman",
+    "show onechequer",
+    "show onesidedrollout",
     "show pipcount",
     "show statistics game",
     "show statistics match",
@@ -2183,6 +2187,10 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ N_("/_Analyse/_Kleinman count"), 
           NULL, Command, CMD_SHOW_KLEINMAN, NULL },
 	{ N_("/_Analyse/_Thorp count"), NULL, Command, CMD_SHOW_THORP, NULL },
+	{ N_("/_Analyse/One chequer race"), NULL, Command, 
+          CMD_SHOW_ONECHEQUER, NULL },
+	{ N_("/_Analyse/One sided rollout"), NULL, Command, 
+          CMD_SHOW_ONESIDEDROLLOUT, NULL },
 	{ N_("/_Analyse/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_Analyse/_Gammon values"), NULL, Command, CMD_SHOW_GAMMONVALUES,
 	  NULL },
