@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.8 2003/09/04 10:12:36 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.9 2003/09/15 07:43:46 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -1605,7 +1605,7 @@ void InsideFillet(float x, float y, float z, float w, float h, float radius, int
 	/* Bottom */
 	DrawTop(x + BOARD_FILLET, y + BOARD_FILLET, BASE_DEPTH, w, EDGE_DEPTH - BOARD_FILLET)
 	/* Right */
-	DrawLeft(x + w + BOARD_FILLET, y + BOARD_FILLET, BASE_DEPTH, h, EDGE_DEPTH - BOARD_FILLET);
+	DrawLeft(x + w + BOARD_FILLET, y + BOARD_FILLET, BASE_DEPTH + LIFT_OFF, h, EDGE_DEPTH - BOARD_FILLET);
 
 	if (tuv)
 	{
