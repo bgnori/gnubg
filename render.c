@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.10 2003/01/18 16:25:32 gtw Exp $
+ * $Id: render.c,v 1.11 2003/01/18 21:20:40 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1851,14 +1851,15 @@ extern void RenderDice( renderdata *prd, unsigned char *puch0,
 			      prd->arLight[ 1 ] * y_norm +
 			      prd->arLight[ 2 ] * z_norm ) > 0.0 ) {
 			    diffuse += cos_theta * 0.8;
-			    cos_theta = 2 * z_norm * cos_theta -
-				prd->arLight[ 2 ];
-			    specular_x += pow( cos_theta,
-					       arDiceExponent[ 0 ] ) *
-				arDiceCoefficient[ 0 ];
-			    specular_o += pow( cos_theta,
-					       arDiceExponent[ 1 ] ) *
-				arDiceCoefficient[ 1 ];
+			    if( ( cos_theta = 2 * z_norm * cos_theta -
+				  prd->arLight[ 2 ] ) > 0.0 ) {
+				specular_x += pow( cos_theta,
+						   arDiceExponent[ 0 ] ) *
+				    arDiceCoefficient[ 0 ];
+				specular_o += pow( cos_theta,
+						   arDiceExponent[ 1 ] ) *
+				    arDiceCoefficient[ 1 ];
+			    }
 			}
 		    }
 		missed:		    
@@ -1946,14 +1947,15 @@ extern void RenderPips( renderdata *prd, unsigned char *puch0,
 					    prd->arLight[ 2 ] * z ) /
 			      sqrt( x * x + y * y + z * z ) ) > 0 ) {
 			    diffuse += cos_theta * 0.8;
-			    cos_theta = 2 * z / 5 * cos_theta -
-				prd->arLight[ 2 ];
-			    specular_x += pow( cos_theta,
-					       arDiceExponent[ 0 ] ) *
-				arDiceCoefficient[ 0 ];
-			    specular_o += pow( cos_theta,
-					       arDiceExponent[ 1 ] ) *
-				arDiceCoefficient[ 1 ];
+			    if( ( cos_theta = 2 * z / 5 * cos_theta -
+				  prd->arLight[ 2 ] ) > 0.0 ) {
+				specular_x += pow( cos_theta,
+						   arDiceExponent[ 0 ] ) *
+				    arDiceCoefficient[ 0 ];
+				specular_o += pow( cos_theta,
+						   arDiceExponent[ 1 ] ) *
+				    arDiceCoefficient[ 1 ];
+			    }
 			}
 		    }
 		    x += 1.0 / ( prd->nSize );
