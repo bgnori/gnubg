@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.119 2003/07/26 17:35:47 thyssen Exp $
+ * $Id: html.c,v 1.120 2003/07/26 20:47:43 thyssen Exp $
  */
 
 #include "config.h"
@@ -1352,8 +1352,13 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   /* left part of bar */
 
   fputs ( "<td>", pf );
-  printImage ( pf, szImageDir, "b-midlb", szExtension, "|", 
-               hecss, HTML_EXPORT_TYPE_GNU );
+  if ( fClockwise )
+    printImage ( pf, szImageDir, "b-midlb", szExtension, "|", 
+                 hecss, HTML_EXPORT_TYPE_GNU );
+  else
+    printImage ( pf, szImageDir, fTurn ? "b-midlb-o" : "b-midlb-x", 
+                 szExtension, "|", hecss, HTML_EXPORT_TYPE_GNU );
+
   fputs ( "</td>", pf );
 
   /* center of board */
@@ -1453,8 +1458,12 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   /* right part of bar */
 
   fputs ( "<td>", pf );
-  printImage ( pf, szImageDir, "b-midlb", szExtension, "|", 
-               hecss, HTML_EXPORT_TYPE_GNU );
+  if ( ! fClockwise )
+    printImage ( pf, szImageDir, "b-midlb", szExtension, "|", 
+                 hecss, HTML_EXPORT_TYPE_GNU );
+  else
+    printImage ( pf, szImageDir, fTurn ? "b-midlb-o" : "b-midlb-x", 
+                 szExtension, "|", hecss, HTML_EXPORT_TYPE_GNU );
   fputs ( "</td>", pf );
 
   fputs ( "</tr>\n", pf );
@@ -1837,7 +1846,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.119 $";
+  const char szVersion[] = "$Revision: 1.120 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1918,7 +1927,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.119 $";
+  const char szVersion[] = "$Revision: 1.120 $";
   int iMajor, iMinor;
   char *pc;
 
