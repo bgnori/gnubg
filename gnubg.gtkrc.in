@@ -18,7 +18,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: gnubg.gtkrc.in,v 1.1 2004/06/15 18:33:54 thyssen Exp $
+# $Id: gnubg.gtkrc.in,v 1.2 2004/06/16 18:53:20 thyssen Exp $
 #
 # style <name> [= <name>]
 # {
@@ -66,16 +66,28 @@ fg[PRELIGHT] = { 0.2, 0.1, 0.0 }
 }
 
 #
-# Style for the move list (e.g., the hint window) for highlighting the actual
+# Style for the move list (e.g. the hint window) for highlighting the actual
 # move made.
+#
+
+style "movedone" = "default"
+{
+  fg[ACTIVE] = { 0xffff, 0, 0 }
+}
+
+widget "*.gnubg-move-done" style "movedone"
+
+
+#
+# Style for the uncompleted move (shown as you move pieces around)
 #
 
 style "movelabel" = "default"
 {
-  fg[ACTIVE] = { 0xffff, 0xffff, 0 }
+  fg[ACTIVE] = { 0xffff, 0, 0 }
 }
-
-widget "*Board.*move" style "movelabel"
+   
+widget "*.gnubg-move-current" style "movelabel"
 
 
 #
