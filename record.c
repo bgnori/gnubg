@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.6 2002/09/30 20:19:27 thyssen Exp $
+ * $Id: record.c,v 1.7 2002/10/26 13:56:56 thyssen Exp $
  */
 
 #include "config.h"
@@ -32,6 +32,7 @@
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif
+#include <errno.h>
 
 #include "backgammon.h"
 #if USE_GTK
@@ -222,7 +223,8 @@ static int RecordWrite( FILE *pfOut, char *pchOut, playerrecord apr[ 2 ] ) {
 
 #ifdef WIN32
     /* experiment */
-    if ( unlink ( sz ) ) {
+    if ( unlink ( sz ) && errno != ENOENT ) {
+      /* do not complain if file is not found */
       outputerr ( sz );
       free ( pchOut );
       return -1;
