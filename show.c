@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.27 2000/08/01 23:43:43 gtw Exp $
+ * $Id: show.c,v 1.28 2000/08/13 09:57:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -530,3 +530,17 @@ extern void CommandShowThorp( char *sz ) {
         outputf("Bower's interpolation: %d%% cubeless winning "
                 "chance\n", 74 + 2 * nDiff );
 }
+
+
+extern void CommandShowBeavers( char *sz ) {
+
+  if ( fBeavers )
+    puts( "Beavers, racoons, and other critters are allowed in"
+          " money sessions.." );
+  else
+    puts( "Beavers, racoons, and other critters are not allowed in"
+          " money sessions.." );
+
+}
+
+

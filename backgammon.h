@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.36 2000/07/31 20:29:28 gtw Exp $
+ * $Id: backgammon.h,v 1.37 2000/08/13 09:57:47 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -91,9 +91,9 @@ typedef union _moverecord {
 extern char *aszGameResult[], szDefaultPrompt[], *szPrompt;
 
 extern int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn, fDisplay, fAutoBearoff,
-    fAutoGame, fAutoMove, fResigned, fMove, fDoubled, anScore[ 2 ],
-    cGames, nCube, fCubeOwner, fAutoRoll, nMatchTo, fJacoby, fCrawford,
-    fPostCrawford, fAutoCrawford, cAutoDoubles, fCubeUse, fNackgammon,
+    fAutoGame, fAutoMove, fResigned, fDoubled, 
+    cGames, fAutoRoll,
+    fAutoCrawford, cAutoDoubles, fCubeUse, fNackgammon,
     fVarRedn, nRollouts, nRolloutTruncate, fNextTurn, fConfirm,
     fShowProgress;
 
@@ -197,6 +197,7 @@ extern void CommandAccept( char * ),
     CommandSetAutoMove( char * ),
     CommandSetAutoRoll( char * ),
     CommandSetBoard( char * ),
+    CommandSetBeavers( char * ),
     CommandSetCache( char * ),
     CommandSetConfirm( char * ),
     CommandSetCrawford( char * ),
@@ -240,6 +241,7 @@ extern void CommandAccept( char * ),
     CommandSetTurn( char * ),
     CommandShowAutomatic( char * ),
     CommandShowBoard( char * ),
+    CommandShowBeavers( char * ),
     CommandShowCache( char * ),
     CommandShowConfirm( char * ),
     CommandShowCopying( char * ),

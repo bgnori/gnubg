@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.26 2000/07/31 17:58:10 gtw Exp $
+ * $Id: set.c,v 1.27 2000/08/13 09:57:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -1001,4 +1001,16 @@ extern void CommandSetPostCrawford( char *sz ) {
       outputl( "No match in progress (type `new match n' to start one)." );
 
 }
+
+
+extern void CommandSetBeavers( char *sz ) {
+
+  SetToggle( "beavers", &fBeavers, sz,
+             "Beavers/racoons allowed in money sessions.",
+             "Beavers/raccons allowed in money sessions." ); 
+
+}
+
+
+
 

@@ -16,14 +16,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.3 2000/01/15 17:38:21 gtw Exp $
+ * $Id: rollout.h,v 1.4 2000/08/13 09:57:48 thyssen Exp $
  */
 
 #ifndef _ROLLOUT_H_
 #define _ROLLOUT_H_
 
-extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
-		    int nTruncate, int cGames, int fVarRedn,
-		    evalcontext *pec );
+extern int 
+Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
+         int nTruncate, int cGames, int fVarRedn,
+         cubeinfo *pci, evalcontext *pec );
 
 #endif
