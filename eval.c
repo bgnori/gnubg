@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.252 2003/08/15 02:20:47 joseph Exp $
+ * $Id: eval.c,v 1.253 2003/08/21 16:21:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -3983,8 +3983,12 @@ DumpPosition( int anBoard[ 2 ][ 25 ], char* szOutput,
                OutputPercent( aarOutput[ 0 ][ j ] ) );
     }
 
-    sprintf( strchr( szOutput, 0 ), "%-9s ",
-             OutputEquity( Utility( aarOutput[ 0 ], pci ), pci, TRUE ) );
+    if ( pci->nMatchTo )
+      sprintf( strchr( szOutput, 0 ), "%-9s ",
+               OutputEquity( Utility( aarOutput[ 0 ], pci ), pci, TRUE ) );
+    else
+      sprintf( strchr( szOutput, 0 ), "%-9s ",
+               OutputMoneyEquity( aarOutput[ 0 ], TRUE ) );
 
     sprintf( strchr( szOutput, 0 ), "%-9s ",
              OutputMWC( aarOutput[ 0 ][ 6 ], pci, TRUE ) );
