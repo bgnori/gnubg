@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.68 2001/03/19 15:53:25 gtw Exp $
+ * $Id: backgammon.h,v 1.69 2001/03/21 15:19:44 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -298,6 +298,8 @@ extern void HandleInput( char *sz );
 extern int fReadline;
 #endif
 
+extern char *aszVersion[];
+
 extern command acDatabase[], acNew[], acSave[], acSetAutomatic[],
     acSetCube[], acSetEvaluation[], acSetPlayer[], acSetRNG[], acSetRollout[],
     acSet[], acShow[], acTrain[], acTop[], acSetMET[];
@@ -421,9 +423,11 @@ extern void CommandAccept( char * ),
     CommandShowDelay( char * ),
     CommandShowDice( char * ),
     CommandShowDisplay( char * ),
+    CommandShowEngine( char * ),
     CommandShowEvaluation( char * ),
-    CommandShowJacoby( char * ),
     CommandShowGammonPrice( char * ),
+    CommandShowJacoby( char * ),
+    CommandShowKleinman( char * ),
     CommandShowMarketWindow( char * ),
     CommandShowNackgammon( char * ),
     CommandShowMatchEquityTable( char * ),
@@ -436,11 +440,11 @@ extern void CommandAccept( char * ),
     CommandShowRollout( char * ),
     CommandShowScore( char * ),
     CommandShowSeed( char * ),
+    CommandShowThorp( char * ),
     CommandShowTraining( char * ),
     CommandShowTurn( char * ),
+    CommandShowVersion( char * ),
     CommandShowWarranty( char * ),
-    CommandShowKleinman( char * ),
-    CommandShowThorp( char * ),
     CommandTake( char * ),
     CommandTrainTD( char * );
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.37 2001/03/19 15:56:58 gtw Exp $
+ * $Id: eval.h,v 1.38 2001/03/21 15:19:44 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -158,6 +158,8 @@ typedef struct _redevaldata {
 extern int 
 EvalInitialise( char *szWeights, char *szWeightsBinary,
                 char *szDatabase, char *szDir, int nSize, int fProgress );
+
+extern void EvalStatus( char *szOutput );
 
 extern int EvalNewWeights( int nSize );
 

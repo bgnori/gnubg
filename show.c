@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.53 2001/03/19 15:53:25 gtw Exp $
+ * $Id: show.c,v 1.54 2001/03/21 15:19:44 gtw Exp $
  */
 
 #include "config.h"
@@ -290,6 +290,15 @@ extern void CommandShowDisplay( char *sz ) {
 	outputl( "GNU Backgammon will display boards for computer moves." );
     else
 	outputl( "GNU Backgammon will not display boards for computer moves." );
+}
+
+extern void CommandShowEngine( char *sz ) {
+
+    char szBuffer[ 4096 ];
+    
+    EvalStatus( szBuffer );
+
+    output( szBuffer );
 }
 
 extern void CommandShowEvaluation( char *sz ) {
@@ -677,6 +686,42 @@ extern void CommandShowTraining( char *sz ) {
 	outputf( "Error threshold %f.\n", rThreshold );
     else
 	outputl( "Error threshold disabled." );
+}
+
+extern void CommandShowVersion( char *sz ) {
+
+    char **ppch = aszVersion;
+    extern char *aszCredits[];
+    int i = 0, cch, cCol = 0;
+    
+#if USE_GTK
+    if( fX ) {
+	GTKShowVersion();
+	return;
+    }
+#endif
+
+    while( *ppch )
+	outputl( *ppch++ );
+
+    outputc( '\n' );
+
+    outputl( "GNU Backgammon was written by Joseph Heled, Øystein Johansen, "
+	     "Jørn Thyssen\nand Gary Wong.\n\nSpecial thanks to:" );
+
+    cCol = 80;
+
+    for( ppch = aszCredits; *ppch; ppch++ ) {
+	i += ( cch = strlen( *ppch ) + 2 );
+	if( i >= cCol ) {
+	    outputc( '\n' );
+	    i = cch;
+	}
+	
+	outputf( "%s%c ", *ppch, *( ppch + 1 ) ? ',' : '.' );
+    }
+
+    outputc( '\n' );
 }
 
 extern void CommandShowMarketWindow ( char * sz ) {
