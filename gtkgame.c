@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.506 2004/08/25 17:49:47 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.507 2004/09/01 17:13:56 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1258,7 +1258,8 @@ extern void GTKThaw( void ) {
 	GL_Thaw();
 	frozen = FALSE;
 	/* Make sure analysis window is correct */
-	GTKSetMoveRecord( plLastMove->p );
+	if (plLastMove)
+		GTKSetMoveRecord( plLastMove->p );
 }
 
 static void SkillMenuActivate( GtkWidget *pw, skilltype st ) {
