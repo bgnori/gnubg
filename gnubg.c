@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.310 2002/10/07 21:01:45 thyssen Exp $
+ * $Id: gnubg.c,v 1.311 2002/10/09 18:44:36 thyssen Exp $
  */
 
 #include "config.h"
@@ -520,6 +520,9 @@ command cER = {
       szFILENAME, &cFilename },
     { NULL, NULL, NULL, NULL, NULL }
 }, acExportSession[] = {
+    { "html", CommandExportMatchHtml,
+      N_("Records a log of the session in .html format"), szFILENAME,
+      &cFilename },
     { "latex", CommandExportMatchLaTeX, N_("Records a log of the session in "
       "LaTeX format"), szFILENAME, &cFilename },
     { "pdf", CommandExportMatchPDF, N_("Records a log of the session in the "
