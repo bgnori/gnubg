@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.458 2004/02/09 13:02:31 uid68519 Exp $
+ * $Id: gtkgame.c,v 1.459 2004/02/09 13:06:44 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -590,12 +590,6 @@ typedef struct {
 grabstack GrabStack[GRAB_STACK_SIZE];
 int GrabStackPointer = 0;
 
-static gboolean ttt(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
-{
-g_print("boo\n");
-	return TRUE;
-}
-
 extern void GTKSuspendInput( monitor *pm ) {
     
   /* Grab events so that the board window knows this is a re-entrant
@@ -609,10 +603,9 @@ extern void GTKSuspendInput( monitor *pm ) {
     GrabStack[GrabStackPointer++].id =
       pm->idSignal = gtk_signal_connect_after( GTK_OBJECT( gtk_widget_get_toplevel(pwGrab) ),
 					       "key-press-event",
-GTK_SIGNAL_FUNC(ttt),
-//					       GTK_SIGNAL_FUNC( gtk_true ),
+					       GTK_SIGNAL_FUNC( gtk_true ),
 					       NULL );
-    
+
   }
   
   /* Don't check stdin here; readline isn't ready yet. */
@@ -634,7 +627,7 @@ extern void GTKResumeInput( monitor *pm ) {
     if ((GrabStack[ i ].owner == pm) &&
 	  (GrabStack[ i ].id == pm->idSignal)) {
 
-      gtk_signal_disconnect( GTK_OBJECT( gtk_widget_get_toplevel(pwGrab) ), pm->idSignal );
+      gtk_signal_disconnect( GTK_OBJECT( pwGrab ), pm->idSignal );
       GrabStackPointer = i;
     }
   }
