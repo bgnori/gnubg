@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.30 2000/10/13 11:41:20 thyssen Exp $
+ * $Id: show.c,v 1.31 2000/10/17 14:08:00 thyssen Exp $
  */
 
 #include "config.h"
@@ -29,6 +29,7 @@
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif
+#include <assert.h>
 
 #include "backgammon.h"
 #include "drawboard.h"
@@ -575,14 +576,28 @@ extern void CommandShowMatchEquityTable ( char *sz ) {
      else if match write nMatchTo x nMatchTo table,
      else write full table (may be HUGE!) */
 
-  if ( ( n <= 0 ) || ( n > MAXSCORE ) ) {
+  if ( ( n <= 0 ) || ( n > nMaxScore ) ) {
     if ( nMatchTo )
       n = nMatchTo;
     else
-      n = MAXSCORE;
+      n = nMaxScore;
   }
 
   /* FIXME: for GTK write out to table */
+
+  output ( "Match equity table: " );
+
+  switch ( metCurrent ) {
+  case MET_ZADEH:
+    output ( "N. Zadeh, Management Science 23, 986 (1977)\n\n" );
+    break;
+  case MET_SNOWIE:
+    output ( "Snowie xx, Oasya, 2000\n\n" );
+  case MET_WOOLSEY:
+    output ( "Kit Woolsey\n\n" );
+  default:
+    assert ( FALSE );
+  }
 
   /* Write column headers */
 

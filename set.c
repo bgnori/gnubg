@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.30 2000/10/16 15:30:35 gtw Exp $
+ * $Id: set.c,v 1.31 2000/10/17 14:08:00 thyssen Exp $
  */
 
 #include "config.h"
@@ -29,6 +29,7 @@
 #include "backgammon.h"
 #include "dice.h"
 #include "eval.h"
+#include "matchequity.h"
 
 static char szEQUITY[] = "<equity>",
     szNAME[] = "<name>",
@@ -1000,5 +1001,32 @@ extern void CommandSetOutputMWC( char *sz ) {
 }
 
 
+static void SetMET( met metNew ) {
+
+    static char *aszMET[] = {
+	"Zadeh", "Snowie", "Woolsey"
+    };
+    
+    if( metCurrent == metNew ) {
+	outputf( "You are already using the %s match equity table.\n",
+		aszMET[ metNew ] );
+    } else {
+	outputf( "GNU Backgammon will now use the %s match equity table.\n",
+		aszMET[ metNew ] );
+
+        InitMatchEquity ( metNew );
+
+        /* FIXME: add match equity table to GTK menu 
+           UpdateSetting( &rngCurrent ); */
+    }
+}
+
+
+extern void
+CommandSetMETZadeh ( char *sz ) {
+
+  SetMET ( MET_ZADEH );
+
+}
 
 

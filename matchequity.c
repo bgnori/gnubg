@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.c,v 1.2 2000/10/08 12:31:28 thyssen Exp $
+ * $Id: matchequity.c,v 1.3 2000/10/17 14:08:00 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -37,11 +37,34 @@ float aafA2 [ MAXSCORE ][ MAXSCORE ];
 
 float afBtilde [ MAXSCORE ];
 
+met metCurrent = MET_ZADEH;
+int nMaxScore = MAXSCORE;
+
 int 
 GetCubePrimeValue ( int i, int j, int nCubeValue );
 
 void
-InitMatchEquity () {
+InitMatchEquityZadeh ();
+
+
+void
+InitMatchEquity ( met metInit ) {
+
+  metCurrent = metInit;
+  nMaxScore = MAXSCORE;
+
+  switch ( metInit ) {
+  case MET_ZADEH:
+    InitMatchEquityZadeh ();
+    break;
+  default:
+    break;
+  }
+
+}
+
+void
+InitMatchEquityZadeh () {
 
   int i,j,k;
   int nCube;
