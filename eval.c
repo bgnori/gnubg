@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.122 2002/01/18 15:45:33 gtw Exp $
+ * $Id: eval.c,v 1.123 2002/01/24 18:20:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -4712,6 +4712,10 @@ fDoCubeful ( cubeinfo *pci ) {
 	pci->anScore[ 1 ] == pci->nMatchTo - 2 )
 	/* score is -2,-2 */
 	return FALSE;
+
+    if ( pci->fCrawford )
+      /* cube is dead in Crawford game */
+      return FALSE;
 
     return TRUE;
 }
