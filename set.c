@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.73 2001/08/29 15:19:29 gtw Exp $
+ * $Id: set.c,v 1.74 2001/09/25 15:08:39 gtw Exp $
  */
 
 #include "config.h"
@@ -541,14 +541,13 @@ extern void CommandSetCubeUse( char *sz ) {
 	ms.fCubeOwner = -1;
 	UpdateSetting( &ms.nCube );
 	UpdateSetting( &ms.fCubeOwner );
-	
-#if USE_GUI
-	if( fX )
-	    ShowBoard();
-#endif
-
 	CancelCubeAction();
     }
+	
+#if USE_GUI
+    if( fX )
+	ShowBoard();
+#endif
 }
 
 extern void CommandSetCubeValue( char *sz ) {
