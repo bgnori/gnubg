@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.13 2000/01/19 17:01:12 gtw Exp $
+ * $Id: eval.c,v 1.14 2000/02/14 02:26:37 joseph Exp $
  */
 
 #include "config.h"
@@ -883,7 +883,7 @@ barPrimeBackGame(int anBoard[ 2 ][ 25 ])
     for(i = 24 - first; i < 20; ++i) {
       unsigned int n = 0;
       for(k = i; k <= i+3; ++k) {
-	if( anBoard[1-side][k] > 0 ) {
+	if( anBoard[1-side][k] > 1 ) {
 	  ++n;
 	}
       }
