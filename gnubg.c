@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.485 2003/09/05 09:29:46 kaoru Exp $
+ * $Id: gnubg.c,v 1.486 2003/09/05 17:23:31 thyssen Exp $
  */
 
 #include "config.h"
@@ -8371,9 +8371,11 @@ TextToClipboard( const char *sz ) {
 
 #if WIN32
 #if ENABLE_NLS
-  /* darty hack for Windows Japanese edition */
+  /* dirty hack for Windows Japanese edition */
   if ( !strncmp( "Japanese", setlocale(LC_ALL, NULL), 8 ) ) {
-    WinCopy( Convert( sz, "SHIFT_JIS", GNUBG_CHARSET ) );
+    char *pch = Convert( sz, "SHIFT_JIS", GNUBG_CHARSET );
+    WinCopy( pch );
+    free( pch );
   }
   else {
     WinCopy ( sz );
