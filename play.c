@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.14 2000/01/15 17:38:21 gtw Exp $
+ * $Id: play.c,v 1.15 2000/01/16 01:02:21 gtw Exp $
  */
 
 #include "config.h"
@@ -519,7 +519,7 @@ extern void CommandMove( char *sz ) {
 	
 	for( i = 0; i < c; i++ ) {
 	    anBoardNew[ 1 ][ an[ i << 1 ] - 1 ]--;
-	    if( an[ ( i << 1 ) | 1 ] >= 0 ) {
+	    if( an[ ( i << 1 ) | 1 ] > 0 ) {
 		anBoardNew[ 1 ][ an[ ( i << 1 ) | 1 ] - 1 ]++;
 		
 		anBoardNew[ 0 ][ 24 ] +=
