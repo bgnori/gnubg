@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.37 2004/04/22 20:57:02 thyssen Exp $
+ * $Id: dice.c,v 1.38 2004/05/03 13:21:49 thyssen Exp $
  */
 
 #include "config.h"
@@ -640,7 +640,7 @@ extern void InitRNGSeed( int n, const rng rngx, void *p ) {
 	break;
     
     case RNG_MERSENNE:
-	init_genrand( n, rngctx->mt );
+	init_genrand( n, &rngctx->mti, rngctx->mt );
 	break;
 
     case RNG_USER:
