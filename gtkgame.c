@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.372 2003/07/23 16:36:20 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.373 2003/07/24 17:40:20 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7028,6 +7028,7 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
   ratingtype rt[ 2 ];
   float aaaar[ 3 ][ 2 ][ 2 ][ 2 ];
   int irow = 0;
+  int fCalc;
 
   GtkWidget *pwButtons,
     *pwCopy = gtk_button_new_with_label( "Copy" );
@@ -7379,7 +7380,9 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
 
   ++irow;
 
-  if ( psc->fDice ) {
+  fCalc = psc->arActualResult[ 0 ] > 0.0f || psc->arActualResult[ 1 ] > 0.0f;
+
+  if ( psc->fDice && fCalc ) {
 
     if ( pms->nMatchTo )
       for ( i = 0; i < 2; ++i ) {
@@ -7398,7 +7401,7 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
 
   ++irow;
 
-  if ( psc->fDice ) {
+  if ( psc->fDice && fCalc ) {
 
     if ( pms->nMatchTo ) {
       float r = 0.5f + psc->arActualResult[ 0 ] - 
@@ -7452,10 +7455,10 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
       }
     }
 
-    irow += 5;
-    
   }
   
+  irow += 5;
+    
   gtk_scrolled_window_set_policy( GTK_SCROLLED_WINDOW( psw ),
                                   GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC );
   gtk_container_add( GTK_CONTAINER( psw ), pwStats );

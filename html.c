@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.112 2003/07/23 16:36:20 jsegrave Exp $
+ * $Id: html.c,v 1.113 2003/07/24 17:37:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -1851,7 +1851,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.112 $";
+  const char szVersion[] = "$Revision: 1.113 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1932,7 +1932,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.112 $";
+  const char szVersion[] = "$Revision: 1.113 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2867,6 +2867,8 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
     N_("Cheater :-)")
   };
 
+  int fCalc;
+
   getMWCFromError ( psc, aaaar );
 
   fprintf ( pf, "\n<!-- %s Statistics -->\n\n", 
@@ -3306,7 +3308,8 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
   }
 
-  if ( psc->fDice ) {
+  fCalc = psc->arActualResult[ 0 ] > 0.0f || psc->arActualResult[ 1 ] > 0.0f;
+  if ( psc->fDice && fCalc ) {
 
     if ( pms->nMatchTo ) {
       float r = 0.5f + psc->arActualResult[ 0 ] - 
