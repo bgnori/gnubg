@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.10 2000/01/19 17:01:12 gtw Exp $
+ * $Id: rollout.c,v 1.11 2000/01/31 17:52:16 gtw Exp $
  */
 
 #include "config.h"
@@ -30,16 +30,18 @@
 #include "positionid.h"
 #include "rollout.h"
 
-static void QuasiRandomDice( int iTurn, int iGame, int cGames,
+static int QuasiRandomDice( int iTurn, int iGame, int cGames,
 			    int anDice[ 2 ] ) {
     if( !iTurn && !( cGames % 36 ) ) {
 	anDice[ 0 ] = ( iGame % 6 ) + 1;
 	anDice[ 1 ] = ( ( iGame / 6 ) % 6 ) + 1;
+	return 0;
     } else if( iTurn == 1 && !( cGames % 1296 ) ) {
 	anDice[ 0 ] = ( ( iGame / 36 ) % 6 ) + 1;
 	anDice[ 1 ] = ( ( iGame / 216 ) % 6 ) + 1;
+	return 0;
     } else
-	RollDice( anDice );
+	return RollDice( anDice );
 }
 
 /* Upon return, anBoard contains the board position after making the best
@@ -99,7 +101,8 @@ static int BearoffRollout( int anBoard[ 2 ][ 25 ], float arOutput[],
 	arOutput[ i ] = 0.0f;
 
     while( iTurn < nTruncate && ClassifyPosition( anBoard ) > CLASS_PERFECT ) {
-	QuasiRandomDice( iTurn, iGame, cGames, anDice );
+	if( QuasiRandomDice( iTurn, iGame, cGames, anDice ) < 0 )
+	    return -1;
 	
 	if( anDice[ 0 ]-- < anDice[ 1 ]-- )
 	    swap( anDice, anDice + 1 );
@@ -150,7 +153,8 @@ static int BasicRollout( int anBoard[ 2 ][ 25 ], float arOutput[],
     
     while( iTurn < nTruncate && ( pc = ClassifyPosition( anBoard ) ) >
 	   CLASS_BEAROFF1 ) {
-	QuasiRandomDice( iTurn, iGame, cGames, anDice );
+	if( QuasiRandomDice( iTurn, iGame, cGames, anDice ) < 0 )
+	    return -1;
 	
 	FindBestMove( NULL, anDice[ 0 ] + 1, anDice[ 1 ] + 1,
 		      anBoard, pec );
@@ -202,7 +206,8 @@ static int VarRednRollout( int anBoard[ 2 ][ 25 ], float arOutput[],
 
     while( iTurn < nTruncate && ( pc = ClassifyPosition( anBoard ) ) >
 	   CLASS_BEAROFF1 ) {
-	QuasiRandomDice( iTurn, iGame, cGames, anDice );
+	if( QuasiRandomDice( iTurn, iGame, cGames, anDice ) < 0 )
+	    return -1;
 	
 	if( anDice[ 0 ]-- < anDice[ 1 ]-- )
 	    swap( anDice, anDice + 1 );

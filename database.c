@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.5 2000/01/16 01:06:57 gtw Exp $
+ * $Id: database.c,v 1.6 2000/01/31 17:52:16 gtw Exp $
  */
 
 #include "config.h"
@@ -187,6 +187,9 @@ extern void CommandDatabaseGenerate( char *sz ) {
 	    
 	    RollDice( anDiceGenerate );
 
+	    if( fInterrupt )
+		break;
+	    
 	    FindBestMove( NULL, anDiceGenerate[ 0 ], anDiceGenerate[ 1 ],
 			  anBoardGenerate, NULL );
 
