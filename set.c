@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.133 2002/10/21 19:36:42 thyssen Exp $
+ * $Id: set.c,v 1.132 2002/10/21 19:32:47 thyssen Exp $
  */
 
 #include "config.h"
@@ -2497,9 +2497,6 @@ SetExportHTMLCSS ( const htmlexportcss hecss ) {
 
   if ( exsExport.hecss == hecss )
     return;
-
-  if ( exsExport.hecss == HTML_EXPORT_CSS_EXTERNAL )
-    CommandNotImplemented ( NULL );
 
   exsExport.hecss = hecss;
 
