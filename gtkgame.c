@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.82 2001/11/01 15:47:56 gtw Exp $
+ * $Id: gtkgame.c,v 1.83 2001/11/05 17:56:18 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1689,6 +1689,21 @@ static void TextPopped( GtkWidget *pw, guint id, gchar *text, void *p ) {
 	fFinishedPopping = TRUE;
 }
 
+static void MainSize( GtkWidget *pw, GtkRequisition *preq, gpointer p ) {
+
+    /* Give the main window a size big enough that the board widget gets
+       board_size=4, if it will fit on the screen. */
+    
+    if( GTK_WIDGET_REALIZED( pw ) )
+	gtk_signal_disconnect_by_func( GTK_OBJECT( pw ),
+				       GTK_SIGNAL_FUNC( MainSize ), p );
+    else
+	gtk_window_set_default_size( GTK_WINDOW( pw ),
+				     MAX( 480, preq->width ),
+				     MIN( preq->height + 79 * 3,
+					  gdk_screen_height() - 20 ) );
+}
+
 extern int InitGTK( int *argc, char ***argv ) {
     
     GtkWidget *pwVbox, *pwHbox;
@@ -2040,10 +2055,9 @@ extern int InitGTK( int *argc, char ***argv ) {
        format string to empty so we don't get the default text. */
     gtk_progress_set_show_text( GTK_PROGRESS( pwProgress ), TRUE );
     gtk_progress_set_format_string( GTK_PROGRESS( pwProgress ), "" );
-    /* Make sure the window is reasonably big, but will fit on a 640x480
-       screen. */
-    gtk_window_set_default_size( GTK_WINDOW( pwMain ), 500, 470 );
     
+    gtk_signal_connect( GTK_OBJECT( pwMain ), "size-request",
+			GTK_SIGNAL_FUNC( MainSize ), NULL );
     gtk_signal_connect( GTK_OBJECT( pwMain ), "delete_event",
 			GTK_SIGNAL_FUNC( main_delete ), NULL );
     gtk_signal_connect( GTK_OBJECT( pwMain ), "destroy_event",
