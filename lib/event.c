@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1996-2000
  *
- * $Id: event.c,v 1.3 2000/01/19 17:01:59 gtw Exp $
+ * $Id: event.c,v 1.4 2000/07/28 17:11:10 gtw Exp $
  */
 
 #include "config.h"
@@ -26,6 +26,8 @@
 #endif
 
 #include <event.h>
+
+#if HAVE_EVENT
 
 #define MAXTVSEC 0x7FFFFFFF
 #define MAXTVUSEC 999999
@@ -364,3 +366,4 @@ extern int HandleEvents( void ) {
 
     return 0;
 }
+#endif

@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1996-2000
  *
- * $Id: event.h,v 1.2 2000/01/10 18:47:54 gtw Exp $
+ * $Id: event.h,v 1.3 2000/07/28 17:11:10 gtw Exp $
  */
 
 #ifndef _EVENT_H_
@@ -13,6 +13,9 @@
 #if defined HAVE_SYS_TIME_H || !defined HAVE_CONFIG_H
 #include <sys/time.h>
 #endif
+
+#if HAVE_SELECT
+#define HAVE_EVENT 1
 
 typedef struct _event event;
 typedef struct _eventhandler eventhandler;
@@ -46,5 +49,6 @@ extern int EventPending( event *pev, int fPending );
 extern int InitEvents( void );
 extern int HandleEvents( void );
 extern int StopEvents( void );
+#endif
 
 #endif
