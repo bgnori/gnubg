@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.43 2003/07/13 02:24:41 jsegrave Exp $
+ * $Id: text.c,v 1.44 2003/07/13 20:26:32 thyssen Exp $
  */
 
 #include "config.h"
@@ -231,6 +231,9 @@ OutputMoveFilterPly( const char *szIndent,
 
     movefilter *pmf = &aamf[ nPlies - 1 ][ i ];
 
+    if ( szIndent && *szIndent )
+      strcat( sz, szIndent );
+
     if ( pmf->Accept < 0 ) {
       sprintf( strchr( sz, 0 ), 
                _("Skip pruning for %d-ply moves.\n"),
@@ -250,6 +253,8 @@ OutputMoveFilterPly( const char *szIndent,
       sprintf( strchr( sz, 0 ),
                _(" and up to %d more moves within equity %0.3g\n"),
                pmf->Extra, pmf->Threshold );
+    else
+      strcat( sz, "\n" );
 
   }
 
@@ -288,6 +293,9 @@ OutputEvalContextsForRollout( char *sz, const char *szIndent,
 
     j = GetPredefinedChequerplaySetting( &aecChequer[ i ], aaamf[ i ] );
 
+    if ( szIndent && *szIndent )
+      strcat ( sz, szIndent );
+
     if ( aecChequer[ i ].nPlies ) {
 
       sprintf( strchr( sz, 0 ),
@@ -305,6 +313,9 @@ OutputEvalContextsForRollout( char *sz, const char *szIndent,
       strcat ( sz, OutputEvalContext ( &aecChequer[ i ], FALSE ) );
       strcat ( sz, "\n" );
     }
+
+    if ( szIndent && *szIndent )
+      strcat ( sz, szIndent );
 
     strcat ( sz, _("Cube: ") );
     strcat ( sz, OutputEvalContext ( &aecCube[ i ], FALSE ) );
@@ -802,7 +813,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.43 $";
+  const char szVersion[] = "$Revision: 1.44 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
