@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.20 2004/05/19 08:43:52 Superfly_Jon Exp $
+ * $Id: render.h,v 1.21 2004/09/09 11:43:27 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -170,6 +170,7 @@ typedef struct _renderimages {
 } renderimages;
 
 extern void RenderInitialise( void );
+extern void RenderFinalise( void );
 
 extern int PreferenceCompare(renderdata *prd1, renderdata *prd2);
 
