@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.24 2003/09/18 22:53:08 jsegrave Exp $
+ * $Id: render.c,v 1.25 2003/09/22 11:03:08 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -173,6 +173,7 @@ renderdata rdDefault = {
 	3,	/* Dice size */
 	0,	/* Rounded edges */
 	PT_ROUNDED,	/* Piece type */
+	PTT_ALL,	/* Piece texture type */
 	/* Default 3d colours - black+white, should never be used -
 		if no 3d settings the first design will be used */
     {{{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, 100, 0, 0},

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.12 2003/09/15 02:01:06 hb Exp $
+ * $Id: render.h,v 1.13 2003/09/22 11:03:08 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -85,6 +85,11 @@ typedef enum _PieceType
 	PT_ROUNDED, PT_FLAT, NUM_PIECE_TYPES
 } PieceType;
 
+typedef enum _PieceTextureType
+{
+	PTT_TOP, PTT_ALL, NUM_TEXTURE_TYPES
+} PieceTextureType;
+
 extern void FindTexture(TextureInfo** textureInfo, char* file);
 extern void FindNamedTexture(TextureInfo** textureInfo, char* name);
 
@@ -129,7 +134,9 @@ typedef struct _renderdata {
 	int planView;	/* Ortho view? */
 	float diceSize;	/* How big are the dice */
 	int roundedEdges;	/* Rounded board edges? */
-	PieceType pieceType;
+	PieceType pieceType;	/* Different piece models */
+	PieceTextureType pieceTextureType;	/* Different piece texture types */
+
 	Material rdChequerMat[2];	/* Chequer colours */
 	Material rdDiceMat[2], rdDiceDotMat[2];
 	Material rdCubeMat, rdCubeNumberMat;
