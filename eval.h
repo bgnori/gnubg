@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.56 2001/10/22 17:20:15 thyssen Exp $
+ * $Id: eval.h,v 1.57 2001/10/27 13:22:25 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -349,4 +349,13 @@ GeneralEvaluationEPliedCubeful ( float arOutput [ NUM_ROLLOUT_OUTPUTS ],
                                  int anBoard[ 2 ][ 25 ],
                                  cubeinfo *pci, evalcontext *pec,
                                  int nPlies );
+extern int
+cmp_evalsetup ( const evalsetup *pes1, const evalsetup *pes2 );
+
+extern int
+cmp_evalcontext ( const evalcontext *pec1, const evalcontext *pec2 );
+
+extern int
+cmp_rolloutcontext ( const rolloutcontext *prc1, const rolloutcontext *prc2 );
+
 #endif
