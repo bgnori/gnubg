@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.52 2001/10/07 17:56:42 thyssen Exp $
+ * $Id: eval.h,v 1.53 2001/10/11 19:53:08 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -120,7 +120,11 @@ typedef struct _evalsetup {
 } evalsetup;
 
 typedef enum _cubedecision {
-  DOUBLE_TAKE, DOUBLE_PASS, NODOUBLE_TAKE, TOOGOOD_TAKE, TOOGOOD_PASS
+  DOUBLE_TAKE, DOUBLE_PASS, NODOUBLE_TAKE, TOOGOOD_TAKE, TOOGOOD_PASS,
+  DOUBLE_BEAVER, NODOUBLE_BEAVER,
+  REDOUBLE_TAKE, REDOUBLE_PASS, NO_REDOUBLE_TAKE,
+  TOOGOODRE_TAKE, TOOGOODRE_PASS,
+  REDOUBLE_BEAVER, NO_REDOUBLE_BEAVER
 } cubedecision;
 
 
