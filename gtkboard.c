@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.178 2004/06/02 08:58:23 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.179 2004/06/04 17:50:59 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1708,10 +1708,19 @@ void ShowBoardPopup(GdkEventButton* event)
 		GtkWidget* menu_item;
 		boardMenu = gtk_menu_new();
 
-		menu_item = gtk_menu_item_new_with_label ("Undo Moves");
+		menu_item = gtk_menu_item_new_with_label ("Undo Move");
 		gtk_menu_shell_append(GTK_MENU_SHELL(boardMenu), menu_item);
 		gtk_widget_show(menu_item);
 		gtk_signal_connect(GTK_OBJECT(menu_item), "activate", GTK_SIGNAL_FUNC(Undo), NULL);
+
+		menu_item = gtk_menu_item_new();
+		gtk_menu_shell_append(GTK_MENU_SHELL(boardMenu), menu_item);
+		gtk_widget_show(menu_item);
+
+		menu_item = gtk_menu_item_new_with_label ("Score Sheet");
+		gtk_menu_shell_append(GTK_MENU_SHELL(boardMenu), menu_item);
+		gtk_widget_show(menu_item);
+		gtk_signal_connect(GTK_OBJECT(menu_item), "activate", GTK_SIGNAL_FUNC(GTKShowScoreSheet), NULL);
 	}
 	gtk_menu_popup(GTK_MENU(boardMenu), NULL, NULL, NULL, NULL, event->button, event->time);
 }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.567 2004/06/01 08:20:41 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.568 2004/06/04 17:50:57 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1973,6 +1973,8 @@ command cER = {
       szOPTDEPTH, NULL },
     { "score", CommandShowScore, N_("View the match or session score "),
       NULL, NULL },
+    { "scoresheet", CommandShowScoreSheet,
+      N_("View the score sheet for the match or session"), NULL, NULL },
     { "seed", CommandShowSeed, N_("Show the dice generator seed"), 
       NULL, NULL },
 #if USE_SOUND
