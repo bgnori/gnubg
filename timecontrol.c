@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: timecontrol.c,v 1.17 2004/03/23 10:16:54 Superfly_Jon Exp $
+ * $Id: timecontrol.c,v 1.18 2004/05/07 14:28:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -873,14 +873,14 @@ extern int CheckGameClock(matchstate *pms, struct timeval *tvp)
     pgcOpp->tvStamp = *tvp;
 
     if (pen) {
-    moverecord *pmr;
-	pmr = malloc( sizeof( movetime ) );
+        moverecord *pmr = NewMoveRecord();
+
 	pmr->mt = MOVE_TIME;
-	pmr->t.sz = 0;
-	pmr->t.fPlayer = ms.fTurn;
-	pmr->t.tl[0] = ms.gc.pc[0].tvTimeleft;
-	pmr->t.tl[1] = ms.gc.pc[1].tvTimeleft;
+	pmr->fPlayer = ms.fTurn;
+	pmr->tl[0] = ms.gc.pc[0].tvTimeleft;
+	pmr->tl[1] = ms.gc.pc[1].tvTimeleft;
 	pmr->t.nPoints = pen;
+
 	AddMoveRecord( pmr );
    }
    return pen;

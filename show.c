@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.184 2004/04/22 19:10:43 thyssen Exp $
+ * $Id: show.c,v 1.185 2004/05/07 14:28:04 thyssen Exp $
  */
 
 #include "config.h"
@@ -2300,7 +2300,8 @@ CommandShowMatchResult( char *sz ) {
   float arSum[ 2 ] = { 0.0f, 0.0f };
   float arSumSquared[ 2 ] = { 0.0f, 0.0f };
   int n = 0;
-  movegameinfo *pmgi;
+  moverecord *pmr;
+  xmovegameinfo *pmgi;
   statcontext *psc;
   list *pl;
   float r;
@@ -2313,8 +2314,9 @@ CommandShowMatchResult( char *sz ) {
 
   for( pl = lMatch.plNext; pl != &lMatch; pl = pl->plNext, ++n ) {
   
-      pmgi = ( (list *) pl->p )->plNext->p;
-      assert( pmgi->mt == MOVE_GAMEINFO );
+      pmr = (moverecord *) ( (list *) pl->p )->plNext->p;
+      pmgi = &pmr->g;
+      assert( pmr->mt == MOVE_GAMEINFO );
       
       psc = &pmgi->sc;
       

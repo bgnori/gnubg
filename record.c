@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.13 2004/02/24 10:20:47 uid68519 Exp $
+ * $Id: record.c,v 1.14 2004/05/07 14:27:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -212,7 +212,7 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
 	return -1;
     }
 
-    if( fputs( "# %Version: 2 ($Revision: 1.13 $)\n", *ppfOut ) < 0 ) {
+    if( fputs( "# %Version: 2 ($Revision: 1.14 $)\n", *ppfOut ) < 0 ) {
 	outputerr( *ppchOut );
 	free( *ppchOut );
 	return -1;
@@ -291,12 +291,13 @@ static int RecordAbort( char *pchOut ) {
 
 static int RecordAddGame( list *plGame, playerrecord apr[ 2 ] ) {
 
-    movegameinfo *pmgi = plGame->plNext->p;
+    moverecord *pmr = (moverecord *) plGame->plNext->p;
+    xmovegameinfo* pmgi = &pmr->g;
     int i;
     expaverage ea;
     float aaaar[ 3 ][ 2 ][ 2 ][ 2 ];
     
-    assert( pmgi->mt == MOVE_GAMEINFO );
+    assert( pmr->mt == MOVE_GAMEINFO );
     
     if( !pmgi->sc.fMoves || !pmgi->sc.fCube || !pmgi->sc.fDice )
 	/* game is not completely analysed */
