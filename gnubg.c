@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.107 2001/03/13 17:22:59 gtw Exp $
+ * $Id: gnubg.c,v 1.108 2001/03/16 15:19:00 gtw Exp $
  */
 
 #include "config.h"
@@ -135,7 +135,7 @@ int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn = -1, fDisplay = TRUE,
     fCrawford = FALSE, fPostCrawford = FALSE, nMatchTo, anScore[ 2 ],
     fBeavers = 1, nCube, fOutputMWC = TRUE, fOutputWinPC = FALSE,
     fOutputMatchPC = TRUE, fOutputRawboard = FALSE;
-float rAlpha = 0.1, rAnneal = 0.3;
+float rAlpha = 0.1, rAnneal = 0.3, rThreshold = 0.1;
 
 gamestate gs = GAME_NONE;
 
@@ -320,6 +320,8 @@ command acDatabase[] = {
       "of errors", szVALUE, NULL },
     { "anneal", CommandSetTrainingAnneal, "Decrease alpha as training "
       "progresses", szRATE, NULL },
+    { "threshold", CommandSetTrainingThreshold, "Require a minimum error in "
+      "position database generation", szVALUE, NULL },
     { NULL, NULL, NULL, NULL, NULL }    
 }, acSet[] = {
     { "automatic", NULL, "Perform certain functions without user input",
@@ -427,6 +429,8 @@ command acDatabase[] = {
     { "seed", CommandShowSeed, "Show the dice generator seed", NULL, NULL },
     { "thorp", CommandShowThorp, "Calculate Thorp Count for "
       "position", szOPTPOSITION, NULL },
+    { "training", CommandShowTraining, "Display the training parameters",
+      NULL, NULL },
     { "turn", CommandShowTurn, "Show which player is on roll", NULL, NULL },
     { "warranty", CommandShowWarranty, "Various kinds of warranty you do "
       "not have", NULL, NULL },
@@ -1915,6 +1919,9 @@ static void LoadCommands( FILE *pf, char *szFile ) {
 	    return;
 	}
 	
+	if( fAction )
+	    fnAction();
+	
 	if( feof( pf ) || fInterrupt )
 	    return;
 
@@ -2188,6 +2195,9 @@ extern void CommandTrainTD( char *sz ) {
 	    FindBestMove( NULL, anDiceTrain[ 0 ], anDiceTrain[ 1 ],
 			  anBoardTrain, &ciCubeless, &ecTD );
 	    
+	    if( fAction )
+		fnAction();
+	
 	    if( fInterrupt )
 		return;
 	    

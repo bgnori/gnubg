@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.26 2001/02/13 18:20:26 gtw Exp $
+ * $Id: rollout.c,v 1.27 2001/03/16 15:19:00 gtw Exp $
  */
 
 #include "config.h"
@@ -133,10 +133,11 @@ BearoffRollout( int anBoard[ 2 ][ 25 ], float arOutput[],
     for( i = 0; i < NUM_OUTPUTS; i++ )
 	    arOutput[ i ] += arMean[ i ] - arMin[ i ];
 
+    if( fAction )
+	fnAction();
+    
     if( fInterrupt )
-	    return -1;
-    else if( fAction )
-	    fnAction();
+	return -1;
 	
     iTurn++;
   }
@@ -169,10 +170,11 @@ BasicRollout( int anBoard[ 2 ][ 25 ], float arOutput[],
 
     FindBestMove( NULL, anDice[ 0 ], anDice[ 1 ], anBoard, pci, pec );
 
+    if( fAction )
+	fnAction();
+    
     if( fInterrupt )
-	    return -1;
-    else if( fAction )
-	    fnAction();
+	return -1;
 	
     SwapSides( anBoard );
 
@@ -273,11 +275,12 @@ static int VarRednRollout( int anBoard[ 2 ][ 25 ], float arOutput[],
     for( i = 0; i < NUM_OUTPUTS; i++ )
 	    arOutput[ i ] += arMean[ i ] -
         aaar[ anDice[ 0 ] ][ anDice[ 1 ] ][ i ];
-	
+
+    if( fAction )
+	fnAction();
+    
     if( fInterrupt )
-	    return -1;
-    else if( fAction )
-	    fnAction();
+	return -1;
 	
     iTurn++;
   }

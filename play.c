@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.59 2001/03/14 22:34:32 gtw Exp $
+ * $Id: play.c,v 1.60 2001/03/16 15:19:00 gtw Exp $
  */
 
 #include "config.h"
@@ -918,6 +918,9 @@ extern void NextTurn( void ) {
 
     /* We have reached a safe point to check for interrupts.  Until now,
        the board could have been in an inconsistent state. */
+    if( fAction )
+	fnAction();
+	
     if( fInterrupt )
 	return;
     
