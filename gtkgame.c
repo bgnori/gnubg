@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.305 2003/01/25 16:58:18 thyssen Exp $
+ * $Id: gtkgame.c,v 1.306 2003/01/27 15:04:49 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -9448,66 +9448,66 @@ extern void GTKRecordShow( FILE *pfIn, char *szFile, char *szPlayer ) {
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 0, pr.szName );
 	
 	if( pr.cGames >= 20 )
-	    sprintf( sz, "%.4f", pr.arErrorChequerplay[ EXPAVG_20 ] );
+	    sprintf( sz, "%.4f", -pr.arErrorChequerplay[ EXPAVG_20 ] );
 	else
 	    strcpy( sz, _("n/a") );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 1, sz );
 	
 	if( pr.cGames >= 20 )
-	    sprintf( sz, "%.4f", pr.arErrorCube[ EXPAVG_20 ] );
+	    sprintf( sz, "%.4f", -pr.arErrorCube[ EXPAVG_20 ] );
 	else
 	    strcpy( sz, _("n/a") );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 2, sz );
 	
 	if( pr.cGames >= 20 )
-	    sprintf( sz, "%.4f", pr.arErrorCombined[ EXPAVG_20 ] );
+	    sprintf( sz, "%.4f", -pr.arErrorCombined[ EXPAVG_20 ] );
 	else
 	    strcpy( sz, _("n/a") );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 3, sz );
 	
 	if( pr.cGames >= 100 )
-	    sprintf( sz, "%.4f", pr.arErrorChequerplay[ EXPAVG_100 ] );
+	    sprintf( sz, "%.4f", -pr.arErrorChequerplay[ EXPAVG_100 ] );
 	else
 	    strcpy( sz, _("n/a") );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 4, sz );
 	
 	if( pr.cGames >= 100 )
-	    sprintf( sz, "%.4f", pr.arErrorCube[ EXPAVG_100 ] );
+	    sprintf( sz, "%.4f", -pr.arErrorCube[ EXPAVG_100 ] );
 	else
 	    strcpy( sz, _("n/a") );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 5, sz );
 	
 	if( pr.cGames >= 100 )
-	    sprintf( sz, "%.4f", pr.arErrorCombined[ EXPAVG_100 ] );
+	    sprintf( sz, "%.4f", -pr.arErrorCombined[ EXPAVG_100 ] );
 	else
 	    strcpy( sz, _("n/a") );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 6, sz );
 	
 	if( pr.cGames >= 500 )
-	    sprintf( sz, "%.4f", pr.arErrorChequerplay[ EXPAVG_500 ] );
+	    sprintf( sz, "%.4f", -pr.arErrorChequerplay[ EXPAVG_500 ] );
 	else
 	    strcpy( sz, _("n/a") );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 7, sz );
 	
 	if( pr.cGames >= 500 )
-	    sprintf( sz, "%.4f", pr.arErrorCube[ EXPAVG_500 ] );
+	    sprintf( sz, "%.4f", -pr.arErrorCube[ EXPAVG_500 ] );
 	else
 	    strcpy( sz, _("n/a") );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 8, sz );
 	
 	if( pr.cGames >= 500 )
-	    sprintf( sz, "%.4f", pr.arErrorCombined[ EXPAVG_500 ] );
+	    sprintf( sz, "%.4f", -pr.arErrorCombined[ EXPAVG_500 ] );
 	else
 	    strcpy( sz, _("n/a") );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 9, sz );
 	
-	sprintf( sz, "%.4f", pr.arErrorChequerplay[ EXPAVG_TOTAL ] );
+	sprintf( sz, "%.4f", -pr.arErrorChequerplay[ EXPAVG_TOTAL ] );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 10, sz );
 	
-	sprintf( sz, "%.4f", pr.arErrorCube[ EXPAVG_TOTAL ] );
+	sprintf( sz, "%.4f", -pr.arErrorCube[ EXPAVG_TOTAL ] );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 11, sz );
 	
-	sprintf( sz, "%.4f", pr.arErrorCombined[ EXPAVG_TOTAL ] );
+	sprintf( sz, "%.4f", -pr.arErrorCombined[ EXPAVG_TOTAL ] );
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 12, sz );
 	
 	if( pr.cGames >= 20 )
@@ -9548,7 +9548,7 @@ extern void GTKRecordShow( FILE *pfIn, char *szFile, char *szPlayer ) {
 	
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 21,
 			    aszLuckRating[ getLuckRating( pr.arLuck[
-				EXPAVG_TOTAL ] ) ] );
+				EXPAVG_TOTAL ] / 20 ) ] );
 	
 	if( !CompareNames( pr.szName, szPlayer ) )
 	    gtk_clist_select_row( GTK_CLIST( pwList ), i, 0 );
