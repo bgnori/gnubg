@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.4 2003/08/15 02:20:47 joseph Exp $
+ * $Id: format.c,v 1.5 2003/08/15 07:00:44 joseph Exp $
  */
 
 #include "config.h"
@@ -31,16 +31,6 @@
 #include "i18n.h"
 #include "export.h"
 
-/* Totally the wrong place for it. Unfortuanetly, format is lined with
-   makebearoff.
-   eval.c huge size hits again.
-*/
-
-extern int
-badSkill(skilltype const st)
-{
-  return st != SKILL_NONE && st != SKILL_GOOD;
-}
 
 int fOutputMWC = TRUE;
 int fOutputWinPC = FALSE;

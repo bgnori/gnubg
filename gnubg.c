@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.461 2003/08/15 02:20:48 joseph Exp $
+ * $Id: gnubg.c,v 1.462 2003/08/15 07:00:44 joseph Exp $
  */
 
 #include "config.h"
@@ -5623,7 +5623,7 @@ static char *OnOffCompletion( const char *sz, int nState ) {
 	i = 0;
     }
 
-    while( i < DIM( asz ) ) {
+    while( i < sizeof(asz)/sizeof(asz[0]) ) {
 	pch = asz[ i++ ];
 
 	if( !strncasecmp( sz, pch, cch ) ) {

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.53 2003/08/15 02:20:48 joseph Exp $
+ * $Id: text.c,v 1.54 2003/08/15 07:00:45 joseph Exp $
  */
 
 #include "config.h"
@@ -240,7 +240,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.53 $";
+  const char szVersion[] = "$Revision: 1.54 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -666,10 +666,12 @@ TextMatchInfo ( FILE *pf, const matchinfo *pmi ) {
 
   /* ratings */
 
-  for ( i = 0; i < 2; ++i )
+  for ( i = 0; i < 2; ++i ) {
+    if ( pmi->pchRating[i] ) {
       fprintf ( pf, _("%s's rating: %s\n"), 
-                ap[ i ].szName, 
-                pmi->pchRating[ i ] ? pmi->pchRating[ i ] : _("n/a") );
+                ap[ i ].szName,  pmi->pchRating[ i ]);
+    }
+  }
 
   /* date */
 
@@ -682,22 +684,28 @@ TextMatchInfo ( FILE *pf, const matchinfo *pmi ) {
     fprintf ( pf, _("Date: %s\n"), sz ); 
 
   }
-  else
-    fputs ( _("Date: n/a\n"), pf );
+  //else fputs ( _("Date: n/a\n"), pf );
 
   /* event, round, place and annotator */
 
-  fprintf ( pf, _("Event: %s\n"),
-            pmi->pchEvent ? pmi->pchEvent : _("n/a") );
-  fprintf ( pf, _("Round: %s\n"),
-            pmi->pchRound ? pmi->pchRound : _("n/a") );
-  fprintf ( pf, _("Place: %s\n"),
-            pmi->pchPlace ? pmi->pchPlace : _("n/a") );
-  fprintf ( pf, _("Annotator: %s\n"),
-            pmi->pchAnnotator ? pmi->pchAnnotator : _("n/a") );
-  fprintf ( pf, _("Comments: %s\n"),
-            pmi->pchComment ? pmi->pchComment : _("n/a") );
+  if( pmi->pchEvent ) {
+    fprintf ( pf, _("Event: %s\n"), pmi->pchEvent);
+  }
+  
+  if(pmi->pchRound) {
+    fprintf ( pf, _("Round: %s\n"), pmi->pchRound);
+  }
+  
+  if( pmi->pchPlace ) {
+    fprintf ( pf, _("Place: %s\n"), pmi->pchPlace);
+  }
 
+  if( pmi->pchAnnotator ) {
+    fprintf ( pf, _("Annotator: %s\n"), pmi->pchAnnotator);
+  }
+  if( pmi->pchComment ) {
+    fprintf ( pf, _("Comments: %s\n"), pmi->pchComment);
+  }
 }
 
 
@@ -875,13 +883,9 @@ static void ExportGameText ( FILE *pf, list *plGame,
     if ( fLastGame ) {
 
       TextDumpStatcontext ( pf, &scTotal, &msOrig, -1 );
-
     }
 
     TextEpilogue( pf, &msExport );
-
-
-    
 }
 
 extern void CommandExportGameText( char *sz ) {
@@ -911,14 +915,12 @@ extern void CommandExportGameText( char *sz ) {
 	return;
     }
 
-    ExportGameText( pf, plGame,
-                    getGameNumber ( plGame ), FALSE );
+    ExportGameText( pf, plGame, getGameNumber ( plGame ), FALSE );
 
     if( pf != stdout )
 	fclose( pf );
 
     setDefaultFileName ( sz, PATH_TEXT );
-    
 }
 
 
