@@ -16,7 +16,7 @@
 ;;; along with this program; if not, write to the Free Software
 ;;; Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ;;; 
-;;; $Id: gnubg.scm,v 1.2 2000/10/31 15:29:19 gtw Exp $
+;;; $Id: gnubg.scm,v 1.3 2001/03/19 15:57:40 gtw Exp $
 ;;; 
 
 ;;;
@@ -31,4 +31,15 @@
 ;; It's not worth defining a Guile interface to the C SwapSides() when
 ;; we can do the same thing more easily in Scheme.
 (define (swap-sides b)
+  "Return a specified position with the opposite player on roll."
   (cons (cdr b) (car b)))
+
+;; Similarly for counting pips.
+(define (pip-count b)
+  "Give the pip count of the specified position.  The cdr is the pip count
+of the player on roll, and the car is the pip count of the opponent."
+  (define (count v i c)
+    (if (>= i 25)
+	c
+	(count v (+ i 1) (+ c (* (vector-ref v i) (+ i 1))))))
+  (cons (count (car b) 0 0) (count (cdr b) 0 0)))
