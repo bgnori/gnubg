@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.115 2002/03/22 20:53:08 gtw Exp $
+ * $Id: backgammon.h,v 1.116 2002/03/29 20:03:36 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -223,6 +223,7 @@ extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     nBeavers, fOutputMWC, fEgyptian, fOutputWinPC, fOutputMatchPC, fJacoby,
     fOutputRawboard, fAnnotation, cAnalysisMoves, fAnalyseCube,
     fAnalyseDice, fAnalyseMove, fRecord;
+extern int fAutoAnalysis;
 extern float rAlpha, rAnneal, rThreshold, arLuckLevel[ LUCK_VERYGOOD + 1 ],
     arSkillLevel[ SKILL_VERYGOOD + 1 ];
 
@@ -356,6 +357,10 @@ extern void HandleInput( char *sz );
 extern int fReadline;
 #endif
 
+extern int
+AnalyzeMove ( moverecord *pmr, matchstate *pms, statcontext *psc,
+              int fUpdateStatistics );
+
 #ifdef WIN32
 extern void WinCopy( char *szOut );
 #endif
@@ -466,6 +471,7 @@ extern void CommandAccept( char * ),
     CommandSetAnalysisThresholdVeryUnlucky( char * ),
     CommandSetAnnotation( char * ),
     CommandSetAppearance( char * ),
+    CommandSetAutoAnalysis( char * ),
     CommandSetAutoBearoff( char * ),
     CommandSetAutoCrawford( char * ),
     CommandSetAutoDoubles( char * ),
