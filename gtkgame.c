@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.322 2003/03/14 20:34:15 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.323 2003/03/14 20:43:27 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4840,11 +4840,11 @@ typedef struct _rolloutwidget {
   int  fCubeEqualChequer, fPlayersAreSame, fTruncEqualPlayer0;
   int *pfOK;
 } rolloutwidget;
-
+/*
 int fCubeEqualChequer = 1;
 int fPlayersAreSame = 1;
 int fTruncEqualPlayer0 = 1;
-
+*/ 
 static void SetRolloutsOK( GtkWidget *pw, rolloutwidget *prw ) {
   int   p0, p1, i;
   int fCubeEqChequer, fPlayersAreSame, nTruncPlies;
