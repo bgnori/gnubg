@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.97 2001/10/25 18:49:35 thyssen Exp $
+ * $Id: backgammon.h,v 1.98 2001/10/27 13:04:09 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -112,6 +112,8 @@ typedef struct _movenormal {
     int fPlayer;
     int anRoll[ 2 ];
     int anMove[ 8 ];
+    /* evaluation setup for move analysis */
+    evalsetup esChequer;
     /* evaluation of cube action before this move */
     float arDouble[ 4 ];
     evalsetup esDouble;
