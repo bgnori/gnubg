@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.72 2001/11/07 16:32:39 gtw Exp $
+ * $Id: show.c,v 1.73 2001/11/09 18:26:05 gtw Exp $
  */
 
 #include "config.h"
@@ -269,7 +269,7 @@ extern void CommandShowBoard( char *sz ) {
 #if USE_GUI
     if( fX )
 #if USE_GTK
-	game_set( BOARD( pwBoard ), an, TRUE, "", "", 0, 0, 0, -1, -1 );
+	game_set( BOARD( pwBoard ), an, TRUE, "", "", 0, 0, 0, -1, -1, FALSE );
 #else
         GameSet( &ewnd, an, TRUE, "", "", 0, 0, 0, -1, -1 );    
 #endif
