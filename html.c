@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.28 2002/06/02 16:41:07 thyssen Exp $
+ * $Id: html.c,v 1.29 2002/06/04 07:11:46 thyssen Exp $
  */
 
 #include "config.h"
@@ -1350,7 +1350,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.28 $";
+  const char szVersion[] = "$Revision: 1.29 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2493,10 +2493,10 @@ extern void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
       rt[ i ] = GetRating ( psc->arErrorCheckerplay[ i ][ 0 ] /
                             psc->anUnforcedMoves[ i ] );
     
-    printStatTableHeader ( pf,
-                           _("Checker play rating"), "%s",
-                           gettext ( aszRating[ rt [ 0 ] ] ), 
-                           gettext ( aszRating[ rt [ 1 ] ] ) );
+    printStatTableRow ( pf, 
+                        _( "Chequer play rating"), "%s",
+                        gettext ( aszLuckRating[ rt[ 0 ] ] ), 
+                        gettext ( aszLuckRating[ rt[ 1 ] ] ) );
 
   }
 
@@ -2680,7 +2680,7 @@ extern void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
                            psc->anCubeWrongDoubleTG[ 1 ],
                            psc->arErrorWrongDoubleTG[ 1 ][ 0 ],
                            psc->arErrorWrongDoubleTG[ 1 ][ 1 ] );
-      printStatTableRow3 ( pf, _ ( "Wrong tales"),
+      printStatTableRow3 ( pf, _ ( "Wrong takes"),
                            "%d", "%+6.3f", "%+7.3f",
                            psc->anCubeWrongTake[ 0 ],
                            psc->arErrorWrongTake[ 0 ][ 0 ],

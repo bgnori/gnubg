@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.157 2002/06/02 19:29:28 thyssen Exp $
+ * $Id: gtkgame.c,v 1.158 2002/06/04 07:11:46 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5590,7 +5590,7 @@ GTKStatPageCube ( const rolloutstat *prs, const int cGames ) {
   }
 
   if ( anTotal[ 2 ] + anTotal[ 3 ] ) {
-    sprintf ( sz, _("Cube efficiency for p%s: %7.4f"),
+    sprintf ( sz, _("Cube efficiency for %s: %7.4f"),
               ap[ 0 ].szName,
 	      (float) anTotal[ 2 ] / ( anTotal[ 3 ] + anTotal[ 2 ] ) );
     pwLabel = gtk_label_new ( sz );
