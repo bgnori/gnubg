@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: timer.c,v 1.1 2003/09/18 10:49:30 Superfly_Jon Exp $
+* $Id: timer.c,v 1.2 2004/01/19 10:50:30 uid68519 Exp $
 */
 
 #include <time.h>
@@ -60,7 +60,10 @@ double get_time()
 
 double get_time()
 {	/* Return elapsed time in milliseconds */
-	return 1000 * clock() / CLOCKS_PER_SEC;
+	struct timeval ts;
+	gettimeofday(&ts, 0);
+
+	return tv->tv_sec * 1000 + tv_usec / 1000;
 }
 
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: timecontrol.c,v 1.14 2003/11/17 12:07:47 Superfly_Jon Exp $
+ * $Id: timecontrol.c,v 1.15 2004/01/19 10:50:30 uid68519 Exp $
  */
 
 #include "config.h"
@@ -752,7 +752,8 @@ int gettimeofday (struct timeval *tv, void * arg)
 	double ms = get_time();
 
 	tv->tv_sec = (long) ms / 1000;
-	tv->tv_usec = (long) ms - (tv->tv_sec * 1000);
+	/* micro seconds */
+	tv->tv_usec = (long) ((ms - (tv->tv_sec * 1000)) / 1000);
 
 	return 0;
 }
