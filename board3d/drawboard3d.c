@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.13 2003/10/17 15:33:03 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.14 2003/10/18 12:44:50 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -837,6 +837,7 @@ void drawDice2(BoardData* bd, int num)
 		drawDots(bd, -LIFT_OFF, &dt, 0, 0);
 
 		glCullFace(GL_BACK);
+		glEnable(GL_BLEND);
 	}
 	setMaterial(&bd->diceMat[diceCol]);
 	glCallList(bd->diceList);

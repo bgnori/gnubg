@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.15 2003/10/17 15:33:03 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.16 2003/10/18 12:44:50 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -1625,7 +1625,7 @@ void ShowFlag3d(BoardData *bd)
 {
 	bd->flagWaved = 0;
 
-	if (rdAppearance.animateFlag && bd->resigned &&
+	if (rdAppearance.animateFlag && bd->resigned && bd->playing &&
 		(ap[bd->turn == 1 ? 0 : 1].pt == PLAYER_HUMAN))		/* not for computer turn */
 	{
 		animStartTime = get_time();
