@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.61 2002/02/06 15:02:03 gtw Exp $
+ * $Id: eval.h,v 1.62 2002/02/07 16:00:30 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -160,6 +160,7 @@ typedef struct _cubeinfo {
 
 extern volatile int fInterrupt, fAction;
 extern void ( *fnAction )( void );
+extern void ( *fnTick )( void );
 extern cubeinfo ciCubeless;
 extern char *aszEvalType[ EVAL_ROLLOUT + 1 ];
 extern int fEgyptian;

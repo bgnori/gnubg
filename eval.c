@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.127 2002/02/06 15:02:03 gtw Exp $
+ * $Id: eval.c,v 1.128 2002/02/07 16:00:30 gtw Exp $
  */
 
 #include "config.h"
@@ -271,7 +271,8 @@ static int fBearoffHeuristic;
 static cache cEval;
 static int cCache;
 volatile int fInterrupt = FALSE, fAction = FALSE;
-void ( *fnAction )( void ) = NULL;
+void ( *fnAction )( void ) = NULL, ( *fnTick )( void ) = NULL;
+static int iTick;
 static float rCubeX = 2.0/3.0;
 int fEgyptian = FALSE;
 
@@ -2713,7 +2714,16 @@ EvaluatePositionCache( int anBoard[ 2 ][ 25 ], float arOutput[],
                        positionclass pc ) {
     evalcache ec, *pec;
     long l;
-    
+
+    /* This should be a part of the code that is called in all
+       time-consuming operations at a relatively steady rate, so is a
+       good choice for a callback function. */
+    if( ++iTick >= 0x100 ) {
+	iTick = 0;
+	if( fnTick )
+	    fnTick();
+    }
+
     if( pecx->rNoise != 0.0f && !pecx->fDeterministic )
 	/* non-deterministic noisy evaluations; cannot cache */
 	return EvaluatePositionFull( anBoard, arOutput, pci, pecx, nPlies,
