@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.130 2003/08/17 17:52:02 jsegrave Exp $
+ * $Id: rollout.c,v 1.131 2003/08/27 17:44:44 jsegrave Exp $
  */
 
 #include "config.h"
@@ -894,7 +894,7 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
   memcpy (&rcRolloutSave, &rcRollout, sizeof (rcRollout));
   if (alternatives < 2) {
     rcRollout.fStopMoveOnJsd = 0;
-    rcRollout.fStopOnSTD = 0;
+    rcRollout.fStopOnJsd = 0;
   }
 
   /* make sure cube decisions are rolled out cubeful */
