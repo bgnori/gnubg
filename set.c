@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.49 2001/03/13 17:22:59 gtw Exp $
+ * $Id: set.c,v 1.50 2001/03/16 15:18:04 gtw Exp $
  */
 
 #include "config.h"
@@ -1010,7 +1010,7 @@ extern void CommandSetTrainingAlpha( char *sz ) {
 
 extern void CommandSetTrainingAnneal( char *sz ) {
 
-    float r = ParseReal( &sz );
+    double r = ParseReal( &sz );
 
     if( r == -HUGE_VAL ) {
 	outputl( "You must specify a valid annealing rate." );
@@ -1019,6 +1019,23 @@ extern void CommandSetTrainingAnneal( char *sz ) {
 
     rAnneal = r;
     outputf( "Annealing rate set to %f.\n", r );
+}
+
+extern void CommandSetTrainingThreshold( char *sz ) {
+
+    float r = ParseReal( &sz );
+
+    if( r < 0.0f ) {
+	outputl( "You must specify a valid error threshold." );
+	return;
+    }
+
+    rThreshold = r;
+
+    if( rThreshold )
+	outputf( "Error threshold set to %f.\n", r );
+    else
+	outputl( "Error threshold disabled." );
 }
 
 extern void CommandSetTurn( char *sz ) {
