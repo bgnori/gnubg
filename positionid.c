@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.21 2002/10/10 20:36:03 thyssen Exp $
+ * $Id: positionid.c,v 1.22 2002/10/21 16:32:53 thyssen Exp $
  */
 
 #include <assert.h>
@@ -333,8 +333,8 @@ static int PositionF( int fBits, int n, int r ) {
         PositionF( fBits, n - 1, r - 1 ) : PositionF( fBits, n - 1, r );
 }
 
-extern unsigned int PositionBearoff( int anBoard[],
-                                       const int n ) {
+extern unsigned int PositionBearoff( const int anBoard[],
+                                     const int n ) {
 
     int i, fBits, j;
 

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.178 2002/10/05 00:30:12 thyssen Exp $
+ * $Id: eval.c,v 1.179 2002/10/21 16:31:35 thyssen Exp $
  */
 
 #include "config.h"
@@ -262,7 +262,7 @@ static int anEscapes[ 0x1000 ];
 static int anEscapes1[ 0x1000 ];
 
 static neuralnet nnContact, nnRace, nnCrashed;
-static unsigned char *pBearoff1 = NULL, *pBearoff2 = NULL;
+unsigned char *pBearoff1 = NULL, *pBearoff2 = NULL;
 static int fBearoffOS = -1;
 static int nBearoffOSPoints = -1;
 static int fBearoffHeuristic;
