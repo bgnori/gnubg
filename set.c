@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.122 2002/09/14 15:33:40 gtw Exp $
+ * $Id: set.c,v 1.123 2002/09/18 19:18:52 gtw Exp $
  */
 
 #include "config.h"
@@ -463,7 +463,7 @@ extern void CommandSetCache( char *sz ) {
     }
 
     if( EvalCacheResize( n ) )
-	perror( "EvalCacheResize" );
+	outputerr( "EvalCacheResize" );
     else {
       if ( n == 1 )
 	outputf( _("The position cache has been sized to %d entry.\n"), n );
@@ -954,7 +954,7 @@ extern void CommandSetPlayerExternal( char *sz ) {
     pch = strcpy( malloc( strlen( sz ) + 1 ), sz );
     
     if( ( h = ExternalSocket( &psa, &cb, sz ) ) < 0 ) {
-	perror( pch );
+	outputerr( pch );
 	free( pch );
 	return;
     }
@@ -974,7 +974,7 @@ extern void CommandSetPlayerExternal( char *sz ) {
 	    continue;
 	}
 	
-	perror( pch );
+	outputerr( pch );
 	close( h );
 	free( psa );
 	free( pch );

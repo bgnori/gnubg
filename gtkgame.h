@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.50 2002/09/17 21:06:14 gtw Exp $
+ * $Id: gtkgame.h,v 1.51 2002/09/18 19:18:51 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -69,6 +69,7 @@ extern GtkWidget *DialogArea( GtkWidget *pw, dialogarea da );
     
 extern int GTKGetInputYN( char *szPrompt );
 extern void GTKOutput( char *sz );
+extern void GTKOutputErr( char *sz );
 extern void GTKOutputX( void );
 extern void GTKOutputNew( void );
 extern void GTKProgressStart( char *sz );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.14 2002/06/02 06:14:35 thyssen Exp $
+ * $Id: external.c,v 1.15 2002/09/18 19:18:51 gtw Exp $
  */
 
 #include "config.h"
@@ -152,7 +152,7 @@ extern int ExternalRead( int h, char *pch, int cch ) {
 	    if( errno == EINTR )
 		continue;
 
-	    perror( _("external connection") );
+	    outputerr( _("external connection") );
 	    return -1;
 	}
 	
@@ -198,7 +198,7 @@ extern int ExternalWrite( int h, char *pch, int cch ) {
 	    if( errno == EINTR )
 		continue;
 
-	    perror( _("external connection") );
+	    outputerr( _("external connection") );
 	    return -1;
 	}
 	
@@ -241,12 +241,12 @@ extern void CommandExternal( char *sz ) {
     }
 
     if( ( h = ExternalSocket( &psa, &cb, sz ) ) < 0 ) {
-	perror( sz );
+	outputerr( sz );
 	return;
     }
 
     if( bind( h, psa, cb ) < 0 ) {
-	perror( sz );
+	outputerr( sz );
 	close( h );
 	free( psa );
 	return;
@@ -255,7 +255,7 @@ extern void CommandExternal( char *sz ) {
     free( psa );
     
     if( listen( h, 1 ) < 0 ) {
-	perror( _("listen") );
+	outputerr( _("listen") );
 	close( h );
 	ExternalUnbind( sz );
 	return;
@@ -275,7 +275,7 @@ extern void CommandExternal( char *sz ) {
 	    continue;
 	}
 	
-	perror( _("accept") );
+	outputerr( _("accept") );
 	close( h );
 	ExternalUnbind( sz );
 	return;

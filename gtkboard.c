@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.85 2002/09/18 18:44:26 gtw Exp $
+ * $Id: gtkboard.c,v 1.86 2002/09/18 19:18:51 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1746,8 +1746,8 @@ static void board_set_cube_font( GtkWidget *widget, BoardData *bd ) {
 		puch0 += ( 6 * bd->board_size - 1 ) * cx +
 		    ( 6 * bd->board_size - 1 ) * 3;
 	    else
-		/* sideways; start from bottom left */
-		puch0 += ( 6 * bd->board_size - 1 ) * cx;
+		/* sideways; start from top right */
+		puch0 += ( 6 * bd->board_size - 1 ) * 3;
 	    
 	    for( y = 0; y < 6 * bd->board_size; y++ ) {
 		for( x = 0; x < 6 * bd->board_size; x++ ) {
@@ -1759,15 +1759,15 @@ static void board_set_cube_font( GtkWidget *widget, BoardData *bd ) {
 			/* upside down; move left */
 			puch0 -= 3;
 		    else
-			/* sideways; move up */
-			puch0 -= cx;
+			/* sideways; move down */
+			puch0 += cx;
 		}
 		if( orient )
 		    /* upside down; move right and up */
 		    puch0 += 6 * bd->board_size * 3 - cx;
 		else
-		    /* sideways; move down and right */
-		    puch0 += 6 * bd->board_size * cx + 3;
+		    /* sideways; move up and left */
+		    puch0 -= 6 * bd->board_size * cx + 3;
 	    }
 		    
 	    g_object_unref( ppb );

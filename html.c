@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.57 2002/08/13 20:22:45 thyssen Exp $
+ * $Id: html.c,v 1.58 2002/09/18 19:18:51 gtw Exp $
  */
 
 #include "config.h"
@@ -1554,7 +1554,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.57 $";
+  const char szVersion[] = "$Revision: 1.58 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -3229,7 +3229,7 @@ extern void CommandExportGameHtml( char *sz ) {
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
     else if( !( pf = fopen( sz, "w" ) ) ) {
-	perror( sz );
+	outputerr( sz );
 	return;
     }
 
@@ -3360,7 +3360,7 @@ extern void CommandExportMatchHtml( char *sz ) {
       if( !strcmp( szCurrent, "-" ) )
 	pf = stdout;
       else if( !( pf = fopen( szCurrent, "w" ) ) ) {
-	perror( szCurrent );
+	outputerr( szCurrent );
 		for ( j = 0; j < 4; j++ )
 		  free (filenames [ j ] );
 
@@ -3412,7 +3412,7 @@ extern void CommandExportPositionHtml( char *sz ) {
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
     else if( !( pf = fopen( sz, "w" ) ) ) {
-	perror( sz );
+	outputerr( sz );
 	return;
     }
 

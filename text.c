@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.18 2002/09/08 19:58:35 thyssen Exp $
+ * $Id: text.c,v 1.19 2002/09/18 19:18:52 gtw Exp $
  */
 
 #include "config.h"
@@ -630,7 +630,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.18 $";
+  const char szVersion[] = "$Revision: 1.19 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1476,7 +1476,7 @@ extern void CommandExportGameText( char *sz ) {
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
     else if( !( pf = fopen( sz, "w" ) ) ) {
-	perror( sz );
+	outputerr( sz );
 	return;
     }
 
@@ -1532,7 +1532,7 @@ extern void CommandExportMatchText( char *sz ) {
       if( !strcmp( szCurrent, "-" ) )
 	pf = stdout;
       else if( !( pf = fopen( szCurrent, "w" ) ) ) {
-	perror( szCurrent );
+	outputerr( szCurrent );
 	return;
       }
 
@@ -1573,7 +1573,7 @@ extern void CommandExportPositionText( char *sz ) {
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
     else if( !( pf = fopen( sz, "w" ) ) ) {
-	perror( sz );
+	outputerr( sz );
 	return;
     }
 

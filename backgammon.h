@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.157 2002/09/17 21:06:14 gtw Exp $
+ * $Id: backgammon.h,v 1.158 2002/09/18 19:18:51 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -389,6 +389,8 @@ extern void outputf( char *sz, ... ) __attribute__((format(printf,1,2)));
 /* Write a string to stdout/status bar/popup window, vprintf style */
 extern void outputv( char *sz, va_list val )
     __attribute__((format(printf,1,0)));
+/* Write an error message, perror() style */
+extern void outputerr( char *sz );
 /* Signifies that all output for the current command is complete */
 extern void outputx( void );
 /* Temporarily disable outputx() calls */

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.2 2002/08/12 16:18:58 thyssen Exp $
+ * $Id: export.c,v 1.3 2002/09/18 19:18:51 gtw Exp $
  */
 
 #include "config.h"
@@ -283,7 +283,7 @@ CommandExportGameEquityEvolution ( char *sz ) {
   if( !strcmp( sz, "-" ) )
     pf = stdout;
   else if( !( pf = fopen( sz, "w" ) ) ) {
-    perror( sz );
+    outputerr( sz );
     return;
   }
 

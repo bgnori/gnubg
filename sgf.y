@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.y,v 1.4 2002/06/06 20:47:42 gtw Exp $
+ * $Id: sgf.y,v 1.5 2002/09/18 19:18:52 gtw Exp $
  */
 
 %{
@@ -248,7 +248,7 @@ int main( int argc, char *argv[] ) {
 
     if( argc > 1 )
 	if( !( pf = fopen( argv[ 1 ], "r" ) ) ) {
-	    perror( argv[ 1 ] );
+	    outputerr( argv[ 1 ] );
 	    return 1;
 	}
     

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.39 2002/08/01 19:23:30 thyssen Exp $
+ * $Id: database.c,v 1.40 2002/09/18 19:18:51 gtw Exp $
  */
 
 #include "config.h"
@@ -140,7 +140,7 @@ extern void CommandDatabaseExport( char *sz ) {
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
     else if( !( pf = fopen( sz, "w" ) ) ) {
-	perror( sz );
+	outputerr( sz );
 	gdbm_close( pdb );
 	return;
     }
@@ -221,7 +221,7 @@ extern void CommandDatabaseImport( char *sz ) {
     }
 
     if( !( pf = fopen( sz, "r" ) ) ) {
-	perror( sz );
+	outputerr( sz );
 	gdbm_close( pdb );
 	return;
     }
@@ -274,7 +274,7 @@ extern void CommandDatabaseImport( char *sz ) {
     }
 
     if( ferror( pf ) )
-	perror( sz );
+	outputerr( sz );
     else if( !feof( pf ) )
 	fprintf( stderr, _("%s: malformed position data\n"), sz );
     

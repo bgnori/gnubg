@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.23 2002/08/13 18:59:50 gtw Exp $
+ * $Id: postscript.c,v 1.24 2002/09/18 19:18:52 gtw Exp $
  */
 
 #include "config.h"
@@ -1014,7 +1014,7 @@ static void ExportGameGeneral( int f, char *sz ) {
 	
 	pf = stdout;
     } else if( !( pf = fopen( sz, f ? "wb" : "w" ) ) ) {
-	perror( sz );
+	outputerr( sz );
 	return;
     }
 
@@ -1074,7 +1074,7 @@ static void ExportMatchGeneral( int f, char *sz ) {
 	
 	pf = stdout;
     } else if( !( pf = fopen( sz, f ? "wb" : "w" ) ) ) {
-	perror( sz );
+	outputerr( sz );
 	return;
     }
 
@@ -1130,7 +1130,7 @@ extern void CommandExportPositionEPS( char *sz ) {
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
     else if( !( pf = fopen( sz, "w" ) ) ) {
-	perror( sz );
+	outputerr( sz );
 	return;
     }
 
