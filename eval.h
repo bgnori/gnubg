@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.30 2000/11/14 15:26:38 gtw Exp $
+ * $Id: eval.h,v 1.31 2000/11/15 18:02:17 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -201,7 +201,8 @@ PipCount( int anBoard[ 2 ][ 25 ], int anPips[ 2 ] );
 
 extern int 
 DumpPosition( int anBoard[ 2 ][ 25 ], char *szOutput,
-              evalcontext *pec, cubeinfo *pci, int fOutputMWC );
+              evalcontext *pec, cubeinfo *pci, int fOutputMWC,
+	      int fOutputInvert );
 
 extern void 
 SwapSides( int anBoard[ 2 ][ 25 ] );
@@ -269,7 +270,7 @@ GetDPEq ( int *pfCube, float *prDPEq, cubeinfo *pci );
 
 extern int 
 GetCubeActionSz ( float arDouble[ 4 ], char *szOutput, cubeinfo *pci,
-		  int fOutputMWC );
+		  int fOutputMWC, int fOutputInvert );
 
 extern float
 mwc2eq ( float rMwc, cubeinfo *ci );

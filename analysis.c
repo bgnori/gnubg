@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.7 2000/11/14 15:26:37 gtw Exp $
+ * $Id: analysis.c,v 1.8 2000/11/15 18:02:17 gtw Exp $
  */
 
 #include "config.h"
@@ -159,7 +159,7 @@ AnalyzeGame ( list *plGame, int iGame ) {
             for ( j = 0; j < 4; j++ ) 
               pmr->n.arDouble[ j ] = arDouble[ j ];
 
-            GetCubeActionSz ( arDouble, sz, &ci, fOutputMWC );
+            GetCubeActionSz ( arDouble, sz, &ci, fOutputMWC, FALSE );
 
             puts ( sz );
 
@@ -238,7 +238,7 @@ AnalyzeGame ( list *plGame, int iGame ) {
           for ( j = 0; j < 4; j++ ) 
             pmr->d.arDouble[ j ] = arDouble[ j ];
 
-          GetCubeActionSz ( arDouble, sz, &ci, fOutputMWC );
+          GetCubeActionSz ( arDouble, sz, &ci, fOutputMWC, FALSE );
 
           puts ( sz );
 

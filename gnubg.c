@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.81 2000/11/14 15:26:38 gtw Exp $
+ * $Id: gnubg.c,v 1.82 2000/11/15 18:02:17 gtw Exp $
  */
 
 #include "config.h"
@@ -1179,22 +1179,15 @@ extern void CommandEval( char *sz ) {
     if( ( n = ParsePosition( an, &sz ) ) < 0 )
 	return;
 
-    if( n ) {
+    if( n && fMove )
 	/* =n notation used; the opponent is on roll in the position given. */
-	if( fMove )
-	    SwapSides( an );
-	
-	fMove = !fMove;
-    }
+	SwapSides( an );
 
-    SetCubeInfo( &ci, nCube, fCubeOwner, fMove, nMatchTo, anScore,
+    SetCubeInfo( &ci, nCube, fCubeOwner, n ? !fMove : fMove, nMatchTo, anScore,
 		 fCrawford, fJacoby, fBeavers );    
     
-    if( !DumpPosition( an, szOutput, &ecEval, &ci, fOutputMWC ) )
+    if( !DumpPosition( an, szOutput, &ecEval, &ci, fOutputMWC, n ) )
 	outputl( szOutput );
-
-    if( n )
-	fMove = !fMove;	
 }
 
 static command *FindHelpCommand( command *pcBase, char *sz,
@@ -1299,7 +1292,7 @@ extern void CommandHint( char *sz ) {
                                        ecEval.nPlies ) < 0 )
           return;
 
-        GetCubeActionSz ( arDouble, szTemp, &ci, fOutputMWC );
+        GetCubeActionSz ( arDouble, szTemp, &ci, fOutputMWC, FALSE );
 
 #if USE_GTK
 	/*
