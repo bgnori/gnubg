@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.580 2004/09/13 10:01:41 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.581 2004/09/13 10:27:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4339,7 +4339,7 @@ extern void PromptForExit( void ) {
 	PortableSignalRestore( SIGINT, &shInterruptOld );
     
 #if USE_GTK
-	if (fx)
+	if (fX)
 		board_free_pixmaps(bd);
 #if USE_BOARD3D
 	if (fX)
