@@ -1,4 +1,4 @@
-$Id: TODO,v 1.253 2002/08/30 16:35:14 thyssen Exp $
+$Id: TODO,v 1.254 2002/08/31 18:06:10 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -176,6 +176,7 @@ duplication of effort and to make sure our changes merge easily.
 *** right-blick bearoff tray for bearing off 4 men
     Also, if "allow dragging to illegal points" is disabled right clicking
     on the bearoff tray will hit the chequer in the home board.
+** add sounds (look at sound.c from GAIM for inspiration)
 
 ** Dialogs:
 *** Add buttons to the "help" window to look up the command in the manual,
