@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.118 2002/11/27 17:47:40 jsegrave Exp $
+ * $Id: show.c,v 1.119 2002/12/01 17:28:25 thyssen Exp $
  */
 
 #include "config.h"
@@ -193,6 +193,12 @@ ShowRollout ( rolloutcontext *prc ) {
       outputl( _("Truncation after 1 ply.") );
   else
       outputl( _("No truncation.") );
+
+  outputl ( prc->fTruncBearoff2 ?
+            _("Will truncate cubeful money game rollouts when reaching "
+              "exact bearoff database.") :
+            _("Will not truncate cubeful money game rollouts when reaching "
+              "exact bearoff database.") );
 
   outputl ( prc->fTruncBearoff2 ?
             _("Will truncate *cubeless* rollouts when reaching "

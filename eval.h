@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.93 2002/11/26 16:14:04 gtw Exp $
+ * $Id: eval.h,v 1.94 2002/12/01 17:28:25 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -245,6 +245,11 @@ typedef enum _positionclass {
 
 #define CLASS_PERFECT CLASS_BEAROFF_TS
 
+#define CFMONEY(arEquity,pci) \
+   ( ( (pci)->fCubeOwner == -1 ) ? arEquity[ 2 ] : \
+   ( ( (pci)->fCubeOwner == (pci)->fMove ) ? arEquity[ 1 ] : arEquity[ 3 ] ) )
+
+
 extern char *PathSearch( const char *szFile, const char *szDir );
 			      
 extern int
@@ -266,6 +271,9 @@ EvalSave( char *szWeights );
 extern int 
 EvaluatePosition( int anBoard[ 2 ][ 25 ], float arOutput[],
                   cubeinfo *pci, evalcontext *pec );
+
+extern int
+EvaluatePerfectCubeful ( int anBoard[ 2 ][ 25 ], float arEquity[] );
 
 extern void
 InvertEvaluationR ( float ar[ NUM_ROLLOUT_OUTPUTS],
