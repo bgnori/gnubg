@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.41 2002/05/22 17:44:12 thyssen Exp $
+ * $Id: sgf.c,v 1.42 2002/05/22 17:57:34 thyssen Exp $
  */
 
 #include "config.h"
@@ -902,6 +902,9 @@ extern void CommandLoadGame( char *sz ) {
 	    GTKThaw();
 	    GTKSet(ap);
         }
+
+        setDefaultFileName ( sz, PATH_SGF );
+
 #endif
     }
 }
@@ -951,6 +954,9 @@ extern void CommandLoadMatch( char *sz ) {
 	    GTKSet(ap);
         }
 #endif
+
+        setDefaultFileName ( sz, PATH_SGF );
+
     }
 }
 
