@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.122 2001/04/12 16:43:18 gtw Exp $
+ * $Id: gnubg.c,v 1.123 2001/04/12 21:06:59 gtw Exp $
  */
 
 #include "config.h"
@@ -313,7 +313,7 @@ command acAnalyse[] = {
       NULL },
     { "value", CommandSetCubeValue, "Fix what the cube stake has been set to",
       szVALUE, NULL },
-    { NULL, NULL, NULL, NULL }
+    { NULL, NULL, NULL, NULL, NULL }
 }, acSetOutput[] = {
     { "matchpc", CommandSetOutputMatchPC,
       "Show match equities as percentages (on) or probabilities (off)",
@@ -325,7 +325,7 @@ command acAnalyse[] = {
     { "winpc", CommandSetOutputWinPC,
       "Show winning chances as percentages (on) or probabilities (off)",
       szONOFF, NULL },
-    { NULL, NULL, NULL, NULL }
+    { NULL, NULL, NULL, NULL, NULL }
 }, acSetRNG[] = {
     { "ansi", CommandSetRNGAnsi, "Use the ANSI C rand() (usually linear "
       "congruential) generator", szOPTSEED, NULL },

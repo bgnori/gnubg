@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.28 2001/03/30 21:01:58 gtw Exp $
+ * $Id: gtkboard.c,v 1.29 2001/04/12 21:06:59 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1918,9 +1918,14 @@ static void board_draw_chequers( GtkWidget *widget, BoardData *bd, int fKey ) {
     
 #define BUFX( y, x, i ) buf_x[ ( (y) * size + (x) ) * 4 + (i) ]
 #define BUFO( y, x, i ) buf_o[ ( (y) * size + (x) ) * 4 + (i) ]
-    
-    buf_x = ( fKey ? bd->rgba_x_key : bd->rgba_x ) = malloc( size * size * 4 );
-    buf_o = ( fKey ? bd->rgba_o_key : bd->rgba_o ) = malloc( size * size * 4 );
+
+    if( fKey ) {
+	buf_x = bd->rgba_x_key = malloc( size * size * 4 );
+	buf_o = bd->rgba_o_key = malloc( size * size * 4 );
+    } else {
+	buf_x = bd->rgba_x = malloc( size * size * 4 );
+	buf_o = bd->rgba_o = malloc( size * size * 4 );
+    }
     
     if( bd->translucent ) {
 	if( !fKey ) {

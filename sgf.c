@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.15 2001/04/12 16:43:18 gtw Exp $
+ * $Id: sgf.c,v 1.16 2001/04/12 21:06:59 gtw Exp $
  */
 
 #include "config.h"
@@ -291,6 +291,7 @@ static void RestoreDoubleAnalysis( property *pp, evaltype *pet,
 
     default:
 	/* FIXME */
+	break;
     }
 }
 
@@ -348,6 +349,7 @@ static void RestoreMoveAnalysis( property *pp, int fPlayer,
 	    
 	default:
 	    /* FIXME */
+	    break;
 	}
     }
 }

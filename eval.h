@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.42 2001/04/10 13:51:28 gtw Exp $
+ * $Id: eval.h,v 1.43 2001/04/12 21:06:59 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -149,13 +149,6 @@ typedef enum _positionclass {
 
 #define CLASS_PERFECT CLASS_BEAROFF2
 				      
-typedef struct _redevaldata {
-  float arOutput[ NUM_OUTPUTS ];
-  float rScore;
-  float rWeight;
-  unsigned char auch[ 10 ];
-} RedEvalData;
-
 extern int 
 EvalInitialise( char *szWeights, char *szWeightsBinary,
                 char *szDatabase, char *szDir, int nSize, int fProgress );
