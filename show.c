@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.54 2001/03/21 15:19:44 gtw Exp $
+ * $Id: show.c,v 1.55 2001/04/06 13:32:52 thyssen Exp $
  */
 
 #include "config.h"
@@ -614,11 +614,11 @@ extern void CommandShowMatchEquityTable ( char *sz ) {
      else if match write nMatchTo x nMatchTo table,
      else write full table (may be HUGE!) */
 
-  if ( ( n <= 0 ) || ( n > nMaxScore ) ) {
+  if ( ( n <= 0 ) || ( n > MAXSCORE ) ) {
     if ( nMatchTo )
       n = nMatchTo;
     else
-      n = nMaxScore;
+      n = MAXSCORE;
   }
 
 #if USE_GTK

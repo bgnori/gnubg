@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.67 2001/04/02 19:25:18 gtw Exp $
+ * $Id: play.c,v 1.68 2001/04/06 13:32:52 thyssen Exp $
  */
 
 #include "config.h"
@@ -1667,12 +1667,12 @@ extern void CommandNewMatch( char *sz ) {
 
     /* Check that match equity table is large enough */
 
-    if ( n > nMaxScore ) {
-
-      outputf ( "The current match equity table does not support "
-                "matches of length %i\n"
-                "(see `help set matchequitytable')\n", n );
-      return;
+    if ( n > MAXSCORE ) {
+       outputf ( "GNU Backgammon is compiled with support only for "
+                 "matches of length %i\n"
+                 "and below\n",
+                 MAXSCORE );
+       return;
     }
 
     if( gs == GAME_PLAYING && fConfirm ) {
