@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.194 2003/07/28 18:21:49 ace Exp $
+ * $Id: set.c,v 1.195 2003/07/31 11:37:24 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1652,7 +1652,7 @@ extern void CommandSetRolloutMaxError ( char *sz ) {
 
     prcSet->rStdLimit = r;
 
-    outputf ( _("Rollouts can stop when the ratio |STD/value| is less than"
+    outputf ( _("Rollouts can stop when the ratio |STD/value| is less than "
 		"%5.4f for every value (win/gammon/backgammon/...equity\n"),
 	      r);
 }

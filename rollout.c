@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.124 2003/07/30 09:36:05 jsegrave Exp $
+ * $Id: rollout.c,v 1.125 2003/07/31 11:37:24 jsegrave Exp $
  */
 
 #include "config.h"
@@ -892,8 +892,10 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
     fOutputMWC = 0;
 
   memcpy (&rcRolloutSave, &rcRollout, sizeof (rcRollout));
-  if (alternatives < 2)
+  if (alternatives < 2) {
     rcRollout.fStopMoveOnJsd = 0;
+    rcRollout.fStopOnSTD = 0;
+  }
 
   /* make sure cube decisions are rolled out cubeful */
   if (fCubeRollout) {
@@ -1154,8 +1156,7 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
 	if (denominator < 1e-8)
 	  denominator = 1e-8;
 
-        ajiJSD[ alt ].rJSD = ajiJSD[ alt ].rEquity /
-          sqrt (s + ajiJSD[ alt ].rJSD * ajiJSD[ alt ].rJSD);
+        ajiJSD[ alt ].rJSD = ajiJSD[ alt ].rEquity / denominator;
         
         if ((rcRollout.fStopMoveOnJsd || rcRollout.fStopOnJsd) &&
             (i >= rcRollout.nMinimumJsdGames)) {
