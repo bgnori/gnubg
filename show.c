@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.114 2002/11/11 18:26:47 joseph Exp $
+ * $Id: show.c,v 1.115 2002/11/18 22:50:51 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1696,6 +1696,16 @@ CommandShowGeometry ( char *sz ) {
             awg[ WINDOW_MESSAGE ].nPosY );
 
 }
+
+
+extern void CommandShowHighlightColour ( char *sz ) {
+
+  outputf ( _("Moves will be highlighted in %s %s.\n"),
+              HighlightIntensity == 2 ? "dark" :
+              HighlightIntensity == 1 ? "medium" : "",
+			  HighlightColour->colourname);
+}
+
 
 
 #ifdef USE_SOUND
