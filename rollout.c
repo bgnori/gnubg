@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.131 2003/08/27 17:44:44 jsegrave Exp $
+ * $Id: rollout.c,v 1.132 2003/09/22 17:42:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -1026,8 +1026,6 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
 
       /* save the board we're working on */
       memcpy (anBoardOrig, apBoard[ alt ], sizeof (anBoardOrig));
-      if ( fInvert )
-        SwapSides( anBoardOrig );
 
       /* get the dice generator set up... */
       if( prc->fRotate ) 
