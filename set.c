@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.222 2004/03/31 09:51:56 Superfly_Jon Exp $
+ * $Id: set.c,v 1.223 2004/04/08 14:22:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -1195,6 +1195,15 @@ extern void CommandSetGUIShowPips( char *sz ) {
 		   _("The pip counts will be shown below the board."),
 		   _("The pip counts will not be shown.") ) )
 	UpdateSetting( &fGUIShowPips );
+}
+
+extern void CommandSetGUIShowEPCs( char *sz ) {
+
+    if( SetToggle( "gui showepcs", &fGUIShowEPCs, sz,
+		   _("The effective pip counts (EPCs) will be shown "
+                     "below the board."),
+		   _("The effective pip counts (EPCs) will not be shown.") ) )
+	UpdateSetting( &fGUIShowEPCs );
 }
 
 extern void CommandSetGUIWindowPositions( char *sz ) {

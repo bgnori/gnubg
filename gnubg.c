@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.546 2004/04/05 06:49:15 thyssen Exp $
+ * $Id: gnubg.c,v 1.547 2004/04/08 14:24:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -1118,6 +1118,9 @@ command cER = {
       N_("Show the higher die on the left"), szONOFF, NULL },
     { "illegal", CommandSetGUIIllegal,
       N_("Permit dragging chequers to illegal points"), szONOFF, NULL },
+    { "showepcs", CommandSetGUIShowEPCs,
+      N_("Show the effective pip counts (EPCs) below the board"), 
+      szONOFF, NULL },
     { "showids", CommandSetGUIShowIDs,
       N_("Show the position and match IDs above the board"), szONOFF, NULL },
     { "showpips", CommandSetGUIShowPips,
@@ -9094,6 +9097,7 @@ CommandClearHint( char *sz ) {
  *               one-sided rollout.  
  * Parameters :  
  *   Input       anBoard (the board)
+ *               fOnlyRace: only calculate EPCs for race positions
  *   Output      arEPC (the calculate EPCs)
  *               pfSource (source of EPC; 0 = database, 1 = OSR)
  *
@@ -9103,7 +9107,7 @@ CommandClearHint( char *sz ) {
 
 extern int
 EPC( int anBoard[ 2 ][ 25 ], float *arEPC, float *arMu, float *arSigma, 
-     int *pfSource ) {
+     int *pfSource, const int fOnlyRace ) {
 
   const float x = ( 2 * 3 + 3 * 4 + 4 * 5 + 4 * 6 + 6 * 7 +
                     5* 8  + 4 * 9 + 2 * 10 + 2 * 11 + 1 * 12 + 
@@ -9172,6 +9176,10 @@ EPC( int anBoard[ 2 ][ 25 ], float *arEPC, float *arMu, float *arSigma,
     float ar[ 5 ];
     int i;
 
+    if ( fOnlyRace && 
+         ClassifyPosition( anBoard, VARIATION_STANDARD ) > CLASS_RACE )
+      return -1;
+
     raceProbs ( anBoard, nTrials, ar, arMux );
 
     for ( i = 0; i < 2; ++i ) {
@@ -9228,7 +9236,7 @@ ShowEPC( int anBoard[ 2 ][ 25 ] ) {
   float arMu[ 2 ];
   float arSigma[ 2 ];
 
-  if ( EPC( anBoard, arEPC, arMu, arSigma, &f ) ) {
+  if ( EPC( anBoard, arEPC, arMu, arSigma, &f, FALSE ) ) {
     sz = g_strdup( _("Sorry, EPCs cannot be calculated for this position") );
     return sz;
   }

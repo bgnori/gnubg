@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.281 2004/04/04 08:48:23 thyssen Exp $
+ * $Id: backgammon.h,v 1.282 2004/04/08 14:21:15 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1048,6 +1048,7 @@ extern void CommandAccept( char * ),
     CommandSetGUIWindowPositions( char * ),
     CommandSetGUIShowIDs( char * ),
     CommandSetGUIShowPips( char * ),
+    CommandSetGUIShowEPCs( char * ),
     CommandSetGUIDragTargetHelp( char * ),
     CommandSetGUIUseStatsPanel( char * ),
     CommandSetHighlight ( char * ),
@@ -1367,7 +1368,7 @@ ShowBearoff( char* sz, matchstate* pms, bearoffcontext* pbc );
 
 extern int
 EPC( int anBoard[ 2 ][ 25 ], float *arEPC, float *arMu, float *arSigma, 
-     int *pfSource );
+     int *pfSource, const int fOnlyRace );
 
 extern char *
 ShowEPC( int anBoard[ 2 ][ 25 ] );

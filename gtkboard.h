@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.61 2004/04/02 09:40:40 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.62 2004/04/08 14:24:05 thyssen Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -53,7 +53,7 @@ typedef enum _animation {
 extern animation animGUI;
 extern int nGUIAnimSpeed, fGUIBeep, fGUIHighDieFirst,
     fGUIIllegal, fGUIShowPips, fGUISetWindowPos,
-    fGUIDragTargetHelp, fGUIUseStatsPanel;
+    fGUIDragTargetHelp, fGUIUseStatsPanel, fGUIShowEPCs;
 
 typedef struct _Board {
     GtkVBox vbox;
@@ -150,6 +150,8 @@ typedef struct _BoardData {
     GtkWidget *take, *drop, *redouble;
     GtkWidget *vbox_ids;
     GtkWidget *pipcount0, *pipcount1;
+    GtkWidget *epclabel0, *epclabel1;
+    GtkWidget *epc0, *epc1;
 #if USE_TIMECONTROL
     GtkWidget *clock0, *clock1;
 #endif
