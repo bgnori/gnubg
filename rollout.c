@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.66 2002/04/21 16:26:32 thyssen Exp $
+ * $Id: rollout.c,v 1.67 2002/04/26 17:20:45 oysteijo Exp $
  */
 
 #include "config.h"
@@ -143,7 +143,7 @@ FindBestBearoff( int anBoard[ 2 ][ 25 ], int nDice0, int nDice1,
 
   SwapSides( anBoardTemp );
     
-  EvalBearoff1( anBoardTemp, ar );
+  EvalBearoff1( anBoardTemp, ar, 0 );
     
   return 0;
 }
