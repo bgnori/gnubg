@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.75 2000/10/31 15:29:51 gtw Exp $
+ * $Id: gnubg.c,v 1.76 2000/11/01 15:08:29 gtw Exp $
  */
 
 #include "config.h"
@@ -2560,7 +2560,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 
     LoadRCFiles();
     
-    if( optind < argc )
+    if( optind < argc && *argv[ optind ] )
        CommandLoadMatch( argv[ optind ] );
     
 #if USE_GTK
