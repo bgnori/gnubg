@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.108 2004/05/24 08:03:53 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.109 2004/06/08 08:20:13 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1955,7 +1955,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.108 2004/05/24 08:03:53 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.109 2004/06/08 08:20:13 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2481,7 +2481,10 @@ DesignPage ( GList **pplBoardDesigns, BoardData *bd ) {
 
   pwDesignList = gtk_clist_new( 1 );
   gtk_clist_set_column_auto_resize( GTK_CLIST( pwDesignList ), 0, TRUE );
-
+/* Should be set to browse mode really, but gtk gets confused when
+	the "lose current settings" warning is shown (dialog freezes)
+  gtk_clist_set_selection_mode( GTK_CLIST( pwDesignList ), GTK_SELECTION_BROWSE );
+*/
   g_list_foreach ( *pplBoardDesigns, AddDesignRow, pwDesignList );
   gtk_container_add ( GTK_CONTAINER ( pwScrolled ), pwDesignList );
 
