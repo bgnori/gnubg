@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.84 2004/06/16 12:02:59 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.85 2004/07/03 13:23:12 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -192,6 +192,9 @@ GTKReadNumber( char *szTitle, char *szPrompt, int nDefault,
 
 extern void GTKFileCommand( char *szPrompt, char *szDefault, char *szCommand,
                             char *szPath, filedialogtype fdt );
+extern char 
+*SelectFile( char *szTitle, char *szDefault, char *szPath, 
+             filedialogtype fdt );
 
 extern void Undo();
 

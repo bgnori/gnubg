@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.500 2004/06/15 15:02:03 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.501 2004/07/03 13:23:12 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4333,7 +4333,7 @@ static void SetDefaultPath( GtkWidget *pw, char *sz ) {
     g_free( pch );
 }
 
-static char *SelectFile( char *szTitle, char *szDefault, char *szPath,
+extern char *SelectFile( char *szTitle, char *szDefault, char *szPath,
 		filedialogtype fdt ) {
 
     GtkWidget *pw = gtk_file_selection_new( szTitle ),
