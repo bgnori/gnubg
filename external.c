@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.6 2001/03/27 19:32:07 gtw Exp $
+ * $Id: external.c,v 1.7 2001/04/06 14:35:15 gtw Exp $
  */
 
 #include "config.h"
@@ -59,7 +59,7 @@ extern int ExternalRead( int h, char *pch, int cch ) {
 	if( fInterrupt )
 	    return -1;
 
-	PortableSignal( SIGPIPE, SIG_IGN, &sh );
+	PortableSignal( SIGPIPE, SIG_IGN, &sh, FALSE );
 	n = read( h, p, cch );
 	PortableSignalRestore( SIGPIPE, &sh );
 	
@@ -104,7 +104,7 @@ extern int ExternalWrite( int h, char *pch, int cch ) {
 	if( fInterrupt )
 	    return -1;
 
-	PortableSignal( SIGPIPE, SIG_IGN, &sh );
+	PortableSignal( SIGPIPE, SIG_IGN, &sh, FALSE );
 	n = write( h, p, cch );
 	PortableSignalRestore( SIGPIPE, &sh );
 	
