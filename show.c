@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.130 2003/01/11 10:34:05 thyssen Exp $
+ * $Id: show.c,v 1.131 2003/01/13 17:18:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -504,9 +504,9 @@ void CommandShowFullBoard( char *sz ) {
 #if USE_GUI
     if( fX )
 #if USE_GTK
-	game_set( BOARD( pwBoard ), an, TRUE, 
-                  ap[ 0 ].szName, ap[ 1 ].szName , ms.nMatchTo, 
-                  ms.anScore[ 0 ], ms.anScore[ 1 ], 
+	game_set( BOARD( pwBoard ), an, ms.fTurn, 
+                  ap[ 1 ].szName, ap[ 0 ].szName , ms.nMatchTo, 
+                  ms.anScore[ 1 ], ms.anScore[ 0 ], 
                   ms.anDice[ 0 ], ms.anDice[ 1 ], FALSE );
 #else
         GameSet( &ewnd, an, TRUE, "", "", 0, 0, 0, -1, -1 );    
