@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.86 2002/10/21 16:31:35 thyssen Exp $
+ * $Id: eval.h,v 1.87 2002/10/26 12:48:59 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -104,7 +104,7 @@ typedef struct _rolloutcontext {
   unsigned int fRotate : 1;  /* rotate dice of first two rolls */
     
   unsigned short nTruncate; /* truncation */
-  unsigned short nTrials; /* number of rollouts */
+  unsigned int nTrials; /* number of rollouts */
 
   rng rngRollout;
   int nSeed;

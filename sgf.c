@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.61 2002/09/25 21:37:09 gtw Exp $
+ * $Id: sgf.c,v 1.62 2002/10/26 12:48:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -575,7 +575,7 @@ RestoreRolloutRolloutContext ( rolloutcontext *prc, const char *sz ) {
   if ( ! pc )
     return;
 
-  sscanf ( pc, "RC %d %d %d %hd %hd \"%1023s\" %d %d",
+  sscanf ( pc, "RC %d %d %d %hu %u \"%1023s\" %d",
            &fCubeful,
            &fVarRedn,
            &fInitial,
