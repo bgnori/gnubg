@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.140 2002/03/26 17:02:58 oysteijo Exp $
+ * $Id: eval.c,v 1.141 2002/03/28 14:10:10 thyssen Exp $
  */
 
 #include "config.h"
@@ -1776,11 +1776,14 @@ extern void SanityCheck( int anBoard[ 2 ][ 25 ], float arOutput[] ) {
     fContact = anBack[ 0 ] + anBack[ 1 ] >= 24;
 
     if( !fContact ) {
-	for( i = 0; i < 2; i++ )
-	    if( anBack[ i ] < 6 && pBearoff1 )
+        for( i = 0; i < 2; i++ ) 
+            if( anBack[ i ] < 6 && pBearoff1 )
 		anMaxTurns[ i ] = MaxTurns( PositionBearoff( anBoard[ i ] ) );
 	    else
 		anMaxTurns[ i ] = anCross[ i ] * 2;
+      
+        if ( ! anMaxTurns[ 1 ] ) anMaxTurns[ 1 ] = 1;
+
     }
     
     if( !fContact && anCross[ 0 ] > 4 * ( anMaxTurns[ 1 ] - 1 ) )
