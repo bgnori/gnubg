@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.548 2004/04/11 17:26:08 thyssen Exp $
+ * $Id: gnubg.c,v 1.549 2004/04/11 21:15:49 thyssen Exp $
  */
 
 #include "config.h"
@@ -7708,8 +7708,11 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #if USE_GTK
 	fX = InitGTK( &argc, &argv );
 
+#ifndef WIN32
+        /* look for DISPLAY on unix systems */
         if( !getenv( "DISPLAY" ) )
 	    fX = FALSE;
+#endif /* ! WIN32 */
 #endif /* ! USE_GTK */
 
     if( fX ) {
