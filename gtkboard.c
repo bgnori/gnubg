@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.153 2003/10/20 09:33:45 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.154 2003/10/28 12:01:44 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1780,20 +1780,25 @@ gboolean button_press_event(GtkWidget *board, GdkEventButton *event, BoardData* 
           bd->drag_colour = bd->turn;
           bd->drag_point = -1;
           
-          if (ForcedMove(anBoard, bd->diceRoll) ||
-               GreadyBearoff(anBoard, bd->diceRoll)) 
-		  {
-            /* we've found a move: update board  */
-            if ( UpdateMove( bd, anBoard ) ) {
-              /* should not happen as ForcedMove and GreadyBearoff
-                 always return legal moves */
-              assert(FALSE);
-            }
-            playSound( SOUND_CHEQUER );
-          }
+			if (ForcedMove(anBoard, bd->diceRoll) ||
+				GreadyBearoff(anBoard, bd->diceRoll))
+			{
+				int old_points[28];
+				memcpy (old_points, bd->points, sizeof old_points);
 
-          return TRUE;
-        }
+				/* we've found a move: update board  */
+				if ( UpdateMove( bd, anBoard ) ) {
+					/* should not happen as ForcedMove and GreadyBearoff
+					   always return legal moves */
+					assert(FALSE);
+				}
+				/* Play a sound if any chequers have moved */
+				if (memcmp(old_points, bd->points, sizeof old_points))
+					playSound( SOUND_CHEQUER );
+			}
+
+			return TRUE;
+		}
 
 		/* How many chequers on clicked point */
 		numOnPoint = bd->points[bd->drag_point];
