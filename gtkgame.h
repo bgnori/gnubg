@@ -16,13 +16,20 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.10 2000/11/17 15:44:08 gtw Exp $
+ * $Id: gtkgame.h,v 1.11 2001/01/04 15:29:37 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
 #define _GTKGAME_H_
 
 #include "backgammon.h"
+
+typedef enum _dialogarea {
+    DA_MAIN,
+    DA_BUTTONS
+} dialogarea;
+
+extern GtkWidget *pwMain;
 
 extern void ShowGameWindow( void );
 
@@ -38,6 +45,11 @@ extern void GTKSetGame( int i );
 extern int InitGTK( int *argc, char ***argv );
 extern void RunGTK( void );
 extern void ShowList( char *asz[], char *szTitle );
+
+extern GtkWidget *CreateDialog( char *szTitle, int fQuestion, GtkSignalFunc pf,
+				void *p );
+extern GtkWidget *DialogArea( GtkWidget *pw, dialogarea da );
+    
 extern int GTKGetInputYN( char *szPrompt );
 extern void GTKOutput( char *sz );
 extern void GTKOutputX( void );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.86 2000/12/16 23:57:21 oysteijo Exp $
+ * $Id: gnubg.c,v 1.87 2001/01/04 15:29:37 gtw Exp $
  */
 
 #include "config.h"
@@ -142,6 +142,7 @@ player ap[ 2 ] = {
 /* Usage strings */
 static char szDICE[] = "<die> <die>",
     szFILENAME[] = "<filename>",
+    szKEYVALUE[] = "[<key>=<value> ...]",
     szLENGTH[] = "<length>",
     szLIMIT[] = "<limit>",
     szMILLISECONDS[] = "<milliseconds>",
@@ -283,6 +284,8 @@ command acDatabase[] = {
       szONOFF, NULL },
     { "cache", CommandSetCache, "Set the size of the evaluation cache",
       szSIZE, NULL },
+    { "colours", CommandSetColours, "Modify the appearance of the board",
+      szKEYVALUE, NULL },
     { "confirm", CommandSetConfirm, "Ask for confirmation before aborting "
       "a game in progress", szONOFF, NULL },
     { "crawford", CommandSetCrawford, 

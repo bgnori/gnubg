@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.38 2000/11/17 15:43:52 gtw Exp $
+ * $Id: set.c,v 1.39 2001/01/04 15:29:37 gtw Exp $
  */
 
 #include "config.h"
@@ -248,6 +248,16 @@ extern void CommandSetCache( char *sz ) {
     else
 	outputf( "The position cache has been sized to %d entr%s.\n", n,
 		n == 1 ? "y" : "ies" );
+}
+
+extern void CommandSetColours( char *sz ) {
+#if USE_GTK
+    if( fX ) {
+	/* FIXME */
+    } else
+#endif    
+	outputl( "The colours may not be changed when using this user "
+		 "interface." );
 }
 
 extern void CommandSetConfirm( char *sz ) {
