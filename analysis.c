@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.60 2002/04/20 10:43:59 thyssen Exp $
+ * $Id: analysis.c,v 1.61 2002/04/28 20:35:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -536,6 +536,10 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, statcontext *psc,
 					   &esAnalysisCube ) < 0 )
 		    return -1;
 
+              }
+              else {
+                memcpy ( aarOutput, pmr->d.aarOutput, sizeof ( aarOutput ) );
+                memcpy ( aarStdDev, pmr->d.aarStdDev, sizeof ( aarStdDev ) );
               }
 	      
                 FindCubeDecision ( arDouble, aarOutput, &ci );
