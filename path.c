@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: path.c,v 1.1 2002/12/03 22:47:23 jsegrave Exp $
+ * $Id: path.c,v 1.2 2002/12/11 20:21:34 thyssen Exp $
  */
 
 #include "config.h"
@@ -143,3 +143,44 @@ PathOpen( const char *szFile, const char *szDir, const int f ) {
     return -1;
 }
 
+
+/*
+ * Backup file by renaming it to sz~
+ *
+ */
+
+extern int
+BackupFile ( const char *sz ) {
+
+  char *szNew;
+  int rc;
+
+  if ( ! sz || !*sz )
+    return 0;
+
+  if ( access ( sz, R_OK ) )
+    return 0;
+
+  if ( ! ( szNew = (char *) malloc ( strlen ( sz ) + 2 ) ) ) 
+    return -1;
+
+  strcpy ( szNew, sz );
+  strcat ( szNew, "~" );
+
+#ifdef WIN32
+  /* windows can not rename to an existing file */
+  if ( unlink ( szNew ) && errno != ENOENT ) {
+    /* do not complain if file is not found */
+    outputerr ( szNew );
+    free ( szNew );
+    return -1;
+  }
+#endif
+
+
+  rc = rename ( sz, szNew );
+  free ( szNew );
+
+  return rc;
+
+}
