@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.112 2001/10/27 16:32:22 thyssen Exp $
+ * $Id: eval.c,v 1.113 2001/10/27 19:09:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -5171,7 +5171,7 @@ Cl2CfMatch ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci ) {
 
   /* Check if this requires a cubeful evaluation */
 
-  if ( fDoCubeful ( pci ) ) {
+  if ( ! fDoCubeful ( pci ) ) {
 
     /* cubeless eval */
 
