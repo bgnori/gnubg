@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.109 2003/07/08 19:05:01 jsegrave Exp $
+ * $Id: rollout.c,v 1.110 2003/07/10 08:50:22 thyssen Exp $
  */
 
 #include "config.h"
@@ -165,6 +165,8 @@ FindBestBearoff( int anBoard[ 2 ][ 25 ], int nDice0, int nDice1,
 
     SwapSides( anBoardTemp );
 
+    assert( FALSE ); /* EvalBearoff1Full doesn't return number of rolls
+                        anymore */
     if( ( j = EvalBearoff1Full( anBoardTemp, ar ) ) < cBestRolls ) {
 	    iMinRolls = i;
 	    cBestRolls = j;
