@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.81 2003/09/30 07:02:44 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.82 2003/10/01 08:38:17 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -706,21 +706,21 @@ static GtkWidget *ChequerPrefs( BoardData *bd, int f ) {
 			       (GtkObject*) ( pwPreview + PI_CHEQUERS0 + f ) );
 
    
-    padjRound = GTK_ADJUSTMENT( gtk_adjustment_new( 1.0 - rdAppearance.rRound, 0, 1,
-						    0.1, 0.1, 0 ) );
-	gtk_signal_connect_object( GTK_OBJECT( padjRound ), "value-changed",
-			       GTK_SIGNAL_FUNC( UpdatePreview ), NULL );
-    pwScale = gtk_hscale_new( padjRound );
-#if GTK_CHECK_VERSION(2,0,0)
-    gtk_widget_set_size_request( pwScale, 100, -1 );
-#else
-    gtk_widget_set_usize ( GTK_WIDGET ( pwScale ), 100, -1 );
-#endif
-    gtk_scale_set_draw_value( GTK_SCALE( pwScale ), FALSE );
-    gtk_scale_set_digits( GTK_SCALE( pwScale ), 2 );
-
 	if (f == 0)
 	{
+		padjRound = GTK_ADJUSTMENT( gtk_adjustment_new( 1.0 - rdAppearance.rRound, 0, 1,
+								0.1, 0.1, 0 ) );
+		gtk_signal_connect_object( GTK_OBJECT( padjRound ), "value-changed",
+					   GTK_SIGNAL_FUNC( UpdatePreview ), NULL );
+		pwScale = gtk_hscale_new( padjRound );
+#if GTK_CHECK_VERSION(2,0,0)
+		gtk_widget_set_size_request( pwScale, 100, -1 );
+#else
+		gtk_widget_set_usize ( GTK_WIDGET ( pwScale ), 100, -1 );
+#endif
+		gtk_scale_set_draw_value( GTK_SCALE( pwScale ), FALSE );
+		gtk_scale_set_digits( GTK_SCALE( pwScale ), 2 );
+
 		pwBox = gtk_hbox_new( FALSE, 0 );
 		gtk_box_pack_start ( GTK_BOX ( pwBox ), gtk_label_new( _("Chequer shape:") ), FALSE, FALSE, 0 );
 		gtk_box_pack_start ( GTK_BOX ( pw ), pwBox, FALSE, FALSE, 4 );
@@ -1904,7 +1904,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.81 2003/09/30 07:02:44 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.82 2003/10/01 08:38:17 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
