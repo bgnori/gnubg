@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.141 2001/06/17 17:39:25 thyssen Exp $
+ * $Id: gnubg.c,v 1.142 2001/06/18 14:53:03 gtw Exp $
  */
 
 #include "config.h"
@@ -330,6 +330,8 @@ command acAnalyse[] = {
       "format", szFILENAME, NULL },
     { "latex", CommandExportGameLaTeX, "Records a log of the game in LaTeX "
       "format", szFILENAME, NULL },
+    { "pdf", CommandExportGamePDF, "Records a log of the game in the"
+      "Portable Document Format", szFILENAME, NULL },
     { "postscript", CommandExportGamePostScript, "Records a log of the game "
       "in PostScript format", szFILENAME, NULL },
     { "ps", CommandExportGamePostScript, NULL, szFILENAME, NULL },
@@ -339,6 +341,8 @@ command acAnalyse[] = {
       "format", szFILENAME, NULL },
     { "latex", CommandExportMatchLaTeX, "Records a log of the match in LaTeX "
       "format", szFILENAME, NULL },
+    { "pdf", CommandExportMatchPDF, "Records a log of the match in the "
+      "Portable Document Format", szFILENAME, NULL },
     { "postscript", CommandExportMatchPostScript, "Records a log of the match "
       "in PostScript format", szFILENAME, NULL },
     { "ps", CommandExportMatchPostScript, NULL, szFILENAME, NULL },
