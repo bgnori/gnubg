@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.294 2003/01/11 22:13:18 gtw Exp $
+ * $Id: gtkgame.c,v 1.295 2003/01/13 17:54:36 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6326,8 +6326,12 @@ GTKRolloutUpdate( float aarMu[][ NUM_ROLLOUT_OUTPUTS ],
     
       for( i = 0; i < NUM_ROLLOUT_OUTPUTS; i++ ) {
         
-        if ( i < OUTPUT_EQUITY )
-          sprintf( sz, "%6.4f", aarMu[ j ][ i ] );
+        if ( i < OUTPUT_EQUITY ) {
+          if ( fOutputWinPC )
+            sprintf( sz, "%6.2f%%", 100.0f * aarMu[ j ][ i ] );
+          else
+            sprintf( sz, "%6.4f", aarMu[ j ][ i ] );
+        }
         else if ( i == OUTPUT_EQUITY ) {
 
           if ( ! ms.nMatchTo )
