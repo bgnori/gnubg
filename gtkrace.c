@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.11 2003/12/29 19:18:28 uid65656 Exp $
+ * $Id: gtkrace.c,v 1.12 2004/01/02 11:16:35 uid65656 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -359,7 +359,6 @@ OneChequerPage ( int anBoard[ 2 ][ 25 ], const int fMove ) {
   int i, j;
   char *sz;
   float r;
-  float aarProb[ 2 ][ 100 ];
   int an[ 2 ][ 25 ];
   float arEPC[ 2 ];
   float arWastage[ 2 ];
@@ -376,17 +375,7 @@ OneChequerPage ( int anBoard[ 2 ][ 25 ], const int fMove ) {
 
   PipCount ( an, anPips );
 
-  for ( i = 0; i < 2; ++i )
-    OneChequer ( anPips[ i ], &arMu[ i ], &arSigma[ i ] );
-
-  for ( j = 0; j < 2; ++j )
-    for ( i = 0; i < 100; ++i ) 
-      aarProb[ j ][ i ] = fnd ( 1.0f * i, arMu[ j ], arSigma[ j ] );
-  
-  r = 0;
-  for ( i = 0; i < 100; ++i )
-    for ( j = i; j < 100; ++j )
-      r += aarProb[ 1 ][ i ] * aarProb[ 0 ][ j ];
+  r = GWCFromPipCount( anPips, arMu, arSigma );
 
   /* build widget */
 

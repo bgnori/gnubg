@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.173 2003/12/29 20:06:48 uid65656 Exp $
+ * $Id: show.c,v 1.174 2004/01/02 11:16:35 uid65656 Exp $
  */
 
 #include "config.h"
@@ -1153,17 +1153,7 @@ CommandShowOneChequer ( char *sz ) {
 
   PipCount ( anBoard, anPips );
 
-  for ( i = 0; i < 2; ++i )
-    OneChequer ( anPips[ i ], &arMu[ i ], &arSigma[ i ] );
-
-  for ( j = 0; j < 2; ++j )
-    for ( i = 0; i < 100; ++i ) 
-      aarProb[ j ][ i ] = fnd ( 1.0f * i, arMu[ j ], arSigma[ j ] );
-  
-  r = 0;
-  for ( i = 0; i < 100; ++i )
-    for ( j = i; j < 100; ++j )
-      r += aarProb[ 1 ][ i ] * aarProb[ 0 ][ j ];
+  r = GWCFromPipCount( anPips, arMu, arSigma );
 
   outputl ( _("Number of rolls to bear off, assuming each player has one "
               "chequer only." ) );
