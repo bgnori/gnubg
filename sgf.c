@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.89 2003/10/18 12:46:59 Superfly_Jon Exp $
+ * $Id: sgf.c,v 1.90 2004/04/22 19:21:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -1666,6 +1666,8 @@ static void
 WriteRolloutContext ( FILE *pf, const rolloutcontext *prc ) {
   
   int i;
+
+  printf( "rng %d\n", prc->rngRollout );
 
   fprintf ( pf, "RC %d %d %d %d %d %d %d %d %d %d \"%s\" %d ",
             prc->fCubeful,

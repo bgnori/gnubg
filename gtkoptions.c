@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.18 2004/04/08 14:22:53 thyssen Exp $
+ * $Id: gtkoptions.c,v 1.19 2004/04/22 19:21:59 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -240,7 +240,7 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
 
     BoardData *bd = BOARD( pwBoard )->board_data;
 
-    InitRNG( &nRandom, FALSE, rngCurrent );
+    InitRNG( &nRandom, NULL, FALSE, rngCurrent );
     
     pwn = gtk_notebook_new();
     gtk_container_set_border_width( GTK_CONTAINER( pwn ), 8 );
