@@ -16,12 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.33 2000/07/14 18:05:12 gtw Exp $
+ * $Id: backgammon.h,v 1.34 2000/07/25 17:45:04 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
 #define _BACKGAMMON_H_
 
+#include <stdarg.h>
 #include <list.h>
 #include "eval.h"
 
@@ -99,6 +100,7 @@ extern list lMatch, *plGame; /* (list of) list of moverecords */
 extern player ap[ 2 ];
 
 extern char *GetInput( char *szPrompt );
+extern int GetInputYN( char *szPrompt );
 extern void HandleCommand( char *sz, command *ac );
 extern void InitBoard( int anBoard[ 2 ][ 25 ] );
 extern char *NextToken( char **ppch );
@@ -112,6 +114,19 @@ extern int SetToggle( char *szName, int *pf, char *sz, char *szOn,
 		       char *szOff );
 extern void ShowBoard( void );
 extern char *FormatPrompt( void );
+
+/* Write a string to stdout/status bar/popup window */
+extern void output( char *sz );
+/* Write a string to stdout/status bar/popup window, and append \n */
+extern void outputl( char *sz );
+/* Write a character to stdout/status bar/popup window */
+extern void outputc( char ch );
+/* Write a string to stdout/status bar/popup window, printf style */
+extern void outputf( char *sz, ... );
+/* Write a string to stdout/status bar/popup window, vprintf style */
+extern void outputv( char *sz, va_list val );
+/* Signifies that all output for the current command is complete */
+extern void outputx( void );
 
 #if USE_GUI
 #if USE_GTK
@@ -226,6 +241,7 @@ extern void CommandAccept( char * ),
     CommandShowRNG( char * ),
     CommandShowRollout( char * ),
     CommandShowScore( char * ),
+    CommandShowSeed( char * ),
     CommandShowTurn( char * ),
     CommandShowWarranty( char * ),
     CommandShowKleinman( char * ),

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.3 2000/07/14 18:04:38 gtw Exp $
+ * $Id: gtkboard.c,v 1.4 2000/07/25 17:45:04 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1815,6 +1815,8 @@ static void board_init( Board *board ) {
     
     bd->drag_point = bd->board_size = -1;
 
+    bd->all_moves = NULL;
+    
     gcval.function = GDK_AND;
     gcval.foreground.pixel = ~0L; /* AllPlanes */
     gcval.background.pixel = 0;

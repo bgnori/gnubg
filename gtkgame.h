@@ -16,12 +16,21 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.3 2000/07/14 18:05:12 gtw Exp $
+ * $Id: gtkgame.h,v 1.4 2000/07/25 17:45:04 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
 #define _GTKGAME_H_
 
+#include "backgammon.h"
+
 extern void RunGTK( void );
+extern void ShowList( char *asz[], char *szTitle );
+extern int GTKGetInputYN( char *szPrompt );
+extern void GTKOutput( char *sz );
+extern void GTKOutputX( void );
+extern void GTKHint( movelist *pml );
+
+extern int fGTKOutput;
 
 #endif

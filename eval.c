@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.30 2000/07/12 16:15:50 gtw Exp $
+ * $Id: eval.c,v 1.31 2000/07/25 17:45:04 gtw Exp $
  */
 
 #include "config.h"
@@ -384,6 +384,7 @@ extern int EvalInitialise( char *szWeights, char *szWeightsBinary,
 	    NeuralNetResize( &nnRace, NUM_RACE_INPUTS, nnRace.cHidden,
 			     NUM_OUTPUTS );	
     } else {
+	/* FIXME eval.c shouldn't write to stdout */
 	puts( "Creating random neural net weights..." );
 	NeuralNetCreate( &nnContact, NUM_INPUTS, 128 /* FIXME */,
 			 NUM_OUTPUTS, 0.1, 1.0 );
@@ -1208,6 +1209,7 @@ extern void SanityCheck( int anBoard[ 2 ][ 25 ], float arOutput[] ) {
 	arOutput[ OUTPUT_LOSEBACKGAMMON ] = arOutput[ OUTPUT_LOSEGAMMON ];
 }
 
+#if 0
 static int
 barPrimeBackGame(int anBoard[ 2 ][ 25 ])
 {
@@ -1263,6 +1265,7 @@ barPrimeBackGame(int anBoard[ 2 ][ 25 ])
   }
   return 0;
 }
+#endif
 
 extern positionclass ClassifyPosition( int anBoard[ 2 ][ 25 ] ) {
 

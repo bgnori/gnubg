@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.16 2000/06/19 18:50:03 oysteijo Exp $
+ * $Id: rollout.c,v 1.17 2000/07/25 17:45:04 gtw Exp $
  */
 
 #include "config.h"
@@ -367,7 +367,7 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
 	SanityCheck( anBoard, arMu );
 	
 	if( fShowProgress ) {
-	    printf( "W=%5.3f Wg=%5.3f Wbg=%5.3f Lg=%5.3f Lbg=%5.3f Eq=%+6.3f"
+	    outputf( "W=%5.3f Wg=%5.3f Wbg=%5.3f Lg=%5.3f Lbg=%5.3f Eq=%+6.3f"
 		    "+/-%5.3f n=%d\r", arMu[ OUTPUT_WIN ],
 		    arMu[ OUTPUT_WINGAMMON ], arMu[ OUTPUT_WINBACKGAMMON ],
 		    arMu[ OUTPUT_LOSEGAMMON ], arMu[ OUTPUT_LOSEBACKGAMMON ],
@@ -389,9 +389,9 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
 
     if( fShowProgress ) {
 	for( i = 0; i < 72; i++ )
-	    putchar( ' ' );
+	    outputc( ' ' );
 
-	putchar( '\r' );
+	outputc( '\r' );
 	fflush( stdout );
     }
     
