@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.243 2004/02/12 11:10:27 uid68519 Exp $
+ * $Id: play.c,v 1.244 2004/02/13 09:03:33 uid68519 Exp $
  */
 
 #include "config.h"
@@ -3616,10 +3616,11 @@ InternalCommandNext(int fMarkedMoves, int n)
   int done = 0;
   
   if( fMarkedMoves ) {
-	list* p =  plLastMove;
 	moverecord* pmr = 0;
+	list* p =  plLastMove->plNext;
+
 	/* we need to increment the count if we're pointing to a marked move */
-	if ( p->plNext->p && MoveIsMarked( (moverecord *) p->plNext->p ) )
+	if ( p->p && MoveIsMarked( (moverecord *) p->p ) )
 	  ++n;
 
 	while(p->p) {
