@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.46 2001/05/18 14:48:12 gtw Exp $
+ * $Id: eval.h,v 1.47 2001/05/23 15:11:44 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -114,6 +114,7 @@ typedef enum _evaltype {
 } evaltype;
 
 typedef struct _evalsetup {
+  evaltype et;
   evalcontext ec;
   rolloutcontext rc;
 } evalsetup;
@@ -131,7 +132,6 @@ typedef struct _move {
   float rScore, rScore2; 
   /* evaluation for this move */
   float arEvalMove[ NUM_OUTPUTS ];
-  evaltype etMove;
   evalsetup esMove;
 } move;
 
@@ -297,11 +297,56 @@ extern float
 eq2mwc ( float rEq, cubeinfo *ci );
  
 extern char 
-*FormatEval ( char *sz, evaltype et, evalsetup es );
+*FormatEval ( char *sz, evalsetup *pes );
+
+extern int 
+EvaluatePositionCubeful2( int anBoard[ 2 ][ 25 ], float arOutput[],
+                          float arCF[ 4 ],
+                          cubeinfo *pci, evalcontext *pec, int nPlies,
+                          int nPliesTop, int fDTTop, cubeinfo *pciTop );
+
+extern cubedecision
+FindCubeDecision ( float arDouble[],
+                   float aarOutput[][ NUM_ROLLOUT_OUTPUTS ], cubeinfo *pci );
 
 extern int
-FindCubeDecision ( cubedecision *pcd, float arCfOutput[],
-                   float arClOutput[], int anBoard[ 2 ][ 25 ],
-                   cubeinfo *pci, evalcontext *pec );
+GeneralEvaluation ( char *sz,
+                    float arOutput[ NUM_ROLLOUT_OUTPUTS ], 
+                    float arStdDev[ NUM_ROLLOUT_OUTPUTS ], 
+                    int anBoard[ 2 ][ 25 ],
+                    cubeinfo *pci, evalsetup *pes );
+
+extern int
+GeneralEvaluationE ( float arOutput[ NUM_ROLLOUT_OUTPUTS ], 
+                     int anBoard[ 2 ][ 25 ],
+                     cubeinfo *pci, evalcontext *pec );
+
+extern int
+GeneralEvaluationR ( char *sz,
+                     float arOutput[ NUM_ROLLOUT_OUTPUTS ],
+                     float arStdDev[ NUM_ROLLOUT_OUTPUTS ],
+                     int anBoard[ 2 ][ 25 ],
+                     cubeinfo *pci, rolloutcontext *prc );
+
+extern int
+GeneralCubeDecision ( char *sz, 
+                      float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                      float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                      int anBoard[ 2 ][ 25 ],
+                      cubeinfo *pci, evalsetup *pes );
+
+extern int
+GeneralCubeDecisionE ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                       int anBoard[ 2 ][ 25 ],
+                       cubeinfo *pci, evalcontext *pec );
+
+extern int
+GeneralCubeDecisionR ( char *sz, 
+                       float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                       float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                       int anBoard[ 2 ][ 25 ],
+                       cubeinfo *pci, rolloutcontext *prc );
+
+
 
 #endif
