@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.16 2004/04/02 09:40:40 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.17 2004/04/02 11:13:41 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -367,7 +367,6 @@ void AddWidgets(GdkWindow* pixWind, GtkWidget *window)
 	label = gtk_label_new(_("Preview:"));
 	gtk_table_attach_defaults(GTK_TABLE (table), label, 0, 1, 3, 4);
 
-	CreatePreview();
 	pwPreview = gtk_pixmap_new(xppm, NULL);
 	gtk_table_attach_defaults(GTK_TABLE (table), pwPreview, 0, 2, 4, 5);
 }
@@ -572,6 +571,9 @@ extern void Setup3dColourPicker(GtkWidget* parent, GdkWindow* wind)
 {
 	dialogParent = parent;
 	refWind = wind;
+	if (!xppm)
+		xppm = gdk_pixmap_new(refWind, PREVIEW_WIDTH, PREVIEW_HEIGHT, -1);
+	CreatePreview();
 }
 
 GtkWidget* gtk_colour_picker_new3d(Material* pMat, int opacity, int texture)
@@ -579,9 +581,6 @@ GtkWidget* gtk_colour_picker_new3d(Material* pMat, int opacity, int texture)
 	GtkWidget *pixmapwid, *button;
 	GdkPixmap *pixmap;
 	pixmap = gdk_pixmap_new(refWind, PREVIEW_WIDTH, PREVIEW_HEIGHT, -1);
-
-	if (!xppm)
-		xppm = gdk_pixmap_new(refWind, PREVIEW_WIDTH, PREVIEW_HEIGHT, -1);
 
 	button = gtk_button_new();
 	pixmapwid = gtk_pixmap_new(pixmap, NULL);
