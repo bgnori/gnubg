@@ -2,7 +2,7 @@
 ------------------------------------------------------------------------------
 Standard definitions and types, Bob Jenkins
 Modified for inclusion with GNU Backgammon by Gary Wong
-$Id: isaacs.h,v 1.1 2000/11/10 18:50:43 gtw Exp $
+$Id: isaacs.h,v 1.2 2000/11/14 18:04:46 gtw Exp $
 ------------------------------------------------------------------------------
 */
 #ifndef _ISAACS_H_
@@ -20,24 +20,5 @@ typedef  unsigned       char ub1;
 typedef    signed       char sb1;   /* signed 1-byte quantities */
 #define SB1MAXVAL 0x7f
 typedef                 int  word;  /* fastest type available */
-
-#define bis(target,mask)  ((target) |=  (mask))
-#define bic(target,mask)  ((target) &= ~(mask))
-#define bit(target,mask)  ((target) &   (mask))
-#ifndef min
-# define min(a,b) (((a)<(b)) ? (a) : (b))
-#endif /* min */
-#ifndef max
-# define max(a,b) (((a)<(b)) ? (b) : (a))
-#endif /* max */
-#ifndef align
-# define align(a) (((ub4)a+(sizeof(void *)-1))&(~(sizeof(void *)-1)))
-#endif /* align */
-#ifndef abs
-# define abs(a)   (((a)>0) ? (a) : -(a))
-#endif
-#define TRUE  1
-#define FALSE 0
-#define SUCCESS 0  /* 1 on VAX */
 
 #endif
