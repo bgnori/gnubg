@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.357 2003/07/12 08:15:29 thyssen Exp $
+ * $Id: gtkgame.c,v 1.358 2003/07/13 02:24:40 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4995,6 +4995,13 @@ int fCubeEqualChequer = 1;
 int fPlayersAreSame = 1;
 int fTruncEqualPlayer0 = 1;
 */ 
+
+/***************************************************************************
+ *****
+ *****  Change SGF_ROLLOUT_VER in eval.h if rollout settings change 
+ *****  such that previous .sgf files won't be able to extend rollouts
+ *****
+ ***************************************************************************/
 static void SetRolloutsOK( GtkWidget *pw, rolloutwidget *prw ) {
   int   p0, p1, i;
   int fCubeEqChequer, fPlayersAreSame, nTruncPlies;
@@ -6704,7 +6711,7 @@ GTKRolloutUpdate( float aarMu[][ NUM_ROLLOUT_OUTPUTS ],
           else 
             /* match play (equity) */
             sprintf( sz, "%+7.4f",
-                     mwc2eq ( eq2mwc ( aarMu[ j ][ i ], &aci[ j ] ), &aci[ 0 ] ) );
+                     mwc2eq ( eq2mwc ( aarMu[ j ][ i ], &aci[ j ] ), &aci[ j ] ) );
 
         }
         else {
@@ -6717,7 +6724,7 @@ GTKRolloutUpdate( float aarMu[][ NUM_ROLLOUT_OUTPUTS ],
               sprintf( sz, "%7.3f%%", 100.0f * aarMu[ j ][ i ] );
             else
               /* match play (equity) */
-              sprintf( sz, "%+7.4f", mwc2eq ( aarMu[ j ][ i ], &aci[ 0 ] ) );
+              sprintf( sz, "%+7.4f", mwc2eq ( aarMu[ j ][ i ], &aci[ j ] ) );
           }
           else {
             strcpy ( sz, "n/a" );
@@ -6746,7 +6753,7 @@ GTKRolloutUpdate( float aarMu[][ NUM_ROLLOUT_OUTPUTS ],
             /* match play (equity) */
             sprintf( sz, "%7.4f",
                      se_mwc2eq ( se_eq2mwc ( aarSigma[ j ][ i ], &aci[ j ] ), 
-                              &aci[ 0 ] ) );
+                              &aci[ j ] ) );
 
         }
         else if ( fCubeful ) {

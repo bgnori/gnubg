@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.18 2003/03/08 07:41:44 thyssen Exp $
+ * $Id: export.h,v 1.19 2003/07/13 02:24:40 jsegrave Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -116,7 +116,7 @@ extern char *
 OutputEquity ( const float r, const cubeinfo *pci, const int f );
 
 extern char *
-OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc );
+OutputRolloutContext ( const char *szIndent, const evalsetup *pes );
 
 extern char *
 OutputEvalContext ( const evalcontext *pec, const int fChequer );

@@ -1,4 +1,3 @@
-
 /*
  * eval.c
  *
@@ -17,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.244 2003/07/10 08:41:51 thyssen Exp $
+ * $Id: eval.c,v 1.245 2003/07/13 02:24:40 jsegrave Exp $
  */
 
 #include "config.h"
@@ -3953,7 +3952,7 @@ extern int DumpPosition( int anBoard[ 2 ][ 25 ], char *szOutput,
 
     ec.nPlies = i;
 
-    if ( GeneralCubeDecisionE ( aarOutput, anBoard, pci, &ec ) < 0 )
+    if ( GeneralCubeDecisionE ( aarOutput, anBoard, pci, &ec, 0 ) < 0 )
       return -1;
 
     if( !i )
@@ -5580,7 +5579,7 @@ CalcCubefulEquity ( positionclass pc,
 extern int
 GeneralCubeDecisionE ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                        int anBoard[ 2 ][ 25 ],
-                       cubeinfo *pci, evalcontext *pec ) {
+                       cubeinfo *pci, evalcontext *pec, evalsetup *pes ) {
 
   float arOutput[ NUM_OUTPUTS ];
   cubeinfo aciCubePos[ 2 ];

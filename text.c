@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.42 2003/07/10 11:11:57 thyssen Exp $
+ * $Id: text.c,v 1.43 2003/07/13 02:24:41 jsegrave Exp $
  */
 
 #include "config.h"
@@ -257,7 +257,6 @@ OutputMoveFilterPly( const char *szIndent,
 
 }
                                  
-
 static void
 OutputEvalContextsForRollout( char *sz, const char *szIndent,
                               const evalcontext aecCube[ 2 ],
@@ -318,8 +317,9 @@ OutputEvalContextsForRollout( char *sz, const char *szIndent,
 
 
 extern char *
-OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc ) {
+OutputRolloutContext ( const char *szIndent, const evalsetup *pes ) {
 
+  const rolloutcontext *prc = &pes->rc;
   static char sz[ 1024 ];
 
   strcpy ( sz, "" );
@@ -354,7 +354,7 @@ OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc ) {
 
   sprintf ( strchr ( sz, 0 ),
             "%d games",
-            prc->nTrials );
+            prc->nGamesDone );
 
   if ( prc->fInitial )
     strcat ( sz, ", rollout as initial position" );
@@ -405,7 +405,6 @@ OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc ) {
   return sz;
 
 }
-
 
 /*
  * Return formatted string with equity or MWC.
@@ -803,7 +802,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.42 $";
+  const char szVersion[] = "$Revision: 1.43 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1106,7 +1105,7 @@ OutputCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   }
 
   if ( pes->et == EVAL_ROLLOUT && exsExport.afCubeParameters[ 1 ] )
-    strcat ( sz, OutputRolloutContext ( NULL, &pes->rc ) );
+    strcat ( sz, OutputRolloutContext ( NULL, pes ) );
     
   return sz;
 
