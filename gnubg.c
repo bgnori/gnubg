@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.553 2004/04/22 19:14:34 thyssen Exp $
+ * $Id: gnubg.c,v 1.554 2004/04/23 13:34:22 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -7861,7 +7861,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #if USE_GTK
     if( fTTY )
 #endif
-      printf( _("GNU Backgammon %s  Copyright 1999, 2000, 2001, 2002, 2003 "
+      printf( _("GNU Backgammon %s  Copyright 1999-2004 "
                 "Gary Wong.\n"
                 "GNU Backgammon is free software, covered by the GNU "
                 "General Public License\n"
