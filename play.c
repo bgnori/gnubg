@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.177 2003/03/20 20:16:59 thyssen Exp $
+ * $Id: play.c,v 1.178 2003/03/27 19:13:29 thyssen Exp $
  */
 
 #include "config.h"
@@ -2795,9 +2795,16 @@ extern void CommandNewGame( char *sz ) {
 			     "and discard the one in progress? ") ) )
 		return;
 	}
-    }
+<<<<<<< play.c
+        
+        PopGame( plGame, TRUE );
     
-    PopGame( plGame, TRUE );
+=======
+    
+        PopGame( plGame, TRUE );
+    
+>>>>>>> 1.170.2.4
+    }
     
     fComputing = TRUE;
     
