@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.318 2003/03/09 08:37:56 thyssen Exp $
+ * $Id: gtkgame.c,v 1.319 2003/03/09 10:25:48 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -143,7 +143,7 @@ typedef enum _gnubgcommand {
     CMD_NEXT_GAME,
     CMD_NEXT_MARKED,
     CMD_NEXT_ROLL,
-	CMD_NEXT_ROLLED,
+    CMD_NEXT_ROLLED,
     CMD_PLAY,
     CMD_PREV,
     CMD_PREV_GAME,
@@ -7174,6 +7174,10 @@ extern void GTKSet( void *p ) {
 	    pif, CMD_NEXT ), plGame != NULL );
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
 	    pif, CMD_PREV ), plGame != NULL );
+	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
+	    pif, CMD_NEXT_ROLLED ), plGame != NULL );
+	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
+	    pif, CMD_PREV_ROLLED ), plGame != NULL );
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
 	    pif, CMD_NEXT_MARKED ), plGame != NULL );
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
