@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.11 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: osr.c,v 1.12 2004/01/30 09:33:50 uid68519 Exp $
  */
 
 #include <stdio.h>
@@ -627,13 +627,18 @@ rollOSR ( const int nGames, const int anBoard[ 25 ], const int nOut,
           float arProbs[], const int nMaxProbs,
           float arGammonProbs[], const int nMaxGammonProbs ) {
 
-  int anCounts [ nMaxGammonProbs ];
   int an[ 25 ];
   unsigned short int anProb[ 32 ];
   int i, n, m;
   int iGame;
   
-  memset ( anCounts, 0, sizeof ( anCounts ) );
+#if __GNUC__ || !HAVE_ALLOCA
+  int anCounts[nMaxGammonProbs];
+#else
+  int *anCounts = (int*)alloca(sizeof(int) * nMaxGammonProbs);
+#endif
+
+  memset(anCounts, 0, sizeof(int) * nMaxGammonProbs);
 
   for ( i = 0; i < nMaxProbs; ++i ) 
     arProbs[ i ] = 0.0f;

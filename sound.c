@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.25 2004/01/26 18:26:57 uid65656 Exp $
+ * $Id: sound.c,v 1.26 2004/01/30 09:33:50 uid68519 Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -44,8 +44,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#if HAVE_SYS_TIME_H
 #include <sys/time.h>
+#endif
+#if HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 
 #if HAVE_ESD
 #include <esd.h>
@@ -61,7 +65,9 @@
 #endif
 
 #ifdef WIN32
-#include "windows.h" /* for PlaySound */
+/* for PlaySound */
+#include "windows.h"
+#include <mmsystem.h>
 #endif
 
 #include "backgammon.h"

@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.14 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: gtktempmap.c,v 1.15 2004/01/30 09:33:49 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -31,7 +31,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#if HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <assert.h>
 
 #include "backgammon.h"

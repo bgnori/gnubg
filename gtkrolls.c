@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.7 2003/09/30 07:03:11 Superfly_Jon Exp $
+ * $Id: gtkrolls.c,v 1.8 2004/01/30 09:33:49 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -28,7 +28,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#if HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <assert.h>
 
 #include "backgammon.h"

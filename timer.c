@@ -18,11 +18,13 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: timer.c,v 1.4 2004/01/19 15:51:05 uid68519 Exp $
+* $Id: timer.c,v 1.5 2004/01/30 09:33:50 uid68519 Exp $
 */
 
 #include <time.h>
+#if HAVE_SYS_TIME
 #include <sys/time.h>
+#endif
 
 #ifdef WIN32
 #include "windows.h"

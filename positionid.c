@@ -32,9 +32,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.29 2003/08/18 22:21:30 joseph Exp $
+ * $Id: positionid.c,v 1.30 2004/01/30 09:33:50 uid68519 Exp $
  */
 
+#include "config.h"
 #include <assert.h>
 #include <stdio.h>
 #include <errno.h>

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.93 2004/01/29 11:30:22 uid68519 Exp $
+ * $Id: gtkprefs.c,v 1.94 2004/01/30 09:33:49 uid68519 Exp $
  */
 
 #include "config.h"
@@ -27,7 +27,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#if HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <time.h>
 
 #if HAVE_LIBXML2
@@ -1962,7 +1964,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.93 2004/01/29 11:30:22 uid68519 Exp $\n"
+          "    $Id: gtkprefs.c,v 1.94 2004/01/30 09:33:49 uid68519 Exp $\n"
           "\n"
           " -->\n"
           "\n"
