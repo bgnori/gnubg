@@ -1,4 +1,4 @@
-$Id: TODO,v 1.274 2002/12/22 02:24:24 gtw Exp $
+$Id: TODO,v 1.275 2002/12/22 10:59:25 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -152,7 +152,6 @@ duplication of effort and to make sure our changes merge easily.
   <http://www.freedesktop.org/standards/clipboards.txt>.  (Wait for GTK+ 2.0.)
 ** The edges of the board should cast shadows.  Getting shadows on the
   board surface is fairly easy... getting shadows on the chequers is not.
-** Update match equity dialog after pressing "Invert" or "Load"
 ** chequer movement
 *** right-blick bearoff tray for bearing off 4 men
     Also, if "allow dragging to illegal points" is disabled right clicking

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.124 2002/12/19 23:08:53 thyssen Exp $
+ * $Id: show.c,v 1.125 2002/12/22 10:58:57 thyssen Exp $
  */
 
 #include "config.h"
@@ -50,6 +50,7 @@
 #include "gtktheory.h"
 #include "gtkrace.h"
 #include "gtkexport.h"
+#include "gtkmet.h"
 #elif USE_EXT
 #include "xgame.h"
 #endif
