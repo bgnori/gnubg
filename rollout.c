@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.121 2003/07/22 14:31:18 jsegrave Exp $
+ * $Id: rollout.c,v 1.122 2003/07/26 11:10:02 jsegrave Exp $
  */
 
 #include "config.h"
@@ -186,7 +186,8 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
                       int iTurn, int iGame,
                       cubeinfo aci[], int afCubeDecTop[], int cci,
                       rolloutcontext *prc,
-                      rolloutstat aarsStatistics[][ 2 ] ) {
+                      rolloutstat aarsStatistics[][ 2 ],
+		      int nBasisCube) {
 
   int anDice [ 2 ], cUnfinished = cci;
   cubeinfo *pci;
@@ -713,7 +714,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
     if ( ! pci->nMatchTo )
       aarOutput[ ici ][ OUTPUT_CUBEFUL_EQUITY ] *=
-        aci [ ici ].nCube / aci[ 0 ].nCube;
+        aci [ ici ].nCube / nBasisCube;
 
     
     
@@ -1023,7 +1024,8 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
 #endif
       BasicCubefulRollout( aanBoardEval + alt, aar + alt, 0, i, apci[ alt ], 
                            apCubeDecTop[ alt ], 1, prc, 
-						   aarsStatistics ? aarsStatistics + alt : NULL );
+			   aarsStatistics ? aarsStatistics + alt : NULL,
+			   aciLocal[ fCubeRollout ? 0 : alt ].nCube);
       if( fInterrupt )
         break;
 
