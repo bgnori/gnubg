@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.416 2003/05/29 11:13:21 thyssen Exp $
+ * $Id: gnubg.c,v 1.417 2003/05/29 19:13:33 thyssen Exp $
  */
 
 #include "config.h"
@@ -1635,6 +1635,9 @@ command cER = {
       NULL, NULL },
 #endif /* USE_SOUND */
     { "statistics", NULL, N_("Show statistics"), NULL, acShowStatistics },
+    { "temperaturemap", CommandShowTemperatureMap, 
+      N_("Show temperature map (graphic overview of dice distribution)"), 
+      NULL, NULL },
     { "thorp", CommandShowThorp, N_("Calculate Thorp Count for "
       "position"), szOPTPOSITION, NULL },
     { "training", CommandShowTraining, N_("Display the training parameters"),

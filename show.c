@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.146 2003/05/24 10:24:50 hb Exp $
+ * $Id: show.c,v 1.147 2003/05/29 19:18:47 thyssen Exp $
  */
 
 #include "config.h"
@@ -52,6 +52,7 @@
 #include "gtkexport.h"
 #include "gtkmet.h"
 #include "gtkrolls.h"
+#include "gtktempmap.h"
 #elif USE_EXT
 #include "xgame.h"
 #endif
@@ -2007,6 +2008,28 @@ CommandShowRolls ( char *sz ) {
 
 }
 
+
+
+extern void
+CommandShowTemperatureMap( char *sz ) {
+
+  if( ms.gs != GAME_PLAYING ) {
+    outputl( _("No game in progress (type `new game' to start one).") );
+
+    return;
+  }
+
+#if USE_GTK
+
+  if ( fX ) {
+    GTKShowTempMap( &ms );
+    return;
+  }
+#endif
+
+  CommandNotImplemented( NULL );
+
+}  
 
 extern void
 CommandShowVariation( char *sz ) {

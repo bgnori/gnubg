@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.343 2003/05/28 13:41:51 hb Exp $
+ * $Id: gtkgame.c,v 1.344 2003/05/29 19:16:03 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -185,6 +185,7 @@ typedef enum _gnubgcommand {
     CMD_SHOW_STATISTICS_GAME,
     CMD_SHOW_STATISTICS_MATCH,
     CMD_SHOW_STATISTICS_SESSION,
+    CMD_SHOW_TEMPERATURE_MAP,
     CMD_SHOW_THORP,
     CMD_SHOW_VERSION,
     CMD_SHOW_WARRANTY,
@@ -263,6 +264,7 @@ static char *aszCommands[ NUM_CMDS ] = {
     "show statistics game",
     "show statistics match",
     "show statistics session",
+    "show temperaturemap",
     "show thorp",
     "show version",
     "show warranty",
@@ -2421,6 +2423,8 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ N_("/_Analyse/Distribution of rolls"), NULL, Command, 
           CMD_SHOW_ROLLS, NULL },
 #endif /* USE_GTK2 */
+	{ N_("/_Analyse/Temperature Map"), NULL, Command, 
+          CMD_SHOW_TEMPERATURE_MAP, NULL },
 	{ N_("/_Analyse/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_Analyse/_Gammon values"), NULL, Command, CMD_SHOW_GAMMONVALUES,
 	  NULL },
