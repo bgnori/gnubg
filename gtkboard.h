@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.15 2001/09/25 15:08:39 gtw Exp $
+ * $Id: gtkboard.h,v 1.16 2001/10/25 14:29:00 gtw Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -50,9 +50,8 @@ extern gint game_set( Board *board, gint points[ 2 ][ 25 ], int roll,
 		      gint score, gint opp_score, gint die0, gint die1 );
 extern gint game_set_old_dice( Board *board, gint die0, gint die1 );
 extern void board_set_playing( Board *board, gboolean f );
-extern void board_set_classical (Board *board, int true );
- 
-
+extern void board_animate( Board *board, int move[ 8 ], int player );
+    
 /* private data */
 typedef struct _BoardData {
     GtkWidget *drawing_area, *dice_area, *hbox_pos, *table, *hbox_match, *move,
@@ -70,7 +69,7 @@ typedef struct _BoardData {
     short *ai_refract[ 2 ];
     GdkFont *cube_font;
     gboolean translucent, labels, classical, usedicearea, permit_illegal,
-        beep_illegal, playing;
+        beep_illegal, playing, animate_computer_moves;
     gdouble aarColour[ 2 ][ 4 ]; /* RGBA for each player */
     guchar aanBoardColour[ 4 ][ 4 ]; /* RGB(A) for background, border, pts */
     int aSpeckle[ 4 ]; /* speckle for background, border, pts */
