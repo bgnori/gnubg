@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.44 2004/07/11 10:08:45 thyssen Exp $
+ * $Id: external.c,v 1.45 2004/08/25 17:46:11 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -24,6 +24,7 @@
 #if HAVE_SOCKETS
 
 #include <signal.h>
+#include <glib.h>
 
 #if HAVE_UNISTD_H
 #include <unistd.h>
