@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.41 2001/10/19 16:17:45 oysteijo Exp $
+ * $Id: analysis.c,v 1.42 2001/10/22 17:21:09 thyssen Exp $
  */
 
 #include "config.h"
@@ -132,32 +132,30 @@ static skilltype Skill( float r ) {
 	return SKILL_NONE;
 }
 
+
 static void
-AnalyzeGame ( list *plGame ) {
+AnalyzeMove ( moverecord *pmr ) {
 
-    list *pl;
-    moverecord *pmr;
-    int i, anBoardMove[ 2 ][ 25 ];
-    int fFirstMove = 1;
-    unsigned char auch[ 10 ];
-    cubeinfo ci;
-    float rSkill, rChequerSkill, rCost;
-    float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
-    float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
-    evalsetup esDouble; /* shared between the */
-                        /* double and subsequent take/drop */
-    float arDouble[ NUM_CUBEFUL_OUTPUTS ]; /* likewise */
-    statcontext *psc;
-    matchstate msAnalyse;
+  static int i, anBoardMove[ 2 ][ 25 ];
+  static int fFirstMove;
+  static unsigned char auch[ 10 ];
+  static cubeinfo ci;
+  static float rSkill, rChequerSkill, rCost;
+  static float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+  static float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+  static evalsetup esDouble; /* shared between the */
+  /* double and subsequent take/drop */
+  static float arDouble[ NUM_CUBEFUL_OUTPUTS ]; /* likewise */
+  static statcontext *psc;
+  static matchstate msAnalyse;
     
-    for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) {
-	pmr = pl->p;
 
-	ProgressValueAdd( 1 );
+  /* analyze this move */
       	
 	switch( pmr->mt ) {
 	case MOVE_GAMEINFO:
 	    psc = &pmr->g.sc;
+            fFirstMove = 1;
 	    IniStatcontext( psc );
 				      
 	    break;
@@ -450,13 +448,31 @@ AnalyzeGame ( list *plGame ) {
 	}
 
 	ApplyMoveRecord( &msAnalyse, pmr );
-    }
 
     psc->fMoves = fAnalyseMove;
     psc->fCube = fAnalyseCube;
     psc->fDice = fAnalyseDice;
 }
 
+
+static void
+AnalyzeGame ( list *plGame ) {
+
+    list *pl;
+    moverecord *pmr;
+    
+    for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) {
+	pmr = pl->p;
+
+	ProgressValueAdd( 1 );
+
+        AnalyzeMove ( pmr );
+
+    }
+
+}
+
+      	
 extern void
 AddStatcontext ( statcontext *pscA, statcontext *pscB ) {
 
