@@ -21,7 +21,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: database.py,v 1.13 2004/12/12 13:33:48 jsegrave Exp $
+# $Id: database.py,v 1.14 2005/02/07 17:41:46 Superfly_Jon Exp $
 #
                                                                                   
 
@@ -596,7 +596,7 @@ class relational:
          played = 0
       else:
          played = int(row)
-      stats.append(("Games played", played))
+      stats.append(("Matches played", played))
 
       row = self.__runqueryvalue("SELECT COUNT(*) FROM match WHERE (nick_id0 = %d and result = 1)" \
         " OR (nick_id1 = %d and result = -1)" % (nick_id, nick_id));
@@ -604,7 +604,7 @@ class relational:
          wins = 0
       else:
          wins = int(row)
-      stats.append(("Games won", wins))
+      stats.append(("Matches won", wins))
 
       row = self.__runqueryvalue("SELECT AVG(overall_error_total) FROM matchstat" \
          " WHERE nick_id = %d" % (nick_id));
