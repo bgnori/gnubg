@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.3 2003/07/16 19:21:13 thyssen Exp $
+ * $Id: gtkoptions.c,v 1.4 2003/07/18 19:32:09 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -40,8 +40,7 @@
 #include "i18n.h"
 #include "sound.h"
 #include "drawboard.h"
-
-
+#include "matchequity.h"
 
 typedef struct _optionswidget {
 
@@ -226,7 +225,8 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
 
     char **ppch, **ppchTip;
     GtkWidget *pw, *pwn, *pwp, *pwvbox, *pwhbox, *pwev, *pwm, *pwf, *pwb,
-	*pwAnimBox, *pwFrame, *pwBox, *pwSpeed, *pwScale;
+	*pwAnimBox, *pwFrame, *pwBox, *pwSpeed, *pwScale, *pwhoriz,
+	*pwLabelFile;
     int cCache;
     int i;
     
@@ -783,7 +783,15 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
     gtk_container_set_border_width (GTK_CONTAINER (pwf), 4);
     pwb = gtk_vbox_new (FALSE, 0);
     gtk_container_add (GTK_CONTAINER (pwf), pwb);
-    
+
+    pwhoriz = gtk_hbox_new (FALSE, 4);
+    gtk_container_add (GTK_CONTAINER (pwb), pwhoriz);
+    gtk_box_pack_start (GTK_BOX (pwhoriz),
+			gtk_label_new( _("Current:") ),
+			FALSE, FALSE, 2);
+    pwLabelFile = gtk_label_new( miCurrent.szFileName );
+    gtk_box_pack_end(GTK_BOX (pwhoriz), pwLabelFile,
+		     FALSE, FALSE, 2);
     pow->pwLoadMET = gtk_button_new_with_label (_("Load..."));
     gtk_box_pack_start (GTK_BOX (pwb), pow->pwLoadMET, FALSE, FALSE, 0);
     gtk_container_set_border_width (GTK_CONTAINER (pow->pwLoadMET), 2);
@@ -792,7 +800,7 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
 			  NULL );
 
     gtk_signal_connect ( GTK_OBJECT ( pow->pwLoadMET ), "clicked",
-			 GTK_SIGNAL_FUNC ( SetMET ), NULL );
+			 GTK_SIGNAL_FUNC ( SetMET ), (gpointer) pwLabelFile );
 
     pow->pwCubeInvert = gtk_check_button_new_with_label (_("Invert table"));
     gtk_box_pack_start (GTK_BOX (pwb), pow->pwCubeInvert, FALSE, FALSE, 0);
