@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.37 2003/07/27 12:26:57 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.38 2003/07/31 16:00:08 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -260,9 +260,6 @@ ShowMove ( hintdata *phd, const int f ) {
 
     memcpy ( anBoard, ms.anBoard, sizeof ( anBoard ) );
     ApplyMove ( anBoard, pm->anMove, FALSE );
-
-    if ( ! ms.fMove )
-      SwapSides ( anBoard );
 
     UpdateMove( ( BOARD( pwBoard ) )->board_data, anBoard );
 
