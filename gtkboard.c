@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.152 2003/10/14 10:02:31 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.153 2003/10/20 09:33:45 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2437,8 +2437,8 @@ static gint board_set( Board *board, const gchar *board_text,
 #if USE_BOARD3D
 			if (rdAppearance.fDisplayType == DT_3D)
 			{
-				/* Has been shaken, so roll dice (if not editing) */
-				if (bd->diceShown != DICE_ON_BOARD && !ToolbarIsEditing( pwToolbar ))
+				/* Has been shaken, so roll dice */
+				if (bd->diceShown == DICE_ROLLING)
 				{
 					bd->diceShown = DICE_ON_BOARD;
 					RollDice3d(bd);
