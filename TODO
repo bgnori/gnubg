@@ -1,4 +1,4 @@
-$Id: TODO,v 1.245 2002/07/16 17:39:28 gtw Exp $
+$Id: TODO,v 1.246 2002/07/17 17:22:14 gtw Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -240,6 +240,9 @@ functions:
   rollouts and do the averaging.
 ** When 'Allow dragging to illegal input' is selected, Two consecutive Button 1
 click will both use the 'first' dice.
+** The board should be updated before automatic analysis starts.  (Currently,
+  if you interrupt the automatic analysis, the move will go into effect, but
+  the board shown will be out of date.)
 
 * Documentation:
 ** Complete the Texinfo manual.  Perhaps for now, only things that are

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.134 2002/07/16 17:39:29 gtw Exp $
+ * $Id: play.c,v 1.135 2002/07/17 17:22:14 gtw Exp $
  */
 
 #include "config.h"
@@ -141,7 +141,9 @@ autoAnalyseMove ( void *p, const matchstate *pms ) {
   if ( fAutoAnalysis && f ) {
       SuspendInput( &m );
       memcpy ( &msx, pms, sizeof ( matchstate ) );
+      ProgressStart( _("Analysing move...") );
       AnalyzeMove ( pmr, &msx, NULL, FALSE );
+      ProgressEnd();
       ResumeInput( &m );
   }
 
