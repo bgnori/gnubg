@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.102 2003/04/04 20:03:43 thyssen Exp $
+ * $Id: html.c,v 1.103 2003/04/08 20:54:34 thyssen Exp $
  */
 
 #include "config.h"
@@ -1850,7 +1850,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.102 $";
+  const char szVersion[] = "$Revision: 1.103 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1931,7 +1931,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.102 $";
+  const char szVersion[] = "$Revision: 1.103 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2850,7 +2850,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
                                   matchstate *pms, const int iGame,
                                   const htmlexportcss hecss ) {
 
-  int i;
+  int i, j;
   ratingtype rt[ 2 ];
   int ai[ 2 ];
   float aaaar[ 3 ][ 2 ][ 2 ][ 2 ];
@@ -3280,7 +3280,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       printStatTableRow2 ( pf,
                            _("Error rate (total)"), 
-                           "%+6.3f", "%+7.3f%",
+                           "%+6.3f", "%+7.3f%%",
                            -aaaar[ COMBINED ][ TOTAL ][ PLAYER_0 ][ NORMALISED ],
                            -aaaar[ COMBINED ][ TOTAL ][ PLAYER_0 ][ UNNORMALISED ] 
                            * 100.0f,
@@ -3290,7 +3290,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
       printStatTableRow4 ( pf,
                            _("Error rate (per decision)"), 
-                           "%+6.3f", "%+7.3f%",
+                           "%+6.3f", "%+7.3f%%",
                            psc->anUnforcedMoves[ 0 ] + psc->anCloseCube[ 0 ],
                            -aaaar[ COMBINED ][ PERMOVE ][ PLAYER_0 ][ NORMALISED ],
                            -aaaar[ COMBINED ][ PERMOVE ][ PLAYER_0 ][ UNNORMALISED ] 
@@ -3299,6 +3299,23 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
                            -aaaar[ COMBINED ][ PERMOVE ][ PLAYER_1 ][ NORMALISED ],
                            -aaaar[ COMBINED ][ PERMOVE ][ PLAYER_1 ][ UNNORMALISED ] 
                            * 100.0f );
+
+      {
+        char asz[ 2 ][ 16 ];
+
+        for ( i = 0; i < 2; ++i )
+          if ( ( j = psc->anTotalMoves[ i ] + psc->anTotalCube[ i ] ) )
+            sprintf( asz[ i ], "%.1f", 1000.0 * 
+                     -aaaar[ COMBINED ][ TOTAL ][ i ][ NORMALISED ] / j );
+          else
+            strcpy( asz[ i ], _("n/a") );
+
+        printStatTableRow ( pf, 
+                            _("Equivalent Snowie error rate"), 
+                            "%s", asz[ 0 ], asz[ 1 ] );
+
+      }
+
 
     }
     else {
