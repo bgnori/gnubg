@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.47 2005/02/10 10:33:42 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.48 2005/02/15 18:12:25 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -1979,10 +1979,10 @@ int idleAnimate(BoardData* bd)
 void RollDice3d(BoardData *bd)
 {	/* animate the dice roll if not below board */
 	setDicePos(bd);
+	SuspendInput();
 
 	if (bd->rd->animateRoll)
 	{
-		SuspendInput();
 		animStartTime = get_time();
 
 		bd->shakingDice = 1;
@@ -2000,7 +2000,6 @@ void RollDice3d(BoardData *bd)
 				firstFrame = 1;
 		}
 		gtk_main();
-		ResumeInput();
 	}
 	else
 	{
@@ -2009,6 +2008,7 @@ void RollDice3d(BoardData *bd)
 		while(gtk_events_pending())
 			gtk_main_iteration();	
 	}
+	ResumeInput();
 }
 
 void AnimateMove3d(BoardData *bd)
