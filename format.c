@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.7 2003/09/20 20:09:15 thyssen Exp $
+ * $Id: format.c,v 1.8 2003/12/29 19:28:46 uid65656 Exp $
  */
 
 #include "config.h"
@@ -897,7 +897,7 @@ OutputCubeAnalysis( const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
               _("Money"), 
               OutputMoneyEquity ( aarOutput[ 0 ], TRUE ) );
   else
-    sprintf ( strchr ( sz, 0 ), " cubeless equity %s\n",
+    sprintf ( strchr ( sz, 0 ), _(" cubeless equity %s\n"),
               OutputMoneyEquity ( aarOutput[ 0 ], TRUE ) );
 
 

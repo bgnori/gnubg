@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.27 2003/11/30 08:57:57 thyssen Exp $
+ * $Id: gtktheory.c,v 1.28 2003/12/29 19:28:46 uid65656 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -471,7 +471,7 @@ TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
 
   if ( ci.nMatchTo ) {
 
-    pch = g_strdup_printf( ("Gammon values at %d-away, %d-away (%d cube)\n\n"),
+    pch = g_strdup_printf( _("Gammon values at %d-away, %d-away (%d cube)\n\n"),
                            ci.nMatchTo - ci.anScore[ 0 ],
                            ci.nMatchTo - ci.anScore[ 1 ],
                            ci.nCube );
@@ -482,7 +482,7 @@ TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
     g_free( pch );
 
     gtk_text_insert( GTK_TEXT( ptw->pwGammonPrice ), pf, NULL, NULL,
-                     "Player                          Gammon   BG\n", -1 );
+                     _("Player                          Gammon   BG\n"), -1 );
     
 
     for ( j = 0; j < 2; ++j ) {
