@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.87 2001/12/19 22:13:49 gtw Exp $
+ * $Id: gtkgame.c,v 1.88 2002/01/02 20:49:48 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -935,7 +935,8 @@ static void CreateGameWindow( void ) {
 	*pm = gtk_menu_new();
     GtkStyle *ps;
     GdkColormap *pcmap;
-    
+    gint nMaxWidth; 
+
 #include "prevgame.xpm"
 #include "prevmove.xpm"
 #include "nextmove.xpm"
@@ -994,9 +995,6 @@ static void CreateGameWindow( void ) {
 
     gtk_clist_set_column_justification( GTK_CLIST( pwGameList ), 0,
 					GTK_JUSTIFY_RIGHT );
-    gtk_clist_set_column_width( GTK_CLIST( pwGameList ), 0, 40 );
-    gtk_clist_set_column_width( GTK_CLIST( pwGameList ), 1, 200 );
-    gtk_clist_set_column_width( GTK_CLIST( pwGameList ), 2, 200 );
     gtk_clist_set_column_resizeable( GTK_CLIST( pwGameList ), 0, FALSE );
     gtk_clist_set_column_resizeable( GTK_CLIST( pwGameList ), 1, FALSE );
     gtk_clist_set_column_resizeable( GTK_CLIST( pwGameList ), 2, FALSE );
@@ -1025,6 +1023,13 @@ static void CreateGameWindow( void ) {
 	psGameList->fg[ GTK_STATE_NORMAL ];
     psCurrent->fg[ GTK_STATE_SELECTED ] = psCurrent->fg[ GTK_STATE_NORMAL ] =
 	psGameList->bg[ GTK_STATE_NORMAL ];
+
+    nMaxWidth = gdk_string_width( psCurrent->font, "Move" );
+    gtk_clist_set_column_width( GTK_CLIST( pwGameList ), 0, nMaxWidth );
+    nMaxWidth = gdk_string_width( psCurrent->font,
+                                  " (set board AAAAAAAAAAAAAA)");
+    gtk_clist_set_column_width( GTK_CLIST( pwGameList ), 1, nMaxWidth );
+    gtk_clist_set_column_width( GTK_CLIST( pwGameList ), 2, nMaxWidth );
     
     gtk_signal_connect( GTK_OBJECT( pwGameList ), "select-row",
 			GTK_SIGNAL_FUNC( GameListSelectRow ), NULL );
