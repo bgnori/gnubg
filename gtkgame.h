@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.14 2001/03/14 22:15:04 gtw Exp $
+ * $Id: gtkgame.h,v 1.15 2001/03/19 15:58:36 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -44,6 +44,9 @@ extern void GTKSetGame( int i );
 
 extern int InitGTK( int *argc, char ***argv );
 extern void RunGTK( void );
+extern void GTKAllowStdin( void );
+extern void GTKDisallowStdin( void );
+extern void GTKDelay( void );
 extern void ShowList( char *asz[], char *szTitle );
 
 extern GtkWidget *CreateDialog( char *szTitle, int fQuestion, GtkSignalFunc pf,
