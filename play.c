@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.111 2002/03/17 16:12:35 thyssen Exp $
+ * $Id: play.c,v 1.112 2002/03/18 22:01:17 gtw Exp $
  */
 
 #include "config.h"
@@ -2889,16 +2889,18 @@ SetMatchID ( char *szMatchID ) {
                      &nMatchTo, anScore, &fCrawford, 
                      anDice, szMatchID ) < 0 ) {
 
-    outputf( "Illegal match ID '%'\n", szMatchID );
+    outputf( "Illegal match ID '%s'\n", szMatchID );
     outputx();
     return;
 
   }
 
+#if 0
   printf ( "%d %d %d %d %d %d %d %d %d\n",
            nCube, fCubeOwner, fMove, nMatchTo, anScore[ 0 ], anScore[ 1 ],
            fCrawford, anDice[ 0 ], anDice[ 1 ] );
-
+#endif
+  
   /* start new match or session */
 
   FreeMatch();

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.133 2002/03/17 13:26:39 thyssen Exp $
+ * $Id: eval.c,v 1.134 2002/03/18 22:01:17 gtw Exp $
  */
 
 #include "config.h"
@@ -7093,7 +7093,7 @@ getMatchPoints ( float aaarPoints[ 2 ][ 4 ][ 2 ],
 
   float arOutput[ NUM_OUTPUTS ];
   float arDP1[ 2 ], arDP2[ 2 ],arCP1[ 2 ], arCP2[ 2 ], arTG[ 2 ];
-  float rDTW, rDTL, rNDW, rNDL, rDP, rRisk, rGain, r;
+  float rDTW, rDTL, rNDW, rNDL, rDP, rRisk, rGain;
 
   int i, anNormScore[ 2 ];
 
