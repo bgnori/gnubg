@@ -18,13 +18,10 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.1.2.4 2003/06/16 19:40:23 thyssen Exp $
+* $Id: inc3d.h,v 1.1.2.5 2003/06/17 08:20:19 Superfly_Jon Exp $
 */
 
 #include "config.h"
-
-/* Comment out next line to remove glut library (needed for debug font) */
-#define USE_GLUT_FONT 1
 
 #if USE_GTK
 	#define BUILDING_LIB 1

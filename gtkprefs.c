@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.64.4.4 2003/06/16 07:11:38 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.64.4.5 2003/06/17 08:20:19 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -68,7 +68,8 @@ static GtkWidget *apwColour[ 2 ], *apwBoard[ 4 ],
     *pwLabels, *pwWood, *pwWoodType, *pwWoodMenu, *pwHinges,
     *pwWoodF, *pwPreview[ NUM_PIXMAPS ];
 #if USE_BOARD3D
-GtkWidget *pwBoardType, *pwShowShadows, *pwAnimateRoll, *pwAnimateFlag, *pwCloseBoard, *pwSpin;
+GtkWidget *pwBoardType, *pwShowShadows, *pwAnimateRoll, *pwAnimateFlag, *pwCloseBoard, *pwSpin,
+	*pwDebugTime;
 #endif
 
 #if HAVE_LIBXML2
@@ -674,6 +675,10 @@ GtkWidget *Board3dPage(BoardData *bd)
 	gtk_box_pack_start (GTK_BOX (dtBox), pwCloseBoard, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwCloseBoard), rdAppearance.closeBoardOnExit );
 	
+	pwDebugTime = gtk_check_button_new_with_label ("Show drawing time");
+	gtk_box_pack_start (GTK_BOX (dtBox), pwDebugTime, FALSE, FALSE, 0);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwDebugTime), rdAppearance.debugTime);
+	
 	pwev = gtk_event_box_new();
 	gtk_box_pack_start(GTK_BOX(dtBox), pwev, FALSE, FALSE, 0);
 	pwhbox = gtk_hbox_new(FALSE, 4);
@@ -718,11 +723,10 @@ static GtkWidget *GeneralPage( BoardData *bd ) {
 	gtk_box_pack_start (GTK_BOX (dtBox), pwBoardType, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwBoardType), (rdAppearance.fDisplayType == DT_2D));
 	
-	group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (pwBoardType));
-	button = gtk_radio_button_new_with_label (group, "3d Board");
+	button = gtk_radio_button_new_with_label_from_widget (GTK_RADIO_BUTTON(pwBoardType), "3d Board");
 	gtk_box_pack_start (GTK_BOX (dtBox), button, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), (rdAppearance.fDisplayType == DT_3D));
-	g_signal_connect(G_OBJECT(button), "toggled", G_CALLBACK(toggle_display_type), NULL);
+	gtk_signal_connect_object(GTK_OBJECT(button), "toggled", GTK_SIGNAL_FUNC(toggle_display_type), NULL);
 #endif
 
     pwLabels = gtk_check_button_new_with_label( _("Numbered point labels") );
@@ -1031,7 +1035,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.64.4.4 2003/06/16 07:11:38 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.64.4.5 2003/06/17 08:20:19 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -1482,6 +1486,7 @@ static void GetPrefs ( renderdata *prd ) {
 	rdAppearance.animateRoll = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(pwAnimateRoll));
 	rdAppearance.animateFlag = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(pwAnimateFlag));
 	rdAppearance.closeBoardOnExit = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(pwCloseBoard));
+	rdAppearance.debugTime = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(pwDebugTime));
 	if (rdAppearance.fDisplayType == DT_3D && bd->resigned)
 		ShowFlag3d();	/* Showing now - update */
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.5.4.3 2003/06/16 07:11:38 Superfly_Jon Exp $
+ * $Id: render.h,v 1.5.4.4 2003/06/17 08:20:19 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -65,6 +65,7 @@ typedef struct _renderdata {
 	int animateRoll;	/* Animate dice rolls */
 	int animateFlag;	/* Animate resignation flag */
 	int closeBoardOnExit;	/* Animate board close on quit */
+	int debugTime;	/* Show average drawing time */
 #endif
 } renderdata;
 
