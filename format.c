@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.13 2004/10/26 19:11:35 oysteijo Exp $
+ * $Id: format.c,v 1.14 2005/02/14 13:19:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -392,13 +392,24 @@ OutputRolloutContext ( const char *szIndent, const evalsetup *pes ) {
               gettext( aszRNG[ prc->rngRollout ] ),
               prc->nSeed );
 
-  /* stop on std.err */
+   if ( ( prc->fStopOnJsd || prc->fStopMoveOnJsd || prc->fStopOnSTD )
+        && szIndent && *szIndent )
+     strcat ( sz, szIndent );
 
-  if ( prc->fStopOnSTD )
+    /* stop on std.err */
+
+   if ( prc->fStopOnSTD && !prc->fStopMoveOnJsd )
     sprintf( strchr( sz, 0 ),
              _("Stop when std.errs. are small enough: ratio "
                "%.4g (min. %d games)\n"),
              prc->rStdLimit, prc->nMinimumGames );
+
+   /* stop on JSD */
+   if ( prc->fStopOnJsd || prc->fStopMoveOnJsd )
+     sprintf( strchr( sz, 0 ),
+              _("Stop when best play is enough JSDs ahead: limit "
+                "%.4g (min. %d games)\n"),
+              prc->rJsdLimit, prc->nMinimumJsdGames );
 
   /* first play */
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.141 2004/10/26 19:11:35 oysteijo Exp $
+ * $Id: rollout.c,v 1.142 2005/02/14 13:19:33 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1462,7 +1462,11 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
     log_name = 0;
   }
 
-  cGames = i;
+  for (alt = 0, cGames = 0; alt < alternatives; ++alt)
+  {
+    if ( nGamesDone[alt] > cGames )
+      cGames = nGamesDone[alt];
+  }
 
   memcpy (&rcRollout, &rcRolloutSave, sizeof (rcRollout));
   fOutputMWC = fOutputMWCSave;
