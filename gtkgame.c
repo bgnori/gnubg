@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.25 2001/01/30 15:53:33 gtw Exp $
+ * $Id: gtkgame.c,v 1.26 2001/02/07 17:59:30 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -231,10 +231,18 @@ static guint nStdin, nDisabledCount = 1;
 void StdinReadNotify( gpointer p, gint h, GdkInputCondition cond ) {
     
 #if HAVE_LIBREADLINE
+    /* Handle "next turn" processing before more input (otherwise we might
+       not even have a readline handler installed!) */
+    while( nNextTurn )
+	NextTurnNotify( NULL );
+    
     rl_callback_read_char();
 #else
     char sz[ 2048 ], *pch;
 
+    while( nNextTurn )
+	NextTurnNotify( NULL );
+    
     sz[ 0 ] = 0;
 	
     fgets( sz, sizeof( sz ), stdin );
