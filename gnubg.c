@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.231 2002/06/26 08:01:27 thyssen Exp $
+ * $Id: gnubg.c,v 1.232 2002/06/27 17:07:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -1286,7 +1286,9 @@ extern double ParseReal( char **ppch ) {
     if( !ppch || !( pchOrig = NextToken( ppch ) ) )
 	return ERR_VAL;
 
+    PushLocale ( "C" );
     r = strtod( pchOrig, &pch );
+    PopLocale ();
 
     return *pch ? ERR_VAL : r;
 }
