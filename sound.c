@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.36 2004/09/16 07:50:17 Superfly_Jon Exp $
+ * $Id: sound.c,v 1.37 2004/10/07 11:24:06 Superfly_Jon Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -91,6 +91,8 @@
 #if !defined(SIGIO) && defined(SIGPOLL)
 #define SIGIO SIGPOLL /* The System V equivalent */
 #endif
+
+#if USE_SOUND
 
 #define MAX_SOUND_LENGTH 1048576
 
@@ -1299,3 +1301,4 @@ extern void SoundWait( void ) {
 	return;
     }
 }
+#endif

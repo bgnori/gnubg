@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.10 2004/10/05 16:13:00 Superfly_Jon Exp $
+ * $Id: relational.c,v 1.11 2004/10/07 11:24:06 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -123,9 +123,9 @@ static void Disconnect(PyObject *r)
 
 extern int RelationalMatchExists()
 {
+  int ret = -1;
 #if USE_PYTHON
   PyObject *v, *r;
-  int ret;
 
   if (!(r = Connect()))
 	  return -1;
@@ -154,11 +154,10 @@ extern int RelationalMatchExists()
 
   Disconnect(r);
 
-  return ret;
-
 #else /* USE_PYTHON */
   outputl( _("This build was not compiled with support for Python.\n") );
 #endif /* !USE_PYTHON */
+  return ret;
 }
 
 extern void
