@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.64 2003/05/24 10:24:49 hb Exp $
+ * $Id: gtkprefs.c,v 1.65 2003/07/08 21:04:06 hb Exp $
  */
 
 #include "config.h"
@@ -950,7 +950,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.64 2003/05/24 10:24:49 hb Exp $\n"
+          "    $Id: gtkprefs.c,v 1.65 2003/07/08 21:04:06 hb Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -1002,7 +1002,7 @@ DesignAddTitle ( boarddesign *pbde ) {
   GtkWidget *pwvbox;
   GtkWidget *pwhbox;
 
-  pwDialog = CreateDialog( _("GNU Backgammon - Add current board design"), 
+  pwDialog = GTKCreateDialog( _("GNU Backgammon - Add current board design"), 
                            DT_QUESTION,
                            GTK_SIGNAL_FUNC( DesignAddOK ), pbde );
 
@@ -1520,7 +1520,7 @@ extern void BoardPreferences( GtkWidget *pwBoard ) {
     fWood = rdAppearance.wt;
     fHinges = rdAppearance.fHinges;
     
-    pwDialog = CreateDialog( _("GNU Backgammon - Appearance"), DT_QUESTION,
+    pwDialog = GTKCreateDialog( _("GNU Backgammon - Appearance"), DT_QUESTION,
 			     GTK_SIGNAL_FUNC( BoardPrefsOK ), bd );
 
     ppm = gdk_pixmap_new( bd->drawing_area->window, 108 * 3, 72 * 3, -1 );
