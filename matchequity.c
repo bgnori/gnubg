@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.29 2002/06/02 16:40:22 thyssen Exp $
+* $Id: matchequity.c,v 1.30 2002/06/26 13:23:08 thyssen Exp $
 */
 
 #include <stdio.h>
@@ -997,6 +997,8 @@ initMETFromParameters ( float aafMET [ MAXSCORE ][ MAXSCORE ],
      * Use Zadeh's formulae 
      */
 
+    PushLocale ( "C" );
+
     /* obtain parameters */
 
     for ( pl = pmp->lParameters.plNext; pl != &pmp->lParameters; 
@@ -1014,6 +1016,8 @@ initMETFromParameters ( float aafMET [ MAXSCORE ][ MAXSCORE ],
         rDeltaBar = atof ( pp->szValue );
 
     }
+
+    PopLocale ();
     
 
     /* calculate table */
@@ -1052,6 +1056,8 @@ initPostCrawfordMETFromParameters ( float afMETPostCrawford[ MAXSCORE ],
      * Use Zadeh's formulae 
      */
 
+    PushLocale ( "C" );
+
     /* obtain parameters */
 
     for ( pl = pmp->lParameters.plNext; pl != &pmp->lParameters; 
@@ -1067,6 +1073,8 @@ initPostCrawfordMETFromParameters ( float afMETPostCrawford[ MAXSCORE ],
         rFD4 = atof ( pp->szValue );
 
     }
+
+    PopLocale ();
 
     /* calculate table */
 
