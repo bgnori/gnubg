@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.4 2000/01/15 17:38:21 gtw Exp $
+ * $Id: database.c,v 1.5 2000/01/16 01:06:57 gtw Exp $
  */
 
 #include "config.h"
@@ -287,11 +287,11 @@ extern void CommandDatabaseDump( char *sz ) {
     NoGDBM();
 }
 
-extern void CommandDatabaseEvaluate( char *sz ) {
+extern void CommandDatabaseGenerate( char *sz ) {
     NoGDBM();
 }
 
-extern void CommandDatabaseGenerate( char *sz ) {
+extern void CommandDatabaseRollout( char *sz ) {
     NoGDBM();
 }
 
