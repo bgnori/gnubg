@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.151 2001/09/21 15:08:59 gtw Exp $
+ * $Id: gnubg.c,v 1.152 2001/09/26 16:32:22 gtw Exp $
  */
 
 #include "config.h"
@@ -1591,7 +1591,7 @@ extern void ShowBoard( void ) {
 #endif
 #else
             GameSet( &ewnd, anBoardTemp, 0, ap[ 1 ].szName, ap[ 0 ].szName,
-                     nMatchTo, anScore[ 1 ], anScore[ 0 ], -1, -1 );
+                     ms.nMatchTo, ms.anScore[ 1 ], ms.anScore[ 0 ], -1, -1 );
 #endif
 	} else
 #endif
