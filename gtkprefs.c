@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.69 2003/08/13 20:39:36 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.70 2003/08/15 10:36:08 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1848,7 +1848,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.69 2003/08/13 20:39:36 thyssen Exp $\n"
+          "    $Id: gtkprefs.c,v 1.70 2003/08/15 10:36:08 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -1899,7 +1899,8 @@ BoardPrefsDestroy ( GtkWidget *pw, void * arg) {
 #endif /* HAVE_LIBXML2 */
 
 #if USE_BOARD3D
-	Tidy3dObjects(&bd3d, FALSE);
+	if (previewType == DT_3D)
+		Tidy3dObjects(&bd3d, FALSE);
 #endif
 
 	gtk_main_quit();
