@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.151 2003/10/13 11:41:47 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.152 2003/10/14 10:02:31 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1742,6 +1742,19 @@ gboolean button_press_event(GtkWidget *board, GdkEventButton *event, BoardData* 
 			
 			return TRUE;
 		}
+
+		if (ap[ms.fTurn].pt != PLAYER_HUMAN && !editing)
+		{
+			outputl( _("It is the computer's turn -- type `play' to force it to "
+				"move immediately.") );
+			outputx();
+
+			board_beep(bd);
+			bd->drag_point = -1;
+
+			return TRUE;
+		}
+
 		if (editing && !(event->state & GDK_CONTROL_MASK))
 		{
 			board_quick_edit(board, bd, x, y, 0);
