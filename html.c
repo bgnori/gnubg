@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.45 2002/07/21 19:42:57 thyssen Exp $
+ * $Id: html.c,v 1.46 2002/07/21 20:55:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -1512,7 +1512,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.45 $";
+  const char szVersion[] = "$Revision: 1.46 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2202,33 +2202,15 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
       rEq = pmr->n.ml.amMoves[ i ].rScore;
       rEqTop = pmr->n.ml.amMoves[ 0 ].rScore;
 
-      if ( !pms->nMatchTo || ( pms->nMatchTo && ! fOutputMWC ) ) {
-
-        /* output in equity */
-
-        if ( i ) 
-          fprintf ( pf,
-                    "<td>%+7.3f (%7.3f)</td>\n", rEq, rEq - rEqTop );
-        else
-          fprintf ( pf,
-                    "<td>%+7.3f</td>\n", rEq );
-
-      }
-      else {
-
-        /* output in mwc */
-
-        rEq = 100.0f * eq2mwc ( rEq, &ci );
-        rEqTop = 100.0f * eq2mwc ( rEqTop, &ci );
-
-        if ( i ) 
-          fprintf ( pf,
-                    "<td>%7.3f%% (%7.3f%%)</td>\n", rEq, rEq - rEqTop );
-        else
-          fprintf ( pf,
-                    "<td>%7.3f%%</td>\n", rEq );
-
-      }
+      if ( i ) 
+        fprintf ( pf,
+                  "<td>%s (%s)</td>\n", 
+                  OutputEquity ( rEq, &ci, TRUE ), 
+                  OutputEquityDiff ( rEq, rEqTop, &ci ) );
+      else
+        fprintf ( pf,
+                  "<td>%s</td>\n", 
+                  OutputEquity ( rEq, &ci, TRUE ) );
 
       /* end row */
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.7 2002/07/21 19:33:51 thyssen Exp $
+ * $Id: text.c,v 1.8 2002/07/21 20:55:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -391,7 +391,7 @@ OutputMWC ( const float r, const cubeinfo *pci, const int f ) {
     else if ( fOutputMatchPC )
       sprintf ( sz, "%6.2f%%", 100.0f * r );
     else
-      sprintf ( sz, "%6.4f%%", r );
+      sprintf ( sz, "%6.4f", r );
   }
 
   return sz;
@@ -625,7 +625,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.7 $";
+  const char szVersion[] = "$Revision: 1.8 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -728,7 +728,7 @@ isMissedDouble ( float arDouble[], int fDouble, cubeinfo *pci ) {
  *
  */
 
-static void
+extern void
 TextPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
                              float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                              float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.3 2002/07/21 19:36:10 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.4 2002/07/21 20:54:15 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -454,10 +454,10 @@ static void HintGetSelection( GtkWidget *pw, GtkSelectionData *psd,
 
 #if HAVE_ALLOCA
     an = alloca( c * sizeof( an[ 0 ] ) );
-    sz = alloca( c * 160 );
+    sz = alloca( c * 9 * 80 );
 #else
     an = malloc( c * sizeof( an[ 0 ] ) );
-    sz = malloc( c * 160 );
+    sz = malloc( c * 9 * 80 );
 #endif
 
     *sz = 0;

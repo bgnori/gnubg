@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.6 2002/07/21 19:33:57 thyssen Exp $
+ * $Id: export.h,v 1.7 2002/07/21 20:56:48 thyssen Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -107,5 +107,16 @@ OutputRolloutResult ( const char *szIndent,
                       const cubeinfo aci[],
                       const int cci,
                       const int fCubeful );
+
+extern void
+TextPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
+                             float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                             float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                             int fPlayer,
+                             evalsetup *pes, cubeinfo *pci,
+                             int fDouble, int fTake,
+                             skilltype stDouble,
+                             skilltype stTake );
+
 
 #endif
