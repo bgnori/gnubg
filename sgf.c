@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.17 2001/04/13 16:24:35 gtw Exp $
+ * $Id: sgf.c,v 1.18 2001/04/14 11:39:01 thyssen Exp $
  */
 
 #include "config.h"
@@ -433,13 +433,13 @@ static void RestoreNode( list *pl ) {
 	    } else if( !strcmp( pch, "take" ) ) {
 		pmr = malloc( sizeof( pmr->t ) );
 		pmr->mt = MOVE_TAKE;
-		pmr->t.sz = NULL;
-		pmr->t.fPlayer = fPlayer;
+		pmr->d.sz = NULL;
+		pmr->d.fPlayer = fPlayer;
 	    } else if( !strcmp( pch, "drop" ) ) {
 		pmr = malloc( sizeof( pmr->t ) );
 		pmr->mt = MOVE_DROP;
-		pmr->t.sz = NULL;
-		pmr->t.fPlayer = fPlayer;
+		pmr->d.sz = NULL;
+		pmr->d.fPlayer = fPlayer;
 	    } else {
 		pmr = malloc( sizeof( pmr->n ) );
 		pmr->mt = MOVE_NORMAL;
