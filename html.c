@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.108 2003/07/17 10:32:17 thyssen Exp $
+ * $Id: html.c,v 1.109 2003/07/21 19:19:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -1850,7 +1850,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.108 $";
+  const char szVersion[] = "$Revision: 1.109 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1931,7 +1931,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.108 $";
+  const char szVersion[] = "$Revision: 1.109 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3380,7 +3380,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
       printStatTableRow( pf,
                          _("Relative FIBS rating"),
                          "%.2f",
-                         rRating, -rRating );
+                         rRating / 2.0f, -rRating / 2.0f );
     }
     else {
 

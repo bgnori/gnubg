@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.370 2003/07/21 17:07:36 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.371 2003/07/21 19:19:16 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7411,7 +7411,7 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
       }
 
       for ( i = 0; i < 2; ++i ) {
-        sprintf( sz, "%.2f", ( 1 - 2 * i ) * rRating );
+        sprintf( sz, "%.2f", ( 1 - 2 * i ) * rRating / 2.0f );
         gtk_clist_set_text( GTK_CLIST( pwStats ), irow + 1, i + 1, sz);
       }
 
