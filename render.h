@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.9 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: render.h,v 1.10 2003/08/13 15:51:31 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -112,6 +112,7 @@ typedef struct _renderdata {
     int fClockwise; /* orientation for board point numbers */
     int fDynamicLabels; /* TRUE if the point numbers are dynamic, i.e.,
                            they adjust depending on the player on roll */
+	int showMoveIndicator;
 #if USE_BOARD3D
 	displaytype fDisplayType;	/* 2d or 3d display */
 	int showShadows;	/* Show 3d shadows */
@@ -123,7 +124,6 @@ typedef struct _renderdata {
 	lighttype lightType;	/* Positional/Directional light source */
 	float lightPos[3];	/* x,y,z pos of light source */
 	int lightLevels[3];	/* amibient/diffuse/specular light levels */
-	int showMoveIndicator;
 	int boardAngle;	/* Angle board is tilted at */
 	int testSkewFactor;	/* Debug FOV adjustment */
 	int planView;	/* Ortho view? */

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.456 2003/08/13 11:52:27 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.457 2003/08/13 15:51:31 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3814,7 +3814,9 @@ Shutdown( void ) {
 extern void PromptForExit( void ) {
 
     static int fExiting;
+#if USE_BOARD3D
 	BoardData* bd = BOARD(pwBoard)->board_data;
+#endif
 
     if( !fExiting && fInteractive && fConfirm && ms.gs == GAME_PLAYING ) {
 	fExiting = TRUE;
