@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.128 2002/10/12 12:39:36 thyssen Exp $
+ * $Id: set.c,v 1.129 2002/10/14 19:13:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -55,6 +55,11 @@
 #include "i18n.h"
 
 #include "sound.h"
+
+#ifdef WIN32
+#include<windows.h>
+#endif
+
 
 static int iPlayerSet;
 
@@ -3108,5 +3113,70 @@ CommandSetSoundSoundTake ( char *sz ) {
 
 }
 
+
+#endif
+
+#ifdef WIN32
+
+static void
+Win32SetPriority ( const int tp, const char *sz ) {
+
+  if ( SetThreadPriority(GetCurrentThread(), tp ) ) {
+    outputf ( _("Priority of program set to: %s\n"), sz );
+    fThreadPriority = tp;
+  }
+  else
+    outputf ( _("Changing priority failed (trying to set priority %s)\n",
+                sz ) );
+
+}
+
+extern void
+CommandSetPriorityIdle ( char *sz ) {
+
+  Win32SetPriority ( THREAD_IDLE_PRIORITY_CLASS, 
+                     "IDLE_PRIORITY_CLASS" );
+
+}
+
+extern void
+CommandSetPriorityBelowNormal ( char *sz ) {
+
+  Win32SetPriority ( THREAD_BELOW_NORMAL_PRIORITY_CLASS, 
+                     "BELOW_NORMAL_PRIORITY_CLASS" );
+
+}
+
+extern void
+CommandSetPriorityNormal ( char *sz ) {
+
+  Win32SetPriority ( THREAD_NORMAL_PRIORITY_CLASS, 
+                     "NORMAL_PRIORITY_CLASS" );
+
+}
+
+extern void
+CommandSetPriorityAboveNormal ( char *sz ) {
+
+  Win32SetPriority ( THREAD_ABOVE_NORMAL_PRIORITY_CLASS, 
+                     "ABOVE_NORMAL_PRIORITY_CLASS" );
+
+}
+
+extern void
+CommandSetPriorityHigh ( char *sz ) {
+
+  Win32SetPriority ( THREAD_HIGH_PRIORITY_CLASS, , 
+                     "HIGH_PRIORITY_CLASS" );
+
+}
+
+extern void
+CommandSetPriorityRealtime ( char *sz ) {
+
+  Win32SetPriority ( THREAD_REALTIME_PRIORITY_CLASS, 
+                     "REALTIME_PRIORITY_CLASS" );
+
+}
 
 #endif

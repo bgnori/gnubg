@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.164 2002/10/12 12:38:52 thyssen Exp $
+ * $Id: backgammon.h,v 1.165 2002/10/14 19:13:59 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -277,6 +277,7 @@ extern int fInvertMET;
 extern int fConfirm, fConfirmSave;
 extern float rAlpha, rAnneal, rThreshold, arLuckLevel[ LUCK_VERYGOOD + 1 ],
     arSkillLevel[ SKILL_VERYGOOD + 1 ];
+extern int fThreadPriority;
 
 typedef enum _pathformat {
   PATH_EPS, PATH_GAM, PATH_HTML, PATH_LATEX, PATH_MAT, PATH_OLDMOVES,
@@ -742,6 +743,12 @@ extern void CommandAccept( char * ),
     CommandSetPlayerPubeval( char * ),
     CommandSetPlayer( char * ),
     CommandSetPostCrawford( char * ),
+    CommandSetPriorityIdle ( char * ),
+    CommandSetPriorityBelowNormal ( char * ),
+    CommandSetPriorityNormal ( char * ),
+    CommandSetPriorityAboveNormal ( char * ),
+    CommandSetPriorityHigh ( char * ),
+    CommandSetPriorityRealtime ( char * ),
     CommandSetPrompt( char * ),
     CommandSetRecord( char * ),
     CommandSetRNG( char * ),
