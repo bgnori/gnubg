@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.244 2004/10/21 14:59:50 Superfly_Jon Exp $
+ * $Id: set.c,v 1.245 2004/10/26 09:45:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2903,6 +2903,15 @@ extern void CommandSetOutputWinPC( char *sz ) {
 	       _("Game winning chances will be shown as probabilities.") );
 }
 
+static void SetInvertMET()
+{
+    invertMET();
+    /* Clear any stored results to stop previous table causing problems */
+    EvalCacheFlush();
+    InvalidateStoredMoves();
+    InvalidateStoredCube();
+}
+
 extern void CommandSetMET( char *sz ) {
 
   sz = NextToken ( &sz );
@@ -2936,7 +2945,7 @@ extern void CommandSetMET( char *sz ) {
 
   }
   if (fInvertMET)
-    invertMET();
+    SetInvertMET();
 }
 
 
@@ -3703,8 +3712,7 @@ CommandSetInvertMatchEquityTable ( char *sz ) {
     UpdateSetting( &fInvertMET );
 
   if ( fOldInvertMET != fInvertMET )
-    invertMET ();
-
+    SetInvertMET();
 }
 
 

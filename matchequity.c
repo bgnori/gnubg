@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.51 2004/10/25 08:45:49 Superfly_Jon Exp $
+* $Id: matchequity.c,v 1.52 2004/10/26 09:45:07 Superfly_Jon Exp $
 */
 
 #include <stdio.h>
@@ -33,7 +33,6 @@
 #include "list.h"
 #include "path.h"
 #include "mec.h"
-#include "backgammon.h"
 
 #if HAVE_LIBXML2
 #include <libxml/tree.h>
@@ -1989,10 +1988,6 @@ invertMET ( void ) {
 
     }
   }
-  /* Clear any stored results to stop previous table causing problems */
-  EvalCacheFlush();
-  InvalidateStoredMoves();
-  InvalidateStoredCube();
 }
 
 /* given a match score, return a pair of arrays with the METs for
