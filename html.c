@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.101 2003/04/03 19:59:35 thyssen Exp $
+ * $Id: html.c,v 1.102 2003/04/04 20:03:43 thyssen Exp $
  */
 
 #include "config.h"
@@ -1379,13 +1379,11 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
 
   fputs ( "<td colspan=\"6\">", pf );
 
-  if ( pms->fMove == fClockwise && pms->anDice[ 0 ] && pms->anDice[ 1 ] ) {
+  if ( ! pms->fMove && pms->anDice[ 0 ] && pms->anDice[ 1 ] ) {
 
     /* player has rolled the dice */
     
-    sprintf ( sz, "b-mid%c-%c%d%d", 
-              pms->fMove ? 'r' : 'l',
-              pms->fMove ? 'o' : 'x',
+    sprintf ( sz, "b-midl-x%d%d", 
               pms->anDice[ 0 ], pms->anDice[ 1 ] );
     sprintf ( szAlt, "&nbsp;&nbsp;%d%d&nbsp;&nbsp;", 
               pms->anDice[ 0 ], pms->anDice[ 1 ] );
@@ -1394,12 +1392,11 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
                  hecss, HTML_EXPORT_TYPE_GNU );
     
   }
-  else if ( pms->fMove == fClockwise && pms->fDoubled ) {
+  else if ( ! pms->fMove && pms->fDoubled ) {
     
     /* player 0 has doubled */
     
-    sprintf ( sz, "b-mid%c-c%d", 
-              pms->fMove ? 'r' : 'l',
+    sprintf ( sz, "b-midl-c%d", 
               2 * pms->nCube );
     sprintf ( szAlt, "&nbsp;[%d]&nbsp;&nbsp;", 2 * pms->nCube );
     
@@ -1435,13 +1432,11 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
 
   fputs ( "<td colspan=\"6\">", pf );
 
-  if ( pms->fMove == ! fClockwise && pms->anDice[ 0 ] && pms->anDice[ 1 ] ) {
+  if ( pms->fMove && pms->anDice[ 0 ] && pms->anDice[ 1 ] ) {
 
     /* player 1 has rolled the dice */
 
-    sprintf ( sz, "b-mid%c-%c%d%d", 
-              pms->fMove ? 'r' : 'l',
-              pms->fMove ? 'o' : 'x',
+    sprintf ( sz, "b-midr-o%d%d", 
               pms->anDice[ 0 ], pms->anDice[ 1 ] );
     sprintf ( szAlt, "&nbsp;&nbsp;%d%d&nbsp;&nbsp;", 
               pms->anDice[ 0 ], pms->anDice[ 1 ] );
@@ -1450,12 +1445,11 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
                  hecss, HTML_EXPORT_TYPE_GNU );
     
   }
-  else if ( pms->fMove == ! fClockwise && pms->fDoubled ) {
+  else if ( pms->fMove && pms->fDoubled ) {
     
     /* player 1 has doubled */
     
-    sprintf ( sz, "b-mid%c-c%d", 
-              pms->fMove ? 'r' : 'l',
+    sprintf ( sz, "b-midr-c%d", 
               2 * pms->nCube );
     sprintf ( szAlt, "&nbsp;[%d]&nbsp;&nbsp;", 2 * pms->nCube );
     
@@ -1856,7 +1850,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.101 $";
+  const char szVersion[] = "$Revision: 1.102 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1937,7 +1931,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.101 $";
+  const char szVersion[] = "$Revision: 1.102 $";
   int iMajor, iMinor;
   char *pc;
 
