@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.145 2003/05/12 18:41:22 thyssen Exp $
+ * $Id: show.c,v 1.146 2003/05/24 10:24:50 hb Exp $
  */
 
 #include "config.h"
@@ -1945,7 +1945,7 @@ extern void CommandShowHighlightColour ( char *sz ) {
 
 
 
-#ifdef USE_SOUND
+#if USE_SOUND
 
 extern void
 CommandShowSound ( char *sz ) {

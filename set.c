@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.182 2003/04/05 18:42:59 thyssen Exp $
+ * $Id: set.c,v 1.183 2003/05/24 10:24:49 hb Exp $
  */
 
 #include "config.h"
@@ -3717,7 +3717,7 @@ CommandSetHighlightDark ( char *sz ) {
  * Sounds
  */
 
-#ifdef USE_SOUND
+#if USE_SOUND
 
 /* enable/disable sounds */
 
@@ -3735,7 +3735,7 @@ CommandSetSoundEnable ( char *sz ) {
 extern void
 CommandSetSoundSystemArtsc ( char *sz ) {
 
-#ifdef HAVE_ARTSC
+#if HAVE_ARTSC
 
   ssSoundSystem = SOUND_SYSTEM_ARTSC;
   outputl ( _("GNU Backgammon will use the ArtsC sound system" ) );
@@ -3770,7 +3770,7 @@ CommandSetSoundSystemCommand ( char *sz ) {
 extern void
 CommandSetSoundSystemESD ( char *sz ) {
 
-#ifdef HAVE_ESD
+#if HAVE_ESD
 
   ssSoundSystem = SOUND_SYSTEM_ESD;
   outputl ( _("GNU Backgammon will use the ESD sound system" ) );
@@ -3787,7 +3787,7 @@ CommandSetSoundSystemESD ( char *sz ) {
 extern void
 CommandSetSoundSystemNAS ( char *sz ) {
 
-#ifdef HAVE_NAS
+#if HAVE_NAS
 
   ssSoundSystem = SOUND_SYSTEM_NAS;
   outputl ( _("GNU Backgammon will use the NAS sound system" ) );

@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.20 2003/05/16 08:09:09 thyssen Exp $
+ * $Id: sound.c,v 1.21 2003/05/24 10:24:50 hb Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -47,16 +47,16 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#ifdef HAVE_ESD
+#if HAVE_ESD
 #include <esd.h>
 #endif
 
-#ifdef HAVE_ARTSC
+#if HAVE_ARTSC
 #include <artsc.h>
 #include <glib.h>
 #endif
 
-#ifdef HAVE_NAS
+#if HAVE_NAS
 #include <audio/audiolib.h>
 #endif
 
@@ -627,8 +627,8 @@ static char *can_play_audio( void ) {
 }
 #endif  /* #ifndef WIN32 */
 
-#ifdef HAVE_ARTSC
 
+#if HAVE_ARTSC
 
 static int _af_ulaw2linear(unsigned char ulawbyte);
 
@@ -755,7 +755,7 @@ static int artsc_play_file(const char *file)
 
 #endif /* HAVE_ARTSC */
 
-#ifdef HAVE_NAS
+#if HAVE_NAS
 
 char nas_server[] = "localhost";
 AuServer *nas_serv = NULL;
@@ -885,7 +885,7 @@ play_file_child(soundcache *psc, const char *filename) {
 
     case SOUND_SYSTEM_ESD:
 
-#ifdef HAVE_ESD
+#if HAVE_ESD
 
       if (esd_play_file(NULL, filename, 1) )
         _exit(0);
@@ -898,7 +898,7 @@ play_file_child(soundcache *psc, const char *filename) {
 
     case SOUND_SYSTEM_ARTSC:
 
-#ifdef HAVE_ARTSC
+#if HAVE_ARTSC
 
       if (artsc_play_file(filename))
         _exit(0);
@@ -908,7 +908,7 @@ play_file_child(soundcache *psc, const char *filename) {
 
     case SOUND_SYSTEM_NAS:
 
-#ifdef HAVE_NAS
+#if HAVE_NAS
 
       if (play_nas_file(filename))
         _exit(0);

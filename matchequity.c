@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.35 2003/01/22 18:26:06 gtw Exp $
+* $Id: matchequity.c,v 1.36 2003/05/24 10:24:49 hb Exp $
 */
 
 #include <stdio.h>
@@ -1621,7 +1621,7 @@ InitMatchEquity ( const char *szFileName, const char *szDir ) {
   int i,j;
   metdata md;
 
-#ifdef HAVE_LIBXML2
+#if HAVE_LIBXML2
   static int fTableLoaded = FALSE;
 
   /*

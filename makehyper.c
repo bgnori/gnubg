@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.2 2003/04/07 19:52:15 thyssen Exp $
+ * $Id: makehyper.c,v 1.3 2003/05/24 10:24:49 hb Exp $
  */
 
 #include "config.h"
@@ -627,7 +627,7 @@ main ( int argc, char **argv ) {
 
   /* i18n */
 
-#ifdef HAVE_SETLOCALE
+#if HAVE_SETLOCALE
   setlocale (LC_ALL, "");
 #endif
   bindtextdomain (PACKAGE, LOCALEDIR);

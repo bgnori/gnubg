@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.27 2003/03/29 12:48:20 thyssen Exp $
+ * $Id: dice.c,v 1.28 2003/05/24 10:24:49 hb Exp $
  */
 
 #include "config.h"
@@ -619,7 +619,7 @@ extern int InitRNG( int *pnSeed, int fSet, const rng rngx ) {
  *
  */
 
-#ifdef HAVE_SOCKETS
+#if HAVE_SOCKETS
 
 static int
 getDiceRandomDotOrg ( void ) {

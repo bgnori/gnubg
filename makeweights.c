@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.7 2002/12/13 07:11:37 jsegrave Exp $
+ * $Id: makeweights.c,v 1.8 2003/05/24 10:24:49 hb Exp $
  */
 
 #include "config.h"
@@ -71,7 +71,7 @@ extern int main( int argc, char *argv[] ) {
 
     /* i18n */
 
-#ifdef HAVE_SETLOCALE
+#if HAVE_SETLOCALE
     setlocale (LC_ALL, "");
 #endif
     bindtextdomain (PACKAGE, LOCALEDIR);
