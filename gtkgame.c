@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.330 2003/03/29 15:57:18 thyssen Exp $
+ * $Id: gtkgame.c,v 1.331 2003/03/30 18:33:12 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -296,6 +296,7 @@ static void ExportPositionPos( gpointer *p, guint n, GtkWidget *pw );
 static void ExportPositionGammOnLine( gpointer *p, guint n, GtkWidget *pw );
 static void ExportPositionHtml( gpointer *p, guint n, GtkWidget *pw );
 static void ExportPositionText( gpointer *p, guint n, GtkWidget *pw );
+static void ExportPositionSnowieTxt( gpointer *p, guint n, GtkWidget *pw );
 static void ExportSessionLaTeX( gpointer *p, guint n, GtkWidget *pw );
 static void ExportSessionPDF( gpointer *p, guint n, GtkWidget *pw );
 static void ExportSessionHtml( gpointer *p, guint n, GtkWidget *pw );
@@ -2273,6 +2274,9 @@ extern int InitGTK( int *argc, char ***argv ) {
 	  NULL },
 	{ N_("/_File/_Export/_Position/.pos..."), NULL, ExportPositionPos, 0,
 	  NULL },
+	{ N_("/_File/_Export/_Position/Snowie .txt..."), NULL, 
+          ExportPositionSnowieTxt, 0,
+	  NULL },
 	{ N_("/_File/_Export/_Position/Text..."), NULL, ExportPositionText, 0,
 	  NULL },
 	{ N_("/_File/_Export/_Session"), NULL, NULL, 0, "<Branch>" },
@@ -3714,6 +3718,16 @@ static void ExportPositionText( gpointer *p, guint n, GtkWidget *pw ) {
 
   char *sz = getDefaultFileName ( PATH_TEXT );
   FileCommand( _("Export text position"), sz, "export position text", "text", 1 );
+  if ( sz ) 
+    free ( sz );
+
+}
+
+static void ExportPositionSnowieTxt( gpointer *p, guint n, GtkWidget *pw ) {
+
+  char *sz = getDefaultFileName ( PATH_SNOWIE_TXT );
+  FileCommand( _("Export Snowie .txt position"), sz, 
+               "export position snowietxt", "snowietxt", 1 );
   if ( sz ) 
     free ( sz );
 

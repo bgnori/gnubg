@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.402 2003/03/30 16:37:51 thyssen Exp $
+ * $Id: gnubg.c,v 1.403 2003/03/30 18:33:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -642,6 +642,9 @@ command cER = {
 #endif /* HAVE_LIBPNG */
     { "pos", CommandNotImplemented, N_("Save the current position in .pos "
       "format"), szFILENAME, &cFilename },
+    { "snowietxt", CommandExportPositionSnowieTxt,
+      N_("Save the current position in Snowie .txt format"), 
+      szFILENAME, &cFilename },
     { "text", CommandExportPositionText,
       N_("Save the current position in text format"), 
       szFILENAME, &cFilename },
