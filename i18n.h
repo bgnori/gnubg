@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: i18n.h,v 1.1 2002/06/01 17:34:58 thyssen Exp $
+ * $Id: i18n.h,v 1.2 2002/06/12 08:46:53 thyssen Exp $
  */
 
 #ifndef _I18N_H_
@@ -35,6 +35,7 @@
 # define _(Text) gettext (Text)
 #else
 # define _(Text) Text
+# define gettext(Text) Text
 #define textdomain(Domain)
 #define bindtextdomain(Package, Directory)
 #endif
