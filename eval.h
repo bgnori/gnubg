@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.5.2.6 2000/02/07 03:21:54 thyssen Exp $
+ * $Id: eval.h,v 1.5.2.7 2000/02/15 01:53:43 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -209,5 +209,9 @@ eq2mwc ( float rEq, cubeinfo *ci );
 
 extern int SetCubeInfo ( cubeinfo *ci, int nCube, int fCubeOwner, 
 			 int fMove );
+
+extern float eq2ceq ( float rEq, 
+		      float rTakePoint0, float rTakePoint1,
+		      int fCenteredCube);
 
 #endif
