@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.13 2004/02/12 10:20:53 uid68519 Exp $
+* $Id: widget3d.c,v 1.14 2004/03/04 10:51:40 Superfly_Jon Exp $
 */
 
 #include <config.h>
@@ -296,7 +296,7 @@ void getFormatDetails(HDC hdc, int* accl, int* dbl, int* col, int* depth, int* s
 	*accum = pfd.cAccumBits;
 }
 
-int CheckAccelerated(GtkWidget* board)
+static int CheckAccelerated(GtkWidget* board)
 {
 #if HAVE_GTKGLEXT
 	/*** OpenGL BEGIN ***/
@@ -348,8 +348,12 @@ int CheckAccelerated(GtkWidget* board)
 
 #else
 
-int CheckAccelerated(GtkWidget* board)
+static int CheckAccelerated(GtkWidget* board)
 {
+/* Commented out check for non-windows systems,
+	as doesn't work very well... */
+	return TRUE;
+/*
 	Display* display = glXGetCurrentDisplay();
 	GLXContext context = glXGetCurrentContext();
 	if (!display || !context)
@@ -358,6 +362,7 @@ int CheckAccelerated(GtkWidget* board)
 		return 1;
 	}
 	return glXIsDirect(display, context);
+*/
 }
 
 #endif
@@ -365,7 +370,7 @@ int CheckAccelerated(GtkWidget* board)
 int DoAcceleratedCheck(GtkWidget* board)
 {
 	if (!CheckAccelerated(board))
-	{	/* Display warning message as performance will be bad */
+	{	/* Display warning message as performance may be bad */
 		GTKShowWarning(WARN_UNACCELERATED);
 		return 0;
 	}
