@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.126 2002/09/25 21:24:25 gtw Exp $
+ * $Id: set.c,v 1.127 2002/10/04 17:39:20 thyssen Exp $
  */
 
 #include "config.h"
@@ -2182,12 +2182,12 @@ CommandSetExportShowPlayer ( char *sz ) {
 
   exsExport.fSide = i + 1;
 
-  if ( i == 3 )
+  if ( i == 2 )
     outputl ( _("Analysis, boards etc will be "
               "shown for both players in exports.") );
   else
     outputf ( _("Analysis, boards etc will only be shown for "
-              "player %s in exports.\n"), ap[ i - 1 ].szName );
+              "player %s in exports.\n"), ap[ i ].szName );
 
 }
 
