@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.cpp,v 1.9 2004/03/23 10:20:40 Superfly_Jon Exp $
+* $Id: font3d.cpp,v 1.10 2004/06/01 08:24:05 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -111,7 +111,7 @@ private:
 extern "C" void BuildFont(BoardData* bd)
 {
 	bd->numberFont = new font(24, FONT_SIZE, auchLuxiSR, cbLuxiSR);
-	bd->cubeFont = new font(48, CUBE_FONT_SIZE, auchLuxiRB, cbLuxiRB);
+	bd->cubeFont = new font(44, CUBE_FONT_SIZE, auchLuxiRB, cbLuxiRB);
 }
 
 extern "C" void KillFont(BoardData* bd)

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.36 2004/05/24 08:04:03 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.37 2004/06/01 08:24:05 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -114,7 +114,7 @@ void initDT(diceTest* dt, int x, int y, int z);
 
 #define BOARD_FILLET (base_unit / 3.0f)
 
-#define DOUBLECUBE_SIZE (base_unit * 4.0f)
+#define DOUBLECUBE_SIZE (base_unit * 3.4f)
 #define DICE_SIZE (bd->rd->diceSize * base_unit)
 
 /* Dice animation step size */
@@ -618,7 +618,7 @@ void drawDCNumbers(BoardData* bd, int mode, diceTest* dt)
 				glDisable(GL_DEPTH_TEST);
 
 			glPushMatrix();
-			glTranslatef(0, 0, depth + !nice * LIFT_OFF * 2);
+			glTranslatef(0, 0, depth + !nice * LIFT_OFF);
 
 			glPrintCube(bd, sides[side], mode);
 
@@ -3442,7 +3442,8 @@ void updateFlagOccPos(BoardData* bd)
 		makeInverseTransposeMatrix(bd->Occluders[OCC_FLAG].invMat, bd->Occluders[OCC_FLAG].trans);
 
 		/* Flag pole */
-		addCube(&bd->Occluders[OCC_FLAG], -FLAGPOLE_WIDTH * 2, -FLAG_HEIGHT, -FLAGPOLE_WIDTH, FLAGPOLE_WIDTH * 2, FLAGPOLE_HEIGHT, FLAGPOLE_WIDTH * 2);
+		addCube(&bd->Occluders[OCC_FLAG], -FLAGPOLE_WIDTH * 1.95f, -FLAG_HEIGHT, -LIFT_OFF,
+			FLAGPOLE_WIDTH * 1.95f, FLAGPOLE_HEIGHT, LIFT_OFF * 2);
 
 		/* Flag surface (approximation) */
 		{
