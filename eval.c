@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.38 2000/08/13 15:57:41 thyssen Exp $
+ * $Id: eval.c,v 1.39 2000/08/13 22:28:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -3440,7 +3440,7 @@ GetDoublePointDeadCube ( float arOutput [ 5 ],
       /* centered cube */
 
       if ( fBeavers ) {
-        return ( rL - 0.25 ) / ( rW + rL + 0.5 );
+        return ( rL - 0.25 ) / ( rW + rL - 0.5 );
       }
       else {
         return ( rL - 0.5 ) / ( rW + rL - 1.0 );
