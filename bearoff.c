@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.17 2003/05/12 18:40:27 thyssen Exp $
+ * $Id: bearoff.c,v 1.18 2003/05/15 17:20:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -1033,8 +1033,8 @@ BearoffDumpOneSided ( bearoffcontext *pbc, int anBoard[ 2 ][ 25 ], char *sz ) {
   sprintf( strchr( sz, 0 ), _("EPC\t%7.3f\t%7.3f\n"
                               "Wastage\t%7.3f\t%7.3f\n\n" ),
            ar[ 0 ][ 0 ] * x, ar[ 1 ][ 0 ] * x,
-           ar[ 0 ][ 0 ] * x - anPips[ 0 ],
-           ar[ 1 ][ 0 ] * x - anPips[ 1 ] );
+           ar[ 0 ][ 0 ] * x - anPips[ 1 ],
+           ar[ 1 ][ 0 ] * x - anPips[ 0 ] );
 
   sprintf( strchr( sz, 0 ),
           _("EPC = %5.3f * Average rolls\n"
