@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.27 2004/07/11 13:31:27 kaoru Exp $
+ * $Id: htmlimages.c,v 1.28 2004/09/16 07:50:17 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -57,6 +57,8 @@
 #include <libart_lgpl/art_rgb.h>
 #include <libart_lgpl/art_rgb_svp.h>
 #endif
+
+#include <glib.h>
 
 #include "backgammon.h"
 #include "export.h"

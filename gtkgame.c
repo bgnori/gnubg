@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.509 2004/09/13 12:57:33 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.510 2004/09/16 07:50:15 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -838,11 +838,6 @@ extern void GTKSetCube( gpointer *p, guint n, GtkWidget *pw ) {
     }
     
     outputresume();
-}
-
-static void ButtonEventCommand( GtkWidget *pw, GdkEvent *event, char *szCommand ) {
-
-      UserCommand( szCommand );
 }
 
 static int fAutoCommentaryChange;
@@ -1988,12 +1983,7 @@ static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *eCon, void
 
 extern int InitGTK( int *argc, char ***argv ) {
     
-    GtkWidget *pwVbox, *pwHbox, *pwHandle;
-
-    GdkPixmap *ppm;
-    GdkBitmap *pbm;
-    GdkColormap *pcmap;
-    GtkWidget *pwPanelHbox, *pwEvent;
+    GtkWidget *pwVbox, *pwHbox, *pwHandle, *pwPanelHbox;
 
     static GtkItemFactoryEntry aife[] = {
 	{ N_("/_File"), NULL, NULL, 0, "<Branch>" },

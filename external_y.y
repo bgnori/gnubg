@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_y.y,v 1.5 2004/08/11 21:42:17 thyssen Exp $
+ * $Id: external_y.y,v 1.6 2004/09/16 07:50:15 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -29,6 +29,9 @@
 #include <glib.h>
 
 #include "external.h"
+
+extern int extlex();
+extern int exterror(const char *s);
 
 extcmd ec; 
 
@@ -131,6 +134,8 @@ exterror( const char *s ) {
   else
     fprintf( stderr, "Error: %s at %s\n", 
              s, exttext && exttext[ 0 ] ? exttext : "<EOT>" );
+
+  return 0;
 }
 
 static void

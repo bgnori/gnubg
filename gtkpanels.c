@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.3 2004/09/13 14:30:18 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.4 2004/09/16 07:50:17 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -27,6 +27,7 @@
 #include "gtkboard.h"
 #include <i18n.h>
 #include "gtkgame.h"
+#include "positionid.h"
 
 extern GtkItemFactory *pif;
 extern GtkWidget *pom;
@@ -206,7 +207,6 @@ void UpdateTheoryData(BoardData* bd, int UpdateType, int points[2][25])
 
 static GtkWidget *CreateTheoryWindow( void )
 {
-	int i;
 	static char *row[] = { NULL, NULL };
 	pwTheoryList = gtk_clist_new(2);
 
@@ -232,11 +232,9 @@ extern struct CommandEntryData_T cedPanel;
 
 static GtkWidget *CreateCommandWindow( void )
 {
-    GtkWidget *vscrollbar, *pwhbox;//, *pwEntry;
+    GtkWidget *pwhbox;
     GtkWidget *pwvbox = gtk_vbox_new(FALSE, 0);
 	GtkWidget *pwShowHelp;
-	GList *glist;
-	int i;
 
 	CreatePanel(WINDOW_COMMAND, pwvbox, _("Command - GNU Backgammon"), "command");
 

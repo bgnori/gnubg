@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.35 2004/04/16 16:00:37 Superfly_Jon Exp $
+ * $Id: sound.c,v 1.36 2004/09/16 07:50:17 Superfly_Jon Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -79,6 +79,8 @@
 #include "windows.h"
 #include <mmsystem.h>
 #endif
+
+#include <glib.h>
 
 #include "backgammon.h"
 #include "eval.h"

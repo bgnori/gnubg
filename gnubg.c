@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.581 2004/09/13 10:27:45 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.582 2004/09/16 07:50:15 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -7507,7 +7507,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     int fSplash = TRUE;
 
 #ifdef WIN32
-    char szInvokingDirectory[ BIG_PATH ];  /* current dir when GNUbg was started */
+	char szInvokingDirectory[ BIG_PATH ] = {0};  /* current dir when GNUbg was started */
     char *pc;
 #endif
 	char szQuoted[ BIG_PATH ];

@@ -18,12 +18,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.l,v 1.6 2004/05/20 14:52:24 Superfly_Jon Exp $
+ * $Id: external_l.l,v 1.7 2004/09/16 07:50:15 Superfly_Jon Exp $
  */
 
 #include <string.h>
 
 #include "external_y.h"
+
+extern int extparse();
 
 int prc_lineno = 1;
 void escapes(const char *cp, char *tp);
@@ -32,7 +34,7 @@ void escapes(const char *cp, char *tp);
 
 %option noyywrap
 %option prefix="ext"
-%option outfile="external_l.c"
+%option nounput
 
 NUMSTR -?[0-9]+
 
