@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.18 2003/01/02 23:20:45 oysteijo Exp $
+ * $Id: gtkchequer.c,v 1.19 2003/01/03 18:19:11 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -292,6 +292,9 @@ MoveListShowToggled ( GtkWidget *pw, hintdata *phd ) {
     memcpy ( anBoard, ms.anBoard, sizeof ( anBoard ) );
     ApplyMove ( anBoard, pm->anMove, FALSE );
 
+    if ( ! ms.fMove )
+      SwapSides ( anBoard );
+
     sz = g_strdup_printf ( "show board %s", PositionID ( anBoard ) );
     UserCommand( sz );
     g_free ( sz );
@@ -299,7 +302,11 @@ MoveListShowToggled ( GtkWidget *pw, hintdata *phd ) {
   }
   else {
     
-    sz = g_strdup_printf ( "show board %s", PositionID ( ms.anBoard ) );
+    memcpy ( anBoard, ms.anBoard, sizeof ( anBoard ) );
+    if ( ! ms.fMove )
+      SwapSides ( anBoard );
+
+    sz = g_strdup_printf ( "show board %s", PositionID ( anBoard ) );
     UserCommand( sz );
     g_free ( sz );
 
