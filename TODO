@@ -1,4 +1,4 @@
-$Id: TODO,v 1.289 2003/04/05 19:51:35 thyssen Exp $
+$Id: TODO,v 1.290 2003/04/10 16:08:03 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -179,6 +179,8 @@ details.
 ** The sound setting options page isn't complete yet.
 ** Show player on roll on board, e.g., dice cup, arrow, or whatever
 ** Optionally show numbers based on who's on roll
+** Show resignations on board. Currently we show a white cube with a number.
+  Change this to showing, e.g., R1, or change to a white flag.
 
 ** Dialogs:
 *** Add buttons to the "help" window to look up the command in the manual,
