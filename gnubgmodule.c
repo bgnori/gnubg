@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.46 2005/01/04 09:20:27 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.47 2005/01/06 08:51:41 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2013,6 +2013,11 @@ PythonMatch(PyObject* self IGNORE, PyObject* args, PyObject* keywds)
 
   PushLocale("C");
 
+  if (g->i != 0)
+  {
+      PyErr_SetString(PyExc_StandardError, "First game missing from match");
+	  return 0;
+  }
   assert( g->i == 0 );
 
   /* W,X,0 

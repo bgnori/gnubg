@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.527 2005/01/04 09:27:34 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.528 2005/01/06 08:51:41 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -10130,7 +10130,7 @@ static void GtkRelationalAddMatch( gpointer *p, guint n, GtkWidget *pw )
 		(exists == 1 && !GetInputYN(_("Match exists, overwrite?"))))
 		return;
 
-	if (GtkGetEnv(env) == -1)
+	if (!GtkGetEnv(env))
 		return;
 
 	/* Pass in env id and force addition */
