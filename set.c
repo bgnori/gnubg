@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.70 2001/07/26 14:44:47 gtw Exp $
+ * $Id: set.c,v 1.71 2001/08/23 14:59:12 gtw Exp $
  */
 
 #include "config.h"
@@ -820,12 +820,15 @@ CommandSetPlayerChequerplay( char *sz ) {
     szSetCommand = "player chequerplay ";
     pesSet = &ap[ iPlayerSet ].esChequer;
 
+    outputpostpone();
+    
     HandleCommand( sz, acSetEvalParam );
 
     if( ap[ iPlayerSet ].pt != PLAYER_GNU )
 	outputf( "(Note that this setting will have no effect until you "
 		"`set player %s gnu'.)\n", ap[ iPlayerSet ].szName );
 
+    outputresume();
 }
 
 
@@ -836,12 +839,15 @@ CommandSetPlayerCubedecision( char *sz ) {
     szSetCommand = "player cubedecision ";
     pesSet = &ap[ iPlayerSet ].esCube;
 
+    outputpostpone();
+    
     HandleCommand( sz, acSetEvalParam );
 
     if( ap[ iPlayerSet ].pt != PLAYER_GNU )
 	outputf( "(Note that this setting will have no effect until you "
 		"`set player %s gnu'.)\n", ap[ iPlayerSet ].szName );
 
+    outputresume();
 }
 
 
