@@ -1,5 +1,5 @@
 /*
- * analysis.h
+ * analysis.c
  *
  * by Joern Thyssen <joern@thyssen.nu>, 2000
  *
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.21 2001/04/17 17:26:11 gtw Exp $
+ * $Id: analysis.c,v 1.22 2001/04/18 15:34:16 oysteijo Exp $
  */
 
 #include "config.h"
@@ -1177,7 +1177,6 @@ DumpStatcontext ( statcontext *psc, int fCompleteAnalysis,
 
   /* nice human readable dump */
 
-  /* FIXME: make GTK+ version */
   /* FIXME: make tty output shorter */
   /* FIXME: the code below is only for match play */
   /* FIXME: honour fOutputMWC etc. */
@@ -1462,7 +1461,7 @@ CommandShowStatisticsMatch ( char *sz ) {
 
   StatMatch ( &scStatMatch, &fCompleteAnalysis );
 
-#if USE_GTK && 0
+#if USE_GTK
   if ( fX ) {
     GTKDumpStatcontext ( &scStatMatch, fCompleteAnalysis,
                          "Statistics for all games" );
@@ -1497,7 +1496,7 @@ CommandShowStatisticsGame ( char *sz ) {
     
   StatGame ( &scStatGame, &fCompleteAnalysis );
 
-#if USE_GTK && 0
+#if USE_GTK
   if ( fX ) {
     GTKDumpStatcontext ( &scStatGame, fCompleteAnalysis,
                          "Statistics for current game" );
