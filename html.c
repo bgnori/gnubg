@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.105 2003/06/06 09:26:33 thyssen Exp $
+ * $Id: html.c,v 1.106 2003/06/25 19:16:10 thyssen Exp $
  */
 
 #include "config.h"
@@ -1850,7 +1850,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.105 $";
+  const char szVersion[] = "$Revision: 1.106 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1931,7 +1931,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.105 $";
+  const char szVersion[] = "$Revision: 1.106 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3351,6 +3351,44 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
     SetCubeInfo( &ci, pms->nCube, pms->fCubeOwner, 0,
                  pms->nMatchTo, pms->anScore, pms->fCrawford,
                  pms->fJacoby, nBeavers, pms->bgv );
+
+    if ( psc->fDice ) {
+
+      if ( pms->nMatchTo ) {
+        printStatTableRow( pf, 
+                           _("Actual result"),
+                           "%.2f%%",
+                           100.0 * ( 0.5f + psc->arActualResult[ 0 ] ),
+                           100.0 * ( 0.5f + psc->arActualResult[ 1 ] ) );
+
+        printStatTableRow( pf, 
+                           _("Luck adjusted result"),
+                           "%.2f%%",
+                           100.0 * ( 0.5f + psc->arActualResult[ 0 ] - 
+                                     psc->arLuck[ 0 ][ 1 ] + 
+                                     psc->arLuck[ 1 ][ 1 ] ),
+                           100.0 * ( 0.5f + psc->arActualResult[ 1 ] - 
+                                     psc->arLuck[ 1 ][ 1 ] + 
+                                     psc->arLuck[ 0 ][ 1 ] ) );
+      }
+      else {
+
+        printStatTableRow( pf,
+                           _("Actual result"),
+                           "%+.3f",
+                           psc->arActualResult[ 0 ],
+                           psc->arActualResult[ 1 ] );
+        printStatTableRow( pf,
+                           _("Luck adjusted result"),
+                           "%+.3f",
+                           psc->arActualResult[ 0 ] - 
+                           psc->arLuck[ 0 ][ 1 ] + psc->arLuck[ 1 ][ 1 ],
+                           psc->arActualResult[ 1 ] - 
+                           psc->arLuck[ 1 ][ 1 ] + psc->arLuck[ 0 ][ 1 ] );
+
+      }
+
+    }
 
     if ( pms->nMatchTo ) {
 

@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.h,v 1.16 2002/11/11 18:26:47 joseph Exp $
+ * $Id: matchequity.h,v 1.17 2003/06/25 19:16:10 thyssen Exp $
  */
 
 
@@ -68,6 +68,13 @@ getME ( const int nScore0, const int nScore1, const int nMatchTo,
         const int fCrawford,
         float aafMET[ MAXSCORE ][ MAXSCORE ],
         float aafMETPostCrawford[ 2 ][ MAXSCORE ] );
+
+extern float
+getMEAtScore( const int nScore0, const int nScore1, const int nMatchTo,
+              const int fPlayer, const int fCrawford,
+              float aafMET[ MAXSCORE ][ MAXSCORE ],
+              float aafMETPostCrawford[ 2 ][ MAXSCORE ] );
+
 
 /* Initialise match equity table */
 
