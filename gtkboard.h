@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.51 2003/10/14 10:04:11 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.52 2003/10/18 12:46:59 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -43,7 +43,7 @@ extern "C" {
 #define IS_BOARD_CLASS( c ) ( GTK_CHECK_CLASS_TYPE( (c), TYPE_BOARD ) )
 
 typedef enum _DiceShown {
-	DICE_NOT_SHOWN = 0, DICE_BELOW_BOARD, DICE_ON_BOARD
+	DICE_NOT_SHOWN = 0, DICE_BELOW_BOARD, DICE_ON_BOARD, DICE_ROLLING
 } DiceShown;
 
 typedef enum _animation {

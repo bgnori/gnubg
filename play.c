@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.231 2003/10/11 21:59:03 thyssen Exp $
+ * $Id: play.c,v 1.232 2003/10/18 12:46:59 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -783,6 +783,7 @@ void DiceRolled()
 		BoardData *bd = BOARD(pwBoard)->board_data;
 		/* Make sure dice are updated */
 		bd->diceRoll[0] = 0;
+		bd->diceShown = DICE_ROLLING;
 		ShowBoard();
 	}
 #endif
