@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.124 2004/02/20 14:19:49 uid65656 Exp $
+## $Id: Makefile.am,v 1.125 2004/03/25 20:10:50 thyssen Exp $
 
 localedir = $(datadir)/locale
 
@@ -85,7 +85,8 @@ COMMON_SOURCES = backgammon.h gnubg.c getopt.h getopt.c getopt1.c eval.h \
 	pub_eval.c set.c show.c database.h database.c dice.c dice.h \
 	rollout.c rollout.h copying.c kleinman.c matchequity.c matchequity.h \
 	analysis.h analysis.c sgf.c sgf.h sgfp.c sgfp.h sgfl.c guile.c \
-        guile.h import.c import.h external.c external.h credits.c latex.c \
+        guile.h import.c import.h external.c external.h credits.h credits.c \
+	latex.c \
 	postscript.c html.c export.h matchid.c matchid.h i18n.c i18n.h text.c \
 	export.c sound.h record.c record.h osr.c osr.h \
         bearoffgammon.c bearoffgammon.h bearoff.c bearoff.h \
