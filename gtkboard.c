@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.47 2002/02/14 17:19:55 oysteijo Exp $
+ * $Id: gtkboard.c,v 1.48 2002/03/10 03:41:17 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2080,7 +2080,7 @@ static gint board_slide_timeout( gpointer p ) {
 extern void board_animate( Board *board, int move[ 8 ], int player ) {
 
     BoardData *pbd = board->board_data;
-    int n, f;
+    int n, f, id;
 	
     if( pbd->animate_computer_moves == ANIMATE_NONE )
 	return;
@@ -2101,8 +2101,14 @@ extern void board_animate( Board *board, int move[ 8 ], int player ) {
 	if( ( f = !GTK_WIDGET_HAS_GRAB( pbd->stop ) ) )
 	    gtk_grab_add( pbd->stop );
 	
+	id = gtk_signal_connect_after( GTK_OBJECT( pbd->stop ),
+				       "key-press-event",
+				       GTK_SIGNAL_FUNC( gtk_true ), NULL );
+	
 	gtk_main_iteration();
 
+	gtk_signal_disconnect( GTK_OBJECT( pbd->stop ), id );
+	
 	if( f )
 	    gtk_grab_remove( pbd->stop );
     }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.108 2002/03/06 17:38:53 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.109 2002/03/10 03:41:17 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -466,16 +466,23 @@ int fEndDelay;
 
 extern void GTKDelay( void ) {
 
-    int f;
+    int f, id;
     
     GTKDisallowStdin();
     
     while( !fInterrupt && !fEndDelay ) {
+	/* Grab events so that the board window knows this is a re-entrant
+	   call, and won't allow commands like roll, move or double. */
 	if( ( f = !GTK_WIDGET_HAS_GRAB( pwGrab ) ) )
 	    gtk_grab_add( pwGrab );
 	
+	id = gtk_signal_connect_after( GTK_OBJECT( pwGrab ), "key-press-event",
+				       GTK_SIGNAL_FUNC( gtk_true ), NULL );
+	
 	gtk_main_iteration();
 
+	gtk_signal_disconnect( GTK_OBJECT( pwGrab ), id );
+	
 	if( f )
 	    gtk_grab_remove( pwGrab );
     }
