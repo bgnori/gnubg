@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.8 2003/10/03 09:22:07 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.9 2003/10/16 10:58:10 Superfly_Jon Exp $
 */
 
 #include <GL/gl.h>
@@ -472,7 +472,8 @@ void SetColour3d(GtkWidget *pw, UpdateDetails* pDetails)
 	if (IsSet(pDetails->opacity, DF_VARIABLE_OPACITY))
 	{
 		useOpacity = 1;
-		gtk_adjustment_set_value(padjOpacity, (col3d->ambientColour[3] + .001f) * 100);
+		gtk_adjustment_set_value(padjOpacity, 
+			col3d->alphaBlend ? (col3d->ambientColour[3] + .001f) * 100 : 100);
 	}
 	else
 	{
