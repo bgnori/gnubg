@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.20.2.1 2003/07/11 17:03:51 hb Exp $
+ * $Id: external.c,v 1.20.2.2 2003/07/11 18:42:42 hb Exp $
  */
 
 #include "config.h"
@@ -202,7 +202,9 @@ extern int ExternalRead( int h, char *pch, int cch ) {
 
     char *p = pch, *pEnd;
     int n;
+#ifndef WIN32
     psighandler sh;
+#endif
     
     while( cch ) {
 	if( fAction )
@@ -211,9 +213,15 @@ extern int ExternalRead( int h, char *pch, int cch ) {
 	if( fInterrupt )
 	    return -1;
 
+#ifndef WIN32
 	PortableSignal( SIGPIPE, SIG_IGN, &sh, FALSE );
+#endif
+
 	n = read( h, p, cch );
+
+#ifndef WIN32
 	PortableSignalRestore( SIGPIPE, &sh );
+#endif
 	
 	if( !n ) {
 	    outputl( _("External connection closed.") );
@@ -249,7 +257,9 @@ extern int ExternalWrite( int h, char *pch, int cch ) {
 
     char *p = pch;
     int n;
+#ifndef WIN32
     psighandler sh;
+#endif
 
     while( cch ) {
 	if( fAction )
@@ -258,9 +268,15 @@ extern int ExternalWrite( int h, char *pch, int cch ) {
 	if( fInterrupt )
 	    return -1;
 
+#ifndef WIN32
 	PortableSignal( SIGPIPE, SIG_IGN, &sh, FALSE );
+#endif
+
 	n = write( h, p, cch );
+
+#ifndef WIN32
 	PortableSignalRestore( SIGPIPE, &sh );
+#endif
 	
 	if( !n )
 	    return 0;
