@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.59 2003/04/12 12:23:02 thyssen Exp $
+ * $Id: import.c,v 1.60 2003/04/12 12:30:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -531,6 +531,16 @@ static void ParseMatMove( char *sz, int iPlayer ) {
 
           /* FIXME: we only handle illegal moves; not illegal cubes,
              changes to the match score etc. */
+
+          pmr = (moverecord *) malloc( sizeof( moverecord ) );
+          pmr->sd.mt = MOVE_SETDICE;
+          pmr->sd.sz = NULL;
+          pmr->sd.fPlayer = iPlayer;
+          pmr->sd.anDice[ 0 ] = sz[ 0 ] - '0';
+          pmr->sd.anDice[ 1 ] = sz[ 1 ] - '0';
+          pmr->sd.lt = LUCK_NONE;
+          pmr->sd.rLuck = ERR_VAL;
+          AddMoveRecord( pmr );
 
           pmr = (moverecord *) malloc( sizeof( moverecord ) );
           pmr->sb.mt = MOVE_SETBOARD;
