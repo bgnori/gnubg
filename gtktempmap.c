@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.17 2004/03/31 09:51:54 Superfly_Jon Exp $
+ * $Id: gtktempmap.c,v 1.18 2004/05/06 14:46:41 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -400,7 +400,9 @@ ExposeDie( GtkWidget *pw, GdkEventExpose *pev,
 
     CopyAppearance(&rd);
     rd.nSize = ptmw->nSizeDie = nSizeDie;
-
+#if USE_BOARD3D
+    Copy3dDiceColour(&rd);
+#endif
     
     for (  i = 0; i < 2; ++i ) {
       g_free( ptmw->achDice[ i ] );

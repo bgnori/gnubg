@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.63 2004/04/30 17:37:46 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.64 2004/05/06 14:46:40 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -68,6 +68,7 @@ extern GtkType board_get_type( void );
 extern GtkWidget *board_new(renderdata* prd);
 extern GtkWidget *board_cube_widget( Board *board );
 extern void DestroySetCube(GtkObject *po, GtkWidget *pw);
+extern void Copy3dDiceColour(renderdata* prd);
 extern GtkWidget *board_dice_widget( Board *board );
 extern void DestroySetDice(GtkObject *po, GtkWidget *pw);
 extern gint game_set( Board *board, gint points[ 2 ][ 25 ], int roll,
