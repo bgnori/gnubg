@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.39 2001/01/04 15:29:37 gtw Exp $
+ * $Id: set.c,v 1.40 2001/01/08 19:30:35 gtw Exp $
  */
 
 #include "config.h"
@@ -29,6 +29,9 @@
 #include "backgammon.h"
 #include "dice.h"
 #include "eval.h"
+#if USE_GTK
+#include "gtkprefs.h"
+#endif
 #include "matchequity.h"
 #include "positionid.h"
 
@@ -253,7 +256,19 @@ extern void CommandSetCache( char *sz ) {
 extern void CommandSetColours( char *sz ) {
 #if USE_GTK
     if( fX ) {
-	/* FIXME */
+	if( !sz || !*sz )
+	    /* modify colours interactively */
+	    BoardPreferences( pwBoard );
+	else {
+	    char *apch[ 2 ];
+
+	    BoardPreferencesStart( pwBoard );
+	    
+	    while( ParseKeyValue( &sz, apch ) )
+		BoardPreferencesParam( pwBoard, apch[ 0 ], apch[ 1 ] );
+
+	    BoardPreferencesDone( pwBoard );	    
+	}
     } else
 #endif    
 	outputl( "The colours may not be changed when using this user "

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.21 2001/01/04 15:29:37 gtw Exp $
+ * $Id: gtkgame.c,v 1.22 2001/01/08 19:30:35 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -85,6 +85,7 @@ typedef enum _gnubgcommand {
     CMD_SET_AUTO_GAME,
     CMD_SET_AUTO_MOVE,
     CMD_SET_AUTO_ROLL,
+    CMD_SET_COLOURS,
     CMD_SET_CONFIRM,
     CMD_SET_CUBE_CENTRE,
     CMD_SET_CUBE_OWNER_0,
@@ -169,6 +170,7 @@ static char *aszCommands[ NUM_CMDS ] = {
     "set automatic game",
     "set automatic move",
     "set automatic roll",
+    "set colours",
     "set confirm",
     "set cube centre",
     NULL, /* set cube owner 0 */
@@ -929,6 +931,7 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ "/_Settings/_Automatic/_Roll", NULL, Command, CMD_SET_AUTO_ROLL,
 	  "<CheckItem>" },
 	{ "/_Settings/Cache...", NULL, NULL, 0, NULL },
+	{ "/_Settings/Colours...", NULL, Command, CMD_SET_COLOURS, NULL },
 	{ "/_Settings/_Confirmation", NULL, Command, CMD_SET_CONFIRM,
 	  "<CheckItem>" },
 	{ "/_Settings/De_lay...", NULL, NULL, 0, NULL },
