@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.87 2003/10/12 13:14:09 thyssen Exp $
+ * $Id: sgf.c,v 1.88 2003/10/16 10:54:26 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -33,6 +33,7 @@
 #include "eval.h"
 #if USE_GTK
 #include "gtkgame.h"
+#include "gtkboard.h"
 #endif
 #include "analysis.h"
 #include "positionid.h"
@@ -1565,7 +1566,12 @@ extern void CommandLoadMatch( char *sz ) {
 
 #if USE_GTK
 	if( fX )
-	    GTKFreeze();
+	{
+		BoardData *bd = BOARD( pwBoard )->board_data;
+		GTKFreeze();
+		/* Don't roll dice (nasty hack) */
+		bd->diceShown = DICE_ON_BOARD;
+	}
 #endif
 	
 	FreeMatch();
