@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.31 2003/08/13 11:52:26 Superfly_Jon Exp $
+ * $Id: dice.c,v 1.32 2003/08/15 15:01:38 thyssen Exp $
  */
 
 #include "config.h"
@@ -781,8 +781,8 @@ extern int RollDice( int anDice[ 2 ], const rng rngx ) {
 
     switch( rngx ) {
     case RNG_ANSI:
-	anDice[ 0 ] = ( rand() % 6 ) + 1;
-	anDice[ 1 ] = ( rand() % 6 ) + 1;
+	anDice[ 0 ] = 1+(int) (6.0*rand()/(RAND_MAX+1.0));
+	anDice[ 1 ] = 1+(int) (6.0*rand()/(RAND_MAX+1.0));
 	return 0;
 	
     case RNG_BBS:
@@ -803,16 +803,16 @@ extern int RollDice( int anDice[ 2 ], const rng rngx ) {
 	
     case RNG_BSD:
 #if HAVE_RANDOM
-	anDice[ 0 ] = ( random() % 6 ) + 1;
-	anDice[ 1 ] = ( random() % 6 ) + 1;
+	anDice[ 0 ] = 1+(int) (6.0*random()/(RAND_MAX+1.0));
+	anDice[ 1 ] = 1+(int) (6.0*random()/(RAND_MAX+1.0));
 	return 0;
 #else
 	abort();
 #endif
 	
     case RNG_ISAAC:
-	anDice[ 0 ] = ( irand( &rc ) % 6 ) + 1;
-	anDice[ 1 ] = ( irand( &rc ) % 6 ) + 1;
+	anDice[ 0 ] = 1+(int) (6.0*irand( &rc )/(0xFFFFFFFF+1.0));
+	anDice[ 1 ] = 1+(int) (6.0*irand( &rc )/(0xFFFFFFFF+1.0));
 	return 0;
 	
     case RNG_MANUAL:
@@ -836,14 +836,16 @@ extern int RollDice( int anDice[ 2 ], const rng rngx ) {
 	
 	
     case RNG_MERSENNE:
-	anDice[ 0 ] = ( genrand() % 6 ) + 1;
-	anDice[ 1 ] = ( genrand() % 6 ) + 1;
+	anDice[ 0 ] = 1+(int) (6.0*genrand()/(0xFFFFFFFF+1.0));
+	anDice[ 1 ] = 1+(int) (6.0*genrand()/(0xFFFFFFFF+1.0));
 	return 0;
 	
     case RNG_USER:
 #if HAVE_LIBDL
-	if( ( anDice[ 0 ] = ( (*pfUserRNGRandom) () % 6 ) + 1 ) <= 0 ||
-	    ( anDice[ 1 ] = ( (*pfUserRNGRandom) () % 6 ) + 1 ) <= 0 )
+	if( ( anDice[ 0 ] = 
+              ( 1 + (int) (6.0*pfUserRNGRandom()/(0x7FFFFFFL+1.0))) <= 0 ) ||
+            ( anDice[ 1 ] = 
+              ( 1 + (int) (6.0*pfUserRNGRandom()/(0x7FFFFFFL+1.0))) <= 0 ) )
 	    return -1;
 	else
 	    return 0;
