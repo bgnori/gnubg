@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.6 2000/01/13 16:50:10 gtw Exp $
+ * $Id: eval.h,v 1.7 2000/01/13 18:04:02 joseph Exp $
  */
 
 #ifndef _EVAL_H_
@@ -91,12 +91,15 @@ typedef struct _movelist {
 } movelist;
 
 typedef enum _positionclass {
-    CLASS_OVER, /* Game already finished */
+    CLASS_OVER = 0, /* Game already finished */
     CLASS_BEAROFF2, /* Two-sided bearoff database */
     CLASS_BEAROFF1, /* One-sided bearoff database */
-    CLASS_RACE, /* Race neural network */
-    CLASS_CONTACT /* Contact neural network */
+    CLASS_RACE,     /* Race neural network */
+    CLASS_CONTACT,  /* Contact neural network */
+    CLASS_BPG,      /* On Bar, Back game, or Prime */
 } positionclass;
+
+#define N_CLASSES (CLASS_BPG + 1)
 
 #define CLASS_PERFECT CLASS_BEAROFF2
 
