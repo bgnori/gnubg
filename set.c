@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.9.2.1 2000/01/10 01:13:45 thyssen Exp $
+ * $Id: set.c,v 1.9.2.2 2000/01/12 08:58:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -648,6 +648,7 @@ extern void CommandSetJacoby( char *sz ) {
   SetToggle( "jacoby", &fJacoby, sz, 
 	     "Will use the Jacoby rule for money sessions.",
 	     "Will not use the Jacoby rule for money sessions." );
+  CalcGammonPrice ();
 }
 
 

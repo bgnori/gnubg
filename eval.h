@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.5.2.1 2000/01/10 01:13:45 thyssen Exp $
+ * $Id: eval.h,v 1.5.2.2 2000/01/12 08:58:59 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -113,6 +113,12 @@ extern int FindBestMoves( movelist *pml, float ar[][ NUM_OUTPUTS ], int nPlies,
 extern int ApplyMove( int anBoard[ 2 ][ 25 ], int anMove[ 8 ] );
 extern int
 EvaluateDouble ( int nPlies, int anBoard[ 2 ][ 25 ], float arDouble[ 4 ] );
+static int 
+EvaluatePositionCubeful( int anBoard[ 2 ][ 25 ], 
+			 int nCube, int fCubeOwner, int fMove,
+			 int fDoDouble,
+			 float *prOutput,
+			 int nPlies );
 
 /* internal use only */
 extern unsigned long EvalBearoff1Full( int anBoard[ 2 ][ 25 ],
