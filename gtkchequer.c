@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.49 2004/01/04 10:05:32 uid65656 Exp $
+ * $Id: gtkchequer.c,v 1.50 2004/01/04 12:31:10 uid65656 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -895,7 +895,7 @@ CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid,
 
     gtk_box_pack_start ( GTK_BOX ( pwHBox ), pw, TRUE, TRUE, 0 );
     gtk_box_pack_end ( GTK_BOX ( pwHBox ),
-                       CreateMoveListTools( phd, TRUE ),
+                       CreateMoveListTools( phd ),
                        FALSE, FALSE, 0 );
     
     gtk_selection_add_target( pwMoves, GDK_SELECTION_PRIMARY,
