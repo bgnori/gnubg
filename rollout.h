@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.16 2002/05/27 19:31:14 thyssen Exp $
+ * $Id: rollout.h,v 1.17 2002/07/14 22:47:44 thyssen Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -125,6 +125,10 @@ getResignEquities ( float arResign[ NUM_ROLLOUT_OUTPUTS ],
                     int nResigned,
                     float *prBefore, float *prAfter );
 
+extern int
+ScoreMoveRollout ( move *pm, cubeinfo *pci, rolloutcontext *prc );
 
+extern int
+ScoreMoveGeneral ( move *pm, cubeinfo *pci, evalsetup *pes );
 
 #endif
