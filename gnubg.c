@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.125 2001/04/13 20:36:19 thyssen Exp $
+ * $Id: gnubg.c,v 1.126 2001/04/14 11:37:02 thyssen Exp $
  */
 
 #include "config.h"
@@ -426,6 +426,14 @@ command acAnalyse[] = {
     { "training", NULL, "Control training parameters", NULL, acSetTraining },
     { "turn", CommandSetTurn, "Set which player is on roll", szPLAYER, NULL },
     { NULL, NULL, NULL, NULL, NULL }
+}, acShowStatistics[] = {
+    { "game", CommandShowStatisticsGame, "Compute statistics for current game",
+      NULL, NULL },
+    { "match", CommandShowStatisticsMatch, "Compute statistics for every game "
+      "in the match", NULL, NULL },
+    { "session", CommandShowStatisticsSession, "Compute statistics for every "
+      "game in the session", NULL, NULL },
+    { NULL, NULL, NULL, NULL, NULL }
 }, acShow[] = {
     { "analysis", CommandShowAnalysis, "Show parameters used for analysing "
       "moves", NULL, NULL },
@@ -488,7 +496,7 @@ command acAnalyse[] = {
     { "score", CommandShowScore, "View the match or session score ",
       NULL, NULL },
     { "seed", CommandShowSeed, "Show the dice generator seed", NULL, NULL },
-    { "statistics", CommandShowStatistics, "Show statistics", NULL, NULL },
+    { "statistics", NULL, "Show statistics", NULL, acShowStatistics },
     { "thorp", CommandShowThorp, "Calculate Thorp Count for "
       "position", szOPTPOSITION, NULL },
     { "training", CommandShowTraining, "Display the training parameters",
