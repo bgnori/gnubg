@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.33 2001/05/23 15:01:30 thyssen Exp $
+ * $Id: analysis.c,v 1.34 2001/05/23 15:42:10 thyssen Exp $
  */
 
 #include "config.h"
@@ -172,7 +172,7 @@ AnalyzeGame ( list *plGame ) {
 
                 if ( GeneralCubeDecision ( "",
                                            aarOutput, aarStdDev,
-                                           msAnalyze.anBoard, &ci,
+                                           msAnalyse.anBoard, &ci,
 					   &esAnalysisCube ) < 0 )
                   return;
 
@@ -311,7 +311,7 @@ AnalyzeGame ( list *plGame ) {
 
                     if ( GeneralCubeDecision ( "",
                                                aarOutput, aarStdDev,
-                                               msAnalyze.anBoard, &ci,
+                                               msAnalyse.anBoard, &ci,
 					       &esAnalysisCube ) < 0 )
                       return;
 
