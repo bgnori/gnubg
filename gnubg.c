@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.261 2002/07/29 18:55:27 thyssen Exp $
+ * $Id: gnubg.c,v 1.262 2002/07/31 14:45:59 oysteijo Exp $
  */
 
 #include "config.h"
@@ -3695,7 +3695,7 @@ SaveRolloutSettings ( FILE *pf, char *sz, rolloutcontext *prc ) {
             sz, prc->nTruncate,
             sz, prc->nTrials );
 
-  SaveRNGSettings ( pf, sz, prc->rngRollout );
+//  SaveRNGSettings ( pf, sz, prc->rngRollout );
 
   /* chequer play and cube decision evalcontexts */
 

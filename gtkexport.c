@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.7 2002/07/30 17:07:17 oysteijo Exp $
+ * $Id: gtkexport.c,v 1.8 2002/07/31 14:45:59 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -74,9 +74,6 @@ typedef struct _exportwidget {
   GtkWidget *pwHTMLType;
 
 } exportwidget;
-
-
-
 
 static void
 ExportOK ( GtkWidget *pw, exportwidget *pew ) {
@@ -149,24 +146,31 @@ ExportOK ( GtkWidget *pw, exportwidget *pew ) {
 
   pexs->szHTMLPictureURL = 
     strdup ( gtk_entry_get_text( GTK_ENTRY( pew->pwHTMLPictureURL ) ) );
- 
+
   if ( pexs->szHTMLType )
     free ( pexs->szHTMLType );
+  
+  if ( pexs->szHTMLExtension )
+    free ( pexs->szHTMLExtension );
 
   n = gtk_option_menu_get_history (GTK_OPTION_MENU (pew->pwHTMLType));
 
-  /* FIXME !! This is bad! The command is sent if the option is changed or
-              not, and it pops up a annoying message dialog */
-
-  if ( n == 0 ) UserCommand("set export html type gnu");
-  if ( n == 1 ) UserCommand("set export html type fibs2html");
-  if ( n == 2 ) UserCommand("set export html type bbs");
+  if ( n == 0 ){
+	  pexs->szHTMLType = strdup( "gnu" );
+	  pexs->szHTMLExtension = strdup( "png" );
+  }
+  if ( n == 1 ){
+	  pexs->szHTMLType = strdup( "fibs2html" );
+	  pexs->szHTMLExtension = strdup( "gif" );
+  }
+  if ( n == 2 ){
+	  pexs->szHTMLType = strdup( "bbs" );
+	  pexs->szHTMLExtension = strdup( "gif" );
+  }
 
   gtk_widget_destroy( gtk_widget_get_toplevel( pw ) );
 
-
 }
-
 
 static void
 ExportSet ( exportwidget *pew ) {
@@ -239,7 +243,6 @@ ExportSet ( exportwidget *pew ) {
 
 }
 
-
 extern void
 GTKShowExport ( exportsetup *pexs ) {
 
@@ -251,6 +254,7 @@ GTKShowExport ( exportsetup *pexs ) {
   GtkWidget *pwTableX;
   GtkWidget *pwType_menu;
   GtkWidget *glade_menuitem;
+  GtkWidget *pwHBox;
   
   GtkWidget *pw;
 
@@ -450,7 +454,6 @@ GTKShowExport ( exportsetup *pexs ) {
                             gettext ( aszMovesDisplay[ i ] ) ), 
                          TRUE, TRUE, 0 );
                          
-
   /* cube */
 
   pwFrame = gtk_frame_new ( _("Output cube decision analysis") );
@@ -520,10 +523,13 @@ GTKShowExport ( exportsetup *pexs ) {
                        gtk_entry_new (),
                        TRUE, TRUE, 0 );
 
-  /* FIXME !! This looks ugly  */
-
+  pwHBox = gtk_hbox_new ( FALSE, 0 );
+  gtk_box_pack_start ( GTK_BOX ( pwHBox ),
+                       gtk_label_new ( _("HTML board type:") ),
+                       TRUE, TRUE, 0 );
+  
   pew->pwHTMLType = gtk_option_menu_new ();
-  gtk_box_pack_start (GTK_BOX (pwVBox), pew->pwHTMLType, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (pwHBox), pew->pwHTMLType, FALSE, FALSE, 0);
   pwType_menu = gtk_menu_new ();
   glade_menuitem = gtk_menu_item_new_with_label (_("GNU Backgammon"));
   gtk_widget_show (glade_menuitem);
@@ -537,6 +543,9 @@ GTKShowExport ( exportsetup *pexs ) {
   gtk_option_menu_set_menu (GTK_OPTION_MENU (pew->pwHTMLType), pwType_menu);
   gtk_option_menu_set_history (GTK_OPTION_MENU (pew->pwHTMLType), 0);
 
+  gtk_container_set_border_width (GTK_CONTAINER (pwHBox), 4);
+  gtk_box_pack_start (GTK_BOX (pwVBox), pwHBox, FALSE, FALSE, 0);
+  
   /* show dialog */
 
   gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
