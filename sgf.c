@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.23 2001/04/22 18:07:44 oysteijo Exp $
+ * $Id: sgf.c,v 1.24 2001/05/14 15:19:04 gtw Exp $
  */
 
 #include "config.h"
@@ -670,7 +670,14 @@ static void RestoreNode( list *pl ) {
 	    SKILL_GOOD;
 	else if( pp->ach[ 0 ] == 'L' && pp->ach[ 1 ] == 'U' )
 	    rLuck = atof( pp->pl->plNext->p );
-	/* FIXME handle GB and GW */
+	else if( pp->ach[ 0 ] == 'G' && pp->ach[ 1 ] == 'B' )
+	    /* good for black */
+	    lt = *( (char *) pp->pl->plNext->p ) == '2' ? LUCK_VERYGOOD :
+	    LUCK_GOOD;
+	else if( pp->ach[ 0 ] == 'G' && pp->ach[ 1 ] == 'W' )
+	    /* good for white */
+	    lt = *( (char *) pp->pl->plNext->p ) == '2' ? LUCK_VERYBAD :
+	    LUCK_BAD;
     }
     
     if( fSetBoard && !pmr ) {
@@ -693,7 +700,7 @@ static void RestoreNode( list *pl ) {
 		RestoreMoveAnalysis( ppA, pmr->n.fPlayer, &pmr->n.ml,
 				     &pmr->n.iMove );
 	    pmr->n.st = st;
-	    pmr->n.lt = lt;
+	    pmr->n.lt = fPlayer ? lt : LUCK_VERYGOOD - lt;
 	    pmr->n.rLuck = rLuck;
 	    break;
 	    
