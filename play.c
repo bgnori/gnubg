@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.95 2001/10/29 16:06:57 gtw Exp $
+ * $Id: play.c,v 1.96 2001/10/30 16:13:10 gtw Exp $
  */
 
 #include "config.h"
@@ -842,45 +842,51 @@ extern int ComputerTurn( void ) {
       int anBoardMove[ 2 ][ 25 ];
       float rPlay, arResign[ NUM_OUTPUTS ];
       int nResign;
-      static char *achResign[ 3 ] = { "n", "g", "b" };
-      
+      static char achResign[ 3 ] = { 'n', 'g', 'b' };
+      char ach[ 2 ];
+	 
       /* Don't use the global board for this call, to avoid
 	 race conditions with updating the board and aborting the
 	 move with an interrupt. */
       memcpy( anBoardMove, ms.anBoard, sizeof( anBoardMove ) );
 
-      /* Consider resigning -- no point wasting time over the decision,
-	 so only evaluate at 0 plies. */
-      if( EvaluatePosition( anBoardMove, arOutput, &ci, NULL ) )
-	  return -1;
+      if( ClassifyPosition( ms.anBoard ) <= CLASS_RACE ) {
+	  /* Consider resigning -- no point wasting time over the decision,
+	     so only evaluate at 0 plies. */
+	  if( EvaluatePosition( anBoardMove, arOutput, &ci, NULL ) )
+	      return -1;
 
-      rPlay = Utility( arOutput, &ci );
-
-      arResign[ OUTPUT_WIN ] = arResign[ OUTPUT_WINGAMMON ] =
-	  arResign[ OUTPUT_WINBACKGAMMON ] = 0.0f;
-      arResign[ OUTPUT_LOSEGAMMON ] = arResign[ OUTPUT_LOSEBACKGAMMON ] = 1.0f;
-      if( arOutput[ OUTPUT_LOSEBACKGAMMON ] > 0.0f &&
-	  Utility( arResign, &ci ) == rPlay )
-	  nResign = 3;
-      else {
-	  /* worth trying to escape the backgammon */
-	  arResign[ OUTPUT_LOSEBACKGAMMON ] = 0.0f;
-	  if( arOutput[ OUTPUT_LOSEGAMMON ] > 0.0f &&
-	      Utility( arResign, &ci ) == rPlay )
-	      nResign = 2;
-	  else {
-	      /* worth trying to escape the gammon */
-	      arResign[ OUTPUT_LOSEGAMMON ] = 0.0f;
-	      nResign = Utility( arResign, &ci ) == rPlay;
-	  }
-      }      
-
-      if( nResign > ms.fResignationDeclined ) {
-	  fComputerDecision = TRUE;
-	  CommandResign( achResign[ nResign - 1 ] );
-	  fComputerDecision = FALSE;
+	  rPlay = Utility( arOutput, &ci );
 	  
-	  return 0;
+	  arResign[ OUTPUT_WIN ] = arResign[ OUTPUT_WINGAMMON ] =
+	      arResign[ OUTPUT_WINBACKGAMMON ] = 0.0f;
+	  arResign[ OUTPUT_LOSEGAMMON ] =
+	      arResign[ OUTPUT_LOSEBACKGAMMON ] = 1.0f;
+	  if( arOutput[ OUTPUT_LOSEBACKGAMMON ] > 0.0f &&
+	      Utility( arResign, &ci ) == rPlay )
+	      nResign = 3;
+	  else {
+	      /* worth trying to escape the backgammon */
+	      arResign[ OUTPUT_LOSEBACKGAMMON ] = 0.0f;
+	      if( arOutput[ OUTPUT_LOSEGAMMON ] > 0.0f &&
+		  Utility( arResign, &ci ) == rPlay )
+		  nResign = 2;
+	      else {
+		  /* worth trying to escape the gammon */
+		  arResign[ OUTPUT_LOSEGAMMON ] = 0.0f;
+		  nResign = Utility( arResign, &ci ) == rPlay;
+	      }
+	  }      
+	  
+	  if( nResign > ms.fResignationDeclined ) {
+	      fComputerDecision = TRUE;
+	      ach[ 0 ] = achResign[ nResign - 1 ];
+	      ach[ 1 ] = 0;
+	      CommandResign( ach );	  
+	      fComputerDecision = FALSE;
+	      
+	      return 0;
+	  }
       }
       
       /* Consider doubling */
