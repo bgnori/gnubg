@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.467 2004/03/15 12:32:10 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.468 2004/03/16 11:31:02 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3666,6 +3666,11 @@ extern void GTKOutput( char *sz ) {
     ListInsert( &lOutput, sz );
 }
 
+int PanelShowing(gnubgwindow panel)
+{
+	return woPanel[WINDOW_MESSAGE].showing && (fDisplayPanels || !woPanel[WINDOW_MESSAGE].docked);
+}
+
 extern void GTKOutputX( void ) {
 
     char *sz, *pchSrc, *pchDest;
@@ -3697,14 +3702,14 @@ extern void GTKOutputX( void ) {
       /* Long message; display in dialog. */
       /* FIXME if fDisplay is false, skip to the last line and display
          in status bar. */
-      if (!woPanel[WINDOW_MESSAGE].showing)
+      if (!PanelShowing(WINDOW_MESSAGE))
         GTKMessage( sz, DT_INFO );
     }
     else
       /* Short message; display in status bar. */
       gtk_statusbar_push( GTK_STATUSBAR( pwStatus ), idOutput, sz );
     
-    if (woPanel[WINDOW_MESSAGE].showing && *sz ) {
+    if (PanelShowing(WINDOW_MESSAGE) && *sz ) {
       strcat ( sz, "\n" );
       gtk_text_insert( GTK_TEXT( pwMessageText ), NULL, NULL, NULL,
                        sz, -1 );
