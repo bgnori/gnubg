@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.11 2001/02/13 18:23:43 gtw Exp $
+ * $Id: sgf.c,v 1.12 2001/02/14 18:54:38 gtw Exp $
  */
 
 #include "config.h"
@@ -647,7 +647,7 @@ extern void CommandSaveGame( char *sz ) {
     }
     
     if( !sz || !*sz ) {
-	outputl( "You must specify a file to save to (see `help save"
+	outputl( "You must specify a file to save to (see `help save "
 		 "game')." );
 	return;
     }
