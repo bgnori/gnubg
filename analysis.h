@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.6 2001/08/27 14:41:20 gtw Exp $
+ * $Id: analysis.h,v 1.7 2001/10/19 16:17:45 oysteijo Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -81,5 +81,8 @@ const char *aszRating [ RAT_UNDEFINED + 1 ];
 extern ratingtype GetRating ( const float rError );
 extern void IniStatcontext ( statcontext *psc );
 extern void AddStatcontext ( statcontext *pscA, statcontext *pscB );
+
+extern void
+DumpStatcontext ( char *szOutput, statcontext *psc, char * sz );
 
 #endif

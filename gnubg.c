@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.157 2001/10/12 17:21:22 oysteijo Exp $
+ * $Id: gnubg.c,v 1.158 2001/10/19 16:17:45 oysteijo Exp $
  */
 
 #include "config.h"
@@ -2586,6 +2586,9 @@ extern void CommandImportSGG( char *sz ) {
 extern void CommandCopy( char *sz ) {
   char *aps[ 7 ] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL};
   char szOut[ 2048 ];
+
+  /* FIXME - Rewrite for new WinCopy command */
+
 #ifdef WIN32
   DrawBoard( szOut, ms.anBoard, 1, aps );
   strcat(szOut, "\n");
@@ -2611,6 +2614,29 @@ extern void CommandCopy( char *sz ) {
   puts( DrawBoard( szOut, ms.anBoard, 1, aps ) );
 #endif
 }
+
+#ifdef WIN32
+extern void WinCopy( char *szOut ){
+
+  if(OpenClipboard(0)) {
+
+    HGLOBAL clipbuffer;
+    char * buf;
+
+    EmptyClipboard();
+    clipbuffer = GlobalAlloc(GMEM_DDESHARE, strlen(szOut)+1 );
+    buf = (char*)GlobalLock(clipbuffer);
+    strcpy(buf, szOut);
+    GlobalUnlock(clipbuffer);
+    SetClipboardData(CF_TEXT, clipbuffer);
+    CloseClipboard();
+
+    } else {
+
+    outputl( "Can't open clipboard" ); 
+  }
+}
+#endif
 
 static void LoadRCFiles( void ) {
 

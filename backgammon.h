@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.95 2001/09/21 15:08:59 gtw Exp $
+ * $Id: backgammon.h,v 1.96 2001/10/19 16:17:45 oysteijo Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -331,6 +331,10 @@ extern void HandleInput( char *sz );
 
 #if HAVE_LIBREADLINE
 extern int fReadline;
+#endif
+
+#ifdef WIN32
+extern void WinCopy( char *szOut );
 #endif
 
 extern int iProgressMax, iProgressValue;
