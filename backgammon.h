@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.175 2002/11/11 18:26:47 joseph Exp $
+ * $Id: backgammon.h,v 1.176 2002/11/14 17:37:26 joseph Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -650,7 +650,6 @@ extern void CommandAccept( char * ),
     CommandSetEvalCandidates( char * ),
     CommandSetEvalCubeful( char * ),
     CommandSetEvalDeterministic( char * ),
-    CommandSetEvalMoveFilter( char *),
     CommandSetEvalNoOnePlyPrune( char * ),
     CommandSetEvalNoise( char * ),    
     CommandSetEvalPlies( char * ),
@@ -721,6 +720,7 @@ extern void CommandAccept( char * ),
     CommandSetMatchID ( char * ),
     CommandSetMessage ( char * ),
     CommandSetMET( char * ),
+    CommandSetMoveFilter( char * ),
     CommandSetJacoby( char * ),
     CommandSetNackgammon( char * ),
     CommandSetOutputMatchPC( char * ),

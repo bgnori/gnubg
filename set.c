@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.137 2002/11/11 18:26:47 joseph Exp $
+ * $Id: set.c,v 1.138 2002/11/14 17:37:26 joseph Exp $
  */
 
 #include "config.h"
@@ -68,8 +68,6 @@ static char szEQUITY[] = N_ ("<equity>"),
     szNAME[] = N_ ("<name>"),
     szNUMBER[] = N_ ("<number>"),
     szONOFF[] = N_ ("on|off"),
-    szFILTER[] = N_ (
- "<ply> <num. to accept (0 = skip)> [<num. of extra moves to accept> <tolerance>]"),
     szPLIES[] = N_ ("<plies>"),
     szSTDDEV[] = N_ ("<std dev>");
     
@@ -91,9 +89,6 @@ command acSetEvaluation[] = {
       N_("Control how thoroughly deep plies are searched"), szNUMBER, NULL },
     { "tolerance", CommandSetEvalTolerance, N_("Control the equity range "
       "of moves for deep evaluation"), szEQUITY, NULL },
-	{ "movefilter", CommandSetEvalMoveFilter, 
-	  N_("Set parameters for choosing moves to evaluate"), 
-	  szFILTER, NULL},
     { NULL, NULL, NULL, NULL, NULL }
 }, acSetPlayer[] = {
     { "chequerplay", CommandSetPlayerChequerplay, N_("Control chequerplay "
@@ -2261,7 +2256,7 @@ CommandSetEvalCubedecision ( char *sz ) {
 
 
 extern void
-CommandSetEvalMoveFilter(char* sz) {
+CommandSetMoveFilter(char* sz) {
 
   int		  ply = ParseNumber( &sz );
   int		  level;
