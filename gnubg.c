@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.563 2004/05/10 19:37:33 thyssen Exp $
+ * $Id: gnubg.c,v 1.564 2004/05/14 14:27:16 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4306,11 +4306,13 @@ extern void PromptForExit( void ) {
 		StopIdle3d(bd);
 	}
 #endif
+#ifdef HAVE_SOCKETS
 	/* Close any open connections */
 	if( ap[0].pt == PLAYER_EXTERNAL )
 		closesocket( ap[0].h );
 	if( ap[1].pt == PLAYER_EXTERNAL )
 		closesocket( ap[1].h );
+#endif
 
     playSound ( SOUND_EXIT );
 
