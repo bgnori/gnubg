@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.141 2003/03/29 15:13:42 thyssen Exp $
+ * $Id: show.c,v 1.142 2003/03/29 15:56:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -1769,6 +1769,7 @@ CommandShowPath ( char *sz ) {
     N_("Export of text files"),
     N_("Loading of match equity files (.xml)"),
     N_("Import of TrueMoneyGames TMG files"),
+    N_("Import of Snowie .txt files"),
   };
 
   /* make GTK widget that allows editing of paths */

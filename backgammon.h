@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.215 2003/03/29 15:12:58 thyssen Exp $
+ * $Id: backgammon.h,v 1.216 2003/03/29 15:55:21 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -298,7 +298,7 @@ extern int nGUIAnimSpeed, fGUIBeep, fGUIDiceArea, fGUIHighDieFirst,
 typedef enum _pathformat {
   PATH_EPS, PATH_GAM, PATH_HTML, PATH_LATEX, PATH_MAT, PATH_OLDMOVES,
   PATH_PDF, PATH_POS, PATH_POSTSCRIPT, PATH_SGF, PATH_SGG, PATH_TEXT, 
-  PATH_MET, PATH_TMG, PATH_BKG,
+  PATH_MET, PATH_TMG, PATH_BKG, PATH_SNOWIE_TXT,
   NUM_PATHS } 
 pathformat;
 
@@ -801,7 +801,9 @@ extern void CommandAccept( char * ),
     CommandSetPathPos( char * ),
     CommandSetPathGam( char * ),
     CommandSetPathPostScript( char * ),
+    CommandSetPathSnowieTxt( char * ),
     CommandSetPathText( char * ),
+    CommandSetPathBKG( char * ),
     CommandSetPlayerChequerplay( char * ),
     CommandSetPlayerCubedecision( char * ),
     CommandSetPlayerExternal( char * ),

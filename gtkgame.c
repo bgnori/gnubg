@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.329 2003/03/29 15:16:44 thyssen Exp $
+ * $Id: gtkgame.c,v 1.330 2003/03/29 15:57:18 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3507,8 +3507,9 @@ static void ImportTMG( gpointer *p, guint n, GtkWidget *pw ) {
 
 static void ImportSnowieTxt( gpointer *p, guint n, GtkWidget *pw ) {
 
-  char *sz = getDefaultPath ( PATH_SGF ); /* FIXME */
-  FileCommand( _("Import Snowie .txt"), sz, "import snowietxt", "txt", 0 );
+  char *sz = getDefaultPath ( PATH_SNOWIE_TXT ); 
+  FileCommand( _("Import Snowie .txt"), sz, "import snowietxt", 
+               "snowietxt", 0 );
   if ( sz ) 
     free ( sz );
 
@@ -8007,7 +8008,9 @@ GTKShowPath ( void ) {
     { N_("Loading of TrueMoneyGames files (.tmg)"), 
       N_("TrueMoneyGames TMG") },
     { N_("Loading of BKG files"),
-      N_("BKG") }
+      N_("BKG") },
+    { N_("Loading of Snowie .txt files"),
+      N_("Snowie .txt") }
   };
 
   

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.178 2003/03/29 15:13:42 thyssen Exp $
+ * $Id: set.c,v 1.179 2003/03/29 15:56:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -3247,6 +3247,14 @@ SetPath ( char *sz, pathformat f ) {
 
 
 extern void
+CommandSetPathSnowieTxt ( char *sz ) {
+
+  SetPath ( sz, PATH_SNOWIE_TXT );
+
+}
+
+
+extern void
 CommandSetPathGam ( char *sz ) {
 
   SetPath ( sz, PATH_GAM );
@@ -3352,6 +3360,13 @@ extern void
 CommandSetPathText ( char *sz ) {
 
   SetPath ( sz, PATH_TEXT );
+
+}
+
+extern void
+CommandSetPathBKG ( char *sz ) {
+
+  SetPath ( sz, PATH_BKG );
 
 }
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.400 2003/03/29 15:12:58 thyssen Exp $
+ * $Id: gnubg.c,v 1.401 2003/03/29 15:55:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -221,7 +221,8 @@ char *aszExtensions [ NUM_PATHS ] = {
   "txt",
   "xml",
   "tmg",
-  "bkg"
+  "bkg",
+  "txt"
 };
 
 
@@ -1265,6 +1266,12 @@ command cER = {
     szFILENAME, &cFilename },
   { "tmg", CommandSetPathTMG,
     N_("Set default path for loading TrueMoneyGames .tmg files"), 
+    szFILENAME, &cFilename },
+  { "bkg", CommandSetPathBKG,
+    N_("Set default path for loading BKG files"), 
+    szFILENAME, &cFilename },
+  { "snowietxt", CommandSetPathSnowieTxt,
+    N_("Set default path for import of Snowie .txt files"), 
     szFILENAME, &cFilename },
   { NULL, NULL, NULL, NULL, NULL }    
 }, acSetPriority[] = {
@@ -4178,7 +4185,7 @@ extern void CommandImportSnowieTxt( char *sz ) {
     if( ( pf = fopen( sz, "r" ) ) ) {
 	ImportSnowieTxt( pf );
 	fclose( pf );
-        //setDefaultFileName ( sz, PATH_SGG );
+        setDefaultFileName ( sz, PATH_SNOWIE_TXT );
     } else
 	outputerr( sz );
 }
