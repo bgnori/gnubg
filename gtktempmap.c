@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.9 2003/06/02 21:22:23 thyssen Exp $
+ * $Id: gtktempmap.c,v 1.10 2003/06/06 10:46:37 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -331,7 +331,7 @@ ExposeQuadrant( GtkWidget *pw, GdkEventExpose *pev, tempmapwidget *ptmw ) {
   if ( pi ) {
     if ( *pi >= 0 ) {
       i = ( *pi % 100 ) / 6;
-      j = *pi % 6;
+      j = ( *pi % 100 ) % 6;
       m = *pi / 100;
     }
     else {
