@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.258 2004/02/24 10:20:47 uid68519 Exp $
+ * $Id: eval.c,v 1.259 2004/03/23 10:19:13 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -5720,16 +5720,16 @@ EvaluatePositionCubeful4( int anBoard[ 2 ][ 25 ],
   float arCf[ 2 * cci ];
   float arCfTemp[ 2 * cci ];
   cubeinfo aci[ 2 * cci ];
-#elif _HAVE_ALLOCA
+#elif HAVE_ALLOCA
   float *arCf =
-    alloca( 2 * cci * sizeof float );
+    alloca( 2 * cci * sizeof(float) );
   float *arCfTemp =
-    alloca( 2 * cci * sizeof float );
-  float *aci = alloca ( 2 * cci * sizeof ( cubeinfo ) );
+    alloca( 2 * cci * sizeof(float) );
+  cubeinfo *aci = alloca ( 2 * cci * sizeof ( cubeinfo ) );
 #else
-  float arCf[ 32 ];
-  float arCfTemp[ 32 ];
-  cubeinfo aci[ 32 ];
+  float arCf[ 128 ];
+  float arCfTemp[ 128 ];
+  cubeinfo aci[ 128 ];
 #endif
   int fUseReduction;
   laRollList_t *rolls = NULL;
