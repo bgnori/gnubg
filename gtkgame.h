@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.95 2005/02/24 17:28:44 oysteijo Exp $
+ * $Id: gtkgame.h,v 1.96 2005/03/05 22:58:49 oysteijo Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -188,8 +188,12 @@ GtkTutor ( char *sz );
 
 extern void
 GTKCopy ( void );
-extern void
-GTKNew ( void );
+
+extern void GTKNew ( void );
+extern void GTKOpen ( void );
+extern void GTKSave ( void );
+extern void GTKImport ( void );
+extern void GTKExport ( void );
 
 extern void
 RefreshGeometries ( void );
