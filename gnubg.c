@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.214 2002/05/22 17:43:29 thyssen Exp $
+ * $Id: gnubg.c,v 1.215 2002/05/22 18:56:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -2410,6 +2410,7 @@ extern void CommandHint( char *sz ) {
     int i;
     char szBuf[ 1024 ];
     float arDouble[ 4 ], aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+    float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
     cubeinfo ci;
     int n = ParseNumber ( &sz );
     
@@ -2433,16 +2434,16 @@ extern void CommandHint( char *sz ) {
 	    }
 	    ProgressEnd();
 	    
+#if USE_GTK
+	    if ( fX ) {
+		GTKDoubleHint( aarOutput, aarStdDev, &esEvalCube );
+		return;
+	    }
+#endif
 	    FindCubeDecision ( arDouble, aarOutput, &ci );  
 
 	    GetCubeActionSz ( arDouble, szBuf, &ci, fOutputMWC, FALSE );
 
-#if USE_GTK
-	    if ( fX ) {
-		GTKDoubleHint( szBuf );
-		return;
-	    }
-#endif
 	    outputl ( szBuf );
 	    
 	    return;
@@ -2538,8 +2539,7 @@ extern void CommandHint( char *sz ) {
 	
 #if USE_GTK
 	if ( fX ) {
-	    GTKTakeHint( arDouble, ms.nMatchTo && fOutputMWC,
-			 !ms.nMatchTo && ms.cBeavers < nBeavers, &ci );
+          GTKTakeHint( aarOutput, aarStdDev, &esEvalCube );
 	    return;
 	}
 #endif
