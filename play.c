@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.235 2003/11/16 09:58:16 thyssen Exp $
+ * $Id: play.c,v 1.236 2003/11/19 17:00:27 hb Exp $
  */
 
 #include "config.h"
@@ -796,8 +796,8 @@ void DiceRolled()
 		bd->diceShown = DICE_ROLLING;
 		ShowBoard();
 	}
-#endif
         if ( ! fX )
+#endif
           ShowBoard();
 
 }
