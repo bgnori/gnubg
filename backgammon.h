@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.236 2003/07/23 16:36:20 jsegrave Exp $
+ * $Id: backgammon.h,v 1.237 2003/07/27 12:25:14 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -282,7 +282,7 @@ extern int fNextTurn, fComputing;
 /* User settings. */
 extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     fCubeUse, fDisplay, fAutoBearoff, fShowProgress,
-    nBeavers, fOutputDigits, fOutputMWC, fOutputWinPC, fOutputMatchPC, fJacoby,
+    nBeavers, fJacoby,
     fOutputRawboard, fAnnotation, cAnalysisMoves, fAnalyseCube,
     fAnalyseDice, fAnalyseMove, fRecord, fMessage, nDefaultLength;
 extern int fInvertMET;
@@ -409,10 +409,6 @@ extern int SetToggle( char *szName, int *pf, char *sz, char *szOn,
 		       char *szOff );
 extern void ShowBoard( void );
 extern void SetMatchID ( const char *szMatchID );
-extern char*
-FormatCubePosition ( char *sz, cubeinfo *pci );
-extern void
-FormatCubePositions( const cubeinfo *pci, char asz[ 2 ][ 40 ] );
 extern char *FormatPrompt( void );
 extern char *FormatMoveHint( char *sz, matchstate *pms, movelist *pml,
 			     int i, int fRankKnown,
