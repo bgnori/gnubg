@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.42.2.14 2003/07/30 12:21:04 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.42.2.15 2003/07/31 10:40:11 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -238,7 +238,6 @@ typedef struct _BoardData {
 	float flagWaved;	/* How much has flag waved */
 
 	void *numberFont, *cubeFont;	/* FTGL fonts */
-	int preview;	/* Showing a preview? */
 
 	/* Saved viewing values (used for picking) */
 	float vertFrustrum, horFrustrum;
@@ -260,7 +259,7 @@ typedef struct _BoardData {
 	Occluder Occluders[NUM_OCC];
 
 	float dim;
-	float (*shadow_light_position)[4];
+	float shadow_light_position[4];
 
 	/* Textures */
 #define MAX_TEXTURES 10
@@ -292,7 +291,6 @@ extern void preDraw3d();
 extern void CloseBoard3d(BoardData* bd);
 extern int BoardPoint3d(BoardData *bd, int x, int y, int point);
 extern int MouseMove3d(BoardData *bd, int x, int y);
-extern void ReadBoard3d(BoardData* bd, GtkWidget *widget, unsigned char* buf);
 extern void RenderBoard3d(BoardData* bd, renderdata* prd, void *glpixmap, unsigned char* buf);
 extern void Tidy3dObjects(BoardData* bd, int glValid);
 extern int TestPerformance3d(BoardData* bd);
@@ -325,7 +323,7 @@ extern int update_move(BoardData *bd);
 extern gboolean place_chequer_or_revert(BoardData *bd, int dest);
 extern gboolean LegalDestPoints( BoardData *bd, int iDestPoints[4] );
 extern void setDicePos(BoardData* bd);
-extern void InitBoardData();
+extern void InitBoardData(BoardData* bd);
 extern gboolean button_press_event(GtkWidget *board, GdkEventButton *event, BoardData* bd);
 extern gboolean motion_notify_event(GtkWidget *widget, GdkEventMotion *event, BoardData* bd);
 extern gboolean button_release_event(GtkWidget *board, GdkEventButton *event, BoardData* bd);

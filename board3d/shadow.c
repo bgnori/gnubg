@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: shadow.c,v 1.1.2.5 2003/07/09 10:20:57 Superfly_Jon Exp $
+* $Id: shadow.c,v 1.1.2.6 2003/07/31 10:40:12 Superfly_Jon Exp $
 */
 
 #include <assert.h>
@@ -112,13 +112,13 @@ void draw_shadow_volume_to_stencil(BoardData* bd)
 	glStencilOp(GL_KEEP, GL_KEEP, GL_DECR);
 
 	for (i = 0; i < NUM_OCC; i++)
-		draw_shadow_volume_extruded_edges(&bd->Occluders[i], *bd->shadow_light_position, GL_QUADS);
+		draw_shadow_volume_extruded_edges(&bd->Occluders[i], bd->shadow_light_position, GL_QUADS);
 
 	glCullFace(GL_BACK);
 	glStencilOp(GL_KEEP, GL_KEEP, GL_INCR);
 
 	for (i = 0; i < NUM_OCC; i++)
-		draw_shadow_volume_extruded_edges(&bd->Occluders[i], *bd->shadow_light_position, GL_QUADS);
+		draw_shadow_volume_extruded_edges(&bd->Occluders[i], bd->shadow_light_position, GL_QUADS);
 
 	/* Enable colour buffer, lighting and depth buffer */
 	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
@@ -133,6 +133,7 @@ void shadowDisplay(void (*drawScene)(BoardData*), BoardData* bd)
 	float d1[4] = {bd->dim, bd->dim, bd->dim, bd->dim};
 	float specular[4];
 	float diffuse[4];
+
 	glGetLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, d1);
 	/* No specular light */

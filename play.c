@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.191.2.7 2003/07/30 15:37:45 jsegrave Exp $
+ * $Id: play.c,v 1.191.2.8 2003/07/31 10:40:12 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -667,7 +667,12 @@ static int NewGame( void ) {
     UpdateSetting( &ms.fCubeOwner );
     UpdateSetting( &ms.fTurn );
 
-	InitBoardData();
+#if USE_BOARD3D
+{
+	BoardData* bd = BOARD(pwBoard)->board_data;
+	InitBoardData(bd);
+}
+#endif
 
  reroll:
     fError = RollDice( ms.anDice, rngCurrent );
@@ -1268,8 +1273,7 @@ extern int ComputerTurn( void ) {
 	      return -1;
 	      
 	  DiceRolled();      
-      }
-
+	 }
       FIBSBoard( szBoard, ms.anBoard, ms.fMove, ap[ 1 ].szName,
 		 ap[ 0 ].szName, ms.nMatchTo, ms.anScore[ 1 ],
 		 ms.anScore[ 0 ], ms.anDice[ 0 ], ms.anDice[ 1 ], ms.nCube,

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.3.4.12 2003/07/30 12:21:04 Superfly_Jon Exp $
+ * $Id: renderprefs.c,v 1.3.4.13 2003/07/31 10:40:12 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -488,10 +488,7 @@ extern void RenderPreferencesParam( renderdata *prd, char *szParam,
     else if( !strncasecmp( szParam, "boardshadows", c ) )
 		prd->showShadows = toupper( *szValue ) == 'Y';
     else if( !strncasecmp( szParam, "shadowdarkness", c ) )
-	{
 		prd->shadowDarkness = atoi(szValue);
-		SetShadowDimness3d(BOARD(pwBoard)->board_data);
-	}
     else if( !strncasecmp( szParam, "animateroll", c ) )
 		prd->animateRoll = toupper( *szValue ) == 'Y';
     else if( !strncasecmp( szParam, "animateflag", c ) )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.126.2.13 2003/07/30 12:21:04 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.126.2.14 2003/07/31 10:40:11 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4089,13 +4089,12 @@ extern GtkWidget *board_dice_widget( Board *board ) {
     return pw;	    
 }
 
-void InitBoardData()
+#if USE_BOARD3D
+void InitBoardData(BoardData* bd)
 {	/* Initialize some BoardData settings on new game start */
 	/* Only needed for 3d board */
-#if USE_BOARD3D
 	if (rdAppearance.fDisplayType == DT_3D)
 	{
-		BoardData* bd = BOARD(pwBoard)->board_data;
 		/* Move cube back to center */
 		bd->cube = 0;
 		bd->cube_owner = 0;
@@ -4111,5 +4110,5 @@ void InitBoardData()
 		updateFlagOccPos(bd);
 		SetupViewingVolume3d(bd, &rdAppearance);
 	}
-#endif
 }
+#endif
