@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.h,v 1.7 2001/04/24 12:35:50 thyssen Exp $
+ * $Id: positionid.h,v 1.8 2002/03/17 13:27:25 thyssen Exp $
  */
 
 #ifndef _POSITIONID_H_
@@ -35,5 +35,28 @@ extern int EqualBoards( int anBoard0[ 2 ][ 25 ], int anBoard1[ 2 ][ 25 ] );
 
 extern int 
 CheckPosition( int anBoard[ 2 ][ 25 ] );
+
+extern int
+LogCube ( const int n );
+
+extern char*
+MatchID ( const int nCube, const int fCubeOwner, const int fMove,
+          const int nMatchTo, const int anScore[ 2 ], 
+          const int fCrawford, const int anDice[ 2 ] );
+
+extern char*
+MatchIDFromKey( unsigned char auchKey[ 8 ] );
+
+extern int
+MatchFromID ( int *pnCube, int *pfCubeOwner, int *pfMove,
+              int *pnMatchTo, int anScore[ 2 ], 
+              int *pfCrawford, int anDice[ 2 ],
+              char *szMatchID );
+
+extern int
+MatchFromKey ( int *pnCube, int *pfCubeOwner, int *pfMove,
+               int *pnMatchTo, int anScore[ 2 ], 
+               int *pfCrawford, int anDice[ 2 ],
+               unsigned char *auchKey;
 
 #endif
