@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.9 2005/01/02 13:48:45 jsegrave Exp $
+ * $Id: gnubgmodule.h,v 1.10 2005/02/10 10:31:12 Superfly_Jon Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
@@ -24,14 +24,13 @@
 
 #if USE_PYTHON
 
-/* Python.h definse HAVE_FSTAT so save and redefine here */
-#if HAVE_FSTAT
-#define _HAVE_FSTAT 1
-#else
-#define _HAVE_FSTAT 0
-#endif
+/* Python.h defines HAVE_FSTAT (2.3) and HAVE_SETVBUF (2.4) so ignore and redefine below */
+#undef HAVE_SETVBUF
+#undef HAVE_LIMITS_H
 #undef HAVE_FSTAT
 #include <Python.h>
+#undef HAVE_SETVBUF
+#undef HAVE_LIMITS_H
 #undef HAVE_FSTAT
 #include "config.h"
 
