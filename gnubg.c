@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.332 2002/11/24 10:31:37 thyssen Exp $
+ * $Id: gnubg.c,v 1.333 2002/11/24 14:41:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -1372,6 +1372,10 @@ command cER = {
       N_("Synonym for `show matchequitytable'"), szOPTVALUE, NULL },
     { "nackgammon", CommandShowNackgammon,
       N_("Display which starting position will be used"), NULL, NULL },
+    { "onechequer", CommandShowOneChequer, 
+      N_("Show misc race theory"), NULL, NULL },
+    { "onesidedrollout", CommandShowOneSidedRollout, 
+      N_("Show misc race theory"), NULL, NULL },
     { "output", CommandShowOutput, N_("Show how results will be formatted"),
       NULL, NULL },
     { "path", CommandShowPath, N_("Show default paths for save, load, export, "

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.188 2002/11/24 10:28:00 thyssen Exp $
+ * $Id: eval.c,v 1.189 2002/11/24 14:44:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -3345,7 +3345,53 @@ FindnSaveBestMoves( movelist *pml,
   return 0;
 }
 
+extern int
+ThorpCount( int anBoard[ 2 ][ 25 ], int *pnLeader, int *pnTrailer ) {
+  
+  int anCovered[2], anMenLeft[2];
+  int x;
+  int anPips[ 2 ];
 
+  PipCount( anBoard, anPips );
+
+  anMenLeft[0] = 0;
+  anMenLeft[1] = 0;
+  for (x = 0; x < 25; x++)
+    {
+      anMenLeft[0] += anBoard[0][x];
+      anMenLeft[1] += anBoard[1][x];
+    }
+
+  anCovered[0] = 0;
+  anCovered[1] = 0;
+  for (x = 0; x < 6; x++) {
+    if (anBoard[0][x])
+      anCovered[0]++;
+    if (anBoard[1][x])
+      anCovered[1]++;
+  }
+
+  *pnLeader = anPips[1];
+  *pnLeader += 2*anMenLeft[1];
+  *pnLeader += anBoard[1][0];
+  *pnLeader -= anCovered[1];
+  
+  if (*pnLeader > 30) {
+    if ((*pnLeader % 10) > 5) {
+        *pnLeader *= 1.1;
+        *pnLeader += 1;
+    }
+    else
+      *pnLeader *= 1.1;
+  }
+  *pnTrailer = anPips[0];
+  *pnTrailer += 2*anMenLeft[0];
+  *pnTrailer += anBoard[0][0];
+  *pnTrailer -= anCovered[0];
+  
+}
+  
+  
 extern int PipCount( int anBoard[ 2 ][ 25 ], int anPips[ 2 ] ) {
 
     int i;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.1 2002/11/24 10:17:34 thyssen Exp $
+ * $Id: bearoff.h,v 1.2 2002/11/24 14:43:31 thyssen Exp $
  */
 
 #ifndef _BEAROFF_H_
@@ -89,5 +89,8 @@ BearoffClose ( bearoffcontext *pbc );
 
 extern int
 isBearoff ( bearoffcontext *pbc, int anBoard[ 2 ][ 25 ] );
+
+extern float
+fnd ( const float x, const float mu, const float sigma  );
 
 #endif /* _BEAROFF_H_ */

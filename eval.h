@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.91 2002/11/24 10:28:00 thyssen Exp $
+ * $Id: eval.h,v 1.92 2002/11/24 14:44:13 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -297,6 +297,9 @@ TrainPosition( int anBoard[ 2 ][ 25 ], float arDesired[], float rAlpha,
 
 extern int 
 PipCount( int anBoard[ 2 ][ 25 ], int anPips[ 2 ] );
+
+extern int 
+ThorpCount( int anBoard[ 2 ][ 25 ], int *pnLeader, int *pnTrailer );
 
 extern int 
 DumpPosition( int anBoard[ 2 ][ 25 ], char *szOutput,

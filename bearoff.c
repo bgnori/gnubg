@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.4 2002/11/24 11:23:17 thyssen Exp $
+ * $Id: bearoff.c,v 1.5 2002/11/24 14:43:31 thyssen Exp $
  */
 
 #include "config.h"
@@ -993,7 +993,7 @@ BearoffInit ( const char *szFilename, const char *szDir,
 }
 
 
-static float
+extern float
 fnd ( const float x, const float mu, const float sigma  ) {
 
    const float epsilon = 1.0e-7;
