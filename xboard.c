@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xboard.c,v 1.17 2000/11/10 18:50:42 gtw Exp $
+ * $Id: xboard.c,v 1.18 2001/03/29 17:25:36 gtw Exp $
  */
 
 #include "config.h"
@@ -313,7 +313,7 @@ static void BoardPointer( extwindow *pewnd, gamedata *pgd, XEvent *pxev ) {
 	    
 	    if( !XQueryPointer( pewnd->pdsp, pewnd->wnd, &wIgnore, &wIgnore,
 				&nIgnore, &nIgnore, &xEvent, &yEvent,
-				&nIgnore ) )
+				(unsigned int *) &nIgnore ) )
 		return;
 	} else {
 	    xEvent = pxev->xmotion.x;

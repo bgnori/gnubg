@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.112 2001/03/29 16:28:12 gtw Exp $
+ * $Id: gnubg.c,v 1.113 2001/03/29 17:25:36 gtw Exp $
  */
 
 #include "config.h"
@@ -150,7 +150,9 @@ evalcontext ecRollout = { 0, 8, 0.16, 0, FALSE };
 
 #define DEFAULT_NET_SIZE 128
 
-storedmoves sm = {}; /* sm.ml.amMoves is NULL, sm.anDice is [0,0]. */
+storedmoves sm; /* sm.ml.amMoves is NULL, sm.anDice is [0,0].
+		 FIXME does ISO C actually guarantee the pointer will be
+		 NULL, if NULL is not filled with 0 bits? */
 
 player ap[ 2 ] = {
     { "gnubg", PLAYER_GNU, { 0, 8, 0.16, 0, FALSE } },

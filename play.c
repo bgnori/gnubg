@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.65 2001/03/29 16:25:05 gtw Exp $
+ * $Id: play.c,v 1.66 2001/03/29 17:25:36 gtw Exp $
  */
 
 #include "config.h"
@@ -1605,9 +1605,10 @@ extern void CommandNext( char *sz ) {
     }
     
     if( ( pch = NextToken( &sz ) ) ) {
-	if( !strncasecmp( pch, "game", strlen( pch ) ) )
-	    return CommandNextGame( sz );
-	else
+	if( !strncasecmp( pch, "game", strlen( pch ) ) ) {
+	    CommandNextGame( sz );
+	    return;
+	} else
 	    n = ParseNumber( &pch );
     } else
 	n = 1;
@@ -1687,9 +1688,10 @@ extern void CommandPrevious( char *sz ) {
     }
     
     if( ( pch = NextToken( &sz ) ) ) {
-	if( !strncasecmp( pch, "game", strlen( pch ) ) )
-	    return CommandPreviousGame( sz );
-	else
+	if( !strncasecmp( pch, "game", strlen( pch ) ) ) {
+	    CommandPreviousGame( sz );
+	    return;
+	} else
 	    n = ParseNumber( &pch );
     } else
 	n = 1;

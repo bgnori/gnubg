@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.82 2001/03/27 05:19:30 joseph Exp $
+ * $Id: eval.c,v 1.83 2001/03/29 17:25:36 gtw Exp $
  */
 
 #include "config.h"
@@ -1071,7 +1071,8 @@ CalculateHalfInputs( int anBoard[ 25 ], int anBoardOpp[ 25 ],
 	    /* enter this shot as available */
 	      
 	    aHit[ aanCombination[ j - 24 + i ][ n ] ] |= 1 << j;
-	    cannot_hit:
+	  cannot_hit:
+	    ;
 	  }
 
   for( i = 0; i < 21; i++ )

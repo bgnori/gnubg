@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: md5.h,v 1.1 2000/11/10 18:50:43 gtw Exp $
+ * $Id: md5.h,v 1.2 2001/03/29 17:25:36 gtw Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
@@ -84,7 +84,7 @@ typedef u_int32_t md5_uint32;
 # define __P(x) ()
 #endif
 
-#ifndef __GNUC__
+#if !defined (__GNUC__) && !defined (__attribute__)
 #define __attribute__(x)
 #endif
      
