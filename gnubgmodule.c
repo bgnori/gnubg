@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.17 2003/09/01 00:42:29 joseph Exp $
+ * $Id: gnubgmodule.c,v 1.18 2003/09/02 21:07:11 joseph Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1259,14 +1259,14 @@ PyGameStats(const statcontext* sc)
 		      "err-missed-double-tg-cost",
 		      sc->arErrorMissedDoubleTG[side][ 1 ],
 			
-		      "err-erong-double-dp-skill",
+		      "err-wrong-double-dp-skill",
 		      sc->arErrorWrongDoubleDP[side][ 0 ],
-		      "err-erong-double-dp-cost",
+		      "err-wrong-double-dp-cost",
 		      sc->arErrorWrongDoubleDP[side][ 1 ],
 			
-		      "err-erong-double-tg-skill",
+		      "err-wrong-double-tg-skill",
 		      sc->arErrorWrongDoubleTG[side][ 0 ],
-		      "err-erong-double-tg-cost",
+		      "err-wrong-double-tg-cost",
 		      sc->arErrorWrongDoubleTG[side][ 1 ],
 
 		      "err-wrong-take-skill",
