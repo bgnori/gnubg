@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.8.2.6 2000/02/01 04:12:27 thyssen Exp $
+ * $Id: eval.c,v 1.8.2.7 2000/02/01 11:02:43 thyssen Exp $
  */
 
 #include "config.h"
@@ -2178,37 +2178,58 @@ EvaluatePositionCubeful( int anBoard[ 2 ][ 25 ],
        *     My ownership  : 0
        */
 
-      if ( ( fCubeOwner == -1 ) || ( fCubeOwner == fMove ) ) {
+      printf ( "Before cubeful... %+8.5f\n", rEq );
+      printf ( "   %1i %1i %2i %2i %2i %2i\n", 
+	       anScore[ fMove ] + nCube >= nMatchTo,
+	       anScore[ !fMove ] + nCube >= nMatchTo,
+	       anScore[ fMove ], anScore[ !fMove ],
+	       nCube, nMatchTo );
 
-	/* FIXME: match play: check for dead cube, auto double */
+      /* 
+       * If match play ( nMatchTo ) there is no value of holding the
+       * cube if
+       * - my score + current cube >= match length 
+       *   (ie. either I own a dead cube or opponent has automatic
+       *    double)
+       * - opp score + current cube >= match length
+       *   (ie. either I have an automatic redouble or opponent own
+       *    a dead cube)
+       */
+      
+      if ( ! ( ( nMatchTo ) && 
+	       ( ( anScore[ fMove ] + nCube >= nMatchTo ) ||
+		 ( anScore[ !fMove ] + nCube >= nMatchTo ) ) ) ) {
 
-	if ( rEq > 0.5 ) {
-	  if ( rEq < 1.0 )
-	    rEq = 1.0; /* I double, opponent pass */
+	if ( ( fCubeOwner == -1 ) || ( fCubeOwner == fMove ) ) {
+
+	  if ( rEq > 0.5 ) {
+	    if ( rEq < 1.0 )
+	      rEq = 1.0; /* I double, opponent pass */
+	  }
+	  else {
+	    if ( rEq > -1.0 )
+	      rEq += 0.25 * rEq + 0.25;
+	  }
+	  
 	}
-	else {
-	  if ( rEq > -1.0 )
-	    rEq += 0.25 * rEq + 0.25;
+
+	if ( ( fCubeOwner == -1 ) || ( fCubeOwner != fMove ) ) {
+
+	  /* Use rEqbck since rEq might have been changed above */
+	  
+	  if ( rEqbck > -0.5 ) {
+	    if ( rEqbck < 1.0 )
+	      rEq += 0.25 * rEqbck - 0.25;
+	  }
+	  else {
+	    if ( rEqbck > -1.0 )
+	      rEq = -1.0; /* opponent double, I pass */
+	  }
+	  
 	}
 
       }
-
-      if ( ( fCubeOwner == -1 ) || ( fCubeOwner != fMove ) ) {
-
-	/* FIXME: match play: check for dead cube, auto double */
-
-	/* Use rEqbck since rEq might have been changed above */
-
-	if ( rEqbck > -0.5 ) {
-	  if ( rEqbck < 1.0 )
-	    rEq += 0.25 * rEqbck - 0.25;
-	}
-	else {
-	  if ( rEqbck > -1.0 )
-	    rEq = -1.0; /* opponent double, I pass */
-	}
-
-      }
+      printf ( "After cubeful... %+8.5f\n", rEq );
 
       prOutput[ 0 ] = rEq;
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.9.2.4 2000/02/01 04:12:27 thyssen Exp $
+ * $Id: set.c,v 1.9.2.5 2000/02/01 11:02:43 thyssen Exp $
  */
 
 #include "config.h"
@@ -817,16 +817,15 @@ extern void CommandSetTurn( char *sz ) {
 
 extern void CommandSetJacoby( char *sz ) {
 
-    if( SetToggle( "jacoby", &fJacoby, sz, 
-		   "Will use the Jacoby rule for money sessions.",
-		   "Will not use the Jacoby rule for money sessions." ) )
-      return;
+  SetToggle( "jacoby", &fJacoby, sz, 
+	     "Will use the Jacoby rule for money sessions.",
+             "Will not use the Jacoby rule for money sessions." );
 
-    CalcGammonPrice ( nCube, fCubeOwner );
+  CalcGammonPrice ( nCube, fCubeOwner );
 
-    if( fJacoby && !fCubeUse )
-      puts( "(Note that you'll have to enable the cube if you want gammons "
-	    "and backgammons\nto be scored -- see `help set cube use'.)" );
+  if( fJacoby && !fCubeUse )
+    puts( "(Note that you'll have to enable the cube if you want gammons "
+          "and backgammons\nto be scored -- see `help set cube use'.)" );
 
 }
 
