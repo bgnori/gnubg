@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.262 2004/07/11 16:39:00 kaoru Exp $
+ * $Id: eval.c,v 1.263 2004/09/16 07:44:26 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4290,7 +4290,10 @@ SetCubeInfoMoney( cubeinfo *pci, const int nCube, const int fCubeOwner,
 
     if( nCube < 1 || fCubeOwner < -1 || fCubeOwner > 1 || fMove < 0 ||
 	fMove > 1 ) /* FIXME also illegal if nCube is not a power of 2 */
+    {
+	memset(pci, 0, sizeof(cubeinfo));
 	return -1;
+    }
 
     pci->nCube = nCube;
     pci->fCubeOwner = fCubeOwner;
@@ -4314,9 +4317,11 @@ SetCubeInfoMatch( cubeinfo *pci, const int nCube, const int fCubeOwner,
     
     if( nCube < 1 || fCubeOwner < -1 || fCubeOwner > 1 || fMove < 0 ||
 	fMove > 1 || nMatchTo < 1 || anScore[ 0 ] >= nMatchTo ||
-	anScore[ 1 ] >= nMatchTo ) /* FIXME also illegal if nCube is not a
-				      power of 2 */
+	anScore[ 1 ] >= nMatchTo ) /* FIXME also illegal if nCube is not a power of 2 */
+    {
+	memset(pci, 0, sizeof(cubeinfo));
 	return -1;
+    }
     
     pci->nCube = nCube;
     pci->fCubeOwner = fCubeOwner;
