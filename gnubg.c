@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.247 2002/07/17 11:09:52 thyssen Exp $
+ * $Id: gnubg.c,v 1.248 2002/07/17 11:13:01 thyssen Exp $
  */
 
 #include "config.h"
@@ -2552,30 +2552,30 @@ extern void CommandHint( char *sz ) {
         
         UpdateStoredCube ( aarOutput, aarStdDev, &esEvalCube, &ms );
         
+      } else {
+        
+        outputl( _("You cannot double.") );
+        return;
+        
       }
+  
+    }
+    
       
 #if USE_GTK
-      if ( fX ) {
-        GTKDoubleHint( sc.aarOutput, sc.aarStdDev, &sc.es );
-        return;
-      }
-#endif
-      FindCubeDecision ( arDouble, aarOutput, &ci );  
-    
-      GetCubeActionSz ( arDouble, szBuf, &ci, fOutputMWC, FALSE );
-    
-      outputl ( szBuf );
-    
+    if ( fX ) {
+      GTKDoubleHint( sc.aarOutput, sc.aarStdDev, &sc.es );
       return;
-    
-    } else {
-    
-      outputl( _("You cannot double.") );
-    
-      return;
-    
     }
-  
+#endif
+    FindCubeDecision ( arDouble, aarOutput, &ci );  
+    
+    GetCubeActionSz ( arDouble, szBuf, &ci, fOutputMWC, FALSE );
+    
+    outputl ( szBuf );
+    
+    return;
+
   }
     
 
