@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.33 2004/04/29 18:45:24 thyssen Exp $
+ * $Id: bearoff.c,v 1.34 2004/11/24 10:25:16 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -923,6 +923,9 @@ BearoffEvalSconyers( bearoffcontext *pbc,
 
 extern int
 BearoffEval ( bearoffcontext *pbc, int anBoard[ 2 ][ 25 ], float arOutput[] ) {
+
+  if (!pbc)
+    return 0;
 
   switch ( pbc->bc ) {
   case BEAROFF_GNUBG:
