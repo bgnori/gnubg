@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.20 2003/01/22 18:26:05 gtw Exp $
+ * $Id: gtkcube.c,v 1.21 2003/03/08 07:37:12 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -763,9 +763,8 @@ GetContent ( cubehintdata *pchd ) {
                             pchd->aarStdDev,
                             pchd->pes,
                             &ci,
-                            FALSE, FALSE,
-                            SKILL_NONE, SKILL_NONE,
-                            FALSE );
+                            -1, -1,
+                            SKILL_NONE, SKILL_NONE );
 
   return pc;
 
