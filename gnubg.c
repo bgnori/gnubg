@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.311 2002/10/09 18:44:36 thyssen Exp $
+ * $Id: gnubg.c,v 1.312 2002/10/09 18:57:31 thyssen Exp $
  */
 
 #include "config.h"
@@ -6113,6 +6113,7 @@ extern void CommandSwapPlayers ( char *sz ) {
 
 #if USE_GTK
   if ( fX ) {
+    GTKSet ( ap );
     GTKRegenerateGames();
     GTKUpdateAnnotations();
   }
