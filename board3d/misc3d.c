@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.43 2004/08/25 17:45:16 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.44 2004/09/09 11:22:36 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2144,7 +2144,7 @@ void SetupViewingVolume3d(BoardData *bd)
 {
 	GLint viewport[4];
 	float tempMatrix[16];
-	glGetIntegerv (GL_VIEWPORT, viewport);
+	glGetIntegerv(GL_VIEWPORT, viewport);
 
 	memcpy(tempMatrix, bd->modelMatrix, sizeof(float[16]));
 
@@ -2303,4 +2303,6 @@ void InitBoard3d(BoardData *bd)
 	bd->numTextures = 0;
 
 	bd->boardPoints = NULL;
+
+	memset(bd->modelMatrix, 0, sizeof(float[16]));
 }
