@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.257 2002/11/24 18:59:35 gtw Exp $
+ * $Id: gtkgame.c,v 1.258 2002/11/25 03:20:27 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5098,7 +5098,7 @@ extern void SetRollouts( gpointer *p, guint n, GtkWidget *pwIgnore ) {
 
     if( rw.rcRollout.fInitial != rcRollout.fInitial ) {
       sprintf( sz, "set rollout initial %s",
-               rw.rcRollout.fVarRedn ? "on" : "off" );
+               rw.rcRollout.fInitial ? "on" : "off" );
       UserCommand( sz );
     }
 
