@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.81 2003/10/28 12:02:03 Superfly_Jon Exp $
+ * $Id: import.c,v 1.82 2003/12/29 19:29:48 uid65656 Exp $
  */
 
 #include "config.h"
@@ -908,7 +908,7 @@ isAscending( const int anMove[ 8 ] ) {
       /* not moving off */
       return anMove[ 0 ] < anMove[ 1 ];
     else
-      return anMove[ 0 ] > 18;
+      return anMove[ 0 ] > 17;
   }
   else
     return anMove[ 1 ] < 6;
@@ -967,7 +967,7 @@ static void ParseOldmove( char *sz, int fInvert ) {
                In theory this is only necessary when iPlayer == fInvert,
                but some programs may write incompatible files.
                Joseph's fibs2html is one such program. */
-            
+
             if ( c && isAscending( pmr->n.anMove ) ) {
               /* ascending moves: invert */
               for ( i = 0; i < ( c << 1); ++i ) 
