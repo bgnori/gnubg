@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.4 2002/07/04 19:59:37 thyssen Exp $
+ * $Id: text.c,v 1.5 2002/07/13 17:15:57 thyssen Exp $
  */
 
 #include "config.h"
@@ -122,7 +122,7 @@ printTextBoard ( FILE *pf, const matchstate *pms ) {
 	
 
   fputs ( DrawBoard( szBoard, anBoard, pms->fMove, apch,
-                     MatchIDFromMatchState ( &ms ) ),
+                     MatchIDFromMatchState ( pms ) ),
           pf);
   fputs ( "\n", pf );
 
@@ -229,7 +229,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.4 $";
+  const char szVersion[] = "$Revision: 1.5 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -813,7 +813,7 @@ TextPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
   fprintf( pf, _("Rolled %d%d"), pmr->n.anRoll[ 0 ], pmr->n.anRoll[ 1 ] );
 
   if( pmr->n.rLuck != ERR_VAL )
-    fprintf( pf, " (%s):\n", GetLuckAnalysis( &ms, pmr->n.rLuck ) );
+    fprintf( pf, " (%s):\n", GetLuckAnalysis( pms, pmr->n.rLuck ) );
   else
     fprintf( pf, ":" );
 
@@ -825,7 +825,7 @@ TextPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
         continue;
 
       fputc( i == pmr->n.iMove ? '*' : ' ', pf );
-      fputs( FormatMoveHint( szBuf, &ms, &pmr->n.ml, i,
+      fputs( FormatMoveHint( szBuf, pms, &pmr->n.ml, i,
                              i != pmr->n.iMove ||
                              i != pmr->n.ml.cMoves - 1 ), pf );
 
@@ -1157,7 +1157,7 @@ static void ExportGameText ( FILE *pf, list *plGame,
 
     }
 
-    TextEpilogue( pf, &ms );
+    TextEpilogue( pf, &msExport );
 
 
     
