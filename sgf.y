@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.y,v 1.2 2002/06/02 16:34:48 thyssen Exp $
+ * $Id: sgf.y,v 1.3 2002/06/04 17:57:39 gtw Exp $
  */
 
 %{
@@ -105,6 +105,7 @@ static char *Concatenate( list *pl ) {
 		   we'll try to be accomodating. */
 Collection:	GameTreeSeq
 		{ $$ = plCollection = $1; }
+	;
 
 GameTreeSeq:	/* empty */
 		{ $$ = NewList(); }
