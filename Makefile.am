@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.95 2003/04/03 20:31:43 thyssen Exp $
+## $Id: Makefile.am,v 1.96 2003/05/16 08:08:34 thyssen Exp $
 if USE_EXT
 SUBDIRS = intl lib doc ext met po m4 xpm sounds
 else
@@ -12,9 +12,9 @@ ACLOCAL_AMFLAGS = -I m4
 ## sounds
 
 if USE_SOUND
-SOUND_INCS = @ESD_CFLAGS@ @NAS_CFLAGS@ @ARTSC_CFLAGS@
+SOUND_INCS = @ESD_CFLAGS@ @NAS_CFLAGS@ @ARTSC_CFLAGS@ @AUDIOFILE_CFLAGS@
 SOUND_SOURCES = sound.c
-SOUND_LIBS = @ESD_LIBS@ @NAS_LIBS@ @ARTSC_LIBS@
+SOUND_LIBS = @ESD_LIBS@ @NAS_LIBS@ @ARTSC_LIBS@ @AUDIOFILE_LIBS@
 else
 SOUND_INCS = 
 SOUND_SOURCES =
