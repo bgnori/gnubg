@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.566 2004/05/25 15:23:39 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.567 2004/06/01 08:20:41 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -367,7 +367,7 @@ rolloutcontext rcRollout =
   /* evaltype */ \
   EVAL_EVAL, \
   /* evalcontext */ \
-  { FALSE, 0, 0, TRUE, 0.0 }, \
+  { TRUE, 0, 0, TRUE, 0.0 }, \
   /* rolloutcontext */ \
   { \
     { \
@@ -4889,7 +4889,7 @@ CommandLoadPython( char * sz ) {
   pch = PathSearch( sz, NULL );
   pf = fopen( pch, "r" );
   if (!pf)
-  {	/* Couldn't find file, have a look in the scripts dir */
+  {  /* Couldn't find file, have a look in the scripts dir */
     char scriptDir[BIG_PATH];
     strcpy(scriptDir, (szDataDirectory && *szDataDirectory) ? szDataDirectory: ".");
     strcat(scriptDir, "/scripts");
