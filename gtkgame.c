@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.50 2001/04/17 15:59:09 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.51 2001/04/17 17:26:11 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1467,6 +1467,28 @@ extern void GTKPopGame( int i ) {
 extern void GTKSetGame( int i ) {
 
     gtk_option_menu_set_history( GTK_OPTION_MENU( pom ), i );
+}
+
+/* The annotation for one or more moves has been modified.  We refresh
+   the entire game and annotation windows, just to be safe. */
+extern void GTKUpdateAnnotations( void ) {
+
+    list *pl;
+    
+    GTKFreeze();
+    
+    GTKClearMoveRecord();
+
+    for( pl = plGame->plNext; pl->p; pl = pl->plNext ) {
+	GTKAddMoveRecord( pl->p );
+	ApplyMoveRecord( pl->p );
+    }
+
+    CalculateBoard();
+
+    GTKSetMoveRecord( plLastMove->p );
+
+    GTKThaw();
 }
 
 static gboolean main_delete( GtkWidget *pw ) {

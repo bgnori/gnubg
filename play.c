@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.73 2001/04/16 17:02:54 gtw Exp $
+ * $Id: play.c,v 1.74 2001/04/17 17:26:11 gtw Exp $
  */
 
 #include "config.h"
@@ -107,7 +107,7 @@ static void ApplyGameOver( void ) {
     anScore[ pmgi->fWinner ] += pmgi->nPoints;
 }
 
-static void ApplyMoveRecord( moverecord *pmr ) {
+extern void ApplyMoveRecord( moverecord *pmr ) {
 
     int n;
     movegameinfo *pmgi = plGame->plNext->p;
