@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.21 2000/02/21 18:06:26 gtw Exp $
+ * $Id: play.c,v 1.22 2000/04/07 16:16:10 gtw Exp $
  */
 
 #include "config.h"
@@ -175,8 +175,12 @@ static int ComputerTurn( void ) {
 	return FindPubevalMove( anDice[ 0 ], anDice[ 1 ], anBoard );
 
     default:
-	assert( FALSE );
     }
+    
+    abort();
+    
+    /* never reached, but fussy compilers might want a return value anyway */
+    return -1;
 }
 
 /* Try to automatically bear off as many chequers as possible.  Only do it
@@ -286,8 +290,8 @@ extern void NextTurn( void ) {
 	ShowBoard();
     
     if( ( n = GameStatus( anBoard ) ) ||
-	( go == GAME_DROP && ( n = 1 ) ) ||
-	( go == GAME_RESIGNED && ( n = fResigned ) ) ) {
+	( go == GAME_DROP && ( ( n = 1 ) ) ) ||
+	( go == GAME_RESIGNED && ( ( n = fResigned ) ) ) ) {
 	fWinner = !fTurn;
 	
 	if( fJacoby && fCubeOwner == -1 && !nMatchTo )
