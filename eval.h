@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.74 2002/05/29 20:25:59 thyssen Exp $
+ * $Id: eval.h,v 1.75 2002/05/30 19:30:58 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -332,10 +332,10 @@ GetCubeActionSz ( float arDouble[ 4 ], char *szOutput, cubeinfo *pci,
 		  int fOutputMWC, int fOutputInvert );
 
 extern float
-mwc2eq ( float rMwc, cubeinfo *ci );
+mwc2eq ( const float rMwc, const cubeinfo *ci );
 
 extern float
-eq2mwc ( float rEq, cubeinfo *ci );
+eq2mwc ( const float rEq, const cubeinfo *ci );
  
 extern float
 se_mwc2eq ( const float rMwc, const cubeinfo *ci );
