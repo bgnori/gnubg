@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.152 2001/09/26 16:32:22 gtw Exp $
+ * $Id: gnubg.c,v 1.153 2001/10/05 14:34:39 gtw Exp $
  */
 
 #include "config.h"
@@ -2947,7 +2947,7 @@ extern void CommandSaveSettings( char *szParam ) {
 	    fprintf( pf, "set player %d gnubg\n", i );
 	    sprintf( szTemp, "set player %d chequerplay", i );
 	    SaveEvalSetupSettings( pf, szTemp, &ap[ i ].esChequer );
-	    sprintf( szTemp, "set player %d cubedecisions", i );
+	    sprintf( szTemp, "set player %d cubedecision", i );
 	    SaveEvalSetupSettings( pf, szTemp, &ap[ i ].esCube );
 	    break;
 	    

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.74 2001/09/25 15:08:39 gtw Exp $
+ * $Id: set.c,v 1.75 2001/10/05 14:34:39 gtw Exp $
  */
 
 #include "config.h"
@@ -1776,7 +1776,7 @@ CommandSetEvalCubedecision ( char *sz ) {
   pesSet = &esEvalCube;
 
   szSet = "`eval' and `hint' cube decisions";
-  szSetCommand = "evaluation cubedecisions ";
+  szSetCommand = "evaluation cubedecision ";
 
   HandleCommand( sz, acSetEvalParam );
 
