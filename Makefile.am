@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.123 2004/01/21 22:01:03 uid65656 Exp $
+## $Id: Makefile.am,v 1.124 2004/02/20 14:19:49 uid65656 Exp $
 
 localedir = $(datadir)/locale
 
@@ -175,7 +175,7 @@ distcheck-hook:
 
 EXTRA_DIST = userrng.c copying.awk gnubgtest sgf.l sgf.y gnubg.6 gnubg.scm \
 	gnubg.gtkrc credits.sh erf.c xboard.c xboard.h xgame.c xgame.h \
-	ABOUT-NLS boards.xml gnubg.py external_l.l external_y.y
+	ABOUT-NLS boards.xml external_l.l external_y.y
 
 DISTCLEANFILES=gnubg.wd
 
