@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.40 2003/08/13 20:47:24 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.41 2003/08/16 07:20:20 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -814,7 +814,7 @@ CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid,
         N_("Lose"), 
         N_("L g"), 
         N_("L bg"),
-	"", 
+       NULL, 
         N_("Diff."), 
         N_("Move")
     }, *aszEmpty[] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
