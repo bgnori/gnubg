@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.196 2002/03/23 17:25:03 thyssen Exp $
+ * $Id: gnubg.c,v 1.197 2002/03/23 17:45:03 thyssen Exp $
  */
 
 #include "config.h"
@@ -1782,7 +1782,8 @@ extern void ShowBoard( void ) {
 	if( !ms.fMove )
 	    SwapSides( ms.anBoard );
 	
-	outputl( DrawBoard( szBoard, ms.anBoard, ms.fMove, apch ) );
+	outputl( DrawBoard( szBoard, ms.anBoard, ms.fMove, apch,
+                            MatchIDFromMatchState ( &ms ) ) );
 
 	if( fAnnotation && plLastMove && ( pmr = plLastMove->plNext->p ) ) {
 	    DisplayAnalysis( pmr );
@@ -2887,7 +2888,7 @@ extern void CommandCopy( char *sz ) {
   /* FIXME - Rewrite for new WinCopy command */
 
 #ifdef WIN32
-  DrawBoard( szOut, ms.anBoard, 1, aps );
+  DrawBoard( szOut, ms.anBoard, 1, aps, MatchIDFromMatchState ( &ms ) );
   strcat(szOut, "\n");
 
   if(OpenClipboard(0)) {
@@ -2908,7 +2909,8 @@ extern void CommandCopy( char *sz ) {
     outputl( "Can't open clipboard" ); 
   }
 #else
-  puts( DrawBoard( szOut, ms.anBoard, 1, aps ) );
+  puts( DrawBoard( szOut, ms.anBoard, 1, aps, 
+                   MatchIDFromMatchState ( &ms ) ) );
 #endif
 }
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.h,v 1.9 2001/10/29 15:13:18 gtw Exp $
+ * $Id: drawboard.h,v 1.10 2002/03/23 17:46:05 thyssen Exp $
  */
 
 #ifndef _DRAWBOARD_H_
@@ -25,7 +25,7 @@
 extern int fClockwise; /* Player 1 moves clockwise */
 
 extern char *DrawBoard( char *pch, int anBoard[ 2 ][ 25 ], int fRoll,
-                        char *asz[] );
+                        char *asz[], char *szMatchID );
 /* Fill the buffer pch with a representation of the move anMove, assuming
    the board looks like anBoard.  pch must have room for 28 characters plus
    a trailing 0 (consider the move `bar/24* 23/22* 21/20* 19/18*'). */

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.82 2002/03/23 14:48:23 thyssen Exp $
+ * $Id: show.c,v 1.83 2002/03/23 17:45:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -37,6 +37,7 @@
 #include "eval.h"
 #include "dice.h"
 #include "matchequity.h"
+#include "matchid.h"
 
 #if USE_GTK
 #include "gtkboard.h"
@@ -278,7 +279,8 @@ extern void CommandShowBoard( char *sz ) {
 #endif
     else
 #endif
-	outputl( DrawBoard( szOut, an, TRUE, ap ) );
+        outputl( DrawBoard( szOut, an, TRUE, ap, 
+                            MatchIDFromMatchState ( &ms ) ) );
 }
 
 extern void CommandShowDelay( char *sz ) {
