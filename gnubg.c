@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.200 2002/03/30 23:54:18 thyssen Exp $
+ * $Id: gnubg.c,v 1.201 2002/03/31 13:08:09 thyssen Exp $
  */
 
 #include "config.h"
@@ -2596,6 +2596,18 @@ CommandRollout( char *sz ) {
 	} else
 	    c = 1; /* current position */
     }
+    else if ( rcRollout.fInitial ) {
+
+      if ( c == 1 && ! strncmp ( sz, "=cube", 5 ) )
+        outputl ( "You cannot do a cube decision rollout for the initial"
+                  " position.\n"
+                  "Please 'set rollout initial off'." );
+      else
+        outputl ( "You cannot rollout moves as initial position.\n"
+                  "Please 'set rollout initial off'." );
+      
+      return;
+    }
 
     /* check for `rollout =cube' */    
     if ( c == 1 && ! strncmp ( sz, "=cube", 5 ) ) {
@@ -2607,7 +2619,7 @@ CommandRollout( char *sz ) {
 	  outputl( "No game in progress." );
 	  return;
       }
-      
+
       GetMatchStateCubeInfo( &ci, &ms );
 
       GeneralCubeDecisionR ( "", aarOutput, aarStdDev, aarsStatistics,
