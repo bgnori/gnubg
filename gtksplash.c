@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.4 2003/01/02 22:03:53 gtw Exp $
+ * $Id: gtksplash.c,v 1.5 2003/01/21 21:58:46 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -54,7 +54,7 @@ extern GtkWidget *
 CreateSplash () {
 
   gtksplash *pgs;
-  GtkWidget *pwvbox;
+  GtkWidget *pwvbox, *pwFrame, *pwb;
   GtkWidget *pwImage;
   int i;
 #include "xpm/gnubg-big.xpm"
@@ -62,6 +62,12 @@ CreateSplash () {
   pgs = (gtksplash *) g_malloc ( sizeof ( gtksplash ) );
 
   pgs->pwWindow = gtk_window_new ( GTK_WINDOW_TOPLEVEL );
+#if GTK_CHECK_VERSION(2,0,0)
+  gtk_window_set_role( GTK_WINDOW( pgs->pwWindow ),
+		       "splash screen" );
+  gtk_window_set_type_hint( GTK_WINDOW( pgs->pwWindow ),
+			    GDK_WINDOW_TYPE_HINT_SPLASHSCREEN );
+#endif
   gtk_window_set_title ( GTK_WINDOW ( pgs->pwWindow ), 
                          _("Starting GNU Backgammon " VERSION ) );
   gtk_window_set_position ( GTK_WINDOW ( pgs->pwWindow ), GTK_WIN_POS_CENTER );
@@ -80,11 +86,18 @@ CreateSplash () {
   pwImage = image_from_xpm_d ( gnubg_big_xpm, GTK_WIDGET ( pgs->pwWindow ) );
   gtk_box_pack_start ( GTK_BOX ( pwvbox ), pwImage, FALSE, FALSE, 0 );
 
+  gtk_box_pack_start( GTK_BOX( pwvbox ),
+		      pwFrame = gtk_frame_new( NULL ), FALSE, FALSE, 0 );
+  gtk_frame_set_shadow_type( GTK_FRAME( pwFrame ), GTK_SHADOW_ETCHED_OUT );
+  
+  gtk_container_add( GTK_CONTAINER( pwFrame ),
+		     pwb = gtk_vbox_new( FALSE, 0 ) );
+  
   /* status bar */
   
   for ( i = 0; i < 2; ++i ) {
     pgs->apwStatus[ i ] = gtk_label_new ( NULL );
-    gtk_box_pack_start ( GTK_BOX ( pwvbox ), pgs->apwStatus[ i ], 
+    gtk_box_pack_start ( GTK_BOX ( pwb ), pgs->apwStatus[ i ], 
                          FALSE, FALSE, 4 );
   }
 

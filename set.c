@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.168 2003/01/19 04:27:06 gtw Exp $
+ * $Id: set.c,v 1.169 2003/01/21 21:58:47 gtw Exp $
  */
 
 #include "config.h"
@@ -1098,6 +1098,14 @@ extern void CommandSetGUIShowPips( char *sz ) {
 		   _("The pip counts will not be shown.") ) )
 	UpdateSetting( &fGUIShowPips );
 }
+
+extern void CommandSetGUIWindowPositions( char *sz ) {
+
+    SetToggle( "gui windowpositions", &fGUISetWindowPos, sz,
+	       _("Saved window positions will be applied to new windows."),
+	       _("Saved window positions will not be applied to new "
+		 "windows.") );
+}
 #else
 static void NoGUI( void ) {
 
@@ -1151,6 +1159,11 @@ extern void CommandSetGUIShowIDs( char *sz ) {
 }
 
 extern void CommandSetGUIShowPips( char *sz ) {
+
+    NoGUI();
+}
+ 
+extern void CommandSetGUIWindowPositions( char *sz ) {
 
     NoGUI();
 }

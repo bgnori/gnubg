@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.376 2003/01/19 04:27:06 gtw Exp $
+ * $Id: gnubg.c,v 1.377 2003/01/21 21:58:45 gtw Exp $
  */
 
 #include "config.h"
@@ -877,6 +877,8 @@ command cER = {
       N_("Show the position and match IDs above the board"), szONOFF, NULL },
     { "showpips", CommandSetGUIShowPips,
       N_("Show the pip counts below the board"), szONOFF, NULL },
+    { "windowpositions", CommandSetGUIWindowPositions,
+      N_("Save and restore window positions and sizes"), szONOFF, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acSetMatchInfo[] = {
     { "annotator", CommandSetMatchAnnotator,
@@ -4809,6 +4811,9 @@ extern void CommandSaveSettings( char *szParam ) {
                   acSetPath[ i ].sz, aaszPaths[ i ][ 0 ] );
 
     /* geometries */
+    /* "set gui windowpositions" must come first */
+    fprintf( pf, "set gui windowpositions %s\n",
+	     fGUISetWindowPos ? "on" : "off" );
 #if USE_GTK
     if ( fX )
        RefreshGeometries ();

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.200 2003/01/19 04:27:06 gtw Exp $
+ * $Id: backgammon.h,v 1.201 2003/01/21 21:58:45 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -285,7 +285,7 @@ typedef enum _animation {
     
 extern animation animGUI;
 extern int nGUIAnimSpeed, fGUIBeep, fGUIDiceArea, fGUIHighDieFirst,
-    fGUIIllegal, fGUIShowIDs, fGUIShowPips;
+    fGUIIllegal, fGUIShowIDs, fGUIShowPips, fGUISetWindowPos;
 #endif
 
 typedef enum _pathformat {
@@ -748,6 +748,7 @@ extern void CommandAccept( char * ),
     CommandSetGUIDiceArea( char * ),
     CommandSetGUIHighDieFirst( char * ),
     CommandSetGUIIllegal( char * ),
+    CommandSetGUIWindowPositions( char * ),
     CommandSetGUIShowIDs( char * ),
     CommandSetGUIShowPips( char * ),
     CommandSetHighlight ( char * ),
