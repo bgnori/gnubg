@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.19 2002/09/18 19:18:52 gtw Exp $
+ * $Id: text.c,v 1.20 2002/10/04 16:42:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -630,7 +630,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.19 $";
+  const char szVersion[] = "$Revision: 1.20 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1224,19 +1224,19 @@ TextAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
     break;
 
   case MOVE_DOUBLE:
-
-    /* no-op: we assume the following move is MOVE_TAKE or MOVE_DROP */
-
-    break;
-
   case MOVE_TAKE:
   case MOVE_DROP:
 
-    fprintf ( pf,
-              "* %s %s\n\n",
-              ap[ pmr->d.fPlayer ].szName,
-              ( pmr->mt == MOVE_TAKE ) ? _("accepts") : _("rejects") );
-
+    if ( pmr->mt == MOVE_DOUBLE ) 
+      fprintf ( pf,
+                "* %s doubles\n\n",
+                ap[ pmr->d.fPlayer ].szName );
+    else
+      fprintf ( pf,
+                "* %s %s\n\n",
+                ap[ pmr->d.fPlayer ].szName,
+                ( pmr->mt == MOVE_TAKE ) ? _("accepts") : _("rejects") );
+    
     TextPrintCubeAnalysis ( pf, pms, pmr );
 
     break;

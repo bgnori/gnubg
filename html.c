@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.61 2002/09/26 13:30:20 gtw Exp $
+ * $Id: html.c,v 1.62 2002/10/04 16:42:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -1559,7 +1559,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.61 $";
+  const char szVersion[] = "$Revision: 1.62 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2395,24 +2395,24 @@ HTMLAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
     break;
 
-  case MOVE_DOUBLE:
-
-    /* no-op: we assume the following move is MOVE_TAKE or MOVE_DROP */
-
-    break;
-
   case MOVE_TAKE:
   case MOVE_DROP:
+  case MOVE_DOUBLE:
 
     fprintf ( pf, "<p>" );
 
     if ( het == HTML_EXPORT_TYPE_FIBS2HTML )
       printImage ( pf, szImageDir, "b-indent", szExtension, "" );
 
-    fprintf ( pf,
-              "*%s %s</p>\n",
-              ap[ pmr->d.fPlayer ].szName,
-              ( pmr->mt == MOVE_TAKE ) ? _("accepts") : _("rejects") );
+    if ( pmr->mt == MOVE_DOUBLE )
+      fprintf ( pf,
+                "*%s doubles</p>\n",
+                ap[ pmr->d.fPlayer ].szName );
+    else
+      fprintf ( pf,
+                "*%s %s</p>\n",
+                ap[ pmr->d.fPlayer ].szName,
+                ( pmr->mt == MOVE_TAKE ) ? _("accepts") : _("rejects") );
 
     HTMLPrintCubeAnalysis ( pf, pms, pmr, szImageDir, szExtension, het );
 
