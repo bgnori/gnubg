@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.c,v 1.4 2002/08/05 16:33:37 thyssen Exp $
+ * $Id: matchid.c,v 1.5 2003/05/15 17:14:16 thyssen Exp $
  */
 
 #include <assert.h>
@@ -167,9 +167,9 @@ MatchID ( const int anDice[ 2 ],
   SetBits ( auchKey, 13, 2, fResigned );
   SetBits ( auchKey, 15, 3, anDice[ 0 ] & 0x7 );
   SetBits ( auchKey, 18, 3, anDice[ 1 ] & 0x7 );
-  SetBits ( auchKey, 21, 15, nMatchTo & 0x8FFF );
-  SetBits ( auchKey, 36, 15, anScore[ 0 ] & 0x8FFF );
-  SetBits ( auchKey, 51, 15, anScore[ 1 ] & 0x8FFF );
+  SetBits ( auchKey, 21, 15, nMatchTo & 0x7FFF );
+  SetBits ( auchKey, 36, 15, anScore[ 0 ] & 0x7FFF );
+  SetBits ( auchKey, 51, 15, anScore[ 1 ] & 0x7FFF );
 
   return MatchIDFromKey ( auchKey );
 
