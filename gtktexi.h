@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.h,v 1.1 2002/02/25 19:32:50 gtw Exp $
+ * $Id: gtktexi.h,v 1.2 2002/03/04 16:09:04 gtw Exp $
  */
 
 #ifndef _GTKTEXI_H_
@@ -28,6 +28,7 @@ typedef struct _texinfocontext texinfocontext;
 
 extern texinfocontext *gtktexi_create( void );
 extern GtkTextBuffer *gtktexi_get_buffer( texinfocontext *ptic );
+extern GtkWidget *gtktexi_get_widget( texinfocontext *ptic );
 extern int gtktexi_load( texinfocontext *ptic, char *szFile );
 extern int gtktexi_render_node( texinfocontext *ptic, char *szTag );
 extern void gtktexi_destroy( texinfocontext *ptic );
