@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.2 2003/07/26 11:05:02 thyssen Exp $
+ * $Id: gtktoolbar.c,v 1.3 2003/07/26 15:20:56 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -150,6 +150,17 @@ ToolbarSetPlaying( GtkWidget *pwToolbar, const int f ) {
   toolbarwidget *ptw = gtk_object_get_user_data ( GTK_OBJECT ( pwToolbar ) );
   
   gtk_widget_set_sensitive( ptw->pwReset, f );
+
+}
+
+
+extern void
+ToolbarSetClockwise( GtkWidget *pwToolbar, const int f ) {
+
+  toolbarwidget *ptw = gtk_object_get_user_data ( GTK_OBJECT ( pwToolbar ) );
+  
+  gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( ptw->pwButtonClockwise ),
+                                f );
 
 }
 

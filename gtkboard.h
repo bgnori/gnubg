@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.43 2003/07/26 11:01:04 thyssen Exp $
+ * $Id: gtkboard.h,v 1.44 2003/07/26 15:21:52 thyssen Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -72,7 +72,6 @@ typedef struct _BoardData {
     GtkWidget *pipcount0, *pipcount1;
     GdkGC *gc_and, *gc_or, *gc_copy, *gc_cube;
     GdkPixmap *appmKey[ 2 ];
-    GtkWidget *button_clockwise;
     
     gboolean playing, computer_turn;
     gint drag_point, drag_colour, x_drag, y_drag, x_dice[ 2 ], y_dice[ 2 ],
