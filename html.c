@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.32 2002/06/21 20:41:08 thyssen Exp $
+ * $Id: html.c,v 1.33 2002/06/21 21:11:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -1263,13 +1263,13 @@ HTMLPrologue ( FILE *pf, const matchstate *pms,
 
   if ( pms->nMatchTo )
     sprintf ( szHeader,
-              _("%s (white, %d pts) vs. %s (red, %d pts) (Match to %d)"),
+              _("%s (red, %d pts) vs. %s (black, %d pts) (Match to %d)"),
               ap [ 0 ].szName, pms->anScore[ 0 ],
               ap [ 1 ].szName, pms->anScore[ 1 ],
               pms->nMatchTo );
   else
     sprintf ( szHeader,
-              _("%s (white, %d pts) vs. %s (red, %d pts) (money game)"),
+              _("%s (red, %d pts) vs. %s (black, %d pts) (money game)"),
               ap [ 0 ].szName, pms->anScore[ 0 ],
               ap [ 1 ].szName, pms->anScore[ 1 ] );
 
@@ -1351,7 +1351,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.32 $";
+  const char szVersion[] = "$Revision: 1.33 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
