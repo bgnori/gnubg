@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.173 2001/11/09 18:26:05 gtw Exp $
+ * $Id: gnubg.c,v 1.174 2001/11/12 17:28:13 oysteijo Exp $
  */
 
 #include "config.h"
@@ -3017,8 +3017,11 @@ extern void CommandSaveSettings( char *szParam ) {
 	     arLuckLevel[ LUCK_VERYBAD ] );
     
 #if USE_GTK
-    fputs( BoardPreferencesCommand( pwBoard, szTemp ), pf );
-    fputc( '\n', pf );
+    if ( fX ) {
+        fputs( BoardPreferencesCommand( pwBoard, szTemp ), pf );
+        fputc( '\n', pf );
+    }  /* FIXME This will overwrite the gtk-preferences if you
+                save the settings in tty mode  */
 #endif
     
     fprintf( pf, "set automatic bearoff %s\n"
