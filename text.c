@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.47 2003/07/16 16:50:21 thyssen Exp $
+ * $Id: text.c,v 1.48 2003/07/18 08:36:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -611,14 +611,16 @@ OutputMWC ( const float r, const cubeinfo *pci, const int f ) {
 
   if ( ! pci->nMatchTo ) {
     /* fmt: "%+7.3f" */
-    sprintf( fmt, "%%+%d.%df", fOutputDigits + 4, fOutputDigits );
+    sprintf( fmt, f ? "%%+%d.%df" : "%%%d.%df", 
+             fOutputDigits + 4, fOutputDigits );
     sprintf ( sz, fmt, r );
   }
   else {
     
     if ( ! fOutputMWC ) {
       /* fmt: "%+7.3f" */
-      sprintf( fmt, "%%+%d.%df", fOutputDigits + 4, fOutputDigits );
+      sprintf( fmt, f ? "%%+%d.%df" : "%%%d.%df", 
+               fOutputDigits + 4, fOutputDigits );
       sprintf ( sz, fmt, 
                 f ? mwc2eq ( r, pci ) : se_mwc2eq ( r, pci ) );
     }
@@ -629,7 +631,8 @@ OutputMWC ( const float r, const cubeinfo *pci, const int f ) {
     }
     else {
       /* fmt: "%6.4f" */
-      sprintf( fmt, "%%+%d.%df", fOutputDigits + 3, fOutputDigits + 1 );
+      sprintf( fmt, f? "%%+%d.%df" : "%%%d.%df", 
+               fOutputDigits + 3, fOutputDigits + 1 );
       sprintf ( sz, fmt, r );
     }
   }
@@ -881,7 +884,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.47 $";
+  const char szVersion[] = "$Revision: 1.48 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
