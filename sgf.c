@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.46 2002/06/22 14:49:07 thyssen Exp $
+ * $Id: sgf.c,v 1.47 2002/06/24 19:19:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -1065,7 +1065,7 @@ static void WriteMoveAnalysis( FILE *pf, int fPlayer, movelist *pml,
 	    break;
 	    
 	case EVAL_EVAL:
-	    fprintf( pf, "E %.4f %.4f %.4f %.4f %.4f %.4f %d%s"
+	    fprintf( pf, "E %.4f %.4f %.4f %.4f %.4f %.4f %d%s "
                      "%d %d %.4f %d %.4f",
 		     pml->amMoves[ i ].arEvalMove[ 0 ],
 		     pml->amMoves[ i ].arEvalMove[ 1 ],
