@@ -1,4 +1,4 @@
-$Id: TODO,v 1.262 2002/10/04 21:34:06 thyssen Exp $
+$Id: TODO,v 1.263 2002/10/12 13:25:43 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -227,6 +227,7 @@ functions:
   the board shown will be out of date.)
 ** the move number shown when exporting positions to text or html is -1
 ** the rollout window is a bit to small
+** try to eliminate dependency on pstopng and friends
 
 * Documentation:
 ** Complete the Texinfo manual.  Perhaps for now, only things that are
