@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.516 2004/10/12 08:41:23 joseph Exp $
+ * $Id: gtkgame.c,v 1.517 2004/10/12 10:23:57 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -9952,6 +9952,13 @@ extern void GtkShowQuery(RowSet* pRow)
     GTKDisallowStdin();
     gtk_main();
     GTKAllowStdin();
+}
+#else
+static void GtkShowRelational( gpointer *p, guint n, GtkWidget *pw )
+{
+}
+static void GtkRelationalAddMatch( gpointer *p, guint n, GtkWidget *pw )
+{
 }
 #endif
 
