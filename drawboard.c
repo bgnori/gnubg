@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.29 2003/09/06 09:40:14 thyssen Exp $
+ * $Id: drawboard.c,v 1.30 2003/09/07 08:36:55 thyssen Exp $
  */
 
 #include "config.h"
@@ -916,6 +916,10 @@ extern int ParseMove( char *pch, int an[ 8 ] ) {
  *
  * (see <URL:http://www.fibs.com/fibs_interface.html#board_state>)
  *
+ * gnubg extends the meaning of the "doubled" field, so the sign of
+ * the field indicates who doubled. This is necessaty to correctly
+ * detects beavers and raccoons.
+ *
  */
 
 extern char *FIBSBoard( char *pch, int anBoard[ 2 ][ 25 ], int fRoll,
@@ -960,7 +964,7 @@ extern char *FIBSBoard( char *pch, int anBoard[ 2 ][ 25 ], int fRoll,
     sprintf( strchr( sz, 0 ), "%d:%d:%d:%d:%d:%d:%d:%d:1:-1:0:25:%d:%d:0:0:0:"
 	     "0:%d:0", nDice0, nDice1, nDice0, nDice1, fTurn < 0 ? 1 : nCube,
 	     fTurn < 0 || fCubeOwner != 0, fTurn < 0 || fCubeOwner != 1,
-	     fDoubled, anOff[ 1 ], anOff[ 0 ],
+	     fDoubled ? ( fTurn ? -1 : 1 ) : 0, anOff[ 1 ], anOff[ 0 ],
 	     fCrawford );
 
     return pch;
@@ -1030,9 +1034,6 @@ extern int ParseFIBSBoard( char *pch, int anBoard[ 2 ][ 25 ],
     }
 
     *pfCubeOwner = fCanDouble != fOppCanDouble ? fCanDouble : -1;
-
-    /* Negative values here show resignations now. -- Rod */
-    /* *pfDoubled = *pfDoubled != 0; */
 
     return 0;
 }
