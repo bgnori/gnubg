@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.599 2005/02/10 10:30:20 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.600 2005/02/14 13:14:58 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3800,7 +3800,7 @@ extern char *FormatMoveHint( char *sz, matchstate *pms, movelist *pml,
     /* number */
 
     if ( i && ! fRankKnown )
-      strcat( sz, "   ?? " );
+      strcat( sz, "   ??  " );
     else
       sprintf ( pc = strchr ( sz, 0 ),
                 " %4i. ", i + 1 );
