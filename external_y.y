@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_y.y,v 1.4 2004/05/20 14:52:25 Superfly_Jon Exp $
+ * $Id: external_y.y,v 1.5 2004/08/11 21:42:17 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -53,7 +53,6 @@ void ( *ExtErrorHandler )( const char *, const char *, const int ) = NULL;
 %token OFF
 
 %name-prefix="ext"
-%output="external_y.c"
 %defines
 
 %%
