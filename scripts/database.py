@@ -21,7 +21,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: database.py,v 1.5 2004/05/26 10:20:42 Superfly_Jon Exp $
+# $Id: database.py,v 1.6 2004/05/26 12:11:26 Superfly_Jon Exp $
 #
                                                                                   
 
@@ -287,10 +287,13 @@ class relational:
          s7 = "NULL,NULL,NULL,NULL,"
 
       # time penalties
-      s8 = "%d,%f,%f" % \
+      if gs.has_key( 'time' ):
+         s8 = "%d,%f,%f" % \
            ( gs[ 'time' ][ 'time-penalty' ], \
              gs[ 'time' ][ 'time-penalty-skill' ], \
              gs[ 'time' ][ 'time-penalty-cost' ] )
+      else:
+         s8 = "0, 0, 0"
       
       query = "INSERT INTO matchstat VALUES (" + \
               s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8 + ");"
