@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.34 2001/05/23 15:24:32 thyssen Exp $
+ * $Id: rollout.c,v 1.35 2001/05/23 15:42:26 thyssen Exp $
  */
 
 #include "config.h"
@@ -499,7 +499,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
           case DOUBLE_TAKE:
 
-            SetCubeInfo ( pci, 2 * pci->nCube, ! pci.fMove, pci.fMove,
+            SetCubeInfo ( pci, 2 * pci->nCube, ! pci->fMove, pci->fMove,
 			  pci->nMatchTo,
                           pci->anScore, pci->fCrawford, pci->fJacoby,
                           pci->fBeavers);
