@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.98 2002/12/19 23:08:07 thyssen Exp $
+ * $Id: eval.h,v 1.99 2002/12/21 21:26:56 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -171,7 +171,7 @@ extern evalcontext aecSettings[ NUM_SETTINGS  ];
 extern const char *aszSettings[ NUM_SETTINGS ];
 
 
-#define NUM_MOVEFILTER_SETTINGS 3
+#define NUM_MOVEFILTER_SETTINGS 5
 
 extern const char *aszMoveFilterSettings[ NUM_MOVEFILTER_SETTINGS ];
 extern movefilter aaamfMoveFilterSettings[ NUM_MOVEFILTER_SETTINGS ][ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
