@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.101 2002/06/02 16:35:24 thyssen Exp $
+ * $Id: set.c,v 1.102 2002/06/15 17:21:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -2447,6 +2447,13 @@ extern void
 CommandSetPathMET ( char *sz ) {
 
   SetPath ( sz, PATH_MET );
+
+}
+
+extern void
+CommandSetPathText ( char *sz ) {
+
+  SetPath ( sz, PATH_TEXT );
 
 }
 

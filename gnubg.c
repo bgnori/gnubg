@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.226 2002/06/15 17:11:10 thyssen Exp $
+ * $Id: gnubg.c,v 1.227 2002/06/15 17:21:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -182,6 +182,7 @@ char *aszExtensions [ PATH_MET + 1 ] = {
   "ps",
   "sgf",
   "sgg",
+  "txt",
   "xml"
 };
 
@@ -874,6 +875,9 @@ command cER = {
     szFILENAME, &cFilename },
   { "sgg", CommandSetPathSGG,
     N_("Set default path for importing GamesGrid SGG files"), 
+    szFILENAME, &cFilename },
+  { "text", CommandSetPathText,
+    N_("Set default path for export of text files"), 
     szFILENAME, &cFilename },
   { "met", CommandSetPathMET,
     N_("Set default path for loading match equity files"), 
@@ -5080,7 +5084,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 
     /* initialise paths */
 
-    for ( i = 0; i <= PATH_SGG; i++ )
+    for ( i = 0; i <= PATH_MET; i++ )
       for ( j = 0; j < 2; j++ )
         strcpy ( aaszPaths[ i ][ j ], "" );
 

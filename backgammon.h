@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.131 2002/06/15 17:11:10 thyssen Exp $
+ * $Id: backgammon.h,v 1.132 2002/06/15 17:21:14 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -250,7 +250,8 @@ extern float rAlpha, rAnneal, rThreshold, arLuckLevel[ LUCK_VERYGOOD + 1 ],
 
 typedef enum _pathformat {
   PATH_EPS, PATH_GAM, PATH_HTML, PATH_LATEX, PATH_MAT, PATH_OLDMOVES,
-  PATH_PDF, PATH_POS, PATH_POSTSCRIPT, PATH_SGF, PATH_SGG, PATH_MET } 
+  PATH_PDF, PATH_POS, PATH_POSTSCRIPT, PATH_SGF, PATH_SGG, PATH_TEXT, 
+  PATH_MET } 
 pathformat;
 
 extern char aaszPaths[ PATH_MET + 1 ][ 2 ][ 255 ];
@@ -619,6 +620,7 @@ extern void CommandAccept( char * ),
     CommandSetPathPos( char * ),
     CommandSetPathGam( char * ),
     CommandSetPathPostScript( char * ),
+    CommandSetPathText( char * ),
     CommandSetPlayerChequerplay( char * ),
     CommandSetPlayerCubedecision( char * ),
     CommandSetPlayerExternal( char * ),
