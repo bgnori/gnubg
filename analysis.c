@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.35 2001/05/23 16:28:27 gtw Exp $
+ * $Id: analysis.c,v 1.36 2001/06/17 17:37:31 thyssen Exp $
  */
 
 #include "config.h"
@@ -148,7 +148,7 @@ AnalyzeGame ( list *plGame ) {
     for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) {
 	pmr = pl->p;
 
-	Progress();
+	ProgressValueAdd( 1 );
       	
 	switch( pmr->mt ) {
 	case MOVE_GAMEINFO:
@@ -516,32 +516,66 @@ static int CheckSettings( void ) {
     return 0;
 }
 
+static int
+NumberMovesGame ( list *plGame ) {
+
+  int nMoves = 0;
+  list *pl;
+
+  for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) 
+    nMoves++;
+
+  return nMoves;
+
+}
+
+
+static int
+NumberMovesMatch ( list *plMatch ) {
+
+  int nMoves = 0;
+  list *pl;
+
+  for ( pl = plMatch->plNext; pl != plMatch; pl = pl->plNext )
+    nMoves += NumberMovesGame ( pl->p );
+
+  return nMoves;
+
+}
+
+
 extern void CommandAnalyseGame( char *sz ) {
 
-    if( !plGame ) {
-	outputl( "No game is being played." );
-	return;
-    }
+  int nMoves;
+
+  if( !plGame ) {
+    outputl( "No game is being played." );
+    return;
+  }
     
   if( CheckSettings() )
-      return;
+    return;
   
-    ProgressStart( "Analysing game..." );
-    
-    AnalyzeGame( plGame );
+  nMoves = NumberMovesGame ( plGame );
 
-    ProgressEnd();
+  ProgressStartValue( "Analysing game; move:", nMoves );
+    
+  AnalyzeGame( plGame );
+
+  ProgressEnd();
 
 #if USE_GTK
-    if( fX )
-	GTKUpdateAnnotations();
+  if( fX )
+    GTKUpdateAnnotations();
 #endif
 }
+
 
 extern void CommandAnalyseMatch( char *sz ) {
 
   list *pl;
   movegameinfo *pmgi;
+  int nMoves;
   
   if( ListEmpty( &lMatch ) ) {
       outputl( "No match is being played." );
@@ -550,8 +584,10 @@ extern void CommandAnalyseMatch( char *sz ) {
 
   if( CheckSettings() )
       return;
-  
-  ProgressStart( "Analysing match..." );
+
+  nMoves = NumberMovesMatch ( &lMatch );
+
+  ProgressStartValue( "Analysing match; move:", nMoves );
 
   IniStatcontext( &scMatch );
   
