@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.28 2004/03/19 18:07:02 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.29 2004/03/19 18:20:41 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -3070,7 +3070,7 @@ void SetupPerspVolume(BoardData* bd, int viewport[4])
 
 		/* If the cube not at top of board and some spare vertical space,
 			see if adding cube at top would fit without changing the board size */
-		if ((bd->cube_owner != 1) && (aspectRatio <= getAreaRatio(&va)))
+		if ((bd->doubled || bd->cube_owner != 1) && (aspectRatio <= getAreaRatio(&va)))
 		{
 			WorkOutViewArea(bd, &va, &halfRadianFOV, aspectRatio, TRUE);
 			if (aspectRatio > getAreaRatio(&va))
