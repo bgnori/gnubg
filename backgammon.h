@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.208 2003/03/03 19:15:00 thyssen Exp $
+ * $Id: backgammon.h,v 1.209 2003/03/05 11:29:57 jsegrave Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -310,6 +310,8 @@ extern movefilter aamfEval[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
 extern movefilter aamfAnalysis[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
 
 extern rolloutcontext rcRollout;
+
+extern int fCubeEqualChequer, fPlayersAreSame, fTruncEqualPlayer0;
 
 /* plGame is the list of moverecords representing the current game;
    plLastMove points to a move within it (typically the most recently
@@ -831,6 +833,7 @@ extern void CommandAccept( char * ),
     CommandSetRolloutLateCubedecision ( char * ),
     CommandSetRolloutCubeful ( char * ),
     CommandSetRolloutChequerplay ( char * ),
+    CommandSetRolloutCubeEqualChequer ( char * ),
     CommandSetRolloutInitial( char * ),
     CommandSetRolloutMoveFilter( char * ),
     CommandSetRolloutPlayer ( char * ),
@@ -840,6 +843,7 @@ extern void CommandAccept( char * ),
     CommandSetRolloutPlayerLateChequerplay ( char * ),
     CommandSetRolloutPlayerLateCubedecision ( char * ),
     CommandSetRolloutPlayerLateMoveFilter( char * ),
+    CommandSetRolloutPlayersAreSame( char * ),
     CommandSetRolloutLate ( char * ),
     CommandSetRolloutLateChequerplay ( char * ),
     CommandSetRolloutLateMoveFilter( char * ),
@@ -849,6 +853,7 @@ extern void CommandAccept( char * ),
     CommandSetRolloutTruncationChequer ( char * ),
     CommandSetRolloutTruncationCube ( char * ),
     CommandSetRolloutTruncationEnable ( char * ),
+    CommandSetRolloutTruncationEqualPlayer0 (char *),
     CommandSetRolloutTruncationPlies ( char * ),    
     CommandSetRolloutRNG ( char * ),
     CommandSetRolloutRotate ( char * ),
