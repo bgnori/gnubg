@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.75 2001/04/17 17:32:51 gtw Exp $
+ * $Id: play.c,v 1.76 2001/04/17 17:37:49 gtw Exp $
  */
 
 #include "config.h"
@@ -1786,7 +1786,9 @@ static void UpdateGame( void ) {
 
 extern void ChangeGame( list *plGameNew ) {
 
+#if USE_GTK
     list *pl;
+#endif
     
     plLastMove = ( plGame = plGameNew )->plNext;
     
