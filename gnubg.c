@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.315 2002/10/15 15:40:24 thyssen Exp $
+ * $Id: gnubg.c,v 1.316 2002/10/15 15:48:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -233,10 +233,10 @@ rolloutcontext rcRollout =
       { 8, FALSE, 0, 0, TRUE, FALSE, 0.16, 0.0 } /* player 1 chequerplay */
   }, 
   FALSE, /* cubeful */
-  FALSE, /* variance reduction */
+  TRUE, /* variance reduction */
   FALSE, /* initial position */
   TRUE, /* rotate */
-  7, /* truncation */
+  11, /* truncation */
   36, /* number of trials */
   RNG_MERSENNE, /* RNG */
   0 /* seed */
