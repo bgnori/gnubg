@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.112 2003/07/17 10:32:18 thyssen Exp $
+ * $Id: analysis.c,v 1.113 2003/07/17 10:42:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -1791,10 +1791,10 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
       if ( psc->nGames > 1 ) {
         sprintf( strchr( szOutput, 0 ),
                  "\n"
-                 "%-31s %7.3f                 %7.3f\n"
-                 "%-31s %7.3f                 %7.3f\n"
-                 "%-31s %7.3f                 %7.3f\n"
-                 "%-31s %7.3f                 %7.3f\n",
+                 "%-31.31s %7.3f                 %7.3f\n"
+                 "%-31.31s %7.3f                 %7.3f\n"
+                 "%-31.31s %7.3f                 %7.3f\n"
+                 "%-31.31s %7.3f                 %7.3f\n",
                  _("Advantage (actual) in ppg"),
                  psc->arActualResult[ 0 ] / psc->nGames,
                  psc->arActualResult[ 1 ] / psc->nGames,
@@ -1803,7 +1803,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
                  sqrt( psc->arVarianceActual[ 0 ] / psc->nGames ),
                  1.95996f *
                  sqrt( psc->arVarianceActual[ 1 ] / psc->nGames ),
-                 _("Advantage (luck adjusted) in ppg"),
+                 _("Advantage (luck adj.) in ppg"),
                  ( psc->arActualResult[ 0 ] - 
                    psc->arLuck[ 0 ][ 1 ] + psc->arLuck[ 1 ][ 1 ] ) / 
                  psc->nGames,
