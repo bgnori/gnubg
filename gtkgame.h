@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.92 2005/01/04 10:32:38 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.93 2005/02/10 18:46:30 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -119,7 +119,7 @@ extern void RunGTK( GtkWidget *pwSplash );
 extern void GTKAllowStdin( void );
 extern void GTKDisallowStdin( void );
 extern void GTKDelay( void );
-extern void ShowList( char *asz[], char *szTitle );
+extern void ShowList( char *asz[], char *szTitle, GtkWidget* pwParent );
 extern void GTKUpdateScores();
 
 extern GtkWidget *GTKCreateDialog( const char *szTitle, const dialogtype dt, 
@@ -167,8 +167,8 @@ extern void GTKSetCube( gpointer *p, guint n, GtkWidget *pw );
 extern void GTKSetDice( gpointer *p, guint n, GtkWidget *pw );
 extern void GTKHelp( char *sz );
 extern void GTKMatchInfo( void );
-extern void GTKShowBuildInfo(void);
-extern void GTKCommandShowCredits(void);
+extern void GTKShowBuildInfo(GtkWidget *pwParent);
+extern void GTKCommandShowCredits(GtkWidget* parent);
 extern void GTKShowScoreSheet(void);
 extern void SwapBoardToPanel(int ToPanel);
 extern void CommentaryChanged( GtkWidget *pw, void *p );
@@ -253,3 +253,4 @@ extern void PanelHide(gnubgwindow panel);
 extern int IsPanelShowVar(gnubgwindow panel, void *p);
 extern int SetMainWindowSize();
 extern void ShowHidePanel(gnubgwindow panel);
+extern void GTKSetCurrentParent(GtkWidget *parent);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.117 2005/02/10 10:32:18 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.118 2005/02/10 18:46:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1237,6 +1237,7 @@ void DoTestPerformance(GtkWidget *pw, GtkWidget* board)
 	char *msg;
 	float fps;
 
+	GTKSetCurrentParent(gtk_widget_get_toplevel(pw));
 	if (!GetInputYN(_("Save settings and test 3d performance for 3 seconds?")))
 		return;
 
@@ -1968,7 +1969,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.117 2005/02/10 10:32:18 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.118 2005/02/10 18:46:30 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"

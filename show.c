@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.193 2005/01/04 09:27:34 Superfly_Jon Exp $
+ * $Id: show.c,v 1.194 2005/02/10 18:46:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -663,7 +663,7 @@ extern void CommandShowCopying( char *sz ) {
 
 #if USE_GTK
     if( fX )
-	ShowList( aszCopying, _("Copying") );
+	ShowList( aszCopying, _("Copying"), NULL );
     else
 #endif
 	ShowPaged( aszCopying );
@@ -961,7 +961,7 @@ extern void CommandShowBuildInfo( char *sz )
 {
 #if USE_GTK
 	if( fX )
-		GTKShowBuildInfo();
+		GTKShowBuildInfo(pwMain);
 #endif
 }
 
@@ -1080,7 +1080,7 @@ extern void CommandShowCredits( char *sz )
 #if USE_GTK
   if( fX )
   {
-    GTKCommandShowCredits();
+    GTKCommandShowCredits(pwMain);
     return;
   }
 #endif
@@ -1093,7 +1093,7 @@ extern void CommandShowWarranty( char *sz ) {
 
 #if USE_GTK
     if( fX )
-	ShowList( aszWarranty, _("Warranty") );
+	ShowList( aszWarranty, _("Warranty"), NULL );
     else
 #endif
 	ShowPaged( aszWarranty );
@@ -2450,7 +2450,7 @@ CommandShowMatchResult( char *sz ) {
 extern void CommandShowTCTutorial( char *sz ) {
 #if USE_GTK
     if ( fX )
-	ShowList( aszTcTutorial, _("Time Control Tutorial") );
+	ShowList( aszTcTutorial, _("Time Control Tutorial"), NULL );
     else
 #endif
 	ShowPaged(aszTcTutorial);
