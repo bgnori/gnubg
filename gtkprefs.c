@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.94 2004/01/30 09:33:49 uid68519 Exp $
+ * $Id: gtkprefs.c,v 1.95 2004/02/02 09:49:04 uid68519 Exp $
  */
 
 #include "config.h"
@@ -1106,6 +1106,7 @@ static void BoardPrefsOK( GtkWidget *pw, BoardData *bd ) {
 		ShowFlag3d(bd);
 		if (bd->diceShown == DICE_ON_BOARD)
 			setDicePos(bd);	/* Make sure dice appear ok */
+		RestrictiveRedraw();
 	}
 	else
 	{
@@ -1964,7 +1965,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.94 2004/01/30 09:33:49 uid68519 Exp $\n"
+          "    $Id: gtkprefs.c,v 1.95 2004/02/02 09:49:04 uid68519 Exp $\n"
           "\n"
           " -->\n"
           "\n"

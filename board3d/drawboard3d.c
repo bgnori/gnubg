@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.22 2004/01/29 11:30:22 uid68519 Exp $
+* $Id: drawboard3d.c,v 1.23 2004/02/02 09:49:04 uid68519 Exp $
 */
 
 #include <math.h>
@@ -3606,7 +3606,7 @@ void RestrictiveDrawMoveIndicator(BoardData* bd)
 
 void RestrictiveDrawBoardNumbers(BoardData* bd)
 {
-#define NUMBER_WIDTH (TOTAL_WIDTH - (2 * TRAY_WIDTH) + ARROW_SIZE)
+#define NUMBER_WIDTH (TOTAL_WIDTH - (2 * TRAY_WIDTH))
 	float pos[3] = {TRAY_WIDTH + (NUMBER_WIDTH / 2.0f), TOTAL_HEIGHT - EDGE_HEIGHT + (EDGE_HEIGHT / 2.0f), BASE_DEPTH + EDGE_DEPTH};
 	float textHeight = getFontHeight(bd);
 
