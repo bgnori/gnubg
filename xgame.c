@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.c,v 1.9 2000/01/12 21:55:03 gtw Exp $
+ * $Id: xgame.c,v 1.10 2000/01/16 18:50:33 gtw Exp $
  */
 
 #include "config.h"
@@ -589,10 +589,11 @@ extern int GameSet( extwindow *pewnd, int anBoard[ 2 ][ 25 ], int fRoll,
 		    int nScore, int nOpponent, int nDice0, int nDice1 ) {
 
     char sz[ 256 ];
-    int i, anOff[ 2 ];
+    int i, anOff[ 2 ], fDiceOld;
     gamedata *pgd = pewnd->pv;
 
     memcpy( pgd->anBoardOld, anBoard, sizeof( pgd->anBoardOld ) );
+    fDiceOld = pgd->anDice[ 0 ];
     
     /* Names and match length/score */
     sprintf( sz, "board:%s:%s:%d:%d:%d:", szPlayer, szOpp, nMatchTo, nScore,
@@ -630,8 +631,10 @@ extern int GameSet( extwindow *pewnd, int anBoard[ 2 ][ 25 ], int fRoll,
     
     if( pgd->anDice[ 0 ] )
 	XUnmapWindow( pewnd->pdsp, pgd->ewndDice.wnd );
-    else
+    else if( fDiceOld )
 	XMapWindow( pewnd->pdsp, pgd->ewndDice.wnd );
+    else
+	DiceRedraw( &pgd->ewndDice, pgd->ewndDice.pv );
     
     return 0;
 }

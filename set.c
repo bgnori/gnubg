@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.13 2000/01/16 01:00:40 gtw Exp $
+ * $Id: set.c,v 1.14 2000/01/16 18:50:33 gtw Exp $
  */
 
 #include "config.h"
@@ -238,7 +238,7 @@ extern void CommandSetCubeCentre( char *sz ) {
     if( fDoubled ) {
 	printf( "(%s's double has been cancelled.)\n", ap[ fMove ].szName );
 	fDoubled = FALSE;
-	NextTurn();
+	fNextTurn = TRUE;
     }
 }
 
@@ -276,7 +276,7 @@ extern void CommandSetCubeOwner( char *sz ) {
     if( fDoubled ) {
 	printf( "(%s's double has been cancelled.)\n", ap[ fMove ].szName );
 	fDoubled = FALSE;
-	NextTurn();
+	fNextTurn = TRUE;
     }
 }
 
@@ -310,7 +310,7 @@ extern void CommandSetCubeUse( char *sz ) {
 	    printf( "(%s's double has been cancelled.)\n",
 		    ap[ fMove ].szName );
 	    fDoubled = FALSE;
-	    NextTurn();
+	    fNextTurn = TRUE;
 	}
     }
 }
@@ -843,8 +843,9 @@ extern void CommandSetCrawford( char *sz ) {
 	CommandSetPostCrawford ( "on" );
 
       if( fCrawford && fDoubled ) {
+	  printf( "(%s's double has been cancelled.)\n", ap[ fMove ].szName );
 	  fDoubled = FALSE;
-	  NextTurn();
+	  fNextTurn = TRUE;
       }
     }
     else {
