@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.159 2003/07/27 14:18:22 oysteijo Exp $
+ * $Id: show.c,v 1.160 2003/08/01 17:57:30 ace Exp $
  */
 
 #include "config.h"
@@ -1022,7 +1022,7 @@ extern void CommandShowThorp( char *sz ) {
 extern void CommandShowBeavers( char *sz ) {
 
     if( nBeavers > 1 )
-	outputf( _("%d beavers/racoons allowed in money sessions.\n"), nBeavers );
+	outputf( _("%d beavers/raccoons allowed in money sessions.\n"), nBeavers );
     else if( nBeavers == 1 )
 	outputl( _("1 beaver allowed in money sessions.") );
     else

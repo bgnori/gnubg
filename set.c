@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.195 2003/07/31 11:37:24 jsegrave Exp $
+ * $Id: set.c,v 1.196 2003/08/01 17:56:53 ace Exp $
  */
 
 #include "config.h"
@@ -1086,7 +1086,7 @@ extern void CommandSetGUIAnimationSpeed( char *sz ) {
 
     if( n < 0 || n > 7 ) {
 	outputl( _("You must specify a speed between 0 and 7 -- try "
-		   "`help set seed'.") );
+		   "`help set speed'.") );
 
 	return;
     }
@@ -2583,7 +2583,7 @@ extern void CommandSetBeavers( char *sz ) {
     nBeavers = n;
 
     if( nBeavers > 1 )
-	outputf( _("%d beavers/racoons allowed in money sessions.\n"), nBeavers );
+	outputf( _("%d beavers/raccoons allowed in money sessions.\n"), nBeavers );
     else if( nBeavers == 1 )
 	outputl( _("1 beaver allowed in money sessions.") );
     else
