@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.c,v 1.15 2000/07/31 20:29:29 gtw Exp $
+ * $Id: xgame.c,v 1.16 2001/01/16 18:39:26 gtw Exp $
  */
 
 #include "config.h"
@@ -785,6 +785,12 @@ extern void RunExt( void ) {
         return;
     }
 
+    fputs( "Please note: This Xlib user interface is deprecated, and may not\n"
+	   "be supported in the future.  Please consider using the GTK+\n"
+	   "interface if you can.  If you would like to maintain this Xlib\n"
+	   "version to ensure it will be retained in GNU Backgammon, please\n"
+	   "contact <bug-gnubg@gnu.org>.  Thank you.\n", stderr );
+    
     /* FIXME check if XResourceManagerString works! */
     if( !( pch = XResourceManagerString( pdsp ) ) )
         pch = "";
