@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.179 2002/10/21 16:31:35 thyssen Exp $
+ * $Id: eval.c,v 1.180 2002/10/26 11:11:44 thyssen Exp $
  */
 
 #include "config.h"
@@ -2338,7 +2338,6 @@ EvalBearoffOSFull ( int anBoard[ 2 ][ 25 ], float arOutput[] ) {
   unsigned short int aaProb[ 2 ][ 32 ];
   unsigned long x;
 
-  int an[ 2 ][ 25 ];
   unsigned short int aaGammonProb[ 2 ][ 32 ];
 
   assert ( fBearoffOS >= 0 );

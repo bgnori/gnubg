@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.159 2002/10/26 11:02:31 thyssen Exp $
+ * $Id: play.c,v 1.160 2002/10/26 11:11:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -3059,8 +3059,8 @@ extern void CommandNext( char *sz ) {
     int n;
     char *pch;
     int fMarkedMoves = FALSE;
-	list *p;
-	moverecord *pmr;
+    list *p;
+    moverecord *pmr = NULL;
     matchstate SaveMs;
     
     if( !plGame ) {

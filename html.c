@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.77 2002/10/26 11:02:31 thyssen Exp $
+ * $Id: html.c,v 1.78 2002/10/26 11:12:29 thyssen Exp $
  */
 
 #include "config.h"
@@ -179,7 +179,7 @@ GetStyle ( const stylesheetclass ssc,
               aaszStyleSheetClasses[ ssc ][ 0 ] );
     break;
   default:
-    sprintf ( sz, "" );
+    strcpy ( sz, "" );
     break;
   }
 
@@ -188,7 +188,7 @@ GetStyle ( const stylesheetclass ssc,
 }
 
   
-
+#if 0
 static void
 WriteStyle ( FILE *pf, const stylesheetclass ssc, 
              const htmlexportcss hecss ) {
@@ -196,6 +196,7 @@ WriteStyle ( FILE *pf, const stylesheetclass ssc,
   fputs ( GetStyle ( ssc, hecss ), pf );
 
 }
+#endif
 
 
 static void
@@ -1785,7 +1786,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.77 $";
+  const char szVersion[] = "$Revision: 1.78 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1865,10 +1866,8 @@ static void
 HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
-  int fFirst;
-  int i;
 
-  const char szVersion[] = "$Revision: 1.77 $";
+  const char szVersion[] = "$Revision: 1.78 $";
   int iMajor, iMinor;
   char *pc;
 
