@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.29 2003/11/19 06:17:54 oysteijo Exp $
+ * $Id: latex.c,v 1.30 2003/11/29 14:08:46 thyssen Exp $
  */
 
 #include "config.h"
@@ -181,7 +181,7 @@ static void PrintLaTeXBoard( FILE *pf, matchstate *pms, int fPlayer ) {
     
     fprintf( pf, "\\bigskip\\pagebreak[1]\\begin{center}\\begin{picture}"
 	     "(356,240)(22,10)\n"
-	     "\\%sboard\n", fPlayer ? _("black") : _("white") );
+	     "\\%sboard\n", fPlayer ? "black" : "white" );
 
     for( i = 0; i < 25; i++ ) {
 	anOff[ 0 ] -= pms->anBoard[ 0 ][ i ];
