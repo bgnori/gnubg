@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1997-1999
  *
- * $Id: xgame.c,v 1.2 1999/12/19 04:00:51 gtw Exp $
+ * $Id: xgame.c,v 1.3 1999/12/20 03:18:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -350,7 +350,7 @@ extern int StatsSet( extwindow *pewnd, char *sz ) {
 				    STATS_OSCORE ), TP_TEXT, 8,
 				  szScore, strlen( szScore ) );
 
-	if( pgd->nMatchTo == 9999 )
+	if( pgd->nMatchTo == 0 )
 	    strcpy( szScore, "unlimited" );
 	else
 	    sprintf( szScore, "%d", pgd->nMatchTo );
