@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.22 2004/02/12 10:29:32 uid68519 Exp $
+ * $Id: htmlimages.c,v 1.23 2004/03/18 15:23:40 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -67,7 +67,7 @@
 char *szFile, *pchFile;
 int imagesWritten;
 
-#define NUM_IMAGES 346
+#define NUM_IMAGES 344
 
 /* Overall board size */
 int s;
