@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.102 2001/10/07 17:56:42 thyssen Exp $
+ * $Id: eval.c,v 1.103 2001/10/10 15:38:44 gtw Exp $
  */
 
 #include "config.h"
@@ -6038,7 +6038,7 @@ GeneralEvaluationEPlied ( float arOutput [ NUM_ROLLOUT_OUTPUTS ],
                                     arOutput, 
                                     &rCubeful,
                                     pci, 1,
-                                    pci, pec, pec->nPlies, TRUE ) )
+                                    pci, pec, nPlies, TRUE ) )
       return -1;
 
     arOutput[ OUTPUT_EQUITY ] = Utility ( arOutput, pci );
