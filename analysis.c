@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.58 2002/04/05 17:06:49 oysteijo Exp $
+ * $Id: analysis.c,v 1.59 2002/04/15 19:52:20 thyssen Exp $
  */
 
 #include "config.h"
@@ -592,7 +592,10 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, statcontext *psc,
 	    GetMatchStateCubeInfo( &ci, pms );
 	  
 	    pmr->d.esDouble = esDouble;
+
 	    memcpy( pmr->d.arDouble, arDouble, sizeof( arDouble ) );
+            memcpy ( pmr->d.aarOutput, aarOutput, sizeof ( aarOutput ) );
+            memcpy ( pmr->d.aarStdDev, aarStdDev, sizeof ( aarStdDev ) );
 	  
             pmr->d.st = Skill( rSkill = -arDouble[ OUTPUT_DROP ] -
                                -arDouble[ OUTPUT_TAKE ] );
