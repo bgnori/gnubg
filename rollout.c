@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.116 2003/07/18 14:05:35 jsegrave Exp $
+ * $Id: rollout.c,v 1.117 2003/07/18 14:26:58 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1011,7 +1011,7 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
         SwapSides( anBoardOrig );
 
       /* roll something out */
-#if 1
+#if 0
       printf ("rollout game %d alt %d\n", i, alt);
 #endif
       BasicCubefulRollout( aanBoardEval + alt, aar + alt, 0, i, apci[ alt ], 
