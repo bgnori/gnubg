@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.100 2003/05/29 19:18:47 thyssen Exp $
+## $Id: Makefile.am,v 1.101 2003/06/13 08:51:32 jsegrave Exp $
 if USE_EXT
 SUBDIRS = intl lib doc ext met po m4 xpm sounds
 else
@@ -217,7 +217,7 @@ bearoff-database: makebearoff
 	@echo ' ** NOTE: you can generate huge one sided and two sided'
 	@echo ' ** bearoff databases for usage with gnubg'
 	@echo ' ** See README for more details'
-	./makebearoff -t 6x6 > $(srcdir)/gnubg_ts0.bd; $(MAKE) gnubg.bd
+	./makebearoff -t 6x6 -f  $(srcdir)/gnubg_ts0.bd
 endif
 
 .PHONY: bearoff-database
