@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.21 2002/12/19 21:48:17 thyssen Exp $
+ * $Id: makebearoff.c,v 1.22 2003/01/08 17:07:38 thyssen Exp $
  */
 
 #include "config.h"
@@ -1268,7 +1268,7 @@ usage ( char *arg0 ) {
            "                      Reuse already generated bearoff database\n"
            "  -H, --no-header     Do not write header\n"
            "  -C, --no-cubeful    Do not calculate cubeful equities for\n"
-           "                      one-sided databases\n"
+           "                      two-sided databases\n"
            "  -c, --no-compress   Do not use compression scheme "
                                   "for one-sided databases\n"
            "  -g, --no-gammons    Include gammon distribution for one-sided"
@@ -1288,7 +1288,7 @@ usage ( char *arg0 ) {
 static void
 version ( void ) {
 
-  printf ( "makebearoff $Revision: 1.21 $\n" );
+  printf ( "makebearoff $Revision: 1.22 $\n" );
 
 }
 

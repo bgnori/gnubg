@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.288 2003/01/06 20:08:57 thyssen Exp $
+ * $Id: gtkgame.c,v 1.289 2003/01/08 17:07:38 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5068,7 +5068,7 @@ RolloutPageGeneral (rolloutpagegeneral *prpw, rolloutwidget *prw) {
                                  prw->rcRollout.fTruncBearoff2 );
 
   prpw->pwTruncBearoffOS = gtk_check_button_new_with_label (
-                                                            _( "Truncate cubeless at one-sided earoff database" ) );
+                                                            _( "Truncate cubeless at one-sided bearoff database" ) );
 
   gtk_container_add( GTK_CONTAINER( pw ), prpw->pwTruncBearoffOS );
   gtk_toggle_button_set_active ( GTK_TOGGLE_BUTTON 
