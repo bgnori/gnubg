@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.64 2001/05/02 18:42:45 gtw Exp $
+ * $Id: set.c,v 1.65 2001/05/14 15:18:44 gtw Exp $
  */
 
 #include "config.h"
@@ -890,10 +890,8 @@ extern void CommandSetPlayerName( char *sz ) {
 	sz[ 31 ] = 0;
 
     for( pch = sz; *pch; pch++ )
-	if( isspace( *pch ) ) {
-	    outputl( "Player names must not include spaces." );
-	    return;
-	}
+	if( isspace( *pch ) )
+	    *pch = '_';
     
     if( ( *sz == '0' || *sz == '1' ) && !sz[ 1 ] ) {
 	outputf( "`%c' is not a valid name.\n", *sz );
