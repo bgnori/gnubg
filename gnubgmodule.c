@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.41 2004/11/09 13:50:15 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.42 2004/11/24 10:26:06 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -429,9 +429,9 @@ PythonCommand( PyObject* self IGNORE, PyObject *args ) {
   PortableSignal( SIGINT, HandleInterrupt, &sh, FALSE );
   HandleCommand( sz, acTop );
 
-/*   if( ms.gs != GAME_NONE ) {  /\* HACK, no idea if this is right or not *\/ */
+   if( ms.gs != GAME_NONE ) {  /* HACK, no idea if this is right or not */
   PythonNextTurn(0, 0); 
-/*   } */
+   }
 
   outputx();
   free( sz );
