@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.38 2004/05/19 08:43:52 Superfly_Jon Exp $
+ * $Id: render.c,v 1.39 2004/06/01 08:21:52 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -174,10 +174,10 @@ renderdata rdDefault = {
 	LT_POSITIONAL, /* light source type */
 	{0, 2, 3.5f},	/* x,y,z pos of light source */
 	{50, 70, 100},	/* amibient/diffuse/specular light levels */
-	35,	/* Board angle */
+	15,	/* Board angle */
 	20,	/* FOV skew factor */
 	0,	/* Plan view */
-	3,	/* Dice size */
+	2.5f,	/* Dice size */
 	0,	/* Rounded edges */
 	1,	/* Background in trays */
 	0,	/* Rounded points */
