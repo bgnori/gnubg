@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.55 2001/04/06 13:24:20 thyssen Exp $
+ * $Id: set.c,v 1.56 2001/04/06 13:56:27 thyssen Exp $
  */
 
 #include "config.h"
@@ -1266,9 +1266,8 @@ static void SetMET( met metNew ) {
           outputf ("\n"
                    "Note that this match equity table only supports "
                    "matches of length %i and below.\n"
-                   "For scores above %i-away an extrapolation scheme"
-                   "derived by David Montgomery\n"
-                   "is used.\n",
+                   "For scores above %i-away David Montgomery's "
+                   "extrapolation scheme is used.\n",
                    nMaxScore, nMaxScore );
 
         }
