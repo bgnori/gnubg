@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.49 2001/03/13 17:22:59 gtw Exp $
+ * $Id: show.c,v 1.50 2001/03/14 22:15:04 gtw Exp $
  */
 
 #include "config.h"
@@ -607,29 +607,17 @@ extern void CommandShowMatchEquityTable ( char *sz ) {
       n = nMaxScore;
   }
 
-  /* FIXME: for GTK write out to table */
+#if USE_GTK
+  if( fX ) {
+      GTKShowMatchEquityTable( n );
+      return;
+  }
+#endif
 
   output ( "Match equity table: " );
-
-  switch ( metCurrent ) {
-  case MET_ZADEH:
-    output ( "N. Zadeh, Management Science 23, 986 (1977)\n\n" );
-    break;
-  case MET_SNOWIE:
-    output ( "Snowie 2.1, Oasya, 1999\n\n" );
-    break;
-  case MET_WOOLSEY:
-    output ( "K. Woolsey, How to Play Tournament Backgammon "
-             "(1993)\n\n" );
-    break;
-  case MET_JACOBS:
-    output ( "J. Jacobs & W. Trice, Can a Fish Taste Twice as Good. "
-             "(1996)\n\n" );
-    break;
-  default:
-    assert ( FALSE );
-  }
-
+  outputl( szMET[ metCurrent ] );
+  outputl( "" );
+  
   /* Write column headers */
 
   output ( "          " );

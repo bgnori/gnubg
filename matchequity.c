@@ -19,11 +19,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.c,v 1.6 2000/11/14 15:26:38 gtw Exp $
+ * $Id: matchequity.c,v 1.7 2001/03/14 22:15:04 gtw Exp $
  */
 
 #include <stdio.h>
 #include "matchequity.h"
+
+char *szMET[ MET_JACOBS + 1 ] = {
+    "N. Zadeh, Management Science 23, 986 (1977)", /* MET_ZADEH */
+    "Snowie 2.1, Oasya (1999)", /* MET_SNOWIE */
+    "K. Woolsey, How to Play Tournament Backgammon (1993)", /* MET_WOOLSEY */
+    "J. Jacobs & W. Trice, Can a Fish Taste Twice as Good (1996)"
+        /* MET_JACOBS */
+};
 
 /*
  * A1 (A2) is the match equity of player 1 (2)
