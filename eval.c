@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.8.2.18 2000/05/21 14:52:10 thyssen Exp $
+ * $Id: eval.c,v 1.8.2.19 2000/05/22 08:10:35 thyssen Exp $
  */
 
 #include "config.h"
@@ -2131,7 +2131,7 @@ extern int DumpPosition( int anBoard[ 2 ][ 25 ], char *szOutput,
 
       int an[ 3 ];
       int i;
-      char *aszDoubleStr[ 3 ] = 
+      char *aszDoubleStr[ 4 ] = 
 			{ "No double, take", "Double, take   ", 
 				"Double, pass   ", "Too good, pass " };
       
