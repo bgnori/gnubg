@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.7 2002/02/21 17:44:18 thyssen Exp $
+ * $Id: html.c,v 1.8 2002/02/22 17:44:53 oysteijo Exp $
  */
 
 #include "config.h"
@@ -512,7 +512,7 @@ HTMLBoardHeader ( FILE *pf, const matchstate *pms, const int iMove ) {
               "<p><b>"
               "<a name=\"game%d.move%d\">Move number %d:</a>"
               "</b>"
-              " %s onroll, cube decicion?</p>\n",
+              " %s onroll, cube decision?</p>\n",
               pms->cGames, iMove, iMove,
               pms->fMove ? "red" : "white"
             );
@@ -609,7 +609,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szID[] = "$Id: html.c,v 1.7 2002/02/21 17:44:18 thyssen Exp $";
+  const char szID[] = "$Id: html.c,v 1.8 2002/02/22 17:44:53 oysteijo Exp $";
 
   time ( &t );
 
@@ -1127,7 +1127,7 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
       if ( i != pmr->n.iMove || i != pmr->n.ml.cMoves - 1 ) 
         fprintf ( pf, 
-                  "<td>%d</td>\n", i );
+                  "<td>%d</td>\n", i + 1 );
       else
         fprintf ( pf, "<td>\?\?</td>\n" );
 
@@ -1167,10 +1167,10 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
         if ( i ) 
           fprintf ( pf,
-                    "<td>%f (%f)</td>\n", rEq, rEq - rEqTop );
+                    "<td>%+7.3f (%7.3f)</td>\n", rEq, rEq - rEqTop );
         else
           fprintf ( pf,
-                    "<td>%f</td>\n", rEq );
+                    "<td>%+7.3f</td>\n", rEq );
 
       }
       else {
@@ -1182,7 +1182,7 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
         if ( i ) 
           fprintf ( pf,
-                    "<td>%7.3f%% (%+7.3f%%)</td>\n", rEq, rEq - rEqTop );
+                    "<td>%7.3f%% (%7.3f%%)</td>\n", rEq, rEq - rEqTop );
         else
           fprintf ( pf,
                     "<td>%7.3f%%</td>\n", rEq );
@@ -1999,8 +1999,9 @@ extern void CommandExportPositionHtml( char *sz ) {
     printHTMLBoard( pf, &ms, ms.fTurn,
                     "http://fibs2html.sourceforge.net/images/", "gif" );
 
-    HTMLAnalysis ( pf, &ms, plLastMove->plNext->p,
-                    "http://fibs2html.sourceforge.net/images/", "gif" );
+    if( plLastMove->plNext->p != NULL)
+        HTMLAnalysis ( pf, &ms, plLastMove->plNext->p,
+                       "http://fibs2html.sourceforge.net/images/", "gif" );
     
     HTMLEpilogue ( pf, &ms );
 
