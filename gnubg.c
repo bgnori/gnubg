@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.74 2000/10/27 14:21:45 gtw Exp $
+ * $Id: gnubg.c,v 1.75 2000/10/31 15:29:51 gtw Exp $
  */
 
 #include "config.h"
@@ -513,10 +513,6 @@ extern int ParsePosition( int an[ 2 ][ 25 ], char *sz ) {
 	return 0;
     }
 
-    /* FIXME be more strict than this -- fail if both players are on the
-       bar against closed boards, or if either player has no chequers
-       remaining. */
-    
     return PositionFromID( an, sz );
 }
 
