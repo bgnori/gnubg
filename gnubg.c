@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.143 2001/07/15 15:29:26 oysteijo Exp $
+ * $Id: gnubg.c,v 1.144 2001/07/16 14:36:19 pdferguson Exp $
  */
 
 #include "config.h"
@@ -3668,7 +3668,7 @@ static void usage( char *argv0 ) {
 "Usage: %s [options] [saved-game-file]\n"
 "Options:\n"
 "  -b, --no-bearoff          Do not use bearoff database\n"
-"  -d DIR, --datadir DIR     Read database and weight files from direcotry "
+"  -d DIR, --datadir DIR     Read database and weight files from directory "
 "DIR\n"
 "  -h, --help                Display usage and exit\n"
 "  -n[S], --new-weights[=S]  Create new neural net (of size S)\n"
@@ -3685,7 +3685,7 @@ static void usage( char *argv0 ) {
 "Usage: %s [options] [saved-game-file]\n"
 "Options:\n"
 "  -b, --no-bearoff          Do not use bearoff database\n"
-"  -d DIR, --datadir DIR     Read database and weight files from direcotry "
+"  -d DIR, --datadir DIR     Read database and weight files from directory "
 "DIR\n"
 "  -h, --help                Display usage and exit\n"
 "  -n[S], --new-weights[=S]  Create new neural net (of size S)\n"
