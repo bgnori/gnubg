@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.164 2002/06/23 09:38:19 thyssen Exp $
+ * $Id: gtkgame.c,v 1.165 2002/06/30 12:02:13 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2721,8 +2721,8 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ N_("/_Settings/Appearance..."), NULL, Command, CMD_SET_APPEARANCE,
 	  NULL },
 	{ N_("/_Settings/_Automatic"), NULL, NULL, 0, "<Branch>" },
-	{ N_("/_Settings/_Automatic/_Analysis"), NULL, Command,
-	  CMD_SET_AUTO_ANALYSIS, "<CheckItem>" },
+	{ N_("/_Settings/_Automatic/_Analysis (EXTREMELY BUGGY!!!)"), 
+          NULL, Command, CMD_SET_AUTO_ANALYSIS, "<CheckItem>" },
 	{ N_("/_Settings/_Automatic/_Bearoff"), NULL, Command,
 	  CMD_SET_AUTO_BEAROFF, "<CheckItem>" },
 	{ N_("/_Settings/_Automatic/_Crawford"), NULL, Command,
