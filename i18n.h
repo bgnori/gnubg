@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: i18n.h,v 1.5 2003/05/24 10:24:49 hb Exp $
+ * $Id: i18n.h,v 1.6 2004/07/10 08:20:33 kaoru Exp $
  */
 
 #ifndef _I18N_H_
@@ -36,10 +36,13 @@
 #else
 # define _(Text) Text
 # define gettext(Text) Text
-#define textdomain(Domain)
-#define bindtextdomain(Package, Directory)
-#define bind_textdomain_codeset(d,c)
+# define ngettext(Singular, Plural, N) \
+    ((N == 1) ? Singular : Plural)
+# define textdomain(Domain)
+# define bindtextdomain(Package, Directory)
+# define bind_textdomain_codeset(d,c)
 #endif
+
 #ifdef gettext_noop
 # define N_(String) gettext_noop (String)
 #else
