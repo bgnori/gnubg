@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.414 2003/09/05 22:55:50 hb Exp $
+ * $Id: gtkgame.c,v 1.415 2003/09/07 13:24:21 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3855,6 +3855,8 @@ static void NewOK( GtkWidget *pw, newwidget *pnw ) {
 
 static void NewSet( newwidget *pnw) {
   gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pnw->pwM ), TRUE );
+  gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pnw->pwTutorMode ),
+                                fTutor );
   gtk_adjustment_set_value( GTK_ADJUSTMENT( pnw->padjML ), nDefaultLength );
 }
 

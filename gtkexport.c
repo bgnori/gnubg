@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.20 2003/08/26 16:16:35 jsegrave Exp $
+ * $Id: gtkexport.c,v 1.21 2003/09/07 13:24:21 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -373,6 +373,10 @@ ExportSet ( exportwidget *pew ) {
                                 pexs->fIncludeLegend );
   gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pew->apwInclude[ 4 ] ),
                                 pexs->fIncludeMatchInfo );
+
+  /* FIXME: legend is not implemented */
+
+  gtk_widget_set_sensitive( GTK_WIDGET( pew->apwInclude[ 3 ] ), FALSE );
 
   /* board */
 
