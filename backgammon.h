@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.292 2004/09/29 18:13:00 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.293 2004/10/05 16:13:00 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -724,6 +724,8 @@ getCurrentMoveRecord ( int* pfHistory );
 extern int
 getFinalScore( int* anScore );
 
+extern char* GetMoveString(moverecord *pmr, int* pPlayer);
+
 extern void
 UpdateStoredMoves ( const movelist* pml, const matchstate* pms );
 
@@ -880,7 +882,6 @@ extern void CommandAccept( char * ),
     CommandRelationalShowEnvironments( char * ),
     CommandRelationalShowPlayers( char * ),
     CommandRelationalShowDetails( char * ),
-    CommandRelationalShowRecords( char * ),
     CommandRelationalTest( char * ),
     CommandRelationalHelp( char * ),
     CommandResign( char * ),

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.9 2004/09/29 19:31:55 oysteijo Exp $
+ * $Id: relational.c,v 1.10 2004/10/05 16:13:00 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -34,8 +34,7 @@
 
 #if USE_PYTHON
 
-#undef HAVE_FSTAT
-#include <Python.h>
+#include "gnubgmodule.h"
 
 #if USE_GTK
 #include "gtkgame.h"
@@ -121,6 +120,46 @@ static void Disconnect(PyObject *r)
 	Py_DECREF(r);
 }
 #endif /* USE_PYTHON */
+
+extern int RelationalMatchExists()
+{
+#if USE_PYTHON
+  PyObject *v, *r;
+  int ret;
+
+  if (!(r = Connect()))
+	  return -1;
+
+  /* Check if match is in database */
+  if (!(v = PyObject_CallMethod(r, "is_existing", "O", PythonMatchChecksum(0, 0))))
+  {
+    PyErr_Print();
+    Py_DECREF(r);
+    return -1;
+  }
+  else
+  {
+    if (PyInt_Check(v))
+	{
+      if (PyInt_AsLong(v) == -1)
+		  return 0;
+	  else
+		  return 1;
+    }
+    else {
+      ret = -1;
+    }
+    Py_DECREF( v );
+  }
+
+  Disconnect(r);
+
+  return ret;
+
+#else /* USE_PYTHON */
+  outputl( _("This build was not compiled with support for Python.\n") );
+#endif /* !USE_PYTHON */
+}
 
 extern void
 CommandRelationalAddMatch( char *sz ) {
@@ -608,19 +647,6 @@ extern int RunQuery(RowSet* pRow, char *sz)
 }
 #endif
 #endif
-
-extern void CommandRelationalShowRecords(char *sz)
-{
-#if USE_PYTHON
-#if USE_GTK
-	GtkShowRelational();
-#else
-	CommandNotImplemented( sz );
-#endif
-#else /* USE_PYTHON */
-	outputl( _("This build was not compiled with support for Python.\n") );
-#endif /* !USE_PYTHON */
-}
 
 extern void CommandRelationalSelect(char *sz)
 {

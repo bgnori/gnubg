@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.6 2004/09/30 09:58:07 Superfly_Jon Exp $
+ * $Id: gnubgmodule.h,v 1.7 2004/10/05 16:13:00 Superfly_Jon Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
@@ -24,11 +24,24 @@
 
 #if USE_PYTHON
 
+/* Python.h definse HAVE_FSTAT so save and redefine here */
+#if HAVE_FSTAT
+#define _HAVE_FSTAT 1
+#else
+#define _HAVE_FSTAT 0
+#endif
+#undef HAVE_FSTAT
+#include <Python.h>
+#undef HAVE_FSTAT
+#define HAVE_FSTAT _HAVE_FSTAT
+
 extern void
 PythonInitialise( const char *arg0, const char *szDir );
 
 extern void
 PythonShutdown();
+
+extern PyObject *PythonMatchChecksum( PyObject* self, PyObject *args );
 
 #endif /* USE_PYTHON */
 

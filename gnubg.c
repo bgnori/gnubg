@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.584 2004/09/30 09:56:55 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.585 2004/10/05 16:13:00 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -958,9 +958,6 @@ command cER = {
       szNAME, NULL },
     { "players", CommandRelationalShowPlayers, 
       N_("Show a list of all the players in the database"), 
-      NULL, NULL },
-    { "records", CommandRelationalShowRecords, 
-      N_("Show details of the database"), 
       NULL, NULL },
     { NULL, NULL, NULL, NULL, NULL }    
 }, acRelational[] = {

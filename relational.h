@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.h,v 1.2 2004/09/29 18:13:00 Superfly_Jon Exp $
+ * $Id: relational.h,v 1.3 2004/10/05 16:13:00 Superfly_Jon Exp $
  */
 
 #ifndef _RELATIONAL_H_
@@ -29,6 +29,7 @@ typedef struct _RowSet
 	int *widths;
 } RowSet;
 
+extern int RelationalMatchExists();
 extern void RelationalUpdatePlayerDetails(int player_id, const char* newName,
 										  const char* newNotes);
 extern int RunQuery(RowSet* pRow, char *sz);
