@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.18 2000/07/31 17:57:41 gtw Exp $
+ * $Id: rollout.c,v 1.19 2000/08/01 23:43:43 gtw Exp $
  */
 
 #include "config.h"
@@ -24,6 +24,7 @@
 #include <errno.h>
 #include <math.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "backgammon.h"
 #include "dice.h"
