@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.5 2002/12/08 10:31:39 thyssen Exp $
+ * $Id: bearoff.h,v 1.6 2002/12/08 11:29:08 thyssen Exp $
  */
 
 #ifndef _BEAROFF_H_
@@ -25,7 +25,9 @@
 
 typedef enum _bearofftype {
   BEAROFF_GNUBG,
-  BEAROFF_UNKNOWN 
+  BEAROFF_EXACT_BEAROFF,
+  BEAROFF_UNKNOWN,
+  NUM_BEAROFFS
 } bearofftype;
 
 typedef struct _bearoffcontext {
