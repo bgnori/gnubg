@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.3 2002/12/11 22:32:14 gtw Exp $
+ * $Id: render.c,v 1.4 2002/12/11 22:48:06 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -34,9 +34,6 @@
 #include <stdlib.h>
 
 #include "render.h"
-
-extern unsigned char auchLuxiRB[], auchLuxiSB[], auchLuxiSR[];
-extern unsigned int cbLuxiRB, cbLuxiSB, cbLuxiSR;
 
 static randctx rc;
 #define RAND irand( &rc )
@@ -68,6 +65,10 @@ FT_Library ftl;
 #define FT_GLYPH_FORMAT_BITMAP ft_glyph_format_bitmap
 #define FT_PIXEL_MODE_GRAY ft_pixel_mode_grays
 #endif
+
+extern unsigned char auchLuxiRB[], auchLuxiSB[], auchLuxiSR[];
+extern unsigned int cbLuxiRB, cbLuxiSB, cbLuxiSR;
+
 #endif
 
 static inline unsigned char clamp( int n ) {
