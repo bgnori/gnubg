@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.8 2001/02/15 19:48:19 joseph Exp $
+ * $Id: positionid.c,v 1.9 2001/04/24 12:35:50 thyssen Exp $
  */
 
 #include <assert.h>
@@ -122,7 +122,7 @@ extern char *PositionID( int anBoard[ 2 ][ 25 ] ) {
 }
 
 
-static int CheckPosition( int anBoard[ 2 ][ 25 ] ) {
+extern int CheckPosition( int anBoard[ 2 ][ 25 ] ) {
 
     int ac[ 2 ], i;
 
