@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.158 2002/12/17 01:02:28 oysteijo Exp $
+ * $Id: set.c,v 1.159 2002/12/19 19:57:26 thyssen Exp $
  */
 
 #include "config.h"
@@ -2373,7 +2373,7 @@ extern void CommandSetEvalMoveFilter( char *sz ) {
 
 extern void CommandSetAnalysisMoveFilter( char *sz ) {
 
-  SetMoveFilter ( sz, aamfEval );
+  SetMoveFilter ( sz, aamfAnalysis );
 
 }
 
