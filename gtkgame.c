@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id $
+ * $Id: gtkgame.c,v 1.255 2002/11/24 12:21:47 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
