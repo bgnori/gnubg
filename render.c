@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.19 2003/08/24 20:40:29 oysteijo Exp $
+ * $Id: render.c,v 1.20 2003/08/25 09:30:19 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -111,7 +111,7 @@ renderdata rdDefault = {
     TRUE,  /* dynamic labels */
 	1	/* Show move indicator */
 #if USE_BOARD3D
-	, DT_3D,	/* Display type */
+	, DT_2D,	/* Display type */
 	FALSE,	/* Show shadows */
 	50,	/* Shadow darkness */
 	0,	/* Animate roll */
@@ -127,7 +127,8 @@ renderdata rdDefault = {
 	3,	/* Dice size */
 	0,	/* Rounded edges */
 	PT_ROUNDED,	/* Piece type */
-	/* Default 3d colours - black+white, should never be used */
+	/* Default 3d colours - black+white, should never be used -
+		if no 3d settings the first design will be used */
     {{{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, 100, 0, 0},
 	 {{0, 0, 0, 1}, {0, 0, 0, 1}, {0, 0, 0, 1}, 100, 0, 0}},
     {{{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, 100, 0, 0},

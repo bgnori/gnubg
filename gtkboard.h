@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.46 2003/08/24 20:40:29 oysteijo Exp $
+ * $Id: gtkboard.h,v 1.47 2003/08/25 09:30:19 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -296,7 +296,7 @@ extern int MouseMove3d(BoardData *bd, int x, int y);
 extern void RenderBoard3d(BoardData* bd, renderdata* prd, void *glpixmap, unsigned char* buf);
 extern void Tidy3dObjects(BoardData* bd, int glValid);
 extern int TestPerformance3d(BoardData* bd);
-extern void testSet3dSetting(BoardData* bd, const renderdata *prd);
+extern void Set3dSettings(BoardData* bd, const renderdata *prd);
 extern void CopySettings3d(BoardData* from, BoardData* to);
 extern void MakeCurrent3d(GtkWidget *widget);
 extern void GetTextures(BoardData* bd);

@@ -18,12 +18,13 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.4 2003/08/24 11:12:49 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.5 2003/08/25 09:30:20 Superfly_Jon Exp $
 */
 
 #include <gtk/gtk.h>
 #include "config.h"
 #include <stdio.h>
+#include "i18n.h"
 
 /*#define USE_MSDEV_TEST_HARNESS*/
 #ifdef USE_MSDEV_TEST_HARNESS
@@ -46,16 +47,20 @@
 
 /* Define relative sizes of objects from arbitrary unit .05 */
 #define base_unit .05f
+
 /* Scale textures by this amount */
 #define TEXTURE_SCALE (10.0f / base_unit)
+
 #define PI 3.14159265358979323846f
 #define copyPoint(to, from) memcpy(to, from, sizeof(float[3]))
 #define SGN(x) (x / abs(x))
+
 #define TEXTURE_PATH "textures//"
-#define NO_TEXTURE_STRING "No texture"
+#define NO_TEXTURE_STRING _("No texture")
+
 #define HINGE_SEGMENTS 6
 
-/* Draw board parts specially */
+/* Draw board parts (boxes) specially */
 typedef enum _boxType
 {
 	BOX_ALL = 0, BOX_NOSIDES = 1, BOX_NOENDS = 2, BOX_SPLITTOP = 4, BOX_SPLITWIDTH = 8

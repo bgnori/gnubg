@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.4 2003/08/24 11:12:49 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.5 2003/08/25 09:30:19 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -234,10 +234,9 @@ void preDrawPiece0(BoardData* bd)
 	for (j = 0; j <= bd->curveAccuracy / 4; j++)
 	{
 		latitude = (float)sin(angle2) * lip;
-		angle = 0;
-
 		new_radius = Dist2d(lip, latitude);
 
+		angle = 0;
 		for (i = 0; i < bd->curveAccuracy; i++)
 		{
 			n[i][j][0] = (float)sin(angle) * new_radius;
