@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 dnl
-dnl $Id: configure.in,v 1.12 2000/02/04 17:05:03 gtw Exp $
+dnl $Id: configure.in,v 1.13 2000/02/19 23:28:59 gtw Exp $
 
 AC_INIT(gnubg.c)
 AM_INIT_AUTOMAKE(gnubg,0.02)
@@ -30,9 +30,10 @@ then
 fi
 
 dnl Checks for programs.
+AC_PROG_AWK
 AC_PROG_CC
 AC_PROG_INSTALL
-AC_PROG_AWK
+AC_PROG_LN_S
 
 dnl Checks for libraries.
 AC_CHECK_LIB(m, sqrt)
