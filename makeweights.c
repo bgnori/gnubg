@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.5 2002/03/31 22:41:04 thyssen Exp $
+ * $Id: makeweights.c,v 1.6 2002/06/01 17:36:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -28,6 +28,8 @@
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif
+
+#include "i18n.h"
 
 #include "eval.h" /* for WEIGHTS_VERSION */
 
@@ -42,17 +44,28 @@ extern int main( int argc, char *argv[] ) {
 #else
 #define output stdout
 #endif
+
+    /* i18n */
+
+#ifdef HAVE_SETLOCALE
+    setlocale (LC_ALL, "");
+#endif
+    bindtextdomain (PACKAGE, LOCALEDIR);
+    textdomain (PACKAGE);
+
+    /* generate weights */
     
     if( scanf( "GNU Backgammon %15s\n", szFileVersion ) != 1 ) {
-	fprintf( stderr, "%s: invalid weights file\n", argv[ 0 ] );
+	fprintf( stderr, _("%s: invalid weights file\n"), argv[ 0 ] );
 	return EXIT_FAILURE;
     }
 
     if( strcmp( szFileVersion, WEIGHTS_VERSION ) ) {
-	fprintf( stderr, "%s: incorrect weights version (version "
-		 WEIGHTS_VERSION " is required,\nbut these weights are "
-		 "%s)\n", argv[ 0 ], szFileVersion );
-	return EXIT_FAILURE;
+      fprintf( stderr, _("%s: incorrect weights version\n"
+                         "(version %s is required, "
+                         "but these weights are %s)\n" ),
+               argv[ 0 ], WEIGHTS_VERSION, szFileVersion );
+      return EXIT_FAILURE;
     }
 
 #ifdef STDOUT_FILENO
@@ -63,12 +76,23 @@ extern int main( int argc, char *argv[] ) {
 #endif
 	
     fwrite( ar, sizeof( ar[ 0 ] ), 2, output );
-    
+
+    PushLocale ( "C" );
+
     for( c = 0; !NeuralNetLoad( &nn, stdin ); c++ )
-	if( NeuralNetSaveBinary( &nn, output ) )
+      if( NeuralNetSaveBinary( &nn, output ) )
 	    return EXIT_FAILURE;
 
-    fprintf( stderr, "%d nets converted\n", c );
-    
+    PopLocale ();
+
+    fprintf( stderr, _("%d nets converted\n"), c );
+
     return EXIT_SUCCESS;
+
 }
+
+
+
+
+
+
