@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.78 2002/10/26 11:12:29 thyssen Exp $
+ * $Id: html.c,v 1.79 2002/10/31 21:27:03 thyssen Exp $
  */
 
 #include "config.h"
@@ -1786,7 +1786,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.78 $";
+  const char szVersion[] = "$Revision: 1.79 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1867,7 +1867,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.78 $";
+  const char szVersion[] = "$Revision: 1.79 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3877,9 +3877,6 @@ CommandExportPositionGammOnLine ( char *sz ) {
 	return;
     }
 
-    fprintf ( pf, "<div %s>\n", 
-              GetStyle ( CLASS_FONT_FAMILY, HTML_EXPORT_CSS_INLINE ) );
-
     fputs ( "\n<!-- Score -->\n\n", pf );
 
     if ( ms.nMatchTo )
@@ -3930,8 +3927,6 @@ CommandExportPositionGammOnLine ( char *sz ) {
                      HTML_EXPORT_CSS_INLINE );
 
     HTMLEpilogueComment ( pf );
-
-    fputs ( "</div>\n", pf );
 
     if( pf != stdout )
 	fclose( pf );
