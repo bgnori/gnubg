@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.c,v 1.11 2000/01/19 17:01:12 gtw Exp $
+ * $Id: xgame.c,v 1.12 2000/01/31 17:53:33 gtw Exp $
  */
 
 #include "config.h"
@@ -224,9 +224,7 @@ extern int StatsConfirm( extwindow *pewnd ) {
 	psd->pm->cPips == psd->ml.cMaxPips ) {
 	FormatMove( sz, psd->pgd->anBoardOld, psd->pm->anMove );
     
-	CommandMove( sz ); /* FIXME output from this command (if any) looks a
-			      bit grotty, because no linefeed was typed after
-			      the prompt */
+	UserCommand( sz );
     } else
 	/* Illegal move */
 	XBell( pewnd->pdsp, 100 );
@@ -415,7 +413,7 @@ static int DiceHandler( extwindow *pewnd, XEvent *pxev ) {
 	if( fBusy )
 	    XBell( pewnd->pdsp, 100 );
 	else
-	    CommandRoll( NULL );
+	    UserCommand( "roll" );
 	
 	break;
 	
