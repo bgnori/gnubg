@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.18 2003/03/30 16:37:51 thyssen Exp $
+ * $Id: external.c,v 1.19 2003/05/21 20:21:31 thyssen Exp $
  */
 
 #include "config.h"
@@ -291,8 +291,10 @@ extern void CommandExternal( char *sz ) {
 			    &fCubeOwner, &fDoubled, &fTurn, &fCrawford ) )
 	    outputl( _("Warning: badly formed board from external controller.") );
 	else {
-	    /* FIXME could SwapSides( anBoard ) be necessary? */
-	    
+
+            if ( ! fTurn )
+              SwapSides( anBoard );
+
 	    SetCubeInfo ( &ci, nCube, fCubeOwner, fTurn, nMatchTo, anScore,
 			  fCrawford, fJacoby, nBeavers, bgvDefault );
 
