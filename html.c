@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.63 2002/10/09 21:01:50 thyssen Exp $
+ * $Id: html.c,v 1.64 2002/10/10 21:02:36 thyssen Exp $
  */
 
 #include "config.h"
@@ -466,7 +466,7 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
 
   /* chequers off */
 
-  sprintf ( sz, "o_w_%d", acOff[ 0 ] );
+  sprintf ( sz, "o_w_%d", acOff[ 1 ] );
   printImage ( pf, szImageDir, sz, szExtension, NULL );
 
   /* player 0's inner board */
@@ -477,7 +477,7 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
                     anBoard[ 0 ][ 23 - i ],
                     ! ( i % 2 ), TRUE );
 
-  /* player 1's chequers on the bar */
+  /* player 0's chequers on the bar */
 
   sprintf ( sz, "b_up_%d", anBoard[ 0 ][ 24 ] );
   printImage ( pf, szImageDir, sz, szExtension, NULL );
@@ -552,9 +552,9 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
                     anBoard[ 0 ][ i ],
                     ( i % 2 ), FALSE );
 
-  /* player 0's chequers on the bar */
+  /* player 1's chequers on the bar */
 
-  sprintf ( sz, "b_dn_%d", anBoard[ 0 ][ 24 ] );
+  sprintf ( sz, "b_dn_%d", anBoard[ 1 ][ 24 ] );
   printImage ( pf, szImageDir, sz, szExtension, NULL );
 
   /* player 1's outer board */
@@ -1559,7 +1559,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.63 $";
+  const char szVersion[] = "$Revision: 1.64 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
