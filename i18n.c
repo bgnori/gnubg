@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: i18n.c,v 1.5 2004/04/30 17:34:53 Superfly_Jon Exp $
+ * $Id: i18n.c,v 1.6 2004/09/17 18:45:37 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -29,8 +29,10 @@
 
 #define MAX_STACK 30
 
+#if ENABLE_NLS
 static char *aszLocaleStack [ MAX_STACK ];
 static int iLocale = -1;
+#endif
 
 void PushLocale ( const char *locale ) {
   

@@ -17,13 +17,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_y.y,v 1.6 2004/09/16 07:50:15 Superfly_Jon Exp $
+ * $Id: external_y.y,v 1.7 2004/09/17 18:45:37 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
 #include "config.h"
 #endif
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <glib.h>
