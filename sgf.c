@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.75 2003/08/04 09:23:11 jsegrave Exp $
+ * $Id: sgf.c,v 1.76 2003/08/07 17:57:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -2179,15 +2179,27 @@ static void SaveGame( FILE *pf, list *plGame ) {
 	case MOVE_SETBOARD:
 	    PositionFromKey( anBoard, pmr->sb.auchKey );
 
-	    fputs( "\n;AE[a:y]AW", pf );
-	    for( i = 0; i < 25; i++ )
-		for( j = 0; j < anBoard[ 1 ][ i ]; j++ )
-		    fprintf( pf, "[%c]", 'a' + i );
+	    fputs( "\n;AE[a:y]", pf );
 
-	    fputs( "AB", pf );
-	    for( i = 0; i < 25; i++ )
+            for ( i = 0, j = 0; i < 25; ++i )
+              j += anBoard[ 1 ][ i ];
+
+            if ( j ) {
+              fputs( "AW", pf );
+              for( i = 0; i < 25; i++ )
+		for( j = 0; j < anBoard[ 1 ][ i ]; j++ )
+                  fprintf( pf, "[%c]", 'a' + i );
+            }
+
+            for ( i = 0, j = 0; i < 25; ++i )
+              j += anBoard[ 0 ][ i ];
+
+            if ( j ) {
+              fputs( "AB", pf );
+              for( i = 0; i < 25; i++ )
 		for( j = 0; j < anBoard[ 0 ][ i ]; j++ )
-		    fprintf( pf, "[%c]", i == 24 ? 'y' : 'x' - i );
+                  fprintf( pf, "[%c]", i == 24 ? 'y' : 'x' - i );
+            }
 
 	    break;
 	    
