@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.111 2001/10/27 13:22:25 thyssen Exp $
+ * $Id: eval.c,v 1.112 2001/10/27 16:32:22 thyssen Exp $
  */
 
 #include "config.h"
@@ -5169,17 +5169,25 @@ Cl2CfMoney ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci ) {
 static float
 Cl2CfMatch ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci ) {
 
-  if ( pci->fCubeOwner == -1 ) {
-    return Cl2CfMatchCentered ( arOutput, pci );
-  } 
-  else if ( pci->fCubeOwner == pci->fMove ) {
+  /* Check if this requires a cubeful evaluation */
 
-    return Cl2CfMatchOwned ( arOutput, pci );
+  if ( fDoCubeful ( pci ) ) {
 
-  } 
+    /* cubeless eval */
+
+    return eq2mwc ( Utility ( arOutput, pci ), pci );
+
+  } /* fDoCubeful */
   else {
 
-    return Cl2CfMatchUnavailable ( arOutput, pci );
+    /* cubeful eval */
+
+    if ( pci->fCubeOwner == -1 ) 
+      return Cl2CfMatchCentered ( arOutput, pci );
+    else if ( pci->fCubeOwner == pci->fMove )
+      return Cl2CfMatchOwned ( arOutput, pci );
+    else
+      return Cl2CfMatchUnavailable ( arOutput, pci );
 
   }
 
@@ -6545,7 +6553,7 @@ EvaluatePositionCubeful3( int anBoard[ 2 ][ 25 ],
         /* cube available */
         if ( pciMove->nMatchTo )
           arCf[ ici ] = Cl2CfMatch ( arOutput, &aci[ ici ] );
-        else
+        else 
           arCf[ ici ] = Cl2CfMoney ( arOutput, &aci[ ici ] );
       }
 
