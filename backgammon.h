@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.222 2003/04/25 18:30:27 thyssen Exp $
+ * $Id: backgammon.h,v 1.223 2003/05/21 18:37:59 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -365,6 +365,7 @@ extern int GetInputYN( char *szPrompt );
 extern void HandleCommand( char *sz, command *ac );
 extern void InitBoard( int anBoard[ 2 ][ 25 ], const bgvariation bgv );
 extern char *NextToken( char **ppch );
+extern char *NextTokenGeneral( char **ppch, const char *szTokens );
 extern int NextTurn( int fPlayNext );
 extern void TurnDone( void );
 extern void AddMoveRecord( void *pmr );
