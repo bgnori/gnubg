@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.39 2003/08/13 11:52:27 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.40 2003/08/13 20:47:24 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -133,21 +133,24 @@ UpdateMoveList ( const hintdata *phd ) {
 
   if( piHighlight && *piHighlight >= 0 ) {
     GtkStyle *ps;
+    GtkStyle *psMoves = gtk_rc_get_style( pwMoves );
 
-    ps = gtk_style_copy( gtk_rc_get_style( pwMoves ) );
+    if ( psMoves && ( ps = gtk_style_copy( psMoves ) ) ) {
     
-    ps->fg[ GTK_STATE_NORMAL ].red = ps->fg[ GTK_STATE_ACTIVE ].red =
-      ps->fg[ GTK_STATE_SELECTED ].red = Highlightrgb[0];
-    ps->fg[ GTK_STATE_NORMAL ].green = ps->fg[ GTK_STATE_ACTIVE ].green =
-      ps->fg[ GTK_STATE_SELECTED ].green = Highlightrgb[1];
-    ps->fg[ GTK_STATE_NORMAL ].blue = ps->fg[ GTK_STATE_ACTIVE ].blue =
-      ps->fg[ GTK_STATE_SELECTED ].blue = Highlightrgb[2];
-
-    for ( i = 0; i < pml->cMoves; i++ )
+      ps->fg[ GTK_STATE_NORMAL ].red = ps->fg[ GTK_STATE_ACTIVE ].red =
+        ps->fg[ GTK_STATE_SELECTED ].red = Highlightrgb[0];
+      ps->fg[ GTK_STATE_NORMAL ].green = ps->fg[ GTK_STATE_ACTIVE ].green =
+        ps->fg[ GTK_STATE_SELECTED ].green = Highlightrgb[1];
+      ps->fg[ GTK_STATE_NORMAL ].blue = ps->fg[ GTK_STATE_ACTIVE ].blue =
+        ps->fg[ GTK_STATE_SELECTED ].blue = Highlightrgb[2];
+      
+      for ( i = 0; i < pml->cMoves; i++ )
 	gtk_clist_set_row_style( GTK_CLIST( pwMoves ), i, i == *piHighlight ?
 				 ps : NULL );
-    
-    gtk_style_unref( ps );
+      
+      gtk_style_unref( ps );
+
+    }
   }
     
   /* update storedmoves global struct */
