@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.116 2004/04/26 11:28:56 Superfly_Jon Exp $
+# $Id: credits.sh,v 1.117 2004/06/04 21:01:21 thyssen Exp $
 # 
 
 column < /dev/null || exit 0
@@ -102,6 +102,7 @@ Jeff Haferman
 Morten Juul Henriksen
 Alain Henry
 Jens Hoefkens
+Casey Hopkins
 Martin Janke
 Nis Jorgensen
 Neil Kazaross
