@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.555 2004/04/23 16:51:08 thyssen Exp $
+ * $Id: gnubg.c,v 1.556 2004/04/23 20:19:43 thyssen Exp $
  */
 
 #include "config.h"
@@ -531,7 +531,7 @@ static char szDICE[] = N_("<die> <die>"),
     szLANG[] = N_("system|<language code>"),
     szONOFF[] = N_("on|off"),
     szOPTCOMMAND[] = N_("[command]"),
-    szOPTENV[] = N_("[env]"),
+    szOPTENVFORCE[] = N_("[env [force]]"),
     szOPTDEPTH[] = N_("[depth]"),
     szOPTFILENAME[] = N_("[filename]"),
     szOPTGENERATOROPTSEED[] = N_("[generator] [seed]"),
@@ -897,7 +897,7 @@ command cER = {
 }, acRelationalAdd[] = {
     { "match", CommandRelationalAddMatch, 
       N_("Log the match to the external relational database"), 
-      szOPTENV, NULL },
+      szOPTENVFORCE, NULL },
     { NULL, NULL, NULL, NULL, NULL }    
 }, acRelationalShow[] = {
     { "environments", CommandRelationalShowEnvironments, 
@@ -911,7 +911,7 @@ command cER = {
       N_("Help and instructions for using and setting up "
          "the external relational database"), NULL, NULL },
     { "show", NULL, N_("Show information from the relational database"),
-      NULL, NULL },
+      NULL, acRelationalShow },
     { "test", CommandRelationalTest, 
       N_("Test the external relational database"), NULL, NULL },
     { NULL, NULL, NULL, NULL, NULL }    
