@@ -1,7 +1,7 @@
 /*
  * gnubg.c
  *
- * by Gary Wong <gtw@gnu.org>, 1998, 1999, 2000, 2001.
+ * by Gary Wong <gtw@gnu.org>, 1998, 1999, 2000, 2001, 2001.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of version 2 of the GNU General Public License as
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.180 2002/01/25 19:24:14 thyssen Exp $
+ * $Id: gnubg.c,v 1.181 2002/02/01 15:48:24 gtw Exp $
  */
 
 #include "config.h"
@@ -4332,7 +4332,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #if USE_GTK
     if( fTTY )
 #endif
-	puts( "GNU Backgammon " VERSION "  Copyright 1999, 2000, 2001 "
+	puts( "GNU Backgammon " VERSION "  Copyright 1999, 2000, 2001, 2002 "
 	      "Gary Wong.\n"
 	      "GNU Backgammon is free software, covered by the GNU "
 	      "General Public License\n"
