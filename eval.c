@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.115 2001/10/30 16:12:26 gtw Exp $
+ * $Id: eval.c,v 1.116 2001/11/01 15:46:49 gtw Exp $
  */
 
 #include "config.h"
@@ -3322,6 +3322,8 @@ FindnSaveBestMoves( movelist *pml,
   /* Evaluate all moves at 0-ply */
   if( ScoreMoves( pml, pci, pec, 0 ) < 0 ) {
       free( pm );
+      pml->cMoves = 0;
+      pml->amMoves = NULL;
       return -1;
   }
   
@@ -3360,6 +3362,8 @@ FindnSaveBestMoves( movelist *pml,
     /* Calculate the full evaluations at the search depth requested */
     if( ScoreMoves( pml, pci, pec, iPly + 1 ) < 0 ) {
 	free( pm );
+	pml->cMoves = 0;
+	pml->amMoves = NULL;
 	return -1;
     }
 
