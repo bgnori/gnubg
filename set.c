@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.17 2000/02/04 17:07:33 gtw Exp $
+ * $Id: set.c,v 1.18 2000/02/17 00:48:00 gtw Exp $
  */
 
 #include "config.h"
@@ -72,20 +72,25 @@ static void SetRNG( rng rngNew, char *szSeed ) {
         /* Dispose dynamically linked user module if necesary */
 
         if ( rngCurrent == RNG_USER )
+#if HAVE_LIBDL
 	  UserRNGClose();
-
+#else
+	  abort();
+#endif
+	  
 	/* Load dynamic library with user RNG */
 
         if ( rngNew == RNG_USER ) {
-	  
+#if HAVE_LIBDL
 	  if ( !UserRNGOpen() ) {
-
 	    printf ( "Error loading shared library.\n" );
 	    printf ( "You are still using the %s generator.\n",
 		     aszRNG[ rngCurrent ] );
             return;
 	  }
-
+#else
+	  abort();
+#endif
 	}
 	    
 	if( ( rngCurrent = rngNew ) != RNG_MANUAL )
