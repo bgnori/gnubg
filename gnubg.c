@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.38 2000/06/08 20:46:13 oysteijo Exp $
+ * $Id: gnubg.c,v 1.39 2000/06/11 18:31:41 oysteijo Exp $
  */
 
 #include "config.h"
@@ -254,6 +254,8 @@ static command acDatabase[] = {
       "during rollouts", NULL },
     { "score", CommandShowScore, "View the match or session score ",
       NULL },
+    { "thorp", CommandShowThorp, "Calculate Thorp Count at current"
+      " position", NULL },
     { "turn", CommandShowTurn, "Show which player is on roll", NULL },
     { "warranty", CommandShowWarranty, "Various kinds of warranty you do "
       "not have", NULL },
