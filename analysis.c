@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.63 2002/05/30 10:38:44 thyssen Exp $
+ * $Id: analysis.c,v 1.64 2002/06/01 17:42:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -949,58 +949,6 @@ DumpStatcontext ( char *szOutput, statcontext *psc, char * sz ) {
   int i;
   ratingtype rt[ 2 ];
   char szTemp[1024];
-#if 0
-
-  /* dump the contents of statcontext to stdin,
-     mainly for debugging */
-
-#define PAN( a, b )   printf ( "%s[%1i] = %i\n", # a, b, a [ b ] )
-#define PAR( a, b )   printf ( "%s[%1i] = %f\n", # a, b, a [ b ] )
-#define PAAN( a, b, c )   printf ( "%s[%1i,%1i] = %i\n", # a, b, c, a [ b ][ c ] )
-#define PAAR( a, b, c )   printf ( "%s[%1i,%1i] = %f\n", # a, b, c, a [ b ][ c ] )
-  
-  int j;
-
-  for ( i = 0; i < 2; i++ ) {
-
-    
-    PAN ( psc->anUnforcedMoves, i );
-    PAN ( psc->anTotalMoves, i );
-    
-    PAN ( psc->anTotalCube, i );
-    PAN ( psc->anDouble, i );
-    PAN ( psc->anTake, i );
-    PAN ( psc->anPass, i );
-
-    for ( j = 0; j <= SKILL_VERYGOOD; j++ )
-      PAAN ( psc->anMoves, i, j );
-
-    for ( j = 0; j <= LUCK_VERYGOOD; j++ )
-      PAAN ( psc->anLuck, i, j );
-
-    PAN ( psc->anCubeMissedDoubleDP, i );
-    PAN ( psc->anCubeMissedDoubleTG, i );
-    PAN ( psc->anCubeWrongDoubleDP, i );
-    PAN ( psc->anCubeWrongDoubleTG, i );
-    PAN ( psc->anCubeWrongTake, i );
-    PAN ( psc->anCubeWrongPass, i );
-
-    for ( j = 0; j < 2; j++ ) {
-
-      PAAR ( psc->arErrorCheckerplay, i, j );
-      PAAR ( psc->arErrorMissedDoubleDP, i, j );
-      PAAR ( psc->arErrorMissedDoubleTG, i, j );
-      PAAR ( psc->arErrorWrongDoubleDP, i, j );
-      PAAR ( psc->arErrorWrongDoubleTG, i, j );
-      PAAR ( psc->arErrorWrongTake, i, j );
-      PAAR ( psc->arErrorWrongPass, i, j );
-      PAAR ( psc->arLuck, i, j );
-
-    }
-
-  }
-
-#endif
 
   /* nice human readable dump */
 
