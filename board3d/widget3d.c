@@ -18,11 +18,14 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.1.2.17 2003/07/31 10:40:12 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.1.2.18 2003/07/31 16:25:24 thyssen Exp $
 */
 
 #include <GL/gl.h>
 #include <GL/glu.h>
+#if !WIN32
+#include <GL/glx.h>
+#endif
 #include "inc3d.h"
 #include "shadow.h"
 #include "renderprefs.h"
@@ -341,10 +344,10 @@ int CheckAccelerated(GtkWidget* board)
 
 #else
 
-void CheckAccelerated(GtkWidget* board)
+int CheckAccelerated(GtkWidget* board)
 {
 	Display* display = glXGetCurrentDisplay();
-	GLXContext* context = glXGetCurrentContext();
+	GLXContext context = glXGetCurrentContext();
 	if (!display || !context)
 	{
 		g_print("Unable to get current display information.\n");
