@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.120 2003/07/26 18:16:40 jsegrave Exp $
+ * $Id: analysis.c,v 1.121 2003/07/28 18:22:44 ace Exp $
  */
 
 #include "config.h"
@@ -1801,7 +1801,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
                  _("Advantage (actual) in ppg"),
                  psc->arActualResult[ 0 ] / psc->nGames,
                  psc->arActualResult[ 1 ] / psc->nGames,
-                 _("95% confidence interval (ppg)"),
+                 _("95%% confidence interval (ppg)"),
                  1.95996f *
                  sqrt( psc->arVarianceActual[ 0 ] / psc->nGames ),
                  1.95996f *
@@ -1813,7 +1813,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
                  ( psc->arActualResult[ 1 ] - 
                    psc->arLuck[ 1 ][ 1 ] + psc->arLuck[ 0 ][ 1 ] ) /
                  psc->nGames,
-                 _("95% confidence interval (ppg)"),
+                 _("95%% confidence interval (ppg)"),
                  1.95996f *
                  sqrt( psc->arVarianceLuckAdj[ 0 ] / psc->nGames ),
                  1.95996f *
