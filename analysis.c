@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.117 2003/07/25 18:22:55 thyssen Exp $
+ * $Id: analysis.c,v 1.118 2003/07/25 18:30:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -158,22 +158,25 @@ LuckFirst ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
 
         if ( pec->fCubeful ) {
           if ( pci->nMatchTo )
-            aar[ j ][ i ] = mwc2eq ( ar[ OUTPUT_CUBEFUL_EQUITY ], pci );
+            aar[ i ][ j ] = mwc2eq ( ar[ OUTPUT_CUBEFUL_EQUITY ], pci );
           else
-            aar[ j ][ i ] = ar[ OUTPUT_CUBEFUL_EQUITY ];
+            aar[ i ][ j ] = ar[ OUTPUT_CUBEFUL_EQUITY ];
         }
         else
-          aar[ j ][ i ] = ar[ OUTPUT_EQUITY ];
+          aar[ i ][ j ] = ar[ OUTPUT_EQUITY ];
 
       }
       else {
-        aar[ j ][ i ] = - ml.amMoves[ 0 ].rScore;
+        aar[ i ][ j ] = - ml.amMoves[ 0 ].rScore;
         free ( ml.amMoves );
       }
 
-      rMean += aar[ j ][ i ];
+      rMean += aar[ i ][ j ];
 
     }
+
+  printf( "%d %d %f %f %f\n", n0, n1, aar[ n0 ][ n1 ], aar[ n1 ][ n0 ],
+          rMean/30.0f );
 
   if ( n0 > n1 )
     return aar[ n0 ][ n1 ] - rMean / 30.0f;
