@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.85 2003/10/14 10:04:11 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.86 2003/10/17 15:33:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1090,9 +1090,11 @@ static void BoardPrefsOK( GtkWidget *pw, BoardData *bd ) {
 	if (rdAppearance.fDisplayType == DT_3D)
 	{	/* Make sure main drawing area's context is current */
 		MakeCurrent3d(bd->drawing_area3d);
+		/* Delete old objects */
+		ClearTextures(bd, TRUE);
+		Tidy3dObjects(bd, FALSE);
 		/* Setup values */
 		Set3dSettings(bd, &rdAppearance);
-		ClearTextures(bd, TRUE);
 		GetTextures(bd);
 		preDraw3d(bd);
 		SetupViewingVolume3d(bd, &rdAppearance);
@@ -1913,7 +1915,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.85 2003/10/14 10:04:11 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.86 2003/10/17 15:33:02 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2497,6 +2499,11 @@ static void GetPrefs ( renderdata *prd ) {
 
 		memcpy(&prd->rdDiceMat[0], prd->afDieColour[0] ? &bd3d.chequerMat[0] : &bd3d.diceMat[0], sizeof(Material));
 		memcpy(&prd->rdDiceMat[1], prd->afDieColour[1] ? &bd3d.chequerMat[1] : &bd3d.diceMat[1], sizeof(Material));
+		/* Reset alpha values of dice (if opaque) - .5 value used for anti-aliasing dice */
+		if (!prd->rdDiceMat[0].alphaBlend)
+			prd->rdDiceMat[0].ambientColour[3] = prd->rdDiceMat[0].diffuseColour[3] = prd->rdDiceMat[0].specularColour[3] = 1;
+		if (!prd->rdDiceMat[1].alphaBlend)
+			prd->rdDiceMat[1].ambientColour[3] = prd->rdDiceMat[1].diffuseColour[3] = prd->rdDiceMat[1].specularColour[3] = 1;
 
 		prd->rdDiceMat[0].textureInfo = prd->rdDiceMat[1].textureInfo = 0;
 		prd->rdDiceMat[0].pTexture = prd->rdDiceMat[1].pTexture = 0;

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.14 2003/10/14 10:04:12 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.15 2003/10/17 15:33:03 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -544,6 +544,11 @@ void Set3dSettings(BoardData* bd, const renderdata *prd)
 	memcpy(&bd->diceMat[1], prd->afDieColour[1] ? &prd->rdChequerMat[1] : &prd->rdDiceMat[1], sizeof(Material));
 	bd->diceMat[0].textureInfo = bd->diceMat[1].textureInfo = 0;
 	bd->diceMat[0].pTexture = bd->diceMat[1].pTexture = 0;
+	/* Set alpha values of dice (if opaque) - .5 value used for anti-aliasing dice */
+	if (!bd->diceMat[0].alphaBlend)
+		bd->diceMat[0].ambientColour[3] = bd->diceMat[0].diffuseColour[3] = bd->diceMat[0].specularColour[3] = 0.5f;
+	if (!bd->diceMat[1].alphaBlend)
+		bd->diceMat[1].ambientColour[3] = bd->diceMat[1].diffuseColour[3] = bd->diceMat[1].specularColour[3] = 0.5f;
 
 	memcpy(bd->diceDotMat, prd->rdDiceDotMat, sizeof(Material[2]));
 

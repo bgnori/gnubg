@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.12 2003/10/14 10:04:12 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.13 2003/10/17 15:33:03 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -169,7 +169,10 @@ void Tidy3dObjects(BoardData* bd, int glValid)
 	}
 
 	if (bd->boardPoints)
+	{
 		freeEigthPoints(bd->boardPoints, bd->curveAccuracy);
+		bd->boardPoints = 0;
+	}
 
 	TidyShadows(bd);
 
@@ -387,7 +390,6 @@ void renderDice(BoardData* bd, float size)
 		lat_angle += lat_step;
 	}
 
-	radius *= (float)sqrt(2);	/* 3d radius */
 	/* Draw 8 corners */
 	for (c = 0; c < 8; c++)
 	{
@@ -416,6 +418,26 @@ void renderDice(BoardData* bd, float size)
 		if (c == 3)
 			glRotatef(180, 1, 0, 0);
 	}
+
+	/* Anti-alias dice edges */
+	glLineWidth(1);
+	glEnable(GL_LINE_SMOOTH);
+	glEnable(GL_BLEND);
+	glDepthMask(GL_FALSE);
+
+	for (c = 0; c < 6; c++)
+	{
+		circleOutline(radius, radius + LIFT_OFF, bd->curveAccuracy);
+
+		if (c % 2 == 0)
+			glRotatef(-90, 0, 1, 0);
+		else
+			glRotatef(90, 1, 0, 0);
+	}
+	glDisable(GL_BLEND);
+	glDisable(GL_LINE_SMOOTH);
+	glDepthMask(GL_TRUE);
+
 	glPopMatrix();
 
 	Free3d(corner_points, corner_steps, corner_steps);
@@ -818,9 +840,6 @@ void drawDice2(BoardData* bd, int num)
 	}
 	setMaterial(&bd->diceMat[diceCol]);
 	glCallList(bd->diceList);
-
-	if (blend)
-		glDisable(GL_BLEND);
 
 	/* Draw front dots */
 	setMaterial(&bd->diceDotMat[diceCol]);
