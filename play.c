@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.146 2002/08/04 09:59:28 thyssen Exp $
+ * $Id: play.c,v 1.147 2002/08/05 17:49:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -257,6 +257,12 @@ extern void ApplyMoveRecord( matchstate *pms, moverecord *pmr ) {
 	pms->anDice[ 0 ] = pms->anDice[ 1 ] = 0;
 
 	if( ( n = GameStatus( pms->anBoard ) ) ) {
+
+            if( fJacoby && pms->fCubeOwner == -1 && ! pms->nMatchTo )
+              /* gammons do not count on a centred cube during money
+                 sessions under the Jacoby rule */
+                n = 1;
+
 	    pms->gs = GAME_OVER;
 	    pmgi->nPoints = pms->nCube * n;
 	    pmgi->fWinner = pmr->n.fPlayer;
