@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.197 2003/07/24 17:42:01 thyssen Exp $
+ * $Id: play.c,v 1.198 2003/07/28 14:31:43 jsegrave Exp $
  */
 
 #include "config.h"
@@ -3504,6 +3504,7 @@ extern void CommandRedouble( char *sz ) {
     pmr->mt = MOVE_DOUBLE;
     pmr->d.sz = NULL;
     pmr->d.fPlayer = ms.fTurn;
+	pmr->d.CubeDecPtr = &pmr->d.CubeDec;
     pmr->d.CubeDecPtr->esDouble.et = EVAL_NONE;
     pmr->d.st = SKILL_NONE;
     AddMoveRecord( pmr );
