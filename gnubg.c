@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.472 2003/08/25 13:00:39 jsegrave Exp $
+ * $Id: gnubg.c,v 1.473 2003/08/25 21:02:32 jsegrave Exp $
  */
 
 #include "config.h"
@@ -6858,6 +6858,7 @@ ChangeDisk( const char *szMsg, const int fChange, const char *szMissingFile ) {
 
 }
 
+
 static void real_main( void *closure, int argc, char *argv[] ) {
 
     char ch, *pch, *pchCommands = NULL, *pchGuileScript = NULL;
@@ -6951,7 +6952,6 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 	  assert (lang != 0);
 	  sprintf (lang, "LANG=%s", optarg);
 	  putenv (lang);
-	  free (lang);
 	  }
 	}
     
