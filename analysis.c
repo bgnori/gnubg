@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.86 2002/11/02 18:43:36 thyssen Exp $
+ * $Id: analysis.c,v 1.87 2002/11/02 18:47:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -1207,6 +1207,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
               "%-31s %3d                     %3d\n"
               "%-31s %3d                     %3d\n"
               "%-31s %3d                     %3d\n"
+              "%-31s %3d                     %3d\n"
               "%-31s %3d                     %3d\n",
               _("Chequerplay statistics"),
               _("Total moves"), 
@@ -1275,6 +1276,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
                 "%-31s %3d                     %3d\n"
                 "%-31s %3d                     %3d\n" 
                 "%-31s %3d                     %3d\n"
+                "%-31s %3d                     %3d\n"
                 "%-31s %3d                     %3d\n",
                 _("Rolls marked very lucky"),
 	       psc->anLuck[ 0 ][ LUCK_VERYGOOD ],
@@ -1319,7 +1321,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
         }
         else
           sprintf ( strchr ( szOutput, 0 ),
-                    "%%-23.23s ", _("n/a") );
+                    "%-23.23s ", _("n/a") );
 
       strcat ( szOutput, "\n" );
 
@@ -1455,7 +1457,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
         }
         else
           sprintf ( strchr ( szOutput, 0 ),
-                    "%%-23.23s ", _("n/a") );
+                    "%-23.23s ", _("n/a") );
 
       strcat ( szOutput, "\n" );
 
@@ -1510,7 +1512,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
         }
         else
           sprintf ( strchr ( szOutput, 0 ),
-                    "%%-23.23s ", _("n/a") );
+                    "%-23.23s ", _("n/a") );
 
       strcat ( szOutput, "\n" );
 
