@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.4 2001/07/19 15:16:19 gtw Exp $
+ * $Id: postscript.c,v 1.5 2001/08/24 15:23:26 gtw Exp $
  */
 
 #include "config.h"
@@ -877,6 +877,11 @@ static void PostScriptEpilogue( FILE *pf ) {
 static void ExportGameGeneral( int f, char *sz ) {
 
     FILE *pf;
+
+    if( !plGame ) {
+	outputl( "No game in progress (type `new game' to start one)." );
+	return;
+    }
     
     if( !sz || !*sz ) {
 	outputl( "You must specify a file to export to (see `help export"
@@ -923,6 +928,11 @@ static void ExportMatchGeneral( int f, char *sz ) {
     FILE *pf;
     list *pl;
 
+    if( !plGame ) {
+	outputl( "No game in progress (type `new game' to start one)." );
+	return;
+    }
+    
     if( !sz || !*sz ) {
 	outputl( "You must specify a file to export to (see `help export "
 		 "match postscript')." ); /* FIXME not necessarily PS */
