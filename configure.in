@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 dnl
-dnl $Id: configure.in,v 1.18 2000/10/25 14:19:12 gtw Exp $
+dnl $Id: configure.in,v 1.19 2000/10/25 18:09:07 gtw Exp $
 
 AC_INIT(gnubg.c)
 AM_INIT_AUTOMAKE(gnubg,0.02)
@@ -56,6 +56,9 @@ if test "$with_guile" = "no"; then
   no_guile=yes
 else
   AM_GUILE
+  if test "$with_guile" != ""; then
+    GUILE_LDFLAGS="$with_guile"
+  fi
 fi
 if test "$no_guile" != "yes"; then
   AC_DEFINE(USE_GUILE,1,Define if you want to use the Guile extensibility language.)
