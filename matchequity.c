@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.24 2002/04/16 16:17:35 thyssen Exp $
+* $Id: matchequity.c,v 1.25 2002/04/19 16:17:49 thyssen Exp $
 */
 
 #include <stdio.h>
@@ -1843,15 +1843,8 @@ getME ( const int nScore0, const int nScore1, const int nMatchTo,
 }
 
 
-/*
- * Invert match equity table.
- *
- * That is, set  MWC(x,y) = 1.0 -  MWC (y,x)
- *
- */
-
 extern void
-CommandInvertMatchEquityTable ( char *sz ) {
+invertMET ( void ) {
 
   int i, j;
   float r;

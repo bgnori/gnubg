@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.h,v 1.14 2002/03/28 21:11:45 thyssen Exp $
+ * $Id: matchequity.h,v 1.15 2002/04/19 16:17:50 thyssen Exp $
  */
 
 
@@ -81,6 +81,9 @@ GetPoints ( float arOutput [ 5 ], cubeinfo *pci, float arCP[ 2 ] );
 
 extern float
 GetDoublePointDeadCube ( float arOutput [ 5 ], cubeinfo *pci );
+
+extern void
+invertMET ( void );
 
 #endif
 
