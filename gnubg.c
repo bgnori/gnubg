@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.228 2002/06/15 17:40:57 thyssen Exp $
+ * $Id: gnubg.c,v 1.229 2002/06/24 16:31:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -3634,6 +3634,14 @@ extern void CommandSaveSettings( char *szParam ) {
 	     arLuckLevel[ LUCK_VERYGOOD ],
 	     arLuckLevel[ LUCK_VERYBAD ] );
     
+    fprintf ( pf,
+              "set analysis cube %s\n"
+              "set analysis luck %s\n"
+              "set analysis moves %s\n",
+              fAnalyseCube ? "on" : "off",
+              fAnalyseDice ? "on" : "off",
+              fAnalyseMove ? "on" : "off" );
+
 #if USE_GTK
     if ( fX ) {
         fputs( BoardPreferencesCommand( pwBoard, szTemp ), pf );
