@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.122 2002/03/23 13:58:46 thyssen Exp $
+ * $Id: gtkgame.c,v 1.123 2002/03/29 20:18:08 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -136,6 +136,7 @@ typedef enum _gnubgcommand {
     CMD_SET_ANALYSIS_MOVES,
     CMD_SET_ANNOTATION_ON,
     CMD_SET_APPEARANCE,
+    CMD_SET_AUTO_ANALYSIS,
     CMD_SET_AUTO_BEAROFF,
     CMD_SET_AUTO_CRAWFORD,
     CMD_SET_AUTO_GAME,
@@ -189,6 +190,7 @@ static togglecommand atc[] = {
     { &fAnalyseCube, CMD_SET_ANALYSIS_CUBE },
     { &fAnalyseDice, CMD_SET_ANALYSIS_LUCK },
     { &fAnalyseMove, CMD_SET_ANALYSIS_MOVES },
+    { &fAutoAnalysis, CMD_SET_AUTO_ANALYSIS },
     { &fAutoBearoff, CMD_SET_AUTO_BEAROFF },
     { &fAutoCrawford, CMD_SET_AUTO_CRAWFORD },
     { &fAutoGame, CMD_SET_AUTO_GAME },
@@ -246,6 +248,7 @@ static char *aszCommands[ NUM_CMDS ] = {
     "set analysis moves",
     "set annotation on",
     NULL, /* set appearance */
+    "set automatic analysis",
     "set automatic bearoff",
     "set automatic crawford",
     "set automatic game",
@@ -2085,6 +2088,8 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ "/_Settings/Appearance...", NULL, Command, CMD_SET_APPEARANCE,
 	  NULL },
 	{ "/_Settings/_Automatic", NULL, NULL, 0, "<Branch>" },
+	{ "/_Settings/_Automatic/_Analysis", NULL, Command,
+	  CMD_SET_AUTO_ANALYSIS, "<CheckItem>" },
 	{ "/_Settings/_Automatic/_Bearoff", NULL, Command,
 	  CMD_SET_AUTO_BEAROFF, "<CheckItem>" },
 	{ "/_Settings/_Automatic/_Crawford", NULL, Command,
