@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.117 2004/06/04 21:01:21 thyssen Exp $
+# $Id: credits.sh,v 1.118 2004/06/15 06:31:55 kaoru Exp $
 # 
 
 column < /dev/null || exit 0
@@ -64,7 +64,7 @@ Olivier Baur,French
 Achim Mueller,German
 Hlynur Sigurgislason,Icelandic
 Renzo Campagna,Italian
-Kaoru Takahashi,Japanese
+Yoshito Takeuchi,Japanese
 Akif Dinc,Turkish
 Dmitri I GOULIAEV,Russian
 EOF
