@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.473 2004/03/19 13:06:51 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.474 2004/03/19 18:03:47 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3306,8 +3306,15 @@ extern void RunGTK( GtkWidget *pwSplash ) {
 
 	/* Display any other windows now */
 	for (i = 0; i < NUM_WINDOWS; i++)
-		UpdateSetting(&woPanel[i].showing);
-
+	{
+		if (woPanel[i].pwWin && woPanel[i].dockable)
+		{
+			if (woPanel[i].showing)
+				gtk_widget_show_all(woPanel[i].pwWin);
+			else
+				gtk_widget_hide(woPanel[i].pwWin);
+		}
+	}
 	if (!fDisplayPanels)
 		HideAllPanels (0, 0, 0);
 
