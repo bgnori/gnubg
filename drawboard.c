@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.6 2000/01/12 21:55:03 gtw Exp $
+ * $Id: drawboard.c,v 1.7 2000/01/14 05:34:31 gtw Exp $
  */
 
 #include "config.h"
@@ -274,9 +274,8 @@ static char *FormatPoint( char *pch, int n ) {
     return pch;
 }
 
-#if 0
-/* Old (unprettified) output */
-extern char *FormatMove( char *sz, int anBoard[ 2 ][ 25 ], int anMove[ 8 ] ) {
+extern char *FormatMovePlain( char *sz, int anBoard[ 2 ][ 25 ],
+			      int anMove[ 8 ] ) {
 
     char *pch = sz;
     int i, j;
@@ -304,7 +303,6 @@ extern char *FormatMove( char *sz, int anBoard[ 2 ][ 25 ], int anMove[ 8 ] ) {
     
     return sz;
 }
-#endif
 
 static int CompareMoves( const void *p0, const void *p1 ) {
 
@@ -508,7 +506,7 @@ extern int ParseMove( char *pch, int an[ 8 ] ) {
 	
 	an[ i ] = anUser[ j ];
 
-	if( ( i & 1 ) && ( fl & ( 1 << ( j - 1 ) ) ) ) {
+	if( ( i & 1 ) && ( fl & ( 1 << ( j + 1 ) ) ) ) {
 	    /* Combined move; this destination is also the next source. */
 	    if( i == 7 ) {
 		/* Too many moves. */
