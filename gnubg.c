@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.62 2000/10/17 15:12:00 gtw Exp $
+ * $Id: gnubg.c,v 1.63 2000/10/18 12:54:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -358,12 +358,15 @@ command acDatabase[] = {
       "self-play", NULL, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acSetMET[] = {
-  {"zadeh", CommandSetMETZadeh, "Use Zadeh's match equity table",
-   NULL, NULL },
-  {"snowie", CommandNotImplemented, "Use Snowie's match equity table",
-   NULL, NULL },
-  {"woolsey", CommandNotImplemented, "Use Woolsey's match equity table",
-   NULL, NULL },
+  {"zadeh", CommandSetMETZadeh, 
+   "Use N. Zadeh's match equity table (match length <= 64)", NULL, NULL },
+  {"snowie", CommandSetMETSnowie, 
+   "Use Snowie's match equity table (match length <= 15)", NULL, NULL },
+  {"woolsey", CommandSetMETWoolsey, 
+   "Use K. Woolsey's match equity table (match length <= 15)", NULL, NULL },
+  {"jacobs", CommandSetMETJacobs, 
+   "Use J. Jacobs and W. Trice's match equity table"
+   "(match length <=25)", NULL, NULL },
   { NULL, NULL, NULL, NULL, NULL }
 }, acTop[] = {
     { "accept", CommandAccept, "Accept a cube or resignation",

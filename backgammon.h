@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.41 2000/10/17 14:08:00 thyssen Exp $
+ * $Id: backgammon.h,v 1.42 2000/10/18 12:54:12 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -256,6 +256,9 @@ extern void CommandAccept( char * ),
     CommandSetEvaluation( char * ),
     CommandSetJacoby( char * ),
     CommandSetMETZadeh( char * ),
+    CommandSetMETWoolsey( char * ),
+    CommandSetMETSnowie( char * ),
+    CommandSetMETJacobs( char * ),
     CommandSetJacoby( char * ),
     CommandSetNackgammon( char * ),
     CommandSetOutputMWC ( char * ),

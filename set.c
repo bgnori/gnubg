@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.31 2000/10/17 14:08:00 thyssen Exp $
+ * $Id: set.c,v 1.32 2000/10/18 12:54:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -1004,7 +1004,7 @@ extern void CommandSetOutputMWC( char *sz ) {
 static void SetMET( met metNew ) {
 
     static char *aszMET[] = {
-	"Zadeh", "Snowie", "Woolsey"
+      "Zadeh", "Snowie", "Woolsey", "Jacobs"
     };
     
     if( metCurrent == metNew ) {
@@ -1017,7 +1017,7 @@ static void SetMET( met metNew ) {
         InitMatchEquity ( metNew );
 
         /* FIXME: add match equity table to GTK menu 
-           UpdateSetting( &rngCurrent ); */
+           UpdateSetting( &metCurrent ); */
     }
 }
 
@@ -1026,6 +1026,30 @@ extern void
 CommandSetMETZadeh ( char *sz ) {
 
   SetMET ( MET_ZADEH );
+
+}
+
+
+extern void
+CommandSetMETWoolsey ( char *sz ) {
+
+  SetMET ( MET_WOOLSEY );
+
+}
+
+
+extern void
+CommandSetMETSnowie ( char *sz ) {
+
+  SetMET ( MET_SNOWIE );
+
+}
+
+
+extern void
+CommandSetMETJacobs ( char *sz ) {
+
+  SetMET ( MET_JACOBS );
 
 }
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.31 2000/10/17 14:08:00 thyssen Exp $
+ * $Id: show.c,v 1.32 2000/10/18 12:54:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -592,9 +592,16 @@ extern void CommandShowMatchEquityTable ( char *sz ) {
     output ( "N. Zadeh, Management Science 23, 986 (1977)\n\n" );
     break;
   case MET_SNOWIE:
-    output ( "Snowie xx, Oasya, 2000\n\n" );
+    output ( "Snowie 2.1, Oasya, 1999\n\n" );
+    break;
   case MET_WOOLSEY:
-    output ( "Kit Woolsey\n\n" );
+    output ( "K. Woolsey, How to Play Tournament Backgammon "
+             "(1993)\n\n" );
+    break;
+  case MET_JACOBS:
+    output ( "J. Jacobs & W. Trice, Can a Fish Taste Twice as Good. "
+             "(1996)\n\n" );
+    break;
   default:
     assert ( FALSE );
   }
@@ -611,7 +618,7 @@ extern void CommandShowMatchEquityTable ( char *sz ) {
     outputf ( " %3i-away ", i + 1 );
     
     for ( j = 0; j < n; j++ )
-      outputf ( " %8.4f ", GET_A1 ( i, j, aafA1 ) * 100.0 );
+      outputf ( " %8.4f ", GET_MET ( i, j, aafMET ) * 100.0 );
     output ( "\n" );
   }
   output ( "\n" );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.36 2000/10/16 15:30:35 gtw Exp $
+ * $Id: play.c,v 1.37 2000/10/18 12:54:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -909,6 +909,16 @@ extern void CommandNewMatch( char *sz ) {
 	outputl( "You must specify a valid match length (1 or longer)." );
 
 	return;
+    }
+
+    /* Check that match equity table is large enough */
+
+    if ( n > nMaxScore ) {
+
+      outputf ( "The current match equity table does not support "
+                "matches of length %i\n"
+                "(see `help set matchequitytable')\n", n );
+      return;
     }
 
     if( fTurn != -1 && fConfirm ) {
