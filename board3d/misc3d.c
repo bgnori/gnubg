@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.1.2.10 2003/07/09 10:20:57 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.1.2.11 2003/07/23 10:29:47 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -134,10 +134,13 @@ void InitGL(BoardData *bd)
 	/* Generate normal co-ords for nurbs */
 	glEnable(GL_AUTO_NORMAL);
 
-	/* Setup some 3d things */
-	BuildFont(bd);
-	setupFlag(bd);
-	shadowInit(bd);
+	if (bd)
+	{
+		/* Setup some 3d things */
+		BuildFont(bd);
+		setupFlag(bd);
+		shadowInit(bd);
+	}
 }
 
 void setMaterial(Material* pMat)
