@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.287 2002/09/01 20:56:59 thyssen Exp $
+ * $Id: gnubg.c,v 1.288 2002/09/05 17:44:13 thyssen Exp $
  */
 
 #include "config.h"
@@ -5323,6 +5323,7 @@ static void version( void ) {
 	puts( *ppch++ );
 }
 
+#ifdef HAVE_FORK
 
 static RETSIGTYPE SoundChild ( int n ) {
     
@@ -5333,6 +5334,8 @@ static RETSIGTYPE SoundChild ( int n ) {
       ;
 
 }
+
+#endif /* HAVE_FORK */
 
 static void real_main( void *closure, int argc, char *argv[] ) {
 
@@ -5640,8 +5643,12 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     }
 #endif
 
+#if HAVE_FORK
+
     /* make sure that forked children are terminated */
     PortableSignal( SIGCHLD, SoundChild, NULL, FALSE );
+
+#endif
    
     /* start-up sound */
     playSound ( SOUND_START );
