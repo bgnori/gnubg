@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.2 1999/12/19 04:34:54 gtw Exp $
+ * $Id: eval.c,v 1.3 1999/12/20 06:25:35 gtw Exp $
  */
 
 #include "config.h"
@@ -1173,7 +1173,8 @@ static void SaveMoves( movelist *pml, int cMoves, int cPip, int anMoves[],
 	if( EqualKeys( auch, pml->amMoves[ i ].auch ) ) {
 	    /* update moves, just in case cMoves or cPip has increased */
 	    for( j = 0; j < cMoves * 2; j++ )
-		pml->amMoves[ i ].anMove[ j ] = anMoves[ j ];
+		pml->amMoves[ i ].anMove[ j ] = anMoves[ j ] > -1 ?
+		    anMoves[ j ] : -1;
     
 	    if( cMoves < 4 )
 		pml->amMoves[ i ].anMove[ cMoves * 2 ] = -1;
