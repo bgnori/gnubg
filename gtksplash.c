@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.6 2003/01/22 16:16:09 gtw Exp $
+ * $Id: gtksplash.c,v 1.6.2.1 2003/07/24 19:12:06 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -60,6 +60,10 @@ CreateSplash () {
 #include "xpm/gnubg-big.xpm"
 
   pgs = (gtksplash *) g_malloc ( sizeof ( gtksplash ) );
+
+#if PROCESSING_UNITS
+  gdk_threads_enter();
+#endif
 
   pgs->pwWindow = gtk_window_new ( GTK_WINDOW_TOPLEVEL );
 #if GTK_CHECK_VERSION(2,0,0)
@@ -114,6 +118,10 @@ CreateSplash () {
   while( gtk_events_pending() )
     gtk_main_iteration();
 
+#if PROCESSING_UNITS
+  gdk_threads_leave();
+#endif
+
   return pgs->pwWindow;
 
 }
@@ -127,7 +135,15 @@ DestroySplash ( GtkWidget *pwSplash ) {
   
   USLEEP( 1000 );
 
+#if PROCESSING_UNITS
+  gdk_threads_enter();
+#endif
+
   gtk_widget_destroy ( pwSplash );
+
+#if PROCESSING_UNITS
+  gdk_threads_leave();
+#endif
 
 }
 
@@ -141,7 +157,11 @@ PushSplash ( GtkWidget *pwSplash,
 
   if ( ! pwSplash )
     return;
-  
+
+#if PROCESSING_UNITS
+  gdk_threads_enter();
+#endif
+
   pgs = gtk_object_get_data ( GTK_OBJECT ( pwSplash ),
                                          "user_data" );
 
@@ -150,6 +170,10 @@ PushSplash ( GtkWidget *pwSplash,
 
   while( gtk_events_pending() )
     gtk_main_iteration();
+
+#if PROCESSING_UNITS
+  gdk_threads_leave();
+#endif
 
   USLEEP( nMuSec );
 
