@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.239 2003/06/22 00:37:30 joseph Exp $
+ * $Id: eval.c,v 1.240 2003/06/22 15:53:49 grob Exp $
  */
 
 #include "config.h"
@@ -767,7 +767,7 @@ EvalInitialise( char *szWeights, char *szWeightsBinary,
 	    fprintf( stderr, _("%s: incorrect weights version (version %s "
                                " is required, but these weights "
                                "are %.2f)\n"), 
-                     WEIGHTS_VERSION, szWeightsBinary, r );
+                     szWeights, WEIGHTS_VERSION, r );
 	else {
 #if HAVE_MMAP
 	    struct stat st;
@@ -818,7 +818,7 @@ EvalInitialise( char *szWeights, char *szWeightsBinary,
                 fprintf( stderr, _("%s: incorrect weights version (version "
                                    "%s is required,\nbut these weights "
                                    "are %s)\n"), 
-                         WEIGHTS_VERSION, szWeights, szFileVersion );
+                         szWeights, WEIGHTS_VERSION, szFileVersion );
 	    else {
 
                 PushLocale ( "C" );
