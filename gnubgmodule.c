@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.32 2004/08/01 00:54:09 jsegrave Exp $
+ * $Id: gnubgmodule.c,v 1.33 2004/09/09 12:12:20 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -44,6 +44,7 @@
 #endif
 
 #include <stdio.h>
+#include <glib.h>
 #include "i18n.h"
 #include "backgammon.h"
 #include "eval.h"
@@ -52,6 +53,7 @@
 #include "positionid.h"
 #include "analysis.h"
 
+#undef IGNORE	// Ignore msdev define
 #define IGNORE __attribute__ ((unused))
 
 static PyObject *
@@ -2094,7 +2096,6 @@ PythonReadline( char *p ) {
 extern void
 PythonInitialise( const char *argv0, const char *szDir ) {
 
-  FILE *pf;
   char *pch;
 
   Py_SetProgramName( (char *) argv0 );

@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.48 2004/04/20 15:57:22 thyssen Exp $
+* $Id: matchequity.c,v 1.49 2004/09/09 12:12:20 Superfly_Jon Exp $
 */
 
 #include <stdio.h>
@@ -1143,11 +1143,11 @@ parseRow ( float arRow[], xmlDocPtr doc, xmlNodePtr root ) {
   for ( cur = root->xmlChildrenNode; cur; cur = cur->next ) {
 
     if ( ! strcmp ( cur->name, "me" ) ) {
-      arRow[ iCol ]  = 
-        atof ( xmlNodeListGetString ( doc, cur->xmlChildrenNode, 1 ) );
+      char* row = xmlNodeListGetString ( doc, cur->xmlChildrenNode, 1 );
+      arRow[ iCol ]  = atof(row);
+      xmlFree(row);        
 
       iCol++;
-
     }
 
   }
@@ -1187,9 +1187,11 @@ parseParameters ( list *plList, xmlDocPtr doc, xmlNodePtr root ) {
 
       pc = xmlGetProp ( cur, "name" );
       pp->szName = strdup ( pc ? pc : "" );
+      xmlFree(pc);
       
       pc = xmlNodeListGetString ( doc, cur->xmlChildrenNode, 1 );
       pp->szValue = strdup ( pc ? pc : "" );
+      xmlFree(pc);
 
       ListInsert ( plList, pp );
 
@@ -1303,15 +1305,19 @@ static void parseInfo ( metdata *pmd, xmlDocPtr doc, xmlNodePtr root ) {
     if ( ! strcmp ( cur->name, "name" ) ) {
       pc = xmlNodeListGetString ( doc, cur->xmlChildrenNode, 1 );
       pmd->mi.szName = ( pc ) ? strdup ( pc ) : NULL;
+      xmlFree(pc);
     }
     else if ( ! strcmp ( cur->name, "description" ) ) {
       pc = xmlNodeListGetString ( doc, cur->xmlChildrenNode, 1 );
       pmd->mi.szDescription = ( pc ) ? strdup ( pc ) : NULL;
+      xmlFree(pc);
     }
     else if ( ! strcmp ( cur->name, "length" ) )
-      pmd->mi.nLength =
-        atoi ( xmlNodeListGetString ( doc, cur->xmlChildrenNode, 1 ) );
-
+    {
+      char* len = xmlNodeListGetString ( doc, cur->xmlChildrenNode, 1 );
+      pmd->mi.nLength = atoi(len);
+      xmlFree(len);
+    }
   }
 
 }
@@ -1467,6 +1473,7 @@ static int readMET ( metdata *pmd, const char *szFileName,
           goto finish;
         }
 
+        xmlFree(pc);
       }
       else
         /* assume "both" */
@@ -1697,8 +1704,6 @@ calcGammonPrices ( float aafMET[ MAXSCORE ][ MAXSCORE ],
 
 
 }
-
-
 
 extern void
 InitMatchEquity ( const char *szFileName, const char *szDir ) {
