@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.14 2000/02/21 18:06:51 gtw Exp $
+ * $Id: rollout.c,v 1.15 2000/06/12 16:54:49 gtw Exp $
  */
 
 #include "config.h"
@@ -156,9 +156,8 @@ static int BasicRollout( int anBoard[ 2 ][ 25 ], float arOutput[],
 	   CLASS_BEAROFF1 ) {
 	if( QuasiRandomDice( iTurn, iGame, cGames, anDice ) < 0 )
 	    return -1;
-	
-	FindBestMove( NULL, anDice[ 0 ] + 1, anDice[ 1 ] + 1,
-		      anBoard, pec );
+
+	FindBestMove( NULL, anDice[ 0 ], anDice[ 1 ], anBoard, pec );
 
 	if( fInterrupt )
 	    return -1;
