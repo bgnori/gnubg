@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.80 2002/03/16 19:07:23 thyssen Exp $
+ * $Id: show.c,v 1.81 2002/03/23 13:58:46 thyssen Exp $
  */
 
 #include "config.h"
@@ -785,6 +785,7 @@ extern void CommandShowMatchEquityTable ( char *sz ) {
   /* Read a number n. */
 
   int n = ParseNumber ( &sz );
+  int i;
 
   /* If n > 0 write n x n match equity table,
      else if match write nMatchTo x nMatchTo table,
@@ -815,8 +816,11 @@ extern void CommandShowMatchEquityTable ( char *sz ) {
   output ( "Pre-Crawford table:\n\n" );
   writeMET ( aafMET, n, n, FALSE );
 
-  output ( "Post-Crawford table:\n\n" );
-  writeMET ( (float (*)[MAXSCORE] ) afMETPostCrawford, 1, n, TRUE );
+  for ( i = 0; i < 2; i++ ) {
+    outputf ( "Post-Crawford table for player %d (%s):\n\n",
+              i, ap[ i ].szName );
+  writeMET ( (float (*)[MAXSCORE] ) aafMETPostCrawford[ i ], 1, n, TRUE );
+  }
   
 }
 
