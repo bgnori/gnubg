@@ -12092,13 +12092,7 @@ msgstr ""
 msgid "/_Edit/Copy as/Position as ASCII"
 msgstr ""
 
-msgid "/_Navigate"
-msgstr ""
-
 msgid "/_Navigate/-"
-msgstr ""
-
-msgid "/_Navigate/Next _chequer play"
 msgstr ""
 
 msgid "/_Analyse/Distribution of rolls"
@@ -12450,7 +12444,7 @@ msgstr "Inverti la direzione di gioco"
 
 msgid ""
 " */\n"
-"/* $Id: it.po,v 1.3 2003/08/15 12:59:43 hb Exp $ */\n"
+"/* $Id: it.po,v 1.4 2003/08/15 20:03:39 jsegrave Exp $ */\n"
 "/* This file is distributed as a part of the GNU Backgammon program. */\n"
 "/* Copying and distribution of verbatim and modified versions of this file "
 "*/\n"
@@ -12831,3 +12825,37 @@ msgid ""
 "(Text Export version %d.%d)\n"
 "\n"
 msgstr ""
+
+msgid "/_Navigate"
+msgstr ""
+
+msgid "/_Navigate/Previous rol_l"
+msgstr "/_Navigate/_Lancio precedente"
+
+msgid "/_Navigate/Next _roll"
+msgstr "/_Navigate/L_ancio successivo"
+
+msgid "/_Navigate/_Previous move"
+msgstr "/_Navigate/_Mossa precedente"
+
+msgid "/_Navigate/Next _move"
+msgstr "/_Navigate/M_ossa successiva"
+
+msgid "/_Navigate/Previous chequer _play"
+msgstr "/_Navigate/_Gioco di pedina precedente"
+
+msgid "/_Navigate/Next _chequer play"
+msgstr "/_Navigate/G_ioco di pedina successivo"
+
+msgid "/_Navigate/Previous marke_d move"
+msgstr "/_Navigate/Mossa segnata _precedente"
+
+msgid "/_Navigate/Next mar_ked move"
+msgstr "/_Navigate/Mossa segnata _successiva"
+
+msgid "/_Navigate/Pre_vious game"
+msgstr "/_Navigate/Game p_recedente"
+
+msgid "/_Navigate/Next _game"
+msgstr "/_Navigate/Game s_uccessivo"
+
