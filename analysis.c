@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.105 2003/05/12 19:52:56 thyssen Exp $
+ * $Id: analysis.c,v 1.106 2003/06/06 09:26:33 thyssen Exp $
  */
 
 #include "config.h"
@@ -1639,9 +1639,10 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
                 "%-31s ", 
                 _("Equiv. Snowie error rate    ") );
 
+      n = psc->anTotalMoves[ 0 ] + psc->anTotalMoves[ 1 ];
       for ( i = 0; i < 2; ++i ) 
-        if ( ( n = psc->anTotalCube[ i ] + psc->anTotalMoves[ i ] ) ) {
-
+        if ( n ) {
+          
           sprintf ( strchr ( szOutput, 0 ),
                     ms.nMatchTo ?
                     "%+6.2f           " :
@@ -1654,9 +1655,9 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
         else
           sprintf ( strchr ( szOutput, 0 ),
                     "%-23.23s ", _("n/a") );
-
+      
       strcat ( szOutput, "\n" );
-
+      
   }
 
   for ( i = 0 ; i < 2; i++ )

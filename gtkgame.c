@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.344 2003/05/29 19:16:03 thyssen Exp $
+ * $Id: gtkgame.c,v 1.345 2003/06/06 09:26:33 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7893,18 +7893,18 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
 
   /* equivalent Snowie error rate */
 
-  if ( psc->anTotalMoves[ 0 ] + psc->anTotalCube[ 0 ] ) 
+  if ( psc->anTotalMoves[ 0 ] + psc->anTotalMoves[ 1 ] ) 
     sprintf( sz, "%+.1f", 
              -1000.0 * aaaar[ COMBINED ][ TOTAL ][ PLAYER_0 ][ NORMALISED ] / 
-             ( psc->anTotalMoves[ 0 ] + psc->anTotalCube[ 0 ] ) );
+             ( psc->anTotalMoves[ 0 ] + psc->anTotalMoves[ 1 ] ) );
   else
     strcpy ( sz, _("n/a") );
   gtk_clist_set_text( GTK_CLIST( pwStats ), ++irow, 1, sz);
 
-  if ( psc->anTotalMoves[ 1 ] + psc->anTotalCube[ 1 ] ) 
+  if ( psc->anTotalMoves[ 0 ] + psc->anTotalMoves[ 1 ] ) 
     sprintf( sz, "%+.1f", 
              -1000.0 * aaaar[ COMBINED ][ TOTAL ][ PLAYER_1 ][ NORMALISED ] / 
-             ( psc->anTotalMoves[ 1 ] + psc->anTotalCube[ 1 ] ) );
+             ( psc->anTotalMoves[ 0 ] + psc->anTotalMoves[ 1 ] ) );
   else
     strcpy ( sz, _("n/a") );
   gtk_clist_set_text( GTK_CLIST( pwStats ), irow, 2, sz);
