@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.9 2003/08/26 16:58:38 hb Exp $
+ * $Id: gtkoptions.c,v 1.10 2003/10/28 21:11:12 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -172,8 +172,10 @@ static char *aaszLang[][ 2 ] = {
     { N_("English (US)"),   "en_US" },
     { N_("French"),	    "fr_FR" },
     { N_("German"),	    "de_DE" },
+    { N_("Icelandic"),      "is_IS" },
     { N_("Italian"),	    "it_IT" },
     { N_("Japanese"),	    "ja_JA" },
+    { N_("Turkish"),        "tr_TR" },
     { NULL, NULL }
 };
 
