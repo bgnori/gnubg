@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.116 2001/04/06 13:25:28 thyssen Exp $
+ * $Id: gnubg.c,v 1.117 2001/04/06 13:38:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -375,7 +375,7 @@ command acAnnotate[] = {
       "parameters", NULL, acSetEvaluation },
     { "jacoby", CommandSetJacoby, "Set whether to use the Jacoby rule in "
       "money games", szONOFF, NULL },
-    { "met", NULL, "Select match equity table", NULL,
+    { "met", NULL, "Synonym for `set matchequitytable'", NULL,
       acSetMET },
     { "matchequitytable", NULL, "Select match equity table", NULL,
       acSetMET },
@@ -439,7 +439,7 @@ command acAnnotate[] = {
     { "matchequitytable", CommandShowMatchEquityTable, 
       "Show match equity table", szOPTVALUE, NULL },
     { "met", CommandShowMatchEquityTable, 
-      "Show match equity table", szOPTVALUE, NULL },
+      "Synonym for `show matchequitytable'", szOPTVALUE, NULL },
     { "nackgammon", CommandShowNackgammon, "Display which starting position "
       "will be used", NULL, NULL },
     { "output", CommandShowOutput, "Show how results will be formatted",
