@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.h,v 1.14 2002/10/04 19:23:37 thyssen Exp $
+ * $Id: positionid.h,v 1.15 2002/10/04 20:38:21 thyssen Exp $
  */
 
 #ifndef _POSITIONID_H_
@@ -38,6 +38,9 @@ extern int EqualBoards( int anBoard0[ 2 ][ 25 ], int anBoard1[ 2 ][ 25 ] );
 extern int 
 CheckPosition( int anBoard[ 2 ][ 25 ] );
 extern void ClosestLegalPosition( int anBoard[ 2 ][ 25 ] );
+
+extern int
+Combination ( int n, int r );
 
 extern int
 Base64( const char ch );
