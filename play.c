@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.248 2004/04/14 16:52:25 jsegrave Exp $
+ * $Id: play.c,v 1.249 2004/04/21 21:11:13 mormegil Exp $
  */
 
 #include "config.h"
@@ -2105,7 +2105,7 @@ static void AnnotateMove( skilltype st ) {
         pmr->n.stCube = st; /* fixme */
         break;
       default:
-        outputl ( _("Invalid annotation.") );
+        outputl ( _("Invalid annotation") );
         break;
       }
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.64 2004/02/04 18:02:18 uid68519 Exp $
+ * $Id: text.c,v 1.65 2004/04/21 21:11:13 mormegil Exp $
  */
 
 #include "config.h"
@@ -262,7 +262,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.64 $";
+  const char szVersion[] = "$Revision: 1.65 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -930,7 +930,7 @@ extern void CommandExportGameText( char *sz ) {
     }
     
     if( !sz || !*sz ) {
-	outputl( _("You must specify a file to export to (see `help export"
+	outputl( _("You must specify a file to export to (see `help export "
 		 "game text').") );
 	return;
     }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.158 2004/04/19 09:28:28 Superfly_Jon Exp $
+ * $Id: html.c,v 1.159 2004/04/21 21:11:13 mormegil Exp $
  */
 
 #include "config.h"
@@ -173,7 +173,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-           "/* $Id: html.c,v 1.158 2004/04/19 09:28:28 Superfly_Jon Exp $ */\n",
+           "/* $Id: html.c,v 1.159 2004/04/21 21:11:13 mormegil Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1850,7 +1850,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.158 $";
+  const char szVersion[] = "$Revision: 1.159 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1931,7 +1931,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.158 $";
+  const char szVersion[] = "$Revision: 1.159 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3506,7 +3506,7 @@ extern void CommandExportGameHtml( char *sz ) {
     }
     
     if( !sz || !*sz ) {
-	outputl( _("You must specify a file to export to (see `help export"
+	outputl( _("You must specify a file to export to (see `help export "
 		 "game html').") );
 	return;
     }

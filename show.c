@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.182 2004/04/04 08:48:23 thyssen Exp $
+ * $Id: show.c,v 1.183 2004/04/21 21:11:13 mormegil Exp $
  */
 
 #include "config.h"
@@ -785,7 +785,7 @@ extern void CommandShowMatchInfo( char *sz ) {
 	     _("unknown rating") );
 
     if( mi.nYear )
-	outputf( ", %04d-%02d-%02d\n", mi.nYear, mi.nMonth, mi.nDay );
+	outputf( _(", %04d-%02d-%02d\n"), mi.nYear, mi.nMonth, mi.nDay );
     else
 	outputc( '\n' );
 
