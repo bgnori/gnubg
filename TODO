@@ -1,4 +1,4 @@
-$Id: TODO,v 1.247 2002/07/28 14:22:45 oysteijo Exp $
+$Id: TODO,v 1.248 2002/08/01 19:30:08 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -290,7 +290,6 @@ click will both use the 'first' dice.
 ** Allow very large (128 bit+) seeds. (gary)
 ** Allow the caller of the Rollout* functions to specify a callback function
   (to replace the current hard-coded GTKRollout()/output* calls).
-** CommandSetRolloutRNG() in set.c needs to be finished. (gary)
 ** Consider making a move selection in the annotation window update the
   chequers to show that move (suggested by Peter Sochovsky).
 ** Investigate more sophisticated training techniques, e.g. real
