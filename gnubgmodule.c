@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.30 2004/05/07 14:26:20 thyssen Exp $
+ * $Id: gnubgmodule.c,v 1.31 2004/05/25 15:23:46 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2096,9 +2096,6 @@ PythonInitialise( const char *argv0, const char *szDir ) {
 
   FILE *pf;
   char *pch;
-  char scriptDir[BIG_PATH];
-  strcpy( scriptDir, ( szDir && *szDir ) ? szDir : "." );
-  strcat(scriptDir, "/scripts");
 
   Py_SetProgramName( (char *) argv0 );
   Py_Initialize();
@@ -2115,14 +2112,9 @@ PythonInitialise( const char *argv0, const char *szDir ) {
 #endif
 
   /* run gnubg.py start up script */
-
-  if ( ( pch = PathSearch( "gnubg.py", scriptDir ) ) &&
-       ( pf = fopen( pch, "r" ) ) ) {
-    PyRun_AnyFile( pf, pch );
-  }
-  if ( pch )
-    free( pch );
-
+  pch = g_strdup( "gnubg.py" );
+  CommandLoadPython( pch );
+  g_free( pch );
 }
 
 extern void

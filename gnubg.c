@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.565 2004/05/20 14:52:25 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.566 2004/05/25 15:23:39 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4887,11 +4887,22 @@ CommandLoadPython( char * sz ) {
   }
 
   pch = PathSearch( sz, NULL );
-  
-  if( ( pf = fopen( pch, "r" ) ) ) {
+  pf = fopen( pch, "r" );
+  if (!pf)
+  {	/* Couldn't find file, have a look in the scripts dir */
+    char scriptDir[BIG_PATH];
+    strcpy(scriptDir, (szDataDirectory && *szDataDirectory) ? szDataDirectory: ".");
+    strcat(scriptDir, "/scripts");
+    pch = PathSearch( sz, scriptDir);
+    pf = fopen( pch, "r" );
+  }
+
+  if (pf)
+  {
     PyRun_AnyFile( pf, pch );
     fclose( pf );
-  } else
+  }
+  else
     outputerr( sz );
 
   free( pch );
