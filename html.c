@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.60 2002/09/23 20:39:00 thyssen Exp $
+ * $Id: html.c,v 1.61 2002/09/26 13:30:20 gtw Exp $
  */
 
 #include "config.h"
@@ -550,7 +550,7 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
     printPointBBS ( pf, szImageDir, szExtension, 
                     anBoard[ 1 ][ 23 - i ],
                     anBoard[ 0 ][ i ],
-                    ! ( i % 2 ), FALSE );
+                    ( i % 2 ), FALSE );
 
   /* player 0's chequers on the bar */
 
@@ -563,7 +563,7 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
     printPointBBS ( pf, szImageDir, szExtension, 
                     anBoard[ 1 ][ 17 - i ],
                     anBoard[ 0 ][ i + 6 ],
-                    ! ( i % 2 ), FALSE );
+                    ( i % 2 ), FALSE );
 
   /* player 1 owning cube */
 
@@ -1559,7 +1559,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.60 $";
+  const char szVersion[] = "$Revision: 1.61 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
