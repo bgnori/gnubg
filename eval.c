@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.192 2002/11/27 20:05:18 thyssen Exp $
+ * $Id: eval.c,v 1.193 2002/11/27 22:38:11 gtw Exp $
  */
 
 #include "config.h"
@@ -3747,10 +3747,14 @@ static void StatusBearoff1( char *sz ) {
 static void StatusNeuralNet( neuralnet *pnn, char *szTitle, char *sz ) {
 
   sprintf( sz, _(" * %s neural network evaluator:\n"
-                 "   - version %s, %d inputs, %d hidden units, "
-                 "trained on %d positions.\n\n"),
-           szTitle, WEIGHTS_VERSION, pnn->cInput, pnn->cHidden,
-	   pnn->nTrained );
+                 "   - version %s, %d inputs, %d hidden units"),
+           szTitle, WEIGHTS_VERSION, pnn->cInput, pnn->cHidden );
+  sz = strchr( sz, 0 );
+  
+  if( pnn->nTrained > 1 )
+      sprintf( sz, _("trained on %d positions"), pnn->nTrained );
+
+  strcat( sz, ".\n\n" );
 }
 
 static void StatusRace( char *sz ) {
