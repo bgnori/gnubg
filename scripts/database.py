@@ -21,7 +21,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: database.py,v 1.11 2004/11/08 12:24:41 Superfly_Jon Exp $
+# $Id: database.py,v 1.12 2004/11/09 13:50:15 Superfly_Jon Exp $
 #
                                                                                   
 
@@ -333,7 +333,7 @@ class relational:
               "result, length, added, rating0, rating1, event, round, place, annotator, comment, date) " \
               "VALUES (%d, '%s', %d, %d, %d, %d, " + CURRENT_TIME + ", '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s) ") % \
               (match_id, key, nick_id0, nick_id1, \
-               -1, mi[ 'match-length' ],
+               mi[ 'result' ], mi[ 'match-length' ],
                self.__getKey( mi[ 'X' ], 'rating' )[0:80],
                self.__getKey( mi[ 'O' ], 'rating' )[0:80],
                self.__getKey( mi, 'event' )[0:80],
