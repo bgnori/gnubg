@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.59 2002/09/23 20:27:31 thyssen Exp $
+ * $Id: html.c,v 1.60 2002/09/23 20:39:00 thyssen Exp $
  */
 
 #include "config.h"
@@ -526,12 +526,10 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
 
   /* center cube */
 
-  if ( pms->fCubeOwner == -1 ) {
-    sprintf ( sz, "c_ce_%d", pms->nCube );
-    printImage ( pf, szImageDir, sz, szExtension, NULL );
-  }    
+  if ( pms->fCubeOwner == -1 )
+    printImage ( pf, szImageDir, "c_center", szExtension, NULL );
   else
-    printImage ( pf, szImageDir, "c_ce_0", szExtension, NULL );
+    printImage ( pf, szImageDir, "c_blank", szExtension, NULL );
 
   fputs ( "<br />\n", pf );
 
@@ -1561,7 +1559,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.59 $";
+  const char szVersion[] = "$Revision: 1.60 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
