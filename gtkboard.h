@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.27 2002/09/09 19:25:29 thyssen Exp $
+ * $Id: gtkboard.h,v 1.28 2002/09/14 16:54:38 thyssen Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -89,6 +89,8 @@ typedef struct _BoardData {
     GdkFont *cube_font;
     gboolean translucent, labels, usedicearea, permit_illegal, beep_illegal,
 	higher_die_first, playing, computer_turn, hinges;
+    gboolean show_ids;
+    gboolean show_pips;
     animation animate_computer_moves;
     int animate_speed;
     gdouble aarColour[ 2 ][ 4 ]; /* RGBA for each player */
