@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.138 2003/08/24 20:40:29 oysteijo Exp $
+ * $Id: gtkboard.c,v 1.139 2003/09/01 09:21:01 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2828,6 +2828,37 @@ extern void board_create_pixmaps( GtkWidget *board, BoardData *bd ) {
     unsigned short asRefract[ 2 ][ 6 * 3 * 6 * 3 ];
     int i, nSizeReal;
 
+#if USE_BOARD3D
+	int j;
+	double aarColourTemp[ 2 ][ 4 ];
+	double aanBoardColourTemp[4];
+	double arCubeColourTemp[4];
+	double aarDiceColourTemp[ 2 ][ 4 ];
+	double aarDiceDotColourTemp[ 2 ][ 4 ];
+
+	if (rdAppearance.fDisplayType == DT_3D)
+	{	/* As settings currently separate, copy 3d colours so 2d dialog colours are correct */
+		memcpy(aarColourTemp, rdAppearance.aarColour, sizeof(rdAppearance.aarColour));
+		memcpy(aanBoardColourTemp, rdAppearance.aanBoardColour[0], sizeof(double[4]));
+		memcpy(arCubeColourTemp, rdAppearance.arCubeColour, sizeof(rdAppearance.arCubeColour));
+		memcpy(aarDiceColourTemp, rdAppearance.aarDiceColour, sizeof(rdAppearance.aarDiceColour));
+		memcpy(aarDiceDotColourTemp, rdAppearance.aarDiceDotColour, sizeof(rdAppearance.aarDiceDotColour));
+
+		for (j = 0; j < 4; j++)
+		{
+			rdAppearance.aanBoardColour[0][j] = rdAppearance.rdBaseMat.ambientColour[j] * 0xff;
+			rdAppearance.arCubeColour[j] = rdAppearance.rdCubeMat.ambientColour[j];
+
+			for (i = 0; i < 2; i++)
+			{
+				rdAppearance.aarColour[i][j] = rdAppearance.rdChequerMat[i].ambientColour[j];
+				rdAppearance.aarDiceColour[i][j] = rdAppearance.rdDiceMat[i].ambientColour[j];
+				rdAppearance.aarDiceDotColour[i][j] = rdAppearance.rdDiceDotMat[i].ambientColour[j];
+			}
+		}
+	}
+#endif
+
     RenderImages( &rdAppearance, &bd->ri );
     nSizeReal = rdAppearance.nSize;
     rdAppearance.nSize = 3;
@@ -2854,6 +2885,16 @@ extern void board_create_pixmaps( GtkWidget *board, BoardData *bd ) {
 	gdk_draw_rgb_image( bd->appmKey[ i ], bd->gc_copy, 0, 0, 20, 20,
 			    GDK_RGB_DITHER_MAX, auch, 20 * 3 );
     }
+#if USE_BOARD3D
+	if (rdAppearance.fDisplayType == DT_3D)
+	{	/* Restore 2d chequer colour */
+		memcpy(rdAppearance.aarColour, aarColourTemp, sizeof(rdAppearance.aarColour));
+		memcpy(rdAppearance.aanBoardColour[0], aanBoardColourTemp, sizeof(double[4]));
+		memcpy(rdAppearance.arCubeColour, arCubeColourTemp, sizeof(rdAppearance.arCubeColour));
+		memcpy(rdAppearance.aarDiceColour, aarDiceColourTemp, sizeof(rdAppearance.aarDiceColour));
+		memcpy(rdAppearance.aarDiceDotColour, aarDiceDotColourTemp, sizeof(rdAppearance.aarDiceDotColour));
+	}
+#endif
 }
 
 extern void board_free_pixmaps( BoardData *bd ) {
