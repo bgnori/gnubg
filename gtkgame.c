@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.187 2002/07/21 10:42:01 thyssen Exp $
+ * $Id: gtkgame.c,v 1.188 2002/07/21 19:35:55 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4558,7 +4558,7 @@ static void HintCopy( GtkWidget *pw, movelist *pmlOrig ) {
 #endif
 
    for( i = 0; i < n; i++ )
-      strcat( szBuf, FormatMoveHint( szTemp, &ms, pml, i, TRUE ) );
+      strcat( szBuf, FormatMoveHint( szTemp, &ms, pml, i, TRUE, TRUE, TRUE ) );
 
 #ifdef WIN32   
    WinCopy( szBuf ); 

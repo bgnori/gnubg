@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.19 2002/07/04 20:04:58 thyssen Exp $
+ * $Id: postscript.c,v 1.20 2002/07/21 19:35:55 thyssen Exp $
  */
 
 #include "config.h"
@@ -810,7 +810,7 @@ static void ExportGamePostScript( FILE *pf, list *plGame ) {
 		    putc( i == pmr->n.iMove ? '*' : ' ', pf );
 		    FormatMoveHint( sz, &msExport, &pmr->n.ml, i,
 				    i != pmr->n.iMove ||
-				    i != pmr->n.ml.cMoves - 1 );
+				    i != pmr->n.ml.cMoves - 1, TRUE, TRUE );
 		    pch = strchr( sz, '\n' );
 		    *pch++ = 0;
 		    fputs( sz, pf );
