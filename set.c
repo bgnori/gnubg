@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.134 2002/10/21 21:06:08 thyssen Exp $
+ * $Id: set.c,v 1.135 2002/10/28 20:38:48 thyssen Exp $
  */
 
 #include "config.h"
@@ -1309,6 +1309,39 @@ CommandSetRolloutPlayerCubedecision ( char *sz ) {
 
     HandleCommand ( sz, acSetEvaluation );
 }
+
+extern void
+CommandSetRolloutBearoffTruncationExact ( char *sz ) {
+
+  int f = prcSet->fTruncBearoff2;
+
+  SetToggle ( "rollout bearofftruncation exact", &f, sz,
+              _("Will truncate *cubeless* rollouts when reaching"
+                " exact bearoff database"),
+              _("Will not truncate *cubeless* rollouts when reaching"
+                " exact bearoff database") );
+
+  prcSet->fTruncBearoff2 = f;
+
+}
+
+
+extern void
+CommandSetRolloutBearoffTruncationOS ( char *sz ) {
+
+  int f = prcSet->fTruncBearoff2;
+
+  SetToggle ( "rollout bearofftruncation onesided", &f, sz,
+              _("Will truncate *cubeless* rollouts when reaching"
+                " one-sided bearoff database"),
+              _("Will not truncate *cubeless* rollouts when reaching"
+                " one-sided bearoff database") );
+
+  prcSet->fTruncBearoff2 = f;
+
+
+}
+
 
 extern void CommandSetRolloutInitial( char *sz ) {
     

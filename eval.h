@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.87 2002/10/26 12:48:59 thyssen Exp $
+ * $Id: eval.h,v 1.88 2002/10/28 20:39:41 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -105,6 +105,9 @@ typedef struct _rolloutcontext {
     
   unsigned short nTruncate; /* truncation */
   unsigned int nTrials; /* number of rollouts */
+
+  unsigned int fTruncBearoff2 : 1; /* cubeless rollout: trunc at BEAROFF2 */
+  unsigned int fTruncBearoffOS: 1; /* cubeless rollout: trunc at BEAROFF_OS */
 
   rng rngRollout;
   int nSeed;
