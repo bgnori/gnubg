@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.4 2003/07/06 16:03:15 thyssen Exp $
+ * $Id: openurl.c,v 1.5 2003/07/08 20:53:42 grob Exp $
  */
 
 #include "config.h"
@@ -53,12 +53,18 @@ OpenURL( const char *szURL ) {
 
   /* FIXME: implement other browsers */
 
+#ifdef __APPLE__
+#define BROWSERCOMMAND "open %s"
+#else
+#define BROWSERCOMMAND "mozilla \"%s\""
+#endif
+
 #if GTK_CHECK_VERSION(1,3,10)
 
   gchar *pchCommand;
   GError *error = NULL;
 
-  pchCommand = g_strdup_printf( "mozilla \"%s\"", szURL );
+  pchCommand = g_strdup_printf( BROWSERCOMMAND, szURL );
 
   if ( ! g_spawn_command_line_async( pchCommand, &error ) ) {
     outputerrf( _("Error launching browser: %s\n"), error->message );
@@ -71,7 +77,7 @@ OpenURL( const char *szURL ) {
 
    
   gchar *pchCommand;
-  pchCommand = g_strdup_printf( "mozilla \"%s\"", szURL );
+  pchCommand = g_strdup_printf( BROWSERCOMMAND, szURL );
 
   if ( system( pchCommand ) < 0 ) 
      outputerr( _("Error launching browser\n") );
