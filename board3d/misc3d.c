@@ -18,15 +18,18 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.33 2004/04/15 09:34:07 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.34 2004/04/17 10:03:10 thyssen Exp $
 */
 
 #include "config.h"
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <io.h>
+#include <sys/io.h>
 #include <memory.h>
+#if HAVE_UNISTD_H
+#include <unistd.h>
+#endif
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include "inc3d.h"
