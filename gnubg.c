@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.78 2000/11/02 19:43:23 thyssen Exp $
+ * $Id: gnubg.c,v 1.79 2000/11/07 15:20:42 gtw Exp $
  */
 
 #include "config.h"
@@ -509,7 +509,8 @@ extern int ParsePosition( int an[ 2 ][ 25 ], char *sz ) {
  
     /* FIXME allow more formats */
 
-    if( !sz || !*sz ) {
+    if( !sz || !*sz || *sz == '=' ) {
+	/* FIXME '=' should use the board after a move given from "hint" */
 	memcpy( an, anBoard, sizeof( anBoard ) );
 
 	return 0;
