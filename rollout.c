@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.33 2001/05/23 15:23:50 thyssen Exp $
+ * $Id: rollout.c,v 1.34 2001/05/23 15:24:32 thyssen Exp $
  */
 
 #include "config.h"
@@ -684,7 +684,6 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
   double aarVariance[ MAX_ROLLOUT_CUBEINFO ][ NUM_ROLLOUT_OUTPUTS ];
 #endif
   
->>>>>>> 1.32
   int i, j, ici;
   int anBoardOrig[ 2 ][ 25 ];
 
