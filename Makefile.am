@@ -1,8 +1,8 @@
-## $Id: Makefile.am,v 1.73 2002/11/29 22:58:14 thyssen Exp $
+## $Id: Makefile.am,v 1.74 2002/11/29 23:09:55 thyssen Exp $
 if USE_EXT
 SUBDIRS = intl lib doc ext met po m4 xpm sounds boards
 else
-SUBDIRS = intl lib doc met po m4 xpm sounds
+SUBDIRS = intl lib doc met po m4 xpm sounds boards
 endif
 
 localedir = $(datadir)/locale
