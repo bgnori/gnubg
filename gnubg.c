@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.365 2003/01/02 21:55:19 thyssen Exp $
+ * $Id: gnubg.c,v 1.366 2003/01/02 21:55:54 thyssen Exp $
  */
 
 #include "config.h"
@@ -7260,3 +7260,4 @@ Convert ( const char *sz,
   return pchDest;
 
 }
+

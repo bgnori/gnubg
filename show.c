@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.126 2002/12/28 13:16:22 thyssen Exp $
+ * $Id: show.c,v 1.127 2003/01/02 21:56:47 thyssen Exp $
  */
 
 #include "config.h"
@@ -1706,7 +1706,8 @@ CommandShowPath ( char *sz ) {
     N_("Load and save of SGF files"),
     N_("Import of GamesGrid SGG files"),
     N_("Export of text files"),
-    N_("Loading of match equity files (.xml)")
+    N_("Loading of match equity files (.xml)"),
+    N_("Import of TrueMoneyGames TMG files"),
   };
 
   /* make GTK widget that allows editing of paths */
@@ -1721,7 +1722,7 @@ CommandShowPath ( char *sz ) {
   outputl ( _("Default and current paths "
             "for load, save, import, and export: \n") );
 
-  for ( i = 0; i <= PATH_MET; ++i ) {
+  for ( i = 0; i < NUM_PATHS; ++i ) {
 
     outputf ( "%s:\n", gettext ( aszPathNames[ i ] ) );
     if ( ! strcmp ( aaszPaths[ i ][ 0 ], "" ) )
