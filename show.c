@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.71 2001/11/02 18:10:31 gtw Exp $
+ * $Id: show.c,v 1.72 2001/11/07 16:32:39 gtw Exp $
  */
 
 #include "config.h"
@@ -333,8 +333,8 @@ static void ShowCommands( command *pc, char *szPrefix ) {
 
 	strcpy( pch, pc->sz );
 
-	if( pc->pc && pc->pc != pc ) {
-	    strcat( sz, " " );
+	if( pc->pc && pc->pc->pc != pc->pc ) {
+	    strcat( pch, " " );
 	    ShowCommands( pc->pc, sz );
 	} else
 	    outputl( sz );
