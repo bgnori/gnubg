@@ -16,17 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.2 2001/04/13 20:39:44 thyssen Exp $
+ * $Id: analysis.h,v 1.3 2001/04/14 11:57:56 thyssen Exp $
  */
 
 #ifndef _ANALYSIS_H_
 #define _ANALYSIS_H_
 
 #include "backgammon.h"
-
-extern void
-CommandShowStatistics ( char *sz );
-
 
 typedef struct _statcontext {
 
@@ -65,9 +61,24 @@ typedef struct _statcontext {
   float arErrorWrongPass [ 2 ][ 2 ];
   float arLuck[ 2 ][ 2 ];
   
-  
-
 } statcontext;
 
+typedef enum _ratingtype {
+  RAT_BEGINNER, RAT_NOVICE, RAT_INTERMEDIATE, RAT_ADVANCED,
+  RAT_EXPERT, RAT_WORLD_CLASS, RAT_EXTRA_TERRESTRIAL 
+} ratingtype;
+
+extern const char *aszRating [ RAT_EXTRA_TERRESTRIAL + 1 ];
+
+extern const float arThrsRating [ RAT_EXTRA_TERRESTRIAL + 1 ];
+
+extern int
+StatGame ( statcontext *pscStatGame, int *pfCompleteAnalysis );
+
+extern int
+StatMatch ( statcontext *pscStatMatch, int *pfCompleteAnalysis );
+
+extern ratingtype
+GetRating ( const float rError );
 
 #endif
