@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.1.2.1 2003/06/11 11:39:13 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.1.2.2 2003/06/13 08:57:09 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -138,7 +138,10 @@ int LoadTexture(Texture* texture, const char* filename)
 	unsigned char* bits;
 	bits = LoadDIBitmap(filename, &texture->width, &texture->height);
 	if (!bits)
+	{
+		g_print("Failed to load texture: %s\n", filename);
 		return 0;	/* failed to load file */
+	}
 
 	glGenTextures(1, &texture->texID);
 	glBindTexture(GL_TEXTURE_2D, texture->texID);
@@ -743,7 +746,7 @@ void updateDicePos(Path* path, DiceRotation *diceRot, float dist, float pos[3])
 	}
 }
 
-#ifdef BUILDING_LIB
+#if BUILDING_LIB
 
 #include "../renderprefs.h"
 #include "../config.h"
@@ -889,7 +892,7 @@ int idleWaveFlag(void)
 void ShowFlag3d()
 {
 	pCurBoard->flagWaved = 0;
-	if (rdAppearance.animateFlag)
+	if (rdAppearance.animateFlag && pCurBoard->resigned)
 	{
 		animStartTime = get_time();
 		setIdleFunc(idleWaveFlag);

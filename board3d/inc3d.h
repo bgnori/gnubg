@@ -18,33 +18,40 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.1.2.1 2003/06/11 11:39:13 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.1.2.2 2003/06/13 08:57:08 Superfly_Jon Exp $
 */
-
-/* Comment out next line to remove glut library (needed for debug font) */
-#define USE_GLUT_FONT
 
 /* Comment next lines to use glut, gtkglarea or gtkglext */
 #define USE_GTK 1
 #if USE_GTK
-//	#define USE_GTK2 1
-//	#define USE_GTKGLAREA
-//	#define BOARD3D 1
-	#define USE_GTKGLEXT
-#include "../config.h"
+	#define USE_GTKGLEXT 1
+	#include "../config.h"
 
-	#define BUILDING_LIB
+	#define BUILDING_LIB 1
+
+	#include <gtk/gtk.h>
+	#include "../eval.h"
 
 #else
 	#define USE_GLUT
-	#define g_print printf
+//	#define g_print printf
+	#define USE_BOARD3D 1
+
+//#define _RENDER_H_
+#define AlphaBlend ab
+#define _BEAROFF_H_
+typedef struct _bearoffcontext { int a;
+} bearoffcontext;
+
 	/* Comment out next line to switch test harness off */
 	#define TEST
-#endif
+	/* Comment out next line to remove glut library (needed for debug font) */
+	#define USE_GLUT_FONT
 
-#if USE_GTK
 	#include <gtk/gtk.h>
-	#include "eval.h"
+	#include "../eval.h"
+	#include "../renderprefs.h"
+#define g_print(a)     ((void)0)
 #endif
 
 #include "../gtkboard.h"
@@ -85,7 +92,7 @@ typedef struct _diceTest
 /* Scale textures by this amount */
 #define TEXTURE_SCALE (10.0f / base_unit)
 
-#include "..\gnubg\boardpos.h"
+#include "..\boardpos.h"
 
 #define PI 3.14159265358979323846f
 
@@ -130,6 +137,8 @@ void updatePieceOccPos(BoardData* bd);
 void updateHingeOccPos(BoardData* bd);
 void SetShadowDimness(BoardData* bd, int percent);
 double get_time();
+void getProjectedPieceDragPos(int x, int y, float pos[3]);
+void updateMovingPieceOccPos(BoardData* bd);
 
 typedef int idleFunc(void);
 

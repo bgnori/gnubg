@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.3.4.2 2003/06/11 11:44:00 Superfly_Jon Exp $
+ * $Id: renderprefs.c,v 1.3.4.3 2003/06/13 08:57:08 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -286,7 +286,7 @@ extern void RenderPreferencesParam( renderdata *prd, char *szParam,
     else if( !strncasecmp( szParam, "animateroll", c ) )
 		prd->animateRoll = toupper( *szValue ) == 'Y';
     else if( !strncasecmp( szParam, "animateflag", c ) )
-		prd->animateRoll = toupper( *szValue ) == 'Y';
+		prd->animateFlag = toupper( *szValue ) == 'Y';
     else if( !strncasecmp( szParam, "boardtype", c ) )
 		prd->fDisplayType = *szValue == '2' ? DT_2D : DT_3D;
 #endif
