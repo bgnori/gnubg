@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.116 2002/08/06 20:41:16 thyssen Exp $
+ * $Id: set.c,v 1.117 2002/08/07 18:43:22 thyssen Exp $
  */
 
 #include "config.h"
@@ -104,7 +104,7 @@ command acSetEvaluation[] = {
 };
 
 static void
-SetSeed ( const rngx, char *sz ) {
+SetSeed ( const rng rngx, char *sz ) {
     
     int n;
 
