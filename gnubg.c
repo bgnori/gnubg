@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.394 2003/03/21 16:14:04 gtw Exp $
+ * $Id: gnubg.c,v 1.395 2003/03/23 18:27:46 oysteijo Exp $
  */
 
 #include "config.h"
@@ -7537,19 +7537,19 @@ Convert ( const char *sz,
 extern void
 TextToClipboard( const char *sz ) {
 
+#if WIN32
+  WinCopy ( sz );
+#else
+  
 #if USE_GTK
   if ( fX ) {
     GTKTextToClipboard( sz );
     return;
   }
 #else
-#  if WIN32
-  WinCopy ( sz );
-#  else
   /* no clipboard: just write string */
   outputl( sz );
-#  endif
 #endif
-
+#endif
 
 }
