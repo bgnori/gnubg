@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.30 2000/08/13 21:17:54 thyssen Exp $
+ * $Id: play.c,v 1.31 2000/09/29 22:14:22 gtw Exp $
  */
 
 #include "config.h"
@@ -229,51 +229,57 @@ static int ComputerTurn( void ) {
 
 
       if ( fDisplay )
-        ShowBoard();
+	  ShowBoard();
 
-	    pmn = malloc( sizeof( *pmn ) );
-	    pmn->mt = MOVE_NORMAL;
-	    pmn->anRoll[ 0 ] = anDice[ 0 ];
-	    pmn->anRoll[ 1 ] = anDice[ 1 ];
-	    pmn->fPlayer = fTurn;
-	    ListInsert( plGame, pmn );
+      pmn = malloc( sizeof( *pmn ) );
+      pmn->mt = MOVE_NORMAL;
+      pmn->anRoll[ 0 ] = anDice[ 0 ];
+      pmn->anRoll[ 1 ] = anDice[ 1 ];
+      pmn->fPlayer = fTurn;
+      ListInsert( plGame, pmn );
       
-	    if( FindBestMove( pmn->anMove, anDice[ 0 ], anDice[ 1 ],
+      if( FindBestMove( pmn->anMove, anDice[ 0 ], anDice[ 1 ],
                         anBoardMove, &ci, &ap[ fTurn ].ec ) < 0 ) {
-        free( pmn );
-        return -1;
-	    }
-	    
-	    memcpy( anBoard, anBoardMove, sizeof( anBoardMove ) );
+	  free( pmn );
+	  return -1;
+      }
+      
+      memcpy( anBoard, anBoardMove, sizeof( anBoardMove ) );
 
       /* write move to status bar if using GTK */
 
 #ifdef USE_GTK        
       if ( fX ) {
-
-        outputnew ();
-        outputf ( "%s moves %s\n",
-                  ap [ fTurn ].szName,
-                  FormatMove( sz, anBoardMove, pmn->anMove ) );
-        outputx ();
-        
+	  
+	  outputnew ();
+	  outputf ( "%s moves %s\n",
+		    ap [ fTurn ].szName,
+		    FormatMove( sz, anBoardMove, pmn->anMove ) );
+	  outputx ();
       }
 #endif
-	    
-	    return 0;
+      
+      return 0;
     }
-
+    
   case PLAYER_PUBEVAL:
     if( fResigned == 3 ) {
-	    CommandAgree( NULL );
-	    return 0;
+	CommandAgree( NULL );
+	return 0;
     } else if( fResigned ) {
-	    CommandDecline( NULL );
-	    return 0;
+	CommandDecline( NULL );
+	return 0;
     } else if( fDoubled ) {
-	    CommandTake( NULL );
-	    return 0;
+	CommandTake( NULL );
+	return 0;
+    } else if( !anDice[ 0 ] ) {
+	if( RollDice( anDice ) < 0 )
+	    return -1;
+
+	if( fDisplay )
+	    ShowBoard();
     }
+    
     /* FIXME save move */
     return FindPubevalMove( anDice[ 0 ], anDice[ 1 ], anBoard );
 
