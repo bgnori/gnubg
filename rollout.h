@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.14 2002/01/26 19:25:38 thyssen Exp $
+ * $Id: rollout.h,v 1.15 2002/03/14 17:47:37 oysteijo Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -61,13 +61,6 @@ typedef struct _rolloutstat {
   /* FIXME: add more stuff */
 
 } rolloutstat;
-
-
-
-extern int 
-Rollout( int anBoard[ 2 ][ 25 ], char *sz, float arOutput[], float arStdDev[],
-         int nTruncate, int cGames, int fVarRedn, cubeinfo *pci,
-	 evalcontext *pec, int fInvert );
 
 extern int
 RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
