@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.147 2003/11/05 00:35:10 jsegrave Exp $
+ * $Id: analysis.c,v 1.148 2003/11/06 13:19:34 jsegrave Exp $
  */
 
 #include "config.h"
@@ -681,7 +681,7 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
 	(pms->anBoard[0][12] != 5) || (pms->anBoard[1][12] != 5) ||
 	(pms->anBoard[0][8]  != 3) || (pms->anBoard[1][8]  != 3) ||
 	(pms->anBoard[0][23] != 2) || (pms->anBoard[1][23] != 2))
-      is_initial_position = 1;
+      is_initial_position = 0;
 
     switch( pmr->mt ) {
     case MOVE_GAMEINFO:
