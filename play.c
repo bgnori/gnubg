@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.204 2003/08/14 22:25:36 joseph Exp $
+ * $Id: play.c,v 1.205 2003/08/14 23:58:38 joseph Exp $
  */
 
 #include "config.h"
@@ -770,10 +770,10 @@ extern int ComputerTurn( void ) {
 
       float rEqBefore, rEqAfter;
       const float epsilon = 1.0e-6;
-
+      const evalcontext* cec = &ap[ ms.fTurn ].esCube.ec;
+      
       ProgressStart( _("Considering resignation...") );
-      if ( GeneralEvaluationE( arOutput, ms.anBoard, &ci,
-                               &ap[ ms.fTurn ].esCube.ec ) ) {
+      if ( GeneralEvaluationE( arOutput, ms.anBoard, &ci, cec) ) {
 	  ProgressEnd();
 	  return -1;
       }
@@ -797,7 +797,7 @@ extern int ComputerTurn( void ) {
       InvertEvaluation ( arOutput );
       
       rEqAfter = Utility ( arOutput, &ci );
-      if ( ms.nMatchTo )
+      if ( ms.nMatchTo && cec->fCubeful )
         rEqAfter = eq2mwc( rEqAfter, &ci );
 
       /* printf ("equity before resignation: %.10f\n"
