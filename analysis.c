@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.29 2001/05/11 14:29:57 gtw Exp $
+ * $Id: analysis.c,v 1.30 2001/05/14 15:19:21 gtw Exp $
  */
 
 #include "config.h"
@@ -79,7 +79,8 @@ static float LuckAnalysis( int anBoard[ 2 ][ 25 ], int n0, int n1,
 		return -HUGE_VALF;
 	    
 	    SwapSides( anBoardTemp );
-	    
+
+	    /* FIXME should we use EvaluatePositionCubeful here? */
 	    if( EvaluatePosition( anBoardTemp, ar, pci, NULL ) )
 		return -HUGE_VALF;
 
@@ -502,8 +503,7 @@ AnalyzeGame ( list *plGame ) {
 	    break;
 	
 	case MOVE_RESIGN:
-	    /* FIXME how does JF do it? */
-	    /* FIXME: evaluate is resignation is OK */
+	    /* FIXME: evaluate if resignation is OK */
 	    break;
 	
 	case MOVE_GAMEINFO:
@@ -517,7 +517,8 @@ AnalyzeGame ( list *plGame ) {
 	    anScore[ 1 ] = pmr->g.anScore[ 1 ];
 	    fCrawfordLocal = pmr->g.fCrawfordGame;
 	    nMatchToLocal = pmr->g.nMatch;
-
+	    nCube = 1 << pmr->g.nAutoDoubles;
+	    
 	    if ( ! fCrawfordLocal &&
 		 ( nMatchToLocal - anScore[ 0 ] == 1 ||
 		   nMatchToLocal - anScore[ 1 ] == 1 ) )
