@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.3 2000/04/10 21:24:38 gtw Exp $
+ * $Id: makeweights.c,v 1.4 2001/01/11 21:18:57 gtw Exp $
  */
 
 #include "config.h"
@@ -42,9 +42,15 @@ extern int main( int argc, char *argv[] ) {
 #define output stdout
 #endif
     
-    if( scanf( "GNU Backgammon %15s\n", szFileVersion ) != 1 ||
-	strcmp( szFileVersion, WEIGHTS_VERSION ) ) {
-	fprintf( stderr, "%s: Invalid weights file\n", argv[ 0 ] );
+    if( scanf( "GNU Backgammon %15s\n", szFileVersion ) != 1 ) {
+	fprintf( stderr, "%s: invalid weights file\n", argv[ 0 ] );
+	return EXIT_FAILURE;
+    }
+
+    if( strcmp( szFileVersion, WEIGHTS_VERSION ) ) {
+	fprintf( stderr, "%s: incorrect weights version (version "
+		 WEIGHTS_VERSION " is required,\nbut these weights are "
+		 "%s)\n", argv[ 0 ], szFileVersion );
 	return EXIT_FAILURE;
     }
 
