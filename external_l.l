@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.l,v 1.8 2004/10/12 08:41:23 joseph Exp $
+ * $Id: external_l.l,v 1.9 2005/02/10 10:29:30 Superfly_Jon Exp $
  */
 
 #include <string.h>
@@ -34,6 +34,8 @@ void escapes(const char *cp, char *tp);
 %option noyywrap
 %option prefix="ext"
 %option nounput
+%option 7bit
+%option case-insensitive
 
 NUMSTR -?[0-9]+
 
@@ -62,7 +64,7 @@ on              { return ON; }
 no              { return OFF; }
 off             { return OFF; }
 
-board:[[:alnum:]]+:[[:alnum:]]+(:{NUMSTR})+  { 
+board:[[:alpha:]_]+:[[:alpha:]_]+(:{NUMSTR})+  { 
 			char *buf = malloc( strlen( exttext ) + 1 );
 			escapes(exttext, buf);
 			extlval.sval = buf;
