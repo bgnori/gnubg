@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.263 2004/11/24 10:23:21 Superfly_Jon Exp $
+ * $Id: play.c,v 1.264 2004/11/24 17:03:38 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1032,10 +1032,19 @@ extern int ComputerTurn( void ) {
       ProgressStart( _("Considering resignation...") );
 
       if (ms.anDice[0] > 0) {
+          float t;
           /* Opponent has rolled the dice and then resigned. We
              want to find out if the resignation is OK after the roll */
           EvaluateRoll (arOutput, ms.anDice[0], ms.anDice[1], ms.anBoard, &ci,
                         &ecResign );
+          /* Swap the equities as evaluation is for other player */
+          arOutput[OUTPUT_WIN] = 1 - arOutput[OUTPUT_WIN];
+          t = arOutput[OUTPUT_WINGAMMON];
+          arOutput[OUTPUT_WINGAMMON] = arOutput[OUTPUT_LOSEGAMMON];
+          arOutput[OUTPUT_LOSEGAMMON] = t;
+          t = arOutput[OUTPUT_WINBACKGAMMON];
+          arOutput[OUTPUT_WINBACKGAMMON] = arOutput[OUTPUT_LOSEBACKGAMMON];
+          arOutput[OUTPUT_LOSEBACKGAMMON] = t;
       } else { 
           GeneralEvaluationE( arOutput, ms.anBoard, &ci, &ecResign ) ;
       }
@@ -1044,9 +1053,6 @@ extern int ComputerTurn( void ) {
 
       getResignEquities ( arOutput, &ci, ms.fResigned,
                           &rEqBefore, &rEqAfter );
-
-      if (ms.anDice[0] > 0)
-		  rEqBefore = -rEqBefore;	/* Swap equity as move has been made */
 
       fComputerDecision = TRUE;
 
