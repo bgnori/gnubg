@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.64 2002/03/03 09:58:35 thyssen Exp $
+ * $Id: eval.h,v 1.65 2002/03/09 18:52:56 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -387,5 +387,24 @@ extern char
 
 extern cubedecision
 FindBestCubeDecision ( float arDouble[], cubeinfo *pci );
+
+extern int
+getCurrentGammonRates ( float aarRates[ 2 ][ 2 ], 
+                        float arOutput[], 
+                        int anBoard[ 2 ][ 25 ],
+                        cubeinfo *pci,
+                        evalcontext *pec );
+
+extern void
+getMoneyPoints ( float aaarPoints[ 2 ][ 7 ][ 2 ],
+                 const int fJacoby, const int fBeavers,
+                 float aarRates[ 2 ][ 2 ] );
+
+extern void
+getMatchPoints ( float aaarPoints[ 2 ][ 4 ][ 2 ],
+                 int afAutoRedouble[ 2 ],
+                 int afDead[ 2 ],
+                 cubeinfo *pci,
+                 float aarRates[ 2 ][ 2 ] );
 
 #endif
