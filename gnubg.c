@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.500 2003/10/02 09:56:34 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.501 2003/10/12 08:52:28 thyssen Exp $
  */
 
 #include "config.h"
@@ -7973,9 +7973,10 @@ swapGame ( list *plGame ) {
       /* no-op */
       break;
 
-	case MOVE_TIME:
-
-      /* no-op */
+    case MOVE_TIME:
+#if USE_TIMECONTROL
+      pmr->t.fPlayer = ! pmr->t.fPlayer;
+#endif
       break;
 
     case MOVE_SETCUBEPOS:
