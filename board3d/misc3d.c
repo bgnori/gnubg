@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.46 2005/02/07 17:45:41 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.47 2005/02/10 10:33:42 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2001,6 +2001,13 @@ void RollDice3d(BoardData *bd)
 		}
 		gtk_main();
 		ResumeInput();
+	}
+	else
+	{
+		/* Show dice on board */
+		gtk_widget_queue_draw(bd->drawing_area3d);
+		while(gtk_events_pending())
+			gtk_main_iteration();	
 	}
 }
 
