@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.198 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: set.c,v 1.199 2003/08/13 20:29:29 thyssen Exp $
  */
 
 #include "config.h"
@@ -3592,7 +3592,7 @@ extern void CommandSetTutorCube( char * sz) {
 
 extern void CommandSetTutorChequer( char * sz) {
 
-  SetToggle ( "tutor-cube", &fTutorChequer, sz,
+  SetToggle ( "tutor-chequer", &fTutorChequer, sz,
 			  _("Include advice on chequer play in tutor mode."),
 			  _("Exclude advice on chequer play from tutor mode.") );
 }
