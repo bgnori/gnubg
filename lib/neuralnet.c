@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.16 2002/04/26 17:39:47 oysteijo Exp $
+ * $Id: neuralnet.c,v 1.17 2002/04/27 06:16:23 oysteijo Exp $
  */
 
 #include "config.h"
