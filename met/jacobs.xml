@@ -14,7 +14,7 @@
      is permitted in any medium provided the copyright notice and this
      permission notice are preserved.
 
-     $Id: jacobs.xml,v 1.4 2002/03/15 20:16:41 thyssen Exp $
+     $Id: jacobs.xml,v 1.5 2002/03/23 14:01:22 thyssen Exp $
 
  -->
 
@@ -731,7 +731,7 @@
   </pre-crawford-table>      
   
 
-  <post-crawford-table type="explicit">
+  <post-crawford-table type="explicit" player="both">
 
     <row>
       <me>0.500</me>
