@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.134 2003/08/28 17:24:30 thyssen Exp $
+ * $Id: analysis.c,v 1.135 2003/08/29 15:24:00 thyssen Exp $
  */
 
 #include "config.h"
@@ -256,13 +256,13 @@ static float LuckAnalysis( int anBoard[ 2 ][ 25 ], int n0, int n1,
 
 static lucktype Luck( float r ) {
 
-    if( r >= arLuckLevel[ LUCK_VERYGOOD ] )
+    if( r > arLuckLevel[ LUCK_VERYGOOD ] )
 	return LUCK_VERYGOOD;
-    else if( r >= arLuckLevel[ LUCK_GOOD ] )
+    else if( r > arLuckLevel[ LUCK_GOOD ] )
 	return LUCK_GOOD;
-    else if( r <= -arLuckLevel[ LUCK_VERYBAD ] )
+    else if( r < -arLuckLevel[ LUCK_VERYBAD ] )
 	return LUCK_VERYBAD;
-    else if( r <= -arLuckLevel[ LUCK_BAD ] )
+    else if( r < -arLuckLevel[ LUCK_BAD ] )
 	return LUCK_BAD;
     else
 	return LUCK_NONE;
@@ -271,11 +271,11 @@ static lucktype Luck( float r ) {
 extern skilltype
 Skill( float const r )
 {
-  if( r <= -arSkillLevel[ SKILL_VERYBAD ] )
+  if( r < -arSkillLevel[ SKILL_VERYBAD ] )
     return SKILL_VERYBAD;
-  else if( r <= -arSkillLevel[ SKILL_BAD ] )
+  else if( r < -arSkillLevel[ SKILL_BAD ] )
     return SKILL_BAD;
-  else if( r <= -arSkillLevel[ SKILL_DOUBTFUL ] )
+  else if( r < -arSkillLevel[ SKILL_DOUBTFUL ] )
     return SKILL_DOUBTFUL;
   else
     return SKILL_GOOD;
