@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.34 2004/03/31 09:51:55 Superfly_Jon Exp $
+ * $Id: render.c,v 1.35 2004/04/17 21:50:35 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1150,7 +1150,7 @@ static void RenderFrameWood( renderdata *prd, unsigned char *puch,
     /* Bar */
     for( y = 0; y < s * BOARD_HEIGHT; y++ )
 	for( x = 0; x < s * BAR_WIDTH / 2; x++ ) {
-	    if( y < s && y < x && y < s * (BAR_WIDTH + 2) - x - 1 ) {
+	    if( y < s && y < x && y < s * (BAR_WIDTH / 2) - x - 1 ) {
 		rDiffuse = arDiffuse[ 3 ][ y ];
 		nSpecular = anSpecular[ 3 ][ y ];
 		rHeight = arHeight[ y ];
