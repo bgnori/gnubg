@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.196 2003/07/23 16:36:20 jsegrave Exp $
+ * $Id: play.c,v 1.197 2003/07/24 17:42:01 thyssen Exp $
  */
 
 #include "config.h"
@@ -2478,7 +2478,11 @@ static void DumpGameList(char *szOut, list *plGame) {
             sprintf( sz, _("      Resigns") );
             break;
 	case MOVE_SETDICE:
-	    /* ignore */
+	    sprintf( sz, "%d%d%-2s: %s", 
+                     pmr->sd.anDice[ 0 ],
+                     pmr->sd.anDice[ 1 ],
+                     aszLuckTypeAbbr[ pmr->n.lt ],
+                     _("Rolled") );
 	    break;
 	case MOVE_SETBOARD:
 	case MOVE_SETCUBEVAL:
