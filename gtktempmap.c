@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.5 2003/06/01 20:40:36 thyssen Exp $
+ * $Id: gtktempmap.c,v 1.6 2003/06/02 15:10:49 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -370,6 +370,8 @@ ExposeDie( GtkWidget *pw, GdkEventExpose *pev,
   int x = ( pw->allocation.width - SIZE_DIE * 7 ) / 2;
   int y = ( pw->allocation.height - SIZE_DIE * 7 ) / 2;
 
+  gdk_window_clear_area( pw->window, pev->area.x, pev->area.y,
+			 pev->area.width, pev->area.height);
   DrawDie( pw->window, ptmw->achDice, ptmw->achPips, SIZE_DIE,
            gc, x, y, ptmw->atm[ 0 ].pms->fMove, *pi + 1 );
 
