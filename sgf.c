@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.91 2004/05/07 14:27:47 thyssen Exp $
+ * $Id: sgf.c,v 1.92 2004/06/01 08:21:15 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -143,11 +143,9 @@ static list *LoadCollection( char *sz ) {
 	}
 	    
 	if( ListEmpty( plCollection ) ) {
-	    fError = FALSE; /* we always want to see this one */
 	    ErrorHandler( _("warning: no backgammon games in SGF file"), TRUE );
 	    free( plCollection );
-            PopLocale ();
-	    return NULL;
+	    plCollection = NULL;
 	}
     }
     
