@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.138 2003/03/09 08:31:36 thyssen Exp $
+ * $Id: show.c,v 1.139 2003/03/13 20:36:08 thyssen Exp $
  */
 
 #include "config.h"
@@ -1958,6 +1958,9 @@ CommandShowRolls ( char *sz ) {
 extern void
 CommandShowVariation( char *sz ) {
 
-  outputf( _("You are playing: %s\n"), aszVariations[ bgv ] );
+  if ( ms.gs != GAME_NONE )
+    outputf( _("You are plaing: %s\n"), aszVariations[ ms.bgv ] );
+
+  outputf( _("Default variation is: %s\n"), aszVariations[ bgvDefault ] );
 
 }

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.220 2003/03/03 19:20:28 thyssen Exp $
+ * $Id: eval.c,v 1.221 2003/03/13 20:33:25 thyssen Exp $
  */
 
 #include "config.h"
@@ -283,7 +283,7 @@ int fEgyptian = FALSE;
 
 /* variation of backgammon used by gnubg */
 
-bgvariation bgv = VARIATION_STANDARD;
+bgvariation bgvDefault = VARIATION_STANDARD;
 
 /* the number of chequers for the variations */
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.104 2003/03/03 19:20:29 thyssen Exp $
+ * $Id: eval.h,v 1.105 2003/03/13 20:33:29 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -282,7 +282,7 @@ typedef enum _bgvariation {
   NUM_VARIATIONS
 } bgvariation;
 
-extern bgvariation bgv;
+extern bgvariation bgvDefault;
 
 extern int anChequers[ NUM_VARIATIONS ];
 extern char *aszVariations[ NUM_VARIATIONS ];
