@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.10 2002/10/07 19:32:56 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.11 2002/10/31 20:46:43 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -560,12 +560,12 @@ CreateMoveListTools ( hintdata *phd ) {
   /* tool tips */
 
   gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwRollout,
-                         _("Rollout cube decision with current settings"),
-                         _("Rollout cube decision with current settings") );
+                         _("Rollout chequer play with current settings"),
+                         _("Rollout chequer play with current settings") );
 
   gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwEval,
-                         _("Evaluate cube decision with current settings"),
-                         _("Evaluate cube decision with current settings") );
+                         _("Evaluate chequer play with current settings"),
+                         _("Evaluate chequer play with current settings") );
 
   gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwRolloutSettings,
                          _("Modify rollout settings"),
