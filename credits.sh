@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.107 2004/03/25 20:08:31 thyssen Exp $
+# $Id: credits.sh,v 1.108 2004/03/25 21:23:26 thyssen Exp $
 # 
 
 column < /dev/null || exit 0
@@ -70,6 +70,7 @@ EOF
 cat > $credit <<EOF
 Elias Kritikos
 Misja Alma
+Christian Anthon
 Kazuaki Asai
 Eric Augustine
 Erik Barfoed
