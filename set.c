@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.201 2003/08/18 22:21:30 joseph Exp $
+ * $Id: set.c,v 1.202 2003/08/20 17:23:32 thyssen Exp $
  */
 
 #include "config.h"
@@ -4556,4 +4556,22 @@ CommandSetBearoffSconyers15x15DiskPath( char *sz ) {
   outputf( _("Path to Hugh Sconyers' full bearoff databases on disk is: %s\n"),
            szPathSconyers15x15Disk );
   
+}
+
+
+extern void
+CommandSetRatingOffset( char *sz ) {
+
+  float r = ParseReal( &sz );
+
+  if ( r < 0 ) {
+    outputl( _("Please provide a positive rating offset\n" ) );
+    return;
+  }
+
+  rRatingOffset = r;
+
+  outputf( _("The rating offset for estimating absolute ratings is: %.1f\n"),
+           rRatingOffset );
+
 }

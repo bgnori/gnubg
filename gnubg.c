@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.464 2003/08/17 08:48:31 jsegrave Exp $
+ * $Id: gnubg.c,v 1.465 2003/08/20 17:21:31 thyssen Exp $
  */
 
 #include "config.h"
@@ -212,6 +212,8 @@ int nThreadPriority = 0;
 int fCheat = FALSE;
 int afCheatRoll[ 2 ] = { 0, 0 };
 int fGotoFirstGame = FALSE;
+float rRatingOffset = 2050;
+
 
 /* Setup for Hugh Sconyers 15x15 full bearoff */
 
@@ -1645,6 +1647,9 @@ command cER = {
     { "priority", NULL, N_("Set the priority of gnubg"), NULL, acSetPriority },
     { "prompt", CommandSetPrompt, N_("Customise the prompt gnubg prints when "
       "ready for commands"), szPROMPT, NULL },
+    { "ratingoffset", CommandSetRatingOffset,
+      N_("Set rating offset used for estimating abs. rating"),
+      szVALUE, NULL },
     { "record", CommandSetRecord, N_("Set whether all games in a session are "
       "recorded"), szONOFF, &cOnOff },
     { "rng", CommandSetRNG, N_("Select the random number generator algorithm"), NULL,
@@ -5412,19 +5417,23 @@ extern void CommandSaveSettings( char *szParam ) {
 
     fprintf( pf, "set priority nice %d\n", nThreadPriority );
 
-	for (i = 0; i < 3; ++i) {
-	  fprintf ( pf, "set highlightcolour %s custom %d %d %d\n",
-				( HighlightIntensity == 2 ? "dark" :
-				  HighlightIntensity == 1 ? "medium" : "normal" ),
-				HighlightColourTable[0].rgbs[i][0], 
-				HighlightColourTable[0].rgbs[i][1], 
-				HighlightColourTable[0].rgbs[i][2]);				
-	}
-	 
-	fprintf ( pf, "set highlightcolour %s %s\n",
-			  ( HighlightIntensity == 2 ? "dark" :
-              HighlightIntensity == 1 ? "medium" : "normal" ),
-			  HighlightColour->colourname);
+    for (i = 0; i < 3; ++i) {
+      fprintf ( pf, "set highlightcolour %s custom %d %d %d\n",
+                ( HighlightIntensity == 2 ? "dark" :
+                  HighlightIntensity == 1 ? "medium" : "normal" ),
+                HighlightColourTable[0].rgbs[i][0], 
+                HighlightColourTable[0].rgbs[i][1], 
+                HighlightColourTable[0].rgbs[i][2]);				
+    }
+    
+    fprintf ( pf, "set highlightcolour %s %s\n",
+              ( HighlightIntensity == 2 ? "dark" :
+                HighlightIntensity == 1 ? "medium" : "normal" ),
+              HighlightColour->colourname);
+    
+    /* rating offset */
+    
+    fprintf( pf, "set ratingoffset %f\n", rRatingOffset );
 
     /* the end */
 

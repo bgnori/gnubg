@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.245 2003/08/16 21:35:58 joseph Exp $
+ * $Id: backgammon.h,v 1.246 2003/08/20 17:21:31 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -616,6 +616,8 @@ extern command acSetExportParameters[];
 extern command acSetGeometryValues[];
 extern command acSetHighlightIntensity[];
 
+extern float rRatingOffset;
+
 
 extern int
 InternalCommandNext(int fMarkedMoves, int n);
@@ -926,6 +928,7 @@ extern void CommandAccept( char * ),
     CommandSetPriorityNormal ( char * ),
     CommandSetPriorityTimeCritical ( char * ),
     CommandSetPrompt( char * ),
+    CommandSetRatingOffset( char * ),
     CommandSetRecord( char * ),
     CommandSetRNG( char * ),
     CommandSetRNGAnsi( char * ),
