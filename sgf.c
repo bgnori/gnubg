@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.84 2003/09/12 14:42:17 Superfly_Jon Exp $
+ * $Id: sgf.c,v 1.85 2003/09/12 17:14:02 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1299,7 +1299,7 @@ static void RestoreNode( list *pl, char *szCharset ) {
     }
 
 #if USE_TIMECONTROL
-// Compensate for mising timestamps
+    /* Compensate for mising timestamps */
     if (pmr && !(fTimeset&1))
 	pmr->a.tl[0]= ((moverecord *) (plLastMove->p))->a.tl[0];
 

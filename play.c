@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.222 2003/09/12 14:42:17 Superfly_Jon Exp $
+ * $Id: play.c,v 1.223 2003/09/12 17:14:02 jsegrave Exp $
  */
 
 #include "config.h"
@@ -411,7 +411,7 @@ printf("ApplyMoveRecord(%d, %d.%d): state:%d, turn: %d, ts0: (%d.%d), ts1: (%d.%
 #if USE_TIMECONTROL
 	pms->tvTimeleft[0] = pmr->a.tl[0];
 	pms->tvTimeleft[1] = pmr->a.tl[1];
-        // HitGameClock(pms);
+        /*  HitGameClock(pms); */
 
 #if USE_GTK
     if( fX )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.166 2003/09/12 13:35:24 steink Exp $
+ * $Id: show.c,v 1.167 2003/09/12 17:14:02 jsegrave Exp $
  */
 
 #include "config.h"
@@ -405,8 +405,8 @@ extern void CommandShowAnalysis( char *sz ) {
                ap[ i ].szName, afAnalysePlayers[ i ] ? _("yes") : _("no") );
 
     outputl( _("\nAnalysis thresholds:") );
-    outputf( //"  +%.3f %s\n"
-	     //"  +%.3f %s\n"
+    outputf( /*"  +%.3f %s\n"
+	     "  +%.3f %s\n" */
 	     "  -%.3f %s\n"
 	     "  -%.3f %s\n"
 	     "  -%.3f %s\n"

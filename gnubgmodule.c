@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.19 2003/09/08 18:44:39 hb Exp $
+ * $Id: gnubgmodule.c,v 1.20 2003/09/12 17:14:02 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1688,8 +1688,8 @@ PythonMatch(PyObject* self IGNORE, PyObject* args, PyObject* keywds)
 
   assert( g->i == 0 );
 
-  // W,X,0 
-  // B,O,1
+  /* W,X,0 
+     B,O,1 */
   {
     int side;
     for(side = 0; side < 2; ++side) {
