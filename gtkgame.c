@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.151 2002/05/29 20:25:59 thyssen Exp $
+ * $Id: gtkgame.c,v 1.152 2002/05/30 19:37:21 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -705,11 +705,12 @@ static void GameListSelectRow( GtkCList *pcl, gint y, gint x,
 	assert( pl->p );
 	if( pl == plGame->plPrev && pl->p == pmr && pmr->mt == MOVE_SETDICE )
 	    break;
+
 	if( pl->p == pmrPrev && pmr != pmrPrev ) {
-	    pmr = pmrPrev;
+	    // pmr = pmrPrev;
 	    break;
 	} else if( pl->plNext->p == pmr ) {
-	    pmr = pl->p;
+	    //pmr = pl->p;
 	    break;
 	}
     }
@@ -721,6 +722,14 @@ static void GameListSelectRow( GtkCList *pcl, gint y, gint x,
     plLastMove = pl;
     
     CalculateBoard();
+
+    if ( pmr && pmr->mt == MOVE_NORMAL ) {
+       /* roll dice */
+       ms.gs = GAME_PLAYING;
+       ms.anDice[ 0 ] = pmr->n.anRoll[ 0 ];
+       ms.anDice[ 1 ] = pmr->n.anRoll[ 1 ];
+   }
+
 
     UpdateSetting( &ms.nCube );
     UpdateSetting( &ms.fCubeOwner );
