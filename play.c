@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.244 2004/02/13 09:03:33 uid68519 Exp $
+ * $Id: play.c,v 1.245 2004/02/17 10:52:19 uid68519 Exp $
  */
 
 #include "config.h"
@@ -1786,6 +1786,9 @@ extern int NextTurn( int fPlayNext ) {
 	    fNextTurn = FALSE;
 	else
 	    return -1;
+
+	if (!plGame)
+		return -1;
 
     fComputing = TRUE;
     

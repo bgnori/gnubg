@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.23 2003/11/29 10:06:51 thyssen Exp $
+ * $Id: gnubgmodule.c,v 1.24 2004/02/17 10:52:19 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -357,6 +357,20 @@ PythonCubeInfo(PyObject* self IGNORE, PyObject* args) {
 
 
 static PyObject *
+PythonNextTurn( PyObject *self IGNORE, PyObject *args ) {
+
+  fNextTurn = TRUE;
+  while( fNextTurn ) {
+    if (NextTurn( TRUE ) == -1)
+      fNextTurn = FALSE;
+  }
+
+  return Py_None;
+
+}
+
+
+static PyObject *
 PythonEvalContext( PyObject* self IGNORE, PyObject *args ) {
 
   evalcontext ec;
@@ -391,10 +405,9 @@ PythonCommand( PyObject* self IGNORE, PyObject *args ) {
 
   PortableSignal( SIGINT, HandleInterrupt, &sh, FALSE );
   HandleCommand( sz, acTop );
-  fNextTurn = TRUE;
-  while( fNextTurn ) {
-    NextTurn( TRUE );
-  }
+
+  PythonNextTurn(0, 0);
+
   outputx();
   free( sz );
   PortableSignalRestore( SIGINT, &sh );
@@ -513,19 +526,6 @@ METPre( float aar[ MAXSCORE ][ MAXSCORE ], const int n ) {
   }
 
   return pyList;
-}
-
-
-static PyObject *
-PythonNextTurn( PyObject *self IGNORE, PyObject *args ) {
-
-  fNextTurn = TRUE;
-  while( fNextTurn ) {
-    NextTurn( TRUE );
-  }
-
-  return Py_None;
-
 }
 
 
