@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.101.2.4 2003/06/06 14:57:54 grob Exp $
+ * $Id: rollout.c,v 1.101.2.5 2003/06/07 15:27:31 grob Exp $
  */
 
 #include "config.h"
@@ -1009,6 +1009,11 @@ void * Threaded_BasicCubefulRollout (void *data)
     
     /*if (PU_DEBUG) fprintf (stderr, "# (0x%x) Starting rollout...\n", 
                            (int) pthread_self ());*/
+
+    sigset_t	sig;
+    sigemptyset (&sig);
+    sigaddset (&sig, SIGIO);
+    assert (pthread_sigmask (SIG_BLOCK, &sig, NULL) == 0);
 
     CreateThreadGlobalStorage ();
 

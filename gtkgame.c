@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.344.2.1 2003/06/06 14:57:53 grob Exp $
+ * $Id: gtkgame.c,v 1.344.2.2 2003/06/07 15:27:31 grob Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -604,6 +604,8 @@ extern void HandleXAction( void ) {
        that will cause this function to be executed again, so we will
        still process its I/O. */
     fAction = FALSE;
+    
+    gdk_threads_enter ();
 
     SuspendInput( &m );
     
@@ -614,6 +616,8 @@ extern void HandleXAction( void ) {
 	gtk_main_iteration();
 
     ResumeInput( &m );
+
+    gdk_threads_leave ();
 }
 
 /* TRUE if gnubg is automatically setting the state of a menu item. */
