@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.320 2002/10/21 20:48:12 thyssen Exp $
+ * $Id: gnubg.c,v 1.321 2002/10/21 20:58:20 thyssen Exp $
  */
 
 #include "config.h"
@@ -518,8 +518,9 @@ command cER = {
       szFILENAME, &cFilename },
     { NULL, NULL, NULL, NULL, NULL }
 }, acExportPosition[] = {
-    { "bbshtml", CommandExportPositionBBSHtml,
-      N_("Save the current position in .html format (special for BBS)"), 
+    { "gammononline", CommandExportPositionGammOnline,
+      N_("Save the current position in .html format "
+         "(special for GammonOnline)"), 
       szFILENAME, &cFilename },
     { "eps", CommandExportPositionEPS, N_("Save the current position in "
       "Encapsulated PostScript format"), szFILENAME, &cFilename },

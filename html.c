@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.71 2002/10/21 20:58:19 thyssen Exp $
+ * $Id: html.c,v 1.72 2002/10/21 21:00:52 thyssen Exp $
  */
 
 #include "config.h"
@@ -1712,7 +1712,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.71 $";
+  const char szVersion[] = "$Revision: 1.72 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1793,7 +1793,7 @@ HTMLEpilogueComment ( FILE *pf ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.71 $";
+  const char szVersion[] = "$Revision: 1.72 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -3778,7 +3778,7 @@ CommandExportPositionGammOnline ( char *sz ) {
                       getMoveNumber ( plGame, pmr ) - 1, FALSE );
 
     printHTMLBoard( pf, &ms, ms.fTurn,
-                    "http://www.gammonline.com/demo/Images/",
+                    "../Images/",
                     "gif", HTML_EXPORT_TYPE_BBS, 
                     HTML_EXPORT_CSS_INLINE );
 
