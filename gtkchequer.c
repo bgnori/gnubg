@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.25 2003/01/26 09:16:28 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.26 2003/03/31 19:12:39 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -406,12 +406,22 @@ MoveListEvalSettings ( GtkWidget *pw, void *unused ) {
 
   SetEvaluation ( NULL, 0, NULL );
 
+#if GTK_CHECK_VERSION(2,0,0)
+  /* bring the dialog holding this button to the top */
+  gtk_window_present ( GTK_WINDOW ( gtk_widget_get_toplevel( pw ) ) );
+#endif
+
 }
 
 static void
 MoveListRolloutSettings ( GtkWidget *pw, void *unused ) {
 
   SetRollouts ( NULL, 0, NULL );
+
+#if GTK_CHECK_VERSION(2,0,0)
+  /* bring the dialog holding this button to the top */
+  gtk_window_present ( GTK_WINDOW ( gtk_widget_get_toplevel( pw ) ) );
+#endif
 
 }
 
