@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.20 2002/10/04 20:38:21 thyssen Exp $
+ * $Id: positionid.c,v 1.21 2002/10/10 20:36:03 thyssen Exp $
  */
 
 #include <assert.h>
@@ -245,11 +245,11 @@ extern int PositionFromID( int anBoard[ 2 ][ 25 ], char *pchEnc ) {
   unsigned char auchKey[ 10 ], ach[ 15 ], *pch = ach, *puch = auchKey;
   int i;
 
+  memset ( ach, 0, 15 );
+
   for( i = 0; i < 14 && pchEnc[ i ]; i++ )
     pch[ i ] = Base64( pchEnc[ i ] );
 
-  pch[ i ] = 0;
-    
   for( i = 0; i < 3; i++ ) {
     *puch++ = ( pch[ 0 ] << 2 ) | ( pch[ 1 ] >> 4 );
     *puch++ = ( pch[ 1 ] << 4 ) | ( pch[ 2 ] >> 2 );

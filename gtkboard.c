@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.93 2002/10/09 19:45:16 thyssen Exp $
+ * $Id: gtkboard.c,v 1.94 2002/10/10 20:36:03 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4475,22 +4475,19 @@ static void board_realize( GtkWidget *board ) {
 
 static void board_set_position( GtkWidget *pw, BoardData *bd ) {
 
-    char sz[ 25 ]; /* "set board XXXXXXXXXXXXXX" */
+  char *sz = g_strdup_printf ( "set board %s",
+                  gtk_entry_get_text( GTK_ENTRY( bd->position_id ) ) );
+  UserCommand( sz );
+  g_free ( sz );
 
-    sprintf( sz, "set board %s", gtk_entry_get_text( GTK_ENTRY(
-	bd->position_id ) ) );
-    
-    UserCommand( sz );
 }
 
 static void board_set_matchid( GtkWidget *pw, BoardData *bd ) {
 
-  char sz[ 25 ]; /* "set board XXXXXXXXXXXXXX" */
-
-  sprintf ( sz, "set matchid %s", 
+  char *sz = g_strdup_printf ( "set matchid %s",
             gtk_entry_get_text ( GTK_ENTRY ( bd->match_id ) ) );
-
   UserCommand ( sz );
+  g_free ( sz );
 
 }
 
