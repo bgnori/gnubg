@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.228 2003/07/10 08:46:44 thyssen Exp $
+ * $Id: backgammon.h,v 1.229 2003/07/10 11:54:59 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -67,6 +67,7 @@ typedef RETSIGTYPE (*psighandler)( int );
 #define MAX_CUBE_STR "4096"
 
 #ifdef WIN32
+#include <wininet.h>
 #define BIG_PATH _MAX_PATH
 #else
 #define BIG_PATH PATH_MAX

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.427 2003/07/10 08:46:44 thyssen Exp $
+ * $Id: gnubg.c,v 1.428 2003/07/10 11:54:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -7715,6 +7715,18 @@ basename (const char *filename)
 } 
 
 #endif /* ! HAVE_BASENAME */
+
+#if ! defined(HAVE_DIRNAME) && ! defined(HAVE_LIBGEN_H)
+
+extern char *
+dirname( const char *filename ) {
+
+   int implement_me = 0;
+   assert ( implement_me );
+
+}
+
+#endif /* ! HAVE_DIRNAME */
 
 
 extern char *
