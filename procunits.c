@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: procunits.c,v 1.2.2.17 2003/07/22 17:47:39 hb Exp $
+ * $Id: procunits.c,v 1.2.2.18 2003/07/23 18:46:08 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3485,9 +3485,17 @@ static void Slave (void)
     
     /* create socket */
     listenSocket = socket (AF_INET, SOCK_STREAM, 0);
+#ifdef WIN32
+    if (listenSocket == INVALID_SOCKET) {
+#else
     if (listenSocket == -1) {
+#endif /* WIN32 */
         outputerrf ("*** RPU could not create slave socket (err=%d).\n", 
+#ifdef WIN32
+            GetLastError() );
+#else
             errno);
+#endif /* WIN32 */
         outputerr ("socket_create");
     }
     else {
