@@ -1,4 +1,4 @@
-$Id: TODO,v 1.248 2002/08/01 19:30:08 thyssen Exp $
+$Id: TODO,v 1.249 2002/08/01 19:41:55 thyssen Exp $
 
 People's names next to entries in this file mean they intend to work on that
 item soon.  Please contact them before working on related areas, to avoid
@@ -47,6 +47,8 @@ duplication of effort and to make sure our changes merge easily.
 *** Make sure analysis works with resignations.
 *** Consider a way for analysis to mark _good_ moves (e.g. moves which are
   flagged as errors at 0-ply but turn out to be correct at higher plies).
+*** Option "[X] update annotations if re-evaluated or rolled out", and
+  update annotations if option is selected.
 ** Finish saving positions and evaluations to databases.
 ** Finish supervised training, and allow people to submit training data via
   web.
