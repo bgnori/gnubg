@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.68 2004/07/16 13:53:10 thyssen Exp $
+ * $Id: text.c,v 1.69 2004/10/22 14:25:44 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -264,7 +264,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.68 $";
+  const char szVersion[] = "$Revision: 1.69 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -314,7 +314,6 @@ TextPrintCubeAnalysisTable ( FILE *pf,
   /* check if cube analysis should be printed */
 
   if ( pes->et == EVAL_NONE ) return; /* no evaluation */
-  if ( ! GetDPEq ( NULL, NULL, pci ) ) return; /* cube not available */
 
   FindCubeDecision ( arDouble, GCCCONSTAHACK aarOutput, pci );
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.162 2004/07/12 20:53:18 mormegil Exp $
+ * $Id: html.c,v 1.163 2004/10/22 14:25:44 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -173,7 +173,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-           "/* $Id: html.c,v 1.162 2004/07/12 20:53:18 mormegil Exp $ */\n",
+           "/* $Id: html.c,v 1.163 2004/10/22 14:25:44 Superfly_Jon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1853,7 +1853,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.162 $";
+  const char szVersion[] = "$Revision: 1.163 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1934,7 +1934,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.162 $";
+  const char szVersion[] = "$Revision: 1.163 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2008,7 +2008,6 @@ HTMLPrintCubeAnalysisTable ( FILE *pf,
   /* check if cube analysis should be printed */
 
   if ( pes->et == EVAL_NONE ) return; /* no evaluation */
-  if ( ! GetDPEq ( NULL, NULL, pci ) ) return; /* cube not available */
 
   cd = FindCubeDecision ( arDouble, GCCCONSTAHACK aarOutput, pci );
 

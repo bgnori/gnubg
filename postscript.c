@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.38 2004/05/07 14:27:41 thyssen Exp $
+ * $Id: postscript.c,v 1.39 2004/10/22 14:25:44 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -838,10 +838,6 @@ PrintPostScriptCubeAnalysis( FILE *pf, const matchstate *pms,
     SetCubeInfo( &ci, pms->nCube, pms->fCubeOwner, fPlayer, pms->nMatchTo,
 		 pms->anScore, pms->fCrawford, pms->fJacoby, nBeavers,
                  pms->bgv );
-    
-    if( !GetDPEq( NULL, NULL, &ci ) )
-	/* No cube action possible */
-	return;
     
     sz = OutputCubeAnalysis( aarOutput, aarStdDev, pes, &ci );
 

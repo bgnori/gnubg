@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.590 2004/10/17 22:20:02 jsegrave Exp $
+ * $Id: gnubg.c,v 1.591 2004/10/22 14:25:44 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3158,10 +3158,6 @@ DisplayCubeAnalysis( const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
     GetMatchStateCubeInfo( &ci, &ms );
     
-    if( !GetDPEq( NULL, NULL, &ci ) )
-	/* No cube action possible */
-	return;
-
     outputl( OutputCubeAnalysis( aarOutput, aarStdDev, pes, &ci ) );
 }
 
