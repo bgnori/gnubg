@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# $Id: Makefile.am,v 1.4 2002/12/27 15:14:31 thyssen Exp $
+# $Id: Makefile.am,v 1.5 2003/12/29 19:56:38 uid65656 Exp $
 SHELL = @SHELL@
 
 srcdir = @srcdir@
