@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.3.2.1 2003/08/05 07:54:13 Superfly_Jon Exp $
+ * $Id: gtktoolbar.c,v 1.3.2.2 2003/08/05 08:57:11 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -39,7 +39,7 @@
 #include "gtk-multiview.h"
 #include "i18n.h"
 #include "drawboard.h"
-
+#include "renderprefs.h"
 
 typedef struct _toolbarwidget {
 
@@ -196,7 +196,14 @@ ToolbarToggleEdit( GtkWidget *pw, toolbarwidget *ptw ) {
 static void 
 ToolbarStop( GtkWidget *pw, gpointer unused ) {
 
-    fInterrupt = TRUE;
+	fInterrupt = TRUE;
+#if USE_BOARD3D
+	if (rdAppearance.fDisplayType == DT_3D)
+	{
+	  BoardData *bd = BOARD( pwBoard )->board_data;
+		StopIdle3d(bd);
+	}
+#endif
 }
 
 

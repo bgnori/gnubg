@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.1.2.20 2003/08/03 09:27:31 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.1.2.21 2003/08/05 08:57:11 Superfly_Jon Exp $
 */
 
 #include <GL/gl.h>
@@ -56,7 +56,7 @@ gboolean idle(BoardData* bd)
 }
 
 void StopIdle3d(BoardData* bd)
-{	/* NB. Animation could have been interruptted */
+{	/* Animation has finished (or could have been interruptted) */
 	if (bd->shakingDice)
 	{
 		bd->shakingDice = 0;

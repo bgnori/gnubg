@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.126.2.15 2003/08/05 07:54:10 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.126.2.16 2003/08/05 08:57:11 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2475,6 +2475,7 @@ static gint board_set( Board *board, const gchar *board_text,
 		if (redrawNeeded)
 		{
 			board_invalidate_dice( bd );
+			board_invalidate_labels( bd );
 			board_invalidate_cube( bd );
 			board_invalidate_resign( bd );
 			board_invalidate_arrow( bd );
