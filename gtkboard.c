@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.131 2003/07/26 20:49:37 thyssen Exp $
+ * $Id: gtkboard.c,v 1.132 2003/07/26 23:25:52 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -343,6 +343,27 @@ static void board_invalidate_dice( BoardData *bd ) {
     y = bd->y_dice[ 1 ] * rdAppearance.nSize;
 
     board_invalidate_rect( bd->drawing_area, x, y, cx, cy, bd );
+}
+
+static void
+board_invalidate_labels( BoardData *bd ) {
+
+  int x, y, cx, cy;
+    
+  x = 0;
+  y = 0;
+  cx = 108 * rdAppearance.nSize;
+  cy = 3 * rdAppearance.nSize;
+
+  board_invalidate_rect( bd->drawing_area, x, y, cx, cy, bd );
+
+  x = 0;
+  y = 69 * rdAppearance.nSize;
+  cx = 108 * rdAppearance.nSize;
+  cy = 3 * rdAppearance.nSize;
+
+  board_invalidate_rect( bd->drawing_area, x, y, cx, cy, bd );
+
 }
 
 static void board_invalidate_cube( BoardData *bd ) {
@@ -2322,8 +2343,10 @@ static gint board_set( Board *board, const gchar *board_text,
     if( rdAppearance.nSize <= 0 )
 	return 0;
 
-    if( bd->turn != old_turn )
+    if( bd->turn != old_turn ) {
       board_invalidate_arrow( bd );
+      board_invalidate_labels( bd );
+    }
 
     if( bd->doubled != old_doubled || 
         bd->cube != old_cube ||

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.6 2003/07/26 20:47:43 thyssen Exp $
+ * $Id: render.h,v 1.7 2003/07/26 23:28:04 thyssen Exp $
  */
 
 #ifndef _RENDER_H_
@@ -52,6 +52,8 @@ typedef struct _renderdata {
     int fHinges; /* TRUE if hinges should be drawn */
     int fLabels; /* TRUE if point numbers should be drawn */
     int fClockwise; /* orientation for board point numbers */
+    int fDynamicLabels; /* TRUE if the point numbers are dynamic, i.e.,
+                           they adjust depending on the player on roll */
 } renderdata;
 
 typedef struct _renderimages {
@@ -61,6 +63,7 @@ typedef struct _renderimages {
     unsigned char *achResignFaces;
     unsigned short *asRefract[ 2 ];
     unsigned char *auchArrow[ 2 ];
+    unsigned char *achLabels[ 2 ];
 } renderimages;
 
 extern renderdata rdDefault;
