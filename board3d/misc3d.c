@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.37 2004/05/07 09:33:25 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.38 2004/05/13 10:25:30 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -571,6 +571,7 @@ void Set3dSettings(renderdata *prdnew, const renderdata *prd)
 	prdnew->quickDraw = prd->quickDraw;
 	prdnew->roundedEdges = prd->roundedEdges;
 	prdnew->bgInTrays = prd->bgInTrays;
+	prdnew->roundedPoints = prd->roundedPoints;
 	prdnew->shadowDarkness = prd->shadowDarkness;
 	prdnew->curveAccuracy = prd->curveAccuracy;
 	prdnew->skewFactor = prd->skewFactor;

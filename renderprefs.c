@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.16 2004/04/15 09:34:07 Superfly_Jon Exp $
+ * $Id: renderprefs.c,v 1.17 2004/05/13 10:25:29 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -519,6 +519,8 @@ extern void RenderPreferencesParam( renderdata *prd, char *szParam,
 		prd->roundedEdges = toupper( *szValue ) == 'Y';
     else if( !strncasecmp( szParam, "bgintrays", c ) )
 		prd->bgInTrays = toupper( *szValue ) == 'Y';
+    else if( !strncasecmp( szParam, "roundedpoints", c ) )
+		prd->roundedPoints = toupper( *szValue ) == 'Y';
     else if( !strncasecmp( szParam, "piecetype", c ) )
 		prd->pieceType = (PieceType)atoi(szValue);
     else if( !strncasecmp( szParam, "piecetexturetype", c ) )
@@ -675,6 +677,7 @@ extern char *RenderPreferencesCommand( renderdata *prd, char *sz ) {
 		"dicesize=%f "
 		"roundededges=%c "
 		"bgintrays=%c "
+		"roundedpoints=%c "
 		"piecetype=%d "
 		"piecetexturetype=%d "
 		"chequers3d0=%s "
@@ -730,6 +733,7 @@ extern char *RenderPreferencesCommand( renderdata *prd, char *sz ) {
 		prd->diceSize,
 		prd->roundedEdges ? 'y' : 'n',
 		prd->bgInTrays ? 'y' : 'n',
+		prd->roundedPoints ? 'y' : 'n',
 		prd->pieceType,
 		prd->pieceTextureType,
 		WriteMaterial(&prd->ChequerMat[0]),

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.18 2004/04/02 09:40:40 Superfly_Jon Exp $
+ * $Id: render.h,v 1.19 2004/05/13 10:25:29 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -143,6 +143,7 @@ typedef struct _renderdata {
 	float diceSize;	/* How big are the dice */
 	int roundedEdges;	/* Rounded board edges? */
 	int bgInTrays;	/* Rounded board edges? */
+	int roundedPoints;	/* Rounded points */
 	PieceType pieceType;	/* Different piece models */
 	PieceTextureType pieceTextureType;	/* Different piece texture types */
 	int afDieColour3d[ 2 ]; /* TRUE means same colour as chequers */
