@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.8 2002/09/18 21:12:53 gtw Exp $
+ * $Id: gtktheory.c,v 1.9 2002/09/22 18:45:18 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -323,13 +323,9 @@ TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
       if ( afAutoRedouble[ i ] )
         gtk_label_set_text ( GTK_LABEL ( ptw->aaapwMW[ i ][ 0 ][ 2 ] ),
                              _("Opp. redoubles") );
-      else if ( ! afDead[ i ] )
-        gtk_label_set_text ( GTK_LABEL ( ptw->aaapwMW[ i ][ 0 ][ 2 ] ),
-                             _("Live cube") );
       else
         gtk_label_set_text ( GTK_LABEL ( ptw->aaapwMW[ i ][ 0 ][ 2 ] ),
-                             "" );
-        
+                             _("Live cube") );
 
       for ( j = 0; j < 4; j++ ) {
 
@@ -343,6 +339,11 @@ TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
           int f = ( ( ! k ) || ( ! afDead[ i ] ) ) &&
             ! ( k && afAutoRedouble[ i ] && ! j ) &&
             ! ( k && afAutoRedouble[ i ] && j == 3 );
+
+          f = f || ( k && afAutoRedouble[ !i ] && ! j );
+
+          f = f && 
+            ( ! ci.nMatchTo || ( ci.anScore[ i ] + ci.nCube < ci.nMatchTo ) );
 
           if ( f ) {
             sprintf ( sz, "%7.3f%%", 100.0f * aaarPointsMatch[ i ][ j ][ k ] );
