@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.12 2003/11/17 20:04:27 hb Exp $
+ * $Id: gtkoptions.c,v 1.13 2003/12/01 11:02:02 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1732,7 +1732,9 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
 	       "set gui dragtargethelp %s" )
 
 #if USE_BOARD3D
-	if (rdAppearance.fDisplayType == DT_2D)
+	if (rdAppearance.fDisplayType == DT_3D)
+		updateDiceOccPos(BOARD( pwBoard )->board_data);
+	else
 #endif
 	if( GTK_WIDGET_REALIZED( pwBoard ) )
 	{
