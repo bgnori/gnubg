@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.c,v 1.7 2001/03/14 22:15:04 gtw Exp $
+ * $Id: matchequity.c,v 1.8 2001/04/04 09:03:25 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -275,9 +275,10 @@ InitMatchEquity ( met metInit ) {
     for ( i = 0; i < 15; i++ ) 
       for ( j = 0; j < 15; j++ ) 
         aafMET[ i ][ j ] = aafMETWoolsey[ i ][ j ];
-    break;
 
     InitPostCrawfordMET ();
+
+    break;
 
   case MET_JACOBS:
 
@@ -286,9 +287,10 @@ InitMatchEquity ( met metInit ) {
     for ( i = 0; i < 25; i++ ) 
       for ( j = 0; j < 25; j++ ) 
         aafMET[ i ][ j ] = aafMETJacobs[ i ][ j ];
-    break;
 
     InitPostCrawfordMET ();
+
+    break;
 
   case MET_SNOWIE:
 
@@ -297,9 +299,11 @@ InitMatchEquity ( met metInit ) {
     for ( i = 0; i < 15; i++ ) 
       for ( j = 0; j < 15; j++ ) 
         aafMET[ i ][ j ] = aafMETSnowie[ i ][ j ];
-    break;
 
     InitPostCrawfordMET ();
+
+    break;
+
 
   default:
     break;
