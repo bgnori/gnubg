@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.155 2002/12/12 22:02:32 thyssen Exp $
+ * $Id: set.c,v 1.156 2002/12/15 22:06:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -54,6 +54,7 @@
 #endif
 #include "matchequity.h"
 #include "positionid.h"
+#include "export.h"
 #include "drawboard.h"
 
 #include "i18n.h"
@@ -3690,4 +3691,20 @@ CommandSetCheat ( char *sz ) {
 
 
 
+extern void
+CommandSetPNGSize ( char *sz ) {
 
+    int n;
+    
+    if( ( n = ParseNumber( &sz ) ) < 1 || n > 20 ) {
+	outputl( _("You must specify a size between 1 and 20.") );
+	return;
+    }
+
+    nPNGSize = n;
+
+    outputf ( "Size of generated PNG images are %dx%d pixels\n",
+              n * 108, n * 72 );
+
+
+}

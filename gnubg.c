@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.351 2002/12/15 17:48:33 thyssen Exp $
+ * $Id: gnubg.c,v 1.352 2002/12/15 22:04:55 thyssen Exp $
  */
 
 #include "config.h"
@@ -407,6 +407,7 @@ static char szDICE[] = N_("<die> <die>"),
     szOPTSEED[] = N_("[seed]"),
     szOPTSIZE[] = N_("[size]"),
     szOPTVALUE[] = N_("[value]"),
+    szPATH[] = N_("<path>"),
     szPLAYER[] = N_("<player>"),
     szPLAYEROPTRATING[] = N_("<player> [rating]"),
     szPLIES[] = N_("<plies>"),
@@ -592,6 +593,10 @@ command cER = {
     { "html", CommandExportPositionHtml,
       N_("Save the current position in .html format"), 
       szFILENAME, &cFilename },
+#if HAVE_LIBPNG && USE_GTK
+    { "png", CommandExportPositionPNG, N_("Save the current position in "
+      "Portable Network Graphics (PNG) format"), szFILENAME, &cFilename },
+#endif /* HAVE_LIBPNG */
     { "pos", CommandNotImplemented, N_("Save the current position in .pos "
       "format"), szFILENAME, &cFilename },
     { "text", CommandExportPositionText,
@@ -1297,6 +1302,9 @@ command cER = {
     { "highlightcolour", CommandSetHighlight, 
       N_("Set brightness and colour for highlighting lines"),
 	  NULL, acSetHighlightIntensity},
+    { "pngsize", CommandSetPNGSize, 
+      N_("Set size of board for PNG export and HTML image export"), 
+      szVALUE, NULL },
     { "invert", NULL, N_("Invert match equity table"), NULL, acSetInvert },
     { "jacoby", CommandSetJacoby, N_("Set whether to use the Jacoby rule in "
       "money games"), szONOFF, &cOnOff },
@@ -4413,7 +4421,8 @@ extern void CommandSaveSettings( char *szParam ) {
 	     "set delay %d\n"
 #endif
 	     "set display %s\n"
-	     "set egyptian %s\n",
+	     "set egyptian %s\n"
+             "set pngsize %d\n",
 	     fClockwise ? "on" : "off", 
 			 fTutor ? "on" : "off",
 			 fTutorCube ? "on" : "off",
@@ -4427,7 +4436,8 @@ extern void CommandSaveSettings( char *szParam ) {
 #if USE_GUI
 	     nDelay,
 #endif
-	     fDisplay ? "on" : "off", fEgyptian ? "on" : "off" );
+	     fDisplay ? "on" : "off", fEgyptian ? "on" : "off",
+             nPNGSize );
 
     SaveEvalSetupSettings ( pf, "set evaluation chequerplay", &esEvalChequer );
     SaveEvalSetupSettings ( pf, "set evaluation cubedecision", &esEvalCube );

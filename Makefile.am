@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.85 2002/12/13 22:03:29 gtw Exp $
+## $Id: Makefile.am,v 1.86 2002/12/15 22:08:07 thyssen Exp $
 if USE_EXT
 SUBDIRS = intl lib doc ext met po m4 xpm sounds
 else
@@ -69,7 +69,7 @@ gnubg_SOURCES = $(COMMON_SOURCES) gtkboard.c gtkboard.h gtkgame.c gtkgame.h \
 	gtkrace.c gtkrace.h nextmarked.xpm prevmarked.xpm \
 	gtkmovefilter.c gtkmovefilter.h \
 	$(BR1_SOURCES) $(SOUND_SOURCES) $(FONT_SOURCES)
-gnubg_LDADD = @GTK_LIBS@ $(COMMON_LIBS) $(SOUND_LIBS)
+gnubg_LDADD = @GTK_LIBS@ $(COMMON_LIBS) $(SOUND_LIBS) $(PNG_LIBS)
 gnubg_DEPENDENCIES = $(COMMON_DEPS)
 else
 if USE_EXT
@@ -82,10 +82,10 @@ gnubg_LDADD = -Lext -lext @X_LIBS@ @X_PRE_LIBS@ -lXmu @X_EXTRA_LIBS@ -lX11 \
 gnubg_DEPENDENCIES = $(COMMON_DEPS) ext/libext.a
 else
 ## --- Plain
-INCLUDES = $(COMMON_INCS) $(SOUND_INCS)
+INCLUDES = $(COMMON_INCS) $(SOUND_INCS) $(PNG_LIBS)
 gnubg_SOURCES = $(COMMON_SOURCES) $(BR1_SOURCES) $(SOUND_SOURCES) \
 	$(FONT_SOURCES)
-gnubg_LDADD = $(COMMON_LIBS) $(SOUND_LIBS)
+gnubg_LDADD = $(COMMON_LIBS) $(SOUND_LIBS) $(PNG_LIBS)
 gnubg_DEPENDENCIES = $(COMMON_DEPS)
 endif
 endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.189 2002/12/12 22:01:49 thyssen Exp $
+ * $Id: backgammon.h,v 1.190 2002/12/15 22:04:15 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -566,6 +566,7 @@ extern void CommandAccept( char * ),
     CommandExportGamePostScript( char * ),
     CommandExportGameText( char * ),
     CommandExportGameEquityEvolution ( char * ),
+    CommandExportHTMLImages ( char * ),
     CommandExportMatchMat( char * ),
     CommandExportMatchHtml( char * ),
     CommandExportMatchLaTeX( char * ),
@@ -574,6 +575,7 @@ extern void CommandAccept( char * ),
     CommandExportMatchText( char * ),
     CommandExportMatchEquityEvolution ( char * ),
     CommandExportPositionEPS( char * ),
+    CommandExportPositionPNG( char * ),
     CommandExportPositionHtml( char * ),
     CommandExportPositionText( char * ),
     CommandExportPositionGammOnLine ( char * ),
@@ -726,6 +728,7 @@ extern void CommandAccept( char * ),
     CommandSetHighlightLight ( char * ),
     CommandSetHighlightMedium ( char * ),
     CommandSetHighlightColour ( char *),
+    CommandSetPNGSize ( char *),
     CommandSetInvertMatchEquityTable( char * ),
     CommandSetJacoby( char * ),
     CommandSetMatchAnnotator( char * ),
