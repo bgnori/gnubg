@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.139 2002/04/22 17:06:37 thyssen Exp $
+ * $Id: gtkgame.c,v 1.140 2002/04/25 20:33:51 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6650,6 +6650,8 @@ extern void GTKSet( void *p ) {
 	    pif, CMD_SHOW_MATCHEQUITYTABLE ), TRUE );
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
 	    pif, CMD_SHOW_ENGINE ), TRUE );
+	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
+	    pif, CMD_SWAP_PLAYERS ), !ListEmpty( &lMatch ) );
 	
 	fAutoCommand = FALSE;
     } else if( p == &ms.fCrawford )
