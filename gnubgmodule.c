@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.10 2003/08/12 02:03:24 joseph Exp $
+ * $Id: gnubgmodule.c,v 1.11 2003/08/13 11:52:27 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H

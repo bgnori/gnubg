@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.22 2003/07/08 19:19:51 grob Exp $
+ * $Id: sound.c,v 1.23 2003/08/13 11:52:28 Superfly_Jon Exp $
  */
 
 #ifdef HAVE_CONFIG_H

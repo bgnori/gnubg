@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.6 2003/07/27 12:26:57 thyssen Exp $
+ * $Id: gtkoptions.c,v 1.7 2003/08/13 11:52:28 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -42,6 +42,8 @@
 #include "drawboard.h"
 #include "matchequity.h"
 #include "format.h"
+#include "gtkboard.h"
+#include "renderprefs.h"
 
 typedef struct _optionswidget {
 
@@ -1669,6 +1671,16 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
 	       "set gui windowpositions %s" )
   CHECKUPDATE( pow->pwDragTargetHelp, fGUIDragTargetHelp,
 	       "set gui dragtargethelp %s" )
+
+#if USE_BOARD3D
+	if (rdAppearance.fDisplayType == DT_2D)
+#endif
+	if( GTK_WIDGET_REALIZED( pwBoard ) )
+	{
+		BoardData* bd = BOARD( pwBoard )->board_data;
+		board_create_pixmaps( pwBoard, bd );
+		gtk_widget_queue_draw( bd->drawing_area );
+	}
 
   if( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pow->pwAnimateNone ) )
       && animGUI != ANIMATE_NONE )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.126 2003/08/01 08:47:01 jsegrave Exp $
+ * $Id: rollout.c,v 1.127 2003/08/13 11:52:28 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -868,7 +868,7 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
   double    v, s;
   unsigned int nFirstTrial;
   evalsetup *pes;
-  rolloutcontext *prc, rcRolloutSave;
+  rolloutcontext *prc = NULL, rcRolloutSave;
   int   cGames;
   int nIsCubeless = 0;
   int nIsCubeful = 0;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.240 2003/08/11 22:57:25 joseph Exp $
+ * $Id: backgammon.h,v 1.241 2003/08/13 11:52:25 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -67,7 +67,7 @@ typedef RETSIGTYPE (*psighandler)( int );
 #define MAX_CUBE_STR "4096"
 
 #ifdef WIN32
-#include <wininet.h>
+#include <stdlib.h>
 #define BIG_PATH _MAX_PATH
 #else
 #define BIG_PATH PATH_MAX
@@ -103,6 +103,8 @@ typedef struct _monitor {
 #if USE_GTK
     int fGrab;
     int idSignal;
+#else
+	int dummy;
 #endif
 } monitor;
 
@@ -361,18 +363,6 @@ extern int fSconyers15x15DVD;
 extern char szPathSconyers15x15DVD[ BIG_PATH ];      
 extern int fSconyers15x15Disk;
 extern char szPathSconyers15x15Disk[ BIG_PATH ];      
-
-/* GUI settings. */
-#if USE_GTK
-typedef enum _animation {
-    ANIMATE_NONE, ANIMATE_BLINK, ANIMATE_SLIDE
-} animation;
-    
-extern animation animGUI;
-extern int nGUIAnimSpeed, fGUIBeep, fGUIDiceArea, fGUIHighDieFirst,
-    fGUIIllegal, fGUIShowIDs, fGUIShowPips, fGUISetWindowPos,
-    fGUIDragTargetHelp;
-#endif
 
 typedef enum _pathformat {
   PATH_EPS, PATH_GAM, PATH_HTML, PATH_LATEX, PATH_MAT, PATH_OLDMOVES,

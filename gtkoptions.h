@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.h,v 1.1 2003/07/10 09:24:38 thyssen Exp $
+ * $Id: gtkoptions.h,v 1.2 2003/08/13 11:52:28 Superfly_Jon Exp $
  */
 
 #ifndef _GTKOPTIONS_H_

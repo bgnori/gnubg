@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.7 2003/07/21 14:02:20 hb Exp $
+ * $Id: gtkmet.c,v 1.8 2003/08/13 11:52:28 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H

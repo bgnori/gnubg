@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.20 2003/08/05 21:42:36 hb Exp $
+ * $Id: gtktheory.c,v 1.21 2003/08/13 11:52:28 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H

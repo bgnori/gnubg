@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.24 2003/07/17 19:59:12 hb Exp $
+ * $Id: external.c,v 1.25 2003/08/13 11:52:27 Superfly_Jon Exp $
  */
 
 #include "config.h"

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.10 2003/07/10 08:44:16 thyssen Exp $
+ * $Id: bearoff.h,v 1.11 2003/08/13 11:52:26 Superfly_Jon Exp $
  */
 
 #ifndef _BEAROFF_H_

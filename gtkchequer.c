@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.38 2003/07/31 16:00:08 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.39 2003/08/13 11:52:27 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H

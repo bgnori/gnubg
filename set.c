@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.197 2003/08/13 06:07:23 joseph Exp $
+ * $Id: set.c,v 1.198 2003/08/13 11:52:28 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -715,12 +715,12 @@ extern void CommandSetAppearance( char *sz ) {
 	BoardPreferencesStart( pwBoard );
 #endif /* USE_GTK */
     
-    while( ParseKeyValue( &sz, apch ) )
-	RenderPreferencesParam( &rdAppearance, apch[ 0 ], apch[ 1 ] );
+	while( ParseKeyValue( &sz, apch ) )
+		RenderPreferencesParam( &rdAppearance, apch[ 0 ], apch[ 1 ] );
 
 #if USE_GTK
-    if( fX )
-	BoardPreferencesDone( pwBoard );	    
+	if( fX )
+		BoardPreferencesDone( pwBoard );	    
 #endif /* USE_GTK */
 }
 

@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.3 2003/07/26 15:20:56 thyssen Exp $
+ * $Id: gtktoolbar.c,v 1.4 2003/08/13 11:52:28 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -39,7 +39,7 @@
 #include "gtk-multiview.h"
 #include "i18n.h"
 #include "drawboard.h"
-
+#include "renderprefs.h"
 
 typedef struct _toolbarwidget {
 
@@ -196,7 +196,14 @@ ToolbarToggleEdit( GtkWidget *pw, toolbarwidget *ptw ) {
 static void 
 ToolbarStop( GtkWidget *pw, gpointer unused ) {
 
-    fInterrupt = TRUE;
+	fInterrupt = TRUE;
+#if USE_BOARD3D
+	if (rdAppearance.fDisplayType == DT_3D)
+	{
+	  BoardData *bd = BOARD( pwBoard )->board_data;
+		StopIdle3d(bd);
+	}
+#endif
 }
 
 
@@ -224,7 +231,7 @@ ToolbarIsEditing( GtkWidget *pwToolbar ) {
 extern toolbarcontrol
 ToolbarUpdate ( GtkWidget *pwToolbar,
                 const matchstate *pms,
-                const int anDice[ 2 ],
+                const DiceShown diceShown,
                 const int fComputerTurn,
                 const int fPlaying ) {
 
@@ -236,7 +243,7 @@ ToolbarUpdate ( GtkWidget *pwToolbar,
 
   c = C_NONE;
 
-  if( ! anDice[ 0 ] )
+  if ( diceShown == DICE_BELOW_BOARD )
     c = C_ROLLDOUBLE;
 
   if( pms->fDoubled )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.h,v 1.1 2002/12/23 17:55:01 gtw Exp $
+ * $Id: gtkcolour.h,v 1.2 2003/08/13 11:52:27 Superfly_Jon Exp $
  */
 
 #ifndef _GTKCOLOUR_H_
@@ -25,6 +25,24 @@
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
+
+#if USE_BOARD3D
+#include "render.h"
+
+#define DF_VARIABLE_OPACITY 1
+#define DF_NO_ALPHA 2
+#define DF_FULL_ALPHA 4
+
+typedef struct UpdateDetails_T
+{
+	Material* pMat;
+	GdkPixmap* pixmap;
+	GtkWidget* preview;
+	GtkWidget** parentPreview;
+	int opacity;
+	TextureType texture;
+} UpdateDetails;
+#endif
 
 #define GTK_TYPE_COLOUR_PICKER (gtk_colour_picker_get_type())
 #define GTK_COLOUR_PICKER(obj) (GTK_CHECK_CAST((obj), GTK_TYPE_COLOUR_PICKER, \

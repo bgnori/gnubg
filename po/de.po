@@ -8528,7 +8528,7 @@ msgstr ""
 #: html.c:169
 msgid ""
 " */\n"
-"/* $Id: de.po,v 1.28 2003/08/05 05:50:54 ace Exp $ */\n"
+"/* $Id: de.po,v 1.29 2003/08/13 11:52:29 Superfly_Jon Exp $ */\n"
 "/* This file is distributed as a part of the GNU Backgammon program. */\n"
 "/* Copying and distribution of verbatim and modified versions of this file "
 "*/\n"
