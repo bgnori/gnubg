@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.50 2002/02/11 19:32:11 thyssen Exp $
+ * $Id: analysis.c,v 1.51 2002/03/22 15:23:49 gtw Exp $
  */
 
 #include "config.h"
@@ -1271,7 +1271,7 @@ CommandShowStatisticsMatch ( char *sz ) {
 
 #if USE_GTK
     if ( fX ) {
-	GTKDumpStatcontext ( &scMatch, "Statistics for all games" );
+	GTKDumpStatcontext ( &scMatch, &ms, "Statistics for all games" );
 	return;
     }
 #endif
@@ -1306,7 +1306,7 @@ CommandShowStatisticsGame ( char *sz ) {
     
 #if USE_GTK
     if ( fX ) {
-	GTKDumpStatcontext ( &pmgi->sc, "Statistics for current game" );
+	GTKDumpStatcontext ( &pmgi->sc, &ms, "Statistics for current game" );
 	return;
     }
 #endif
