@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.83 2000/11/17 15:44:08 gtw Exp $
+ * $Id: gnubg.c,v 1.84 2000/11/21 17:56:32 gtw Exp $
  */
 
 #include "config.h"
@@ -1065,8 +1065,8 @@ extern void ShowBoard( void ) {
 		if( cch > 20 )
 		    cch = 20;
 		
-		sprintf( szCube, "%*s (Cube: %d)", cch,
-			 ap[ fCubeOwner ].szName, nCube );
+		sprintf( szCube, "%c: %*s (Cube: %d)", fCubeOwner ? 'X' : 'O',
+			 cch, ap[ fCubeOwner ].szName, nCube );
 
 		apch[ fCubeOwner ? 6 : 0 ] = szCube;
 	    }
