@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.5 2002/06/15 17:14:58 thyssen Exp $
+ * $Id: export.h,v 1.6 2002/07/21 19:33:57 thyssen Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -71,5 +71,41 @@ getMoveNumber ( const list *plGame, const void *p );
 
 extern char *
 HTMLFilename ( const char *szBase, const int iGame );
+
+/* misc. output routines used by text and HTML export */
+
+extern char *
+OutputPercents ( const float ar[], const int f );
+
+extern char *
+OutputPercent ( const float r );
+
+extern char *
+OutputMWC ( const float r, const cubeinfo *pci, const int f );
+
+extern char *
+OutputEquity ( const float r, const cubeinfo *pci, const int f );
+
+extern char *
+OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc );
+
+extern char *
+OutputEvalContext ( const evalcontext *pec, const int fChequer );
+
+extern char *
+OutputEquityDiff ( const float r1, const float r2, const cubeinfo *pci );
+
+extern char *
+OutputEquityScale ( const float r, const cubeinfo *pci, 
+                    const cubeinfo *pciBase, const int f );
+
+extern char *
+OutputRolloutResult ( const char *szIndent,
+                      char asz[][ 1024 ],
+                      float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
+                      float aarStdDev[][ NUM_ROLLOUT_OUTPUTS ],
+                      const cubeinfo aci[],
+                      const int cci,
+                      const int fCubeful );
 
 #endif
