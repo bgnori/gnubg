@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.31 2004/02/12 10:31:27 uid68519 Exp $
+ * $Id: positionid.c,v 1.32 2004/06/27 11:22:47 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -208,7 +208,11 @@ PositionFromKey(int anBoard[2][25], const unsigned char* pauch)
     
     for(k = 0; k < 8; ++k) {
       if( (cur & 0x1) ) {
-	++anBoard[i][j];
+        if (i >= 2 || j >= 25)
+        {	/* Error, so return - will probably show error message */
+          return;
+        }
+        ++anBoard[i][j];
       } else {
 	if( ++j == 25 ) {
 	  ++i;
