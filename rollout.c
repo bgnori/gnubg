@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.102 2003/06/23 21:46:52 jsegrave Exp $
+ * $Id: rollout.c,v 1.103 2003/06/27 18:43:25 thyssen Exp $
  */
 
 #include "config.h"
@@ -540,6 +540,11 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
           for ( i = 0; i < 6; i++ )
             for ( j = 0; j <= i; j++ ) {
 
+              if ( prc->fInitial && ! iTurn && j == i )
+                /* no doubles possible for first roll when rolling
+                   out as initial position */
+                continue;
+
               memcpy ( &aaanBoard[ i ][ j ][ 0 ][ 0 ], 
                        &aanBoard[ ici ][ 0 ][ 0 ],
                        2 * 25 * sizeof ( int )  );
@@ -570,8 +575,13 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
             }
 
-          for ( i = 0; i < NUM_ROLLOUT_OUTPUTS; i++ )
-            arMean[ i ] /= 36.0f;
+          if ( prc->fInitial && ! iTurn && j == i )
+            /* no doubles ... */
+            for ( i = 0; i < NUM_ROLLOUT_OUTPUTS; i++ )
+              arMean[ i ] /= 30.0f;
+          else
+            for ( i = 0; i < NUM_ROLLOUT_OUTPUTS; i++ )
+              arMean[ i ] /= 36.0f;
 
           /* Find best move */
 
