@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.254 2004/06/26 15:00:52 thyssen Exp $
+ * $Id: play.c,v 1.255 2004/06/26 15:11:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -1028,7 +1028,8 @@ extern int ComputerTurn( void ) {
       if (ms.anDice[0] > 0) {
           /* Opponent has rolled the dice and then resigned. We
              want to find out if the resignation is OK after the roll */
-          EvaluateRoll (arOutput, ms.anDice[0], ms.anDice[1], ms.anBoard, &ci, NULL);
+          EvaluateRoll (arOutput, ms.anDice[0], ms.anDice[1], ms.anBoard, &ci,
+                        &ecResign );
       } else { 
           GeneralEvaluationE( arOutput, ms.anBoard, &ci, &ecResign ) ;
       }
