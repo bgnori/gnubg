@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.189 2003/05/24 10:24:49 hb Exp $
+ * $Id: play.c,v 1.190 2003/06/06 10:23:08 thyssen Exp $
  */
 
 #include "config.h"
@@ -3858,6 +3858,12 @@ SetMatchID ( const char *szMatchID ) {
                      szMatchID ) < 0 ) {
 
     outputf( _("Illegal match ID '%s'\n"), szMatchID );
+    outputf( _("Dice %d %d, player on roll %d (turn %d), resigned %d,\n"
+               "doubled %d, cube owner %d, crawford game %d,\n"
+               "match length %d, score %d-%d, cube %d, game state %d\n"),
+             anDice[ 0 ], anDice[ 1 ], fMove, fTurn, fResigned, fDoubled,
+             fCubeOwner, fCrawford, nMatchTo, anScore[ 0 ], anScore[ 1 ],
+             nCube, (int) gs );
     outputx();
     return;
 

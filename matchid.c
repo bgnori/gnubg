@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.c,v 1.5 2003/05/15 17:14:16 thyssen Exp $
+ * $Id: matchid.c,v 1.6 2003/06/06 10:23:08 thyssen Exp $
  */
 
 #include <assert.h>
@@ -222,6 +222,12 @@ MatchFromKey ( int anDice[ 2 ],
     if ( anScore[ 0 ] < 0 || anScore[ 0 ] > *pnMatchTo )
       return -1;
     if ( anScore[ 1 ] < 0 || anScore[ 1 ] > *pnMatchTo )
+      return -1;
+  }
+  else {
+    /* money game */
+    if ( *pfCrawford )
+      /* no Crawford game in money play */
       return -1;
   }
 
