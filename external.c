@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.36 2004/02/04 18:02:17 uid68519 Exp $
+ * $Id: external.c,v 1.37 2004/02/12 11:57:13 uid68519 Exp $
  */
 
 #include "config.h"
@@ -604,7 +604,7 @@ extern void CommandExternal( char *sz ) {
 	return;
       }
       
-      while( ( hPeer = accept( h, &saRemote, &saLen ) ) < 0 ) {
+      while( ( hPeer = accept( h, (struct sockaddr*)&saRemote, &saLen ) ) < 0 ) {
 	if( errno == EINTR ) {
           if( fAction )
             fnAction();
