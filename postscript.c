@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.16 2002/05/22 17:48:30 thyssen Exp $
+ * $Id: postscript.c,v 1.17 2002/06/01 17:38:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -33,6 +33,7 @@
 #include "backgammon.h"
 #include "drawboard.h"
 #include "positionid.h"
+#include "i18n.h"
 
 typedef enum _font { FONT_NONE, FONT_RM, FONT_SF, FONT_TT } font;
 static char *aszFont[ FONT_TT + 1 ] = { NULL, "rm", "sf", "tt" };
@@ -489,7 +490,7 @@ static void PrintPostScriptBoard( FILE *pf, matchstate *pms, int fPlayer ) {
     if( fPDF ) {
 	/* FIXME most of the following could be encapsulated into a PDF
 	   XObject to optimise the output file */
-	fprintf( pf, "q 1 0 0 1 %d %d cm %.2f 0 0 %.2f 0 0 cm 0.5 g\n",
+	lifprintf( pf, "q 1 0 0 1 %d %d cm %.2f 0 0 %.2f 0 0 cm 0.5 g\n",
 		 225 - 200 * nMag / 100, y, nMag / 100.0, nMag / 100.0 );
 	fputs( "60 10 280 240 re S\n", pf );
 	for( i = 0; i < 6; i++ ) {
