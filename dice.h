@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.15 2004/04/22 19:13:20 thyssen Exp $
+ * $Id: dice.h,v 1.16 2004/07/11 14:46:42 kaoru Exp $
  */
 
 #ifndef _DICE_H_
@@ -55,6 +55,12 @@ extern int InitRNGSeedLong( char *sz, rng rng, void *rngctx );
 extern int InitRNGBBSModulus( char *sz, void *rngctx );
 extern int InitRNGBBSFactors( char *sz0, char *sz1, void *rngctx );
 #endif
+
+
+#if HAVE_LIBDL
+extern int
+UserRNGOpen( void *p, char *sz );
+#endif /* HAVE_LIBDL */
 
 extern int
 OpenDiceFile( void *rngctx, const char *sz );
