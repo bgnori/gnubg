@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.69 2001/10/28 09:23:04 thyssen Exp $
+ * $Id: show.c,v 1.70 2001/10/29 15:14:56 gtw Exp $
  */
 
 #include "config.h"
@@ -79,13 +79,19 @@ ShowRollout ( rolloutcontext *prc ) {
 
   int i;
 
-  outputf( "%d game%s will be played per rollout.\n"
-           "Truncation after %d pl%s.\n"
-           "Lookahead variance reduction is %sabled.\n"
+  outputf( "%d game%s will be played per rollout.\n", prc->nTrials,
+	   prc->nTrials > 1 ? "s" : "" );
+
+  if( prc->nTruncate > 1 )
+      outputf( "Truncation after %d plies.\n", prc->nTruncate );
+  else if( prc->nTruncate == 1 )
+      outputl( "Truncation after 1 ply." );
+  else
+      outputl( "No truncation." );
+
+  outputf( "Lookahead variance reduction is %sabled.\n"
            "Cube%s rollout.\n"
            "%s dice generator with seed %u.\n",
-           prc->nTrials, prc->nTrials == 1 ? "" : "s",
-           prc->nTruncate, prc->nTruncate == 1 ? "y" : "ies",
            prc->fVarRedn ? "en" : "dis",
            prc->fCubeful ? "ful" : "less",
            aszRNG[ prc->rngRollout ], prc->nSeed );
@@ -708,12 +714,12 @@ extern void CommandShowThorp( char *sz ) {
 
 extern void CommandShowBeavers( char *sz ) {
 
-    if ( fBeavers )
-	outputl( "Beavers, racoons, and other critters are allowed in"
-		 " money sessions." );
+    if( nBeavers > 1 )
+	outputf( "%d beavers/racoons allowed in money sessions.\n", nBeavers );
+    else if( nBeavers == 1 )
+	outputl( "1 beaver allowed in money sessions." );
     else
-	outputl( "Beavers, racoons, and other critters are not allowed in"
-		 " money sessions." );
+	outputl( "No beavers allowed in money sessions." );
 }
 
 extern void CommandShowGammonPrice ( char *sz ) {
