@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.39 2004/10/16 21:41:04 oysteijo Exp $
+ * $Id: gnubgmodule.c,v 1.40 2004/11/07 13:55:43 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2306,6 +2306,32 @@ extern void
 PythonInitialise( const char *argv0, const char *szDir ) {
 
   char *pch;
+
+#if WIN32
+{	/* Setup python to look in the pythonlib directory if present */
+	const char* dirSep = argv0 + strlen(argv0);
+	while (*dirSep != '\\' && *dirSep != '/')
+	{
+		if (dirSep == argv0)
+			break;	/* No dir seperator found... */
+		dirSep--;
+	}
+	if (dirSep != argv0)
+	{
+		char pythonDir[BIG_PATH];
+		strncpy(pythonDir, argv0, dirSep - argv0 + 1);
+		pythonDir[dirSep - argv0 + 1] = '\0';
+		strcat(pythonDir, "PythonLib");
+		if (!access(pythonDir, F_OK))
+		{	/* Set Pyton to use this directory */
+			char buf[BIG_PATH + 100];
+			sprintf(buf, "PYTHONPATH=%s", pythonDir);
+			_putenv(buf);
+			sprintf(buf, "PYTHONROOT=%s", pythonDir);
+		}
+	}
+	}
+#endif
 
   Py_SetProgramName( (char *) argv0 );
   Py_Initialize();
