@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.417 2003/05/29 19:13:33 thyssen Exp $
+ * $Id: gnubg.c,v 1.418 2003/06/06 15:10:22 hb Exp $
  */
 
 #include "config.h"
@@ -6696,7 +6696,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 
 #if WIN32
 
-    if ( pc = getenv( "ProgramFiles" ) ) {
+    if ( ( pc = getenv( "ProgramFiles" ) ) ) {
 
       strcpy( aaszPaths[ PATH_SGG ][ 0 ], pc );
       strcat( aaszPaths[ PATH_SGG ][ 0 ], "\\GamesGrid\\SaveGame\\" );

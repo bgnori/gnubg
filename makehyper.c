@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.3 2003/05/24 10:24:49 hb Exp $
+ * $Id: makehyper.c,v 1.4 2003/06/06 15:10:22 hb Exp $
  */
 
 #include "config.h"
@@ -603,7 +603,7 @@ main ( int argc, char **argv ) {
   int nPos;
   float rNorm;
   float rEpsilon = 1.0e-5;
-  bearoffcontext *pbc;
+  bearoffcontext *pbc = NULL;
   int it;
   char szFilename[ 20 ];
   float arNorm[ 10 ];
