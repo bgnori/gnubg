@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: i18n.c,v 1.4 2002/06/03 19:03:51 thyssen Exp $
+ * $Id: i18n.c,v 1.5 2004/04/30 17:34:53 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -60,7 +60,10 @@ void PopLocale ( void ) {
 #if ENABLE_NLS
 
   if ( iLocale < 0 )
+  {
+    printf("PopLocale() called without a PushLocale()!\n");
     return;
+  }
 
   setlocale ( LC_ALL, aszLocaleStack[ iLocale ] );
 
