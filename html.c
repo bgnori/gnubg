@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.62 2002/10/04 16:42:13 thyssen Exp $
+ * $Id: html.c,v 1.63 2002/10/09 21:01:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -1559,7 +1559,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.62 $";
+  const char szVersion[] = "$Revision: 1.63 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -3020,6 +3020,54 @@ HTMLPrintComment ( FILE *pf, const moverecord *pmr ) {
 }
 
 
+static void
+HTMLMatchInfo ( FILE *pf, const matchinfo *pmi ) {
+
+  int i;
+  char sz[ 80 ];
+  struct tm tmx;
+
+  fputs ( "<hr />", pf );
+
+  fprintf ( pf, "<h2>%s</h2>\n", _("Match Information") );
+
+  /* ratings */
+
+  for ( i = 0; i < 2; ++i )
+      fprintf ( pf, _("%s's rating: %s<br />\n"), 
+                ap[ i ].szName, 
+                pmi->pchRating[ i ] ? pmi->pchRating[ i ] : _("n/a") );
+
+  /* date */
+
+  if ( pmi->nYear ) {
+
+    tmx.tm_year = pmi->nYear - 1900;
+    tmx.tm_mon = pmi->nMonth - 1;
+    tmx.tm_mday = pmi->nDay;
+    strftime ( sz, sizeof ( sz ), _("%B %d, %Y"), &tmx );
+    fprintf ( pf, _("Date: %s<br />\n"), sz ); 
+
+  }
+  else
+    fputs ( _("Date: n/a<br />\n"), pf );
+
+  /* event, round, place and annotator */
+
+  fprintf ( pf, _("Event: %s<br />\n"),
+            pmi->pchEvent ? pmi->pchEvent : _("n/a") );
+  fprintf ( pf, _("Round: %s<br />\n"),
+            pmi->pchRound ? pmi->pchRound : _("n/a") );
+  fprintf ( pf, _("Place: %s<br />\n"),
+            pmi->pchPlace ? pmi->pchPlace : _("n/a") );
+  fprintf ( pf, _("Annotator: %s<br />\n"),
+            pmi->pchAnnotator ? pmi->pchAnnotator : _("n/a") );
+  fprintf ( pf, _("Comments: %s<br />\n"),
+            pmi->pchComment ? pmi->pchComment : _("n/a") );
+
+}
+
+
 /*
  * Export a game in HTML
  *
@@ -3062,6 +3110,8 @@ static void ExportGameHTML ( FILE *pf, list *plGame, const char *szImageDir,
         ApplyMoveRecord ( &msExport, pmr );
 
         HTMLPrologue( pf, &msExport, iGame, aszLinks );
+
+        HTMLMatchInfo ( pf, &mi );
 
         msOrig = msExport;
         pmgi = &pmr->g;
@@ -3420,6 +3470,8 @@ extern void CommandExportPositionHtml( char *sz ) {
     }
 
     HTMLPrologue ( pf, &ms, getGameNumber ( plGame ), NULL );
+
+    HTMLMatchInfo ( pf, &mi );
 
     HTMLBoardHeader ( pf, &ms, exsExport.het,
                       getGameNumber ( plGame ),
