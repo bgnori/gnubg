@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.31 2002/09/15 19:56:50 gtw Exp $
+ * $Id: gtkboard.h,v 1.32 2002/09/18 18:44:26 gtw Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -88,7 +88,9 @@ typedef struct _BoardData {
 	*rgb_saved, *rgb_temp, *rgb_temp_saved, *rgb_bar0, *rgb_bar1;
     BoardWood wood;
     short *ai_refract[ 2 ];
+#if !USE_GTK2
     GdkFont *cube_font;
+#endif
     gboolean translucent, labels, usedicearea, permit_illegal, beep_illegal,
 	higher_die_first, playing, computer_turn, hinges;
     gboolean show_ids;
@@ -109,9 +111,11 @@ typedef struct _BoardData {
     gint board_size; /* basic unit of board size, in pixels -- a chequer's
 			diameter is 6 of these units (and is 2 units thick) */
     gint drag_point, drag_colour, x_drag, y_drag, x_dice[ 2 ], y_dice[ 2 ],
-	dice_colour[ 2 ], cube_font_rotated, old_board[ 2 ][ 25 ],
-	drag_button, click_time, cube_use, 
-	dice_roll[ 2 ]; /* roll showing on the off-board dice */
+	dice_colour[ 2 ], old_board[ 2 ][ 25 ], drag_button, click_time,
+	cube_use, dice_roll[ 2 ]; /* roll showing on the off-board dice */
+#if !USE_GTK2
+    gint cube_font_rotated;
+#endif
     gint cube_owner; /* -1 = bottom, 0 = centred, 1 = top */
     gint clockwise; /* last drawn orientation */
     gint qedit_point; /* used to remember last point in quick edit mode */
