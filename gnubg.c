@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.191 2002/03/17 16:11:05 thyssen Exp $
+ * $Id: gnubg.c,v 1.192 2002/03/18 17:29:20 oysteijo Exp $
  */
 
 #include "config.h"
@@ -1992,9 +1992,11 @@ extern void CommandHelp( char *sz ) {
     command *pc, *pcFull;
     char szCommand[ 128 ], szUsage[ 128 ], *szHelp;
     
-#if USE_GTK && GTK_CHECK_VERSION(2,0,0)
+#if USE_GTK 
+# if GTK_CHECK_VERSION(2,0,0)
     if( fX )
 	return GTKHelp( sz );
+# endif
 #endif
     
     if( !( pc = FindHelpCommand( &cTop, sz, szCommand, szUsage ) ) ) {
@@ -4588,7 +4590,6 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 		 "directions for obtaining a pre-trained network." );
 	outputx();
     }
-
 #if USE_GUILE
     GuileInitialise( pchDataDir );
 #endif
