@@ -16,18 +16,20 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.2 1999/12/15 02:36:51 thyssen Exp $
+ * $Id: dice.c,v 1.3 2000/01/05 02:34:55 gtw Exp $
  */
 
 #include "config.h"
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-
 #if HAVE_LIBDL
 #include <dlfcn.h>
 #endif
+#if HAVE_FCNTL_H
+#include <fcntl.h>
+#endif
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 #if TIME_WITH_SYS_TIME
 #include <sys/time.h>
@@ -38,6 +40,10 @@
 #else
 #include <time.h>
 #endif
+#endif
+
+#if HAVE_UNISTD_H
+#include <unistd.h>
 #endif
 
 #include "dice.h"
@@ -93,21 +99,32 @@ extern void InitRNGSeed( int n ) {
     }
 }
 
-extern void InitRNG( void ) {
+/* Returns TRUE if /dev/random was available, or FALSE if system clock was
+   used. */
+extern int InitRNG( void ) {
 
-    int n;
-    
+    int n, h, f = FALSE;
+
+    if( ( h = open( "/dev/random", O_RDONLY ) ) >= 0 ) {
+	f = read( h, &n, sizeof n ) == sizeof n;
+	close( h );
+    }
+
+    if( !f ) {
 #if HAVE_GETTIMEOFDAY
-    struct timeval tv;
-    struct timezone tz;
+	struct timeval tv;
+	struct timezone tz;
 
-    if( !gettimeofday( &tv, &tz ) )
-	n = tv.tv_sec ^ tv.tv_usec;
-    else
+	if( !gettimeofday( &tv, &tz ) )
+	    n = tv.tv_sec ^ tv.tv_usec;
+	else
 #endif
-	n = time( NULL );
-
+	    n = time( NULL );
+    }
+    
     InitRNGSeed( n );
+
+    return f;
 }
 
 extern void RollDice( int anDice[ 2 ] ) {
