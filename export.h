@@ -16,31 +16,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.2 2002/02/07 21:59:29 thyssen Exp $
+ * $Id: export.h,v 1.3 2002/03/30 23:55:03 thyssen Exp $
  */
 
 #ifndef _EXPORT_H_
 #define _EXPORT_H_
 
-#define EXPORT_SIDE_PLAYER0  1
-#define EXPORT_SIDE_PLAYER1  2
-
-#define EXPORT_MOVES_NONE    0
-#define EXPORT_MOVES_ROLLOUT 1
-#define EXPORT_MOVES_EVAL    2
-
-#define EXPORT_MOVES_ERROR   1
-#define EXPORT_MOVES_BLUNDER 2
-#define EXPORT_MOVES_ALL     4
-
-#define EXPORT_CUBE_NONE     0
-#define EXPORT_CUBE_ROLLOUT  1
-#define EXPORT_CUBE_EVAL     2
-
-#define EXPORT_CUBE_ACTUAL   1
-#define EXPORT_CUBE_MISSED   2
-#define EXPORT_CUBE_CLOSE    4
-#define EXPORT_CUBE_ALL      8
+#define EXPORT_CUBE_ACTUAL   7
+#define EXPORT_CUBE_MISSED   8
+#define EXPORT_CUBE_CLOSE    9
 
 typedef struct _exportsetup {
 
@@ -53,22 +37,24 @@ typedef struct _exportsetup {
 
   int fDisplayBoard;
 
-  int fSide; /* bits: 1 (player 0), 2 (player 1) */
+  int fSide; /* 0, 1, or -1 for both players */
 
   /* moves */
 
   int nMoves; /* show at most nMoves */
   int fMovesDetailProb; /* show detailed probabilities */
-  int fMovesParameters; /* bits: 1 (rollout), 2 (eval) */
-  int fMovesDisplay;    /* bits: 1 (error), 2 (blunder), 3 (all) */
+  int afMovesParameters[ 2 ]; /* detailed parameters */
+  int afMovesDisplay[ 7 ];    /* display moves */
 
   /* cube */
   
   int fCubeDetailProb; /* show detailed probabilities */
-  int fCubeParameters; /* bits: 1 (rollout), 2 (eval) */
-  int fCubeDisplay;    /* bits: 1 (actual), 2 (close), 3 (all) */
+  int afCubeParameters[ 2 ]; /* detailed parameters */
+  int afCubeDisplay[ 10 ];    /* display moves */
 
   /* FIXME: add format specific options */
+
+  /* For example, frames/non frames for HTML. */
 
 
 } exportsetup;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.117 2002/03/30 16:26:38 thyssen Exp $
+ * $Id: backgammon.h,v 1.118 2002/03/30 23:54:18 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -379,6 +379,7 @@ extern command acDatabase[], acNew[], acSave[], acSetAutomatic[],
     acSet[], acShow[], acTrain[], acTop[], acSetMET[], acSetEvalParam[],
     acSetRolloutPlayer[], cOnOff, cFilename;
 extern command acAnnotateMove[];
+extern command acSetExportParameters[];
 
 extern void CommandAccept( char * ),
     CommandAgree( char * ),
@@ -514,6 +515,35 @@ extern void CommandAccept( char * ),
     CommandSetEvalChequerplay ( char * ),
     CommandSetEvalCubedecision ( char * ),
     CommandSetEgyptian( char * ),
+    CommandSetExportIncludeAnnotations ( char * ),
+    CommandSetExportIncludeAnalysis ( char * ),
+    CommandSetExportIncludeStatistics ( char * ),
+    CommandSetExportIncludeLegend ( char * ),
+    CommandSetExportShowBoard ( char * ),
+    CommandSetExportShowPlayer ( char * ),
+    CommandSetExportMovesNumber ( char * ),
+    CommandSetExportMovesProb ( char * ),
+    CommandSetExportMovesParameters ( char * ),
+    CommandSetExportMovesDisplayVeryBad ( char * ),
+    CommandSetExportMovesDisplayBad ( char * ),
+    CommandSetExportMovesDisplayDoubtful ( char * ),
+    CommandSetExportMovesDisplayUnmarked ( char * ),
+    CommandSetExportMovesDisplayInteresting ( char * ),
+    CommandSetExportMovesDisplayGood ( char * ),
+    CommandSetExportMovesDisplayVeryGood ( char * ),
+    CommandSetExportCubeProb ( char * ),
+    CommandSetExportCubeParameters ( char * ),
+    CommandSetExportCubeDisplayVeryBad ( char * ),
+    CommandSetExportCubeDisplayBad ( char * ),
+    CommandSetExportCubeDisplayDoubtful ( char * ),
+    CommandSetExportCubeDisplayUnmarked ( char * ),
+    CommandSetExportCubeDisplayInteresting ( char * ),
+    CommandSetExportCubeDisplayGood ( char * ),
+    CommandSetExportCubeDisplayVeryGood ( char * ),
+    CommandSetExportCubeDisplayActual ( char * ),
+    CommandSetExportCubeDisplayClose ( char * ),
+    CommandSetExportParametersEvaluation ( char * ),
+    CommandSetExportParametersRollout ( char * ),
     CommandSetJacoby( char * ),
     CommandSetMatchID ( char * ),
     CommandSetMET( char * ),
@@ -577,6 +607,7 @@ extern void CommandAccept( char * ),
     CommandShowDisplay( char * ),
     CommandShowEngine( char * ),
     CommandShowEvaluation( char * ),
+    CommandShowExport ( char * ),
     CommandShowGammonValues( char * ),
     CommandShowEgyptian( char * ),
     CommandShowJacoby( char * ),
