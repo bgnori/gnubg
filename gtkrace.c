@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.10 2003/09/08 03:10:17 kaoru Exp $
+ * $Id: gtkrace.c,v 1.11 2003/12/29 19:18:28 uid65656 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -373,9 +373,6 @@ OneChequerPage ( int anBoard[ 2 ][ 25 ], const int fMove ) {
   /* calculate one chequer bearoff */
 
   memcpy( an, anBoard, 2 * 25 *sizeof ( int ) );
-
-  if ( fMove )
-    SwapSides( an );
 
   PipCount ( an, anPips );
 
