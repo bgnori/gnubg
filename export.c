@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.22 2003/08/31 13:14:31 thyssen Exp $
+ * $Id: export.c,v 1.23 2003/09/06 09:39:34 thyssen Exp $
  */
 
 #include "config.h"
@@ -197,7 +197,7 @@ GenerateImage (renderimages * pri, renderdata * prd,
   int anCubePosition[2];
   int anDicePosition[2][2];
   int nOrient;
-  int doubled, color;
+  int color;
   /* FIXME: resignations */
   int anResignPosition[2];
   int fResign = 0, nResignOrientation = 0;
@@ -217,20 +217,15 @@ GenerateImage (renderimages * pri, renderdata * prd,
 
   /* calculate cube position */
 
-  if (fDoubled)
-    doubled = fTurn ? -1 : 1;
-  else
-    doubled = 0;
-
   if ( ! fCubeOwner )
-    cube_owner = 1;
-  else if ( fCubeOwner == 1 )
     cube_owner = -1;
+  else if ( fCubeOwner == 1 )
+    cube_owner = 1;
   else
     cube_owner = 0;
 
 
-  CubePosition( FALSE, fCube, doubled, cube_owner,
+  CubePosition( FALSE, fCube, fDoubled, fTurn ? -1 : 1, cube_owner,
                 &anCubePosition[ 0 ], &anCubePosition[ 1 ], &nOrient );
 
   /* calculate dice position */
@@ -262,7 +257,7 @@ GenerateImage (renderimages * pri, renderdata * prd,
   CalculateArea( prd, puch, 108 * nSize * 3, pri, anBoard, NULL,
 		 (int *) anDice, anDicePosition,
 		 color, anCubePosition,
-		 LogCube( nCube ) + ( doubled != 0 ),
+		 LogCube( nCube ) + fDoubled,
 		 nOrient,
 		 anResignPosition, fResign, nResignOrientation,
 		 anArrowPosition, ms.gs != GAME_NONE, fMove == 1,
