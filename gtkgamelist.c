@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.12 2005/01/04 09:27:34 Superfly_Jon Exp $
+* $Id: gtkgamelist.c,v 1.13 2005/02/02 19:49:08 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -494,10 +494,6 @@ extern void GTKSetMoveRecord( moverecord *pmr ) {
 
 	/* Highlight current move */
 	gtk_clist_set_cell_style(pcl, yCurrent, xCurrent, psCurrent);
-
-	/* Wait for screen to resize to make sure move will be shown */
-	while( gtk_events_pending() )
-		gtk_main_iteration();
 
 	if( gtk_clist_row_is_visible( pcl, yCurrent ) != GTK_VISIBILITY_FULL )
 		gtk_clist_moveto( pcl, yCurrent, xCurrent, 0.8, 0.5 );
