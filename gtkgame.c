@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.72 2001/09/21 15:08:59 gtw Exp $
+ * $Id: gtkgame.c,v 1.73 2001/10/09 16:45:21 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3037,7 +3037,7 @@ static void SetAnalysisEvalCube( gpointer *p, guint n, GtkWidget *pw ) {
     GtkWidget *pwDialog, *pwEval;
     int fOK;
     
-    memcpy( &ec, &esEvalChequer.ec, sizeof ec );
+    memcpy( &ec, &esAnalysisChequer.ec, sizeof ec );
 
     pwEval = EvalWidget( &ec, &fOK );
     
@@ -3065,7 +3065,7 @@ static void SetAnalysisEvalCube( gpointer *p, guint n, GtkWidget *pw ) {
            different settings for chequer and cube evaluations, and
            rollouts. */
         SetEvalCommands( "set analysis cubedecision eval", &ec,
-                         &esEvalChequer.ec );
+                         &esAnalysisChequer.ec );
     /*  SetEvalCommands( "set evaluation cube eval", &ec, &esEvalCube.ec );*/
     }
 }
@@ -3079,7 +3079,7 @@ static void SetAnalysisEvalChequer( gpointer *p, guint n, GtkWidget *pw ) {
     GtkWidget *pwDialog, *pwEval;
     int fOK;
     
-    memcpy( &ec, &esEvalChequer.ec, sizeof ec );
+    memcpy( &ec, &esAnalysisChequer.ec, sizeof ec );
 
     pwEval = EvalWidget( &ec, &fOK );
     
@@ -3107,7 +3107,7 @@ static void SetAnalysisEvalChequer( gpointer *p, guint n, GtkWidget *pw ) {
            different settings for chequer and cube evaluations, and
            rollouts. */
         SetEvalCommands( "set analysis chequer eval", &ec,
-                         &esEvalChequer.ec );
+                         &esAnalysisChequer.ec );
     /*  SetEvalCommands( "set evaluation cube eval", &ec, &esEvalCube.ec );*/
     }
 }
