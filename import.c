@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.31 2002/07/15 21:09:15 thyssen Exp $
+ * $Id: import.c,v 1.32 2002/07/16 14:30:37 gtw Exp $
  */
 
 #include "config.h"
@@ -763,7 +763,7 @@ ImportOldmovesGame( FILE *pf, int iGame, int nLength, int n0,
      */
     
     if( fscanf( pf, " %31s is X - %31s is O\n", sz0, sz1 ) < 2 )
-	return;
+	return 0;
 
     /* consistency checks */
 
