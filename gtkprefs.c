@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.68 2003/08/13 16:23:29 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.69 2003/08/13 20:39:36 thyssen Exp $
  */
 
 #include "config.h"
@@ -1022,7 +1022,7 @@ static GtkWidget *BorderPage( BoardData *bd ) {
     return pwx;
 }
 
-char szTemp[2048];
+static char szTemp[2048];
 
 static void BoardPrefsOK( GtkWidget *pw, BoardData *bd ) {
 
@@ -1848,7 +1848,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.68 2003/08/13 16:23:29 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.69 2003/08/13 20:39:36 thyssen Exp $\n"
           "\n"
           " -->\n"
           "\n"
