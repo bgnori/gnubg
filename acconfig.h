@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1999, 2000
  *
- * $Id: acconfig.h,v 1.5 2000/11/10 18:50:42 gtw Exp $
+ * $Id: acconfig.h,v 1.6 2001/02/22 16:43:21 gtw Exp $
  */
 
 /* Installation directory (used to determine PKGDATADIR below). */
@@ -21,6 +21,36 @@
 /* Define the obvious signbit() if the C library doesn't. */
 #if !HAVE_SIGNBIT
 #define signbit(x) ( (x) < 0.0 )
+#endif
+
+/* Use the double versions of the math functions if the float ones aren't
+   available. */
+#if !HAVE_ACOSF
+#define acosf acos
+#endif
+
+#if !HAVE_ASINF
+#define asinf asin
+#endif
+
+#if !HAVE_ATANF
+#define atanf atan
+#endif
+
+#if !HAVE_COSF
+#define cosf cos
+#endif
+
+#if !HAVE_LRINT
+#define lrint(x) ((long) ((x)+0.5))
+#endif
+
+#if !HAVE_SINF
+#define sinf sin
+#endif
+
+#if !HAVE_TANF
+#define tanf tan
 #endif
 
 #ifndef FALSE

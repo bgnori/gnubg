@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1996-2000
  *
- * $Id: buffer.c,v 1.5 2000/07/28 17:11:10 gtw Exp $
+ * $Id: buffer.c,v 1.6 2001/02/22 16:43:21 gtw Exp $
  */
 
 #include "config.h"
@@ -17,7 +17,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
+#if HAVE_SYS_UIO_H
 #include <sys/uio.h>
+#endif
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif

@@ -16,13 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.4 2000/07/13 16:25:26 gtw Exp $
+ * $Id: makebearoff.c,v 1.5 2001/02/22 16:43:21 gtw Exp $
  */
 
 #include "config.h"
 
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "eval.h"
 #include "positionid.h"

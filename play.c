@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.55 2001/02/13 18:22:43 gtw Exp $
+ * $Id: play.c,v 1.56 2001/02/22 16:43:21 gtw Exp $
  */
 
 #include "config.h"
@@ -47,7 +47,9 @@ list lMatch, *plGame, *plLastMove;
 static int fComputerDecision = FALSE;
 
 #if USE_GTK
+#if HAVE_GDK_GDKX_H
 #include <gdk/gdkx.h> /* for ConnectionNumber GTK_DISPLAY -- get rid of this */
+#endif
 #include "gtkgame.h"
 #endif
 
@@ -347,7 +349,7 @@ extern void ClearMoveRecord( void ) {
     ListCreate( plGame );
 }
 
-#if USE_GUI
+#if USE_GUI && HAVE_SELECT
 static struct timeval tvLast;
 
 static void ResetDelayTimer( void ) {
@@ -805,7 +807,7 @@ static int TryBearoff( void ) {
 extern void NextTurn( void ) {
 
     int n;
-#if USE_GUI
+#if USE_GUI && HAVE_SELECT
     struct timeval tv;
     fd_set fds;
 #endif
@@ -824,7 +826,7 @@ extern void NextTurn( void ) {
 #endif
 	fNextTurn = FALSE;
     
-#if USE_GUI
+#if USE_GUI && HAVE_SELECT
     if( fX && nDelay && fDisplay ) {
 	if( tvLast.tv_sec ) {
 	    if( ( tvLast.tv_usec += 1000 * nDelay ) >= 1000000 ) {
