@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.c,v 1.1.2.4 2000/05/05 07:51:58 thyssen Exp $
+ * $Id: matchequity.c,v 1.1.2.5 2000/05/14 12:12:34 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -486,11 +486,16 @@ GetTakePoint ( float arOutput [ 5 ],
 
     /* Take points for current cube */
 
-    arTakePoint[ 0 ] = arD1[ 0 ];
-    arTakePoint[ 1 ] = arD2[ 0 ];
+    /* arTakePoint[ 0 ] = arD1[ 0 ];
+       arTakePoint[ 1 ] = arD2[ 0 ]; */
+    arTakePoint[ 0 ] = arD1bar[ 0 ]; 
+    arTakePoint[ 1 ] = arD2bar[ 0 ];
+    arTakePoint[ 2 ] = 0.0;
+    arTakePoint[ 3 ] = 0.0;
 
   /* Take point for recubes */
 
+    /*
     if ( n ) {
       arTakePoint[ 2 ] = arD1[ 1 ];
       arTakePoint[ 3 ] = arD2[ 1 ];
@@ -499,6 +504,7 @@ GetTakePoint ( float arOutput [ 5 ],
       arTakePoint[ 2 ] = 0.0;
       arTakePoint[ 3 ] = 0.0;
     }
+    */
   } /* endif-else ! nMatchTo */
 }
 
