@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.36 2000/02/21 18:06:26 gtw Exp $
+ * $Id: gnubg.c,v 1.37 2000/05/09 09:19:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -1303,11 +1303,15 @@ int StdinReadNotify( event *pev, void *p ) {
 #if HAVE_LIBREADLINE
     rl_callback_read_char();
 #else
-    char sz[ 2048 ];
+    char sz[ 2048 ], *pch;
 
     sz[ 0 ] = 0;
 	
     fgets( sz, sizeof( sz ), stdin );
+
+    if( ( pch = strchr( sz, '\n' ) ) )
+	*pch = 0;
+    
 	
     if( feof( stdin ) ) {
 	PromptForExit();
@@ -1802,7 +1806,7 @@ extern int main( int argc, char *argv[] ) {
 	
 	free( sz );
 #else
-	char sz[ 2048 ];
+	char sz[ 2048 ], *pch;
 	
 	sz[ 0 ] = 0;
 	
@@ -1810,6 +1814,10 @@ extern int main( int argc, char *argv[] ) {
 
 	/* FIXME shouldn't restart sys calls on signals during this fgets */
 	fgets( sz, sizeof( sz ), stdin );
+
+        if( ( pch = strchr( sz, '\n' ) ) )
+           *pch = 0;
+    
 	
 	while( feof( stdin ) ) {
 	    putchar( '\n' );
