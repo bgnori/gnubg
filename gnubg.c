@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.279 2002/08/18 08:38:54 thyssen Exp $
+ * $Id: gnubg.c,v 1.280 2002/08/18 09:14:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -3435,6 +3435,7 @@ extern void CommandCopy (char *sz)
   char szOut[2048];
   char szCube[32], szPlayer0[35], szPlayer1[35],
     szScore0[35], szScore1[35], szMatch[35];
+  int anBoardTemp[ 2 ][ 25 ];
     
   aps[0] = szPlayer0;
   aps[6] = szPlayer1;
@@ -3498,13 +3499,19 @@ extern void CommandCopy (char *sz)
 	}
     }
 
+  memcpy ( anBoardTemp, ms.anBoard, sizeof ( anBoardTemp ) );
+
+  if ( ! ms.fMove )
+    SwapSides ( anBoardTemp );
+
 #ifdef WIN32
-  DrawBoard (szOut, ms.anBoard, ms.fMove, aps, MatchIDFromMatchState (&ms));
+
+  DrawBoard (szOut, anBoardTemp, ms.fMove, aps, MatchIDFromMatchState (&ms));
   strcat (szOut, "\n");
   WinCopy (szOut);
 #else
-  puts (DrawBoard (szOut, ms.anBoard, ms.fMove, aps,
-			  MatchIDFromMatchState (&ms)));
+  puts (DrawBoard (szOut, anBoardTemp, ms.fMove, aps,
+                   MatchIDFromMatchState (&ms)));
 #endif
 
 }
