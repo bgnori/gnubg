@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.16 2002/12/03 22:47:24 jsegrave Exp $
+ * $Id: sound.c,v 1.17 2003/01/22 18:26:06 gtw Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -611,7 +611,7 @@ static void play_audio_file(soundcache *psc, const char *file,
 #endif
 }
 
-static char *can_play_audio() {
+static char *can_play_audio( void ) {
 
     static char *asz[] = { "/dev/dsp", "/dev/audio", NULL };
     char **ppch;

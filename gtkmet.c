@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.3 2002/12/28 13:16:22 thyssen Exp $
+ * $Id: gtkmet.c,v 1.4 2003/01/22 18:26:05 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -124,7 +124,6 @@ static GtkWidget
 #endif
   GtkWidget *pwBox = gtk_vbox_new( FALSE, 0 );
   mettable *pmt;
-  GtkWidget *pw;
 
   pmt = (mettable *) g_malloc ( sizeof ( mettable ) );
   pmt->pwTable = pwTable;

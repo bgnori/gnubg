@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.22 2003/01/10 18:22:23 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.23 2003/01/22 18:29:43 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -26,7 +26,6 @@
 #if HAVE_ALLOCA_H
 #include <alloca.h>
 #endif
-#define GTK_ENABLE_BROKEN /* for GtkText */
 #include <gtk/gtk.h>
 
 #include <stdio.h>

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.19 2002/12/21 23:01:50 thyssen Exp $
+ * $Id: gtkcube.c,v 1.20 2003/01/22 18:26:05 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -26,7 +26,6 @@
 #if HAVE_ALLOCA_H
 #include <alloca.h>
 #endif
-#define GTK_ENABLE_BROKEN /* for GtkText */
 #include <gtk/gtk.h>
 
 #include <stdio.h>

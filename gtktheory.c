@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.11 2002/12/11 18:38:04 thyssen Exp $
+ * $Id: gtktheory.c,v 1.12 2003/01/22 18:26:06 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -26,7 +26,7 @@
 #if HAVE_ALLOCA_H
 #include <alloca.h>
 #endif
-#define GTK_ENABLE_BROKEN /* for GtkText */
+
 #include <gtk/gtk.h>
 
 #include <stdio.h>
@@ -36,6 +36,7 @@
 #include "backgammon.h"
 #include "eval.h"
 #include "gtkgame.h"
+#include "gtktheory.h"
 #include "i18n.h"
 #include "matchequity.h"
 

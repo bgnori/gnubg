@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.22 2003/01/08 17:07:38 thyssen Exp $
+ * $Id: makebearoff.c,v 1.23 2003/01/22 18:26:06 gtw Exp $
  */
 
 #include "config.h"
@@ -891,7 +891,7 @@ CubeEquity ( const short int siND, const short int siDT,
 
 }
 
-extern int
+static int
 CalcPosition ( const int i, const int j, const int n ) {
 
   int max;
@@ -1288,7 +1288,7 @@ usage ( char *arg0 ) {
 static void
 version ( void ) {
 
-  printf ( "makebearoff $Revision: 1.22 $\n" );
+  printf ( "makebearoff $Revision: 1.23 $\n" );
 
 }
 

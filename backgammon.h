@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.201 2003/01/21 21:58:45 gtw Exp $
+ * $Id: backgammon.h,v 1.202 2003/01/22 18:26:05 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -267,7 +267,7 @@ extern int fNextTurn, fComputing;
 /* User settings. */
 extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     fCubeUse, fNackgammon, fDisplay, fAutoBearoff, fShowProgress,
-    nBeavers, fOutputMWC, fEgyptian, fOutputWinPC, fOutputMatchPC, fJacoby,
+    nBeavers, fOutputMWC, fOutputWinPC, fOutputMatchPC, fJacoby,
     fOutputRawboard, fAnnotation, cAnalysisMoves, fAnalyseCube,
     fAnalyseDice, fAnalyseMove, fRecord, fMessage, nDefaultLength;
 extern int fInvertMET;
@@ -756,7 +756,6 @@ extern void CommandAccept( char * ),
     CommandSetHighlightDark ( char * ),
     CommandSetHighlightLight ( char * ),
     CommandSetHighlightMedium ( char * ),
-    CommandSetHighlightColour ( char *),
     CommandSetInvertMatchEquityTable( char * ),
     CommandSetJacoby( char * ),
     CommandSetMatchAnnotator( char * ),
@@ -771,7 +770,6 @@ extern void CommandAccept( char * ),
     CommandSetMessage ( char * ),
     CommandSetMET( char * ),
     CommandSetMoveFilter( char * ),
-    CommandSetJacoby( char * ),
     CommandSetNackgammon( char * ),
     CommandSetOutputMatchPC( char * ),
     CommandSetOutputMWC ( char * ),

@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.y,v 1.5 2002/09/18 19:18:52 gtw Exp $
+ * $Id: sgf.y,v 1.6 2003/01/22 18:26:06 gtw Exp $
  */
 
 %{
@@ -39,7 +39,7 @@ extern int sgflex( void );
 
 void ( *SGFErrorHandler )( char *, int ) = NULL;
  
-extern int sgferror( char *s ) {
+static int sgferror( char *s ) {
 
     if( SGFErrorHandler )
 	SGFErrorHandler( s, 1 );
@@ -49,7 +49,7 @@ extern int sgferror( char *s ) {
     return 0;
 }
 
-list *NewList( void ) {
+static list *NewList( void ) {
     list *pl = malloc( sizeof( *pl ) );
     ListCreate( pl );
     return pl;

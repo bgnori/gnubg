@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.60 2003/01/19 04:27:06 gtw Exp $
+ * $Id: gtkprefs.c,v 1.61 2003/01/22 18:26:06 gtw Exp $
  */
 
 #include "config.h"
@@ -110,7 +110,7 @@ typedef struct _boarddesign {
 
 static boarddesign *pbdeSelected = NULL;
 
-extern GList *
+static GList *
 read_board_designs ( void ) {
 
   GList *plUser, *plSystem, *plFinal;
@@ -144,7 +144,7 @@ free_board_design ( gpointer data, gpointer user_data ) {
 
 }
 
-extern void
+static void
 free_board_designs ( GList *pl ) {
 
   g_list_foreach ( pl, free_board_design, NULL );
@@ -946,7 +946,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.60 2003/01/19 04:27:06 gtw Exp $\n"
+          "    $Id: gtkprefs.c,v 1.61 2003/01/22 18:26:06 gtw Exp $\n"
           "\n"
           " -->\n"
           "\n"

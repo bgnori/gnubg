@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.134 2003/01/17 21:46:31 gtw Exp $
+ * $Id: show.c,v 1.135 2003/01/22 18:26:06 gtw Exp $
  */
 
 #include "config.h"
@@ -191,7 +191,7 @@ show_movefilters ( const movefilter aaamf[ 2 ][ MAX_FILTER_PLIES ][ MAX_FILTER_P
   }
 }
 
-extern void
+static void
 ShowRollout ( const rolloutcontext *prc ) {
 
   int fDoTruncate = 0;
@@ -301,7 +301,7 @@ ShowRollout ( const rolloutcontext *prc ) {
 
 }
 
-extern void
+static void
 ShowEvalSetup ( const evalsetup *pes ) {
 
   switch ( pes->et ) {

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.303 2003/01/22 16:16:09 gtw Exp $
+ * $Id: gtkgame.c,v 1.304 2003/01/22 18:26:05 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2127,7 +2127,7 @@ static void MainSize( GtkWidget *pw, GtkRequisition *preq, gpointer p ) {
 }
 
 
-gchar *GTKTranslate ( const gchar *path, gpointer func_data ) {
+static gchar *GTKTranslate ( const gchar *path, gpointer func_data ) {
 
   return (gchar *) gettext ( (const char *) path );
 

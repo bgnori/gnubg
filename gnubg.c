@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.377 2003/01/21 21:58:45 gtw Exp $
+ * $Id: gnubg.c,v 1.378 2003/01/22 18:26:05 gtw Exp $
  */
 
 #include "config.h"
@@ -2182,7 +2182,7 @@ static RETSIGTYPE HandleChild( int n ) {
 }
 #endif
 
-void ShellEscape( char *pch ) {
+static void ShellEscape( char *pch ) {
 #if HAVE_FORK
     pid_t pid;
     char *pchShell;
@@ -3897,7 +3897,7 @@ static void LoadCommands( FILE *pf, char *szFile ) {
 
 	    while( SCM_FALSEP( scm_internal_catch(
 		SCM_BOOL_T, (scm_catch_body_t) LoadCommandsGuile,
-		(void *) s, LoadCommandsGuileCatch, NULL ) ) )
+		s, LoadCommandsGuileCatch, NULL ) ) )
 		;
 	    
 	    GuileEndIntHandler();
@@ -5302,7 +5302,7 @@ extern void HandleInput( char *sz ) {
 static char *szInput;
 static int fInputAgain;
 
-void HandleInputRecursive( char *sz ) {
+static void HandleInputRecursive( char *sz ) {
 
     if( !sz ) {
 	outputc( '\n' );

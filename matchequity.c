@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.34 2002/12/17 01:02:28 oysteijo Exp $
+* $Id: matchequity.c,v 1.35 2003/01/22 18:26:06 gtw Exp $
 */
 
 #include <stdio.h>
@@ -137,7 +137,7 @@ NormalDistArea ( float rMin, float rMax, float rMu, float rSigma ) {
 
 
 
-int 
+static int 
 GetCubePrimeValue ( int i, int j, int nCubeValue ) {
 
   if ( (i < 2 * nCubeValue) && (j >= 2 * nCubeValue ) )
@@ -170,7 +170,7 @@ GetCubePrimeValue ( int i, int j, int nCubeValue ) {
  *
  */
 
-void 
+static void 
 initPostCrawfordMET ( float afMETPostCrawford[ MAXSCORE ],
                       const int iStart,
                       const float rG,
@@ -224,7 +224,7 @@ initPostCrawfordMET ( float afMETPostCrawford[ MAXSCORE ],
 *
 */
 
-void
+static void
 initMETZadeh ( float aafMET[ MAXSCORE ][ MAXSCORE ], 
                const float afMETPostCrawford[ MAXSCORE ],
                const float rG1, const float rG2, 
@@ -847,7 +847,7 @@ initMD ( metdata *pmd ) {
 }
 
 
-extern void
+static void
 freeP ( parameter *pp ) {
 
   if ( pp->szName )
@@ -859,7 +859,7 @@ freeP ( parameter *pp ) {
 }
 
 
-extern void
+static void
 freeMP ( metparameters *pmp ) {
 
   list *pl;
@@ -879,7 +879,7 @@ freeMP ( metparameters *pmp ) {
 }
 
 
-extern void
+static void
 getDefaultMET ( metdata *pmd ) {
 
   int i, j;
@@ -1229,7 +1229,7 @@ static void parseInfo ( metdata *pmd, xmlDocPtr doc, xmlNodePtr root ) {
 
 }
 
-void validateWarning ( void *ctx,
+static void validateWarning ( void *ctx,
                         const char *msg, 
                         ... ) {
 
@@ -1241,7 +1241,7 @@ void validateWarning ( void *ctx,
 
 }
 
-void validateError ( void *ctx,
+static void validateError ( void *ctx,
                      const char *msg, 
                      ... ) {
 
