@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.87 2001/05/23 15:09:09 thyssen Exp $
+ * $Id: backgammon.h,v 1.88 2001/05/23 15:26:38 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -71,10 +71,6 @@ typedef enum _playertype {
 typedef struct _player {
     char szName[ 32 ];
     playertype pt;
-<<<<<<< backgammon.h
-=======
-    evaltype etChequer, etCube; /* PLAYER_GNU */
->>>>>>> 1.85
     evalsetup esChequer, esCube; /* PLAYER_GNU */
     int h; /* PLAYER_EXTERNAL */
 } player;
