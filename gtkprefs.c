@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.62 2003/01/29 19:05:06 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.63 2003/05/23 16:04:58 hb Exp $
  */
 
 #include "config.h"
@@ -183,10 +183,11 @@ static void Preview( renderdata *prd ) {
     anBoard[ 0 ][ 7 ] = anBoard[ 1 ][ 7 ] = 3;
     anBoard[ 0 ][ 12 ] = anBoard[ 1 ][ 12 ] = 5;
     anBoard[ 0 ][ 23 ] = anBoard[ 1 ][ 23 ] = 2;
-    
+
     CalculateArea( &rd, auch, 108 * 3 * 3, &ri, anBoard, NULL, anDice,
 		   anDicePosition, 1, anCubePosition, 0, 0, 
                    anResignPosition, fResign, nResignOrientation,
+		   NULL, 0, 0,
                    0, 0, 108 * 3, 72 * 3 );
     FreeImages( &ri );
   
@@ -949,7 +950,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.62 2003/01/29 19:05:06 thyssen Exp $\n"
+          "    $Id: gtkprefs.c,v 1.63 2003/05/23 16:04:58 hb Exp $\n"
           "\n"
           " -->\n"
           "\n"

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.4 2003/01/29 19:05:06 thyssen Exp $
+ * $Id: render.h,v 1.5 2003/05/23 16:04:59 hb Exp $
  */
 
 #ifndef _RENDER_H_
@@ -60,6 +60,7 @@ typedef struct _renderimages {
     unsigned char *achResign;
     unsigned char *achResignFaces;
     unsigned short *asRefract[ 2 ];
+    unsigned char *auchArrow[ 2 ];
 } renderimages;
 
 extern renderdata rdDefault;
@@ -116,6 +117,8 @@ extern void CalculateArea( renderdata *prd, unsigned char *puch, int nStride,
 			   int nLogCube, int nCubeOrientation,
                            int anResignPosition[ 2 ],
                            int fResign, int fResignOrientation,
+                           int anArrowPosition[ 2 ],
+			   int fPlaying, int nPlayer,
 			   int x, int y, int cx, int cy );
     
 #ifdef __cplusplus

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.16 2003/05/01 14:20:53 oysteijo Exp $
+ * $Id: export.c,v 1.17 2003/05/23 16:04:58 hb Exp $
  */
 
 #include "config.h"
@@ -496,16 +496,21 @@ GenerateImage (renderimages * pri, renderdata * prd,
       anDicePosition[1][1] = -1;
     }
 
+  /* FIXME: calculate arrow position:
+     call Arrow_Position() from gtkboard.c */
+  /* requires pointer to BoardData */
+
   /* render board */
 
   color = fMove;
 
-  CalculateArea (prd, puch, 108 * nSize * 3, pri, anBoard, NULL,
+  CalculateArea( prd, puch, 108 * nSize * 3, pri, anBoard, NULL,
 		 (int *) anDice, anDicePosition,
 		 color, anCubePosition,
-		 LogCube (nCube) + (doubled != 0),
+		 LogCube( nCube ) + ( doubled != 0 ),
 		 nOrient,
 		 anResignPosition, fResign, nResignOrientation,
+		 NULL /*anArrowPosition*/, 0 /*bd->playing or ms.gs != GAME_NONE*/, fMove == 1,
 		 0, 0, 108 * nSize, 72 * nSize);
 
   /* crop */
