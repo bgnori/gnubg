@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.267 2003/11/29 20:23:53 thyssen Exp $
+ * $Id: backgammon.h,v 1.268 2003/11/30 07:48:19 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -749,6 +749,9 @@ UpdateStoredCube ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 extern void
 InvalidateStoredMoves( void );
 
+extern void
+InvalidateStoredCube( void );
+
 extern char* aszVersion[], *szHomeDirectory, *szDataDirectory,
     *szTerminalCharset;
 
@@ -806,6 +809,7 @@ extern void CommandAccept( char * ),
     CommandAnnotateVeryLucky( char * ),
     CommandAnnotateVeryUnlucky( char * ),
     CommandCalibrate( char* sz ),
+    CommandClearHint( char * ),
     CommandCopy ( char * ),
     CommandDatabaseDump( char * ),
     CommandDatabaseExport( char * ),
