@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.91 2001/10/27 13:19:07 thyssen Exp $
+ * $Id: play.c,v 1.92 2001/10/27 14:56:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -921,6 +921,7 @@ extern int ComputerTurn( void ) {
       pmn->ml.cMoves = 0;
       pmn->ml.amMoves = NULL;
       pmn->esDouble.et = EVAL_NONE;
+      pmn->esChequer.et = EVAL_NONE;
       pmn->lt = LUCK_NONE;
       pmn->rLuck = -HUGE_VALF;
       pmn->st = SKILL_NONE;
@@ -980,6 +981,7 @@ extern int ComputerTurn( void ) {
     pmn->ml.cMoves = 0;
     pmn->ml.amMoves = NULL;
     pmn->esDouble.et = EVAL_NONE;
+    pmn->esChequer.et = EVAL_NONE;
     pmn->lt = LUCK_NONE;
     pmn->rLuck = -HUGE_VALF;
     pmn->st = SKILL_NONE;
@@ -1042,6 +1044,7 @@ extern int ComputerTurn( void ) {
       pmn->ml.cMoves = 0;
       pmn->ml.amMoves = NULL;
       pmn->esDouble.et = EVAL_NONE;
+      pmn->esChequer.et = EVAL_NONE;
       pmn->lt = LUCK_NONE;
       pmn->rLuck = -HUGE_VALF;
       pmn->st = SKILL_NONE;
@@ -1123,6 +1126,7 @@ static int TryBearoff( void ) {
 		pmn->ml.cMoves = 0;
 		pmn->ml.amMoves = NULL;
                 pmn->esDouble.et = EVAL_NONE;
+                pmn->esChequer.et = EVAL_NONE;
 		pmn->lt = LUCK_NONE;
 		pmn->rLuck = -HUGE_VALF;
 		pmn->st = SKILL_NONE;
@@ -1813,6 +1817,7 @@ CommandMove( char *sz ) {
 	    pmn->ml.cMoves = 0;
 	    pmn->ml.amMoves = NULL;
 	    pmn->esDouble.et = EVAL_NONE;
+	    pmn->esChequer.et = EVAL_NONE;
 	    pmn->lt = LUCK_NONE;
 	    pmn->rLuck = -HUGE_VALF;
 	    pmn->st = SKILL_NONE;
@@ -1884,6 +1889,7 @@ CommandMove( char *sz ) {
 		pmn->ml.cMoves = 0;
 		pmn->ml.amMoves = NULL;
 		pmn->esDouble.et = EVAL_NONE;
+		pmn->esChequer.et = EVAL_NONE;
 		pmn->lt = LUCK_NONE;
 		pmn->rLuck = -HUGE_VALF;
 		pmn->st = SKILL_NONE;
@@ -2452,6 +2458,7 @@ CommandRoll( char *sz ) {
     pmn->ml.cMoves = 0;
     pmn->ml.amMoves = NULL;
     pmn->esDouble.et = EVAL_NONE;
+    pmn->esChequer.et = EVAL_NONE;
     pmn->lt = LUCK_NONE;
     pmn->rLuck = -HUGE_VALF;
     pmn->st = SKILL_NONE;
@@ -2472,6 +2479,7 @@ CommandRoll( char *sz ) {
     pmn->ml.cMoves = 0;
     pmn->ml.amMoves = NULL;
     pmn->esDouble.et = EVAL_NONE;
+    pmn->esChequer.et = EVAL_NONE;
     pmn->lt = LUCK_NONE;
     pmn->rLuck = -HUGE_VALF;
     pmn->st = SKILL_NONE;
