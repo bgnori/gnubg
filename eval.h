@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.77 2002/07/14 16:36:22 thyssen Exp $
+ * $Id: eval.h,v 1.78 2002/07/16 11:53:40 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -422,9 +422,13 @@ getPercent ( const cubedecision cd,
              const float arDouble[] );
 
 extern void
-RefreshMoveList ( movelist *pml );
+RefreshMoveList ( movelist *pml, int *ai );
 
 extern int 
 ScoreMove( move *pm, cubeinfo *pci, evalcontext *pec, int nPlies );
+
+extern void
+CopyMoveList ( movelist *pmlDest, const movelist *pmlSrc );
+
 
 #endif
