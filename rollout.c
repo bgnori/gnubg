@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.82 2002/10/28 20:50:16 thyssen Exp $
+ * $Id: rollout.c,v 1.83 2002/10/30 18:40:55 thyssen Exp $
  */
 
 #include "config.h"
@@ -29,6 +29,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 #include "backgammon.h"
 #include "dice.h"
@@ -664,7 +665,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
         if ( ( ( prc->fTruncBearoff2 && pc == CLASS_BEAROFF2 ) ||
                     ( prc->fTruncBearoffOS && pc <= CLASS_BEAROFF_OS ) ) &&
-                  ! prc->fCubeful ) {
+                  ! prc->fCubeful && *pf ) {
           
           /* cubeless rollout, requested to truncate at bearoff db */
 
@@ -679,7 +680,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
         }
         
-          
+        assert ( cUnfinished >= 0 );
 
 
       }
