@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.16 2002/01/08 16:32:52 gtw Exp $
+ * $Id: drawboard.c,v 1.17 2002/01/10 16:41:00 gtw Exp $
  */
 
 #include "config.h"
@@ -664,6 +664,7 @@ extern char *FormatMove( char *sz, int anBoard[ 2 ][ 25 ], int anMove[ 8 ] ) {
             if( j > i ) {
                 pnSource[ i ] = pnSource[ j ];
                 pnDest[ i ] = pnDest[ j ];
+		anCount[ i ] = anCount[ j ];
             }
 
 	    i++;
