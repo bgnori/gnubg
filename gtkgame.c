@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.153 2002/06/01 11:31:40 thyssen Exp $
+ * $Id: gtkgame.c,v 1.154 2002/06/01 17:46:13 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2758,6 +2758,8 @@ extern int InitGTK( int *argc, char ***argv ) {
     char sz[ 4096 ];
 #endif
 
+    gtk_set_locale ();
+
     sprintf( sz, "%s/.gnubg.gtkrc", szHomeDirectory );
     if( !access( sz, R_OK ) )
 	gtk_rc_add_default_file( sz );
@@ -3337,7 +3339,7 @@ static void SetAlpha( gpointer *p, guint k, GtkWidget *pw ) {
     if( r >= 0.0f ) {
 	char sz[ 32 ];
 
-	sprintf( sz, "set training alpha %f", r );
+	lisprintf( sz, "set training alpha %f", r );
 	UserCommand( sz );
     }
 }
@@ -3367,7 +3369,7 @@ static void SetAnneal( gpointer *p, guint k, GtkWidget *pw ) {
     if( r >= -5.0f ) {
 	char sz[ 32 ];
 
-	sprintf( sz, "set training anneal %f", r );
+	lisprintf( sz, "set training anneal %f", r );
 	UserCommand( sz );
     }
 }
@@ -3450,7 +3452,7 @@ static void SetThreshold( gpointer *p, guint k, GtkWidget *pw ) {
     if( r >= 0.0f ) {
 	char sz[ 32 ];
 
-	sprintf( sz, "set training threshold %f", r );
+	lisprintf( sz, "set training threshold %f", r );
 	UserCommand( sz );
     }
 }
