@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.14 2001/10/29 15:13:18 gtw Exp $
+ * $Id: drawboard.c,v 1.15 2001/12/10 16:01:06 gtw Exp $
  */
 
 #include "config.h"
@@ -850,8 +850,15 @@ extern char *FIBSBoard( char *pch, int anBoard[ 2 ][ 25 ], int fRoll,
     int i, anOff[ 2 ];
     
     /* Names and match length/score */
-    sprintf( sz, "board:%s:%s:%d:%d:%d:", szPlayer, szOpp, nMatchTo, nScore,
-	     nOpponent );
+    strcpy( sz, "board:" );
+    
+    for( sz += 6; *szPlayer; szPlayer++ )
+	*sz++ = ( *szPlayer != ':' ? *szPlayer : '_' );
+    
+    for( *sz++ = ':'; *szOpp; szOpp++ )    
+	*sz++ = ( *szOpp != ':' ? *szOpp : '_' );
+    
+    sprintf( sz, ":%d:%d:%d:", nMatchTo, nScore, nOpponent );
 
     /* Opponent on bar */
     sprintf( strchr( sz, 0 ), "%d:", -anBoard[ 0 ][ 24 ] );
