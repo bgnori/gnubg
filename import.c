@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.85 2004/02/04 18:02:18 uid68519 Exp $
+ * $Id: import.c,v 1.86 2004/02/09 21:55:49 uid65656 Exp $
  */
 
 #include "config.h"
@@ -2715,12 +2715,13 @@ ImportTMG ( FILE *pf, const char *szFilename ) {
         break;
 
   }
-  
+
   UpdateSettings();
   
   /* swap players */
   
-  CommandSwapPlayers ( NULL );
+  if ( ms.gs != GAME_NONE )
+    CommandSwapPlayers ( NULL );
   
 #if USE_GTK
   if( fX ){
