@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.126 2002/03/31 20:41:43 thyssen Exp $
+ * $Id: gtkgame.c,v 1.127 2002/04/02 16:43:37 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1572,8 +1572,6 @@ static GtkWidget *CubeAnalysis( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                        GTK_EXPAND | GTK_FILL, 
                        8, 8 );
 
-    gtk_widget_pop_style ();
-      
     return pwFrame;
 }
 
@@ -1839,8 +1837,6 @@ static GtkWidget *TakeAnalysis( movetype mt,
                        GTK_EXPAND | GTK_FILL, 
                        8, 8 );
 
-    gtk_widget_pop_style ();
-      
     return pwFrame;
 
 #if 0
