@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.111 2004/07/07 09:51:49 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.112 2004/07/12 20:53:17 mormegil Exp $
  */
 
 #include "config.h"
@@ -1966,7 +1966,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.111 2004/07/07 09:51:49 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.112 2004/07/12 20:53:17 mormegil Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2484,7 +2484,10 @@ static void ImportDesign ( GtkWidget *pw, gpointer data )
     new_length = g_list_length( plBoardDesigns );
 
     /* FIXME: show dialog instead */
-    outputf( _("%d designs added.\n"), new_length - old_length );
+    outputf( ngettext( "%d design added.\n",
+                       "%d designs added.\n",
+                       new_length - old_length ),
+             new_length - old_length );
     outputx();
 
   }

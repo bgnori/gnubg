@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.161 2004/07/11 07:33:28 kaoru Exp $
+ * $Id: html.c,v 1.162 2004/07/12 20:53:18 mormegil Exp $
  */
 
 #include "config.h"
@@ -173,7 +173,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-           "/* $Id: html.c,v 1.161 2004/07/11 07:33:28 kaoru Exp $ */\n",
+           "/* $Id: html.c,v 1.162 2004/07/12 20:53:18 mormegil Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1684,7 +1684,9 @@ HTMLBoardHeader ( FILE *pf, const matchstate *pms,
     /* resignation */
 
     fprintf ( pf,
-              _(" %s resigns %d points"), 
+              ngettext( " %s resigns %d point",
+                        " %s resigns %d points",
+                        pms->fResigned * pms->nCube ), 
               ap[ pms->fTurn ].szName,
               pms->fResigned * pms->nCube
             );
@@ -1851,7 +1853,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.161 $";
+  const char szVersion[] = "$Revision: 1.162 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1932,7 +1934,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.161 $";
+  const char szVersion[] = "$Revision: 1.162 $";
   int iMajor, iMinor;
   char *pc;
 
