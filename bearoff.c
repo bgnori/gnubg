@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.22 2003/07/27 12:45:21 oysteijo Exp $
+ * $Id: bearoff.c,v 1.23 2003/07/27 15:28:03 oysteijo Exp $
  */
 
 #include "config.h"
@@ -41,6 +41,8 @@
 #endif
 #if HAVE_LIBGEN_H
 #include <libgen.h>
+#elif ! defined(HAVE_BASENAME) && ! defined (HAVE_DIRNAME )
+#include "simplelibgen.h"
 #endif
 
 #include "positionid.h"
@@ -54,11 +56,6 @@
 #define BINARY O_BINARY
 #else
 #define BINARY 0
-#endif
-
-#ifndef HAVE_DIRNAME
-extern char *
-dirname ( const char *filename );
 #endif
 
 typedef struct _hashentryonesided {
