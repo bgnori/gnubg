@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.37 2000/11/13 15:53:16 gtw Exp $
+ * $Id: set.c,v 1.38 2000/11/17 15:43:52 gtw Exp $
  */
 
 #include "config.h"
@@ -198,7 +198,7 @@ extern void CommandSetBoard( char *sz ) {
     }
 
     /* FIXME how should =n notation be handled? */
-    if( ParsePosition( an, &sz ) < 0 )
+    if( ParsePosition( an, &sz, NULL ) < 0 )
 	return;
 
     pmsb = malloc( sizeof( *pmsb ) );
