@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.68 2001/04/06 13:32:52 thyssen Exp $
+ * $Id: play.c,v 1.69 2001/04/09 17:39:53 gtw Exp $
  */
 
 #include "config.h"
@@ -363,7 +363,7 @@ extern void AddMoveRecord( void *pv ) {
 		pmr->n.etDouble <= EVAL_ROLLOUT );
 	assert( pmr->n.ml.cMoves >= 0 && pmr->n.ml.cMoves < MAX_MOVES );
 	if( pmr->n.ml.cMoves )
-	    assert( pmr->n.iMove >= 0 && pmr->n.iMove < pmr->n.ml.cMoves );
+	    assert( pmr->n.iMove >= 0 && pmr->n.iMove <= pmr->n.ml.cMoves );
 	assert( pmr->n.lt >= LUCK_VERYBAD && pmr->n.lt <= LUCK_VERYGOOD );
 	assert( pmr->n.st >= SKILL_VERYBAD && pmr->n.st <= SKILL_VERYGOOD );
 	break;
@@ -686,8 +686,10 @@ static int ComputerTurn( void ) {
 
       if ( fCubeUse && ! anDice[ 0 ] && nCube < MAX_CUBE &&
 	   GetDPEq ( NULL, NULL, &ci ) ) {
+	  evalcontext ecDH;
 
-        static evalcontext ecDH = { 1, 8, 0.16, 0, FALSE }; 
+	  memcpy( &ecDH, &ap[ fTurn ].ec, sizeof ecDH );
+	  ecDH.fCubeful = FALSE;
         
         /* We have access to the cube */
 

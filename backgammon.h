@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.72 2001/04/06 14:33:59 gtw Exp $
+ * $Id: backgammon.h,v 1.73 2001/04/09 17:39:53 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -214,7 +214,7 @@ extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     fCubeUse, fNackgammon, fVarRedn, nRollouts, nRolloutTruncate, fConfirm,
     fDisplay, fAutoBearoff, fShowProgress, fBeavers, fOutputMWC,
     fOutputWinPC, fOutputMatchPC, fJacoby, fOutputRawboard, nRolloutSeed,
-    fAnnotation;
+    fAnnotation, cAnalysisMoves;
 extern float rAlpha, rAnneal, rThreshold;
 
 extern evalcontext ecEval, ecRollout, ecTD;
@@ -269,7 +269,7 @@ extern int SetToggle( char *szName, int *pf, char *sz, char *szOn,
 		       char *szOff );
 extern void ShowBoard( void );
 extern char *FormatPrompt( void );
-extern char *FormatMoveHint( char *sz, movelist *pml, int i );
+extern char *FormatMoveHint( char *sz, movelist *pml, int i, int fRankKnown );
 extern void UpdateSetting( void *p );
 extern void ResetInterrupt( void );
 extern void PromptForExit( void );
@@ -307,6 +307,10 @@ extern void outputoff( void );
 /* Enable output */
 extern void outputon( void );
 
+extern void ProgressStart( char *sz );
+extern void Progress( void );
+extern void ProgressEnd( void );
+
 #if USE_GUI
 #if USE_GTK
 extern gint NextTurnNotify( gpointer p );
@@ -335,7 +339,9 @@ extern command acDatabase[], acNew[], acSave[], acSetAutomatic[],
 
 extern void CommandAccept( char * ),
     CommandAgree( char * ),
-    CommandAnalysis ( char * ),
+    CommandAnalyseGame( char * ),
+    CommandAnalyseMatch( char * ),
+    CommandAnalyseSession( char * ),
     CommandAnnotateBad( char * ),
     CommandAnnotateClear( char * ),
     CommandAnnotateDoubtful( char * ),
@@ -385,6 +391,7 @@ extern void CommandAccept( char * ),
     CommandSaveMatch( char * ),
     CommandSaveSettings( char * ),
     CommandSaveWeights( char * ),
+    CommandSetAnalysisLimit( char * ),
     CommandSetAnnotation( char * ),
     CommandSetAutoBearoff( char * ),
     CommandSetAutoCrawford( char * ),
@@ -450,6 +457,7 @@ extern void CommandAccept( char * ),
     CommandSetTrainingAnneal( char * ),
     CommandSetTrainingThreshold( char * ),
     CommandSetTurn( char * ),
+    CommandShowAnalysis( char * ),
     CommandShowAutomatic( char * ),
     CommandShowBoard( char * ),
     CommandShowBeavers( char * ),

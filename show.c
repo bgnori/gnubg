@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.55 2001/04/06 13:32:52 thyssen Exp $
+ * $Id: show.c,v 1.56 2001/04/09 17:39:53 gtw Exp $
  */
 
 #include "config.h"
@@ -102,6 +102,14 @@ static void ShowPaged( char **ppch ) {
 #endif
 	while( *ppch )
 	    outputl( *ppch++ );
+}
+
+extern void CommandShowAnalysis( char *sz ) {
+    
+    if( cAnalysisMoves < 0 )
+	outputl( "Every legal move will be analysed." );
+    else
+	outputf( "Up to %d moves will be analysed.\n", cAnalysisMoves );
 }
 
 extern void CommandShowAutomatic( char *sz ) {
