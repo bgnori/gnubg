@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.140 2003/03/20 20:16:32 thyssen Exp $
+ * $Id: show.c,v 1.141 2003/03/29 15:13:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -1969,5 +1969,15 @@ CommandShowVariation( char *sz ) {
     outputf( _("You are plaing: %s\n"), aszVariations[ ms.bgv ] );
 
   outputf( _("Default variation is: %s\n"), aszVariations[ bgvDefault ] );
+
+}
+
+extern void
+CommandShowCheat( char *sz ) {
+
+  outputf( _("Manipulation with dice is %s.\n"),
+           fCheat ? _("enabled") : _("disabled") );
+  PrintCheatRoll( 0, afCheatRoll[ 0 ] );
+  PrintCheatRoll( 1, afCheatRoll[ 1 ] );
 
 }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.106 2003/03/20 20:19:02 thyssen Exp $
+ * $Id: eval.h,v 1.107 2003/03/29 15:17:05 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -122,8 +122,6 @@ typedef struct _rolloutcontext {
   unsigned int fTruncBearoff2 : 1; /* cubeless rollout: trunc at BEAROFF2 */
   unsigned int fTruncBearoffOS: 1; /* cubeless rollout: trunc at BEAROFF_OS */
   unsigned short nLate; /* switch evaluations on move nLate of game */
-  unsigned short int fIgnoreJacobyCubeless; /* ignore Jacoby rule for cubeless
-                                         money game rollouts */
   rng rngRollout;
   int nSeed;
 
@@ -385,6 +383,9 @@ extern unsigned long EvalBearoff1Full( int anBoard[ 2 ][ 25 ],
 
 extern float
 Utility( float ar[ NUM_OUTPUTS ], cubeinfo *pci );
+
+extern float
+UtilityME( float ar[ NUM_OUTPUTS ], cubeinfo *pci );
 
 
 extern int SetCubeInfoMoney( cubeinfo *pci, int nCube, int fCubeOwner,
