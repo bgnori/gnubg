@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.41 2000/10/21 05:08:27 gtw Exp $
+ * $Id: play.c,v 1.42 2000/10/21 09:11:02 thyssen Exp $
  */
 
 #include "config.h"
@@ -772,7 +772,7 @@ extern void CommandDecline( char *sz ) {
 
 extern void CommandDouble( char *sz ) {
 
-    movetype *pmt;
+    movedouble *pmt;
     
     if( fTurn < 0 ) {
 	outputl( "No game in progress (type `new game' to start one)." );
@@ -833,7 +833,8 @@ extern void CommandDouble( char *sz ) {
 	outputf( "%s doubles.\n", ap[ fTurn ].szName );
     
     pmt = malloc( sizeof( *pmt ) );
-    *pmt = MOVE_DOUBLE;
+    pmt->mt = MOVE_DOUBLE;
+    pmt->fPlayer = fTurn;
     AddMoveRecord( pmt );
     
     TurnDone();
