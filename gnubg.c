@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.113 2001/03/29 17:25:36 gtw Exp $
+ * $Id: gnubg.c,v 1.114 2001/03/29 18:06:27 gtw Exp $
  */
 
 #include "config.h"
@@ -1118,12 +1118,15 @@ extern void ShowBoard( void ) {
 
     char szBoard[ 2048 ];
     char sz[ 32 ], szCube[ 32 ], szPlayer0[ 35 ], szPlayer1[ 35 ];
-    char *apch[ 7 ] = { szPlayer0, NULL, NULL, NULL, NULL, NULL, szPlayer1 };
+    char *apch[ 7 ] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
     int anBoardTemp[ 2 ][ 25 ];
     
     if( cOutputDisabled )
 	return;
 
+    apch[ 0 ] = szPlayer0;
+    apch[ 6 ] = szPlayer1;
+    
 #if USE_GTK
     if( fX && !nDelay ) {
 	/* Always let the board widget know about dice rolls, even if the
