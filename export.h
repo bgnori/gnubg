@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.13 2002/10/21 17:21:05 thyssen Exp $
+ * $Id: export.h,v 1.14 2002/10/21 19:36:42 thyssen Exp $
  */
 
 #ifndef _EXPORT_H_
@@ -34,7 +34,16 @@ typedef enum _htmlexporttype {
   NUM_HTML_EXPORT_TYPES
 } htmlexporttype;
 
+typedef enum _htmlexportcss {
+  HTML_EXPORT_CSS_HEAD,
+  HTML_EXPORT_CSS_INLINE,
+  HTML_EXPORT_CSS_EXTERNAL,
+  NUM_HTML_EXPORT_CSS 
+} htmlexportcss;
+
 extern char *aszHTMLExportType[];
+extern char *aszHTMLExportCSS[];
+extern char *aszHTMLExportCSSCommand[];
 
 typedef struct _exportsetup {
 
@@ -70,6 +79,7 @@ typedef struct _exportsetup {
   char *szHTMLPictureURL;
   htmlexporttype het;
   char *szHTMLExtension;
+  htmlexportcss hecss;
 
 } exportsetup;
 
