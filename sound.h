@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sound.h,v 1.3 2002/09/01 16:31:34 thyssen Exp $
+ * $Id: sound.h,v 1.4 2002/09/14 00:40:13 gtw Exp $
  */
 
 #ifndef _SOUND_H_
@@ -73,11 +73,16 @@ extern int fSound;
 
 extern void
 playSound ( const gnubgsound gs );
+extern void SoundWait( void );
+
+#ifdef SIGIO
+extern RETSIGTYPE SoundSIGIO( int idSignal );
+#endif
 
 #else /* USE_SOUND */
 
 #define playSound(a) 
-
+#define SoundWait()
 #endif
 
 

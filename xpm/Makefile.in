@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# $Id: Makefile.am,v 1.1 2002/09/01 09:49:06 thyssen Exp $
+# $Id: Makefile.am,v 1.1 2002/09/09 19:25:29 thyssen Exp $
 SHELL = @SHELL@
 
 srcdir = @srcdir@
@@ -76,6 +76,7 @@ BISON = @BISON@
 BUILD_INCLUDED_LIBINTL = @BUILD_INCLUDED_LIBINTL@
 CATOBJEXT = @CATOBJEXT@
 CC = @CC@
+CSOUND = @CSOUND@
 DATADIRNAME = @DATADIRNAME@
 DEPDIR = @DEPDIR@
 ESD_CFLAGS = @ESD_CFLAGS@
