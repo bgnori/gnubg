@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.195 2003/01/02 21:54:33 thyssen Exp $
+ * $Id: backgammon.h,v 1.196 2003/01/10 15:39:00 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -280,7 +280,7 @@ extern int fCheat;
 typedef enum _pathformat {
   PATH_EPS, PATH_GAM, PATH_HTML, PATH_LATEX, PATH_MAT, PATH_OLDMOVES,
   PATH_PDF, PATH_POS, PATH_POSTSCRIPT, PATH_SGF, PATH_SGG, PATH_TEXT, 
-  PATH_MET, PATH_TMG,
+  PATH_MET, PATH_TMG, PATH_BKG,
   NUM_PATHS } 
 pathformat;
 
@@ -587,6 +587,7 @@ extern void CommandAccept( char * ),
     CommandExternal( char * ),
     CommandHelp( char * ),
     CommandHint( char * ),
+    CommandImportBKG( char * ),
     CommandImportJF( char * ),
     CommandImportMat( char * ),
     CommandImportOldmoves( char * ),
