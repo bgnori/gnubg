@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1999
  *
- * $Id: show.c,v 1.2 1999/12/15 02:42:33 thyssen Exp $
+ * $Id: show.c,v 1.3 1999/12/19 04:34:54 gtw Exp $
  */
 
 #include "config.h"
@@ -92,15 +92,9 @@ extern void CommandShowPipCount( char *sz ) {
 
 	return;
     }
-    
-    an[ 0 ] = 0;
-    an[ 1 ] = 0;
-    
-    for( i = 0; i < 25; i++ ) {
-	an[ 0 ] += anBoard[ 0 ][ i ] * ( i + 1 );
-	an[ 1 ] += anBoard[ 1 ][ i ] * ( i + 1 );
-    }
 
+    PipCount( anBoard, an );
+    
     printf( "The pip counts are: %s %d, %s %d.\n", ap[ fMove ].szName,
 	    an[ 1 ], ap[ !fMove ].szName, an[ 0 ] );
 }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: eval.h,v 1.2 1999/12/19 04:34:54 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -86,6 +86,8 @@ extern int FindBestMove( int nPlies, int anMove[ 8 ], int nDice0, int nDice1,
 extern int FindPubevalMove( int nDice0, int nDice1, int anBoard[ 2 ][ 25 ] );
 
 extern int TrainPosition( int anBoard[ 2 ][ 25 ], float arDesired[] );
+
+extern int PipCount( int anBoard[ 2 ][ 25 ], int anPips[ 2 ] );
 
 extern int DumpPosition( int anBoard[ 2 ][ 25 ], char *szOutput, int nPlies );
 

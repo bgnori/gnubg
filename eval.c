@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: eval.c,v 1.2 1999/12/19 04:34:54 gtw Exp $
  */
 
 #include "config.h"
@@ -1459,6 +1459,21 @@ extern int FindBestMoves( movelist *pml, float ar[][ NUM_OUTPUTS ], int nPlies,
     if( nPlies )
 	qsort( pml->amMoves, pml->cMoves, sizeof( move ),
 	       (cfunc) CompareMoves );
+
+    return 0;
+}
+
+extern int PipCount( int anBoard[ 2 ][ 25 ], int anPips[ 2 ] ) {
+
+    int i;
+    
+    anPips[ 0 ] = 0;
+    anPips[ 1 ] = 0;
+    
+    for( i = 0; i < 25; i++ ) {
+	anPips[ 0 ] += anBoard[ 0 ][ i ] * ( i + 1 );
+	anPips[ 1 ] += anBoard[ 1 ][ i ] * ( i + 1 );
+    }
 
     return 0;
 }

@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1999
  *
- * $Id: backgammon.h,v 1.2 1999/12/15 02:38:39 thyssen Exp $
+ * $Id: backgammon.h,v 1.3 1999/12/19 04:34:54 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -55,7 +55,7 @@ typedef union _moverecord {
     moveresign r;
 } moverecord;
 
-extern char *aszGameResult[];
+extern char *aszGameResult[], szDefaultPrompt[], *szPrompt;
 
 extern int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn, fDisplay, fAutoGame,
     fAutoMove, fResigned, fMove, fDoubled, nPliesEval, anScore[ 2 ], cGames,
@@ -114,6 +114,7 @@ extern void CommandAccept( char * ),
     CommandSetPlayerPubeval( char * ),
     CommandSetPlayer( char * ),
     CommandSetPlies( char * ),
+    CommandSetPrompt( char * ),
     CommandSetRNGAnsi( char * ),
     CommandSetRNGBsd( char * ),
     CommandSetRNGIsaac( char * ),
