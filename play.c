@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.262 2004/11/15 11:17:40 Superfly_Jon Exp $
+ * $Id: play.c,v 1.263 2004/11/24 10:23:21 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1044,6 +1044,9 @@ extern int ComputerTurn( void ) {
 
       getResignEquities ( arOutput, &ci, ms.fResigned,
                           &rEqBefore, &rEqAfter );
+
+      if (ms.anDice[0] > 0)
+		  rEqBefore = -rEqBefore;	/* Swap equity as move has been made */
 
       fComputerDecision = TRUE;
 
