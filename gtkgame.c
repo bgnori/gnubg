@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.212 2002/08/05 17:46:08 gtw Exp $
+ * $Id: gtkgame.c,v 1.213 2002/08/07 18:53:35 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6355,6 +6355,7 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
          N_("Error rate (total)"),
          N_("Error rate (per cube decision)"),
          N_("Cube decision rating"),
+         N_("Overall"),
          N_("Overall error rate (total)"),
          N_("Overall error rate (per decision)"),
          N_("Overall rating"),
@@ -6397,7 +6398,7 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
   gtk_clist_set_column_title( GTK_CLIST( pwStats ), 1, (ap[0].szName));
   gtk_clist_set_column_title( GTK_CLIST( pwStats ), 2, (ap[1].szName));
 
-  for (i = 0; i < (39 + ( pms->nMatchTo != 0 ) * 2 ); i++) {
+  for (i = 0; i < (40 + ( pms->nMatchTo != 0 ) * 2 ); i++) {
     gtk_clist_append( GTK_CLIST( pwStats ), aszEmpty );
     gtk_clist_set_text( GTK_CLIST( pwStats ), i, 0, gettext ( aszLabels[i] ) );
   }
