@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.32 2000/10/18 12:54:12 thyssen Exp $
+ * $Id: set.c,v 1.33 2000/10/24 10:47:53 thyssen Exp $
  */
 
 #include "config.h"
@@ -42,6 +42,7 @@ command acSetEvaluation[] = {
       "for deep evaluation", szNUMBER, NULL },
     { "consistency", CommandSetEvalConsistency, "Use the same evaluator for "
       "all moves", szONOFF, NULL },
+    { "cubeful", CommandSetEvalCubeful, "Cubeful evaluations", szONOFF, NULL },
     { "plies", CommandSetEvalPlies, "Choose how many plies the `eval' and "
       "`hint' commands look ahead", szPLIES, NULL },
     { "reduced", CommandSetEvalReduced,
@@ -451,6 +452,16 @@ extern void CommandSetEvalCandidates( char *sz ) {
 	    "plies.\n", szSet, pecSet->nSearchCandidates,
 	    pecSet->nSearchCandidates == 1 ? "" : "s" );
 }
+
+
+extern void 
+CommandSetEvalCubeful( char *sz ) {
+
+  SetToggle( "cubeful", &pecSet->fCubeful, sz,
+             "Cubeful evaluation enabled.",
+             "Cubeful evaluation disabled." );
+}
+
 
 extern void CommandSetEvalConsistency( char *sz ) {
 
