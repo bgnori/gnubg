@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.9 2002/11/24 18:59:36 gtw Exp $
+ * $Id: record.c,v 1.10 2002/12/16 22:37:39 thyssen Exp $
  */
 
 #include "config.h"
@@ -113,7 +113,7 @@ extern int RecordReadItem( FILE *pf, char *pch, playerrecord *ppr ) {
 	    ppr->szName[ i++ ] = ch;
     } while( i < 31 && !isspace( ch = getc( pf ) ) );
     ppr->szName[ i ] = 0;
-    
+
     if( nVersion > 1 )
 	PushLocale( "C" );
     
@@ -212,7 +212,7 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
 	return -1;
     }
 
-    if( fputs( "# %Version: 2 ($Revision: 1.9 $)\n", *ppfOut ) < 0 ) {
+    if( fputs( "# %Version: 2 ($Revision: 1.10 $)\n", *ppfOut ) < 0 ) {
 	outputerr( *ppchOut );
 	free( *ppchOut );
 	return -1;
@@ -567,4 +567,33 @@ extern void CommandRecordShow( char *szPlayer ) {
     }
     
     fclose( pfIn );
+}
+
+extern playerrecord *
+GetPlayerRecord( char *szPlayer ) {
+
+    FILE *pfIn;
+    static playerrecord pr;
+#if __GNUC__
+    char sz[ strlen( szHomeDirectory ) + 10 ];
+#elif HAVE_ALLOCA
+    char *sz = alloca( strlen( szHomeDirectory ) + 10 );
+#else
+    char sz[ 4096 ];
+#endif
+    
+    sprintf( sz, "%s/.gnubgpr", szHomeDirectory );
+    if( !( pfIn = fopen( sz, "r" ) ) ) 
+      return NULL;
+
+    while( !RecordReadItem( pfIn, sz, &pr ) )
+      if( !CompareNames( szPlayer, pr.szName ) ) {
+        fclose ( pfIn );
+        nVersion = 0;
+        return &pr;
+      }
+    
+    fclose( pfIn );
+
+    return NULL;
 }

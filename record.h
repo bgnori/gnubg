@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.h,v 1.2 2002/09/18 18:45:26 gtw Exp $
+ * $Id: record.h,v 1.3 2002/12/16 22:37:39 thyssen Exp $
  */
 
 #ifndef RECORD_H
@@ -36,5 +36,8 @@ typedef struct _playerrecord {
 } playerrecord;
 
 extern int RecordReadItem( FILE *pf, char *pch, playerrecord *ppr );
+
+extern playerrecord *
+GetPlayerRecord( char *szPlayer );
 
 #endif
