@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.140 2002/04/25 20:33:51 thyssen Exp $
+ * $Id: gtkgame.c,v 1.141 2002/05/04 21:17:31 joseph Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -39,6 +39,11 @@
 #if HAVE_GDK_GDKX_H
 #include <gdk/gdkx.h> /* for ConnectionNumber GTK_DISPLAY -- get rid of this */
 #endif
+
+#if HAVE_STROPTS_H
+#include <stropts.h>  /* I_SETSIG, S_RDNORM under solaris */
+#endif
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
