@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.80 2003/08/31 13:17:33 thyssen Exp $
+ * $Id: sgf.c,v 1.81 2003/09/03 18:08:41 thyssen Exp $
  */
 
 #include "config.h"
@@ -1822,7 +1822,7 @@ static void WriteMoveAnalysis( FILE *pf, int fPlayer, movelist *pml,
 static void WriteLuck( FILE *pf, int fPlayer, float rLuck, lucktype lt ) {
 
     if( rLuck != ERR_VAL )
-	fprintf( pf, "LU[%+.3f]", rLuck );
+	fprintf( pf, "LU[%+.5f]", rLuck );
     
     switch( lt ) {
     case LUCK_VERYBAD:
