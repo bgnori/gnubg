@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.52 2000/08/01 16:35:31 gtw Exp $
+ * $Id: gnubg.c,v 1.53 2000/08/02 19:21:43 gtw Exp $
  */
 
 #include "config.h"
@@ -1156,6 +1156,13 @@ extern void CommandRollout( char *sz ) {
 		       fVarRedn, &ecRollout ) ) < 0 )
 	return;
 
+#if USE_GTK
+    if( fX ) {
+	GTKRolloutDone();
+	return;
+    }
+#endif
+    
     outputf( "Result (after %d trials):\n\n"
 	    "               \tWin  \tW(g) \tW(bg)\tL(g) \tL(bg)\t"
 	    "Equity\n"
