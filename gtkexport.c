@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.2 2002/06/01 20:12:06 thyssen Exp $
+ * $Id: gtkexport.c,v 1.3 2002/06/01 20:13:31 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -236,8 +236,8 @@ GTKShowExport ( exportsetup *pexs ) {
   GtkWidget *pw, *pwx;
 
   char *aszInclude[] = {
-    N_ ("Annotations"), 
-    N_ ("Analysis"), 
+    N_("Annotations"), 
+    N_("Analysis"), 
     N_("Statistics"), 
     N_("Legend") };
 
