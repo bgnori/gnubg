@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.99 2003/04/02 20:48:13 thyssen Exp $
+ * $Id: rollout.c,v 1.100 2003/04/03 20:31:43 thyssen Exp $
  */
 
 #include "config.h"
@@ -385,8 +385,6 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
       if ( prc->fTruncBearoff2 && pc <= CLASS_PERFECT &&
            prc->fCubeful && *pf && ! pci->nMatchTo &&
            ( ( afCubeDecTop[ ici ] && ! prc->fInitial ) || iTurn > 0 ) ) {
-
-        float arEquity[ 4 ];
 
         /* truncate at two sided bearoff if money game */
 
