@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.119 2003/07/25 18:31:21 thyssen Exp $
+ * $Id: analysis.c,v 1.120 2003/07/26 18:16:40 jsegrave Exp $
  */
 
 #include "config.h"
@@ -744,12 +744,14 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
                  ci.fCubeOwner < 0 || ci.fCubeOwner == ci.fMove ) {
 	      
               if ( cmp_evalsetup ( pesCube, 
-								   &pmr->d.CubeDecPtr->esDouble ) > 0 ) {
+				   &pmr->d.CubeDecPtr->esDouble ) > 0 ) {
 
 		if ( GeneralCubeDecision ( aarOutput, aarStdDev, 
                                            aarsStatistics, pms->anBoard, &ci,
 					   pesCube, NULL, NULL ) < 0 )
 		    return -1;
+		
+		pmr->d.CubeDecPtr->esDouble = *pesCube;
 
               }
               else {
@@ -761,7 +763,7 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
 	      
                 FindCubeDecision ( arDouble, aarOutput, &ci );
 	      
-		esDouble = pmr->d.CubeDecPtr->esDouble = *pesCube;
+		esDouble = pmr->d.CubeDecPtr->esDouble;
 	      
                 memcpy ( pmr->d.CubeDecPtr->arDouble, arDouble, 
 						 sizeof ( arDouble ) );
@@ -800,21 +802,10 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
 
 	    GetMatchStateCubeInfo( &ci, pms );
 	  
-	    pmr->d.CubeDecPtr->esDouble = esDouble;
-
-            memcpy ( pmr->d.CubeDecPtr->arDouble, arDouble, 
-					 sizeof ( arDouble ) );
-            memcpy ( pmr->d.CubeDecPtr->aarOutput, aarOutput, 
-					 sizeof ( aarOutput ) );
-            memcpy ( pmr->d.CubeDecPtr->aarStdDev, aarStdDev, 
-					 sizeof ( aarStdDev ) );
-	  
             pmr->d.st = Skill ( -arDouble[ OUTPUT_TAKE ] - 
                                 -arDouble[ OUTPUT_DROP ] );
 	      
 	}
-        else
-          pmr->d.CubeDecPtr->esDouble.et = EVAL_NONE;
 
         if ( fUpdateStatistics )
           updateStatcontext ( psc, pmr, pms );
@@ -834,21 +825,11 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
 	if( fAnalyseCube && esDouble.et != EVAL_NONE ) {
 	    GetMatchStateCubeInfo( &ci, pms );
 	  
-	    pmr->d.CubeDecPtr->esDouble = esDouble;
-
-	    memcpy( pmr->d.CubeDecPtr->arDouble, arDouble, 
-				sizeof( arDouble ) );
-	    memcpy ( pmr->d.CubeDecPtr->aarOutput, aarOutput, 
-				 sizeof ( aarOutput ) );
-	    memcpy ( pmr->d.CubeDecPtr->aarStdDev, aarStdDev, 
-				 sizeof ( aarStdDev ) );
-	  
 	    pmr->d.st = Skill( rSkill = -arDouble[ OUTPUT_DROP ] -
                                -arDouble[ OUTPUT_TAKE ] );
 	      
 	}
-        else
-          pmr->d.CubeDecPtr->esDouble.et = EVAL_NONE;
+
 
         if ( fUpdateStatistics )
           updateStatcontext ( psc, pmr, pms );
