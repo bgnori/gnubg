@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.42.2.16 2003/08/01 07:43:52 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.42.2.17 2003/08/03 09:27:30 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -228,6 +228,7 @@ typedef struct _BoardData {
 	int boardAngle;	/* Angle board is tilted at */
 	int testSkewFactor;	/* Debug FOV adjustment */
 	int curveAccuracy;	/* Round curve approximation accuracy */
+	float diceSize;
 
 	float movingPos[3];
 	float dragPos[3];

@@ -2,7 +2,7 @@
 * widget3d.c
 * by Jon Kinsey, 2003
 *
-* Gtkglext widget for 3d drawing
+* Gtkglarea/Gtkglext widget for 3d drawing
 *
 *
 * This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.1.2.19 2003/08/01 07:43:52 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.1.2.20 2003/08/03 09:27:31 Superfly_Jon Exp $
 */
 
 #include <GL/gl.h>

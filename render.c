@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.13.4.10 2003/07/29 10:37:53 Superfly_Jon Exp $
+ * $Id: render.c,v 1.13.4.11 2003/08/03 09:27:30 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -121,7 +121,8 @@ renderdata rdDefault = {
 	1,	/* Show move indicator */
 	35,	/* Board angle */
 	20,	/* FOV skew factor */
-	PT_ROUNDED,
+	3,	/* Dice size */
+	PT_ROUNDED,	/* Piece type */
     {{{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, 100, 0, 0},
 	 {{0, 0, 0, 1}, {0, 0, 0, 1}, {0, 0, 0, 1}, 100, 0, 0}},
     {{{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, 100, 0, 0},
