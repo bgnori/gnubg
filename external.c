@@ -16,13 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.1 2001/02/13 18:22:43 gtw Exp $
+ * $Id: external.c,v 1.2 2001/02/15 19:48:19 joseph Exp $
  */
 
 #include "config.h"
 
 #include <errno.h>
 #include <signal.h>
+#include <assert.h>
 #if HAVE_SYS_SOCKET_H
 #include <sys/socket.h>
 #include <sys/un.h>

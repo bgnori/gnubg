@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.16 2001/02/14 18:55:16 gtw Exp $
+ * $Id: database.c,v 1.17 2001/02/15 19:48:19 joseph Exp $
  */
 
 #include "config.h"
@@ -436,6 +436,14 @@ static void NoGDBM( void ) {
 
   outputl( "This installation of GNU Backgammon was compiled without GDBM\n"
            "support, and does not implement position database operations." );
+}
+
+extern void CommandDatabaseExport( char *sz ) {
+  NoGDBM();
+}
+
+extern void CommandDatabaseImport( char *sz ) {
+  NoGDBM();
 }
 
 extern void CommandDatabaseDump( char *sz ) {
