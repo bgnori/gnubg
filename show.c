@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.84 2002/03/29 20:01:42 thyssen Exp $
+ * $Id: show.c,v 1.85 2002/03/29 20:11:46 thyssen Exp $
  */
 
 #include "config.h"
@@ -245,6 +245,7 @@ extern void CommandShowAutomatic( char *sz ) {
 	    "game    \t(Start a new game after each one is completed):\t%s\n"
 	    "move    \t(Play the forced move when there is no choice):\t%s\n"
 	    "roll    \t(Roll the dice if no double is possible):      \t%s\n",
+	    fAutoAnalysis ? szOn : szOff,
 	    fAutoBearoff ? szOn : szOff,
 	    fAutoCrawford ? szOn : szOff,
 	    cAutoDoubles,
