@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.217 2003/03/30 18:33:12 thyssen Exp $
+ * $Id: backgammon.h,v 1.218 2003/03/31 19:55:51 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -604,6 +604,7 @@ extern void CommandAccept( char * ),
     CommandExportPositionHtml( char * ),
     CommandExportPositionText( char * ),
     CommandExportPositionGammOnLine ( char * ),
+    CommandExportPositionGOL2Clipboard ( char * ),
     CommandExportPositionSnowieTxt( char * ),
     CommandExternal( char * ),
     CommandHelp( char * ),

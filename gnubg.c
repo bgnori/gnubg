@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.403 2003/03/30 18:33:12 thyssen Exp $
+ * $Id: gnubg.c,v 1.404 2003/03/31 19:55:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -628,6 +628,10 @@ command cER = {
     { NULL, NULL, NULL, NULL, NULL }
 }, acExportPosition[] = {
     { "gammonline", CommandExportPositionGammOnLine,
+      N_("Save the current position in .html format "
+         "(special for GammOnLine)"), 
+      szFILENAME, &cFilename },
+    { "gol2clipboard", CommandExportPositionGOL2Clipboard,
       N_("Copy the current position in .html format to clipboard"
          "(special for GammOnLine)"), 
       szFILENAME, &cFilename },
