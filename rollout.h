@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.19 2003/07/16 10:27:27 thyssen Exp $
+ * $Id: rollout.h,v 1.20 2003/07/18 14:05:36 jsegrave Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -68,17 +68,21 @@ typedef void
                         const cubeinfo aci[],
                         const int iGame,
                         const int iAlternative,
+						const int nRank,
+						const float rJsd,
+						const int fStopped,
+						const int fShowRanks,
                         void *pUserData );
 
 extern int
 RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ], 
                 float (* apOutput[])[ NUM_ROLLOUT_OUTPUTS ],
                 float (* apStdDev[])[ NUM_ROLLOUT_OUTPUTS ],
-                rolloutstat (* apStatistics[])[2],
+                rolloutstat apStatistics[][2],
                 evalsetup (* apes[]),
                 cubeinfo (* apci[]), 
                 int (* apCubeDecTop[]), int alternatives, 
-		int fInvert,
+		int fInvert, int fCubeRollout,
                 rolloutprogressfunc *pfRolloutProgress,
                 void *pUserData );
 

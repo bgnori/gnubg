@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.115 2003/07/13 02:24:40 jsegrave Exp $
+ * $Id: eval.h,v 1.116 2003/07/18 14:05:35 jsegrave Exp $
  */
 
 #ifndef _EVAL_H_
@@ -134,11 +134,21 @@ typedef struct _rolloutcontext {
   unsigned int fStopOnSTD;    /* stop when std's are small enough */
   unsigned int nMinimumGames; /* but always do at least this many */
   double       rStdLimit;     /* stop when abs( value / std ) < this */
+  unsigned int fStopMoveOnJsd;    /* stop multi-line rollout when jsd is small enough */
+  unsigned int fStopOnJsd;
+  unsigned int nMinimumJsdGames;
+  double       rJsdLimit;
   int nGamesDone;
   int nSkip;
-  int fNoMore;
 } rolloutcontext;
 
+
+typedef struct {
+  float  rEquity;
+  float  rJSD;
+  int    nOrder;
+  int	 nRank;
+} jsdinfo;
 
 typedef enum _evaltype {
   EVAL_NONE, EVAL_EVAL, EVAL_ROLLOUT

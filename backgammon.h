@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.234 2003/07/16 16:50:21 thyssen Exp $
+ * $Id: backgammon.h,v 1.235 2003/07/18 14:05:35 jsegrave Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -535,7 +535,7 @@ extern char *aszSkillType[], *aszSkillTypeAbbr[], *aszLuckType[],
 extern command acDatabase[], acNew[], acSave[], acSetAutomatic[],
     acSetCube[], acSetEvaluation[], acSetPlayer[], acSetRNG[], 
     acSetRollout[], acSetRolloutLate[], acSetRolloutLimit[], 
-    acSetTruncation [], 
+  acSetTruncation [], acSetRolloutJsd[],
     acSet[], acShow[], acTrain[], acTop[], acSetMET[], acSetEvalParam[],
     acSetRolloutPlayer[], acSetRolloutLatePlayer[], cOnOff, cFilename,
     cHighlightColour;
@@ -813,11 +813,11 @@ extern void CommandAccept( char * ),
     CommandSetMessage ( char * ),
     CommandSetMET( char * ),
     CommandSetMoveFilter( char * ),
+    CommandSetOutputDigits( char *),
     CommandSetOutputMatchPC( char * ),
     CommandSetOutputMWC ( char * ),
     CommandSetOutputRawboard( char * ),
     CommandSetOutputWinPC( char * ),
-    CommandSetOutputDigits( char * ),
     CommandSetPathEPS( char * ),
     CommandSetPathSGF( char * ),
     CommandSetPathLaTeX( char * ),
@@ -874,6 +874,11 @@ extern void CommandAccept( char * ),
     CommandSetRolloutChequerplay ( char * ),
     CommandSetRolloutCubeEqualChequer ( char * ),
     CommandSetRolloutInitial( char * ),
+    CommandSetRolloutJsd( char * ),
+    CommandSetRolloutJsdEnable( char * ),
+    CommandSetRolloutJsdLimit( char * ),
+    CommandSetRolloutJsdMinGames( char * ),
+    CommandSetRolloutJsdMoveEnable( char * ),
     CommandSetRolloutLimit( char * ),
     CommandSetRolloutLimitEnable( char * ),
     CommandSetRolloutLimitMinGames( char * ),

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.189 2003/07/16 16:51:25 thyssen Exp $
+ * $Id: set.c,v 1.190 2003/07/18 14:05:36 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1653,6 +1653,66 @@ extern void CommandSetRolloutMaxError ( char *sz ) {
 
     outputf ( _("Rollouts can stop when the ratio |STD/value| is less than"
 		"%5.4f for every value (win/gammon/backgammon/...equity\n"),
+	      r);
+}
+
+extern void CommandSetRolloutJsd ( char *sz ) {
+
+  HandleCommand ( sz, acSetRolloutJsd );
+
+}
+
+extern void CommandSetRolloutJsdEnable ( char *sz ) {
+
+  SetToggle( "stop rollout when one move appears "
+   "to have a higher equity", &prcSet->fStopOnJsd, sz,
+	     _("Stop rollout based on J.S.D.s"),
+	     _("Do not stop rollout based on J.S.D.s"));
+
+}
+
+extern void CommandSetRolloutJsdMoveEnable ( char *sz ) {
+
+  SetToggle( "stop rollout of moves which appear to  "
+   "to have a lowerer equity", &prcSet->fStopMoveOnJsd, sz,
+	     _("Stop rollout of moves based on J.S.D.s"),
+	     _("Do not stop rollout of moves based on J.S.D.s"));
+
+}
+
+extern void CommandSetRolloutJsdMinGames ( char *sz ) {
+
+  int n = ParseNumber( &sz );
+
+  if (n < 1) {
+    outputl( _("You must specify a valid minimum number of games to rollout"
+               "-- try 'help set rollout jsd minimumgames'.") );
+    return;
+  }
+  prcSet->nMinimumJsdGames = n;
+
+  outputf( _("After %d games, rollouts will stop if the J.S.D.s are large enough"
+	     ".\n"), n);
+}
+
+
+extern void CommandSetRolloutJsdLimit ( char *sz ) {
+
+    double r = ParseReal( &sz );
+
+    if( r < 0.0001 ) {
+      outputl( 
+  _("You must set a number of joint standard deviations for the equity"
+    " difference with the best move being rolled out "
+   "-- try 'help set rollout jsd limit'." ) );
+      return;
+    }
+
+    prcSet->rJsdLimit = r;
+
+    outputf ( 
+  _("Rollouts (or rollouts of moves) may  stop when the equity is more "
+   "than %5.f joint standard deviatons from the best move being rolled out\n"),
 	      r);
 }
 
