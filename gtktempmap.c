@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.8 2003/06/02 21:11:43 thyssen Exp $
+ * $Id: gtktempmap.c,v 1.9 2003/06/02 21:22:23 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -559,8 +559,19 @@ GTKShowTempMap( const matchstate ams[], const int n,
 
       ptm->szTitle = ( aszTitle &&  aszTitle[ m ] && *aszTitle[ m ] ) ?
         g_strdup( aszTitle[ m ] ) : NULL;
-      
+
+#if OLD_CODE
       pw = gtk_aspect_frame_new( ptm->szTitle, 0.5, 0.5, 1.0, FALSE );
+
+      gtk_table_attach_defaults( GTK_TABLE( pwOuterTable ),
+                                 pw, l, l + 1, k, k + 1 );
+
+      gtk_container_add( GTK_CONTAINER( pw ), 
+                         pwTable = gtk_table_new( 7, 7, TRUE ) );
+
+#endif
+
+      pw = gtk_frame_new( ptm->szTitle );
 
       gtk_table_attach_defaults( GTK_TABLE( pwOuterTable ),
                                  pw, l, l + 1, k, k + 1 );
