@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.88 2002/05/12 11:23:14 thyssen Exp $
+ * $Id: show.c,v 1.89 2002/05/22 17:46:56 thyssen Exp $
  */
 
 #include "config.h"
@@ -1306,5 +1306,56 @@ CommandShowExport ( char *sz ) {
             exsExport.afCubeDisplay[ EXPORT_CUBE_CLOSE ] ? "yes" : "no" );
 
   outputl ( "\n" );
+
+}
+
+
+extern void
+CommandShowPath ( char *sz ) {
+
+  int i;
+
+  char *aszPathNames[] = {
+    "Export of Encapsulated PostScript .eps files",
+    "Import or export of Jellyfish .gam files",
+    "Export of HTML files",
+    "Export of LaTeX files",
+    "Import or export of Jellyfish .mat files",
+    "Import of FIBS oldmoves files",
+    "Export of PDF files",
+    "Import of Jellyfish .pos files",
+    "Export of PostScript files",
+    "Load and save of SGF files",
+    "Import of GamesGrid SGG files",
+    "Loading of match equity files (.xml)" };
+
+  /* make GTK widget that allows editing of paths */
+
+#if USE_GTK
+  if ( fX ) {
+    GTKShowPath ();
+    return;
+  }
+#endif
+
+  outputl ( "Default and current paths "
+            "for load, save, import, and export: \n" );
+
+  for ( i = 0; i <= PATH_SGG; ++i ) {
+
+    outputf ( "%s:\n", aszPathNames[ i ] );
+    if ( ! strcmp ( aaszPaths[ i ][ 0 ], "" ) )
+      outputl ( "   Default : not defined" );
+    else
+      outputf ( "   Default : \"%s\"\n", aaszPaths[ i ][ 0 ] );
+
+    if ( ! strcmp ( aaszPaths[ i ][ 1 ], "" ) )
+      outputl ( "   Current : not defined" );
+    else
+      outputf ( "   Current : \"%s\"\n", aaszPaths[ i ][ 1 ] );
+
+
+
+  }
 
 }
