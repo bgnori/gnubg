@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.36 2003/08/15 02:20:48 joseph Exp $
+ * $Id: postscript.c,v 1.37 2003/09/12 14:42:17 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1225,6 +1225,10 @@ static void ExportGamePostScript( FILE *pf, list *plGame ) {
 	    /* ignore */
 	    break;
 	    
+	case MOVE_TIME:
+		/* ignore */
+		break;
+
 	case MOVE_SETBOARD:
 	case MOVE_SETCUBEVAL:
 	case MOVE_SETCUBEPOS:

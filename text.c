@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.58 2003/09/01 19:19:14 thyssen Exp $
+ * $Id: text.c,v 1.59 2003/09/12 14:42:17 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -241,7 +241,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.58 $";
+  const char szVersion[] = "$Revision: 1.59 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -646,6 +646,9 @@ TextPrintComment ( FILE *pf, const moverecord *pmr ) {
   case MOVE_SETCUBEPOS:
     sz = pmr->scp.sz;
     break;
+  case MOVE_TIME:
+	  /* ignore */
+	  break;
 
   }
 

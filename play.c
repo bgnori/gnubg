@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.221 2003/09/12 13:35:24 steink Exp $
+ * $Id: play.c,v 1.222 2003/09/12 14:42:17 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3152,7 +3152,7 @@ extern void CommandNewMatch( char *sz ) {
     InitGameClock(&ms.gc, &tc, 2*ms.nMatchTo);
 #if USE_GUI
 #if USE_GTK
-	nClockTimeout = gtk_timeout_add(314 , UpdateClockNotify, 0 );
+	nClockTimeout = gtk_timeout_add(314 , (GtkFunction)UpdateClockNotify, 0 );
 #else
 	/* EventPending( &evNextTurn, TRUE );    */ assert (0);
 #endif
@@ -3200,7 +3200,7 @@ extern void CommandNewSession( char *sz ) {
     InitGameClock(&ms.gc, &tc, 0);
 #if USE_GUI
 #if USE_GTK
-	nClockTimeout = gtk_timeout_add( 314 , UpdateClockNotify, 0 );
+	nClockTimeout = gtk_timeout_add( 314 , (GtkFunction)UpdateClockNotify, 0 );
 #else
 	/* EventPending( &evNextTurn, TRUE );    */ assert (0);
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.142 2003/09/08 18:44:39 hb Exp $
+ * $Id: analysis.c,v 1.143 2003/09/12 14:42:17 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1039,6 +1039,7 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
     case MOVE_SETBOARD:	  
     case MOVE_SETCUBEVAL:
     case MOVE_SETCUBEPOS:
+    case MOVE_TIME:
 	break;
     }
   

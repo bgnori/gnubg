@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.73 2003/09/12 13:35:24 steink Exp $
+ * $Id: gtkgame.h,v 1.74 2003/09/12 14:42:17 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -88,6 +88,7 @@ extern void GTKAllowStdin( void );
 extern void GTKDisallowStdin( void );
 extern void GTKDelay( void );
 extern void ShowList( char *asz[], char *szTitle );
+extern void GTKUpdateScores();
 
 extern GtkWidget *GTKCreateDialog( const char *szTitle, const dialogtype dt, 
                                    GtkSignalFunc pf, void *p );

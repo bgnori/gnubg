@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.488 2003/09/12 13:35:23 steink Exp $
+ * $Id: gnubg.c,v 1.489 2003/09/12 14:42:17 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -133,6 +133,10 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 
 extwindow ewnd;
 event evNextTurn;
+#endif
+
+#if USE_TIMECONTROL
+#include "timecontrol.h"
 #endif
 
 #ifdef WIN32
@@ -4323,6 +4327,9 @@ static void ExportGameJF( FILE *pf, list *plGame, int iGame,
 	case MOVE_SETDICE:
 	    /* ignore */
 	    break;
+	case MOVE_TIME:
+	    /* ignore */
+	    break;
 	case MOVE_SETBOARD:
 	case MOVE_SETCUBEVAL:
 	case MOVE_SETCUBEPOS:
@@ -7898,6 +7905,11 @@ swapGame ( list *plGame ) {
       break;
 
     case MOVE_SETCUBEVAL:
+
+      /* no-op */
+      break;
+
+	case MOVE_TIME:
 
       /* no-op */
       break;

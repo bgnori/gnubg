@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.146 2003/09/12 08:54:56 Superfly_Jon Exp $
+ * $Id: html.c,v 1.147 2003/09/12 14:42:17 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -171,7 +171,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-           "/* $Id: html.c,v 1.146 2003/09/12 08:54:56 Superfly_Jon Exp $ */\n",
+           "/* $Id: html.c,v 1.147 2003/09/12 14:42:17 Superfly_Jon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1810,7 +1810,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.146 $";
+  const char szVersion[] = "$Revision: 1.147 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1891,7 +1891,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.146 $";
+  const char szVersion[] = "$Revision: 1.147 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3005,7 +3005,9 @@ HTMLPrintComment ( FILE *pf, const moverecord *pmr,
   case MOVE_SETCUBEPOS:
     sz = pmr->scp.sz;
     break;
-
+  case MOVE_TIME:
+	  /* ignore */
+	  break;
   }
 
   if ( sz ) {
