@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xboard.c,v 1.12 2000/01/31 17:53:33 gtw Exp $
+ * $Id: xboard.c,v 1.13 2000/02/18 17:07:01 gtw Exp $
  */
 
 #include "config.h"
@@ -377,7 +377,7 @@ static void BoardPointer( extwindow *pewnd, gamedata *pgd, XEvent *pxev ) {
 
 	    if( ( nDest <= 0 ) || ( nDest >= 25 ) )
 		/* bearing off */
-		nDest = pgd->fDragColour ? 26 : 27;
+		nDest = pgd->fDragColour > 0 ? 26 : 27;
 	    
 	    goto PlaceChequer;
 	}

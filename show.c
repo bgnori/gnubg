@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.12 2000/02/07 18:56:51 gtw Exp $
+ * $Id: show.c,v 1.13 2000/02/18 17:07:01 gtw Exp $
  */
 
 #include "config.h"
@@ -52,7 +52,7 @@ static void ShowEvaluation( evalcontext *pec ) {
 
 static void ShowPaged( char **ppch ) {
 
-    int i, nRows = 0, ch;
+    int i, nRows = 0;
     char *pchLines;
 #if TIOCGWINSZ
     struct winsize ws;

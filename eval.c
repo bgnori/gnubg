@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.15 2000/02/16 18:34:40 joseph Exp $
+ * $Id: eval.c,v 1.16 2000/02/18 17:07:00 gtw Exp $
  */
 
 #include "config.h"
@@ -1373,6 +1373,9 @@ static void SaveMoves( movelist *pml, int cMoves, int cPip, int anMoves[],
     
 		if( cMoves < 4 )
 		    pml->amMoves[ i ].anMove[ cMoves * 2 ] = -1;
+
+		pml->amMoves[ i ].cMoves = cMoves;
+		pml->amMoves[ i ].cPips = cPip;
 	    }
 	    
 	    return;
