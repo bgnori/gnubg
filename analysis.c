@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.95 2002/12/16 21:52:47 thyssen Exp $
+ * $Id: analysis.c,v 1.96 2002/12/21 17:10:45 thyssen Exp $
  */
 
 #include "config.h"
@@ -674,11 +674,7 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
 	break;
       
     case MOVE_DOUBLE:
-	if( pmr->d.fPlayer != pms->fMove ) {
-	    SwapSides( pms->anBoard );
-	    pms->fMove = pmr->d.fPlayer;
-	}
-      
+
 	/* cube action */	    
 	if( fAnalyseCube ) {
 	    GetMatchStateCubeInfo( &ci, pms );
