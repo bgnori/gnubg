@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.105 2001/12/10 16:06:06 gtw Exp $
+ * $Id: backgammon.h,v 1.106 2002/01/26 19:27:57 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -140,6 +140,12 @@ typedef struct _moveresign {
     char *sz;
     int fPlayer;
     int nResigned;
+
+    evalsetup esResign;
+    float arResign[ NUM_ROLLOUT_OUTPUTS ];
+
+    skilltype stResign;
+    skilltype stAccept;
 } moveresign;
 
 typedef struct _movesetboard {
