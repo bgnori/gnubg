@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.11 2001/02/23 18:11:22 gtw Exp $
+ * $Id: dice.c,v 1.12 2001/03/19 15:56:38 gtw Exp $
  */
 
 #include "config.h"
@@ -201,13 +201,13 @@ extern void InitRNGSeed( int n ) {
     }
 }
 
-/* Returns TRUE if /dev/random was available, or FALSE if system clock was
+/* Returns TRUE if /dev/urandom was available, or FALSE if system clock was
    used. */
 extern int InitRNG( int *pnSeed, int fSet ) {
 
     int n, h, f = FALSE;
 
-    if( ( h = open( "/dev/random", O_RDONLY ) ) >= 0 ) {
+    if( ( h = open( "/dev/urandom", O_RDONLY ) ) >= 0 ) {
 	f = read( h, &n, sizeof n ) == sizeof n;
 	close( h );
     }
