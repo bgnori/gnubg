@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.38 2004/05/03 13:21:49 thyssen Exp $
+ * $Id: dice.c,v 1.39 2004/05/07 17:59:16 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -53,9 +53,12 @@
 #include <unistd.h>
 #endif
 
+#if HAVE_SOCKETS
 #ifndef WIN32
 #include <errno.h>
 #include <sys/types.h>
+
+#define closesocket close
 
 #if HAVE_SYS_SOCKET_H
 #include <sys/socket.h>
@@ -106,6 +109,7 @@
 #define ESTALE                  WSAESTALE
 #define EREMOTE                 WSAEREMOTE
 #endif /* #ifndef WIN32 */
+#endif /* #if HAVE_SOCKETS */
 
 #include "backgammon.h"
 #include "dice.h"
@@ -927,7 +931,7 @@ getDiceRandomDotOrg ( void ) {
 
     if ( ExternalWrite( h, szHTTP, strlen ( szHTTP ) + 1 ) < 0 ) {
       outputerr( szHTTP );
-      close( h );
+      closesocket( h );
       return -1;
     }
 
@@ -941,20 +945,14 @@ getDiceRandomDotOrg ( void ) {
 	if ( ! ( nBytesRead = read( h, acBuf, sizeof ( acBuf ) ) ) ) {
 #endif
       outputerr( "reading data" );
-      close( h );
+      closesocket( h );
       return -1;
     }
 
     /* close socket */
-
-#ifdef WIN32
-    closesocket( (SOCKET) h ); 
-#else
-    close ( h );
-#endif
+    closesocket ( h );
 
     /* parse string */
-
     outputl ( _("Done." ) );
     outputx ();
 
