@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.149 2002/11/28 02:47:28 gtw Exp $
+ * $Id: set.c,v 1.150 2002/11/29 23:00:11 thyssen Exp $
  */
 
 #include "config.h"
@@ -565,11 +565,12 @@ extern void CommandSetAppearance( char *sz ) {
 #if USE_GTK
     if( fX ) {
 	char *apch[ 2 ];
+        BoardData *bd = BOARD( pwBoard )->board_data;
 
 	BoardPreferencesStart( pwBoard );
 	    
 	while( ParseKeyValue( &sz, apch ) )
-	    BoardPreferencesParam( pwBoard, apch[ 0 ], apch[ 1 ] );
+	    BoardPreferencesParam( bd, apch[ 0 ], apch[ 1 ] );
 
 	BoardPreferencesDone( pwBoard );	    
     } else
