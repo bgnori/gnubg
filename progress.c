@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.17 2005/02/24 17:28:44 oysteijo Exp $
+ * $Id: progress.c,v 1.18 2005/03/30 15:41:58 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -919,9 +919,11 @@ GTKRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
                     rolloutprogress *prp ) {
 
     char sz[ 32 ];
-    gchar *gsz;
     int i;
+#if USE_GTK2
+    gchar *gsz;
     double frac;
+#endif
 
     if( !prp ||  !prp->pwRolloutResult )
       return;
@@ -1044,7 +1046,9 @@ GTKRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
 
 static void GTKRolloutProgressEnd( void **pp ) {
     
+#if USE_GTK2
     gchar *gsz;
+#endif
 
     rolloutprogress *prp = *pp;
 
