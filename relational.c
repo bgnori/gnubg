@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.8 2004/09/29 18:13:00 Superfly_Jon Exp $
+ * $Id: relational.c,v 1.9 2004/09/29 19:31:55 oysteijo Exp $
  */
 
 #include <stdio.h>
@@ -625,6 +625,9 @@ extern void CommandRelationalShowRecords(char *sz)
 extern void CommandRelationalSelect(char *sz)
 {
 #if USE_PYTHON
+#if !USE_GTK
+	int i, j;
+#endif
 	RowSet r;
 
 	if (!sz || !*sz)
