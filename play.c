@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.122 2002/04/20 15:11:50 thyssen Exp $
+ * $Id: play.c,v 1.123 2002/04/22 09:48:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -3101,6 +3101,8 @@ SetMatchID ( const char *szMatchID ) {
 
   moverecord *pmr;
 
+  if ( ! szMatchID || ! *szMatchID )
+     return;
 
   if( ms.gs == GAME_PLAYING && fConfirm ) {
     if( fInterrupt )

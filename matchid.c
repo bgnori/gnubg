@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.c,v 1.2 2002/03/26 17:02:58 oysteijo Exp $
+ * $Id: matchid.c,v 1.3 2002/04/22 09:48:59 thyssen Exp $
  */
 
 #include <assert.h>
@@ -27,6 +27,7 @@
 #include "backgammon.h"
 #include "positionid.h"
 #include "matchid.h"
+#include "matchequity.h"
 
 
 /*
@@ -209,6 +210,17 @@ MatchFromKey ( int anDice[ 2 ],
   GetBits ( auchKey, 51, 15, &anScore[ 1 ] );
 
   /* FIXME: implement a consistency check */
+
+  if ( anDice[ 0 ] < 0 || anDice[ 0 ] > 6 )
+     return -1;
+  if ( anDice[ 1 ] < 0 || anDice[ 1 ] > 6 )
+     return -1;
+  if ( *pnMatchTo < 0 || *pnMatchTo > MAXSCORE )
+     return -1;
+  if ( anScore[ 0 ] < 0 || anScore[ 0 ] > *pnMatchTo )
+     return -1;
+  if ( anScore[ 1 ] < 0 || anScore[ 1 ] > *pnMatchTo )
+     return -1;
 
   return 0;
 
