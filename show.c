@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.44 2001/01/31 15:39:20 gtw Exp $
+ * $Id: show.c,v 1.45 2001/02/08 16:38:47 gtw Exp $
  */
 
 #include "config.h"
@@ -673,6 +673,12 @@ extern void CommandShowMarketWindow ( char * sz ) {
 
   int i, fAutoRedouble[ 2 ], afDead[ 2 ], anNormScore[ 2 ];
 
+  if( gs != GAME_PLAYING ) {
+    outputl( "No game in progress (type `new game' to start one)." );
+
+    return;
+  }
+      
   /* Show market window */
 
   /* First, get gammon and backgammon percentages */
