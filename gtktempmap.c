@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.7 2003/06/02 20:33:34 thyssen Exp $
+ * $Id: gtktempmap.c,v 1.8 2003/06/02 21:11:43 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -241,6 +241,7 @@ UpdateTempMapEquities( tempmapwidget *ptmw ) {
   float rMax, rMin, r;
   cubeinfo ci;
   int m;
+  char szMove[ 100 ];
 
   /* calc. min, max and average */
 
@@ -271,14 +272,22 @@ UpdateTempMapEquities( tempmapwidget *ptmw ) {
   for ( m = 0; m < ptmw->n; ++m ) {
     for ( i = 0; i < 6; ++i )
       for ( j = 0; j < 6; ++j ) {
+
+        gchar *sz = 
+          g_strdup_printf( "%s [%s]", 
+                           GetEquityString( ptmw->atm[ m ].aarEquity[ i ][ j ],
+                                            &ci, ptmw->fInvert ), 
+                           FormatMove( szMove, ptmw->atm[ m ].pms->anBoard, 
+                                       ptmw->atm[ m ].aaanMove[ i ][ j ] ) );
+                           
+
         SetStyle( ptmw->atm[ m ].aapwDA[ i ][ j ],
                   ptmw->atm[ m ].aarEquity[ i ][ j ], rMin, rMax, 
                   ptmw->fInvert );
 
-        gtk_tooltips_set_tip( ptt, ptmw->atm[ m ].aapwe[ i ][ j ], 
-                              GetEquityString( ptmw->atm[ m ].aarEquity[ i ][ j ],
-                                               &ci, ptmw->fInvert ), 
+        gtk_tooltips_set_tip( ptt, ptmw->atm[ m ].aapwe[ i ][ j ], sz,
                               "" );
+        g_free( sz );
         gtk_widget_queue_draw( ptmw->atm[ m ].aapwDA[ i ][ j ] ); 
 
       }
@@ -656,7 +665,7 @@ GTKShowTempMap( const matchstate ams[], const int n,
                           GTK_SIGNAL_FUNC( ExposeQuadrant ),
                           ptmw );
 
-    }
+     }
 
   /* separator */
 
