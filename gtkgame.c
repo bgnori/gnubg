@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.152 2002/05/30 19:37:21 thyssen Exp $
+ * $Id: gtkgame.c,v 1.153 2002/06/01 11:31:40 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -177,6 +177,7 @@ typedef enum _gnubgcommand {
     CMD_SET_TURN_1,
     CMD_SHOW_COPYING,
     CMD_SHOW_ENGINE,
+    CMD_SHOW_EXPORT,
     CMD_SHOW_GAMMONVALUES,
     CMD_SHOW_MARKETWINDOW,
     CMD_SHOW_MATCHEQUITYTABLE,
@@ -296,6 +297,7 @@ static char *aszCommands[ NUM_CMDS ] = {
     NULL, /* set turn 1 */
     "show copying",
     "show engine",
+    "show export",
     "show gammonvalues",
     "show marketwindow",
     "show matchequitytable",
@@ -2704,6 +2706,8 @@ extern int InitGTK( int *argc, char ***argv ) {
 	  NULL },
         { "/_Settings/_Egyptian rule", NULL, Command, CMD_SET_EGYPTIAN,
           "<CheckItem>" },
+        { "/_Settings/E_xport...", NULL, Command, CMD_SHOW_EXPORT,
+          NULL },
 	{ "/_Settings/_Invert/_Match equity table", NULL, Command, 
           CMD_SET_INVERT_MET,
 	  "<CheckItem>" },
