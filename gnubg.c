@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.536 2004/02/24 10:24:04 uid68519 Exp $
+ * $Id: gnubg.c,v 1.537 2004/02/24 11:42:43 uid68519 Exp $
  */
 
 #include "config.h"
@@ -108,6 +108,10 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "osr.h"
 #include "format.h"
 #include "onechequer.h"
+
+#ifdef HAVE_SOCKETS
+#include <winsock.h>
+#endif
 
 #if USE_PYTHON
 #include <gnubgmodule.h>
