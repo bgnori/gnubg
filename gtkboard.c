@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.90 2002/09/24 21:33:36 gtw Exp $
+ * $Id: gtkboard.c,v 1.91 2002/09/26 03:44:13 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5041,7 +5041,7 @@ static void board_init( Board *board ) {
 
     gtk_toolbar_append_space ( GTK_TOOLBAR ( bd->toolbar ) );
 
-    bd->stopparent = gtk_hbox_new( 0, FALSE );
+    bd->stopparent = gtk_event_box_new();
 #if USE_GTK2
     bd->stop =
       button_from_image ( gtk_image_new_from_stock ( GTK_STOCK_STOP, 
@@ -5058,7 +5058,7 @@ static void board_init( Board *board ) {
 
     gtk_toolbar_append_widget ( GTK_TOOLBAR ( bd->toolbar ),
                                 bd->stopparent,
-                                _("Stop the current process"),
+                                _("Stop the current operation"),
                                 _("private") );
 
     /* horisontal separator */
