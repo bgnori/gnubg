@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.183 2003/04/04 20:16:02 thyssen Exp $
+ * $Id: play.c,v 1.184 2003/04/04 20:41:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -1271,7 +1271,8 @@ extern int ComputerTurn( void ) {
       FIBSBoard( szBoard, ms.anBoard, ms.fMove, ap[ 1 ].szName,
 		 ap[ 0 ].szName, ms.nMatchTo, ms.anScore[ 1 ],
 		 ms.anScore[ 0 ], ms.anDice[ 0 ], ms.anDice[ 1 ], ms.nCube,
-		 ms.fCubeOwner, ms.fDoubled, ms.fTurn, ms.fCrawford );
+		 ms.fCubeOwner, ms.fDoubled, ms.fTurn, ms.fCrawford,
+                 anChequers [ ms.bgv ] );
       strcat( szBoard, "\n" );
       
       if( ExternalWrite( ap[ ms.fTurn ].h, szBoard,

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.37 2003/01/29 19:05:06 thyssen Exp $
+ * $Id: gtkboard.h,v 1.38 2003/04/04 20:41:59 thyssen Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -53,7 +53,7 @@ extern GtkWidget *board_dice_widget( Board *board );
 extern gint game_set( Board *board, gint points[ 2 ][ 25 ], int roll,
 		      gchar *name, gchar *opp_name, gint match,
 		      gint score, gint opp_score, gint die0, gint die1,
-		      gint computer_turn );
+		      gint computer_turn, gint nchequers );
 extern gint game_set_old_dice( Board *board, gint die0, gint die1 );
 extern void board_set_playing( Board *board, gboolean f );
 extern void board_animate( Board *board, int move[ 8 ], int player );
@@ -84,6 +84,7 @@ typedef struct _BoardData {
     gint cube_owner; /* -1 = bottom, 0 = centred, 1 = top */
     gint qedit_point; /* used to remember last point in quick edit mode */
     gint resigned;
+    gint nchequers;
     move *all_moves, *valid_move;
     movelist move_list;
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.37 2003/03/30 16:37:52 thyssen Exp $
+ * $Id: text.c,v 1.38 2003/04/04 20:41:59 thyssen Exp $
  */
 
 #include "config.h"
@@ -544,7 +544,7 @@ printTextBoard ( FILE *pf, const matchstate *pms ) {
 	
 
   fputs ( DrawBoard( szBoard, anBoard, pms->fMove, apch,
-                     MatchIDFromMatchState ( pms ) ),
+                     MatchIDFromMatchState ( pms ), anChequers[ ms.bgv ] ),
           pf);
 
   PipCount ( anBoard, anPips );
@@ -659,7 +659,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.37 $";
+  const char szVersion[] = "$Revision: 1.38 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
