@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.98 2002/12/25 15:49:30 thyssen Exp $
+ * $Id: analysis.c,v 1.97 2002/12/25 15:47:49 thyssen Exp $
  */
 
 #include "config.h"
@@ -731,6 +731,7 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
     case MOVE_TAKE:
 
         tt = (taketype) DoubleType ( pms->fDoubled, pms->fMove, pms->fTurn );
+        printf ( "move_Take: %d\n", tt );
         if ( tt != TT_NORMAL )
           break;
       
@@ -759,6 +760,7 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
     case MOVE_DROP:
       
         tt = (taketype) DoubleType ( pms->fDoubled, pms->fMove, pms->fTurn );
+        printf ( "move_drop: %d\n", tt );
         if ( tt != TT_NORMAL )
           break;
       
