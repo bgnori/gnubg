@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.19 2000/05/04 12:28:40 thyssen Exp $
+ * $Id: set.c,v 1.20 2000/06/30 02:09:57 gtw Exp $
  */
 
 #include "config.h"
@@ -33,6 +33,8 @@
 static command acSetEvaluation[] = {
     { "candidates", CommandSetEvalCandidates, "Limit the number of moves "
       "for deep evaluation", NULL },
+    { "consistency", CommandSetEvalConsistency, "Use the same evaluator for "
+      "all moves", NULL },
     { "plies", CommandSetEvalPlies, "Choose how many plies the `eval' and "
       "`hint' commands look ahead", NULL },
     { "reduced", CommandSetEvalReduced,
@@ -434,6 +436,12 @@ extern void CommandSetEvalCandidates( char *sz ) {
     printf( "%s will consider up to %d move%s for evaluation at deeper "
 	    "plies.\n", szSet, pecSet->nSearchCandidates,
 	    pecSet->nSearchCandidates == 1 ? "" : "s" );
+}
+
+extern void CommandSetEvalConsistency( char *sz ) {
+
+    SetToggle( "consistency", &pecSet->fRelativeAccuracy, sz, "Consistent "
+	       "evaluation enabled.", "Consistent evaluation disabled." );
 }
 
 extern void CommandSetEvalPlies( char *sz ) {

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.19 2000/06/26 19:24:02 gtw Exp $
+ * $Id: show.c,v 1.20 2000/06/30 02:09:57 gtw Exp $
  */
 
 #include "config.h"
@@ -46,10 +46,13 @@ static void ShowEvaluation( evalcontext *pec ) {
     printf( "    %d-ply evaluation.\n"
 	    "    %d move search candidate%s.\n"
 	    "    %0.3g cubeless search tolerance.\n"
-	    "    %.0f%% speed.\n\n",
+	    "    %.0f%% speed.\n"
+	    "    %s.\n\n",
 	    pec->nPlies, pec->nSearchCandidates, pec->nSearchCandidates == 1 ?
 	    "" : "s", pec->rSearchTolerance,
-	    (pec->nReduced) ? 100. * pec->nReduced / 21.0 : 100. );
+	    (pec->nReduced) ? 100. * pec->nReduced / 21.0 : 100.,
+	    pec->fRelativeAccuracy ? "Consistent evaluations",
+	    "Variable evaluations" );
 }
 
 static void ShowPaged( char **ppch ) {
