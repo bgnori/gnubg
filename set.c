@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.121 2002/09/08 19:53:53 thyssen Exp $
+ * $Id: set.c,v 1.122 2002/09/14 15:33:40 gtw Exp $
  */
 
 #include "config.h"
@@ -2877,6 +2877,8 @@ CommandSetSoundSystemWindows ( char *sz ) {
 static void
 SetSound ( const gnubgsound gs, const char *szFilename ) {
 
+  SoundFlushCache( gs );
+    
   if ( ! szFilename || ! *szFilename ) {
 
     strcpy ( aszSound[ gs ], "" );
@@ -2891,7 +2893,6 @@ SetSound ( const gnubgsound gs, const char *szFilename ) {
     outputf ( _("Sound for: %s: %s\n"), 
               gettext ( aszSoundDesc[ gs ] ),
               aszSound[ gs ] );
-
   }
 
 }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sound.h,v 1.4 2002/09/14 00:40:13 gtw Exp $
+ * $Id: sound.h,v 1.5 2002/09/14 15:33:40 gtw Exp $
  */
 
 #ifndef _SOUND_H_
@@ -32,6 +32,7 @@ typedef enum _gnubgsound {
   SOUND_AGREE,
   SOUND_DOUBLE,
   SOUND_DROP,
+  SOUND_CHEQUER,
   SOUND_MOVE,
   SOUND_REDOUBLE,
   SOUND_RESIGN,
@@ -73,6 +74,7 @@ extern int fSound;
 
 extern void
 playSound ( const gnubgsound gs );
+extern void SoundFlushCache( const gnubgsound gs );
 extern void SoundWait( void );
 
 #ifdef SIGIO

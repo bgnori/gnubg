@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.75 2002/09/11 15:21:04 thyssen Exp $
+ * $Id: gtkboard.c,v 1.76 2002/09/14 15:33:40 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -40,6 +40,7 @@
 #include "gtk-multiview.h"
 #include "gtkprefs.h"
 #include "positionid.h"
+#include "sound.h"
 #include "matchid.h"
 #include "i18n.h"
 
@@ -1472,6 +1473,8 @@ static gboolean board_pointer( GtkWidget *board, GdkEvent *event,
 		    board_expose_point( board, bd, bd->drag_point );
 		    board_expose_point( board, bd, bar );
 			
+		    playSound( SOUND_CHEQUER );
+
 		    goto finished;
 		}
 
@@ -1624,7 +1627,9 @@ static gboolean board_pointer( GtkWidget *board, GdkEvent *event,
 		    /* bearing off */
 		    dest = bd->drag_colour > 0 ? 26 : 27;
 		
-		if( !place_chequer_or_revert( board, bd, dest ) ) {
+		if( place_chequer_or_revert( board, bd, dest ) )
+		    playSound( SOUND_CHEQUER );
+		else {
 		    /* First roll was illegal.  We are going to 
 		       try the second roll next. First, we have 
 		       to redo the pickup since we got reverted. */
@@ -1640,7 +1645,9 @@ static gboolean board_pointer( GtkWidget *board, GdkEvent *event,
 			/* bearing off */
 			dest = bd->drag_colour > 0 ? 26 : 27;
 		    
-		    if( !place_chequer_or_revert( board, bd, dest ) ) {
+		    if( place_chequer_or_revert( board, bd, dest ) )
+			playSound( SOUND_CHEQUER );
+		    else {
 			board_expose_point( board, bd, bd->drag_point );
 			board_beep( bd );
 		    }
@@ -1648,7 +1655,9 @@ static gboolean board_pointer( GtkWidget *board, GdkEvent *event,
 	    }
 	} else {
 	    /* This is from a normal drag release */
-	    if( !place_chequer_or_revert( board, bd, dest ) )
+	    if( place_chequer_or_revert( board, bd, dest ) )
+		playSound( SOUND_CHEQUER );
+	    else
 		board_beep( bd );
 	}
 	
@@ -2207,6 +2216,8 @@ static gint board_slide_timeout( gpointer p ) {
 	    pbd->drag_point = -1;
 	    slide_phase = 0;
 	    slide_move += 2;
+
+	    playSound( SOUND_CHEQUER );
 
 	    return TRUE;
 	}
