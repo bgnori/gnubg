@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.162 2004/01/28 11:06:27 uid68519 Exp $
+ * $Id: gtkboard.c,v 1.163 2004/01/29 11:30:22 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1601,6 +1601,7 @@ UpdateMove( BoardData *bd, int anBoard[ 2 ][ 25 ] ) {
 			{
 				int min = MIN(abs(old_points[an[i]]), abs(bd->points[an[i]]));
 				int max = MAX(abs(old_points[an[i]]), abs(bd->points[an[i]]));
+				min = MIN(min, max - 1);	/* huffed - no change in number of chequers */
 				for (k = min + 1; k <= max; k++)
 					RestrictiveDrawPiece(bd, an[i], k);
 			}
@@ -2563,8 +2564,13 @@ static gint board_set( Board *board, const gchar *board_text,
 		if (bd->resigned)
 			updateFlagOccPos(bd);
 
-		if (bd->quickDraw && bd->showMoveIndicator)
-			RestrictiveDrawMoveIndicator(bd);
+		if (bd->quickDraw)
+		{
+			if (rdAppearance.fDynamicLabels)
+				RestrictiveDrawBoardNumbers(bd);
+			else if (bd->showMoveIndicator)
+				RestrictiveDrawMoveIndicator(bd);
+		}
 #endif
 	  redrawNeeded = 1;
 	}

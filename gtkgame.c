@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.455 2004/01/19 10:20:07 uid68519 Exp $
+ * $Id: gtkgame.c,v 1.456 2004/01/29 11:30:22 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -144,11 +144,10 @@ extern gint gtk_option_menu_get_history (GtkOptionMenu *option_menu) {
 char* warningStrings[WARN_NUM_WARNINGS] =
 {
 	N_("Press escape to exit full screen mode"),
-	N_("This option will speed up the 3d drawing for slow machines.\n"
-		"Several options will be disabled, so only select this option if performance is poor"),
+	N_("This option will speed up the 3d drawing, but may not work correctly on all machines"),
 	N_("Drawing shadows is only supported on the latest graphics cards\n"
 		"Disable this option if performance is poor"),
-	N_("No hardware accelerated graphics card found, performance may be slow\n")
+	N_("No hardware accelerated graphics card found, performance may be slow")
 };
 
 char* warningNames[WARN_NUM_WARNINGS] =
