@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.345 2002/12/06 16:22:46 gtw Exp $
+ * $Id: gnubg.c,v 1.346 2002/12/06 20:10:28 thyssen Exp $
  */
 
 #include "config.h"
@@ -735,6 +735,8 @@ command cER = {
       acSetEvalParam },
     { "limit", CommandSetAnalysisLimit, N_("Specify the maximum number of "
       "possible moves analysed"), szOPTLIMIT, NULL },
+    { "luckanalysis", CommandSetAnalysisLuckAnalysis,
+      N_("Specify parameters for the luck analysis"), NULL, acSetEvaluation },
     { "luck", CommandSetAnalysisLuck, N_("Select whether dice rolls will be "
       "analysed"), szONOFF, &cOnOff },
     { "moves", CommandSetAnalysisMoves, 
@@ -4299,6 +4301,8 @@ extern void CommandSaveSettings( char *szParam ) {
 			    &esAnalysisChequer );
     SaveEvalSetupSettings ( pf, "set analysis cubedecision",
 			    &esAnalysisCube );
+
+    SaveEvalSettings ( pf, "set analysis luckanalysis", &ecLuck );
     
     fprintf( pf, "set analysis limit %d\n", cAnalysisMoves );
 

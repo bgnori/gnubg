@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.186 2002/12/04 20:55:52 thyssen Exp $
+ * $Id: backgammon.h,v 1.187 2002/12/06 20:10:28 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -287,6 +287,7 @@ extern char *aszExtensions[ PATH_MET + 1 ];
 extern char *szCurrentFileName;
 
 extern evalcontext ecTD;
+extern evalcontext ecLuck;
 
 extern evalsetup esEvalCube, esEvalChequer;
 extern evalsetup esAnalysisCube, esAnalysisChequer;
@@ -614,6 +615,7 @@ extern void CommandAccept( char * ),
     CommandSetAnalysisCube( char * ),
     CommandSetAnalysisCubedecision( char * ),
     CommandSetAnalysisLimit( char * ),
+    CommandSetAnalysisLuckAnalysis( char * ),
     CommandSetAnalysisLuck( char * ),
     CommandSetAnalysisMoves( char * ),
     CommandSetAnalysisThresholdBad( char * ),
