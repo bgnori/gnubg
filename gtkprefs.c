@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.53 2002/12/13 19:38:34 gtw Exp $
+ * $Id: gtkprefs.c,v 1.54 2002/12/15 19:40:10 thyssen Exp $
  */
 
 #include "config.h"
@@ -852,7 +852,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.53 2002/12/13 19:38:34 gtw Exp $\n"
+          "    $Id: gtkprefs.c,v 1.54 2002/12/15 19:40:10 thyssen Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -1006,6 +1006,8 @@ DesignAdd ( GtkWidget *pw, gpointer data ) {
   if( bd.rd.arLight[ 1 ] < 0 )
     rAzimuth = 360 - rAzimuth;
 
+  PushLocale( "C" );
+
   pbde->szBoardDesign = g_strdup_printf (
             "\n"
             "         board=#%02X%02X%02X;%0.2f\n"
@@ -1076,6 +1078,8 @@ DesignAdd ( GtkWidget *pw, gpointer data ) {
              /* points1 */
 	     bd.rd.aanBoardColour[ 3 ][ 0 ], bd.rd.aanBoardColour[ 3 ][ 1 ], 
 	     bd.rd.aanBoardColour[ 3 ][ 2 ], bd.rd.aSpeckle[ 3 ] / 128.0f );
+
+  PopLocale();
 
   pbde->fDeletable = TRUE;
 
