@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.13 2000/02/04 17:06:23 gtw Exp $
+ * $Id: rollout.c,v 1.14 2000/02/21 18:06:51 gtw Exp $
  */
 
 #include "config.h"
@@ -343,10 +343,17 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
 	    ar[ OUTPUT_LOSEBACKGAMMON ];
 	
 	for( j = 0; j < NUM_ROLLOUT_OUTPUTS; j++ ) {
+	    float rMuNew, rDelta;
+	    
 	    arResult[ j ] += ar[ j ];
-	    arVariance[ j ] += ar[ j ] * ar[ j ];
+	    rMuNew = arResult[ j ] / ( i + 1 );
 
-	    arMu[ j ] = arResult[ j ] / ( i + 1 );
+	    rDelta = rMuNew - arMu[ j ];
+	    
+	    arVariance[ j ] = arVariance[ j ] * ( 1.0 - 1.0 / ( i + 1 ) ) +
+		( i + 2 ) * rDelta * rDelta;
+
+	    arMu[ j ] = rMuNew;
 
 	    if( j < OUTPUT_EQUITY ) {
 		if( arMu[ j ] < 0.0f )
@@ -354,16 +361,8 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
 		else if( arMu[ j ] > 1.0f )
 		    arMu[ j ] = 1.0f;
 	    }
-	    
-	    if( i == 0 )
-		arSigma[ j ] = 0.0f;
-	    else {
-		arSigma[ j ] = arVariance[ j ] - ( i + 1 ) * arMu[ j ] *
-		    arMu[ j ];
-		if( arSigma[ j ] < 0.0f )
-		    arSigma[ j ] = 0.0f;
-		arSigma[ j ] = sqrt( arSigma[ j ] ) / i;
-	    }
+
+	    arSigma[ j ] = sqrt( arVariance[ j ] / ( i + 1 ) );
 	}
 
 	SanityCheck( anBoard, arMu );
