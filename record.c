@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.11 2003/03/02 15:07:22 thyssen Exp $
+ * $Id: record.c,v 1.12 2003/03/13 17:01:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -212,7 +212,7 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
 	return -1;
     }
 
-    if( fputs( "# %Version: 2 ($Revision: 1.11 $)\n", *ppfOut ) < 0 ) {
+    if( fputs( "# %Version: 2 ($Revision: 1.12 $)\n", *ppfOut ) < 0 ) {
 	outputerr( *ppchOut );
 	free( *ppchOut );
 	return -1;
@@ -302,6 +302,10 @@ static int RecordAddGame( list *plGame, playerrecord apr[ 2 ] ) {
 	/* game is not completely analysed */
 	return -1;
 
+    /* ensure statistics are updated */
+
+    updateStatisticsGame ( plGame );
+    
     for( i = 0; i < 2; i++ ) {
 	apr[ i ].cGames++;
 
@@ -391,7 +395,7 @@ extern void CommandRecordAddGame( char *sz ) {
     }
 
     InitPlayerRecords( apr );
-    
+
     if( RecordRead( &pf, &pch, apr ) < 0 )
 	return;
     
