@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.16 2002/12/01 15:42:42 thyssen Exp $
+ * $Id: makebearoff.c,v 1.17 2002/12/01 16:05:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -889,7 +889,7 @@ static void BearOff2( int nUs, int nThem,
     if ( fCubeful ) {
 
       for ( k = 1; k < 4; ++k )
-        arEquity[ k ] /= 36.0f;
+        arEquity[ k ] = arTotal[ k ] / 36.0f;
 
     }
 
@@ -1096,7 +1096,7 @@ usage ( char *arg0 ) {
 static void
 version ( void ) {
 
-  printf ( "makebearoff $Revision: 1.16 $\n" );
+  printf ( "makebearoff $Revision: 1.17 $\n" );
 
 }
 
