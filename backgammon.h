@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.248 2003/08/24 20:40:29 oysteijo Exp $
+ * $Id: backgammon.h,v 1.249 2003/08/26 16:58:37 hb Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -363,6 +363,7 @@ extern int fSconyers15x15DVD;
 extern char szPathSconyers15x15DVD[ BIG_PATH ];      
 extern int fSconyers15x15Disk;
 extern char szPathSconyers15x15Disk[ BIG_PATH ];      
+extern char szLang[ 32 ];      
 
 typedef enum _pathformat {
   PATH_EPS, PATH_GAM, PATH_HTML, PATH_LATEX, PATH_MAT, PATH_OLDMOVES,
@@ -877,6 +878,7 @@ extern void CommandAccept( char * ),
     CommandSetHighlightMedium ( char * ),
     CommandSetInvertMatchEquityTable( char * ),
     CommandSetJacoby( char * ),
+    CommandSetLang( char * ),
     CommandSetMatchAnnotator( char * ),
     CommandSetMatchComment( char * ),
     CommandSetMatchDate( char * ),
@@ -1056,6 +1058,7 @@ extern void CommandAccept( char * ),
     CommandShowEgyptian( char * ),
     CommandShowJacoby( char * ),
     CommandShowKleinman( char * ),
+    CommandShowLang( char * ),
     CommandShowMarketWindow( char * ),
     CommandShowMatchInfo( char * ),
     CommandShowMatchLength( char * ),

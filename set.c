@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.203 2003/08/24 09:06:20 thyssen Exp $
+ * $Id: set.c,v 1.204 2003/08/26 16:58:38 hb Exp $
  */
 
 #include "config.h"
@@ -4573,5 +4573,31 @@ CommandSetRatingOffset( char *sz ) {
 
   outputf( _("The rating offset for estimating absolute ratings is: %.1f\n"),
            rRatingOffset );
+
+}
+
+extern void CommandSetLang( char *sz ) {
+
+    if( !sz || !*sz ) {
+	outputl( _( "You must give `system' or a language code "
+		    "as an argument." ) );
+	return;
+    }
+
+    if( strlen( sz ) > 31 )
+	sz[ 31 ] = 0;
+
+    if( ! strcmp( sz, szLang ) ) {
+	outputf( _("The current language preference is already set to "
+		   "%s."), sz );
+	return;
+    }
+
+    strcpy( szLang, sz );
+
+    outputf( _( "The language preference has been set to `%s'.\n"
+		"Please remember to save settings.\n"
+		"The new setting will only take effect on the next start "
+		"of gnubg." ), sz );
 
 }

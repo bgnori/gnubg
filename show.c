@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.162 2003/08/14 22:25:36 joseph Exp $
+ * $Id: show.c,v 1.163 2003/08/26 16:58:38 hb Exp $
  */
 
 #include "config.h"
@@ -756,6 +756,12 @@ extern void CommandShowJacoby( char *sz ) {
   else
     outputl( _("Money sessions are played without the Jacoby rule.") );
 
+}
+
+extern void CommandShowLang( char *sz ) {
+
+  outputf( _("Your language preference is set to %s.\n"), szLang );
+    
 }
 
 extern void CommandShowMatchInfo( char *sz ) {
