@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.29 2000/02/01 00:09:37 gtw Exp $
+ * $Id: gnubg.c,v 1.30 2000/02/01 16:20:09 gtw Exp $
  */
 
 #include "config.h"
@@ -55,6 +55,9 @@
 #endif
 #if HAVE_UNISTD_H
 #include <unistd.h>
+#endif
+#if HAVE_SYS_WAIT_H
+#include <sys/wait.h>
 #endif
 
 #if HAVE_LIBREADLINE
@@ -456,14 +459,40 @@ static command *FindContext( command *pc, char *sz, int ich, int fDeep ) {
 extern void HandleCommand( char *sz, command *ac ) {
 
     command *pc;
-    char *pch;
+    char *pch, *pchShell;
     int cch;
-
+    pid_t pid;
+    
     if( ac == acTop ) {
 	if( *sz == '!' ) {
 	    /* Shell escape */
-	    /* FIXME */
-	    return;
+	    for( pch = sz + 1; isspace( *pch ); pch++ )
+		;
+
+	    if( *pch ) {
+		/* Command specified; system() is more portable than
+		   fork/exec */
+		/* FIXME it would be nice to handle X events while waiting
+		   for the child, but then system() wouldn't be good enough. */
+		system( pch );
+		return;
+	    } else if( ( pid = fork() ) < 0 ) {
+		/* Error */
+		perror( "fork" );
+		return;
+	    } else if( pid ) {
+		/* Parent */
+		/* FIXME it would be nice to handle X events while waiting
+		   for the child. */
+		waitpid( pid, NULL, 0 );
+		return;
+	    } else {
+		/* Child */
+		if( !( pchShell = getenv( "SHELL" ) ) )
+		    pchShell = "/bin/sh";
+		execl( pchShell, pchShell, NULL );
+		_exit( EXIT_FAILURE );
+	    }
 	} else if( *sz == ':' ) {
 	    /* Guile escape */
 	    puts( "This installation of GNU Backgammon was compiled without "
