@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.48 2002/12/06 17:58:12 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.49 2002/12/09 19:40:18 thyssen Exp $
  */
 
 #include "config.h"
@@ -651,8 +651,12 @@ static GtkWidget *GeneralPage( BoardData *bd ) {
 		      0, 1, 1, 2, 0, 0, 4, 2 );
 
     rElevation = asinf( bd->arLight[ 2 ] ) * 180 / M_PI;
-    rAzimuth = acosf( bd->arLight[ 0 ] / sqrt( 1.0 - bd->arLight[ 2 ] *
-					   bd->arLight[ 2 ] ) ) * 180 / M_PI;
+    if ( fabs ( bd->arLight[ 2 ] - 1.0f ) < 1e-5 ) 
+      rAzimuth = 0.0;
+    else
+      rAzimuth = 
+        acosf( bd->arLight[ 0 ] / sqrt( 1.0 - bd->arLight[ 2 ] *
+                                        bd->arLight[ 2 ] ) ) * 180 / M_PI;
     if( bd->arLight[ 1 ] < 0 )
 	rAzimuth = 360 - rAzimuth;
     
@@ -929,8 +933,12 @@ UseDesign ( GtkWidget *pw, BoardData *bdBoard ) {
   /* light */
 
   rElevation = asinf( bd.arLight[ 2 ] ) * 180 / M_PI;
-  rAzimuth = acosf( bd.arLight[ 0 ] / sqrt( 1.0 - bd.arLight[ 2 ] *
-                                             bd.arLight[ 2 ] ) ) * 180 / M_PI;
+    if ( fabs ( bd.arLight[ 2 ] - 1.0f ) < 1e-5 ) 
+      rAzimuth = 0.0;
+    else
+      rAzimuth = 
+        acosf( bd.arLight[ 0 ] / sqrt( 1.0 - bd.arLight[ 2 ] *
+                                        bd.arLight[ 2 ] ) ) * 180 / M_PI;
   if( bd.arLight[ 1 ] < 0 )
     rAzimuth = 360 - rAzimuth;
     
@@ -1784,9 +1792,10 @@ extern char *BoardPreferencesCommand( GtkWidget *pwBoard, char *sz ) {
     float rAzimuth, rElevation;
     static char *aszAnim[ ANIMATE_SLIDE + 1 ] = { "none", "blink", "slide" };
     rElevation = asinf( bd->arLight[ 2 ] ) * 180 / M_PI;
-    rAzimuth = acosf( bd->arLight[ 0 ] / sqrt( 1.0 - bd->arLight[ 2 ] *
-					       bd->arLight[ 2 ] ) ) *
-	180 / M_PI;
+    rAzimuth = ( fabs ( bd->arLight[ 2 ] - 1.0f ) < 1e-5 ) ? 0.0f : 
+      acosf( bd->arLight[ 0 ] / sqrt( 1.0 - bd->arLight[ 2 ] *
+                                      bd->arLight[ 2 ] ) ) * 180 / M_PI;
+
     if( bd->arLight[ 1 ] < 0 )
 	rAzimuth = 360 - rAzimuth;
 
