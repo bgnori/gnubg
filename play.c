@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.207 2003/08/15 07:00:45 joseph Exp $
+ * $Id: play.c,v 1.208 2003/08/15 14:41:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -771,44 +771,18 @@ extern int ComputerTurn( void ) {
 
       float rEqBefore, rEqAfter;
       const float epsilon = 1.0e-6;
-      const evalcontext* cec = &ap[ ms.fTurn ].esCube.ec;
+      const evalsetup* ces = &ap[ ms.fTurn ].esCube;;
       
       ProgressStart( _("Considering resignation...") );
-      if ( GeneralEvaluationE( arOutput, ms.anBoard, &ci, cec) ) {
-	  ProgressEnd();
-	  return -1;
-      }
+      getResignation( arOutput, ms.anBoard, &ci, ces );
       ProgressEnd();
 
-      rEqBefore = arOutput[ OUTPUT_CUBEFUL_EQUITY ];
-
-      /* I win 100% if opponent resigns */
-      arOutput[ 0 ] = 1.0; 
-      arOutput[ 1 ] = arOutput[ 2 ] =
-        arOutput[ 3 ] = arOutput[ 4 ] = 0.0;
-
-      if( ms.fResigned >= 2 )
-	  /* resigned at least a gammon */
-	  arOutput[ 1 ] = 1.0;
-
-      if( ms.fResigned == 3 )
-	  /* resigned a backgammon */
-	  arOutput[ 2 ] = 1.0;
-
-      InvertEvaluation ( arOutput );
-      
-      rEqAfter = Utility ( arOutput, &ci );
-      if ( ms.nMatchTo && cec->fCubeful )
-        rEqAfter = eq2mwc( rEqAfter, &ci );
-
-      /* printf ("equity before resignation: %.10f\n"
-              "equity after resignation : %.10f\n",
-              rEqBefore, rEqAfter ); */
+      getResignEquities ( arOutput, &ci, ms.fResigned,
+                          &rEqBefore, &rEqAfter );
 
       fComputerDecision = TRUE;
 
-      if( ( rEqAfter - rEqBefore ) <= epsilon )
-        /* i.e., opponent gives up equity by resigning */
+      if( rEqAfter <= ( rEqBefore - epsilon ) )
         CommandAgree( NULL );
       else
         CommandDecline( NULL );
