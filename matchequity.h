@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.h,v 1.9 2002/01/12 16:48:28 thyssen Exp $
+ * $Id: matchequity.h,v 1.10 2002/03/14 20:04:18 thyssen Exp $
  */
 
 
@@ -32,9 +32,9 @@ typedef struct _metinfo {
 
   /* FIXME: use dynamic memory allocation instead? */
 
-  char szName[ 80 ];          /* Name of match equity table */
-  char szFileName[ 255 ];     /* File name of met */
-  char szDescription[ 400 ];  /* Description of met */
+  char *szName;          /* Name of match equity table */
+  char *szFileName;     /* File name of met */
+  char *szDescription;  /* Description of met */
   int nLength;                /* native length of met */
  
 } metinfo;
@@ -47,22 +47,16 @@ typedef struct _metinfo {
 
 /* current match equity table used by gnubg */
 
-
-typedef enum _met {
-  MET_ZADEH, MET_SNOWIE, MET_WOOLSEY, MET_JACOBS
-} met;
-
 extern float aafMET [ MAXSCORE ][ MAXSCORE ];
 
 extern float afMETPostCrawford [ MAXSCORE ];
 
 extern metinfo miCurrent;
-extern met metCurrent;
 
 /* Initialise match equity table */
 
 void
-InitMatchEquity ( met metInit );
+InitMatchEquity ( const char *szFileName );
 
 /* Get double points */
 
@@ -71,11 +65,6 @@ GetPoints ( float arOutput [ 5 ], cubeinfo *pci, float arCP[ 2 ] );
 
 extern float
 GetDoublePointDeadCube ( float arOutput [ 5 ], cubeinfo *pci );
-
-/* Get maximum score for met */
-
-extern int
-GetMaxScore ( met metx );
 
 #endif
 
