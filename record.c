@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.10 2002/12/16 22:37:39 thyssen Exp $
+ * $Id: record.c,v 1.11 2003/03/02 15:07:22 thyssen Exp $
  */
 
 #include "config.h"
@@ -190,15 +190,15 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
     playerrecord pr;
     FILE *pfIn;
 #if __GNUC__
-    char sz[ strlen( szHomeDirectory ) + 10 ];
+    char sz[ strlen( szHomeDirectory ) + strlen ( GNUBGPR ) + 2 ];
 #elif HAVE_ALLOCA
-    char *sz = alloca( strlen( szHomeDirectory ) + 10 );
+    char *sz = alloca( strlen( szHomeDirectory ) + strlen ( GNUBGPR ) + 2 );
 #else
     char sz[ 4096 ];
 #endif
 
-    *ppchOut = malloc( strlen( szHomeDirectory ) + 16 );
-    sprintf( *ppchOut, "%s/.gnubgpr%06d", szHomeDirectory,
+    *ppchOut = malloc( strlen( szHomeDirectory ) + strlen ( GNUBGPR ) + 8 );
+    sprintf( *ppchOut, "%s/%s%06d", szHomeDirectory, GNUBGPR, 
 #if HAVE_GETPID
 	     (int) getpid() % 1000000
 #else
@@ -212,13 +212,13 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
 	return -1;
     }
 
-    if( fputs( "# %Version: 2 ($Revision: 1.10 $)\n", *ppfOut ) < 0 ) {
+    if( fputs( "# %Version: 2 ($Revision: 1.11 $)\n", *ppfOut ) < 0 ) {
 	outputerr( *ppchOut );
 	free( *ppchOut );
 	return -1;
     }
     
-    sprintf( sz, "%s/.gnubgpr", szHomeDirectory );
+    sprintf( sz, "%s/%s", szHomeDirectory, GNUBGPR );
     if( !( pfIn = fopen( sz, "r" ) ) )
 	/* could not read existing records; assume empty */
 	return 0;
@@ -241,9 +241,9 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
 static int RecordWrite( FILE *pfOut, char *pchOut, playerrecord apr[ 2 ] ) {
 
 #if __GNUC__
-    char sz[ strlen( szHomeDirectory ) + 10 ];
+    char sz[ strlen( szHomeDirectory ) + strlen ( GNUBGPR ) + 2 ];
 #elif HAVE_ALLOCA
-    char *sz = alloca( strlen( szHomeDirectory ) + 10 );
+    char *sz = alloca( strlen( szHomeDirectory ) + strlen ( GNUBGPR ) + 2 );
 #else
     char sz[ 4096 ];
 #endif
@@ -260,7 +260,7 @@ static int RecordWrite( FILE *pfOut, char *pchOut, playerrecord apr[ 2 ] ) {
 	return -1;
     }
     
-    sprintf( sz, "%s/.gnubgpr", szHomeDirectory );
+    sprintf( sz, "%s/%s", szHomeDirectory, GNUBGPR );
 
 #ifdef WIN32
     /* experiment */
@@ -487,9 +487,9 @@ extern void CommandRecordErase( char *szPlayer ) {
 extern void CommandRecordEraseAll( char *szIgnore ) {
 
 #if __GNUC__
-    char sz[ strlen( szHomeDirectory ) + 10 ];
+    char sz[ strlen( szHomeDirectory ) + strlen ( GNUBGPR ) + 2 ];
 #elif HAVE_ALLOCA
-    char *sz = alloca( strlen( szHomeDirectory ) + 10 );
+    char *sz = alloca( strlen( szHomeDirectory ) + strlen ( GNUBGPR ) + 2 );
 #else
     char sz[ 4096 ];
 #endif
@@ -498,7 +498,7 @@ extern void CommandRecordEraseAll( char *szIgnore ) {
 				       "player records?") ) )
 	return;
 
-    sprintf( sz, "%s/.gnubgpr", szHomeDirectory );
+    sprintf( sz, "%s/%s", szHomeDirectory, GNUBGPR );
 
     if( unlink( sz ) && errno != ENOENT ) {
 	/* do not complain if file is not found */
@@ -515,14 +515,14 @@ extern void CommandRecordShow( char *szPlayer ) {
     int f = FALSE;
     playerrecord pr;
 #if __GNUC__
-    char sz[ strlen( szHomeDirectory ) + 10 ];
+    char sz[ strlen( szHomeDirectory ) + strlen ( GNUBGPR ) + 2 ];
 #elif HAVE_ALLOCA
-    char *sz = alloca( strlen( szHomeDirectory ) + 10 );
+    char *sz = alloca( strlen( szHomeDirectory ) + strlen ( GNUBGPR ) + 2 );
 #else
     char sz[ 4096 ];
 #endif
     
-    sprintf( sz, "%s/.gnubgpr", szHomeDirectory );
+    sprintf( sz, "%s/%s", szHomeDirectory, GNUBGPR );
     if( !( pfIn = fopen( sz, "r" ) ) ) {
 	if( errno == ENOENT )
 	    outputl( _("No player records found.") );
@@ -575,14 +575,14 @@ GetPlayerRecord( char *szPlayer ) {
     FILE *pfIn;
     static playerrecord pr;
 #if __GNUC__
-    char sz[ strlen( szHomeDirectory ) + 10 ];
+    char sz[ strlen( szHomeDirectory ) + strlen ( GNUBGPR ) + 2 ];
 #elif HAVE_ALLOCA
-    char *sz = alloca( strlen( szHomeDirectory ) + 10 );
+    char *sz = alloca( strlen( szHomeDirectory ) + strlen ( GNUBGPR ) + 2 );
 #else
     char sz[ 4096 ];
 #endif
     
-    sprintf( sz, "%s/.gnubgpr", szHomeDirectory );
+    sprintf( sz, "%s/%s", szHomeDirectory, GNUBGPR );
     if( !( pfIn = fopen( sz, "r" ) ) ) 
       return NULL;
 

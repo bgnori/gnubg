@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.h,v 1.3 2002/12/16 22:37:39 thyssen Exp $
+ * $Id: record.h,v 1.4 2003/03/02 15:07:22 thyssen Exp $
  */
 
 #ifndef RECORD_H
@@ -39,5 +39,7 @@ extern int RecordReadItem( FILE *pf, char *pch, playerrecord *ppr );
 
 extern playerrecord *
 GetPlayerRecord( char *szPlayer );
+
+#define GNUBGPR ".gnubg/gnubgpr"
 
 #endif
