@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.8 2003/12/29 19:28:46 uid65656 Exp $
+ * $Id: format.c,v 1.9 2004/01/01 19:31:10 uid65656 Exp $
  */
 
 #include "config.h"
@@ -582,6 +582,52 @@ OutputEquityDiff ( const float r1, const float r2, const cubeinfo *pci ) {
       /* fmt: "%6.4f" */
       sprintf( fmt, "%%+%d.%df", fOutputDigits + 3, fOutputDigits + 1 );
       sprintf ( sz, fmt, eq2mwc ( r1, pci ) - eq2mwc ( r2, pci ) );
+    }
+  }
+
+  return sz;
+
+}
+
+
+/*
+ * Return formatted string with equity or MWC for an equity difference.
+ *
+ * Input:
+ *    r: equity (either money equity or MWC for match play
+ *    pci: cubeinfo
+ *    f: indicates equity (TRUE) or std. error (FALSE)
+ *    
+ *
+ * Important: function is not re-entrant. Caller must save output
+ * if needed.
+ */
+
+extern char *
+OutputMWCDiff ( const float r1, const float r2, const cubeinfo *pci ) {
+
+  static char sz[ 9 ];
+  char fmt[ 32 ];
+
+  if ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) {
+    /* fmt: "%+7.3f" */
+    sprintf( fmt, "%%+%d.%df", fOutputDigits + 4, fOutputDigits );
+    if ( pci->nMatchTo ) 
+      sprintf ( sz, fmt, r1 - r2 );
+    else
+      sprintf ( sz, fmt, mwc2eq( r1, pci ) - mwc2eq( r2, pci ) );
+  }
+  else {
+    if ( fOutputMatchPC ) {
+      /* fmt: "%6.2f%%" */
+      sprintf( fmt, "%%%d.%df%%%%", fOutputDigits + 3, fOutputDigits - 1 );
+      sprintf ( sz, fmt,
+                100.0f * r1 - 100.0f * r2 );
+    }
+    else {
+      /* fmt: "%6.4f" */
+      sprintf( fmt, "%%+%d.%df", fOutputDigits + 3, fOutputDigits + 1 );
+      sprintf ( sz, fmt, r1 - r2 );
     }
   }
 
