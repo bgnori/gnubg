@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: formatgs.c,v 1.4 2003/09/08 20:18:12 hb Exp $
+ * $Id: formatgs.c,v 1.5 2003/09/09 04:38:46 kaoru Exp $
  */
 
 #include "config.h"
@@ -551,8 +551,10 @@ formatGS( const statcontext *psc, const matchstate *pms,
 
 	static char *asz[ 2 ][ 2 ] = {
           { N_("Advantage (actual) in ppg"),
+            /* xgettext: no-c-format */
             N_("95% confidence interval (ppg)") },
           { N_("Advantage (luck adjusted) in ppg"),
+            /* xgettext: no-c-format */
             N_("95% confidence interval (ppg)") }
 	};
         const float *af[ 2 ][ 2 ] = { 
