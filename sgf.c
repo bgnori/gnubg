@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.93 2004/08/25 17:49:47 Superfly_Jon Exp $
+ * $Id: sgf.c,v 1.94 2004/09/10 09:34:56 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1449,7 +1449,7 @@ extern void CommandLoadGame( char *sz ) {
 
 #if USE_GTK
 	if( fX )
-	{	// Clear record to avoid ugly updates
+	{	/* Clear record to avoid ugly updates */
 		GTKClearMoveRecord();
 		GTKFreeze();
 	}
@@ -1509,7 +1509,7 @@ CommandLoadPosition( char *sz ) {
 
 #if USE_GTK
 	if( fX )
-	{	// Clear record to avoid ugly updates
+	{	/* Clear record to avoid ugly updates */
 		GTKClearMoveRecord();
 		GTKFreeze();
 	}
@@ -1567,7 +1567,7 @@ extern void CommandLoadMatch( char *sz ) {
 
 #if USE_GTK
 	if( fX )
-	{	// Clear record to avoid ugly updates
+	{	/* Clear record to avoid ugly updates */
 		GTKClearMoveRecord();
 		GTKFreeze();
 	}

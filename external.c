@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.45 2004/08/25 17:46:11 Superfly_Jon Exp $
+ * $Id: external.c,v 1.46 2004/09/10 09:34:56 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -617,7 +617,7 @@ extern void CommandExternal( char *sz ) {
       }
       outputf( _("Waiting for a connection from %s...\n"), sz);
 
-      // Must set length when using windows
+      /* Must set length when using windows */
       saLen = sizeof(struct sockaddr);
       while( ( hPeer = accept( h, (struct sockaddr*)&saRemote, &saLen ) ) < 0 ) {
 	if( errno == EINTR ) {

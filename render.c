@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.41 2004/09/09 11:43:27 Superfly_Jon Exp $
+ * $Id: render.c,v 1.42 2004/09/10 09:34:56 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2055,7 +2055,7 @@ extern void RenderCubeFaces( renderdata *prd, unsigned char *puch,
 #endif
     
     for( i = 0; i < 6; i++ ) {
-	// Clear destination buffer (no blending at present - so all overwriten anyway)
+	/* Clear destination buffer (no blending at present - so all overwriten anyway) */
 	memset(puch, 0, nStride * CUBE_LABEL_HEIGHT * prd->nSize);
 
 	AlphaBlendBase( puch, nStride, puch, nStride, puchCube + prd->nSize * 4 +
@@ -2075,7 +2075,7 @@ extern void RenderCubeFaces( renderdata *prd, unsigned char *puch,
     }
     
     for( ; i < 12; i++ ) {
-	// Clear destination buffer (no blending at present - so all overwriten anyway)
+	/* Clear destination buffer (no blending at present - so all overwriten anyway) */
 	memset(puch, 0, nStride * CUBE_LABEL_HEIGHT * prd->nSize);
 
 	AlphaBlendBase( puch, nStride, puch, nStride, puchCube + prd->nSize * 4 +
@@ -2135,7 +2135,7 @@ extern void RenderResignFaces( renderdata *prd, unsigned char *puch,
 #endif
     
     for( i = 0; i < 3; i++ ) {
-	// Clear destination buffer (no blending at present - so all overwriten anyway)
+	/* Clear destination buffer (no blending at present - so all overwriten anyway) */
 	memset(puch, 0, nStride * RESIGN_LABEL_HEIGHT * prd->nSize);
 
 	AlphaBlendBase( puch, nStride, puch, nStride, puchCube + prd->nSize * 4 +
