@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.209 2003/08/16 21:35:58 joseph Exp $
+ * $Id: play.c,v 1.210 2003/08/17 00:45:33 jsegrave Exp $
  */
 
 #include "config.h"
@@ -672,10 +672,10 @@ static int NewGame( void ) {
     UpdateSetting( &ms.fTurn );
 
 #if USE_BOARD3D
-{
+    if (fX) {
 	BoardData* bd = BOARD(pwBoard)->board_data;
 	InitBoardData(bd);
-}
+    }
 #endif
 
  reroll:
