@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.28 2001/04/30 19:26:55 gtw Exp $
+ * $Id: analysis.c,v 1.29 2001/05/11 14:29:57 gtw Exp $
  */
 
 #include "config.h"
@@ -344,7 +344,7 @@ AnalyzeGame ( list *plGame ) {
 		
 		if( pmr->n.ml.cMoves > 1 ) {
 		    psc->anUnforcedMoves[ fPlayer ]++;
-		    psc->arErrorCheckerplay[ fPlayer ][ 0 ] -= rSkill;
+		    psc->arErrorCheckerplay[ fPlayer ][ 0 ] -= rChequerSkill;
 		    psc->arErrorCheckerplay[ fPlayer ][ 1 ] -= rCost;
 		}
 		
@@ -508,6 +508,8 @@ AnalyzeGame ( list *plGame ) {
 	
 	case MOVE_GAMEINFO:
 	    psc = &pmr->g.sc;
+	    IniStatcontext( psc );
+				      
 	    fWinner = pmr->g.fWinner;
 	    nPoints = pmr->g.nPoints;
 
