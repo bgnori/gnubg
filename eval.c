@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.245 2003/07/13 02:24:40 jsegrave Exp $
+ * $Id: eval.c,v 1.246 2003/07/26 09:05:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -4946,7 +4946,8 @@ Cl2CfMoney ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci ) {
     return Utility ( arOutput, pci );
   }
 
-  rEqDead = arOutput[ 0 ] *  ( rW + rL ) - rL;
+  
+  rEqDead = Utility( arOutput, pci );
   rEqLive = MoneyLive( rW, rL, arOutput[ 0 ], pci );
 
   return rEqDead * ( 1.0 - rCubeX ) + rEqLive * rCubeX;
