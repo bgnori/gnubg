@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.245 2002/07/17 09:22:00 thyssen Exp $
+ * $Id: gnubg.c,v 1.246 2002/07/17 09:25:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -2826,6 +2826,8 @@ CommandRollout( char *sz ) {
       float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
       rolloutstat aarsStatistics[ 2 ][ 2 ];
 
+      evalsetup es;
+
       if( ms.gs != GAME_PLAYING ) {
 	  outputl( _("No game in progress.") );
 	  return;
@@ -2835,6 +2837,11 @@ CommandRollout( char *sz ) {
 
       GeneralCubeDecisionR ( "", aarOutput, aarStdDev, aarsStatistics,
                              ms.anBoard, &ci, &rcRollout );
+
+      es.et = EVAL_ROLLOUT;
+      es.rc = rcRollout;
+      UpdateStoredCube ( aarOutput, aarStdDev, &es, &ms );
+
       return;
 
     }

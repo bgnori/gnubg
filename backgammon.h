@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.137 2002/07/16 17:39:28 gtw Exp $
+ * $Id: backgammon.h,v 1.138 2002/07/17 09:22:00 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -295,6 +295,20 @@ typedef struct _storedmoves {
 } storedmoves;
 extern storedmoves sm;
 
+/*
+ * Store cube analysis
+ *
+ */
+
+typedef struct _storedcube {
+  float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+  float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+  evalsetup es;
+  matchstate ms;
+} storedcube;
+extern storedcube sc;
+
+
 extern player ap[ 2 ];
 
 extern char *GetInput( char *szPrompt );
@@ -426,6 +440,12 @@ getCurrentMoveRecord ( void );
 
 extern void
 UpdateStoredMoves ( const movelist *pml, const matchstate *pms );
+
+extern void
+UpdateStoredCube ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                   float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                   const evalsetup *pes,
+                   const matchstate *pms );
 
 #ifdef WIN32
 extern void WinCopy( char *szOut );
