@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.175 2002/10/04 21:32:21 thyssen Exp $
+ * $Id: eval.c,v 1.176 2002/10/04 21:35:35 thyssen Exp $
  */
 
 #include "config.h"
@@ -84,6 +84,10 @@ Cl2CfMatchUnavailable ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci );
 
 static float
 EvalEfficiency( int anBoard[2][25], positionclass pc );
+
+static void
+EvalRace(int anBoard[ 2 ][ 25 ], float arOutput[] /*, int nm */ );
+
 
 static int MaxTurns( int i );
 
