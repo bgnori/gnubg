@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.94 2002/10/10 20:36:03 thyssen Exp $
+ * $Id: gtkboard.c,v 1.95 2002/10/11 18:11:45 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2003,11 +2003,18 @@ static gint board_set( Board *board, const gchar *board_text ) {
 
         if ( bd->match_to ) {
 
-          sprintf( buf, "%d (%d-away)", bd->score_opponent,
-                   bd->match_to - bd->score_opponent );
+          if ( bd->score_opponent >= bd->match_to )
+            sprintf( buf, "%d (won match)", bd->score_opponent );
+          else
+            sprintf( buf, "%d (%d-away)", bd->score_opponent,
+                     bd->match_to - bd->score_opponent );
           gtk_label_set_text( GTK_LABEL( bd->lscore0 ), buf );
-          sprintf( buf, "%d (%d-away)", bd->score,
-                   bd->match_to - bd->score );
+
+          if ( bd->score >= bd->match_to )
+            sprintf( buf, "%d (won match)", bd->score );
+          else
+            sprintf( buf, "%d (%d-away)", bd->score,
+                     bd->match_to - bd->score );
           gtk_label_set_text( GTK_LABEL( bd->lscore1 ), buf );
 
         }
