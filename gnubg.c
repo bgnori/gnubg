@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.222 2002/06/06 20:47:11 gtw Exp $
+ * $Id: gnubg.c,v 1.223 2002/06/11 13:50:55 thyssen Exp $
  */
 
 #include "config.h"
@@ -3726,8 +3726,13 @@ extern void CommandSaveSettings( char *szParam ) {
     fprintf ( pf, "set export cube close %s\n", 
               exsExport.afCubeDisplay[ EXPORT_CUBE_CLOSE ] ? "yes" : "no" );
 
-    fprintf ( pf, "set export html pictureurl \"%s\"\n",
-              exsExport.szHTMLPictureURL );
+    if ( *exsExport.szHTMLPictureURL != '"' && 
+         strchr ( exsExport.szHTMLPictureURL, ' ' ) )
+       fprintf ( pf, "set export html pictureurl  \"%s\"\n",
+                 exsExport.szHTMLPictureURL );
+    else
+       fprintf ( pf, "set export html pictureurl  %s\n",
+                 exsExport.szHTMLPictureURL );
 
     /* invert settings */
 
