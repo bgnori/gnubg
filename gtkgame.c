@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.340 2003/04/25 18:30:27 thyssen Exp $
+ * $Id: gtkgame.c,v 1.341 2003/05/21 19:23:13 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -325,6 +325,8 @@ static void SetOptions( gpointer *p, guint n, GtkWidget *pw );
 static void SetPlayers( gpointer *p, guint n, GtkWidget *pw );
 static void SetSeed( gpointer *p, guint n, GtkWidget *pw );
 static void ShowManual( gpointer *p, guint n, GtkWidget *pw );
+static void ShowManualWeb( gpointer *p, guint n, GtkWidget *pw );
+static void ReportBug( gpointer *p, guint n, GtkWidget *pw );
 static void ShowFAQ( gpointer *p, guint n, GtkWidget *pw );
 
 /* A dummy widget that can grab events when others shouldn't see them. */
@@ -2470,10 +2472,13 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ N_("/_Help"), NULL, NULL, 0, "<Branch>" },
 	{ N_("/_Help/_Commands"), NULL, Command, CMD_HELP, NULL },
 	{ N_("/_Help/gnubg _Manual"), NULL, ShowManual, 0, NULL },
+	{ N_("/_Help/gnubg M_anual (web)"), NULL, ShowManualWeb, 0, NULL },
 	{ N_("/_Help/_Frequently Asked Questions"), NULL, ShowFAQ, 0, NULL },
 	{ N_("/_Help/Co_pying gnubg"), NULL, Command, CMD_SHOW_COPYING, NULL },
 	{ N_("/_Help/gnubg _Warranty"), NULL, Command, CMD_SHOW_WARRANTY,
 	  NULL },
+	{ N_("/_Help/-"), NULL, NULL, 0, "<Separator>" },
+	{ N_("/_Help/_Report bug"), NULL, ReportBug, 0, NULL },
 	{ N_("/_Help/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_Help/_About gnubg"), NULL, Command, CMD_SHOW_VERSION, NULL }
     };
@@ -6969,6 +6974,22 @@ static void ShowManual( gpointer *p, guint n, GtkWidget *pwEvent ) {
 
     NoManual();
 }
+
+
+static void
+ShowManualWeb( gpointer *p, guint n, GtkWidget *pwEvent ) {
+
+  OpenURL( "http://www.gnu.org/manual/gnubg/" );
+
+}
+
+static void
+ReportBug( gpointer *p, guint n, GtkWidget *pwEvent ) {
+
+  OpenURL( "http://savannah.gnu.org/bugs/?group=gnubg" );
+
+}
+
 
 static void ShowFAQ( gpointer *p, guint n, GtkWidget *pwEvent ) {
 #if HAVE_GTKTEXI
