@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.231.2.3 2003/05/31 11:55:58 thyssen Exp $
+ * $Id: eval.c,v 1.231.2.4 2003/06/06 14:57:53 grob Exp $
  */
 
 #include "config.h"
@@ -2035,8 +2035,16 @@ enum {
     0: save base
     1: from base
  */
-DECLARE_THREADSTATICGLOBAL (int, nContext[3], ({-1, -1, -1}));
-
+#if PROCESSING_UNITS
+DECLARE_THREADSTATICGLOBAL (int, nContext[3], {});
+#else
+/* we can't use DECLARE_THREADSTATICGLOBAL here:
+   we can't use commas inside the initialiser {-1,-1,-1} because they're
+   recongised as macro arg separtors; and bracing them: ({-1,-1,-1})
+   would generate: static int nContext[3]=({-1,-1,-1}) which 
+   generates a compiler error */
+static int nContext[3] = {-1, -1, -1};
+#endif
 
 static inline NNEvalType
 NNevalAction(positionclass p)

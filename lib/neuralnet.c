@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.18.6.2 2003/05/31 11:34:47 thyssen Exp $
+ * $Id: neuralnet.c,v 1.18.6.3 2003/06/06 14:57:54 grob Exp $
  */
 
 #include "config.h"
-
-#define PROCESSING_UNITS 1
 
 #if HAVE_ALLOCA_H
 #include <alloca.h>
