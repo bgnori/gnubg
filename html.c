@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.126 2003/08/03 17:17:55 thyssen Exp $
+ * $Id: html.c,v 1.127 2003/08/04 19:05:37 thyssen Exp $
  */
 
 #include "config.h"
@@ -77,6 +77,7 @@ typedef enum _stylesheetclass {
   CLASS_CUBE_ACTION,
   CLASS_CUBE_PLY,
   CLASS_CUBE_PROBABILITIES,
+  CLASS_CUBE_CUBELESS_TEXT,
   NUM_CLASSES 
 } stylesheetclass;
 
@@ -118,7 +119,8 @@ static char *aaszStyleSheetClasses[ NUM_CLASSES ][ 2 ] = {
   { "cubeequity", "font-weight: bold" },
   { "cubeaction", "color: red" },
   { "cubeply", "font-weight: bold" },
-  { "cubeprobs", "font-weight: bold" }
+  { "cubeprobs", "font-weight: bold" },
+  { "cubecubelesstext", "font-style: italic" }
 };
 
 
@@ -167,7 +169,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( _("\n" 
              "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.126 2003/08/03 17:17:55 thyssen Exp $ */\n"
+             "/* $Id: html.c,v 1.127 2003/08/04 19:05:37 thyssen Exp $ */\n"
              "/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
@@ -1911,7 +1913,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.126 $";
+  const char szVersion[] = "$Revision: 1.127 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1992,7 +1994,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.126 $";
+  const char szVersion[] = "$Revision: 1.127 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2249,11 +2251,12 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
     fprintf ( pf, 
               "</span> %s</td>"
               "<td %s>%s</td>"
-              "<td>(%s: <span %s>%s</span>)</td>\n",
+              "<td %s>(%s: <span %s>%s</span>)</td>\n",
               ( !pci->nMatchTo || ( pci->nMatchTo && ! fOutputMWC ) ) ?
               _("cubeless equity") : _("cubeless MWC"),
               GetStyle( CLASS_CUBE_EQUITY, hecss ),
               OutputEquity ( aarOutput[ 0 ][ OUTPUT_EQUITY ], pci, TRUE ),
+              GetStyle( CLASS_CUBE_CUBELESS_TEXT, hecss ),
               _("Money"), 
                GetStyle( CLASS_CUBE_EQUITY, hecss ),
               OutputMoneyEquity ( aarOutput[ 0 ], TRUE ) );
