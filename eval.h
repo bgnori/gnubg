@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.28 2000/11/01 15:06:48 gtw Exp $
+ * $Id: eval.h,v 1.29 2000/11/02 19:43:23 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -265,6 +265,7 @@ KleinmanCount (int nPipOnRoll, int nPipNotOnRoll);
 
 extern int 
 EvaluatePositionCubeful( int anBoard[ 2 ][ 25 ], float arCfOutput[],
+                         float arClOutput[ NUM_OUTPUTS ],
                          cubeinfo *pci, evalcontext *pec, int nPlies );
 
 extern int

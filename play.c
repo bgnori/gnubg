@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.48 2000/11/01 15:08:56 gtw Exp $
+ * $Id: play.c,v 1.49 2000/11/02 19:43:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -451,7 +451,7 @@ static int ComputerTurn( void ) {
 
       /* Consider cube action */
 
-      if ( EvaluatePositionCubeful ( anBoard, arDouble, &ci,
+      if ( EvaluatePositionCubeful ( anBoard, arDouble, arOutput, &ci,
                                      &ap [ fTurn ].ec,
                                      ap [ fTurn ].ec.nPlies ) < 0 )
         return -1;
@@ -498,7 +498,7 @@ static int ComputerTurn( void ) {
 
           /* We're in market window */
 
-          if ( EvaluatePositionCubeful ( anBoard, arDouble, &ci,
+          if ( EvaluatePositionCubeful ( anBoard, arDouble, arOutput, &ci,
                                          &ap [ fTurn ].ec,
                                          ap [ fTurn ].ec.nPlies ) < 0 )
             return -1;

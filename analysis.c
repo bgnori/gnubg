@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.4 2000/10/26 14:20:07 gtw Exp $
+ * $Id: analysis.c,v 1.5 2000/11/02 19:43:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -77,7 +77,7 @@ AnalyzeGame ( list *plGame, int iGame ) {
     evalcontext ecDouble = { 1, 0, 0, 0, TRUE };  
     evalcontext ecMove   = { 1, 8, 0.16, 0, FALSE };  
     cubeinfo ci;
-    float arDouble[ 4 ];
+    float arDouble[ 4 ], arOutput [ NUM_OUTPUTS ];
     int fWinner, nPoints;
 
 
@@ -146,7 +146,7 @@ AnalyzeGame ( list *plGame, int iGame ) {
 
           if ( GetDPEq ( NULL, NULL, &ci ) ) {
 
-            if ( EvaluatePositionCubeful ( anBoard, arDouble, &ci,
+            if ( EvaluatePositionCubeful ( anBoard, arDouble, arOutput, &ci,
                                            &ecDouble,
                                            ecDouble.nPlies ) < 0 ) 
               return;
@@ -223,7 +223,7 @@ AnalyzeGame ( list *plGame, int iGame ) {
 
         if ( GetDPEq ( NULL, NULL, &ci ) ) {
 
-          if ( EvaluatePositionCubeful ( anBoard, arDouble, &ci,
+          if ( EvaluatePositionCubeful ( anBoard, arDouble, arOutput, &ci,
                                          &ecDouble,
                                          ecDouble.nPlies ) < 0 ) 
             return;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.77 2000/11/02 08:40:07 thyssen Exp $
+ * $Id: gnubg.c,v 1.78 2000/11/02 19:43:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -1186,7 +1186,7 @@ extern void CommandHint( char *sz ) {
     movelist ml;
     int i;
     char szMove[ 32 ], szTemp[ 1024 ];
-    float arDouble[ 4 ];
+    float arDouble[ 4 ], arOutput[ NUM_OUTPUTS ];
     cubeinfo ci;
     int n = ParseNumber ( &sz );
     
@@ -1202,11 +1202,12 @@ extern void CommandHint( char *sz ) {
 
       if ( GetDPEq ( NULL, NULL, &ci ) ) {
 
-	/* Give hint on cube action */
+        /* Give hint on cube action */
 
-	if ( EvaluatePositionCubeful ( anBoard, arDouble, &ci, &ecEval,
-				       ecEval.nPlies ) < 0 )
-	  return;
+        if ( EvaluatePositionCubeful ( anBoard, arDouble, arOutput,
+                                       &ci, &ecEval,
+                                       ecEval.nPlies ) < 0 )
+          return;
 
         GetCubeActionSz ( arDouble, szTemp, &ci );
 
@@ -1242,7 +1243,7 @@ extern void CommandHint( char *sz ) {
 
       SetCubeInfo ( &ci, nCube, fCubeOwner, fMove );
 
-      if ( EvaluatePositionCubeful ( anBoard, arDouble, &ci, &ecEval,
+      if ( EvaluatePositionCubeful ( anBoard, arDouble, arOutput, &ci, &ecEval,
                                      ecEval.nPlies ) < 0 )
         return;
 
