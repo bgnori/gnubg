@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.25 2000/10/23 16:38:39 gtw Exp $
+ * $Id: eval.h,v 1.26 2000/10/24 11:06:05 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -81,6 +81,8 @@ typedef struct _evalcontext {
     int fRelativeAccuracy; /* evaluate all positions according to the most
 			      general positionclass, to decrease relative
 			      error */
+  /* cubeful evaluation */
+  int fCubeful;
 } evalcontext;
 
 typedef enum _evaltype {
@@ -184,6 +186,9 @@ EvaluatePosition( int anBoard[ 2 ][ 25 ], float arOutput[],
 extern void 
 InvertEvaluation( float ar[ NUM_OUTPUTS ] );
 
+extern void 
+InvertEvaluationCf( float ar[ 4 ] );
+
 extern int 
 FindBestMove( int anMove[ 8 ], int nDice0, int nDice1,
               int anBoard[ 2 ][ 25 ], cubeinfo *pci, evalcontext *pec );
@@ -275,6 +280,6 @@ extern float
 eq2mwc ( float rEq, cubeinfo *ci );
  
 extern char 
-*FormatEval5 ( char *sz, evaltype et, evalsetup es );
+*FormatEval ( char *sz, evaltype et, evalsetup es );
 
 #endif
