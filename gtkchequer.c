@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.26 2003/03/31 19:12:39 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.27 2003/04/12 12:41:13 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -304,6 +304,20 @@ MoveListShowToggled ( GtkWidget *pw, hintdata *phd ) {
 
   int f = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON ( phd->pwShow ) );
   int c = CheckHintButtons ( phd );
+  GtkWidget *pwMoves = phd->pwMoves;
+
+
+  /* allow only one move to be selected when "Show" is active */
+
+  if ( f )
+    gtk_clist_set_selection_mode( GTK_CLIST( pwMoves ),
+				  GTK_SELECTION_SINGLE );
+  else
+    gtk_clist_set_selection_mode( GTK_CLIST( pwMoves ),
+				  GTK_SELECTION_MULTIPLE );
+
+
+  c = CheckHintButtons( phd );
 
   if ( f && c == 1 )
     ShowMove ( phd, TRUE );
