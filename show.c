@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.22.2.1 2000/07/10 17:01:54 gtw Exp $
+ * $Id: show.c,v 1.22.2.2 2000/07/12 17:28:15 gtw Exp $
  */
 
 #include "config.h"
@@ -274,7 +274,7 @@ extern void CommandShowPipCount( char *sz ) {
 
     int anPips[ 2 ], an[ 2 ][ 25 ];
 
-    if( !sz && !*sz && fTurn == -1 ) {
+    if( !*sz && fTurn == -1 ) {
 	puts( "No position specified and no game in progress." );
 	return;
     }
@@ -407,7 +407,7 @@ extern void CommandShowKleinman( char *sz ) {
     int anPips[ 2 ], an[ 2 ][ 25 ];
     float fKC;
 
-    if( !sz && !*sz && fTurn == -1 ) {
+    if( !*sz && fTurn == -1 ) {
         puts( "No position specified and no game in progress." );
         return;
     }
@@ -433,7 +433,7 @@ extern void CommandShowThorp( char *sz ) {
     int nLeader, nTrailer, anCovered[2], anMenLeft[2];
     int x;
 
-    if( !sz && !*sz && fTurn == -1 ) {
+    if( !*sz && fTurn == -1 ) {
         puts( "No position specified and no game in progress." );
         return;
     }
