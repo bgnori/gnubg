@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: i18n.c,v 1.3 2002/06/01 22:27:21 thyssen Exp $
+ * $Id: i18n.c,v 1.4 2002/06/03 19:03:51 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -185,6 +185,10 @@ lisprintf(char *str, const char *format, ...) {
 
 }
 
+#if 0
+
+vsnprintf is not posix...
+
 extern int 
 lisnprintf(char *str, size_t size, const  char  *format, ...) {
 
@@ -202,3 +206,4 @@ lisnprintf(char *str, size_t size, const  char  *format, ...) {
     return rc;
 
 }
+#endif
