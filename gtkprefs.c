@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.64.4.23 2003/08/07 08:38:32 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.64.4.24 2003/08/08 11:27:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1626,6 +1626,9 @@ if (rd.fDisplayType == DT_3D)
 	for(i = 0; i < 2; i++)
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(apwDieColour[i]), rd.afDieColour[i]);
 
+	gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pwRoundedEdges ),
+                                rd.roundedEdges );
+
 	UpdateColPreviews();
 	redrawChange = FALSE;
 }
@@ -1834,7 +1837,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.64.4.23 2003/08/07 08:38:32 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.64.4.24 2003/08/08 11:27:51 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2434,8 +2437,6 @@ static void GetPrefs ( renderdata *prd ) {
 	else
 #endif
 {
-	prd->showMoveIndicator = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(pwMoveIndicator));
-
     for( i = 0; i < 2; i++ ) {
 	prd->arRefraction[ i ] = apadj[ i ]->value;
 	prd->arCoefficient[ i ] = apadjCoefficient[ i ]->value;
@@ -2500,9 +2501,10 @@ static void GetPrefs ( renderdata *prd ) {
     prd->rRound = 1.0 - padjRound->value;
 }
 
-    prd->fHinges = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pwHinges ) );
+	prd->fHinges = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pwHinges ) );
 	prd->fDynamicLabels = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pwDynamicLabels ) );
 	prd->fLabels = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pwLabels ) );
+	prd->showMoveIndicator = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON(pwMoveIndicator));
     
     prd->arLight[ 2 ] = sinf( paElevation->value / 180 * M_PI );
     prd->arLight[ 0 ] = cosf( paAzimuth->value / 180 * M_PI ) *
