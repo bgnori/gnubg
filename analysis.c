@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.71 2002/07/09 17:25:16 thyssen Exp $
+ * $Id: analysis.c,v 1.72 2002/07/19 07:37:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -1354,7 +1354,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
       if ( ms.nMatchTo ){
 	  sprintf ( szTemp,_("Error rate (total)\t\t"
                              "%+6.3f (%+7.3f%%)\t%+6.3f (%+7.3f%%)\n"
-                             "Error rate (pr. cubedecision)\t"
+                             "Error rate (per cube decision)\t"
                              "%+6.3f (%+7.3f%%)\t%+6.3f (%+7.3f%%)\n"),
                     -aaaar[ CUBEDECISION ][ TOTAL ][ PLAYER_0 ][ NORMALISED ],
                     -aaaar[ CUBEDECISION ][ TOTAL ][ PLAYER_0 ][ UNNORMALISED ] * 100.0f,
@@ -1372,7 +1372,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
       } else {
 	  sprintf ( szTemp,_("Error rate (total)\t\t"
                              "%+6.3f (%+7.3f%%)\t%+6.3f (%+7.3f%%)\n"
-                             "Error rate (pr. cubedecision)\t"
+                             "Error rate (per cube decision)\t"
                              "%+6.3f (%+7.3f%%)\t%+6.3f (%+7.3f%%)\n"),
                     -aaaar[ CUBEDECISION ][ TOTAL ][ PLAYER_0 ][ NORMALISED ],
                     -aaaar[ CUBEDECISION ][ TOTAL ][ PLAYER_0 ][ UNNORMALISED ],
@@ -1411,7 +1411,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
     if ( ms.nMatchTo ){
       sprintf ( szTemp,_("Error rate (total)\t\t"
                          "%+6.3f (%+7.3f%%)\t%+6.3f (%+7.3f%%)\n"
-                         "Error rate (pr. cubedecision)\t"
+                         "Error rate (per decision)\t"
                          "%+6.3f (%+7.3f%%)\t%+6.3f (%+7.3f%%)\n"),
                 -aaaar[ COMBINED ][ TOTAL ][ PLAYER_0 ][ NORMALISED ],
                 -aaaar[ COMBINED ][ TOTAL ][ PLAYER_0 ][ UNNORMALISED ] * 100.0f,
@@ -1429,7 +1429,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
     } else {
       sprintf ( szTemp,_("Error rate (total)\t\t"
                          "%+6.3f (%+7.3f%%)\t%+6.3f (%+7.3f%%)\n"
-                         "Error rate (pr. cubedecision)\t"
+                         "Error rate (per decision)\t"
                          "%+6.3f (%+7.3f%%)\t%+6.3f (%+7.3f%%)\n"),
                 -aaaar[ COMBINED ][ TOTAL ][ PLAYER_0 ][ NORMALISED ],
                 -aaaar[ COMBINED ][ TOTAL ][ PLAYER_0 ][ UNNORMALISED ],
