@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.5 2002/07/13 17:15:57 thyssen Exp $
+ * $Id: text.c,v 1.6 2002/07/14 16:29:10 thyssen Exp $
  */
 
 #include "config.h"
@@ -229,7 +229,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.5 $";
+  const char szVersion[] = "$Revision: 1.6 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1261,6 +1261,7 @@ extern void CommandExportMatchText( char *sz ) {
 extern void CommandExportPositionText( char *sz ) {
 
     FILE *pf;
+    moverecord *pmr = getCurrentMoveRecord ();
 	
     sz = NextToken( &sz );
     
@@ -1273,14 +1274,6 @@ extern void CommandExportPositionText( char *sz ) {
 	outputl( _("You must specify a file to export to (see `help export "
 		 "position text').") );
 	return;
-    }
-
-
-    if ( ! plLastMove || ! plLastMove->plNext || ! plLastMove->plNext->p ) {
-
-      outputl ( "Sorry, cannot export move!" );
-      return;
-
     }
 
 
@@ -1298,12 +1291,12 @@ extern void CommandExportPositionText( char *sz ) {
 
     TextBoardHeader ( pf, &ms, 
                       getGameNumber ( plGame ),
-                      getMoveNumber ( plGame, plLastMove->plNext->p ) - 1 );
+                      getMoveNumber ( plGame, pmr ) - 1 );
 
     printTextBoard( pf, &ms );
 
-    if( plLastMove->plNext->p != NULL)
-      TextAnalysis ( pf, &ms, plLastMove->plNext->p );
+    if( pmr )
+      TextAnalysis ( pf, &ms, pmr );
     
     TextEpilogue ( pf, &ms );
 
