@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.5 2002/06/01 20:27:28 thyssen Exp $
+ * $Id: gtktheory.c,v 1.6 2002/08/12 17:12:50 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -913,9 +913,6 @@ GTKShowTheory ( const int fActivePage ) {
 
   /* show dialog */
 
-  gtk_notebook_set_page ( GTK_NOTEBOOK ( pwNotebook ),
-                          fActivePage ? 2 /* prices */ : 0 /* market */ );
-
   gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
   gtk_window_set_transient_for( GTK_WINDOW( pwDialog ),
                                 GTK_WINDOW( pwMain ) );
@@ -928,6 +925,9 @@ GTKShowTheory ( const int fActivePage ) {
   
   TheoryUpdated ( NULL, ptw );
   
+  gtk_notebook_set_page ( GTK_NOTEBOOK ( pwNotebook ),
+                          fActivePage ? 2 /* prices */ : 0 /* market */ );
+
   GTKDisallowStdin();
   gtk_main();
   GTKAllowStdin();
