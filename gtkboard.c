@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.44 2001/12/10 16:06:06 gtw Exp $
+ * $Id: gtkboard.c,v 1.45 2002/01/31 17:33:42 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1066,7 +1066,7 @@ static void board_quick_edit( GtkWidget *board, BoardData *bd,
 	
 	bd->points[ 1 ] = -2;
 	bd->points[ 6 ] = 5;
-	bd->points[ 8 ] = 2;
+	bd->points[ 8 ] = 3;
 	bd->points[ 12 ] = -5;
 	bd->points[ 13 ] = 5;
 	bd->points[ 17 ] = -3;
