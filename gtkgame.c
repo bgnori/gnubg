@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.289 2003/01/08 17:07:38 thyssen Exp $
+ * $Id: gtkgame.c,v 1.290 2003/01/09 14:43:25 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5603,7 +5603,7 @@ extern void GTKRollout( int c, char asz[][ 40 ], int cGames,
 			rolloutstat ars[][ 2 ] ) {
     
     static char *aszTitle[] = {
-        "",
+        NULL,
         N_("Win"), 
         N_("Win (g)"), 
         N_("Win (bg)"), 
@@ -5655,7 +5655,7 @@ extern void GTKRollout( int c, char asz[][ 40 ], int cGames,
     pwVbox = gtk_vbox_new( FALSE, 4 );
 	
     for ( i = 0; i < 8; i++ )
-      aszTemp[ i ] = gettext ( aszTitle[ i ] );
+      aszTemp[ i ] = aszTitle[ i ] ? gettext ( aszTitle[ i ] ) : "";
 
     pwRolloutResult = gtk_clist_new_with_titles( 8, aszTemp );
     gtk_clist_column_titles_passive( GTK_CLIST( pwRolloutResult ) );

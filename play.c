@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.169 2002/12/22 17:05:17 jsegrave Exp $
+ * $Id: play.c,v 1.170 2003/01/09 14:43:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -1584,9 +1584,10 @@ extern int NextTurn( int fPlayNext ) {
         playSound ( ap[ pmgi->fWinner ].pt == PLAYER_HUMAN ? 
                     SOUND_HUMAN_WIN_GAME : SOUND_BOT_WIN_GAME );
 
-	outputf( _("%s wins a %s and %d point%s.\n"), ap[ pmgi->fWinner ].szName,
-		 gettext ( aszGameResult[ n - 1 ] ), pmgi->nPoints,
-		 pmgi->nPoints > 1 ? "s" : "" );
+	outputf((pmgi->nPoints == 1 ? _("%s wins a %s and %d point.\n")
+		 : _("%s wins a %s and %d points.\n")),
+		ap[ pmgi->fWinner ].szName,
+		gettext ( aszGameResult[ n - 1 ] ), pmgi->nPoints);
 
 #if USE_GUI
 	if( fX ) {
@@ -2396,8 +2397,10 @@ extern void CommandDrop( char *sz ) {
 
 
     if( fDisplay )
-	outputf( _("%s refuses the cube and gives up %d point%s.\n"),
-		ap[ ms.fTurn ].szName, ms.nCube, ms.nCube == 1 ? "" : "s" );
+       outputf((ms.nCube == 1
+		? _("%s refuses the cube and gives up %d point.\n")
+		: _("%s refuses the cube and gives up %d points.\n")),
+	       ap[ ms.fTurn ].szName, ms.nCube);
     
     AddMoveRecord( pmr );
     
