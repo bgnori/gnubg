@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.275 2002/08/10 11:39:16 thyssen Exp $
+ * $Id: gnubg.c,v 1.276 2002/08/12 12:12:35 thyssen Exp $
  */
 
 #include "config.h"
@@ -311,10 +311,10 @@ player ap[ 2 ] = {
 
 windowgeometry awg[ NUM_WINDOWS ] =
   { 
-    { 0, 0, -1, -1 },  /* main */
-    { 250, 200, -1, -1 },    /* game list */
-    { 0, 400, -1, -1 },      /* annotation */
-    { 0, 0, -1, -1 }         /* hint */
+    { 0, 0, 20, 20 },  /* main */
+    { 250, 200, 20, 20 },    /* game list */
+    { 0, 400, 20, 20 },      /* annotation */
+    { 0, 0, 20, 20 }         /* hint */
   };
 
 
