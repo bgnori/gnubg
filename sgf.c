@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.36 2002/03/31 20:43:19 thyssen Exp $
+ * $Id: sgf.c,v 1.37 2002/04/20 10:39:38 thyssen Exp $
  */
 
 #include "config.h"
@@ -32,6 +32,7 @@
 #if USE_GTK
 #include "gtkgame.h"
 #endif
+#include "analysis.h"
 #include "positionid.h"
 #include "sgf.h"
 
@@ -1191,6 +1192,8 @@ static void SaveGame( FILE *pf, list *plGame ) {
     list *pl;
     moverecord *pmr;
     int i, j, anBoard[ 2 ][ 25 ];
+
+    updateStatisticsGame ( plGame );
     
     pl = plGame->plNext;
     pmr = pl->p;
