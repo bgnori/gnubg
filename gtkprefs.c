@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.36 2002/09/15 19:56:50 gtw Exp $
+ * $Id: gtkprefs.c,v 1.37 2002/09/16 15:21:49 gtw Exp $
  */
 
 #include "config.h"
@@ -1747,7 +1747,7 @@ extern char *BoardPreferencesCommand( GtkWidget *pwBoard, char *sz ) {
 	     "translucent=%c labels=%c diceicon=%c illegal=%c "
 	     "beep=%c highdie=%c wood=%s hinges=%c "
              "show_ids=%c show_pips=%c "
-	     "animate=%s speed=%d light=%0.0f;%0.0f shape=%0.1f" 
+	     "animate=%s speed=%d light=%0.0f;%0.0f shape=%0.1f " 
 	     "chequers0=#%02X%02X%02X;%0.2f;%0.2f;%0.2f;%0.2f "
 	     "chequers1=#%02X%02X%02X;%0.2f;%0.2f;%0.2f;%0.2f "
 	     "dice0=#%02X%02X%02X;%0.2f;%0.2f;%c "
