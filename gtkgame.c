@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.371 2003/07/21 19:19:16 thyssen Exp $
+ * $Id: gtkgame.c,v 1.372 2003/07/23 16:36:20 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1750,12 +1750,13 @@ static void SetAnnotation( moverecord *pmr ) {
 
             if ( dt == DT_NORMAL ) {
 	    
-              fixOutput ( pmr->d.arDouble, pmr->d.aarOutput );
+              fixOutput ( pmr->d.CubeDecPtr->arDouble, 
+						  pmr->d.CubeDecPtr->aarOutput );
             
-              if ( ( pw = CreateCubeAnalysis ( pmr->d.aarOutput,
-                                               pmr->d.aarStdDev,
-                                               pmr->d.arDouble,
-                                               &pmr->d.esDouble,
+              if ( ( pw = CreateCubeAnalysis ( pmr->d.CubeDecPtr->aarOutput,
+                                               pmr->d.CubeDecPtr->aarStdDev,
+                                               pmr->d.CubeDecPtr->arDouble,
+                                               &pmr->d.CubeDecPtr->esDouble,
                                                MOVE_DOUBLE ) ) )
 		gtk_box_pack_start( GTK_BOX( pwAnalysis ), pw, FALSE,
 				    FALSE, 0 );
@@ -1795,12 +1796,13 @@ static void SetAnnotation( moverecord *pmr ) {
 
             if ( tt == TT_NORMAL ) {
 
-              fixOutput ( pmr->d.arDouble, pmr->d.aarOutput );
+              fixOutput ( pmr->d.CubeDecPtr->arDouble, 
+						  pmr->d.CubeDecPtr->aarOutput );
               
-              if ( ( pw = CreateCubeAnalysis ( pmr->d.aarOutput,
-                                               pmr->d.aarStdDev,
-                                               pmr->d.arDouble,
-                                               &pmr->d.esDouble,
+              if ( ( pw = CreateCubeAnalysis ( pmr->d.CubeDecPtr->aarOutput,
+                                               pmr->d.CubeDecPtr->aarStdDev,
+                                               pmr->d.CubeDecPtr->arDouble,
+                                               &pmr->d.CubeDecPtr->esDouble,
                                                pmr->mt ) ) )
 		gtk_box_pack_start( GTK_BOX( pwAnalysis ), pw, FALSE,
 				    FALSE, 0 );

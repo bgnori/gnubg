@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.19 2003/07/03 15:21:32 jsegrave Exp $
+ * $Id: export.c,v 1.20 2003/07/23 16:36:21 jsegrave Exp $
  */
 
 #include "config.h"
@@ -207,10 +207,10 @@ ExportGameEquityEvolution (FILE * pf, list * plGame,
 	  rMoveError = 0.0;
 	  rMoveEquity = 0.0;
 
-	  if (pmr->d.esDouble.et != EVAL_NONE)
+	  if (pmr->d.CubeDecPtr->esDouble.et != EVAL_NONE)
 	    {
 
-	      float *arDouble = pmr->d.arDouble;
+	      float *arDouble = pmr->d.CubeDecPtr->arDouble;
 
 	      GetMatchStateCubeInfo (&ci, &msEE);
 

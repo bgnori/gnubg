@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.48 2003/07/18 08:36:23 thyssen Exp $
+ * $Id: text.c,v 1.49 2003/07/23 16:36:20 jsegrave Exp $
  */
 
 #include "config.h"
@@ -884,7 +884,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.48 $";
+  const char szVersion[] = "$Revision: 1.49 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1291,10 +1291,12 @@ TextPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
 
   case MOVE_DOUBLE:
 
-    TextPrintCubeAnalysisTable ( pf, pmr->d.arDouble, 
-                                 pmr->d.aarOutput, pmr->d.aarStdDev,
+    TextPrintCubeAnalysisTable ( pf, pmr->d.CubeDecPtr->arDouble, 
+                                 pmr->d.CubeDecPtr->aarOutput, 
+								 pmr->d.CubeDecPtr->aarStdDev,
                                  pmr->d.fPlayer,
-                                 &pmr->d.esDouble, &ci, TRUE, -1,
+                                 &pmr->d.CubeDecPtr->esDouble, 
+								 &ci, TRUE, -1,
                                  pmr->d.st, SKILL_NONE );
 
     break;
@@ -1304,10 +1306,12 @@ TextPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr ) {
 
     /* cube analysis from double, {take, drop, beaver} */
 
-    TextPrintCubeAnalysisTable ( pf, pmr->d.arDouble, 
-                                 pmr->d.aarOutput, pmr->d.aarStdDev,
+    TextPrintCubeAnalysisTable ( pf, pmr->d.CubeDecPtr->arDouble, 
+                                 pmr->d.CubeDecPtr->aarOutput, 
+								 pmr->d.CubeDecPtr->aarStdDev,
                                  pmr->d.fPlayer,
-                                 &pmr->d.esDouble, &ci, TRUE, 
+                                 &pmr->d.CubeDecPtr->esDouble, 
+								 &ci, TRUE, 
                                  pmr->mt == MOVE_TAKE,
                                  SKILL_NONE, /* FIXME: skill from prev. cube */
                                  pmr->d.st );

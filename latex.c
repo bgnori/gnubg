@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.23 2003/03/30 16:37:51 thyssen Exp $
+ * $Id: latex.c,v 1.24 2003/07/23 16:36:20 jsegrave Exp $
  */
 
 #include "config.h"
@@ -456,8 +456,9 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 	    PrintLaTeXBoard( pf, &msExport, pmr->d.fPlayer );
 
 	    PrintLaTeXCubeAnalysis( pf, &msExport, pmr->d.fPlayer,
-				    pmr->d.arDouble, 
-                                    pmr->d.aarOutput, &pmr->d.esDouble );
+								pmr->d.CubeDecPtr->arDouble, 
+								pmr->d.CubeDecPtr->aarOutput, 
+								&pmr->d.CubeDecPtr->esDouble );
 
 	    /* FIXME what about beavers? */
 	    fprintf( pf, "\\begin{center}%s %s%s\\end{center}\n\n",

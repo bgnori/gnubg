@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.111 2003/07/22 00:38:42 joseph Exp $
+ * $Id: html.c,v 1.112 2003/07/23 16:36:20 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1851,7 +1851,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.111 $";
+  const char szVersion[] = "$Revision: 1.112 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1932,7 +1932,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.111 $";
+  const char szVersion[] = "$Revision: 1.112 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2375,10 +2375,12 @@ HTMLPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
   case MOVE_DOUBLE:
 
-    HTMLPrintCubeAnalysisTable ( pf, pmr->d.arDouble, 
-                                 pmr->d.aarOutput, pmr->d.aarStdDev,
+    HTMLPrintCubeAnalysisTable ( pf, pmr->d.CubeDecPtr->arDouble, 
+                                 pmr->d.CubeDecPtr->aarOutput, 
+								 pmr->d.CubeDecPtr->aarStdDev,
                                  pmr->d.fPlayer,
-                                 &pmr->d.esDouble, &ci, TRUE, -1,
+                                 &pmr->d.CubeDecPtr->esDouble, 
+								 &ci, TRUE, -1,
                                  pmr->d.st, SKILL_NONE, hecss );
 
     break;
@@ -2388,10 +2390,11 @@ HTMLPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
     /* cube analysis from double, {take, drop, beaver} */
 
-    HTMLPrintCubeAnalysisTable ( pf, pmr->d.arDouble, 
-                                 pmr->d.aarOutput, pmr->d.aarStdDev,
+    HTMLPrintCubeAnalysisTable ( pf, pmr->d.CubeDecPtr->arDouble, 
+                                 pmr->d.CubeDecPtr->aarOutput, 
+								 pmr->d.CubeDecPtr->aarStdDev,
                                  pmr->d.fPlayer,
-                                 &pmr->d.esDouble, &ci, TRUE, 
+                                 &pmr->d.CubeDecPtr->esDouble, &ci, TRUE, 
                                  pmr->mt == MOVE_TAKE,
                                  SKILL_NONE, /* FIXME: skill from prev. cube */
                                  pmr->d.st, hecss );

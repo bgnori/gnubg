@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.443 2003/07/18 21:17:11 jsegrave Exp $
+ * $Id: gnubg.c,v 1.444 2003/07/23 16:36:20 jsegrave Exp $
  */
 
 #include "config.h"
@@ -2811,7 +2811,8 @@ static void DisplayAnalysis( moverecord *pmr ) {
 	break;
 
     case MOVE_DOUBLE:
-      DisplayCubeAnalysis( pmr->d.arDouble, pmr->d.aarOutput,
+      DisplayCubeAnalysis( pmr->d.CubeDecPtr->arDouble, 
+						   pmr->d.CubeDecPtr->aarOutput,
                              &pmr->n.esDouble );
 	break;
 
