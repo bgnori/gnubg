@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.10 2003/06/06 10:46:37 thyssen Exp $
+ * $Id: gtktempmap.c,v 1.11 2003/06/09 15:45:26 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -90,7 +90,7 @@ typedef struct _tempmapwidget {
 static int
 TempMapEquities( evalcontext *pec, matchstate *pms, 
                  float aarEquity[ 6 ][ 6 ], int aaanMove[ 6 ][ 6 ][ 8 ],
-                 const gchar *szTitle ) {
+                 const gchar *szTitle, const float rFac ) {
 
 
   int i, j;
@@ -138,8 +138,10 @@ TempMapEquities( evalcontext *pec, matchstate *pms,
         return -1;
       }
 
-      
       InvertEvaluationR( arOutput, &cix );
+
+      if ( ! cix.nMatchTo && rFac != 1.0 )
+        arOutput[ OUTPUT_CUBEFUL_EQUITY ] *= rFac;
 
       aar[ i ][ j ] = arOutput[ OUTPUT_CUBEFUL_EQUITY ];
       aar[ j ][ i ] = arOutput[ OUTPUT_CUBEFUL_EQUITY ];
@@ -172,7 +174,8 @@ CalcTempMapEquities( evalcontext *pec, tempmapwidget *ptmw ) {
     if ( TempMapEquities( pec, ptmw->atm[ i ].pms,
                           ptmw->atm[ i ].aarEquity, 
                           ptmw->atm[ i ].aaanMove,
-                          ptmw->atm[ i ].szTitle ) < 0 ) 
+                          ptmw->atm[ i ].szTitle,
+                          ptmw->atm[ i ].pms->nCube / ptmw->atm[ 0 ].pms->nCube ) < 0 ) 
       return -1;
 
   return 0;
