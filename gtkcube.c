@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.27 2003/07/16 10:28:35 thyssen Exp $
+ * $Id: gtkcube.c,v 1.28 2003/07/23 14:17:06 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -665,6 +665,10 @@ CubeAnalysisRollout ( GtkWidget *pw, cubehintdata *pchd ) {
     pes->rc.fStopOnSTD = rcRollout.fStopOnSTD;
     pes->rc.nMinimumGames = rcRollout.nMinimumGames;
     pes->rc.rStdLimit = rcRollout.rStdLimit;
+	memcpy (aarOutput, pchd->aarOutput, 
+			2 * NUM_ROLLOUT_OUTPUTS * sizeof ( float ) );
+	memcpy (aarStdDev, pchd->aarStdDev,
+			2 * NUM_ROLLOUT_OUTPUTS * sizeof ( float ) );
   }
 
   GetMatchStateCubeInfo( &ci, &pchd->ms );
@@ -687,8 +691,10 @@ CubeAnalysisRollout ( GtkWidget *pw, cubehintdata *pchd ) {
   memcpy ( pchd->aarStdDev, aarStdDev, 
            2 * NUM_ROLLOUT_OUTPUTS * sizeof ( float ) );
 
+  if (pes->et != EVAL_ROLLOUT)
+	memcpy ( &pchd->pes->rc, &rcRollout, sizeof ( rcRollout ) );
+
   pchd->pes->et = EVAL_ROLLOUT;
-  memcpy ( &pchd->pes->rc, &rcRollout, sizeof ( rcRollout ) );
 
   if ( pchd->arDouble )
     FindCubeDecision ( pchd->arDouble, pchd->aarOutput, &ci );
