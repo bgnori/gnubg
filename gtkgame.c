@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.510 2004/09/16 07:50:15 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.511 2004/09/17 18:46:01 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3245,11 +3245,12 @@ extern void CommandOK( GtkWidget *pw, struct CommandEntryData_T *pData )
 	pData->numHistory++;
 
 	if (pData->modal)
-	    gtk_widget_destroy( gtk_widget_get_toplevel( pw ) );
+		gtk_widget_destroy(gtk_widget_get_toplevel(pw));
 	else
+	{
 		PopulateCommandHistory(pData);
-
-	gtk_entry_set_text(GTK_ENTRY(pData->pwEntry), "");
+		gtk_entry_set_text(GTK_ENTRY(pData->pwEntry), "");
+	}
 
 	if (pData->cmdString)
 	{
@@ -3344,7 +3345,7 @@ extern gboolean CommandKeyPress(GtkWidget *widget, GdkEventKey *event, struct Co
 		if ((pc = FindHelpCommand(&cTop, gtk_editable_get_chars( GTK_EDITABLE( pData->pwEntry ), 0, -1 ), szCommand, szUsage)))
 		{
 			Capitalize(szCommand);
-		    gtk_entry_set_text( GTK_ENTRY( pData->pwEntry ), szCommand );
+			gtk_entry_set_text( GTK_ENTRY( pData->pwEntry ), szCommand );
 		}
 		/* Gtk 1 not good at stoping focus moving - so just move back later */
 		pData->completing = 1;
