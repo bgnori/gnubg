@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.28 2001/03/19 15:53:25 gtw Exp $
+ * $Id: rollout.c,v 1.29 2001/04/09 17:37:04 gtw Exp $
  */
 
 #include "config.h"
@@ -425,7 +425,7 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], char *sz, float arOutput[],
       && !fX
 #endif
       ) {
-      for( i = 0; i < 72; i++ )
+      for( i = 0; i < 79; i++ )
 	  outputc( ' ' );
 
       outputc( '\r' );

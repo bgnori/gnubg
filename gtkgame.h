@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.19 2001/04/06 14:32:51 gtw Exp $
+ * $Id: gtkgame.h,v 1.20 2001/04/09 17:37:04 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -62,6 +62,9 @@ extern int GTKGetInputYN( char *szPrompt );
 extern void GTKOutput( char *sz );
 extern void GTKOutputX( void );
 extern void GTKOutputNew( void );
+extern void GTKProgressStart( char *sz );
+extern void GTKProgress( void );
+extern void GTKProgressEnd( void );
 extern void GTKEval( char *szOutput );
 extern void GTKHint( movelist *pml );
 extern void GTKRollout( int c, char asz[][ 40 ], int cGames );
