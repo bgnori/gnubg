@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.23 2003/08/25 20:14:24 thyssen Exp $
+ * $Id: gtktheory.c,v 1.24 2003/10/02 17:41:29 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -280,6 +280,11 @@ TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
   /* get values */
 
   TheoryGetValues ( ptw, &ci, aarRates );
+
+  /* set max on the gammon spinners */
+
+  for ( i = 0; i < 2; ++i ) 
+    ptw->aapwRates[ i ][ 1 ]->upper = ptw->aapwRates[ i ][ 0 ]->value;
 
   SetCubeInfo ( &ci, ci.nCube, 0, 0, ci.nMatchTo,
                 ci.anScore, ci.fCrawford, ci.fJacoby, ci.fBeavers, ci.bgv );
