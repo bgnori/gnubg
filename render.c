@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.39 2004/06/01 08:21:52 Superfly_Jon Exp $
+ * $Id: render.c,v 1.40 2004/06/28 09:24:18 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3027,8 +3027,10 @@ extern int PreferenceCompare(renderdata *prd1, renderdata *prd2)
 			!memcmp(prd1->afDieColour3d, prd2->afDieColour3d, sizeof(prd1->afDieColour3d)) &&
 			MaterialTextCompare(&prd1->ChequerMat[0], &prd2->ChequerMat[0]) &&
 			MaterialCompare(&prd1->ChequerMat[1], &prd2->ChequerMat[1]) &&
-			MaterialCompare(&prd1->DiceMat[0], &prd2->DiceMat[0]) &&
-			MaterialCompare(&prd1->DiceMat[1], &prd2->DiceMat[1]) &&
+			(prd1->afDieColour3d[0] ||
+				MaterialCompare(&prd1->DiceMat[0], &prd2->DiceMat[0])) &&
+			(prd1->afDieColour3d[1] ||
+				MaterialCompare(&prd1->DiceMat[1], &prd2->DiceMat[1])) &&
 			MaterialCompare(&prd1->DiceDotMat[0], &prd2->DiceDotMat[0]) &&
 			MaterialCompare(&prd1->DiceDotMat[1], &prd2->DiceDotMat[1]) &&
 			MaterialCompare(&prd1->CubeMat, &prd2->CubeMat) &&
