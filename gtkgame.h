@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.44 2002/07/17 15:32:24 thyssen Exp $
+ * $Id: gtkgame.h,v 1.45 2002/07/17 18:46:09 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -31,7 +31,8 @@ extern gint gtk_option_menu_get_history (GtkOptionMenu *option_menu);
 
 typedef enum _dialogarea {
     DA_MAIN,
-    DA_BUTTONS
+    DA_BUTTONS,
+    DA_OK
 } dialogarea;
 
 extern GtkWidget *pwMain, *pwMenuBar;
@@ -83,13 +84,9 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
 				char *szTitle );
 extern void GTKEval( char *szOutput );
 extern void GTKHint( movelist *pml );
-extern void GTKDoubleHint( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
-                           float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
-                           const evalsetup *pes );
-
-extern void GTKTakeHint( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
-                           float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
-                           const evalsetup *pes );
+extern void GTKCubeHint( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+			 float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+			 const evalsetup *pes );
 
 extern void
 GTKRollout( int c, char asz[][ 40 ], int cGames,

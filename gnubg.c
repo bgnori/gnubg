@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.248 2002/07/17 11:13:01 thyssen Exp $
+ * $Id: gnubg.c,v 1.249 2002/07/17 18:46:09 gtw Exp $
  */
 
 #include "config.h"
@@ -2564,7 +2564,7 @@ extern void CommandHint( char *sz ) {
       
 #if USE_GTK
     if ( fX ) {
-      GTKDoubleHint( sc.aarOutput, sc.aarStdDev, &sc.es );
+      GTKCubeHint( sc.aarOutput, sc.aarStdDev, &sc.es );
       return;
     }
 #endif
@@ -2660,7 +2660,7 @@ extern void CommandHint( char *sz ) {
 	
 #if USE_GTK
 	if ( fX ) {
-          GTKTakeHint( aarOutput, aarStdDev, &esEvalCube );
+          GTKCubeHint( aarOutput, aarStdDev, &esEvalCube );
 	    return;
 	}
 #endif
