@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.3 2003/08/13 16:23:29 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.4 2003/08/24 11:12:49 Superfly_Jon Exp $
 */
 
 #include <gtk/gtk.h>
@@ -99,6 +99,7 @@ void updateMovingPieceOccPos(BoardData* bd);
 void LoadTextureInfo();
 GList *GetTextureList(int type);
 int IsSet(int flags, int bit);
+float Dist2d(float a, float b);
 
 typedef int idleFunc(BoardData* bd);
 void setIdleFunc(BoardData* bd, idleFunc* pFun);

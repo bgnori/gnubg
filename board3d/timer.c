@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: timer.c,v 1.3 2003/08/14 11:03:43 Superfly_Jon Exp $
+* $Id: timer.c,v 1.4 2003/08/24 11:12:49 Superfly_Jon Exp $
 */
 
 #include <time.h>
@@ -60,7 +60,7 @@ double get_time()
 
 double get_time()
 {	/* Return elapsed time in milliseconds */
-	return clock() / 1000.0;
+	return 1000 * clock() / CLOCKS_PER_SEC;
 }
 
 #endif

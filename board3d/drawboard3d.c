@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.3 2003/08/13 16:23:29 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.4 2003/08/24 11:12:49 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -235,7 +235,8 @@ void preDrawPiece0(BoardData* bd)
 	{
 		latitude = (float)sin(angle2) * lip;
 		angle = 0;
-		new_radius = (float)sqrt((lip * lip) - (latitude * latitude));
+
+		new_radius = Dist2d(lip, latitude);
 
 		for (i = 0; i < bd->curveAccuracy; i++)
 		{
@@ -391,7 +392,7 @@ void renderDice(BoardData* bd, float size)
 	for (i = 0; i < lns + 1; i++)
 	{
 		latitude = (float)sin(lat_angle) * radius;
-		new_radius = (float)sqrt(radius * radius - (latitude * latitude));
+		new_radius = Dist2d(radius, latitude);
 
 		ns = (bd->curveAccuracy / 4) - i;
 
@@ -1694,7 +1695,7 @@ if (bd->roundedEdges)
 		tuv = (TEXTURE_SCALE) / bd->boxMat.pTexture->width;
 		st = (float)sin((2 * PI) / bd->curveAccuracy) * BOARD_FILLET;
 		ct = ((float)cos((2 * PI) / bd->curveAccuracy) - 1) * BOARD_FILLET;
-		dInc = (float)sqrt(st * st + (ct * ct));
+		dInc = (float)sqrt(st * st + ct * ct);
 		curveTextOff = (bd->curveAccuracy / 4) * dInc;
 	}
 
