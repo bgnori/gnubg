@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1999
  *
- * $Id: backgammon.h,v 1.10 2000/01/08 21:30:17 gtw Exp $
+ * $Id: backgammon.h,v 1.10.2.1 2000/01/10 01:13:45 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -78,6 +78,9 @@ extern int ParsePosition( int an[ 2 ][ 25 ], char *sz );
 extern int SetToggle( char *szName, int *pf, char *sz, char *szOn,
 		       char *szOff );
 extern void ShowBoard( void );
+extern void SetCube ( int nNewCube, int fNewCubeOwner );
+extern void CalcGammonPrice ( void ); 
+
 
 extern void CommandAccept( char * ),
     CommandAgree( char * ),

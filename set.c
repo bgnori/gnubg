@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.9 2000/01/08 21:28:54 gtw Exp $
+ * $Id: set.c,v 1.9.2.1 2000/01/10 01:13:45 thyssen Exp $
  */
 
 #include "config.h"
@@ -281,6 +281,7 @@ extern void CommandSetCubeUse( char *sz ) {
 	   centred. */
 	nCube = 1;
 	fCubeOwner = -1;
+	CalcGammonPrice ();
 	
 #if !X_DISPLAY_MISSING
 	if( fX )
@@ -308,6 +309,7 @@ extern void CommandSetCubeValue( char *sz ) {
     for( i = fDoubled ? MAX_CUBE >> 1 : MAX_CUBE; i; i >>= 1 )
 	if( n == i ) {
 	    printf( "The cube has been set to %d.\n", nCube = n );
+	    CalcGammonPrice ();
 	    
 #if !X_DISPLAY_MISSING
 	    if( fX )
