@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.49 2000/10/26 14:20:07 gtw Exp $
+ * $Id: backgammon.h,v 1.50 2000/11/02 08:40:07 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -342,6 +342,7 @@ extern void CommandAccept( char * ),
     CommandShowEvaluation( char * ),
     CommandShowJacoby( char * ),
     CommandShowGammonPrice( char * ),
+    CommandShowMarketWindow( char * ),
     CommandShowNackgammon( char * ),
     CommandShowMatchEquityTable( char * ),
     CommandShowOutputMWC ( char * ),

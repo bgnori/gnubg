@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.76 2000/11/01 15:08:29 gtw Exp $
+ * $Id: gnubg.c,v 1.77 2000/11/02 08:40:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -339,6 +339,8 @@ command acDatabase[] = {
       "See if the Jacoby rule is used in money sessions", NULL, NULL },
     { "kleinman", CommandShowKleinman, "Calculate Kleinman count for "
       "position", szOPTPOSITION, NULL },
+    { "marketwindow", CommandShowMarketWindow, 
+      "show market window for doubles", NULL, NULL },
     { "matchequitytable", CommandShowMatchEquityTable, 
       "Show match equity table", szOPTVALUE, NULL },
     { "nackgammon", CommandShowNackgammon, "Display which starting position "
