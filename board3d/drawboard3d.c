@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.31 2004/03/31 09:51:56 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.32 2004/04/02 16:36:32 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -139,6 +139,8 @@ float getBoardWidth() {return TOTAL_WIDTH;}
 float getBoardHeight() {return TOTAL_HEIGHT;}
 float getDiceSize(BoardData* bd) {return DICE_SIZE;}
 
+extern list textures;
+
 void TidyShadows(BoardData* bd)
 {
 	freeOccluder(&bd->Occluders[OCC_BOARD]);
@@ -167,6 +169,7 @@ void Tidy3dObjects(BoardData* bd)
 	TidyShadows(bd);
 
 	ClearTextures(bd);
+	ListDeleteAll(&textures);
 }
 
 void preDrawPiece0(renderdata* prd)
