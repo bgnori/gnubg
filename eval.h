@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.83 2002/09/08 19:43:24 thyssen Exp $
+ * $Id: eval.h,v 1.84 2002/10/04 19:32:26 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -61,6 +61,7 @@
 #define GNUBG_WEIGHTS "gnubg.weights"
 #define GNUBG_WEIGHTS_BINARY "gnubg.wd"
 #define GNUBG_BEAROFF "gnubg.bd"
+#define GNUBG_BEAROFF_HUGE_OSR "gnubg_huge_osr.bd"
 
 /* A trivial upper bound on the number of (complete or incomplete)
  * legal moves of a single roll: if all 15 chequers are spread out,
@@ -211,6 +212,7 @@ typedef enum _positionclass {
     CLASS_OVER = 0, /* Game already finished */
     CLASS_BEAROFF2, /* Two-sided bearoff database */
     CLASS_BEAROFF1, /* One-sided bearoff database */
+    CLASS_BEAROFF_HUGEOSR, /* huge one-sided bearoff database */
     CLASS_RACE,     /* Race neural network */
     CLASS_CRASHED,  /* Contact, one side has less than 7 active checkers */
     CLASS_CONTACT   /* Contact neural network */
@@ -222,10 +224,14 @@ typedef enum _positionclass {
 
 extern char *PathSearch( const char *szFile, const char *szDir );
 			      
-extern int 
+extern int
 EvalInitialise( char *szWeights, char *szWeightsBinary,
-                char *szDatabase, char *szDir, int nSize,
+		char *szDatabase, char *szHugeDatabase, 
+                char *szDir, int nSize,
 		void (*pfProgress)( int ) );
+
+extern int
+EvalShutdown( void );
 
 extern void EvalStatus( char *szOutput );
 

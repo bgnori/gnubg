@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.307 2002/09/25 21:39:58 gtw Exp $
+ * $Id: gnubg.c,v 1.308 2002/10/04 19:31:55 thyssen Exp $
  */
 
 #include "config.h"
@@ -3107,6 +3107,8 @@ extern void PromptForExit( void ) {
     if ( fX )
       free_board_designs ( plBoardDesigns );
 #endif
+
+    EvalShutdown ();
     
     exit( EXIT_SUCCESS );
 }
@@ -5707,6 +5709,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     if( ( n = EvalInitialise( nNewWeights ? NULL : GNUBG_WEIGHTS,
 			      nNewWeights ? NULL : GNUBG_WEIGHTS_BINARY,
 			      fNoBearoff ? NULL : GNUBG_BEAROFF,
+			      fNoBearoff ? NULL : GNUBG_BEAROFF_HUGE_OSR,
 			      szDataDirectory, nNewWeights,
 			      fShowProgress ? BearoffProgress : NULL ) ) < 0 )
 	exit( EXIT_FAILURE );
@@ -5803,12 +5806,14 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 
     if( pchCommands ) {
 	CommandLoadCommands( pchCommands );
+        EvalShutdown();
 	exit( EXIT_SUCCESS );
     }
 
 #if USE_GUILE
     if( pchScript ) {
 	scm_primitive_load( scm_makfrom0str( pchScript ) );
+        EvalShutdown();
 	exit( EXIT_SUCCESS );
     }
 #endif
@@ -5827,6 +5832,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     if( fX ) {
 	RunGTK();
 
+        EvalShutdown();
 	exit( EXIT_SUCCESS );
     }
 #elif USE_EXT
@@ -5873,8 +5879,10 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 		
 		
 		if( feof( stdin ) ) {
-		    if( !isatty( STDIN_FILENO ) )
+		    if( !isatty( STDIN_FILENO ) ) {
+                        EvalShutdown();
 			exit( EXIT_SUCCESS );
+                    }
 		    
 		    outputc( '\n' );
 		    
