@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.1.2.5 2003/06/17 08:20:19 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.1.2.6 2003/06/17 08:28:24 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -173,7 +173,7 @@ void preDrawPiece0(BoardData* bd)
 
 	/* Draw top/bottom of piece */
 	if (bd->checkerMat[0].pTexture)
-	{	/* Note: texturing will be enabled at this point */
+	{
 		glEnable(GL_TEXTURE_2D);
 		glPushMatrix();
 		glTranslatef(0, 0, PIECE_HEIGHT);
@@ -269,8 +269,8 @@ void preDrawPiece1(BoardData* bd)
 
 	/* Draw top of piece */
 	if (bd->checkerMat[0].pTexture)
-	{	/* Note: texturing will be enabled at this point */
-glEnable(GL_TEXTURE_2D);
+	{
+		glEnable(GL_TEXTURE_2D);
 		glPushMatrix();
 		glTranslatef(0, 0, PIECE_HEIGHT);
 		glBindTexture(GL_TEXTURE_2D, bd->checkerMat[0].pTexture->texID);

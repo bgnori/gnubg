@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.1.2.5 2003/06/17 08:20:19 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.1.2.6 2003/06/17 08:28:24 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -39,9 +39,9 @@
 #include <gtkgl/gtkglarea.h>
 #endif
 
-#include "../backgammon.h"
-#include "../sound.h"
-#include "../renderprefs.h"
+#include "backgammon.h"
+#include "sound.h"
+#include "renderprefs.h"
 
 int screenHeight;
 guint id = 0;
