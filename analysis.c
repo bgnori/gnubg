@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.116 2003/07/24 17:37:59 thyssen Exp $
+ * $Id: analysis.c,v 1.117 2003/07/25 18:22:55 thyssen Exp $
  */
 
 #include "config.h"
@@ -144,7 +144,7 @@ LuckFirst ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
       
       /* Find the best move for each roll at ply 0 only. */
       if( FindnSaveBestMoves( &ml, i + 1, j + 1, anBoardTemp, NULL, 0.0f,
-                              (cubeinfo *) pci, (evalcontext *) pec, 
+                              &ciOpp, (evalcontext *) pec, 
                               defaultFilters ) < 0 )
         return ERR_VAL;
 
@@ -152,30 +152,33 @@ LuckFirst ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
       
         SwapSides( anBoardTemp );
       
-        if ( GeneralEvaluationE ( ar, anBoardTemp, &ciOpp, 
+        if ( GeneralEvaluationE ( ar, anBoardTemp, (cubeinfo *) pci, 
                                   (evalcontext *) pec ) < 0 )
           return ERR_VAL;
 
         if ( pec->fCubeful ) {
           if ( pci->nMatchTo )
-            aar[ i ][ j ] = mwc2eq ( ar[ OUTPUT_CUBEFUL_EQUITY ], &ciOpp );
+            aar[ j ][ i ] = mwc2eq ( ar[ OUTPUT_CUBEFUL_EQUITY ], pci );
           else
-            aar[ i ][ j ] = ar[ OUTPUT_CUBEFUL_EQUITY ];
+            aar[ j ][ i ] = ar[ OUTPUT_CUBEFUL_EQUITY ];
         }
         else
-          aar[ i ][ j ] = ar[ OUTPUT_EQUITY ];
+          aar[ j ][ i ] = ar[ OUTPUT_EQUITY ];
 
       }
       else {
-        aar[ i ][ j ] = - ml.amMoves[ 0 ].rScore;
+        aar[ j ][ i ] = - ml.amMoves[ 0 ].rScore;
         free ( ml.amMoves );
       }
 
-      rMean += aar[ i ][ j ];
+      rMean += aar[ j ][ i ];
 
     }
 
-  return aar[ n0 ][ n1 ] - rMean / 30.0f;
+  if ( n0 > n1 )
+    return aar[ n0 ][ n1 ] - rMean / 30.0f;
+  else
+    return aar[ n1 ][ n0 ] - rMean / 30.0f;
 
 }
 
