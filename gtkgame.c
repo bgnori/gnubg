@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.170 2002/07/04 20:03:44 thyssen Exp $
+ * $Id: gtkgame.c,v 1.171 2002/07/08 08:02:33 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4846,39 +4846,39 @@ static void AnalysisOK( GtkWidget *pw, analysiswidget *paw ) {
   sprintf(sz, "set analysis limit %.0f", paw->padjMoves->value );
   UserCommand(sz); 
   
-  sprintf(sz, "set analysis threshold verygood %.3f",
+  lisprintf(sz, "set analysis threshold verygood %.3f",
 		  paw->apadjSkill[0]->value );
   UserCommand(sz); 
     
-  sprintf(sz, "set analysis threshold good %.3f",
+  lisprintf(sz, "set analysis threshold good %.3f",
 		  paw->apadjSkill[1]->value );
   UserCommand(sz); 
     
-  sprintf(sz, "set analysis threshold doubtful %.3f",
+  lisprintf(sz, "set analysis threshold doubtful %.3f",
 		  paw->apadjSkill[2]->value );
   UserCommand(sz); 
     
-  sprintf(sz, "set analysis threshold bad %.3f",
+  lisprintf(sz, "set analysis threshold bad %.3f",
 		  paw->apadjSkill[3]->value );
   UserCommand(sz); 
     
-  sprintf(sz, "set analysis threshold verybad %.3f",
+  lisprintf(sz, "set analysis threshold verybad %.3f",
 		  paw->apadjSkill[4]->value );
   UserCommand(sz); 
 
-  sprintf(sz, "set analysis threshold verylucky %.3f",
+  lisprintf(sz, "set analysis threshold verylucky %.3f",
 		  paw->apadjLuck[0]->value );
   UserCommand(sz); 
     
-  sprintf(sz, "set analysis threshold lucky %.3f",
+  lisprintf(sz, "set analysis threshold lucky %.3f",
 		  paw->apadjLuck[1]->value );
   UserCommand(sz); 
     
-  sprintf(sz, "set analysis threshold unlucky %.3f",
+  lisprintf(sz, "set analysis threshold unlucky %.3f",
 		  paw->apadjLuck[2]->value );
   UserCommand(sz); 
     
-  sprintf(sz, "set analysis threshold veryunlucky %.3f",
+  lisprintf(sz, "set analysis threshold veryunlucky %.3f",
 		  paw->apadjLuck[3]->value );
   UserCommand(sz); 
     
