@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.51 2000/11/13 15:53:16 gtw Exp $
+ * $Id: play.c,v 1.52 2000/11/14 15:26:38 gtw Exp $
  */
 
 #include "config.h"
@@ -464,7 +464,8 @@ static int ComputerTurn( void ) {
   cubeinfo ci;
   float arDouble[ 4 ], arOutput[ NUM_OUTPUTS ], rDoublePoint;
     
-  SetCubeInfo ( &ci, nCube, fCubeOwner, fMove );
+  SetCubeInfo ( &ci, nCube, fCubeOwner, fMove, nMatchTo, anScore,
+		fCrawford, fJacoby, fBeavers );
 
   switch( ap[ fTurn ].pt ) {
   case PLAYER_GNU:
@@ -557,7 +558,7 @@ static int ComputerTurn( void ) {
           return -1;
 
         rDoublePoint = 
-          GetDoublePointDeadCube ( arOutput, anScore, nMatchTo, &ci );
+          GetDoublePointDeadCube ( arOutput, &ci );
 
         if ( arOutput[ 0 ] >= rDoublePoint ) {
 

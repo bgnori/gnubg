@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.40 2000/11/13 15:53:16 gtw Exp $
+ * $Id: show.c,v 1.41 2000/11/14 15:26:38 gtw Exp $
  */
 
 #include "config.h"
@@ -541,7 +541,8 @@ extern void CommandShowGammonPrice ( char *sz ) {
   cubeinfo ci;
   int i;
 
-  SetCubeInfo ( &ci, nCube, fCubeOwner, fMove );
+  SetCubeInfo ( &ci, nCube, fCubeOwner, fMove, nMatchTo, anScore,
+		fCrawford, fJacoby, fBeavers );
 
   output ( "Player        Gammon price    Backgammon price\n" );
 
@@ -643,7 +644,8 @@ extern void CommandShowMarketWindow ( char * sz ) {
 
   /* First, get gammon and backgammon percentages */
 
-  SetCubeInfo ( &ci, nCube, fCubeOwner, fMove );
+  SetCubeInfo ( &ci, nCube, fCubeOwner, fMove, nMatchTo, anScore,
+		fCrawford, fJacoby, fBeavers );
 
   /* see if ratios are given on command line */
 
@@ -739,7 +741,7 @@ extern void CommandShowMarketWindow ( char * sz ) {
     for ( i = 0; i < 2; i++ )
       anNormScore[ i ] = nMatchTo - anScore[ i ];
 
-    GetPoints ( arOutput, anScore, nMatchTo, &ci, arCP2 );
+    GetPoints ( arOutput, &ci, arCP2 );
 
     for ( i = 0; i < 2; i++ ) {
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.52 2000/11/13 15:53:16 gtw Exp $
+ * $Id: backgammon.h,v 1.53 2000/11/14 15:26:37 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -163,22 +163,21 @@ typedef enum _gamestate {
    (which indicates which player is on roll: normally the same as
    fTurn, but occasionally different, e.g. if a double has been
    offered).  anDice indicate the roll to be played (0,0 indicates the
-   roll has not been made).  Other variables representing the game
-   state are fCubeOwner, fCrawford/fPostCrawford, nMatchTo, anScore
-   and nCube, from eval.h.
+   roll has not been made).
 
    The game state should generally only be modified by play.c; this
    isn't true at the moment, but other code should be (re)written to
    create an appropriate moverecord and call AddMoveRecord on it, so
    that the game record is kept consistent. */
 extern int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn, fResigned, fDoubled,
-    cGames, fNextTurn;
+    cGames, fNextTurn, fMove, fCubeOwner, fCrawford, fPostCrawford, nMatchTo,
+    anScore[ 2 ], nCube;
 extern gamestate gs;
 
-/* User settings (see eval.h for others). */
+/* User settings. */
 extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     fCubeUse, fNackgammon, fVarRedn, nRollouts, nRolloutTruncate, fConfirm,
-    fDisplay, fAutoBearoff, fShowProgress;
+    fDisplay, fAutoBearoff, fShowProgress, fBeavers, fOutputMWC, fJacoby;
 
 extern evalcontext ecEval, ecRollout, ecTD;
 
