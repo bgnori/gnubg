@@ -1,7 +1,7 @@
 /*
  * drawboard.c
  *
- * by Gary Wong, 1999-2001
+ * by Gary Wong <gtw@gnu.org>, 1999, 2000, 2001, 2002
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of version 2 of the GNU General Public License as
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.19 2002/02/07 16:00:30 gtw Exp $
+ * $Id: drawboard.c,v 1.20 2002/03/21 23:01:09 gtw Exp $
  */
 
 #include "config.h"
@@ -627,8 +627,6 @@ extern char *FormatMove( char *sz, int anBoard[ 2 ][ 25 ], int anMove[ 8 ] ) {
     while( i < 4 )
         pnSource[ i++ ] = NULL;
 
-    /* At this point i-1 is the current maximum offset. */
-    
     for ( i = 0; i < 4; i++)
         anCount[i] = pnSource[i] ? 1 : 0;
 
@@ -683,6 +681,7 @@ extern char *FormatMove( char *sz, int anBoard[ 2 ][ 25 ], int anMove[ 8 ] ) {
             *pch = '/';
             pch = FormatPoint( pch + 1, pnSource[ i ][ j ] );
             *pch++ = '*';
+            fl |= 1 << pnSource[ i ][ j ];
         }
 
         *pch = '/';
