@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkbearoff.c,v 1.1 2003/07/10 08:47:19 thyssen Exp $
+ * $Id: gtkbearoff.c,v 1.2 2003/07/10 09:26:20 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -30,6 +30,7 @@
 #include <gtk/gtk.h>
 
 #include <stdio.h>
+#include <string.h>
 #include <assert.h>
 
 #include "backgammon.h"
@@ -239,7 +240,6 @@ GTKShowBearoff( const matchstate *pms ) {
   GtkWidget *pwDialog;
   GtkWidget *pwNotebook;
   GtkWidget *pwv;
-  GtkWidget *pw;
   sconyerswidget *psw;
 
   pwDialog = GTKCreateDialog( _("Bearoff Databases"), 
