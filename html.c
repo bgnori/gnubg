@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.13 2002/03/30 23:52:58 thyssen Exp $
+ * $Id: html.c,v 1.14 2002/03/31 20:45:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -637,7 +637,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szID[] = "$Id: html.c,v 1.13 2002/03/30 23:52:58 thyssen Exp $";
+  const char szID[] = "$Id: html.c,v 1.14 2002/03/31 20:45:05 thyssen Exp $";
 
   /* add links to other games */
 
@@ -1066,9 +1066,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf, float arDouble[],
 
   /* equities */
 
-  ai[ 0 ] = 1;
-  ai[ 1 ] = 2;
-  ai[ 2 ] = 3;
+  getCubeDecisionOrdering ( ai, arDouble, pci );
 
   for ( i = 0; i < 3; i++ ) {
 
