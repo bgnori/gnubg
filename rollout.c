@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.118 2003/07/20 10:49:22 jsegrave Exp $
+ * $Id: rollout.c,v 1.119 2003/07/20 22:02:54 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1006,9 +1006,6 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
 
       memcpy ( &aanBoardEval[alt][0][0], apBoard[ alt ], 
                sizeof( anBoardOrig ));
-
-      if (fInvert)
-        SwapSides( anBoardOrig );
 
       /* roll something out */
 #if 0
