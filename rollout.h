@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.8 2001/05/23 15:23:50 thyssen Exp $
+ * $Id: rollout.h,v 1.9 2001/05/23 16:28:27 gtw Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -39,5 +39,43 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
                 float aarStdDev[][ NUM_ROLLOUT_OUTPUTS ],
                 rolloutcontext *prc,
                 cubeinfo aci[], int afCubeDecTop[], int cci, int fInvert );
+
+extern int
+GeneralEvaluation ( char *sz,
+                    float arOutput[ NUM_ROLLOUT_OUTPUTS ], 
+                    float arStdDev[ NUM_ROLLOUT_OUTPUTS ], 
+                    int anBoard[ 2 ][ 25 ],
+                    cubeinfo *pci, evalsetup *pes );
+
+extern int
+GeneralEvaluationE ( float arOutput[ NUM_ROLLOUT_OUTPUTS ], 
+                     int anBoard[ 2 ][ 25 ],
+                     cubeinfo *pci, evalcontext *pec );
+
+extern int
+GeneralEvaluationR ( char *sz,
+                     float arOutput[ NUM_ROLLOUT_OUTPUTS ],
+                     float arStdDev[ NUM_ROLLOUT_OUTPUTS ],
+                     int anBoard[ 2 ][ 25 ],
+                     cubeinfo *pci, rolloutcontext *prc );
+
+extern int
+GeneralCubeDecision ( char *sz, 
+                      float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                      float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                      int anBoard[ 2 ][ 25 ],
+                      cubeinfo *pci, evalsetup *pes );
+
+extern int
+GeneralCubeDecisionE ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                       int anBoard[ 2 ][ 25 ],
+                       cubeinfo *pci, evalcontext *pec );
+
+extern int
+GeneralCubeDecisionR ( char *sz, 
+                       float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                       float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                       int anBoard[ 2 ][ 25 ],
+                       cubeinfo *pci, rolloutcontext *prc );
 
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.34 2001/05/23 15:42:10 thyssen Exp $
+ * $Id: analysis.c,v 1.35 2001/05/23 16:28:27 gtw Exp $
  */
 
 #include "config.h"
@@ -34,6 +34,7 @@
 #include "gtkgame.h"
 #endif
 #include "positionid.h"
+#include "rollout.h"
 #include "analysis.h"
 
 #ifndef HUGE_VALF
@@ -135,7 +136,7 @@ AnalyzeGame ( list *plGame ) {
     int fFirstMove = 1;
     unsigned char auch[ 10 ];
     cubeinfo ci;
-    float arOutput [ NUM_OUTPUTS ], rSkill, rChequerSkill, rCost;
+    float rSkill, rChequerSkill, rCost;
     float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
     float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
     evalsetup esDouble; /* shared between the */
