@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.522 2004/11/07 13:55:43 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.523 2004/11/08 12:26:38 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7488,7 +7488,9 @@ extern void GTKCommandShowCredits(void)
 			gtk_list_item_new_with_label(TRANS(ceCredits[ i ].Name)) );
 	}
 
-	ListDeleteAll(&names);
+	while(names.plNext->p)
+		ListDelete(names.plNext );
+
 	gtk_widget_show_all( pwDialog );
 	gtk_main();
 }
