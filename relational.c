@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.3 2004/04/23 20:19:43 thyssen Exp $
+ * $Id: relational.c,v 1.4 2004/04/26 11:28:56 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -31,7 +31,9 @@
 #include "backgammon.h"
 
 
+#if HAVE_PYTHON
 static int fPyLoaded = FALSE;
+#endif
 
 static void
 LoadDatabasePy( void ) {

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.486 2004/04/21 21:11:12 mormegil Exp $
+ * $Id: gtkgame.c,v 1.487 2004/04/26 11:28:56 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7862,7 +7862,7 @@ extern void GTKShowBuildInfo(void)
 	gtk_box_pack_start(GTK_BOX(pwBox), gtk_hseparator_new(), FALSE, FALSE, 4);
 
 	gtk_box_pack_start( GTK_BOX( pwBox ),
-			gtk_label_new( "Copyright 1999-2004 Gary Wong" ), FALSE, FALSE, 4 );
+			gtk_label_new( _(aszCOPYRIGHT) ), FALSE, FALSE, 4 );
 
 	gtk_box_pack_start( GTK_BOX( pwBox ), pwPrompt = gtk_label_new(
 	_("GNU Backgammon is free software, covered by the GNU General Public "

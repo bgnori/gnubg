@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.556 2004/04/23 20:19:43 thyssen Exp $
+ * $Id: gnubg.c,v 1.557 2004/04/26 11:28:56 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -109,6 +109,7 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "format.h"
 #include "onechequer.h"
 #include "relational.h"
+#include "credits.h"
 
 #ifdef WIN32
 #ifdef HAVE_SOCKETS
@@ -7861,10 +7862,10 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #if USE_GTK
     if( fTTY )
 #endif
-      printf( _("GNU Backgammon %s\n"
-                "Copyright 1999, 2000, 2001, 2002, 2003, 2004 "
-                "by Gary Wong.\n"
-                "GNU Backgammon is free software, covered by the GNU "
+    {
+      printf( _("GNU Backgammon %s\n"), VERSION);
+      printf( "%s\n", _(aszCOPYRIGHT));
+      printf( _("GNU Backgammon is free software, covered by the GNU "
                 "General Public License\n"
                 "version 2, and you are welcome to change it and/or "
                 "distribute copies of it\n"
@@ -7872,9 +7873,8 @@ static void real_main( void *closure, int argc, char *argv[] ) {
                 "the conditions.\n"
                 "There is absolutely no warranty for GNU Backgammon.  "
                 "Type \"show warranty\" for\n"
-                "details.\n"),
-              VERSION );
-
+                "details.\n"));
+    }
 
 #if USE_GTK
     if ( fX && fSplash )

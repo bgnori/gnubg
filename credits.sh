@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.115 2004/04/25 06:47:24 thyssen Exp $
+# $Id: credits.sh,v 1.116 2004/04/26 11:28:56 Superfly_Jon Exp $
 # 
 
 column < /dev/null || exit 0
@@ -212,6 +212,8 @@ extern credits creditList[];
 
 extern char aszAUTHORS[];
 
+extern char aszCOPYRIGHT[];
+
 EOF
 
 cat > credits.c <<EOF
@@ -220,6 +222,9 @@ cat > credits.c <<EOF
 
 #include "i18n.h"
 #include "credits.h"
+
+char aszCOPYRIGHT[] = N_("Copyright 1999, 2000, 2001, 2002, 2003, 2004 "
+			"by Gary Wong.");
 
 credEntry ceAuthors[] = {
 EOF
