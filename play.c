@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.116 2002/03/26 17:02:58 oysteijo Exp $
+ * $Id: play.c,v 1.117 2002/03/29 20:12:03 thyssen Exp $
  */
 
 #include "config.h"
@@ -63,6 +63,49 @@ static int fComputerDecision = FALSE;
 
 static int anLastMove[ 8 ], fLastMove, fLastPlayer;
 #endif
+
+static void
+autoAnalyseMove ( void *p, const matchstate *pms ) {
+
+  matchstate msx;
+  moverecord *pmr = p;
+  int f;
+
+  if ( ! p ) 
+    return;
+
+  switch ( pmr->mt ) {
+  case MOVE_NORMAL:
+    f = ap[ pmr->n.fPlayer ].pt == PLAYER_HUMAN;
+    break;
+  case MOVE_DOUBLE:
+  case MOVE_TAKE:
+  case MOVE_DROP:
+    // f = ap[ pmr->d.fPlayer ].pt == PLAYER_HUMAN;
+    f = TRUE;
+    break;
+  case MOVE_SETDICE:
+    f = ap[ pmr->sd.fPlayer ].pt == PLAYER_HUMAN;
+    break;
+  case MOVE_RESIGN:
+    f = ap[ pmr->r.fPlayer ].pt == PLAYER_HUMAN;
+    break;
+  default:
+    f = FALSE;
+    break;
+
+  }
+
+  /* tutor-mode */
+
+  if ( fAutoAnalysis && f ) {
+
+    memcpy ( &msx, pms, sizeof ( matchstate ) );
+    AnalyzeMove ( pmr, &msx, NULL, FALSE );
+    
+  }
+
+}
 
 static void PlayMove( matchstate *pms, int anMove[ 8 ], int fPlayer ) {
 
@@ -437,6 +480,10 @@ extern void AddMoveRecord( void *pv ) {
 	( pmrOld = plLastMove->p )->mt == MOVE_SETDICE &&
 	pmrOld->sd.fPlayer == pmr->n.fPlayer )
 	PopMoveRecord( plLastMove );
+
+    /* automatic analysis (tutor mode) */
+
+    autoAnalyseMove ( pmr, &ms );
     
     /* FIXME perform other elision (e.g. consecutive "set" records) */
 
@@ -555,7 +602,7 @@ static int NewGame( void ) {
     pmr->g.nAutoDoubles = 0;
     IniStatcontext( &pmr->g.sc );
     AddMoveRecord( pmr );
-        
+
     UpdateSetting( &ms.nCube );
     UpdateSetting( &ms.fCubeOwner );
     UpdateSetting( &ms.fTurn );
@@ -2055,7 +2102,7 @@ CommandMove( char *sz ) {
 	    ShowAutoMove( ms.anBoard, pmn->anMove );
 	    
 	    AddMoveRecord( pmn );
-	    
+
 	    TurnDone();
 	    
 	    return;
