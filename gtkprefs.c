@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.107 2004/05/18 13:55:02 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.108 2004/05/24 08:03:53 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1222,7 +1222,7 @@ void DoTestPerformance(GtkWidget *pw, GtkWidget* board)
 	BoardData *bd = BOARD(board)->board_data;
 	char str[255];
 	char *msg;
-	int fps;
+	float fps;
 	monitor m;
 
 	if (!GetInputYN(_("Save settings and test 3d performance for 3 seconds?")))
@@ -1248,7 +1248,7 @@ void DoTestPerformance(GtkWidget *pw, GtkWidget* board)
 	else
 		msg = _("3d Performance is very poor.\n");
 
-	sprintf(str, _("%s\n(%d frames per second)\n"), msg, fps);
+	sprintf(str, _("%s\n(%.1f frames per second)\n"), msg, fps);
 
 	outputl(str);
 
@@ -1955,7 +1955,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.107 2004/05/18 13:55:02 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.108 2004/05/24 08:03:53 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.64 2004/05/06 14:46:40 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.65 2004/05/24 08:03:52 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -261,6 +261,7 @@ typedef struct _BoardData {
 	Texture textureList[MAX_TEXTURES];
 	char* textureName[MAX_TEXTURES];
 	int numTextures;
+	int dotTexture;	/* Holds texture used to draw dots on dice */
 
 #endif
 	renderdata* rd;	/* The board colour settings */
@@ -296,7 +297,7 @@ extern int BoardPoint3d(BoardData *bd, int x, int y, int point);
 extern int MouseMove3d(BoardData *bd, int x, int y);
 extern void RenderBoard3d(BoardData* bd, renderdata* prd, void *glpixmap, unsigned char* buf);
 extern void Tidy3dObjects(BoardData* bd);
-extern int TestPerformance3d(BoardData* bd);
+extern float TestPerformance3d(BoardData* bd);
 extern void Set3dSettings(renderdata *prdnew, const renderdata *prd);
 extern void CopySettings3d(BoardData* from, BoardData* to);
 extern void MakeCurrent3d(GtkWidget *widget);
