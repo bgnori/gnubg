@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.65 2003/07/23 16:36:21 jsegrave Exp $
+ * $Id: import.c,v 1.66 2003/07/24 17:29:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -1316,6 +1316,8 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
 
     int fPlayerOld, nMoveOld; 
     int nMove = -1;
+
+    int fResigned = -1;
     
     InitBoard( ms.anBoard, ms.bgv );
 
@@ -1351,7 +1353,7 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
 
 	/* check for game over */
 	for( pch = sz; *pch; pch++ )
-	    if( !strncmp( pch, "  wins ", 7 ) )
+            if( !strncmp( pch, "  wins ", 7 ) )
 		goto finished;
 	    else if( *pch == ':' || *pch == ' ' )
 		break;
@@ -1394,6 +1396,14 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
                       AddMoveRecord( pmr );
                       szComment = NULL;
                       fBeaver = FALSE;
+                    }
+                    
+                    if ( !strncasecmp( pch, "resign", 6 ) ||
+                         ( strlen( pch ) > 4 && 
+                           !strncasecmp( pch + 4, "resign", 6 ) ) ) {
+                      /* resignation after rolling dice */
+                      fResigned = fPlayer;
+                      continue;
                     }
                 
 		    pmr = malloc( sizeof( pmr->n ) );
@@ -1446,8 +1456,6 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
                               continue;
                             }
 
-
-
                             /* when beavered there is no explicit "take" */
                             if ( fBeaver ) {
                               moverecord *pmrDouble;
@@ -1496,7 +1504,7 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
 				if( !isspace( *pch ) )
 				    break;
 			    
-			    if( *pch ) {
+			    if( *pch && strncasecmp( pch, "resign", 6 ) ) {
 				/* Apparently SGG files can contain spurious
 				   duplicate moves -- the only thing we can
 				   do is ignore them. */
@@ -1542,6 +1550,12 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
 
 			    AddMoveRecord( pmr );
                             fBeaver = FALSE;
+
+                            if ( !strncasecmp( pch, "resign", 6 ) ) {
+                              /* resignation after rolling dice */
+                              fResigned = fPlayer;
+                              continue;
+                            }
 
 			}
 		    } else {
@@ -1638,7 +1652,13 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
                             szComment = NULL;
                             fBeaver = FALSE;
 			}
-		    }
+                        else if ( !strncasecmp( pch, "resign", 4 ) ) {
+                          /* resignation */
+                          fResigned = fPlayer;
+                        }
+                    }
+                
+
 		}
 	    } /* *pch++ == '\t' */
             else {
@@ -1683,6 +1703,25 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
     }
 
  finished:
+
+    if ( fResigned > -1 ) {
+      /* game was terminated by an resignation */
+      /* parse string, e.g., MosheTissona_MC  wins 2 points. */
+
+      pch += 7; /* step over '  wins ' */
+
+      pmr = malloc( sizeof ( moverecord ) );
+      
+      pmr->mt = MOVE_RESIGN;
+      pmr->r.sz = szComment;
+      pmr->r.fPlayer = fResigned;
+      pmr->r.nResigned = atoi( pch ) / ms.nCube;
+      pmr->r.esResign.et = EVAL_NONE;
+
+      AddMoveRecord( pmr );
+
+    }
+
     AddGame( pmgi );
 
     /* garbage collect */
