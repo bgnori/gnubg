@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.77 2001/03/12 16:10:00 gtw Exp $
+ * $Id: eval.c,v 1.78 2001/03/14 22:34:32 gtw Exp $
  */
 
 #include "config.h"
@@ -1069,7 +1069,8 @@ CalculateHalfInputs( int anBoard[ 25 ],
 	    /* enter this shot as available */
 	      
 	    aHit[ aanCombination[ j - 24 + i ][ n ] ] |= 1 << j;
-	    cannot_hit:
+	  cannot_hit:
+	    ;
 	  }
 
   for( i = 0; i < 21; i++ )
@@ -2031,7 +2032,7 @@ enum {
   OG_POSSIBLE = 0x4,
   
   /* backgammon possible by side not on roll */
-  OBG_POSSIBLE = 0x8,
+  OBG_POSSIBLE = 0x8
 };
 
 static void

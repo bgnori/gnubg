@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.3 2001/02/22 16:45:20 gtw Exp $
+ * $Id: external.c,v 1.4 2001/03/14 22:34:32 gtw Exp $
  */
 
 #include "config.h"
@@ -166,6 +166,7 @@ extern void CommandExternal( char *sz ) {
     if( listen( h, 1 ) < 0 ) {
 	perror( "listen" );
 	close( h );
+	unlink( sz );
 	return;
     }
 
@@ -176,6 +177,7 @@ extern void CommandExternal( char *sz ) {
 
 	    if( fInterrupt ) {
 		close( h );
+		unlink( sz );
 		return;
 	    }
 	    
@@ -184,6 +186,7 @@ extern void CommandExternal( char *sz ) {
 	
 	perror( "accept" );
 	close( h );
+	unlink( sz );
 	return;
     }
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.32 2001/03/14 22:15:04 gtw Exp $
+ * $Id: gtkgame.c,v 1.33 2001/03/14 22:34:32 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -223,6 +223,7 @@ static char *aszCommands[ NUM_CMDS ] = {
 
 static void DatabaseExport( gpointer *p, guint n, GtkWidget *pw );
 static void DatabaseImport( gpointer *p, guint n, GtkWidget *pw );
+static void LoadCommands( gpointer *p, guint n, GtkWidget *pw );
 static void LoadGame( gpointer *p, guint n, GtkWidget *pw );
 static void LoadMatch( gpointer *p, guint n, GtkWidget *pw );
 static void NewMatch( gpointer *p, guint n, GtkWidget *pw );
