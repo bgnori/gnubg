@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.152 2002/09/14 00:40:13 gtw Exp $
+ * $Id: play.c,v 1.153 2002/09/19 13:45:28 gtw Exp $
  */
 
 #include "config.h"
@@ -296,6 +296,8 @@ extern void ApplyMoveRecord( matchstate *pms, moverecord *pmr ) {
     case MOVE_SETDICE:
 	pms->anDice[ 0 ] = pmr->sd.anDice[ 0 ];
 	pms->anDice[ 1 ] = pmr->sd.anDice[ 1 ];
+	if( pms->fMove != pmr->sd.fPlayer )
+	    SwapSides( pms->anBoard );
 	pms->fTurn = pms->fMove = pmr->sd.fPlayer;
 	pms->fDoubled = FALSE;
 	break;

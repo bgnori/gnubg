@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.300 2002/09/18 19:18:51 gtw Exp $
+ * $Id: gnubg.c,v 1.301 2002/09/19 13:45:28 gtw Exp $
  */
 
 #include "config.h"
@@ -614,6 +614,8 @@ command cER = {
     { "match", CommandSaveMatch, 
       N_("Record a log of the match so far to a file"),
       szFILENAME, &cFilename },
+    { "position", CommandSavePosition, N_("Record the current board position "
+      "to a file"), szFILENAME, &cFilename },
     { "settings", CommandSaveSettings, N_("Use the current settings in future "
       "sessions"), NULL, NULL },
     { "weights", CommandSaveWeights, 
