@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.10 2001/01/16 18:40:23 gtw Exp $
+ * $Id: dice.c,v 1.11 2001/02/23 18:11:22 gtw Exp $
  */
 
 #include "config.h"
@@ -203,7 +203,7 @@ extern void InitRNGSeed( int n ) {
 
 /* Returns TRUE if /dev/random was available, or FALSE if system clock was
    used. */
-extern int InitRNG( void ) {
+extern int InitRNG( int *pnSeed, int fSet ) {
 
     int n, h, f = FALSE;
 
@@ -223,8 +223,12 @@ extern int InitRNG( void ) {
 #endif
 	    n = time( NULL );
     }
-    
-    InitRNGSeed( n );
+
+    if( pnSeed )
+	*pnSeed = n;
+
+    if( fSet )
+	InitRNGSeed( n );
 
     return f;
 }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.44 2001/02/22 16:45:20 gtw Exp $
+ * $Id: set.c,v 1.45 2001/02/23 18:12:17 gtw Exp $
  */
 
 #include "config.h"
@@ -983,8 +983,9 @@ extern void CommandSetSeed( char *sz ) {
 	InitRNGSeed( n );
 	outputf( "Seed set to %d.\n", n );
     } else
-	outputl( InitRNG() ? "Seed initialised from system random data." :
-	      "Seed initialised by system clock." );
+	outputl( InitRNG( NULL, TRUE ) ?
+		 "Seed initialised from system random data." :
+		 "Seed initialised by system clock." );
 }
 
 extern void CommandSetTurn( char *sz ) {
@@ -1156,8 +1157,7 @@ static void SetMET( met metNew ) {
 
         InitMatchEquity ( metNew );
 
-        /* FIXME: add match equity table to GTK menu 
-           UpdateSetting( &metCurrent ); */
+	UpdateSetting( &metCurrent );
     }
 }
 
