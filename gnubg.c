@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.277 2002/08/12 16:18:58 thyssen Exp $
+ * $Id: gnubg.c,v 1.278 2002/08/16 19:22:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -3792,7 +3792,7 @@ extern void CommandSaveSettings( char *szParam ) {
     int i, cCache; 
     char *szFile;
     static char *aszWindow[] =
-      { "main", "annotation", "game", "hint" };
+      { "main", "game", "annotation", "hint" };
 
     szParam = NextToken ( &szParam );
     
