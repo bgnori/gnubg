@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.100 2001/02/23 18:13:36 gtw Exp $
+ * $Id: gnubg.c,v 1.101 2001/02/26 23:58:40 gtw Exp $
  */
 
 #include "config.h"
@@ -131,7 +131,7 @@ int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn = -1, fDisplay = TRUE,
     fConfirm = TRUE, fShowProgress, fMove, fCubeOwner, fJacoby = TRUE,
     fCrawford = FALSE, fPostCrawford = FALSE, nMatchTo, anScore[ 2 ],
     fBeavers = 1, nCube, fOutputMWC = TRUE, fOutputWinPC = FALSE,
-    fOutputMatchPC = TRUE;
+    fOutputMatchPC = TRUE, fOutputRawboard = FALSE;
 
 gamestate gs = GAME_NONE;
 
@@ -273,6 +273,8 @@ command acDatabase[] = {
       szONOFF, NULL },
     { "mwc", CommandSetOutputMWC, "Show output in MWC (on) or "
       "equity (off) (match play only)", szONOFF, NULL },
+    { "rawboard", CommandSetOutputRawboard, "Give FIBS \"boardstyle 3\" "
+      "output (on), or an ASCII board (off)", szONOFF, NULL },
     { "winpc", CommandSetOutputWinPC,
       "Show winning chances as percentages (on) or probabilities (off)",
       szONOFF, NULL },
@@ -1115,6 +1117,14 @@ extern void ShowBoard( void ) {
 #if USE_GUI
     if( !fX ) {
 #endif
+	if( fOutputRawboard ) {
+	    outputl( FIBSBoard( szBoard, anBoard, fMove, ap[ 1 ].szName,
+				ap[ 0 ].szName, nMatchTo, anScore[ 1 ],
+				anScore[ 0 ], anDice[ 0 ], anDice[ 1 ], nCube,
+				fCubeOwner, fDoubled, fTurn, fCrawford ) );
+	    return;
+	}
+	
 	if( fDoubled ) {
 	    apch[ fTurn ? 5 : 1 ] = szCube;
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.45 2001/02/23 18:12:17 gtw Exp $
+ * $Id: set.c,v 1.46 2001/02/26 23:58:40 gtw Exp $
  */
 
 #include "config.h"
@@ -1133,6 +1133,13 @@ extern void CommandSetOutputMWC( char *sz ) {
   else
     outputl( "Cannot set `outputmwc' for money play." );
 
+}
+
+extern void CommandSetOutputRawboard( char *sz ) {
+
+    SetToggle( "output rawboard", &fOutputRawboard, sz,
+	       "TTY boards will be given in raw format.",
+	       "TTY boards will be given in ASCII." );
 }
 
 extern void CommandSetOutputWinPC( char *sz ) {

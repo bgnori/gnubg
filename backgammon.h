@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.62 2001/02/14 18:55:16 gtw Exp $
+ * $Id: backgammon.h,v 1.63 2001/02/26 23:58:40 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -189,7 +189,7 @@ extern gamestate gs;
 extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     fCubeUse, fNackgammon, fVarRedn, nRollouts, nRolloutTruncate, fConfirm,
     fDisplay, fAutoBearoff, fShowProgress, fBeavers, fOutputMWC,
-    fOutputWinPC, fOutputMatchPC, fJacoby;
+    fOutputWinPC, fOutputMatchPC, fJacoby, fOutputRawboard;
 
 extern evalcontext ecEval, ecRollout, ecTD;
 
@@ -373,6 +373,7 @@ extern void CommandAccept( char * ),
     CommandSetNackgammon( char * ),
     CommandSetOutputMatchPC( char * ),
     CommandSetOutputMWC ( char * ),
+    CommandSetOutputRawboard( char * ),
     CommandSetOutputWinPC( char * ),
     CommandSetPlayerEvaluation( char * ),
     CommandSetPlayerExternal( char * ),
