@@ -17,12 +17,12 @@
      along with this program; if not, write to the Free Software
       Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-     $Id: met.dtd,v 1.1 2002/03/10 17:03:45 thyssen Exp $
+     $Id: met.dtd,v 1.2 2002/03/23 14:00:46 thyssen Exp $
 
  -->
 
 
-<!ELEMENT met (info,pre-crawford-table,post-crawford-table)>
+<!ELEMENT met (info,pre-crawford-table,post-crawford-table+)>
 
 <!ELEMENT info (name,description,length)>
 
@@ -34,7 +34,8 @@
 <!ATTLIST pre-crawford-table type CDATA #IMPLIED>
 
 <!ELEMENT post-crawford-table (row|parameters)>
-<!ATTLIST post-crawford-table type CDATA #IMPLIED>
+<!ATTLIST post-crawford-table type CDATA #IMPLIED
+                             player CDATA #IMPLIED>
 
 <!ELEMENT row (me)*>
 
