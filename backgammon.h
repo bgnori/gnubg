@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.269 2003/12/29 11:28:33 uid68519 Exp $
+ * $Id: backgammon.h,v 1.270 2003/12/29 20:11:18 uid65656 Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1229,6 +1229,7 @@ extern void CommandAccept( char * ),
     CommandShowDisplay( char * ),
     CommandShowDisplayPanels( char * ),
     CommandShowEngine( char * ),
+    CommandShowEPC( char * ),
     CommandShowEvaluation( char * ),
     CommandShowExport ( char * ),
     CommandShowFullBoard( char * ),
@@ -1341,5 +1342,11 @@ PrintCheatRoll( const int fPlayer, const int n );
 
 extern void
 ShowBearoff( char* sz, matchstate* pms, bearoffcontext* pbc );
+
+extern int
+EPC( int anBoard[ 2 ][ 25 ], float arEPC[ 2 ], int *pfSource );
+
+extern char *
+ShowEPC( int anBoard[ 2 ][ 25 ] );
 
 #endif
