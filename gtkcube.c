@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.16 2002/11/11 18:26:47 joseph Exp $
+ * $Id: gtkcube.c,v 1.17 2002/11/27 17:47:40 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -588,7 +588,7 @@ static GtkWidget *CubeAnalysis( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 static void
 UpdateCubeAnalysis ( cubehintdata *pchd ) {
 
-  GtkWidget *pw;
+  GtkWidget *pw = 0;
 
   switch ( pchd->mt ) {
   case MOVE_NORMAL:

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.190 2002/11/24 14:50:53 thyssen Exp $
+ * $Id: eval.c,v 1.191 2002/11/27 17:47:40 jsegrave Exp $
  */
 
 #include "config.h"
@@ -5974,6 +5974,7 @@ cmp_evalsetup ( const evalsetup *pes1, const evalsetup *pes2 ) {
     assert ( FALSE );
   }
 
+  return 0;
 }
 
 
@@ -6594,6 +6595,7 @@ getPercent ( const cubedecision cd,
 
   }
 
+  return -1.0;
 }
 
 

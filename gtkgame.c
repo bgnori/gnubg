@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.260 2002/11/27 00:14:25 gtw Exp $
+ * $Id: gtkgame.c,v 1.261 2002/11/27 17:47:40 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -409,7 +409,7 @@ getWindowGeometry ( windowgeometry *pwg, GtkWidget *pw ) {
 extern void
 UpdateGeometry ( const gnubgwindow gw ) {
 
-  GtkWidget *pw;
+  GtkWidget *pw = 0;
 
   switch ( gw ) {
   case WINDOW_MAIN:
@@ -1072,8 +1072,9 @@ static int AddMoveRecordRow( void ) {
 extern void GTKAddMoveRecord( moverecord *pmr ) {
 
     gamelistrow *pglr;
-    int i, fPlayer;
-    char *pch, sz[ 40 ];
+    int i, fPlayer = 0;
+    char *pch = 0;
+	char sz[ 40 ];
     
     switch( pmr->mt ) {
     case MOVE_GAMEINFO:

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.22 2002/11/27 02:10:14 gtw Exp $
+ * $Id: dice.c,v 1.23 2002/11/27 17:47:40 jsegrave Exp $
  */
 
 #include "config.h"
@@ -396,6 +396,7 @@ extern void PrintRNGSeed( const rng rngx ) {
 	abort();
 #endif
     default:
+	break;
     }
 
     outputl( _("You cannot show the seed with this random number "
