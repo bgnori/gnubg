@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1997-1999
  *
- * $Id: xboard.c,v 1.7 2000/01/06 17:08:33 gtw Exp $
+ * $Id: xboard.c,v 1.8 2000/01/07 05:27:16 gtw Exp $
  */
 
 #include "config.h"
@@ -288,6 +288,9 @@ static void BoardPointer( extwindow *pewnd, gamedata *pgd, XEvent *pxev ) {
 	xEvent = pxev->xmotion.x;
 	yEvent = pxev->xmotion.y;
 	break;
+
+    default:
+	abort();
     }
     
     switch( pxev->type ) {
@@ -485,6 +488,8 @@ static void BoardSetCubeFont( extwindow *pewnd, gamedata *pgd ) {
 	/* fall through */
 	
     case 3:
+	fFound = FALSE;
+	    
 	for( i = 0; i < 20 && anSizes[ i ] > pgd->nBoardSize * 5; i++ )
 	    ;
 
@@ -492,8 +497,6 @@ static void BoardSetCubeFont( extwindow *pewnd, gamedata *pgd ) {
 	    sprintf( szFont, "-adobe-utopia-bold-r-normal--%d-*-*-*-p-*-"
 		     "iso8859-1", anSizes[ i ] );
 
-	    fFound = FALSE;
-	    
 	    if( ( pgd->pxfsCube = ExtWndAttachFont( pewnd, &eq_cubeFont,
 						    &eq_Font, szFont ) ) ) {
 		fFound = TRUE;
