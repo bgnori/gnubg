@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.65 2003/07/10 09:26:20 thyssen Exp $
+ * $Id: gtkgame.h,v 1.66 2003/07/16 10:34:07 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -49,6 +49,10 @@ typedef enum _dialogtype {
 
 extern GtkWidget *pwMain, *pwMenuBar;
 extern GtkTooltips *ptt;
+
+extern GtkWidget *pwGrab;
+extern GtkWidget *pwOldGrab;
+
 
 extern int fEndDelay;
 
@@ -103,19 +107,6 @@ extern void GTKCubeHint( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 			 float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
 			 const evalsetup *pes );
 
-extern void
-GTKRollout( int c, char asz[][ 40 ], int cGames,
-	    rolloutstat ars[][ 2 ] );
-
-extern void GTKRolloutRow( int i );
-
-extern int
-GTKRolloutUpdate( float aarMu[][ NUM_ROLLOUT_OUTPUTS ],
-                  float aarSigma[][ NUM_ROLLOUT_OUTPUTS ],
-                  int iGame, int cGames, int fCubeful, int cRows,
-                  cubeinfo aci[] );
-
-extern void GTKRolloutDone( void );
 extern void GTKSet( void *p );
 extern void GTKUpdateAnnotations( void );
 extern int GTKGetManualDice( int an[ 2 ] );
@@ -125,7 +116,6 @@ extern void *GTKCalibrationStart( void ),
     GTKCalibrationUpdate( void *context, float rEvalsPerSec ),
     GTKCalibrationEnd( void *context );
 extern void GTKDumpRolloutResults(GtkWidget *widget, gpointer data);
-extern void GTKViewRolloutStatistics(GtkWidget *widget, gpointer data);
 extern void GTKWinCopy( GtkWidget *widget, gpointer data);
 extern void
 GTKResignHint( float arOutput[], float rEqBefore, float rEqAfter,

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.22 2003/07/11 18:47:41 hb Exp $
+ * $Id: external.c,v 1.23 2003/07/16 10:32:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -388,9 +388,9 @@ extern void CommandExternal( char *sz ) {
 	    if ( fDoubled > 0 ) {
 
 		/* take decision */
-		if( GeneralCubeDecision( "", aarOutput, aarStdDev,
+		if( GeneralCubeDecision( aarOutput, aarStdDev,
 					 aarsStatistics, anBoard, &ci,
-					 &esEvalCube ) < 0 )
+					 &esEvalCube, NULL, NULL ) < 0 )
 		    break;
 	  
 		switch( FindCubeDecision( arDouble, aarOutput, &ci ) ) {
@@ -461,9 +461,9 @@ extern void CommandExternal( char *sz ) {
 		FormatMovePlain( szResponse, anBoardOrig, anMove );
 	    } else {
 		/* double decision */
-		if( GeneralCubeDecision( "", aarOutput, aarStdDev,
+		if( GeneralCubeDecision( aarOutput, aarStdDev,
 					 aarsStatistics, anBoard, &ci,
-					 &esEvalCube ) < 0 )
+					 &esEvalCube, NULL, NULL ) < 0 )
 		    break;
 		
 		switch( FindCubeDecision( arDouble, aarOutput, &ci ) ) {

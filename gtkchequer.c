@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.34 2003/07/13 17:17:17 thyssen Exp $
+ * $Id: gtkchequer.c,v 1.35 2003/07/16 10:28:35 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -43,6 +43,7 @@
 #include "gtkchequer.h"
 #include "i18n.h"
 #include "gtktempmap.h"
+#include "progress.h"
 
 
 
@@ -186,6 +187,7 @@ MoveListRollout( GtkWidget *pw, hintdata *phd ) {
   int i;
   move *m;
   int *ai;
+  void *p;
 
   if ( !  GTK_CLIST( pwMoves )->selection )
     return;
@@ -218,30 +220,24 @@ MoveListRollout( GtkWidget *pw, hintdata *phd ) {
 
   }
 
-#if USE_GTK
-  if( fX )
-    GTKRollout( c, asz, rcRollout.nTrials, NULL ); 
-#endif
+  RolloutProgressStart( &ci, c, NULL, &rcRollout, asz, &p );
 
-    GTKRolloutRow ( 0 );
+  if ( fAction )
+    HandleXAction();
 
-    if ( fAction )
-      HandleXAction();
-
-    if ( ScoreMoveRollout ( ppm, ppci, c ) < 0 ) {
-      GTKRolloutDone ();
-      return;
-    }
+  if ( ScoreMoveRollout ( ppm, ppci, c, RolloutProgress, p ) < 0 ) {
+    RolloutProgressEnd( &p );
+    return;
+  }
     
+  RolloutProgressEnd( &p );
 
-    /* Calling RefreshMoveList here requires some extra work, as
-       it may reorder moves */
-
-    UpdateMoveList ( phd );
+  /* Calling RefreshMoveList here requires some extra work, as
+     it may reorder moves */
+  
+  UpdateMoveList ( phd );
 
   }
-
-  GTKRolloutDone ();
 
   gtk_clist_unselect_all ( GTK_CLIST ( pwMoves ) );
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.110 2003/06/25 19:16:10 thyssen Exp $
+ * $Id: analysis.c,v 1.111 2003/07/16 10:32:58 thyssen Exp $
  */
 
 #include "config.h"
@@ -619,10 +619,9 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
           
           if ( cmp_evalsetup ( pesCube, &pmr->n.esDouble ) > 0 ) {
             
-	    if ( GeneralCubeDecision ( "",
-				       aarOutput, aarStdDev, aarsStatistics, 
+	    if ( GeneralCubeDecision ( aarOutput, aarStdDev, aarsStatistics, 
 				       pms->anBoard, &ci,
-				       pesCube ) < 0 )
+				       pesCube, NULL, NULL  ) < 0 )
               return -1;
             
             
@@ -743,10 +742,9 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
 	      
               if ( cmp_evalsetup ( pesCube, &pmr->d.esDouble ) > 0 ) {
 
-		if ( GeneralCubeDecision ( "",
-					   aarOutput, aarStdDev, aarsStatistics, 
-					   pms->anBoard, &ci,
-					   pesCube ) < 0 )
+		if ( GeneralCubeDecision ( aarOutput, aarStdDev, 
+                                           aarsStatistics, pms->anBoard, &ci,
+					   pesCube, NULL, NULL ) < 0 )
 		    return -1;
 
               }
