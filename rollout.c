@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.105 2003/07/06 12:54:19 jsegrave Exp $
+ * $Id: rollout.c,v 1.106 2003/07/07 09:34:29 grob Exp $
  */
 
 #include "config.h"
@@ -1084,6 +1084,11 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
       }
     } /* if (prc->fStopOnSTD && (i >= prc->nMinimumGames)) */
   }
+  
+  /* re-init the RNG so dice rolled in games played after this rollout won't
+     be dependent on the rollout RNG seed and on the number of rollouts just
+     performed */
+  InitRNG( NULL, TRUE, rngCurrent );
 
   cGames = i;
   /* return -1 if no games rolled out */
