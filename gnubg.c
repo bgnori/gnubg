@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.603 2005/02/18 16:37:32 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.604 2005/02/24 17:28:44 oysteijo Exp $
  */
 
 #include "config.h"
@@ -7210,7 +7210,7 @@ ProgressValue ( int iValue ) {
 #endif  
 #if USE_GTK
   if( fX ) {
-    GTKProgressValue( iValue );
+    GTKProgressValue( iValue, iProgressMax );
     return;
   }
 #endif
