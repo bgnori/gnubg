@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.186 2003/04/05 18:02:05 thyssen Exp $
+ * $Id: play.c,v 1.187 2003/04/12 13:00:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -3956,6 +3956,11 @@ SetMatchID ( const char *szMatchID ) {
 
   }
 
+  /* set board to old value */
+
+  if ( strlen ( szID ) )
+    CommandSetBoard ( szID );
+
   /* the following is needed to get resignations correct */
 
   ms.gs = gs;
@@ -3970,11 +3975,9 @@ SetMatchID ( const char *szMatchID ) {
   UpdateSetting( &ms.fTurn );
   UpdateSetting( &ms.fCrawford );
 
-  /* set board to old value */
+  /* show board */
 
-  if ( strlen ( szID ) )
-    CommandSetBoard ( szID );
-
+  ShowBoard();
 
 }
 
