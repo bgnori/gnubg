@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.251 2002/07/21 19:31:41 thyssen Exp $
+ * $Id: gnubg.c,v 1.252 2002/07/22 15:31:34 thyssen Exp $
  */
 
 #include "config.h"
@@ -455,11 +455,9 @@ command cER = {
       "against the database"), NULL, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acExportGame[] = {
-#if 0
     { "equityevolution", CommandExportGameEquityEvolution, 
       N_("Exports the equity evolution of the game (for import into a spreadsheet"), 
       szFILENAME, &cFilename },
-#endif
     { "gam", CommandExportGameGam, N_("Records a log of the game in .gam "
       "format"), szFILENAME, &cFilename },
     { "html", CommandExportGameHtml,
@@ -477,11 +475,9 @@ command cER = {
       szFILENAME, &cFilename },
     { NULL, NULL, NULL, NULL, NULL }
 }, acExportMatch[] = {
-#if 0
     { "equityevolution", CommandExportMatchEquityEvolution, 
       N_("Exports the equity evolution of the match (for import into a spreadsheet"), 
       szFILENAME, &cFilename },
-#endif
     { "mat", CommandExportMatchMat, N_("Records a log of the match in .mat "
       "format"), szFILENAME, &cFilename },
     { "html", CommandExportMatchHtml,
