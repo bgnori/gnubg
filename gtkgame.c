@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.356 2003/07/10 09:24:38 thyssen Exp $
+ * $Id: gtkgame.c,v 1.357 2003/07/12 08:15:29 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3980,10 +3980,11 @@ static GtkWidget *EvalWidget( evalcontext *pec, movefilter *pmf,
     const char *aszReduced[] = {
       N_("No reduction"),
       NULL,
-      N_("50% speed"),
-      N_("33% speed"),
-      N_("25% speed") 
+      N_("50%% speed"),
+      N_("33%% speed"),
+      N_("25%% speed") 
     };
+    gchar *pch;
 
     int i;
     int *pi;
@@ -4114,7 +4115,9 @@ static GtkWidget *EvalWidget( evalcontext *pec, movefilter *pmf,
       if ( i == 1 )
         continue;
       
-      pwItem = gtk_menu_item_new_with_label ( gettext ( aszReduced[ i ] ) );
+      pch = g_strdup_printf( gettext( aszReduced[ i ] ) );
+      pwItem = gtk_menu_item_new_with_label ( pch );
+      g_free( pch );
       gtk_menu_append ( GTK_MENU ( pwMenu ), pwItem );
       pi = g_malloc ( sizeof ( int ) );
       *pi = i;
