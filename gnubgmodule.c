@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.22 2003/11/29 10:02:56 thyssen Exp $
+ * $Id: gnubgmodule.c,v 1.23 2003/11/29 10:06:51 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -391,7 +391,10 @@ PythonCommand( PyObject* self IGNORE, PyObject *args ) {
 
   PortableSignal( SIGINT, HandleInterrupt, &sh, FALSE );
   HandleCommand( sz, acTop );
-  NextTurn( FALSE );
+  fNextTurn = TRUE;
+  while( fNextTurn ) {
+    NextTurn( TRUE );
+  }
   outputx();
   free( sz );
   PortableSignalRestore( SIGINT, &sh );
