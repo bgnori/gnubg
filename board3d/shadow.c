@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: shadow.c,v 1.5 2004/03/31 09:51:57 Superfly_Jon Exp $
+* $Id: shadow.c,v 1.6 2004/05/10 09:29:02 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -40,6 +40,9 @@ void shadowInit(BoardData* bd)
 {
 	int i;
 	int stencilBits;
+
+	/* Darkness as percentage of ambient light */
+	bd->rd->dimness = ((bd->rd->lightLevels[1] / 100.0f) * (100 - bd->rd->shadowDarkness)) / 100;
 
 	for (i = 0; i < NUM_OCC; i++)
 		bd->Occluders[i].handle = 0;
