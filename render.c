@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.31 2004/02/12 10:31:27 uid68519 Exp $
+ * $Id: render.c,v 1.32 2004/02/24 10:20:47 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1518,10 +1518,16 @@ RenderLabels( renderdata *prd, unsigned char *puch, int nStride,
     FT_Glyph aftg[ 10 ];
 
     if( FT_New_Memory_Face( ftl, auchLuxiSB, cbLuxiSB, 0, &ftf ) )
-	return RenderBasicLabels( prd, puch, nStride, iStart, iEnd, iDelta );
+	{
+		RenderBasicLabels( prd, puch, nStride, iStart, iEnd, iDelta );
+		return;
+	}
     
     if( FT_Set_Pixel_Sizes( ftf, 0, prd->nSize * 5 / 2 ) )
-	return RenderBasicLabels( prd, puch, nStride, iStart, iEnd, iDelta );
+	{
+		RenderBasicLabels( prd, puch, nStride, iStart, iEnd, iDelta );
+		return;
+	}
 
 	if (prd->fLabels)
 	{

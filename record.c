@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.12 2003/03/13 17:01:30 thyssen Exp $
+ * $Id: record.c,v 1.13 2004/02/24 10:20:47 uid68519 Exp $
  */
 
 #include "config.h"
@@ -212,7 +212,7 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
 	return -1;
     }
 
-    if( fputs( "# %Version: 2 ($Revision: 1.12 $)\n", *ppfOut ) < 0 ) {
+    if( fputs( "# %Version: 2 ($Revision: 1.13 $)\n", *ppfOut ) < 0 ) {
 	outputerr( *ppchOut );
 	free( *ppchOut );
 	return -1;
@@ -537,7 +537,10 @@ extern void CommandRecordShow( char *szPlayer ) {
 
 #if USE_GTK
     if( fX )
-	return GTKRecordShow( pfIn, sz, szPlayer );
+	{
+		GTKRecordShow( pfIn, sz, szPlayer );
+		return;
+	}
 #endif
     
     while( !RecordReadItem( pfIn, sz, &pr ) )

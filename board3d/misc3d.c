@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.24 2004/02/12 10:30:43 uid68519 Exp $
+* $Id: misc3d.c,v 1.25 2004/02/24 10:16:49 uid68519 Exp $
 */
 
 #include <math.h>
@@ -1559,10 +1559,10 @@ void RationalizeBox(ClipBox* pCb)
 	midY = (int)BoxMidHeight(pCb);
 	maxXoff = (int)MAX(midX - pCb->x, pCb->xx - midX) + 1;
 	maxYoff = (int)MAX(midY - pCb->y, pCb->yy - midY) + 1;
-	pCb->x = midX - maxXoff;
-	pCb->xx = midX + maxXoff;
-	pCb->y = midY - maxYoff;
-	pCb->yy = midY + maxYoff;
+	pCb->x = (float)(midX - maxXoff);
+	pCb->xx = (float)(midX + maxXoff);
+	pCb->y = (float)(midY - maxYoff);
+	pCb->yy = (float)(midY + maxYoff);
 }
 
 void RestrictiveRedraw()
@@ -1700,7 +1700,7 @@ int MouseMove3d(BoardData *bd, int x, int y)
 		return 0;
 }
 
-void RestrictiveStartMouseMove(BoardData *bd, int pos, int depth)
+void RestrictiveStartMouseMove(int pos, int depth)
 {
 	float erasePos[3];
 	if (numRestrictFrames != -1)
@@ -1712,7 +1712,7 @@ void RestrictiveStartMouseMove(BoardData *bd, int pos, int depth)
 	freezeRestrict = 1;
 }
 
-void RestrictiveEndMouseMove(BoardData *bd, int pos, int depth)
+void RestrictiveEndMouseMove(int pos, int depth)
 {
 	float newPos[3];
 	getPiecePos(pos, depth, fClockwise, newPos);
@@ -1815,7 +1815,7 @@ int idleAnimate(BoardData* bd)
 				bd->points[moveDest] = 0;
 
 				if (bd->quickDraw)
-					RestrictiveDrawPiece(bd, bar, abs(bd->points[bar]));
+					RestrictiveDrawPiece(bar, abs(bd->points[bar]));
 			}
 
 			bd->points[moveDest] += bd->turn;

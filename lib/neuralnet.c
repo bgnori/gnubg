@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.19 2003/12/29 20:29:33 uid65656 Exp $
+ * $Id: neuralnet.c,v 1.20 2004/02/24 10:15:50 uid68519 Exp $
  */
 
 #include "config.h"
@@ -486,11 +486,11 @@ static int EvaluateOld( neuralnet *pnn, float arInput[], float ar[],
 
 static int Evaluate( neuralnet *pnn, float arInput[], float ar[],
 		     float arOutput[], float *saveAr ) {
-  int i;
 
 #if !HAVE_LIBATLAS
-  return EvaluateOld( pnn, arInput, ar, arOutput, saveAr );
+    return EvaluateOld( pnn, arInput, ar, arOutput, saveAr );
 #else /* HAVE_LIBATLAS */
+    int i;
 
     /* BLAS implementation */
 
@@ -591,11 +591,11 @@ static int EvaluateFromBaseOld( neuralnet *pnn, float arInputDif[], float ar[],
 
 static int EvaluateFromBase( neuralnet *pnn, float arInputDif[], float ar[],
 		     float arOutput[] ) {
-    int i;
 
 #if !HAVE_LIBATLAS
     return EvaluateFromBaseOld( pnn, arInputDif, ar, arOutput );
 #else /* HAVE_LIBATLAS */
+    int i;
 
     /* BLAS implementation */
 

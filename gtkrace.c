@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.12 2004/01/02 11:16:35 uid65656 Exp $
+ * $Id: gtkrace.c,v 1.13 2004/02/24 10:20:47 uid68519 Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -568,7 +568,7 @@ OSRPage ( int anBoard[ 2 ][ 25 ], racewidget *prw ) {
   g_free( pch );
 
   for ( i = 0; i < 6; ++i )
-    asz[ i ] = aszTitle[ i ] ? gettext ( aszTitle[ i ] ) :  "";
+    asz[ i ] = (char*)(aszTitle[ i ] ? gettext ( aszTitle[ i ] ) :  "");
 
   prw->pwOutput = gtk_clist_new_with_titles( 6, asz );
   gtk_box_pack_start ( GTK_BOX ( pwvbox ), 

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.6 2003/10/14 10:03:14 Superfly_Jon Exp $
+* $Id: graph.c,v 1.7 2004/02/24 10:16:49 uid68519 Exp $
 */
 
 #include <config.h>
@@ -79,7 +79,7 @@ static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *notused, G
 	width = widget->allocation.width;
 	height = widget->allocation.height;
 
-	maxX = gd->numGames * RES_WIDTH + RES_WIDTH + TOTAL_GAP;
+	maxX = (float)(gd->numGames * RES_WIDTH + RES_WIDTH + TOTAL_GAP);
 	modelWidth = maxX * (1 + NUM_WIDTH_PER);
 
 	maxY = gd->maxY * 1.05f + 1;
@@ -112,8 +112,8 @@ static void realize(GtkWidget *widget, void* arg)
     if (!gtk_gl_area_make_current(GTK_GL_AREA(widget)))
 		return;
 #endif
-
-	glClearColor(.2, .2, .4, 1);
+	/* Deep blue background colour */
+	glClearColor(.2f, .2f, .4f, 1);
 
 	BuildFont(&fonts);
 
@@ -169,7 +169,7 @@ void DrawColourBar(int player, float x, float y, float first, float second)
 	for (i = 0; i < 4; i++)
 	{
 		if (rdAppearance.fDisplayType == DT_2D)
-			col[i] = rdAppearance.aarColour[player][i];
+			col[i] = (float)rdAppearance.aarColour[player][i];
 		else
 			col[i] = rdAppearance.rdChequerMat[player].ambientColour[i];
 	}
@@ -229,7 +229,7 @@ void DrawLeftAxis(GraphData *pgd)
 		pScale++;
 
 	pointInc = *pScale;
-	numPoints = pgd->maxY / pointInc;
+	numPoints = (int)(pgd->maxY / pointInc);
 	if (numPoints == 0)
 		numPoints = 1;
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.124 2003/08/31 19:38:43 thyssen Exp $
+ * $Id: eval.h,v 1.125 2004/02/24 10:20:47 uid68519 Exp $
  */
 
 #ifndef _EVAL_H_
@@ -423,7 +423,7 @@ extern void
 EvalCacheFlush(void);
 
 extern int 
-EvalCacheResize( int cNew );
+EvalCacheResize( unsigned int cNew );
 
 extern int 
 EvalCacheStats( int *pcUsed, int *pcSize, int *pcLookup, int *pcHit );

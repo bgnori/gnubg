@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.56 2004/02/04 18:02:17 uid68519 Exp $
+ * $Id: gtkboard.h,v 1.57 2004/02/24 10:20:47 uid68519 Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -323,9 +323,9 @@ extern void updateHingeOccPos(BoardData* bd);
 extern void updateFlagOccPos(BoardData* bd);
 
 extern void RestrictiveRedraw();
-extern void RestrictiveDrawPiece(BoardData* bd, int pos, int depth);
-extern void RestrictiveStartMouseMove(BoardData *bd, int pos, int depth);
-extern void RestrictiveEndMouseMove(BoardData *bd, int pos, int depth);
+extern void RestrictiveDrawPiece(int pos, int depth);
+extern void RestrictiveStartMouseMove(int pos, int depth);
+extern void RestrictiveEndMouseMove(int pos, int depth);
 extern void RestrictiveDrawDice(BoardData* bd);
 extern void RestrictiveDrawCube(BoardData* bd, int old_doubled, int old_cube_owner);
 extern void RestrictiveDrawMoveIndicator(BoardData* bd);
