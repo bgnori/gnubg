@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.128 2002/02/07 16:00:30 gtw Exp $
+ * $Id: eval.c,v 1.129 2002/02/08 22:28:44 gtw Exp $
  */
 
 #include "config.h"
@@ -1907,11 +1907,12 @@ ClassifyPosition( int anBoard[ 2 ][ 25 ] )
 
     return CLASS_CONTACT;
   }
-  else if( nBack > 5 || nOppBack > 5 )
+  else if( nBack > 5 || nOppBack > 5 || !pBearoff1 )
     return CLASS_RACE;
 
   if( PositionBearoff( anBoard[ 0 ] ) > 923 ||
-      PositionBearoff( anBoard[ 1 ] ) > 923 )
+      PositionBearoff( anBoard[ 1 ] ) > 923 ||
+      !pBearoff2 )
     return CLASS_BEAROFF1;
 
   return CLASS_BEAROFF2;
