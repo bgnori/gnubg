@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.20 2000/06/30 02:09:57 gtw Exp $
+ * $Id: show.c,v 1.21 2000/07/01 18:26:19 gtw Exp $
  */
 
 #include "config.h"
@@ -51,7 +51,7 @@ static void ShowEvaluation( evalcontext *pec ) {
 	    pec->nPlies, pec->nSearchCandidates, pec->nSearchCandidates == 1 ?
 	    "" : "s", pec->rSearchTolerance,
 	    (pec->nReduced) ? 100. * pec->nReduced / 21.0 : 100.,
-	    pec->fRelativeAccuracy ? "Consistent evaluations",
+	    pec->fRelativeAccuracy ? "Consistent evaluations" :
 	    "Variable evaluations" );
 }
 
