@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.60 2002/03/07 19:01:56 thyssen Exp $
+ * $Id: rollout.c,v 1.61 2002/03/11 21:54:30 thyssen Exp $
  */
 
 #include "config.h"
@@ -1085,21 +1085,11 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
                                aarsStatistics );
         break;
       case BASIC:
+      case VARREDN:
 	  BasicCubefulRollout( aanBoardEval, aar, 
                                0, i, aci, afCubeDecTop, cci, prc,
                                aarsStatistics );
 	  break;
-      case VARREDN:
-
-        if ( ! prc->fCubeful )
-	  VarRednRollout( *aanBoardEval, *aar, prc->nTruncate,
-                          0, i, cGames, &aci[ 0 ],
-                          &prc->aecChequer[ 0 ] );
-        else
-	  BasicCubefulRollout( aanBoardEval, aar, 
-                               0, i, aci, afCubeDecTop, cci, prc,
-                               aarsStatistics );
-        break;
       }
       
       if( fInterrupt )
