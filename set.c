@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.132 2002/10/21 19:32:47 thyssen Exp $
+ * $Id: set.c,v 1.134 2002/10/21 21:06:08 thyssen Exp $
  */
 
 #include "config.h"
@@ -1409,8 +1409,8 @@ CommandSetRolloutRotate ( char *sz ) {
   int f = prcSet->fRotate;
 
   SetToggle ( "rollout rotate", &f, sz,
-              _("Will rotate first two rolls of rollout"),
-              _("Will not rotate first two rolls of rollout") );
+              _("Use rotation for the first rolls"),
+              _("Do not use rotation for the first rolls") );
 
   prcSet->fRotate = f;
 
@@ -2497,6 +2497,9 @@ SetExportHTMLCSS ( const htmlexportcss hecss ) {
 
   if ( exsExport.hecss == hecss )
     return;
+
+  if ( exsExport.hecss == HTML_EXPORT_CSS_EXTERNAL )
+    CommandNotImplemented ( NULL );
 
   exsExport.hecss = hecss;
 

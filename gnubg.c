@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.321 2002/10/21 20:58:20 thyssen Exp $
+ * $Id: gnubg.c,v 1.322 2002/10/21 21:06:08 thyssen Exp $
  */
 
 #include "config.h"
@@ -816,7 +816,7 @@ command cER = {
     { "rng", CommandSetRolloutRNG, N_("Specify the random number "
       "generator algorithm for rollouts"), NULL, acSetRNG },
     { "rotate", CommandSetRolloutRotate, 
-      N_("Rotate the first two rolls"), szONOFF, &cOnOff },
+      N_("Use rotation for the first rolls"), szONOFF, &cOnOff },
     { "seed", CommandSetRolloutSeed, N_("Specify the base pseudo-random seed "
       "to use for rollouts"), szOPTSEED, NULL },
     { "trials", CommandSetRolloutTrials, N_("Control how many rollouts to "
