@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1997-1999
  *
- * $Id: xgame.h,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: xgame.h,v 1.1.1.1 1999/12/15 01:17:34 gtw Exp $
  */
 
 #ifndef _GAME_H_

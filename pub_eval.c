@@ -5,7 +5,7 @@
  *
  * modified by Gary Wong for GNU Backgammon, 1999
  *
- * $Id: pub_eval.c,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: pub_eval.c,v 1.1.1.1 1999/12/15 01:17:34 gtw Exp $
  */
 
 static float wr[122] = {

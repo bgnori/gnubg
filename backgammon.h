@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1999
  *
- * $Id: backgammon.h,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: backgammon.h,v 1.1.1.1 1999/12/15 01:17:34 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_

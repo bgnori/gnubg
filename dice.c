@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: dice.c,v 1.1.1.1 1999/12/15 01:17:34 gtw Exp $
  */
 
 #include "config.h"

@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1997-1999
  *
- * $Id: xgame.c,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: xgame.c,v 1.1.1.1 1999/12/15 01:17:34 gtw Exp $
  */
 
 #include "config.h"

@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1999
  *
- * $Id: acconfig.h,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: acconfig.h,v 1.1.1.1 1999/12/15 01:17:34 gtw Exp $
  */
 
 @BOTTOM@
