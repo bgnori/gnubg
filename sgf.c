@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.22 2001/04/20 15:33:23 gtw Exp $
+ * $Id: sgf.c,v 1.23 2001/04/22 18:07:44 oysteijo Exp $
  */
 
 #include "config.h"
@@ -847,8 +847,10 @@ extern void CommandLoadGame( char *sz ) {
 	UpdateSettings();
 	
 #if USE_GTK
-	if( fX )
+	if( fX ){
 	    GTKThaw();
+	    GTKSet(ap);
+        }
 #endif
     }
 }
@@ -891,8 +893,10 @@ extern void CommandLoadMatch( char *sz ) {
 	UpdateSettings();
 	
 #if USE_GTK
-	if( fX )
+	if( fX ){
 	    GTKThaw();
+	    GTKSet(ap);
+        }
 #endif
     }
 }
