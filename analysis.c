@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.72 2002/07/19 07:37:42 thyssen Exp $
+ * $Id: analysis.c,v 1.73 2002/07/24 16:37:57 thyssen Exp $
  */
 
 #include "config.h"
@@ -131,8 +131,7 @@ static lucktype Luck( float r ) {
 	return LUCK_NONE;
 }
 
-static skilltype Skill( float r ) {
-
+extern skilltype Skill( float r ) {
     /* FIXME if the move is correct according to the selected evaluator
        but incorrect according to 0-ply, then return SKILL_GOOD or
        SKILL_VERYGOOD */
@@ -1681,3 +1680,5 @@ extern int getLuckRating ( const float rLuck ) {
     return 5;
 
 }
+
+

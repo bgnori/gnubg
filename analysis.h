@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.12 2002/07/09 17:25:17 thyssen Exp $
+ * $Id: analysis.h,v 1.13 2002/07/24 16:37:57 thyssen Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -117,4 +117,8 @@ absoluteFibsRating ( const float r, const int n );
 
 extern float
 getMWCFromError ( const statcontext *psc, float aaaar[ 3 ][ 2 ][ 2 ][ 2 ] );
+
+extern skilltype
+Skill( float r );
+
 #endif
