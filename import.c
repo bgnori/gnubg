@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.83 2004/01/01 17:58:47 uid65656 Exp $
+ * $Id: import.c,v 1.84 2004/01/01 19:30:14 uid65656 Exp $
  */
 
 #include "config.h"
@@ -2530,8 +2530,6 @@ static void ImportTMGGame( FILE *pf, int i, int nLength, int n0, int n1,
 	case TMG_OUT_OF_TIME_1:
 #if USE_TIMECONTROL
           pmr = malloc( sizeof *pmr );
-
-          printf( "out of time: %d\n", fPlayer );
 
           pmr->mt = MOVE_TIME;
           pmr->t.sz = NULL;

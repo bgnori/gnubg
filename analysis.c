@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.151 2004/01/01 17:59:29 uid65656 Exp $
+ * $Id: analysis.c,v 1.152 2004/01/01 19:29:24 uid65656 Exp $
  */
 
 #include "config.h"
@@ -663,11 +663,7 @@ updateStatcontext(statcontext*       psc,
       else
         r = pms->nCube * d;
 
-      printf( "%f %f\n", r, d );
-
       psc->anTimePenalties[ pmr->t.fPlayer ]++;
-
-      printf( "update %d\n", psc->anTimePenalties[ pmr->t.fPlayer ] );
 
       psc->aarTimeLoss[ pmr->t.fPlayer ][ 0 ] += r;
       psc->aarTimeLoss[ pmr->t.fPlayer ][ 1 ] += d;
@@ -1199,7 +1195,6 @@ AddStatcontext ( const statcontext *pscA, statcontext *pscB ) {
 
 #if USE_TIMECONTROL
     pscB->anTimePenalties[ i ] += pscA->anTimePenalties[ i ];
-    printf( "add %d %d\n", i, pscB->anTimePenalties[ i ] );
 #endif /* USE_TIMECONTROL */
 
     pscB->anUnforcedMoves[ i ] += pscA->anUnforcedMoves[ i ];
