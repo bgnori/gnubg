@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.92 2002/06/02 17:01:36 thyssen Exp $
+ * $Id: show.c,v 1.93 2002/06/06 20:36:45 thyssen Exp $
  */
 
 #include "config.h"
@@ -1300,7 +1300,7 @@ CommandShowExport ( char *sz ) {
   if ( exsExport.fSide == 3 )
     outputl ( _("both") );
   else
-    outputf ( _("%s\n"), 
+    outputf ( "%s\n", 
               ap[ exsExport.fSide - 1 ].szName );
 
   outputl ( _("\nOutput moves:\n") );
