@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.61 2003/01/22 18:26:06 gtw Exp $
+ * $Id: gtkprefs.c,v 1.62 2003/01/29 19:05:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -165,6 +165,8 @@ static void Preview( renderdata *prd ) {
     int anDice[ 2 ] = { 4, 3 };
     int anDicePosition[ 2 ][ 2 ] = { { 70, 30 }, { 80, 32 } };
     int anCubePosition[ 2 ] = { 50, 32 };
+    int anResignPosition[ 2 ] = { -32768, -32768 };
+    int fResign = 0, nResignOrientation = 0;
 
     if( !fUpdate )
 	return;
@@ -183,8 +185,9 @@ static void Preview( renderdata *prd ) {
     anBoard[ 0 ][ 23 ] = anBoard[ 1 ][ 23 ] = 2;
     
     CalculateArea( &rd, auch, 108 * 3 * 3, &ri, anBoard, NULL, anDice,
-		   anDicePosition, 1, anCubePosition, 0, 0, 0, 0, 108 * 3,
-		   72 * 3 );
+		   anDicePosition, 1, anCubePosition, 0, 0, 
+                   anResignPosition, fResign, nResignOrientation,
+                   0, 0, 108 * 3, 72 * 3 );
     FreeImages( &ri );
   
     gc = gdk_gc_new( ppm );
@@ -946,7 +949,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.61 2003/01/22 18:26:06 gtw Exp $\n"
+          "    $Id: gtkprefs.c,v 1.62 2003/01/29 19:05:06 thyssen Exp $\n"
           "\n"
           " -->\n"
           "\n"

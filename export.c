@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.10 2003/01/19 04:27:06 gtw Exp $
+ * $Id: export.c,v 1.11 2003/01/29 19:05:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -410,6 +410,9 @@ GenerateImage ( renderimages *pri, renderdata *prd,
   int anDicePosition[ 2 ][ 2 ];
   int nOrient;
   int doubled, color;
+  /* FIXME: resignations */
+  int anResignPosition[ 2 ];
+  int fResign = 0, nResignOrientation;
 
   if ( ! fMove )
     SwapSides ( anBoard );
@@ -474,6 +477,7 @@ GenerateImage ( renderimages *pri, renderdata *prd,
                   color, anCubePosition, 
                   LogCube( nCube ) + ( doubled != 0 ),
                   nOrient,
+                  anResignPosition, fResign, nResignOrientation,
                   0, 0, 108 * nSize, 72 * nSize );
 
   /* crop */
