@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.8.2.14 2000/05/13 08:56:30 thyssen Exp $
+ * $Id: eval.c,v 1.8.2.15 2000/05/14 12:11:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -2755,8 +2755,8 @@ EvaluatePositionCubeful( int anBoard[ 2 ][ 25 ],
 
 	/* fNoCube: calculate cubeful equity? */
 	
-	fNoCube = ( anScore[ fMove ] + nCube >= nMatchTo );
-	fNoCube = fNoCube || ( anScore[ ! fMove ] + nCube >= nMatchTo );
+	fNoCube = ( anScore[ fMove ] + 2 * nCube >= nMatchTo );
+	fNoCube = fNoCube || ( anScore[ ! fMove ] + 2 * nCube >= nMatchTo );
 	fNoCube = fNoCube ||  
 	  ( ( anScore[ fMove ] == nMatchTo - 2 ) &&
 	    ( anScore[ ! fMove ] == nMatchTo - 2 ) );
@@ -2889,7 +2889,7 @@ EvaluatePositionCubeful( int anBoard[ 2 ][ 25 ],
 
 	}
 	
-	prOutput[ 2 ] = eq2mwc ( rEq, ci );
+	prOutput[ 2 ] = eq2mwc ( rEq, &cix );
 
 
       } /* fCube */
