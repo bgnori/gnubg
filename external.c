@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.34 2003/12/31 22:53:38 uid65656 Exp $
+ * $Id: external.c,v 1.35 2004/01/01 22:03:45 uid65655 Exp $
  */
 
 #include "config.h"
@@ -104,6 +104,7 @@
 #include "rollout.h"
 #include "i18n.h"
 
+#if HAVE_SOCKETS
 /* Stuff for the yacc/lex parser */
 
 extern extcmd ec;
@@ -118,7 +119,6 @@ extern void extparse();
 #define PF_LOCAL PF_UNIX
 #endif
 
-#if HAVE_SOCKETS
 extern int ExternalSocket( struct sockaddr **ppsa, int *pcb, char *sz ) {
 
     int sock, f;
@@ -332,6 +332,7 @@ extern int ExternalWrite( int h, char *pch, int cch ) {
 #endif /* HAVE_SOCKETS */
 
 
+#if HAVE_SOCKETS
 static void
 ErrorHandler( const char *szMessage, const char *szNear, 
               const int fParseError ) {
@@ -556,6 +557,7 @@ ExtFIBSBoard( extcmd *pec ) {
   return szResponse;
 
 }
+#endif
 
 extern void CommandExternal( char *sz ) {
 
