@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.179 2002/01/06 15:35:38 thyssen Exp $
+ * $Id: gnubg.c,v 1.180 2002/01/25 19:24:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -2369,6 +2369,7 @@ CommandRollout( char *sz ) {
 	    fOpponent = TRUE;
 	}
 
+    /*
     if( fOpponent ) {
 	an[ 0 ] = ms.anScore[ 1 ];
 	an[ 1 ] = ms.anScore[ 0 ];
@@ -2376,9 +2377,11 @@ CommandRollout( char *sz ) {
 	an[ 0 ] = ms.anScore[ 0 ];
 	an[ 1 ] = ms.anScore[ 1 ];
     }
+    */
     
     SetCubeInfo ( &ci, ms.nCube, ms.fCubeOwner, fOpponent ? !ms.fMove :
-		  ms.fMove, ms.nMatchTo, an, ms.fCrawford, fJacoby, nBeavers );
+		  ms.fMove, ms.nMatchTo, ms.anScore, ms.fCrawford, fJacoby,
+                  nBeavers );
 
 #if USE_GTK
     if( fX )
