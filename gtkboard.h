@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.20 2002/03/16 23:58:25 gtw Exp $
+ * $Id: gtkboard.h,v 1.21 2002/03/17 16:15:35 thyssen Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -63,7 +63,7 @@ typedef struct _BoardData {
 	*position_id, *reset, *edit, *name0, *name1, *score0, *score1, *match,
 	*crawford, *widget, *key0, *key1, *stop, *takedrop, *rolldouble,
 	*agreedecline, *redouble, *doub, *lname0, *lname1, *lscore0, *lscore1,
-	*mname0, *mname1, *mscore0, *mscore1, *play;
+	*mname0, *mname1, *mscore0, *mscore1, *play, *match_id, *pos_table;
     GdkGC *gc_and, *gc_or, *gc_copy, *gc_cube;
     GdkPixmap *pm_board, *pm_x, *pm_o, *pm_x_dice, *pm_o_dice, *pm_x_pip,
 	*pm_o_pip, *pm_cube, *pm_saved, *pm_temp, *pm_temp_saved, *pm_point,
