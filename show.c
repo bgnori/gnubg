@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.57 2001/04/10 13:51:28 gtw Exp $
+ * $Id: show.c,v 1.58 2001/04/12 16:43:18 gtw Exp $
  */
 
 #include "config.h"
@@ -319,7 +319,7 @@ extern void CommandShowEngine( char *sz ) {
 
 extern void CommandShowEvaluation( char *sz ) {
 
-    outputl( "`eval' and `hint' will use:" );
+    outputl( "`eval', `hint' and analysis will use:" );
     ShowEvaluation( &ecEval );
 }
 

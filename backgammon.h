@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.74 2001/04/10 13:51:28 gtw Exp $
+ * $Id: backgammon.h,v 1.75 2001/04/12 16:43:18 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -134,6 +134,7 @@ typedef struct _movenormal {
     movelist ml;
     int iMove; /* index into the movelist of the move that was made */
     lucktype lt;
+    float rLuck; /* -HUGE_VALF means unknown */
     skilltype st;
 } movenormal;
 
@@ -156,6 +157,7 @@ typedef struct _movesetdice {
     int fPlayer;
     int anDice[ 2 ];
     lucktype lt;
+    float rLuck; /* -HUGE_VALF means unknown */
 } movesetdice;
 
 typedef struct _movesetcubeval {

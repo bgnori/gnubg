@@ -16,13 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.14 2001/04/02 19:25:18 gtw Exp $
+ * $Id: sgf.c,v 1.15 2001/04/12 16:43:18 gtw Exp $
  */
 
 #include "config.h"
 
 #include <assert.h>
 #include <ctype.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -33,6 +34,10 @@
 #endif
 #include "positionid.h"
 #include "sgf.h"
+
+#ifndef HUGE_VALF
+#define HUGE_VALF (-1e38)
+#endif
 
 static char *szFile;
 static int fError;
@@ -403,6 +408,7 @@ static void RestoreNode( list *pl ) {
     int i, fPlayer, fSetBoard = FALSE, an[ 25 ];
     skilltype st = SKILL_NONE;
     lucktype lt = LUCK_NONE;
+    float rLuck = -HUGE_VALF;
     
     for( pl = pl->plNext; ( pp = pl->p ); pl = pl->plNext ) {
 	if( pp->ach[ 1 ] == 0 &&
@@ -574,6 +580,7 @@ static void RestoreNode( list *pl ) {
 				     &pmr->n.iMove );
 	    pmr->n.st = st;
 	    pmr->n.lt = lt;
+	    pmr->n.rLuck = rLuck;
 	    break;
 	    
 	case MOVE_DOUBLE:
@@ -590,6 +597,7 @@ static void RestoreNode( list *pl ) {
 	    
 	case MOVE_SETDICE:
 	    pmr->sd.lt = lt;
+	    pmr->sd.rLuck = rLuck;
 	    break;
 	    
 	default:
