@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.33 2001/01/31 15:31:13 gtw Exp $
+ * $Id: eval.h,v 1.34 2001/02/13 18:21:50 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -157,7 +157,9 @@ typedef struct _redevaldata {
 
 extern int 
 EvalInitialise( char *szWeights, char *szWeightsBinary,
-                char *szDatabase, char *szDir, int fProgress );
+                char *szDatabase, char *szDir, int nSize, int fProgress );
+
+extern int EvalNewWeights( int nSize );
 
 extern int 
 EvalSave( char *szWeights );
@@ -195,7 +197,7 @@ PipCount( int anBoard[ 2 ][ 25 ], int anPips[ 2 ] );
 extern int 
 DumpPosition( int anBoard[ 2 ][ 25 ], char *szOutput,
               evalcontext *pec, cubeinfo *pci, int fOutputMWC,
-	      int fOutputInvert );
+	      int fOutputWinPC, int fOutputInvert );
 
 extern void 
 SwapSides( int anBoard[ 2 ][ 25 ] );
