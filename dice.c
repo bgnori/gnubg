@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.6 2000/02/17 00:48:00 gtw Exp $
+ * $Id: dice.c,v 1.6.2.1 2000/07/10 17:01:53 gtw Exp $
  */
 
 #include "config.h"
@@ -26,6 +26,9 @@
 #endif
 #if HAVE_FCNTL_H
 #include <fcntl.h>
+#endif
+#if HAVE_LIMITS_H
+#include <limits.h>
 #endif
 #include <stdlib.h>
 #include <stdio.h>
@@ -62,7 +65,7 @@ static void *pvUserRNGHandle;
 
 static char szUserRNGSeed[ 32 ];
 static char szUserRNGRandom[ 32 ];
-static char szUserRNG[ MAXPATHLEN ];
+static char szUserRNG[ PATH_MAX ];
 #endif
 
 static int GetManualDice( int anDice[ 2 ] ) {
@@ -236,7 +239,7 @@ extern int RollDice( int anDice[ 2 ] ) {
 extern int  UserRNGOpen() {
 
   char *error;
-  char szFileName[ MAXPATHLEN ];
+  char szFileName[ PATH_MAX ];
 
   strcpy( szUserRNG, "userrng.so" );
 

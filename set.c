@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.22 2000/07/10 16:42:25 gtw Exp $
+ * $Id: set.c,v 1.22.2.1 2000/07/10 17:01:54 gtw Exp $
  */
 
 #include "config.h"

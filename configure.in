@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 dnl
-dnl $Id: configure.in,v 1.14 2000/03/06 22:29:36 gtw Exp $
+dnl $Id: configure.in,v 1.14.2.1 2000/07/10 17:01:53 gtw Exp $
 
 AC_INIT(gnubg.c)
 AM_INIT_AUTOMAKE(gnubg,0.02)
@@ -67,17 +67,14 @@ AC_CHECK_FUNCS(alloca getlogin getpwuid gettimeofday isatty random)
 AC_REPLACE_FUNCS(rand_r)
 AC_TYPE_SIGNAL
 
-dnl Check for the X Window System.
-AC_PATH_XTRA
-AM_CONDITIONAL(NOX, test "$no_x" = "yes" )
+dnl Check for GTK
+AM_PATH_GTK(1.2.0)
+AM_CONDITIONAL(NOX, test "$no_gtk" = "yes" )
 
 dnl Record installation paths.
 AC_DEFINE_DIR(DATADIR, datadir)
 
-if test "$no_x" != "yes"; then
-  conf_ext=ext
-fi
-AC_CONFIG_SUBDIRS(lib doc $conf_ext)
+AC_CONFIG_SUBDIRS(lib doc)
 
 AC_OUTPUT(Makefile)
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.22 2000/07/05 19:57:36 gtw Exp $
+ * $Id: show.c,v 1.22.2.1 2000/07/10 17:01:54 gtw Exp $
  */
 
 #include "config.h"
@@ -36,7 +36,7 @@
 #include "dice.h"
 
 #if !X_DISPLAY_MISSING
-#include "xgame.h"
+#include "gtkboard.h"
 #endif
 
 extern char *aszCopying[], *aszWarranty[]; /* from copying.c */
@@ -140,7 +140,7 @@ extern void CommandShowBoard( char *sz ) {
 
 #if !X_DISPLAY_MISSING
     if( fX )
-	GameSet( &ewnd, an, TRUE, "", "", 0, 0, 0, -1, -1 );
+	game_set( BOARD( pwBoard ), an, TRUE, "", "", 0, 0, 0, -1, -1 );
     else
 #endif
 	puts( DrawBoard( szOut, an, TRUE, ap ) );

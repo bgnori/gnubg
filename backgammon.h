@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.31 2000/07/10 16:42:56 gtw Exp $
+ * $Id: backgammon.h,v 1.31.2.1 2000/07/10 17:01:53 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -26,11 +26,10 @@
 #include "eval.h"
 
 #if !X_DISPLAY_MISSING
-#include <ext.h>
-#include <event.h>
-extern extwindow ewnd;
+#include <gtk/gtk.h>
+extern GtkWidget *pwMain, *pwBoard;
 extern int fX, nDelay;
-extern event evNextTurn;
+extern guint nNextTurn; /* GTK idle function */
 #endif
 
 #define MAX_CUBE ( 1 << 12 )
@@ -106,6 +105,7 @@ extern int SetToggle( char *szName, int *pf, char *sz, char *szOn,
 extern void ShowBoard( void );
 
 #if !X_DISPLAY_MISSING
+extern gint NextTurnNotify( gpointer p );
 extern void UserCommand( char *sz );
 extern void HandleXAction( void );
 #endif
