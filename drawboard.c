@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.31 2003/09/12 13:35:22 steink Exp $
+ * $Id: drawboard.c,v 1.32 2003/10/14 16:43:33 jsegrave Exp $
  */
 
 #include "config.h"
@@ -530,10 +530,10 @@ static char *FormatPoint( char *pch, int n ) {
     
     if( !n ) {
         strcpy( pch, _("off") );
-        return pch + 3;
+        return pch + strlen(_("off") );
     } else if( n == 25 ) {
         strcpy( pch, _("bar") );
-        return pch + 3;
+        return pch + strlen(_("bar") );
     } else if( n > 9 )
         *pch++ = n / 10 + '0';
 
