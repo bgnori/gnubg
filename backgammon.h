@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.71 2001/04/02 19:25:18 gtw Exp $
+ * $Id: backgammon.h,v 1.72 2001/04/06 14:33:59 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -276,7 +276,7 @@ extern void PromptForExit( void );
 extern void Prompt( void );
 
 extern void PortableSignal( int nSignal, RETSIGTYPE (*p)(int),
-			     psighandler *pOld );
+			    psighandler *pOld, int fRestart );
 extern void PortableSignalRestore( int nSignal, psighandler *p );
 extern RETSIGTYPE HandleInterrupt( int idSignal );
 
@@ -350,6 +350,7 @@ extern void CommandAccept( char * ),
     CommandDatabaseRollout( char * ),
     CommandDatabaseGenerate( char * ),
     CommandDatabaseTrain( char * ),
+    CommandDatabaseVerify( char * ),
     CommandDecline( char * ),
     CommandDouble( char * ),
     CommandDrop( char * ),
