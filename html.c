@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.100 2003/03/31 19:55:51 thyssen Exp $
+ * $Id: html.c,v 1.101 2003/04/03 19:59:35 thyssen Exp $
  */
 
 #include "config.h"
@@ -728,8 +728,8 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
 
   PipCount ( anBoard, anPips );
   fprintf ( pf, _("Pip counts: %s %d, %s %d<br />\n"),
-            ap[ 1 ].szName, anPips[ 0 ], 
-            ap[ 0 ].szName, anPips[ 1 ] );
+            ap[ 0 ].szName, anPips[ 1 ], 
+            ap[ 1 ].szName, anPips[ 0 ] );
   
 
 }
@@ -1097,8 +1097,8 @@ printHTMLBoardF2H ( FILE *pf, matchstate *pms, int fTurn,
 
   PipCount ( anBoard, anPips );
   fprintf ( pf, _("Pip counts: %s %d, %s %d<br />\n"),
-            ap[ 1 ].szName, anPips[ 0 ], 
-            ap[ 0 ].szName, anPips[ 1 ] );
+            ap[ 0 ].szName, anPips[ 1 ], 
+            ap[ 1 ].szName, anPips[ 0 ] );
   
   fprintf ( pf, "</p>\n" );
 
@@ -1607,8 +1607,8 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
 
   PipCount ( anBoard, anPips );
   fprintf ( pf, _("Pip counts: %s %d, %s %d<br />\n"),
-            ap[ 1 ].szName, anPips[ 0 ], 
-            ap[ 0 ].szName, anPips[ 1 ] );
+            ap[ 0 ].szName, anPips[ 1 ], 
+            ap[ 1 ].szName, anPips[ 0 ] );
 
   fputs ( "</p>\n", pf );
 
@@ -1856,7 +1856,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.100 $";
+  const char szVersion[] = "$Revision: 1.101 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1937,7 +1937,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.100 $";
+  const char szVersion[] = "$Revision: 1.101 $";
   int iMajor, iMinor;
   char *pc;
 
