@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.31 2000/02/02 21:19:23 gtw Exp $
+ * $Id: gnubg.c,v 1.32 2000/02/03 16:42:58 gtw Exp $
  */
 
 #include "config.h"
@@ -1238,8 +1238,7 @@ static eventhandler StdinReadHandler = {
     NextTurnNotify, NULL
 };
 
-static void HandleXAction( void ) {
-
+extern void HandleXAction( void ) {
     /* It is safe to execute this function with SIGIO unblocked, because
        if a SIGIO occurs before fAction is reset, then the I/O it alerts
        us to will be processed anyway.  If one occurs after fAction is reset,
