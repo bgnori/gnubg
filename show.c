@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.83 2002/03/23 17:45:19 thyssen Exp $
+ * $Id: show.c,v 1.84 2002/03/29 20:01:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -237,7 +237,9 @@ extern void CommandShowAutomatic( char *sz ) {
 
     static char *szOn = "On", *szOff = "Off";
     
-    outputf( "bearoff \t(Play certain non-contact bearoff moves):      \t%s\n"
+    outputf( 
+            "analysis \t(Analyse game during play (tutor-mode)):      \t%s\n"
+            "bearoff \t(Play certain non-contact bearoff moves):      \t%s\n"
 	    "crawford\t(Enable the Crawford rule as appropriate):     \t%s\n"
 	    "doubles \t(Turn the cube when opening roll is a double): \t%d\n"
 	    "game    \t(Start a new game after each one is completed):\t%s\n"
