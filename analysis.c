@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.79 2002/08/07 18:41:07 thyssen Exp $
+ * $Id: analysis.c,v 1.80 2002/08/16 18:31:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -1032,6 +1032,7 @@ extern float
 getMWCFromError ( const statcontext *psc, float aaaar[ 3 ][ 2 ][ 2 ][ 2 ] ) {
 
   int i, j;
+  float r;
 
   for ( i = 0; i < 2; i++ ) 
     for ( j = 0; j < 2; j++ ) {
@@ -1078,9 +1079,16 @@ getMWCFromError ( const statcontext *psc, float aaaar[ 3 ][ 2 ][ 2 ][ 2 ] ) {
 
     }
 
-  return 0.50 
+  r =0.50 
     - aaaar[ COMBINED ][ TOTAL ][ PLAYER_0 ][ UNNORMALISED ] 
     + aaaar[ COMBINED ][ TOTAL ][ PLAYER_1 ][ UNNORMALISED ];
+
+  if ( r < 0.0f )
+    return 0.0f;
+  else if ( r > 1.0f )
+    return 1.0f;
+  else
+    return r;
 
 }
 
