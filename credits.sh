@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.112 2004/04/11 20:54:26 thyssen Exp $
+# $Id: credits.sh,v 1.113 2004/04/16 20:04:31 thyssen Exp $
 # 
 
 column < /dev/null || exit 0
@@ -370,6 +370,7 @@ cat >> AUTHORS <<'EOF'
              Bob Jenkins (the ISAAC pseudo random number generator)
        Takuji Nishimura and Makoto Matsumoto (the Mersenne Twister PRNG)
                 Gerry Tesauro (the "pubeval" position evaluator)
+             Claes Tornberg (the mec match equity table generator)
 
 
       If you feel that you're not given credits for your contributions to

@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.45 2004/03/28 08:52:16 thyssen Exp $
+* $Id: matchequity.c,v 1.46 2004/04/16 20:06:01 thyssen Exp $
 */
 
 #include <stdio.h>
@@ -32,6 +32,7 @@
 #include "config.h"
 #include "list.h"
 #include "path.h"
+#include "mec.h"
 
 #if HAVE_LIBXML2
 #include <libxml/tree.h>
@@ -945,7 +946,43 @@ initMETFromParameters ( float aafMET [ MAXSCORE ][ MAXSCORE ],
                         int nLength,
                         metparameters *pmp ) {
 
-  if ( ! strcmp ( pmp->szName, "zadeh" ) ) {
+  if ( ! strcmp ( pmp->szName, "mec" ) ) {
+    
+    float rG = 0.15;
+    float rWR = 0.5;
+    list *pl; 
+    parameter *pp;
+
+    /* 
+     */
+
+    PushLocale ( "C" );
+
+    /* obtain parameters */
+
+    for ( pl = pmp->lParameters.plNext; pl != &pmp->lParameters; 
+          pl = pl->plNext ) {
+
+      pp = pl->p;
+
+      if ( ! strcmp ( pp->szName, "gammon-rate" ) )
+        rG = atof ( pp->szValue );
+      else if ( ! strcmp ( pp->szName, "win-rate" ) )
+        rWR = atof ( pp->szValue );
+
+    }
+
+    PopLocale ();
+    
+
+    /* calculate table */
+
+    mec( rG, rWR, aafMETPostCrawford, aafMET );
+
+    return 0;
+
+  }
+  else if ( ! strcmp ( pmp->szName, "zadeh" ) ) {
     
     float rG1 = 0.25;
     float rG2 = 0.15;
@@ -1040,6 +1077,43 @@ initPostCrawfordMETFromParameters ( float afMETPostCrawford[ MAXSCORE ],
     /* calculate table */
 
     initPostCrawfordMET ( afMETPostCrawford, 0, rG, rFD2, rFD4 );
+    return 0;
+
+  }
+  else if ( ! strcmp( pmp->szName, "mec" ) ) {
+
+    float rG = 0.25;
+    float rFD2 = 0.015;
+    float rFD4 = 0.004;
+    float rWR = 0.5;
+    list *pl;
+    parameter *pp;
+    int i;
+
+    /* obtain parameters */
+
+    for ( pl = pmp->lParameters.plNext; pl != &pmp->lParameters; 
+          pl = pl->plNext ) {
+
+      pp = pl->p;
+
+      if ( ! strcmp ( pp->szName, "gammon-rate" ) )
+        rG = atof ( pp->szValue );
+      else if ( ! strcmp ( pp->szName, "free-drop-2-away" ) )
+        rFD2 = atof ( pp->szValue );
+      else if ( ! strcmp ( pp->szName, "free-drop-4-away" ) )
+        rFD4 = atof ( pp->szValue );
+      else if ( ! strcmp( pp->szName, "win-rate" ) )
+        rWR = atof ( pp->szValue );
+
+    }
+
+    PopLocale ();
+
+    /* calculate table */
+
+    mec_pc( rG, rFD2, rFD4, rWR, afMETPostCrawford );
+
     return 0;
 
   }
