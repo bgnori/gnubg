@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.207 2003/09/15 02:01:06 hb Exp $
+ * $Id: set.c,v 1.208 2003/09/20 20:09:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -4626,4 +4626,24 @@ extern void CommandSetDisplayPanels( char *sz ) {
   }
 #endif
     
+}
+
+
+extern void
+CommandSetOutputErrorRateFactor( char *sz ) {
+
+  float r = ParseReal( &sz );
+
+  if ( r < 0 ) {
+    outputl( _("Please provide a positive number\n" ) );
+    return;
+  }
+
+  rErrorRateFactor = r;
+
+  outputf( _("The factor used for multiplying error rates is: %.1f\n"),
+           rErrorRateFactor );
+
+
+
 }

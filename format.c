@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.6 2003/08/29 18:38:12 jsegrave Exp $
+ * $Id: format.c,v 1.7 2003/09/20 20:09:15 thyssen Exp $
  */
 
 #include "config.h"
@@ -37,6 +37,7 @@ int fOutputMWC = TRUE;
 int fOutputWinPC = FALSE;
 int fOutputMatchPC = TRUE;
 int fOutputDigits = 3;
+float rErrorRateFactor = 1000.0f;
 
 
 extern char *
