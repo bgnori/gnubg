@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.184 2003/04/04 20:41:59 thyssen Exp $
+ * $Id: play.c,v 1.185 2003/04/05 12:58:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -1432,8 +1432,10 @@ static int TryBearoff( void ) {
     int i, iMove, cMoves;
     movenormal *pmn;
     
-    if( ClassifyPosition( ms.anBoard, ms.bgv ) > CLASS_RACE )
+    if( ClassifyPosition( ms.anBoard, VARIATION_STANDARD ) > CLASS_RACE )
 	/* It's a contact position; don't automatically bear off */
+        /* note that we use VARIATION_STANDARD instead of ms.bgv in order
+           to avoid automatic bearoff in contact positions for hypergammon */
 	return -1;
     
     GenerateMoves( &ml, ms.anBoard, ms.anDice[ 0 ], ms.anDice[ 1 ], FALSE );
