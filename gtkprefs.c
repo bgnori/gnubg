@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.103 2004/04/21 21:11:13 mormegil Exp $
+ * $Id: gtkprefs.c,v 1.104 2004/04/30 17:37:12 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -187,16 +187,20 @@ free_board_designs ( GList *pl ) {
 
 #endif /* HAVE_LIBXML2 */
 
+#if HAVE_LIBXML2
 static void DesignSelect( GtkCList *pw, gint nRow, gint nCol,
 			  GdkEventButton *pev, gpointer unused );
 static void DesignUnselect( GtkCList *pw, gint nRow, gint nCol,
 			  GdkEventButton *pev, gpointer unused );
+#endif
 
 void SetTitle()
 {	/* Update dialog title to include design name + author */
+#if HAVE_LIBXML2
 	int i = 0;
-	char title[1024];
 	int found = FALSE;
+#endif
+	char title[1024];
 	GtkWidget *pwDialog = gtk_widget_get_toplevel(pwPrevBoard);
 
 	strcpy(title, _("GNU Backgammon - Appearance"));
@@ -1199,7 +1203,12 @@ void toggle_display_type(GtkWidget *widget, BoardData* bd)
 		DoAcceleratedCheck(bd->drawing_area3d);
 
 		updateDiceOccPos(bd);
-	}			
+	}
+	else
+	{
+		board_free_pixmaps( bd );
+		board_create_pixmaps( pwPrevBoard, bd );
+	}
 
 	AddPages(bd, pwNotebook);
 	gtk_widget_set_sensitive(pwTestPerformance, (rdPrefs.fDisplayType == DT_3D));
@@ -1984,7 +1993,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.103 2004/04/21 21:11:13 mormegil Exp $\n"
+          "    $Id: gtkprefs.c,v 1.104 2004/04/30 17:37:12 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
