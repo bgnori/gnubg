@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.26 2004/03/15 11:13:25 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.27 2004/03/16 11:28:10 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -1474,8 +1474,8 @@ void showMoveIndicator(BoardData* bd)
 
 	glBegin(GL_QUADS);
 		glVertex2f(-ARROW_UNIT * 2, -ARROW_UNIT);
-		glVertex2f(0, -ARROW_UNIT);
-		glVertex2f(0, ARROW_UNIT);
+		glVertex2f(LIFT_OFF, -ARROW_UNIT);
+		glVertex2f(LIFT_OFF, ARROW_UNIT);
 		glVertex2f(-ARROW_UNIT * 2, ARROW_UNIT);
 	glEnd();
 	glBegin(GL_TRIANGLES);
