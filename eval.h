@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.48 2001/05/23 16:28:27 gtw Exp $
+ * $Id: eval.h,v 1.49 2001/06/15 16:59:54 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -194,6 +194,9 @@ extern int
 EvaluatePosition( int anBoard[ 2 ][ 25 ], float arOutput[],
                   cubeinfo *pci, evalcontext *pec );
 
+extern void
+InvertEvaluationR ( float ar[ NUM_ROLLOUT_OUTPUTS] );
+
 extern void 
 InvertEvaluation( float ar[ NUM_OUTPUTS ] );
 
@@ -300,13 +303,19 @@ extern char
 *FormatEval ( char *sz, evalsetup *pes );
 
 extern int 
-EvaluatePositionCubeful2( int anBoard[ 2 ][ 25 ], float arOutput[],
-                          float arCF[ 4 ],
-                          cubeinfo *pci, evalcontext *pec, int nPlies,
-                          int nPliesTop, int fDTTop, cubeinfo *pciTop );
+EvaluatePositionCubeful2( int anBoard[ 2 ][ 25 ],
+                          float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
+                          cubeinfo aci[], int cci,
+                          evalcontext *pec, int nPlies,
+                          int nPliesTop, int fDTTop, cubeinfo aciTop[] );
 
 extern cubedecision
 FindCubeDecision ( float arDouble[],
                    float aarOutput[][ NUM_ROLLOUT_OUTPUTS ], cubeinfo *pci );
+
+extern int
+GeneralCubeDecisionE ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                       int anBoard[ 2 ][ 25 ],
+                       cubeinfo *pci, evalcontext *pec );
 
 #endif
