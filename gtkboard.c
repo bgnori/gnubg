@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.115 2003/04/05 19:51:29 thyssen Exp $
+ * $Id: gtkboard.c,v 1.116 2003/04/12 08:59:42 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1075,6 +1075,7 @@ static gboolean place_chequer_or_revert( GtkWidget *board, BoardData *bd,
     write_points( oldpoints, bd->turn, bd->nchequers, bd->old_board );
 
     if ( ( unhit = ( ( oldpoints[ bd->drag_point ] == -bd->drag_colour ) && 
+                     ( dest < 26 ) &&
                      ( ( bd->drag_point - dest ) * bd->drag_colour < 0 ) ) ) ) {
       bd->points[ bar ] += bd->drag_colour;
       bd->points[ bd->drag_point ] -= bd->drag_colour;
