@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.109 2003/07/21 19:19:16 thyssen Exp $
+ * $Id: html.c,v 1.110 2003/07/21 20:13:32 thyssen Exp $
  */
 
 #include "config.h"
@@ -1850,7 +1850,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.109 $";
+  const char szVersion[] = "$Revision: 1.110 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1931,7 +1931,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.109 $";
+  const char szVersion[] = "$Revision: 1.110 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3517,12 +3517,29 @@ HTMLPrintComment ( FILE *pf, const moverecord *pmr,
 
 
 static void
+HTMLPrintMI( FILE *pf, const char *szTitle, const char *sz ) {
+
+  if ( ! sz || ! *sz )
+    return;
+
+  fprintf( pf, "%s: %s<br />\n", szTitle, sz );
+
+}
+
+static void
 HTMLMatchInfo ( FILE *pf, const matchinfo *pmi,
                 const htmlexportcss hecss ) {
 
   int i;
   char sz[ 80 ];
   struct tm tmx;
+
+  if ( ! pmi->nYear &&
+       ! pmi->pchRating[ 0 ] && ! pmi->pchRating[ 1 ] &&
+       ! pmi->pchEvent && ! pmi->pchRound && ! pmi->pchPlace &&
+       ! pmi->pchAnnotator && ! pmi->pchComment )
+    /* no match information -- don't print anything */
+    return;
 
   fputs ( "\n<!-- Match Information -->\n\n", pf );
 
@@ -3535,6 +3552,7 @@ HTMLMatchInfo ( FILE *pf, const matchinfo *pmi,
   /* ratings */
 
   for ( i = 0; i < 2; ++i )
+    if ( pmi->pchRating[ i ] )
       fprintf ( pf, _("%s's rating: %s<br />\n"), 
                 ap[ i ].szName, 
                 pmi->pchRating[ i ] ? pmi->pchRating[ i ] : _("n/a") );
@@ -3550,22 +3568,14 @@ HTMLMatchInfo ( FILE *pf, const matchinfo *pmi,
     fprintf ( pf, _("Date: %s<br />\n"), sz ); 
 
   }
-  else
-    fputs ( _("Date: n/a<br />\n"), pf );
 
   /* event, round, place and annotator */
 
-  fprintf ( pf, _("Event: %s<br />\n"),
-            pmi->pchEvent ? pmi->pchEvent : _("n/a") );
-  fprintf ( pf, _("Round: %s<br />\n"),
-            pmi->pchRound ? pmi->pchRound : _("n/a") );
-  fprintf ( pf, _("Place: %s<br />\n"),
-            pmi->pchPlace ? pmi->pchPlace : _("n/a") );
-  fprintf ( pf, _("Annotator: %s<br />\n"),
-            pmi->pchAnnotator ? pmi->pchAnnotator : _("n/a") );
-  fprintf ( pf, _("Comments: %s<br />\n"),
-            pmi->pchComment ? pmi->pchComment : _("n/a") );
-
+  HTMLPrintMI( pf, _("Event"), pmi->pchEvent );
+  HTMLPrintMI( pf, _("Round"), pmi->pchRound );
+  HTMLPrintMI( pf, _("Place"), pmi->pchPlace );
+  HTMLPrintMI( pf, _("Annotator"), pmi->pchAnnotator );
+  HTMLPrintMI( pf, _("Comment"), pmi->pchComment );
 
   fputs ( "</p>\n", pf );
 
