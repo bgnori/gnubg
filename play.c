@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.131 2002/07/04 20:20:33 thyssen Exp $
+ * $Id: play.c,v 1.132 2002/07/08 07:55:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -2500,6 +2500,8 @@ extern void CommandNewMatch( char *sz ) {
     
     FreeMatch();
 
+    plLastMove = NULL;
+
     ms.nMatchTo = n;
 
     ms.cGames = ms.anScore[ 0 ] = ms.anScore[ 1 ] = 0;
@@ -2536,6 +2538,8 @@ extern void CommandNewSession( char *sz ) {
     }
     
     FreeMatch();
+
+    plLastMove = NULL;
 
     ms.cGames = ms.nMatchTo = ms.anScore[ 0 ] = ms.anScore[ 1 ] = 0;
     ms.fTurn = -1;
