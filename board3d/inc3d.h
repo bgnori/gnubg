@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.1.2.10 2003/07/08 07:35:01 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.1.2.11 2003/07/29 10:37:53 Superfly_Jon Exp $
 */
 
 #include <gtk/gtk.h>
@@ -32,6 +32,7 @@
 	#define USE_GLUT_FONT
 	/* Comment out next line to switch test harness off */
 	#define TEST
+
 	#define AlphaBlend ab
 	#define gtk_main_quit() 0
 	#define gtk_main() 0
@@ -50,7 +51,9 @@
 #define PI 3.14159265358979323846f
 #define copyPoint(to, from) memcpy(to, from, sizeof(float[3]))
 #define SGN(x) (x / abs(x))
-#define TEXTURE_PATH "Data//"
+#define TEXTURE_PATH "textures//"
+#define NO_TEXTURE_STRING "No texture"
+#define HINGE_SEGMENTS 6
 
 /* Draw board parts specially */
 typedef enum _boxType
@@ -93,7 +96,9 @@ void updateHingeOccPos(BoardData* bd);
 double get_time();
 void getProjectedPieceDragPos(int x, int y, float pos[3]);
 void updateMovingPieceOccPos(BoardData* bd);
-void ClearTextures(BoardData* bd);
+void LoadTextureInfo();
+GList *GetTextureList(int type);
+int IsSet(int flags, int bit);
 
 typedef int idleFunc(BoardData* bd);
 void setIdleFunc(BoardData* bd, idleFunc* pFun);
