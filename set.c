@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.83 2001/12/20 19:59:41 gtw Exp $
+ * $Id: set.c,v 1.84 2001/12/26 22:46:15 joseph Exp $
  */
 
 #include "config.h"
@@ -31,6 +31,7 @@
 #if defined(sun)
 #define AF_LOCAL AF_UNIX
 #define PF_LOCAL PF_UNIX
+#include <limits.h>
 #endif
 
 #include <sys/socket.h>
