@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.131 2002/04/12 19:52:56 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.132 2002/04/15 19:53:43 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1728,7 +1728,6 @@ static GtkWidget *TakeAnalysis( movetype mt,
       /* label */
 
       pw = gtk_label_new ( aszCube[ ai[ i ] ] );
-      printf ( "vla %s\n", aszCube[ ai [ i ] ] );
       gtk_misc_set_alignment( GTK_MISC( pw ), 0, 0.5 );
 
       gtk_table_attach ( GTK_TABLE ( pwTable ), pw,
