@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.40 2000/06/12 16:54:49 gtw Exp $
+ * $Id: gnubg.c,v 1.41 2000/06/26 19:24:02 gtw Exp $
  */
 
 #include "config.h"
@@ -234,7 +234,8 @@ static command acDatabase[] = {
     /* FIXME show cube */
     { "crawford", CommandShowCrawford, 
       "See if this is the Crawford game", NULL },
-    /* FIXME show delay */
+    { "delay", CommandShowDelay, "See what the current delay setting is", 
+              NULL },
     { "dice", CommandShowDice, "See what the current dice roll is", NULL },
     /* FIXME show display */
     { "evaluation", CommandShowEvaluation, "Display evaluation settings "

@@ -1,4 +1,4 @@
-$Id: AUTHORS,v 1.7 2000/03/06 22:30:10 gtw Exp $
+$Id: AUTHORS,v 1.8 2000/06/26 19:26:27 gtw Exp $
 
 
 			 GNU Backgammon was written by:
@@ -10,6 +10,7 @@ $Id: AUTHORS,v 1.7 2000/03/06 22:30:10 gtw Exp $
 
 	 Contributors (of bug reports, comments, and patches) include:
 
+				 Eric Augustine
 			          Steve Baedke
                                  Bill Davidson
 				 Jeff Haferman

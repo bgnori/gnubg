@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.18 2000/06/13 17:48:32 gtw Exp $
+ * $Id: show.c,v 1.19 2000/06/26 19:24:02 gtw Exp $
  */
 
 #include "config.h"
@@ -141,6 +141,13 @@ extern void CommandShowBoard( char *sz ) {
     else
 #endif
 	puts( DrawBoard( szOut, an, TRUE, ap ) );
+}
+
+extern void CommandShowDelay( char *sz ) {
+    if( nDelay )
+	printf( "The delay is set to %d ms.\n",nDelay);
+    else
+	puts( "No delay is being used." );
 }
 
 extern void CommandShowCache( char *sz ) {
@@ -359,6 +366,7 @@ extern void CommandShowKleinman( char *sz ) {
     else
         printf ("Cubeless Winning Chance: %.4f\n", fKC);
  }
+
 extern void CommandShowThorp( char *sz ) {
 
     int anPips[ 2 ], an[ 2 ][ 25 ];
