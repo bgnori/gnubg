@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: formatgs.c,v 1.3 2003/09/08 18:44:39 hb Exp $
+ * $Id: formatgs.c,v 1.4 2003/09/08 20:18:12 hb Exp $
  */
 
 #include "config.h"
@@ -271,8 +271,8 @@ formatGS( const statcontext *psc, const matchstate *pms,
 
         for ( j = 0; j < 2; ++j ) 
           aasz[ j + 1 ] = cubeEntry( ai2[ i ][ j ],
-                                     af2[ j ][ i ][ 0 ],
-                                     af2[ j ][ i ][ 1 ],
+                                     -af2[ j ][ i ][ 0 ],
+                                     -af2[ j ][ i ][ 1 ],
                                      pms );
 
         list = g_list_append( list, aasz );
