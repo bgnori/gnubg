@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.2 2002/12/17 01:02:28 oysteijo Exp $
+ * $Id: gtkmovefilter.c,v 1.3 2002/12/17 01:07:54 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -473,7 +473,6 @@ ClickButton ( GtkWidget *pw, movefilterwidget *pmfw ) {
   GtkWidget *pwMoveFilterSetup;
   movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
 
-  return;
   memcpy ( aamf, pmfw->pmf, sizeof ( aamf ) );
   pwMoveFilterSetup = MoveFilterSetup( aamf, &fOK );
 
