@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.505 2004/07/30 21:14:19 thyssen Exp $
+ * $Id: gtkgame.c,v 1.506 2004/08/25 17:49:47 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -435,6 +435,7 @@ static guint idOutput, idProgress;
 static list lOutput;
 int fTTY = TRUE;
 int fGUISetWindowPos = TRUE;
+int frozen = FALSE;
 
 static guint nStdin, nDisabledCount = 1;
 int lastImportType = -1;
@@ -1249,11 +1250,15 @@ static void ShowAnalysis( void )
 extern void GTKFreeze( void ) {
 
 	GL_Freeze();
+	frozen = TRUE;
 }
 
 extern void GTKThaw( void ) {
 
 	GL_Thaw();
+	frozen = FALSE;
+	/* Make sure analysis window is correct */
+	GTKSetMoveRecord( plLastMove->p );
 }
 
 static void SkillMenuActivate( GtkWidget *pw, skilltype st ) {

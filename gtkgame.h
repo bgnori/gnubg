@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.85 2004/07/03 13:23:12 thyssen Exp $
+ * $Id: gtkgame.h,v 1.86 2004/08/25 17:49:47 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -156,6 +156,7 @@ extern void SetMET( GtkWidget *pw, gpointer p );
 extern void HintMove( GtkWidget *pw, GtkWidget *pwMoves );
 
 extern int fTTY;
+extern int frozen;
 
 extern int 
 GtkTutor ( char *sz );
