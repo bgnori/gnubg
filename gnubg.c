@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.163 2001/10/26 14:43:44 gtw Exp $
+ * $Id: gnubg.c,v 1.164 2001/10/28 09:23:52 thyssen Exp $
  */
 
 #include "config.h"
@@ -426,6 +426,8 @@ command acAnalyse[] = {
 }, acSetAnalysisThreshold[] = {
     { "bad", CommandSetAnalysisThresholdBad, "Specify the equity loss for a "
       "bad move", szVALUE, NULL },
+    { "doubtful", CommandSetAnalysisThresholdDoubtful, 
+      "Specify the equity loss for a doubtful move", szVALUE, NULL },
     { "good", CommandSetAnalysisThresholdGood, "Specify the equity gain for a "
       "good move", szVALUE, NULL },
     { "lucky", CommandSetAnalysisThresholdLucky, "Specify the equity gain for "

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.75 2001/10/05 14:34:39 gtw Exp $
+ * $Id: set.c,v 1.76 2001/10/28 09:22:10 thyssen Exp $
  */
 
 #include "config.h"
@@ -230,6 +230,10 @@ static void SetSkillThreshold( char *szCommand, skilltype lt, char *sz ) {
     outputf( "`%s' threshold set to %.3f.\n", szCommand, r );
 }
 
+extern void CommandSetAnalysisThresholdDoubtful( char *sz ) {
+
+    SetSkillThreshold( "bad", SKILL_BAD, sz );
+}
 extern void CommandSetAnalysisThresholdBad( char *sz ) {
 
     SetSkillThreshold( "bad", SKILL_BAD, sz );
