@@ -1,7 +1,7 @@
 /*
  * positionid.h
  *
- * by Gary Wong, 1998-1999
+ * by Gary Wong, 1998, 1999, 2002
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of version 2 of the GNU General Public License as
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.h,v 1.10 2002/03/19 21:45:33 thyssen Exp $
+ * $Id: positionid.h,v 1.11 2002/03/23 17:20:20 thyssen Exp $
  */
 
 #ifndef _POSITIONID_H_
@@ -37,51 +37,7 @@ extern int
 CheckPosition( int anBoard[ 2 ][ 25 ] );
 
 extern int
-LogCube ( const int n );
-
-extern char*
-MatchID ( const int anDice[ 2 ],
-          const int fTurn,
-          const int fResigned,
-          const int fDoubled,
-          const int fMove,
-          const int fCubeOwner,
-          const int fCrawford,
-          const int nMatchTo,
-          const int anScore[ 2 ],
-          const int nCube,
-          const int gs );
-
-extern char*
-MatchIDFromKey( unsigned char auchKey[ 8 ] );
-
-extern int
-MatchFromID ( int anDice[ 2 ],
-              int *pfTurn,
-              int *pfResigned,
-              int *pfDoubled,
-              int *pfMove,
-              int *pfCubeOwner,
-              int *pfCrawford,
-              int *pnMatchTo,
-              int anScore[ 2 ],
-              int *pnCube,
-              int *pgs,
-              const char *szMatchID );
-
-extern int
-MatchFromKey ( int anDice[ 2 ],
-               int *pfTurn,
-               int *pfResigned,
-               int *pfDoubled,
-               int *pfMove,
-               int *pfCubeOwner,
-               int *pfCrawford,
-               int *pnMatchTo,
-               int anScore[ 2 ],
-               int *pnCube,
-               int *pgs,
-               const unsigned char *auchKey );
-
+Base64( const char ch );
 
 #endif
+
