@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.3 2000/10/24 10:57:44 thyssen Exp $
+ * $Id: analysis.c,v 1.4 2000/10/26 14:20:07 gtw Exp $
  */
 
 #include "config.h"
@@ -74,8 +74,8 @@ AnalyzeGame ( list *plGame, int iGame ) {
     int anDice[ 2 ], k, l, j;
     int fFirstMove = 1;
     unsigned char auch[ 10 ];
-    evalcontext ecDouble = { 1, 0, 0, 0, FALSE, TRUE };  
-    evalcontext ecMove   = { 1, 8, 0.16, 0, FALSE, FALSE };  
+    evalcontext ecDouble = { 1, 0, 0, 0, TRUE };  
+    evalcontext ecMove   = { 1, 8, 0.16, 0, FALSE };  
     cubeinfo ci;
     float arDouble[ 4 ];
     int fWinner, nPoints;

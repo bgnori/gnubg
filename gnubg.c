@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.71 2000/10/26 09:28:52 thyssen Exp $
+ * $Id: gnubg.c,v 1.72 2000/10/26 14:20:07 gtw Exp $
  */
 
 #include "config.h"
@@ -122,13 +122,13 @@ int anBoard[ 2 ][ 25 ], anDice[ 2 ], fTurn = -1, fDisplay = TRUE,
   nRollouts = 1296, nRolloutTruncate = 7, fNextTurn = FALSE,
   fConfirm = TRUE, fShowProgress;
 
-evalcontext ecTD = { 0, 8, 0.16, 0, FALSE, FALSE };
-evalcontext ecEval = { 1, 8, 0.16, 0, FALSE, FALSE };
-evalcontext ecRollout = { 0, 8, 0.16, 0, FALSE, FALSE };
+evalcontext ecTD = { 0, 8, 0.16, 0, FALSE };
+evalcontext ecEval = { 1, 8, 0.16, 0, FALSE };
+evalcontext ecRollout = { 0, 8, 0.16, 0, FALSE };
 
 player ap[ 2 ] = {
-    { "gnubg", PLAYER_GNU, { 0, 8, 0.16, 0, FALSE, FALSE } },
-    { "user", PLAYER_HUMAN, { 0, 8, 0.16, 0, FALSE, FALSE } }
+    { "gnubg", PLAYER_GNU, { 0, 8, 0.16, 0, FALSE } },
+    { "user", PLAYER_HUMAN, { 0, 8, 0.16, 0, FALSE } }
 };
 
 /* Usage strings */

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.26 2000/10/24 11:06:05 thyssen Exp $
+ * $Id: eval.h,v 1.27 2000/10/26 14:20:07 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -78,9 +78,6 @@ typedef struct _evalcontext {
     int nSearchCandidates;
     float rSearchTolerance;
     int nReduced;
-    int fRelativeAccuracy; /* evaluate all positions according to the most
-			      general positionclass, to decrease relative
-			      error */
   /* cubeful evaluation */
   int fCubeful;
 } evalcontext;

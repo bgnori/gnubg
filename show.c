@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.35 2000/10/24 10:50:26 thyssen Exp $
+ * $Id: show.c,v 1.36 2000/10/26 14:20:08 gtw Exp $
  */
 
 #include "config.h"
@@ -52,14 +52,11 @@ static void ShowEvaluation( evalcontext *pec ) {
              "    %d move search candidate%s.\n"
              "    %0.3g cubeless search tolerance.\n"
              "    %.0f%% speed.\n"
-             "    %s evaluations.\n"
-             "    %s.\n\n",
+             "    %s evaluations.\n\n",
              pec->nPlies, pec->nSearchCandidates, pec->nSearchCandidates == 1 ?
              "" : "s", pec->rSearchTolerance,
              (pec->nReduced) ? 100. * pec->nReduced / 21.0 : 100.,
-             pec->fCubeful ? "Cubeful" : "Cubeless",
-             pec->fRelativeAccuracy ? "Consistent evaluations" :
-             "Variable evaluations" );
+             pec->fCubeful ? "Cubeful" : "Cubeless" );
 }
 
 static void ShowPaged( char **ppch ) {
