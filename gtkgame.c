@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.109 2002/03/10 03:41:17 gtw Exp $
+ * $Id: gtkgame.c,v 1.110 2002/03/11 15:57:32 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6171,7 +6171,7 @@ static GtkWidget* CreateSetCubeDialog ()
   for( nCubeTurns = 0; ms.nCube >> ( nCubeTurns + 1 ); nCubeTurns++ )
        ;
 
-  SetCubeWindow = gtk_window_new (GTK_WINDOW_DIALOG);
+  SetCubeWindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_object_set_data (GTK_OBJECT (SetCubeWindow), "SetCubeWindow",
                          SetCubeWindow);
   gtk_window_set_title (GTK_WINDOW (SetCubeWindow), "Set cube");
