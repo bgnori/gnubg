@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.171 2002/10/24 17:43:08 thyssen Exp $
+ * $Id: backgammon.h,v 1.172 2002/10/26 10:54:06 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -481,7 +481,7 @@ getDefaultPath ( const pathformat f );
 extern char *GetLuckAnalysis( matchstate *pms, float rLuck );
 
 extern moverecord *
-getCurrentMoveRecord ( void );
+getCurrentMoveRecord ( int *pfHistory );
 
 extern void
 UpdateStoredMoves ( const movelist *pml, const matchstate *pms );
