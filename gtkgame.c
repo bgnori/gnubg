@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.346.2.8 2003/08/05 07:54:12 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.346.2.9 2003/08/12 09:25:13 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7504,7 +7504,6 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
     if ( pms->nMatchTo ) {
       float r = 0.5f + psc->arActualResult[ 0 ] - 
         psc->arLuck[ 0 ][ 1 ] + psc->arLuck[ 1 ][ 1 ];
-      float rRating = relativeFibsRating( r, pms->nMatchTo );
 
       for ( i = 0; i < 2; ++i ) {
         sprintf( sz, "%.2f%%", 
@@ -7514,7 +7513,12 @@ extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
       }
 
       for ( i = 0; i < 2; ++i ) {
-        sprintf( sz, "%.2f", ( 1 - 2 * i ) * rRating / 2.0f );
+        if ( r > 0.0f && r < 1.0f )
+          sprintf( sz, "%.2f", ( 1 - 2 * i ) * 
+                   relativeFibsRating( r, pms->nMatchTo ) / 2.0f );
+        else
+          strcpy( sz, _("n/a") );
+
         gtk_clist_set_text( GTK_CLIST( pwStats ), irow + 1, i + 1, sz);
       }
 

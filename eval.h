@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.109.4.1 2003/08/05 07:54:09 Superfly_Jon Exp $
+ * $Id: eval.h,v 1.109.4.2 2003/08/12 09:25:12 Superfly_Jon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -55,10 +55,14 @@
 			   rollouts do. */
 #define OUTPUT_CUBEFUL_EQUITY 6
 
-#define OUTPUT_OPTIMAL 0 /* Cubeful evalutions */
-#define OUTPUT_NODOUBLE 1
-#define OUTPUT_TAKE 2
-#define OUTPUT_DROP 3
+/* Cubeful evalutions */
+typedef enum {
+  OUTPUT_OPTIMAL = 0,
+  OUTPUT_NODOUBLE ,
+  OUTPUT_TAKE, 
+  OUTPUT_DROP,
+  N_CUBEFUL_OUTPUTS
+} CubefulOutputs;
 
 #define GNUBG_WEIGHTS "gnubg.weights"
 #define GNUBG_WEIGHTS_BINARY "gnubg.wd"
@@ -86,7 +90,7 @@ typedef struct movefilter_s {
   int   Accept;    /* always allow this many moves. 0 means don't use this */
 		   /* level, since at least 1 is needed when used. */
   int   Extra;     /* and add up to this many more... */
-  float Threshold; /* ...if they are within this equity */
+  float Threshold; /* ...if they are within this equity difference */
 } movefilter;
 
 /* we'll have filters for 1..4 ply evaluation */
@@ -300,7 +304,7 @@ typedef struct _movelist {
     int cMaxMoves, cMaxPips;
     int iMoveBest;
     float rBestScore;
-    move *amMoves;
+    move* amMoves;
 } movelist;
 
 /* cube efficiencies */

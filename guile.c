@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.31.4.1 2003/08/05 07:54:13 Superfly_Jon Exp $
+ * $Id: guile.c,v 1.31.4.2 2003/08/12 09:25:13 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -390,7 +390,7 @@ static SCM position_id_to_board( SCM sPosID ) {
     memcpy( sz, SCM_ROCHARS( sPosID ), c );
     sz[ 14 ] = 0;
 
-    if( PositionFromID( anBoard, sz ) )
+    if( !PositionFromID( anBoard, sz ) )
 	return SCM_BOOL_F;
     else
 	return BoardToSCM( anBoard );

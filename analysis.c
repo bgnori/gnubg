@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.108.2.1 2003/08/05 07:54:07 Superfly_Jon Exp $
+ * $Id: analysis.c,v 1.108.2.2 2003/08/12 09:25:11 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1830,11 +1830,20 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz ) {
 
     float r = 0.5f + psc->arActualResult[ 0 ] - 
       psc->arLuck[ 0 ][ 1 ] + psc->arLuck[ 1 ][ 1 ];
-    float rRating = relativeFibsRating( r, ms.nMatchTo );
 
-    sprintf ( strchr ( szOutput, 0 ),
-              "%-31s %7.2f                 %7.2f\n",
-              _("Relative FIBS rating"), rRating / 2.0f , -rRating / 2.0f );
+    if ( r > 0.0f && r < 1.0f ) {
+      float rRating = relativeFibsRating( r, ms.nMatchTo );
+
+      sprintf ( strchr ( szOutput, 0 ),
+                "%-31s %7.2f                 %7.2f\n",
+                _("Relative FIBS rating"), rRating / 2.0f , -rRating / 2.0f );
+
+    }
+    else
+      sprintf ( strchr ( szOutput, 0 ),
+                "%-31s %-7s                 %-7s\n",
+                _("Relative FIBS rating"), _("n/a"), _("n/a") );
+
 
   }
 
@@ -1931,7 +1940,7 @@ extern void CommandAnalyseMove ( char *sz ) {
 
 
 static void
-updateStatisticsMove ( moverecord *pmr, matchstate *pms, list *plGame,
+updateStatisticsMove ( moverecord *pmr, matchstate *pms, const list* plGame,
                        statcontext *psc ) {
 
   FixMatchState ( pms, pmr );
@@ -1983,7 +1992,7 @@ updateStatisticsMove ( moverecord *pmr, matchstate *pms, list *plGame,
 
 
 extern void
-updateStatisticsGame ( list *plGame ) {
+updateStatisticsGame ( const list* plGame ) {
 
   list *pl;
   moverecord *pmr;

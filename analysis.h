@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.17.4.1 2003/08/05 07:54:08 Superfly_Jon Exp $
+ * $Id: analysis.h,v 1.17.4.2 2003/08/12 09:25:11 Superfly_Jon Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -100,7 +100,7 @@ extern void
 DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz );
 
 extern void
-updateStatisticsGame ( list *plGame );
+updateStatisticsGame ( const list* plGame );
 
 extern void
 updateStatisticsMatch ( list *plMatch );

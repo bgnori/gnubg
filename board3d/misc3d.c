@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.1.2.20 2003/08/11 09:17:27 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.1.2.21 2003/08/12 09:25:14 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -271,10 +271,15 @@ void FindTexture(TextureInfo** textureInfo, char* file)
 void LoadTextureInfo()
 {
 	FILE* fp;
+	char *szFile;
 
 	ListInit(&textures, sizeof(TextureInfo));
-	
-	fp = fopen(TEXTURE_FILE, "r");
+
+	/* Open texture file in home directory */
+	szFile = (char*)malloc(strlen(szHomeDirectory) + strlen(TEXTURE_FILE) + 1);
+	sprintf(szFile, "%s/"TEXTURE_FILE, szHomeDirectory); 
+	fp = fopen(szFile, "r");
+	free(szFile);
 	if (!fp)
 	{
 		g_print("Error: Texture file (%s) not found\n", TEXTURE_FILE);
