@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.22 2002/08/08 17:38:56 gtw Exp $
+ * $Id: postscript.c,v 1.23 2002/08/13 18:59:50 gtw Exp $
  */
 
 #include "config.h"
@@ -526,12 +526,12 @@ static void PrintPostScriptBoard( FILE *pf, matchstate *pms, int fPlayer ) {
 		 pms->nCube == 1 || pms->nCube > 8 ? -10 : -5,
 		 pms->nCube == 1 ? 64 : pms->nCube );
     } else
-	fprintf( pf, "gsave\n"
-		 "%d %d translate %.2f %.2f scale\n"
-		 "0 0 moveto %s board\n"
-		 "%d %d %d cube\n", 225 - 200 * nMag / 100, y,
-		 nMag / 100.0, nMag / 100.0, fPlayer ? "true" : "false",
-		 pms->nCube == 1 ? 64 : pms->nCube, yCube, theta );
+	lifprintf( pf, "gsave\n"
+		   "%d %d translate %.2f %.2f scale\n"
+		   "0 0 moveto %s board\n"
+		   "%d %d %d cube\n", 225 - 200 * nMag / 100, y,
+		   nMag / 100.0, nMag / 100.0, fPlayer ? "true" : "false",
+		   pms->nCube == 1 ? 64 : pms->nCube, yCube, theta );
 
     for( i = 0; i < 25; i++ ) {
 	anOff[ 0 ] -= pms->anBoard[ 0 ][ i ];
