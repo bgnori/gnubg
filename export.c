@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.26 2004/01/30 09:33:48 uid68519 Exp $
+ * $Id: export.c,v 1.27 2004/03/31 09:51:50 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -163,8 +163,14 @@ void GenerateImage3d(renderdata *prd, const char* szName,
 	unsigned char *puch;
 	BoardData* bd = BOARD(pwBoard)->board_data;
 	BoardData bdpw;
+	renderdata rd;
 	GdkPixmap *ppm = gdk_pixmap_new(bd->drawing_area->window, nSizeX * nSize, nSizeY * nSize, -1 );
 	void *glpixPreview;
+
+	/* Copy current settings */
+	CopyAppearance(&rd);
+	CopySettings3d(bd, &bdpw);
+	bdpw.rd = &rd;
 
 	if (!(puch = (unsigned char *) malloc (nSizeX * nSizeY * nSize * nSize * 3)))
 	{
@@ -174,9 +180,6 @@ void GenerateImage3d(renderdata *prd, const char* szName,
 	/* Create preview area */
 	glpixPreview = CreatePreviewBoard3d(&bdpw, ppm);
 
-	/* Copy current settings */
-	CopySettings3d(bd, &bdpw);
-	
 	/* Draw board */
 	RenderBoard3d(&bdpw, prd, glpixPreview, puch);
 
@@ -303,14 +306,14 @@ GenerateImage (renderimages * pri, renderdata * prd,
   return 0;
 }
 
-
-
 extern void
 CommandExportPositionPNG (char *sz)
 {
 
   renderimages ri;
   renderdata rd;
+
+  CopyAppearance(&rd);
 
   sz = NextToken (&sz);
 
@@ -333,16 +336,14 @@ CommandExportPositionPNG (char *sz)
   /* generate PNG image */
 
 #if USE_BOARD3D
-	if (rdAppearance.fDisplayType == DT_3D)
+	if (rd.fDisplayType == DT_3D)
 	{
-		GenerateImage3d( &rdAppearance, sz, exsExport.nPNGSize,
+		GenerateImage3d( &rd, sz, exsExport.nPNGSize,
 				 BOARD_WIDTH, BOARD_HEIGHT );
 	}
 	else
 #endif
 {
-  memcpy (&rd, &rdAppearance, sizeof rd);
-
   rd.nSize = exsExport.nPNGSize;
 
   assert (rd.nSize >= 1);

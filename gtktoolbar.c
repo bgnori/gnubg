@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.12 2004/02/25 17:03:38 uid68519 Exp $
+ * $Id: gtktoolbar.c,v 1.13 2004/03/31 09:51:54 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -184,12 +184,14 @@ ToolbarStop( GtkWidget *pw, gpointer unused ) {
 
 	fInterrupt = TRUE;
 #if USE_BOARD3D
-	if (rdAppearance.fDisplayType == DT_3D)
+{
+	BoardData *bd = BOARD( pwBoard )->board_data;
+	if (bd->rd->fDisplayType == DT_3D)
 	{
-		BoardData *bd = BOARD( pwBoard )->board_data;
 		StopIdle3d(bd);
 		RestrictiveRedraw();
 	}
+}
 #endif
 }
 

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.7 2004/02/24 10:16:49 uid68519 Exp $
+* $Id: graph.c,v 1.8 2004/03/31 09:51:57 Superfly_Jon Exp $
 */
 
 #include <config.h>
@@ -162,21 +162,22 @@ void DrawBar(float col[4], float x, float y, float first, float second)
 	glPopMatrix();
 }
 
-void DrawColourBar(int player, float x, float y, float first, float second)
+static void DrawColourBar(int player, float x, float y, float first, float second)
 {
 	float col[4];
 	int i;
+	renderdata *prd = GetMainAppearance();
 	for (i = 0; i < 4; i++)
 	{
-		if (rdAppearance.fDisplayType == DT_2D)
-			col[i] = (float)rdAppearance.aarColour[player][i];
+		if (prd->fDisplayType == DT_2D)
+			col[i] = (float)prd->aarColour[player][i];
 		else
-			col[i] = rdAppearance.rdChequerMat[player].ambientColour[i];
+			col[i] = prd->ChequerMat[player].ambientColour[i];
 	}
 	DrawBar(col, x, y, first, second);
 }
 
-void DrawBars(int num, float **values, int total)
+static void DrawBars(int num, float **values, int total)
 {
 	float x = NUM_WIDTH + RES_WIDTH * num;
 	if (total)

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: shadow.c,v 1.4 2004/03/23 10:20:42 Superfly_Jon Exp $
+* $Id: shadow.c,v 1.5 2004/03/31 09:51:57 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -131,7 +131,7 @@ void shadowDisplay(void (*drawScene)(BoardData*), BoardData* bd)
 {
 	/* Pass 1: Draw model, ambient light only (some diffuse to vary shadow darkness) */
 	float zero[4] = {0,0,0,0};
-	float d1[4] = {bd->dim, bd->dim, bd->dim, bd->dim};
+	float d1[4] = {bd->rd->dimness, bd->rd->dimness, bd->rd->dimness, bd->rd->dimness};
 	float specular[4];
 	float diffuse[4];
 

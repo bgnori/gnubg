@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.h,v 1.9 2003/08/25 09:30:19 Superfly_Jon Exp $
+ * $Id: gtkprefs.h,v 1.10 2004/03/31 09:51:54 Superfly_Jon Exp $
  */
 
 #ifndef _GTKPREFS_H_
@@ -27,6 +27,6 @@
 extern void BoardPreferences( GtkWidget *pwBoard );
 extern void BoardPreferencesStart( GtkWidget *pwBoard );
 extern void BoardPreferencesDone( GtkWidget *pwBoard );
-extern void Default3dSettings();
+extern void Default3dSettings(BoardData* bd);
 
 #endif

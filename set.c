@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.221 2004/03/19 12:24:52 Superfly_Jon Exp $
+ * $Id: set.c,v 1.222 2004/03/31 09:51:56 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -744,7 +744,7 @@ extern void CommandSetAppearance( char *sz ) {
 #endif /* USE_GTK */
     
 	while( ParseKeyValue( &sz, apch ) )
-		RenderPreferencesParam( &rdAppearance, apch[ 0 ], apch[ 1 ] );
+		RenderPreferencesParam( GetMainAppearance(), apch[ 0 ], apch[ 1 ] );
 
 #if USE_GTK
 	if( fX )
@@ -1142,11 +1142,11 @@ extern void CommandSetGUIBeep( char *sz ) {
 
 extern void CommandSetGUIDiceArea( char *sz ) {
 
-    if( SetToggle( "gui dicearea", &fGUIDiceArea, sz,
+    if( SetToggle( "gui dicearea", &GetMainAppearance()->fDiceArea, sz,
 		   _("A dice icon will be shown below the board when a human "
 		     "player is on roll."),
 		   _("No dice icon will be shown.") ) >= 0 )
-	UpdateSetting( &fGUIDiceArea );
+	UpdateSetting( &GetMainAppearance()->fDiceArea );
 }
 
 extern void CommandSetGUIHighDieFirst( char *sz ) {
@@ -1165,11 +1165,11 @@ extern void CommandSetGUIIllegal( char *sz ) {
 
 extern void CommandSetGUIShowIDs( char *sz ) {
 
-    if( SetToggle( "gui showids", &fGUIShowIDs, sz,
+    if( SetToggle( "gui showids", &GetMainAppearance()->fShowIDs, sz,
 		   _("The position and match IDs will be shown above the "
 		     "board."),
 		   _("The position and match IDs will not be shown.") ) )
-	UpdateSetting( &fGUIShowIDs );
+	UpdateSetting( &GetMainAppearance()->fShowIDs );
 }
 
 extern void CommandSetGUIDragTargetHelp( char *sz ) {

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.24 2004/03/23 10:15:49 Superfly_Jon Exp $
+ * $Id: htmlimages.c,v 1.25 2004/03/31 09:51:54 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -624,7 +624,7 @@ static void RenderObjects()
 {
 	int clockwise;
 	renderdata rd;
-	memcpy( &rd, &rdAppearance, sizeof( renderdata ) );
+	CopyAppearance(&rd);
 
 	rd.fLabels = TRUE; 
 	rd.nSize = s;

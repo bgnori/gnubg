@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.16 2004/02/02 09:50:59 uid68519 Exp $
+ * $Id: gtktempmap.c,v 1.17 2004/03/31 09:51:54 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -398,7 +398,7 @@ ExposeDie( GtkWidget *pw, GdkEventExpose *pev,
 
     /* render die */
 
-    memcpy( &rd, &rdAppearance, sizeof rd );
+    CopyAppearance(&rd);
     rd.nSize = ptmw->nSizeDie = nSizeDie;
 
     
