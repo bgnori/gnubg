@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.14 2003/03/28 17:29:35 thyssen Exp $
+ * $Id: dice.h,v 1.15 2004/04/22 19:13:20 thyssen Exp $
  */
 
 #ifndef _DICE_H_
@@ -33,29 +33,36 @@ extern char *aszRNG[ NUM_RNGS ];
 extern char szDiceFilename[];
 
 extern rng rngCurrent;
+extern void *rngctxCurrent;
 
-extern int InitRNG( int *pnSeed, int fSet, const rng rngx );
-extern void PrintRNGSeed( const rng rngx );
-extern void InitRNGSeed( int n, const rng rngx );
+
+extern void *InitRNG( int *pnSeed, int *pfInitFrom,
+                      const int fSet, const rng rngx );
+extern void
+CloseRNG( const rng rngx, void *rngctx );
+extern void DestroyRNG( const rng rngx, void **rngctx );
+extern void PrintRNGSeed( const rng rngx, void *rngctx );
+extern void PrintRNGCounter( const rng rngx, void *rngctx );
+extern void InitRNGSeed( int n, const rng rngx, void *rngctx );
+extern int
+RNGSystemSeed( const rng rngx, void *p, int *pnSeed );
 
 extern int 
-RollDice( int anDice[ 2 ], const rng rngx );
+RollDice( int anDice[ 2 ], const rng rngx, void *rngctx );
 
 #if HAVE_LIBGMP
-extern int InitRNGSeedLong( char *sz, rng rng );
-extern int InitRNGBBSModulus( char *sz );
-extern int InitRNGBBSFactors( char *sz0, char *sz1 );
-#endif
-
-#if HAVE_LIBDL
-extern int UserRNGOpen( char * );
-extern void UserRNGClose( void );
+extern int InitRNGSeedLong( char *sz, rng rng, void *rngctx );
+extern int InitRNGBBSModulus( char *sz, void *rngctx );
+extern int InitRNGBBSFactors( char *sz0, char *sz1, void *rngctx );
 #endif
 
 extern int
-OpenDiceFile( const char *sz );
+OpenDiceFile( void *rngctx, const char *sz );
 
 extern void
-CloseDiceFile( void );
+CloseDiceFile( void *rngctx );
+
+extern char *
+GetDiceFileName( void *rngctx );
 
 #endif

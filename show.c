@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.183 2004/04/21 21:11:13 mormegil Exp $
+ * $Id: show.c,v 1.184 2004/04/22 19:10:43 thyssen Exp $
  */
 
 #include "config.h"
@@ -922,7 +922,8 @@ extern void CommandShowScore( char *sz ) {
 
 extern void CommandShowSeed( char *sz ) {
 
-    PrintRNGSeed( rngCurrent );
+    PrintRNGSeed( rngCurrent, rngctxCurrent );
+    PrintRNGCounter( rngCurrent, rngctxCurrent );
 }
 
 extern void CommandShowTurn( char *sz ) {

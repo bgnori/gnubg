@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.249 2004/04/21 21:11:13 mormegil Exp $
+ * $Id: play.c,v 1.250 2004/04/22 19:12:52 thyssen Exp $
  */
 
 #include "config.h"
@@ -873,7 +873,7 @@ static int NewGame( void ) {
 #endif
 
  reroll:
-    fError = RollDice( ms.anDice, rngCurrent );
+    fError = RollDice( ms.anDice, rngCurrent, rngctxCurrent );
 
     if( fInterrupt || fError ) {
 	PopMoveRecord( plGame->plNext );
@@ -1321,7 +1321,7 @@ extern int ComputerTurn( void ) {
       if ( !ms.anDice[ 0 ] ) {
         if ( ! fCheat || CheatDice ( ms.anDice, 
                                      &ms, afCheatRoll[ ms.fMove ] ) )
-	  if( RollDice ( ms.anDice, rngCurrent ) < 0 )
+	  if( RollDice ( ms.anDice, rngCurrent, rngctxCurrent ) < 0 )
             return -1;
 
 	  DiceRolled();      
@@ -1436,7 +1436,7 @@ extern int ComputerTurn( void ) {
       return 0;
     } else if( !ms.anDice[ 0 ] ) {
       if ( ! fCheat || CheatDice ( ms.anDice, &ms, afCheatRoll[ ms.fMove ] ) )
-        if( RollDice ( ms.anDice, rngCurrent ) < 0 )
+        if( RollDice ( ms.anDice, rngCurrent, rngctxCurrent ) < 0 )
           return -1;
 
 		DiceRolled();      
@@ -1504,7 +1504,7 @@ extern int ComputerTurn( void ) {
       if( !ms.anDice[ 0 ] && !ms.fDoubled && !ms.fResigned &&
 	  ( !ms.fCubeUse || ms.nCube >= MAX_CUBE ||
 	    !GetDPEq( NULL, NULL, &ci ) ) ) {
-	  if( RollDice( ms.anDice, rngCurrent ) < 0 )
+	  if( RollDice( ms.anDice, rngCurrent, rngctxCurrent ) < 0 )
 	      return -1;
 	      
 	  DiceRolled();      
@@ -1588,7 +1588,7 @@ extern int ComputerTurn( void ) {
 	return ms.fTurn == fTurnOrig ? -1 : 0;
       } else if( !ms.anDice[ 0 ] ) {
 	  if( tolower( *szResponse ) == 'r' ) { /* roll */
-	      if( RollDice( ms.anDice, rngCurrent ) < 0 )
+	      if( RollDice( ms.anDice, rngCurrent, rngctxCurrent ) < 0 )
 		  return -1;
 	      
 		  DiceRolled();      
@@ -4186,7 +4186,7 @@ CommandRoll( char *sz ) {
 	  return;
 
   if ( ! fCheat || CheatDice ( ms.anDice, &ms, afCheatRoll[ ms.fMove ] ) )
-    if( RollDice ( ms.anDice, rngCurrent ) < 0 )
+    if( RollDice ( ms.anDice, rngCurrent, rngctxCurrent ) < 0 )
       return;
 
   pmr = malloc( sizeof( pmr->sd ) );

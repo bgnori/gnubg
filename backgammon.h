@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.284 2004/04/19 20:56:01 thyssen Exp $
+ * $Id: backgammon.h,v 1.285 2004/04/22 19:14:34 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -541,6 +541,7 @@ extern evalsetup esAnalysisCube, esAnalysisChequer;
 extern movefilter aamfEval[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
 extern movefilter aamfAnalysis[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
 
+extern void *rngctxRollout;
 extern rolloutcontext rcRollout;
 
 extern int fCubeEqualChequer, fPlayersAreSame, fTruncEqualPlayer0;
