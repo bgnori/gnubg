@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.59 2001/05/17 22:46:21 thyssen Exp $
+ * $Id: gtkgame.c,v 1.60 2001/05/17 22:54:41 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3151,7 +3151,7 @@ static void SetPlayers( gpointer *p, guint n, GtkWidget *pw ) {
 		}
 		
 		sprintf( sz, "set player %d evaluation", i );
-		SetEvalCommands( sz, &apTemp[ i ].ec, &ap[ i ].esChequer.ec );
+		SetEvalCommands( sz, &apTemp[ i ].esChequer.ec, &ap[ i ].esChequer.ec );
 		break;
 		
 	    case PLAYER_PUBEVAL:
