@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.508 2003/11/29 20:23:54 thyssen Exp $
+ * $Id: gnubg.c,v 1.509 2003/11/29 20:25:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -7351,7 +7351,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 #ifdef WIN32
          /* Bad hack */
             fX = TRUE;
-            MessageBox (NULL,Co
+            MessageBox (NULL,
               TEXT (_("Sorry, this build does not support the -tty option")),
               TEXT (_("GNU Backgammon for Windows")), MB_ICONWARNING);
 #else /* WIN32 */
