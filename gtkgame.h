@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.17 2001/03/21 15:19:44 gtw Exp $
+ * $Id: gtkgame.h,v 1.18 2001/04/02 19:25:18 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -43,6 +43,9 @@ extern void GTKClearMoveRecord( void );
 extern void GTKAddGame( char *sz );
 extern void GTKPopGame( int c );
 extern void GTKSetGame( int i );
+
+extern void GTKFreeze( void );
+extern void GTKThaw( void );
 
 extern int InitGTK( int *argc, char ***argv );
 extern void RunGTK( void );
