@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.116 2003/04/12 08:59:42 thyssen Exp $
+ * $Id: gtkboard.c,v 1.117 2003/05/19 18:02:17 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -595,7 +595,7 @@ static void Confirm( BoardData *bd ) {
     else if( bd->valid_move &&
 	     bd->valid_move->cMoves == bd->move_list.cMaxMoves &&
 	     bd->valid_move->cPips == bd->move_list.cMaxPips ) {
-        FormatMove( move, bd->old_board, bd->valid_move->anMove );
+        FormatMovePlain( move, bd->old_board, bd->valid_move->anMove );
     
         UserCommand( move );
     } else
