@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.468 2004/03/16 11:31:02 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.469 2004/03/16 12:03:09 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -8382,6 +8382,7 @@ void DockPanels()
 			if (woPanel[i].dockable && woPanel[i].pwWin)
 			{
 				gtk_widget_destroy(woPanel[i].pwWin);
+				woPanel[i].pwWin = NULL;
 				woPanel[i].docked = FALSE;
 			}
 		}
@@ -10056,6 +10057,11 @@ PythonShell( gpointer *p, guint n, GtkWidget *pw ) {
 
 extern void
 ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw ) {
+
+  /* Only valid if panels docked */
+  if (!fDockPanels)
+	  return;
+
   fDisplayPanels = 1;
   if (woPanel[WINDOW_ANNOTATION].showing)
     ShowAnnotation();
@@ -10082,6 +10088,11 @@ ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw ) {
 
 extern void
 HideAllPanels ( gpointer *p, guint n, GtkWidget *pw ) {
+
+  /* Only valid if panels docked */
+  if (!fDockPanels)
+	  return;
+
   fDisplayPanels = 0;
   if (woPanel[WINDOW_ANNOTATION].showing)
   {
