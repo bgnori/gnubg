@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.230 2002/06/24 16:47:19 thyssen Exp $
+ * $Id: gnubg.c,v 1.231 2002/06/26 08:01:27 thyssen Exp $
  */
 
 #include "config.h"
@@ -3769,9 +3769,9 @@ extern void CommandSaveSettings( char *szParam ) {
               "set export moves parameters evaluation %s\n"
               "set export moves parameters rollout %s\n"
               "set export moves probabilities %s\n",
-              exsExport.afMovesParameters[ 0 ],
-              exsExport.afMovesParameters[ 1 ],
-              exsExport.fMovesDetailProb );
+              exsExport.afMovesParameters[ 0 ] ? "yes" : "no",
+              exsExport.afMovesParameters[ 1 ] ? "yes" : "no",
+              exsExport.fMovesDetailProb  ? "yes" : "no" );
 
     for ( i = 0; i <= SKILL_VERYGOOD; i++ ) {
       if ( i == SKILL_NONE ) 
@@ -3787,9 +3787,9 @@ extern void CommandSaveSettings( char *szParam ) {
               "set export cube parameters evaluation %s\n"
               "set export cube parameters rollout %s\n"
               "set export cube probabilities %s\n",
-              exsExport.afCubeParameters[ 0 ],
-              exsExport.afCubeParameters[ 1 ],
-              exsExport.fCubeDetailProb );
+              exsExport.afCubeParameters[ 0 ] ? "yes" : "no",
+              exsExport.afCubeParameters[ 1 ] ? "yes" : "no",
+              exsExport.fCubeDetailProb ? "yes" : "no" );
 
     for ( i = 0; i <= SKILL_VERYGOOD; i++ ) {
       if ( i == SKILL_NONE )
