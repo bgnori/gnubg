@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.124 2001/04/13 16:25:39 gtw Exp $
+ * $Id: gnubg.c,v 1.125 2001/04/13 20:36:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -488,6 +488,7 @@ command acAnalyse[] = {
     { "score", CommandShowScore, "View the match or session score ",
       NULL, NULL },
     { "seed", CommandShowSeed, "Show the dice generator seed", NULL, NULL },
+    { "statistics", CommandShowStatistics, "Show statistics", NULL, NULL },
     { "thorp", CommandShowThorp, "Calculate Thorp Count for "
       "position", szOPTPOSITION, NULL },
     { "training", CommandShowTraining, "Display the training parameters",
@@ -3457,7 +3458,7 @@ static void real_main( void *closure, int argc, char *argv[] ) {
     rl_readline_name = "gnubg";
     rl_basic_word_break_characters = szCommandSeparators;
     rl_attempted_completion_function = (CPPFunction *) CompleteKeyword;
-    rl_completion_entry_function = NullGenerator;
+    rl_completion_entry_function = (Function *) NullGenerator;
 #endif
 
     if( !fNoRC )
