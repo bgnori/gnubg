@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.9 2001/03/29 16:28:12 gtw Exp $
+ * $Id: gtkboard.h,v 1.10 2001/03/30 21:01:58 gtw Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -66,7 +66,7 @@ typedef struct _BoardData {
 	*rgb_saved, *rgb_temp, *rgb_temp_saved, *rgb_bar;
     short *ai_refract[ 2 ];
     GdkFont *cube_font;
-    gboolean translucent, labels, usedicearea, permit_illegal;
+    gboolean translucent, labels, usedicearea, permit_illegal, playing;
     gdouble aarColour[ 2 ][ 4 ]; /* RGBA for each player */
     guchar aanBoardColour[ 4 ][ 4 ]; /* RGB(A) for background, border, pts */
     int aSpeckle[ 4 ]; /* speckle for background, border, pts */
