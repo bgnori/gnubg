@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.106 2003/06/06 09:26:33 thyssen Exp $
+ * $Id: analysis.c,v 1.107 2003/06/06 09:51:50 thyssen Exp $
  */
 
 #include "config.h"
@@ -377,7 +377,10 @@ updateStatcontext ( statcontext *psc,
      * update chequerplay statistics 
      */
 
-    if ( fAnalyseMove && pmr->n.esChequer.et != EVAL_NONE ) {
+    /* hmm, MOVE_NORMALs which has no legal moves have
+       pmr->n.esChequer.et == EVAL_NONE */
+
+    if ( fAnalyseMove /* && pmr->n.esChequer.et != EVAL_NONE */ ) {
 
       /* find skill */
 
@@ -401,8 +404,8 @@ updateStatcontext ( statcontext *psc,
 	  
       rCost = pms->nMatchTo ? eq2mwc( rChequerSkill, &ci ) -
         eq2mwc( 0.0f, &ci ) : pms->nCube * rChequerSkill;
-	  
-      psc->anTotalMoves[ pmr->n.fPlayer ]++;
+
+      psc->anTotalMoves[ pmr->n.fPlayer ]++;	  
       psc->anMoves[ pmr->n.fPlayer ][ Skill( rChequerSkill ) ]++;
 	  
       if( pmr->n.ml.cMoves > 1 ) {
