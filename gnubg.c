@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.131 2001/04/18 17:59:51 gtw Exp $
+ * $Id: gnubg.c,v 1.132 2001/04/24 12:36:14 thyssen Exp $
  */
 
 #include "config.h"
@@ -749,6 +749,55 @@ extern int ParsePosition( int an[ 2 ][ 25 ], char **ppch, char *pchDesc ) {
 	    strcpy( pchDesc, "Current position" );
 	
 	return 0;
+    }
+
+    if ( ! strcmp ( pch, "simple" ) ) {
+   
+       /* board given as 26 integers.
+        * integer 1   : # of my chequers on the bar
+        * integer 2-25: number of chequers on point 1-24
+        *               positive ints: my chequers 
+        *               negative ints: opp chequers 
+        * integer 26  : # of opp chequers on the bar
+        */
+ 
+       int n;
+
+       for ( i = 0; i < 26; i++ ) {
+
+          if ( ( n = ParseNumber ( ppch ) ) == INT_MIN ) {
+             outputf ("`simple' must be followed by 26 integers; "
+                      "found only %d\n", i );
+             return -1;
+          }
+
+          if ( i == 0 ) {
+             /* my chequers on the bar */
+             an[ fMove ][ 24 ] = abs(n);
+          }
+          else if ( i == 25 ) {
+             /* opp chequers on the bar */
+             an[ ! fMove ][ 24 ] = abs(n);
+          } else {
+
+             an[ fMove ][ i - 1 ] = 0;
+             an[ ! fMove ][ 24 - i ] = 0;
+
+             if ( n < 0 )
+                an[ ! fMove ][ 24 - i ] = -n;
+             else if ( n > 0 )
+                an[ fMove ][ i - 1 ] = n;
+             
+          }
+      
+       }
+
+       if( pchDesc )
+          strcpy( pchDesc, *ppch );
+	
+
+       return CheckPosition ( an );
+
     }
 
     if( *pch == '=' ) {
