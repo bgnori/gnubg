@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.108 2003/06/09 15:21:15 thyssen Exp $
+ * $Id: analysis.c,v 1.109 2003/06/12 19:00:44 thyssen Exp $
  */
 
 #include "config.h"
@@ -101,7 +101,7 @@ LuckFirst ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
               2 * 25 * sizeof( int ) );
       
       /* Find the best move for each roll at ply 0 only. */
-      if( FindnSaveBestMoves( &ml, i + 1, j + 1, anBoardTemp, NULL,
+      if( FindnSaveBestMoves( &ml, i + 1, j + 1, anBoardTemp, NULL, 0.0f,
                               (cubeinfo *) pci, (evalcontext *) pec, 
                               defaultFilters ) < 0 )
         return ERR_VAL;
@@ -142,7 +142,7 @@ LuckFirst ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
       SwapSides ( anBoardTemp );
       
       /* Find the best move for each roll at ply 0 only. */
-      if( FindnSaveBestMoves( &ml, i + 1, j + 1, anBoardTemp, NULL,
+      if( FindnSaveBestMoves( &ml, i + 1, j + 1, anBoardTemp, NULL, 0.0f,
                               (cubeinfo *) pci, (evalcontext *) pec, 
                               defaultFilters ) < 0 )
         return ERR_VAL;
@@ -196,7 +196,7 @@ LuckNormal ( int anBoard[ 2 ][ 25 ], const int n0, const int n1,
               2 * 25 * sizeof( int ) );
       
       /* Find the best move for each roll at ply 0 only. */
-      if( FindnSaveBestMoves( &ml, i + 1, j + 1, anBoardTemp, NULL,
+      if( FindnSaveBestMoves( &ml, i + 1, j + 1, anBoardTemp, NULL, 0.0f,
                               (cubeinfo *) pci, (evalcontext *) pec, 
                               defaultFilters ) < 0 )
         return ERR_VAL;
@@ -641,8 +641,9 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
 	  
               if( FindnSaveBestMoves ( &(pmr->n.ml), pmr->n.anRoll[ 0 ],
                                        pmr->n.anRoll[ 1 ],
-                                       pms->anBoard, auch, &ci,
-                                       &pesChequer->ec, aamf ) < 0 )
+                                       pms->anBoard, auch, 
+                                       arSkillLevel[ SKILL_DOUBTFUL ],
+                                       &ci, &pesChequer->ec, aamf ) < 0 )
 		return -1;
 
             }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.110 2003/06/10 19:25:08 joseph Exp $
+ * $Id: eval.h,v 1.111 2003/06/12 19:00:45 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -346,7 +346,7 @@ int FindBestMove( int anMove[ 8 ], int nDice0, int nDice1,
 extern int 
 FindnSaveBestMoves( movelist *pml,
                     int nDice0, int nDice1, int anBoard[ 2 ][ 25 ],
-                    unsigned char *auchMove,
+                    unsigned char *auchMove, const float rThr,
                     cubeinfo *pci, evalcontext *pec,
                     movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] );
 
