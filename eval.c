@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.8.2.11 2000/02/15 01:53:43 thyssen Exp $
+ * $Id: eval.c,v 1.8.2.12 2000/02/21 04:10:06 thyssen Exp $
  */
 
 #include "config.h"
@@ -2479,7 +2479,7 @@ EvaluatePositionCubeful( int anBoard[ 2 ][ 25 ],
       if ( fCube ) 
 	prOutput[ 3 ] = prOutput[ 0 ];
       else 
-	prOutput[ 0 ] = 0.0;
+	prOutput[ 3 ] = 0.0;
 
     } 
     else {
