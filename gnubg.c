@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.182 2002/02/03 10:33:43 thyssen Exp $
+ * $Id: gnubg.c,v 1.183 2002/02/03 14:57:31 thyssen Exp $
  */
 
 #include "config.h"
@@ -82,6 +82,7 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "matchequity.h"
 #include "analysis.h"
 #include "import.h"
+#include "export.h"
 
 #if USE_GUILE
 #include <libguile.h>
@@ -232,6 +233,23 @@ evalsetup esEvalCube = EVALSETUP;
 evalsetup esAnalysisChequer = EVALSETUP;
 evalsetup esAnalysisCube = EVALSETUP;
 
+exportsetup exsExport = {
+  TRUE, /* include annotations */
+  TRUE, /* include analysis */
+  TRUE, /* include statistics */
+  TRUE, /* include legend */
+  1, /* display board for all moves */
+  EXPORT_SIDE_PLAYER0 | EXPORT_SIDE_PLAYER1, 
+  5, /* display max 5 moves */
+  TRUE, /* show detailed probabilities */
+  EXPORT_MOVES_NONE, /* do not show move parameters */
+  EXPORT_MOVES_ERROR | EXPORT_MOVES_BLUNDER | EXPORT_MOVES_ALL,
+  TRUE, /* show detailed prob. */
+  EXPORT_CUBE_NONE, /* do not show move parameters */
+  EXPORT_CUBE_ACTUAL | EXPORT_CUBE_MISSED | EXPORT_CUBE_CLOSE 
+};
+
+  
 #define DEFAULT_NET_SIZE 128
 
 storedmoves sm; /* sm.ml.amMoves is NULL, sm.anDice is [0,0] */
@@ -337,6 +355,9 @@ command cER = {
 }, acExportGame[] = {
     { "gam", CommandExportGameGam, "Records a log of the game in .gam "
       "format", szFILENAME, &cFilename },
+    { "html", CommandExportGameHtml,
+      "Records a log of the game in .html format", szFILENAME,
+      &cFilename },
     { "latex", CommandExportGameLaTeX, "Records a log of the game in LaTeX "
       "format", szFILENAME, &cFilename },
     { "pdf", CommandExportGamePDF, "Records a log of the game in the "
@@ -348,6 +369,9 @@ command cER = {
 }, acExportMatch[] = {
     { "mat", CommandExportMatchMat, "Records a log of the match in .mat "
       "format", szFILENAME, &cFilename },
+    { "html", CommandExportMatchHtml,
+      "Records a log of the match in .html format", szFILENAME,
+      &cFilename },
     { "latex", CommandExportMatchLaTeX, "Records a log of the match in LaTeX "
       "format", szFILENAME, &cFilename },
     { "pdf", CommandExportMatchPDF, "Records a log of the match in the "
@@ -359,6 +383,8 @@ command cER = {
 }, acExportPosition[] = {
     { "eps", CommandExportPositionEPS, "Save the current position in "
       "Encapsulated PostScript format", szFILENAME, &cFilename },
+    { "html", CommandExportPositionHtml,
+      "Save the current position in .html format", szFILENAME, &cFilename },
     { "pos", CommandNotImplemented, "Save the current position in .pos "
       "format", szFILENAME, &cFilename },
     { NULL, NULL, NULL, NULL, NULL }
