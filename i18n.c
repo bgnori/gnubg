@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: i18n.c,v 1.2 2002/06/01 19:13:31 thyssen Exp $
+ * $Id: i18n.c,v 1.3 2002/06/01 22:27:21 thyssen Exp $
  */
 
 #include <stdio.h>
@@ -71,6 +71,7 @@ void PopLocale ( void ) {
 
 }
 
+#if 0
 
 extern int 
 liscanf ( const char *format, ... ) {
@@ -126,6 +127,8 @@ lisscanf( const char *str, const char *format, ...) {
     return rc;
 
 }
+
+#endif
 
 
 extern int 
