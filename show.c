@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.94 2002/06/06 20:46:48 gtw Exp $
+ * $Id: show.c,v 1.95 2002/06/15 17:19:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -1401,6 +1401,7 @@ CommandShowPath ( char *sz ) {
     N_("Export of PostScript files"),
     N_("Load and save of SGF files"),
     N_("Import of GamesGrid SGG files"),
+    N_("Export of text files"),
     N_("Loading of match equity files (.xml)")
   };
 
@@ -1416,7 +1417,7 @@ CommandShowPath ( char *sz ) {
   outputl ( _("Default and current paths "
             "for load, save, import, and export: \n") );
 
-  for ( i = 0; i <= PATH_SGG; ++i ) {
+  for ( i = 0; i <= PATH_MET; ++i ) {
 
     outputf ( "%s:\n", gettext ( aszPathNames[ i ] ) );
     if ( ! strcmp ( aaszPaths[ i ][ 0 ], "" ) )
