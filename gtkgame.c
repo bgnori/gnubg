@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.529 2005/02/02 19:49:08 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.530 2005/02/07 17:46:25 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2787,7 +2787,7 @@ extern char* GTKGetInput(char* title, char* prompt)
 	GtkWidget *pwDialog, *pwHbox, *pwEntry;
 	pwEntry = gtk_entry_new();
 	inputString = NULL;
-	pwDialog = GTKCreateDialog(title, DT_QUESTION, GetInputOk, pwEntry );
+	pwDialog = GTKCreateDialog(title, DT_QUESTION, GTK_SIGNAL_FUNC(GetInputOk), pwEntry );
 
 	gtk_container_add(GTK_CONTAINER(DialogArea(pwDialog, DA_MAIN)), 
 		pwHbox = gtk_hbox_new(FALSE, 0));
