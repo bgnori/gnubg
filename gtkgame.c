@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.501 2004/07/03 13:23:12 thyssen Exp $
+ * $Id: gtkgame.c,v 1.502 2004/07/04 12:27:27 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1326,8 +1326,6 @@ TimeAnalysis( const moverecord *pmr, const matchstate *pms ) {
   cubeinfo ci;
   GtkWidget *pwTable = gtk_table_new ( 4, 2, FALSE );
   GtkWidget *pwLabel;
-
-  float rAfter, rBefore;
 
   char *sz;
 
