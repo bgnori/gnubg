@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.164 2003/01/09 20:47:37 thyssen Exp $
+ * $Id: set.c,v 1.165 2003/01/15 20:00:24 gtw Exp $
  */
 
 #include "config.h"
@@ -817,8 +817,10 @@ extern void CommandSetDelay( char *sz ) {
 	}
 
 	if( n ) {
-	    outputf( _("All moves will be shown for at least %d millisecond%s.\n"),
-		    n, n > 1 ? "s" : "" );
+	    outputf(( n == 1
+		      ? _("All moves will be shown for at least %d millisecond.\n")
+		      : _("All moves will be shown for at least %d milliseconds.\n")),
+		    n );
 	    if( !fDisplay )
 		outputl( _("(You will also need to use `set display' to turn "
 		      "board updates on -- see `help set display'.)") );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.131 2003/01/13 17:18:40 thyssen Exp $
+ * $Id: show.c,v 1.132 2003/01/15 20:00:24 gtw Exp $
  */
 
 #include "config.h"
@@ -841,8 +841,10 @@ extern void CommandShowRollout( char *sz ) {
 
 extern void CommandShowScore( char *sz ) {
 
-    outputf( _("The score (after %d game%s) is: %s %d, %s %d"),
-	    ms.cGames, ms.cGames == 1 ? "" : "s",
+    outputf((ms.cGames == 1
+	     ? _("The score (after %d game) is: %s %d, %s %d")
+	     : _("The score (after %d games) is: %s %d, %s %d")),
+	    ms.cGames,
 	    ap[ 0 ].szName, ms.anScore[ 0 ],
 	    ap[ 1 ].szName, ms.anScore[ 1 ] );
 
