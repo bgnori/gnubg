@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.230 2003/10/11 21:23:48 thyssen Exp $
+ * $Id: play.c,v 1.231 2003/10/11 21:59:03 thyssen Exp $
  */
 
 #include "config.h"
@@ -745,7 +745,7 @@ static gint DelayTimeout( gpointer p ) {
 static void ResetDelayTimer( void ) {
 
     if( fX && nDelay && fDisplay ) {
-      if( nTimeout ) {
+      if( nTimeout )
         gtk_timeout_remove( nTimeout );
 
 	nTimeout = gtk_timeout_add( nDelay, DelayTimeout, NULL );
