@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.34 2002/12/13 19:38:34 gtw Exp $
+ * $Id: gtkboard.h,v 1.35 2002/12/20 19:51:56 gtw Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -48,6 +48,7 @@ typedef struct _BoardClass {
 
 extern GtkType board_get_type( void );    
 extern GtkWidget *board_new( void );
+extern GtkWidget *board_cube_widget( Board *board );
 extern GtkWidget *board_dice_widget( Board *board );
 extern gint game_set( Board *board, gint points[ 2 ][ 25 ], int roll,
 		      gchar *name, gchar *opp_name, gint match,

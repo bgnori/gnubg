@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.8 2002/12/20 17:10:41 gtw Exp $
+ * $Id: render.c,v 1.9 2002/12/20 19:51:57 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1725,7 +1725,7 @@ extern void RenderCubeFaces( renderdata *prd, unsigned char *puch,
 	    FT_Get_Glyph( ftf->glyph, aftg + i );
 	}
 	
-	FT_Set_Pixel_Sizes( ftf, 0, 22 * prd->nSize / 8 );
+	FT_Set_Pixel_Sizes( ftf, 0, 21 * prd->nSize / 8 );
 	
 	for( i = 0; i < 10; i++ ) {
 	    FT_Load_Char( ftf, '0' + i, FT_LOAD_RENDER );
