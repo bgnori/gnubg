@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.48 2002/06/28 21:32:16 thyssen Exp $
+ * $Id: sgf.c,v 1.49 2002/07/04 20:48:49 thyssen Exp $
  */
 
 #include "config.h"
@@ -1290,9 +1290,11 @@ static void SaveGame( FILE *pf, list *plGame ) {
     fputs( "(;FF[4]GM[6]AP[GNU Backgammon:" VERSION "]", pf );
 
     /* Match length, if appropriate */
-    if( pmr->g.nMatch )
-	fprintf( pf, "MI[length:%d][game:%d][ws:%d][bs:%d]", pmr->g.nMatch,
-		 pmr->g.i, pmr->g.anScore[ 0 ], pmr->g.anScore[ 1 ] );
+    /* FIXME: isn't it always appropriate to write this? */
+    /* If not, money games will be loaded without score and game number */
+    /* if( pmr->g.nMatch ) */
+    fprintf( pf, "MI[length:%d][game:%d][ws:%d][bs:%d]", pmr->g.nMatch,
+             pmr->g.i, pmr->g.anScore[ 0 ], pmr->g.anScore[ 1 ] );
     
     /* Names */
     fputs( "PW[", pf );
