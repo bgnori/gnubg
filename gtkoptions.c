@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.11 2003/11/05 00:35:10 jsegrave Exp $
+ * $Id: gtkoptions.c,v 1.12 2003/11/17 20:04:27 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -167,6 +167,7 @@ static void ToggleAnimation( GtkWidget *pw, GtkWidget *pwSpeed ) {
 
 static char *aaszLang[][ 2 ] = {
     { N_("System default"), "system" },
+    { N_("Czech"),	    "cs_CZ" },
     { N_("Danish"),	    "da_DA" },
     { N_("English (UK)"),   "en_UK" },
     { N_("English (US)"),   "en_US" },
