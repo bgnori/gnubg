@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.346.2.1 2003/06/10 19:05:51 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.346.2.2 2003/06/11 11:44:00 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2513,7 +2513,7 @@ extern int InitGTK( int *argc, char ***argv ) {
     if( !gtk_init_check( argc, argv ) )
 	return FALSE;
 
-#if BOARD3D
+#if USE_BOARD3D
 	/* Initialize gtkglext */
 	InitGTK3d(argc, argv);
 #endif
@@ -2714,7 +2714,7 @@ extern void RunGTK( GtkWidget *pwSplash ) {
     
     gtk_widget_show_all( pwMain );
 
-#if BOARD3D
+#if USE_BOARD3D
 	DisplayCorrectBoardType();
 #endif
     
@@ -7443,7 +7443,7 @@ extern void GTKSet( void *p ) {
 	    else if( ! GTK_WIDGET_VISIBLE( bd->dice_area ) && fGUIDiceArea )
 		gtk_widget_show_all( bd->dice_area );
 
-#if BOARD3D
+#if USE_BOARD3D
 	/* If in 3d mode may need to update sizes */
     if (rdAppearance.fDisplayType == DT_3D)
 		SetupViewingVolume3d();
