@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.20 2002/04/28 19:59:37 thyssen Exp $
+ * $Id: html.c,v 1.21 2002/04/29 16:37:19 thyssen Exp $
  */
 
 #include "config.h"
@@ -833,9 +833,9 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   fputs ( "<tr>", pf );
   fputs ( "<td>", pf );
 
-  sprintf ( sz, "b-bar-x%d", anBoard[ 0 ][ 24 ] );
-  if ( anBoard[ 0 ][ 24 ] )
-    sprintf ( szAlt, "|%1X&nbsp;|", anBoard[ 0 ][ 24 ] );
+  sprintf ( sz, "b-bar-o%d", anBoard[ 1 ][ 24 ] );
+  if ( anBoard[ 1 ][ 24 ] )
+    sprintf ( szAlt, "|%1X&nbsp;|", anBoard[ 1 ][ 24 ] );
   else
     strcpy ( szAlt, "|&nbsp;&nbsp;&nbsp;|" );
   printImage ( pf, szImageDir, sz, szExtension, szAlt );
@@ -971,9 +971,9 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
 
   fputs ( "<td>", pf );
 
-  sprintf ( sz, "b-bar-o%d", anBoard[ 1 ][ 24 ] );
-  if ( anBoard[ 1 ][ 24 ] )
-    sprintf ( szAlt, "|%1X&nbsp;|", anBoard[ 1 ][ 24 ] );
+  sprintf ( sz, "b-bar-x%d", anBoard[ 0 ][ 24 ] );
+  if ( anBoard[ 0 ][ 24 ] )
+    sprintf ( szAlt, "|%1X&nbsp;|", anBoard[ 0 ][ 24 ] );
   else
     strcpy ( szAlt, "|&nbsp;&nbsp;&nbsp;|" );
   printImage ( pf, szImageDir, sz, szExtension, szAlt );
@@ -1267,7 +1267,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.20 $";
+  const char szVersion[] = "$Revision: 1.21 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
