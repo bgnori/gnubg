@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.74 2003/08/29 09:35:27 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.75 2003/08/29 21:38:31 kaoru Exp $
  */
 
 #include "config.h"
@@ -1848,7 +1848,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.74 2003/08/29 09:35:27 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.75 2003/08/29 21:38:31 kaoru Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -1889,21 +1889,6 @@ DesignAddChanged ( GtkWidget *pw, GtkWidget *pwDialog ) {
                              szAuthor && szTitle &&
                              *szAuthor && *szTitle );
 
-}
-
-static void
-BoardPrefsDestroy ( GtkWidget *pw, void * arg) {
-
-#if HAVE_LIBXML2
-	free_board_designs ( plBoardDesigns );
-#endif /* HAVE_LIBXML2 */
-
-#if USE_BOARD3D
-	if (previewType == DT_3D)
-		Tidy3dObjects(&bd3d, FALSE);
-#endif
-
-	gtk_main_quit();
 }
 
 static void
@@ -2351,6 +2336,21 @@ DesignPage ( GList **pplBoardDesigns, BoardData *bd ) {
 }
 
 #endif /* HAVE_LIBXML2 */
+
+static void
+BoardPrefsDestroy ( GtkWidget *pw, void * arg) {
+
+#if HAVE_LIBXML2
+	free_board_designs ( plBoardDesigns );
+#endif /* HAVE_LIBXML2 */
+
+#if USE_BOARD3D
+	if (previewType == DT_3D)
+		Tidy3dObjects(&bd3d, FALSE);
+#endif
+
+	gtk_main_quit();
+}
 
 extern void BoardPreferencesDone( GtkWidget *pwBoard )
 {
