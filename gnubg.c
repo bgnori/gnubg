@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.68 2000/10/24 10:55:43 thyssen Exp $
+ * $Id: gnubg.c,v 1.69 2000/10/24 14:21:42 gtw Exp $
  */
 
 #include "config.h"
@@ -1163,7 +1163,7 @@ extern void CommandHint( char *sz ) {
     movelist ml;
     int i;
     char szMove[ 32 ], szTemp[ 1024 ];
-    float aar[ 32 ][ NUM_OUTPUTS ], arDouble[ 4 ];
+    float arDouble[ 4 ];
     cubeinfo ci;
     
     if( fTurn < 0 ) {
@@ -1266,12 +1266,15 @@ extern void CommandHint( char *sz ) {
 
       SetCubeInfo ( &ci, nCube, fCubeOwner, fMove );
 
-      FindnSaveBestMoves( &ml, anDice[ 0 ], anDice[ 1 ], anBoard,
-                          NULL, &ci, &ecEval );
+      if( FindnSaveBestMoves( &ml, anDice[ 0 ], anDice[ 1 ], anBoard,
+			      NULL, &ci, &ecEval ) < 0 || fInterrupt )
+	  return;
 
-      if( fInterrupt )
-        return;
-    
+      if( !ml.cMoves ) {
+	  outputl( "There are no legal moves." );
+	  return;
+      }
+      
 #if USE_GTK
       if( fX ) {
         GTKHint( &ml );

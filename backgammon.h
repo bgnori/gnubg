@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.47 2000/10/24 10:47:53 thyssen Exp $
+ * $Id: backgammon.h,v 1.48 2000/10/24 14:21:42 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -179,7 +179,9 @@ extern char *NextToken( char **ppch );
 extern void NextTurn( void );
 extern void TurnDone( void );
 extern void AddMoveRecord( void *pmr );
+extern void SetMoveRecord( void *pmr );
 extern void ClearMoveRecord( void );
+extern void CalculateBoard( void );
 extern void CancelCubeAction( void );
 extern void FreeMatch( void );
 extern int ParseNumber( char **ppch );

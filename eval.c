@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.58 2000/10/24 13:47:57 thyssen Exp $
+ * $Id: eval.c,v 1.59 2000/10/24 14:21:42 gtw Exp $
  */
 
 #include "config.h"
@@ -3259,13 +3259,6 @@ FindnSaveBestMoves( movelist *pml,
   int i, j, nMoves, iPly;
   positionclass pc;
   move *pm;
-#if __GNUC__
-  move amCandidates[ pec->nSearchCandidates ];
-#elif HAVE_ALLOCA
-  move* amCandidates = alloca( pec->nSearchCandidates * sizeof( move ) );
-#else
-  move amCandidates[ MAX_SEARCH_CANDIDATES ];
-#endif
     
   /* Find all moves -- note that pml contains internal pointers to static
      data, so we can't call GenerateMoves again (or anything that calls
@@ -3274,6 +3267,12 @@ FindnSaveBestMoves( movelist *pml,
   
   GenerateMoves( pml, anBoard, nDice0, nDice1, FALSE );
 
+  if ( pml->cMoves == 0 ) {
+      /* no legal moves */
+      pml->amMoves = NULL;
+      return 0;
+  }
+  
   /* Save moves */
 
   pm = (move *) malloc ( pml->cMoves * sizeof ( move ) );
@@ -3282,15 +3281,13 @@ FindnSaveBestMoves( movelist *pml,
 
   nMoves = pml->cMoves;
 
-  if ( pml->cMoves == 0 ) 
-    /* no legal moves */
-    return 0;
-
   /* Evaluate all moves at 0-ply */
 
-  if( ( pc = ScoreMoves( pml, pci, pec, 0, CLASS_ANY ) ) < 0 )
-    return -1;
-
+  if( ( pc = ScoreMoves( pml, pci, pec, 0, CLASS_ANY ) ) < 0 ) {
+      free( pm );
+      return -1;
+  }
+  
   for ( iPly = 0; iPly < pec->nPlies; iPly++ ) {
 
     /* search tolerance at iPly */
@@ -3335,8 +3332,10 @@ FindnSaveBestMoves( movelist *pml,
                     ( pec->nSearchCandidates >> iPly ) );
 
     /* Calculate the full evaluations at the search depth requested */
-    if( ScoreMoves( pml, pci, pec, iPly + 1, pc ) < 0 )
+    if( ScoreMoves( pml, pci, pec, iPly + 1, pc ) < 0 ) {
+	free( pm );
 	return -1;
+    }
 
   }
 
