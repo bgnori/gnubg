@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.187 2003/04/12 13:00:14 thyssen Exp $
+ * $Id: play.c,v 1.188 2003/05/21 19:36:33 thyssen Exp $
  */
 
 #include "config.h"
@@ -747,6 +747,7 @@ extern int ComputerTurn( void ) {
     if( ms.fResigned ) {
 
       float rEqBefore, rEqAfter;
+      const float epsilon = 1.0e-6;
 
       ProgressStart( _("Considering resignation...") );
       if ( GeneralEvaluationE( arOutput, ms.anBoard, &ci,
@@ -777,14 +778,13 @@ extern int ComputerTurn( void ) {
       if ( ms.nMatchTo )
         rEqAfter = eq2mwc( rEqAfter, &ci );
 
-      /*
-      printf ("equity before resignation: %7.3f\n"
-              "equity after resignation : %7.3f\n",
-              rEqBefore, rEqAfter );*/
+      /* printf ("equity before resignation: %.10f\n"
+              "equity after resignation : %.10f\n",
+              rEqBefore, rEqAfter ); */
 
       fComputerDecision = TRUE;
 
-      if( rEqAfter <= rEqBefore )
+      if( ( rEqAfter - rEqBefore ) <= epsilon )
         /* i.e., opponent gives up equity by resigning */
         CommandAgree( NULL );
       else
