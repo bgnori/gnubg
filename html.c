@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.79 2002/10/31 21:27:03 thyssen Exp $
+ * $Id: html.c,v 1.80 2002/11/13 17:06:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -1786,7 +1786,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.79 $";
+  const char szVersion[] = "$Revision: 1.80 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1867,7 +1867,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.79 $";
+  const char szVersion[] = "$Revision: 1.80 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3322,6 +3322,9 @@ HTMLPrintComment ( FILE *pf, const moverecord *pmr,
 
   if ( sz ) {
 
+
+    fputs ( "<!-- Annotation -->\n\n", pf );
+
     fprintf ( pf, 
               "<br />\n"
               "<div %s>", 
@@ -3343,8 +3346,9 @@ HTMLPrintComment ( FILE *pf, const moverecord *pmr,
 
     }
 
-    fputs ( "</div>\n", pf );
+    fputs ( "</div>\n\n", pf );
 
+    fputs ( "<!-- End Annotation -->\n\n", pf );
     
 
   }
@@ -3830,10 +3834,15 @@ extern void CommandExportPositionHtml( char *sz ) {
                     exsExport.szHTMLPictureURL, exsExport.szHTMLExtension,
                     exsExport.het, exsExport.hecss );
 
-    if( pmr )
+    if( pmr ) {
+
       HTMLAnalysis ( pf, &ms, pmr,
                      exsExport.szHTMLPictureURL, exsExport.szHTMLExtension,
                      exsExport.het, exsExport.hecss );
+
+      HTMLPrintComment ( pf, pmr, exsExport.hecss );
+
+    }
     
     HTMLEpilogue ( pf, &ms, NULL, exsExport.hecss );
 
@@ -3920,11 +3929,15 @@ CommandExportPositionGammOnLine ( char *sz ) {
                     "gif", HTML_EXPORT_TYPE_BBS, 
                     HTML_EXPORT_CSS_INLINE );
 
-    if( pmr )
+    if( pmr ) {
       HTMLAnalysis ( pf, &ms, pmr,
                      "../Images/",
                      "gif", HTML_EXPORT_TYPE_BBS, 
                      HTML_EXPORT_CSS_INLINE );
+
+      HTMLPrintComment ( pf, pmr, HTML_EXPORT_CSS_INLINE );
+
+    }
 
     HTMLEpilogueComment ( pf );
 
