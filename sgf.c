@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.51 2002/07/16 11:59:19 thyssen Exp $
+ * $Id: sgf.c,v 1.52 2002/07/16 14:30:56 gtw Exp $
  */
 
 #include "config.h"
@@ -560,13 +560,13 @@ RestoreRolloutRolloutContext ( move *pm, const char *sz ) {
   if ( ! pc )
     return;
 
-  sscanf ( pc, "RC %d %d %d %d %d \"%s\" %d",
+  sscanf ( pc, "RC %d %d %d %hd %hd \"%1023s\" %d",
            &fCubeful,
            &fVarRedn,
            &fInitial,
            &pm->esMove.rc.nTruncate,
            &pm->esMove.rc.nTrials,
-           &szTemp,
+           szTemp,
            &pm->esMove.rc.nSeed );
 
   pm->esMove.rc.fCubeful = fCubeful;
