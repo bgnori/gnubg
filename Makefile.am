@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.114 2003/08/30 18:13:59 thyssen Exp $
+## $Id: Makefile.am,v 1.115 2003/09/12 13:35:22 steink Exp $
 if USE_EXT
 EXT_DIR=ext
 else
@@ -29,6 +29,13 @@ else
 SOUND_INCS = 
 SOUND_SOURCES =
 SOUND_LIBS = 
+endif
+
+## timecontrol
+if USE_TIMECONTROL
+TIME_SOURCES = timecontrol.h timecontrol.c
+else
+TIME_SOURCES =
 endif
 
 if COMPILE_BR1
@@ -111,7 +118,7 @@ gnubg_SOURCES = $(COMMON_SOURCES) gtkboard.c gtkboard.h gtkgame.c gtkgame.h \
         openurl.c openurl.h gtktempmap.c gtktempmap.h \
 	gtkbearoff.c gtkbearoff.h gtkoptions.h gtkoptions.c \
 	gtkpath.c gtkpath.h gtktoolbar.h gtktoolbar.c \
-	$(BR1_SOURCES) $(SOUND_SOURCES) $(FONT_SOURCES) $(PYTHON_SOURCES)
+	$(BR1_SOURCES) $(SOUND_SOURCES) $(FONT_SOURCES) $(PYTHON_SOURCES) $(TIME_SOURCES)
 gnubg_LDADD = @GTK_LIBS@ $(COMMON_LIBS) $(SOUND_LIBS) $(PNG_LIBS) \
         @LIBART_LIBS@ $(BOARD3D_LIBS) @THREAD_LIBS@
 gnubg_DEPENDENCIES = $(COMMON_DEPS) $(BOARD3D_DEPS)
@@ -120,7 +127,7 @@ if USE_EXT
 ## --- EXT
 INCLUDES = $(COMMON_INCS) -I$(srcdir)/ext @X_CFLAGS@  $(SOUND_INCS)
 gnubg_SOURCES = $(COMMON_SOURCES) xboard.c xboard.h xgame.c xgame.h \
-	$(BR1_SOURCES) $(SOUND_SOURCES) $(FONT_SOURCES) $(PYTHON_SOURCES) 
+	$(BR1_SOURCES) $(SOUND_SOURCES) $(FONT_SOURCES) $(PYTHON_SOURCES) $(TIME_SOURCES)
 gnubg_LDADD = -Lext -lext @X_LIBS@ @X_PRE_LIBS@ -lXmu @X_EXTRA_LIBS@ -lX11 \
 	$(COMMON_LIBS) $(SOUND_LIBS) @THREAD_LIBS@
 gnubg_DEPENDENCIES = $(COMMON_DEPS) ext/libext.a
@@ -128,8 +135,9 @@ else
 ## --- Plain
 INCLUDES = $(COMMON_INCS) $(SOUND_INCS) $(PNG_LIBS)
 gnubg_SOURCES = $(COMMON_SOURCES) $(BR1_SOURCES) $(SOUND_SOURCES) \
-	$(FONT_SOURCES)  $(PYTHON_SOURCES)
+	$(FONT_SOURCES)  $(PYTHON_SOURCES) $(TIME_SOURCES)
 gnubg_LDADD = $(COMMON_LIBS) $(SOUND_LIBS) $(PNG_LIBS) @THREAD_LIBS@
+
 
 gnubg_DEPENDENCIES = $(COMMON_DEPS)
 endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.165 2003/09/06 13:08:15 thyssen Exp $
+ * $Id: show.c,v 1.166 2003/09/12 13:35:24 steink Exp $
  */
 
 #include "config.h"
@@ -2357,3 +2357,19 @@ CommandShowMatchResult( char *sz ) {
   }
             
 }
+
+#if USE_TIMECONTROL
+
+#include "tctutorial.h"
+
+extern void CommandShowTCTutorial( char *sz ) {
+#if USE_GTK
+    if ( fX )
+	ShowList( aszTcTutorial, _("Time Control Tutorial") );
+    else
+#endif
+	ShowPaged(aszTcTutorial);
+}
+#endif
+
+
