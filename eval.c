@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.4 2000/01/03 17:52:23 gtw Exp $
+ * $Id: eval.c,v 1.5 2000/01/05 17:41:36 joseph Exp $
  */
 
 #include "config.h"
@@ -758,6 +758,19 @@ extern void SanityCheck( int anBoard[ 2 ][ 25 ], float arOutput[] ) {
     else if( !fContact && anBack[ 1 ] < 18 )
 	/* Player is out of home board; no backgammons possible */
 	arOutput[ OUTPUT_LOSEBACKGAMMON ] = 0.0;
+
+    /* gammons must be less than wins */
+    
+    if( arOutput[ OUTPUT_WINGAMMON ] > arOutput[ OUTPUT_WIN ] ) {
+      arOutput[ OUTPUT_WINGAMMON ] = arOutput[ OUTPUT_WIN ];
+    }
+
+    {
+      float lose = 1.0 - arOutput[ OUTPUT_WIN ];
+      if( arOutput[ OUTPUT_LOSEGAMMON ] > lose ) {
+	arOutput[ OUTPUT_LOSEGAMMON ] = lose;
+      }
+    }
 }
 
 extern positionclass ClassifyPosition( int anBoard[ 2 ][ 25 ] ) {
