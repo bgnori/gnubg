@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.h,v 1.10 2004/05/10 19:37:44 thyssen Exp $
+ * $Id: external.h,v 1.11 2004/10/12 08:41:23 joseph Exp $
  */
 
 #ifndef _EXTERNAL_H_
@@ -53,6 +53,7 @@ typedef struct _extcmd {
   int fDeterministic;
   int fCubeful;
   int nReduced;
+  int fUsePrune;
 
   /* fibs board */
   char *szFIBSBoard;

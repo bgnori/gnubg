@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.126 2004/07/04 12:26:40 thyssen Exp $
+ * $Id: eval.h,v 1.127 2004/10/12 08:41:23 joseph Exp $
  */
 
 #ifndef _EVAL_H_
@@ -33,8 +33,8 @@
 #define TRUE 1
 #endif
 
-#define WEIGHTS_VERSION "0.14"
-#define WEIGHTS_VERSION_BINARY 0.14f
+#define WEIGHTS_VERSION "0.15"
+#define WEIGHTS_VERSION_BINARY 0.15f
 #define WEIGHTS_MAGIC_BINARY 472.3782f
 
 #define NUM_OUTPUTS 5
@@ -102,9 +102,14 @@ typedef struct {
        classes */
     unsigned int fCubeful : 1; /* cubeful evaluation */
     unsigned int nPlies   : 3;
+#if defined( REDUCTION_CODE )
     unsigned int nReduced : 3; /* this will need to be expanded if we add
 				  support for nReduced != 3 */
+#else
+  unsigned int filler : 3;
+#endif
     unsigned int fDeterministic : 1;
+    unsigned int fUsePrune : 1;
     float        rNoise;       /* standard deviation */
 } evalcontext;
 

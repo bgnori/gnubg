@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.58 2004/06/17 10:21:22 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.59 2004/10/12 08:41:23 joseph Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -45,8 +45,6 @@
 #include "gtktempmap.h"
 #include "progress.h"
 #include "format.h"
-
-
 
 
 /*

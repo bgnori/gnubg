@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.587 2004/10/11 00:04:51 nall Exp $
+ * $Id: gnubg.c,v 1.588 2004/10/12 08:41:23 joseph Exp $
  */
 
 #include "config.h"
@@ -5502,11 +5502,17 @@ SaveEvalSettings( FILE *pf, char *sz, evalcontext *pec ) {
 
     fprintf( pf, "%s plies %d\n"
 	     "%s reduced %d\n"
+	     "%s prune %s\n"
 	     "%s cubeful %s\n"
 	     "%s noise %.3f\n"
 	     "%s deterministic %s\n",
 	     sz, pec->nPlies, 
+#if defined( REDUCTION_CODE )
 	     sz, pec->nReduced,
+#else
+	     sz, 0,
+#endif
+	     sz, pec->fUsePrune ? "on" : "off",
 	     sz, pec->fCubeful ? "on" : "off",
 	     sz, pec->rNoise, 
              sz, pec->fDeterministic ? "on" : "off" );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.13 2004/03/31 09:51:54 Superfly_Jon Exp $
+ * $Id: gtktoolbar.c,v 1.14 2004/10/12 08:41:24 joseph Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -475,6 +475,7 @@ ToolbarNew ( void ) {
 
   
   gtk_toolbar_append_space(GTK_TOOLBAR(pwToolbar));
+
 #if !USE_GTK2
   gtk_toolbar_set_button_relief( GTK_TOOLBAR( pwToolbar ), 
 		  GTK_RELIEF_NONE);

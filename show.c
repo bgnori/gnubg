@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.189 2004/09/06 00:30:08 jsegrave Exp $
+ * $Id: show.c,v 1.190 2004/10/12 08:41:24 joseph Exp $
  */
 
 #include "config.h"
@@ -114,10 +114,14 @@ static void
 ShowEvaluation( const evalcontext *pec ) {
   
   outputf( _("        %d-ply evaluation.\n"
+#if defined( REDUCTION_CODE )
              "        %d%% speed.\n"
+#endif
              "        %s evaluations.\n"),
            pec->nPlies, 
+#if defined( REDUCTION_CODE )
            (pec->nReduced) ? 100 / pec->nReduced : 100,
+#endif
            pec->fCubeful ? _("Cubeful") : _("Cubeless") );
 
   if( pec->rNoise )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.46 2004/09/10 09:34:56 Superfly_Jon Exp $
+ * $Id: external.c,v 1.47 2004/10/12 08:41:23 joseph Exp $
  */
 
 #include "config.h"
@@ -402,7 +402,10 @@ ExtEvaluation( extcmd *pec ) {
 
     ec.fCubeful = pec->fCubeful;
     ec.nPlies = pec->nPlies;
+#if defined( REDUCTION_CODE )
     ec.nReduced = pec->nReduced;
+#endif
+    ec.fUsePrune = pec->fUsePrune;
     ec.fDeterministic = pec->fDeterministic;
     ec.rNoise = pec->rNoise;
     
