@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff1.c,v 1.5 2002/12/02 21:40:04 jsegrave Exp $
+ * $Id: makebearoff1.c,v 1.6 2004/03/29 07:48:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -57,7 +57,7 @@ PrintPre ( FILE *pf ) {
          " * along with this program; if not, write to the Free Software\n"
          " * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
          " *\n"
-         " * $Id: makebearoff1.c,v 1.5 2002/12/02 21:40:04 jsegrave Exp $\n"
+         " * $Id: makebearoff1.c,v 1.6 2004/03/29 07:48:24 thyssen Exp $\n"
          " */\n"
          "\n\n\n"
          "#include <stdio.h>\n"
@@ -92,26 +92,32 @@ PrintCode ( FILE *pf ) {
           "  }\n"
           "\n"
           "\n"
-          "  if ( ! ( pbc = (bearoffcontext *) malloc ( sizeof ( bearoffcontext ) ) ) ) {\n"
+          "  if ( ! ( pbc = BearoffAlloc() ) ) {\n"
           "    /* malloc failed */\n"
           "    perror ( \"bearoffcontext\" );\n"
           "    return NULL;\n"
           "  }\n"
           "  \n"
-          "  pbc->bt = BEAROFF_GNUBG;\n"
-          "  pbc->fInMemory = TRUE;\n"
           "  pbc->h = -1;\n"
+          "  pbc->ah = NULL;\n"
+          "  pbc->nFiles = 0;\n"
+          "  pbc->bt = BEAROFF_ONESIDED;\n"
+          "  pbc->bc = BEAROFF_GNUBG;\n"
           "  pbc->nPoints = 6;\n"
           "  pbc->nChequers = 15;\n"
-          "  pbc->fTwoSided = FALSE;\n"
+          "  pbc->fInMemory = TRUE;\n"
           "  pbc->fMalloc = FALSE;\n"
+          "\n"
           "  pbc->fCompressed = TRUE;\n"
           "  pbc->fGammon = TRUE;\n"
           "  pbc->fND = FALSE;\n"
-          "  pbc->fCubeful = FALSE;\n"
-          "  pbc->nReads = 0;\n"
-          "  pbc->fHeuristic = FALSE;\n"
+          "  pbc->fHeuristic = TRUE;\n"
+          "\n"
           "  pbc->p = (void *) acBearoff1;\n"
+          "\n"
+          "  pbc->ph = NULL;\n"
+          "\n"
+          "  pbc->nReads = 0;\n"
           "\n"
           "  return pbc;\n"
           "}\n\n\n",
