@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.211 2003/08/18 01:14:29 joseph Exp $
+ * $Id: play.c,v 1.212 2003/08/18 15:51:27 thyssen Exp $
  */
 
 #include "config.h"
@@ -782,7 +782,7 @@ extern int ComputerTurn( void ) {
 
       fComputerDecision = TRUE;
 
-      if( fabs(rEqAfter - rEqBefore) <= epsilon )
+      if( ( rEqAfter - epsilon ) < rEqBefore )
         CommandAgree( NULL );
       else
         CommandDecline( NULL );
