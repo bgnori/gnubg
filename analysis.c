@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.130 2003/08/16 09:24:47 thyssen Exp $
+ * $Id: analysis.c,v 1.131 2003/08/17 10:37:45 thyssen Exp $
  */
 
 #include "config.h"
@@ -1867,7 +1867,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * sz,
       else
         sprintf ( strchr ( szOutput, 0 ),
                   "%-31s %-7s\n",
-                  _("FIBS rating difference") );
+                  _("FIBS rating difference"), _("n/a") );
     }
 
   }
