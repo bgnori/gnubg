@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.124 2002/04/25 18:32:26 thyssen Exp $
+ * $Id: play.c,v 1.125 2002/05/23 21:25:16 thyssen Exp $
  */
 
 #include "config.h"
@@ -2630,6 +2630,21 @@ static void CommandNextRoll( char *sz ) {
     UpdateGame( FALSE );
 }
 
+static void CommandNextRolled( char *sz ) {
+
+    moverecord *pmr;
+
+    /* goto next move */
+
+    CommandNext ( NULL );
+
+    if( plLastMove && plLastMove->plNext &&
+        ( pmr = plLastMove->plNext->p ) && pmr->mt == MOVE_NORMAL )
+       CommandNextRoll ( NULL );
+
+}
+
+
 extern void CommandNext( char *sz ) {
 
     int n;
@@ -2646,6 +2661,9 @@ extern void CommandNext( char *sz ) {
 	    return;
 	} else if( !strncasecmp( pch, "roll", strlen( pch ) ) ) {
 	    CommandNextRoll( sz );
+	    return;
+	} else if( !strncasecmp( pch, "rolled", strlen( pch ) ) ) {
+	    CommandNextRolled( sz );
 	    return;
 	}
 	    n = ParseNumber( &pch );
@@ -2754,6 +2772,25 @@ static void CommandPreviousRoll( char *sz ) {
     
     UpdateGame( FALSE );
 }
+
+static void CommandPreviousRolled( char *sz ) {
+
+    moverecord *pmr;
+
+    if( !plLastMove || !plLastMove->p )
+        /* silently ignore */
+        return;
+
+    /* step back and boogie */
+
+    CommandPrevious ( NULL );
+
+    if ( plLastMove && plLastMove->plNext &&
+         ( pmr = plLastMove->plNext->p ) && pmr->mt == MOVE_NORMAL )
+       CommandNextRoll ( NULL );
+
+}
+
 
 extern void CommandPrevious( char *sz ) {
 
