@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.47 2002/12/04 22:22:20 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.48 2002/12/06 17:58:12 thyssen Exp $
  */
 
 #include "config.h"
@@ -938,6 +938,11 @@ UseDesign ( GtkWidget *pw, BoardData *bdBoard ) {
                              rAzimuth );
   gtk_adjustment_set_value ( GTK_ADJUSTMENT ( paElevation ),
                              rElevation );
+
+  /* round */
+
+  gtk_adjustment_set_value ( GTK_ADJUSTMENT ( padjRound ),
+                             1.0f - bd.round );
 
 
   BoardPrefsDo ( pw, bdBoard, FALSE );
