@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.89 2004/01/19 10:20:07 uid68519 Exp $
+ * $Id: gtkprefs.c,v 1.90 2004/01/21 09:45:04 uid68519 Exp $
  */
 
 #include "config.h"
@@ -1191,7 +1191,6 @@ void toggle_quick_draw(GtkWidget *widget, int init)
 {
 	int set = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
 	gtk_widget_set_sensitive(pwShowShadows, !set);
-	gtk_widget_set_sensitive(pwAnimateRoll, !set);
 	gtk_widget_set_sensitive(pwCloseBoard, !set);
 	gtk_widget_set_sensitive(pwAnimateFlag, !set);
 	gtk_widget_set_sensitive(pwDynamicLabels, !set);
@@ -1199,7 +1198,6 @@ void toggle_quick_draw(GtkWidget *widget, int init)
 	if (set)
 	{
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwShowShadows), 0);
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwAnimateRoll), 0);
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwCloseBoard), 0);
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwAnimateFlag), 0);
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwDynamicLabels), 0);
@@ -1978,7 +1976,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.89 2004/01/19 10:20:07 uid68519 Exp $\n"
+          "    $Id: gtkprefs.c,v 1.90 2004/01/21 09:45:04 uid68519 Exp $\n"
           "\n"
           " -->\n"
           "\n"
