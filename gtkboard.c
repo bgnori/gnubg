@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.124 2003/05/30 15:44:08 thyssen Exp $
+ * $Id: gtkboard.c,v 1.125 2003/05/30 15:47:50 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1983,8 +1983,8 @@ static gint board_set( Board *board, const gchar *board_text,
     old_dice[ 1 ] = bd->dice[ 1 ];
     old_dice[ 2 ] = bd->dice_opponent[ 0 ];
     old_dice[ 3 ] = bd->dice_opponent[ 1 ];
-    old_turn = bd->turn;
 #endif
+    old_turn = bd->turn;
     
     editing = bd->playing &&
 	gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( bd->edit ) );
