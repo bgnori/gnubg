@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.5 2000/11/17 15:44:08 gtw Exp $
+ * $Id: rollout.h,v 1.6 2001/05/17 22:13:30 thyssen Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -26,5 +26,12 @@ extern int
 Rollout( int anBoard[ 2 ][ 25 ], char *sz, float arOutput[], float arStdDev[],
          int nTruncate, int cGames, int fVarRedn, cubeinfo *pci,
 	 evalcontext *pec, int fInvert );
+
+extern int
+RolloutGeneral( int anBoard[ 2 ][ 25 ], char *sz,
+                float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
+                float aarStdDev[][ NUM_ROLLOUT_OUTPUTS ],
+                rolloutcontext *prc,
+                cubeinfo aci[], int cci, int fInvert );
 
 #endif
