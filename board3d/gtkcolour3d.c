@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.9 2003/10/16 10:58:10 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.10 2003/11/27 10:08:53 Superfly_Jon Exp $
 */
 
 #include <GL/gl.h>
@@ -167,6 +167,7 @@ static void Draw(Material* pMat)
 
 void UpdatePreviewBar(Material* pMat, GdkPixmap *pixmap)
 {
+#if !LINUX
 	GdkGC *gc;
 
 	RenderPreview(pMat, auch);
@@ -175,6 +176,7 @@ void UpdatePreviewBar(Material* pMat, GdkPixmap *pixmap)
 	gdk_draw_rgb_image(pixmap, gc, 0, 0, PREVIEW_WIDTH, PREVIEW_HEIGHT, GDK_RGB_DITHER_MAX,
 					  auch, PREVIEW_WIDTH * 3 );
 	gdk_gc_unref( gc );
+#endif
 }
 
 void UpdateColourPreview(void *arg)
