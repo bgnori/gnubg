@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.44 2000/10/20 18:53:29 gtw Exp $
+ * $Id: backgammon.h,v 1.45 2000/10/21 08:58:45 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -84,11 +84,27 @@ typedef struct _movegameinfo {
 	nAutoDoubles; /* how many automatic doubles were rolled */
 } movegameinfo;
 
+typedef struct _movedouble {
+  movetype mt;
+  int fPlayer;
+  /* evaluation of cube action */
+  float arDouble[ 4 ];
+  evaltype etDouble;
+  evalsetup esDouble;
+} movedouble;
+
+
 typedef struct _movenormal {
-    movetype mt;
-    int fPlayer;
-    int anRoll[ 2 ];
-    int anMove[ 8 ];
+  movetype mt;
+  int fPlayer;
+  int anRoll[ 2 ];
+  int anMove[ 8 ];
+  /* evaluation of cube action before this move */
+  float arDouble[ 4 ];
+  evaltype etDouble;
+  evalsetup esDouble;
+  /* evaluation of the moves */
+  movelist ml;
 } movenormal;
 
 typedef struct _moveresign {
@@ -120,6 +136,7 @@ typedef union _moverecord {
     movesetboard sb;
     movesetcubeval scv;
     movesetcubepos scp;
+    movedouble d;
 } moverecord;
 
 extern char *aszGameResult[], szDefaultPrompt[], *szPrompt;
