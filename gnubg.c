@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.208 2002/04/19 16:26:03 thyssen Exp $
+ * $Id: gnubg.c,v 1.209 2002/04/20 17:45:49 thyssen Exp $
  */
 
 #include "config.h"
@@ -270,6 +270,12 @@ player ap[ 2 ] = {
     { "gnubg", PLAYER_GNU, EVALSETUP, EVALSETUP },
     { "user", PLAYER_HUMAN, EVALSETUP, EVALSETUP } 
 };
+
+
+windowgeometry wgMain = { 0, 0, -1, -1 };
+windowgeometry wgAnnotation = { 250, 200, -1, -1 };
+windowgeometry wgGame = { 0, 400, -1, -1 };
+
 
 /* Usage strings */
 static char szDICE[] = "<die> <die>",
