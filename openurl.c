@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.3 2003/07/03 15:21:32 jsegrave Exp $
+ * $Id: openurl.c,v 1.4 2003/07/06 16:03:15 thyssen Exp $
  */
 
 #include "config.h"
@@ -27,6 +27,9 @@
 
 #include <gtk/gtk.h>
 #include <gdk/gdkprivate.h>
+#if !GTK_CHECK_VERSION(1,3,10)
+#include <stdlib.h>
+#endif
 
 #include "openurl.h"
 #include "i18n.h"
@@ -37,6 +40,7 @@
 #endif /* WIN32 */
 
 #include "backgammon.h"
+
 
 extern void
 OpenURL( const char *szURL ) {
@@ -49,6 +53,8 @@ OpenURL( const char *szURL ) {
 
   /* FIXME: implement other browsers */
 
+#if GTK_CHECK_VERSION(1,3,10)
+
   gchar *pchCommand;
   GError *error = NULL;
 
@@ -60,6 +66,19 @@ OpenURL( const char *szURL ) {
   }
 
   g_free( pchCommand );
+
+#else /* GTK 1.3 */
+
+   
+  gchar *pchCommand;
+  pchCommand = g_strdup_printf( "mozilla \"%s\"", szURL );
+
+  if ( system( pchCommand ) < 0 ) 
+     outputerr( _("Error launching browser\n") );
+
+  g_free( pchCommand );
+
+#endif /* ! GTK 1.3 */
 
 #endif /* ! WIN32 */
 
