@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boarddim.h,v 1.2 2003/09/15 07:42:08 Superfly_Jon Exp $
+ * $Id: boarddim.h,v 1.3 2003/09/15 13:38:11 hb Exp $
  */
 
 #ifndef _BOARDDIM_H_
@@ -32,10 +32,10 @@ extern "C" {
 
 
 #define BOARD_WIDTH		108
-#if USE_OLD_LAYOUT
-#define BOARD_HEIGHT		 82
-#else
+#if USE_BOARD3D /* || USE_OLD_LAYOUT */
 #define BOARD_HEIGHT		 72
+#else
+#define BOARD_HEIGHT		 82
 #endif
 #define BORDER_HEIGHT		  3
 #define BORDER_WIDTH		  3
