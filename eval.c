@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.107 2001/10/17 17:12:53 thyssen Exp $
+ * $Id: eval.c,v 1.108 2001/10/18 20:45:40 thyssen Exp $
  */
 
 #include "config.h"
@@ -3099,7 +3099,11 @@ static int ScoreMove( move *pm, cubeinfo *pci, evalcontext *pec, int nPlies ) {
       return -1;
 
     InvertEvaluationR ( arEval, &ci );
-    
+
+    if ( ci.nMatchTo )
+      arEval[ OUTPUT_CUBEFUL_EQUITY ] =
+        mwc2eq ( arEval[ OUTPUT_CUBEFUL_EQUITY ], pci );
+
     /* Save evaluations */  
     memcpy( pm->arEvalMove, arEval, NUM_OUTPUTS * sizeof ( float ) );
     
@@ -6109,7 +6113,7 @@ GeneralEvaluationEPlied ( float arOutput [ NUM_ROLLOUT_OUTPUTS ],
                                     arOutput, 
                                     &rCubeful,
                                     pci, 1,
-                                    pci, pec, nPlies, TRUE ) )
+                                    pci, pec, nPlies, FALSE ) )
       return -1;
 
     arOutput[ OUTPUT_EQUITY ] = Utility ( arOutput, pci );
