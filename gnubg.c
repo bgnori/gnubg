@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.2 1999/12/15 02:39:35 thyssen Exp $
+ * $Id: gnubg.c,v 1.3 1999/12/17 16:16:12 gtw Exp $
  */
 
 #include "config.h"
@@ -967,10 +967,13 @@ static void usage( char *argv0 ) {
 "Usage: %s [options]\n"
 "Options:\n"
 "  -h, --help                Display usage and exit\n"
+#if !X_DISPLAY_MISSING
 "  -t, --tty                 Start on tty instead of using X\n"
+#endif
 "  -v, --version             Show version information and exit\n"
 "\n"
-"Report bugs to <gnubg@sourceforge.net>.\n", argv0 );
+"For more information, type `help' from within gnubg.\n"
+"Please report bugs to <gnubg@sourceforge.net>.\n", argv0 );
 }
 
 extern int main( int argc, char *argv[] ) {
@@ -994,6 +997,8 @@ extern int main( int argc, char *argv[] ) {
 	case 't': /* tty */
 #if !X_DISPLAY_MISSING
 	    fX = FALSE;
+#else
+	    /* Silently ignore */
 #endif
 	    break;
 	case 'v': /* version */
