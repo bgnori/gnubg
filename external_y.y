@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_y.y,v 1.2 2003/12/31 22:53:38 uid65656 Exp $
+ * $Id: external_y.y,v 1.3 2004/05/18 14:42:14 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -53,6 +53,8 @@ void ( *ExtErrorHandler )( const char *, const char *, const int ) = NULL;
 %token OFF
 
 %name-prefix="ext"
+%output="external_y.c"
+%defines
 
 %%
 
@@ -103,18 +105,14 @@ optnoise       : NOISE NUMBER /* FIXME: FLOAT */ { ec.rNoise = $2; }
                | /* empty */
                ;
 
-optreduced     : REDUCED NUMBER { ec.nReduced = $2; };
+optreduced     : REDUCED NUMBER { ec.nReduced = $2; }
                | /* empty */
                ;
 
 evalcontext    : optplies optcube optcubeful optcubeless optnoise optreduced
                ;
 
-optevalcontext : evalcontext
-               | /* empty */
-               ;
-
-evaluation     : EVALUATION FIBSBOARD fibsboard optevalcontext { 
+evaluation     : EVALUATION FIBSBOARD fibsboard evalcontext {
   ec.ct = COMMAND_EVALUATION;
 }
 ;

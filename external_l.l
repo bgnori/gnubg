@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.l,v 1.4 2004/05/08 08:51:26 thyssen Exp $
+ * $Id: external_l.l,v 1.5 2004/05/18 14:42:14 Superfly_Jon Exp $
  */
 
 #include <string.h>
@@ -32,11 +32,13 @@ void escapes(const char *cp, char *tp);
 
 %option noyywrap
 %option prefix="ext"
-%option outfile="lex.yy.c"
+%option outfile="external_l.c"
+
+NUMSTR -?[0-9]+
 
 %%
 
-\"[^\"]*\"	{
+(\"[^\"]*\")|(\'[^\']*\')	{
 			char *buf = malloc( strlen( exttext ) + 1 );
 
 			exttext[strlen(exttext)-1] = '\0';
@@ -46,17 +48,6 @@ void escapes(const char *cp, char *tp);
                         BEGIN(INITIAL);
 			return STRING;
 		}
-\'[^\']*\'	{
-			char *buf = malloc( strlen( exttext ) + 1 );
-
-			exttext[strlen(exttext)-1] = '\0';
-			escapes(exttext+1, buf);
-			extlval.sval = (char *) strdup(buf);
-                        free( buf );
-                        BEGIN(0);
-			return STRING;
-		}
-
 
 evaluation      { return EVALUATION; }
 fibsboard       { return FIBSBOARD; }
@@ -71,7 +62,7 @@ on              { return ON; }
 no              { return OFF; }
 off             { return OFF; }
 
-board:[A-Za-z0-9]+:[A-Za-z0-9]+(:-?[0-9]+)+  { 
+board:[[:alnum:]]+:[[:alnum:]]+(:{NUMSTR})+  { 
 			char *buf = malloc( strlen( exttext ) + 1 );
 
 			escapes(exttext, buf);
@@ -83,7 +74,7 @@ board:[A-Za-z0-9]+:[A-Za-z0-9]+(:-?[0-9]+)+  {
 
 (#.*)?\\?\n	{ prc_lineno++;	}   /* newline is ignored */
 
--?[0-9]+	{ extlval.number = atoi(exttext); return NUMBER; }
+{NUMSTR}	{ extlval.number = atoi(exttext); return NUMBER; }
 
 [^=;:, \t\r\n]+	{
 			char *buf = malloc( strlen( exttext ) + 1 );
