@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.347 2003/06/23 21:46:52 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.348 2003/06/23 22:25:42 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5339,7 +5339,7 @@ RolloutPageGeneral (rolloutpagegeneral *prpw, rolloutwidget *prw) {
   prpw->pwAdjMaxError = pwHBox = gtk_hbox_new( FALSE, 0 );
   gtk_container_add( GTK_CONTAINER( pw ), pwHBox);
   gtk_container_add( GTK_CONTAINER( pwHBox ), 
-                   gtk_label_new( _("Ratio |Value/Standard Deviation|:" ) ) );
+                   gtk_label_new( _("Ratio |Standard Deviation/Value|:" ) ) );
 
   prpw->padjMaxError = GTK_ADJUSTMENT( gtk_adjustment_new( 
                        prw->rcRollout.rStdLimit, 0, 1, .0001, .0001, 0.001 ) );
