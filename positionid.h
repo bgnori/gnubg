@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.h,v 1.8 2002/03/17 13:27:25 thyssen Exp $
+ * $Id: positionid.h,v 1.9 2002/03/17 13:29:01 thyssen Exp $
  */
 
 #ifndef _POSITIONID_H_
@@ -57,6 +57,6 @@ extern int
 MatchFromKey ( int *pnCube, int *pfCubeOwner, int *pfMove,
                int *pnMatchTo, int anScore[ 2 ], 
                int *pfCrawford, int anDice[ 2 ],
-               unsigned char *auchKey;
+               unsigned char *auchKey );
 
 #endif
