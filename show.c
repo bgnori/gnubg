@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.104 2002/08/05 17:58:16 thyssen Exp $
+ * $Id: show.c,v 1.105 2002/08/13 20:53:34 thyssen Exp $
  */
 
 #include "config.h"
@@ -780,7 +780,8 @@ extern void CommandShowGammonValues ( char *sz ) {
 
     outputf ("%-12s     %7.5f         %7.5f\n",
 	     ap[ i ].szName,
-	     ci.arGammonPrice[ i ], ci.arGammonPrice[ 2 + i ] );
+	     0.5f * ci.arGammonPrice[ i ], 
+             0.5f * ( ci.arGammonPrice[ 2 + i ] + ci.arGammonPrice[ i ] ) );
   }
 
 }

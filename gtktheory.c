@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.6 2002/08/12 17:12:50 thyssen Exp $
+ * $Id: gtktheory.c,v 1.7 2002/08/13 20:53:10 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -419,11 +419,17 @@ TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
 
     for ( i = 0; i < 2; i++ ) {
 
-      sprintf ( sz, "%6.4f", ci.arGammonPrice[ i ] );
+      /* divide gammon prices with 2 in order to get the
+         "usual" gammon prices */
+
+      sprintf ( sz, "%6.4f", 0.5f * ci.arGammonPrice[ i ] );
       gtk_label_set_text ( GTK_LABEL ( ptw->aapwMatchGP[ i ][ 0 ] ),
                             sz );
 
-      sprintf ( sz, "%6.4f", ci.arGammonPrice[ 2 + i ] );
+      /* divide by two and add the gammon price */
+
+      sprintf ( sz, "%6.4f", 
+                0.5f * ( ci.arGammonPrice[ 2 + i ] + ci.arGammonPrice[ i ] ) );
       gtk_label_set_text ( GTK_LABEL ( ptw->aapwMatchGP[ i ][ 1 ] ),
                             sz );
 
@@ -441,11 +447,13 @@ TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
 
       for ( i = 0; i < 2; i++ ) {
         
-        sprintf ( sz, "%6.4f", ci.arGammonPrice[ i ] );
+        sprintf ( sz, "%6.4f", 0.5f * ci.arGammonPrice[ i ] );
         gtk_label_set_text ( GTK_LABEL ( ptw->aaapwMoneyGP[ j ][ i ][ 0 ] ),
                              sz );
         
-        sprintf ( sz, "%6.4f", ci.arGammonPrice[ 2 + i ] );
+        sprintf ( sz, "%6.4f", 
+                  0.5f * ( ci.arGammonPrice[ 2 + i ] + 
+                           ci.arGammonPrice[ i ] ) );
         gtk_label_set_text ( GTK_LABEL ( ptw->aaapwMoneyGP[ j ][ i ][ 1 ] ),
                              sz );
         

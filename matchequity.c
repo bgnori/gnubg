@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.30 2002/06/26 13:23:08 thyssen Exp $
+* $Id: matchequity.c,v 1.31 2002/08/13 20:54:36 thyssen Exp $
 */
 
 #include <stdio.h>
@@ -1575,10 +1575,20 @@ getGammonPrice ( float arGammonPrice[ 4 ],
       
   if ( fabs ( rWin - rCenter ) > epsilon ) {
 
+    /* this expression can be reduced to: 
+       2 * ( rWinGammon - rWin ) / ( rWin - rLose )
+       which is twice the "usual" gammon value */
+
     arGammonPrice[ 0 ] = 
       ( rWinGammon - rCenter ) / ( rWin - rCenter ) - 1.0;
+
+    /* this expression can be reduced to:
+       2 * ( rLose - rLoseGammon ) / ( rWin - rLose )
+       which is twice the "usual" gammon value */
+
     arGammonPrice[ 1 ] = 
       ( rCenter - rLoseGammon ) / ( rWin - rCenter ) - 1.0;
+
     arGammonPrice[ 2 ] = 
       ( rWinBG - rCenter ) / ( rWin - rCenter ) - 
       ( arGammonPrice[ 0 ] + 1.0 );
