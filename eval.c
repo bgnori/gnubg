@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.116 2001/11/01 15:46:49 gtw Exp $
+ * $Id: eval.c,v 1.117 2001/11/03 15:40:42 thyssen Exp $
  */
 
 #include "config.h"
@@ -4268,7 +4268,9 @@ FindBestCubeDecision ( float arDouble[], cubeinfo *pci ) {
 
       arDouble[ OUTPUT_OPTIMAL ] = arDouble[ OUTPUT_TAKE ];
 
-      if ( ! pci->nMatchTo && arDouble[ OUTPUT_TAKE ] <= 0.0 
+      if ( ! pci->nMatchTo &&
+           arDouble[ OUTPUT_TAKE ] >= -2.0 &&
+           arDouble[ OUTPUT_TAKE ] <= 0.0 
            && pci->fBeavers )
         /* beaver (jacoby paradox) */
         return ( pci->fCubeOwner == -1 ) ? DOUBLE_BEAVER : REDOUBLE_BEAVER;
@@ -4293,7 +4295,8 @@ FindBestCubeDecision ( float arDouble[], cubeinfo *pci ) {
       
       if ( arDouble [ OUTPUT_NODOUBLE ] > arDouble [ OUTPUT_DROP ] )
         return ( pci->fCubeOwner == -1 ) ? TOOGOOD_TAKE : TOOGOODRE_TAKE;
-      else if ( arDouble[ OUTPUT_TAKE ] <= 0.0 && ! pci->nMatchTo 
+      else if ( arDouble[ OUTPUT_TAKE ] >= -2.0 &&
+                arDouble[ OUTPUT_TAKE ] <= 0.0 && ! pci->nMatchTo 
                 && pci->fBeavers )
         return ( pci->fCubeOwner == -1 ) ?
           NODOUBLE_BEAVER : NO_REDOUBLE_BEAVER; 
