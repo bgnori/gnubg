@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.22 2003/09/15 02:01:06 hb Exp $
+ * $Id: gtkexport.c,v 1.23 2003/10/20 09:34:03 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -350,7 +350,7 @@ ExportOK ( GtkWidget *pw, exportwidget *pew ) {
   /* set new values */
 
   SetExportCommands ( pexs, &exsNew );
-  g_free ( exsNew.szHTMLPictureURL ),
+  free ( exsNew.szHTMLPictureURL ),
 
   gtk_widget_destroy( gtk_widget_get_toplevel( pw ) );
 
