@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkpath.c,v 1.2 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: gtkpath.c,v 1.3 2004/05/07 09:42:25 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -142,6 +142,8 @@ GTKShowPath ( void ) {
       N_("FIBS oldmoves") },
     { N_("Export of PDF files") , 
       N_("PDF") },
+    { N_("Export of PNG positions") , 
+      N_("PNG") },
     { N_("Import of Jellyfish .pos files") , 
       N_("Jellyfish .pos") },
     { N_("Export of PostScript files") , 

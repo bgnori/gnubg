@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.231 2004/04/28 15:38:22 Superfly_Jon Exp $
+ * $Id: set.c,v 1.232 2004/05/07 09:42:25 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3734,6 +3734,12 @@ CommandSetPathPos ( char *sz ) {
 
 }
 
+extern void
+CommandSetPathPNG ( char *sz ) {
+
+  SetPath ( sz, PATH_PNG );
+
+}
 
 extern void
 CommandSetPathEPS ( char *sz ) {

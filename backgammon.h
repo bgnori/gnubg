@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.285 2004/04/22 19:14:34 thyssen Exp $
+ * $Id: backgammon.h,v 1.286 2004/05/07 09:42:14 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -523,12 +523,12 @@ extern char szLang[ 32 ];
 
 typedef enum _pathformat {
   PATH_EPS, PATH_GAM, PATH_HTML, PATH_LATEX, PATH_MAT, PATH_OLDMOVES,
-  PATH_PDF, PATH_POS, PATH_POSTSCRIPT, PATH_SGF, PATH_SGG, PATH_TEXT, 
+  PATH_PDF, PATH_PNG, PATH_POS, PATH_POSTSCRIPT, PATH_SGF, PATH_SGG, PATH_TEXT, 
   PATH_MET, PATH_TMG, PATH_BKG, PATH_SNOWIE_TXT,
   NUM_PATHS } 
 pathformat;
 
-extern char aaszPaths[ NUM_PATHS ][ 2 ][ 255 ];
+extern char aaszPaths[ NUM_PATHS ][ 2 ][ BIG_PATH ];
 extern char* aszExtensions[ NUM_PATHS ];
 extern char* szCurrentFileName;
 
@@ -1092,6 +1092,7 @@ extern void CommandAccept( char * ),
     CommandSetPathSGG( char * ),
     CommandSetPathTMG( char * ),
     CommandSetPathOldMoves( char * ),
+    CommandSetPathPNG( char * ),
     CommandSetPathPos( char * ),
     CommandSetPathGam( char * ),
     CommandSetPathPostScript( char * ),

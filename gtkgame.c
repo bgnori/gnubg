@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.490 2004/05/07 06:45:08 thyssen Exp $
+ * $Id: gtkgame.c,v 1.491 2004/05/07 09:42:25 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -5278,10 +5278,10 @@ static void ExportPositionPos( gpointer *p, guint n, GtkWidget *pw ) {
 
 static void ExportPositionPNG( gpointer *p, guint n, GtkWidget *pw ) {
 
-  /* char *sz = getDefaultFileName ( PATH_PNG ); */
-  GTKFileCommand( _("Export PNG position"), NULL, "export position png", "png", FDT_EXPORT );
-  /* if ( sz ) 
-     free ( sz ); */
+  char *sz = getDefaultFileName ( PATH_PNG );
+  GTKFileCommand( _("Export PNG position"), sz, "export position png", "png", FDT_EXPORT );
+  if ( sz ) 
+     free ( sz );
 
 }
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.558 2004/05/07 05:29:47 thyssen Exp $
+ * $Id: gnubg.c,v 1.559 2004/05/07 09:42:14 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -250,7 +250,7 @@ char szPathSconyers15x15Disk[ BIG_PATH ];/* Path to Sconyers's databases */
 skilltype TutorSkill = SKILL_DOUBTFUL;
 int nTutorSkillCurrent = 0;
 
-char aaszPaths[ NUM_PATHS ][ 2 ][ 255 ];
+char aaszPaths[ NUM_PATHS ][ 2 ][ BIG_PATH ];
 char *szCurrentFileName = NULL;
 char *aszExtensions [ NUM_PATHS ] = {
   "eps",
@@ -260,6 +260,7 @@ char *aszExtensions [ NUM_PATHS ] = {
   "mat",
   "fibs",
   "pdf",
+  "png",
   "pos",
   "ps",
   "sgf",
@@ -1545,6 +1546,9 @@ command cER = {
     szFILENAME, &cFilename },
   { "pdf", CommandSetPathPDF,
     N_("Set default path for exporting PDF files"), 
+    szFILENAME, &cFilename },
+  { "png", CommandSetPathPNG,
+    N_("Set default path for exporting PNG positions"), 
     szFILENAME, &cFilename },
   { "pos", CommandSetPathPos,
     N_("Set default path for importing Jellyfish .pos files"), 
