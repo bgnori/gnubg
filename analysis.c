@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.62 2002/05/20 18:54:39 thyssen Exp $
+ * $Id: analysis.c,v 1.63 2002/05/30 10:38:44 thyssen Exp $
  */
 
 #include "config.h"
@@ -499,8 +499,9 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, statcontext *psc,
 		    pmr->n.iMove = cAnalysisMoves - 1;
 		}
 	      
-		realloc( pmr->n.ml.amMoves,
-			 cAnalysisMoves * sizeof( move ) );
+                pmr->n.ml.amMoves = (move *)
+                  realloc( pmr->n.ml.amMoves,
+                           cAnalysisMoves * sizeof( move ) );
 		pmr->n.ml.cMoves = cAnalysisMoves;
 	    }
 
