@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.10 2002/06/21 20:41:08 thyssen Exp $
+ * $Id: analysis.h,v 1.11 2002/07/01 19:02:25 thyssen Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -99,8 +99,10 @@ extern int getLuckRating ( const float rLuck );
 extern float
 relativeFibsRating ( const float r, const int n );
 
-extern void
-getMWCFromError ( const statcontext *psc,
-                  float aar[ 2 ][ 2 ] );
+extern float
+absoluteFibsRating ( const float r, const int n );
+
+extern float
+getMWCFromError ( const statcontext *psc, float *ar );
 
 #endif
