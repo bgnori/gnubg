@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.227 2002/06/15 17:21:14 thyssen Exp $
+ * $Id: gnubg.c,v 1.228 2002/06/15 17:40:57 thyssen Exp $
  */
 
 #include "config.h"
@@ -5659,10 +5659,24 @@ getDefaultFileName ( const pathformat f ) {
 extern char *
 getDefaultPath ( const pathformat f ) {
 
-  if ( strlen ( aaszPaths[ f ][ 1 ] ) )
-    return PathSearch ( strcat ( aaszPaths[ f ][ 1 ], "/" ), szDataDirectory );
-  else if ( strlen ( aaszPaths[ f ][ 0 ] ) )
-    return PathSearch ( strcat ( aaszPaths[ f ][ 0 ], "/" ), szDataDirectory );
+  char *pc;
+
+  if ( strlen ( aaszPaths[ f ][ 1 ] ) ) {
+    pc = strchr ( aaszPaths[ f ][ 1 ], 0 ) - 1;
+    if ( *pc == '/' )
+      return PathSearch ( aaszPaths[ f ][ 1 ], szDataDirectory );
+    else
+      return PathSearch ( strcat ( aaszPaths[ f ][ 1 ], "/" ), 
+                          szDataDirectory );
+  }
+  else if ( strlen ( aaszPaths[ f ][ 0 ] ) ) {
+    pc = strchr ( aaszPaths[ f ][ 0 ], 0 ) - 1;
+    if ( *pc == '/' )
+      return PathSearch ( aaszPaths[ f ][ 0 ], szDataDirectory );
+    else
+      return PathSearch ( strcat ( aaszPaths[ f ][ 0 ], "/" ), 
+                          szDataDirectory );
+  }
   else 
     return NULL;
 
