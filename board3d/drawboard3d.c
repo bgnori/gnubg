@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.16 2003/11/18 12:33:05 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.17 2003/11/21 11:51:25 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -2557,10 +2557,10 @@ void setupPath(BoardData *bd, Path* p, float* pRotate, int fClockwise, int fromP
 	/* Only rotate piece going home */
 	*pRotate = -1;
 
-	/* Swap board if displaying other way around */
+	/* Swap boards if displaying other way around */
 	if (fClockwise)
 	{
-		int swap[] = {0, 2, 1, 4, 3};
+		int swap[] = {0, 2, 1, 4, 3, 5};
 		fromBoard = swap[fromBoard];
 		toBoard = swap[toBoard];
 	}
