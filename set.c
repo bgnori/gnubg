@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.15 2000/02/01 00:09:38 gtw Exp $
+ * $Id: set.c,v 1.16 2000/02/02 21:35:07 gtw Exp $
  */
 
 #include "config.h"
@@ -125,9 +125,11 @@ extern void CommandSetAutoDoubles( char *sz ) {
 	
     if( ( cAutoDoubles = n ) > 1 )
 	printf( "Automatic doubles will be used (up to a limit of %d).\n", n );
-    else
+    else if( cAutoDoubles )
 	puts( "A single automatic double will be permitted." );
-
+    else
+	puts( "Automatic doubles will not be used." );
+	
     if( cAutoDoubles ) {
 	if( nMatchTo > 0 )
 	    puts( "(Note that automatic doubles will have no effect until you "
