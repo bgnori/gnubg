@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.31 2003/04/04 22:25:32 gtw Exp $
+ * $Id: guile.c,v 1.31.4.1 2003/08/05 07:54:13 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -317,7 +317,7 @@ static SCM evaluate_position_cubeful( SCM sBoard, SCM sCube,
     SCMToCubeInfo( sCube, &ci );
 
     PortableSignal( SIGINT, HandleInterrupt, &sh, FALSE );
-    n = GeneralCubeDecisionE ( aarOutput, anBoard, &ci, &ec );
+    n = GeneralCubeDecisionE ( aarOutput, anBoard, &ci, &ec, 0 );
     PortableSignalRestore( SIGINT, &sh );
     if( fInterrupt ) {
 	raise( SIGINT );
@@ -419,8 +419,9 @@ static SCM rollout_position( SCM sBoard, SCM sCube, SCM sRolloutContext,
     SCMToCubeInfo( sCube, &ci );
 
     PortableSignal( SIGINT, HandleInterrupt, &sh, FALSE );    
-    n = GeneralEvaluationR( SCM_CHARS( sDesc ), ar, arStdDev, arsStatistics, anBoard,
-			    &ci, &rcRollout /* FIXME use sRolloutContext */ );
+    n = GeneralEvaluationR( ar, arStdDev, arsStatistics, anBoard,
+			    &ci, &rcRollout, /* FIXME use sRolloutContext */ 
+			    NULL, NULL);
     PortableSignalRestore( SIGINT, &sh );
     if( fInterrupt ) {
 	raise( SIGINT );

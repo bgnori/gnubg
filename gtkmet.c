@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.5 2003/01/22 20:12:48 thyssen Exp $
+ * $Id: gtkmet.c,v 1.5.4.1 2003/08/05 07:54:13 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -238,7 +238,7 @@ static void invertMETlocal( GtkWidget *pw, metwidget *pmw ){
 
 static void loadMET ( GtkWidget *pw, metwidget *pmw ) {
 
-  SetMET ( NULL, 0, NULL );
+  SetMET ( NULL, NULL );
 
   UpdateAllTables ( pmw );
 
@@ -251,7 +251,7 @@ extern void GTKShowMatchEquityTable( const int nMatchTo,
   /* FIXME: Widget should update after 'Invert' or 'Load ...' */  
   int i;
   char sz[ 50 ];
-  GtkWidget *pwDialog = CreateDialog( _("GNU Backgammon - Match equity table"),
+  GtkWidget *pwDialog = GTKCreateDialog( _("GNU Backgammon - Match equity table"),
                                       DT_INFO, NULL, NULL );
   GtkWidget *pwNotebook = gtk_notebook_new ();
   GtkWidget *pwLoad = gtk_button_new_with_label(_("Load table..."));

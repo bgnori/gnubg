@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.3 2003/03/29 12:48:20 thyssen Exp $
+ * $Id: gtkrolls.c,v 1.3.4.1 2003/08/05 07:54:13 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -37,7 +37,7 @@
 #include "gtkgame.h"
 #include "drawboard.h"
 #include "i18n.h"
-#include "export.h"
+#include "format.h"
 
 #if USE_GTK2
 
@@ -281,7 +281,7 @@ GTKShowRolls ( const gint nDepth, evalcontext *pec, matchstate *pms ) {
 
 #if USE_GTK2
 
-  GtkWidget *pwDialog = CreateDialog( _("Distribution of rolls"),
+  GtkWidget *pwDialog = GTKCreateDialog( _("Distribution of rolls"),
                                       DT_INFO, NULL, NULL );
   GtkWidget *pw, *vbox, *hbox;
 

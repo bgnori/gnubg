@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.11 2003/06/09 15:45:26 thyssen Exp $
+ * $Id: gtktempmap.c,v 1.11.2.1 2003/08/05 07:54:13 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -40,7 +40,7 @@
 #include "gtkgame.h"
 #include "drawboard.h"
 #include "i18n.h"
-#include "export.h"
+#include "format.h"
 #include "render.h"
 #include "renderprefs.h"
 #include "gtkboard.h"
@@ -517,7 +517,7 @@ GTKShowTempMap( const matchstate ams[], const int n,
 
   /* dialog */
 
-  pwDialog = CreateDialog( _("Sho Sengoku Temperature Map - "
+  pwDialog = GTKCreateDialog( _("Sho Sengoku Temperature Map - "
                              "Distribution of rolls"), DT_INFO, NULL, NULL );
 
 

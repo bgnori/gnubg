@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.23 2003/03/30 16:37:51 thyssen Exp $
+ * $Id: latex.c,v 1.23.4.1 2003/08/05 07:54:13 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -27,6 +27,8 @@
 #include "analysis.h"
 #include "backgammon.h"
 #include "drawboard.h"
+#include "export.h"
+#include "format.h"
 #include "i18n.h"
 
 static char*aszLuckTypeLaTeXAbbr[] = { "$--$", "$-$", "", "$+$", "$++$" };
@@ -345,16 +347,15 @@ static void PrintLaTeXComment( FILE *pf, unsigned char *pch ) {
 
 static void 
 PrintLaTeXCubeAnalysis( FILE *pf, matchstate *pms, int fPlayer,
-                        float arDouble[ 4 ], 
                         float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                        float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                         evalsetup *pes ) { 
   
     cubeinfo ci;
-    char sz[ 1024 ];
 
     if( pes->et == EVAL_NONE )
 	return;
-    
+
     SetCubeInfo( &ci, pms->nCube, pms->fCubeOwner, fPlayer, pms->nMatchTo,
 		 pms->anScore, pms->fCrawford, pms->fJacoby, nBeavers,
                  pms->bgv );
@@ -363,11 +364,10 @@ PrintLaTeXCubeAnalysis( FILE *pf, matchstate *pms, int fPlayer,
 	/* No cube action possible */
 	return;
     
-    GetCubeActionSz( arDouble, aarOutput, sz, &ci, fOutputMWC, FALSE );
-
+    
     /* FIXME use center and tabular environment instead of verbatim */
     fputs( "{\\begin{quote}\\footnotesize\\begin{verbatim}\n", pf );
-    fputs( sz, pf );
+    fputs( OutputCubeAnalysis( aarOutput, aarStdDev, pes, &ci ), pf );
     fputs( "\\end{verbatim}\\end{quote}}\n", pf );    
 }
 
@@ -422,7 +422,7 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 		PrintLaTeXBoard( pf, &msExport, pmr->n.fPlayer );
 	    
 	    PrintLaTeXCubeAnalysis( pf, &msExport, pmr->n.fPlayer,
-				    pmr->n.arDouble, pmr->n.aarOutput,
+				    pmr->n.aarOutput, pmr->n.aarStdDev,
                                     &pmr->n.esDouble );
             /* FIXME: output cube skill */
 
@@ -456,8 +456,9 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 	    PrintLaTeXBoard( pf, &msExport, pmr->d.fPlayer );
 
 	    PrintLaTeXCubeAnalysis( pf, &msExport, pmr->d.fPlayer,
-				    pmr->d.arDouble, 
-                                    pmr->d.aarOutput, &pmr->d.esDouble );
+                                    pmr->d.CubeDecPtr->aarOutput, 
+                                    pmr->d.CubeDecPtr->aarStdDev, 
+                                    &pmr->d.CubeDecPtr->esDouble );
 
 	    /* FIXME what about beavers? */
 	    fprintf( pf, "\\begin{center}%s %s%s\\end{center}\n\n",

@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.36 2003/05/24 10:24:49 hb Exp $
+* $Id: matchequity.c,v 1.36.4.1 2003/08/05 07:54:14 Superfly_Jon Exp $
 */
 
 #include <stdio.h>
@@ -1816,6 +1816,53 @@ getME ( const int nScore0, const int nScore1, const int nMatchTo,
   return 0.0f;
 
 }
+
+
+extern float
+getMEAtScore( const int nScore0, const int nScore1, const int nMatchTo,
+              const int fPlayer, const int fCrawford,
+              float aafMET[ MAXSCORE ][ MAXSCORE ],
+              float aafMETPostCrawford[ 2 ][ MAXSCORE ] ) {
+
+  int n0 = nMatchTo - nScore0 - 1;
+  int n1 = nMatchTo - nScore1 - 1;
+
+  /* check if any player has won the match */
+
+  if ( n0 < 0 )
+    /* player 0 has won the game */
+    return ( fPlayer ) ? 0.0f : 1.0f;
+  else if ( n1 < 0 )
+    /* player 1 has won the game */
+    return ( fPlayer ) ? 1.0f : 0.0f;
+
+  /* the match is not finished */
+
+  if ( ! fCrawford &&
+       ( ( nMatchTo - nScore0 == 1 ) || ( nMatchTo - nScore1 == 1 ) ) ) {
+
+    /* this game is post-Crawford */
+
+    if ( ! n0 )
+      /* player 0 is leading match */
+      /* FIXME: use pc-MET for player 0 */
+      return ( fPlayer ) ? 
+        aafMETPostCrawford[ 1 ][ n1 ] : 1.0 - aafMETPostCrawford[ 1 ][ n1 ];
+    else
+      /* player 1 is leading the match */
+      return ( fPlayer ) ? 
+        1.0f - aafMETPostCrawford[ 0 ][ n0 ] : aafMETPostCrawford[ 0 ][ n0 ];
+
+  }
+  else 
+    /* non-post-Crawford games */
+    return ( fPlayer ) ? 1.0 - aafMET[ n0 ][ n1 ] : aafMET[ n0 ][ n1 ];
+
+  assert ( FALSE );
+  return 0.0f;
+
+}
+
 
 
 extern void

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.18.4.1 2003/07/31 10:40:11 Superfly_Jon Exp $
+ * $Id: export.c,v 1.18.4.2 2003/08/05 07:54:09 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -207,10 +207,10 @@ ExportGameEquityEvolution (FILE * pf, list * plGame,
 	  rMoveError = 0.0;
 	  rMoveEquity = 0.0;
 
-	  if (pmr->d.esDouble.et != EVAL_NONE)
+	  if (pmr->d.CubeDecPtr->esDouble.et != EVAL_NONE)
 	    {
 
-	      float *arDouble = pmr->d.arDouble;
+	      float *arDouble = pmr->d.CubeDecPtr->arDouble;
 
 	      GetMatchStateCubeInfo (&ci, &msEE);
 
@@ -794,7 +794,7 @@ CommandExportPositionJF (char *sz)
    */
 
   FILE *fp;
-  int i, anBoardJF[26];
+  int i;
   unsigned char c;
   int anBoard[2][25];
 

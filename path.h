@@ -16,11 +16,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: path.h,v 1.2 2002/12/11 20:21:34 thyssen Exp $
+ * $Id: path.h,v 1.2.6.1 2003/08/05 07:54:14 Superfly_Jon Exp $
  */
 
 #ifndef _PATH_H_
 #define _PATH_H_
+
+#ifdef WIN32
+#define DIR_SEPARATOR  '\\'
+#define DIR_SEPARATOR_S  "\\"
+#else
+#define DIR_SEPARATOR  '/'
+#define DIR_SEPARATOR_S  "/"
+#endif
 
 extern char *PathSearch( const char *szFile, const char *szDir );
 

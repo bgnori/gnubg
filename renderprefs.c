@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.3.4.15 2003/08/03 09:27:31 Superfly_Jon Exp $
+ * $Id: renderprefs.c,v 1.3.4.16 2003/08/05 07:54:14 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -409,6 +409,9 @@ extern void RenderPreferencesParam( renderdata *prd, char *szParam,
     else if( !strncasecmp( szParam, "labels", c ) )
 	/* labels=bool */
 	prd->fLabels = toupper( *szValue ) == 'Y';
+    else if( !strncasecmp( szParam, "dynamiclabels", c ) )
+	/* dynamiclabels=bool */
+	prd->fDynamicLabels = toupper( *szValue ) == 'Y';
     else if( !strncasecmp( szParam, "diceicon", c ) )
 	/* FIXME deprecated in favour of "set gui dicearea" */
 	fGUIDiceArea = toupper( *szValue ) == 'Y';
@@ -676,7 +679,7 @@ extern char *RenderPreferencesCommand( renderdata *prd, char *sz ) {
 		"numbers3d=%s "
 		"background3d=%s "
 #endif
-	     "labels=%c wood=%s hinges=%c "
+	     "labels=%c dynamiclabels=%c wood=%s hinges=%c "
 	     "light=%0.0f;%0.0f shape=%0.1f " 
 	     "chequers0=#%02X%02X%02X;%0.2f;%0.2f;%0.2f;%0.2f "
 	     "chequers1=#%02X%02X%02X;%0.2f;%0.2f;%0.2f;%0.2f "
@@ -727,6 +730,7 @@ extern char *RenderPreferencesCommand( renderdata *prd, char *sz ) {
 #endif
              /* labels ... */
              prd->fLabels ? 'y' : 'n',
+             prd->fDynamicLabels ? 'y' : 'n',
 	     aszWoodName[ prd->wt ],
 	     prd->fHinges ? 'y' : 'n',
 	     rAzimuth, rElevation, 1.0 - prd->rRound,
