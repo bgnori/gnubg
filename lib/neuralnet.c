@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.21 2004/09/16 07:38:42 Superfly_Jon Exp $
+ * $Id: neuralnet.c,v 1.22 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #include "config.h"
@@ -166,7 +166,7 @@ static float e[100] = {
    The Intel x87's `f2xm1' instruction makes calculating accurate
    exponentials comparatively fast, but still about 30% slower than
    the lookup table used here. */
-//static inline float sigmoid(float const xin) {
+/* static inline float sigmoid(float const xin) { */
 static float sigmoid_original(float const xin) {
     
     if( !signbit( xin ) ) { /* signbit() can be faster than a compare to 0.0 */

@@ -2,6 +2,7 @@
  * heap.c
  *
  * by Gary Wong, 1997
+ * $Id: heap.c,v 1.3 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #include <stddef.h>

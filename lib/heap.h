@@ -2,6 +2,7 @@
  * heap.h
  *
  * by Gary Wong, 1997
+ * $Id: heap.h,v 1.2 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #ifndef _HEAP_H_

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.32 2004/09/29 13:15:58 oysteijo Exp $
+ * $Id: makebearoff.c,v 1.33 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #include "config.h"
@@ -695,7 +695,7 @@ generate_os ( const int nOS, const int fHeader,
     dlgprintf(127, "Opening temporary file." );
 #endif
     time ( &t );
-    sprintf ( szTmp, "t%06ld.bd", t % 100000 );
+    sprintf ( szTmp, "t%06lu.bd", (unsigned long) t % 100000 );
     if ( ! ( pfTmp = fopen ( szTmp, "w+b" ) ) ) {
       perror ( szTmp );
       exit ( 2 );
@@ -1298,7 +1298,7 @@ generate_ts ( const int nTSP, const int nTSC,
 #endif
 
     time ( &t );
-    sprintf ( szTmp, "t%06ld.bd", t % 100000 );
+    sprintf ( szTmp, "t%06lu.bd", (unsigned long) t % 100000 );
     if ( ! ( pfTmp = fopen ( szTmp, "w+b" ) ) ) {
       perror ( szTmp );
       exit ( 2 );
@@ -1501,9 +1501,9 @@ usage ( char *arg0 ) {
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.32 $\n" );
+  printf ( "makebearoff $Revision: 1.33 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.32 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.33 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1647,7 +1647,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.32 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.33 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1775,7 +1775,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.32 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.33 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"

@@ -2,6 +2,7 @@
  * list.c
  *
  * by Gary Wong, 1996
+ * $Id: list.c,v 1.5 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #include <list.h>

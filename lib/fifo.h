@@ -2,6 +2,7 @@
  * fifo.h
  *
  * by Gary Wong, 1996
+ * $Id: fifo.h,v 1.3 2005/02/21 23:23:08 jsegrave Exp $
  *
  */
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffdump.c,v 1.2 2004/11/18 23:14:16 hb Exp $
+ * $Id: bearoffdump.c,v 1.3 2005/02/21 23:23:07 jsegrave Exp $
  */
 
 #include "config.h"
@@ -30,7 +30,7 @@
 #include "bearoff.h"
 
 /* ugly fixes */
-char *aszRNG[];
+char *aszRNG[ 1 ];
 char *aszSkillType[ 1 ];
 int exsExport;
 int ap;

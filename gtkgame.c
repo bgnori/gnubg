@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.533 2005/02/17 17:05:36 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.534 2005/02/21 23:23:07 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -9696,7 +9696,7 @@ extern void Undo()
 static void
 TogglePanel ( gpointer *p, guint n, GtkWidget *pw ) {
   int f;
-  gnubgwindow panel;
+  gnubgwindow panel = 0;
 
   g_assert( GTK_IS_CHECK_MENU_ITEM( pw ) );
   
@@ -9936,9 +9936,10 @@ static void RelationalLinkPlayers(GtkWidget *pw, GtkWidget *pwRelList)
 	if (*linkPlayer)
 	{
 		RelationalLinkNick(linkNick, linkEnv, linkPlayer);
-ShowRelationalSelect(pwRelList, curRow, 0, 0, 0);
-//update new details list...
-//>> change query so person not picked if nick in selected env!
+		ShowRelationalSelect(pwRelList, curRow, 0, 0, 0);
+		/* update new details list...
+		   >> change query so person not picked if nick in selected env!
+		*/
 	}
 }
 

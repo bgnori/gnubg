@@ -2,6 +2,7 @@
  * hash.h
  *
  * by Gary Wong, 1997
+ * $Id: hash.h,v 1.4 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #ifndef _HASH_H_

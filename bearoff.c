@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.34 2004/11/24 10:25:16 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.35 2005/02/21 23:23:07 jsegrave Exp $
  */
 
 #include "config.h"
@@ -2086,9 +2086,9 @@ GetDistCompressed ( bearoffcontext *pbc, const unsigned int nPosID ) {
              "The bearoff file '%s' is likely to be corrupted.\n"
              "Please check that the MD5 sum is the same as documented "
              "in the GNU Backgammon manual.\n"
-             "Offset %ld, dist size %u (offset %u), "
+             "Offset %lu, dist size %u (offset %u), "
              "gammon dist size %u (offset %u)\n",
-             pbc->szFilename, iOffset, nz, ioff, nzg, ioffg );
+             pbc->szFilename, (unsigned long) iOffset, nz, ioff, nzg, ioffg );
     assert( FALSE );
   }
 

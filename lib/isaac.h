@@ -1,4 +1,5 @@
 /*
+ $Id: isaac.h,v 1.2 2005/02/21 23:23:08 jsegrave Exp $
 ------------------------------------------------------------------------------
 isaac.h: definitions for a random number generator
 MODIFIED:

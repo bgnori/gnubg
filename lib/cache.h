@@ -2,6 +2,7 @@
  * cache.h
  *
  * by Gary Wong, 1997-2000
+ * $Id: cache.h,v 1.6 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #ifndef _CACHE_H_

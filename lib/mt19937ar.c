@@ -44,7 +44,7 @@
 
    (1) #UNDEF main(), and other unused functions.
    (2) make mt and mti parameters
-
+   $Id: mt19937ar.c,v 1.3 2005/02/21 23:23:08 jsegrave Exp $
 */
 
 #include <stdio.h>

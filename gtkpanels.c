@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.12 2005/02/17 16:59:25 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.13 2005/02/21 23:23:08 jsegrave Exp $
 */
 
 #include "config.h"
@@ -31,6 +31,7 @@
 #define GTK_ENABLE_BROKEN /* for GtkText */
 #include "backgammon.h"
 #include <i18n.h>
+#include <strings.h>
 
 #if USE_GTK
 #include "gtkboard.h"

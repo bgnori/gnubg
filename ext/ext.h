@@ -3,6 +3,7 @@
  *
  * by Gary Wong, 1997-2000
  *
+ * $Id: ext.h,v 1.3 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #ifndef _EXT_H_

@@ -2,6 +2,7 @@
  * list.h
  *
  * by Gary Wong, 1996
+ * $Id: list.h,v 1.4 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #ifndef _LIST_H_

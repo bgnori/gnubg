@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.137 2004/09/16 13:10:39 Superfly_Jon Exp $
+## $Id: Makefile.am,v 1.138 2005/02/21 23:23:08 jsegrave Exp $
 
 localedir = $(datadir)/locale
 
@@ -108,7 +108,7 @@ if USE_GTK
 ## --- GTK
 INCLUDES = $(COMMON_INCS) @GTK_CFLAGS@ $(SOUND_INCS) @LIBART_CFLAGS@ \
            $(BOARD3D_INCS)
-gnubg_SOURCES = $(COMMON_SOURCES) gtkboard.c gtkboard.h gtkgame.c gtkgame.h \
+gnubg_SOURCES = $(COMMON_SOURCES) gtkboard.c gtkboard.h gtkgame.c gtkgame.h gtkfile.c \
 	gtkprefs.c gtkprefs.h gtk-multiview.c \
 	gtk-multiview.h gtktheory.c gtktheory.h gtktexi.c gtktexi.h \
 	gtkexport.c gtkexport.h gtkcube.c gtkcube.h gtkchequer.c gtkchequer.h \

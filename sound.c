@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.37 2004/10/07 11:24:06 Superfly_Jon Exp $
+ * $Id: sound.c,v 1.38 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -667,9 +667,10 @@ static char *can_play_audio( void ) {
 
 #if HAVE_ARTSC
 
-static int _af_ulaw2linear(unsigned char ulawbyte);
-
 #ifndef HAVE_AF_ULAW2LINEAR
+
+static int _af_ulaw2linear(unsigned char ulawbyte); 
+
 
 /*
 ** This routine converts from ulaw to 16 bit linear.
@@ -703,6 +704,9 @@ static int _af_ulaw2linear(unsigned char ulawbyte)
 
 	return (sample);
 }
+
+#else
+int _af_ulaw2linear(unsigned char ulawbyte); 
 
 #endif /* !HAVE_AF_ULAW2LINEAR */
 

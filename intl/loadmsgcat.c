@@ -14,7 +14,9 @@
    You should have received a copy of the GNU Library General Public
    License along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
-   USA.  */
+   USA.  
+   $Id: loadmsgcat.c,v 1.4 2005/02/21 23:23:08 jsegrave Exp $
+*/
 
 /* Tell glibc's <string.h> to provide a prototype for mempcpy().
    This must come before <config.h> because <config.h> may include

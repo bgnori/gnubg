@@ -2,6 +2,7 @@
  * neuralnet.h
  *
  * by Gary Wong, 1998
+ * $Id: neuralnet.h,v 1.8 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #ifndef _NEURALNET_H_

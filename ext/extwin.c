@@ -3,6 +3,7 @@
  *
  * by Gary Wong, 1997
  *
+ * $Id: extwin.c,v 1.3 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #include "config.h"

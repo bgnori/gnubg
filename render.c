@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.42 2004/09/10 09:34:56 Superfly_Jon Exp $
+ * $Id: render.c,v 1.43 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2213,8 +2213,8 @@ extern void RenderDice( renderdata *prd, unsigned char *puch0,
 			    arDiceCoefficient[ 1 ];
 		    } else {
 			/* corner */
-			x_norm = 0.707 * x; // - ( x > 0.0 ? 1.0 : 1.0); 
-			y_norm = -0.707 * y; // - ( y > 0.0 ? 1.0 : 1.0 );
+		      x_norm = 0.707 * x; /* - ( x > 0.0 ? 1.0 : 1.0);  */
+		      y_norm = -0.707 * y; /* - ( y > 0.0 ? 1.0 : 1.0 ); */
 			z_norm = 1 - x_norm * x_norm - y_norm * y_norm; 
 			z_norm = ssqrt( z_norm );
 			

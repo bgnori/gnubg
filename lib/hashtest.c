@@ -2,6 +2,7 @@
  * hashtest.c
  *
  * by Gary Wong, 1997
+ * $Id: hashtest.c,v 1.2 2005/02/21 23:23:08 jsegrave Exp $
  */
 
 #include <assert.h>
