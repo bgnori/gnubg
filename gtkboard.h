@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.53 2004/01/16 09:42:15 uid68519 Exp $
+ * $Id: gtkboard.h,v 1.54 2004/01/27 09:44:22 uid68519 Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -339,8 +339,6 @@ extern void update_pipcount ( BoardData *bd, gint points[ 2 ][ 25 ] );
 extern void write_board ( BoardData *bd, int anBoard[ 2 ][ 25 ] );
 extern void board_beep( BoardData *bd );
 extern void Confirm( BoardData *bd );
-extern int ForcedMove ( int anBoard[ 2 ][ 25 ], int anDice[ 2 ] );
-extern int GreadyBearoff ( int anBoard[ 2 ][ 25 ], int anDice[ 2 ] );
 extern int update_move(BoardData *bd);
 extern gboolean place_chequer_or_revert(BoardData *bd, int dest);
 extern gboolean LegalDestPoints( BoardData *bd, int iDestPoints[4] );

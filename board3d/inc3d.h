@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.14 2004/01/16 09:42:15 uid68519 Exp $
+* $Id: inc3d.h,v 1.15 2004/01/27 09:44:34 uid68519 Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -123,6 +123,7 @@ void RestrictiveRender(BoardData *bd);
 void RestrictiveDrawFrame(float pos[3], float width, float height, float depth);
 void RestrictiveDraw(ClipBox* pCb, float pos[3], float width, float height, float depth);
 void EnlargeCurrentToBox(ClipBox* pOtherCb);
+void RestrictiveDrawFlag(BoardData* bd);
 
 extern void getPiecePos(int point, int pos, int swap, float v[3]);
 

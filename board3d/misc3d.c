@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.21 2004/01/21 09:46:20 uid68519 Exp $
+* $Id: misc3d.c,v 1.22 2004/01/27 09:44:34 uid68519 Exp $
 */
 
 #include <math.h>
@@ -1952,6 +1952,7 @@ int idleWaveFlag(BoardData* bd)
 	float elapsedTime = (float)(get_time() - animStartTime);
 	bd->flagWaved = elapsedTime / 200;
 	updateFlagOccPos(bd);
+	RestrictiveDrawFlag(bd);
 	return 1;
 }
 
@@ -1971,7 +1972,7 @@ void ShowFlag3d(BoardData *bd)
 	waveFlag(bd, 0);
 	updateFlagOccPos(bd);
 
-	RestrictiveRedraw();
+	RestrictiveDrawFlag(bd);
 }
 
 int idleCloseBoard(BoardData* bd)

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.20 2004/01/26 10:13:56 uid68519 Exp $
+* $Id: drawboard3d.c,v 1.21 2004/01/27 09:44:23 uid68519 Exp $
 */
 
 #include <math.h>
@@ -3593,6 +3593,15 @@ void RestrictiveDrawMoveIndicator(BoardData* bd)
 	bd->turn *= -1;
 	getMoveIndicatorPos(bd, pos);
 	RestrictiveDrawFrame(pos, ARROW_SIZE, ARROW_SIZE, LIFT_OFF);
+}
+
+void RestrictiveDrawFlag(BoardData* bd)
+{
+	float v[4];
+	getFlagPos(bd, v);
+	v[0] += FLAG_WIDTH / 2.0f - FLAGPOLE_WIDTH;
+	v[2] -= FLAG_WIDTH / 2.0f;
+	RestrictiveDrawFrame(v, FLAG_WIDTH, FLAGPOLE_HEIGHT, FLAG_WIDTH);
 }
 
 void drawBoard(BoardData* bd)
