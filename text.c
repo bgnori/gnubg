@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.61 2003/10/02 17:59:07 thyssen Exp $
+ * $Id: text.c,v 1.62 2003/10/11 16:02:52 thyssen Exp $
  */
 
 #include "config.h"
@@ -224,20 +224,24 @@ TextBoardHeader ( FILE *pf, const matchstate *pms,
 static void 
 TextPrologue ( FILE *pf, const matchstate *pms, const int iGame ) {
 
-  if ( pms->nMatchTo )
-    fprintf ( pf,
-              _("%s (O, %d pts) vs. %s (X, %d pts) (Match to %d)\n\n"),
-              ap [ 0 ].szName, pms->anScore[ 0 ],
-              ap [ 1 ].szName, pms->anScore[ 1 ],
-              pms->nMatchTo );
-  else
-    fprintf ( pf,
-              _("%s (O, %d pts) vs. %s (X, %d pts) (money game)\n\n"),
-              ap [ 0 ].szName, pms->anScore[ 0 ],
-              ap [ 1 ].szName, pms->anScore[ 1 ] );
+  fprintf( pf, pms->cGames == 1 ? 
+           _("The score (after %d game) is: %s %d, %s %d") :
+           _("The score (after %d games) is: %s %d, %s %d"),
+           pms->cGames, 
+           ap[ 0 ].szName, pms->anScore[ 0 ],
+           ap[ 1 ].szName, pms->anScore[ 1 ] );
 
-  fprintf ( pf, 
-            _("Game number %d\n\n"), iGame + 1 );
+  if ( pms->nMatchTo > 0 ) 
+    fprintf( pf,
+             pms->nMatchTo == 1 ?
+             _(" (match to %d point%s)") :
+             _(" (match to %d points%s)"),
+             pms->nMatchTo,
+             pms->fCrawford ? 
+             _(", Crawford game") : ( pms->fPostCrawford ?
+					 _(", post-Crawford play") : ""));
+
+  fputs( "\n", pf );
 
 }
 
@@ -256,7 +260,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.61 $";
+  const char szVersion[] = "$Revision: 1.62 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.148 2003/09/12 17:14:02 jsegrave Exp $
+ * $Id: html.c,v 1.149 2003/10/11 16:02:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -171,7 +171,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-           "/* $Id: html.c,v 1.148 2003/09/12 17:14:02 jsegrave Exp $ */\n",
+           "/* $Id: html.c,v 1.149 2003/10/11 16:02:51 thyssen Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -277,6 +277,15 @@ GetStyleGeneral( const htmlexportcss hecss, ... ) {
   strcat( sz, "\"" );
 
   return sz;
+
+}
+
+
+static void
+HTMLPrintLegend( FILE *pf, const htmlexportcss hecss ) {
+
+  /* WRITE ME */
+
 
 }
 
@@ -1688,42 +1697,28 @@ HTMLPrologue ( FILE *pf, const matchstate *pms,
                const htmlexportcss hecss ) {
 
   char szTitle[ 100 ];
-  char szHeader[ 100 ];
 
   int i;
   int fFirst;
 
   /* DTD */
 
-  if ( pms->nMatchTo )
-    sprintf ( szTitle,
-              _("%s versus %s, score is %d-%d in %d points match (game %d)"),
-              ap [ 1 ].szName, ap[ 0 ].szName,
-              pms->anScore[ 1 ], pms->anScore[ 0 ], pms->nMatchTo,
-              iGame + 1 );
-  else
-    sprintf ( szTitle,
-              _("%s versus %s, score is %d-%d in money game (game %d)"),
-              ap [ 1 ].szName, ap[ 0 ].szName,
-              pms->anScore[ 1 ], pms->anScore[ 0 ], 
-              iGame + 1 );
+  sprintf( szTitle, pms->cGames == 1 ? 
+           _("The score (after %d game) is: %s %d, %s %d") :
+           _("The score (after %d games) is: %s %d, %s %d"),
+           pms->cGames, 
+           ap[ 0 ].szName, pms->anScore[ 0 ],
+           ap[ 1 ].szName, pms->anScore[ 1 ] );
 
-  if ( pms->nMatchTo )
-    sprintf ( szHeader,
-              _("%s (%d pts) vs. %s (%d pts) (Match to %d)"),
-              ap[ 0 ].szName,
-              pms->anScore[ 0 ],
-              ap[ 1 ].szName,
-              pms->anScore[ 1 ],
-              pms->nMatchTo );
-  else
-    sprintf ( szHeader,
-              _("%s (%d pts) vs. %s (%d pts) (money game)"),
-              ap[ 0 ].szName,
-              pms->anScore[ 0 ],
-              ap[ 1 ].szName,
-              pms->anScore[ 1 ] );
-
+  if ( pms->nMatchTo > 0 ) 
+    sprintf( strchr( szTitle, 0 ),
+             pms->nMatchTo == 1 ?
+             _(" (match to %d point%s)") :
+             _(" (match to %d points%s)"),
+             pms->nMatchTo,
+             pms->fCrawford ? 
+             _(", Crawford game") : ( pms->fPostCrawford ?
+					 _(", post-Crawford play") : ""));
 
   fprintf ( pf,
             "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' "
@@ -1770,7 +1765,7 @@ HTMLPrologue ( FILE *pf, const matchstate *pms,
             "</h1>\n"
             "<h2>%s</h2>\n"
             ,
-            szHeader );
+            szTitle );
 
   /* add links to other games */
 
@@ -1810,7 +1805,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.148 $";
+  const char szVersion[] = "$Revision: 1.149 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1891,7 +1886,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.148 $";
+  const char szVersion[] = "$Revision: 1.149 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3329,8 +3324,15 @@ static void ExportGameHTML ( FILE *pf, list *plGame, const char *szImageDir,
 
     if ( fLastGame ) {
 
+      /* match statistics */
+
       fprintf ( pf, "<hr />\n" );
       HTMLDumpStatcontext ( pf, &scTotal, &msOrig, -1, hecss );
+
+      /* legend */
+
+      if ( exsExport.fIncludeLegend )
+        HTMLPrintLegend( pf, hecss );
 
     }
 
@@ -3708,23 +3710,26 @@ ExportPositionGammOnLine( FILE *pf ) {
 
     fputs ( "\n<!-- Score -->\n\n", pf );
 
-    if ( ms.nMatchTo )
-      fprintf ( pf, 
-                _("<strong>%s (%s, %d pts) vs. %s (%s, %d pts) "
-                  "(Match to %d)</strong>\n"),
-                ap[ 0 ].szName,
-                ap [ 0 ].szName, ms.anScore[ 0 ],
-                ap[ 1 ].szName,
-                ap [ 1 ].szName, ms.anScore[ 1 ],
-                ms.nMatchTo );
-    else
-      fprintf ( pf,
-                _("<strong>%s (%s, %d pts) vs. %s (%s, %d pts) "
-                  "(money game)</strong>\n"),
-                ap[ 0 ].szName,
-                ap [ 0 ].szName, ms.anScore[ 0 ],
-                ap[ 1 ].szName,
-                ap [ 1 ].szName, ms.anScore[ 1 ] );
+    fputs( "<strong>", pf );
+
+    fprintf( pf, 
+             ms.cGames == 1 ? 
+             _("The score (after %d game) is: %s %d, %s %d") :
+             _("The score (after %d games) is: %s %d, %s %d"),
+             ms.cGames, 
+             ap[ 0 ].szName, ms.anScore[ 0 ],
+             ap[ 1 ].szName, ms.anScore[ 1 ] );
+
+    if ( ms.nMatchTo > 0 ) 
+      fprintf( pf,
+               ms.nMatchTo == 1 ?
+               _(" (match to %d point%s)") :
+               _(" (match to %d points%s)"),
+               ms.nMatchTo,
+               ms.fCrawford ? 
+               _(", Crawford game") : ( ms.fPostCrawford ?
+                                        _(", post-Crawford play") : ""));
+    fputs( "</strong>\n", pf );
 
     fputs ( "\n<!-- End Score -->\n\n", pf );
 
