@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.57 2002/04/04 19:06:44 thyssen Exp $
+ * $Id: analysis.c,v 1.58 2002/04/05 17:06:49 oysteijo Exp $
  */
 
 #include "config.h"
@@ -1360,8 +1360,10 @@ extern void CommandAnalyseMove ( char *sz ) {
     memcpy ( &msx, &ms, sizeof ( matchstate ) );
     AnalyzeMove ( plLastMove->plNext->p, &msx, NULL, FALSE );
 
+#if USE_GTK
+  if( fX )
     GTKUpdateAnnotations();
-
+#endif
   }
   else
     outputl ( "Sorry, cannot analyse move!" );

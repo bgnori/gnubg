@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.203 2002/04/04 17:25:35 thyssen Exp $
+ * $Id: gnubg.c,v 1.204 2002/04/05 17:06:49 oysteijo Exp $
  */
 
 #include "config.h"
@@ -3374,7 +3374,7 @@ extern void CommandSaveSettings( char *szParam ) {
 	     "set analysis threshold verybad %.3f\n"
 	     "set analysis threshold verygood %.3f\n"
 	     "set analysis threshold verylucky %.3f\n"
-	     "set analysis threshold veryunlucky %.4893f\n",
+	     "set analysis threshold veryunlucky %.3f\n",
 	     arSkillLevel[ SKILL_BAD ],
 	     arSkillLevel[ SKILL_DOUBTFUL ],
 	     arSkillLevel[ SKILL_GOOD ],
