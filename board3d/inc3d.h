@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.1.2.12 2003/07/30 12:21:05 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.1.2.13 2003/08/06 09:03:36 Superfly_Jon Exp $
 */
 
 #include <gtk/gtk.h>
@@ -28,7 +28,6 @@
 #ifdef USE_MSDEV_TEST_HARNESS
 	#undef USE_GTK
 	#define USE_GLUT
-	/* Comment out next line to remove glut library (needed for debug font) */
 	#define USE_GLUT_FONT
 	/* Comment out next line to switch test harness off */
 	#define TEST

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.42.2.18 2003/08/05 07:54:11 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.42.2.19 2003/08/06 09:03:35 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -224,6 +224,7 @@ typedef struct _BoardData {
 	int testSkewFactor;	/* Debug FOV adjustment */
 	int curveAccuracy;	/* Round curve approximation accuracy */
 	float diceSize;
+	int roundedEdges;	/* Rounded board edges? */
 
 	float movingPos[3];
 	float dragPos[3];

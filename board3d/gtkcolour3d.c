@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.1.2.4 2003/08/03 09:27:31 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.1.2.5 2003/08/06 09:03:36 Superfly_Jon Exp $
 */
 
 #include <GL/gl.h>
@@ -454,11 +454,6 @@ void setCol(GtkColourPicker* pCP, float val[4])
 		dval[i] = val[i];
 
 	gtk_colour_picker_set_colour(pCP, dval);
-}
-
-int IsSet(int flags, int bit)
-{
-	return ((flags & bit) == bit) ? 1 : 0;
 }
 
 void SetColour3d(GtkWidget *pw, UpdateDetails* pDetails)

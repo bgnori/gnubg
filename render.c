@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.13.4.12 2003/08/05 07:54:14 Superfly_Jon Exp $
+ * $Id: render.c,v 1.13.4.13 2003/08/06 09:03:36 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -124,6 +124,7 @@ renderdata rdDefault = {
 	35,	/* Board angle */
 	20,	/* FOV skew factor */
 	3,	/* Dice size */
+	0,	/* Rounded edges */
 	PT_ROUNDED,	/* Piece type */
     {{{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, 100, 0, 0},
 	 {{0, 0, 0, 1}, {0, 0, 0, 1}, {0, 0, 0, 1}, 100, 0, 0}},
@@ -2670,7 +2671,8 @@ extern void CalculateArea( renderdata *prd, unsigned char *puch, int nStride,
     /* draw arrow for direction of play */
 
 #if HAVE_LIBART
-    if( fPlaying && intersects( x, y, cx, cy,
+    if( fPlaying && prd->showMoveIndicator &&
+			intersects( x, y, cx, cy,
                     anArrowPosition[ 0 ], anArrowPosition[ 1 ],
                     ARROW_SIZE * prd->nSize, ARROW_SIZE * prd->nSize ) ) {
 
@@ -2763,7 +2765,8 @@ extern void RenderImages( renderdata *prd, renderimages *pri ) {
     RenderResignFaces( prd, pri->achResignFaces, nSize * 6 * 3, pri->achResign,
                        nSize * 8 * 4 );
 #if HAVE_LIBART
-    RenderArrows( prd, pri->auchArrow[0], pri->auchArrow[1], nSize * ARROW_SIZE * 4 );
+	if (prd->showMoveIndicator)
+		RenderArrows( prd, pri->auchArrow[0], pri->auchArrow[1], nSize * ARROW_SIZE * 4 );
 #undef ARROW_SIZE
 #endif /* HAVE_LIBART */
 

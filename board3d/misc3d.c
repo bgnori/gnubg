@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.1.2.16 2003/08/03 09:27:31 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.1.2.17 2003/08/06 09:03:36 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -156,6 +156,11 @@ void setMaterial(Material* pMat)
 	{
 		glDisable(GL_TEXTURE_2D);
 	}
+}
+
+int IsSet(int flags, int bit)
+{
+	return ((flags & bit) == bit) ? 1 : 0;
 }
 
 /* Texture functions */
@@ -368,8 +373,9 @@ void testSet3dSetting(BoardData* bd, const renderdata *prd)
 	bd->showHinges = prd->fHinges;
 	bd->showMoveIndicator = prd->showMoveIndicator;
 	bd->showShadows = prd->showShadows;
+	bd->roundedEdges = prd->roundedEdges;
 	bd->shadowDarkness = prd->shadowDarkness;
-	SetShadowDimness3d(BOARD(pwBoard)->board_data);
+	SetShadowDimness3d(bd);
 	bd->curveAccuracy = prd->curveAccuracy;
 	bd->testSkewFactor = prd->testSkewFactor;
 	bd->boardAngle = prd->boardAngle;
@@ -751,9 +757,9 @@ void drawBox(boxType type, float x, float y, float z, float w, float h, float d,
 	{	/* no texture co-ords */
 	glBegin(GL_QUADS);
 		/* Front Face */
+		glNormal3f(0, 0, normZ);
 		if (type & BOX_SPLITTOP)
 		{
-			glNormal3f(0, 0, normZ);
 			glVertex3f(-1, -1, 1);
 			glVertex3f(1, -1, 1);
 			glVertex3f(1, 0, 1);
@@ -765,13 +771,26 @@ void drawBox(boxType type, float x, float y, float z, float w, float h, float d,
 			glVertex3f(-1, 1, 1);
 		}
 		else
+		if (type & BOX_SPLITWIDTH)
 		{
-			glNormal3f(0, 0, normZ);
+			glVertex3f(-1, -1, 1);
+			glVertex3f(0, -1, 1);
+			glVertex3f(0, 1, 1);
+			glVertex3f(-1, 1, 1);
+
+			glVertex3f(0, -1, 1);
+			glVertex3f(1, -1, 1);
+			glVertex3f(1, 1, 1);
+			glVertex3f(0, 1, 1);
+		}
+		else
+		{
 			glVertex3f(-1, -1, 1);
 			glVertex3f(1, -1, 1);
 			glVertex3f(1, 1, 1);
 			glVertex3f(-1, 1, 1);
 		}
+
 		if (!(type & BOX_NOENDS))
 		{
 			/* Top Face */

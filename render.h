@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.5.4.12 2003/08/05 07:54:14 Superfly_Jon Exp $
+ * $Id: render.h,v 1.5.4.13 2003/08/06 09:03:36 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -121,6 +121,7 @@ typedef struct _renderdata {
 	int boardAngle;	/* Angle board is tilted at */
 	int testSkewFactor;	/* Debug FOV adjustment */
 	float diceSize;	/* How big are the dice */
+	int roundedEdges;	/* Rounded board edges? */
 	PieceType pieceType;
 	Material rdChequerMat[2];	/* Chequer colours */
 	Material rdDiceMat[2], rdDiceDotMat[2];
