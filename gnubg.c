@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.154 2001/10/09 14:30:35 gtw Exp $
+ * $Id: gnubg.c,v 1.155 2001/10/09 18:52:27 gtw Exp $
  */
 
 #include "config.h"
@@ -2335,7 +2335,7 @@ static void ExportGameJF( FILE *pf, list *plGame, int iGame,
 			  int anScore[ 2 ] ) {
     list *pl;
     moverecord *pmr;
-    char sz[ 40 ];
+    char sz[ 128 ];
     int i = 0, n, nFileCube = 1, anBoard[ 2 ][ 25 ], fWarned = FALSE;
 
     /* FIXME It would be nice if this function was updated to use the
