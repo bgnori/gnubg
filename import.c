@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.77 2003/09/11 16:51:42 thyssen Exp $
+ * $Id: import.c,v 1.78 2003/09/21 14:58:18 thyssen Exp $
  */
 
 #include "config.h"
@@ -896,6 +896,25 @@ extern int ImportMat( FILE *pf, char *szFilename ) {
 
 }
 
+static int
+isAscending( const int anMove[ 8 ] ) {
+
+  if ( anMove[ 0 ] < 0 )
+    return FALSE;
+
+  if ( anMove[ 0 ] != 24 ) {
+    /* not moving from the bar */
+    if ( anMove[ 1 ] > -1 )
+      /* not moving off */
+      return anMove[ 0 ] < anMove[ 1 ];
+    else
+      return anMove[ 0 ] > 18;
+  }
+  else
+    return anMove[ 1 ] < 6;
+
+}
+
 static void ParseOldmove( char *sz, int fInvert ) {
 
     int iPlayer, i, c;
@@ -949,10 +968,12 @@ static void ParseOldmove( char *sz, int fInvert ) {
                but some programs may write incompatible files.
                Joseph's fibs2html is one such program. */
             
-            if ( c && pmr->n.anMove[ 0 ] < pmr->n.anMove[ 1 ] ) {
+            if ( c && isAscending( pmr->n.anMove ) ) {
               /* ascending moves: invert */
               for ( i = 0; i < ( c << 1); ++i ) 
-                pmr->n.anMove[ i ] = 23 - pmr->n.anMove[ i ];
+                if ( pmr->n.anMove[ i ] > -1 &&  pmr->n.anMove[ i ] < 24 )
+                  /* invert numbers (other than bar=24 and off=-1) */
+                  pmr->n.anMove[ i ] = 23 - pmr->n.anMove[ i ];
 	    }
  
 	    if( c < 4 )
