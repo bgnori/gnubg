@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.23 2002/06/11 14:58:59 oysteijo Exp $
+ * $Id: drawboard.c,v 1.24 2002/06/15 09:52:21 thyssen Exp $
  */
 
 #include "config.h"
@@ -916,7 +916,7 @@ extern char *FIBSBoard( char *pch, int anBoard[ 2 ][ 25 ], int fRoll,
     int i, anOff[ 2 ];
     
     /* Names and match length/score */
-    strcpy( sz, _("board:") );
+    strcpy( sz, "board:" );
     
     for( sz += 6; *szPlayer; szPlayer++ )
 	*sz++ = ( *szPlayer != ':' ? *szPlayer : '_' );
