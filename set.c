@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.143 2002/11/24 12:21:47 jsegrave Exp $
+ * $Id: set.c,v 1.144 2002/11/24 19:35:18 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1553,7 +1553,7 @@ extern void CommandSetRolloutTruncationPlies ( char *sz ) {
 
     prcSet->nTruncate = n;
 
-    if( !n )
+    if( ( n == 0 ) || !prcSet->fDoTruncate )
 	outputl( _("Rollouts will not be truncated.") );
     else if ( n == 1 )
       outputf( _("Rollouts will be truncated after %d ply.\n"), n );
