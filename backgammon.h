@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.61 2001/02/13 18:25:13 gtw Exp $
+ * $Id: backgammon.h,v 1.62 2001/02/14 18:55:16 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -300,6 +300,8 @@ extern void CommandAccept( char * ),
     CommandAgree( char * ),
     CommandAnalysis ( char * ),
     CommandDatabaseDump( char * ),
+    CommandDatabaseExport( char * ),
+    CommandDatabaseImport( char * ),
     CommandDatabaseRollout( char * ),
     CommandDatabaseGenerate( char * ),
     CommandDatabaseTrain( char * ),
