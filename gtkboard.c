@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.184 2004/06/26 14:57:37 thyssen Exp $
+ * $Id: gtkboard.c,v 1.185 2004/06/27 10:51:28 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1402,9 +1402,7 @@ gboolean place_chequer_or_revert(BoardData *bd,
 	}
 /*    } */
 
-
-    if (placed)
-	board_invalidate_point( bd, dest );
+	board_invalidate_point( bd, placed ? dest : bd->drag_point );
 
 #if USE_BOARD3D
 	if (bd->rd->fDisplayType == DT_3D && bd->rd->quickDraw)
