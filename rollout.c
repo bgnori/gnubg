@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.40 2001/06/15 17:29:04 thyssen Exp $
+ * $Id: rollout.c,v 1.41 2001/06/15 17:38:23 thyssen Exp $
  */
 
 #include "config.h"
@@ -592,25 +592,12 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
       if ( *pf ) {
 
-        EvaluateGeneralE ( aanBoard[ ici ],
-                           ( float (*) [ NUM_ROLLOUT_OUTPUTS ] )
-                           aarOutput[ ici ],
-                           pci, 1, 
-                           &prc->aecCube[ pci->fMove ],
-                           prc->aecCube[ pci->fMove ].nPlies,
-                           prc->aecCube[ pci->fMove ].nPlies,
-                           TRUE, pci );
+        GeneralEvaluationE ( aarOutput[ ici ],
+                             aanBoard[ ici ],
+                             pci, &prc->aecCube[ pci->fMove ] );
 
-        if ( iTurn & 1 ) {
+        if ( iTurn & 1 ) InvertEvaluationR ( aarOutput[ ici ] );
           
-          InvertEvaluation ( aarOutput[ ici ] );
-          if ( pci->nMatchTo )
-            aarOutput[ ici ][ OUTPUT_CUBEFUL_EQUITY ] = 
-              1.0 - aarOutput[ ici ][ OUTPUT_CUBEFUL_EQUITY ];
-          else
-            aarOutput[ ici ][ OUTPUT_CUBEFUL_EQUITY ] *= -1.0f;
-          
-        }
       }
 
       /* convert to MWC or normalize against old cube value. */
