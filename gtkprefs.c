@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.119 2005/02/17 17:05:36 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.120 2005/02/25 11:42:35 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1600,6 +1600,9 @@ static GtkWidget *GeneralPage( BoardData *bd, GtkWidget* bdMain ) {
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwCloseBoard), bd->rd->closeBoardOnExit );
 
 	pwev = gtk_event_box_new();
+#if GTK_CHECK_VERSION(2,4,0)
+	gtk_event_box_set_visible_window(GTK_EVENT_BOX(pwev), FALSE);
+#endif
 	gtk_box_pack_start(GTK_BOX(pw), pwev, FALSE, FALSE, 0);
 	pwhbox = gtk_hbox_new(FALSE, 4);
 	gtk_container_add(GTK_CONTAINER(pwev), pwhbox);
@@ -1969,7 +1972,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.119 2005/02/17 17:05:36 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.120 2005/02/25 11:42:35 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"

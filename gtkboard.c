@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.192 2005/01/04 09:27:34 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.193 2005/02/25 11:42:35 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3792,7 +3792,10 @@ static GtkWidget *chequer_key_new( int iPlayer, Board *board ) {
     BoardData *bd = board->board_data;
     GdkPixmap *ppm;
     char sz[ 128 ];
-    
+
+#if GTK_CHECK_VERSION(2,4,0)
+	gtk_event_box_set_visible_window(GTK_EVENT_BOX(pw), FALSE);
+#endif
     ppm = bd->appmKey[ iPlayer ] = gdk_pixmap_new(
 	NULL, 20, 20, gtk_widget_get_visual( GTK_WIDGET( board ) )->depth );
 

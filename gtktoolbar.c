@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.15 2005/02/17 17:05:36 Superfly_Jon Exp $
+ * $Id: gtktoolbar.c,v 1.16 2005/02/25 11:42:35 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -549,6 +549,9 @@ ToolbarNew ( void ) {
   /* stop button */
   
   ptw->pwStopParent = gtk_event_box_new();
+#if GTK_CHECK_VERSION(2,4,0)
+	gtk_event_box_set_visible_window(GTK_EVENT_BOX(ptw->pwStopParent), FALSE);
+#endif
   ptw->pwStop = gtk_button_new(),
   gtk_container_add( GTK_CONTAINER( ptw->pwStopParent ), ptw->pwStop );
 
