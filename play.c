@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.247 2004/03/31 09:51:54 Superfly_Jon Exp $
+ * $Id: play.c,v 1.248 2004/04/14 16:52:25 jsegrave Exp $
  */
 
 #include "config.h"
@@ -4401,6 +4401,9 @@ SetMatchID ( const char *szMatchID ) {
     return;
 
   }
+
+  if (nMatchTo == 1)
+    fCrawford = 0;
 
 #if 0
   printf ( "%d %d %d %d %d %d %d %d %d\n",
