@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 dnl
-dnl $Id: configure.in,v 1.19 2000/10/25 18:09:07 gtw Exp $
+dnl $Id: configure.in,v 1.20 2000/10/26 14:17:55 gtw Exp $
 
 AC_INIT(gnubg.c)
 AM_INIT_AUTOMAKE(gnubg,0.02)
@@ -46,7 +46,7 @@ if test "$with_readline" != "no"; then
   done
   AC_CHECK_LIB(readline, readline)
 fi
-AC_ARG_WITH(gdbm,[  --with-gdbm             use GNU gdm for position databases])
+AC_ARG_WITH(gdbm,[  --with-gdbm             use GNU dbm for position databases])
 if test "$with_gdbm" != "no"; then
   AC_CHECK_LIB(gdbm, gdbm_open)
 fi
