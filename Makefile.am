@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.117 2003/09/19 19:52:53 jsegrave Exp $
+## $Id: Makefile.am,v 1.118 2003/12/29 19:30:55 uid65656 Exp $
 if USE_EXT
 EXT_DIR=ext
 else
@@ -109,10 +109,10 @@ INCLUDES = $(COMMON_INCS) @GTK_CFLAGS@ $(SOUND_INCS) @LIBART_CFLAGS@ \
            $(BOARD3D_INCS)
 gnubg_SOURCES = $(COMMON_SOURCES) gtkboard.c gtkboard.h gtkgame.c gtkgame.h \
 	gtkprefs.c gtkprefs.h gtk-multiview.c \
-	gtk-multiview.h gnu.xpm question.xpm nextgame.xpm nextmove.xpm \
-	prevgame.xpm prevmove.xpm gtktheory.c gtktheory.h gtktexi.c gtktexi.h \
+	gtk-multiview.h \
+	gtktheory.c gtktheory.h gtktexi.c gtktexi.h \
 	gtkexport.c gtkexport.h gtkcube.c gtkcube.h gtkchequer.c gtkchequer.h \
-	gtkrace.c gtkrace.h nextmarked.xpm prevmarked.xpm \
+	gtkrace.c gtkrace.h \
 	gtkmovefilter.c gtkmovefilter.h gtkmet.c gtkmet.h gtkcolour.c \
 	gtkcolour.h gtksplash.c gtksplash.h gtkrolls.c gtkrolls.h \
         openurl.c openurl.h gtktempmap.c gtktempmap.h \
