@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.108 2004/03/25 21:23:26 thyssen Exp $
+# $Id: credits.sh,v 1.109 2004/03/29 07:47:03 thyssen Exp $
 # 
 
 column < /dev/null || exit 0
@@ -140,7 +140,7 @@ Billie Patterson
 Mike Petch
 Zvezdan Petkovic
 Nardy Pillards
-Petri Pitkänen
+Petri Pitkanen
 Sam Pottle
 Henrik Ravn
 James Rech
@@ -148,7 +148,7 @@ Jared Riley
 Klaus Rindholt
 Oliver Riordan
 Rod Roark
-Hans-Jürgen Schäfer
+Hans-Juergen Schaefer
 Steve Schreiber
 Hugh Sconyers
 Martin Schrode
@@ -172,6 +172,7 @@ Robert-Jan Veldhuizen
 Morten Wang
 Jeff White
 JP White
+Mike Whitton
 Chris Wilson
 Kit Woolsey
 Frank Worrell
