@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.11 2003/09/04 10:12:36 Superfly_Jon Exp $
+ * $Id: render.h,v 1.12 2003/09/15 02:01:06 hb Exp $
  */
 
 #ifndef _RENDER_H_
@@ -106,7 +106,7 @@ typedef struct _renderdata {
     float rRound; /* shape of chequers */
     int nSize; /* basic unit of board size, in pixels -- a chequer's
 		  diameter is 6 of these units (and is 2 units thick).
-		  The board is 108x72 units, the dice 7x7 and cube 8x8. */
+		  The board is 108x82(old:72) units, the dice 7x7 and cube 8x8. */
     int fHinges; /* TRUE if hinges should be drawn */
     int fLabels; /* TRUE if point numbers should be drawn */
     int fClockwise; /* orientation for board point numbers */

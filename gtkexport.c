@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.21 2003/09/07 13:24:21 thyssen Exp $
+ * $Id: gtkexport.c,v 1.22 2003/09/15 02:01:06 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -38,6 +38,7 @@
 #include "export.h"
 #include "gtkexport.h"
 #include "i18n.h"
+#include "boarddim.h"
 
 
 static char *aszInclude[] = {
@@ -442,7 +443,7 @@ PNGSizeChanged ( GtkAdjustment *adj, exportwidget *pew ) {
   int n = (int) adj->value;
 
   char *sz = g_strdup_printf ( _("%dx%d pixels"), 
-                                n * 108, n * 72 );
+                                n * BOARD_WIDTH, n * BOARD_HEIGHT );
 
   gtk_label_set_text ( GTK_LABEL ( pew->pwPNGSize ),
                        sz );
@@ -468,6 +469,7 @@ GTKShowExport ( exportsetup *pexs ) {
   GtkWidget *pw;
 
   int i;
+  char *sz;
 
   exportwidget *pew;
 
@@ -775,10 +777,14 @@ GTKShowExport ( exportsetup *pexs ) {
   gtk_box_pack_start ( GTK_BOX ( pwHBox ),
                        gtk_label_new ( _("Size of PNG images:") ),
                        TRUE, TRUE, 0 );
-  
-  gtk_box_pack_start ( GTK_BOX ( pwHBox ),
-                       pew->pwPNGSize = gtk_label_new ( "108x72 pixels" ),
-                       TRUE, TRUE, 0 );
+
+  sz = g_strdup_printf( _("%dx%d pixels"), BOARD_WIDTH, BOARD_HEIGHT );
+
+  gtk_box_pack_start( GTK_BOX ( pwHBox ),
+                      pew->pwPNGSize = gtk_label_new ( sz ),
+                      TRUE, TRUE, 0 );
+
+  g_free ( sz );
 
   pew->adjPNGSize = GTK_ADJUSTMENT ( gtk_adjustment_new ( 1,
                                                           1, 20, 1, 5, 0 ) );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.77 2003/09/02 10:34:39 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.78 2003/09/15 02:01:06 hb Exp $
  */
 
 #include "config.h"
@@ -45,6 +45,7 @@
 #include "path.h"
 #include "render.h"
 #include "renderprefs.h"
+#include "boarddim.h"
 
 #if USE_BOARD3D
 #define NUM_NONPREVIEW_PAGES 2
@@ -197,7 +198,7 @@ Preview2D( renderdata *prd ) {
     GdkGC *gc;
     renderdata rd;
     renderimages ri;
-    unsigned char auch[ 108 * 3 * 82 * 3 * 3 ];
+    unsigned char auch[ BOARD_WIDTH * 3 * BOARD_HEIGHT * 3 * 3 ];
     int anBoard[ 2 ][ 25 ];
     int anDice[ 2 ] = { 4, 3 };
     int anDicePosition[ 2 ][ 2 ] = { { 70, 35 }, { 80, 37 } };
@@ -212,17 +213,17 @@ Preview2D( renderdata *prd ) {
 
     InitBoard( anBoard, VARIATION_STANDARD );
   
-    CalculateArea( &rd, auch, 108 * 3 * 3, &ri, anBoard, NULL, anDice,
+    CalculateArea( &rd, auch, BOARD_WIDTH * 3 * 3, &ri, anBoard, NULL, anDice,
 		   anDicePosition, 1, anCubePosition, 0, 0, 
                    anResignPosition, fResign, nResignOrientation,
 		   NULL, 0, 0,
-                   0, 0, 108 * 3, 82 * 3 );
+                   0, 0, BOARD_WIDTH * 3, BOARD_HEIGHT * 3 );
     FreeImages( &ri );
   
     gc = gdk_gc_new( ppm );
 
-    gdk_draw_rgb_image( ppm, gc, 0, 0, 108 * 3, 82 * 3, GDK_RGB_DITHER_MAX,
-			auch, 108 * 3 * 3 );
+    gdk_draw_rgb_image( ppm, gc, 0, 0, BOARD_WIDTH * 3, BOARD_HEIGHT * 3,
+			GDK_RGB_DITHER_MAX, auch, BOARD_WIDTH * 3 * 3 );
 
     gdk_gc_unref( gc );
 }
@@ -230,7 +231,7 @@ Preview2D( renderdata *prd ) {
 #if USE_BOARD3D
 static void Preview3D(renderdata *prd)
 {
-	unsigned char auch[ 108 * 3 * 82 * 3 * 3 ];
+	unsigned char auch[ BOARD_WIDTH * 3 * BOARD_HEIGHT * 3 * 3 ];
 	GdkGC *gc;
 
 	Set3dSettings(&bd3d, prd);
@@ -238,8 +239,8 @@ static void Preview3D(renderdata *prd)
 	RenderBoard3d(&bd3d, prd, glpixPreview, auch);
 
 	gc = gdk_gc_new( ppm );
-	gdk_draw_rgb_image( ppm, gc, 0, 0, 108 * 3, 82 * 3, GDK_RGB_DITHER_MAX,
-					  auch, 108 * 3 * 3 );
+	gdk_draw_rgb_image( ppm, gc, 0, 0, BOARD_WIDTH * 3, BOARD_HEIGHT * 3,
+			    GDK_RGB_DITHER_MAX, auch, BOARD_WIDTH * 3 * 3 );
 	gdk_gc_unref( gc );
 }
 #endif
@@ -1848,7 +1849,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.77 2003/09/02 10:34:39 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.78 2003/09/15 02:01:06 hb Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2272,7 +2273,8 @@ DesignPage ( GList **pplBoardDesigns, BoardData *bd ) {
 		/* design preview */
 		gtk_box_pack_start (GTK_BOX(pwvbox), pwPreview[PI_DESIGN],
 			FALSE, FALSE, 0);
-		gtk_widget_set_usize(pwPreview[PI_DESIGN], 108 * 3, 82 * 3);
+		gtk_widget_set_usize( pwPreview[PI_DESIGN],
+				      BOARD_WIDTH * 3, BOARD_HEIGHT * 3 );
 	}
 	else
 	{
@@ -2546,7 +2548,8 @@ static void append_preview_page( GtkWidget *pwNotebook, GtkWidget *pwPage,
 
 void AddPages(BoardData* bd, GtkWidget* pwNotebook)
 {
-    ppm = gdk_pixmap_new( bd->drawing_area->window, 108 * 3, 82 * 3, -1 );
+    ppm = gdk_pixmap_new( bd->drawing_area->window,
+			  BOARD_WIDTH * 3, BOARD_HEIGHT * 3, -1 );
 
 #if HAVE_LIBXML2
 {
