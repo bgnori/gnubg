@@ -1,7 +1,7 @@
 /*
  * backgammon.h
  *
- * by Gary Wong, 1999
+ * by Gary Wong, 1999, 2000.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of version 2 of the GNU General Public License as
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.30 2000/07/05 19:57:36 gtw Exp $
+ * $Id: backgammon.h,v 1.31 2000/07/10 16:42:56 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -36,10 +36,11 @@ extern event evNextTurn;
 #define MAX_CUBE ( 1 << 12 )
 
 typedef struct _command {
-    char *sz;
-    void ( *pf )( char * );
-    char *szHelp;
-    struct _command *pc;
+    char *sz; /* Command name (NULL indicates end of list) */
+    void ( *pf )( char * ); /* Command handler; NULL to use default
+			       subcommand handler */
+    char *szHelp, *szUsage; /* Documentation */
+    struct _command *pc; /* List of subcommands (NULL if none) */
 } command;
 
 typedef enum _playertype {
@@ -108,6 +109,10 @@ extern void ShowBoard( void );
 extern void UserCommand( char *sz );
 extern void HandleXAction( void );
 #endif
+
+extern command acDatabase[], acNew[], acSave[], acSetAutomatic[],
+    acSetCube[], acSetEvaluation[], acSetPlayer[], acSetRNG[], acSetRollout[],
+    acSet[], acShow[], acTrain[], acTop[];
 
 extern void CommandAccept( char * ),
     CommandAgree( char * ),
