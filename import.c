@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.43 2003/01/02 21:57:36 thyssen Exp $
+ * $Id: import.c,v 1.44 2003/01/08 17:31:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -348,6 +348,10 @@ static void ParseMatMove( char *sz, int iPlayer ) {
 		pmr->n.anMove[ i ]--;
 	    if( c < 4 )
 		pmr->n.anMove[ c << 1 ] = pmr->n.anMove[ ( c << 1 ) | 1 ] = -1;
+
+            for ( i = 0; i < c; ++i )
+              printf ( "move= %d/%d\n", pmr->n.anMove[ 2 * i ],
+                       pmr->n.anMove[ 2 * i + 1 ] );
 
             if ( ! IsValidMove ( ms.anBoard, pmr->n.anMove ) )
               outputf ( _("WARNING: Invalid move: \"%s\" encountered\n"),
