@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.121 2002/01/18 09:38:22 joseph Exp $
+ * $Id: eval.c,v 1.122 2002/01/18 15:45:33 gtw Exp $
  */
 
 #include "config.h"
@@ -3690,6 +3690,10 @@ extern int DumpPosition( int anBoard[ 2 ][ 25 ], char *szOutput,
     strcat( szOutput, "RACE" );
     break;
 
+  case CLASS_CRASHED: /* Crashed neural network */
+    strcat( szOutput, "CRASHED" );
+    break;
+    
   case CLASS_CONTACT: /* Contact neural network */
     strcat( szOutput, "CONTACT" );
     break;
@@ -5720,9 +5724,10 @@ EvalEfficiency( int anBoard[2][25], positionclass pc ){
           return rEff;
        }
      }
-  if (pc == CLASS_CONTACT)
+  if (pc == CLASS_CONTACT || pc == CLASS_CRASHED)
     {
-      
+      /* FIXME: should CLASS_CRASHED be handled differently? */
+	
       /* FIXME: use Øystein's values published in rec.games.backgammon,
          or work some other semiempirical values */
 

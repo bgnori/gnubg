@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.20 2001/12/16 11:54:02 thyssen Exp $
+ * $Id: guile.c,v 1.21 2002/01/18 15:45:33 gtw Exp $
  */
 
 #include "config.h"
@@ -468,6 +468,7 @@ extern int GuileInitialise( char *szDir ) {
     scm_sysintern( "CLASS_BEAROFF2", SCM_MAKINUM( CLASS_BEAROFF2 ) );
     scm_sysintern( "CLASS_BEAROFF1", SCM_MAKINUM( CLASS_BEAROFF1 ) );
     scm_sysintern( "CLASS_RACE", SCM_MAKINUM( CLASS_RACE ) );
+    scm_sysintern( "CLASS_CRASHED", SCM_MAKINUM( CLASS_CRASHED ) );
     scm_sysintern( "CLASS_CONTACT", SCM_MAKINUM( CLASS_CONTACT ) );
 
     scm_sysintern( "GAME_NONE", SCM_MAKINUM( GAME_NONE ) );
