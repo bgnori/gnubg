@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.145 2002/11/25 12:20:14 jsegrave Exp $
+ * $Id: set.c,v 1.146 2002/11/26 16:14:05 gtw Exp $
  */
 
 #include "config.h"
@@ -1602,9 +1602,9 @@ CommandSetRolloutRotate ( char *sz ) {
 
   int f = prcSet->fRotate;
 
-  SetToggle ( "rollout rotate", &f, sz,
-              _("Use rotation for the first rolls"),
-              _("Do not use rotation for the first rolls") );
+  SetToggle ( "rollout quasirandom", &f, sz,
+              _("Use quasi-random dice in rollouts"),
+              _("Do not use quasi-random dice in rollouts") );
 
   prcSet->fRotate = f;
 

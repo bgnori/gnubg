@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.116 2002/11/24 14:41:01 thyssen Exp $
+ * $Id: show.c,v 1.117 2002/11/26 16:14:05 gtw Exp $
  */
 
 #include "config.h"
@@ -210,8 +210,8 @@ ShowRollout ( rolloutcontext *prc ) {
             _("Lookahead variance reduction is enabled.") :
             _("Lookahead variance reduction is disabled.") );
   outputl ( prc->fRotate ? 
-            _("Rotating of first two rolls is enabled.") :
-            _("Rotating of first two rolls is disabled.") );
+            _("Quasi-random dice are enabled.") :
+            _("Quasi-random dice are disabled.") );
   outputl ( prc->fCubeful ?
             _("Cubeful rollout.") :
             _("Cubeless rollout.") );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.28 2002/11/26 12:24:13 jsegrave Exp $
+ * $Id: text.c,v 1.29 2002/11/26 16:14:05 gtw Exp $
  */
 
 #include "config.h"
@@ -196,9 +196,6 @@ OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc ) {
   sprintf ( pc = strchr ( sz, 0 ),
             prc->fVarRedn ? _(" with var.redn.") : _(" without var.redn.") );
 
-  if ( prc->fRotate )
-    strcat ( sz, _(", with rotate rolls") );
-
   strcat ( sz, "\n" );
   
   if ( szIndent && *szIndent )
@@ -214,6 +211,7 @@ OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc ) {
   sprintf ( pc = strchr ( sz, 0 ),
             ", seed %d using %s\n",
             prc->nSeed,
+	    prc->fRotate ? _("quasi-random dice") :
             gettext ( aszRNG[ prc->rngRollout ] ) );
 
   for ( i = 0; i < 1 + ! fIdentical; i++ ) {
@@ -656,7 +654,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.28 $";
+  const char szVersion[] = "$Revision: 1.29 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );

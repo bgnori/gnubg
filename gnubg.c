@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.335 2002/11/25 12:20:14 jsegrave Exp $
+ * $Id: gnubg.c,v 1.336 2002/11/26 16:14:04 gtw Exp $
  */
 
 #include "config.h"
@@ -903,10 +903,13 @@ command cER = {
     { "player", CommandSetRolloutPlayer, 
       N_("Control evaluation parameters for each side individually"), 
       szPLAYER, acSetRolloutPlayer }, 
+    { "quasirandom", CommandSetRolloutRotate, 
+      N_("Permute the dice rolls according to a uniform distribution"),
+      szONOFF, &cOnOff },
     { "rng", CommandSetRolloutRNG, N_("Specify the random number "
       "generator algorithm for rollouts"), NULL, acSetRNG },
     { "rotate", CommandSetRolloutRotate, 
-      N_("Use rotation for the first rolls"), szONOFF, &cOnOff },
+      N_("Synonym for `quasirandom'"), szONOFF, &cOnOff },
     { "seed", CommandSetRolloutSeed, N_("Specify the base pseudo-random seed "
       "to use for rollouts"), szOPTSEED, NULL },
     { "trials", CommandSetRolloutTrials, N_("Control how many rollouts to "
@@ -4147,7 +4150,7 @@ SaveRolloutSettings ( FILE *pf, char *sz, rolloutcontext *prc ) {
   fprintf ( pf,
             "%s cubeful %s\n"
             "%s varredn %s\n"
-            "%s rotate %s\n"
+            "%s quasirandom %s\n"
             "%s initial %s\n"
             "%s truncation enable %s\n"
             "%s truncation plies %d\n"

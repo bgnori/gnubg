@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.92 2002/11/24 14:44:13 thyssen Exp $
+ * $Id: eval.h,v 1.93 2002/11/26 16:14:04 gtw Exp $
  */
 
 #ifndef _EVAL_H_
@@ -115,7 +115,7 @@ typedef struct _rolloutcontext {
   unsigned int fCubeful : 1; /* Cubeful rollout */
   unsigned int fVarRedn : 1; /* variance reduction */
   unsigned int fInitial: 1;  /* roll out as opening position */
-  unsigned int fRotate : 1;  /* rotate dice of first two rolls */
+  unsigned int fRotate : 1;  /* quasi-random dice */
   unsigned int fLateEvals; /* enable different evals for later moves */
   unsigned int fDoTruncate; /* enable truncated rollouts */
   unsigned short nTruncate; /* truncation */
