@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1999
  *
- * $Id: backgammon.h,v 1.6 1999/12/21 00:57:49 gtw Exp $
+ * $Id: backgammon.h,v 1.7 2000/01/03 17:52:23 gtw Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -110,6 +110,7 @@ extern void CommandAccept( char * ),
     CommandSetCrawford( char * ),
     CommandSetPostCrawford( char * ),
     CommandSetBoard( char * ),
+    CommandSetCache( char * ),
     CommandSetDice( char * ),
     CommandSetDisplay( char * ),
     CommandSetPlayerGNU( char * ),
@@ -126,6 +127,7 @@ extern void CommandAccept( char * ),
     CommandSetRNGManual( char * ),
     CommandSetRNGMersenne( char * ),
     CommandSetRNGUser( char * ),
+    CommandSetScore( char * ),
     CommandSetSeed( char * ),
     CommandSetTurn( char * ),
     CommandShowBoard( char * ),

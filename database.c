@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: database.c,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: database.c,v 1.2 2000/01/03 17:52:23 gtw Exp $
  */
 
 #include "config.h"
@@ -99,7 +99,7 @@ extern void CommandDatabaseEvaluate( char *sz ) {
     datum dKey, dValue;
     dbevaluation *pev;
     int i, c = 0, anBoardEval[ 2 ][ 25 ];
-    float arOutput[ NUM_OUTPUTS ];
+    float arOutput[ NUM_ROLLOUT_OUTPUTS ];
     void *p;
     
     if( !( pdb = gdbm_open( szDatabase, 0, GDBM_WRITER, 0, NULL ) ) ) {

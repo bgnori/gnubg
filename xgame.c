@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1997-1999
  *
- * $Id: xgame.c,v 1.3 1999/12/20 03:18:23 thyssen Exp $
+ * $Id: xgame.c,v 1.4 2000/01/03 17:52:23 gtw Exp $
  */
 
 #include "config.h"
@@ -264,6 +264,8 @@ extern int StatsMove( extwindow *pewnd, int nSource, int nDest, int fHit ) {
     statsdata *psd = pewnd->pv;
     int i;
 
+    StatsUpdateBoardID( pewnd, psd );
+    
     if( psd->pgd->fTurn < 0 ) {
 	nSource = 25 - nSource;
 	if( nDest < 25 )
@@ -316,8 +318,6 @@ extern int StatsMove( extwindow *pewnd, int nSource, int nDest, int fHit ) {
     ExtChangePropertyHandler( psd->paewnd + STATS_MOVE, TP_TEXT, 8, sz,
 			      strlen( sz ) + 1 );    
 
-    StatsUpdateBoardID( pewnd, psd );
-    
     return 0;
 }
 

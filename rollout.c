@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: rollout.c,v 1.2 2000/01/03 17:52:23 gtw Exp $
  */
 
 #include "config.h"
@@ -172,15 +172,15 @@ static int RolloutGame( int anBoard[ 2 ][ 25 ], float arOutput[],
 extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
 		    int nPlies, int nTruncate, int cGames ) {
     int i, j;
-    float ar[ NUM_OUTPUTS ];
-    double arResult[ NUM_OUTPUTS ], arVariance[ NUM_OUTPUTS ];
-    
+    float ar[ NUM_ROLLOUT_OUTPUTS ];
+    double arResult[ NUM_ROLLOUT_OUTPUTS ], arVariance[ NUM_ROLLOUT_OUTPUTS ];
+
     if( cGames < 1 ) {
 	errno = EINVAL;
 	return -1;
     }
 	
-    for( i = 0; i < NUM_OUTPUTS; i++ )
+    for( i = 0; i < NUM_ROLLOUT_OUTPUTS; i++ )
 	arResult[ i ] = arVariance[ i ] = 0.0;
     
     for( i = 0; i < cGames; i++ ) {
@@ -189,8 +189,15 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
 
 	printf( "%6d\r", i + 1 );
 	fflush( stdout );
+
+	/* ar[ NUM_OUTPUTS ] is used to store cubeless equity */
+	ar[ OUTPUT_EQUITY ] = ar[ OUTPUT_WIN ] * 2.0 - 1.0 +
+	    ar[ OUTPUT_WINGAMMON ] +
+	    ar[ OUTPUT_WINBACKGAMMON ] -
+	    ar[ OUTPUT_LOSEGAMMON ] -
+	    ar[ OUTPUT_LOSEBACKGAMMON ];
 	
-	for( j = 0; j < NUM_OUTPUTS; j++ ) {
+	for( j = 0; j < NUM_ROLLOUT_OUTPUTS; j++ ) {
 	    arResult[ j ] += ar[ j ];
 	    arVariance[ j ] += ar[ j ] * ar[ j ];
 	}
@@ -199,23 +206,28 @@ extern int Rollout( int anBoard[ 2 ][ 25 ], float arOutput[], float arStdDev[],
     if( !( cGames = i ) )
 	return -1;
 
-    for( i = 0; i < NUM_OUTPUTS; i++ ) {
+    for( i = 0; i < NUM_ROLLOUT_OUTPUTS; i++ ) {
 	if( arOutput ) {
 	    arOutput[ i ] = arResult[ i ] / cGames;
 
-	    if( arOutput[ i ] < 0.0 )
-		arOutput[ i ] = 0.0;
-	    else if( arOutput[ i ] > 1.0 )
-		arOutput[ i ] = 1.0;
+	    if( i < OUTPUT_EQUITY ) {
+		if( arOutput[ i ] < 0.0 )
+		    arOutput[ i ] = 0.0;
+		else if( arOutput[ i ] > 1.0 )
+		    arOutput[ i ] = 1.0;
+	    }
 	}
 	
-	if( arStdDev )
+	if( arStdDev ) {
 	    if( cGames == 1 )
 		arStdDev[ i ] = 0.0;
 	    else {
 		arVariance[ i ] -= cGames * arOutput[ i ] * arOutput[ i ];
+		if( arVariance[ i ] < 0.0 )
+		    arVariance[ i ] = 0.0;
 		arStdDev[ i ] = sqrt( arVariance[ i ] / ( cGames - 1 ) );
 	    }
+	}
     }
 
     return cGames;
