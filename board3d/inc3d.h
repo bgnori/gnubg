@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.11 2003/09/03 15:18:15 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.12 2003/09/18 10:49:30 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -132,7 +132,6 @@ void setupPath(BoardData *bd, Path* p, float* pRotate, int fClockwise, int fromP
 int movePath(Path* p, float d, float* pRotate, float v[3]);
 int finishedPath(Path* p);
 void updateHingeOccPos(BoardData* bd);
-double get_time();
 void getProjectedPieceDragPos(int x, int y, float pos[3]);
 void updateMovingPieceOccPos(BoardData* bd);
 void LoadTextureInfo();

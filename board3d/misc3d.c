@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.11 2003/09/11 11:30:54 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.12 2003/09/18 10:49:30 Superfly_Jon Exp $
 */
 
 #include <math.h>
@@ -35,9 +35,11 @@
 #include "backgammon.h"
 #include "path.h"
 
-double animStartTime = 0;
 int stopNextTime;
 int slide_move;
+double animStartTime = 0;
+
+extern double get_time();
 extern int convert_point( int i, int player );
 extern void setupFlag(BoardData* bd);
 extern void setupDicePaths(BoardData* bd, Path dicePaths[2]);
