@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.83 2001/08/23 14:58:48 gtw Exp $
+ * $Id: play.c,v 1.84 2001/08/27 14:43:29 gtw Exp $
  */
 
 #include "config.h"
@@ -45,7 +45,7 @@
 #include "matchequity.h"
 
 #ifndef HUGE_VALF
-#define HUGE_VALF (-1e38)
+#define HUGE_VALF 1e38
 #endif
 
 char *aszGameResult[] = { "single game", "gammon", "backgammon" },
