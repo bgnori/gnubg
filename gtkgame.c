@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.342 2003/05/22 13:58:28 hb Exp $
+ * $Id: gtkgame.c,v 1.343 2003/05/28 13:41:51 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6987,7 +6987,7 @@ ShowManualWeb( gpointer *p, guint n, GtkWidget *pwEvent ) {
 static void
 ReportBug( gpointer *p, guint n, GtkWidget *pwEvent ) {
 
-  OpenURL( "http://savannah.gnu.org/bugs/?group=gnubg" );
+  OpenURL( "http://savannah.gnu.org/bugs/?func=addbug&group=gnubg" );
 
 }
 
