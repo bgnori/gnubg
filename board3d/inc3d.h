@@ -18,14 +18,14 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.2 2003/08/13 11:52:29 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.3 2003/08/13 16:23:29 Superfly_Jon Exp $
 */
 
 #include <gtk/gtk.h>
 #include "config.h"
 #include <stdio.h>
 
-//#define USE_MSDEV_TEST_HARNESS
+/*#define USE_MSDEV_TEST_HARNESS*/
 #ifdef USE_MSDEV_TEST_HARNESS
 	#undef USE_GTK
 	#define USE_GLUT
@@ -79,7 +79,7 @@ float getBoardWidth();
 float getBoardHeight();
 void calculateBackgroundSize(BoardData *bd, int viewport[4]);
 
-// Misc functions
+/* Misc functions */
 void SetTexture(BoardData* bd, Material* pMat, const char* filename, TextureFormat format);
 void SetupSimpleMatAlpha(Material* pMat, float r, float g, float b, float a);
 void SetupSimpleMat(Material* pMat, float r, float g, float b);

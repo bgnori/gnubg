@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.6 2003/08/13 15:51:31 Superfly_Jon Exp $
+ * $Id: renderprefs.c,v 1.7 2003/08/13 16:23:29 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -122,6 +122,8 @@ static int SetColourX( gdouble arColour[ 4 ], char *sz ) {
 
     return -1;
 }
+
+#if USE_BOARD3D
 static int SetColourF( float arColour[ 4 ], char *sz ) {
 
     char *pch;
@@ -139,7 +141,8 @@ static int SetColourF( float arColour[ 4 ], char *sz ) {
 
     return -1;
 }
-#endif
+#endif /* USE_BOARD3D */
+#endif /* USE_GTK */
 
 #if USE_BOARD3D
 static int SetMaterial(Material* pMat, char *sz)

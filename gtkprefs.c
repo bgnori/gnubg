@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.67 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.68 2003/08/13 16:23:29 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1848,7 +1848,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.67 2003/08/13 11:52:28 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.68 2003/08/13 16:23:29 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2017,7 +2017,6 @@ memcpy(&rd, &rdAppearance, sizeof(renderdata));
 
   PushLocale( "C" );
 
-	// Using sprintf as g_strdup_printf wasn't working...
 	sprintf(szTemp,
             "\n"
             "         board=#%02X%02X%02X;%0.2f\n"
