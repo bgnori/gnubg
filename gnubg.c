@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.379 2003/01/22 23:18:10 gtw Exp $
+ * $Id: gnubg.c,v 1.380 2003/01/25 16:56:46 thyssen Exp $
  */
 
 #include "config.h"
@@ -406,6 +406,7 @@ static char szDICE[] = N_("<die> <die>"),
     szNAME[] = N_("<name>"),
     szONOFF[] = N_("on|off"),
     szOPTCOMMAND[] = N_("[command]"),
+    szOPTDEPTH[] = N_("[depth]"),
     szOPTFILENAME[] = N_("[filename]"),
     szOPTGENERATOROPTSEED[] = N_("[generator] [seed]"),
     szOPTLENGTH[] = N_("[length]"),
@@ -1530,6 +1531,8 @@ command cER = {
       "is being used"), NULL, NULL },
     { "rollout", CommandShowRollout, N_("Display the evaluation settings used "
       "during rollouts"), NULL, NULL },
+    { "rolls", CommandShowRolls, N_("Display evaluations for all rolls "),
+      szOPTDEPTH, NULL },
     { "score", CommandShowScore, N_("View the match or session score "),
       NULL, NULL },
     { "seed", CommandShowSeed, N_("Show the dice generator seed"), 

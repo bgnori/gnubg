@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.304 2003/01/22 18:26:05 gtw Exp $
+ * $Id: gtkgame.c,v 1.305 2003/01/25 16:58:18 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -176,6 +176,7 @@ typedef enum _gnubgcommand {
     CMD_SHOW_ONESIDEDROLLOUT,
     CMD_SHOW_PATH,
     CMD_SHOW_PIPCOUNT,
+    CMD_SHOW_ROLLS,
     CMD_SHOW_STATISTICS_GAME,
     CMD_SHOW_STATISTICS_MATCH,
     CMD_SHOW_STATISTICS_SESSION,
@@ -249,6 +250,7 @@ static char *aszCommands[ NUM_CMDS ] = {
     "show onesidedrollout",
     "show path",
     "show pipcount",
+    "show rolls",
     "show statistics game",
     "show statistics match",
     "show statistics session",
@@ -2354,6 +2356,10 @@ extern int InitGTK( int *argc, char ***argv ) {
           CMD_SHOW_ONECHEQUER, NULL },
 	{ N_("/_Analyse/One sided rollout"), NULL, Command, 
           CMD_SHOW_ONESIDEDROLLOUT, NULL },
+#if USE_GTK2
+	{ N_("/_Analyse/Distribution of rolls"), NULL, Command, 
+          CMD_SHOW_ROLLS, NULL },
+#endif /* USE_GTK2 */
 	{ N_("/_Analyse/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_Analyse/_Gammon values"), NULL, Command, CMD_SHOW_GAMMONVALUES,
 	  NULL },

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.135 2003/01/22 18:26:06 gtw Exp $
+ * $Id: show.c,v 1.136 2003/01/25 16:57:24 thyssen Exp $
  */
 
 #include "config.h"
@@ -51,6 +51,7 @@
 #include "gtkrace.h"
 #include "gtkexport.h"
 #include "gtkmet.h"
+#include "gtkrolls.h"
 #elif USE_EXT
 #include "xgame.h"
 #endif
@@ -1934,3 +1935,30 @@ CommandShowSound ( char *sz ) {
 }
 
 #endif /* USE_SOUND */
+
+
+extern void
+CommandShowRolls ( char *sz ) {
+
+#if USE_GTK2
+  int nDepth = ParseNumber ( &sz );
+#endif
+
+  if( ms.gs != GAME_PLAYING ) {
+    outputl( _("No game in progress (type `new game' to start one).") );
+
+    return;
+  }
+
+#if USE_GTK2
+
+  if ( fX ) {
+    static evalcontext ec0ply = { TRUE, 0, 0, TRUE, 0.0 };
+    GTKShowRolls( nDepth, &ec0ply, &ms );
+    return;
+  }
+#endif
+
+  CommandNotImplemented( NULL );
+
+}
