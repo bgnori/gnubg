@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.273 2004/11/24 17:04:01 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.274 2005/02/08 16:36:35 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3016,7 +3016,7 @@ EvaluatePositionCache( int anBoard[ 2 ][ 25 ], float arOutput[],
     /* This should be a part of the code that is called in all
        time-consuming operations at a relatively steady rate, so is a
        good choice for a callback function. */
-    if( ++iTick >= 0x100 ) {
+    if( ++iTick >= 0x400 ) {
 	iTick = 0;
 	if( fnTick )
 	    fnTick();
