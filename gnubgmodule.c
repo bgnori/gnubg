@@ -16,16 +16,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.15 2003/08/18 22:21:30 joseph Exp $
+ * $Id: gnubgmodule.c,v 1.16 2003/08/29 18:38:12 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
 #include "config.h"
+#if USE_PYTHON
+#undef HAVE_FSTAT
+#endif
 #endif
 
 #if USE_PYTHON
-
 #include <Python.h>
+#if HAVE_CONFIG_H
+#undef HAVE_FSTAT
+#include "config.h"
+#endif
 
 #include <signal.h>
 #include <assert.h>
@@ -1118,7 +1124,7 @@ PyDoubleAnalysis(const evalsetup* pes,
 		 PyMatchState* ms,
 		 int const verbose)
 {
-  PyObject* dict;
+  PyObject* dict = 0;
   
   switch( pes->et ) {
     case EVAL_EVAL:

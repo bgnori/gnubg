@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.55 2003/08/16 08:46:59 thyssen Exp $
+ * $Id: text.c,v 1.56 2003/08/29 18:38:12 jsegrave Exp $
  */
 
 #include "config.h"
@@ -28,6 +28,7 @@
 #include <assert.h>
 #include <stdarg.h>
 
+#define USES_badSkill
 #include "backgammon.h"
 #include "drawboard.h"
 #include "export.h"
@@ -240,7 +241,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.55 $";
+  const char szVersion[] = "$Revision: 1.56 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );

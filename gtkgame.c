@@ -16,12 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.403 2003/08/29 12:37:09 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.404 2003/08/29 18:38:12 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
 #include <config.h>
 #endif
+
+#define  USES_badSkill
 
 #if USE_BOARD3D
 #include "board3d/inc3d.h"

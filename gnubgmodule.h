@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.4 2003/08/13 11:52:27 Superfly_Jon Exp $
+ * $Id: gnubgmodule.h,v 1.5 2003/08/29 18:38:12 jsegrave Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
@@ -24,11 +24,17 @@
 
 #if HAVE_CONFIG_H
 #include "config.h"
+#if USE_PYTHON
+#undef HAVE_FSTAT
+#endif
 #endif
 
 #if USE_PYTHON
-
 #include <Python.h>
+#if HAVE_CONFIG_H
+#undef HAVE_FSTAT
+#include "config.h"
+#endif
 
 extern PyMethodDef gnubgMethods[];
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.138 2003/08/28 17:24:30 thyssen Exp $
+ * $Id: html.c,v 1.139 2003/08/29 18:38:12 jsegrave Exp $
  */
 
 #include "config.h"
@@ -30,6 +30,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+#define USES_badSkill
 #include "analysis.h"
 #include "backgammon.h"
 #include "drawboard.h"
@@ -169,7 +170,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( _("\n" 
              "/* CSS Stylesheet for GNU Backgammon " VERSION " */\n"
-             "/* $Id: html.c,v 1.138 2003/08/28 17:24:30 thyssen Exp $ */\n"
+             "/* $Id: html.c,v 1.139 2003/08/29 18:38:12 jsegrave Exp $ */\n"
              "/* This file is distributed as a part of the "
              "GNU Backgammon program. */\n"
              "/* Copying and distribution of verbatim and modified "
@@ -1913,7 +1914,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.138 $";
+  const char szVersion[] = "$Revision: 1.139 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1994,7 +1995,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.138 $";
+  const char szVersion[] = "$Revision: 1.139 $";
   int iMajor, iMinor;
   char *pc;
 

@@ -16,12 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.6 2003/08/25 10:40:46 Superfly_Jon Exp $
+ * $Id: gtktoolbar.c,v 1.7 2003/08/29 18:38:12 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
 #include <config.h>
 #endif
+
+#include <stdlib.h>
 
 #define GTK_ENABLE_BROKEN /* for GtkText */
 #include <gtk/gtk.h>

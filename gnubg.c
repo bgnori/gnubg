@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.477 2003/08/29 16:54:41 thyssen Exp $
+ * $Id: gnubg.c,v 1.478 2003/08/29 18:38:12 jsegrave Exp $
  */
 
 #include "config.h"
@@ -80,10 +80,6 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include <iconv.h>
 #endif
 
-#if USE_PYTHON
-#include <Python.h>
-#include <gnubgmodule.h>
-#endif
 
 #if HAVE_LIBGEN_H
 #include <libgen.h>
@@ -111,6 +107,10 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "record.h"
 #include "progress.h"
 #include "format.h"
+
+#if USE_PYTHON
+#include <gnubgmodule.h>
+#endif
 
 #if USE_GUILE
 #include <libguile.h>

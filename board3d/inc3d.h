@@ -18,12 +18,20 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.8 2003/08/29 12:37:09 jsegrave Exp $
+* $Id: inc3d.h,v 1.9 2003/08/29 18:38:12 jsegrave Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
 
 #include <gtk/gtk.h>
+
+#ifdef TRUE
+#undef TRUE
+#endif
+#ifdef FALSE
+#undef FALSE
+#endif
+
 #include "config.h"
 #include <stdio.h>
 #include "i18n.h"

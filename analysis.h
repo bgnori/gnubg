@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.27 2003/08/28 17:24:30 thyssen Exp $
+ * $Id: analysis.h,v 1.28 2003/08/29 18:38:12 jsegrave Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -37,11 +37,13 @@ typedef enum _skilltype {
 } skilltype;
 
 #if defined(__GNUC__)
+#ifdef USES_badSkill
 static inline int
 badSkill(skilltype const st)
 {
   return st != SKILL_NONE && st != SKILL_GOOD;
 }
+#endif
 #else
 #define badSkill(st)  ((st) != SKILL_NONE && (st) != SKILL_GOOD)
 #endif

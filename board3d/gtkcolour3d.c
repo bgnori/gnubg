@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.4 2003/08/29 09:41:41 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.5 2003/08/29 18:38:12 jsegrave Exp $
 */
 
 #include <GL/gl.h>
@@ -294,7 +294,7 @@ void RenderPreview(Material* pMat, unsigned char* buf)
 
 void TextureChange(GtkList *list, gpointer user_data)
 {
-	char* current = gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(textureCombo)->entry));
+	char* current = (char *)gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(textureCombo)->entry));
 
 	if (current && *current && *lastTextureStr && (strcmp(current, lastTextureStr)))
 	{
@@ -539,7 +539,7 @@ void SetColour3d(GtkWidget *pw, UpdateDetails* pDetails)
 	
 		if (useTexture)
 		{
-			texStr = gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(textureCombo)->entry));
+			texStr = (char *)gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(textureCombo)->entry));
 
 			if (!strcmp(texStr, NO_TEXTURE_STRING))
 				col3d->textureInfo = 0;
