@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.359 2003/07/14 09:09:36 thyssen Exp $
+ * $Id: gtkgame.c,v 1.360 2003/07/14 09:27:41 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -78,7 +78,6 @@
 #include "record.h"
 #include "sound.h"
 #include "gtkoptions.h"
-#include "gtkbatch.h"
 
 #define GNUBGMENURC ".gnubgmenurc"
 
@@ -2306,8 +2305,6 @@ extern int InitGTK( int *argc, char ***argv ) {
 	  ExportSessionText, 0, NULL },
 	{ N_("/_File/_Export/_HTML Images..."), NULL, ExportHTMLImages, 0,
 	  NULL },
-	{ N_("/_File/-"), NULL, NULL, 0, "<Separator>" },
-	{ N_("/_File/_Batch..."), NULL, GTKBatch, 0, NULL },
 	{ N_("/_File/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_File/_Quit"), "<control>Q", Command, CMD_QUIT, NULL },
 	{ N_("/_Edit"), NULL, NULL, 0, "<Branch>" },
