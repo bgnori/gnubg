@@ -16,13 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.h,v 1.1 2003/05/29 19:14:54 thyssen Exp $
+ * $Id: gtktempmap.h,v 1.2 2003/05/30 19:28:51 thyssen Exp $
  */
 
 #ifndef _GTKTEMPMAP_H_
 #define _GTKTEMPMAP_H_
 
 extern void
-GTKShowTempMap( matchstate *pms );
+GTKShowTempMap( const matchstate *pms, const gchar *szTitle,
+                const int fInvert );
 
 #endif /* _GTKTEMPMAP_H_ */

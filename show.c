@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.147 2003/05/29 19:18:47 thyssen Exp $
+ * $Id: show.c,v 1.148 2003/05/30 19:28:51 thyssen Exp $
  */
 
 #include "config.h"
@@ -2022,7 +2022,7 @@ CommandShowTemperatureMap( char *sz ) {
 #if USE_GTK
 
   if ( fX ) {
-    GTKShowTempMap( &ms );
+    GTKShowTempMap( &ms, NULL, FALSE );
     return;
   }
 #endif
