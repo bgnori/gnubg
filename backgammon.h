@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.227 2003/07/08 19:19:49 grob Exp $
+ * $Id: backgammon.h,v 1.228 2003/07/10 08:46:44 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -66,6 +66,11 @@ typedef RETSIGTYPE (*psighandler)( int );
 #define MAX_CUBE ( 1 << 12 )
 #define MAX_CUBE_STR "4096"
 
+#ifdef WIN32
+#define BIG_PATH _MAX_PATH
+#else
+#define BIG_PATH PATH_MAX
+#endif
 
 /* position of windows: main window, game list, and annotation */
 
@@ -283,6 +288,10 @@ extern int nThreadPriority;
 extern int fCheat;
 extern int afCheatRoll[ 2 ];
 extern int fGotoFirstGame;
+extern int fSconyers15x15DVD;
+extern char szPathSconyers15x15DVD[ BIG_PATH ];      
+extern int fSconyers15x15Disk;
+extern char szPathSconyers15x15Disk[ BIG_PATH ];      
 
 /* GUI settings. */
 #if USE_GTK
@@ -684,6 +693,10 @@ extern void CommandAccept( char * ),
     CommandSetAutoGame( char * ),
     CommandSetAutoMove( char * ),
     CommandSetAutoRoll( char * ),
+    CommandSetBearoffSconyers15x15DVDEnable( char * ),
+    CommandSetBearoffSconyers15x15DVDPath( char * ),
+    CommandSetBearoffSconyers15x15DiskEnable( char * ),
+    CommandSetBearoffSconyers15x15DiskPath( char * ),
     CommandSetBoard( char * ),
     CommandSetBeavers( char * ),
     CommandSetCache( char * ),
@@ -981,6 +994,7 @@ extern void CommandAccept( char * ),
     CommandShowRollout( char * ),
     CommandShowRolls ( char * ),
     CommandShowScore( char * ),
+    CommandShowBearoff( char * ),
     CommandShowSeed( char * ),
     CommandShowSound( char * ),
     CommandShowStatisticsGame( char * ),
@@ -1050,11 +1064,7 @@ TextToClipboard ( const char * sz );
 extern void
 PrintCheatRoll( const int fPlayer, const int n );
 
-#ifdef WIN32
-#define BIG_PATH _MAX_PATH
-#else
-#define BIG_PATH PATH_MAX
-#endif
-
+extern void
+ShowBearoff( char *sz, matchstate *pms, bearoffcontext *pbc );
 
 #endif
