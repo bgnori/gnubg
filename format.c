@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.12 2004/10/22 14:25:44 Superfly_Jon Exp $
+ * $Id: format.c,v 1.13 2004/10/26 19:11:35 oysteijo Exp $
  */
 
 #include "config.h"
@@ -126,11 +126,11 @@ OutputEvalContext ( const evalcontext *pec, const int fChequer ) {
     sprintf ( pc = strchr ( sz, 0 ),
               " %d%% speed",
               (pec->nReduced) ? 100 / pec->nReduced : 100 );
-#endif
-
+#else
   if( pec->fUsePrune ) {
     sprintf( pc = strchr ( sz, 0 ), " prune" );
   }
+#endif
 	    
   if ( fChequer && pec->nPlies ) {
     /* FIXME: movefilters!!! */

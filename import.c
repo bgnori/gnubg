@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.98 2004/09/10 09:34:56 Superfly_Jon Exp $
+ * $Id: import.c,v 1.99 2004/10/26 19:11:35 oysteijo Exp $
  */
 
 #include "config.h"
@@ -724,6 +724,10 @@ char* GetMatLine(FILE* fp)
 
 	return szLine;
 }
+
+#ifndef MIN
+#define MIN(A,B) (A < B) ? A : B
+#endif
 
 static int 
 ImportGame( FILE *fp, int iGame, int nLength ) {

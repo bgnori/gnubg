@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.156 2004/07/04 12:26:41 thyssen Exp $
+ * $Id: analysis.c,v 1.157 2004/10/26 19:11:35 oysteijo Exp $
  */
 
 #include "config.h"
@@ -71,8 +71,11 @@ static const float arThrsRating [ RAT_SUPERNATURAL + 1 ] = {
 
 int afAnalysePlayers[ 2 ] = { TRUE, TRUE };
 
+#if defined (REDUCTION_CODE)
 evalcontext ecLuck = { TRUE, 0, 0, TRUE, 0.0 };
-
+#else
+evalcontext ecLuck = { TRUE, 0, FALSE, TRUE, 0.0 };
+#endif
 
 extern ratingtype
 GetRating ( const float rError ) {
