@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.103 2003/06/27 18:43:25 thyssen Exp $
+ * $Id: rollout.c,v 1.104 2003/06/27 21:21:24 jsegrave Exp $
  */
 
 #include "config.h"
@@ -870,7 +870,6 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
   
   int i, j, ici;
   int anBoardOrig[ 2 ][ 25 ];
-  int stopped_early = 0;
   int		ii, jj;
   int     err_too_big;
   double	v, s;
@@ -1081,13 +1080,14 @@ RolloutGeneral( int anBoard[ 2 ][ 25 ], char asz[][ 40 ],
 	} /* for (ii = 0; ii < NUM_ROLLOUT_OUTPUTS; ii++) */
       } /* for (jj = 0; jj < cci; jj++) */
       if (!err_too_big) {
-	stopped_early = 1;
 	break;
       }
     } /* if (prc->fStopOnSTD && (i >= prc->nMinimumGames)) */
   }
 
-  if( ( cGames != i ) && !stopped_early )
+  cGames = i;
+  /* return -1 if no games rolled out */
+  if( ! cGames)
     return -1;
 
   if( aarOutput )
