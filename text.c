@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.12 2002/07/29 16:44:53 thyssen Exp $
+ * $Id: text.c,v 1.13 2002/08/01 18:45:52 thyssen Exp $
  */
 
 #include "config.h"
@@ -608,6 +608,9 @@ TextPrologue ( FILE *pf, const matchstate *pms, const int iGame ) {
               ap [ 0 ].szName, pms->anScore[ 0 ],
               ap [ 1 ].szName, pms->anScore[ 1 ] );
 
+  fprintf ( pf, 
+            _("Game number %d\n\n"), iGame + 1 );
+
 }
 
 
@@ -625,7 +628,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.12 $";
+  const char szVersion[] = "$Revision: 1.13 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
