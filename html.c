@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.44 2002/07/21 19:35:03 thyssen Exp $
+ * $Id: html.c,v 1.45 2002/07/21 19:42:57 thyssen Exp $
  */
 
 #include "config.h"
@@ -1512,7 +1512,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.44 $";
+  const char szVersion[] = "$Revision: 1.45 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1560,7 +1560,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
             "<img style=\"border:0;width:88px;height:31px\" "
             "src=\"http://www.w3.org/Icons/valid-xhtml10\" "
             "alt=\"%s\" /></a>\n"
-            "<a href=\"http://jigsaw.w3.org/css-validator/\">"
+            "<a href=\"http://jigsaw.w3.org/css-validator/check/referer\">"
             "<img style=\"border:0;width:88px;height:31px\" "
             "src=\"http://jigsaw.w3.org/css-validator/images/vcss\" "
             "alt=\"%s\" />"
