@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.149 2002/04/13 13:45:57 oysteijo Exp $
+ * $Id: eval.c,v 1.150 2002/04/24 16:05:14 oysteijo Exp $
  */
 
 #include "config.h"
@@ -3355,7 +3355,7 @@ GenerateMoves( movelist *pml, int anBoard[ 2 ][ 25 ],
 static int FindBestMovePlied( int anMove[ 8 ], int nDice0, int nDice1,
 			      int anBoard[ 2 ][ 25 ], cubeinfo *pci,
 			      evalcontext *pec, int nPlies ) {
-  int i, j, iPly;
+  int i, j = 0, iPly;
   movelist ml;
 #if __GNUC__
   move amCandidates[ pec->nSearchCandidates ];
@@ -3408,23 +3408,27 @@ static int FindBestMovePlied( int anMove[ 8 ], int nDice0, int nDice1,
 	tol = 0.24;
       }
       
-      for( i = 0, j = 0; i < ml.cMoves; i++ )
-	if( ml.amMoves[ i ].rScore >= ml.rBestScore - tol ) {
-	  if( i != j )
-	    ml.amMoves[ j ] = ml.amMoves[ i ];
+      if ( ! ( pec->fNoOnePlyPrune && ( iPly == 1 ) ) ) {
+        for( i = 0, j = 0; i < ml.cMoves; i++ )
+	  if( ml.amMoves[ i ].rScore >= ml.rBestScore - tol ) {
+	    if( i != j )
+	      ml.amMoves[ j ] = ml.amMoves[ i ];
 		    
-	  j++;
-	}
-	    
-      if( j == 1 )
-	break;
+	    j++;
+	  }
+    
+        if( j == 1 )
+          break;
 
-      qsort( ml.amMoves, j, sizeof( move ), (cfunc) CompareMoves );
+        qsort( ml.amMoves, j, sizeof( move ), (cfunc) CompareMoves );
+
+      }     /* if ( ! (pec->fNoOnePlyPrune && ( iPly != 1 ) ) ) */
 
       ml.iMoveBest = 0;
 	    
-      ml.cMoves = ( j < ( pec->nSearchCandidates >> iPly ) ? j :
-		    ( pec->nSearchCandidates >> iPly ) );
+      if ( ! ( pec->fNoOnePlyPrune && ( iPly == 1 ) ) )
+         ml.cMoves = ( j < ( pec->nSearchCandidates >> iPly ) ? j :
+                        ( pec->nSearchCandidates >> iPly ) );
 
       if( ml.amMoves != amCandidates ) {
 	memcpy( amCandidates, ml.amMoves, ml.cMoves * sizeof( move ) );
@@ -3482,7 +3486,7 @@ FindnSaveBestMoves( movelist *pml,
       pml->amMoves = NULL;
       return 0;
   }
-  
+ 
   /* Save moves */
   pm = (move *) malloc ( pml->cMoves * sizeof ( move ) );
   memcpy( pm, pml->amMoves, pml->cMoves * sizeof( move ) );    
