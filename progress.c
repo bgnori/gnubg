@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.12 2003/12/29 19:24:46 uid65656 Exp $
+ * $Id: progress.c,v 1.13 2003/12/29 22:16:32 uid65656 Exp $
  */
 
 #include "config.h"
@@ -71,7 +71,6 @@ typedef struct _rolloutprogress {
 } rolloutprogress;
 
 
-#if USE_GTK
 
 
 
@@ -132,6 +131,7 @@ estimatedSE( const float rSE, const int iGame, const int nTrials ) {
 
 }
 
+#if USE_GTK
 
 /*
  * Make pages with statistics.
