@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.h,v 1.1 2002/12/27 15:06:12 thyssen Exp $
+ * $Id: gtksplash.h,v 1.2 2002/12/28 15:10:19 thyssen Exp $
  */
 
 #ifndef _GTKSPLASH_H_
@@ -31,6 +31,6 @@ DestroySplash ( GtkWidget *pwSplash );
 extern void
 PushSplash ( GtkWidget *pwSplash, 
              const gchar *szText0, const gchar *szText1,
-             const guint nSeconds );
+             const unsigned long nMuSec );
 
 #endif /* _GTKSPLASH_H_ */

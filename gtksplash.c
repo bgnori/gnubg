@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.1 2002/12/27 15:06:12 thyssen Exp $
+ * $Id: gtksplash.c,v 1.2 2002/12/28 15:10:19 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -104,7 +104,7 @@ DestroySplash ( GtkWidget *pwSplash ) {
   if ( ! pwSplash )
     return;
   
-  sleep ( 3 );
+  usleep ( 1000 );
 
   gtk_widget_destroy ( pwSplash );
 
@@ -114,7 +114,7 @@ DestroySplash ( GtkWidget *pwSplash ) {
 extern void
 PushSplash ( GtkWidget *pwSplash, 
              const gchar *szText0, const gchar *szText1,
-             const guint nSeconds ) {
+             const unsigned long nMuSec ) {
   
   gtksplash *pgs;
 
@@ -130,6 +130,6 @@ PushSplash ( GtkWidget *pwSplash,
   while( gtk_events_pending() )
     gtk_main_iteration();
 
-  sleep ( nSeconds );
+  usleep ( nMuSec );
 
 }

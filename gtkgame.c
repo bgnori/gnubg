@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.284 2002/12/27 21:06:08 gtw Exp $
+ * $Id: gtkgame.c,v 1.285 2002/12/28 15:10:19 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1533,6 +1533,7 @@ static void SetAnnotation( moverecord *pmr ) {
     GtkWidget *pwMoveAnalysis = NULL, *pwCubeAnalysis = NULL;
     doubletype dt;
     taketype tt;
+    cubeinfo ci;
     
     /* Select the moverecord _after_ pmr.  FIXME this is very ugly! */
     for( pl = plGame->plNext; pl != plGame; pl = pl->plNext )
@@ -1578,6 +1579,12 @@ static void SetAnnotation( moverecord *pmr ) {
 
             fixOutput ( pmr->n.arDouble, pmr->n.aarOutput );
 
+            /* 
+             * Skill and luck
+             */
+
+            /* luck */
+
 	    gtk_box_pack_start( GTK_BOX( pwAnalysis ), pwBox, FALSE, FALSE,
 				0 );
 	    
@@ -1587,6 +1594,22 @@ static void SetAnnotation( moverecord *pmr ) {
 					      pmr->n.rLuck, pmr->n.lt ),
 				FALSE, FALSE, 4 );
 
+            /* Skill for cube */
+
+            GetMatchStateCubeInfo ( &ci, &ms );
+            if ( GetDPEq ( NULL, NULL, &ci ) ) {
+
+              gtk_box_pack_start ( GTK_BOX ( pwBox ),
+                                   gtk_label_new ( _("Didn't double") ),
+                                   FALSE, FALSE, 4 );
+              gtk_box_pack_start ( GTK_BOX ( pwBox ),
+                                   SkillMenu ( pmr->n.stCube, "cube" ),
+                                   FALSE, FALSE, 4 );
+
+            }
+
+            /* chequer play skill */
+
 	    gtk_box_pack_end( GTK_BOX( pwBox ), 
                               SkillMenu( pmr->n.stMove, "move" ),
 			      FALSE, FALSE, 4 );
@@ -1595,19 +1618,6 @@ static void SetAnnotation( moverecord *pmr ) {
 	    gtk_box_pack_end( GTK_BOX( pwBox ),
 			      gtk_label_new( sz ), FALSE, FALSE, 0 );
 
-            /* Skill for cube */
-
-            pwBox = gtk_hbox_new ( FALSE, 0 );
-
-            gtk_box_pack_start ( GTK_BOX ( pwAnalysis ), pwBox, FALSE, FALSE,
-                                 0 );
-
-            gtk_box_pack_start ( GTK_BOX ( pwBox ),
-                                 gtk_label_new ( _("Didn't double") ),
-                                 FALSE, FALSE, 4 );
-            gtk_box_pack_start ( GTK_BOX ( pwBox ),
-                                 SkillMenu ( pmr->n.stCube, "cube" ),
-                                 FALSE, FALSE, 4 );
             /* cube */
 
             pwCubeAnalysis = CreateCubeAnalysis( pmr->n.aarOutput, 
