@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.221 2002/06/02 16:42:41 thyssen Exp $
+ * $Id: gnubg.c,v 1.222 2002/06/06 20:47:11 gtw Exp $
  */
 
 #include "config.h"
@@ -2025,9 +2025,9 @@ extern void ShowBoard( void ) {
           sprintf( apch[ 1 ] = szScore0, _("%d points"), ms.anScore[ 0 ] );
 
         if ( ms.anScore[ 1 ] == 1 )
-          sprintf( apch[ 5 ] = szScore0, _("%d point"), ms.anScore[ 1 ] );
+          sprintf( apch[ 5 ] = szScore1, _("%d point"), ms.anScore[ 1 ] );
         else
-          sprintf( apch[ 5 ] = szScore0, _("%d points"), ms.anScore[ 1 ] );
+          sprintf( apch[ 5 ] = szScore1, _("%d points"), ms.anScore[ 1 ] );
 
 	if( ms.fDoubled ) {
 	    apch[ ms.fTurn ? 4 : 2 ] = szCube;
