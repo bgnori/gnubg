@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.32 2004/04/07 08:49:19 thyssen Exp $
+ * $Id: sound.c,v 1.33 2004/04/11 17:25:33 thyssen Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -1246,6 +1246,9 @@ extern void SoundFlushCache( const gnubgsound gs ) {
 }
 
 extern void SoundWait( void ) {
+
+    if (!fSound)
+        return;
 
     switch( ssSoundSystem ) {
 #ifdef SIGIO
