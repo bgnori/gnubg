@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.5 2003/08/25 09:30:20 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.6 2003/08/27 10:11:36 jsegrave Exp $
 */
 
 #include <gtk/gtk.h>
@@ -55,7 +55,7 @@
 #define copyPoint(to, from) memcpy(to, from, sizeof(float[3]))
 #define SGN(x) (x / abs(x))
 
-#define TEXTURE_PATH "textures//"
+#define TEXTURE_PATH "textures/"
 #define NO_TEXTURE_STRING _("No texture")
 
 #define HINGE_SEGMENTS 6
