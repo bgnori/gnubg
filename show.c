@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1999
  *
- * $Id: show.c,v 1.1 1999/12/15 01:17:34 gtw Exp $
+ * $Id: show.c,v 1.2 1999/12/15 02:42:33 thyssen Exp $
  */
 
 #include "config.h"
@@ -13,6 +13,7 @@
 #include "backgammon.h"
 #include "drawboard.h"
 #include "eval.h"
+#include "dice.h"
 
 #if !X_DISPLAY_MISSING
 #include "xgame.h"
@@ -149,4 +150,16 @@ extern void CommandShowTurn( char *sz ) {
     if( fResigned )
 	printf( "%s has offered to resign a %s.\n", ap[ fMove ].szName,
 		aszGameResult[ fResigned - 1 ] );
+}
+
+extern void CommandShowRNG( char *sz ) {
+
+  static char *aszRNG[] = {
+    "ANSI", "BSD", "ISAAC", "manual", "Mersenne Twister",
+    "user supplied"
+  };
+
+  printf( "You are using the %s generator.\n",
+	  aszRNG[ rngCurrent ] );
+    
 }
