@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.172 2003/12/29 19:20:02 uid65656 Exp $
+ * $Id: show.c,v 1.173 2003/12/29 20:06:48 uid65656 Exp $
  */
 
 #include "config.h"
@@ -2123,7 +2123,7 @@ CommandShowCubeEfficiency( char *sz ) {
 
   outputf( _("Parameters for cube evaluations:\n"
              "Cube efficiency for crashed positions           : %7.4f\n"
-             "Cube efficiency for context positions           : %7.4f\n"
+             "Cube efficiency for contact positions           : %7.4f\n"
              "Cube efficiency for one sided bearoff positions : %7.4f\n"
              "Cube efficiency for race: x = pips * %.5f + %.5f\n"
              "(min value %.4f, max value %.4f)\n"),
@@ -2384,4 +2384,33 @@ extern void CommandShowDisplayPanels( char *sz ) {
 	else
 	  outputf( _("Game list, Annotation and Message panels/windows "
 		        "will not be displayed."));
+}
+
+
+
+extern void
+CommandShowEPC( char *sz ) {
+
+  int anBoard[ 2 ][ 25 ];
+
+  if( ms.gs != GAME_PLAYING ) {
+    outputl( _("There must be a game in progress to set show "
+               "effective pip count.") );
+    return;
+  }
+
+  if ( ParsePosition( anBoard, &sz, NULL ) ) 
+    outputl( _("Illegal board") );
+
+#if USE_GTK
+  if ( fX )
+    GTKShowEPC( anBoard );
+  else
+#endif /* USE_GTK */
+    {
+      char *sz = ShowEPC( anBoard );
+      output( sz );
+      g_free( sz );
+    }
+
 }
