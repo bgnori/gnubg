@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.114 2004/04/20 15:57:22 thyssen Exp $
+# $Id: credits.sh,v 1.115 2004/04/25 06:47:24 thyssen Exp $
 # 
 
 column < /dev/null || exit 0
@@ -66,6 +66,7 @@ Hlynur Sigurgislason,Icelandic
 Renzo Campagna,Italian
 Kaoru Takahashi,Japanese
 Akif Dinc,Turkish
+Dmitri I GOULIAEV,Russian
 EOF
 
 cat > $credit <<EOF
