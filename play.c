@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.168 2002/12/21 21:01:10 thyssen Exp $
+ * $Id: play.c,v 1.169 2002/12/22 17:05:17 jsegrave Exp $
  */
 
 #include "config.h"
@@ -1443,15 +1443,20 @@ static int TryBearoff( void ) {
 		pmn->fPlayer = ms.fTurn;
 		memcpy( pmn->anMove, ml.amMoves[ i ].anMove,
 			sizeof( pmn->anMove ) );
-                if ( ! cmp_matchstate ( &ms, &sm.ms ) ) {
+                if ( cmp_matchstate ( &ms, &sm.ms ) ) {
+		  pmn->ml.cMoves = 0;
+		  pmn->ml.amMoves = NULL;
+		} else {
                   CopyMoveList ( &pmn->ml, &sm.ml );
                   pmn->iMove = locateMove ( ms.anBoard, pmn->anMove, 
                                             &pmn->ml );
+		  if ((pmn->iMove < 0) || (pmn->iMove > pmn->ml.cMoves)) {
+		    free (pmn->ml.amMoves);
+		    pmn->ml.cMoves = 0;
+		    pmn->ml.amMoves = NULL;
+		  }
                 }
-                else {
-                  pmn->ml.cMoves = 0;
-                  pmn->ml.amMoves = NULL;
-                }
+
                 pmn->esDouble.et = EVAL_NONE;
                 pmn->esChequer.et = EVAL_NONE;
 		pmn->lt = LUCK_NONE;
@@ -2618,15 +2623,20 @@ CommandMove( char *sz ) {
 	    pmn->anRoll[ 0 ] = ms.anDice[ 0 ];
 	    pmn->anRoll[ 1 ] = ms.anDice[ 1 ];
 	    pmn->fPlayer = ms.fTurn;
-            if ( ! cmp_matchstate ( &ms, &sm.ms ) ) {
+            if ( cmp_matchstate ( &ms, &sm.ms ) ) {
+	      pmn->ml.cMoves = 0;
+              pmn->ml.amMoves = NULL;
+            } else {
               CopyMoveList ( &pmn->ml, &sm.ml );
               pmn->iMove = locateMove ( ms.anBoard, pmn->anMove, 
                                         &pmn->ml );
-            }
-            else {
-              pmn->ml.cMoves = 0;
-              pmn->ml.amMoves = NULL;
-            }
+              if ((pmn->iMove < 0) || (pmn->iMove > pmn->ml.cMoves)) {
+		free (pmn->ml.amMoves);
+		pmn->ml.cMoves = 0;
+		pmn->ml.amMoves = NULL;
+	      }
+	    }
+
 	    pmn->esDouble.et = EVAL_NONE;
 	    pmn->esChequer.et = EVAL_NONE;
 	    pmn->lt = LUCK_NONE;
@@ -2700,15 +2710,20 @@ CommandMove( char *sz ) {
 		pmn->anRoll[ 0 ] = ms.anDice[ 0 ];
 		pmn->anRoll[ 1 ] = ms.anDice[ 1 ];
 		pmn->fPlayer = ms.fTurn;
-                if ( ! cmp_matchstate ( &ms, &sm.ms ) ) { 
+                if ( cmp_matchstate ( &ms, &sm.ms ) ) { 
+		  pmn->ml.cMoves = 0;
+		  pmn->ml.amMoves = NULL;
+		} else {
                   CopyMoveList ( &pmn->ml, &sm.ml );
                   pmn->iMove = locateMove ( ms.anBoard, pmn->anMove, 
                                             &pmn->ml );
+		  if ((pmn->iMove < 0) || (pmn->iMove > pmn->ml.cMoves)) {
+		    free (pmn->ml.amMoves);
+		    pmn->ml.cMoves = 0;
+		    pmn->ml.amMoves = NULL;
+		  }
                 }
-                else {
-                  pmn->ml.cMoves = 0;
-                  pmn->ml.amMoves = NULL;
-                }
+
 		pmn->esDouble.et = EVAL_NONE;
 		pmn->esChequer.et = EVAL_NONE;
 		pmn->lt = LUCK_NONE;
