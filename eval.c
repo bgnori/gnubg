@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.225 2003/04/07 19:27:17 thyssen Exp $
+ * $Id: eval.c,v 1.226 2003/04/07 19:43:39 thyssen Exp $
  */
 
 #include "config.h"
@@ -645,12 +645,24 @@ EvalNewWeights(int nSize)
 extern int
 EvalShutdown ( void ) {
 
+  int i;
+
   /* close bearoff databases */
 
   BearoffClose ( pbc1 );
   BearoffClose ( pbc2 );
   BearoffClose ( pbcOS );
   BearoffClose ( pbcTS );
+  for ( i = 0; i < 3; ++i )
+    BearoffClose( apbcHyper[ i ] );
+
+  /* destroy neural nets */
+
+  DestroyWeights();
+
+  /* destroy cache */
+
+  CacheDestroy( &cEval );
 
   return 0;
 
