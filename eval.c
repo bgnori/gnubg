@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.72 2001/01/31 15:31:13 gtw Exp $
+ * $Id: eval.c,v 1.73 2001/02/07 17:59:05 gtw Exp $
  */
 
 #include "config.h"
@@ -3064,6 +3064,14 @@ static int FindBestMovePlied( int anMove[ 8 ], int nDice0, int nDice1,
   move amCandidates[ MAX_SEARCH_CANDIDATES ];
 #endif
 
+  if( fAction )
+      fnAction();
+	  
+  if( fInterrupt ) {
+      errno = EINTR;
+      return -1;
+  }
+	  
   if( anMove ) {
     for( i = 0; i < 8; i++ ) {
       anMove[ i ] = -1;
