@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.91 2002/03/14 20:21:50 thyssen Exp $
+ * $Id: set.c,v 1.92 2002/03/17 16:09:11 thyssen Exp $
  */
 
 #include "config.h"
@@ -1905,4 +1905,11 @@ CommandSetEvalCubedecision ( char *sz ) {
 
 }
 
+
+extern void
+CommandSetMatchID ( char *sz ) {
+
+  SetMatchID ( sz );
+
+}
 
