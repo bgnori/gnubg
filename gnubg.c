@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.56 2000/10/08 12:23:46 thyssen Exp $
+ * $Id: gnubg.c,v 1.57 2000/10/12 15:21:06 gtw Exp $
  */
 
 #include "config.h"
@@ -1214,7 +1214,7 @@ extern void CommandHint( char *sz ) {
     
 	for( i = 0; i < ml.cMoves; i++ ) {
 	  float *ar = ml.amMoves[ i ].pEval;
-	  float rMwc = Utility ( ar, &ci );
+
 	  outputf( "%5.3f\t%5.3f\t%5.3f\t%5.3f\t%5.3f\t%6.2f%%\t",
 		   ar[ 0 ], ar[ 1 ], ar[ 2 ], ar[ 3 ], ar[ 4 ],
 		   100.0 * eq2mwc ( Utility ( ar, &ci ), &ci ) );
