@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.29 2001/10/27 13:27:14 thyssen Exp $
+ * $Id: sgf.c,v 1.30 2001/10/29 15:15:20 gtw Exp $
  */
 
 #include "config.h"
@@ -34,10 +34,6 @@
 #endif
 #include "positionid.h"
 #include "sgf.h"
-
-#ifndef HUGE_VALF
-#define HUGE_VALF 1e38
-#endif
 
 static char *szFile;
 static int fError;
@@ -528,7 +524,7 @@ static void RestoreNode( list *pl ) {
     int i, fPlayer, fSetBoard = FALSE, an[ 25 ];
     skilltype st = SKILL_NONE;
     lucktype lt = LUCK_NONE;
-    float rLuck = -HUGE_VALF;
+    float rLuck = ERR_VAL;
     
     for( pl = pl->plNext; ( pp = pl->p ); pl = pl->plNext ) {
 	if( pp->ach[ 1 ] == 0 &&
@@ -995,7 +991,7 @@ static void WriteMoveAnalysis( FILE *pf, int fPlayer, movelist *pml,
 
 static void WriteLuck( FILE *pf, int fPlayer, float rLuck, lucktype lt ) {
 
-    if( rLuck != -HUGE_VALF )
+    if( rLuck != ERR_VAL )
 	fprintf( pf, "LU[%+.3f]", rLuck );
     
     switch( lt ) {
