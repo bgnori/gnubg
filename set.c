@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.214 2003/12/29 11:28:33 uid68519 Exp $
+ * $Id: set.c,v 1.215 2003/12/29 19:32:21 uid65656 Exp $
  */
 
 #include "config.h"
@@ -4500,6 +4500,13 @@ SetVariation( const bgvariation bgvx ) {
 
   bgvDefault = bgvx;
   CommandShowVariation( NULL );
+
+  if ( ms.gs != GAME_NONE )
+    outputf( _("The current match or session is being played as `%s'.\n"),
+             gettext( aszVariations[ ms.bgv ] ) );
+
+  outputf( _("Please start a new match or session to play `%s'\n"),
+           gettext( aszVariations[ bgvDefault ] ) );
 
 #if USE_GUI
     if( fX && ms.gs == GAME_NONE )
