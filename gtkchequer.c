@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.14 2002/11/20 19:19:26 jsegrave Exp $
+ * $Id: gtkchequer.c,v 1.15 2002/12/11 18:38:04 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -348,7 +348,7 @@ static void
 MoveListEvalPly ( GtkWidget *pw, hintdata *phd ) {
 
   char *szPly = gtk_object_get_data ( GTK_OBJECT ( pw ), "user_data" );
-  evalcontext ec = { 0, TRUE, 0, 0, TRUE, FALSE, 0.0f, 0.0f };
+  evalcontext ec = { TRUE, 0, 0, TRUE, 0.0 };
 
   ec.nPlies = atoi ( szPly );
 

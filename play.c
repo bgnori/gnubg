@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.164 2002/12/04 20:57:46 thyssen Exp $
+ * $Id: play.c,v 1.165 2002/12/11 18:51:38 thyssen Exp $
  */
 
 #include "config.h"
@@ -973,7 +973,7 @@ extern int ComputerTurn( void ) {
 
       if( ClassifyPosition( ms.anBoard ) <= CLASS_RACE ) {
 
-          evalcontext ecResign = { 0, FALSE, 0, 0, TRUE, FALSE, 0.0, 0.0};
+          evalcontext ecResign = { FALSE, 0, 0, TRUE, 0.0 };
           evalsetup esResign;
 
           esResign.et = EVAL_EVAL;
@@ -4007,7 +4007,7 @@ getCurrentMoveRecord ( int *pfHistory ) {
 static int
 CheatDice ( int anDice[ 2 ], matchstate *pms ) {
 
-  static evalcontext ec0ply = { 0, FALSE, 0, 0, TRUE, FALSE, 0.0, 0.0 };
+  static evalcontext ec0ply = { FALSE, 0, 0, TRUE, 0.0 };
   static cubeinfo ci;
     
   GetMatchStateCubeInfo( &ci, pms );

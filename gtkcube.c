@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.17 2002/11/27 17:47:40 jsegrave Exp $
+ * $Id: gtkcube.c,v 1.18 2002/12/11 18:38:04 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -704,7 +704,7 @@ static void
 CubeAnalysisEvalPly ( GtkWidget *pw, cubehintdata *pchd ) {
 
   char *szPly = gtk_object_get_data ( GTK_OBJECT ( pw ), "user_data" );
-  evalcontext ec = { 0, TRUE, 0, 0, TRUE, FALSE, 0.0f, 0.0f };
+  evalcontext ec = { TRUE, 0, 0, TRUE, 0.0 };
 
   ec.nPlies = atoi ( szPly );
 

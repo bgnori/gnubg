@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.30 2002/11/28 02:47:28 gtw Exp $
+ * $Id: text.c,v 1.31 2002/12/11 18:47:55 thyssen Exp $
  */
 
 #include "config.h"
@@ -129,11 +129,9 @@ OutputEvalContext ( const evalcontext *pec, const int fChequer ) {
               " %d%% speed",
               (pec->nReduced) ? 100 / pec->nReduced : 100 );
 
-  if ( fChequer && pec->nPlies ) 
-    sprintf ( pc = strchr ( sz, 0 ),
-              ", %d cand., %0.3g tol.",
-              pec->nSearchCandidates,
-              pec->rSearchTolerance );
+  if ( fChequer && pec->nPlies ) {
+    /* FIXME: movefilters!!! */
+  }
 
   if ( pec->rNoise > 0.0f )
     sprintf ( pc = strchr ( sz, 0 ),
@@ -654,7 +652,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.30 $";
+  const char szVersion[] = "$Revision: 1.31 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
