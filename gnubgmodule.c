@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.31 2004/05/25 15:23:46 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.32 2004/08/01 00:54:09 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1232,7 +1232,7 @@ PyDoubleAnalysis(const evalsetup* pes,
 }
 
 static PyObject*
-PyGameStats(const statcontext* sc, const int nMatchTo, const int fIsMatch )
+PyGameStats(const statcontext* sc, const int fIsMatch, const int nMatchTo)
 {
   PyObject* p[2];
   float aaaar[ 3 ][ 2 ][ 2 ][ 2 ];
