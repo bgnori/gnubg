@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.8 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: gtkmet.c,v 1.9 2003/09/03 21:59:48 hb Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -34,6 +34,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 #include "backgammon.h"
 #include "eval.h"
@@ -64,8 +65,10 @@ UpdateTable ( mettable *pmt,
               metinfo *pmi,
               const int nRows, const int nCols, const int fInvert ) {
 
-  int i, j;
-  char sz[ 16 ];
+#define STRINGLENGTH 64
+
+  int i, j, nBytes;
+  char sz[ STRINGLENGTH ];
 
   /* set labels */
 
@@ -79,14 +82,17 @@ UpdateTable ( mettable *pmt,
     for( j = 0; j < nCols; j++ ) {
 
       if ( fInvert )
-        sprintf( sz, "%8.4f", GET_MET( j, i, aafMET ) * 100.0f );
+        nBytes = sprintf( sz, "%8.4f", GET_MET( j, i, aafMET ) * 100.0f );
       else
-        sprintf( sz, "%8.4f", GET_MET( i, j, aafMET ) * 100.0f );
+        nBytes = sprintf( sz, "%8.4f", GET_MET( i, j, aafMET ) * 100.0f );
+
+      assert( nBytes < STRINGLENGTH );
 
       gtk_label_set_text ( GTK_LABEL ( pmt->aapwLabel[ i ][ j ] ), sz );
 
     }
 
+#undef STRINGLENGTH
 }
 
 
