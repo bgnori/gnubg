@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.70 2002/08/03 15:32:25 thyssen Exp $
+ * $Id: gtkboard.c,v 1.71 2002/08/08 19:08:03 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4536,7 +4536,7 @@ static void board_init( Board *board ) {
 #endif
     bd->wood = WOOD_ALDER;
     bd->hinges = TRUE;
-    bd->labels = FALSE;
+    bd->labels = TRUE;
     bd->usedicearea = TRUE;
     bd->permit_illegal = FALSE;
     bd->beep_illegal = TRUE;
