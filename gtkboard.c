@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.12 2000/10/21 05:09:54 gtw Exp $
+ * $Id: gtkboard.c,v 1.13 2000/11/10 18:46:35 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -25,6 +25,7 @@
 
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
+#include <isaac.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,9 +38,6 @@
 
 #define POINT_DICE 28
 #define POINT_CUBE 29
-
-static unsigned int nSeed = 1; /* for rand_r */
-#define RAND ( ( (unsigned int) rand_r( &nSeed ) ) & RAND_MAX )
 
 typedef struct _BoardData {
     GtkWidget *drawing_area, *dice_area, *hbox_pos, *table, *hbox_match, *move,
@@ -90,6 +88,9 @@ static int positions[ 28 ][ 3 ] = {
 };
 
 static GtkVBoxClass *parent_class = NULL;
+
+static randctx rc;
+#define RAND irand( &rc )
 
 extern GtkWidget *board_new( void ) {
 
@@ -2249,18 +2250,20 @@ static void board_class_init( BoardClass *c ) {
 
 extern GtkType board_get_type( void ) {
 
-   static GtkType board_type = 0;
-   static const GtkTypeInfo board_info = {
-       "Board",
-       sizeof( Board ),
-       sizeof( BoardClass ),
-       (GtkClassInitFunc) board_class_init,
-       (GtkObjectInitFunc) board_init,
-       NULL, NULL, NULL
-   };
-   
-   if( !board_type )
-       board_type = gtk_type_unique( GTK_TYPE_VBOX, &board_info );
-
-   return board_type;
+    static GtkType board_type = 0;
+    static const GtkTypeInfo board_info = {
+	"Board",
+	sizeof( Board ),
+	sizeof( BoardClass ),
+	(GtkClassInitFunc) board_class_init,
+	(GtkObjectInitFunc) board_init,
+	NULL, NULL, NULL
+    };
+    
+    if( !board_type ) {
+	irandinit( &rc, FALSE );
+	board_type = gtk_type_unique( GTK_TYPE_VBOX, &board_info );
+    }
+    
+    return board_type;
 }
