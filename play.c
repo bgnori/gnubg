@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.78 2001/04/30 19:28:22 gtw Exp $
+ * $Id: play.c,v 1.79 2001/05/14 15:19:50 gtw Exp $
  */
 
 #include "config.h"
@@ -53,7 +53,8 @@ char *aszGameResult[] = { "single game", "gammon", "backgammon" },
 			"interesting", "good", "very good" },
     *aszSkillTypeAbbr[] = { "??", "?", "?!", "", "!?", "!", "!!" },
     *aszLuckType[] = { "very unlucky", "unlucky", NULL, "lucky",
-		       "very lucky" };
+		       "very lucky" },
+    *aszLuckTypeAbbr[] = { "--", "-", "", "+", "++" };
 list lMatch, *plGame, *plLastMove;
 statcontext scMatch;
 static int fComputerDecision = FALSE;
