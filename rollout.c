@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.74 2002/07/14 22:47:44 thyssen Exp $
+ * $Id: rollout.c,v 1.75 2002/07/17 11:52:52 thyssen Exp $
  */
 
 #include "config.h"
@@ -670,8 +670,14 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
       for ( i = 0; i < NUM_ROLLOUT_OUTPUTS; i++ )
         aarOutput[ ici ][ i ] += aarVarRedn[ ici ][ i ];
 
-      /* convert to MWC or normalize against old cube value. */
+    /* multiply money equities */
 
+    if ( ! pci->nMatchTo )
+      aarOutput[ ici ][ OUTPUT_CUBEFUL_EQUITY ] *=
+        aci [ ici ].nCube / aci[ 0 ].nCube;
+
+    
+    
 /*        if ( pci->nMatchTo ) */
 /*          aarOutput[ ici ][ OUTPUT_CUBEFUL_EQUITY ] = */
 /*            eq2mwc ( aarOutput[ ici ][ OUTPUT_CUBEFUL_EQUITY ], pci ); */
