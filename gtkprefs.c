@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.46 2002/12/04 21:16:42 thyssen Exp $
+ * $Id: gtkprefs.c,v 1.47 2002/12/04 22:22:20 thyssen Exp $
  */
 
 #include "config.h"
@@ -1319,7 +1319,9 @@ static void BoardPrefsOK( GtkWidget *pw, BoardData *bd ) {
 static void
 BoardPrefsDestroy ( GtkWidget *pw, GList *plBoardDesigns ) {
 
+#if HAVE_LIBXML2
   free_board_designs ( plBoardDesigns );
+#endif /* HAVE_LIBXML2 */
 
 }
 
