@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.48 2002/07/28 23:16:21 oysteijo Exp $
+ * $Id: html.c,v 1.49 2002/07/29 16:44:53 thyssen Exp $
  */
 
 #include "config.h"
@@ -1512,7 +1512,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ] ) {
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.48 $";
+  const char szVersion[] = "$Revision: 1.49 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -2165,7 +2165,8 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
       /* move no */
 
-      if ( i != pmr->n.iMove || i != pmr->n.ml.cMoves - 1 ) 
+      if ( i != pmr->n.iMove || i != pmr->n.ml.cMoves - 1 || 
+           pmr->n.ml.cMoves == 1 ) 
         fprintf ( pf, 
                   "<td>%d</td>\n", i + 1 );
       else
@@ -3276,7 +3277,7 @@ HTMLFilename ( const char *szBase, const int iGame ) {
 
     if ( ! szExtension ) {
 
-      sprintf ( sz, "%s_%03d", szBase, iGame );
+      sprintf ( sz, "%s_%03d", szBase, iGame + 1 );
       return sz;
 
     }
@@ -3285,7 +3286,7 @@ HTMLFilename ( const char *szBase, const int iGame ) {
       strcpy ( sz, szBase );
       pc = strrchr ( sz, '.' );
       
-      sprintf ( pc, "_%03d%s", iGame, szExtension );
+      sprintf ( pc, "_%03d%s", iGame + 1, szExtension );
 
       return sz;
 
