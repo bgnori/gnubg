@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.21 2000/03/05 23:15:25 joseph Exp $
+ * $Id: eval.c,v 1.22 2000/03/06 17:29:08 gtw Exp $
  */
 
 #include "config.h"
@@ -1730,7 +1730,6 @@ extern int GameStatus( int anBoard[ 2 ][ 25 ] ) {
 extern int TrainPosition( int anBoard[ 2 ][ 25 ], float arDesired[] ) {
 
   float arInput[ NUM_INPUTS ], arOutput[ NUM_OUTPUTS ];
-  int fRace;
 
   int pc = ClassifyPosition( anBoard );
   
@@ -1749,11 +1748,10 @@ extern int TrainPosition( int anBoard[ 2 ][ 25 ], float arDesired[] ) {
 
   SanityCheck( anBoard, arDesired );
     
-  fRace = CalculateInputs( anBoard, arInput );
+  CalculateInputs( anBoard, arInput );
 
   NeuralNetTrain( nn, arInput, arOutput, arDesired,
-		  2.0 / pow( 100.0 + ( fRace ? nnRace : nnContact ).nTrained,
-			     0.25 ) );
+		  2.0 / pow( 100.0 + nn.nTrained, 0.25 ) );
 
   return 0;
 }
