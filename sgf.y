@@ -18,10 +18,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.y,v 1.3 2002/06/04 17:57:39 gtw Exp $
+ * $Id: sgf.y,v 1.4 2002/06/06 20:47:42 gtw Exp $
  */
 
 %{
+#include "config.h"
 #include <list.h>
 #include <stdio.h>
 #include <stdlib.h>
