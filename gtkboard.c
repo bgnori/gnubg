@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.37 2001/09/25 15:08:39 gtw Exp $
+ * $Id: gtkboard.c,v 1.38 2001/10/12 14:40:11 gtw Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -949,7 +949,8 @@ static gboolean board_pointer( GtkWidget *board, GdkEvent *event,
 	
 	bd->drag_colour = bd->points[ bd->drag_point ] < 0 ? -1 : 1;
 
-	if( bd->drag_point > 0 && bd->drag_point < 25 &&
+	if( !gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( bd->edit ) ) &&
+	    bd->drag_point > 0 && bd->drag_point < 25 &&
 	    bd->drag_colour != bd->turn ) {
 	    /* trying to move opponent's chequer (except off the bar, which
 	       is OK) */
