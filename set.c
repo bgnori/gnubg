@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.79 2001/10/30 16:14:12 gtw Exp $
+ * $Id: set.c,v 1.80 2001/11/06 15:53:49 gtw Exp $
  */
 
 #include "config.h"
@@ -226,10 +226,6 @@ static void SetSkillThreshold( char *szCommand, skilltype lt, char *sz ) {
     outputf( "`%s' threshold set to %.3f.\n", szCommand, r );
 }
 
-extern void CommandSetAnalysisThresholdDoubtful( char *sz ) {
-
-    SetSkillThreshold( "doubtful", SKILL_DOUBTFUL, sz );
-}
 extern void CommandSetAnalysisThresholdBad( char *sz ) {
 
     SetSkillThreshold( "bad", SKILL_BAD, sz );
@@ -238,6 +234,16 @@ extern void CommandSetAnalysisThresholdBad( char *sz ) {
 extern void CommandSetAnalysisThresholdGood( char *sz ) {
 
     SetSkillThreshold( "good", SKILL_GOOD, sz );
+}
+
+extern void CommandSetAnalysisThresholdDoubtful( char *sz ) {
+
+    SetSkillThreshold( "doubtful", SKILL_DOUBTFUL, sz );
+}
+
+extern void CommandSetAnalysisThresholdInteresting( char *sz ) {
+
+    SetSkillThreshold( "interesting", SKILL_INTERESTING, sz );
 }
 
 extern void CommandSetAnalysisThresholdLucky( char *sz ) {
@@ -432,7 +438,7 @@ extern void CommandSetClockwise( char *sz ) {
 #endif
 }
 
-extern void CommandSetColours( char *sz ) {
+extern void CommandSetAppearance( char *sz ) {
     
 #if USE_GTK
     if( fX ) {
@@ -446,7 +452,7 @@ extern void CommandSetColours( char *sz ) {
 	BoardPreferencesDone( pwBoard );	    
     } else
 #endif
-	outputl( "The colours may not be changed when using this user "
+	outputl( "The appearance may not be changed when using this user "
 		 "interface." );
 }
 
