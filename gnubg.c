@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.475 2003/08/27 14:05:07 jsegrave Exp $
+ * $Id: gnubg.c,v 1.476 2003/08/27 21:52:10 jsegrave Exp $
  */
 
 #include "config.h"
@@ -6963,9 +6963,9 @@ static void real_main( void *closure, int argc, char *argv[] ) {
 	free (szFile);
 
 	if ( szLang && *szLang && strcmp( "system", szLang ) ) {
-          char *lang = malloc (1 + strlen ("LANG=") + strlen (optarg));
+          char *lang = malloc (1 + strlen ("LANG=") + strlen (szLang));
           assert (lang != 0);
-          sprintf (lang, "LANG=%s", optarg);
+          sprintf (lang, "LANG=%s", szLang);
           putenv (lang);
 	}
 
