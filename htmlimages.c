@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.23 2004/03/18 15:23:40 Superfly_Jon Exp $
+ * $Id: htmlimages.c,v 1.24 2004/03/23 10:15:49 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -474,7 +474,7 @@ static void WriteImages()
 		int offset;
 		int cube_y = i ? ((BOARD_HEIGHT - BORDER_HEIGHT) * s - CUBE_HEIGHT * ss) : (BORDER_HEIGHT * s);
 
-		AlphaBlend(auchBoard + (BOARD_WIDTH / 2) * s * 3 - (CUBE_WIDTH / 2) * ss * 3 +
+		AlphaBlendBase(auchBoard + (BOARD_WIDTH / 2) * s * 3 - (CUBE_WIDTH / 2) * ss * 3 +
 				cube_y * boardStride, boardStride,
 				auchBoard + (BOARD_WIDTH / 2) * s * 3 - (CUBE_WIDTH / 2) * ss * 3 +
 				cube_y * boardStride, boardStride,
@@ -516,7 +516,7 @@ static void WriteImages()
 		offset = ((BOARD_CENTER_HEIGHT / 2) * s - (CUBE_HEIGHT / 2) * ss) * BOARD_CENTER_WIDTH * s * 3 +
 			3 * POINT_WIDTH * s * 3 - (CUBE_WIDTH / 2) * ss * 3;
 
-		AlphaBlend(auchMidBoard + offset, BOARD_CENTER_WIDTH * s * 3,
+		AlphaBlendBase(auchMidBoard + offset, BOARD_CENTER_WIDTH * s * 3,
 				auchMidBoard + offset, BOARD_CENTER_WIDTH * s * 3,
 				auchCube, CUBE_WIDTH * ss * 4,
 				CUBE_WIDTH * ss, CUBE_HEIGHT * ss);
@@ -538,7 +538,7 @@ static void WriteImages()
 		}
 	}
 	/* cube - centered */
-	AlphaBlend( auchBoard + 
+	AlphaBlendBase( auchBoard + 
 				((BOARD_HEIGHT / 2) * s - (CUBE_HEIGHT / 2) * ss) * boardStride +
 				(BOARD_WIDTH / 2) * s * 3 - (CUBE_WIDTH / 2) * ss * 3, 
 				boardStride,
@@ -579,12 +579,12 @@ static void WriteImages()
 
 		int dice_y = ((BOARD_HEIGHT / 2) * s - (DIE_HEIGHT / 2) * ss) * boardStride;
 
-		AlphaBlend(auchBoard + dice_x - DIE_WIDTH * ss * 3 + dice_y, boardStride, 
+		AlphaBlendBase(auchBoard + dice_x - DIE_WIDTH * ss * 3 + dice_y, boardStride, 
 							auchBoard + dice_x - DIE_WIDTH * ss * 3 + dice_y, boardStride,
 							auchDice[i], DIE_WIDTH * ss * 4,
 							DIE_WIDTH * ss, DIE_HEIGHT * ss);
 
-		AlphaBlend(auchBoard + dice_x + DIE_WIDTH * ss * 3 + dice_y, boardStride,
+		AlphaBlendBase(auchBoard + dice_x + DIE_WIDTH * ss * 3 + dice_y, boardStride,
 							auchBoard + dice_x + DIE_WIDTH * ss * 3 + dice_y, boardStride,
 							auchDice[i], DIE_WIDTH * ss * 4,
 							DIE_WIDTH * ss, DIE_HEIGHT * ss);
