@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.142 2002/03/28 15:48:24 thyssen Exp $
+ * $Id: eval.c,v 1.143 2002/03/28 21:11:45 thyssen Exp $
  */
 
 #include "config.h"
@@ -4301,71 +4301,28 @@ extern int SetCubeInfoMatch( cubeinfo *pci, int nCube, int fCubeOwner,
      */
               
     {
-      float rWin = 
-        getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                0, pci->nCube, 0, pci->fCrawford,
-                aafMET, aafMETPostCrawford );
 
-      float rWinGammon = 
-        getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                0, 2 * pci->nCube, 0, pci->fCrawford,
-                aafMET, aafMETPostCrawford );
+      int nAway0 = pci->nMatchTo - pci->anScore[ 0 ] - 1;
+      int nAway1 = pci->nMatchTo - pci->anScore[ 1 ] - 1;
+      int i;
 
-      float rWinBG = 
-        getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                0, 3 * pci->nCube, 0, pci->fCrawford,
-                aafMET, aafMETPostCrawford );
+      if ( ( ! nAway0 || ! nAway1 ) && ! fCrawford ) {
+        if ( ! nAway0 )
+          memcpy ( pci->arGammonPrice, 
+                   aaaafGammonPricesPostCrawford[ LogCube ( pci->nCube ) ]
+                   [ nAway1 ][ 0 ], 4 * sizeof ( float ) );
+        else
+          memcpy ( pci->arGammonPrice, 
+                   aaaafGammonPricesPostCrawford[ LogCube ( pci->nCube ) ]
+                   [ nAway0 ][ 1 ], 4 * sizeof ( float ) );
+      }
+      else
+        memcpy ( pci->arGammonPrice, 
+                 aaaafGammonPrices[ LogCube ( pci->nCube ) ]
+                 [ nAway0 ][ nAway1 ], 4 * sizeof ( float ) );
 
-      float rLose = 
-        getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                0, pci->nCube, 1, pci->fCrawford,
-                aafMET, aafMETPostCrawford );
-
-      float rLoseGammon = 
-        getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                0, 2 * pci->nCube, 1, pci->fCrawford,
-                aafMET, aafMETPostCrawford );
-
-      float rLoseBG = 
-        getME ( pci->anScore[ 0 ], pci->anScore[ 1 ], pci->nMatchTo,
-                0, 3 * pci->nCube, 1, pci->fCrawford,
-                aafMET, aafMETPostCrawford );
-
-      float rCenter = ( rWin + rLose ) / 2.0;
-
-      /* FIXME: correct numerical problems in a better way, than done
-         below. If cube is dead gammon or backgammon price might be a
-         small negative number. For example, at -2,-3 with cube on 2
-         the current code gives: 0.9090..., 0, -2.7e-8, 0 instead
-         of the correct 0.9090..., 0, 0, 0. */
-      
-      pci->arGammonPrice[ 0 ] = 
-        ( rWinGammon - rCenter ) / ( rWin - rCenter ) - 1.0;
-      pci->arGammonPrice[ 1 ] = 
-        ( rCenter - rLoseGammon ) / ( rWin - rCenter ) - 1.0;
-      pci->arGammonPrice[ 2 ] = 
-        ( rWinBG - rCenter ) / ( rWin - rCenter ) - 
-        ( pci->arGammonPrice[ 0 ] + 1.0 );
-      pci->arGammonPrice[ 3 ] = 
-        ( rCenter - rLoseBG ) / ( rWin - rCenter ) - 
-        ( pci->arGammonPrice[ 1 ] + 1.0 );
     }
-
-    /* Correct numerical problems */
-    if ( pci->arGammonPrice[ 0 ] < 0 )
-	pci->arGammonPrice[ 0 ] = 0.0;
-    if ( pci->arGammonPrice[ 1 ] < 0 )
-	pci->arGammonPrice[ 1 ] = 0.0;
-    if ( pci->arGammonPrice[ 2 ] < 0 )
-	pci->arGammonPrice[ 2 ] = 0.0;
-    if ( pci->arGammonPrice[ 3 ] < 0 )
-	pci->arGammonPrice[ 3 ] = 0.0;
-    
-    assert( pci->arGammonPrice[ 0 ] >= 0 );
-    assert( pci->arGammonPrice[ 1 ] >= 0 );
-    assert( pci->arGammonPrice[ 2 ] >= 0 );
-    assert( pci->arGammonPrice[ 3 ] >= 0 );
-    
+            
     return 0;
 }
 
