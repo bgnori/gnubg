@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: guile.c,v 1.21 2002/01/18 15:45:33 gtw Exp $
+ * $Id: guile.c,v 1.22 2002/02/04 15:32:20 gtw Exp $
  */
 
 #include "config.h"
@@ -501,9 +501,14 @@ extern int GuileInitialise( char *szDir ) {
     scm_protect_object( sInterrupt );
 
 #if USE_GTK && HAVE_LIBGUILEGTK_1_2
-    if( fX )
+    if( fX ) {
 	sgtk_init();
+	sgtk_set_standalone( FALSE );
+    }
 #endif
+
+    scm_set_current_module( scm_resolve_module(
+	scm_read_0str( "(guile-user)" ) ) );
     
     if( szDir ) {
 #if __GNUC__
