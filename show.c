@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.97 2002/07/24 16:46:42 thyssen Exp $
+ * $Id: show.c,v 1.98 2002/07/25 17:10:18 thyssen Exp $
  */
 
 #include "config.h"
@@ -257,15 +257,13 @@ extern void CommandShowAutomatic( char *sz ) {
 
     static char *szOn = N_("On"), *szOff = N_("Off");
     
-    outputf( 
-            _("analysis \t(Analyse game during play (tutor-mode)):      \t%s\n"
+    outputf( _( 
               "bearoff \t(Play certain non-contact bearoff moves):      \t%s\n"
               "crawford\t(Enable the Crawford rule as appropriate):     \t%s\n"
               "doubles \t(Turn the cube when opening roll is a double): \t%d\n"
               "game    \t(Start a new game after each one is completed):\t%s\n"
               "move    \t(Play the forced move when there is no choice):\t%s\n"
               "roll    \t(Roll the dice if no double is possible):      \t%s\n"),
-	    fAutoAnalysis ? gettext ( szOn ) : gettext ( szOff ),
 	    fAutoBearoff ? gettext ( szOn ) : gettext ( szOff ),
 	    fAutoCrawford ? gettext ( szOn ) : gettext ( szOff ),
 	    cAutoDoubles,

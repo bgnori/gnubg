@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.105 2002/07/24 16:46:42 thyssen Exp $
+ * $Id: set.c,v 1.106 2002/07/25 17:10:18 thyssen Exp $
  */
 
 #include "config.h"
@@ -289,14 +289,6 @@ extern void CommandSetAutoBearoff( char *sz ) {
     SetToggle( "automatic bearoff", &fAutoBearoff, sz, _("Will automatically "
 	       "bear off as many chequers as possible."), _("Will not "
 	       "automatically bear off chequers.") );
-}
-
-extern void CommandSetAutoAnalysis( char *sz ) {
-
-    SetToggle( "automatic analysis", &fAutoAnalysis, sz, 
-               _("Will analyse match during play\n"
-                 "WARNING: EXTREMELY BUGGY!!! USE AT OWN RISK!!!"), 
-               _("Will not analyse match during play") );
 }
 
 extern void CommandSetAutoCrawford( char *sz ) {
