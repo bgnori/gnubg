@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.159 2002/12/19 19:57:26 thyssen Exp $
+ * $Id: set.c,v 1.160 2002/12/19 23:08:53 thyssen Exp $
  */
 
 #include "config.h"
@@ -1426,7 +1426,36 @@ CommandSetRolloutChequerplay ( char *sz ) {
   SetRolloutEvaluationContextBoth (sz, pec);
 
 }
-  
+
+extern void
+CommandSetRolloutMoveFilter ( char *sz ) {
+
+  SetMoveFilter ( sz, prcSet->aaamfChequer[ 0 ] );
+  SetMoveFilter ( sz, prcSet->aaamfChequer[ 1 ] );
+
+}  
+
+extern void
+CommandSetRolloutLateMoveFilter ( char *sz ) {
+
+  SetMoveFilter ( sz, prcSet->aaamfLate[ 0 ] );
+  SetMoveFilter ( sz, prcSet->aaamfLate[ 1 ] );
+
+}  
+
+extern void
+CommandSetRolloutPlayerMoveFilter ( char *sz ) {
+
+  SetMoveFilter ( sz, prcSet->aaamfChequer[ iPlayerSet ] );
+
+}  
+
+extern void
+CommandSetRolloutPlayerLateMoveFilter ( char *sz ) {
+
+  SetMoveFilter ( sz, prcSet->aaamfLate[ iPlayerLateSet ] );
+
+}  
 
 extern void
 CommandSetRolloutLateChequerplay ( char *sz ) {

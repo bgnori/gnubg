@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.191 2002/12/16 23:10:31 thyssen Exp $
+ * $Id: backgammon.h,v 1.192 2002/12/19 23:07:19 thyssen Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -799,13 +799,17 @@ extern void CommandAccept( char * ),
     CommandSetRolloutCubeful ( char * ),
     CommandSetRolloutChequerplay ( char * ),
     CommandSetRolloutInitial( char * ),
+    CommandSetRolloutMoveFilter( char * ),
     CommandSetRolloutPlayer ( char * ),
     CommandSetRolloutPlayerChequerplay ( char * ),
     CommandSetRolloutPlayerCubedecision ( char * ),
+    CommandSetRolloutPlayerMoveFilter( char * ),
     CommandSetRolloutPlayerLateChequerplay ( char * ),
     CommandSetRolloutPlayerLateCubedecision ( char * ),
+    CommandSetRolloutPlayerLateMoveFilter( char * ),
     CommandSetRolloutLate ( char * ),
     CommandSetRolloutLateChequerplay ( char * ),
+    CommandSetRolloutLateMoveFilter( char * ),
     CommandSetRolloutLateEnable ( char * ),
     CommandSetRolloutLatePlayer ( char * ),
     CommandSetRolloutLatePlies ( char * ),

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.97 2002/12/12 22:08:38 thyssen Exp $
+ * $Id: eval.h,v 1.98 2002/12/19 23:08:07 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -109,8 +109,8 @@ typedef struct _rolloutcontext {
   evalcontext aecCube[ 2 ], aecChequer [ 2 ]; /* evaluation parameters */
   evalcontext aecCubeLate[ 2 ], aecChequerLate [ 2 ]; /* ... for later moves */
   evalcontext aecCubeTrunc, aecChequerTrunc; /* ... at truncation point */
-  movefilter aamfChequer[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
-  movefilter aamfLate[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
+  movefilter aaamfChequer[ 2 ][ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
+  movefilter aaamfLate[ 2 ][ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
   unsigned int fCubeful : 1; /* Cubeful rollout */
   unsigned int fVarRedn : 1; /* variance reduction */
   unsigned int fInitial: 1;  /* roll out as opening position */
@@ -499,5 +499,17 @@ locateMove ( int anBoard[ 2 ][ 25 ],
 extern int
 MoveKey ( int anBoard[ 2 ][ 25 ], const int anMove[ 8 ], 
           unsigned char auch[ 10 ] );
+
+extern int
+equal_movefilter ( const int i, 
+                   movefilter amf1[ MAX_FILTER_PLIES ],
+                   movefilter amf2[ MAX_FILTER_PLIES ] );
+
+extern int
+equal_movefilters ( movefilter aamf1[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ],
+                    movefilter aamf2[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] );
+
+
+
 
 #endif

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.203 2002/12/12 22:05:55 thyssen Exp $
+ * $Id: eval.c,v 1.204 2002/12/19 23:08:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -6749,3 +6749,46 @@ MoveKey ( int anBoard[ 2 ][ 25 ], const int anMove[ 8 ],
   return 0;
 
 }
+
+
+extern int
+equal_movefilter ( const int i, 
+                   movefilter amf1[ MAX_FILTER_PLIES ],
+                   movefilter amf2[ MAX_FILTER_PLIES ] ) {
+
+  int j;
+
+  for ( j = 0; j <= i; ++j ) {
+    if ( amf1[ j ].Accept != amf2[ j ].Accept )
+      return 0;
+    if ( ! amf1[ j ].Accept )
+      continue;
+    if ( amf1[ j ].Extra != amf2[ j ].Extra )
+      return 0;
+    if ( ! amf1[ j ].Extra )
+      continue;
+    if ( amf1[ j ].Threshold != amf2[ j ].Threshold )
+      return 0;
+    
+  }
+
+  return 1;
+
+}
+
+
+extern int
+equal_movefilters ( movefilter aamf1[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ],
+                    movefilter aamf2[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] ) {
+
+  int i;
+
+  for ( i = 0; i < MAX_FILTER_PLIES; ++i )
+    if ( ! equal_movefilter ( i, aamf1[ i ], aamf2[ i ] ) )
+      return 0;
+      
+  return 1;
+
+}
+
+

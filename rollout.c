@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.91 2002/12/15 13:18:22 thyssen Exp $
+ * $Id: rollout.c,v 1.92 2002/12/19 23:08:07 thyssen Exp $
  */
 
 #include "config.h"
@@ -603,7 +603,8 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
                           aanBoard[ ici ], pci,
                           pecChequer [ pci->fMove ],
                           ( iTurn < nLateEvals ) ? 
-                          prc->aamfChequer : prc->aamfLate );
+                          prc->aaamfChequer[ pci->fMove ] : 
+                          prc->aaamfLate[ pci->fMove ] );
 
           else {
 
@@ -645,7 +646,8 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
                         aanBoard[ ici ], pci,
                         pecChequer [ pci->fMove ],
                         ( iTurn < nLateEvals ) ? 
-                        prc->aamfChequer : prc->aamfLate );
+                        prc->aaamfChequer[ pci->fMove ] : 
+                        prc->aaamfLate[ pci->fMove ] );
 
         }
 

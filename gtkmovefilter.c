@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.4 2002/12/18 16:55:27 thyssen Exp $
+ * $Id: gtkmovefilter.c,v 1.5 2002/12/19 23:09:12 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -108,47 +108,6 @@ MoveFilterSetupGetValues ( movefilter *pmf, movefiltersetupwidget *pmfsw ) {
   memcpy ( pmf, aamf, sizeof ( aamf ) );
 
 }
-
-static int
-equal_movefilter ( const int i, 
-                   movefilter amf1[ MAX_FILTER_PLIES ],
-                   movefilter amf2[ MAX_FILTER_PLIES ] ) {
-
-  int j;
-
-  for ( j = 0; j <= i; ++j ) {
-    if ( amf1[ j ].Accept != amf2[ j ].Accept )
-      return 0;
-    if ( ! amf1[ j ].Accept )
-      continue;
-    if ( amf1[ j ].Extra != amf2[ j ].Extra )
-      return 0;
-    if ( ! amf1[ j ].Extra )
-      continue;
-    if ( amf1[ j ].Threshold != amf2[ j ].Threshold )
-      return 0;
-    
-  }
-
-  return 1;
-
-}
-
-
-static int
-equal_movefilters ( movefilter aamf1[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ],
-                    movefilter aamf2[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] ) {
-
-  int i;
-
-  for ( i = 0; i < MAX_FILTER_PLIES; ++i )
-    if ( ! equal_movefilter ( i, aamf1[ i ], aamf2[ i ] ) )
-      return 0;
-      
-  return 1;
-
-}
-
 
 static void
 AcceptChanged ( GtkWidget *pw, movefiltersetupwidget *pmfsw ) {
