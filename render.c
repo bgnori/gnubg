@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.15 2003/07/26 23:28:04 thyssen Exp $
+ * $Id: render.c,v 1.16 2003/07/26 23:47:14 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -312,7 +312,7 @@ extern void AlphaBlend( unsigned char *puchDest, int nDestStride,
     }
 }
 
-static void AlphaBlendClip( unsigned char *puchDest, int nDestStride,
+extern void AlphaBlendClip( unsigned char *puchDest, int nDestStride,
 			    int xDest, int yDest, int cxDest, int cyDest,
 			    unsigned char *puchBack, int nBackStride,
 			    int xBack, int yBack,

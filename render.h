@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.7 2003/07/26 23:28:04 thyssen Exp $
+ * $Id: render.h,v 1.8 2003/07/26 23:47:14 thyssen Exp $
  */
 
 #ifndef _RENDER_H_
@@ -82,6 +82,12 @@ extern void AlphaBlend( unsigned char *puchDest, int nDestStride,
 			unsigned char *puchBack, int nBackStride,
 			unsigned char *puchFore, int nForeStride,
 			int cx, int cy );
+extern void AlphaBlendClip( unsigned char *puchDest, int nDestStride,
+			    int xDest, int yDest, int cxDest, int cyDest,
+			    unsigned char *puchBack, int nBackStride,
+			    int xBack, int yBack,
+			    unsigned char *puchFore, int nForeStride,
+			    int xFore, int yFore, int cx, int cy );
 extern void RefractBlend( unsigned char *puchDest, int nDestStride,
 			  unsigned char *puchBack, int nBackStride,
 			  unsigned char *puchFore, int nForeStride,
@@ -120,6 +126,11 @@ extern void RenderImages( renderdata *prd, renderimages *pri );
 extern void RenderArrows( renderdata *prd, unsigned char* puch0,
 			  unsigned char* puch1, int nStride );
 #endif
+
+extern void
+RenderBoardLabels( renderdata *prd, 
+                   unsigned char *achLo, unsigned char *achHi, int nStride );
+
 extern void FreeImages( renderimages *pri );
     
 extern void CalculateArea( renderdata *prd, unsigned char *puch, int nStride,
