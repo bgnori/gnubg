@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.48 2002/08/04 10:29:48 thyssen Exp $
+ * $Id: gtkgame.h,v 1.49 2002/08/09 18:46:50 thyssen Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -83,7 +83,8 @@ extern void GTKBearoffProgress( int i );
 extern void GTKDumpStatcontext( statcontext *psc, matchstate *pms,
 				char *szTitle );
 extern void GTKEval( char *szOutput );
-extern void GTKHint( movelist *pml );
+extern void 
+GTKHint( movelist *pmlOrig, const int iMove );
 extern void GTKCubeHint( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
 			 float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
 			 const evalsetup *pes );
@@ -139,5 +140,8 @@ UpdateGeometry ( const gnubgwindow gw );
 
 extern void
 RefreshGeometries ( void );
+
+extern int
+GTKGetMove ( int anMove[ 8 ] );
 
 #endif

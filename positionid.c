@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.15 2002/03/23 17:20:20 thyssen Exp $
+ * $Id: positionid.c,v 1.16 2002/08/09 18:45:09 thyssen Exp $
  */
 
 #include <assert.h>
@@ -223,7 +223,8 @@ extern int PositionFromID( int anBoard[ 2 ][ 25 ], char *pchEnc ) {
   return CheckPosition( anBoard );
 }
 
-extern int EqualKeys( unsigned char auch0[ 10 ], unsigned char auch1[ 10 ] ) {
+extern int 
+EqualKeys( const unsigned char auch0[ 10 ], const unsigned char auch1[ 10 ] ) {
 
     int i;
 

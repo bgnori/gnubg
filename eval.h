@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.81 2002/08/07 18:37:35 thyssen Exp $
+ * $Id: eval.h,v 1.82 2002/08/09 18:48:10 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -290,7 +290,8 @@ GenerateMoves( movelist *pml, int anBoard[ 2 ][ 25 ],
                int n0, int n1, int fPartial );
 
 extern int 
-ApplyMove( int anBoard[ 2 ][ 25 ], int anMove[ 8 ], int fCheckLegal );
+ApplyMove( int anBoard[ 2 ][ 25 ], const int anMove[ 8 ],
+           const int fCheckLegal );
 
 extern positionclass 
 ClassifyPosition( int anBoard[ 2 ][ 25 ] );
@@ -449,5 +450,13 @@ isMissedDouble ( float arDouble[],
                  float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                  const int fDouble, 
                  const cubeinfo *pci );
+
+extern int
+locateMove ( int anBoard[ 2 ][ 25 ], 
+             const int anMove[ 8 ], const movelist *pml );
+
+extern int
+MoveKey ( int anBoard[ 2 ][ 25 ], const int anMove[ 8 ], 
+          unsigned char auch[ 10 ] );
 
 #endif
