@@ -1,7 +1,7 @@
 /*
  * gtkgame.h
  *
- * by Gary Wong <gtw@gnu.org>, 2000.
+ * by Gary Wong <gtw@gnu.org>, 2000, 2002.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of version 2 of the GNU General Public License as
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.31 2002/02/03 10:33:43 thyssen Exp $
+ * $Id: gtkgame.h,v 1.32 2002/02/04 15:33:28 gtw Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -41,9 +41,10 @@ extern void GTKPopMoveRecord( moverecord *pmr );
 extern void GTKSetMoveRecord( moverecord *pmr );
 extern void GTKClearMoveRecord( void );
 
-extern void GTKAddGame( char *sz );
+extern void GTKAddGame( moverecord *pmr );
 extern void GTKPopGame( int c );
 extern void GTKSetGame( int i );
+extern void GTKRegenerateGames( void );
 
 extern void GTKFreeze( void );
 extern void GTKThaw( void );
