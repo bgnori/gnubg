@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.7 2002/07/25 15:04:56 oysteijo Exp $
+ * $Id: gtkcube.c,v 1.8 2002/07/25 15:11:45 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -700,7 +700,7 @@ CubeAnalysisCopy ( GtkWidget *pw, cubehintdata *pchd ) {
 
 #ifdef WIN32
 
-  char *pc =  GetContext ( pchd );
+  char *pc =  GetContent ( pchd );
 
   if ( pc )
     WinCopy ( pc );
