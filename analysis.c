@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.56 2002/04/04 17:59:13 thyssen Exp $
+ * $Id: analysis.c,v 1.57 2002/04/04 19:06:44 thyssen Exp $
  */
 
 #include "config.h"
@@ -525,9 +525,10 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, statcontext *psc,
 	if( fAnalyseCube ) {
 	    GetMatchStateCubeInfo( &ci, pms );
 	  
-	    if ( GetDPEq ( NULL, NULL, &ci ) ) {
+	    if ( GetDPEq ( NULL, NULL, &ci ) ||
+                 ci.fCubeOwner < 0 || ci.fCubeOwner == ci.fMove ) {
 	      
-              if ( cmp_evalsetup ( &esAnalysisCube, &pmr->n.esDouble ) > 0 ) {
+              if ( cmp_evalsetup ( &esAnalysisCube, &pmr->d.esDouble ) > 0 ) {
 
 		if ( GeneralCubeDecision ( "",
 					   aarOutput, aarStdDev, aarsStatistics, 
