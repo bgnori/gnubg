@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.315 2003/03/05 14:26:26 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.316 2003/03/05 14:28:52 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2333,7 +2333,7 @@ extern int InitGTK( int *argc, char ***argv ) {
 	{ N_("/_Navigate/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_Navigate/Previous chequer _play"), "<alt>Page_Up",
 	  Command, CMD_PREV_ROLLED, NULL },
-	{ N_("/_Navigate/Next _cheqeer play"), "<alt>Page_Down",
+	{ N_("/_Navigate/Next _chequer play"), "<alt>Page_Down",
 	  Command, CMD_NEXT_ROLLED, NULL },
 	{ N_("/_Navigate/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_Navigate/Previous marke_d move"), "<control><shift>Page_Up", 
