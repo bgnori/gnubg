@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.99 2002/12/13 21:32:17 gtw Exp $
+ * $Id: gtkboard.c,v 1.100 2002/12/15 22:20:04 thyssen Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -57,7 +57,7 @@
 #define MASK_VISIBLE 0
 
 #if !USE_GTK2
-#define gtk_image_new_from_pixmap gtk_image_new
+#define gtk_image_new_from_pixmap gtk_pixmap_new
 #endif
 
 static int positions[ 2 ][ 30 ][ 3 ] = { {
@@ -79,6 +79,11 @@ static int positions[ 2 ][ 30 ][ 3 ] = { {
     { 18, 3, -6 }, { 12, 3, -6 },
     { 51, 41, -7 }, { 3, 63, 6 }, { 3, 3, -6 }, { 99, 63, 6 }, { 99, 3, -6 }
 } };
+
+
+#if !GTK_CHECK_VERSION(1,3,0)
+#define g_alloca alloca
+#endif
 
 static GtkVBoxClass *parent_class = NULL;
 
@@ -2392,8 +2397,9 @@ static GtkWidget *chequer_key_new( int iPlayer, Board *board ) {
     
     ppm = bd->appmKey[ iPlayer ] = gdk_pixmap_new(
 	NULL, 20, 20, gtk_widget_get_visual( GTK_WIDGET( board ) )->depth );
-    
-    pwImage = gtk_image_new_from_pixmap( ppm, NULL );
+
+    pwImage = gtk_image_new_from_pixmap( ppm, NULL ); 
+
     gtk_container_add( GTK_CONTAINER( pw ), pwImage );
     
     gtk_widget_add_events( pw, GDK_BUTTON_PRESS_MASK );
