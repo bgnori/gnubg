@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.102 2002/01/28 18:37:03 gtw Exp $
+ * $Id: play.c,v 1.103 2002/01/31 19:28:02 thyssen Exp $
  */
 
 #include "config.h"
@@ -781,7 +781,6 @@ extern int ComputerTurn( void ) {
 
         case DOUBLE_BEAVER:
         case NODOUBLE_BEAVER:
-        case REDOUBLE_BEAVER:
         case NO_REDOUBLE_BEAVER:
 
           /* opponent beaver was correct */
@@ -822,7 +821,6 @@ extern int ComputerTurn( void ) {
 
         case DOUBLE_BEAVER:
         case NODOUBLE_BEAVER:
-        case REDOUBLE_BEAVER:
         case NO_REDOUBLE_BEAVER:
 
           if ( ms.cBeavers < nBeavers && ! ms.nMatchTo &&
@@ -933,7 +931,6 @@ extern int ComputerTurn( void ) {
           case DOUBLE_PASS:
           case REDOUBLE_PASS:
           case DOUBLE_BEAVER:
-          case REDOUBLE_BEAVER:
 
             /* Double */
 

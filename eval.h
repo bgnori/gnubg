@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.59 2002/01/18 09:38:22 joseph Exp $
+ * $Id: eval.h,v 1.60 2002/01/31 19:28:02 thyssen Exp $
  */
 
 #ifndef _EVAL_H_
@@ -122,7 +122,7 @@ typedef enum _cubedecision {
   DOUBLE_BEAVER, NODOUBLE_BEAVER,
   REDOUBLE_TAKE, REDOUBLE_PASS, NO_REDOUBLE_TAKE,
   TOOGOODRE_TAKE, TOOGOODRE_PASS,
-  REDOUBLE_BEAVER, NO_REDOUBLE_BEAVER,
+  NO_REDOUBLE_BEAVER,
   NOT_AVAILABLE, /* Cube not available */
 } cubedecision;
 
