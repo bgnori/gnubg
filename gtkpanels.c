@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.8 2005/01/05 08:52:52 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.9 2005/02/10 10:38:39 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -449,7 +449,7 @@ static GtkWidget *CreateAnalysisWindow( void ) {
 	if (!woPanel[WINDOW_ANALYSIS].docked)
 	{
 	    gtk_signal_connect( GTK_OBJECT( woPanel[WINDOW_ANALYSIS].pwWin ), "delete_event",
-			woPanel[WINDOW_ANALYSIS].hideFun, NULL );
+			GTK_SIGNAL_FUNC(woPanel[WINDOW_ANALYSIS].hideFun), NULL );
 		return woPanel[WINDOW_ANALYSIS].pwWin;
 	}
 	else
@@ -572,7 +572,7 @@ static void CreateGameWindow( void ) {
 	if (!woPanel[WINDOW_GAME].docked)
 	{
 	    gtk_signal_connect( GTK_OBJECT( woPanel[WINDOW_GAME].pwWin ), "delete_event",
-			woPanel[WINDOW_GAME].hideFun, NULL );
+			GTK_SIGNAL_FUNC(woPanel[WINDOW_GAME].hideFun), NULL );
 	}
 	else
 		woPanel[WINDOW_GAME].pwWin = pvbox;
