@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.43 2001/02/15 19:48:19 joseph Exp $
+ * $Id: set.c,v 1.44 2001/02/22 16:45:20 gtw Exp $
  */
 
 #include "config.h"
@@ -42,6 +42,14 @@
 #endif
 #include "matchequity.h"
 #include "positionid.h"
+
+#if defined(AF_UNIX) && !defined(AF_LOCAL)
+#define AF_LOCAL AF_UNIX
+#define PF_LOCAL PF_UNIX
+#endif
+#ifndef SUN_LEN
+#define SUN_LEN(x) (sizeof *(x))
+#endif
 
 static char szEQUITY[] = "<equity>",
     szNAME[] = "<name>",
