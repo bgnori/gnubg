@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.190 2002/03/16 19:05:59 thyssen Exp $
+ * $Id: gnubg.c,v 1.191 2002/03/17 16:11:05 thyssen Exp $
  */
 
 #include "config.h"
@@ -286,7 +286,8 @@ static char szDICE[] = "<die> <die>",
     szSCORE[] = "<score>",
     szSIZE[] = "<size>",
     szTRIALS[] = "<trials>",
-    szVALUE[] = "<value>";
+    szVALUE[] = "<value>",
+    szMATCHID[] = "<matchid>";
 
 command cER = {
     /* dummy command used for evaluation/rollout parameters */
@@ -647,6 +648,7 @@ command cER = {
       "money games", szONOFF, &cOnOff },
     { "matchequitytable", CommandSetMET,
       "Read match equity table from XML file", szFILENAME, &cFilename },
+    { "matchid", CommandSetMatchID, "set Match ID", szMATCHID, NULL },
     { "met", CommandSetMET,
       "Synonym for `set matchequitytable'", szFILENAME, &cFilename },
     { "nackgammon", CommandSetNackgammon, "Set the starting position",
@@ -1820,6 +1822,18 @@ extern void ShowBoard( void ) {
 #endif
     }    
 #endif    
+
+#ifdef UNDEF
+    {
+      char *pc;
+
+      printf ( "MatchID: %s\n", pc = MatchIDFromMatchState ( &ms ) );
+
+      MatchStateFromID ( &ms, pc );
+
+    }
+#endif
+
 }
 
 extern char *FormatPrompt( void ) {
