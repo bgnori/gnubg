@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.474 2004/03/19 18:03:47 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.475 2004/03/22 09:09:39 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -8393,6 +8393,8 @@ void DockPanels()
 
 	if (fDockPanels)
 	{
+		RefreshGeometries();	/* Get the current window positions */
+
 		gtk_widget_show(pwArrowVBox);
 		gtk_widget_show(gtk_item_factory_get_widget(pif, "/Windows/Commentary"));
 		gtk_widget_show(gtk_item_factory_get_widget(pif, "/Windows/Hide panels"));
