@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.542 2004/03/15 12:08:19 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.543 2004/03/18 23:29:14 oysteijo Exp $
  */
 
 #include "config.h"
@@ -111,7 +111,7 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 
 #ifdef WIN32
 #ifdef HAVE_SOCKETS
-#include <winsock.h>
+#include <winsock2.h>
 #endif
 #endif /* WIN32 */
 

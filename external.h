@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.h,v 1.7 2004/03/11 11:12:56 Superfly_Jon Exp $
+ * $Id: external.h,v 1.8 2004/03/18 23:29:14 oysteijo Exp $
  */
 
 #ifndef _EXTERNAL_H_
@@ -32,7 +32,7 @@
 #endif /* #if HAVE_SYS_SOCKET_H */
 
 #else /* #ifndef WIN32 */
-#include <winsock.h>
+#include <winsock2.h>
 #endif /* #ifndef WIN32 */
 
 typedef enum _cmdtype  {

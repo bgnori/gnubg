@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.219 2004/03/04 10:54:54 Superfly_Jon Exp $
+ * $Id: set.c,v 1.220 2004/03/18 23:29:14 oysteijo Exp $
  */
 
 #include "config.h"
@@ -48,7 +48,7 @@
 #include <string.h>
 
 #else /* #ifndef WIN32 */
-#include <winsock.h>
+#include <winsock2.h>
 #endif /* #ifndef WIN32 */
 
 #if HAVE_UNISTD_H
