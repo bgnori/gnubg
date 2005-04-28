@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.274 2005/02/08 16:36:35 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.275 2005/04/28 20:49:13 oysteijo Exp $
  */
 
 #include "config.h"
@@ -2285,10 +2285,15 @@ EvalRace(int anBoard[ 2 ][ 25 ], float arOutput[], const bgvariation bgv ) {
   float arInput[ NUM_INPUTS ];
 
   CalculateRaceInputs( anBoard, arInput );
-    
+#if USE_SSE_VECTORIZE 
+  if ( NeuralNetEvaluate128( &nnRace, arInput, arOutput, 
+                          NNevalAction( CLASS_RACE ) ) )
+    return -1;
+#else
   if ( NeuralNetEvaluate( &nnRace, arInput, arOutput, 
                           NNevalAction( CLASS_RACE ) ) )
     return -1;
+#endif
   
   /* anBoard[1] is on roll */
   {
@@ -2387,8 +2392,13 @@ EvalContact(int anBoard[ 2 ][ 25 ], float arOutput[], const bgvariation bgv)
     
   CalculateContactInputs( anBoard, arInput );
     
+#if USE_SSE_VECTORIZE 
+  return NeuralNetEvaluate128(&nnContact, arInput, arOutput,
+                           NNevalAction( CLASS_CONTACT ) );
+#else
   return NeuralNetEvaluate(&nnContact, arInput, arOutput,
                            NNevalAction( CLASS_CONTACT ) );
+#endif
 }
 
 static int
@@ -2398,8 +2408,13 @@ EvalCrashed(int anBoard[ 2 ][ 25 ], float arOutput[], const bgvariation bgv)
     
   CalculateCrashedInputs( anBoard, arInput );
     
+#if USE_SSE_VECTORIZE 
+  return NeuralNetEvaluate128( &nnCrashed, arInput, arOutput,
+                            NNevalAction( CLASS_CRASHED ) );
+#else
   return NeuralNetEvaluate( &nnCrashed, arInput, arOutput,
                             NNevalAction( CLASS_CRASHED ) );
+#endif
 }
 
 extern int
