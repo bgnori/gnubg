@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.275 2005/04/28 20:49:13 oysteijo Exp $
+ * $Id: eval.c,v 1.276 2005/04/29 20:05:08 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1211,8 +1211,7 @@ CalculateHalfInputs( int anBoard[ 25 ], int anBoardOpp[ 25 ], float afInput[] )
     if( anBoard[ i ] )
       nBoard++;
 
-  for( i = 0; i < 39; i++ )
-    aHit[ i ] = 0;
+    memset(aHit, 0, sizeof(aHit));
     
     /* for every point we'd consider hitting a blot on, */
     
@@ -1263,8 +1262,7 @@ CalculateHalfInputs( int anBoard[ 25 ], int anBoardOpp[ 25 ], float afInput[] )
 	  cannot_hit: ;
 	  }
 
-  for( i = 0; i < 21; i++ )
-    aRoll[ i ].nPips = aRoll[ i ].nChequers = 0;
+  memset(aRoll, 0, sizeof(aRoll));
     
   if( !anBoard[ 24 ] ) {
     /* we're not on the bar; for each roll, */
