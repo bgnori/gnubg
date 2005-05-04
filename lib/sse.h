@@ -1,3 +1,5 @@
+/* $Id: sse.h,v 1.4 2005/05/04 17:13:28 jsegrave Exp $ 
+ */
 
 #if USE_SSE_VECTORIZE
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.277 2005/04/30 07:20:32 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.278 2005/05/04 17:13:27 jsegrave Exp $
  */
 
 #include "config.h"
@@ -820,7 +820,7 @@ EvalInitialise( char *szWeights, char *szWeightsBinary,
                                "are %.2f)\n"), 
                      szWeights, WEIGHTS_VERSION, r );
 	else {
-#if HAVE_MMAP
+#if HAVE_MMAP && ! USE_SSE_VECTORIZE
 	    struct stat st;
 	    void *p;
 
