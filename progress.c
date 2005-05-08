@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.19 2005/04/29 20:04:45 Superfly_Jon Exp $
+ * $Id: progress.c,v 1.20 2005/05/08 12:34:56 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -197,7 +197,7 @@ GTKStatPageWin ( const rolloutstat *prs, const int cGames ) {
 
   /* table with results */
 
-  aszColumnTitle[ 0 ] = strdup ( _("Cube") );
+  aszColumnTitle[ 0 ] = g_strdup ( _("Cube") );
   for ( i = 0; i < 2; i++ ) {
     aszColumnTitle[ 3 * i + 1 ] = 
       g_strdup_printf ( _("Win Single\n%s"), ap[ i ].szName );
@@ -286,7 +286,7 @@ GTKStatPageCube ( const rolloutstat *prs, const int cGames ) {
   char sz[ 100 ];
   int anTotal[ 4 ];
 
-  aszColumnTitle[ 0 ] = strdup ( _("Cube") );
+  aszColumnTitle[ 0 ] = g_strdup ( _("Cube") );
   for ( i = 0; i < 2; i++ ) {
     aszColumnTitle[ 2 * i + 1 ] = 
       g_strdup_printf ( _("#Double, take\n%s"), ap[ i ].szName );

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.15 2005/03/05 22:58:49 oysteijo Exp $
+* $Id: gtkpanels.c,v 1.16 2005/05/08 12:34:56 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -39,6 +39,7 @@
 
 extern GtkItemFactory *pif;
 extern GtkWidget *pom;
+extern GtkWidget *hpaned;
 
 extern GtkWidget* GL_Create();
 extern GtkWidget *StatsPixmapButton(GdkColormap *pcmap, char **xpm, void *fn);
@@ -871,11 +872,14 @@ void DockPanels()
 extern void
 ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 {
+	BoardData *bd = BOARD( pwBoard )->board_data;
 	int i;
 	/* Only valid if panels docked */
 	if (!fDockPanels)
 		return;
 
+	/* Hide for smoother appearance */
+	gtk_widget_hide(bd->drawing_area3d);
 	fDisplayPanels = 1;
 
 	for (i = 0; i < NUM_WINDOWS; i++)
@@ -895,15 +899,20 @@ ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 	gtk_widget_set_sensitive(gtk_item_factory_get_widget(pif, "/View/Theory"), TRUE);
 
 	SwapBoardToPanel(TRUE);
+	gtk_widget_show(bd->drawing_area3d);
 }
 
 extern void
 HideAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 {
+	BoardData *bd = BOARD( pwBoard )->board_data;
 	int i;
 	/* Only valid if panels docked */
 	if (!fDockPanels)
 		return;
+
+	/* Hide for smoother appearance */
+	gtk_widget_hide(bd->drawing_area3d);
 
 	fDisplayPanels = 0;
 
@@ -930,6 +939,7 @@ HideAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 
 	/* Resize screen */
 	SetMainWindowSize();
+	gtk_widget_show(bd->drawing_area3d);
 }
 
 extern void ToggleDockPanels( gpointer *p, guint n, GtkWidget *pw )
@@ -957,7 +967,10 @@ void DisplayWindows()
 		}
 	}
 	if (!fDisplayPanels)
+	{
+		gtk_widget_hide(hpaned);	/* Need to stop wrong panel position getting set - gtk 2.6 */
 		HideAllPanels (0, 0, 0);
+	}
 }
 
 void DestroyPanel(gnubgwindow window)
