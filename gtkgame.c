@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.545 2005/05/09 16:44:02 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.546 2005/05/09 16:52:22 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -9222,7 +9222,9 @@ FullScreenMode( gpointer *p, guint n, GtkWidget *pw ) {
 	static gulong id;
 	static int showingPanels;
 	static int showIDs;
+#if USE_GTK2
 	static int maximised;
+#endif
 	static int changedRP, changedDP;
 
 	int state = !GTK_CHECK_MENU_ITEM(gtk_item_factory_get_widget(pif, "/View/Full screen"))->active;
