@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.16 2005/05/08 12:34:56 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.17 2005/05/09 16:38:53 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -879,7 +879,13 @@ ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 		return;
 
 	/* Hide for smoother appearance */
-	gtk_widget_hide(bd->drawing_area3d);
+#if USE_BOARD3D
+	if (bd->rd->fDisplayType == DT_3D)
+		gtk_widget_hide(bd->drawing_area3d);
+	else
+#endif
+		gtk_widget_hide(bd->drawing_area);
+
 	fDisplayPanels = 1;
 
 	for (i = 0; i < NUM_WINDOWS; i++)
@@ -899,7 +905,13 @@ ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 	gtk_widget_set_sensitive(gtk_item_factory_get_widget(pif, "/View/Theory"), TRUE);
 
 	SwapBoardToPanel(TRUE);
-	gtk_widget_show(bd->drawing_area3d);
+
+#if USE_BOARD3D
+	if (bd->rd->fDisplayType == DT_3D)
+		gtk_widget_show(bd->drawing_area3d);
+	else
+#endif
+		gtk_widget_show(bd->drawing_area);
 }
 
 extern void
@@ -912,7 +924,12 @@ HideAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 		return;
 
 	/* Hide for smoother appearance */
-	gtk_widget_hide(bd->drawing_area3d);
+#if USE_BOARD3D
+	if (bd->rd->fDisplayType == DT_3D)
+		gtk_widget_hide(bd->drawing_area3d);
+	else
+#endif
+		gtk_widget_hide(bd->drawing_area);
 
 	fDisplayPanels = 0;
 
@@ -939,7 +956,13 @@ HideAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 
 	/* Resize screen */
 	SetMainWindowSize();
-	gtk_widget_show(bd->drawing_area3d);
+
+#if USE_BOARD3D
+	if (bd->rd->fDisplayType == DT_3D)
+		gtk_widget_show(bd->drawing_area3d);
+	else
+#endif
+		gtk_widget_show(bd->drawing_area);
 }
 
 extern void ToggleDockPanels( gpointer *p, guint n, GtkWidget *pw )
