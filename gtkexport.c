@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.25 2004/07/25 17:17:13 jsegrave Exp $
+ * $Id: gtkexport.c,v 1.26 2005/08/05 11:55:48 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -292,6 +292,9 @@ SetExportCommands ( const exportsetup *pexsOrig,
               "cube parameters rollout" );
 
   for ( i = 0; i < N_SKILLS; ++i ) {
+    if ( i == SKILL_GOOD ) {
+      continue;
+    }
     if ( i == SKILL_NONE ) {
       CHECKFLAG ( pexsOrig, pexsNew, afCubeDisplay[ i ], 
                   "cube display unmarked" );
