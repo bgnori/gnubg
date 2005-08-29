@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.302 2005/02/17 17:05:36 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.303 2005/08/29 14:56:06 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1016,6 +1016,7 @@ extern void CommandAccept( char * ),
     CommandSetGUIShowEPCs( char * ),
     CommandSetGUIDragTargetHelp( char * ),
     CommandSetGUIUseStatsPanel( char * ),
+    CommandSetGUIMoveListDetail( char * ),
     CommandSetImportFileType(char *sz),
     CommandSetInvertMatchEquityTable( char * ),
     CommandSetJacoby( char * ),

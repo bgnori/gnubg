@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.h,v 1.7 2004/01/04 10:05:05 uid65656 Exp $
+ * $Id: gtkchequer.h,v 1.8 2005/08/29 14:56:06 Superfly_Jon Exp $
  */
 
 #ifndef _GTKCHEQUER_H_
@@ -46,4 +46,7 @@ CreateMoveList( movelist *pml, int *piHighlight,
 extern int 
 CheckHintButtons( hintdata *phd );
 
+extern void MoveListRefreshSize();
+extern GtkWidget* pwDetails;
+extern int showMoveListDetail;
 #endif
