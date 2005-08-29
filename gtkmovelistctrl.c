@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.1 2005/08/29 14:56:06 Superfly_Jon Exp $
+ * $Id: gtkmovelistctrl.c,v 1.2 2005/08/29 16:05:00 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -35,10 +35,6 @@ GdkColor wlCol;
 
 static void     custom_cell_renderer_movelist_init       (CustomCellRendererMovelist      *cellprogress);
 static void     custom_cell_renderer_movelist_class_init (CustomCellRendererMovelistClass *klass);
-static void     custom_cell_renderer_movelist_get_property  (GObject                    *object,
-                                                             guint                       param_id,
-                                                             GValue                     *value,
-                                                             GParamSpec                 *pspec);
 static void     custom_cell_renderer_movelist_set_property  (GObject                    *object,
                                                              guint                       param_id,
                                                              const GValue               *value,

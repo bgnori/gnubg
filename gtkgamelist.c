@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.13 2005/02/02 19:49:08 Superfly_Jon Exp $
+* $Id: gtkgamelist.c,v 1.14 2005/08/29 16:05:00 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -64,8 +64,6 @@ static void gtk_set_font(GtkStyle* psStyle, GtkStyle* psValue)
 
 GtkWidget *pwGameList;
 GtkStyle *psGameList, *psCurrent, *psCubeErrors[3], *psChequerErrors[3], *psLucky[LUCK_VERYGOOD + 1];
-
-extern void SetAnnotation( moverecord *pmr );
 
 typedef struct _gamelistrow {
     moverecord *apmr[ 2 ]; /* moverecord entries for each column */

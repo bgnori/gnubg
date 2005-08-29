@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.1 2005/08/29 14:56:06 Superfly_Jon Exp $
+ * $Id: gtkmovelist.c,v 1.2 2005/08/29 16:05:00 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -30,6 +30,8 @@
 #include "format.h"
 #include "assert.h"
 #include "gtkmovelistctrl.h"
+#include "gtkgame.h"
+#include "drawboard.h"
 
 #if USE_GTK2
 extern void HintDoubleClick(GtkTreeView        *treeview,
@@ -78,13 +80,6 @@ void MoveListCreate(hintdata *phd)
         N_("L g"), 
         N_("L bg"),
        NULL, 
-        N_("Diff."), 
-        N_("Move")
-    };
-    static char *aszTitle[] = {
-	N_("Rank"), 
-        N_("Type"), 
-	NULL, 
         N_("Diff."), 
         N_("Move")
     };
