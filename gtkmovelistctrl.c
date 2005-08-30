@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.3 2005/08/29 21:33:24 Superfly_Jon Exp $
+ * $Id: gtkmovelistctrl.c,v 1.4 2005/08/30 06:36:25 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -433,7 +433,7 @@ custom_cell_renderer_movelist_render (GtkCellRenderer *cell,
 		x += _s_cP + _s_Y * 2;
 	else
 		x += _s_c + _s_Y * 2;
-	if (cellprogress->rank > 1)
+	if (cellprogress->rank != 1)
 	{
 		pango_layout_set_text(layout, OutputEquityDiff( cellprogress->pml->rScore, rBest, &ci), -1);
 		gdk_draw_layout_with_colors(window, gc, cell_area->x + x, cell_area->y + y, layout, pFontCol, 0);
