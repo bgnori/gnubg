@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.2 2005/08/29 16:05:00 Superfly_Jon Exp $
+ * $Id: gtkmovelist.c,v 1.3 2005/08/30 18:15:33 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -61,7 +61,7 @@ enum
   ML_COL_EQUITY,
   ML_COL_DIFF,
   ML_COL_MOVE,
-ML_COL_FGCOL,
+  ML_COL_FGCOL,
   ML_COL_DATA
 } ;
 #endif
@@ -183,7 +183,7 @@ void MoveListCreate(hintdata *phd)
 /* Add empty rows */
 #if USE_GTK2
 	if (phd->fDetails)
-		store = gtk_list_store_new(DETAIL_COLUMN_COUNT + 1, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_POINTER);
+		store = gtk_list_store_new(DETAIL_COLUMN_COUNT + 2, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_POINTER);
 	else
 	{
 		if (showWLTree)
