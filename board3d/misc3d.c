@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.48 2005/02/15 18:12:25 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.49 2005/09/18 08:30:31 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2298,7 +2298,7 @@ void InitBoard3d(BoardData *bd)
 	SetupSimpleMat(&bd->gapColour, 0, 0, 0);
 	SetupSimpleMat(&bd->logoMat, 1, 1, 1);
 	SetupMat(&bd->flagMat, 1, 1, 1, 1, 1, 1, 1, 1, 1, 50, 0);
-	SetupMat(&bd->flagNumberMat, 0, 0, .4f, 0, 0, .4f, 1, 1, 1, 100, 0);
+	SetupMat(&bd->flagNumberMat, 0, 0, .4f, 0, 0, .4f, 1, 1, 1, 100, 1);
 
 	bd->diceList = bd->DCList = bd->pieceList = 0;
 	bd->qobjTex = bd->qobj = 0;

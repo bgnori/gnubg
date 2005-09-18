@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.40 2005/02/07 17:45:41 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.41 2005/09/18 08:30:31 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -3270,9 +3270,30 @@ void renderFlag(BoardData* bd)
 	{
 		/* Draw number */
 		char flagValue[2] = "x";
+		/* No specular light */
+		float specular[4];
+		float zero[4] = {0,0,0,0};
+		glGetLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+		glLightfv(GL_LIGHT0, GL_SPECULAR, zero);
+
 		flagValue[0] = '0' + abs(bd->resigned);
-		glScalef(1.5f, 1.3f, 1);
+		glScalef(1.3f, 1.3f, 1);
+
+		glPushMatrix();
 		glPrintCube(bd, flagValue, 0);
+		glPopMatrix();
+
+		/* Anti-alias flag number */
+		glLineWidth(.5f);
+		glEnable(GL_LINE_SMOOTH);
+		glEnable(GL_BLEND);
+
+		glPrintCube(bd, flagValue, 1);
+
+		glDisable(GL_BLEND);
+		glDisable(GL_LINE_SMOOTH);
+
+		glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
 	}
 	glPopMatrix();
 
