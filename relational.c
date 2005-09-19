@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.16 2005/02/21 23:23:08 jsegrave Exp $
+ * $Id: relational.c,v 1.17 2005/09/19 22:41:59 jsegrave Exp $
  */
 
 #include <stdio.h>
@@ -710,8 +710,8 @@ CommandRelationalShowPlayers( char *sz )
 #if USE_PYTHON
 	/* Use the Select command */
 	CommandRelationalSelect("person.name AS Player, nick.name AS Nickname, env.place AS env"
-		" FROM nick INNER JOIN env INNER JOIN person"
-		" ON nick.env_id = env.env_id AND nick.person_id = person.person_id"
+		" FROM nick INNER JOIN env ON nick.env_id = env.env_id"
+		" INNER JOIN person ON nick.person_id = person.person_id"
 		" ORDER BY person.name");
 
 #else /* USE_PYTHON */
