@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.10 2005/02/07 17:45:41 Superfly_Jon Exp $
+* $Id: graph.c,v 1.11 2005/09/20 19:31:13 Superfly_Jon Exp $
 */
 
 #include <config.h>
@@ -193,10 +193,8 @@ void PrintBottomNumber(int num, float width, float height, float x, float y)
 
 	glColor3f(1, 1, 1);
 	glScalef(width, height, 1);
-	glPushMatrix();
-	glPrintCube(&fonts, numStr, 0);
-	glPopMatrix();
-	glPrintCube(&fonts, numStr, 1);
+	glLineWidth(.5f);
+	glPrintCube(&fonts, numStr);
 	glPopMatrix();
 }
 
@@ -209,10 +207,8 @@ void PrintSideNumber(int num, float width, float height, float x, float y)
 	glTranslatef(x, y, 0);
 
 	glScalef(width, height, 1);
-	glPushMatrix();
-	glPrintNumbersRA(&fonts, numStr, 0);
-	glPopMatrix();
-	glPrintNumbersRA(&fonts, numStr, 1);
+	glLineWidth(.5f);
+	glPrintNumbersRA(&fonts, numStr);
 	glPopMatrix();
 }
 
@@ -252,6 +248,9 @@ void DrawGraph(GraphData *gd)
 {
 	int i;
 	float lastx = 0;
+
+	/* Avoid over-blurry anti-aliasing */
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 
 	if (total.texID)
 	{
@@ -301,6 +300,8 @@ void DrawGraph(GraphData *gd)
 	glBegin(GL_POINTS);
 		glVertex2f(NUM_WIDTH, NUM_HEIGHT);
 	glEnd();
+
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 static gboolean expose_event(GtkWidget *widget, GdkEventExpose *event, GraphData* gd)

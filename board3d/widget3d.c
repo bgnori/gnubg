@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.20 2005/02/07 17:45:41 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.21 2005/09/20 19:31:13 Superfly_Jon Exp $
 */
 
 #include <config.h>
@@ -266,7 +266,7 @@ void Init3d()
 	LoadTextureInfo(FALSE);
 }
 
-#ifdef WIN32
+#ifdef TEMP_REMOVE //WIN32
 
 #ifndef PFD_GENERIC_ACCELERATED
 #define PFD_GENERIC_ACCELERATED     0x00001000

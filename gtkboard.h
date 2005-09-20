@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.68 2005/02/07 17:51:32 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.69 2005/09/20 19:31:13 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -28,6 +28,7 @@
 #if USE_BOARD3D
 #include "board3d/glincl.h"
 #include "board3d/mylist.h"
+#include "board3d/myftgl.h"
 #endif
 
 #ifdef __cplusplus
@@ -229,7 +230,7 @@ typedef struct _BoardData {
 
 	float flagWaved;	/* How much has flag waved */
 
-	void *numberFont, *cubeFont;	/* FTGL fonts */
+	OGLFont numberFont, cubeFont;	/* OpenGL fonts */
 
 	/* Saved viewing values (used for picking) */
 	float vertFrustrum, horFrustrum;
