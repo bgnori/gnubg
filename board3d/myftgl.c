@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: myftgl.c,v 1.2 2005/09/20 19:50:22 Superfly_Jon Exp $
+ * $Id: myftgl.c,v 1.3 2005/09/22 18:03:12 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -353,9 +353,14 @@ void PopulateContour(Contour* pContour, FT_Vector* points, char* pointTags, int 
 	}
 }
 
-// TODO: Probably won't work cross platform...
+/* Unfortunately the glu library doesn't define this callback type precisely
+ so it may well cause problems on different platforms / opengl implementations */
+#if WIN32
+/* Need to set the callback calling convention for windows */
 #define TESS_CALLBACK CALLBACK
-typedef void (TESS_CALLBACK *GLUTesselatorFunction)();
+#else
+#define TESS_CALLBACK
+#endif
 
 Tesselation curTess;
 
