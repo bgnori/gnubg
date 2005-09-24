@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.22 2005/09/20 19:31:13 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.23 2005/09/24 10:45:35 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -87,13 +87,12 @@ typedef struct _diceTest
 void InitGL(BoardData *bd);
 
 /* font functions */
-#ifndef __cplusplus
 void glPrintPointNumbers(BoardData* bd, const char *text);
 void glPrintCube(BoardData* bd, const char *text);
 void glPrintNumbersRA(BoardData* bd, const char *text);
-float getFontHeight(BoardData* bd);
-void BuildFont(BoardData* bd);
-#endif
+int BuildFont3d(BoardData* bd);
+int RenderString3d(OGLFont *pFont, const char* str);
+float getTextLen3d(OGLFont *pFont, const char* text);
 
 /* Drawing functions */
 void drawBoard(BoardData* bd);

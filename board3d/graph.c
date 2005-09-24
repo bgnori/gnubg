@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.12 2005/09/22 17:50:08 Superfly_Jon Exp $
+* $Id: graph.c,v 1.13 2005/09/24 10:45:35 Superfly_Jon Exp $
 */
 
 #include <config.h>
@@ -111,7 +111,7 @@ static void realize(GtkWidget *widget, void* arg)
 	/* Deep blue background colour */
 	glClearColor(.2f, .2f, .4f, 1);
 
-	BuildFont(&fonts);
+	BuildFont3d(&fonts);
 
 	total.texID = 0;
 	LoadTexture(&total, TEXTURE_PATH"total.bmp", TF_BMP);

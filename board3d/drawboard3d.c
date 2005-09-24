@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.42 2005/09/20 19:31:13 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.43 2005/09/24 10:45:34 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -1095,7 +1095,7 @@ void DrawNumbers(BoardData* bd, int sides)
 	int i;
 	char num[3];
 	float x;
-	float textHeight = getFontHeight(bd);
+	float textHeight = bd->numberFont.height;
 	int n;
 
 	glPushMatrix();
@@ -3682,7 +3682,7 @@ void RestrictiveDrawBoardNumbers(BoardData* bd)
 {
 #define NUMBER_WIDTH (TOTAL_WIDTH - (2 * TRAY_WIDTH))
 	float pos[3] = {TRAY_WIDTH + (NUMBER_WIDTH / 2.0f), TOTAL_HEIGHT - EDGE_HEIGHT + (EDGE_HEIGHT / 2.0f), BASE_DEPTH + EDGE_DEPTH};
-	float textHeight = getFontHeight(bd);
+	float textHeight = bd->numberFont.height;;
 
 	RestrictiveDrawFrame(pos, NUMBER_WIDTH, textHeight, LIFT_OFF);
 	pos[1] = EDGE_HEIGHT / 2.0f;
