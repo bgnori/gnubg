@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.139 2005/08/29 21:33:24 Superfly_Jon Exp $
+## $Id: Makefile.am,v 1.140 2005/09/24 11:42:22 Superfly_Jon Exp $
 
 localedir = $(datadir)/locale
 
@@ -56,8 +56,8 @@ BOARD3D_TEXTURE_FILES = textures.txt
 if USE_BOARD3D
 BOARD3D_DIR=board3d textures
 BOARD3D_DEPS=board3d/libboard3d.a
-BOARD3D_LIBS=-L$(srcdir)/board3d -lboard3d @GTKGLEXT_LIBS@ @FTGL_LIBS@
-BOARD3D_INCS=@GTKGLEXT_CFLAGS@ @FTGL_CFLAGS@
+BOARD3D_LIBS=-L$(srcdir)/board3d -lboard3d @GTKGLEXT_LIBS@
+BOARD3D_INCS=@GTKGLEXT_CFLAGS@
 BOARD3DDATA=$(BOARD3D_TEXTURE_FILES)
 else
 BOARD3D_DIR=
