@@ -18,7 +18,7 @@
      This match equity table is based rollouts by GNU Backgammon. It's still
      work in progress.
 
-     $Id: Kazaross-Shaw.xml,v 1.4 2003/12/29 19:52:43 uid65656 Exp $
+     $Id: Kazaross-Shaw.xml,v 1.5 2005/10/06 18:46:08 oysteijo Exp $
 
  -->
 
@@ -27,7 +27,7 @@
   <info>
     <name>Kazaross</name>
     <description>Neil Kazaross and GNU Backgammon, Table based on GNU Backgammon rollouts.</description>
-    <length>4</length>
+    <length>5</length>
   </info>
 
   <pre-crawford-table type="explicit">
