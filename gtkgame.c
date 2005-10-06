@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.549 2005/10/06 18:59:05 oysteijo Exp $
+ * $Id: gtkgame.c,v 1.550 2005/10/06 20:18:44 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -7068,7 +7068,7 @@ extern void GTKCommandShowCredits(GtkWidget *pwParent)
 #if HAVE_GTKTEXI
 static int ShowManualSection( char *szTitle, char *szNode ) {
     
-    static GtkWidget *pw;
+    static GtkWidget *pw = NULL;
     char *pch;
     
     if( pw ) {
@@ -7077,7 +7077,7 @@ static int ShowManualSection( char *szTitle, char *szNode ) {
 	return 0;
     }
 
-    if( !( pch = PathSearch( "gnubg.xml", szDataDirectory ) ) )
+    if( !( pch = PathSearch( "doc/gnubg.xml", szDataDirectory ) ) )
 	return -1;
     else if( access( pch, R_OK ) ) {
 	outputerr( pch );

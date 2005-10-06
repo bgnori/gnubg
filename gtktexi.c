@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.c,v 1.8 2003/01/11 10:34:04 thyssen Exp $
+ * $Id: gtktexi.c,v 1.9 2005/10/06 20:18:44 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -516,15 +516,13 @@ static void ScanCharacters( void *pv, const xmlChar *pchIn, int cch ) {
     }
 }
 
-static void Err( void *pv, const char *msg, ... ) {
-
-#if 0
+static void Err( void *pv, const char *msg, ... )
+{
     va_list args;
 
     va_start(args, msg);
     vprintf(msg, args);
     va_end(args);
-#endif
 }
 
 static xmlSAXHandler xsaxScan = {
@@ -1062,7 +1060,7 @@ static int RenderNode( GtkTexi *pw, char *szTag ) {
     
     gtk_widget_set_sensitive( gtk_item_factory_get_widget(
 	pw->pif, "/Go/Top" ), strcmp( szTag, "Top" ) );
-	
+
     if( strcmp( szTag, "*" ) ) {
 	for( pl = pw->ptic->lNode.plNext; pl != &pw->ptic->lNode;
 	     pl = pl->plNext ) {
