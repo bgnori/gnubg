@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.548 2005/09/19 22:41:59 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.549 2005/10/06 18:59:05 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -4178,7 +4178,7 @@ extern void SetMET( GtkWidget *pw, gpointer p ) {
     }
     
     GTKFileCommand( _("Set match equity table"), pch, "set matchequitytable ",
-		 "met", FDT_NONE_OPEN, PATH_NULL );
+		 "met", FDT_NONE_OPEN, PATH_MET );
 
     /* update filename on option page */
     if ( p && GTK_WIDGET_VISIBLE( p ) )
