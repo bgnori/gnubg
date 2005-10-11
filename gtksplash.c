@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.9 2004/01/30 09:33:49 uid68519 Exp $
+ * $Id: gtksplash.c,v 1.10 2005/10/11 07:56:38 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -73,7 +73,7 @@ CreateSplash () {
 #endif
 #endif
   gtk_window_set_title ( GTK_WINDOW ( pgs->pwWindow ), 
-                         _("Starting GNU Backgammon " VERSION ) );
+                         _("Starting " VERSION_STRING ) );
   gtk_window_set_position ( GTK_WINDOW ( pgs->pwWindow ), GTK_WIN_POS_CENTER );
   
   gtk_widget_realize ( GTK_WIDGET ( pgs->pwWindow ) );

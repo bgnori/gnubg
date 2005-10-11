@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.28 2004/04/02 09:40:40 Superfly_Jon Exp $
+ * $Id: export.c,v 1.29 2005/10/11 07:56:38 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -119,7 +119,7 @@ WritePNG (const char *sz, unsigned char *puch, int nStride,
   atext[0].compression = PNG_TEXT_COMPRESSION_NONE;
 
   atext[1].key = "author";
-  atext[1].text = "GNU Backgammon" VERSION;
+  atext[1].text = VERSION_STRING;
   atext[1].compression = PNG_TEXT_COMPRESSION_NONE;
 
 #ifdef PNG_iTXt_SUPPORTED

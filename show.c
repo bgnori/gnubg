@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.195 2005/02/11 17:33:12 Superfly_Jon Exp $
+ * $Id: show.c,v 1.196 2005/10/11 07:56:38 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -978,16 +978,15 @@ ShowAuthors( const credEntry ace[], const char *title ) {
 
 extern void CommandShowBuildInfo( char *sz )
 {
-    char **ppch = aszVersion;
+    char *pch;
 
 #if USE_GTK
 	if( fX )
 		GTKShowBuildInfo(pwMain);
 #endif
 
-	ppch++;	/* Skip version line */
-	while (*ppch)
-		outputl( gettext ( *ppch++ ) );
+    while(pch = GetBuildInfoString())
+		outputl( gettext(pch) );
 
     outputc( '\n' );
 }
@@ -1471,7 +1470,7 @@ extern void CommandShowVersion( char *sz )
 	}
 #endif
 
-	outputl( gettext ( *aszVersion ) );
+	outputl( gettext ( VERSION_STRING ) );
 	outputc( '\n' );
 	ShowAuthors( ceAuthors, _("Written by:") );
 }

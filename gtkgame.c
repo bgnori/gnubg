@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.550 2005/10/06 20:18:44 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.551 2005/10/11 07:56:38 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6793,7 +6793,7 @@ extern void GTKShowVersion( void ) {
 	gtk_misc_set_padding( GTK_MISC( pwImage ), 8, 8 );
 	gtk_box_pack_start( GTK_BOX( pwImageVBox ), pwImage, FALSE, FALSE, 0 );
 
-	sprintf(PromptStr, "%s %s", _("GNU Backgammon"), VERSION);
+	sprintf(PromptStr, "%s", _(VERSION_STRING));
 	pwPrompt = gtk_label_new(PromptStr);
 	gtk_box_pack_start( GTK_BOX( pwImageVBox ), pwPrompt, FALSE, FALSE, 0 );
 #if GTK_CHECK_VERSION(1,3,10)
@@ -6896,6 +6896,7 @@ extern void GTKShowBuildInfo(GtkWidget *pwParent)
 {
 	GtkWidget *pwDialog, *pwBox, *pwPrompt;
 	int i;
+	char* pch;
 
 	pwDialog = GTKCreateDialog( _("GNU Backgammon - Build Info"),
 					DT_INFO, NULL, NULL );
@@ -6918,9 +6919,8 @@ extern void GTKShowBuildInfo(GtkWidget *pwParent)
 
 	gtk_box_pack_start(GTK_BOX(pwBox), gtk_hseparator_new(), FALSE, FALSE, 4);
 
-	for( i = 1; aszVersion[ i ]; i++ )
-		gtk_box_pack_start( GTK_BOX( pwBox ), pwPrompt =
-			gtk_label_new( gettext ( aszVersion[ i ] ) ),
+    while(pch = GetBuildInfoString())
+		gtk_box_pack_start( GTK_BOX( pwBox ), pwPrompt = gtk_label_new( gettext(pch) ),
 			FALSE, FALSE, 0 );
 
 	gtk_box_pack_start(GTK_BOX(pwBox), gtk_hseparator_new(), FALSE, FALSE, 4);

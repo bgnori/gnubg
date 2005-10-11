@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.303 2005/08/29 14:56:06 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.304 2005/10/11 07:56:38 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -713,7 +713,10 @@ InvalidateStoredMoves( void );
 extern void
 InvalidateStoredCube( void );
 
-extern char* aszVersion[], *szHomeDirectory, *szDataDirectory,
+#define VERSION_STRING "GNU Backgammon " VERSION
+
+extern char *GetBuildInfoString();
+extern char *szHomeDirectory, *szDataDirectory,
     *szTerminalCharset;
 
 extern char* aszSkillType[], *aszSkillTypeAbbr[], *aszLuckType[],

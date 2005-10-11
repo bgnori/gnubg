@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.39 2004/10/22 14:25:44 Superfly_Jon Exp $
+ * $Id: postscript.c,v 1.40 2005/10/11 07:56:38 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -263,7 +263,7 @@ static void PostScriptPrologue( FILE *pf, int fEPS, char *szTitle ) {
     int i;
     
     static char *aszPrologue[] = {
-	"%%%%Creator: (GNU Backgammon " VERSION ")\n"
+	"%%%%Creator: (" VERSION_STRING ")\n"
 	"%%%%DocumentData: Clean7Bit\n"
 	"%%%%DocumentNeededResources: font Courier Helvetica Times-Roman\n"
 	"%%%%DocumentSuppliedResources: procset GNU-Backgammon-Prolog 1.0 0\n"
