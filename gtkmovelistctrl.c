@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.4 2005/08/30 06:36:25 Superfly_Jon Exp $
+ * $Id: gtkmovelistctrl.c,v 1.5 2005/10/19 06:36:40 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -29,7 +29,6 @@
 #include "gtkchequer.h"
 
 extern float rBest;
-extern int aanColumns[][2];
 extern GtkStyle *psHighlight;
 GdkColor wlCol;
 
@@ -472,11 +471,11 @@ custom_cell_renderer_movelist_render (GtkCellRenderer *cell,
 	{
 		char *str;
 		if (i < 3)
-			str = OutputPercent( ar[ aanColumns[ i ][ 1 ] ] );
+			str = OutputPercent(ar[i]);
 		else if (i == 3)
-			str = OutputPercent(1.0f - ar[ aanColumns[ OUTPUT_WIN ][ 1 ] ] );
+			str = OutputPercent(1.0f - ar[OUTPUT_WIN]);
 		else
-			str = OutputPercent( ar[ aanColumns[ i - 1 ][ 1 ] ] );
+			str = OutputPercent(ar[i - 1]);
 
 		while (*str == ' ')
 			str++;
