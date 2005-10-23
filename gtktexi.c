@@ -16,11 +16,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.c,v 1.11 2005/10/23 16:33:23 Superfly_Jon Exp $
+ * $Id: gtktexi.c,v 1.12 2005/10/23 16:36:59 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
 #include <config.h>
+#include "backgammon.h"
 #endif
 
 #include "gtktexi.h"
