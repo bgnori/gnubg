@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.282 2005/10/29 23:00:50 oysteijo Exp $
+ * $Id: eval.c,v 1.283 2005/10/29 23:19:09 oysteijo Exp $
  */
 
 #include "config.h"
@@ -730,8 +730,8 @@ int SSE_Supported()
 
 int CheckSSE()
 {
-	int result = 1;
-#if 0	
+	int result = 0;
+
 	asm (
 		// Check if cpuid is supported (can bit 21 of flags be changed)
 		"mov $1, %%eax\n\t"
@@ -781,7 +781,7 @@ int CheckSSE()
 "end:"
 
 			: "=b"(result) : : "%eax", "%ecx", "%edx");
-#endif
+	
 	switch (result)
 	{
 	case -1:
