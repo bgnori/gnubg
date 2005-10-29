@@ -3,13 +3,15 @@
  *
  * by Gary Wong, 1997
  *
- * $Id: extwin.h,v 1.2 2005/02/21 23:23:08 jsegrave Exp $
+ * $Id: extwin.h,v 1.3 2005/10/29 15:47:01 Superfly_Jon Exp $
  */
 
 #ifndef _EXTWIN_H_
 #define _EXTWIN_H_
 
+#if EXT
 #include <ext.h>
+#endif
 
 extern extwindowclass ewcText;
 

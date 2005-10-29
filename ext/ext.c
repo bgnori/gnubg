@@ -3,7 +3,7 @@
  *
  * by Gary Wong, 1997-2000
  *
- * $Id: ext.c,v 1.5 2005/02/21 23:23:08 jsegrave Exp $
+ * $Id: ext.c,v 1.6 2005/10/29 15:47:01 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -13,17 +13,21 @@
 #include <hash.h>
 #include <stdlib.h>
 #include <string.h>
+#if EXT
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
 #include <X11/Xresource.h>
 #include <X11/Xutil.h>
 #include <X11/Xmu/StdCmap.h>
+#endif
 
 #if EXT_DEBUG
 #include <stdio.h>
 #endif
 
+#if EXT
 #include <ext.h>
+#endif
 
 static XContext xc;
 

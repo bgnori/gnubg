@@ -3,15 +3,17 @@
  *
  * by Gary Wong, 1997-2000
  *
- * $Id: ext.h,v 1.3 2005/02/21 23:23:08 jsegrave Exp $
+ * $Id: ext.h,v 1.4 2005/10/29 15:47:01 Superfly_Jon Exp $
  */
 
 #ifndef _EXT_H_
 #define _EXT_H_
 
+#if EXT
 #include <X11/Xlib.h>
 #include <X11/Xresource.h>
 #include <X11/Xutil.h>
+#endif
 
 #include <event.h>
 #include <list.h>
