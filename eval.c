@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.280 2005/10/19 21:08:46 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.281 2005/10/29 15:41:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3678,7 +3678,7 @@ static int LegalMove( int anBoard[ 2 ][ 25 ], int iSrc, int nPips ) {
 static int GenerateMovesSub( movelist *pml, int anRoll[], int nMoveDepth,
 			     int iPip, int cPip, int anBoard[ 2 ][ 25 ],
 			     int anMoves[], int fPartial ) {
-    int i, iCopy, fUsed = 0;
+    int i, fUsed = 0;
     int anBoardNew[ 2 ][ 25 ];
 
     if( nMoveDepth > 3 || !anRoll[ nMoveDepth ] )

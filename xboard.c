@@ -16,18 +16,20 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xboard.c,v 1.19 2003/09/15 02:03:59 hb Exp $
+ * $Id: xboard.c,v 1.20 2005/10/29 15:41:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
 
+#if USE_EXT
 #include <ext.h>
 #include <extwin.h>
+#include <X11/Xutil.h>
+#endif
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <X11/Xutil.h>
 
 #include "backgammon.h"
 #include "xboard.h"

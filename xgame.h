@@ -16,13 +16,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: xgame.h,v 1.8 2004/02/04 18:02:18 uid68519 Exp $
+ * $Id: xgame.h,v 1.9 2005/10/29 15:41:03 Superfly_Jon Exp $
  */
 
 #ifndef _GAME_H_
 #define _GAME_H_
 
+#if USE_EXT
 #include <ext.h>
+#endif
 
 #include "eval.h"
 

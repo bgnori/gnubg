@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.606 2005/10/11 07:56:38 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.607 2005/10/29 15:41:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -7487,7 +7487,7 @@ static void version( void ) {
 	puts(VERSION_STRING);
 	puts("");
 
-    while(pch = GetBuildInfoString())
+    while((pch = GetBuildInfoString()))
       puts(gettext(pch));
 }
 
