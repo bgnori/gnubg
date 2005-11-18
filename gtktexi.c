@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.c,v 1.13 2005/10/29 15:41:03 Superfly_Jon Exp $
+ * $Id: gtktexi.c,v 1.14 2005/11/18 16:53:46 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -31,6 +31,8 @@
 
 #if HAVE_UNISTD_H
 #include <unistd.h>
+#else
+#include <io.h>
 #endif
 
 #include <assert.h>
@@ -38,7 +40,6 @@
 #include <stdarg.h>
 #include <string.h>
 #include <libxml/parser.h>
-#include <io.h>
 
 #include "list.h"
 #include "hash.h"
