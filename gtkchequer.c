@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.64 2005/09/18 08:28:33 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.65 2005/12/17 03:34:38 jsegrave Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -682,6 +682,7 @@ CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid,
 {
     GtkWidget *pw;
     GtkWidget *pwHBox;
+    GtkWidget *pwTools;
 
     hintdata *phd = (hintdata *) malloc ( sizeof ( hintdata ) );
 
@@ -694,6 +695,7 @@ CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid,
     phd->fButtonsValid = fButtonsValid;
     phd->fDestroyOnMove = fDestroyOnMove;
     phd->pwMove = NULL;
+    pwTools = CreateMoveListTools( phd );
     phd->fDetails = fDetails;
 	MoveListCreate(phd);
 
@@ -708,7 +710,7 @@ CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid,
 
     gtk_box_pack_start ( GTK_BOX ( pwHBox ), pw, TRUE, TRUE, 0 );
     gtk_box_pack_end ( GTK_BOX ( pwHBox ),
-                       CreateMoveListTools( phd ),
+		       pwTools,
                        FALSE, FALSE, 0 );
 
     gtk_object_set_data_full( GTK_OBJECT( pwHBox ), "user_data", 
