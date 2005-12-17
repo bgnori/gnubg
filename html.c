@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.164 2005/10/11 07:56:38 Superfly_Jon Exp $
+ * $Id: html.c,v 1.165 2005/12/17 01:26:26 jsegrave Exp $
  */
 
 #include "config.h"
@@ -173,7 +173,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.164 2005/10/11 07:56:38 Superfly_Jon Exp $ */\n",
+           "/* $Id: html.c,v 1.165 2005/12/17 01:26:26 jsegrave Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1853,7 +1853,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.164 $";
+  const char szVersion[] = "$Revision: 1.165 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1933,7 +1933,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.164 $";
+  const char szVersion[] = "$Revision: 1.165 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3557,6 +3557,21 @@ extern void CommandExportGameHtml( char *sz ) {
  *   Caller must free returned pointer if not NULL
  * 
  */
+#ifdef WIN32
+#define DIR_SEPARATOR  '\\'
+#define DIR_SEPARATOR_S  "\\"
+#else
+#define DIR_SEPARATOR  '/'
+#define DIR_SEPARATOR_S  "/"
+#endif
+
+static char *
+get_basename (const char *filename) 
+{ 
+  char *p1 = strrchr (filename, DIR_SEPARATOR); 
+  return p1 ? p1 + 1 : (char *) filename;
+} 
+
 
 extern char *
 HTMLFilename ( const char *szBase, const int iGame ) {
@@ -3619,23 +3634,23 @@ extern void CommandExportMatchHtml( char *sz ) {
 
       szCurrent = HTMLFilename ( sz, i );
 	  filenames[0] = HTMLFilename ( sz, 0 );
-      aszLinks[ 0 ] = basename ( filenames[ 0 ] );
+      aszLinks[ 0 ] = get_basename ( filenames[ 0 ] );
 	  filenames[ 1 ] = aszLinks[ 1 ] = NULL;
 	  if (i > 0) {
 		filenames[ 1 ] = HTMLFilename ( sz, i - 1 );
-		aszLinks[ 1 ]  = basename ( filenames[ 1 ] );
+		aszLinks[ 1 ]  = get_basename ( filenames[ 1 ] );
 	  }
 		
 	  filenames[ 2 ] = aszLinks[ 2 ] = NULL;
 	  if (i < nGames - 1) {
 		filenames[ 2 ] = HTMLFilename ( sz, i + 1 );
-		aszLinks[ 2 ]  = basename ( filenames[ 2 ] );
+		aszLinks[ 2 ]  = get_basename ( filenames[ 2 ] );
 	  }
 
 
 	  
 	  filenames[ 3 ] = HTMLFilename ( sz, nGames - 1 );
-	  aszLinks[ 3 ] = basename ( filenames[ 3 ] );
+	  aszLinks[ 3 ] = get_basename ( filenames[ 3 ] );
       if ( !i ) {
 
         if ( ! confirmOverwrite ( sz, fConfirmSave ) ) {
