@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.17 2005/09/19 22:41:59 jsegrave Exp $
+ * $Id: relational.c,v 1.18 2005/12/20 19:10:19 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -1011,14 +1011,14 @@ extern int RunQuery(RowSet* pRow, char *sz)
 	if (!(v = PyObject_CallMethod(r, "select", "s", sz))
 		|| v == Py_None)
 	{
-		outputl(_("Error running query"));
+		outputerrf(_("Error running query"));
 		PyErr_Print();
 		return FALSE;
 	}
 
 	if (!PySequence_Check(v))
 	{
-		outputl( _("invalid return (non-tuple)") );
+		outputerrf( _("invalid return (non-tuple)") );
 		Py_DECREF(v);
 		Disconnect(r);
 		return FALSE;
@@ -1031,7 +1031,7 @@ extern int RunQuery(RowSet* pRow, char *sz)
 		PyObject *cols = PySequence_GetItem(v, 0);
 		if (!PySequence_Check(cols))
 		{
-			outputl( _("invalid return (non-tuple)") );
+			outputerrf( _("invalid return (non-tuple)") );
 			Py_DECREF(v);
 			Disconnect(r);
 			return FALSE;
@@ -1041,7 +1041,6 @@ extern int RunQuery(RowSet* pRow, char *sz)
 	}
 
 	MallocRowset(pRow, i, j);
-
 	for (i = 0; i < pRow->rows; i++)
 	{
 		PyObject *e = PySequence_GetItem(v, i);
@@ -1065,8 +1064,12 @@ extern int RunQuery(RowSet* pRow, char *sz)
 					outputf(_("Error getting sub item no (%d, %d)\n"), i, j);
 					continue;
 				}
-
-				if (PyString_Check(e2))
+        if (PyUnicode_Check(e2))
+        {
+					strcpy(buf, PyString_AsString(PyObject_Str(e2)));
+					size = strlen(buf);
+        }
+				else if (PyString_Check(e2))
 				{
 					strcpy(buf, PyString_AsString(e2));
 					size = strlen(buf);
@@ -1192,6 +1195,7 @@ extern void RelationalUpdatePlayerDetails(int player_id, const char* newName,
 {
 	char query[1024];
 	RowSet r;
+	int curPlayerId = player_id;
 
 	/* Can't change the name to an existing one */
 	sprintf(query, "person_id FROM person WHERE name = '%s'", newName);
@@ -1201,6 +1205,9 @@ extern void RelationalUpdatePlayerDetails(int player_id, const char* newName,
 		return;
 	}
 	if (r.rows > 1)
+    curPlayerId = atoi(r.data[1][0]);
+	
+	if (curPlayerId != player_id)
 		outputerrf( _("Player name already exists.  Use the link button to combine different"
 			" nicknames for the same player") );
 	else
