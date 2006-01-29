@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.17 2005/05/09 16:38:53 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.18 2006/01/29 19:33:46 jsegrave Exp $
 */
 
 #include "config.h"
@@ -792,7 +792,9 @@ void DockPanels()
 {
 	int i;
 	int currentSelectedGame = -1;
-	
+	if(!fX)
+	  return;
+
 	if (pom)
 		currentSelectedGame = gtk_option_menu_get_history( GTK_OPTION_MENU( pom ) );
 
