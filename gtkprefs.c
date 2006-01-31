@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.121 2005/10/11 07:56:38 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.122 2006/01/31 08:36:15 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1072,6 +1072,7 @@ static void BoardPrefsOK( GtkWidget *pw, GtkWidget *mainBoard ) {
 
 #if USE_BOARD3D
 	DisplayCorrectBoardType(bd);
+	SetSwitchModeMenuText();
 
 	if (bd->rd->fDisplayType == DT_3D)
 	{
@@ -1972,7 +1973,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.121 2005/10/11 07:56:38 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.122 2006/01/31 08:36:15 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"

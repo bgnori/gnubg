@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.97 2005/08/29 16:05:00 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.98 2006/01/31 08:36:15 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -262,3 +262,7 @@ extern int SetMainWindowSize();
 extern void ShowHidePanel(gnubgwindow panel);
 extern void GTKSetCurrentParent(GtkWidget *parent);
 extern void SetAnnotation( moverecord *pmr );
+
+#if USE_BOARD3D
+extern void SetSwitchModeMenuText();
+#endif
