@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.14 2005/08/29 16:05:00 Superfly_Jon Exp $
+* $Id: gtkgamelist.c,v 1.15 2006/02/02 08:03:25 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -232,6 +232,8 @@ GtkWidget* GL_Create()
     GtkStyle *ps;
     gint nMaxWidth; 
     char *asz[] = {_("#"), NULL, NULL};
+	PangoRectangle logical_rect;
+	PangoLayout *layout;
 
     pwGameList = gtk_clist_new_with_titles(3, asz);
     GTK_WIDGET_UNSET_FLAGS(pwGameList, GTK_CAN_FOCUS);
@@ -282,10 +284,16 @@ GtkWidget* GL_Create()
     GetStyleFromRCFile(&psLucky[LUCK_VERYBAD], "gamelist-luck-bad", psGameList);
     GetStyleFromRCFile(&psLucky[LUCK_VERYGOOD], "gamelist-luck-good", psGameList);
 
-    nMaxWidth = gdk_string_width( gtk_style_get_font( psCurrent ), _("99") );
+	layout = gtk_widget_create_pango_layout(pwGameList, _("99"));
+	pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
+	g_object_unref (layout);
+	nMaxWidth = logical_rect.width;
     gtk_clist_set_column_width( GTK_CLIST( pwGameList ), 0, nMaxWidth );
-    nMaxWidth = gdk_string_width( gtk_style_get_font( psCurrent ),
-                                  " (set board AAAAAAAAAAAAAA)");
+
+	layout = gtk_widget_create_pango_layout(pwGameList, _(" (set board AAAAAAAAAAAAAA)"));
+	pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
+	g_object_unref (layout);
+	nMaxWidth = logical_rect.width;
     gtk_clist_set_column_width( GTK_CLIST( pwGameList ), 1, nMaxWidth - 30);
     gtk_clist_set_column_width( GTK_CLIST( pwGameList ), 2, nMaxWidth - 30);
     
