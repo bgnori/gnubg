@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.3 2005/03/30 15:43:57 Superfly_Jon Exp $
+ * $Id: gtkfile.c,v 1.4 2006/02/06 08:45:24 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -365,7 +365,9 @@ extern void GTKFileCommand24( char *szPrompt, char *szDefault, char *szCommand,
 		gtk_file_filter_add_pattern (anyFileFilter, "*");
 		gtk_file_filter_set_name    (anyFileFilter, "Show all Files (*)");
 		gtk_file_filter_set_name    (suffixFileFilter, filterDescription);
-		gtk_file_chooser_add_filter ((GtkFileChooser *) filechooser, suffixFileFilter);
+		/* Only show *.suffix filter if suffix is not empty */
+		if (*eiof->file_suffix)
+			gtk_file_chooser_add_filter ((GtkFileChooser *) filechooser, suffixFileFilter);
 		gtk_file_chooser_add_filter ((GtkFileChooser *) filechooser, anyFileFilter);
 
 		if (filterDescription) g_free(filterDescription);

@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.56 2005/10/06 20:26:21 Superfly_Jon Exp $
+* $Id: matchequity.c,v 1.57 2006/02/06 08:45:25 Superfly_Jon Exp $
 */
 
 #include <stdio.h>
@@ -1427,6 +1427,7 @@ static int readMET ( metdata *pmd, const char *szFileName,
 
   }
 
+#if (LIBXML_VERSION > 20507)
   /* validate against the DTD */
   ctxt = xmlNewValidCtxt();
   ctxt->error = validateError;
@@ -1442,6 +1443,7 @@ static int readMET ( metdata *pmd, const char *szFileName,
 
   if (ctxt) xmlFreeValidCtxt(ctxt);
   if (dtd) xmlFreeDtd(dtd);
+#endif /* XMLVERSION > 20507 */
 }
 #endif /* XMLVERSION */
 
