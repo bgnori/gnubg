@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.98 2006/01/31 08:36:15 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.99 2006/02/24 17:41:47 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -185,9 +185,6 @@ extern int frozen;
 
 extern int 
 GtkTutor ( char *sz );
-
-extern void
-GTKCopy ( void );
 
 extern void GTKNew ( void );
 extern void GTKOpen ( void );

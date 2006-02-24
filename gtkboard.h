@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.70 2005/09/24 10:45:34 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.71 2006/02/24 17:41:47 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -353,6 +353,8 @@ extern gboolean motion_notify_event(GtkWidget *widget, GdkEventMotion *event, Bo
 extern gboolean button_release_event(GtkWidget *board, GdkEventButton *event, BoardData* bd);
 extern void RollDice2d(BoardData* bd);
 extern void DestroyPanel(gnubgwindow window);
+extern void board_set_matchid( GtkWidget *pw, BoardData *bd );
+extern void board_set_position( GtkWidget *pw, BoardData *bd );
 
 extern void
 DrawDie( GdkDrawable *pd, 
