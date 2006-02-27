@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.265 2005/02/10 10:33:04 Superfly_Jon Exp $
+ * $Id: play.c,v 1.266 2006/02/27 10:15:11 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2548,15 +2548,17 @@ static skilltype GoodDouble (int fisRedouble, moverecord *pmr )
   switch ( cd ) {
 	case NODOUBLE_TAKE:
 	case NODOUBLE_BEAVER:
-	case TOOGOOD_TAKE:
-	case TOOGOOD_PASS:
 	case NO_REDOUBLE_TAKE:
 	case NO_REDOUBLE_BEAVER:
+	case TOOGOOD_TAKE:
 	case TOOGOODRE_TAKE:
-
-	  rDeltaEquity = arDouble [OUTPUT_TAKE] - arDouble [OUTPUT_NODOUBLE];
+	  rDeltaEquity = arDouble[OUTPUT_TAKE] - arDouble[OUTPUT_NODOUBLE];
 	  break;
-  
+
+	case TOOGOOD_PASS:
+	  rDeltaEquity = arDouble[OUTPUT_DROP] - arDouble[OUTPUT_NODOUBLE];
+	  break;
+
 	default:
 	  return (SKILL_NONE);
 	}
@@ -2749,6 +2751,7 @@ static skilltype ShouldDrop (int fIsDrop, moverecord *pmr) {
 	case NODOUBLE_BEAVER:
 	case NO_REDOUBLE_TAKE:
 	case NO_REDOUBLE_BEAVER:
+	case TOOGOOD_TAKE:
 	case TOOGOODRE_TAKE:
         case OPTIONAL_DOUBLE_BEAVER:
         case OPTIONAL_DOUBLE_TAKE:
