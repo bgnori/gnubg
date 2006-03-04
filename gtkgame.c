@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.556 2006/02/24 17:41:47 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.557 2006/03/04 09:39:06 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -9440,14 +9440,6 @@ static GtkWidget* GetRelList(RowSet* pRow)
 int curPlayerId, curRow;
 GtkWidget *pwPlayerName, *pwPlayerNotes, *pwQueryText, *pwQueryResult, *pwQueryBox,
 	*aliases, *pwAliasList;
-
-static void ClearText(GtkWidget* pwText)
-{
-	gtk_text_set_point(GTK_TEXT(pwText), 0);
-	gtk_text_freeze(GTK_TEXT(pwText));
-	gtk_text_forward_delete(GTK_TEXT(pwText), gtk_text_get_length(GTK_TEXT(pwText)));
-	gtk_text_thaw(GTK_TEXT(pwText));
-}
 
 static void ShowRelationalSelect(GtkWidget *pw, int y, int x, GdkEventButton *peb, GtkWidget *pwCopy)
 {
