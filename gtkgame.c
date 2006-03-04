@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.557 2006/03/04 09:39:06 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.558 2006/03/04 10:24:20 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6566,6 +6566,18 @@ GTKHint( movelist *pmlOrig, const int iMove) {
     gtk_widget_show_all( pwHint );
 }
 
+static void SetMouseCursor(GdkCursorType cursorType)
+{
+	if (cursorType)
+	{
+		GdkCursor *cursor;
+		cursor = gdk_cursor_new(cursorType);
+		gdk_window_set_cursor(pwMain->window, cursor);
+		gdk_cursor_unref(cursor);
+	}
+	else
+		gdk_window_set_cursor(pwMain->window, NULL);
+}
 
 extern void GTKProgressStart( char *sz ) {
 
@@ -6577,6 +6589,8 @@ extern void GTKProgressStart( char *sz ) {
 #endif
     if( sz )
 	gtk_statusbar_push( GTK_STATUSBAR( pwStatus ), idProgress, sz );
+
+	SetMouseCursor(GDK_WATCH);
 }
 
 
@@ -6595,6 +6609,7 @@ GTKProgressStartValue( char *sz, int iMax ) {
   if( sz )
     gtk_statusbar_push( GTK_STATUSBAR( pwStatus ), idProgress, sz );
 
+	SetMouseCursor(GDK_WATCH);
 }
 
 extern void
@@ -6648,6 +6663,8 @@ extern void GTKProgressEnd( void ) {
     gtk_progress_bar_set_text( GTK_PROGRESS_BAR( pwProgress ), " " );
 #endif
     gtk_statusbar_pop( GTK_STATUSBAR( pwStatus ), idProgress );
+
+	SetMouseCursor(0);
 }
 
 int colWidth;
