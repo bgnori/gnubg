@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.157 2004/10/26 19:11:35 oysteijo Exp $
+ * $Id: analysis.c,v 1.158 2006/03/20 22:21:51 oysteijo Exp $
  */
 
 #include "config.h"
@@ -286,47 +286,6 @@ Skill( float r )
 }
 
 /*
- * get cash point regardless of match or money play
- */
-
-static float
-CashPoint( const matchstate* pms, float arOutput[] )
-{
-    cubeinfo ci;
-    float aarRates[ 2 ][ 2 ];
-    int afAutoRedouble[ 2 ];
-    int afDead[ 2 ];
-
-    GetMatchStateCubeInfo( &ci, pms );
-
-    calculate_gammon_rates( aarRates, arOutput, &ci );
-
-    if ( ci.nMatchTo ) {
-    	/* Match play */
-	float aaarPointsMatch[ 2 ][ 4 ][ 2 ];
-	int nIndex;
-
-	getMatchPoints( aaarPointsMatch, afAutoRedouble, afDead,
-		    &ci, aarRates );
-
-	nIndex = ! afDead[ 0 ];
-
-	return aaarPointsMatch[ 0 ][ 2 ][ nIndex ];
-    }
-    else {
-    	/* Money play */
-    	float aaarPointsMoney[ 2 ][ 7 ][ 2 ];
-
-	getMoneyPoints( aaarPointsMoney, ci.fJacoby, ci.fBeavers, aarRates );
-
-	return aaarPointsMoney[ 0 ][ 5 ][ 0 ];
-    }
-    assert( 0 );
-    return 0.0;
-}
-
-
-/*
  * update statcontext for given move
  *
  * Input:
@@ -422,8 +381,7 @@ updateStatcontext(statcontext*       psc,
         rCost = pms->nMatchTo ? eq2mwc( rSkill, &ci ) -
           eq2mwc( 0.0f, &ci ) : pms->nCube * rSkill;
 
-        if ( pmr->CubeDecPtr->aarOutput[ 0 ][ OUTPUT_WIN ] >= 
-             CashPoint( pms, pmr->CubeDecPtr->aarOutput[ 0 ] ) ) {
+        if ( arDouble[ OUTPUT_TAKE ] > 1.0f ) {
           /* missed double above cash point */
           psc->anCubeMissedDoubleTG[ pmr->fPlayer ]++;
           psc->arErrorMissedDoubleTG[ pmr->fPlayer ][ 0 ] -=
@@ -541,8 +499,7 @@ updateStatcontext(statcontext*       psc,
         rCost = pms->nMatchTo ? eq2mwc( rSkill, &ci ) -
           eq2mwc( 0.0f, &ci ) : pms->nCube * rSkill;
 
-        if ( pmr->CubeDecPtr->aarOutput[ 0 ][ OUTPUT_WIN ] >=
-	     CashPoint( pms, pmr->CubeDecPtr->aarOutput[ 0 ] ) ) {
+        if ( arDouble[ OUTPUT_NODOUBLE ] > 1.0f ) {
           /* wrong double above too good point */
           psc->anCubeWrongDoubleTG[ pmr->fPlayer ]++;
           psc->arErrorWrongDoubleTG[ pmr->fPlayer ][ 0 ] -= rSkill;
