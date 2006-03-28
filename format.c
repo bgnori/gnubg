@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.15 2005/08/29 14:50:22 Superfly_Jon Exp $
+ * $Id: format.c,v 1.16 2006/03/28 22:35:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -774,7 +774,7 @@ OutputCubeAnalysisFull ( const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
   float r;
 
-  int fClose, fMissed;
+  int fMissed;
   int fAnno = FALSE;
 
   float arDouble[ 4 ];
@@ -793,7 +793,6 @@ OutputCubeAnalysisFull ( const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
   /* print alerts */
 
-  fClose = isCloseCubedecision ( arDouble ); 
   fMissed = 
     fDouble > -1 &&
     isMissedDouble ( arDouble, aarOutput, fDouble, pci );

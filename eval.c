@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.286 2006/02/06 08:45:24 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.287 2006/03/28 22:35:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -7329,24 +7329,18 @@ CopyMoveList ( movelist *pmlDest, const movelist *pmlSrc ) {
  *
  */
 
+#ifndef min
+#define min(x,y)   (((x) > (y)) ? (y) : (x))
+#endif
+
 extern int
 isCloseCubedecision ( const float arDouble[] ) {
-  
-  const float rThr = 0.25;
+  const float rThr = 0.16;
+  float rDouble;
+  rDouble = min (arDouble[ OUTPUT_TAKE ] , 1.0f);
 
-  /* too good positions */
-
-  if ( arDouble[ OUTPUT_NODOUBLE ] > 1.0 ) return 1;
-
-  /* almost a double */
-
-  if ( fabs ( arDouble[ OUTPUT_NODOUBLE ] - arDouble[ OUTPUT_TAKE ] ) < rThr )
-    return 1;
-
-  /* almost a pass */
-
-  if ( fabs ( arDouble[ OUTPUT_NODOUBLE ] - arDouble[ OUTPUT_DROP ] ) < rThr )
-    return 1;
+  /* Report if doubling is less than very bad (0.16) */
+  if ( arDouble[ OUTPUT_OPTIMAL ] - rDouble < rThr ) return 1;
 
   return 0;
 

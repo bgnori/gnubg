@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.158 2006/03/20 22:21:51 oysteijo Exp $
+ * $Id: analysis.c,v 1.159 2006/03/28 22:35:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -366,11 +366,9 @@ updateStatcontext(statcontext*       psc,
 
       psc->anTotalCube[ pmr->fPlayer ]++;
 
-      if ( isCloseCubedecision ( arDouble ) || 
-           isMissedDouble ( arDouble, GCCCONSTAHACK pmr->CubeDecPtr->aarOutput,
-			    FALSE, &ci ) )
-        psc->anCloseCube[ pmr->fPlayer ]++;
-	  
+      /* Count doubles less than very bad */
+      if ( isCloseCubedecision ( arDouble ) ) psc->anCloseCube[ pmr->fPlayer ]++;
+
       if( arDouble[ OUTPUT_NODOUBLE ] <
           arDouble[ OUTPUT_OPTIMAL ] ) {
         /* it was a double */
