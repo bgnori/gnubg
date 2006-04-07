@@ -21,7 +21,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: database.py,v 1.18 2005/12/20 19:10:20 Superfly_Jon Exp $
+# $Id: database.py,v 1.19 2006/04/07 12:22:07 c_anthon Exp $
 #
                                                                                   
 
@@ -599,7 +599,10 @@ class relational:
       
       cursor = self.conn.cursor()
       # Open file which has db create sql statments
-      sqlfile = open("gnubg.sql", "r")
+      if self.games: 
+          sqlfile = open("gnubg.games.sql", "r")
+      else:
+          sqlfile = open("gnubg.sql", "r")
       done = False
       stmt = ""
       # Loop through file and run sql commands
