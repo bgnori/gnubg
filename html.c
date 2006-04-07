@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.166 2006/04/06 20:33:52 c_anthon Exp $
+ * $Id: html.c,v 1.167 2006/04/07 12:20:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -173,7 +173,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.166 2006/04/06 20:33:52 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.167 2006/04/07 12:20:23 c_anthon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -593,7 +593,7 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
   PipCount ( anBoard, anPips );
 
   /* Begin table  and print for player 0*/
-  fprintf ( pf, "<table><tr><th align=\"left\">%s<th align=\"right\">%d<tr><th colspan=\"2\">", ap[ 0 ].szName,  anPips[ 1 ]);
+  fprintf ( pf, "<table><tr><th align=\"left\">%s<th align=\"right\">%d<tr><th align=\"center\" colspan=\"2\">", ap[ 0 ].szName,  anPips[ 1 ]);
 
   /* avoid page break when printing */
   fputs( "<p style=\"page-break-inside: avoid\">", pf );
@@ -737,7 +737,7 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
 
   fputs( "</p>\n", pf );
 
-  fprintf ( pf, "<tr><th align=\"left\">%s<th align=\"right\">%d<tr><th colspan=\"2\">", ap[ 1 ].szName, anPips[ 0 ] );
+  fprintf ( pf, "<tr><th align=\"left\">%s<th align=\"right\">%d<tr><th align=\"center\" colspan=\"2\">", ap[ 1 ].szName, anPips[ 0 ] );
 
   /* pip counts */
 
@@ -1853,7 +1853,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.166 $";
+  const char szVersion[] = "$Revision: 1.167 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1933,7 +1933,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.166 $";
+  const char szVersion[] = "$Revision: 1.167 $";
   int iMajor, iMinor;
   char *pc;
 
