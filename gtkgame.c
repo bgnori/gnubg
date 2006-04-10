@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.559 2006/04/07 12:23:15 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.560 2006/04/10 07:51:45 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -9886,7 +9886,7 @@ static int GtkGetEnv(char* env)
 static void GtkRelationalAddMatch( gpointer *p, guint n, GtkWidget *pw )
 {
 	char env[100];
-	char buf[20];
+	char buf[200];
 	int exists = RelationalMatchExists();
 	if (exists == -1 ||
 		(exists == 1 && !GetInputYN(_("Match exists, overwrite?"))))
