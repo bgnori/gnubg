@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.24 2006/04/11 16:45:49 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.25 2006/04/11 19:32:51 Superfly_Jon Exp $
 */
 
 #include <config.h>
@@ -111,6 +111,7 @@ static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *notused, B
   	if (width != oldWidth || height != oldHeight)
     {
       oldWidth = width, oldHeight = height;
+	  {
 #if HAVE_GTKGLEXT
     	/*** OpenGL BEGIN ***/
     	GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
@@ -132,6 +133,7 @@ static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *notused, B
     	gdk_gl_drawable_gl_end(gldrawable);
     	/*** OpenGL END ***/
 #endif
+	  }
     }
   }
 	return TRUE;
