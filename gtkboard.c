@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.194 2006/02/24 17:41:47 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.195 2006/04/11 20:50:04 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1283,7 +1283,9 @@ gboolean place_chequer_or_revert(BoardData *bd,
     /* Check for hits, undoing hits, including pick-and pass */
 
 
-    if ( (source - dest2) * bd->drag_colour > 0 ) { /*We are moving forward */ 
+    if (( (source - dest2) * bd->drag_colour > 0 ) /*We are moving forward */ 
+		|| ToolbarIsEditing( pwToolbar ))	/* Or in edit mode */
+	{ 
         if( bd->points[ dest ] == -bd->drag_colour ) {
              /* outputf ("Hitting on %d \n", dest); */
              hit++;
