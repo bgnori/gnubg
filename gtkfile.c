@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.4 2006/02/06 08:45:24 Superfly_Jon Exp $
+ * $Id: gtkfile.c,v 1.5 2006/04/11 16:43:42 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -399,10 +399,6 @@ extern void GTKFileCommand24( char *szPrompt, char *szDefault, char *szCommand,
 
 	gtk_widget_destroy (filechooser);
 	External_IO_Format_destroy(eiof);
-
-    GTKDisallowStdin();
-    gtk_main();
-    GTKAllowStdin();
 }
 #endif
 
