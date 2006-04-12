@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.39 2005/03/26 00:21:31 jsegrave Exp $
+ * $Id: sound.c,v 1.40 2006/04/12 00:28:29 mdpetch Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -581,7 +581,7 @@ static void play_audio_file(soundcache *psc, const char *file,
     }
 #elif defined( AUDIO_SETINFO )
     {
-	struct audio_info_t ait;
+	audio_info_t ait;
 
 	AUDIO_INITINFO( &ait );
 	ait.play.sample_rate = psc->nSampleRate;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.43 2005/02/21 23:23:07 jsegrave Exp $
+ * $Id: dice.c,v 1.44 2006/04/12 00:28:29 mdpetch Exp $
  */
 
 #include "config.h"
@@ -108,6 +108,10 @@
 #define EREMOTE                 WSAEREMOTE
 #endif /* #ifndef WIN32 */
 #endif /* #if HAVE_SOCKETS */
+
+#if HAVE_ALLOCA_H
+#include <alloca.h>
+#endif
 
 #include "backgammon.h"
 #include "dice.h"
@@ -1120,7 +1124,7 @@ extern int UserRNGOpen( void *p, char *sz ) {
 #if __GNUC__
   char szCWD[ strlen( sz ) + 3 ];
 #elif HAVE_ALLOCA
-  char *szCWD = alloca( strlen( szOrig ) + 3 );
+  char *szCWD = alloca( strlen( sz ) + 3 );
 #else
   char szCWD[ 4096 ];
 #endif

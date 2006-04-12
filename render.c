@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.43 2005/02/21 23:23:08 jsegrave Exp $
+ * $Id: render.c,v 1.44 2006/04/12 00:28:29 mdpetch Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -34,6 +34,10 @@
 #include <isaac.h>
 #include <math.h>
 #include <stdlib.h>
+
+#if HAVE_ALLOCA_H
+#include <alloca.h>
+#endif
 
 #if HAVE_LIBART
 #include <libart_lgpl/art_misc.h>

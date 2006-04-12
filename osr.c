@@ -18,13 +18,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.14 2004/05/03 13:21:49 thyssen Exp $
+ * $Id: osr.c,v 1.15 2006/04/12 00:28:29 mdpetch Exp $
  */
 
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
 
+#if HAVE_ALLOCA_H
+#include <alloca.h>
+#endif
 
 #include "config.h"
 
