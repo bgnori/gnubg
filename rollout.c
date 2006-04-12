@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.144 2006/04/11 20:14:46 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.145 2006/04/12 00:34:52 mdpetch Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -31,6 +31,10 @@
 #ifndef alloca
 #define alloca __builtin_alloca
 #endif
+#endif
+
+#ifndef min
+#define min(x,y)   (((x) > (y)) ? (y) : (x))
 #endif
 
 #include <errno.h>
