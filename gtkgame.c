@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.560 2006/04/10 07:51:45 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.561 2006/04/12 19:14:36 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -115,6 +115,7 @@
 
 void DockPanels();
 
+#if USE_PYTHON
 static void ClearText(GtkTextView* pwText)
 {
   gtk_text_buffer_set_text(gtk_text_view_get_buffer(pwText), "", -1);
@@ -131,6 +132,7 @@ static char* GetText(GtkTextView* pwText)
 	pch = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
   return pch;
 }
+#endif
 
 #if USE_GTK2
 #define GTK_STOCK_DIALOG_GNU "gtk-dialog-gnu" /* stock gnu head icon */
@@ -5258,6 +5260,9 @@ static GtkWidget *AnalysisPage( analysiswidget *paw ) {
 
     pwSpin = 
 	    gtk_spin_button_new (GTK_ADJUSTMENT (paw->apadjSkill[i]), 1, 2);
+    /* Disable good and very good thresholds, as not used at the moment */
+    if (i == 0 || i == 1)
+      gtk_widget_set_sensitive(pwSpin, FALSE);
     
     gtk_table_attach (GTK_TABLE (pwTable), pwSpin, 1, 2, i, i+1,
                       (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
