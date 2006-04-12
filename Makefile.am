@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.140 2005/09/24 11:42:22 Superfly_Jon Exp $
+## $Id: Makefile.am,v 1.141 2006/04/12 23:45:50 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -25,6 +25,7 @@ SOUND_INCS =
 SOUND_SOURCES =
 SOUND_LIBS = 
 endif
+
 
 ## timecontrol
 if USE_TIMECONTROL

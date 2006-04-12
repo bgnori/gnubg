@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.130 2005/12/20 19:10:19 Superfly_Jon Exp $
+ * $Id: eval.h,v 1.131 2006/04/12 23:45:50 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -657,7 +657,5 @@ baseInputs(int anBoard[2][25], float arInput[]);
 
 extern void 
 CalculateRaceInputs(int anBoard[2][25], float inputs[]);
-
-extern int SSE_Supported();
 
 #endif
