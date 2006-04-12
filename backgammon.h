@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.305 2006/02/24 17:41:47 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.306 2006/04/12 06:53:35 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -70,6 +70,13 @@ typedef struct sigaction psighandler;
 typedef struct sigvec psighandler;
 #else
 typedef RETSIGTYPE (*psighandler)( int );
+#endif
+
+#ifndef MIN
+#define MIN(A,B) (((A) < (B)) ? (A) : (B))
+#endif
+#ifndef MAX
+#define MAX(A,B) (((A) > (B)) ? (A) : (B))
 #endif
 
 #define MAX_CUBE ( 1 << 12 )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.145 2006/04/12 00:34:52 mdpetch Exp $
+ * $Id: rollout.c,v 1.146 2006/04/12 06:53:35 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -31,10 +31,6 @@
 #ifndef alloca
 #define alloca __builtin_alloca
 #endif
-#endif
-
-#ifndef min
-#define min(x,y)   (((x) > (y)) ? (y) : (x))
 #endif
 
 #include <errno.h>
@@ -1482,7 +1478,7 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
 	/* Make sure final output is upto date */
 	for (alt = 0; alt < alternatives; ++alt) {
 	(*pfProgress)( aarMu, aarSigma, prc, aciLocal,
-					min(i, cGames - 1), alt, ajiJSD[ alt ].nRank + 1,
+					MIN(i, cGames - 1), alt, ajiJSD[ alt ].nRank + 1,
 					ajiJSD[ alt ].rJSD, fNoMore[ alt ], show_jsds,
 					pUserData );
 	}

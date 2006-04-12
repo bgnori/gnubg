@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.50 2005/09/24 10:45:35 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.51 2006/04/12 06:53:35 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -1624,8 +1624,8 @@ void RationalizeBox(ClipBox* pCb)
 	pCb->yy += .5f;
 	midX = (int)BoxMidWidth(pCb);
 	midY = (int)BoxMidHeight(pCb);
-	maxXoff = (int)MAX(midX - pCb->x, pCb->xx - midX) + 1;
-	maxYoff = (int)MAX(midY - pCb->y, pCb->yy - midY) + 1;
+	maxXoff = MAX(midX - (int)pCb->x, (int)pCb->xx - midX) + 1;
+	maxYoff = MAX(midY - (int)pCb->y, (int)pCb->yy - midY) + 1;
 	pCb->x = (float)(midX - maxXoff);
 	pCb->xx = (float)(midX + maxXoff);
 	pCb->y = (float)(midY - maxYoff);
