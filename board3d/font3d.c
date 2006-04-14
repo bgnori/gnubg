@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.2 2005/09/24 10:45:35 Superfly_Jon Exp $
+* $Id: font3d.c,v 1.3 2006/04/14 06:14:27 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -373,7 +373,7 @@ void PopulateContour(Contour* pContour, FT_Vector* points, char* pointTags, int 
  so it may well cause problems on different platforms / opengl implementations */
 #if WIN32
 /* Need to set the callback calling convention for windows */
-#define TESS_CALLBACK CALLBACK
+#define TESS_CALLBACK APIENTRY
 #else
 #define TESS_CALLBACK
 #endif
