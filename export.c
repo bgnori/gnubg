@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.29 2005/10/11 07:56:38 Superfly_Jon Exp $
+ * $Id: export.c,v 1.30 2006/04/14 09:13:53 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ void GenerateImage3d(renderdata *prd, const char* szName,
 	BoardData* bd = BOARD(pwBoard)->board_data;
 	BoardData bdpw;
 	renderdata rd;
-	GdkPixmap *ppm = gdk_pixmap_new(bd->drawing_area->window, nSizeX * nSize, nSizeY * nSize, -1 );
+	GdkPixmap *ppm = gdk_pixmap_new(bd->drawing_area->window, nSizeX * nSize, nSizeY * nSize, 24);
 	void *glpixPreview;
 
 	/* Copy current settings */

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.20 2005/03/30 15:40:41 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.21 2006/04/14 09:13:53 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -569,7 +569,7 @@ extern void Setup3dColourPicker(GtkWidget* parent, GdkWindow* wind)
 	dialogParent = parent;
 	refWind = wind;
 	if (!xppm)
-		xppm = gdk_pixmap_new(refWind, PREVIEW_WIDTH, PREVIEW_HEIGHT, -1);
+		xppm = gdk_pixmap_new(refWind, PREVIEW_WIDTH, PREVIEW_HEIGHT, 24);
 	CreatePreview();
 }
 

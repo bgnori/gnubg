@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.25 2006/04/11 19:32:51 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.26 2006/04/14 09:13:54 Superfly_Jon Exp $
 */
 
 #include <config.h>
@@ -425,7 +425,7 @@ void *CreatePreviewBoard3d(BoardData* bd, GdkPixmap *ppm)
 	gldrawable = GDK_GL_DRAWABLE(glpixmap);
 	glPixmapContext = gdk_gl_context_new (gldrawable, NULL, FALSE, GDK_GL_RGBA_TYPE);
 
-	InitBoardPreview(bd);
+	InitBoard3d(bd);
 
 	if (!gdk_gl_drawable_gl_begin (gldrawable, glPixmapContext))
 		return 0;
@@ -483,7 +483,7 @@ void *CreatePreviewBoard3d(BoardData* bd, GdkPixmap *ppm)
 {
 	SetupVisual();
 
-	InitBoardPreview(bd);
+	InitBoard3d(bd);
 
 	return ppm;
 }
