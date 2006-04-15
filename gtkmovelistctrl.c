@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.6 2006/04/14 09:13:53 Superfly_Jon Exp $
+ * $Id: gtkmovelistctrl.c,v 1.7 2006/04/15 01:35:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -27,6 +27,8 @@
 #include "format.h"
 #include "drawboard.h"
 #include "gtkchequer.h"
+#include "string.h"
+
 
 extern float rBest;
 extern GtkStyle *psHighlight;
