@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.146 2006/04/12 06:53:35 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.147 2006/04/16 10:50:48 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -967,7 +967,7 @@ int UpdateTimePassed()
 	static double lasttime = -1;
 	double current = get_time();
 
-	if (current - lasttime > 1000)
+	if (abs(current - lasttime) > 1000)
 	{
 		lasttime = current;
 		return TRUE;
