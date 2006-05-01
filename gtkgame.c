@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.561 2006/04/12 19:14:36 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.562 2006/05/01 20:27:35 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -426,8 +426,9 @@ int frozen = FALSE;
 
 static guint nStdin, nDisabledCount = 1;
 
-#if GTK_CHECK_VERSION(1,3,0)
-static char *ToUTF8( unsigned char *sz ) {
+#if 0 
+/* GTK_CHECK_VERSION(1,3,0) */
+static unsigned char *ToUTF8( unsigned char *sz ) {
 
     static unsigned char szOut[ 128 ], *pch;
 
@@ -8821,7 +8822,7 @@ extern void GTKMatchInfo( void ) {
     GTKAllowStdin();
 
     if( fOK ) {
-	int nYear, nMonth, nDay;
+	unsigned int nYear, nMonth, nDay;
 	
 	gtk_signal_disconnect( GTK_OBJECT( pwDialog ), id );
 	

@@ -22,7 +22,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: md5.c,v 1.2 2001/03/29 17:25:36 gtw Exp $
+ * $Id: md5.c,v 1.3 2006/05/01 20:27:35 oysteijo Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
@@ -62,6 +62,7 @@
 
 /* This array contains the bytes used to pad the buffer to the next
    64-byte boundary.  (RFC 1321, 3.1: Step 1)  */
+/* But this isn't used ???? */
 static const unsigned char fillbuf[64] = { 0x80, 0 /* , 0, 0, ...  */ };
 
 

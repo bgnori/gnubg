@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.610 2006/04/12 06:53:35 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.611 2006/05/01 20:27:35 oysteijo Exp $
  */
 
 #include "config.h"
@@ -6536,6 +6536,7 @@ extern void UserCommand( char *szCommand ) {
 #if USE_GTK
     if( !fTTY ) {
 	fInterrupt = FALSE;
+	pchTranslated = Convert( sz, szTerminalCharset, GNUBG_CHARSET );
 	HandleCommand( sz, acTop );
 	ResetInterrupt();
 
