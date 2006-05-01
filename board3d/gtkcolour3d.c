@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.21 2006/04/14 09:13:53 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.22 2006/05/01 20:17:32 oysteijo Exp $
 */
 
 #include "config.h"
@@ -116,7 +116,7 @@ static void Draw(Material* pMat)
 		char buf[100];
 		strcpy(buf, TEXTURE_PATH);
 		strcat(buf, pMat->textureInfo->file);
-		LoadTexture(&texture, buf, pMat->textureInfo->format);
+		LoadTexture(&texture, buf);
 
 		gluQuadricTexture(qobj, GL_TRUE);
 

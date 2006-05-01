@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.13 2005/09/24 10:45:35 Superfly_Jon Exp $
+* $Id: graph.c,v 1.14 2006/05/01 20:17:32 oysteijo Exp $
 */
 
 #include <config.h>
@@ -114,7 +114,7 @@ static void realize(GtkWidget *widget, void* arg)
 	BuildFont3d(&fonts);
 
 	total.texID = 0;
-	LoadTexture(&total, TEXTURE_PATH"total.bmp", TF_BMP);
+	LoadTexture(&total, TEXTURE_PATH"total.bmp");
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 

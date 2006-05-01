@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.21 2004/09/09 11:43:27 Superfly_Jon Exp $
+ * $Id: render.h,v 1.22 2006/05/01 20:17:32 oysteijo Exp $
  */
 
 #ifndef _RENDER_H_
@@ -51,11 +51,6 @@ typedef struct _Texture
 #define FILENAME_SIZE 15
 #define NAME_SIZE 20
 
-typedef enum _TextureFormat
-{
-	TF_BMP, TF_PNG, TF_COUNT
-} TextureFormat;
-
 typedef enum _TextureType
 {
 	TT_NONE = 1, TT_GENERAL = 2, TT_PIECE = 4, TT_HINGE = 8, TT_DISABLED = 16, TT_COUNT = 3
@@ -66,7 +61,6 @@ typedef struct _TextureInfo
 	char file[FILENAME_SIZE + 1];
 	char name[NAME_SIZE + 1];
 	TextureType type;
-	TextureFormat format;
 } TextureInfo;
 
 typedef struct _Material
