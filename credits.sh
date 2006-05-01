@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.119 2004/11/03 08:20:10 oysteijo Exp $
+# $Id: credits.sh,v 1.120 2006/05/01 20:22:20 oysteijo Exp $
 # 
 
 column < /dev/null || exit 0
@@ -70,7 +70,6 @@ Dmitri I GOULIAEV,Russian
 EOF
 
 cat > $credit <<EOF
-Elias Kritikos
 Misja Alma
 Christian Anthon
 Kazuaki Asai
@@ -115,6 +114,7 @@ Johnny Kirk
 Gerhard Knop
 Robert Konigsberg
 Martin Krainer
+Elias Kritikos
 Corrin Lakeland
 Tim Laursen
 Eli Liang
@@ -144,6 +144,7 @@ James Rech
 Jared Riley
 Klaus Rindholt
 Oliver Riordan
+Alex Romosan
 Hans-Juergen Schaefer
 Steve Schreiber
 Hugh Sconyers
