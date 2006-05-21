@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.611 2006/05/01 20:27:35 oysteijo Exp $
+ * $Id: gnubg.c,v 1.612 2006/05/21 16:50:06 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4434,8 +4434,9 @@ extern void PromptForExit( void ) {
 	while( gtk_events_pending() )
 	    gtk_main_iteration();
     }
+	SoundWait();	// Wait for sound to finish before final close
 #endif
-    
+
     if( fInteractive )
 	PortableSignalRestore( SIGINT, &shInterruptOld );
     
