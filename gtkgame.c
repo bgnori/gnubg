@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.563 2006/05/02 10:36:46 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.564 2006/05/21 16:49:32 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6337,7 +6337,7 @@ extern void GTKEval( char *szOutput ) {
     GtkWidget *pwDialog = GTKCreateDialog( _("GNU Backgammon - Evaluation"),
             DT_INFO, NULL, NULL ), *pwText = gtk_text_new( NULL, NULL );
     GdkFont *pf;
-    GtkWidget *pwButtons, *pwCopy = gtk_button_new_with_label( _("Copy") );
+    GtkWidget *scrolledwindow1, *pwButtons, *pwCopy = gtk_button_new_with_label( _("Copy") );
 
     pf = gdk_font_load( "-b&h-lucidatypewriter-medium-r-normal-sans-12-"
 			"*-*-*-m-*-*-*" );
@@ -6352,7 +6352,7 @@ extern void GTKEval( char *szOutput ) {
     gtk_text_insert( GTK_TEXT( pwText ), pf, NULL, NULL, szOutput, -1 );
 
     /* create a vertical scrollwindow container for the eval text */
-    GtkWidget *scrolledwindow1 = gtk_scrolled_window_new (NULL, NULL);
+    scrolledwindow1 = gtk_scrolled_window_new (NULL, NULL);
     gtk_container_add (GTK_CONTAINER( DialogArea( pwDialog, DA_MAIN ) ),
             scrolledwindow1);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolledwindow1),
