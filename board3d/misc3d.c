@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.52 2006/05/01 20:17:32 oysteijo Exp $
+* $Id: misc3d.c,v 1.53 2006/05/21 17:28:30 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -51,8 +51,7 @@ extern void setupFlag(BoardData* bd);
 extern void setupDicePaths(BoardData* bd, Path dicePaths[2]);
 extern void waveFlag(BoardData* bd, float wag);
 extern float getDiceSize(BoardData* bd);
-static
-void SetTexture(BoardData* bd, Material* pMat, const char* filename);
+static void SetTexture(BoardData* bd, Material* pMat, const char* filename);
 
 /* Test function to show normal direction */
 void CheckNormal()
