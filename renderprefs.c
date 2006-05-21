@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.20 2006/05/08 19:35:10 oysteijo Exp $
+ * $Id: renderprefs.c,v 1.21 2006/05/21 15:56:27 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -158,39 +158,39 @@ static int SetColourF( float arColour[ 4 ], char *sz ) {
 #endif /* USE_GTK */
 
 #if USE_BOARD3D
-static int SetMaterialCommon(Material* pMat, char **sz)
+static int SetMaterialCommon(Material* pMat, char *sz, char **arg)
 {
 	float opac;
 	char* pch;
 
-	if (SetColourF(pMat->ambientColour, *sz) != 0)
+	if (SetColourF(pMat->ambientColour, sz) != 0)
 		return -1;
-	*sz += strlen(*sz) + 1;
+	sz += strlen(sz) + 1;
 
-	if (SetColourF(pMat->diffuseColour, *sz) != 0)
+	if (SetColourF(pMat->diffuseColour, sz) != 0)
 		return -1;
-	*sz += strlen(*sz) + 1;
+	sz += strlen(sz) + 1;
 
-	if (SetColourF(pMat->specularColour, *sz) != 0)
+	if (SetColourF(pMat->specularColour, sz) != 0)
 		return -1;
 
-	if (*sz)
-		*sz += strlen(*sz) + 1;
-	if ((pch = strchr(*sz, ';')))
+	if (sz)
+		sz += strlen(sz) + 1;
+	if ((pch = strchr(sz, ';')))
 		*pch = 0;
 
-	if (*sz)
-		pMat->shine = atoi(*sz);
+	if (sz)
+		pMat->shine = atoi(sz);
 	else
 		pMat->shine = 128;
 
-	if (*sz)
-		*sz += strlen(*sz) + 1;
-	if ((pch = strchr(*sz, ';')))
+	if (sz)
+		sz += strlen(sz) + 1;
+	if ((pch = strchr(sz, ';')))
 		*pch = 0;
-	if (*sz)
+	if (sz)
 	{
-		int o = atoi(*sz);
+		int o = atoi(sz);
 		if (o == 100)
 			opac = 1;
 		else
@@ -204,9 +204,12 @@ static int SetMaterialCommon(Material* pMat, char **sz)
 
 	if (pch)
 	{
-		*sz += strlen(*sz) + 1;
-		if (*sz && **sz)
+		sz += strlen(sz) + 1;
+		if (sz && *sz)
+		{
+			*arg = sz;
 			return 1;
+		}
 	}
 	return 0;
 }
@@ -216,12 +219,13 @@ static int SetMaterial(Material* pMat, char *sz)
 	int ret=0;
 	if (fX)
 	{
-		ret=SetMaterialCommon(pMat, &sz);
+		char *arg;
+		ret=SetMaterialCommon(pMat, sz, &arg);
 		pMat->textureInfo = 0;
 		pMat->pTexture = 0;
 		if (ret > 0)
 		{
-			FindTexture(&pMat->textureInfo, sz);
+			FindTexture(&pMat->textureInfo, arg);
 			ret = 0;
 		}
 	}
@@ -230,12 +234,13 @@ static int SetMaterial(Material* pMat, char *sz)
 
 static int SetMaterialDice(Material* pMat, char *sz, int* flag)
 {
-	int ret=SetMaterialCommon(pMat, &sz);
+	char *arg;
+	int ret=SetMaterialCommon(pMat, sz, &arg);
 	/* die colour same as chequer colour */
 	*flag = TRUE;
 	if (ret > 0)
 	{
-		*flag = (toupper(*sz) == 'Y');
+		*flag = (toupper(*arg) == 'Y');
 		ret = 0;
 	}
 	return ret;
