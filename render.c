@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.45 2006/05/24 18:54:53 Superfly_Jon Exp $
+ * $Id: render.c,v 1.46 2006/05/26 09:53:47 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -45,6 +45,7 @@
 
 #if USE_GTK2
 #include <gtk/gtk.h>
+#include <cairo.h>
 #endif
 
 static randctx rc;
