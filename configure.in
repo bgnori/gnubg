@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-AC_REVISION($Revision: 1.137 $)
+AC_REVISION($Revision: 1.138 $)
 AC_INIT([GNU Backgammon],[0.14.3-devel],[bug-gnubg@gnu.org],[gnubg])
 AC_CONFIG_SRCDIR(gnubg.c)
 AM_INIT_AUTOMAKE
@@ -382,7 +382,6 @@ if test "$bearoff_database" = "static"; then
 fi
 
 AM_CONDITIONAL(CROSS_COMPILING, test "$cross_compiling" = "yes")
-AM_CONDITIONAL(XML_MANUAL, test "$no_libxml2" != "yes" -a "$gtk2" = "yes")
 
 dnl AC_ARG_WITH(freetype,[  --with-freetype         compile with freetype2 support])
 dnl if test "$with_freetype" != "no"; then
