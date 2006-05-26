@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.565 2006/05/26 09:53:47 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.566 2006/05/26 18:40:11 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -39,7 +39,6 @@
 #define GTK_ENABLE_BROKEN /* for GtkText */
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-#include <gdk/gdkx.h> /* for ConnectionNumber GTK_DISPLAY -- get rid of this */
 #include <gtk/gtktext.h>
 
 #if HAVE_STROPTS_H
