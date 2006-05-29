@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.99 2006/02/24 17:41:47 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.100 2006/05/29 09:05:20 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -27,10 +27,6 @@
 #include "backgammon.h"
 #include "rollout.h"
 #include "relational.h"
-
-#if !HAVE_GTK_OPTION_MENU_GET_HISTORY
-extern gint gtk_option_menu_get_history (GtkOptionMenu *option_menu);
-#endif
 
 typedef enum _dialogarea {
     DA_MAIN,
