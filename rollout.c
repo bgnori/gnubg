@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.147 2006/04/16 10:50:48 c_anthon Exp $
+ * $Id: rollout.c,v 1.148 2006/06/08 18:53:51 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1477,6 +1477,7 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
 
 	/* Make sure final output is upto date */
 	for (alt = 0; alt < alternatives; ++alt) {
+	 if (nGamesDone[ alt ] > 0)
 	(*pfProgress)( aarMu, aarSigma, prc, aciLocal,
 					MIN(i, cGames - 1), alt, ajiJSD[ alt ].nRank + 1,
 					ajiJSD[ alt ].rJSD, fNoMore[ alt ], show_jsds,
