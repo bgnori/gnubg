@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.569 2006/06/02 21:05:31 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.570 2006/06/08 18:55:02 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -111,6 +111,26 @@
 #define GNUBGMENURC ".gnubgmenurc"
 
 void DockPanels();
+
+#if !HAVE_GTK_OPTION_MENU_GET_HISTORY
+extern gint gtk_option_menu_get_history (GtkOptionMenu *option_menu) {
+    
+    GtkWidget *active_widget;
+  
+    g_return_val_if_fail (GTK_IS_OPTION_MENU (option_menu), -1);
+
+    if (option_menu->menu) {
+	active_widget = gtk_menu_get_active (GTK_MENU (option_menu->menu));
+
+	if (active_widget)
+	    return g_list_index (GTK_MENU_SHELL (option_menu->menu)->children,
+				 active_widget);
+	else
+	    return -1;
+    } else
+	return -1;
+}
+#endif
 
 #if USE_PYTHON
 static void ClearText(GtkTextView* pwText)
