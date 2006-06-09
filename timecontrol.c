@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: timecontrol.c,v 1.18 2004/05/07 14:28:23 thyssen Exp $
+ * $Id: timecontrol.c,v 1.19 2006/06/09 22:04:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -904,12 +904,8 @@ static char staticBuf[20];
 }
 
 
-#if USE_GUI
-#if USE_GTK
+#if USE_GTK2
 extern gboolean UpdateClockNotify(gpointer *p)
-#else
-extern int UpdateClockNotify(event *pev, void *p)
-#endif
 #else
 extern int UpdateClockNotify(void *p)
 #endif

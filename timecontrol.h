@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: timecontrol.h,v 1.7 2005/02/21 23:23:08 jsegrave Exp $
+ * $Id: timecontrol.h,v 1.8 2006/06/09 22:04:52 c_anthon Exp $
  */
 
 #ifndef _TIMECONTROL_H_
@@ -77,12 +77,8 @@ extern char *FormatClock(struct timeval * ptl , char *buf);
  * issue a 
  * MOVE_TIME record if time has run out
  */ 
-#if USE_GUI
-#if USE_GTK
+#if USE_GTK2
 extern gboolean UpdateClockNotify(gpointer *p); 
-#else
-extern int UpdateClockNotify(event *pev, void *p); 
-#endif
 #else
 extern int UpdateClockNotify(void *p);
 #endif
