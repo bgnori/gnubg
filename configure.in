@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-AC_REVISION($Revision: 1.141 $)
+AC_REVISION($Revision: 1.142 $)
 AC_INIT([GNU Backgammon],[0.14.3-devel],[bug-gnubg@gnu.org],[gnubg])
 AC_CONFIG_SRCDIR(gnubg.c)
 AM_INIT_AUTOMAKE
@@ -302,7 +302,6 @@ if test "$with_gtk" != "no"; then
 fi
 AM_CONDITIONAL(USE_GTK2, test "$no_gtk" != "yes" )
 AM_CONDITIONAL(USE_GTK, test "$no_gtk" != "yes" )
-AM_CONDITIONAL(USE_GUI, test "$no_gtk" != "yes" )
 AM_CONDITIONAL(USE_BOARD3D, test "$no_board3d" != "yes" )
 
 AM_PATH_GLIB_2_0(2.0.0)
