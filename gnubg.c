@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.617 2006/05/29 11:26:17 c_anthon Exp $
+ * $Id: gnubg.c,v 1.618 2006/06/09 14:33:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3644,9 +3644,10 @@ extern void CommandHelp( char *sz ) {
     char szCommand[ 128 ], szUsage[ 128 ], *szHelp;
     
 #if USE_GTK2 
-    if( fX )
-	GTKHelp( sz );
-    return;
+    if( fX ){
+        GTKHelp( sz );
+        return;
+    }
 #endif
     
     if( !( pc = FindHelpCommand( &cTop, sz, szCommand, szUsage ) ) ) {
