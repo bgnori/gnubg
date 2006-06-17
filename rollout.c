@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.148 2006/06/08 18:53:51 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.149 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -51,7 +51,7 @@
 #include "matchid.h"
 #include "positionid.h"
 #include "rollout.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "format.h"
 
 int log_rollouts = 0;

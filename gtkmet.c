@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.10 2006/05/26 09:53:47 c_anthon Exp $
+ * $Id: gtkmet.c,v 1.11 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -36,7 +36,7 @@
 #include "backgammon.h"
 #include "eval.h"
 #include "gtkgame.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "matchequity.h"
 #include "gtkmet.h"
 

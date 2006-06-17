@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.16 2006/03/28 22:35:45 c_anthon Exp $
+ * $Id: format.c,v 1.17 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #include "config.h"
@@ -29,7 +29,7 @@
 #include "eval.h"
 #include "format.h"
 
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "export.h"
 
 

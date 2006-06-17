@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.48 2004/10/26 19:11:35 oysteijo Exp $
+ * $Id: external.c,v 1.49 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #include "config.h"
@@ -104,7 +104,7 @@
 #include "drawboard.h"
 #include "external.h"
 #include "rollout.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 
 #if HAVE_SOCKETS
 /* Stuff for the yacc/lex parser */
@@ -651,7 +651,7 @@ extern void CommandExternal( char *sz ) {
       outputf( _("Accepted connection from %s.\n"), 
                  inet_ntoa( saRemote.sin_addr ) );
 
-      PushLocale( "C" );
+      /* PushLocale( "C" ); Fuck */
 
       while( !ExternalRead( hPeer, szCommand, sizeof( szCommand ) ) ) {
 
@@ -690,7 +690,7 @@ extern void CommandExternal( char *sz ) {
       }
 
 
-      PopLocale();
+      /* PopLocale(); */
 
       closesocket( hPeer );
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.9 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: gtkmovefilter.c,v 1.10 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -36,7 +36,7 @@
 #include "backgammon.h"
 #include "eval.h"
 #include "gtkgame.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "matchequity.h"
 #include "gtkmovefilter.h"
 
@@ -610,19 +610,19 @@ SetMovefilterCommands ( const char *sz,
 
   int i, j;
   char *szCmd;
+  gchar buf[G_ASCII_DTOSTR_BUF_SIZE];
 
   for ( i = 0; i < MAX_FILTER_PLIES; ++i )
     for ( j = 0; j <= i; ++j ) {
       if ( aamfNew[ i ][ j ].Accept != aamfOld[ i ][ j ].Accept ||
            aamfNew[ i ][ j ].Extra != aamfOld[ i ][ j ].Extra ||
            aamfNew[ i ][ j ].Threshold != aamfOld[ i ][ j ].Threshold ) {
-        PushLocale ( "C" );
-        szCmd = g_strdup_printf ( "%s %d %d %d %d %f",
+        szCmd = g_strdup_printf ( "%s %d %d %d %d %s",
                                   sz, i + 1, j,
                                   aamfNew[ i ][ j ].Accept,
                                   aamfNew[ i ][ j ].Extra,
-                                  aamfNew[ i ][ j ].Threshold );
-        PopLocale ();
+                                  g_ascii_formatd( buf, G_ASCII_DTOSTR_BUF_SIZE,
+			           "%0.3f", aamfNew[ i ][ j ].Threshold ));
         UserCommand ( szCmd );
         g_free ( szCmd );
       }

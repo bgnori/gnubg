@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff1.c,v 1.7 2005/02/14 13:18:06 Superfly_Jon Exp $
+ * $Id: makebearoff1.c,v 1.8 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #include "config.h"
@@ -32,7 +32,7 @@
 #include "eval.h"
 #include "positionid.h"
 #include "getopt.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "bearoff.h"
 
 static void
@@ -57,7 +57,7 @@ PrintPre ( FILE *pf ) {
          " * along with this program; if not, write to the Free Software\n"
          " * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
          " *\n"
-         " * $Id: makebearoff1.c,v 1.7 2005/02/14 13:18:06 Superfly_Jon Exp $\n"
+         " * $Id: makebearoff1.c,v 1.8 2006/06/17 17:58:27 oysteijo Exp $\n"
          " */\n"
          "\n\n\n"
          "#include <stdio.h>\n"

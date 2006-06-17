@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.167 2006/04/07 12:20:23 c_anthon Exp $
+ * $Id: html.c,v 1.168 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #include "config.h"
@@ -51,7 +51,7 @@
 #include "simplelibgen.h"
 #endif
 
-#include "i18n.h"
+#include <glib/gi18n.h>
 
 typedef enum _stylesheetclass {
   CLASS_MOVETABLE,
@@ -173,7 +173,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.167 2006/04/07 12:20:23 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.168 2006/06/17 17:58:27 oysteijo Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1853,7 +1853,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.167 $";
+  const char szVersion[] = "$Revision: 1.168 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1933,7 +1933,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.167 $";
+  const char szVersion[] = "$Revision: 1.168 $";
   int iMajor, iMinor;
   char *pc;
 

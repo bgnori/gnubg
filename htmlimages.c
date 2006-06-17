@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.29 2006/05/24 18:54:53 Superfly_Jon Exp $
+ * $Id: htmlimages.c,v 1.30 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -48,7 +48,7 @@
 
 #include "backgammon.h"
 #include "export.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "render.h"
 #include "renderprefs.h"
 #include "boardpos.h"

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.48 2005/02/10 10:31:12 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.49 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -37,7 +37,7 @@
 
 #include <stdio.h>
 #include <glib.h>
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "backgammon.h"
 #include "eval.h"
 #include "matchequity.h"
@@ -2015,7 +2015,7 @@ PythonMatch(PyObject* self IGNORE, PyObject* args, PyObject* keywds)
     return 0;
   }
 
-  PushLocale("C");
+  /* PushLocale("C"); */
 
   if (g->i != 0)
   {
@@ -2151,7 +2151,7 @@ PythonMatch(PyObject* self IGNORE, PyObject* args, PyObject* keywds)
 /* 		     PyInt_FromLong(SGF_ROLLOUT_VER)); */
   }
 
-  PopLocale();
+  /* PopLocale(); */
 
   return matchDict;
 }

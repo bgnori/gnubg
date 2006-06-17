@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.11 2004/07/04 12:27:26 thyssen Exp $
+ * $Id: openurl.c,v 1.12 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #include "config.h"
@@ -36,7 +36,7 @@
 #endif
 
 #include "openurl.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #ifdef WIN32
 #define WIN32_LEAN_AND_MEAN 1
 #include "windows.h"

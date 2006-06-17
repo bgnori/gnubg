@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.24 2005/02/25 11:42:35 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.25 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -38,7 +38,7 @@
 #include "eval.h"
 #include "dice.h"
 #include "gtkgame.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "sound.h"
 #include "drawboard.h"
 #include "matchequity.h"
@@ -1770,19 +1770,25 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
 
   if( pow->padjLearning->value != rAlpha ) 
   { 
-     lisprintf(sz, "set training alpha %0.3f", pow->padjLearning->value); 
+     gchar buf[G_ASCII_DTOSTR_BUF_SIZE];
+     sprintf(sz, "set training alpha %s", 
+       g_ascii_formatd( buf, G_ASCII_DTOSTR_BUF_SIZE, "%0.3f", pow->padjLearning->value)); 
      UserCommand(sz); 
   }
 
   if( pow->padjAnnealing->value != rAnneal ) 
   { 
-     lisprintf(sz, "set training anneal %0.3f", pow->padjAnnealing->value); 
+     gchar buf[G_ASCII_DTOSTR_BUF_SIZE];
+     sprintf(sz, "set training anneal %s",
+       g_ascii_formatd( buf, G_ASCII_DTOSTR_BUF_SIZE, "%0.3f", pow->padjAnnealing->value)); 
      UserCommand(sz); 
   }
 
   if( pow->padjThreshold->value != rThreshold ) 
   { 
-     lisprintf(sz, "set training threshold %0.3f", pow->padjThreshold->value); 
+     gchar buf[G_ASCII_DTOSTR_BUF_SIZE];
+     sprintf(sz, "set training threshold %s", 
+       g_ascii_formatd( buf, G_ASCII_DTOSTR_BUF_SIZE, "%0.3f", pow->padjThreshold->value)); 
      UserCommand(sz); 
   }
   

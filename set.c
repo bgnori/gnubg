@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.252 2006/06/09 22:04:52 c_anthon Exp $
+ * $Id: set.c,v 1.253 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #include "config.h"
@@ -77,7 +77,7 @@
 #include "format.h"
 #include "boarddim.h"
 
-#include "i18n.h"
+#include <glib/gi18n.h>
 
 #include "sound.h"
 

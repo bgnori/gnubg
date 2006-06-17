@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.c,v 1.14 2005/11/18 16:53:46 jsegrave Exp $
+ * $Id: gtktexi.c,v 1.15 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -43,7 +43,7 @@
 
 #include "list.h"
 #include "hash.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 
 #define BLOCK_SIZE 1024
 #define MAX_ITEM_DEPTH 8

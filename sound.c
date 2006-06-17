@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.40 2006/04/12 00:28:29 mdpetch Exp $
+ * $Id: sound.c,v 1.41 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -84,7 +84,7 @@
 
 #include "backgammon.h"
 #include "eval.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "sound.h"
 #include "path.h"
 

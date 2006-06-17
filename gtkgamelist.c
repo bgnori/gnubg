@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.15 2006/02/02 08:03:25 Superfly_Jon Exp $
+* $Id: gtkgamelist.c,v 1.16 2006/06/17 17:58:27 oysteijo Exp $
 */
 
 #include "config.h"
@@ -26,7 +26,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <string.h>
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "backgammon.h"
 #include "gtkboard.h"
 #include "drawboard.h"

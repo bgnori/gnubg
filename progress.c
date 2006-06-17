@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.20 2005/05/08 12:34:56 Superfly_Jon Exp $
+ * $Id: progress.c,v 1.21 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #include "config.h"
@@ -36,7 +36,7 @@
 #include "rollout.h"
 #include "progress.h"
 #include "backgammon.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "format.h"
 #include "time.h"
 

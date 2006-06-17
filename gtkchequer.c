@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.66 2006/02/24 17:41:47 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.67 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -41,7 +41,7 @@
 #include "gtkboard.h"
 #include "gtkgame.h"
 #include "gtkchequer.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "gtktempmap.h"
 #include "progress.h"
 #include "format.h"

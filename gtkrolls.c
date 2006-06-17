@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.10 2005/02/14 13:17:13 Superfly_Jon Exp $
+ * $Id: gtkrolls.c,v 1.11 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -38,7 +38,7 @@
 #include "gtkrolls.h"
 #include "gtkgame.h"
 #include "drawboard.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "format.h"
 
 #if USE_GTK2

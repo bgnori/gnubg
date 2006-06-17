@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.44 2006/04/12 00:28:29 mdpetch Exp $
+ * $Id: dice.c,v 1.45 2006/06/17 17:58:27 oysteijo Exp $
  */
 
 #include "config.h"
@@ -118,7 +118,7 @@
 #include "md5.h"
 #include "mt19937ar.h"
 #include "isaac.h"
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "external.h"
 #include "path.h"
 
