@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.24 2006/05/01 20:17:32 oysteijo Exp $
+* $Id: inc3d.h,v 1.25 2006/06/17 17:41:50 oysteijo Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -31,7 +31,7 @@
 #endif
 
 #include <stdio.h>
-#include "i18n.h"
+#include <glib/gi18n.h>
 
 #if USE_GTK
 #include <gtk/gtk.h>
