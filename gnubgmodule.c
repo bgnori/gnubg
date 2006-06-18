@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.49 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: gnubgmodule.c,v 1.50 2006/06/18 11:20:58 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2015,8 +2015,6 @@ PythonMatch(PyObject* self IGNORE, PyObject* args, PyObject* keywds)
     return 0;
   }
 
-  /* PushLocale("C"); */
-
   if (g->i != 0)
   {
       PyErr_SetString(PyExc_StandardError, "First game missing from match");
@@ -2150,8 +2148,6 @@ PythonMatch(PyObject* self IGNORE, PyObject* args, PyObject* keywds)
 /*     DictSetItemSteal(matchInfoDict, "sgf-rollout-version", */
 /* 		     PyInt_FromLong(SGF_ROLLOUT_VER)); */
   }
-
-  /* PopLocale(); */
 
   return matchDict;
 }

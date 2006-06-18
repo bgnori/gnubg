@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.9 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: makeweights.c,v 1.10 2006/06/18 11:20:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -69,11 +69,7 @@ extern int main( int argc, char *argv[] ) {
       usage (argv[0]);
     }
 
-    /* i18n */
-
-#if HAVE_SETLOCALE
-    setlocale (LC_ALL, "");
-#endif
+    setlocale (LC_ALL, "C");
     bindtextdomain (PACKAGE, LOCALEDIR);
     textdomain (PACKAGE);
 
@@ -95,22 +91,12 @@ extern int main( int argc, char *argv[] ) {
 	
     fwrite( ar, sizeof( ar[ 0 ] ), 2, output );
 
-    PushLocale ( "C" );
-
     for( c = 0; !NeuralNetLoad( &nn, stdin ); c++ )
       if( NeuralNetSaveBinary( &nn, output ) )
 	    return EXIT_FAILURE;
-
-    PopLocale ();
 
     fprintf( stderr, _("%d nets converted\n"), c );
 
     return EXIT_SUCCESS;
 
 }
-
-
-
-
-
-

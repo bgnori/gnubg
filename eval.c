@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.290 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: eval.c,v 1.291 2006/06/18 11:20:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -895,8 +895,6 @@ EvalInitialise( char *szWeights, char *szWeightsBinary,
                          szWeights, WEIGHTS_VERSION, szFileVersion );
 	    else {
 
-                /* PushLocale ( "C" ); */
-
 		if( !( fReadWeights =
 		       !NeuralNetLoad( &nnContact, pfWeights ) &&
 		       !NeuralNetLoad( &nnRace, pfWeights ) &&
@@ -907,8 +905,6 @@ EvalInitialise( char *szWeights, char *szWeightsBinary,
 		       !NeuralNetLoad( &nnpRace, pfWeights ) 
 		       ) )
 		    perror( szWeights );
-
-                /* PopLocale (); */
 
 		fclose( pfWeights );
 	    }

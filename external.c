@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.49 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: external.c,v 1.50 2006/06/18 11:20:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -651,8 +651,6 @@ extern void CommandExternal( char *sz ) {
       outputf( _("Accepted connection from %s.\n"), 
                  inet_ntoa( saRemote.sin_addr ) );
 
-      /* PushLocale( "C" ); Fuck */
-
       while( !ExternalRead( hPeer, szCommand, sizeof( szCommand ) ) ) {
 
         if ( ! ( pec = ExtParse( szCommand ) ) ) {
@@ -688,12 +686,7 @@ extern void CommandExternal( char *sz ) {
         }
 
       }
-
-
-      /* PopLocale(); */
-
       closesocket( hPeer );
-
     } while ( 1 );
 #endif
 }
