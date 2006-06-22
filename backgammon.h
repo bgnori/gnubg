@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.307 2006/06/09 22:04:52 c_anthon Exp $
+ * $Id: backgammon.h,v 1.308 2006/06/22 18:55:07 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -644,7 +644,7 @@ extern void ProgressValue ( int iValue );
 extern void ProgressValueAdd ( int iValue );
 extern void ProgressEnd( void );
 
-#if USE_GTK2
+#if USE_GTK
 extern gint NextTurnNotify( gpointer p );
 extern void UserCommand( char* sz );
 extern void HandleXAction( void );
@@ -652,8 +652,6 @@ extern void HandleXAction( void );
 extern int fReadingCommand;
 extern void HandleInput( char* sz );
 #endif
-#endif
-#if USE_GTK2
 extern void HideAllPanels ( gpointer *p, guint n, GtkWidget *pw );
 extern void ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw );
 #endif
@@ -1288,13 +1286,7 @@ dirname ( char* filename );
 #endif
 
 #if USE_GTK
-#  if GTK_CHECK_VERSION(1,3,0) || defined (WIN32)
-#    define GNUBG_CHARSET "UTF-8"
-#  else
-#    define GNUBG_CHARSET "ISO-8859-1"
-#  endif
-#else
-#  define GNUBG_CHARSET "ISO-8859-1"
+#define GNUBG_CHARSET "UTF-8"
 #endif
 
 extern char *

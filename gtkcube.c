@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.43 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: gtkcube.c,v 1.44 2006/06/22 18:55:07 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -809,10 +809,8 @@ CubeAnalysisEvalSettings ( GtkWidget *pw, void *unused ) {
 
   SetEvaluation ( NULL, 0, NULL );
 
-#if GTK_CHECK_VERSION(2,0,0)
   /* bring the dialog holding this button to the top */
   gtk_window_present ( GTK_WINDOW ( gtk_widget_get_toplevel( pw ) ) );
-#endif
 
 }
 
@@ -821,10 +819,8 @@ CubeAnalysisRolloutSettings ( GtkWidget *pw, void *unused ) {
 
   SetRollouts ( NULL, 0, NULL );
 
-#if GTK_CHECK_VERSION(2,0,0)
   /* bring the dialog holding this button to the top */
   gtk_window_present ( GTK_WINDOW ( gtk_widget_get_toplevel( pw ) ) );
-#endif
 
 }
 

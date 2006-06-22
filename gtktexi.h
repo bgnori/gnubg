@@ -16,19 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.h,v 1.5 2004/10/05 16:13:00 Superfly_Jon Exp $
+ * $Id: gtktexi.h,v 1.6 2006/06/22 18:55:07 c_anthon Exp $
  */
 
 #ifndef _GTKTEXI_H_
 #define _GTKTEXI_H_
 
-#if !HAVE_CONFIG_H
-/* Compiling standalone; assume all dependencies are satisfied. */
-#define HAVE_LIBXML2 1
-#define USE_GTK2 1
-#endif
-
-#if HAVE_LIBXML2 && USE_GTK2
+#if HAVE_LIBXML2 && USE_GTK
 
 #define HAVE_GTKTEXI 1
 

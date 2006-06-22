@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.22 2006/05/01 20:17:32 oysteijo Exp $
+ * $Id: render.h,v 1.23 2006/06/22 18:55:07 c_anthon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -221,11 +221,8 @@ extern void RenderDice( renderdata *prd, unsigned char *puch0,
 extern void RenderPips( renderdata *prd, unsigned char *puch0,
 			unsigned char *puch1, int nStride );
 extern void RenderImages( renderdata *prd, renderimages *pri );
-#if HAVE_LIBART
 extern void RenderArrows( renderdata *prd, unsigned char* puch0,
 			  unsigned char* puch1, int nStride );
-#endif
-
 extern void
 RenderBoardLabels( renderdata *prd, 
                    unsigned char *achLo, unsigned char *achHi, int nStride );

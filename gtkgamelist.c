@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.16 2006/06/17 17:58:27 oysteijo Exp $
+* $Id: gtkgamelist.c,v 1.17 2006/06/22 18:55:07 c_anthon Exp $
 */
 
 #include "config.h"
@@ -33,23 +33,6 @@
 #include "positionid.h"
 #include "gtkgame.h"
 
-#if !GTK_CHECK_VERSION(1,3,10)
-#define gtk_style_get_font(s) ((s)->font)
-
-static int gtk_compare_fonts(GtkStyle* psOne, GtkStyle* psTwo)
-{
-	return gdk_font_equal(gtk_style_get_font(psOne), gtk_style_get_font(psTwo));
-}
-
-static void gtk_set_font(GtkStyle* psStyle, GtkStyle* psValue)
-{
-	GdkFont *pf = gtk_style_get_font(psValue);
-	psStyle->font = pf;
-	gdk_font_ref( pf );
-}
-
-#else
-
 static int gtk_compare_fonts(GtkStyle* psOne, GtkStyle* psTwo)
 {
 	return pango_font_description_equal(psOne->font_desc, psTwo->font_desc);
@@ -59,8 +42,6 @@ static void gtk_set_font(GtkStyle* psStyle, GtkStyle* psValue)
 {
 	psStyle->font_desc = pango_font_description_copy(psValue->font_desc);
 }
-
-#endif
 
 GtkWidget *pwGameList;
 GtkStyle *psGameList, *psCurrent, *psCubeErrors[3], *psChequerErrors[3], *psLucky[LUCK_VERYGOOD + 1];

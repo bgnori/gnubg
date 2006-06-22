@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.c,v 1.10 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: gtkcolour.c,v 1.11 2006/06/22 18:55:07 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -29,13 +29,6 @@
 #include "gtkcolour.h"
 #include <glib/gi18n.h>
 
-#if !GTK_CHECK_VERSION(1,3,10)
-#define gtk_color_selection_set_has_opacity_control(p,f) \
-    gtk_color_selection_set_opacity(p,f)
-#define gtk_color_selection_get_has_opacity_control(p) \
-    ( (p)->use_opacity )
-#endif
-
 #define COLOUR_SEL_DIA( pcp ) GTK_COLOR_SELECTION_DIALOG( (pcp)->pwColourSel )
 #define COLOUR_SEL( pcp ) GTK_COLOR_SELECTION( COLOUR_SEL_DIA(pcp)->colorsel )
 
@@ -43,7 +36,7 @@ static gpointer parent_class = NULL;
 
 static void set_gc_colour( GdkGC *gc, GdkColormap *pcm, GdkColor *col ) {
 
-#if USE_GTK2
+#if USE_GTK
     gdk_gc_set_rgb_fg_color( gc, col );
 #else
     /* FIXME this is ugly -- we never free the allocated colour.  But
