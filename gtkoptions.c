@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.26 2006/06/22 18:55:07 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.27 2006/06/22 22:50:29 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1783,7 +1783,7 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
 {
 #if USE_BOARD3D
 	if (bd->rd->fDisplayType == DT_3D)
-		updateDiceOccPos(bd);
+		updateDiceOccPos(bd, &bd->bd3d);
 	else
 #endif
 	if( GTK_WIDGET_REALIZED( pwBoard ) )

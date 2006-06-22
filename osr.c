@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.16 2006/04/12 06:53:35 Superfly_Jon Exp $
+ * $Id: osr.c,v 1.17 2006/06/22 22:50:29 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -638,11 +638,7 @@ rollOSR ( const int nGames, const int anBoard[ 25 ], const int nOut,
   int i, n, m;
   int iGame;
   
-#if __GNUC__ || !HAVE_ALLOCA
-  int anCounts[nMaxGammonProbs];
-#else
-  int *anCounts = (int*)alloca(sizeof(int) * nMaxGammonProbs);
-#endif
+  VARIABLE_ARRAY(int, anCounts, nMaxGammonProbs)
 
   memset(anCounts, 0, sizeof(int) * nMaxGammonProbs);
 

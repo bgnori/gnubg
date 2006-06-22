@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.6 2006/06/22 18:55:07 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.7 2006/06/22 22:50:29 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -379,7 +379,7 @@ extern void GTKFileCommand24( char *szPrompt, char *szDefault, char *szCommand,
 	    filename = gtk_file_chooser_get_filename ((GtkFileChooser *)  filechooser);
 
 		if (filename) {
-			char *sz = g_alloca(strlen( filename ) + strlen( szCommand ) + 4);
+			VARIABLE_ARRAY(char, sz, strlen( filename ) + strlen( szCommand ) + 4)
 			/* and actually do the requested IO */
 			sprintf( sz, "%s \"%s\"", szCommand, filename );
 			UserCommand( sz );

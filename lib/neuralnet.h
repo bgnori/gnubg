@@ -2,7 +2,7 @@
  * neuralnet.h
  *
  * by Gary Wong, 1998
- * $Id: neuralnet.h,v 1.12 2006/04/12 23:45:51 c_anthon Exp $
+ * $Id: neuralnet.h,v 1.13 2006/06/22 22:51:00 Superfly_Jon Exp $
  */
 
 #ifndef _NEURALNET_H_
@@ -40,7 +40,7 @@ extern int NeuralNetDestroy( neuralnet *pnn );
 typedef enum  {
   NNEVAL_NONE,
   NNEVAL_SAVE,
-  NNEVAL_FROMBASE,
+  NNEVAL_FROMBASE
 } NNEvalType;
 
 extern int (*NeuralNetEvaluateFn)( neuralnet *pnn, float arInput[],

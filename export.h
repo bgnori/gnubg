@@ -16,8 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.22 2003/12/29 11:28:33 uid68519 Exp $
+ * $Id: export.h,v 1.23 2006/06/22 22:50:29 Superfly_Jon Exp $
  */
+
+#include "render.h"
 
 #ifndef _EXPORT_H_
 #define _EXPORT_H_
@@ -100,5 +102,9 @@ HTMLFilename ( const char *szBase, const int iGame );
 
 extern int WritePNG( const char *sz, unsigned char *puch, int nStride,
 		     const int nSizeX, const int nSizeY );
+
+#if USE_BOARD3D
+void GenerateImage3d(renderdata *prd, const char* szName, const int nSize, const int nSizeX, const int nSizeY);
+#endif
 
 #endif

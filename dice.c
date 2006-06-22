@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.45 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: dice.c,v 1.46 2006/06/22 22:50:29 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1121,13 +1121,7 @@ extern int RollDice( int anDice[ 2 ], const rng rngx, void *p ) {
 extern int UserRNGOpen( void *p, char *sz ) {
 
   char *error;
-#if __GNUC__
-  char szCWD[ strlen( sz ) + 3 ];
-#elif HAVE_ALLOCA
-  char *szCWD = alloca( strlen( sz ) + 3 );
-#else
-  char szCWD[ 4096 ];
-#endif
+  VARIABLE_ARRAY(char, szCWD, strlen( sz ) + 3)
   rngcontext *rngctx = (rngcontext *) p;
 
   /* 

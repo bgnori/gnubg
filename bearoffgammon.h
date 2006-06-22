@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffgammon.h,v 1.4 2005/02/21 23:23:07 jsegrave Exp $
+ * $Id: bearoffgammon.h,v 1.5 2006/06/22 22:50:29 Superfly_Jon Exp $
  */
 
 #if !defined( BEAROFFGAMMON_H )
@@ -36,10 +36,10 @@
 
 /* pack for space */
 struct GammonProbs {
-  unsigned long p1 : 16;  /* 0 - 36^2 */
-  unsigned long p2 : 16;  /* 0 - 36^3 */
-  unsigned long p3 : 24;  /* 0 - 36^4 */
-  unsigned long p0 : 8;   /*  0 - 36 */
+  unsigned int p1 : 16;  /* 0 - 36^2 */
+  unsigned int p2 : 16;  /* 0 - 36^3 */
+  unsigned int p3 : 24;  /* 0 - 36^4 */
+  unsigned int p0 : 8;   /*  0 - 36 */
 };
 
 #if defined( __cplusplus )

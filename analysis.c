@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.160 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: analysis.c,v 1.161 2006/06/22 22:50:29 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -951,13 +951,13 @@ AnalyzeMove ( moverecord *pmr, matchstate *pms, list *plGame, statcontext *psc,
         if ( rAfter < rBefore ) {
           /* wrong resign */
           pmr->r.stResign = Skill ( rAfter - rBefore );
-          pmr->r.stAccept = SKILL_GOOD; //VERYGOOD;
+          pmr->r.stAccept = SKILL_GOOD; /* VERYGOOD */
         }
 
         if ( rBefore < rAfter ) {
           /* wrong accept */
           pmr->r.stAccept = Skill ( rBefore - rAfter );
-          pmr->r.stResign = SKILL_GOOD; // VERYGOOD;
+          pmr->r.stResign = SKILL_GOOD; /* VERYGOOD */
         }
 
 

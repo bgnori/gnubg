@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.68 2006/06/22 18:55:07 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.69 2006/06/22 22:50:29 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -47,7 +47,7 @@
 #include "format.h"
 
 #if USE_GTK
-extern moverecord *pmrCurAnn;;
+extern moverecord *pmrCurAnn;
 int showMoveListDetail = 1;
 #endif
 

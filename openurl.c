@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.13 2006/06/22 18:55:07 c_anthon Exp $
+ * $Id: openurl.c,v 1.14 2006/06/22 22:50:29 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -27,20 +27,15 @@
 #include <stdlib.h>
 #include <glib.h>
 
-#if USE_GTK
-#include <gtk/gtk.h>
-#include <gdk/gdkprivate.h>
-#endif
-
-#include "openurl.h"
+#include "backgammon.h"
 #include <glib/gi18n.h>
+#include "openurl.h"
+
 #ifdef WIN32
 #define WIN32_LEAN_AND_MEAN 1
 #include "windows.h"
 #include "shellapi.h"
 #endif /* WIN32 */
-
-#include "backgammon.h"
 
 
 #ifndef WIN32

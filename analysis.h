@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.33 2004/01/01 17:59:29 uid65656 Exp $
+ * $Id: analysis.h,v 1.34 2006/06/22 22:50:29 Superfly_Jon Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -33,20 +33,10 @@ typedef enum _skilltype {
   SKILL_BAD,
   SKILL_DOUBTFUL,
   SKILL_NONE,
-  SKILL_GOOD,
+  SKILL_GOOD
 } skilltype;
 
-#if defined(__GNUC__)
-#ifdef USES_badSkill
-static inline int
-badSkill(skilltype const st)
-{
-  return st != SKILL_NONE && st != SKILL_GOOD;
-}
-#endif
-#else
 #define badSkill(st)  ((st) != SKILL_NONE && (st) != SKILL_GOOD)
-#endif
 
 #define N_SKILLS (SKILL_GOOD + 1)
 

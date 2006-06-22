@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.12 2006/06/22 18:55:07 c_anthon Exp $
+ * $Id: gtksplash.c,v 1.13 2006/06/22 22:50:29 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
