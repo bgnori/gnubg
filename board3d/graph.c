@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.15 2006/06/22 22:50:59 Superfly_Jon Exp $
+* $Id: graph.c,v 1.16 2006/06/24 20:39:48 c_anthon Exp $
 */
 
 #include <config.h>
@@ -103,10 +103,8 @@ static void realize(GtkWidget *widget, void* arg)
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-#if HAVE_GTKGLEXT
 	gdk_gl_drawable_gl_end(gldrawable);
 	/*** OpenGL END ***/
-#endif
 }
 
 void DrawBar(float col[4], float x, float y, float first, float second)

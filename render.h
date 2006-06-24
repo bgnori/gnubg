@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.24 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: render.h,v 1.25 2006/06/24 20:39:48 c_anthon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -167,7 +167,6 @@ extern void RenderDice( renderdata *prd, unsigned char *puch0,
 extern void RenderPips( renderdata *prd, unsigned char *puch0,
 			unsigned char *puch1, int nStride );
 extern void RenderImages( renderdata *prd, renderimages *pri );
-#if USE_GTK
 extern void RenderArrows( renderdata *prd, unsigned char* puch0,
 			  unsigned char* puch1, int nStride );
 extern void
