@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.24 2006/06/22 22:50:59 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.25 2006/06/26 19:00:44 c_anthon Exp $
 */
 
 #include "config.h"
@@ -396,11 +396,7 @@ GtkWidget* Create3dColourDialog(UpdateDetails* pDetails)
 	gtk_signal_connect(GTK_OBJECT(pwColourDialog3d), "realize",
 			GTK_SIGNAL_FUNC(UpdateColourPreview), 0 );
 
-#if GTK_CHECK_VERSION(1,3,15)
 	gtk_window_add_accel_group( GTK_WINDOW( pwColourDialog3d ), pag );
-#else
-	gtk_accel_group_attach( pag, GTK_OBJECT( pwColourDialog3d ) );
-#endif
 	gtk_widget_add_accelerator( pwCancel, "clicked", pag, GDK_Escape, 0, 0 );
 
 	gtk_window_set_title( GTK_WINDOW( pwColourDialog3d ), _("3d Colour selection") );

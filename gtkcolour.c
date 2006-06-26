@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.c,v 1.13 2006/06/24 20:39:48 c_anthon Exp $
+ * $Id: gtkcolour.c,v 1.14 2006/06/26 19:00:44 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -36,14 +36,7 @@ static gpointer parent_class = NULL;
 
 static void set_gc_colour( GdkGC *gc, GdkColormap *pcm, GdkColor *col ) {
 
-#if USE_GTK
     gdk_gc_set_rgb_fg_color( gc, col );
-#else
-    /* FIXME this is ugly -- we never free the allocated colour.  But
-       that only matters on pseudo-colour visuals. */
-    gdk_colormap_alloc_color( pcm, col, FALSE, TRUE );
-    gdk_gc_set_foreground( gc, col );
-#endif
 }
 
 extern GtkWidget *gtk_colour_picker_new(ColorPickerFunc	func, void *data) {

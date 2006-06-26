@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.13 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: gtkrolls.c,v 1.14 2006/06/26 19:00:44 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -41,7 +41,6 @@
 #include <glib/gi18n.h>
 #include "format.h"
 
-#if USE_GTK
 
 typedef struct _rollswidget {
 
@@ -340,12 +339,9 @@ static gint RollsClose(GtkWidget *widget, GdkEvent *event, rollswidget *prw)
 		return FALSE;
 }
 
-#endif /* USE_GTK */
-
 extern void
 GTKShowRolls ( const gint nDepth, evalcontext *pec, matchstate *pms ) {
 
-#if USE_GTK
 
   GtkWidget *vbox, *hbox;
   GtkAdjustment *padj;
@@ -433,6 +429,5 @@ GTKShowRolls ( const gint nDepth, evalcontext *pec, matchstate *pms ) {
   gtk_main();
   GTKAllowStdin();
   
-#endif
 
 }
