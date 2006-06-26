@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: model.c,v 1.8 2006/06/22 22:51:00 Superfly_Jon Exp $
+* $Id: model.c,v 1.9 2006/06/26 21:07:16 c_anthon Exp $
 */
 
 #include "config.h"
@@ -28,6 +28,7 @@
 #include "matrix.h"
 #include "inc3d.h"
 #include "shadow.h"
+#include <string.h>
 
 #define TOP_EDGE -2
 

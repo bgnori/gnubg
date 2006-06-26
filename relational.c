@@ -16,16 +16,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.21 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: relational.c,v 1.22 2006/06/26 21:07:16 c_anthon Exp $
  */
-
-#include <stdio.h>
-
 
 #if HAVE_CONFIG_H
 #include "config.h"
 #endif
 
+#if USE_PYTHON
+
+#include "gnubgmodule.h"
+
+#if USE_GTK
+#include "gtkgame.h"
+#endif
+
+#include <stdio.h>
 #include <assert.h>
 #include <glib.h>
 
@@ -35,13 +41,6 @@
 #include "positionid.h"
 #include "rollout.h"
 
-#if USE_PYTHON
-
-#include "gnubgmodule.h"
-
-#if USE_GTK
-#include "gtkgame.h"
-#endif
 
 static void
 LoadDatabasePy( void ) {

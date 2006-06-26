@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.10 2006/06/18 11:20:58 c_anthon Exp $
+ * $Id: makeweights.c,v 1.11 2006/06/26 21:07:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -30,6 +30,7 @@
 #endif
 
 #include <glib/gi18n.h>
+#include <locale.h>
 
 #include "eval.h" /* for WEIGHTS_VERSION */
 

@@ -16,10 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.624 2006/06/26 20:12:57 c_anthon Exp $
+ * $Id: gnubg.c,v 1.625 2006/06/26 21:07:16 c_anthon Exp $
  */
 
 #include "config.h"
+
+#if USE_PYTHON
+#include <gnubgmodule.h>
+#endif
 
 #if HAVE_ALLOCA_H
 #include <alloca.h>
@@ -89,6 +93,7 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "getopt.h"
 #include "import.h"
 #include <glib/gi18n.h>
+#include <locale.h>
 #include "matchequity.h"
 #include "matchid.h"
 #include "path.h"
@@ -112,10 +117,6 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include <winsock2.h>
 #endif
 #endif /* WIN32 */
-
-#if USE_PYTHON
-#include <gnubgmodule.h>
-#endif
 
 #if USE_GTK
 #include <gtk/gtk.h>
