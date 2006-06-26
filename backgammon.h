@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.309 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.310 2006/06/26 20:12:57 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1238,16 +1238,6 @@ extern skilltype TutorSkill;
 extern int fTutorAnalysis;
 
 extern int EvalCmp ( const evalcontext *, const evalcontext *, const int);
-
-#ifndef HAVE_BASENAME
-extern char *
-basename ( const char* filename );
-#endif
-
-#ifndef HAVE_DIRNAME
-extern char *
-dirname ( char* filename );
-#endif
 
 #if USE_GTK
 #define GNUBG_CHARSET "UTF-8"

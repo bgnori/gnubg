@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.623 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.624 2006/06/26 20:12:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -79,12 +79,6 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include <iconv.h>
 #endif
 
-
-#if HAVE_LIBGEN_H
-#include <libgen.h>
-#elif ! defined(HAVE_BASENAME) && ! defined (HAVE_DIRNAME )
-#include "simplelibgen.h"
-#endif
 
 #include "analysis.h"
 #include "backgammon.h"
@@ -8395,86 +8389,6 @@ extern int GiveAdvice( skilltype Skill ) {
 
 	return GetAdviceAnswer( sz );
 }
-#if 0
-/* Hopefully this code won't be compiled anyway */
-#if ! defined(HAVE_BASENAME) && ! defined(HAVE_LIBGEN_H ) && defined (HAVE_DIRNAME )
-/*
- * Basename copied from glibc-2.2. for users without glibc.
- */
-
-extern char *
-basename (const char *filename) 
-{ 
-	  char *p1 = strrchr (filename, DIR_SEPARATOR); 
-	    return p1 ? p1 + 1 : (char *) filename;
-} 
-
-#endif /* ! HAVE_BASENAME etc... */
-
-#if ! defined(HAVE_DIRNAME) && ! defined(HAVE_LIBGEN_H) && defined ( HAVE_BASENAME )
-
-/*
- * This code is taken from glibc-2.2, and modified for Windows systems.
- */
-
-extern char *
-dirname (char *path)
-{
-  static const char dot[] = ".";
-  char *last_slash;
-
-  /* Find last DIR_SEPARATOR.  */
-  last_slash = path != NULL ? strrchr (path, DIR_SEPARATOR) : NULL;
-
-  if (last_slash != NULL && last_slash != path && last_slash[1] == '\0')
-    {
-      /* Determine whether all remaining characters are slashes.  */
-      char *runp;
-
-      for (runp = last_slash; runp != path; --runp)
-	if (runp[-1] != DIR_SEPARATOR)
-	  break;
-
-      /* The DIR_SEPARATOR is the last character, we have to look further.  */
-      /* if (runp != path)
-	last_slash = __memrchr (path, DIR_SEPARATOR, runp - path); */
-    }
-
-  if (last_slash != NULL)
-    {
-      /* Determine whether all remaining characters are slashes.  */
-      char *runp;
-
-      for (runp = last_slash; runp != path; --runp)
-	if (runp[-1] != DIR_SEPARATOR)
-	  break;
-
-      /* Terminate the path.  */
-      if (runp == path)
-	{
-	  /* The last slash is the first character in the string.  We have to
-	     return "/".  As a special case we have to return "//" if there
-	     are exactly two slashes at the beginning of the string.  See
-	     XBD 4.10 Path Name Resolution for more information.  */
-	  if (last_slash == path + 1)
-	    ++last_slash;
-	  else
-	    last_slash = path + 1;
-	}
-
-      last_slash[0] = '\0';
-    }
-  else
-    /* This assignment is ill-designed but the XPG specs require to
-       return a string containing "." in any case no directory part is
-       found and so a static and constant string is required.  */
-    path = (char *) dot;
-
-  return path;
-}
-
-#endif /* ! HAVE_DIRNAME, but defined HAVE_BASENAME */
-#endif /* 0 */
 
 extern char *
 Convert ( const char *sz, 

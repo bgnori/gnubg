@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.38 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.39 2006/06/26 20:12:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -28,6 +28,7 @@
 #include <assert.h>
 #include <errno.h>
 #include <math.h>
+#include <glib.h>
 
 #if HAVE_FCNTL_H
 #include <fcntl.h>
@@ -40,11 +41,6 @@
 #endif
 #if HAVE_SYS_STAT_H
 #include <sys/stat.h>
-#endif
-#if HAVE_LIBGEN_H
-#include <libgen.h>
-#elif ! defined(HAVE_BASENAME) && ! defined (HAVE_DIRNAME )
-#include "simplelibgen.h"
 #endif
 
 #include "positionid.h"
@@ -771,9 +767,9 @@ ReadSconyers15x15( bearoffcontext *pbc,
             pch2 = strdup( pch );
           
             if( pbc->szDir )
-              free( pbc->szDir );
+              g_free( pbc->szDir );
 
-            pbc->szDir = dirname( pch );
+            pbc->szDir = g_path_get_dirname( pch );
 
             free( pch );
             free( pch2 );
@@ -1359,7 +1355,7 @@ BearoffClose ( bearoffcontext **ppbc ) {
     free ( (*ppbc)->p );
 
   if ( (*ppbc)->szDir )
-    free( (*ppbc)->szDir );
+    g_free( (*ppbc)->szDir );
 
   if ( (*ppbc)->szFilename )
     free( (*ppbc)->szFilename );
