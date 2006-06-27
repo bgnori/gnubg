@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.125 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.126 2006/06/27 17:36:00 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -270,14 +270,14 @@ void SetTitle()
 
 void UpdatePreview(GtkWidget **ppw)
 {
+	if (!fUpdate)
+		return;
+{
 	BoardData *bd = BOARD(pwPrevBoard)->board_data;
+#if USE_BOARD3D
 	BoardData3d *bd3d = &bd->bd3d;
 	renderdata *prd = bd->rd;
 
-	if (!fUpdate)
-		return;
-
-#if USE_BOARD3D
 	if (prd->fDisplayType == DT_3D)
 	{	/* Sort out chequer and dice special settings */
 		if (prd->ChequerMat[0].textureInfo != prd->ChequerMat[1].textureInfo)
@@ -314,6 +314,7 @@ void UpdatePreview(GtkWidget **ppw)
 		GetPrefs(&rdPrefs);
 		board_create_pixmaps(pwPrevBoard, bd);
 	}
+}
 	SetTitle();
 	gtk_widget_queue_draw(pwPrevBoard);
 }
@@ -1962,7 +1963,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.125 2006/06/22 22:50:29 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.126 2006/06/27 17:36:00 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2107,10 +2108,10 @@ void WriteDesignString(boarddesign *pbde, renderdata *prd)
   char szTemp[2048];
   gchar buf[G_ASCII_DTOSTR_BUF_SIZE];
 
-  float rElevation = asinf( prd->arLight[ 2 ] ) * 180 / M_PI;
+  float rElevation = asinf( prd->arLight[ 2 ] ) * 180 / PI;
   float rAzimuth = ( fabs ( prd->arLight[ 2 ] - 1.0f ) < 1e-5 ) ? 0.0f : 
     acosf( prd->arLight[ 0 ] / sqrt( 1.0 - prd->arLight[ 2 ] *
-                                    prd->arLight[ 2 ] ) ) * 180 / M_PI;
+                                    prd->arLight[ 2 ] ) ) * 180 / PI;
 
   if( prd->arLight[ 1 ] < 0 )
     rAzimuth = 360 - rAzimuth;

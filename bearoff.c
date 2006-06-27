@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.39 2006/06/26 20:12:57 c_anthon Exp $
+ * $Id: bearoff.c,v 1.40 2006/06/27 17:36:00 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -49,7 +49,7 @@
 #include <glib/gi18n.h>
 #include "bearoffgammon.h"
 #include "path.h"
-#include "backgammon.h"
+#include "common.h"
 
 #if WIN32
 #define BINARY O_BINARY
@@ -277,7 +277,7 @@ static void GenerateBearoff( unsigned char *p, int nId ) {
     }
 }
 
-static unsigned char *HeuristicDatabase( void (*pfProgress)( int ) ) {
+static unsigned char *HeuristicDatabase( void (*pfProgress)() ) {
 
     unsigned char *pm = malloc( 40 + 54264 * 64 );
     unsigned char *p = pm ? pm + 40 : NULL;

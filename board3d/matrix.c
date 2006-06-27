@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matrix.c,v 1.6 2006/06/22 22:50:59 Superfly_Jon Exp $
+* $Id: matrix.c,v 1.7 2006/06/27 17:36:00 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -80,7 +80,7 @@ void makeInverseTransposeMatrix(float m[4][4], float v[3])
 /* Simple rotation matrices */
 void makeInverseRotateMatrixX(float m[4][4], float degRot)
 {
-	float radRot = -(degRot * PI) / 180.0f; 
+	float radRot = -(degRot * (float)PI) / 180.0f; 
 	float cosRot = (float)cos(radRot);
 	float sinRot = (float)sin(radRot);
 
@@ -93,7 +93,7 @@ void makeInverseRotateMatrixX(float m[4][4], float degRot)
 
 void makeInverseRotateMatrixY(float m[4][4], float degRot)
 {
-	float radRot = -(degRot * PI) / 180.0f; 
+	float radRot = -(degRot * (float)PI) / 180.0f; 
 	float cosRot = (float)cos(radRot);
 	float sinRot = (float)sin(radRot);
 
@@ -106,7 +106,7 @@ void makeInverseRotateMatrixY(float m[4][4], float degRot)
 
 void makeInverseRotateMatrixZ(float m[4][4], float degRot)
 {
-	float radRot = -(degRot * PI) / 180.0f; 
+	float radRot = -(degRot * (float)PI) / 180.0f; 
 	float cosRot = (float)cos(radRot);
 	float sinRot = (float)sin(radRot);
 
@@ -120,7 +120,7 @@ void makeInverseRotateMatrixZ(float m[4][4], float degRot)
 /* Generic rotation matrix - just used for testing */
 void makeInverseRotateMatrix(float m[4][4], float degRot, float x, float y, float z)
 {
-	float radRot = -(degRot * PI) / 180.0f; 
+	float radRot = -(degRot * (float)PI) / 180.0f; 
 	float sqnorm = x * x + y * y + z * z;
 	float sin_theta;
 	float q[4];

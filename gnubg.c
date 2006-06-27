@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.625 2006/06/26 21:07:16 c_anthon Exp $
+ * $Id: gnubg.c,v 1.626 2006/06/27 17:36:00 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -52,6 +52,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif
