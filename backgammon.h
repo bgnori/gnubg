@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.310 2006/06/26 20:12:57 c_anthon Exp $
+ * $Id: backgammon.h,v 1.311 2006/06/29 12:52:40 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1239,9 +1239,7 @@ extern int fTutorAnalysis;
 
 extern int EvalCmp ( const evalcontext *, const evalcontext *, const int);
 
-#if USE_GTK
 #define GNUBG_CHARSET "UTF-8"
-#endif
 
 extern char *
 Convert ( const char* sz, 
