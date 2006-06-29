@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.120 2006/05/01 20:22:20 oysteijo Exp $
+# $Id: credits.sh,v 1.121 2006/06/29 09:39:41 c_anthon Exp $
 # 
 
 column < /dev/null || exit 0
@@ -193,7 +193,7 @@ cat > credits.h <<EOF
 /* Do not modify this file!  It is created automatically by credits.sh.
    Modify credits.sh instead. */
 
-#include "i18n.h"
+#include <glib/gi18n.h>
 
 typedef struct _credEntry {
 	char* Name;
@@ -223,7 +223,7 @@ cat > credits.c <<EOF
 /* Do not modify this file!  It is created automatically by credits.sh.
    Modify credits.sh instead. */
 
-#include "i18n.h"
+#include <glib/gi18n.h>
 #include "credits.h"
 
 char aszCOPYRIGHT[] = N_("Copyright 1999, 2000, 2001, 2002, 2003, 2004 "
