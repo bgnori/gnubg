@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.574 2006/06/27 17:36:00 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.575 2006/06/30 09:46:14 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1617,7 +1617,7 @@ int panelSize = 325;
 
 extern int GetPanelSize()
 {
-    if( GTK_WIDGET_REALIZED( pwMain ) )
+    if(  (fX) && GTK_WIDGET_REALIZED( pwMain ))
 	{
 		int pos = gtk_paned_get_position(GTK_PANED(hpaned));
 		return pwMain->allocation.width - pos;
