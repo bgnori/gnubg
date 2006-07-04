@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.27 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.28 2006/07/04 16:46:15 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -815,7 +815,7 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
     gtk_box_pack_start (GTK_BOX (pwhoriz),
 			gtk_label_new( _("Current:") ),
 			FALSE, FALSE, 2);
-    pwLabelFile = gtk_label_new( miCurrent.szFileName );
+    pwLabelFile = gtk_label_new( (char*) miCurrent.szFileName );
     gtk_box_pack_end(GTK_BOX (pwhoriz), pwLabelFile,
 		     FALSE, FALSE, 2);
     pow->pwLoadMET = gtk_button_new_with_label (_("Load..."));

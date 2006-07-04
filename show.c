@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.201 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: show.c,v 1.202 2006/07/04 16:46:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1392,9 +1392,9 @@ extern void CommandShowMatchEquityTable ( char *sz ) {
 #endif
 
   output ( _("Match equity table: ") );
-  outputl( miCurrent.szName );
+  outputl( (char*)miCurrent.szName );
   outputf( "(%s)\n", miCurrent.szFileName );
-  outputl( miCurrent.szDescription );
+  outputl( (char*)miCurrent.szDescription );
   outputl( "" );
   
   /* write tables */

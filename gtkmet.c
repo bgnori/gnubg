@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.11 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: gtkmet.c,v 1.12 2006/07/04 16:46:15 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -69,9 +69,9 @@ UpdateTable ( mettable *pmt,
 
   /* set labels */
 
-  gtk_label_set_text ( GTK_LABEL ( pmt->pwName ), pmi->szName );
-  gtk_label_set_text ( GTK_LABEL ( pmt->pwFileName ), pmi->szFileName );
-  gtk_label_set_text ( GTK_LABEL ( pmt->pwDescription ), pmi->szDescription );
+  gtk_label_set_text ( GTK_LABEL ( pmt->pwName ), (char*) pmi->szName );
+  gtk_label_set_text ( GTK_LABEL ( pmt->pwFileName ), (char*) pmi->szFileName );
+  gtk_label_set_text ( GTK_LABEL ( pmt->pwDescription ), (char*) pmi->szDescription );
 
   /* fill out table */
     
@@ -129,13 +129,13 @@ static GtkWidget
   pmt->pwTable = pwTable;
 
   gtk_box_pack_start( GTK_BOX( pwBox ), 
-                      pmt->pwName = gtk_label_new( miCurrent.szName ),
+                      pmt->pwName = gtk_label_new( (char*) miCurrent.szName ),
                       FALSE, FALSE, 4 );
   gtk_box_pack_start( GTK_BOX( pwBox ),
-                      pmt->pwFileName = gtk_label_new( miCurrent.szFileName ),
+                      pmt->pwFileName = gtk_label_new( (char*) miCurrent.szFileName ),
                       FALSE, FALSE, 4 );
   gtk_box_pack_start( GTK_BOX( pwBox ),
-                      pmt->pwDescription = gtk_label_new( miCurrent.szDescription ),
+                      pmt->pwDescription = gtk_label_new( (char*) miCurrent.szDescription ),
                       FALSE, FALSE, 4 );
 
   gtk_box_pack_start( GTK_BOX( pwBox ), pwScrolledWindow, TRUE, TRUE, 0 );

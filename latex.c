@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.33 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: latex.c,v 1.34 2006/07/04 16:46:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -341,7 +341,7 @@ static void LaTeXEscape( FILE *pf, unsigned char *pch ) {
 }
 #endif
 
-static void PrintLaTeXComment( FILE *pf, unsigned char *pch ) {
+static void PrintLaTeXComment( FILE *pf, char *pch ) {
 
     /* LaTeXEscape( pf, pch ); */
     if( pch != NULL)

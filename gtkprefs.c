@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.126 2006/06/27 17:36:00 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.127 2006/07/04 16:46:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1963,7 +1963,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.126 2006/06/27 17:36:00 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.127 2006/07/04 16:46:15 c_anthon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -3316,7 +3316,7 @@ static void ScanEndElement( void *pv, const xmlChar *pchName ) {
 static void ScanCharacters( void *pv, const xmlChar *pchIn, int cch ) {
 
   parsecontext *ppc = pv;
-  char *sz = g_strndup ( pchIn, cch );
+  char *sz = g_strndup ( (char*)pchIn, cch );
   char *pc;
 
   switch ( ppc->aps[ ppc->ips ] ) {
@@ -3358,12 +3358,12 @@ static void ScanStartElement( void *pv, const xmlChar *pchName,
 
   parsecontext *ppc = pv;
 
-  if ( ! strcmp ( pchName, "board-designs" ) && ppc->ips == -1 ) {
+  if ( ! strcmp ( (char*)pchName, "board-designs" ) && ppc->ips == -1 ) {
 
     PushState ( ppc, STATE_BOARD_DESIGNS );
 
   }
-  else if ( ! strcmp ( pchName, "board-design" ) &&
+  else if ( ! strcmp ( (char*)pchName, "board-design" ) &&
             ppc->aps[ ppc->ips ] == STATE_BOARD_DESIGNS ) {
 
     /* allocate list if empty */
@@ -3378,27 +3378,27 @@ static void ScanStartElement( void *pv, const xmlChar *pchName,
     PushState ( ppc, STATE_BOARD_DESIGN );
 
   }
-  else if ( ! strcmp ( pchName, "about" ) &&
+  else if ( ! strcmp ( (char*) pchName, "about" ) &&
             ppc->aps[ ppc->ips ] == STATE_BOARD_DESIGN ) {
 
     PushState ( ppc, STATE_ABOUT );
 
   }
-  else if ( ! strcmp ( pchName, "title" ) &&
+  else if ( ! strcmp ( (char*)pchName, "title" ) &&
             ppc->aps[ ppc->ips ] == STATE_ABOUT ) {
 
     PushState ( ppc, STATE_TITLE );
     ppc->pbde->szTitle = g_strdup ( "" );
 
   }
-  else if ( ! strcmp ( pchName, "author" ) &&
+  else if ( ! strcmp( (char*) pchName, "author" ) &&
             ppc->aps[ ppc->ips ] == STATE_ABOUT ) {
 
     PushState ( ppc, STATE_AUTHOR );
     ppc->pbde->szAuthor = g_strdup ( "" );
 
   }
-  else if ( ! strcmp ( pchName, "design" ) &&
+  else if ( ! strcmp( (char*) pchName, "design" ) &&
             ppc->aps[ ppc->ips ] == STATE_BOARD_DESIGN ) {
 
     PushState ( ppc, STATE_DESIGN );

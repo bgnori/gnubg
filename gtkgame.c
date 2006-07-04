@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.575 2006/06/30 09:46:14 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.576 2006/07/04 16:46:15 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -3874,8 +3874,8 @@ extern void SetMET( GtkWidget *pw, gpointer p ) {
 		 "met", FDT_NONE_OPEN, PATH_MET );
 
     /* update filename on option page */
-    if ( p && GTK_WIDGET_VISIBLE( p ) )
-	gtk_label_set_text( GTK_LABEL( p ), miCurrent.szFileName );
+    if ( p && GTK_WIDGET_VISIBLE ( p ) )
+        gtk_label_set_text ( GTK_LABEL ( p ), ( char * ) miCurrent.szFileName );
 
     if( pch )
 	free( pch );
