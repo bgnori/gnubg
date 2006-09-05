@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.22 2006/06/26 19:00:44 c_anthon Exp $
+ * $Id: gtktoolbar.c,v 1.23 2006/09/05 10:44:54 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -25,7 +25,6 @@
 
 #include <stdlib.h>
 
-#define GTK_ENABLE_BROKEN /* for GtkText */
 #include <gtk/gtk.h>
 
 #include <stdio.h>

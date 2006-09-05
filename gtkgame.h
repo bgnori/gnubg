@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.100 2006/05/29 09:05:20 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.101 2006/09/05 10:44:54 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -168,7 +168,7 @@ extern void GTKShowBuildInfo(GtkWidget *pwParent);
 extern void GTKCommandShowCredits(GtkWidget* parent);
 extern void GTKShowScoreSheet(void);
 extern void SwapBoardToPanel(int ToPanel);
-extern void CommentaryChanged( GtkWidget *pw, void *p );
+extern void CommentaryChanged( GtkWidget *pw, GtkTextBuffer *buffer );
 
 extern void SetEvaluation( gpointer *p, guint n, GtkWidget *pw );
 extern void SetRollouts( gpointer *p, guint n, GtkWidget *pw );

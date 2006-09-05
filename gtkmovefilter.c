@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.10 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: gtkmovefilter.c,v 1.11 2006/09/05 10:44:54 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -26,7 +26,6 @@
 #if HAVE_ALLOCA_H
 #include <alloca.h>
 #endif
-#define GTK_ENABLE_BROKEN /* for GtkText */
 #include <gtk/gtk.h>
 
 #include <stdio.h>
