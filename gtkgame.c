@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.578 2006/09/06 17:16:55 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.579 2006/09/07 10:25:48 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1766,7 +1766,7 @@ static void CopyText()
 	const char *text;
 
 	pFocus = gtk_window_get_focus(GTK_WINDOW(pwMain));
-	if (!pFocus || !text)
+	if (!pFocus)
 		return;
 	if (GTK_IS_ENTRY(pFocus)) {
 		text = gtk_entry_get_text(GTK_ENTRY(pFocus));
@@ -1797,11 +1797,12 @@ static void PasteText()
 		else if (pFocus == bd->match_id)
 			board_set_matchid(0, bd);
 	} else if (GTK_IS_TEXT_VIEW(pFocus)) {
-		if (!gtk_text_view_get_editable(GTK_TEXT_VIEW(pFocus)))
-			return;
-		buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(pFocus));
-		gtk_text_buffer_insert_at_cursor(buffer, text, -1);
-		return;
+		if (gtk_text_view_get_editable(GTK_TEXT_VIEW(pFocus))) {
+			buffer =
+			    gtk_text_view_get_buffer(GTK_TEXT_VIEW
+						     (pFocus));
+			gtk_text_buffer_insert_at_cursor(buffer, text, -1);
+		}
 	}
 	g_free(text);
 }
