@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.627 2006/08/23 15:07:50 jsegrave Exp $
+ * $Id: gnubg.c,v 1.628 2006/09/09 12:14:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2949,25 +2949,11 @@ extern void HandleCommand( char *sz, command *ac ) {
 		GTKDisallowStdin();
 #endif
           if ( *sz ) {
-            /* expression specified -- evalute it */
-#ifdef ndef
-            StartPythonHandleX();
-#endif
             PyRun_SimpleString( sz );
-#ifdef ndef
-            StopPythonHandleX();
-#endif
           }
           else {
-#ifdef ndef
-            /* no expresision -- start python shell */
-            StartPythonHandleX();
-#endif
             PyRun_SimpleString( "import sys; print 'Python', sys.version" );
             PyRun_AnyFile( stdin, NULL );
-#ifdef ndef
-            StopPythonHandleX();
-#endif
           }
 #if USE_GTK
 	    if( fX )
