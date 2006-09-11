@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.202 2006/07/04 16:46:15 c_anthon Exp $
+ * $Id: show.c,v 1.203 2006/09/11 22:59:40 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -972,7 +972,7 @@ extern void CommandShowBuildInfo( char *sz )
 
 #if USE_GTK
 	if( fX )
-		GTKShowBuildInfo(pwMain);
+		GTKShowBuildInfo(pwMain, NULL);
 #endif
 
     while((pch = GetBuildInfoString()))
@@ -1076,7 +1076,7 @@ extern void CommandShowCredits( char *sz )
 #if USE_GTK
   if( fX )
   {
-    GTKCommandShowCredits(pwMain);
+    GTKCommandShowCredits(NULL, NULL);
     return;
   }
 #endif
@@ -2208,6 +2208,12 @@ CommandShowBearoff( char *sz ) {
 
   char szTemp[ 4096 ];
 
+	if( ms.gs != GAME_PLAYING )
+	{
+		outputl( _("No game is being played.") );
+		return;
+	}
+
 #if USE_GTK
   if ( fX ) {
     GTKShowBearoff( &ms );
@@ -2440,7 +2446,7 @@ CommandShowMatchResult( char *sz ) {
 
 extern void CommandShowTCTutorial( char *sz ) {
 #if USE_GTK
-    if ( fX )
+    if ( fX )	/* This should be converted to texi and added to the manual */
 	ShowList( aszTcTutorial, _("Time Control Tutorial"), NULL );
     else
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.127 2006/07/04 16:46:15 c_anthon Exp $
+ * $Id: gtkprefs.c,v 1.128 2006/09/11 22:59:40 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -48,6 +48,7 @@
 #include "render.h"
 #include "renderprefs.h"
 #include "boarddim.h"
+#include "gtkwindows.h"
 
 #if USE_BOARD3D
 #define NUM_NONPREVIEW_PAGES 2
@@ -1171,7 +1172,7 @@ void toggle_display_type(GtkWidget *widget, BoardData* bd)
 		/* Make sure 3d code is initialized */
 		Init3d();
 
-		DoAcceleratedCheck(bd->bd3d.drawing_area3d);
+		DoAcceleratedCheck(bd->bd3d.drawing_area3d, widget);
 
 		updateDiceOccPos(bd, &bd->bd3d);
 	}
@@ -1204,7 +1205,7 @@ void toggle_quick_draw(GtkWidget *widget, int init)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwShowShadows), 0);
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pwCloseBoard), 0);
 		if (init != -1)
-			GTKShowWarning(WARN_QUICKDRAW_MODE);
+			GTKShowWarning(WARN_QUICKDRAW_MODE, widget);
 	}
 }
 
@@ -1215,7 +1216,7 @@ void toggle_show_shadows(GtkWidget *widget, int init)
 	gtk_widget_set_sensitive(pwDarkness, set);
 	gtk_widget_set_sensitive(darkLab, set);
 	if (set && init != -1)
-		GTKShowWarning(WARN_SET_SHADOWS);
+		GTKShowWarning(WARN_SET_SHADOWS, widget);
 	
 	option_changed(0, 0);
 }
@@ -1238,7 +1239,7 @@ void DoTestPerformance(GtkWidget *pw, GtkWidget* board)
 	char *msg;
 	float fps;
 
-	GTKSetCurrentParent(gtk_widget_get_toplevel(pw));
+	GTKSetCurrentParent(pw);
 	if (!GetInputYN(_("Save settings and test 3d performance for 3 seconds?")))
 		return;
 
@@ -1963,7 +1964,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.127 2006/07/04 16:46:15 c_anthon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.128 2006/09/11 22:59:40 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2043,8 +2044,7 @@ DesignAddTitle ( boarddesign *pbde ) {
   GtkWidget *pwhbox;
 
   pwDialog = GTKCreateDialog( _("GNU Backgammon - Add current board design"), 
-                           DT_QUESTION,
-                           GTK_SIGNAL_FUNC( DesignAddOK ), pbde );
+			DT_QUESTION, NULL, DIALOG_FLAG_MODAL, GTK_SIGNAL_FUNC( DesignAddOK ), pbde );
 
   pwvbox = gtk_vbox_new ( FALSE, 4 );
   gtk_container_add ( GTK_CONTAINER( DialogArea( pwDialog, DA_MAIN ) ), 
@@ -2086,13 +2086,6 @@ DesignAddTitle ( boarddesign *pbde ) {
 
   /* show dialog */
 
-  gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
-  gtk_window_set_transient_for( GTK_WINDOW( pwDialog ),
-                                GTK_WINDOW( pwMain ) );
-
-  gtk_signal_connect( GTK_OBJECT( pwDialog ), "destroy",
-			GTK_SIGNAL_FUNC( gtk_main_quit ), NULL );
-  
   gtk_widget_grab_focus( pwDesignAddTitle );
   gtk_widget_show_all( pwDialog );
 
@@ -2355,6 +2348,7 @@ DesignAdd ( GtkWidget *pw, gpointer data ) {
 
   pbde->szTitle = pbde->szAuthor = pbde->szBoardDesign = NULL;
 
+  GTKSetCurrentParent(pw);
   DesignAddTitle ( pbde );
   if ( ! pbde->szTitle || ! pbde->szAuthor ) {
     g_free ( pbde );
@@ -2766,8 +2760,6 @@ BoardPrefsDestroy ( GtkWidget *pw, void * arg) {
 #if HAVE_LIBXML2
 	free_board_designs ( plBoardDesigns );
 #endif /* HAVE_LIBXML2 */
-
-	gtk_main_quit();
 }
 
 static void GetPrefs ( renderdata* prd ) {
@@ -3047,7 +3039,7 @@ extern void BoardPreferences(GtkWidget *pwBoard)
 	InitBoardPreview(bd);
 	RollDice2d(bd);
 
-    pwDialog = GTKCreateDialog( _("GNU Backgammon - Appearance"), DT_QUESTION,
+    pwDialog = GTKCreateDialog( _("GNU Backgammon - Appearance"), DT_QUESTION, NULL, DIALOG_FLAG_MODAL,
 			     GTK_SIGNAL_FUNC( BoardPrefsOK ), pwBoard );
 
 #if USE_BOARD3D
@@ -3080,10 +3072,6 @@ extern void BoardPreferences(GtkWidget *pwBoard)
     plBoardDesigns = read_board_designs ();
 #endif
 	AddPages(bd, pwNotebook);
-
-    gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
-    gtk_window_set_transient_for( GTK_WINDOW( pwDialog ),
-				  GTK_WINDOW( pwMain ) );
 
     gtk_signal_connect( GTK_OBJECT( pwNotebook ), "switch-page",
 			GTK_SIGNAL_FUNC( ChangePage ), 0);

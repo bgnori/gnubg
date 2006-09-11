@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.70 2006/06/26 19:00:44 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.71 2006/09/11 22:59:40 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -88,6 +88,7 @@ static void MoveListRolloutClicked(GtkWidget *pw, hintdata *phd)
   }
 	MoveListFreeSelectionList(plSelList);
 
+	GTKSetCurrentParent(pw);
   RolloutProgressStart( &ci, c, NULL, &rcRollout, asz, &p );
 
   if ( fAction )
@@ -196,6 +197,7 @@ static void MoveListTempMapClicked( GtkWidget *pw, hintdata *phd )
   }
 	MoveListFreeSelectionList(plSelList);
 
+	GTKSetCurrentParent(pw);
   GTKShowTempMap( ams, c, ( const gchar** ) asz, TRUE );
 
   g_free( ams );
@@ -294,6 +296,7 @@ MoveListEvalPly ( GtkWidget *pw, hintdata *phd )
 static void
 MoveListEvalSettings ( GtkWidget *pw, void *unused )
 {
+	GTKSetCurrentParent(pw);
   SetEvaluation ( NULL, 0, NULL );
 
   /* bring the dialog holding this button to the top */
@@ -303,7 +306,8 @@ MoveListEvalSettings ( GtkWidget *pw, void *unused )
 static void
 MoveListRolloutSettings ( GtkWidget *pw, void *unused )
 {
-  SetRollouts ( NULL, 0, NULL );
+	GTKSetCurrentParent(pw);
+	SetRollouts ( NULL, 0, NULL );
 
   /* bring the dialog holding this button to the top */
   gtk_window_present ( GTK_WINDOW ( gtk_widget_get_toplevel( pw ) ) );

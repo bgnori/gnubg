@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.27 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: gtkexport.c,v 1.28 2006/09/11 22:59:40 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -39,7 +39,7 @@
 #include "gtkexport.h"
 #include <glib/gi18n.h>
 #include "boarddim.h"
-
+#include "gtkwindows.h"
 
 static char *aszInclude[] = {
     N_("Annotations"), 
@@ -493,8 +493,8 @@ GTKShowExport ( exportsetup *pexs ) {
 
   /* create dialog */
 
-  pwDialog = GTKCreateDialog ( _("GNU Backgammon - Export Settings"),
-			       DT_QUESTION, GTK_SIGNAL_FUNC ( ExportOK ), pew );
+  pwDialog = GTKCreateDialog ( _("GNU Backgammon - Export Settings"), DT_QUESTION,
+	  NULL, DIALOG_FLAG_MODAL, GTK_SIGNAL_FUNC ( ExportOK ), pew );
 
   pwTable = gtk_table_new ( 3, 2, FALSE );
   gtk_container_add ( GTK_CONTAINER ( DialogArea ( pwDialog, DA_MAIN ) ),
@@ -831,20 +831,10 @@ GTKShowExport ( exportsetup *pexs ) {
 
   /* show dialog */
 
-  gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
-  gtk_window_set_transient_for( GTK_WINDOW( pwDialog ),
-                                GTK_WINDOW( pwMain ) );
-  gtk_signal_connect( GTK_OBJECT( pwDialog ), "destroy",
-                      GTK_SIGNAL_FUNC( gtk_main_quit ), NULL );
-
   gtk_widget_show_all( pwDialog );
-
   ExportSet ( pew );
 
   GTKDisallowStdin();
   gtk_main();
   GTKAllowStdin();
-
 }
-
-

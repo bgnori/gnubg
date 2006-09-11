@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.14 2006/06/26 19:00:44 c_anthon Exp $
+ * $Id: gtkrolls.c,v 1.15 2006/09/11 22:59:40 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -40,7 +40,7 @@
 #include "drawboard.h"
 #include <glib/gi18n.h>
 #include "format.h"
-
+#include "gtkwindows.h"
 
 typedef struct _rollswidget {
 
@@ -350,7 +350,7 @@ GTKShowRolls ( const gint nDepth, evalcontext *pec, matchstate *pms ) {
   rollswidget *prw = g_malloc ( sizeof ( rollswidget ) );
 
   prw->closing = FALSE;
-  prw->pDialog = GTKCreateDialog( _("Distribution of rolls"), DT_INFO, NULL, NULL );
+  prw->pDialog = GTKCreateDialog( _("Distribution of rolls"), DT_INFO, NULL, DIALOG_FLAG_MODAL, NULL, NULL );
 
   n = ( nDepth < 1 ) ? 1 : nDepth;
 
@@ -411,23 +411,12 @@ GTKShowRolls ( const gint nDepth, evalcontext *pec, matchstate *pms ) {
       prw->nDepth = n;
   }
   
-  /* modality */
-
   gtk_window_set_default_size( GTK_WINDOW( prw->pDialog ), 560, 400 ); 
-  gtk_window_set_modal( GTK_WINDOW( prw->pDialog ), TRUE );
-  gtk_window_set_transient_for( GTK_WINDOW( prw->pDialog ),
-                                GTK_WINDOW( pwMain ) );
-
   gtk_widget_show_all( prw->pDialog );
-
   gtk_signal_connect( GTK_OBJECT( prw->pDialog ), "delete_event",
-                      GTK_SIGNAL_FUNC(RollsClose), prw );
-  gtk_signal_connect( GTK_OBJECT( prw->pDialog ), "destroy",
-                      GTK_SIGNAL_FUNC(gtk_main_quit), NULL );
+                      GTK_SIGNAL_FUNC(RollsClose), prw );	/* In case closed mid calculation */
 
   GTKDisallowStdin();
   gtk_main();
   GTKAllowStdin();
-  
-
 }

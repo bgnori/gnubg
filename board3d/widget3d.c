@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.27 2006/06/22 22:51:00 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.28 2006/09/11 22:59:40 Superfly_Jon Exp $
 */
 
 #include <config.h>
@@ -271,11 +271,11 @@ static int CheckAccelerated(GtkWidget* board)
 
 #endif
 
-int DoAcceleratedCheck(GtkWidget* board)
+int DoAcceleratedCheck(GtkWidget* board, GtkWidget* pwParent)
 {
 	if (!CheckAccelerated(board))
 	{	/* Display warning message as performance may be bad */
-		GTKShowWarning(WARN_UNACCELERATED);
+		GTKShowWarning(WARN_UNACCELERATED, pwParent);
 		return 0;
 	}
 	else

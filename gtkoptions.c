@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.28 2006/07/04 16:46:15 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.29 2006/09/11 22:59:40 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -45,6 +45,7 @@
 #include "format.h"
 #include "gtkboard.h"
 #include "renderprefs.h"
+#include "gtkwindows.h"
 
 typedef struct _optionswidget {
 
@@ -1964,10 +1965,7 @@ GTKSetOptions( void ) {
   optionswidget ow;
 
   pwDialog = GTKCreateDialog( _("GNU Backgammon - General options"), DT_QUESTION,
-			     GTK_SIGNAL_FUNC( OptionsOK ), &ow );
-  gtk_window_set_modal( GTK_WINDOW( pwDialog ), TRUE );
-  gtk_window_set_transient_for( GTK_WINDOW( pwDialog ),
-                                  GTK_WINDOW( pwMain ) );
+			     NULL, DIALOG_FLAG_MODAL, GTK_SIGNAL_FUNC( OptionsOK ), &ow );
   gtk_container_add( GTK_CONTAINER( DialogArea( pwDialog, DA_MAIN ) ),
  		        pwOptions = OptionsPages( &ow ) );
   gtk_widget_show_all( pwDialog );
@@ -1975,5 +1973,4 @@ GTKSetOptions( void ) {
   OptionsSet ( &ow );
  
   gtk_main();
-
 }

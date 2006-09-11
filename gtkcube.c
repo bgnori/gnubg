@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.45 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: gtkcube.c,v 1.46 2006/09/11 22:59:40 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -723,6 +723,7 @@ CubeAnalysisRollout ( GtkWidget *pw, cubehintdata *pchd ) {
   GetMatchStateCubeInfo( &ci, &pchd->ms );
 
   FormatCubePositions( &ci, asz );
+  GTKSetCurrentParent(pw);
   RolloutProgressStart( &ci, 2, aarsStatistics, &pes->rc, asz, &p );
 
   if ( GeneralCubeDecisionR ( aarOutput, aarStdDev, aarsStatistics,
@@ -804,9 +805,10 @@ CubeAnalysisEval ( GtkWidget *pw, cubehintdata *pchd ) {
 }
 
 static void
-CubeAnalysisEvalSettings ( GtkWidget *pw, void *unused ) {
-
-  SetEvaluation ( NULL, 0, NULL );
+CubeAnalysisEvalSettings ( GtkWidget *pw, void *unused )
+{
+	GTKSetCurrentParent(pw);
+	SetEvaluation ( NULL, 0, NULL );
 
   /* bring the dialog holding this button to the top */
   gtk_window_present ( GTK_WINDOW ( gtk_widget_get_toplevel( pw ) ) );
@@ -814,9 +816,10 @@ CubeAnalysisEvalSettings ( GtkWidget *pw, void *unused ) {
 }
 
 static void
-CubeAnalysisRolloutSettings ( GtkWidget *pw, void *unused ) {
-
-  SetRollouts ( NULL, 0, NULL );
+CubeAnalysisRolloutSettings ( GtkWidget *pw, void *unused )
+{
+	GTKSetCurrentParent(pw);
+	SetRollouts ( NULL, 0, NULL );
 
   /* bring the dialog holding this button to the top */
   gtk_window_present ( GTK_WINDOW ( gtk_widget_get_toplevel( pw ) ) );
