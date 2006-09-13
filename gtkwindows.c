@@ -18,11 +18,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.1 2006/09/11 22:59:40 Superfly_Jon Exp $
+ * $Id: gtkwindows.c,v 1.2 2006/09/13 19:44:05 c_anthon Exp $
  */
 
 #include <config.h>
 
+#include <string.h>
+#include <stdlib.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "gtkwindows.h"

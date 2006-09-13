@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.581 2006/09/11 22:59:40 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.582 2006/09/13 19:44:05 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -8682,8 +8682,6 @@ static void ShowRelationalSelect(GtkWidget *pw, int y, int x, GdkEventButton *pe
   		char line[100];
   		sprintf(line, _("%s on %s\n"), r2.data[i][0], r2.data[i][1]);
   		  gtk_text_buffer_insert(buffer, &it, line, -1);
-  		  gtk_text_insert(GTK_TEXT(pwAliasList), NULL, 
-  				  NULL, NULL, line, -1);
   	}
 	}
 	FreeRowset(&r);
