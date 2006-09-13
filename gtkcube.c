@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.46 2006/09/11 22:59:40 Superfly_Jon Exp $
+ * $Id: gtkcube.c,v 1.47 2006/09/13 21:55:07 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -39,6 +39,7 @@
 #include "rollout.h"
 #include "gtkgame.h"
 #include "gtkcube.h"
+#include "gtkwindows.h"
 #include <glib/gi18n.h>
 #include "progress.h"
 #include "format.h"

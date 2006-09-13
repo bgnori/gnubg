@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.628 2006/09/09 12:14:02 c_anthon Exp $
+ * $Id: gnubg.c,v 1.629 2006/09/13 21:55:07 c_anthon Exp $
  */
 
 #include "config.h"
@@ -126,6 +126,7 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "gtkprefs.h"
 #include "gtksplash.h"
 #include "gtkchequer.h"
+#include "gtkwindows.h"
 #else
 #include <glib.h>
 #endif

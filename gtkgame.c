@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.582 2006/09/13 19:44:05 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.583 2006/09/13 21:55:07 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2414,8 +2414,8 @@ TutorRethink ( GtkWidget *pw, void *unused ) {
 extern int GtkTutor ( char *sz )
 {
     int f = FALSE, fRestoreNextTurn;
-    GtkWidget *pwTutorDialog, *pwOK, *pwCancel, *pwEndTutor, *pwHbox,
-          *pwButtons, *pwPixmap, *pwPrompt, *pwHint;
+    GtkWidget *pwTutorDialog, *pwOK, *pwCancel, *pwEndTutor,
+          *pwButtons, *pwPrompt, *pwHint;
 
 	pwTutorDialog = GTKCreateDialog( _("GNU Backgammon - Tutor"),
 		DT_GNUQUESTION, NULL, DIALOG_FLAG_MODAL, GTK_SIGNAL_FUNC(OK), (void*)&f);

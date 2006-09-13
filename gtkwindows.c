@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.2 2006/09/13 19:44:05 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.3 2006/09/13 21:55:07 c_anthon Exp $
  */
 
 #include <config.h>
@@ -26,7 +26,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <gtk/gtk.h>
-#include <glib/gi18n.h>
 #include "gtkwindows.h"
 #include "gtkgame.h"
 #include <gdk/gdkkeysyms.h>
