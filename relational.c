@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.23 2006/06/27 22:23:31 c_anthon Exp $
+ * $Id: relational.c,v 1.24 2006/09/13 19:54:10 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -35,11 +35,11 @@
 #include <assert.h>
 #include <glib.h>
 
-#include <glib/gi18n.h>
 #include "relational.h"
 #include "backgammon.h"
 #include "positionid.h"
 #include "rollout.h"
+#include <glib/gi18n.h>
 
 
 static void

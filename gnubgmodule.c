@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.50 2006/06/18 11:20:58 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.51 2006/09/13 19:54:10 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -37,7 +37,6 @@
 
 #include <stdio.h>
 #include <glib.h>
-#include <glib/gi18n.h>
 #include "backgammon.h"
 #include "eval.h"
 #include "matchequity.h"
@@ -45,6 +44,7 @@
 #include "positionid.h"
 #include "analysis.h"
 #include "md5.h"
+#include <glib/gi18n.h>
 
 #undef IGNORE	// Ignore msdev define
 #define IGNORE __attribute__ ((unused))
