@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.629 2006/09/13 21:55:07 c_anthon Exp $
+ * $Id: gnubg.c,v 1.630 2006/09/18 20:18:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2003,6 +2003,8 @@ command cER = {
 #endif
     { "jacoby", CommandShowJacoby, 
       N_("See if the Jacoby rule is used in money sessions"), NULL, NULL },
+    { "keith", CommandShowKeith, N_("Calculate Keith Count for "
+      "position"), szOPTPOSITION, NULL },
     { "kleinman", CommandShowKleinman, N_("Calculate Kleinman count for "
       "position"), szOPTPOSITION, NULL },
     { "lang", CommandShowLang, N_("Display your language preference"),
