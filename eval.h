@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.131 2006/04/12 23:45:50 c_anthon Exp $
+ * $Id: eval.h,v 1.132 2006/09/19 08:42:51 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -420,6 +420,9 @@ PipCount( int anBoard[ 2 ][ 25 ], int anPips[ 2 ] );
 
 extern int 
 ThorpCount( int anBoard[ 2 ][ 25 ], int *pnLeader, int *pnTrailer );
+
+extern int
+KeithCount(int anBoard[2][25], int *pnL, int *pnT);
 
 extern int 
 DumpPosition( int anBoard[ 2 ][ 25 ], char *szOutput,

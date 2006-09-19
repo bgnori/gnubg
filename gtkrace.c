@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.17 2006/09/18 20:18:35 c_anthon Exp $
+ * $Id: gtkrace.c,v 1.18 2006/09/19 08:42:51 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -193,7 +193,7 @@ KeithPage ( int anBoard[ 2 ][ 25 ], const int fMove ) {
   GtkWidget *pwTable = gtk_table_new ( 2, 2, FALSE );
   GtkWidget *pw;
   GtkWidget *pwp = gtk_alignment_new( 0, 0, 0, 0 );
-  int i, j, nLeader, nTrailer, nDiff;
+  int i, j, nLeader, nTrailer;
   int anPips[ 2 ];
   float fL;
   char *sz;

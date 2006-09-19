@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.204 2006/09/18 20:18:35 c_anthon Exp $
+ * $Id: show.c,v 1.205 2006/09/19 08:42:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1177,7 +1177,6 @@ extern void CommandShowKeith( char *sz ) {
 
     int an[ 2 ][ 25 ];
     int nLeader, nTrailer;
-    int nDiff;
     float fL;
 
     if( !*sz && ms.gs == GAME_NONE ) {
