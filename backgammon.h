@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.312 2006/09/18 20:18:35 c_anthon Exp $
+ * $Id: backgammon.h,v 1.313 2006/09/20 20:42:41 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -415,7 +415,7 @@ extern int fAutoGame, fAutoMove, fAutoRoll, fAutoCrawford, cAutoDoubles,
     nBeavers, fJacoby,
     fOutputRawboard, cAnalysisMoves, fAnalyseCube,
     fAnalyseDice, fAnalyseMove, fRecord,
-	nDefaultLength, nToolbarStyle, fStyledGamelist;
+	nDefaultLength, nToolbarStyle, fStyledGamelist, fFullScreen;
 extern int fInvertMET;
 extern int fConfirm, fConfirmSave;
 extern float rAlpha, rAnneal, rThreshold, arLuckLevel[ LUCK_VERYGOOD + 1 ],
@@ -948,6 +948,7 @@ extern void CommandAccept( char * ),
     CommandSetExportParametersRollout ( char * ),
     CommandSetExportPNGSize ( char *),
     CommandSetExportHtmlSize ( char *),
+    CommandSetFullScreen ( char * ),
     CommandSetGameList ( char * ),
     CommandSetGeometryAnalysis( char * ),
     CommandSetGeometryCommand ( char * ),

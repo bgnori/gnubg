@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.205 2006/09/19 08:42:51 c_anthon Exp $
+ * $Id: show.c,v 1.206 2006/09/20 20:42:41 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -828,6 +828,12 @@ extern void CommandShowPipCount( char *sz ) {
     
     outputf( _("The pip counts are: %s %d, %s %d.\n"), ap[ ms.fMove ].szName,
 	    anPips[ 1 ], ap[ !ms.fMove ].szName, anPips[ 0 ] );
+
+	if (fX && fFullScreen)
+	{	/* Display in dialog box in full screen mode (urgh) */
+		output(" ");
+		outputx();
+	}
 }
 
 extern void CommandShowPlayer( char *sz ) {

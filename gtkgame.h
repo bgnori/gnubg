@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.103 2006/09/13 19:44:05 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.104 2006/09/20 20:42:41 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -230,6 +230,8 @@ extern int IsPanelShowVar(gnubgwindow panel, void *p);
 extern int SetMainWindowSize();
 extern void ShowHidePanel(gnubgwindow panel);
 extern void SetAnnotation( moverecord *pmr );
+extern void FullScreenMode(int state);
+extern void GetFullscreenWindowSettings(int *panels, int *ids, int *maxed);
 
 #if USE_BOARD3D
 extern void SetSwitchModeMenuText();

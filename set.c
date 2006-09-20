@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.255 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: set.c,v 1.256 2006/09/20 20:42:41 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -527,6 +527,23 @@ extern void CommandSetStyledGameList( char *sz ) {
     if( fX )
 		GTKUpdateAnnotations();
 #endif
+}
+
+extern void CommandSetFullScreen( char *sz )
+{
+	int newValue;
+	SetToggle( "fullscreen", &newValue, sz,
+		   _("Show board in full screen mode"),
+		   _("Show board in normal screen mode.") );
+
+	if (newValue != fFullScreen)
+	{	/* Value has changed */
+		fFullScreen = newValue;
+#if USE_GTK
+	    if( fX )
+			FullScreenMode(fFullScreen);
+#endif
+	}
 }
 
 extern void CommandSetAutoBearoff( char *sz ) {
