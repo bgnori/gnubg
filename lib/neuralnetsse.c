@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.1 2006/04/12 19:08:24 Superfly_Jon Exp $
+ * $Id: neuralnetsse.c,v 1.2 2006/09/21 22:24:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -32,8 +32,6 @@
 
 #include <xmmintrin.h>
 #include <mm_malloc.h>
-
-#define sse_aligned(ar) (!(((int)ar) % ALIGN_SIZE))
 
 #define HIDDEN_NODES 128
 
@@ -212,9 +210,11 @@ extern int NeuralNetEvaluate128( neuralnet *pnn, float arInput[],
 			      float arOutput[], NNEvalType t ) {
 
     SSE_ALIGN(float ar[HIDDEN_NODES]);
+#if DEBUG_SSE	
+	/* Removed as not 64bit robust (pointer truncation) and caused strange crash */
     assert(sse_aligned(ar));
     assert(sse_aligned(arInput));
-
+#endif
     assert(pnn->cHidden == HIDDEN_NODES);
 
     switch( t ) {

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: path.c,v 1.7 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: path.c,v 1.8 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -80,7 +80,7 @@ extern char *PathSearch( const char *szFile, const char *szDir ) {
 
     cch += strlen( szFile ) + 2;
 
-    if( !( pch = malloc( cch ) ) )
+    if( ( pch = malloc( cch ) ) == NULL )
 	return NULL;
 
     if( szDir ) {
@@ -154,7 +154,7 @@ BackupFile ( const char *sz ) {
   if ( access ( sz, R_OK ) )
     return 0;
 
-  if ( ! ( szNew = (char *) malloc ( strlen ( sz ) + 2 ) ) ) 
+  if ( ( szNew = (char *) malloc ( strlen ( sz ) + 2 ) ) == NULL ) 
     return -1;
 
   strcpy ( szNew, sz );

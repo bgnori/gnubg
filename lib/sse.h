@@ -1,4 +1,4 @@
-/* $Id: sse.h,v 1.5 2006/04/12 19:08:24 Superfly_Jon Exp $ 
+/* $Id: sse.h,v 1.6 2006/09/21 22:24:45 Superfly_Jon Exp $ 
  */
 
 #if USE_SSE_VECTORIZE
@@ -12,6 +12,8 @@
 #else
 #define SSE_ALIGN(D) D __attribute__ ((aligned(ALIGN_SIZE)))
 #endif
+
+#define sse_aligned(ar) (!(((int)ar) % ALIGN_SIZE))
 
 extern void *sse_malloc(size_t size);
 extern void sse_free(void* ptr);

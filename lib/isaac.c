@@ -8,7 +8,7 @@ MODIFIED:
   991209: modified for inclusion with GNU Backgammon by Gary Wong  
 ------------------------------------------------------------------------------
 
-  $Id: isaac.c,v 1.2 2005/02/21 23:23:08 jsegrave Exp $
+  $Id: isaac.c,v 1.3 2006/09/21 22:24:45 Superfly_Jon Exp $
 */
 
 #include "isaacs.h"
@@ -23,8 +23,7 @@ MODIFIED:
   *(r++) = b = (ind(mm,y>>RANDSIZL) + x) & 0xffffffff; \
 }
 
-void     isaac(ctx)
-randctx *ctx;
+void     isaac(randctx *ctx)
 {
    register ub4 a,b,x,y,*m,*mm,*m2,*r,*mend;
    mm=ctx->randmem; r=ctx->randrsl;
@@ -60,9 +59,7 @@ randctx *ctx;
 }
 
 /* if (flag==TRUE), then use the contents of randrsl[] to initialize mm[]. */
-void irandinit(ctx, flag)
-randctx *ctx;
-word     flag;
+void irandinit(randctx *ctx, word     flag)
 {
    word i;
    ub4 a,b,c,d,e,f,g,h;

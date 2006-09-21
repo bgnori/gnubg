@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.18 2006/06/22 22:50:29 Superfly_Jon Exp $
+* $Id: gtkgamelist.c,v 1.19 2006/09/21 22:24:05 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -214,10 +214,11 @@ GtkWidget* GL_Create()
 {
     GtkStyle *ps;
     gint nMaxWidth; 
-    char *asz[] = {_("#"), NULL, NULL};
+    char *asz[] = {NULL, NULL, NULL};
 	PangoRectangle logical_rect;
 	PangoLayout *layout;
 
+	asz[0] = _("#");
     pwGameList = gtk_clist_new_with_titles(3, asz);
     GTK_WIDGET_UNSET_FLAGS(pwGameList, GTK_CAN_FOCUS);
 
@@ -485,7 +486,7 @@ extern void GTKSetMoveRecord( moverecord *pmr ) {
 	gtk_clist_set_cell_style(pcl, yCurrent, xCurrent, psCurrent);
 
 	if( gtk_clist_row_is_visible( pcl, yCurrent ) != GTK_VISIBILITY_FULL )
-		gtk_clist_moveto( pcl, yCurrent, xCurrent, 0.8, 0.5 );
+		gtk_clist_moveto( pcl, yCurrent, xCurrent, 0.8f, 0.5f );
 }
 
 extern void GTKPopMoveRecord( moverecord *pmr ) {

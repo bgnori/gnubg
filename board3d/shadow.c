@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: shadow.c,v 1.8 2006/06/22 22:51:00 Superfly_Jon Exp $
+* $Id: shadow.c,v 1.9 2006/09/21 22:24:45 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -96,7 +96,7 @@ void draw_shadow_volume_to_stencil(BoardData3d* bd3d)
 	glDepthMask(GL_FALSE);
 
 	/* Z-pass approach */
-	glStencilFunc(GL_ALWAYS, midStencilVal, ~0);
+	glStencilFunc(GL_ALWAYS, midStencilVal, (GLuint)~0);
 
 	glCullFace(GL_FRONT);
 	glStencilOp(GL_KEEP, GL_KEEP, GL_DECR);
@@ -142,7 +142,7 @@ void shadowDisplay(void (*drawScene)(BoardData *, BoardData3d *, renderdata *), 
 	draw_shadow_volume_to_stencil(&bd->bd3d);
 
 	/* Pass 2: Redraw model, full light in non-shadowed areas */
-	glStencilFunc(GL_EQUAL, midStencilVal, ~0);
+	glStencilFunc(GL_EQUAL, midStencilVal, (GLuint)~0);
 	glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 
 	drawScene(bd, &bd->bd3d, prd);

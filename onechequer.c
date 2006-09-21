@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: onechequer.c,v 1.5 2004/01/03 13:35:08 uid65656 Exp $
+ * $Id: onechequer.c,v 1.6 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -51,7 +51,7 @@ AverageRolls ( const float arProb[ 32 ], float *ar ) {
 
 
   ar[ 0 ] = sx;
-  ar[ 1 ] = sqrt ( sx2 - sx *sx );
+  ar[ 1 ] = (float)sqrt ( sx2 - sx *sx );
 
 }
 
@@ -121,8 +121,6 @@ getDist( const int nPips, const int nRoll, float *table ) {
 
     return ( table[ nPips * 32 + nRoll ] = r );
   }
-
-  assert( FALSE );
 
 }
 

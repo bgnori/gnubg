@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.50 2006/06/18 11:20:58 c_anthon Exp $
+ * $Id: external.c,v 1.51 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -597,7 +597,8 @@ extern void CommandExternal( char *sz ) {
 	return;
     }
 
-    do {
+listenloop:
+	{
 
       if( ( h = ExternalSocket( &psa, &cb, sz ) ) < 0 ) {
 	SockErr( sz );
@@ -687,6 +688,7 @@ extern void CommandExternal( char *sz ) {
 
       }
       closesocket( hPeer );
-    } while ( 1 );
+    }
+	goto listenloop;
 #endif
 }

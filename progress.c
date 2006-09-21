@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.24 2006/09/11 22:59:40 Superfly_Jon Exp $
+ * $Id: progress.c,v 1.25 2006/09/21 22:24:06 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -137,7 +137,7 @@ estimatedTimeLeft( const time_t tStart, const int iGame, const int nTrials,
 
   /* estimate time left */
 
-  return ( ( nAlt - iAlt - 1 ) + ( nTrials - iGame - 1 ) * nAlt ) * tpert;
+  return (time_t)(( ( nAlt - iAlt - 1 ) + ( nTrials - iGame - 1 ) * nAlt ) * tpert);
 
 }
 
@@ -166,7 +166,7 @@ formatDelta( const time_t t ) {
 static float
 estimatedSE( const float rSE, const int iGame, const int nTrials ) {
 
-  return rSE * sqrt( ( 1.0f * iGame ) / ( 1.0f * ( nTrials - 1 ) ) );
+  return rSE * (float)sqrt( ( 1.0 * iGame ) / ( 1.0 * ( nTrials - 1 ) ) );
 
 
 }

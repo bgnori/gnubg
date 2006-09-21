@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.17 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: osr.c,v 1.18 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -939,7 +939,7 @@ raceProbs ( int anBoard[ 2 ][ 25 ], const int nGames,
     for ( i = 0; i < 2; ++i ) {
       arMu[ i ] = 0.0f;
       for ( j = 0; j < MAX_PROBS; ++j )
-        arMu[ i ] += 1.0 * j * aarProbs[ i ][ j ];
+        arMu[ i ] += 1.0f * j * aarProbs[ i ][ j ];
 
     }
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: formatgs.c,v 1.11 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: formatgs.c,v 1.12 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -70,7 +70,7 @@ errorRate( const float rn, const float ru, const matchstate *pms ) {
 static char *
 errorRateMP( const float rn, const float ru, const matchstate *pms ) {
 
-  int n = fOutputDigits - ( log10( rErrorRateFactor ) - 0.5 );
+  int n = fOutputDigits - (int)( log10( rErrorRateFactor ) - 0.5 );
 
   if ( n < 0 )
     n = 0;

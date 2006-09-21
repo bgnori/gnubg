@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.46 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: dice.c,v 1.47 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1222,7 +1222,8 @@ ReadDiceFile( rngcontext *rngctx ) {
   unsigned char uch;
   int n;
 
-  while ( 1 ) {
+uglyloop:
+  {
   
     n = read( rngctx->hDice, &uch, 1 );
 
@@ -1239,6 +1240,7 @@ ReadDiceFile( rngcontext *rngctx ) {
       return (uch - '0');
 
   }
+  goto uglyloop;	/* This logic should be reconsidered */
 
   return -1;
 

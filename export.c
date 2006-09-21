@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.33 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: export.c,v 1.34 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -583,12 +583,12 @@ CommandExportPositionJF (char *sz)
       WriteInt16 (fp, ms.anScore[1]);
     }
 
-  c = strlen (ap[0].szName);
+  c = (unsigned char)strlen (ap[0].szName);
   fwrite (&c, 1, 1, fp);
   for (i = 0; i < c; i++)
     fwrite (&ap[0].szName[i], 1, 1, fp);
 
-  c = strlen (ap[1].szName);
+  c = (unsigned char)strlen (ap[1].szName);
   fwrite (&c, 1, 1, fp);
   for (i = 0; i < c; i++)
     fwrite (&ap[1].szName[i], 1, 1, fp);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.36 2006/08/29 12:34:10 c_anthon Exp $
+ * $Id: drawboard.c,v 1.37 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -59,8 +59,8 @@ static char *DrawBoardStd( char *sz, int anBoard[ 2 ][ 25 ], int fRoll,
 
     char *pch = sz, *pchIn;
     int x, y, an[ 2 ][ 25 ], cOffO = nChequers, cOffX = nChequers;
-    static char achX[ 16 ] = "     X6789ABCDEF",
-        achO[ 16 ] = "     O6789ABCDEF";
+    static char achX[ 17 ] = "     X6789ABCDEF",
+        achO[ 17 ] = "     O6789ABCDEF";
 
     for( x = 0; x < 25; x++ ) {
         cOffO -= anBoard[ 0 ][ x ];
@@ -304,8 +304,8 @@ static char *DrawBoardCls( char *sz, int anBoard[ 2 ][ 25 ], int fRoll,
 
     char *pch = sz, *pchIn;
     int x, y, an[ 2 ][ 25 ], cOffO = nChequers, cOffX = nChequers;
-    static char achX[ 16 ] = "     X6789ABCDEF",
-        achO[ 16 ] = "     O6789ABCDEF";
+    static char achX[ 17 ] = "     X6789ABCDEF",
+        achO[ 17 ] = "     O6789ABCDEF";
 
     for( x = 0; x < 25; x++ ) {
         cOffO -= anBoard[ 0 ][ x ];

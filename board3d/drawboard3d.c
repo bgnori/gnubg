@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.45 2006/06/27 17:36:00 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.46 2006/09/21 22:24:45 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -3262,7 +3262,7 @@ void renderFlag(BoardData *bd, BoardData3d *bd3d, int curveAccuracy)
 		glGetLightfv(GL_LIGHT0, GL_SPECULAR, specular);
 		glLightfv(GL_LIGHT0, GL_SPECULAR, zero);
 
-		flagValue[0] = '0' + abs(bd->resigned);
+		flagValue[0] = '0' + (char)abs(bd->resigned);
 		glScalef(1.3f, 1.3f, 1);
 
 		glLineWidth(.5f);

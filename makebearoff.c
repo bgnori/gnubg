@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.34 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: makebearoff.c,v 1.35 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -26,7 +26,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#if HAVE_UNISTD_H
 #include <unistd.h>
+#endif
+#include <sys\types.h>
 #include <math.h>
 #include <errno.h>
 #include <stdarg.h>
@@ -652,10 +655,9 @@ generate_os ( const int nOS, const int fHeader,
 #if WIN32
   HINSTANCE hInstance = (HINSTANCE) GetModuleHandle(NULL);
   HWND hwndPB;
+  INITCOMMONCONTROLSEX InitCtrlEx;
   if( hdlg != NULL)
     ShowWindow(hdlg, SW_SHOW);
-
-  INITCOMMONCONTROLSEX InitCtrlEx;
 
   InitCtrlEx.dwSize = sizeof(INITCOMMONCONTROLSEX);
   InitCtrlEx.dwICC  = ICC_PROGRESS_CLASS;
@@ -929,10 +931,9 @@ generate_nd ( const int nPoints,const int nHashSize, const int fHeader,
 #if WIN32
   HINSTANCE hInstance = (HINSTANCE) GetModuleHandle(NULL);
   HWND hwndPB;
+  INITCOMMONCONTROLSEX InitCtrlEx;
   if( hdlg != NULL)
     ShowWindow(hdlg, SW_SHOW);
-
-  INITCOMMONCONTROLSEX InitCtrlEx;
 
   InitCtrlEx.dwSize = sizeof(INITCOMMONCONTROLSEX);
   InitCtrlEx.dwICC  = ICC_PROGRESS_CLASS;
@@ -1284,10 +1285,9 @@ generate_ts ( const int nTSP, const int nTSC,
 #if WIN32
   HINSTANCE hInstance = (HINSTANCE) GetModuleHandle(NULL);
   HWND hwndPB;
+  INITCOMMONCONTROLSEX InitCtrlEx;
   if( hdlg != NULL)
     ShowWindow(hdlg, SW_SHOW);
-
-  INITCOMMONCONTROLSEX InitCtrlEx;
 
   InitCtrlEx.dwSize = sizeof(INITCOMMONCONTROLSEX);
   InitCtrlEx.dwICC  = ICC_PROGRESS_CLASS;
@@ -1501,9 +1501,9 @@ usage ( char *arg0 ) {
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.34 $\n" );
+  printf ( "makebearoff $Revision: 1.35 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.34 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.35 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1647,7 +1647,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.34 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.35 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1775,7 +1775,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.34 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.35 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"

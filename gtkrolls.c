@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.15 2006/09/11 22:59:40 Superfly_Jon Exp $
+ * $Id: gtkrolls.c,v 1.16 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -167,8 +167,8 @@ sort_func ( GtkTreeModel *model,
   gtk_tree_model_get ( model, a, 2, &sz0, -1 );
   gtk_tree_model_get ( model, b, 2, &sz1, -1 );
 
-  r0 = atof ( sz0 );
-  r1 = atof ( sz1 );
+  r0 = (float)atof ( sz0 );
+  r1 = (float)atof ( sz1 );
 
   if ( r0 < r1 )
     return -1;
@@ -274,7 +274,7 @@ static void DepthChanged ( GtkRange *pr, rollswidget *prw )
 		return;
 	}
 
-	n = gtk_range_get_value(pr);
+	n = (int)gtk_range_get_value(pr);
 	if (n == prw->nDepth)
 		return;
 
@@ -406,7 +406,7 @@ GTKShowRolls ( const gint nDepth, evalcontext *pec, matchstate *pms ) {
 
   /* tree  */
 
-  if( ( prw->ptv = RollsTree ( n, pec, pms ) ) ) {
+  if( ( prw->ptv = RollsTree ( n, pec, pms ) ) != 0 ) {
       gtk_container_add ( GTK_CONTAINER ( prw->psw ), prw->ptv );
       prw->nDepth = n;
   }

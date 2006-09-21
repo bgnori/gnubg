@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkbearoff.c,v 1.15 2006/09/13 19:44:05 c_anthon Exp $
+ * $Id: gtkbearoff.c,v 1.16 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -161,7 +161,7 @@ CreateBearoff( matchstate *pms, bearoffcontext *pbc ) {
   int i, j;
   char **aaXpm[6];
   
-  if ( ! ( pbw = (bearoffwidget *) g_malloc( sizeof ( bearoffwidget ) ) ) )
+  if ( ( pbw = (bearoffwidget *) g_malloc( sizeof ( bearoffwidget ) ) ) == NULL )
     return NULL;
 
   memcpy( &pbw->ms, pms, sizeof ( matchstate ) );

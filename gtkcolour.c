@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.c,v 1.14 2006/06/26 19:00:44 c_anthon Exp $
+ * $Id: gtkcolour.c,v 1.15 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -69,15 +69,15 @@ static void render_pixmap( GtkColourPicker *pcp ) {
     else
       opac = pcp->arColour[3];
 
-    col.red = ( pcp->arColour[ 0 ] * opac + 0.66667 * ( 1 - opac ) ) * 0xFFFF;
-    col.green = ( pcp->arColour[ 1 ] * opac + 0.66667 * ( 1 - opac ) ) * 0xFFFF;
-    col.blue = ( pcp->arColour[ 2 ] * opac + 0.66667 * ( 1 - opac ) ) * 0xFFFF;
+    col.red = (guint16)(( pcp->arColour[ 0 ] * opac + 0.66667 * ( 1 - opac ) ) * 0xFFFF);
+    col.green = (guint16)(( pcp->arColour[ 1 ] * opac + 0.66667 * ( 1 - opac ) ) * 0xFFFF);
+    col.blue = (guint16)(( pcp->arColour[ 2 ] * opac + 0.66667 * ( 1 - opac ) ) * 0xFFFF);
 
     set_gc_colour( gc0, gtk_widget_get_colormap( GTK_WIDGET( pcp ) ), &col );
     
-    col.red = ( pcp->arColour[ 0 ] * opac + 0.33333 * ( 1 - opac ) ) * 0xFFFF;
-    col.green = ( pcp->arColour[ 1 ] * opac + 0.33333 * ( 1 - opac ) ) * 0xFFFF;
-    col.blue = ( pcp->arColour[ 2 ] * opac + 0.33333 * ( 1 - opac ) ) * 0xFFFF;
+    col.red = (guint16)(( pcp->arColour[ 0 ] * opac + 0.33333 * ( 1 - opac ) ) * 0xFFFF);
+    col.green = (guint16)(( pcp->arColour[ 1 ] * opac + 0.33333 * ( 1 - opac ) ) * 0xFFFF);
+    col.blue = (guint16)(( pcp->arColour[ 2 ] * opac + 0.33333 * ( 1 - opac ) ) * 0xFFFF);
 
     set_gc_colour( gc1, gtk_widget_get_colormap( GTK_WIDGET( pcp ) ), &col );
     

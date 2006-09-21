@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.17 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: record.c,v 1.18 2006/09/21 22:24:06 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -45,7 +45,7 @@ static int anAvg[ NUM_AVG - 1 ] = { 20, 100, 500 };
 
 /* exponential filter function, using the first three terms of the
    Taylor expansion of e^x */
-#define DECAY(n) ( 1.0 - 1.0/(n) + 0.5/(n)/(n) )
+#define DECAY(n) ( 1.0f - 1.0f/(n) + 0.5f/(n)/(n) )
 static float arDecay[ NUM_AVG - 1 ] = {
     DECAY(20), DECAY(100), DECAY(500)
 };
@@ -205,7 +205,7 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
 	return -1;
     }
 
-    if( fputs( "# %Version: 2 ($Revision: 1.17 $)\n", *ppfOut ) < 0 ) {
+    if( fputs( "# %Version: 2 ($Revision: 1.18 $)\n", *ppfOut ) < 0 ) {
 	outputerr( *ppchOut );
 	free( *ppchOut );
 	return -1;

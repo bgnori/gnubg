@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.28 2006/09/11 22:59:40 Superfly_Jon Exp $
+ * $Id: gtkexport.c,v 1.29 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -145,7 +145,7 @@ ExportGetValues ( exportwidget *pew, exportsetup *pexs ) {
 
   /* board */
 
-  pexs->fDisplayBoard = pew->padjDisplayBoard->value;
+  pexs->fDisplayBoard = (int)pew->padjDisplayBoard->value;
 
   pexs->fSide = 0;
   for ( i = 0; i < 2; i++ ) 
@@ -154,7 +154,7 @@ ExportGetValues ( exportwidget *pew, exportsetup *pexs ) {
 
   /* moves */
 
-  pexs->nMoves = pew->padjMoves->value;
+  pexs->nMoves = (int)pew->padjMoves->value;
 
   pexs->fMovesDetailProb = 
     gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( 
@@ -201,8 +201,8 @@ ExportGetValues ( exportwidget *pew, exportsetup *pexs ) {
     gtk_option_menu_get_history (GTK_OPTION_MENU (pew->pwHTMLCSS));
 
   /* sizes */
-  pexs->nPNGSize = pew->adjPNGSize->value;
-  pexs->nHtmlSize = pew->adjHtmlSize->value;
+  pexs->nPNGSize = (int)pew->adjPNGSize->value;
+  pexs->nHtmlSize = (int)pew->adjHtmlSize->value;
 }
 
 #define CHECKVALUE(orig,new,flag,text,format) \

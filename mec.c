@@ -28,7 +28,7 @@
  *
  *     gcc -DMEC_STANDALONE mec.c -o mec
  *
- * $Id: mec.c,v 1.2 2004/04/19 09:28:28 Superfly_Jon Exp $
+ * $Id: mec.c,v 1.3 2006/09/21 22:24:05 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -239,7 +239,7 @@ mec_pc( const float rGammonRate,
   /* save post Crawford equities */
 
   for ( i = 0; i < ml; ++i )
-    arMetPC[ i ] = E[ i + 1 ][ 1 ];
+    arMetPC[ i ] = (float)E[ i + 1 ][ 1 ];
     
   /* garbage collect */
 
@@ -329,7 +329,7 @@ mec( const float rGammonRate,
 
   for ( i = 0; i < ml; ++i )
     for ( j = 0; j < ml; ++j )
-      aarMet[ i ][ j ] = E[ i + 1 ][ j + 1 ];
+      aarMet[ i ][ j ] = (float)E[ i + 1 ][ j + 1 ];
 
   /* garbage collect */
 

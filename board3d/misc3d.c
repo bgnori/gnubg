@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.58 2006/09/11 22:59:40 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.59 2006/09/21 22:24:45 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -400,7 +400,8 @@ void LoadTextureInfo(int FirstPass)
 
 	do
 	{
-		int err, found, i, len, val;
+		int err, found, i, val;
+		size_t len;
 		TextureInfo text;
 
 		err = 0;
@@ -419,6 +420,7 @@ void LoadTextureInfo(int FirstPass)
 		{
 			g_print("Texture filename %s too big, maximum length %d.  Entry ignored.\n", buf, FILENAME_SIZE);
 			err = 1;
+			strcpy(text.file, "");
 		}
 		else
 			strcpy(text.file, buf);
@@ -2225,7 +2227,7 @@ void SetTexture(BoardData3d* bd3d, Material* pMat, const char* filename)
 
 	do
 	{
-		if (!(newStart = strchr(nameStart, '\\')))
+		if ((newStart = strchr(nameStart, '\\')) == NULL)
 			newStart = strchr(nameStart, '/');
 
 		if (newStart)
@@ -2349,7 +2351,7 @@ void GenerateImage3d(renderdata *prd, const char* szName,
 	bdpw.rd = &rd;
 	rd.nSize = nSize;
 
-	if (!(puch = (unsigned char *) malloc (nSizeX * nSizeY * nSize * nSize * 3)))
+	if ((puch = (unsigned char *) malloc(nSizeX * nSizeY * nSize * nSize * 3)) == NULL)
 	{
 		outputerr ("malloc");
 		return;
