@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.18 2006/09/21 22:24:06 Superfly_Jon Exp $
+ * $Id: record.c,v 1.19 2006/09/30 21:59:11 c_anthon Exp $
  */
 
 #include "config.h"
@@ -137,9 +137,9 @@ extern int RecordReadItem( FILE *pf, char *pch, playerrecord *ppr ) {
 	    return -1;
 	}
         ppr->arErrorChequerplay[ ea ] = g_ascii_strtod(str1, NULL);
-        ppr->arErrorCube[ ea ] =g_ascii_strtod(str1, NULL);
-        ppr->arErrorCombined[ ea ] = g_ascii_strtod(str1, NULL);
-        ppr->arLuck[ ea ]  = g_ascii_strtod(str1, NULL);
+        ppr->arErrorCube[ ea ] =g_ascii_strtod(str2, NULL);
+        ppr->arErrorCombined[ ea ] = g_ascii_strtod(str3, NULL);
+        ppr->arLuck[ ea ]  = g_ascii_strtod(str4, NULL);
     }
 
     return 0;
@@ -205,7 +205,7 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
 	return -1;
     }
 
-    if( fputs( "# %Version: 2 ($Revision: 1.18 $)\n", *ppfOut ) < 0 ) {
+    if( fputs( "# %Version: 2 ($Revision: 1.19 $)\n", *ppfOut ) < 0 ) {
 	outputerr( *ppchOut );
 	free( *ppchOut );
 	return -1;
