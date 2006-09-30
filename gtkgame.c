@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.587 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.588 2006/09/30 09:10:12 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1627,11 +1627,6 @@ extern void SetPanelWidth(int size)
 
 extern void SwapBoardToPanel(int ToPanel)
 {	/* Show/Hide panel on right of screen */
-
-	/* Need to hide these, as handle box seems to be buggy and gets confused */
-	gtk_widget_hide(gtk_widget_get_parent(pwMenuBar));
-	gtk_widget_hide(gtk_widget_get_parent(pwToolbar));
-
 	if (ToPanel)
 	{
 		gtk_widget_reparent(pwEventBox, pwPanelGameBox);
@@ -1640,9 +1635,21 @@ extern void SwapBoardToPanel(int ToPanel)
 			gtk_main_iteration();
 		gtk_widget_hide(pwGameBox);
 		SetPanelWidth(panelSize);
+{	/* Hack to sort out widget positions - may be removed if works in later version of gtk */
+		BoardData *bd = BOARD( pwBoard )->board_data;
+		GtkAllocation temp = pwMain->allocation;
+		temp.height++;
+		gtk_widget_size_allocate(pwMain, &temp);
+		temp.height--;
+		gtk_widget_size_allocate(pwMain, &temp);
+}
 	}
 	else
 	{
+		/* Need to hide these, as handle box seems to be buggy and gets confused */
+		gtk_widget_hide(gtk_widget_get_parent(pwMenuBar));
+		gtk_widget_hide(gtk_widget_get_parent(pwToolbar));
+
 		gtk_widget_reparent(pwEventBox, pwGameBox);
 		gtk_widget_show(pwGameBox);
 		while(gtk_events_pending())
@@ -1652,9 +1659,9 @@ extern void SwapBoardToPanel(int ToPanel)
 			panelSize = GetPanelSize();
 			gtk_widget_hide(hpaned);
 		}
+		gtk_widget_show(gtk_widget_get_parent(pwMenuBar));
+		gtk_widget_show(gtk_widget_get_parent(pwToolbar));
 	}
-	gtk_widget_show(gtk_widget_get_parent(pwMenuBar));
-	gtk_widget_show(gtk_widget_get_parent(pwToolbar));
 }
 
 static void MainSize( GtkWidget *pw, GtkRequisition *preq, gpointer p ) {
