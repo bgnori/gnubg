@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.3 2006/09/13 21:55:07 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.4 2006/09/30 09:08:42 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -67,6 +67,8 @@ extern GtkWidget *GTKCreateDialog(const char *szTitle, const dialogtype dt,
 		parent = GTKGetCurrentParent();
 	if (!GTK_IS_WINDOW(parent))
 		parent = gtk_widget_get_toplevel(parent);
+	if (!GTK_WIDGET_REALIZED(parent))
+		parent = NULL;
 	if (parent != NULL && (flags & DIALOG_FLAG_MODAL))
 	{
 		if ((flags & DIALOG_FLAG_NOTIDY) == 0)
