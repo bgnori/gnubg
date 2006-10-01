@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.632 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.633 2006/10/01 22:53:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6187,7 +6187,7 @@ extern void Prompt( void ) {
 
 #if USE_GTK
 #if HAVE_LIBREADLINE
-static void ProcessInput( char *sz, int fFree ) {
+static void ProcessInput( char *sz) {
 
     char *szConverted;
     char *pchExpanded;
@@ -6224,9 +6224,6 @@ static void ProcessInput( char *sz, int fFree ) {
     ResetInterrupt();
 
 
-    if( fFree )
-	free( sz );
-
     /* Recalculate prompt -- if we call nothing, then readline will
        redisplay the old prompt.  This isn't what we want: we either
        want no prompt at all, yet (if NextTurn is going to be called),
@@ -6243,7 +6240,7 @@ static void ProcessInput( char *sz, int fFree ) {
 
 extern void HandleInput( char *sz ) {
 
-    ProcessInput( sz, TRUE );
+    ProcessInput( sz);
 }
 
 #endif
@@ -6281,7 +6278,7 @@ extern void UserCommand( char *szCommand ) {
 	pchTranslated = Convert( sz, szTerminalCharset, GNUBG_CHARSET );
 	puts( pchTranslated );
 	free( pchTranslated );
-	ProcessInput( sz, FALSE );
+	ProcessInput( sz);
 	return;
     }
 #endif

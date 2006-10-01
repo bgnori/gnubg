@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.41 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: postscript.c,v 1.42 2006/10/01 22:53:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -154,7 +154,7 @@ static void PSStartPage( FILE *pf ) {
 	int id, idContents;
 	
 	StartObject( pf, id = AllocateObject() );
-	DynArrayAdd( &daPages, (void *) id );
+	DynArrayAdd( &daPages, GINT_TO_POINTER(id) );
 
 	idContents = AllocateObject();
 	fprintf( pf, "<<\n"
@@ -1259,7 +1259,7 @@ static void PostScriptEpilogue( FILE *pf ) {
 	       "/Type /Pages\n"
 	       "/Kids [\n", pf );
 	for( i = 0; i < daPages.c; i++ )
-	    fprintf( pf, " %d 0 R\n", (int) daPages.ap[ i ] );
+	    fprintf( pf, " %d 0 R\n", GPOINTER_TO_INT(daPages.ap[ i ]) );
 	fprintf( pf, "]\n"
 		 "/Count %d\n"
 		 "/MediaBox [0 0 %d %d]\n"
