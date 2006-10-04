@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.24 2006/09/11 22:59:40 Superfly_Jon Exp $
+ * $Id: gtktoolbar.c,v 1.25 2006/10/04 10:01:49 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -338,7 +338,7 @@ ToolbarNew ( void ) {
   gtk_toolbar_set_orientation ( GTK_TOOLBAR ( pwToolbar ),
                                 GTK_ORIENTATION_HORIZONTAL );
   gtk_toolbar_set_style ( GTK_TOOLBAR ( pwToolbar ),
-                          GTK_TOOLBAR_ICONS );
+                          GTK_TOOLBAR_BOTH );
   gtk_box_pack_start( GTK_BOX( vbox_toolbar ), pwToolbar, 
                       FALSE, FALSE, 0 );
 
