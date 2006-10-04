@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.72 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: text.c,v 1.73 2006/10/04 12:28:39 c_anthon Exp $
  */
 
 #include "config.h"
@@ -263,7 +263,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.72 $";
+  const char szVersion[] = "$Revision: 1.73 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -625,8 +625,8 @@ static void TextDumpStatcontext ( FILE *pf, const statcontext *psc,
 
   }
 
-  DumpStatcontext ( sz, psc, NULL, iGame < 0 );
-
+  DumpStatcontext ( sz, psc, ap[0].szName, ap[1].szName,
+          NULL, iGame < 0 );
   fputs ( sz, pf );
 
   fputs ( "\n\n", pf );

@@ -1,7 +1,7 @@
 /*
- * formatgs.h
+ * gtkrelational.h
  *
- * by Joern Thyssen <jth@gnubg.org>, 2003
+ * by Christian Anthon <anthon@kiku.dk>, 2006.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of version 2 of the GNU General Public License as
@@ -16,27 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: formatgs.h,v 1.2 2006/10/04 12:28:39 c_anthon Exp $
+ * $Id: gtkrelational.h,v 1.1 2006/10/04 12:28:39 c_anthon Exp $
  */
 
-#ifndef _FORMATGS_H_
-#define _FORMATGS_H_
-
-#include <glib.h>
-
-#include "analysis.h"
-
-enum _formatgs {
-  FORMATGS_CHEQUER,
-  FORMATGS_CUBE, 
-  FORMATGS_LUCK,
-  FORMATGS_OVERALL };
-
-extern GList *
-formatGS( const statcontext *psc, const int nMatchTo,
-          const int fIsMatch, const enum _formatgs fg );
-
-extern void
-freeGS( GList *list );
-
-#endif /* _FORMATGS_H_ */
+#ifndef _GTKRELATIONAL_H_
+#define _GTKRELATIONAL_H_
+extern void GtkRelationalShowStats(gpointer p, guint n, GtkWidget * pw);
+#endif

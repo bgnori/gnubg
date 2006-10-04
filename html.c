@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.171 2006/06/26 21:07:16 c_anthon Exp $
+ * $Id: html.c,v 1.172 2006/10/04 12:28:39 c_anthon Exp $
  */
 
 #include "config.h"
@@ -167,7 +167,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.171 2006/06/26 21:07:16 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.172 2006/10/04 12:28:39 c_anthon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1847,7 +1847,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.171 $";
+  const char szVersion[] = "$Revision: 1.172 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1927,7 +1927,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.171 $";
+  const char szVersion[] = "$Revision: 1.172 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2910,7 +2910,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
   if( psc->fMoves ) {
 
-    GList *list = formatGS( psc, pms, fIsMatch, FORMATGS_CHEQUER );
+    GList *list = formatGS( psc, pms->nMatchTo, fIsMatch, FORMATGS_CHEQUER );
     GList *pl;
 
     printStatTableHeader ( pf, hecss, _("Checker play statistics") );
@@ -2932,7 +2932,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
   if( psc->fDice ) {
 
-    GList *list = formatGS( psc, pms, fIsMatch, FORMATGS_LUCK );
+    GList *list = formatGS( psc, pms->nMatchTo, fIsMatch, FORMATGS_LUCK );
     GList *pl;
 
     printStatTableHeader ( pf, hecss, 
@@ -2955,7 +2955,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
   if( psc->fCube ) {
 
-    GList *list = formatGS( psc, pms, fIsMatch, FORMATGS_CUBE );
+    GList *list = formatGS( psc, pms->nMatchTo, fIsMatch, FORMATGS_CUBE );
     GList *pl;
 
     printStatTableHeader ( pf, hecss, 
@@ -2978,7 +2978,7 @@ static void HTMLDumpStatcontext ( FILE *pf, const statcontext *psc,
 
   {
     
-    GList *list = formatGS( psc, pms, fIsMatch, FORMATGS_OVERALL );
+    GList *list = formatGS( psc, pms->nMatchTo, fIsMatch, FORMATGS_OVERALL );
     GList *pl;
     
     printStatTableHeader ( pf, hecss, 
