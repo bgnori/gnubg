@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.590 2006/10/04 12:28:39 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.591 2006/10/05 21:53:55 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -350,9 +350,11 @@ enum { TOGGLE_GAMELIST = NUM_CMDS + 1, TOGGLE_ANALYSIS, TOGGLE_COMMENTARY, TOGGL
 static void CopyAsGOL( gpointer *p, guint n, GtkWidget *pw );
 static void CopyAsIDs( gpointer *p, guint n, GtkWidget *pw );
 static void ExportHTMLImages( gpointer *p, guint n, GtkWidget *pw );
+#if USE_PYTHON
 static void GtkManageRelationalEnvs( gpointer *p, guint n, GtkWidget *pw );
 static void GtkShowRelational( gpointer *p, guint n, GtkWidget *pw );
 static void GtkRelationalAddMatch( gpointer *p, guint n, GtkWidget *pw );
+#endif
 static void LoadCommands( gpointer *p, guint n, GtkWidget *pw );
 static void NewClicked( gpointer *p, guint n, GtkWidget *pw );
 static void OpenClicked( gpointer *p, guint n, GtkWidget *pw );
@@ -9464,16 +9466,6 @@ static void GtkManageRelationalEnvs( gpointer *p, guint n, GtkWidget *pw )
 	GTKDisallowStdin();
 	gtk_main();
 	GTKAllowStdin();
-}
-#else
-static void GtkShowRelational( gpointer *p, guint n, GtkWidget *pw )
-{
-}
-static void GtkRelationalAddMatch( gpointer *p, guint n, GtkWidget *pw )
-{
-}
-static void GtkManageRelationalEnvs( gpointer *p, guint n, GtkWidget *pw )
-{
 }
 #endif
 
