@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.51 2006/09/13 19:54:10 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.52 2006/10/09 12:28:43 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -46,8 +46,11 @@
 #include "md5.h"
 #include <glib/gi18n.h>
 
+#ifdef _MSC_VER
 #undef IGNORE	// Ignore msdev define
 #define IGNORE __attribute__ ((unused))
+#include <direct.h>
+#endif
 
 static PyObject *
 BoardToPy( int anBoard[ 2 ][ 25 ] )
@@ -355,11 +358,14 @@ PythonCubeInfo(PyObject* self IGNORE, PyObject* args) {
   int fCubeOwner = ms.fCubeOwner;
   int fMove = ms.fMove;
   int nMatchTo = ms.nMatchTo;
-  int anScore[ 2 ] = { ms.anScore[ 0 ], ms.anScore[ 1 ] };
+  int anScore[ 2 ];
   int fCrawford = ms.fCrawford;
   int fJacoby = ms.fJacoby;
   int fBeavers = ms.cBeavers;
   bgvariation bgv = ms.bgv;
+  anScore[ 0 ] = ms.anScore[ 0 ];
+  anScore[ 1 ] = ms.anScore[ 1 ];
+
 
   if ( ! PyArg_ParseTuple( args, "|iiii(ii)iiii:cubeinfo", 
                            &nCube, &fCubeOwner, &fMove, &nMatchTo, 
@@ -777,7 +783,7 @@ extern char* GameAsString()
 		int move = 1;
 		for (plMove = plStart->plNext; plMove->p; plMove = plMove->plNext)
 		{
-			char playerStr[3] = ".AB";
+			char playerStr[4] = ".AB";
 			int player;
 			moverecord* pmr = plMove->p;
 			char* moveString = GetMoveString(pmr, &player);
@@ -809,7 +815,8 @@ extern char* GameAsString()
 extern PyObject *
 PythonMatchChecksum( PyObject* self IGNORE, PyObject *args )
 {
-	unsigned char auch[16], auchHex[33];
+	unsigned char auch[16];
+	char auchHex[33];
 	int i;
 	// Work out md5 checksum
 	char* gameStr = GameAsString();
