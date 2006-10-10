@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.52 2006/10/09 12:28:43 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.53 2006/10/10 21:15:32 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -47,10 +47,10 @@
 #include <glib/gi18n.h>
 
 #ifdef _MSC_VER
-#undef IGNORE	// Ignore msdev define
-#define IGNORE __attribute__ ((unused))
 #include <direct.h>
+#undef IGNORE	// Ignore msdev define
 #endif
+#define IGNORE __attribute__ ((unused))
 
 static PyObject *
 BoardToPy( int anBoard[ 2 ][ 25 ] )
