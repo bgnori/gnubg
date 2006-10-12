@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.28 2006/09/20 20:42:41 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.29 2006/10/12 19:06:30 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -1311,4 +1311,22 @@ int IsPanelShowVar(gnubgwindow panel, void *p)
 int PanelShowing(gnubgwindow window)
 {
 	return woPanel[window].showing && (fDisplayPanels || !woPanel[window].docked);
+}
+
+void ClosePanels()
+{
+	/* loop through and close each panel (not main window) */
+	int window;
+	for (window = 0; window < NUM_WINDOWS; window++)
+	{
+		if (window != WINDOW_MAIN)
+		{
+			if (woPanel[window].pwWin)
+			{
+				gtk_widget_destroy(woPanel[window].pwWin);
+				woPanel[window].pwWin = NULL;
+			}
+		}
+	}
+	pwTheoryList = NULL;	/* Reset this to stop errors - may be other ones that need reseting? */
 }

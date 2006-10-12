@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.313 2006/09/20 20:42:41 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.314 2006/10/12 19:06:30 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -72,6 +72,7 @@ extern void SaveWindowSettings(FILE* pf);
 extern void HidePanel(gnubgwindow window);
 extern void getWindowGeometry(gnubgwindow window);
 extern int PanelShowing(gnubgwindow window);
+extern void ClosePanels();
 
 extern int GetPanelSize();
 extern void SetPanelWidth(int size);
@@ -1270,5 +1271,7 @@ EPC( int anBoard[ 2 ][ 25 ], float *arEPC, float *arMu, float *arSigma,
 
 extern char *
 ShowEPC( int anBoard[ 2 ][ 25 ] );
+
+extern void SetupLanguage(char *newLangCode);
 
 #endif
