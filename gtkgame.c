@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.592 2006/10/12 19:06:30 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.593 2006/10/13 16:50:56 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2347,6 +2347,7 @@ extern void RunGTK( GtkWidget *pwSplash )
 #endif
 
 		DestroySplash ( pwSplash );
+		pwSplash = NULL;
 
 		/* Display any other windows now */
 		DisplayWindows();
