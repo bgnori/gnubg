@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.636 2006/10/16 21:44:13 c_anthon Exp $
+ * $Id: gnubg.c,v 1.637 2006/10/17 18:23:01 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -166,7 +166,6 @@ int fReadline = TRUE;
 /* CommandSetLang trims the selection to 31 max and copies */
 char szLang[32] = "system";
 char *orgLangCode;
-void SetupLanguageFirstRun(void);
 
 char szDefaultPrompt[] = "(\\p) ",
     *szPrompt = szDefaultPrompt;
@@ -7166,9 +7165,13 @@ int main(int argc, char *argv[] ) {
 	FILE *pf;
 
 	outputoff();
-        SetupLanguageFirstRun();
 
-    
+	orgLangCode = g_strdup (setlocale (LC_ALL, ""));
+
+	bindtextdomain (PACKAGE, LOCALEDIR);
+	textdomain (PACKAGE);
+	bind_textdomain_codeset (PACKAGE, GNUBG_CHARSET);
+
 #define AUTORC "/.gnubgautorc"
 
 	szFile = malloc (1 + strlen(szHomeDirectory)+strlen(AUTORC));
@@ -8794,25 +8797,27 @@ extern void CommandSetImportFileType(char *sz)
  	outputl(_("Invalid file type specified"));
 }
 
-void
-SetupLanguage (char *newLangCode)
-{
-  if (newLangCode)
-    {
-      if (!strcmp (newLangCode, "system") || !strcmp (newLangCode, ""))
-	g_setenv ("LC_ALL", orgLangCode, TRUE);
-      else
-	g_setenv ("LC_ALL", newLangCode, TRUE);
-    }
-  setlocale (LC_ALL, "");
+void setlangenv(char *newLangCode)
+{	/* Different functions needed on different platforms ! */
+#if WIN32
+    char *lang = malloc (strlen ("LANG=") + strlen(newLangCode) + 1);
+    sprintf(lang, "LANG=%s", newLangCode);
+    putenv(lang);
+    free(lang);
+#else
+	setenv ("LC_ALL", newLangCode, TRUE);
+#endif
 }
 
 void
-SetupLanguageFirstRun (void)
+SetupLanguage (char *newLangCode)
 {
-  orgLangCode = g_strdup (setlocale (LC_ALL, ""));
-
-  bindtextdomain (PACKAGE, LOCALEDIR);
-  textdomain (PACKAGE);
-  bind_textdomain_codeset (PACKAGE, GNUBG_CHARSET);
+	if (newLangCode)
+	{
+		if (!strcmp (newLangCode, "system") || !strcmp (newLangCode, ""))
+			setlangenv(orgLangCode);
+		else
+			setlangenv(newLangCode);
+	}
+	setlocale (LC_ALL, "");
 }
