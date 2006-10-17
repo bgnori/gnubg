@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.37 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: drawboard.c,v 1.38 2006/10/17 13:04:05 c_anthon Exp $
  */
 
 #include "config.h"
@@ -69,7 +69,7 @@ static char *DrawBoardStd( char *sz, int anBoard[ 2 ][ 25 ], int fRoll,
     
     strcpy( pch, _ (" GNU Backgammon  Position ID: ") );
 
-    pch += 30;
+    pch = strchr ( pch, 0 );
 
     if( fRoll )
         strcpy( pch, PositionID( anBoard ) );
@@ -180,7 +180,7 @@ static char *DrawBoardStd( char *sz, int anBoard[ 2 ][ 25 ], int fRoll,
     
     *pch++ = fRoll ? 'v' : '^';
     strcpy( pch, _("|                  |BAR|                  |     ") );
-    pch += 48;
+    pch = strchr ( pch, 0 );
     
     if( asz[ 3 ] )
         for( pchIn = asz[ 3 ]; *pchIn; pchIn++ )
@@ -314,7 +314,7 @@ static char *DrawBoardCls( char *sz, int anBoard[ 2 ][ 25 ], int fRoll,
     
     strcpy( pch, _("    GNU Backgammon  Position ID: ") );
 
-    pch += 33;
+    pch = strchr ( pch, 0 );
 
     if( fRoll )
         strcpy( pch, PositionID( anBoard ) );
@@ -419,7 +419,7 @@ static char *DrawBoardCls( char *sz, int anBoard[ 2 ][ 25 ], int fRoll,
     *pch++ = '\n';
     
     strcpy( pch, _("    |                  |BAR|                  |") );
-    pch += 47;
+    pch = strchr ( pch, 0 );
     *pch++ = fRoll ? 'v' : '^';
     *pch++ = ' ';   
     
@@ -528,12 +528,14 @@ static char *FormatPoint( char *pch, int n ) {
 
     assert( n >= 0 );
     
+    /*don't translate 'off' and 'bar' as these may be used in UserCommand at a later
+     * point */
     if( !n ) {
-        strcpy( pch, N_("off") );
-        return pch + strlen(N_("off") );
+        strcpy( pch, ("off") );
+        return pch + strlen(("off") );
     } else if( n == 25 ) {
-        strcpy( pch, N_("bar") );
-        return pch + strlen(N_("bar") );
+        strcpy( pch, ("bar") );
+        return pch + strlen(("bar") );
     } else if( n > 9 )
         *pch++ = n / 10 + '0';
 
