@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.597 2006/10/18 13:04:21 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.598 2006/10/20 18:22:29 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -2056,7 +2056,7 @@ GtkItemFactoryEntry aife[] = {
 	{ N_("/_Settings/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_Settings/Options..."), NULL, SetOptions, 0, NULL },
 	{ N_("/_Settings/Paths..."), NULL, Command, CMD_SHOW_PATH, NULL },
-	{ N_("/_Settings/Language..."), NULL, SetLanguage, 0, NULL },
+	{ N_("/_Settings/_Language..."), NULL, SetLanguage, 0, NULL },
 	{ N_("/_Settings/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_Settings/Save settings"), 
           NULL, Command, CMD_SAVE_SETTINGS, NULL },
