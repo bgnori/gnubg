@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.c,v 1.17 2006/07/04 16:46:15 c_anthon Exp $
+ * $Id: gtktexi.c,v 1.18 2006/10/23 17:54:26 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -1083,7 +1083,7 @@ static void EndElement( void *pv, const xmlChar *pchName ) {
 static void Characters( void *pv, const xmlChar *pchIn, int cch ) {
 
     GtkTexi *pw = pv;
-    VARIABLE_ARRAY(char, sz, cch)
+    VARIABLE_ARRAY(char, sz, cch + 1)
     char *pch;
 
 #if DEBUG_XML
