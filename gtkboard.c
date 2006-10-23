@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.203 2006/10/01 22:53:04 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.204 2006/10/23 17:55:56 Superfly_Jon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -872,6 +872,10 @@ gboolean LegalDestPoints( BoardData *bd, int iDestPoints[4] ) {
 	int iDestPt = -1;
 	int iDestLegal = TRUE;
 	int bar = bd->drag_colour == bd->colour ? bd->bar : 25 - bd->bar; /* determine point number of bar */
+
+	if (bd->valid_move && bd->valid_move->cMoves == bd->move_list.cMaxMoves
+		    && bd->valid_move->cPips == bd->move_list.cMaxPips)
+		return FALSE;	/* Complete move already made */
 
 	/* initialise */
 	for (i = 0; i <= 3; ++i)
