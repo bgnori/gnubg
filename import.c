@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.104 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: import.c,v 1.105 2006/10/24 08:52:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -278,9 +278,9 @@ extern int
 ImportJF( FILE * fp, char *szFileName) {
 
   moverecord *pmr;
-  int nMatchTo, fJacoby, fTurn, fCrawfordGame, fPostCrawford;
+  int nMatchTo, fJacoby=0, fTurn, fCrawfordGame, fPostCrawford;
   int anScore[ 2 ], nCube, fCubeOwner, anBoard[ 2 ][ 25 ], anDice[ 2 ];
-  int fCubeUse, fBeavers;
+  int fCubeUse=0, fBeavers;
   char aszPlayer[ 2 ][ MAX_NAME_LEN ];
   int i;
   
@@ -1463,6 +1463,7 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
     AddMoveRecord( pmgi );
 
     anRoll[ 0 ] = 0;
+    anRoll[ 1 ] = 0;
     
     while( fgets( sz, 1024, pf ) ) {
 
@@ -2395,6 +2396,7 @@ static void ImportTMGGame( FILE *pf, int i, int nLength, int n0, int n1,
     AddMoveRecord( pmgi );
 
     anRoll[ 0 ] = 0;
+    anRoll[ 1 ] = 0;
     
     while( fgets( sz, 1024, pf ) ) {
 

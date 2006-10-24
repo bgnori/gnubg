@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.c,v 1.18 2006/10/23 17:54:26 Superfly_Jon Exp $
+ * $Id: gtktexi.c,v 1.19 2006/10/24 08:52:49 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -582,7 +582,7 @@ static void ScanErr( void *pv, const char *msg, ... )
 static xmlEntity xmlEntityCprt = {
     NULL, XML_ENTITY_DECL, BAD_CAST "copyright",
     NULL, NULL, NULL, NULL, NULL, NULL, 
-    BAD_CAST "©", BAD_CAST "©", 1,
+    BAD_CAST "Â©", BAD_CAST "Â©", 1,
     XML_INTERNAL_PREDEFINED_ENTITY,
     NULL, NULL, NULL, NULL
 };
@@ -596,14 +596,14 @@ static xmlEntity xmlEntityBullet = {
 static xmlEntity xmlEntityLdQuo = {
     NULL, XML_ENTITY_DECL, BAD_CAST "ldqu",
     NULL, NULL, NULL, NULL, NULL, NULL, 
-    BAD_CAST "‘", BAD_CAST "‘", 1,
+    BAD_CAST "Â«", BAD_CAST "Â«", 1,
     XML_INTERNAL_PREDEFINED_ENTITY,
     NULL, NULL, NULL, NULL
 };
 static xmlEntity xmlEntityRdQuo = {
     NULL, XML_ENTITY_DECL, BAD_CAST "rdqu",
     NULL, NULL, NULL, NULL, NULL, NULL, 
-    BAD_CAST "’", BAD_CAST "’", 1,
+    BAD_CAST "Â»", BAD_CAST "Â»", 1,
     XML_INTERNAL_PREDEFINED_ENTITY,
     NULL, NULL, NULL, NULL
 };
