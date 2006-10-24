@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.599 2006/10/23 17:55:10 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.600 2006/10/24 22:53:07 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6417,7 +6417,7 @@ static int ShowManualSection( char *szTitle, char *szNode )
     }
     
     pw = gtk_texi_new();
-    g_object_add_weak_pointer( G_OBJECT( pw ), (gpointer *) &pw );
+    g_object_add_weak_pointer( G_OBJECT( pw ), (gpointer) &pw );
     gtk_window_set_title( GTK_WINDOW( pw ), _(szTitle) );
     gtk_window_set_default_size( GTK_WINDOW( pw ), 600, 400 );
     gtk_widget_show_all( pw );
@@ -6670,7 +6670,7 @@ extern void GTKHelp( char *sz )
 	GTKHelpAdd( pts, NULL, acTop );
 	
 	pw = GTKCreateDialog(_("Help - command reference"), DT_INFO, NULL, DIALOG_FLAG_NONE, NULL, NULL);
-	g_object_add_weak_pointer( G_OBJECT( pw ), (gpointer *) &pw );
+	g_object_add_weak_pointer( G_OBJECT( pw ), (gpointer ) &pw );
 	gtk_window_set_title( GTK_WINDOW( pw ), _("Help - command reference") );
 	gtk_window_set_default_size( GTK_WINDOW( pw ), 500, 400 );
 	gtk_dialog_add_button(GTK_DIALOG(pw), GTK_STOCK_CLOSE, 

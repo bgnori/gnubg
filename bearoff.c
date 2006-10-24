@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.41 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.42 2006/10/24 22:53:07 c_anthon Exp $
  */
 
 #include "config.h"
@@ -733,7 +733,6 @@ ReadSconyers15x15( bearoffcontext *pbc,
   long lPos;
   unsigned char ac[ 16 ];
   float ar[ 4 ];
-  float *pr;
   long l;
   int i;
   int h = -1;
@@ -869,8 +868,12 @@ ReadSconyers15x15( bearoffcontext *pbc,
       ( ac[ 4 * i + 1 ] << 8 ) |
       ( ac[ 4 * i + 2 ] << 16 ) |
       ( ac[ 4 * i + 3 ] << 24 );
-    pr = (float *) &l;
-    ar[ i ] = *pr;
+    /* the commented code is strange and causes compiler warnings
+     * float* pr; 
+     * pr = (float *) &l; 
+     * ar[ i ] = *pr; 
+     * and is therefore replaced by */
+    ar[ i ] = (float)l;
   }
 
   /* Save equities */

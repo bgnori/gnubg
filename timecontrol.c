@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: timecontrol.c,v 1.23 2006/09/21 22:24:06 Superfly_Jon Exp $
+ * $Id: timecontrol.c,v 1.24 2006/10/24 22:53:07 c_anthon Exp $
  */
 
 #include "config.h"
@@ -369,7 +369,7 @@ static void showTimeControl( timecontrol *ptc, int level, int levels )
       break;
     }
     outputf("%*s%-*s (%s): ", 2*level,"",
-		30-strlen(szTCPENALTY),
+		(int)(30-strlen(szTCPENALTY)),
 		"Penalty points",
 		szTCPENALTY);
     if (TC_LOSS == ptc->penalty)
@@ -379,13 +379,13 @@ static void showTimeControl( timecontrol *ptc, int level, int levels )
 
     /* if (ptc->nAddedTime) */
 	outputf("%*s%-*s (%s): %9s\n", 2*level,"",
-		30-strlen(szTCTIME),
+		(int)(30-strlen(szTCTIME)),
 		"Added time",
 		szTCTIME,
 		time2str( ptc->nAddedTime, 0 ) );
     if (ptc->nPointAllowance)
 	outputf("%*s%-*s (%s): %9s\n", 2*level,"",
-		30-strlen(szTCPOINT),
+		(int)(30-strlen(szTCPOINT)),
 		"Time per point",
 		szTCPOINT,
 		time2str(ptc->nPointAllowance, 0));
@@ -393,13 +393,13 @@ static void showTimeControl( timecontrol *ptc, int level, int levels )
 	TC_FISCHER == ptc->timing ||
 	TC_BRONSTEIN == ptc->timing)
 	outputf("%*s%-*s (%s): %9s\n", 2*level,"",
-		30-strlen(szTCMOVE),
+		(int)(30-strlen(szTCMOVE)),
 		"Time per move",
 		szTCMOVE,
 		time2str(ptc->nMoveAllowance, 0));
     if (ptc->dMultiplier != 1.0) 
 	outputf("%*s%-*s (%s): %9s\n", 2*level,"",
-		30-strlen(szTCMULT),
+		(int)(30-strlen(szTCMULT)),
 		"Scale old time by:",
 		szTCMULT,
 		time2str((int)ptc->dMultiplier, 0)
