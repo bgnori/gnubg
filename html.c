@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.172 2006/10/04 12:28:39 c_anthon Exp $
+ * $Id: html.c,v 1.173 2006/10/25 09:37:47 c_anthon Exp $
  */
 
 #include "config.h"
@@ -167,7 +167,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.172 2006/10/04 12:28:39 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.173 2006/10/25 09:37:47 c_anthon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1847,7 +1847,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.172 $";
+  const char szVersion[] = "$Revision: 1.173 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1927,7 +1927,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.172 $";
+  const char szVersion[] = "$Revision: 1.173 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3525,7 +3525,7 @@ extern void CommandExportGameHtml( char *sz ) {
     if( pf != stdout )
 	fclose( pf );
 
-    setDefaultFileName ( sz, PATH_HTML );
+    setDefaultFileName ( sz);
     
     /* external stylesheet */
 
@@ -3639,7 +3639,7 @@ extern void CommandExportMatchHtml( char *sz ) {
           return;
 		}
 
-        setDefaultFileName ( sz, PATH_HTML );
+        setDefaultFileName ( sz);
 
       }
 
@@ -3746,7 +3746,7 @@ extern void CommandExportPositionHtml( char *sz ) {
     if( pf != stdout )
 	fclose( pf );
 
-    setDefaultFileName ( sz, PATH_HTML );
+    setDefaultFileName ( sz);
 
     /* external stylesheet */
 

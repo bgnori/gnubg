@@ -1,7 +1,10 @@
 /*
- * gtkpath.h
+ * gtkfile.c
  *
- * by Joern Thyssen <jth@gnubg.org>, 2003
+ * by Christian Anthon 2006
+ *
+ * File dialogs
+ *
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of version 2 of the GNU General Public License as
@@ -16,13 +19,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkpath.h,v 1.2 2003/08/13 11:52:28 Superfly_Jon Exp $
+ * $Id: gtkfile.h,v 1.1 2006/10/25 09:37:47 c_anthon Exp $
  */
 
-#ifndef _GTKPATH_H_
-#define _GTKPATH_H_
-
-extern void
-GTKShowPath( void );
-
-#endif /* _GTKPATH_H_ */
+#ifndef _GTKFILE_H_
+#define _GTKFILE_H_
+extern void GTKOpen (gpointer * p, guint n, GtkWidget * pw);
+extern void GTKImport (gpointer * p, guint n, GtkWidget * pw);
+extern void GTKSave (gpointer * p, guint n, GtkWidget * pw);
+extern void GTKExport (gpointer * p, guint n, GtkWidget * pw);
+extern char *GTKFileSelect (gchar * prompt, gchar * extension, gchar * folder,
+			    gchar * name, GtkFileChooserAction action);
+extern void SetDefaultFileName (char *path);
+#endif

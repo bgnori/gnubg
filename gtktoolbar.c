@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.25 2006/10/04 10:01:49 c_anthon Exp $
+ * $Id: gtktoolbar.c,v 1.26 2006/10/25 09:37:47 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -36,6 +36,7 @@
 #include "gtkboard.h"
 #include "gtkgame.h"
 #include "gtk-multiview.h"
+#include "gtkfile.h"
 #include <glib/gi18n.h>
 #include "drawboard.h"
 #include "renderprefs.h"

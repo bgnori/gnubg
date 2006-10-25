@@ -16,12 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.54 2006/10/12 19:04:07 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.55 2006/10/25 09:37:47 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
 #include "config.h"
 #endif
+
 #if USE_PYTHON
 #include "gnubgmodule.h"
 

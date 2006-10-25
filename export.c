@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.34 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: export.c,v 1.35 2006/10/25 09:37:47 c_anthon Exp $
  */
 
 #include "config.h"
@@ -452,7 +452,7 @@ CommandExportPositionSnowieTxt (char *sz)
   if (pf != stdout)
     fclose (pf);
 
-  setDefaultFileName (sz, PATH_SNOWIE_TXT);
+  setDefaultFileName (sz);
 
 }
 
@@ -638,7 +638,7 @@ CommandExportPositionJF (char *sz)
 
   fclose (fp);
 
-  setDefaultFileName (sz, PATH_POS);
+  setDefaultFileName (sz);
 
   return;
 }

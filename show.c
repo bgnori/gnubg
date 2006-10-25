@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.208 2006/09/21 22:24:06 Superfly_Jon Exp $
+ * $Id: show.c,v 1.209 2006/10/25 09:37:47 c_anthon Exp $
  */
 
 #include "config.h"
@@ -52,7 +52,6 @@
 #if USE_GTK
 #include "gtkboard.h"
 #include "gtkgame.h"
-#include "gtkpath.h"
 #include "gtktheory.h"
 #include "gtkrace.h"
 #include "gtkexport.h"
@@ -1978,59 +1977,6 @@ CommandShowExport ( char *sz ) {
 }
 
 
-extern void
-CommandShowPath ( char *sz ) {
-
-  int i;
-
-  char *aszPathNames[] = {
-    N_("Export of Encapsulated PostScript .eps files"),
-    N_("Import or export of Jellyfish .gam files"),
-    N_("Export of HTML files"),
-    N_("Export of LaTeX files"),
-    N_("Import or export of Jellyfish .mat files"),
-    N_("Import of FIBS oldmoves files"),
-    N_("Export of PDF files"),
-    N_("Import of Jellyfish .pos files"),
-    N_("Export of PostScript files"),
-    N_("Load and save of SGF files"),
-    N_("Import of GamesGrid SGG files"),
-    N_("Export of text files"),
-    N_("Loading of match equity files (.xml)"),
-    N_("Import of TrueMoneyGames TMG files"),
-    N_("Import of Snowie .txt files"),
-  };
-
-  /* make GTK widget that allows editing of paths */
-
-#if USE_GTK
-  if ( fX ) {
-    GTKShowPath ();
-    return;
-  }
-#endif
-
-  outputl ( _("Default and current paths "
-            "for load, save, import, and export: \n") );
-
-  for ( i = 0; i < sizeof(aszPathNames)/sizeof(aszPathNames[0]); ++i ) {
-
-    outputf ( "%s:\n", gettext ( aszPathNames[ i ] ) );
-    if ( ! strcmp ( aaszPaths[ i ][ 0 ], "" ) )
-      outputl ( _("   Default : not defined") );
-    else
-      outputf ( _("   Default : \"%s\"\n"), aaszPaths[ i ][ 0 ] );
-
-    if ( ! strcmp ( aaszPaths[ i ][ 1 ], "" ) )
-      outputl ( _("   Current : not defined") );
-    else
-      outputf ( _("   Current : \"%s\"\n"), aaszPaths[ i ][ 1 ] );
-
-
-
-  }
-
-}
 
 extern void CommandShowTutor( char *sz ) {
 

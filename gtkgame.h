@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.106 2006/10/12 19:06:30 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.107 2006/10/25 09:37:47 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -27,11 +27,6 @@
 #include "backgammon.h"
 #include "rollout.h"
 #include "relational.h"
-
-typedef enum _filedialogtype { 
-  FDT_NONE=0, FDT_SAVE, FDT_EXPORT, FDT_IMPORT, FDT_EXPORT_FULL,
-  FDT_NONE_OPEN, FDT_NONE_SAVE
-} filedialogtype;
 
 typedef enum _warnings { 
   WARN_FULLSCREEN_EXIT=0, WARN_QUICKDRAW_MODE, WARN_SET_SHADOWS, 
@@ -71,7 +66,6 @@ extern GtkWidget *pwMessageText, *pwPanelVbox, *pwAnalysis, *pwCommentary;
 extern GtkWidget *pwGrab;
 extern GtkWidget *pwOldGrab;
 
-extern int lastImportType, lastExportType;
 extern int fEndDelay;
 
 extern gboolean ShowGameWindow( void );
@@ -162,10 +156,6 @@ extern int
 GtkTutor ( char *sz );
 
 extern void GTKNew ( void );
-extern void GTKOpen ( void );
-extern void GTKSave ( void );
-extern void GTKImport ( void );
-extern void GTKExport ( void );
 
 extern void
 RefreshGeometries ( void );
@@ -189,14 +179,6 @@ extern int
 GTKReadNumber( char *szTitle, char *szPrompt, int nDefault,
                int nMin, int nMax, int nInc );
 
-extern void GTKFileCommand( char *szPrompt, char *szDefault, char *szCommand,
-                            char *szPath, filedialogtype fdt, pathformat pathFormat );
-extern void GTKFileCommand24( char *szPrompt, char *szDefault, char *szCommand,
-                              char *szPath, filedialogtype fdt, pathformat pathId);
-extern char 
-*SelectFile( char *szTitle, char *szDefault, char *szPath, 
-             filedialogtype fdt );
-
 extern void Undo();
 
 #if USE_TIMECONTROL
@@ -212,7 +194,6 @@ GTKShowManual( void );
 
 extern void GtkShowQuery(RowSet* pRow);
 
-#endif
 
 extern void GetStyleFromRCFile(GtkStyle** ppStyle, char* name, GtkStyle* psBase);
 extern void ToggleDockPanels( gpointer *p, guint n, GtkWidget *pw );
@@ -237,4 +218,5 @@ extern void GtkChangeLanguage();
 
 #if USE_BOARD3D
 extern void SetSwitchModeMenuText();
+#endif
 #endif
