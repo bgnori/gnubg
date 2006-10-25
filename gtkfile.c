@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.8 2006/10/25 09:37:47 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.9 2006/10/25 10:58:50 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -27,9 +27,9 @@
 #endif
 #include <stdlib.h>
 #include <string.h>
+#include "backgammon.h"
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include "backgammon.h"
 #include "gtkfile.h"
 #include "gtkgame.h"
 
@@ -85,6 +85,9 @@ static GtkWidget *
 GnuBGFileDialog (gchar * prompt, gchar * folder, gchar * name,
 		 GtkFileChooserAction action)
 {
+#if WIN32
+char *pc, *tmp;
+#endif
   GtkWidget *fc;
   switch (action)
     {
