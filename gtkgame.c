@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.602 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.603 2006/10/26 17:24:58 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -3222,8 +3222,12 @@ ExportHTMLImages (gpointer * p, guint n, GtkWidget * pw)
 	      ok = GTKGetInputYN (message);
 	      g_free (message);
 	    }
-	  else if (g_mkdir (expfolder, S_IRWXU) == 0)
-	    {
+	  else if (mkdir (expfolder
+#ifndef WIN32
+                 , S_IRWXU
+#endif
+                 ) == 0 )
+	  {
 	      ok = TRUE;
 	    }
 	  else
