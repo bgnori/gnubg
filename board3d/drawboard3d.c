@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.46 2006/09/21 22:24:45 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.47 2006/10/26 17:02:50 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -62,7 +62,7 @@ void circleTex(float radius, float height, int accuracy, Texture* texture);
 void circleRevTex(float radius, float height, int accuracy, Texture* texture);
 void circleOutlineOutward(float radius, float height, int accuracy);
 void circleOutline(float radius, float height, int accuracy);
-void drawBox(boxType type, float x, float y, float z, float w, float h, float d, Texture* texture);
+void drawBox(int boxType, float x, float y, float z, float w, float h, float d, Texture* texture);
 void drawCube(float size);
 void drawRect(float x, float y, float z, float w, float h, Texture* texture);
 void drawSplitRect(float x, float y, float z, float w, float h, Texture* texture);

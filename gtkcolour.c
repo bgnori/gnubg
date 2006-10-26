@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.c,v 1.15 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: gtkcolour.c,v 1.16 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
-#if HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #include <gtk/gtk.h>
 #include <string.h>
@@ -43,7 +41,7 @@ extern GtkWidget *gtk_colour_picker_new(ColorPickerFunc	func, void *data) {
 
     GtkColourPicker *pcp;
 
-    pcp = gtk_type_new( GTK_TYPE_COLOUR_PICKER );
+    pcp = GTK_COLOUR_PICKER(gtk_type_new( GTK_TYPE_COLOUR_PICKER ));
     pcp->func = func;
     pcp->data = data;
 
@@ -130,7 +128,7 @@ static void ok( GtkWidget *pw, GtkColourPicker *pcp )
 	gtk_color_selection_get_color( COLOUR_SEL( pcp ), pcp->arColour );
 	gtk_widget_destroy( GTK_WIDGET( COLOUR_SEL_DIA( pcp ) ) );
 	pcp->pwColourSel = NULL;
-	(pcp->func)(pcp->data);
+	(pcp->func)(GTK_WIDGET(pcp->data));
 }
 
 static void cancel( GtkWidget *pw, GtkColourPicker *pcp )

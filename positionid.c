@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.33 2006/09/21 22:24:06 Superfly_Jon Exp $
+ * $Id: positionid.c,v 1.34 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -41,8 +41,9 @@
 #include <errno.h>
 #include <string.h>
 #include "positionid.h"
+#include "common.h"
 
-static inline void
+static inline_hint void
 addBits(unsigned char auchKey[10], int const bitPos, int const nBits)
 {
   int const k = bitPos / 8;

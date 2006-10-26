@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.163 2006/10/04 12:28:39 c_anthon Exp $
+ * $Id: analysis.c,v 1.164 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -83,7 +83,8 @@ GetRating ( const float rError ) {
   int i;
 
   for ( i = RAT_SUPERNATURAL; i >= 0; i-- )
-    if ( rError < arThrsRating[ i ] ) return i;
+    if ( rError < arThrsRating[ i ] )
+		return (ratingtype)i;
 
   return RAT_UNDEFINED;
 }

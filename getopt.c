@@ -23,7 +23,7 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
    USA.  
-   $Id: getopt.c,v 1.3 2005/02/21 23:23:07 jsegrave Exp $
+   $Id: getopt.c,v 1.4 2006/10/26 17:02:31 Superfly_Jon Exp $
 */
 
 /* This tells Alpha OSF/1 not to define a getopt prototype in <stdio.h>.
@@ -32,9 +32,7 @@
 #define _NO_PROTO
 #endif
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #if !defined (__STDC__) || !__STDC__
 /* This is a separate conditional since some stdc systems

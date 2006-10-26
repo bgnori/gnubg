@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.26 2006/09/11 22:59:40 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.27 2006/10/26 17:02:51 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -343,7 +343,7 @@ static gboolean OkClicked(GtkWidget *pw, UpdateDetails* pDetails)
 			col3d.textureInfo = 0;
 		else
 		{
-			BoardData *bd = BOARD(pwPrevBoard)->board_data;
+			BoardData *bd = (BOARD(pwPrevBoard))->board_data;
 			ClearTextures(&bd->bd3d);
 			GetTextures(&bd->bd3d, bd->rd);
 		}
@@ -484,7 +484,7 @@ extern void Setup3dColourPicker(GtkWidget* parent, GdkWindow* wind)
 	CreatePreview();
 }
 
-GtkWidget* gtk_colour_picker_new3d(Material* pMat, int opacity, int texture)
+GtkWidget* gtk_colour_picker_new3d(Material* pMat, int opacity, TextureType texture)
 {
 	GtkWidget *pixmapwid, *button;
 	GdkPixmap *pixmap;

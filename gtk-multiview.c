@@ -15,7 +15,7 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * $Id: gtk-multiview.c,v 1.4 2006/06/22 18:55:07 c_anthon Exp $
+ * $Id: gtk-multiview.c,v 1.5 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
@@ -90,7 +90,7 @@ gtk_multiview_class_init (GtkMultiviewClass *klass)
   object_class = (GtkObjectClass*) klass;
   widget_class = (GtkWidgetClass*) klass;
   container_class = (GtkContainerClass*) klass;
-  parent_class = gtk_type_class (gtk_container_get_type ());
+  parent_class = GTK_CONTAINER_CLASS(gtk_type_class (gtk_container_get_type ()));
 
   widget_class->size_request = gtk_multiview_size_request;
   widget_class->size_allocate = gtk_multiview_size_allocate;
@@ -225,7 +225,7 @@ gtk_multiview_forall (GtkContainer *container,
   tmp_list = multiview->children;
   while (tmp_list)
     {
-      child = tmp_list->data;
+      child = GTK_WIDGET(tmp_list->data);
       tmp_list = tmp_list->next;
       (* callback) (GTK_WIDGET (child), callback_data);
     }

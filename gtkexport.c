@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.29 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: gtkexport.c,v 1.30 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
-#if HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #if HAVE_ALLOCA_H
 #include <alloca.h>
@@ -195,10 +193,9 @@ ExportGetValues ( exportwidget *pew, exportsetup *pexs ) {
   pexs->szHTMLPictureURL = 
     strdup ( gtk_entry_get_text( GTK_ENTRY( pew->pwHTMLPictureURL ) ) );
 
-  pexs->het = gtk_option_menu_get_history (GTK_OPTION_MENU (pew->pwHTMLType));
+  pexs->het = (htmlexporttype)gtk_option_menu_get_history (GTK_OPTION_MENU (pew->pwHTMLType));
 
-  pexs->hecss = 
-    gtk_option_menu_get_history (GTK_OPTION_MENU (pew->pwHTMLCSS));
+  pexs->hecss = (htmlexportcss)gtk_option_menu_get_history (GTK_OPTION_MENU (pew->pwHTMLCSS));
 
   /* sizes */
   pexs->nPNGSize = (int)pew->adjPNGSize->value;
@@ -487,7 +484,7 @@ GTKShowExport ( exportsetup *pexs ) {
 
   exportwidget *pew;
 
-  pew = malloc ( sizeof ( exportwidget ) );
+  pew = (exportwidget*)malloc ( sizeof ( exportwidget ) );
 
   pew->pexs = pexs;
 

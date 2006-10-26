@@ -2,13 +2,14 @@
  * neuralnet.h
  *
  * by Gary Wong, 1998
- * $Id: neuralnet.h,v 1.13 2006/06/22 22:51:00 Superfly_Jon Exp $
+ * $Id: neuralnet.h,v 1.14 2006/10/26 17:02:51 Superfly_Jon Exp $
  */
 
 #ifndef _NEURALNET_H_
 #define _NEURALNET_H_
 
 #include <stdio.h>
+#include "common.h"
 
 #define SIGMOID_BAUR 0
 #define SIGMOID_JTH 0
@@ -18,7 +19,7 @@
 #elif SIGMOID_JTH
 #define sigmoid sigmoid_jth
 #else
-extern /*inline*/ float sigmoid_original(float const xin);
+extern float sigmoid_original(float const xin);
 #define sigmoid sigmoid_original
 #endif
 

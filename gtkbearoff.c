@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkbearoff.c,v 1.16 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: gtkbearoff.c,v 1.17 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
-#if HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #include <gtk/gtk.h>
 
@@ -112,7 +110,7 @@ BearoffUpdated( GtkWidget *pw, bearoffwidget *pbw ) {
 
   buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(pbw->pwText));
 
-  pch = g_malloc( 2000 );
+  pch = (char*)malloc( 2000 );
   strcpy( pch, "" );
   ShowBearoff( pch, &pbw->ms, pbw->pbc );
 
@@ -121,7 +119,7 @@ BearoffUpdated( GtkWidget *pw, bearoffwidget *pbw ) {
   pango_font_description_free (font_desc);
   gtk_text_buffer_set_text(buffer, pch, -1);
 
-  g_free( pch );
+  free( pch );
 
 }
 

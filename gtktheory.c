@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.36 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: gtktheory.c,v 1.37 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
-#if HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #if HAVE_ALLOCA_H
 #include <alloca.h>

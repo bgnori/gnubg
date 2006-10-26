@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.30 2006/09/21 22:24:45 Superfly_Jon Exp $
+ * $Id: neuralnet.c,v 1.31 2006/10/26 17:02:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -158,6 +158,7 @@ static float e[100] = {
    exponentials comparatively fast, but still about 30% slower than
    the lookup table used here. */
 
+/* NB. can't be inlined as now used in sse file as well */
 extern /*inline*/ float sigmoid_original(float const xin) {
     
     if( !signbit( xin ) ) { /* signbit() can be faster than a compare to 0.0 */

@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.204 2006/10/23 17:55:56 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.205 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
-#if HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #include <assert.h>
 #include <gtk/gtk.h>
@@ -2525,7 +2523,7 @@ static gint board_set( Board *board, const gchar *board_text,
 	int redrawNeeded = 0;
 	int dummy;
     
-#if __GNUC__
+#if __GNUC__ && !__STRICT_ANSI__
     int *match_settings[] = { &bd->match_to, &bd->score,
 			      &bd->score_opponent };
     int *game_settings[] = { &bd->turn, 

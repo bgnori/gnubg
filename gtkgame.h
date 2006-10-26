@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.107 2006/10/25 09:37:47 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.108 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -215,6 +215,7 @@ extern void GTKTextWindow( const char *szOutput, const char *title, const int ty
 extern void FullScreenMode(int state);
 extern void GetFullscreenWindowSettings(int *panels, int *ids, int *maxed);
 extern void GtkChangeLanguage();
+extern void OK( GtkWidget *pw, int *pf );
 
 #if USE_BOARD3D
 extern void SetSwitchModeMenuText();

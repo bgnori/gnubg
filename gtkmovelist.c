@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.10 2006/06/26 19:00:44 c_anthon Exp $
+ * $Id: gtkmovelist.c,v 1.11 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -160,7 +160,7 @@ void MoveListRefreshSize()
 	custom_cell_renderer_invalidate_size();
 	if (pwMoveAnalysis)
 	{
-		hintdata *phd = gtk_object_get_user_data(GTK_OBJECT(pwMoveAnalysis));
+		hintdata *phd = (hintdata *)gtk_object_get_user_data(GTK_OBJECT(pwMoveAnalysis));
 		MoveListUpdate(phd);
 	}
 }

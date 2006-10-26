@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.18 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: osr.c,v 1.19 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -66,11 +66,7 @@ OSRQuasiRandomDice( const int iTurn, const int iGame, const int cGames,
 /* Fill aaProb with one sided bearoff probabilities for position with */
 /* bearoff id n.                                                      */
 
-static 
-#if defined( __GNUC__ )
-inline
-#endif
-void
+static inline_hint void
 getBearoffProbs(const unsigned int n, unsigned short int aaProb[32])
 {
 

@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.55 2006/10/25 09:37:47 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.56 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
-#if HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #if USE_PYTHON
 #include "gnubgmodule.h"
@@ -1013,7 +1011,7 @@ PythonPositionFromBearoff( PyObject* self UNUSED_PARAM, PyObject *args ) {
 #define CHARP_HACK
 #endif
 
-static inline void
+static inline_hint void
 DictSetItemSteal(PyObject* dict, const char* key, PyObject* val)
 {
   int const s = PyDict_SetItemString(dict, CHARP_HACK key, val);  

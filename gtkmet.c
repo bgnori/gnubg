@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.13 2006/09/11 22:59:40 Superfly_Jon Exp $
+ * $Id: gtkmet.c,v 1.14 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
-#if HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #if HAVE_ALLOCA_H
 #include <alloca.h>
@@ -100,12 +98,11 @@ UpdateAllTables ( metwidget *pmw ) {
   mettable *pmt;
   int i;
 
-  pmt = gtk_object_get_user_data ( GTK_OBJECT ( pmw->pwPreCrawford ) );
+  pmt = (mettable*)gtk_object_get_user_data ( GTK_OBJECT ( pmw->pwPreCrawford ) );
   UpdateTable ( pmt, aafMET, &miCurrent, pmw->nMatchTo, pmw->nMatchTo, FALSE );
 
   for ( i = 0; i < 2; ++i ) {
-    pmt = 
-      gtk_object_get_user_data ( GTK_OBJECT ( pmw->apwPostCrawford[ i ] ) );
+    pmt = (mettable*)gtk_object_get_user_data ( GTK_OBJECT ( pmw->apwPostCrawford[ i ] ) );
     UpdateTable ( pmt, (float (*)[ MAXSCORE ]) aafMETPostCrawford[ i ], 
                   &miCurrent, pmw->nMatchTo, 1, TRUE );
   }

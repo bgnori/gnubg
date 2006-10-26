@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.272 2006/10/24 22:53:07 c_anthon Exp $
+ * $Id: play.c,v 1.273 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4272,7 +4272,7 @@ SetMatchID ( const char *szMatchID ) {
   int anScore[ 2 ], anDice[ 2 ];
   int nMatchTo, fCubeOwner, fMove, fCrawford, nCube;
   int fTurn, fDoubled, fResigned;
-  int gs;
+  gamestate gs;
   
   char szID[ 15 ];
 
@@ -4297,7 +4297,7 @@ SetMatchID ( const char *szMatchID ) {
                "match length %d, score %d-%d, cube %d, game state %d\n"),
              anDice[ 0 ], anDice[ 1 ], fMove, fTurn, fResigned, fDoubled,
              fCubeOwner, fCrawford, nMatchTo, anScore[ 0 ], anScore[ 1 ],
-             nCube, gs );
+             nCube, (int) gs );
     outputx();
     return;
 

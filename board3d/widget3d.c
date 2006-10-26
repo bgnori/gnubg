@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.28 2006/09/11 22:59:40 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.29 2006/10/26 17:02:51 Superfly_Jon Exp $
 */
 
 #include <config.h>
@@ -34,7 +34,7 @@ extern GdkGLConfig *getGlConfig()
 {
 	static GdkGLConfig *glconfig = NULL;
 	if (!glconfig)
-		glconfig = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH | GDK_GL_MODE_DOUBLE | GDK_GL_MODE_STENCIL);
+		glconfig = gdk_gl_config_new_by_mode((GdkGLConfigMode)(GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH | GDK_GL_MODE_DOUBLE | GDK_GL_MODE_STENCIL));
 
 	return glconfig;
 }
@@ -299,7 +299,7 @@ GdkGLConfig *glconfigSingle = NULL;
 GdkGLConfig *getglconfigSingle()
 {
 	if (!glconfigSingle)
-		glconfigSingle = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH | GDK_GL_MODE_SINGLE | GDK_GL_MODE_STENCIL);
+		glconfigSingle = gdk_gl_config_new_by_mode((GdkGLConfigMode)(GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH | GDK_GL_MODE_SINGLE | GDK_GL_MODE_STENCIL));
 
 	return glconfigSingle;
 }

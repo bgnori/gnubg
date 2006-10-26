@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrelational.c,v 1.2 2006/10/09 12:28:43 Superfly_Jon Exp $
+ * $Id: gtkrelational.c,v 1.3 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
-#if HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #if USE_PYTHON
 #include <gtk/gtk.h>

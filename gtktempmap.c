@@ -19,12 +19,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.25 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: gtktempmap.c,v 1.26 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
-#if HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #include <gtk/gtk.h>
 
@@ -409,8 +407,8 @@ ExposeDie( GtkWidget *pw, GdkEventExpose *pev,
       g_free( ptmw->achDice[ i ] );
       g_free( ptmw->achPips[ i ] );
 
-      ptmw->achDice[ i ] = g_malloc ( nSizeDie * nSizeDie * 7 * 7 * 4 );
-      ptmw->achPips[ i ] = g_malloc ( nSizeDie * nSizeDie * 3 );
+      ptmw->achDice[ i ] = (unsigned char*)g_malloc ( nSizeDie * nSizeDie * 7 * 7 * 4 );
+      ptmw->achPips[ i ] = (unsigned char*)g_malloc ( nSizeDie * nSizeDie * 3 );
     }
 
     RenderDice( &rd, ptmw->achDice[ 0 ], ptmw->achDice[ 1 ], nSizeDie * 7 * 4 );

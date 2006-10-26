@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.47 2006/09/13 21:55:07 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.48 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
-#if HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #if HAVE_ALLOCA_H
 #include <alloca.h>
@@ -783,7 +781,7 @@ EvalCube ( cubehintdata *pchd, evalcontext *pec ) {
 static void
 CubeAnalysisEvalPly ( GtkWidget *pw, cubehintdata *pchd ) {
 
-  char *szPly = gtk_object_get_data ( GTK_OBJECT ( pw ), "user_data" );
+  char *szPly = (char*)gtk_object_get_data ( GTK_OBJECT ( pw ), "user_data" );
   evalcontext ec = {0, 0, 0, TRUE, 0.0};
 
   ec.fCubeful = esAnalysisCube.ec.fCubeful;

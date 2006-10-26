@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.74 2006/06/27 17:36:00 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.75 2006/10/26 17:02:31 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -53,9 +53,10 @@ extern int nGUIAnimSpeed, fGUIBeep, fGUIHighDieFirst,
     fGUIIllegal, fGUIShowPips, fGUISetWindowPos,
     fGUIDragTargetHelp, fGUIUseStatsPanel, fGUIShowEPCs;
 
+struct _BoardData;      /* Forward declaration for use in Board */
 typedef struct _Board {
     GtkVBox vbox;
-    gpointer board_data;
+    struct _BoardData *board_data;
 } Board;
 
 typedef struct _BoardClass {
