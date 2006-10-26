@@ -3,14 +3,14 @@
  *
  * by Gary Wong, 1996-2000
  *
- * $Id: event.h,v 1.5 2004/10/05 16:13:00 Superfly_Jon Exp $
+ * $Id: event.h,v 1.6 2006/10/26 18:28:02 Superfly_Jon Exp $
  */
 
 #ifndef _EVENT_H_
 #define _EVENT_H_
 
 #include <list.h>
-#if defined HAVE_SYS_TIME_H || !defined HAVE_CONFIG_H
+#if defined HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
 
