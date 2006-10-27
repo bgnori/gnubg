@@ -2,7 +2,7 @@
  * hash.c
  *
  * by Gary Wong, 1997-2000
- * $Id: hash.c,v 1.14 2006/10/26 17:02:51 Superfly_Jon Exp $
+ * $Id: hash.c,v 1.15 2006/10/27 19:44:41 Superfly_Jon Exp $
  */
 
 #include <assert.h>
@@ -358,7 +358,7 @@ CacheLookup(cache* pc, cacheNode* e, unsigned long* m)
     return ck1;
   }
 
-  if( ck1->nEvalContext != (unsigned int)-1 ) {
+  if( ck1->nEvalContext != -1 ) {
     cacheNode* ck2 = pc->m + (l+1);
     if( (ck2->nEvalContext == e->nEvalContext &&
 	 memcmp(e->auchKey, ck2->auchKey, sizeof(e->auchKey)) == 0) ) {
@@ -383,7 +383,7 @@ CacheAdd(cache* pc, cacheNode* e, unsigned long l)
 
   ++pc->nAdds;
   
-  if( ck1->nEvalContext != (unsigned int)-1 ) {
+  if( ck1->nEvalContext != -1 ) {
     pc->m[l+1] = *ck1;
   }
   *ck1 = *e;

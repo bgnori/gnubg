@@ -15,7 +15,7 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * $Id: gtk-multiview.h,v 1.1 2001/04/30 19:26:24 gtw Exp $
+ * $Id: gtk-multiview.h,v 1.2 2006/10/27 19:44:41 Superfly_Jon Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
@@ -29,7 +29,6 @@
 
 #ifdef __cplusplus
 extern "C" {
-#pragma }
 #endif /* __cplusplus */
 
 #define GTK_TYPE_MULTIVIEW			(gtk_multiview_get_type ())

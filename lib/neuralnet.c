@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.31 2006/10/26 17:02:51 Superfly_Jon Exp $
+ * $Id: neuralnet.c,v 1.32 2006/10/27 19:44:41 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -830,7 +830,7 @@ extern int NeuralNetResize( neuralnet *pnn, int cInput, int cHidden,
     CheckRC();
     
     if( cHidden != pnn->cHidden ) {
-	if( ( pnn->arHiddenThreshold = realloc( pnn->arHiddenThreshold,
+	if( ( pnn->arHiddenThreshold = (float*)realloc( pnn->arHiddenThreshold,
 		cHidden * sizeof( float ) ) ) == NULL )
 	    return -1;
 
@@ -862,7 +862,7 @@ extern int NeuralNetResize( neuralnet *pnn, int cInput, int cHidden,
     }
 	
     if( cOutput != pnn->cOutput ) {
-	if( ( pnn->arOutputThreshold = realloc( pnn->arOutputThreshold,
+	if( ( pnn->arOutputThreshold = (float*)realloc( pnn->arOutputThreshold,
 		cOutput * sizeof( float ) ) ) == NULL )
 	    return -1;
 

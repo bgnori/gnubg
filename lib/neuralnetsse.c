@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.2 2006/09/21 22:24:45 Superfly_Jon Exp $
+ * $Id: neuralnetsse.c,v 1.3 2006/10/27 19:44:41 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -35,15 +35,15 @@
 
 #define HIDDEN_NODES 128
 
-void *sse_malloc(size_t size)
+float *sse_malloc(size_t size)
 {
 	if (SSE_Supported())
-		return _mm_malloc(size, ALIGN_SIZE);
+		return (float *)_mm_malloc(size, ALIGN_SIZE);
 	else
-		return malloc(size);
+		return (float *)malloc(size);
 }
 
-void sse_free(void* ptr)
+void sse_free(float* ptr)
 {
 	if (SSE_Supported())
 		_mm_free(ptr);

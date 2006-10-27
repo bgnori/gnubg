@@ -2,7 +2,7 @@
  * heap.c
  *
  * by Gary Wong, 1997
- * $Id: heap.c,v 1.5 2006/10/26 17:02:51 Superfly_Jon Exp $
+ * $Id: heap.c,v 1.6 2006/10/27 19:44:41 Superfly_Jon Exp $
  */
 
 #include <stddef.h>
@@ -14,7 +14,7 @@ extern int HeapCreate( heap *ph, int c, heapcomparefunc phcf ) {
 
     if( ( ph->ap = (void**)malloc( c * sizeof( void * ) ) ) == NULL )
 	return -1;
-    
+
     ph->cp = 0;
     ph->cpAlloc = c;
     ph->phcf = phcf;
