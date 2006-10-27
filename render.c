@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.49 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: render.c,v 1.50 2006/10/27 19:44:15 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -1786,8 +1786,10 @@ extern void RenderChequers( renderdata *prd, unsigned char *puch0,
 			1 / ( 1 - prd->rRound ) + 1;
 		s = ssqrt( 1 - r * r );
 		s1 = ssqrt( 1 - r1 * r1 );
-		
-		theta = atanf( r1 / s1 );
+		if (s1 != 0)
+			theta = atanf( r1 / s1 );
+		else
+			theta = 0;
 		
 		for( f = 0; f < 2; f++ ) {
 		    b = asinf( sinf( theta ) / prd->arRefraction[ f ] );
