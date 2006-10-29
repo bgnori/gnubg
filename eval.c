@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.295 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.296 2006/10/29 21:19:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1815,8 +1815,8 @@ baseInputs(int anBoard[2][25], float arInput[])
     {
       int nc = board[ 24 ];
       
-      afInput[ 24 * 4 + 0 ] = (nc == 1) ? 1.0f : 0.0f;
-      afInput[ 24 * 4 + 1 ] = (nc >= 2) ? 1.0f : 0.0f;	/* is this correct? */
+      afInput[ 24 * 4 + 0 ] = (nc >= 1) ? 1.0f : 0.0f;
+      afInput[ 24 * 4 + 1 ] = (nc >= 2) ? 1.0f : 0.0f;
       afInput[ 24 * 4 + 2 ] = (nc >= 3) ? 1.0f : 0.0f;
       afInput[ 24 * 4 + 3 ] = nc > 3 ? ( nc - 3 ) / 2.0f : 0.0f;
     }
