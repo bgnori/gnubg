@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.642 2006/10/26 17:36:57 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.643 2006/10/30 20:44:13 c_anthon Exp $
  */
 
 #include "config.h"
@@ -7949,11 +7949,13 @@ setDefaultFileName (char *path)
   g_free (szCurrentFileName);
   DisectPath (path, NULL, &szCurrentFileName, &szCurrentFolder);
 #if USE_GTK
-{
-  gchar *title = g_strdup_printf(_("GNU Backgammon (%s)"), szCurrentFileName);  
-  gtk_window_set_title(GTK_WINDOW(pwMain), title);
-  g_free(title);
-}
+  if (fX)
+    {
+      gchar *title =
+	g_strdup_printf (_("GNU Backgammon (%s)"), szCurrentFileName);
+      gtk_window_set_title (GTK_WINDOW (pwMain), title);
+      g_free (title);
+    }
 #endif
 }
 
