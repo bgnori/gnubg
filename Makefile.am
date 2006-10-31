@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.157 2006/10/25 09:37:47 c_anthon Exp $
+## $Id: Makefile.am,v 1.158 2006/10/31 23:58:15 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -76,7 +76,7 @@ COMMON_LIBS = -Llib -levent @LIBOBJS@ @LTLIBINTL@ @LIBXML2_LIBS@ \
               @FT2_LIBS@ @PYTHON_LIBS@ @GLIB_LIBS@
 
 COMMON_SOURCES = credits.h credits.c copying.c backgammon.h gnubg.c \
-		 getopt.h getopt.c getopt1.c eval.h eval.c play.c \
+		 eval.h eval.c play.c \
 		 positionid.h positionid.c drawboard.h drawboard.c \
 		 pub_eval.c set.c show.c dice.c dice.h rollout.c \
 		 rollout.h kleinman.c matchequity.c matchequity.h \
