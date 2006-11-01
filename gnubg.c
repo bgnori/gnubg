@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.644 2006/10/31 23:58:15 c_anthon Exp $
+ * $Id: gnubg.c,v 1.645 2006/11/01 22:30:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -7027,11 +7027,12 @@ main (int argc, char *argv[])
   g_option_context_add_group (context, gtk_get_option_group (FALSE));
 #endif
   g_option_context_parse (context, &argc, &argv, &error);
+  g_option_context_free (context);
 
   if (error)
     {
       g_print ("%s\n", error->message);
-      exit(EXIT_FAILURE);
+      exit (EXIT_FAILURE);
     }
 
   /* set language */
@@ -7096,8 +7097,8 @@ main (int argc, char *argv[])
 #endif
 
 
-  if (pchCommands || pchPythonScript || fNoX)
 #if USE_GTK
+  if (pchCommands || pchPythonScript || fNoX)
 #if WIN32
     {
       MessageBox (NULL,
@@ -7109,19 +7110,6 @@ main (int argc, char *argv[])
     fX = FALSE;
 #endif
 #endif
-
-  if (pchPythonScript)
-#if !USE_PYTHON
-    {
-      fprintf (stderr, _("%s: option `-p' requires Python\n"), argv[0]);
-      exit (EXIT_FAILURE);
-    }
-#else
-    fInteractive = FALSE;
-#endif
-
-  if (pchCommands)
-    fInteractive = FALSE;
 
 #if USE_GTK
   if (fX)
@@ -7145,12 +7133,26 @@ main (int argc, char *argv[])
   else
 #endif /* USE_GTK */
     {
-#if HAVE_LIBREADLINE
-      fReadline =
-#endif
-	fInteractive = isatty (STDIN_FILENO);
+      fInteractive = isatty (STDIN_FILENO);
       fShowProgress = isatty (STDOUT_FILENO);
     }
+
+  if (pchPythonScript)
+#if !USE_PYTHON
+    {
+      fprintf (stderr, _("%s: option `-p' requires Python\n"), argv[0]);
+      exit (EXIT_FAILURE);
+    }
+#else
+    fInteractive = FALSE;
+#endif
+
+  if (pchCommands)
+    fInteractive = FALSE;
+
+#if HAVE_LIBREADLINE
+  fReadline = fInteractive;
+#endif
 
 #if HAVE_FSTAT && HAVE_SETVBUF
   {
