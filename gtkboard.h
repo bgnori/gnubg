@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.75 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.76 2006/11/02 20:54:40 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -95,8 +95,8 @@ typedef struct _BoardData {
     GtkWidget *take, *drop, *redouble;
     GtkWidget *vbox_ids;
     GtkWidget *pipcount0, *pipcount1;
-    GtkWidget *epclabel0, *epclabel1;
-    GtkWidget *epc0, *epc1;
+    GtkWidget *pipcountlabel0, *pipcountlabel1;
+
 #if USE_TIMECONTROL
     GtkWidget *clock0, *clock1;
 #endif
