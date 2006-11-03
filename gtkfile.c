@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.12 2006/11/02 20:56:07 Superfly_Jon Exp $
+ * $Id: gtkfile.c,v 1.13 2006/11/03 17:48:16 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -354,8 +354,11 @@ void fhDataGetChar(FileHelper *fh)
 	else
 		read = fread(fh->data + fh->dataRead, 1, BLOCK_SIZE, fh->fp);
 	if (read < BLOCK_SIZE)
+	{
 		(fh->data + fh->dataRead)[read] = '\0';
-	fh->dataRead += BLOCK_SIZE;
+		read++;
+	}
+	fh->dataRead += read;
 }
 
 char fhPeekNextChar(FileHelper *fh)
@@ -397,7 +400,7 @@ int fhSkipToEOL(FileHelper *fh)
 			return TRUE;
 	} while (c != '\0');
 
-	return (c != '\0');
+	return FALSE;
 }
 
 int fhReadString(FileHelper *fh, char *str)
@@ -502,12 +505,12 @@ int IsSGGFile(FileHelper *fh)
 int IsMATFile(FileHelper *fh)
 {
 	fhReset(fh);
-	while (!fhEOF(fh))
+	do
 	{
 		char c;
 		fhSkipWS(fh);
 		c = fhPeekNextChar(fh);
-		if (isalnum(c))
+		if (isdigit(c))
 		{
 			if (fhReadNumber(fh))
 			{
@@ -521,8 +524,7 @@ int IsMATFile(FileHelper *fh)
 			}
 			return FALSE;
 		}
-		fhSkipToEOL(fh);
-	}
+	} while (fhSkipToEOL(fh));
 	return FALSE;
 }
 
