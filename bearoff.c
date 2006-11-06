@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.43 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.41.2.1 2006/11/06 23:29:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -868,6 +868,11 @@ ReadSconyers15x15( bearoffcontext *pbc,
       ( ac[ 4 * i + 1 ] << 8 ) |
       ( ac[ 4 * i + 2 ] << 16 ) |
       ( ac[ 4 * i + 3 ] << 24 );
+    /* the commented code is strange and causes compiler warnings
+     * float* pr; 
+     * pr = (float *) &l; 
+     * ar[ i ] = *pr; 
+     * and is therefore replaced by */
     ar[ i ] = (float)l;
   }
 

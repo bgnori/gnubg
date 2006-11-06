@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.105 2006/10/24 08:52:49 c_anthon Exp $
+ * $Id: import.c,v 1.104.2.1 2006/11/06 23:29:34 c_anthon Exp $
  */
 
 #include "config.h"

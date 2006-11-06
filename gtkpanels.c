@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.30 2006/10/26 17:02:31 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.28.2.1 2006/11/06 23:29:34 c_anthon Exp $
 */
 
 #include "config.h"
@@ -1037,7 +1037,7 @@ RefreshGeometries ( void )
 {
 	int i;
 	for (i = 0; i < NUM_WINDOWS; i++)
-		getWindowGeometry((gnubgwindow)i);
+		getWindowGeometry(i);
 }
 
 extern void CommandSetAnnotation( char *sz ) {

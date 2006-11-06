@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.104 2006/10/25 09:37:47 c_anthon Exp $
+ * $Id: sgf.c,v 1.102.2.1 2006/11/06 23:29:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1521,7 +1521,7 @@ extern void CommandLoadGame(char *sz)
 	    GTKSet(ap);
 	}
 
-	setDefaultFileName(sz);
+	setDefaultFileName(sz, PATH_SGF);
 
 #endif
 
@@ -1580,7 +1580,7 @@ extern void CommandLoadPosition(char *sz)
 	    GTKSet(ap);
 	}
 
-	setDefaultFileName(sz);
+	setDefaultFileName(sz, PATH_SGF);
 
 #endif
 
@@ -1639,7 +1639,7 @@ extern void CommandLoadMatch(char *sz)
 	}
 #endif
 
-	setDefaultFileName(sz);
+	setDefaultFileName(sz, PATH_SGF);
 
 	if (fGotoFirstGame)
 	    CommandFirstGame(NULL);
@@ -2486,7 +2486,7 @@ extern void CommandSaveGame(char *sz)
     if (pf != stdout)
 	fclose(pf);
 
-    setDefaultFileName(sz);
+    setDefaultFileName(sz, PATH_SGF);
 
 }
 
@@ -2527,7 +2527,7 @@ extern void CommandSaveMatch(char *sz)
     if (pf != stdout)
 	fclose(pf);
 
-    setDefaultFileName(sz);
+    setDefaultFileName(sz, PATH_SGF);
 
 }
 
@@ -2648,5 +2648,5 @@ extern void CommandSavePosition(char *sz)
     free(pmscv);
     free(pmscp);
 
-    setDefaultFileName(sz);
+    setDefaultFileName(sz, PATH_SGF);
 }

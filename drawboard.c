@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.38 2006/10/17 13:04:05 c_anthon Exp $
+ * $Id: drawboard.c,v 1.37.2.1 2006/11/06 23:29:34 c_anthon Exp $
  */
 
 #include "config.h"
