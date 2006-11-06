@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.159 2006/11/06 12:37:44 c_anthon Exp $
+## $Id: Makefile.am,v 1.160 2006/11/06 19:51:31 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -124,7 +124,7 @@ endif
 
 
 pkgdata_DATA = gnubg_ts0.bd gnubg.wd boards.xml @GTKDATA@ \
-	$(BR1DATA) $(BOARD3DDATA) gnubg.game.sql
+	$(BR1DATA) $(BOARD3DDATA) gnubg.game.sql gnubg.gtkrc
 
 man_MANS = gnubg.6
 
