@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.51 2006/11/06 12:37:44 c_anthon Exp $
+ * $Id: render.c,v 1.52 2006/11/06 14:13:45 c_anthon Exp $
  */
 
 #include <config.h>
@@ -1528,7 +1528,6 @@ RenderLabels( renderdata *prd, unsigned char *puch, int nStride,
     char *file;
 
     file = PathSearch(FONT_VERA_BOLD, szDataDirectory);
-    printf ("file %s", file);
     if( FT_New_Face( ftl, file, 0, &ftf ) )
 	{
 		RenderBasicLabels( prd, puch, nStride, iStart, iEnd, iDelta );

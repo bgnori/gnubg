@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.8 2006/11/06 12:37:44 c_anthon Exp $
+* $Id: font3d.c,v 1.9 2006/11/06 14:13:45 c_anthon Exp $
 */
 
 #include "config.h"
@@ -30,9 +30,9 @@
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
-#define FONT_VERA "/Vera.ttf"
-#define FONT_VERA_SERIF_BOLD "/VeraSeBd.ttf"
-#define FONT_VERA_BOLD "/VeraBd.ttf"
+#define FONT_VERA "fonts/Vera.ttf"
+#define FONT_VERA_SERIF_BOLD "fonts/VeraSeBd.ttf"
+#define FONT_VERA_BOLD "fonts/VeraBd.ttf"
 
 #define FONT_SIZE (base_unit / 20.0f)
 #define CUBE_FONT_SIZE (base_unit / 24.0f)

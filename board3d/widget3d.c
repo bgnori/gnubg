@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.29 2006/10/26 17:02:51 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.30 2006/11/06 14:13:45 c_anthon Exp $
 */
 
 #include <config.h>
@@ -34,8 +34,16 @@ extern GdkGLConfig *getGlConfig()
 {
 	static GdkGLConfig *glconfig = NULL;
 	if (!glconfig)
-		glconfig = gdk_gl_config_new_by_mode((GdkGLConfigMode)(GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH | GDK_GL_MODE_DOUBLE | GDK_GL_MODE_STENCIL));
-
+                glconfig = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH | GDK_GL_MODE_DOUBLE | GDK_GL_MODE_STENCIL);
+        if (!glconfig)
+        {
+                glconfig = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH | GDK_GL_MODE_DOUBLE);
+                g_warning("Stencil buffer not available, no shadows\n");
+        }
+        if (!glconfig)
+        {
+                g_warning ("*** No appropriate OpenGL-capable visual found.\n");
+        }
 	return glconfig;
 }
 
@@ -300,6 +308,8 @@ GdkGLConfig *getglconfigSingle()
 {
 	if (!glconfigSingle)
 		glconfigSingle = gdk_gl_config_new_by_mode((GdkGLConfigMode)(GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH | GDK_GL_MODE_SINGLE | GDK_GL_MODE_STENCIL));
+	if (!glconfigSingle)
+		glconfigSingle = gdk_gl_config_new_by_mode((GdkGLConfigMode)(GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH | GDK_GL_MODE_SINGLE));
 
 	return glconfigSingle;
 }
