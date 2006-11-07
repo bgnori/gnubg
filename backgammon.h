@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.317 2006/10/31 23:58:15 c_anthon Exp $
+ * $Id: backgammon.h,v 1.318 2006/11/07 19:44:54 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1275,5 +1275,9 @@ extern char *
 ShowEPC( int anBoard[ 2 ][ 25 ] );
 
 extern void SetupLanguage(char *newLangCode);
+
+#define FONT_VERA "fonts/Vera.ttf"
+#define FONT_VERA_SERIF_BOLD "fonts/VeraSeBd.ttf"
+#define FONT_VERA_BOLD "fonts/VeraBd.ttf"
 
 #endif

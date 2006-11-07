@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.52 2006/11/06 14:13:45 c_anthon Exp $
+ * $Id: render.c,v 1.53 2006/11/07 19:44:54 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -123,10 +123,6 @@ FT_Library ftl;
 #define FT_GLYPH_FORMAT_BITMAP ft_glyph_format_bitmap
 #define FT_PIXEL_MODE_GRAY ft_pixel_mode_grays
 #endif
-
-#define FONT_VERA "fonts/Vera.ttf"
-#define FONT_VERA_BOLD "fonts/VeraBd.ttf"
-#define FONT_VERA_SERIF_BOLD "fonts/VeraSeBd.ttf"
 #endif
 
 renderdata rdDefault = {
@@ -1527,12 +1523,12 @@ RenderLabels( renderdata *prd, unsigned char *puch, int nStride,
     FT_Glyph aftg[ 10 ];
     char *file;
 
-    file = PathSearch(FONT_VERA_BOLD, szDataDirectory);
+    file = PathSearch(FONT_VERA, szDataDirectory);
     if( FT_New_Face( ftl, file, 0, &ftf ) )
 	{
 		RenderBasicLabels( prd, puch, nStride, iStart, iEnd, iDelta );
-		return;
                 free(file);
+		return;
 	}
     free(file);
 
