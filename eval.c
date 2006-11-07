@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.296 2006/10/29 21:19:02 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.294.2.1 2006/11/07 13:13:26 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2286,7 +2286,7 @@ enum {
  */
 static int nContext[3] = {-1, -1, -1};
 
-static inline_hint NNEvalType
+static inline NNEvalType
 NNevalAction(positionclass const p)
 {
   {                     assert( 0 <= p - CLASS_RACE && p - CLASS_RACE < 3 ); }
