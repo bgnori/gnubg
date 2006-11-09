@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.13 2006/11/03 17:48:16 Superfly_Jon Exp $
+ * $Id: gtkfile.c,v 1.14 2006/11/09 20:47:16 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -460,11 +460,14 @@ int fhReadNumber(FileHelper *fh)
 
 int fhReadAnyAlphNumString(FileHelper *fh)
 {
+	char c = fhPeekNextChar(fh);
+	if (!isalnum(c))
+		return FALSE;
 	do
 	{
 		char c = fhPeekNextChar(fh);
-		if (!isalnum(c))
-			return FALSE;
+		if (!isalnum(c) && c != '_')
+			return fhPeekNextIsWS(fh);
 	} while (fhReadNextChar(fh) != '\0');
 	return TRUE;
 }
@@ -585,6 +588,24 @@ int IsBKGFile(FileHelper *fh)
 	return FALSE;
 }
 
+int IsGAMFile(FileHelper *fh)
+{
+	fhReset(fh);
+	fhSkipWS(fh);
+
+	if (fhReadAnyAlphNumString(fh))
+	{
+		fhSkipWS(fh);
+		if (fhReadAnyAlphNumString(fh))
+		{
+			fhSkipWS(fh);
+			return fhReadString(fh, "1)");
+		}
+	}
+
+	return FALSE;
+}
+
 FilePreviewData *ReadFilePreview(char *filename)
 {
 	FilePreviewData *fpd;
@@ -609,6 +630,8 @@ FilePreviewData *ReadFilePreview(char *filename)
 		fpd->format = &file_format[8];
 	else if (IsBKGFile(fh))
 		fpd->format = &file_format[4];
+	else if (IsGAMFile(fh))
+		fpd->format = &file_format[16];
 
 	CloseFileHelper(fh);
 	return fpd;
