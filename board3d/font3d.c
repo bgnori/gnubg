@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.9 2006/11/06 14:13:45 c_anthon Exp $
+* $Id: font3d.c,v 1.6.2.1 2006/11/10 11:34:40 c_anthon Exp $
 */
 
 #include "config.h"
@@ -380,12 +380,6 @@ void PopulateContour(Contour* pContour, FT_Vector* points, char* pointTags, int 
 #define TESS_CALLBACK
 #endif
 
-#if __GNUC__
-#define GLUFUN(X) (_GLUfuncptr)X
-#else
-#define GLUFUN(X) X
-#endif
-
 Tesselation curTess;
 
 void TESS_CALLBACK tcbError(GLenum errCode, Mesh* mesh)
@@ -435,11 +429,11 @@ void PopulateMesh(Vectoriser* pVect, Mesh* pMesh)
 
 	pMesh->tesselations = g_array_new(FALSE, FALSE, sizeof(Tesselation));
 
-	gluTessCallback( tobj, GLU_TESS_BEGIN_DATA, GLUFUN(tcbBegin));
-	gluTessCallback( tobj, GLU_TESS_VERTEX_DATA, GLUFUN(tcbVertex));
-	gluTessCallback( tobj, GLU_TESS_COMBINE_DATA, GLUFUN(tcbCombine));
-	gluTessCallback( tobj, GLU_TESS_END_DATA, GLUFUN(tcbEnd));
-	gluTessCallback( tobj, GLU_TESS_ERROR_DATA, GLUFUN(tcbError));
+	gluTessCallback( tobj, GLU_TESS_BEGIN_DATA, tcbBegin);
+	gluTessCallback( tobj, GLU_TESS_VERTEX_DATA, tcbVertex);
+	gluTessCallback( tobj, GLU_TESS_COMBINE_DATA, tcbCombine);
+	gluTessCallback( tobj, GLU_TESS_END_DATA, tcbEnd);
+	gluTessCallback( tobj, GLU_TESS_ERROR_DATA, tcbError);
 
 	gluTessProperty( tobj, GLU_TESS_WINDING_RULE, GLU_TESS_WINDING_ODD);
 

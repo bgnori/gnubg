@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.26 2006/06/22 22:50:59 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.26.2.1 2006/11/10 11:34:40 c_anthon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -48,6 +48,7 @@ typedef struct _OGLFont
 	int advance;
 	int kern[10][10];
 	float scale;
+	float heightRatio;
 	float height;
 } OGLFont;
 
