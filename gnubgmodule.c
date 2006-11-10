@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.56 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.57 2006/11/10 11:37:17 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1551,7 +1551,7 @@ PyGameStats(const statcontext* sc, const int fIsMatch, const int nMatchTo)
     int side;
     for(side = 0; side < 2; ++side) {
       PyObject* d =
-	Py_BuildValue("{s:f,s:f,s:f,s:f,s:f}",
+	Py_BuildValue("{s:f,s:f,s:f,s:f}",
 		      "luck", sc->arLuck[side][0],
 		      "luck-cost", sc->arLuck[side][1], 
                       "actual-result", sc->arActualResult[side],
