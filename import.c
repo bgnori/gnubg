@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.106 2006/11/09 20:47:16 Superfly_Jon Exp $
+ * $Id: import.c,v 1.107 2006/11/11 08:23:50 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3190,7 +3190,7 @@ extern int ImportGAM(FILE *fp, char *szFilename )
 		pchRight = pchLeft;
 		while (*pchRight != ' ' && *pchRight != '\t' && *pchRight != '\n')
 			pchRight++;
-		*pchRight = '\n';
+		*pchRight = '\0';
 		strcpy( ap[ 1 ].szName, pchLeft );
 
 		InitBoard( ms.anBoard, ms.bgv );
