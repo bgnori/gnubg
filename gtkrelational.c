@@ -16,14 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrelational.c,v 1.3 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: gtkrelational.c,v 1.4 2006/11/11 08:24:05 Superfly_Jon Exp $
  */
 
 #include <config.h>
 
 #if USE_PYTHON
 #include <gtk/gtk.h>
-#include <glib/gi18n.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -31,6 +30,7 @@
 #include "gtkrelational.h"
 #include "relational.h"
 #include "gtkwindows.h"
+#include <glib/gi18n.h>
 
 
 enum
