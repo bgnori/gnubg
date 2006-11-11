@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.61 2006/10/26 17:02:51 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.62 2006/11/11 09:17:26 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -1507,7 +1507,7 @@ void calculateEigthPoints(float ****boardPoints, float radius, int accuracy)
 	float latitude;
 	float new_radius;
 	float angle;
-	float step;
+	float step = 0;
 	int corner_steps = (accuracy / 4) + 1;
 	*boardPoints = Alloc3d(corner_steps, corner_steps, 3);
 
@@ -1522,7 +1522,8 @@ void calculateEigthPoints(float ****boardPoints, float radius, int accuracy)
 
 		angle = 0;
 		ns = (accuracy / 4) - i;
-		step = (2 * (float)PI) / (ns * 4);
+		if (ns > 0)
+			step = (2 * (float)PI) / (ns * 4);
 
 		for (j = 0; j <= ns; j++)
 		{

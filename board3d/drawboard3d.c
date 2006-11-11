@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.47 2006/10/26 17:02:50 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.48 2006/11/11 09:17:26 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -364,7 +364,7 @@ void renderDice(renderdata* prd)
 	float latitude;
 	float new_radius;
 	float radius;
-	float angle, step;
+	float angle, step = 0;
 	float size = getDiceSize(prd);
 
 	int corner_steps = (prd->curveAccuracy / 4) + 1;
@@ -397,8 +397,8 @@ void renderDice(renderdata* prd)
 		new_radius = Dist2d(radius, latitude);
 
 		ns = (prd->curveAccuracy / 4) - i;
-
-		step = ((float)PI / 2 - lat_angle) / (ns);
+		if (ns > 0)
+			step = ((float)PI / 2 - lat_angle) / (ns);
 		angle = 0;
 
 		for (j = 0; j <= ns; j++)
