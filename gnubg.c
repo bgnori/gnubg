@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.647 2006/11/13 21:35:01 c_anthon Exp $
+ * $Id: gnubg.c,v 1.648 2006/11/13 21:42:47 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5428,7 +5428,6 @@ extern void CommandSaveSettings( char *szParam ) {
       outputerr( szFile );
       return;
     }
-    g_free(szFile);
 
     errno = 0;
 
@@ -5813,7 +5812,7 @@ extern void CommandSaveSettings( char *szParam ) {
       outputf( _("Settings saved to %s.\n"),
                ( ! strcmp ( szFile, "-" ) ) ? _("standard output stream") :
                szFile );
-    free ( szFile );
+    g_free ( szFile );
 
 #if USE_GTK
     if( fX )
