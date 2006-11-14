@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.604 2006/11/13 21:35:01 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.605 2006/11/14 21:21:39 jsegrave Exp $
  */
 
 #include <config.h>
@@ -5724,7 +5724,7 @@ extern void GTKShowScoreSheet( void )
 	gtk_clist_select_row(GTK_CLIST(pwList), numRows - 1, 1);
 
 	gtk_signal_connect(GTK_OBJECT(pwList), "realize",
-			GTK_SIGNAL_FUNC(MoveListIntoView), GINT_TO_POINTER(numRows - 1) );
+			GTK_SIGNAL_FUNC(MoveListIntoView), &numRows );
 
 	gtk_widget_show_all(pwDialog);
 	gtk_main();
