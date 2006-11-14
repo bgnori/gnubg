@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.133 2006/11/13 21:35:01 c_anthon Exp $
+ * $Id: gtkprefs.c,v 1.134 2006/11/14 00:00:26 c_anthon Exp $
  */
 
 #include "config.h"
@@ -37,6 +37,8 @@
 #include <libxml/parserInternals.h>
 #endif
 
+#include <glib.h>
+#include <glib/gstdio.h>
 #include "backgammon.h"
 #include "drawboard.h"
 #include "gtkboard.h"
@@ -149,7 +151,7 @@ read_board_designs ( void ) {
 
   plSystem = ParseBoardDesigns ( "boards.xml", FALSE );
 
-  sz = g_build_filename(szHomeDirectory, ".gnubg/boards.xml", NULL);
+  sz = g_build_filename(szHomeDirectory, ".gnubg", "boards.xml", NULL);
   plUser = ParseBoardDesigns ( sz, TRUE );
   g_free ( sz );
 
@@ -1964,7 +1966,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.133 2006/11/13 21:35:01 c_anthon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.134 2006/11/14 00:00:26 c_anthon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -1993,7 +1995,7 @@ DesignSave ( GtkWidget *pw, gpointer data ) {
   szFile = g_build_filename ( szHomeDirectory, ".gnubg/boards.xml", NULL);
   BackupFile ( szFile );
 
-  if ( ! ( pf = fopen ( szFile, "w+" ) ) ) {
+  if ( ! ( pf = g_fopen ( szFile, "w+" ) ) ) {
     outputerr ( szFile );
     g_free ( szFile );
     return;
@@ -3436,7 +3438,9 @@ ParseBoardDesigns ( const char *szFile, const int fDeletable ) {
 
   xmlParserCtxt *pxpc;
   parsecontext pc;
-  char *pch;
+  char *contents;
+  gsize size;
+
 
   pc.ips = -1;
   pc.pl = NULL;
@@ -3445,20 +3449,14 @@ ParseBoardDesigns ( const char *szFile, const int fDeletable ) {
 
   /* create parser context */
 
-  if ( ! ( pch = PathSearch ( szFile, szDataDirectory ) ) )
-  {
-          outputerr(pch);
+  if (!g_file_test(szFile, G_FILE_TEST_IS_REGULAR))
           return NULL;
-  }
+  if (!g_file_get_contents(szFile, &contents, &size, NULL))
+          return NULL;
 
-  pxpc = xmlCreateFileParserCtxt ( pch );
+  pxpc = xmlCreateMemoryParserCtxt ( contents, (int)size );
   if ( ! pxpc )
-  {
-          outputerr(pch);
-          free ( pch );
           return NULL;
-  }
-  free ( pch );
 
   pxpc->sax = &xsaxScan;
   pxpc->userData = &pc;
