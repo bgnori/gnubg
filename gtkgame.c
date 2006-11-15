@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.605 2006/11/14 21:21:39 jsegrave Exp $
+ * $Id: gtkgame.c,v 1.606 2006/11/15 00:15:45 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -8048,11 +8048,12 @@ static void DoFullScreenMode( gpointer *p, guint n, GtkWidget *pw )
 	GtkWidget* pmiDP = gtk_item_factory_get_widget(pif, "/View/Dock panels");
 
 	fFullScreen = GTK_CHECK_MENU_ITEM(gtk_item_factory_get_widget(pif, "/View/Full screen"))->active;
-	bd->rd->fShowGameInfo = !fFullScreen;
 
 	if (fFullScreen)
 	{
 		GTKShowWarning(WARN_FULLSCREEN_EXIT, NULL);
+
+		bd->rd->fShowGameInfo = FALSE;
 
 		if (pmiRP && GTK_WIDGET_VISIBLE(pmiRP) && GTK_WIDGET_IS_SENSITIVE(pmiRP))
 			changedRP = TRUE;
@@ -8093,6 +8094,7 @@ static void DoFullScreenMode( gpointer *p, guint n, GtkWidget *pw )
 	}
 	else
 	{
+		bd->rd->fShowGameInfo = TRUE;
 		gtk_widget_show(pwMenuBar);
 		gtk_widget_show(pwToolbar);
 		gtk_widget_show(pwHandle);
