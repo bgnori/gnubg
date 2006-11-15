@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.648 2006/11/13 21:42:47 c_anthon Exp $
+ * $Id: gnubg.c,v 1.649 2006/11/15 00:10:28 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -6996,7 +6996,17 @@ main (int argc, char *argv[])
   GError *error = NULL;
   GOptionContext *context;
 
-  szHomeDirectory = g_get_home_dir ();
+  szHomeDirectory = g_build_filename(g_get_home_dir(), "gnubg", NULL);
+	/* Make sure directory exists (or create it) */
+	if (!g_file_test(szHomeDirectory, G_FILE_TEST_IS_DIR) )
+	{
+		if ( g_mkdir ( szHomeDirectory, 0700) < 0 ) 
+		{
+			outputerr ( szHomeDirectory );
+			return -1;
+		}
+	}
+
 #if WIN32
 
   /* data directory: initialise to the path where gnubg is installed */
