@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.651 2006/11/16 14:32:22 c_anthon Exp $
+ * $Id: gnubg.c,v 1.652 2006/11/16 21:34:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6792,29 +6792,25 @@ move_rc_files (void)
   g_free (oldfile);
   g_free (newfile);
 
-#if WIN32
+#if 0
   {
     GDir *dir;
     const char *file;
     char *gnubgdir = g_build_filename (olddir, ".gnubg", NULL);
-    g_free (newfile);
     if ((dir = g_dir_open (gnubgdir, 0, NULL)))
       {
 	file = g_dir_read_name (dir);
 	while (file != NULL)
 	  {
-	    newfile =
-	      g_build_filename (szHomeDirectory,
-				g_path_get_basename (file), NULL);
+	    newfile = g_build_filename (szHomeDirectory, file, NULL);
 	    g_rename (file, newfile);
 	    g_free (newfile);
+	    file = g_dir_read_name (dir);
 	  }
-	file = g_dir_read_name (dir);
+	g_dir_close (dir);
       }
-    g_dir_close(gnubgdir);
   }
 #endif
-
 }
 
 /*
