@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.259 2006/10/25 09:37:47 c_anthon Exp $
+ * $Id: set.c,v 1.260 2006/11/16 23:23:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -390,8 +390,8 @@ extern void CommandSetAnalysisLimit( char *sz ) {
     
     int n;
     
-    if( ( n = ParseNumber( &sz ) ) <= 0 ) {
-	cAnalysisMoves = -1;
+    if( ( n = ParseNumber( &sz ) ) <= 1 ) {
+	cAnalysisMoves = 1;
 	outputl( _("Every legal move will be analysed.") );
     } else if( n >= 2 ) {
 	cAnalysisMoves = n;

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.30 2006/10/26 17:02:31 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.31 2006/11/16 23:23:44 c_anthon Exp $
 */
 
 #include "config.h"
@@ -98,7 +98,7 @@ windowobject woPanel[NUM_WINDOWS] =
 	/* analysis */
 	{
 		"analysis",
-		FALSE, TRUE, TRUE, TRUE,
+		TRUE, TRUE, TRUE, TRUE,
 		ShowAnalysis, DeleteAnalysis,
 		0,
 		{ 0, 400, 20, 20 }

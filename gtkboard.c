@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.206 2006/11/02 20:54:40 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.207 2006/11/16 23:23:44 c_anthon Exp $
  */
 
 #include <config.h>
@@ -3892,6 +3892,8 @@ static void board_init( Board *board ) {
     /* third row: pip count and epc */
 
     pw = gtk_hbox_new ( FALSE, 0 );
+    if (gdk_screen_width()>863)
+            gtk_widget_set_size_request(pw, 270, -1);
     gtk_box_pack_start ( GTK_BOX ( pwvbox ), pw, FALSE, FALSE, 0 );
 
     /* pip count label */
@@ -3982,6 +3984,8 @@ static void board_init( Board *board ) {
     /* third row: pip count and epc */
 
     pw = gtk_hbox_new ( FALSE, 0 );
+    if (gdk_screen_width()>863)
+            gtk_widget_set_size_request(pw, 270, -1);
     gtk_box_pack_start ( GTK_BOX ( pwvbox ), pw, FALSE, FALSE, 0 );
 
     /* pip count label */

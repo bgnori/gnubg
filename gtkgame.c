@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.607 2006/11/16 14:30:25 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.608 2006/11/16 23:23:44 c_anthon Exp $
  */
 
 #include <config.h>
@@ -1594,7 +1594,7 @@ static void TextPopped( GtkWidget *pw, guint id, gchar *text, void *p ) {
 }
 
 GtkWidget *hpaned, *pwGameBox, *pwPanelGameBox, *pwEventBox;
-int panelSize = 325;
+int panelSize = 410;
 
 extern int GetPanelSize()
 {
@@ -2107,6 +2107,7 @@ void CreateMainWindow()
     GtkWidget *pwVbox, *pwHbox, *pwHandle, *pwPanelHbox;
 
     pwMain = gtk_window_new( GTK_WINDOW_TOPLEVEL );
+    gtk_window_maximize(GTK_WINDOW(pwMain));
 	SetPanelWidget(WINDOW_MAIN, pwMain);
     gtk_window_set_role( GTK_WINDOW( pwMain ), "main" );
     gtk_window_set_type_hint( GTK_WINDOW( pwMain ),
