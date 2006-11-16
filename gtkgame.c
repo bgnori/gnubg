@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.608 2006/11/16 23:23:44 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.609 2006/11/16 23:38:21 c_anthon Exp $
  */
 
 #include <config.h>
@@ -1594,7 +1594,7 @@ static void TextPopped( GtkWidget *pw, guint id, gchar *text, void *p ) {
 }
 
 GtkWidget *hpaned, *pwGameBox, *pwPanelGameBox, *pwEventBox;
-int panelSize = 410;
+int panelSize = 325;
 
 extern int GetPanelSize()
 {
