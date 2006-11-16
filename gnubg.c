@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.650 2006/11/16 14:30:25 c_anthon Exp $
+ * $Id: gnubg.c,v 1.651 2006/11/16 14:32:22 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6811,6 +6811,7 @@ move_rc_files (void)
 	  }
 	file = g_dir_read_name (dir);
       }
+    g_dir_close(gnubgdir);
   }
 #endif
 
