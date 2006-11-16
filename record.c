@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.22 2006/11/15 00:07:22 Superfly_Jon Exp $
+ * $Id: record.c,v 1.23 2006/11/16 14:30:25 c_anthon Exp $
  */
 
 #include "config.h"
@@ -198,7 +198,7 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
 	return -1;
     }
 
-    if( fputs( "# %Version: 2 ($Revision: 1.22 $)\n", *ppfOut ) < 0 ) {
+    if( fputs( "# %Version: 2 ($Revision: 1.23 $)\n", *ppfOut ) < 0 ) {
 	outputerr( *ppchOut );
 	free( *ppchOut );
 	return -1;
@@ -263,6 +263,7 @@ static int RecordWrite( FILE *pfOut, char *pchOut, playerrecord apr[ 2 ] ) {
             fclose(IPFile);
             fclose(OPFile);
             free( pchOut );
+            g_unlink(pchOut);
             g_free( sz );
             return -1;
     }

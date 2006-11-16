@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.606 2006/11/15 00:15:45 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.607 2006/11/16 14:30:25 c_anthon Exp $
  */
 
 #include <config.h>
@@ -107,8 +107,6 @@
 /* Offset action to avoid predefined values */
 #define TOOLBAR_ACTION_OFFSET 10000
 #define MENU_OFFSET 50
-
-#define GNUBGMENURC ".gnubgmenurc"
 
 void DockPanels();
 
@@ -1571,7 +1569,7 @@ extern void GTKUpdateAnnotations( void ) {
 
 extern void GTKSaveSettings( void ) {
 
-    char *sz = g_build_filename(szHomeDirectory, GNUBGMENURC, NULL);
+    char *sz = g_build_filename(szHomeDirectory, "gnubgmenurc", NULL);
     gtk_accel_map_save( sz );
     g_free(sz);
 }
@@ -2213,7 +2211,7 @@ extern int InitGTK( int *argc, char ***argv )
 {
     int anBoardTemp[ 2 ][ 25 ];
     int i;
-    char *sz = g_build_filename(szHomeDirectory, ".gnubg.gtkrc", NULL );
+    char *sz = g_build_filename(szHomeDirectory, "gnubg.gtkrc", NULL );
 
     gtk_set_locale ();
 
@@ -2253,7 +2251,7 @@ extern int InitGTK( int *argc, char ***argv )
 
     ptt = gtk_tooltips_new();
 
-    sz = g_build_filename (szHomeDirectory, GNUBGMENURC, NULL);
+    sz = g_build_filename (szHomeDirectory, "gnubgmenurc", NULL);
     gtk_accel_map_load( sz );
     g_free(sz);
 
@@ -7206,7 +7204,7 @@ static void RecordErase( GtkWidget *pw, recordwindowinfo *prwi ) {
 static void RecordEraseAll( GtkWidget *pw, recordwindowinfo *prwi ) {
 
     FILE *pf;
-    char *sz = g_build_filename (szHomeDirectory, ".gnubgpr", NULL);
+    char *sz = g_build_filename (szHomeDirectory, "gnubgpr", NULL);
     
     UserCommand( "record eraseall" );
 
