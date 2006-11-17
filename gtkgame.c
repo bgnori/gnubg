@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.591.2.2 2006/11/17 08:50:36 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.591.2.3 2006/11/17 09:20:48 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -6048,7 +6048,6 @@ int colWidth;
 
 void MoveListIntoView(GtkWidget *pwList, int *row)
 {
-        printf("row %d\n", (*row-1));
   if (gtk_clist_row_is_visible(GTK_CLIST(pwList), (*row-1)) != GTK_VISIBILITY_FULL)
   {
     gtk_clist_moveto(GTK_CLIST(pwList), (*row-1), 0, 0, 0);
