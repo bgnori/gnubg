@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.31 2006/11/16 23:23:44 c_anthon Exp $
+* $Id: gtkpanels.c,v 1.32 2006/11/17 19:46:30 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -995,10 +995,9 @@ setWindowGeometry(gnubgwindow window)
                     ( pwo->wg.nPosY >= 0 ) ? pwo->wg.nPosY : 0 );
 
   if (pwo->wg.max)
-    gtk_window_maximize(GTK_WINDOW( pwo->pwWin ));
-
-
-
+    gtk_window_maximize(GTK_WINDOW(pwo->pwWin));
+  else
+    gtk_window_unmaximize(GTK_WINDOW(pwo->pwWin));
 }
 
 void ShowHidePanel(gnubgwindow panel)
