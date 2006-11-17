@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.14 2006/11/09 20:47:16 Superfly_Jon Exp $
+ * $Id: gtkfile.c,v 1.15 2006/11/17 19:18:12 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -649,10 +649,10 @@ update_preview_cb (GtkFileChooser *file_chooser, gpointer data)
 	if (fdp)
 	{
 		if (!fdp->format)
-			label = "not a backgmamon file";
+			label = _("not a backgmamon file");
 		else
 		{
-			label = fdp->format->description;
+			label = gettext(fdp->format->description);
 			gtk_dialog_set_response_sensitive(GTK_DIALOG(file_chooser), GTK_RESPONSE_ACCEPT, TRUE);
 		}
 
@@ -675,18 +675,9 @@ extern void GTKOpen (gpointer * p, guint n, GtkWidget * pw)
 
   fc = GnuBGFileDialog (_("Open backgammon file"), folder, NULL, GTK_FILE_CHOOSER_ACTION_OPEN);
 
-{	/* For testing - remove or add some useful data */
-PangoRectangle logical_rect;
-PangoLayout *layout;
-layout = gtk_widget_create_pango_layout(fc, _(file_format[0].description));
-pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
-g_object_unref (layout);
-
-preview = gtk_label_new("");
-gtk_widget_set_size_request(preview, logical_rect.width, -1);
-gtk_file_chooser_set_preview_widget (GTK_FILE_CHOOSER(fc), preview);
-g_signal_connect (GTK_FILE_CHOOSER(fc), "update-preview", G_CALLBACK (update_preview_cb), preview);
-}
+  preview = gtk_label_new("");
+  gtk_file_chooser_set_extra_widget(GTK_FILE_CHOOSER(fc), preview);
+  g_signal_connect (GTK_FILE_CHOOSER(fc), "update-preview", G_CALLBACK (update_preview_cb), preview);
 
   aff = gtk_file_filter_new ();
   gtk_file_filter_set_name (aff, _("Supported files"));
