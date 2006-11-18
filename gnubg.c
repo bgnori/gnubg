@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.654 2006/11/17 19:20:16 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.655 2006/11/18 08:25:40 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -7042,15 +7042,6 @@ main (int argc, char *argv[])
   GOptionContext *context;
 
   szHomeDirectory = g_build_filename(g_get_home_dir(), ".gnubg", NULL);
-	/* Make sure directory exists (or create it) */
-	if (!g_file_test(szHomeDirectory, G_FILE_TEST_IS_DIR) )
-	{
-		if ( g_mkdir ( szHomeDirectory, 0700) < 0 ) 
-		{
-			outputerr ( szHomeDirectory );
-			return -1;
-		}
-	}
 
 #if WIN32
 
