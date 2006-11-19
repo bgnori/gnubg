@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.610 2006/11/17 08:44:23 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.611 2006/11/19 16:57:46 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -9406,8 +9406,8 @@ static void SetLanguage( gpointer *p, guint n, GtkWidget *pw )
 	pwLangDialog = GTKCreateDialog( NULL, DT_QUESTION, NULL, DIALOG_FLAG_MODAL, SetLangOk, NULL );
 
 	pl = gtk_container_children( GTK_CONTAINER( DialogArea( pwLangDialog, DA_BUTTONS ) ) );
-	SetWidgetLabelLang(GTK_WIDGET(pl->data), N_("OK"));
-	SetWidgetLabelLang(GTK_WIDGET(pl->next->data), N_("Cancel"));
+	SetWidgetLabelLang(GTK_WIDGET(pl->data), N_("Cancel"));
+	SetWidgetLabelLang(GTK_WIDGET(pl->next->data), N_("OK"));
 	g_list_free(pl);
 
 	curSel = NULL;
