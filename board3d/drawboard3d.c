@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.48 2006/11/11 09:17:26 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.49 2006/11/19 22:23:43 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -600,7 +600,7 @@ void drawDCNumbers(BoardData* bd, diceTest* dt)
 	char* sides[] = {"4", "16", "32", "64", "8", "2"};
 	int side;
 
-	glLineWidth(1);
+	glLineWidth(.5f);
 	glPushMatrix();
 	for (c = 0; c < 6; c++)
 	{
