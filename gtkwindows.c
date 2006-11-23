@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.7 2006/11/19 16:57:46 Superfly_Jon Exp $
+ * $Id: gtkwindows.c,v 1.8 2006/11/23 19:29:01 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -85,6 +85,8 @@ extern GtkWidget *GTKCreateDialog(const char *szTitle, const dialogtype dt,
     int fQuestion = (dt == DT_QUESTION || dt == DT_AREYOUSURE);
 
 	pwDialog = gtk_dialog_new();
+	if (flags & DIALOG_FLAG_MINMAXBUTTONS)
+		gtk_window_set_type_hint(GTK_WINDOW(pwDialog), GDK_WINDOW_TYPE_HINT_NORMAL);
 	gtk_window_set_title(GTK_WINDOW(pwDialog), szTitle);
 
 	if (parent == NULL)
@@ -127,6 +129,9 @@ extern GtkWidget *GTKCreateDialog(const char *szTitle, const dialogtype dt,
 
 		gtk_dialog_add_button(GTK_DIALOG( pwDialog ), OkButton ? _("OK") : _("Close"), OkButton ? GTK_RESPONSE_OK : GTK_RESPONSE_CLOSE);
 		gtk_dialog_set_default_response(GTK_DIALOG( pwDialog ), OkButton ? GTK_RESPONSE_OK : GTK_RESPONSE_CLOSE);
+
+		if (!fQuestion)
+			gtk_widget_add_accelerator(DialogArea(pwDialog, DA_OK), "clicked", pag, GDK_Escape, 0, 0 );
 	}
 
     if( fQuestion )

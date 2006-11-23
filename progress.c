@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.26 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: progress.c,v 1.27 2006/11/23 19:29:01 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -798,7 +798,8 @@ GTKRolloutProgressStart( const cubeinfo *pci, const int n,
 
   AllocTextList(prp);
 
-  prp->pwRolloutDialog = GTKCreateDialog( _("GNU Backgammon - Rollout"), DT_INFO, NULL, DIALOG_FLAG_MODAL, NULL, NULL );
+  prp->pwRolloutDialog = GTKCreateDialog( _("GNU Backgammon - Rollout"), DT_INFO, NULL,
+	  DIALOG_FLAG_MODAL | DIALOG_FLAG_MINMAXBUTTONS | DIALOG_FLAG_NOTIDY, NULL, NULL );
   prp->pwRolloutViewStat = gtk_button_new_with_label ( _("View statistics") );
   prp->pwRolloutStop = gtk_button_new_with_label( _("Stop") );
     

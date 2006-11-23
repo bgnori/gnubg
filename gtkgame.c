@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.611 2006/11/19 16:57:46 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.612 2006/11/23 19:29:01 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -5746,7 +5746,8 @@ extern void GTKShowVersion( void )
 #include "xpm/gnubg-big.xpm"
 	GtkWidget *pwDialog, *pwButtonBox, *pwButton;
 
-	pwDialog = GTKCreateDialog(_("About GNU Backgammon"), DT_INFO, NULL, DIALOG_FLAG_MODAL | DIALOG_FLAG_CUSTOM_PICKMAP, NULL, gnubg_big_xpm);
+	pwDialog = GTKCreateDialog(_("About GNU Backgammon"), DT_INFO, NULL,
+		DIALOG_FLAG_MODAL | DIALOG_FLAG_CUSTOM_PICKMAP | DIALOG_FLAG_CLOSEBUTTON, NULL, gnubg_big_xpm);
     gtk_window_set_policy(GTK_WINDOW(pwDialog), FALSE, FALSE, FALSE);
 
 	/* Buttons on right side */
