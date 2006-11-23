@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.655 2006/11/18 08:25:40 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.656 2006/11/23 18:45:11 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -229,30 +229,6 @@ int nTutorSkillCurrent = 0;
 char *szCurrentFileName = NULL;
 char *szCurrentFolder = NULL;
 
-
-/* char *extension; char *description; char *clname;
- * gboolean canimport; gboolean canexport; gboolean exports[3]; */
-FileFormat file_format[] = {
-  {".sgf", N_("Gnu Backgammon File"), "sgf", TRUE, TRUE, {TRUE, TRUE, TRUE}}, /*must be the first element*/
-  {".eps", N_("Encapsulated Postscript"), "eps", FALSE, TRUE, {FALSE, FALSE, TRUE}},
-  {".fibs", N_("Fibs Oldmoves"), "oldmoves", FALSE, FALSE, {FALSE, FALSE, FALSE}},
-  {".sgg", N_("Gamesgrid Save Game"), "sgg", TRUE, FALSE, {FALSE, FALSE, FALSE}},
-  {".bkg", N_("Hans Berliner's BKG Format"), "bkg", TRUE, FALSE, {FALSE, FALSE, FALSE}},
-  {".html", N_("HTML"), "html", FALSE, TRUE, {TRUE, TRUE, TRUE}},
-  {".gam", N_("Jellyfish Game"), "gam", FALSE, TRUE, {FALSE, TRUE, FALSE}},
-  {".mat", N_("Jellyfish Match"), "mat", TRUE, TRUE, {TRUE, FALSE, FALSE}},
-  {".pos", N_("Jellyfish Position"), "pos", TRUE, TRUE, {FALSE, FALSE, TRUE}},
-  {".tex", N_("LaTeX"), "latex", FALSE, TRUE, {TRUE, TRUE, FALSE}},
-  {".pdf", N_("PDF"), "pdf", FALSE, TRUE, {TRUE, TRUE, FALSE}},
-  {".txt", N_("Plain Text"), "text", FALSE, TRUE, {TRUE, TRUE, TRUE}},
-  {".png", N_("Portable Network Graphics"), "pdf", FALSE, TRUE, {FALSE, FALSE, TRUE}},
-  {".ps", N_("PostScript"), "postscript", FALSE, TRUE, {TRUE, TRUE, FALSE}},
-  {".txt", N_("Snowie Text"), "snowietxt", TRUE, TRUE, {FALSE, FALSE, TRUE}},
-  {".tmg", N_("True Moneygames"), "tmg", TRUE, FALSE, {FALSE, FALSE, FALSE}},
-  {".gam", N_("GammonEmpire Game"), "gam", TRUE, FALSE, {FALSE, FALSE, FALSE}},
-};
-
-gint n_file_formats = G_N_ELEMENTS(file_format);
 
 int fNextTurn = FALSE, fComputing = FALSE;
 

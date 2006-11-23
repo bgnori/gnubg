@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.319 2006/11/09 20:47:16 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.320 2006/11/23 18:45:11 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -433,18 +433,6 @@ extern char szPathSconyers15x15Disk[ BIG_PATH ];
 extern char szLang[ 32 ];   
 
 extern char *szCurrentFileName, *szCurrentFolder;
-
-typedef struct _FileFormat FileFormat;
-struct _FileFormat {
-    char *extension;
-    char *description;
-    char *clname;
-    int canimport;
-    int canexport;
-    int exports[3];
-};
-extern FileFormat file_format[];
-extern gint n_file_formats;
 
 extern gchar *default_import_folder, *default_export_folder, *default_sgf_folder;
 
