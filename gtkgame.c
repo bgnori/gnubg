@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.612 2006/11/23 19:29:01 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.613 2006/11/24 18:46:53 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -9421,4 +9421,6 @@ static void SetLanguage( gpointer *p, guint n, GtkWidget *pw )
 
 	if (newLang)
 		CommandSetLang(newLang);	/* Set new language (after dialog has closed) */
+	else
+		SetupLanguage(szLang);	/* If cancelled make sure language stays the same */
 }
