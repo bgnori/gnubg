@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.657 2006/11/25 22:53:34 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.658 2006/11/26 16:04:42 c_anthon Exp $
  */
 
 #include "config.h"
@@ -828,9 +828,13 @@ command cER = {
       szFILENAME, &cFilename },
     { "mat", CommandImportMat, N_("Import a Jellyfish match"), szFILENAME,
       &cFilename },
+    { "gam", CommandImportMat, N_("Import a Jellyfish game"), szFILENAME,
+      &cFilename },
     { "oldmoves", CommandImportOldmoves, N_("Import a FIBS oldmoves file"),
       szFILENAME, &cFilename },
-    { "gam", CommandImportGAM, N_("Import a GammonEmpire game file"),
+    { "empire", CommandImportEmpire, N_("Import a GammonEmpire game file"),
+      szFILENAME, &cFilename },
+    { "party", CommandImportParty, N_("Import a PartyGammon game file"),
       szFILENAME, &cFilename },
     { "pos", CommandImportJF, 
       N_("Import a Jellyfish position file"), szFILENAME,
@@ -4914,7 +4918,7 @@ extern void CommandImportSnowieTxt( char *sz ) {
 	outputerr( sz );
 }
 
-extern void CommandImportGAM(char *sz)
+extern void CommandImportEmpire(char *sz)
 {
     FILE *pf;
 
@@ -4923,7 +4927,7 @@ extern void CommandImportGAM(char *sz)
     if (!sz || !*sz)
 	{
 		outputl( _("You must specify a GammonEmpire file to import (see `help "
-		 "import gam').") );
+		 "import empire').") );
 	return;
     }
 
@@ -4938,6 +4942,52 @@ extern void CommandImportGAM(char *sz)
     }
 	else
 		outputerr(sz);
+}
+
+extern void CommandImportParty(char *sz)
+{
+    FILE *gamf, *matf;
+    char *tmpfile;
+    char *cmd;
+
+    sz = NextToken( &sz );
+
+    if (!sz || !*sz)
+	{
+		outputl( _("You must specify a PartyGammon file to import (see `help "
+		 "import party').") );
+	return;
+    }
+
+    if (! (gamf = fopen( sz, "r" ))) {
+            outputerr(sz);
+            return;
+    }
+
+    tmpfile = g_strdup_printf("%s.mat", sz);
+    if (g_file_test(tmpfile, G_FILE_TEST_EXISTS)){
+            outputerrf("%s is in the way. Cannot import %s\n", tmpfile, sz);
+            g_free(tmpfile);
+            fclose(gamf);
+            return;
+    }
+
+    if (! (matf = fopen( tmpfile, "w" ))) {
+            outputerr(tmpfile);
+            g_free(tmpfile);
+            fclose(gamf);
+            return;
+    }
+
+    if (ConvertPartyGammonFileToMat(gamf, matf)) {
+            cmd = g_strdup_printf("import mat '%s'", tmpfile);
+            UserCommand(cmd);
+            g_free(cmd);
+    }
+    else
+            outputerrf("Failed to convert gam to mat\n");
+    g_free(tmpfile);
+    g_unlink(tmpfile);
 }
 
 extern void CommandCopy (char *sz)

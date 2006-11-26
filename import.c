@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.109 2006/11/25 18:48:34 Superfly_Jon Exp $
+ * $Id: import.c,v 1.110 2006/11/26 16:04:42 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3341,17 +3341,13 @@ typedef struct _PartyGame
 	char *gameStr;
 } PartyGame;
 
-int ConvertPartyGammonFileToMat(char *partyFile, char *matFile)
+extern int ConvertPartyGammonFileToMat(FILE *partyFP, FILE *matFP)
 {
 	PartyGame pg;
 	int matchLen = -1;
 	char p1[MAX_NAME_LEN], p2[MAX_NAME_LEN];
 	GList *games = NULL;
 	char buffer[1024 * 10];
-	FILE *partyFP = fopen(partyFile, "r");
-	if (!partyFP)
-		return FALSE;
-
 	while (!feof(partyFP))
 	{
 		char *value, *key;
@@ -3366,7 +3362,7 @@ int ConvertPartyGammonFileToMat(char *partyFile, char *matFile)
 				do
 					key++;
 				while(key[-1] != '_');
-				if (value[strlen(value) - 1] == '\n')
+				if (g_ascii_iscntrl (value[strlen(value) - 1]))
 					value[strlen(value) - 1] = '\0';
 
 				if (!strcasecmp(key, "PLAYER_1"))
@@ -3394,15 +3390,12 @@ int ConvertPartyGammonFileToMat(char *partyFile, char *matFile)
 				matchLen = atoi(value);
 		}
 	}
-	fclose(partyFP);
+  	fclose(partyFP);
 	if (g_list_length(games) > 0 || matchLen == -1)
 	{	/* Write out mat file */
 		unsigned int i;
 		int s1 = 0, s2 = 0;
 		GList *pl;
-		FILE *matFP = fopen(matFile, "w");
-		if (!matFP)
-			return FALSE;
 
 		fprintf(matFP, " %d point match\n", matchLen);
 		for (i = 0, pl = g_list_first(games); i < g_list_length(games); i++, pl = g_list_next(pl))
@@ -3419,8 +3412,8 @@ int ConvertPartyGammonFileToMat(char *partyFile, char *matFile)
 			free(pGame->gameStr);
 			free(pGame);
 		}
+  		fclose(matFP);
 		g_list_free(pl);
-		fclose(matFP);
 		return TRUE;
 	}
 	return FALSE;

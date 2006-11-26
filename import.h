@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- * $Id: import.h,v 1.10 2006/11/09 20:47:16 Superfly_Jon Exp $
+ * $Id: import.h,v 1.11 2006/11/26 16:04:42 c_anthon Exp $
  */
 
 #ifndef _IMPORT_H_
@@ -29,5 +29,6 @@ extern int ImportTMG( FILE *pf, const char *szFilename );
 extern int ImportBKG( FILE *pf, const char *szFilename );
 extern int ImportSnowieTxt( FILE *pf );
 extern int ImportGAM( FILE *pf, char *szFilename );
+extern int ConvertPartyGammonFileToMat(FILE *partyFP, FILE *matFP);
 
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.320 2006/11/23 18:45:11 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.321 2006/11/26 16:04:42 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -764,10 +764,11 @@ extern void CommandAccept( char * ),
     CommandHint( char * ),
     CommandHistory( char * ),
     CommandImportBKG( char * ),
-    CommandImportGAM( char * ),
+    CommandImportEmpire( char * ),
     CommandImportJF( char * ),
     CommandImportMat( char * ),
     CommandImportOldmoves( char * ),
+    CommandImportParty( char * ),
     CommandImportSGG( char * ),
     CommandImportSnowieTxt( char * ),
     CommandImportTMG( char * ),
