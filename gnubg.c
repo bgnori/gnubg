@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.658 2006/11/26 16:04:42 c_anthon Exp $
+ * $Id: gnubg.c,v 1.659 2006/11/26 16:10:12 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4986,8 +4986,8 @@ extern void CommandImportParty(char *sz)
     }
     else
             outputerrf("Failed to convert gam to mat\n");
-    g_free(tmpfile);
     g_unlink(tmpfile);
+    g_free(tmpfile);
 }
 
 extern void CommandCopy (char *sz)
