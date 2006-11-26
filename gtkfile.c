@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.19 2006/11/26 16:04:42 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.20 2006/11/26 22:32:49 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -162,7 +162,7 @@ char *programdir, *pc, *tmp;
 
 #if WIN32
   programdir = g_strdup(szDataDirectory);
-  if ((pc = strrchr(programdir, G_DIR_SEPARATOR))) {
+  if ((pc = strrchr(programdir, G_DIR_SEPARATOR)) != NULL) {
           *pc = '\0';
 
           tmp = g_build_filename(programdir, "GamesGrid", "SaveGame", NULL);
