@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sound.h,v 1.10 2003/09/12 13:35:24 steink Exp $
+ * $Id: sound.h,v 1.11 2006/11/26 22:43:47 Superfly_Jon Exp $
  */
 
 #ifndef _SOUND_H_
@@ -66,7 +66,6 @@ typedef enum _soundsystem {
   NUM_SOUND_SYSTEMS
 } soundsystem;
 
-extern char aszSound[ NUM_SOUNDS ][ 80 ];
 extern char *aszSoundDesc[ NUM_SOUNDS ];
 extern char *aszSoundCommand[ NUM_SOUNDS ];
 
@@ -87,6 +86,11 @@ extern void SoundWait( void );
 #ifdef SIGIO
 extern RETSIGTYPE SoundSIGIO( int idSignal );
 #endif
+
+extern char *GetDefaultSoundFile(int sound);
+extern int playSoundFile(const gnubgsound gs, char *file);
+extern void SetSoundFile(const gnubgsound gs, const char *szFilename);
+extern char *GetSoundFile(gnubgsound sound);
 
 #else /* USE_SOUND */
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.659 2006/11/26 16:10:12 c_anthon Exp $
+ * $Id: gnubg.c,v 1.660 2006/11/26 22:43:47 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -5792,8 +5792,7 @@ extern void CommandSaveSettings( char *szParam ) {
 
     for ( i = 0; i < NUM_SOUNDS; ++i ) 
       fprintf ( pf, "set sound sound %s \"%s\"\n",
-                aszSoundCommand [ i ],
-                aszSound[ i ] );
+				aszSoundCommand [ i ], GetSoundFile(i));
     
 
 #endif /* USE_SOUND */
