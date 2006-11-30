@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.9 2006/11/30 21:18:05 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.10 2006/11/30 22:43:18 c_anthon Exp $
  */
 
 #include <config.h>
@@ -228,7 +228,7 @@ GTKMessage( char *sz, dialogtype dt )
 	gtk_window_set_policy( GTK_WINDOW( pwDialog ), FALSE, TRUE, TRUE );
 
     gtk_window_set_default_size( GTK_WINDOW( pwDialog ), -1, MIN(400,
-                            req.height+100) );
+                            req.height+50) );
 
     gtk_widget_show_all( pwDialog );
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.296 2006/10/29 21:19:02 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.297 2006/11/30 22:43:18 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4245,6 +4245,7 @@ static void
 DumpAnyContact(int anBoard[ 2 ][ 25 ], char* szOutput,
 	       const bgvariation bgv, int isCrashed )
 {
+#if 0
   float arInput[ NUM_INPUTS ], arOutput[ NUM_OUTPUTS ],
     arDerivative[ NUM_INPUTS * NUM_OUTPUTS ],
     ardEdI[ NUM_INPUTS ], *p;
@@ -4320,6 +4321,7 @@ DumpAnyContact(int anBoard[ 2 ][ 25 ], char* szOutput,
 	   player[ I_BACKG1 ], dPlayer[ I_BACKG1 ],
 	   player[ I_FREEPIP ], dPlayer[ I_FREEPIP ] );
   }
+#endif
 }
 
 static int

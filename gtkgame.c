@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.613 2006/11/24 18:46:53 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.614 2006/11/30 22:43:18 c_anthon Exp $
  */
 
 #include <config.h>
@@ -5313,6 +5313,7 @@ GTKTextWindow (const char *szOutput, const char *title, const int type)
   GtkWidget *sw;
   GtkTextBuffer *buffer;
   GtkTextIter iter;
+  GtkRequisition req;
 
   pwText = gtk_text_view_new ();
   gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (pwText), GTK_WRAP_NONE);
@@ -5330,9 +5331,10 @@ GTKTextWindow (const char *szOutput, const char *title, const int type)
 				  GTK_POLICY_AUTOMATIC);
   gtk_container_add (GTK_CONTAINER (sw), pwText);
 
+  gtk_widget_size_request( GTK_WIDGET( pwText ), &req );
+  gtk_window_set_default_size( GTK_WINDOW( pwDialog ), -1, MIN(500, req.height+200) );
   gtk_container_add (GTK_CONTAINER (DialogArea (pwDialog, DA_MAIN)), sw);
   gtk_window_set_modal (GTK_WINDOW (pwDialog), TRUE);
-  gtk_window_set_default_size (GTK_WINDOW (pwDialog), 800, 600);
   gtk_window_set_transient_for (GTK_WINDOW (pwDialog), GTK_WINDOW (pwMain));
   gtk_signal_connect (GTK_OBJECT (pwDialog), "destroy",
 		      GTK_SIGNAL_FUNC (gtk_main_quit), NULL);
