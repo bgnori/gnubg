@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.27 2006/11/23 19:29:01 Superfly_Jon Exp $
+ * $Id: progress.c,v 1.28 2006/12/02 22:12:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -189,6 +189,7 @@ GTKStatPageWin ( const rolloutstat *prs, const int cGames ) {
   static char *aszRow[ 7 ];
   int i;
   int anTotal[ 6 ];
+  int cGamesCount=0;
 
   pw = gtk_vbox_new ( FALSE, 0 );
 
@@ -250,6 +251,8 @@ GTKStatPageWin ( const rolloutstat *prs, const int cGames ) {
     gtk_clist_append ( GTK_CLIST ( pwStat ), aszRow );
 
   }
+  
+
 
 
   sprintf ( aszRow[ 0 ], _("Total") );
@@ -259,14 +262,18 @@ GTKStatPageWin ( const rolloutstat *prs, const int cGames ) {
 
 
   sprintf ( aszRow[ 0 ], "%%" );
-  for ( i = 0; i < 6; i++ )
+  for ( i = 0; i < 6; i++ ) {
     sprintf ( aszRow[ i + 1 ], "%6.2f%%",
 	      100.0 * (float) anTotal[ i ] / (float) cGames );
+    cGamesCount+=anTotal[i];
+  }
   gtk_clist_append ( GTK_CLIST ( pwStat ), aszRow );
 
 
   for ( i = 0; i < 7; i++ ) free ( aszRow[ i ] );
 
+  /* allow for one missing (could just be a stopped rollout) */
+  if (cGamesCount < (cGames-1)) outputerrf (_("Win statistics invalid due to (race) truncation, or  (%d != %d)"), cGamesCount, cGames);
 
   return pw;
 
@@ -817,7 +824,7 @@ GTKRolloutProgressStart( const cubeinfo *pci, const int n,
 
   gtk_container_add( GTK_CONTAINER( pwButtons ), prp->pwRolloutStop );
     
-  if ( aars )
+  if ( aars && (prc->nGamesDone == 0) )
     gtk_container_add( GTK_CONTAINER( pwButtons ), prp->pwRolloutViewStat );
 
   gtk_widget_set_sensitive( prp->pwRolloutOK, FALSE );
