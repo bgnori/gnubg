@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.c,v 1.20 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: gtktexi.c,v 1.21 2006/12/04 23:47:05 c_anthon Exp $
  */
 
 #include <config.h>
@@ -1081,7 +1081,7 @@ static void EndElement( void *pv, const xmlChar *pchName ) {
 static void Characters( void *pv, const xmlChar *pchIn, int cch ) {
 
     GtkTexi *pw = pv;
-    VARIABLE_ARRAY(char, sz, cch + 1)
+    char *sz = (char*) g_alloca(cch + 1 * sizeof(char));
     char *pch;
 
 #if DEBUG_XML
@@ -1350,7 +1350,7 @@ static void GoNavTarget( GtkTexi *pw, int i ) {
     /* NB: it is not safe to pass ptic->aszNavTarget[ i ], because it is in
        storage that will be freed by gtktexi_render_node() */
     if( pw->ptic->aszNavTarget[ i ] ) {
-	VARIABLE_ARRAY(char, sz, strlen( pw->ptic->aszNavTarget[ i ] ) + 1)
+	char *sz = (char *) g_alloca(strlen( pw->ptic->aszNavTarget[ i ] ) + 1);
 	
 	strcpy( sz, pw->ptic->aszNavTarget[ i ] );
 	gtk_texi_render_node( pw, sz );

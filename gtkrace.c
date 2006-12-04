@@ -16,14 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.20 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: gtkrace.c,v 1.21 2006/12/04 23:47:05 c_anthon Exp $
  */
 
 #include <config.h>
 
-#if HAVE_ALLOCA_H
-#include <alloca.h>
-#endif
 #include <gtk/gtk.h>
 
 #include <stdio.h>

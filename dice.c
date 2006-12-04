@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.47 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: dice.c,v 1.48 2006/12/04 23:47:05 c_anthon Exp $
  */
 
 #include "config.h"
@@ -108,10 +108,6 @@
 #define EREMOTE                 WSAEREMOTE
 #endif /* #ifndef WIN32 */
 #endif /* #if HAVE_SOCKETS */
-
-#if HAVE_ALLOCA_H
-#include <alloca.h>
-#endif
 
 #include "backgammon.h"
 #include "dice.h"
@@ -1121,7 +1117,7 @@ extern int RollDice( int anDice[ 2 ], const rng rngx, void *p ) {
 extern int UserRNGOpen( void *p, char *sz ) {
 
   char *error;
-  VARIABLE_ARRAY(char, szCWD, strlen( sz ) + 3)
+  char *szCWD;
   rngcontext *rngctx = (rngcontext *) p;
 
   /* 
@@ -1137,8 +1133,9 @@ extern int UserRNGOpen( void *p, char *sz ) {
      * (2)
      * Try opening shared object from current directory
      */
-      sprintf( szCWD, "./%s", sz );
+      szCWD = g_strdup_printf( "./%s", sz );
       rngctx->pvUserRNGHandle = dlopen( szCWD, RTLD_LAZY );
+      g_free(szCWD);
   }
   
   if (!rngctx->pvUserRNGHandle ) {

@@ -16,14 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.297 2006/11/30 22:43:18 c_anthon Exp $
+ * $Id: eval.c,v 1.298 2006/12/04 23:47:05 c_anthon Exp $
  */
 
 #include "config.h"
 
-#if HAVE_ALLOCA_H
-#include <alloca.h>
-#endif
 #include <assert.h>
 #include <cache.h>
 #include <errno.h>
@@ -2788,7 +2785,7 @@ FindBestMoveInEval(int const nDice0, int const nDice1, int anBoard[2][25],
 	{
 	((cubeinfo*)pci)->fMove = !pci->fMove;
 	if( use ) {
-	VARIABLE_ARRAY(move, amMoves, ml.cMoves)
+	move *amMoves = (move*) g_alloca(ml.cMoves * sizeof(move));
 	for(i = 0; (int)i < ml.cMoves; i++) {
 	int const j = bmovesi[i];
 	memcpy(&amMoves[i], &ml.amMoves[j], sizeof(amMoves[0]));
@@ -6193,9 +6190,9 @@ EvaluatePositionCubeful4( int anBoard[ 2 ][ 25 ],
 
   cubeinfo ciMoveOpp;
 
-  VARIABLE_ARRAY(float, arCf, 2 * cci)
-  VARIABLE_ARRAY(float, arCfTemp, 2 * cci)
-  VARIABLE_ARRAY(cubeinfo, aci, 2 * cci)
+  float *arCf = (float*) g_alloca(2 * cci * sizeof(float));
+  float *arCfTemp = (float*) g_alloca(2 * cci * sizeof(float));
+  cubeinfo *aci = (cubeinfo*) g_alloca(2 * cci * sizeof(cubeinfo));
 
 #if defined( REDUCTION_CODE )
   int fUseReduction, ir;

@@ -16,14 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.38 2006/11/10 08:33:31 kaoru Exp $
+ * $Id: gtktheory.c,v 1.39 2006/12/04 23:47:05 c_anthon Exp $
  */
 
 #include <config.h>
-
-#if HAVE_ALLOCA_H
-#include <alloca.h>
-#endif
 
 #include <gtk/gtk.h>
 

@@ -16,17 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.614 2006/11/30 22:43:18 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.615 2006/12/04 23:47:05 c_anthon Exp $
  */
 
 #include <config.h>
 
 #if USE_BOARD3D
 #include "board3d/inc3d.h"
-#endif
-
-#if HAVE_ALLOCA_H
-#include <alloca.h>
 #endif
 #include <assert.h>
 #if HAVE_FCNTL_H

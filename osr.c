@@ -18,16 +18,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.19 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: osr.c,v 1.20 2006/12/04 23:47:05 c_anthon Exp $
  */
 
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
 
-#if HAVE_ALLOCA_H
-#include <alloca.h>
-#endif
 
 #include "config.h"
 
@@ -634,7 +631,7 @@ rollOSR ( const int nGames, const int anBoard[ 25 ], const int nOut,
   int i, n, m;
   int iGame;
   
-  VARIABLE_ARRAY(int, anCounts, nMaxGammonProbs)
+  int *anCounts = (int*) g_alloca(nMaxGammonProbs * sizeof(int));
 
   memset(anCounts, 0, sizeof(int) * nMaxGammonProbs);
 
