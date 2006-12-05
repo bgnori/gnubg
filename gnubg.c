@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.661 2006/12/04 23:47:05 c_anthon Exp $
+ * $Id: gnubg.c,v 1.662 2006/12/05 08:57:31 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4244,13 +4244,8 @@ CommandRollout( char *sz ) {
     cubeinfo ci;
     move *pm = 0;
 
-#if HAVE_ALLOCA
     int ( *aan )[ 2 ][ 25 ];
     char ( *asz )[ 40 ];
-#else
-    int aan[ 10 ][ 2 ][ 25 ];
-    char asz[ 10 ][ 40 ];
-#endif
 
   if( !( c = CountTokens( sz ) ) ) {
     if( ms.gs != GAME_PLAYING ) {

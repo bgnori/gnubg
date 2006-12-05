@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.153 2006/12/04 23:47:05 c_anthon Exp $
+ * $Id: rollout.c,v 1.154 2006/12/05 08:57:31 c_anthon Exp $
  */
 
 #include <config.h>
@@ -1001,13 +1001,6 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
   int active_alternatives;
   int show_jsds = 1;
   char *log_name = 0;
-
-#if !(__GNUC__ || HAVE_ALLOCA)
-  if (alternatives > MAX_ROLLOUT_CUBEINFO) {
-    errno = EINVAL;
-    return -1;
-  }
-#endif
 
   if( alternatives < 1 ) {
     errno = EINVAL;

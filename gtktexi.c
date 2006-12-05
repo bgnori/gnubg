@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.c,v 1.21 2006/12/04 23:47:05 c_anthon Exp $
+ * $Id: gtktexi.c,v 1.22 2006/12/05 08:57:31 c_anthon Exp $
  */
 
 #include <config.h>
@@ -572,7 +572,7 @@ static void ScanErr( void *pv, const char *msg, ... )
     va_list args;
 
     va_start(args, msg);
-    vprintf(msg, args);
+    g_vprintf(msg, args);
     va_end(args);
 #endif
 }
@@ -690,7 +690,7 @@ static void ParseError( void *pv, const char *msg, ... )
     va_list args;
 
     va_start(args, msg);
-    vprintf(msg, args);
+    g_vprintf(msg, args);
     va_end(args);
 #endif
 }
