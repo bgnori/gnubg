@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.28 2006/11/02 20:56:07 Superfly_Jon Exp $
+ * $Id: gtktoolbar.c,v 1.29 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include <config.h>
@@ -27,7 +27,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <assert.h>
+#include <glib.h>
 
 #include "backgammon.h"
 #include "gtktoolbar.h"
@@ -221,7 +221,7 @@ ToolbarGetStopParent ( GtkWidget *pwToolbar ) {
 	
   toolbarwidget *ptw = gtk_object_get_user_data ( GTK_OBJECT ( pwToolbar ) );
 
-  assert ( ptw );
+  g_assert ( ptw );
 
   return ptw->pwStopParent;
 }
@@ -237,7 +237,7 @@ ToolbarUpdate ( GtkWidget *pwToolbar,
   toolbarcontrol c;
   int fEdit = ToolbarIsEditing( pwToolbar );
 
-  assert ( ptw );
+  g_assert ( ptw );
 
   c = C_NONE;
 

@@ -16,31 +16,24 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.23 2006/11/16 14:30:25 c_anthon Exp $
+ * $Id: record.c,v 1.24 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include "config.h"
 
-#include <assert.h>
+#include <glib.h>
 #include <ctype.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#if !HAVE_GETPID
-#include <time.h>
-#endif
-#if HAVE_UNISTD_H
-#include <unistd.h>
-#endif
 #include <errno.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <glib/gstdio.h>
 
 #include "backgammon.h"
 #if USE_GTK
 #include "gtkgame.h"
 #endif
-#include <glib.h>
-#include <glib/gi18n.h>
-#include <glib/gstdio.h>
 #include "record.h"
 
 static int anAvg[ NUM_AVG - 1 ] = { 20, 100, 500 };
@@ -198,7 +191,7 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
 	return -1;
     }
 
-    if( fputs( "# %Version: 2 ($Revision: 1.23 $)\n", *ppfOut ) < 0 ) {
+    if( fputs( "# %Version: 2 ($Revision: 1.24 $)\n", *ppfOut ) < 0 ) {
 	outputerr( *ppchOut );
 	free( *ppchOut );
 	return -1;
@@ -288,7 +281,7 @@ static int RecordAddGame( list *plGame, playerrecord apr[ 2 ] ) {
     expaverage ea;
     float aaaar[ 3 ][ 2 ][ 2 ][ 2 ];
     
-    assert( pmr->mt == MOVE_GAMEINFO );
+    g_assert( pmr->mt == MOVE_GAMEINFO );
     
     if( !pmgi->sc.fMoves || !pmgi->sc.fCube || !pmgi->sc.fDice )
 	/* game is not completely analysed */

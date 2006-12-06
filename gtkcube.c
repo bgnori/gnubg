@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.49 2006/12/04 23:47:05 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.50 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include <config.h>
@@ -25,7 +25,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <assert.h>
+#include <glib.h>
 
 #include "backgammon.h"
 #include "eval.h"
@@ -208,7 +208,7 @@ TakeAnalysis( const movetype mt,
 
     default:
 
-      assert ( FALSE );
+      g_assert ( FALSE );
       break;
 
     }
@@ -661,7 +661,7 @@ UpdateCubeAnalysis ( cubehintdata *pchd ) {
 
   default:
 
-    assert ( FALSE );
+    g_assert ( FALSE );
     break;
 
   }
@@ -1050,7 +1050,7 @@ CreateCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
   default:
 
-    assert ( FALSE );
+    g_assert ( FALSE );
     break;
 
   }

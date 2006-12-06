@@ -16,20 +16,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: timecontrol.c,v 1.24 2006/10/24 22:53:07 c_anthon Exp $
+ * $Id: timecontrol.c,v 1.25 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include "config.h"
 
-#include <assert.h>
+#include <glib.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-
-#if HAVE_LIMITS_H
-#include <limits.h>
-#endif
 
 #include "backgammon.h"
 #include "eval.h"
@@ -669,7 +665,7 @@ static int applyPenalty(matchstate *pms)
 		timerclear(&pgcPlayer->tvTimeleft); /*  not to reiterate applyPenalty */
 		return pms->nMatchTo - pms->anScore[!pms->fTurn];
 	default:
-	  assert (1 == 0);
+	  g_assert (1 == 0);
 	  return 0;
 	}
 
@@ -745,7 +741,7 @@ printf("HitGameClock: state:%d, turn: %d, ts0: (%d.%d), ts1: (%d.%d)\n",
 extern void PauseGameClock(matchstate *pms)
 {
     fprintf(stderr, "Not yet implemented\n");
-    assert (0);
+    g_assert (0);
 }
 
 #if WIN32
@@ -840,7 +836,7 @@ extern int CheckGameClock(matchstate *pms, struct timeval *tvp)
 	/* Player's timestamp is reference for last hit.
 	 * Opp's timestamp is last update */
 
-	assert (timerisset(&pgcPlayer->tvStamp) &&  
+	g_assert (timerisset(&pgcPlayer->tvStamp) &&  
 	   ! timercmp(&pgcOpp->tvStamp, &pgcPlayer->tvStamp, <) );
 
     timersub(tvp, & pgcOpp->tvStamp, &used);

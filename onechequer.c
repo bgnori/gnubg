@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: onechequer.c,v 1.6 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: onechequer.c,v 1.7 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -29,7 +29,7 @@
 #include <stdio.h>
 #endif
 #include <math.h>
-#include <assert.h>
+#include <glib.h>
 
 #include "onechequer.h"
 #include "bearoff.h"

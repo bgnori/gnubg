@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.11 2006/06/26 21:07:16 c_anthon Exp $
+ * $Id: makeweights.c,v 1.12 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -25,10 +25,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#if HAVE_UNISTD_H
-#include <unistd.h>
-#endif
-
 #include <glib/gi18n.h>
 #include <locale.h>
 

@@ -16,12 +16,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff1.c,v 1.8 2006/06/17 17:58:27 oysteijo Exp $
+ * $Id: makebearoff1.c,v 1.9 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include "config.h"
 
-#include <assert.h>
+#include <glib.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -57,7 +57,7 @@ PrintPre ( FILE *pf ) {
          " * along with this program; if not, write to the Free Software\n"
          " * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
          " *\n"
-         " * $Id: makebearoff1.c,v 1.8 2006/06/17 17:58:27 oysteijo Exp $\n"
+         " * $Id: makebearoff1.c,v 1.9 2006/12/06 23:12:52 c_anthon Exp $\n"
          " */\n"
          "\n\n\n"
          "#include <stdio.h>\n"

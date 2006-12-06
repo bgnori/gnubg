@@ -32,18 +32,18 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.34 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: positionid.c,v 1.35 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include "config.h"
-#include <assert.h>
+#include <glib.h>
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
 #include "positionid.h"
 #include "common.h"
 
-static inline_hint void
+static inline void
 addBits(unsigned char auchKey[10], int const bitPos, int const nBits)
 {
   int const k = bitPos / 8;
@@ -320,10 +320,10 @@ static int InitCombination( void ) {
 
 extern int Combination( const int n, const int r ) {
 
-    assert( n > 0 );
-    assert( r > 0 );
-    assert( n <= MAX_N );
-    assert( r <= MAX_R );
+    g_assert( n > 0 );
+    g_assert( r > 0 );
+    g_assert( n <= MAX_N );
+    g_assert( r <= MAX_R );
 
     if( !fCalculated )
         InitCombination();

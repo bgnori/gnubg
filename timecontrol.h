@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: timecontrol.h,v 1.9 2006/06/22 18:55:07 c_anthon Exp $
+ * $Id: timecontrol.h,v 1.10 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #ifndef _TIMECONTROL_H_
@@ -24,9 +24,6 @@
 
 #include <stdio.h>
 #include <time.h>
-#if HAVE_SYS_TIME
-#include <sys/time.h>
-#endif
 
 #if USE_GTK
 #include <gtk/gtk.h>

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.33 2006/12/04 23:47:05 c_anthon Exp $
+ * $Id: neuralnet.c,v 1.34 2006/12/06 23:12:56 c_anthon Exp $
  */
 
 #include "config.h"
@@ -374,7 +374,6 @@ extern int NeuralNetCreate( neuralnet *pnn, int cInput, int cHidden,
 
     return 0;
 }
-#if HAVE_MMAP
 extern void *NeuralNetCreateDirect( neuralnet *pnn, void *p ) {
  
    float *fp;
@@ -416,7 +415,6 @@ extern void *NeuralNetCreateDirect( neuralnet *pnn, void *p ) {
 
    return fp;
 }
-#endif
 
 extern int
 NeuralNetDestroy( neuralnet *pnn )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.15 2006/12/04 23:47:05 c_anthon Exp $
+ * $Id: gtkmet.c,v 1.16 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include <config.h>
@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <assert.h>
+#include <glib.h>
 
 #include "backgammon.h"
 #include "eval.h"
@@ -79,7 +79,7 @@ UpdateTable ( mettable *pmt,
       else
         nBytes = sprintf( sz, "%8.4f", GET_MET( i, j, aafMET ) * 100.0f );
 
-      assert( nBytes < STRINGLENGTH );
+      g_assert( nBytes < STRINGLENGTH );
 
       gtk_label_set_text ( GTK_LABEL ( pmt->aapwLabel[ i ][ j ] ), sz );
 

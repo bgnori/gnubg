@@ -16,17 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.36 2006/12/04 23:47:05 c_anthon Exp $
+ * $Id: export.c,v 1.37 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include "config.h"
 
-#include <stdio.h>
-#include <string.h>
+#include <glib.h>
+#include <glib/gi18n.h>
 #include <stdlib.h>
-#include <time.h>
-#include <assert.h>
-#include <stdarg.h>
 
 #if HAVE_LIBPNG
 #include <png.h>
@@ -40,7 +37,6 @@
 #include "positionid.h"
 #include "renderprefs.h"
 #include "matchid.h"
-#include <glib/gi18n.h>
 #include "boardpos.h"
 #include "boarddim.h"
 
@@ -303,7 +299,7 @@ CommandExportPositionPNG (char *sz)
 	{
 		rd.nSize = exsExport.nPNGSize;
 
-		assert (rd.nSize >= 1);
+		g_assert (rd.nSize >= 1);
 
 		RenderImages (&rd, &ri);
 

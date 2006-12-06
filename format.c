@@ -16,19 +16,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.18 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: format.c,v 1.19 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include "config.h"
 
-#include <stdio.h>
+#include <glib.h>
+#include <glib/gi18n.h>
 #include <string.h>
 
 #include "backgammon.h"
 #include "eval.h"
 #include "format.h"
 
-#include <glib/gi18n.h>
 #include "export.h"
 
 

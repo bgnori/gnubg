@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.51 2006/09/21 22:24:05 Superfly_Jon Exp $
+ * $Id: external.c,v 1.52 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -32,11 +32,9 @@
 
 #ifndef WIN32
 
-#include <assert.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>
-#include <glib.h>
 
 #if HAVE_SYS_SOCKET_H
 #include <sys/types.h>
@@ -215,7 +213,7 @@ extern int ExternalSocket( struct sockaddr **ppsa, int *pcb, char *sz ) {
     return sock;
 
 #if 0 
-    assert( FALSE );
+    g_assert( FALSE );
 #endif /* 0 */
 
 }
@@ -288,7 +286,7 @@ extern int ExternalRead( int h, char *pch, int cch ) {
     p[ cch - 1 ] = 0;
     return 0;
 #if 0
-    assert( FALSE );
+    g_assert( FALSE );
 #endif
 }
 #endif /* HAVE_SOCKETS */
@@ -341,7 +339,7 @@ extern int ExternalWrite( int h, char *pch, int cch ) {
 
     return 0;
 #if 0
-    assert( FALSE );
+    g_assert( FALSE );
 #endif
 }
 #endif /* HAVE_SOCKETS */

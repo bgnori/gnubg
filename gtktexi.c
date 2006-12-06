@@ -16,10 +16,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktexi.c,v 1.22 2006/12/05 08:57:31 c_anthon Exp $
+ * $Id: gtktexi.c,v 1.23 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include <config.h>
+#include <glib.h>
+#include <glib/gi18n.h>
 #include "backgammon.h"
 #include "openurl.h"
 
@@ -33,7 +35,6 @@
 #include <io.h>
 #endif
 
-#include <assert.h>
 #include <ctype.h>
 #include <stdarg.h>
 #include <string.h>
@@ -41,7 +42,6 @@
 
 #include "list.h"
 #include "hash.h"
-#include <glib/gi18n.h>
 
 #define BLOCK_SIZE 1024
 #define MAX_ITEM_DEPTH 8
@@ -518,14 +518,14 @@ static void AddNode( GtkTexi *pw, char *sz, int fNode, int ib ) {
 
 static void NewParameter( GtkTexi *pw ) {
 
-    assert( !pw->ptic->pch );
+    g_assert( !pw->ptic->pch );
     
     *( pw->ptic->pch = pw->ptic->szParameter ) = 0;
 }
 
 static char *ReadParameter( GtkTexi *pw ) {
 
-    assert( pw->ptic->pch );
+    g_assert( pw->ptic->pch );
     
     pw->ptic->pch = NULL;
     return pw->ptic->szParameter;
@@ -1094,7 +1094,7 @@ static void Characters( void *pv, const xmlChar *pchIn, int cch ) {
 
     if( pw->ptic->pch ) {
 	/* reading a parameter */
-	assert( pw->ptic->pch + cch - pw->ptic->szParameter <
+	g_assert( pw->ptic->pch + cch - pw->ptic->szParameter <
 		sizeof( pw->ptic->szParameter ) );
 	
 	memcpy( pw->ptic->pch, pchIn, cch );

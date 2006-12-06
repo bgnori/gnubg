@@ -16,29 +16,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.139 2006/12/05 08:57:31 c_anthon Exp $
+ * $Id: gtkprefs.c,v 1.140 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include "config.h"
 
 #include <ctype.h>
 #include <gtk/gtk.h>
+#include <glib.h>
+#include <glib/gstdio.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#if HAVE_UNISTD_H
-#include <unistd.h>
-#endif
-#include <time.h>
+#include <glib/gi18n.h>
 
 #if HAVE_LIBXML2
 #include <libxml/parser.h>
 #include <libxml/parserInternals.h>
 #endif
 
-#include <glib.h>
-#include <glib/gstdio.h>
 #include "backgammon.h"
 #include "drawboard.h"
 #include "gtkboard.h"
@@ -46,7 +43,6 @@
 #include "gtkgame.h"
 #include "gtkfile.h"
 #include "gtkprefs.h"
-#include <glib/gi18n.h>
 #include "path.h"
 #include "render.h"
 #include "renderprefs.h"
@@ -1966,7 +1962,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.139 2006/12/05 08:57:31 c_anthon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.140 2006/12/06 23:12:52 c_anthon Exp $\n"
           "\n"
           " -->\n"
           "\n"

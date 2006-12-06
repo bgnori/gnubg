@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.75 2006/12/04 23:47:05 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.76 2006/12/06 23:12:52 c_anthon Exp $
  */
 
 #include <config.h>
@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <assert.h>
+#include <glib.h>
 
 #include "backgammon.h"
 #include "drawboard.h"
@@ -630,7 +630,7 @@ CreateMoveList( movelist *pml, int *piHighlight, const int fButtonsValid,
 
     /* This function should only be called when the game state matches
        the move list. */
-    assert( ms.fMove == 0 || ms.fMove == 1 );
+    g_assert( ms.fMove == 0 || ms.fMove == 1 );
 
     phd->piHighlight = piHighlight;
     phd->pml = pml;
