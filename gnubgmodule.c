@@ -16,10 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.58 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.59 2006/12/07 00:00:17 c_anthon Exp $
  */
 
 #include "config.h"
+#include "backgammon.h"
 
 #if USE_PYTHON
 #include "gnubgmodule.h"
@@ -33,7 +34,6 @@
 #include <readline/readline.h>
 #endif
 
-#include "backgammon.h"
 #include "eval.h"
 #include "matchequity.h"
 #include "path.h"

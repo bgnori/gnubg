@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.299 2006/12/06 23:12:51 c_anthon Exp $
+ * $Id: eval.c,v 1.300 2006/12/07 00:00:17 c_anthon Exp $
  */
 
 #include "config.h"
@@ -26,6 +26,7 @@
 #include <string.h>
 #include <errno.h>
 #include <cache.h>
+#include <fcntl.h>
 
 #include "isaac.h"
 #include "neuralnet.h"

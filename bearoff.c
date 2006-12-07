@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.44 2006/12/06 23:12:51 c_anthon Exp $
+ * $Id: bearoff.c,v 1.45 2006/12/07 00:00:17 c_anthon Exp $
  */
 
 #include "config.h"
@@ -27,6 +27,7 @@
 #include <string.h>
 #include <errno.h>
 #include <glib.h>
+#include <fcntl.h>
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -1369,7 +1370,7 @@ static int
 ReadIntoMemory ( bearoffcontext *pbc, const int iOffset, const int nSize ) {
 
   pbc->fMalloc = TRUE;
-
+#if !WIN32
   if ( ( pbc->p = mmap ( NULL, nSize, PROT_READ, 
                            MAP_SHARED, pbc->h, iOffset ) ) == (void *) -1 ) {
     /* allocate memory for database */
@@ -1398,6 +1399,7 @@ ReadIntoMemory ( bearoffcontext *pbc, const int iOffset, const int nSize ) {
 
   }
   else
+#endif
     pbc->fMalloc = FALSE;
 
   return 0;

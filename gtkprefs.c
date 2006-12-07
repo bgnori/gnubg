@@ -16,10 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.140 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: gtkprefs.c,v 1.141 2006/12/07 00:00:17 c_anthon Exp $
  */
 
 #include "config.h"
+#include "backgammon.h"
 
 #include <ctype.h>
 #include <gtk/gtk.h>
@@ -36,7 +37,6 @@
 #include <libxml/parserInternals.h>
 #endif
 
-#include "backgammon.h"
 #include "drawboard.h"
 #include "gtkboard.h"
 #include "gtkcolour.h"
@@ -1962,7 +1962,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.140 2006/12/06 23:12:52 c_anthon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.141 2006/12/07 00:00:17 c_anthon Exp $\n"
           "\n"
           " -->\n"
           "\n"

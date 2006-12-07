@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.616 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.617 2006/12/07 00:00:17 c_anthon Exp $
  */
 
 #include <config.h>
@@ -2205,7 +2205,7 @@ extern int InitGTK( int *argc, char ***argv )
     
     if( !gtk_init_check( argc, argv ) )
 	return FALSE;
-    
+
 #if USE_BOARD3D
 	/* Initialize openGL widget library */
 	InitGTK3d(argc, argv);
