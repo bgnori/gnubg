@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.664 2006/12/07 00:00:17 c_anthon Exp $
+ * $Id: gnubg.c,v 1.665 2006/12/07 15:58:07 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4879,9 +4879,9 @@ extern void CommandImportEmpire(char *sz)
 
 extern void CommandImportParty(char *sz)
 {
-    FILE *gamf, *matf;
+    FILE *gamf, *matf, *pf;
     char *tmpfile;
-    char *cmd;
+    int rc;
 
     sz = NextToken( &sz );
 
@@ -4913,9 +4913,17 @@ extern void CommandImportParty(char *sz)
     }
 
     if (ConvertPartyGammonFileToMat(gamf, matf)) {
-            cmd = g_strdup_printf("import mat '%s'", tmpfile);
-            UserCommand(cmd);
-            g_free(cmd);
+            if( ( pf = fopen( tmpfile, "r" ) ) ) {
+                    rc = ImportMat( pf, tmpfile );
+                    fclose( pf );
+                    if ( !rc )
+                    {
+                            setDefaultFileName ( tmpfile );
+                            if ( fGotoFirstGame )
+                                    CommandFirstGame( NULL );
+                    }
+            } else
+                    outputerr( tmpfile );
     }
     else
             outputerrf("Failed to convert gam to mat\n");

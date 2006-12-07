@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.165 2006/12/06 23:12:51 c_anthon Exp $
+## $Id: Makefile.am,v 1.166 2006/12/07 15:58:07 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -114,7 +114,7 @@ else
 INCLUDES = $(COMMON_INCS) $(SOUND_INCS)
 gnubg_SOURCES = $(COMMON_SOURCES) $(BR1_SOURCES) $(SOUND_SOURCES) \
 	$(PYTHON_SOURCES) $(TIME_SOURCES)
-gnubg_LDADD = $(COMMON_LIBS) $(SOUND_LIBS) $(PNG_LIBS) @THREAD_LIBS@
+gnubg_LDADD = $(COMMON_LIBS) $(SOUND_LIBS) $(PNG_LIBS)
 
 
 gnubg_DEPENDENCIES = $(COMMON_DEPS)
