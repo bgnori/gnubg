@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-AC_REVISION($Revision: 1.155 $)
+AC_REVISION($Revision: 1.156 $)
 AC_INIT([GNU Backgammon],[0.16-devel],[bug-gnubg@gnu.org],[gnubg])
 AC_CONFIG_SRCDIR(gnubg.c)
 AM_INIT_AUTOMAKE
@@ -145,6 +145,7 @@ dnl
 dnl Checks for library functions.
 dnl
 
+AC_FUNC_MMAP
 AC_CHECK_FUNCS(sigaction sigvec,break)
 AC_CHECK_FUNCS(sigprocmask sigblock,break)
 AC_CHECK_FUNCS(fork fstat getdtablesize gettimeofday isatty random readv select setvbuf setpriority)
