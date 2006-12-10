@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.48 2006/12/08 08:32:01 c_anthon Exp $
+ * $Id: sound.c,v 1.49 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -1051,6 +1051,7 @@ play_file(soundcache *psc, const char *filename) {
   }
 #endif
   g_assert(FALSE);
+  return -1;
 }
 
 int playSoundFile(const gnubgsound gs, char *file)

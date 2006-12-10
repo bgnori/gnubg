@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.108 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.109 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -27,11 +27,7 @@
 #include "backgammon.h"
 #include "rollout.h"
 #include "relational.h"
-
-typedef enum _warnings { 
-  WARN_FULLSCREEN_EXIT=0, WARN_QUICKDRAW_MODE, WARN_SET_SHADOWS, 
-	  WARN_UNACCELERATED, WARN_NUM_WARNINGS
-} warnings;
+#include "gtkpanels.h"
 
 #define NUM_CMD_HISTORY 10
 struct CommandEntryData_T
@@ -51,11 +47,6 @@ extern void CommandOK( GtkWidget *pw, struct CommandEntryData_T *pData );
 extern void ShowHelpToggled(GtkWidget *widget, struct CommandEntryData_T *pData);
 extern gboolean CommandFocusIn(GtkWidget *widget, GdkEventFocus *event, struct CommandEntryData_T *pData);
 extern void PopulateCommandHistory(struct CommandEntryData_T *pData);
-
-extern void GTKShowWarning(warnings warning, GtkWidget *pwParent);
-extern char* warningStrings[WARN_NUM_WARNINGS];
-extern char* warningNames[WARN_NUM_WARNINGS];
-extern int warningEnabled[WARN_NUM_WARNINGS];
 
 extern GtkWidget *pwMain, *pwMenuBar;
 extern GtkWidget *pwToolbar;

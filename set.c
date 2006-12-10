@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.262 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: set.c,v 1.263 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -60,6 +60,7 @@
 #include "gtkgame.h"
 #include "gtkprefs.h"
 #include "gtkchequer.h"
+#include "gtkwindows.h"
 #endif /* USE_GTK */
 
 #include "matchequity.h"
@@ -77,6 +78,9 @@
 
 #if USE_TIMECONTROL
 #include "timecontrol.h"
+#endif
+#if USE_BOARD3D
+#include "fun3d.h"
 #endif
 
 #if WIN32

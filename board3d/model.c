@@ -18,17 +18,10 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: model.c,v 1.10 2006/06/27 17:36:00 Superfly_Jon Exp $
+* $Id: model.c,v 1.11 2006/12/10 21:49:33 Superfly_Jon Exp $
 */
 
-#include "config.h"
-#include <stdlib.h>
-#include <assert.h>
-#include <math.h>
-#include "matrix.h"
 #include "inc3d.h"
-#include "shadow.h"
-#include <string.h>
 
 #define TOP_EDGE -2
 

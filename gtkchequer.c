@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.76 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.77 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -41,6 +41,9 @@
 #include "gtkwindows.h"
 #include "progress.h"
 #include "format.h"
+#if USE_BOARD3D
+#include "fun3d.h"
+#endif
 
 extern moverecord *pmrCurAnn;
 int showMoveListDetail = 1;

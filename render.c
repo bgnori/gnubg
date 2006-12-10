@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.55 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: render.c,v 1.56 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -44,9 +44,16 @@
 #include <gtk/gtk.h>
 #include <cairo.h>
 #endif
+#if USE_BOARD3D
+#include "fun3d.h"
+#endif
 
 static randctx rc;
 #define RAND irand( &rc )
+
+#define FONT_VERA "fonts/Vera.ttf"
+#define FONT_VERA_SERIF_BOLD "fonts/VeraSeBd.ttf"
+#define FONT_VERA_BOLD "fonts/VeraBd.ttf"
 
 /* aaanPositions[Clockwise][x][point number][x, y. deltay] */
 int positions[ 2 ][ 30 ][ 3 ] = { {
@@ -2896,7 +2903,7 @@ int MaterialTextCompare(Material* pMat1, Material* pMat2)
 	return MaterialCompare(pMat1, pMat2) &&
 		((!pMat1->textureInfo && !pMat2->textureInfo) ||
 			(pMat1->textureInfo && pMat2->textureInfo &&
-			!strcmp(pMat1->textureInfo->name, pMat2->textureInfo->name)));
+			!strcmp(MaterialGetTextureFilename(pMat1), MaterialGetTextureFilename(pMat2))));
 }
 #endif
 

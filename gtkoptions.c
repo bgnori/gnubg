@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.39 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.40 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -45,7 +45,9 @@
 #include "gtkboard.h"
 #include "renderprefs.h"
 #include "gtkwindows.h"
-
+#if USE_BOARD3D
+#include "fun3d.h"
+#endif
 #if USE_SOUND
 static void SetSoundSettings();
 static void AddSoundWidgets(GtkWidget *container);
@@ -1587,7 +1589,7 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
 {
 #if USE_BOARD3D
 	if (bd->rd->fDisplayType == DT_3D)
-		updateDiceOccPos(bd, &bd->bd3d);
+		updateDiceOccPos(bd, bd->bd3d);
 	else
 #endif
 	if( GTK_WIDGET_REALIZED( pwBoard ) )

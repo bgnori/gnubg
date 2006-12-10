@@ -16,17 +16,20 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.76 2006/11/02 20:54:40 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.77 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
 #define _GTKBOARD_H_
 
+#include <gtk/gtk.h>
+#include "eval.h"
+#include "gtkpanels.h"
+#include "common.h"
 #include "render.h"
-#include "backgammon.h"
 
 #if USE_BOARD3D
-#include "board3d/inc3d.h"
+#include "types3d.h"
 #endif
 
 #ifdef __cplusplus
@@ -139,7 +142,7 @@ typedef struct _BoardData {
 	int iTargetHelpPoints[4];	/* Drag target position */
 
 #if USE_BOARD3D
-	BoardData3d bd3d;	/* extra members for 3d board */
+	BoardData3d *bd3d;	/* extra members for 3d board */
 #endif
 	renderdata* rd;	/* The board colour settings */
 } BoardData;
@@ -183,9 +186,5 @@ extern int UpdateMove( BoardData *bd, int anBoard[ 2 ][ 25 ] );
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
-
-#if USE_BOARD3D
-#include "board3d/fun3d.h"
-#endif
 
 #endif

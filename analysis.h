@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.35 2006/10/04 12:28:39 c_anthon Exp $
+ * $Id: analysis.h,v 1.36 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -40,7 +40,7 @@ typedef enum _skilltype {
 
 #define N_SKILLS (SKILL_GOOD + 1)
 
-typedef struct {
+typedef struct _statcontext {
   int fMoves, fCube, fDice; /* which statistics have been computed? */
     
   int anUnforcedMoves[ 2 ];

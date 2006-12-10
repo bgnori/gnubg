@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.274 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: play.c,v 1.275 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -44,6 +44,9 @@
 #endif
 #if USE_TIMECONTROL
 #include "timecontrol.h"
+#endif
+#if USE_BOARD3D
+#include "fun3d.h"
 #endif
 
 char *aszGameResult[] = { 

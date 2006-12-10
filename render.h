@@ -16,20 +16,30 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.25 2006/06/24 20:39:48 c_anthon Exp $
+ * $Id: render.h,v 1.26 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
 #define _RENDER_H_
 
 #if USE_BOARD3D
-#include "board3d/inc3d.h"
+#include "types3d.h"
+struct _Material
+{
+	float ambientColour[4];
+	float diffuseColour[4];
+	float specularColour[4];
+	int shine;
+	int alphaBlend;
+	TextureInfo* textureInfo;
+	Texture* pTexture;
+};
 #endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
-    
+
 typedef enum _woodtype {
     WOOD_ALDER, WOOD_ASH, WOOD_BASSWOOD, WOOD_BEECH, WOOD_CEDAR,
     WOOD_EBONY, WOOD_FIR, WOOD_MAPLE, WOOD_OAK, WOOD_PINE, WOOD_REDWOOD,

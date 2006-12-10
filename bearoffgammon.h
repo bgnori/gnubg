@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffgammon.h,v 1.5 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: bearoffgammon.h,v 1.6 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #if !defined( BEAROFFGAMMON_H )
@@ -26,12 +26,6 @@
 
 #if defined( __GNUG__ )
 #pragma interface
-#endif
-
-#if defined(__cplusplus)
-#define CONST const
-#else
-#define CONST
 #endif
 
 /* pack for space */
@@ -46,10 +40,10 @@ struct GammonProbs {
 extern "C" {
 #endif
 
-extern CONST struct GammonProbs*
+extern struct GammonProbs*
 getBearoffGammonProbs(int b[6]);
 
-extern CONST long*
+extern long*
 getRaceBGprobs(int board[6]);
 
 #if defined( __cplusplus )

@@ -18,20 +18,12 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.27 2006/10/26 17:02:51 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.28 2006/12/10 21:49:33 Superfly_Jon Exp $
 */
 
-#include "config.h"
-#include <string.h>
 #include "inc3d.h"
-#include <gdk/gdkkeysyms.h>
-#include "gtkboard.h"
-#include <glib/gi18n.h>
-
-#include <gtk/gtkgl.h>
 
 #include "gtkcolour.h"
-#include "gtkwindows.h"
 
 extern void UpdatePreview(GtkWidget **ppw);
 static void RenderPreview(Material* pMat, unsigned char* buf);
@@ -344,8 +336,8 @@ static gboolean OkClicked(GtkWidget *pw, UpdateDetails* pDetails)
 		else
 		{
 			BoardData *bd = (BOARD(pwPrevBoard))->board_data;
-			ClearTextures(&bd->bd3d);
-			GetTextures(&bd->bd3d, bd->rd);
+			ClearTextures(bd->bd3d);
+			GetTextures(bd->bd3d, bd->rd);
 		}
 	}
 	gc = gdk_gc_new(pDetails->pixmap);

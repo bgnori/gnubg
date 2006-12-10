@@ -1,6 +1,7 @@
 
-/* $Id: bearoffgammon.c,v 1.4 2006/12/06 23:12:51 c_anthon Exp $ */
+/* $Id: bearoffgammon.c,v 1.5 2006/12/10 21:49:33 Superfly_Jon Exp $ */
 
+#include "config.h"
 #include "bearoffgammon.h"
 
 struct GroupInfo {
@@ -7802,7 +7803,7 @@ static T* y[] = {
 };
 
 
-CONST long*
+long*
 getRaceBGprobs(int board[6])
 {
   unsigned int tot = 0;

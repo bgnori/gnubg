@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.27 2006/12/07 00:00:17 c_anthon Exp $
+ * $Id: renderprefs.c,v 1.28 2006/12/10 21:49:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -32,6 +32,9 @@
 #include "renderprefs.h"
 #if USE_GTK
 #include "gtkboard.h"
+#endif
+#if USE_BOARD3D
+#include "fun3d.h"
 #endif
 
 char *aszWoodName[] = {
@@ -627,7 +630,7 @@ WriteMaterial (Material * pMat)
      pMat->shine, (int) ((pMat->ambientColour[3] + .001f) * 100));
   if (pMat->textureInfo) {
     strcat (buf[cur], ";");
-    strcat (buf[cur], pMat->textureInfo->file);
+    strcat (buf[cur], MaterialGetTextureFilename(pMat));
   }
   return buf[cur];
 }
