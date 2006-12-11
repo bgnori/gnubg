@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.166 2006/12/07 15:58:07 c_anthon Exp $
+## $Id: Makefile.am,v 1.167 2006/12/11 09:25:49 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -63,7 +63,7 @@ else
 PYTHON_SOURCES=
 endif
 
-COMMON_INCS = -I$(srcdir)/lib @LIBXML2_CFLAGS@ \
+COMMON_INCS = -I$(srcdir)/lib -I$(srcdir)/board3d @LIBXML2_CFLAGS@ \
               -DLOCALEDIR=\"$(localedir)\" \
               @FREETYPE2_CFLAGS@ @PYTHON_CSPEC@ @GLIB_CFLAGS@ @LIBPNG_CFLAGS@
 COMMON_LIBS = -Llib -levent @LTLIBOBJS@ @LTLIBINTL@ @LIBXML2_LIBS@ \
