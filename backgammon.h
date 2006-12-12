@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.323 2006/12/10 21:49:33 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.324 2006/12/12 14:57:19 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1235,5 +1235,6 @@ extern char *
 ShowEPC( int anBoard[ 2 ][ 25 ] );
 
 extern void SetupLanguage(char *newLangCode);
+extern void SaveRolloutSettings ( FILE *pf, char *sz, rolloutcontext *prc );
 
 #endif

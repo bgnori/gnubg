@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.666 2006/12/10 21:49:33 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.667 2006/12/12 14:57:19 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5233,7 +5233,7 @@ SaveEvalSettings( FILE *pf, char *sz, evalcontext *pec ) {
 }
 
 
-static void
+extern void
 SaveRolloutSettings ( FILE *pf, char *sz, rolloutcontext *prc ) {
 
   char *pch;
@@ -5394,8 +5394,8 @@ extern void CommandSaveSettings( char *szParam ) {
       pf = g_fopen( szFile, "w" );
 
     if ( ! pf ) {
-      g_free ( szFile );
       outputerr( szFile );
+      g_free ( szFile );
       return;
     }
 
