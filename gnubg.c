@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.667 2006/12/12 14:57:19 c_anthon Exp $
+ * $Id: gnubg.c,v 1.668 2006/12/14 19:26:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -6612,6 +6612,8 @@ ProgressStartValue ( char *sz, int iMax ) {
   iProgressValue = 0;
   pcProgress = sz;
 
+  fInProgress = TRUE;
+
 #if USE_GTK
   if( fX ) {
     GTKProgressStartValue( sz, iMax );
@@ -6688,15 +6690,19 @@ extern void Progress( void ) {
 static void CallbackProgress( void ) {
 
 #if USE_GTK
-    if( fX ) {
+	if( fX )
+	{
+		GTKDisallowStdin();
+		if (fInProgress)
+			SuspendInput();
 
-	GTKDisallowStdin();
-    
-	while( gtk_events_pending() )
-	    gtk_main_iteration();
-	
-	GTKAllowStdin();
-    }
+		while( gtk_events_pending() )
+			gtk_main_iteration();
+
+		if (fInProgress)
+			ResumeInput();
+		GTKAllowStdin();
+	}
 #endif
 
     if( fInProgress && !iProgressMax )
