@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.619 2006/12/12 14:57:19 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.620 2006/12/14 17:56:23 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -5005,6 +5005,7 @@ static void gtk_save_rollout_settings(void)
 {
 	char *filename;
 	char *folder;
+	FILE *pf;
 	folder = g_build_filename(szHomeDirectory, "rol", NULL);
 	if (!g_file_test(folder, G_FILE_TEST_IS_DIR)) {
 		g_mkdir(folder, 0700);
@@ -5027,7 +5028,7 @@ static void gtk_save_rollout_settings(void)
 	}
 
 	errno = 0;
-	FILE *pf = g_fopen(filename, "w");
+	pf = g_fopen(filename, "w");
 	if (!pf) {
 		outputerr(filename);
 		g_free(filename);
