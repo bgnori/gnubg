@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.111 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: import.c,v 1.112 2006/12/14 17:57:41 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3325,7 +3325,7 @@ void WritePartyGame(FILE *fp, char *gameStr)
 			strcpy(buf, move);	/* Double/Take */
 
 		if (side == 0)
-			fprintf(fp, "%-28s", buf);
+			fprintf(fp, "%-30s ", buf);
 		else
 			fprintf(fp, "%s\n", buf);
 	}
