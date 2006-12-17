@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.13 2006/12/14 17:58:02 Superfly_Jon Exp $
+ * $Id: gtkmovelist.c,v 1.14 2006/12/17 21:00:50 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -226,16 +226,18 @@ if (!psHighlight)
 	{
 		/* Lets count how many moves are possible to see if this is the last move */
 		movelist ml;
-		if (!ms.anDice[0])
+		int dice[2];
+		memcpy(dice, ms.anDice, sizeof(dice));
+		if (!dice[0])
 		{	/* If the dice have got lost, try to find them */
 			moverecord* pmr = (moverecord*)plLastMove->p;
 			if (pmr)
 			{
-				ms.anDice[0] = pmr->anDice[0];
-				ms.anDice[1] = pmr->anDice[1];
+				dice[0] = pmr->anDice[0];
+				dice[1] = pmr->anDice[1];
 			}
 		}
-		GenerateMoves(&ml, ms.anBoard, ms.anDice[0], ms.anDice[1], FALSE);
+		GenerateMoves(&ml, ms.anBoard, dice[0], dice[1], FALSE);
 		if (i < ml.cMoves - 1)
 			rankKnown = 0;
 	}
