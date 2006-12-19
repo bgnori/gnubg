@@ -16,10 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.36 2006/12/10 16:40:38 c_anthon Exp $
+ * $Id: neuralnet.c,v 1.37 2006/12/19 11:03:49 c_anthon Exp $
  */
 
 #include "config.h"
+#include "common.h"
 
 #include <glib.h>
 #include <errno.h>
