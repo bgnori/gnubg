@@ -2,7 +2,7 @@
  * hash.h
  *
  * by Gary Wong, 1997
- * $Id: hash.h,v 1.4 2005/02/21 23:23:08 jsegrave Exp $
+ * $Id: hash.h,v 1.5 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #ifndef _HASH_H_
@@ -23,8 +23,8 @@ typedef struct _hash {
     unsigned long int cSize, cHits, cMisses, cLookups;
 } hash;
 
-extern int HashCreate( hash *ph, int c, hashcomparefunc phcf );
-extern int HashDestroy( hash *ph );
+extern int HashCreate( hash *ph, unsigned int c, hashcomparefunc phcf );
+extern int HashDestroy( const hash *ph );
 extern int HashAdd( hash *ph, unsigned long l, void *p );
 extern int HashDelete( hash *ph, unsigned long l, void *p );
 extern void *HashLookup( hash *ph, unsigned long l, void *p );

@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: md5.h,v 1.2 2001/03/29 17:25:36 gtw Exp $
+ * $Id: md5.h,v 1.3 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
@@ -78,7 +78,7 @@ typedef u_int32_t md5_uint32;
 #endif
 
 #undef __P
-#if defined (__STDC__) && __STDC__
+#if __STDC__ || _MSC_VER
 # define __P(x) x
 #else
 # define __P(x) ()

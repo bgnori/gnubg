@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.77 2006/12/10 21:49:33 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.78 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -83,6 +83,7 @@ extern void board_animate( Board *board, int move[ 8 ], int player );
 extern void board_set_clock(Board *board, gchar *c0, gchar *c1);
 extern void board_set_scores(Board *board, int s0, int s1);
 #endif
+extern unsigned int convert_point( int i, int player );
 
 /* private data */
 typedef struct _BoardData {

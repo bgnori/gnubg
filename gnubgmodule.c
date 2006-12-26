@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.60 2006/12/11 09:25:49 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.61 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -809,7 +809,7 @@ PythonMatchChecksum( PyObject* self UNUSED_PARAM, PyObject *args )
 	unsigned char auch[16];
 	char auchHex[33];
 	int i;
-	// Work out md5 checksum
+	/* Work out md5 checksum */
 	char* gameStr = GameAsString();
 	md5_buffer(gameStr, strlen(gameStr), auch);
 	free(gameStr);

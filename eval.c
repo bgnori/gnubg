@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.302 2006/12/07 02:29:30 c_anthon Exp $
+ * $Id: eval.c,v 1.303 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -701,7 +701,7 @@ EvalShutdown ( void ) {
 }
 
 
-int (*NeuralNetEvaluateFn)( neuralnet *pnn, float arInput[],
+int (*NeuralNetEvaluateFn)( const neuralnet *pnn, float arInput[],
 			      float arOutput[], NNEvalType t) = 0;
 
 extern int

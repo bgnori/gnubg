@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.142 2006/12/10 21:49:33 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.143 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -112,15 +112,6 @@ void AddPages(BoardData* bd, GtkWidget* pwNotebook);
 #if HAVE_LIBXML2
 static void AddDesignRow ( gpointer data, gpointer user_data );
 static void AddDesignRowIfNew ( gpointer data, gpointer user_data );
-#endif
-
-#if USE_BOARD3D
-void ResetPreviews();
-void UpdateColPreviews();
-int GetPreviewId();
-void UpdateColPreview(int ID);
-void SetPreviewLightLevel(int levels[3]);
-void Setup3dColourPicker(GtkWidget* parent, GdkWindow* wind);
 #endif
 
 #if HAVE_LIBXML2
@@ -267,7 +258,7 @@ void SetTitle()
 	gtk_window_set_title( GTK_WINDOW( pwDialog ),  title);
 }
 
-void UpdatePreview(GtkWidget *ppw)
+void UpdatePreview(GtkWidget *notused)
 {
 	if (!fUpdate)
 		return;
@@ -1963,7 +1954,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.142 2006/12/10 21:49:33 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.143 2006/12/26 11:22:06 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -3138,7 +3129,7 @@ extern void BoardPreferencesDone( GtkWidget *pwBoard )
 		if (prd->fDisplayType == DT_3D)
 			updateOccPos(bd);
 		else
-			StopIdle3d(bd);
+			StopIdle3d(bd, bd->bd3d);
 
 		if (prd->fDisplayType == DT_2D)
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.324 2006/12/12 14:57:19 c_anthon Exp $
+ * $Id: backgammon.h,v 1.325 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -24,7 +24,7 @@
 
 
 #include <float.h>
-#include <list.h>
+#include "list.h"
 #include <math.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -562,9 +562,9 @@ extern void outputoff( void );
 extern void outputon( void );
 
 /* Temporarily ignore TTY/GUI input. */
-extern void SuspendInput();
+extern void SuspendInput(void);
 /* Resume input (must match a previous SuspendInput). */
-extern void ResumeInput();
+extern void ResumeInput(void);
 
 extern void ProgressStart( char* sz );
 extern void ProgressStartValue( char* sz, int iMax );

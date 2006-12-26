@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.620 2006/12/14 17:56:23 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.621 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -97,7 +97,8 @@ extern gint gtk_option_menu_get_history (GtkOptionMenu *option_menu) {
     
     GtkWidget *active_widget;
   
-    g_return_val_if_fail (GTK_IS_OPTION_MENU (option_menu), -1);
+    if (!GTK_IS_OPTION_MENU (option_menu))
+		return -1;
 
     if (option_menu->menu) {
 	active_widget = gtk_menu_get_active (GTK_MENU (option_menu->menu));

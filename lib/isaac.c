@@ -8,13 +8,15 @@ MODIFIED:
   991209: modified for inclusion with GNU Backgammon by Gary Wong  
 ------------------------------------------------------------------------------
 
-  $Id: isaac.c,v 1.3 2006/09/21 22:24:45 Superfly_Jon Exp $
+  $Id: isaac.c,v 1.4 2006/12/26 11:22:06 Superfly_Jon Exp $
 */
+
+/*lint --e{661,662}	 Ignore warnings of out of bounds array access (as ok) */
 
 #include "isaacs.h"
 #include "isaac.h"
 
-#define ind(mm,x)  ((mm)[(x>>2)&(RANDSIZ-1)])
+#define ind(mm,x)  ((mm)[((x)>>2)&(RANDSIZ-1)])
 #define rngstep(mix,a,b,mm,m,m2,r,x) \
 { \
   x = *m;  \

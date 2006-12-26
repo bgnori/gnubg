@@ -2,7 +2,7 @@
  * list.h
  *
  * by Gary Wong, 1996
- * $Id: list.h,v 1.4 2005/02/21 23:23:08 jsegrave Exp $
+ * $Id: list.h,v 1.5 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #ifndef _LIST_H_
@@ -19,7 +19,7 @@ extern int ListCreate( list *pl );
 
 #define ListEmpty( pl ) ( (pl)->plNext == (pl) )
 extern list* ListInsert( list* pl, void* p );
-extern int ListDelete( list* pl );
-extern int ListDeleteAll( list *pl );
+extern void ListDelete( list* pl );
+extern void ListDeleteAll( const list *pl );
 
 #endif

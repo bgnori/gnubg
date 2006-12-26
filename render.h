@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.26 2006/12/10 21:49:33 Superfly_Jon Exp $
+ * $Id: render.h,v 1.27 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -60,7 +60,7 @@ typedef struct _renderdata {
     float arDiceCoefficient[ 2 ], arDiceExponent[ 2 ]; /* Phong parameters */
     float arLight[ 3 ]; /* XYZ light vector */
     float rRound; /* shape of chequers */
-    int nSize; /* basic unit of board size, in pixels -- a chequer's
+    unsigned int nSize; /* basic unit of board size, in pixels -- a chequer's
 		  diameter is 6 of these units (and is 2 units thick).
 		  The board is 108x82(old:72) units, the dice 7x7 and cube 8x8. */
     int fHinges; /* TRUE if hinges should be drawn */
@@ -83,7 +83,7 @@ typedef struct _renderdata {
 	int animateFlag;	/* Animate resignation flag */
 	int closeBoardOnExit;	/* Animate board close on quit */
 	int quickDraw;	/* Cut down 3d drawing to improve performance */
-	int curveAccuracy;	/* Round curve approximation accuracy */
+	unsigned int curveAccuracy;	/* Round curve approximation accuracy */
 	lighttype lightType;	/* Positional/Directional light source */
 	float lightPos[3];	/* x,y,z pos of light source */
 	int lightLevels[3];	/* amibient/diffuse/specular light levels */

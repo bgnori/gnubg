@@ -16,13 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.36 2006/12/10 21:49:33 Superfly_Jon Exp $
+ * $Id: analysis.h,v 1.37 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #ifndef _ANALYSIS_H_
 #define _ANALYSIS_H_
 
-#include <list.h>
+#include "lib/list.h"
 
 typedef enum _lucktype {
     LUCK_VERYBAD, LUCK_BAD, LUCK_NONE, LUCK_GOOD, LUCK_VERYGOOD
@@ -150,7 +150,7 @@ absoluteFibsRatingCube( const float rCube, const int n );
 #define NORMALISED   0
 #define UNNORMALISED 1
 
-extern float
+extern void
 getMWCFromError ( const statcontext* psc, float aaaar[ 3 ][ 2 ][ 2 ][ 2 ] );
 
 extern skilltype

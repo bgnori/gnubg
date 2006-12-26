@@ -18,19 +18,19 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matrix.h,v 1.2 2003/08/13 11:52:29 Superfly_Jon Exp $
+* $Id: matrix.h,v 1.3 2006/12/26 11:22:06 Superfly_Jon Exp $
 */
 
 void setIdMatrix(float m[4][4]);
 #define copyMatrix(to, from) memcpy(to, from, sizeof(float[4][4]))
 
-void makeInverseTransposeMatrix(float m[4][4], float v[3]);
+void makeInverseTransposeMatrix(float m[4][4], const float v[3]);
 void makeInverseRotateMatrix(float m[4][4], float degRot, float x, float y, float z);
 void makeInverseRotateMatrixX(float m[4][4], float degRot);
 void makeInverseRotateMatrixY(float m[4][4], float degRot);
 void makeInverseRotateMatrixZ(float m[4][4], float degRot);
 
-void mult_matrix_vec(float mat[4][4], float src[4], float dst[4]);
-void matrixmult(float m[4][4], float b[4][4]);
+void mult_matrix_vec(const float mat[4][4], const float src[4], float dst[4]);
+void matrixmult(float m[4][4], const float b[4][4]);
 
-void dumpMatrix(float m[4][4]);
+void dumpMatrix(const float m[4][4]);

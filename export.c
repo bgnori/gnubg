@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.38 2006/12/07 00:00:17 c_anthon Exp $
+ * $Id: export.c,v 1.39 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -65,15 +65,15 @@ CommandExportMatchEquityEvolution (char *sz)
    as defined in boarddim.h */
 
 extern int
-WritePNG (const char *sz, unsigned char *puch, int nStride,
-	  const int nSizeX, const int nSizeY)
+WritePNG (const char *sz, unsigned char *puch, unsigned int nStride,
+	  unsigned int nSizeX, unsigned int nSizeY)
 {
 
   FILE *pf;
   png_structp ppng;
   png_infop pinfo;
   png_text atext[3];
-  int i;
+  unsigned int i;
 
   if (!(pf = fopen (sz, "wb")))
     return -1;

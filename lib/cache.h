@@ -2,7 +2,7 @@
  * cache.h
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.h,v 1.6 2005/02/21 23:23:08 jsegrave Exp $
+ * $Id: cache.h,v 1.7 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #ifndef _CACHE_H_
@@ -61,15 +61,15 @@ CacheResize(cache *pc, unsigned int cNew);
 
 /* l is filled with a value which is passed to CacheAdd */
 cacheNode*
-CacheLookup(cache* pc, cacheNode* e, unsigned long* l);
+CacheLookup(cache* pc, const cacheNode* e, unsigned long* l);
 
-void CacheAdd(cache* pc, cacheNode* e, unsigned long l);
-void CacheFlush(cache* pc);
-void CacheDestroy(cache* pc);
-void CacheStats(cache* pc, int* pcLookup, int* pcHit);
+void CacheAdd(cache* pc, const cacheNode* e, unsigned long l);
+void CacheFlush(const cache* pc);
+void CacheDestroy(const cache* pc);
+void CacheStats(const cache* pc, unsigned int* pcLookup, unsigned int* pcHit);
 
 extern unsigned long
-keyToLong(unsigned char k[10], int np);
+keyToLong(const unsigned char k[10], unsigned int np);
 
 #endif
 

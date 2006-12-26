@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.30 2006/12/10 21:49:33 Superfly_Jon Exp $
+ * $Id: gtktoolbar.c,v 1.31 2006/12/26 11:22:06 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -212,7 +212,7 @@ ToolbarStop( GtkWidget *pw, gpointer unused ) {
 	BoardData *bd = BOARD( pwBoard )->board_data;
 	if (bd->rd->fDisplayType == DT_3D)
 	{
-		StopIdle3d(bd);
+		StopIdle3d(bd, bd->bd3d);
 		RestrictiveRedraw();
 	}
 }
