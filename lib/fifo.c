@@ -2,7 +2,7 @@
  * fifo.c
  *
  * by Gary Wong, 1996
- * $Id: fifo.c,v 1.7 2006/12/26 11:22:06 Superfly_Jon Exp $
+ * $Id: fifo.c,v 1.8 2006/12/28 09:05:21 c_anthon Exp $
  */
 
 #include "config.h"
@@ -119,3 +119,43 @@ int FifoConsume( fifo *pf, int cch ) {
 
     return 0;
 }
+
+#if HAVE_FIFOIOVEC
+int FifoIOVec( fifo *pf, struct iovec *aiov, int fIn ) {
+
+    if( fIn ) {
+	if( pf->cb == pf->cbSize )
+	    return 0;
+	else if( pf->iHead && ( pf->iHead + pf->cb < pf->cbSize ) ) {
+	    aiov[ 0 ].iov_base = pf->pchBuffer + pf->iHead + pf->cb;
+	    aiov[ 0 ].iov_len = pf->cbSize - pf->iHead - pf->cb;
+	    aiov[ 1 ].iov_base = pf->pchBuffer;
+	    aiov[ 1 ].iov_len = pf->iHead;
+	    
+	    return 2;
+	} else {
+	    aiov[ 0 ].iov_base = pf->pchBuffer + ( ( pf->iHead + pf->cb ) %
+		pf->cbSize );
+	    aiov[ 0 ].iov_len = pf->cbSize - pf->cb;
+
+	    return 1;
+	}
+    } else {
+	if( !pf->cb )
+	    return 0;
+	else if( pf->iHead + pf->cb > pf->cbSize ) {
+	    aiov[ 0 ].iov_base = pf->pchBuffer + pf->iHead;
+	    aiov[ 0 ].iov_len = pf->cbSize - pf->iHead;
+	    aiov[ 1 ].iov_base = pf->pchBuffer;
+	    aiov[ 1 ].iov_len = ( pf->iHead + pf->cb ) % pf->cbSize;
+
+	    return 2;
+	} else {
+	    aiov[ 0 ].iov_base = pf->pchBuffer + pf->iHead;
+	    aiov[ 0 ].iov_len = pf->cb;
+
+	    return 1;
+	}
+    }
+}
+#endif

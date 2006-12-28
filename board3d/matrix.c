@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matrix.c,v 1.9 2006/12/26 11:22:06 Superfly_Jon Exp $
+* $Id: matrix.c,v 1.10 2006/12/28 09:05:21 c_anthon Exp $
 */
 
 #include "inc3d.h"
@@ -44,7 +44,7 @@ void mult_matrix_vec(const float mat[4][4], const float src[4], float dst[4])
 		src[2] * mat[3][2] + src[3] * mat[3][3]);
 }
 
-void matrixmult(float m[4][4], const float b[4][4])
+void matrixmult(float m[4][4], float b[4][4])
 {
 	int i, j, c;
 	float a[4][4] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
