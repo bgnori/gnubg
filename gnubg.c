@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.669 2006/12/26 11:22:06 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.670 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -156,9 +156,10 @@ int fDisplay = TRUE, fAutoBearoff = FALSE, fAutoGame = TRUE, fAutoMove = FALSE,
     fCubeUse = TRUE, 
     fConfirm = TRUE, fShowProgress, fJacoby = TRUE,
     nBeavers = 3, fOutputRawboard = FALSE, 
-    cAnalysisMoves = 1, fAnalyseCube = TRUE,
+    fAnalyseCube = TRUE,
     fAnalyseDice = TRUE, fAnalyseMove = TRUE, fRecord = TRUE,
     nDefaultLength = 7, nToolbarStyle = 2, fStyledGamelist = TRUE, fFullScreen = FALSE;
+unsigned int cAnalysisMoves = 1;
 int fCubeEqualChequer = TRUE, fPlayersAreSame = TRUE, 
 	fTruncEqualPlayer0 =TRUE;
 int fInvertMET = FALSE;
@@ -1795,6 +1796,10 @@ command cER = {
     { "theorywindow", CommandSetTheoryWindow, N_("Display game theory in window"),
       szONOFF, &cOnOff },
 #endif
+#ifdef USE_MULTITHREAD
+    { "threads", CommandSetThreads, N_("Set the number of calculation threads"),
+      szSIZE, NULL },
+#endif
     { "toolbar", CommandSetToolbar, N_("Change if icons and/or text are shown on toolbar"),
       szVALUE, NULL },
     { "training", NULL, 
@@ -2935,9 +2940,9 @@ extern void InitBoard( int anBoard[ 2 ][ 25 ], const bgvariation bgv ) {
 }
 
 
-extern int GetMatchStateCubeInfo( cubeinfo* pci, const matchstate* pms ) {
+extern void GetMatchStateCubeInfo( cubeinfo* pci, const matchstate* pms ) {
 
-    return SetCubeInfo( pci, pms->nCube, pms->fCubeOwner, pms->fMove,
+    SetCubeInfo( pci, pms->nCube, pms->fCubeOwner, pms->fMove,
 			pms->nMatchTo, pms->anScore, pms->fCrawford,
 			pms->fJacoby, nBeavers, pms->bgv );
 }
@@ -3100,7 +3105,7 @@ extern void ShowBoard( void )
 
 	    game_set( BOARD( pwBoard ), anBoardTemp, 0, ap[ 1 ].szName,
 		      ap[ 0 ].szName, ms.nMatchTo, ms.anScore[ 1 ],
-		      ms.anScore[ 0 ], -1, -1, FALSE, anChequers[ ms.bgv ] );
+		      ms.anScore[ 0 ], 0, 0, FALSE, anChequers[ ms.bgv ] );
 	} else
 #endif
 
@@ -5493,6 +5498,10 @@ extern void CommandSaveSettings( char *szParam ) {
 
     EvalCacheStats( NULL, &cCache, NULL, NULL );
     fprintf( pf, "set cache %d\n", cCache );
+
+#ifdef USE_MULTITHREAD
+    fprintf( pf, "set threads %d\n", MT_GetNumThreads() );
+#endif
 
     fprintf( pf, "set clockwise %s\n"
 		 "set tutor mode %s\n"

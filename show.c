@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.212 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: show.c,v 1.213 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -500,7 +500,7 @@ extern void CommandShowBoard( char *sz ) {
 
 #if USE_GTK
     if( fX )
-      game_set( BOARD( pwBoard ), an, TRUE, "", "", 0, 0, 0, -1, -1, FALSE,
+      game_set( BOARD( pwBoard ), an, TRUE, "", "", 0, 0, 0, 0, 0, FALSE,
                 anChequers[ ms.bgv ] );
     else
 #endif
@@ -2280,7 +2280,7 @@ ShowBearoff( char *sz, matchstate *pms, bearoffcontext *pbc ) {
     float arBest[ 4 ];
     float arEquity[ 4 ];
     int anBoard[ 2 ][ 25 ];
-    int i, j;
+    unsigned int i, j;
     static char *aszCube[] = {
       N_("No cube"),
       N_("Owned cube"),

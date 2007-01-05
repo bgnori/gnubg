@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.174 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: html.c,v 1.175 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -161,7 +161,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.174 2006/12/06 23:12:52 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.175 2007/01/05 22:01:02 Superfly_Jon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1841,7 +1841,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.174 $";
+  const char szVersion[] = "$Revision: 1.175 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1921,7 +1921,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.174 $";
+  const char szVersion[] = "$Revision: 1.175 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2433,7 +2433,7 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
                         const htmlexporttype het, const htmlexportcss hecss ) {
 
   char sz[ 64 ];
-  int i;
+  unsigned int i;
   float rEq, rEqTop;
 
   cubeinfo ci;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.263 2006/12/10 21:49:33 Superfly_Jon Exp $
+ * $Id: set.c,v 1.264 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -81,6 +81,9 @@
 #endif
 #if USE_BOARD3D
 #include "fun3d.h"
+#endif
+#ifdef USE_MULTITHREAD
+#include "multithread.h"
 #endif
 
 #if WIN32
@@ -710,6 +713,22 @@ extern void CommandSetCache( char *sz ) {
     }
 
 }
+
+#ifdef USE_MULTITHREAD
+extern void CommandSetThreads( char *sz )
+{
+    int n;
+
+    if( ( n = ParseNumber( &sz ) ) < 0 ) {
+	outputl( _("You must specify the number of threads to use.") );
+
+	return;
+    }
+
+	MT_SetNumThreads(n);
+	outputf( _("The number of threads has been set to %d.\n"), n );
+}
+#endif
 
 extern void CommandSetCalibration( char *sz ) {
 

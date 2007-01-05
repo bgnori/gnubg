@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: timer.c,v 1.7 2005/09/14 21:37:07 Superfly_Jon Exp $
+* $Id: timer.c,v 1.8 2007/01/05 22:01:02 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -48,7 +48,7 @@ int setup_timer()
 
 double get_time()
 {	/* Return elapsed time in milliseconds */
-	LARGE_INTEGER time;
+	LARGE_INTEGER timer;
 
 	if (!perFreq)
 	{
@@ -56,8 +56,8 @@ double get_time()
 			return clock() / 1000.0;
 	}
 
-	QueryPerformanceCounter(&time);
-	return time.QuadPart / perFreq;
+	QueryPerformanceCounter(&timer);
+	return timer.QuadPart / perFreq;
 }
 
 #else

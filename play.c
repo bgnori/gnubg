@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.276 2006/12/26 11:22:06 Superfly_Jon Exp $
+ * $Id: play.c,v 1.277 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1725,7 +1725,7 @@ extern void CancelCubeAction( void ) {
 static int TryBearoff( void ) {
 
     movelist ml;
-    int i, iMove, cMoves;
+    unsigned int i, iMove, cMoves;
     moverecord *pmr;
     
     if( ClassifyPosition( ms.anBoard, VARIATION_STANDARD ) > CLASS_RACE )
@@ -2906,7 +2906,7 @@ static skilltype GoodMove (moverecord *pmr) {
   ProgressStart( _("Considering move...") );
   if (AnalyzeMove ( pmr, &msx, plGame, NULL, pesChequer, pesChequer,
                     fTutorAnalysis ? aamfAnalysis : aamfEval, 
-		    FALSE, NULL ) < 0) {
+		    NULL ) < 0) {
     fAnalyseMove = fAnalyseMoveSaved;
     ProgressEnd();
     ResumeInput();
@@ -2928,7 +2928,8 @@ static skilltype GoodMove (moverecord *pmr) {
 extern void 
 CommandMove( char *sz ) {
 
-    int c, i, j, anBoardNew[ 2 ][ 25 ], anBoardTest[ 2 ][ 25 ], an[ 8 ];
+    int j, anBoardNew[ 2 ][ 25 ], anBoardTest[ 2 ][ 25 ], an[ 8 ];
+	unsigned int i, c;
     movelist ml;
     moverecord *pmr;
     

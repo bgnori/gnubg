@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.47 2006/12/26 11:22:06 Superfly_Jon Exp $
+ * $Id: postscript.c,v 1.48 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1006,7 +1006,8 @@ static void ExportGamePostScript( FILE *pf, list *plGame ) {
     list *pl;
     moverecord *pmr;
     matchstate msExport;
-    int fTook = FALSE, i, cx;
+    int fTook = FALSE, cx; 
+	unsigned int i;
     char sz[ 1024 ], *pch;
     int iMove = 0;
 

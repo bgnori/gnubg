@@ -2,7 +2,7 @@
  * neuralnet.h
  *
  * by Gary Wong, 1998
- * $Id: neuralnet.h,v 1.15 2006/12/26 11:22:06 Superfly_Jon Exp $
+ * $Id: neuralnet.h,v 1.16 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #ifndef _NEURALNET_H_
@@ -37,7 +37,7 @@ extern int NeuralNetCreate( neuralnet *pnn, unsigned int cInput, unsigned int cH
 
 extern void *NeuralNetCreateDirect( neuralnet *pnn, void *p );
 
-extern int NeuralNetDestroy( neuralnet *pnn );
+extern void NeuralNetDestroy( neuralnet *pnn );
 
 typedef enum  {
   NNEVAL_NONE,

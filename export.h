@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.25 2006/12/26 11:22:06 Superfly_Jon Exp $
+ * $Id: export.h,v 1.26 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #include "render.h"
@@ -64,7 +64,7 @@ typedef struct _exportsetup {
 
   /* moves */
 
-  int nMoves; /* show at most nMoves */
+  unsigned int nMoves; /* show at most nMoves */
   int fMovesDetailProb; /* show detailed probabilities */
   int afMovesParameters[ 2 ]; /* detailed parameters */
   int afMovesDisplay[ 7 ];    /* display moves */

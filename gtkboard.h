@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.78 2006/12/26 11:22:06 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.79 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -127,7 +127,7 @@ typedef struct _BoardData {
     gint match_to, score, score_opponent;
     gint points[ 28 ]; /* 0 and 25 are the bars */
     gint turn; /* -1 is X, 1 is O, 0 if game over */
-    gint diceRoll[ 2 ]; /* 0, 0 if not rolled */
+    unsigned int diceRoll[ 2 ]; /* 0, 0 if not rolled */
     gint cube;
     gint can_double, opponent_can_double; /* allowed to double */
     gint doubled; /* -1 if X is doubling, 1 if O is doubling */

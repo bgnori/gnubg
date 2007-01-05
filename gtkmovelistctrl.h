@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.h,v 1.1 2005/08/29 14:56:07 Superfly_Jon Exp $
+ * $Id: gtkmovelistctrl.h,v 1.2 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #ifndef _GTKMOVELISTCTRL_H_
@@ -48,7 +48,7 @@ struct _CustomCellRendererMovelist
 {
 	GtkCellRenderer parent;
 	move* pml;
-	int rank;
+	unsigned int rank;
 };
 
 

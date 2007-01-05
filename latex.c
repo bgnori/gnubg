@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.35 2006/10/25 09:37:47 c_anthon Exp $
+ * $Id: latex.c,v 1.36 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -380,7 +380,8 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
     list *pl;
     moverecord *pmr;
     matchstate msExport;
-    int fTook = FALSE, i;
+    int fTook = FALSE;
+	unsigned int i;
     char sz[ 1024 ];
 
     updateStatisticsGame ( plGame );

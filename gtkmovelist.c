@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.14 2006/12/17 21:00:50 Superfly_Jon Exp $
+ * $Id: gtkmovelist.c,v 1.15 2007/01/05 22:01:02 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -80,7 +80,7 @@ void MoveListCreate(hintdata *phd)
         N_("Diff."), 
         N_("Move")
     };
-	int i;
+	unsigned int i;
 	int showWLTree = showMoveListDetail && !phd->fDetails;
 
 /* Create list widget */
@@ -172,7 +172,7 @@ void MoveListRefreshSize()
  */
 void MoveListUpdate ( const hintdata *phd )
 {
-  int i, j, colNum;
+  unsigned int i, j, colNum;
   char sz[ 32 ];
   cubeinfo ci;
   movelist *pml = phd->pml;
