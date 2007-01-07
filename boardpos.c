@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boardpos.c,v 1.9 2006/12/06 23:12:51 c_anthon Exp $
+ * $Id: boardpos.c,v 1.10 2007/01/07 22:29:24 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -27,6 +27,7 @@
 
 #include "boarddim.h"
 #include "boardpos.h"
+#include "common.h"
 
 extern void
 ChequerPosition( const int clockwise, 
@@ -102,10 +103,10 @@ extern void
 ResignPosition( const int resigned, int *px, int *py, int *porient ) {
 
   if( resigned ) {
-    if ( px ) *px = (resigned / abs ( resigned ) < 0) ? 
+    if ( px ) *px = (SGN(resigned) < 0) ? 
 		CUBE_RESIGN_LEFT_X : CUBE_RESIGN_RIGHT_X;
     if ( py ) *py = CUBE_CENTRE_Y;
-    if( porient ) *porient = - resigned / abs ( resigned );
+    if( porient ) *porient = - SGN(resigned);
   }
   else {
     /* no resignation */

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.29 2006/12/26 11:22:06 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.30 2007/01/07 22:29:24 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -199,7 +199,6 @@ struct _BoardData3d
 #define TEXTURE_SCALE (10.0f / base_unit)
 
 #define copyPoint(to, from) memcpy(to, from, sizeof(float[3]))
-#define SGN(x) (x / (int)abs(x))
 
 #define TEXTURE_PATH "textures/"
 #define NO_TEXTURE_STRING _("No texture")

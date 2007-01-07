@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.213 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.214 2007/01/07 22:29:24 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -1618,7 +1618,7 @@ void board_quick_edit(GtkWidget *board, BoardData *bd, int x, int y, int draggin
 		i = current + 1;
     
     /* Clear chequers of the other colour from this point */
-    if (current && (bd->points[n] / abs(bd->points[n])) != colour)
+    if (current && ((SGN(bd->points[n])) != colour))
 	{
 		bd->points[opponent_off] += current * -colour;
 		bd->points[n] = 0;

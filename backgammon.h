@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.326 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.327 2007/01/07 22:29:24 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -594,7 +594,7 @@ extern int
 AnalyzeMove ( moverecord* pmr, matchstate* pms, const list* plGame, statcontext* psc,
               const evalsetup* pesChequer, evalsetup* pesCube,
               movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ],
-	      const int afAnalysePlayers[ 2 ] );
+	      const int afAnalysePlayers[ 2 ], float *doubleError );
 
 extern int
 confirmOverwrite ( const char* sz, const int f );
