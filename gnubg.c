@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.670 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.671 2007/01/07 10:48:20 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -91,6 +91,9 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #endif
 #if USE_BOARD3D
 #include "fun3d.h"
+#endif
+#ifdef USE_MULTITHREAD
+#include "multithread.h"
 #endif
 
 #if defined(MSDOS) || defined(__MSDOS__) || defined(WIN32)
@@ -5859,7 +5862,7 @@ extern void CommandTrainTD( char *sz ) {
 	    
 	    SwapSides( anBoardTrain );
 	    
-	    EvaluatePosition( anBoardTrain, ar, &ciCubeless, &ecTD );
+	    EvaluatePosition( NULL, anBoardTrain, ar, &ciCubeless, &ecTD );
 	    
 	    InvertEvaluation( ar );
 	    if( TrainPosition( anBoardOld, ar, rAlpha, rAnneal, 

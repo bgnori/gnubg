@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.155 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: rollout.c,v 1.156 2007/01/07 10:48:20 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -2096,7 +2096,7 @@ ScoreMoveGeneral ( move *pm, const cubeinfo* pci, const evalsetup* pes,
 
   switch ( pes->et ) {
   case EVAL_EVAL:
-    return ScoreMove ( pm, pci, &pes->ec, pes->ec.nPlies );
+    return ScoreMove ( NULL, pm, pci, &pes->ec, pes->ec.nPlies );
     break;
   case EVAL_ROLLOUT:
     return ScoreMoveRollout ( &pm, &pci, 1, pf, p );

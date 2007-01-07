@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.6 2006/10/26 17:02:32 Superfly_Jon Exp $
+ * $Id: speed.c,v 1.7 2007/01/07 10:48:20 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -96,7 +96,7 @@ extern void CommandCalibrate( char *sz ) {
 	}
 
 	for( i = 0; i < EVALS_PER_ITERATION; i++ ) {
-            EvaluatePosition( aanBoard[ i ], ar, &ciCubeless, NULL );
+            EvaluatePosition( NULL, aanBoard[ i ], ar, &ciCubeless, NULL );
 	    if( fInterrupt )
 		break;
 	}

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.277 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: play.c,v 1.278 2007/01/07 10:48:20 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1290,7 +1290,7 @@ extern int ComputerTurn( void ) {
 
         /* Determine market window */
 
-        if ( EvaluatePosition ( anBoardMove, arOutput, &ci, &ecDH ) )
+        if ( EvaluatePosition ( NULL, anBoardMove, arOutput, &ci, &ecDH ) )
           return -1;
 
         rDoublePoint = 

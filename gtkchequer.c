@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.78 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.79 2007/01/07 10:48:20 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -240,7 +240,7 @@ EvalMoves ( hintdata *phd, evalcontext *pec )
 
 	for(pl = plSelList; pl; pl = pl->next)
 	{
-    if ( ScoreMove (MoveListGetMove(phd, pl), &ci, pec, pec->nPlies ) < 0 ) {
+    if ( ScoreMove (NULL, MoveListGetMove(phd, pl), &ci, pec, pec->nPlies ) < 0 ) {
       ProgressEnd ();
 		MoveListFreeSelectionList(plSelList);
       return;
