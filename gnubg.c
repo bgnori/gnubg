@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.671 2007/01/07 10:48:20 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.672 2007/01/16 19:05:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -6394,7 +6394,7 @@ extern void output( const char *sz ) {
     if( !isatty( STDOUT_FILENO ) ) 
        fflush( stdout );
 
-    free( pch );
+    g_free( pch );
 }
 
 /* Write a string to stdout/status bar/popup window, and append \n */
