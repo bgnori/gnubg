@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.10 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: makehyper.c,v 1.11 2007/01/25 19:29:41 c_anthon Exp $
  */
 
 #include "config.h"
@@ -113,7 +113,7 @@ ClassifyHyper ( int anBoard[ 2 ][ 25 ] ) {
 static void
 HyperOver ( int anBoard[ 2 ][ 25 ], float ar[ NUM_OUTPUTS ], const int nC ) {
 
-  EvalOver( anBoard, ar, VARIATION_HYPERGAMMON_1 + nC - 1 );
+  EvalOver( anBoard, ar, VARIATION_HYPERGAMMON_1 + nC - 1, NULL );
 
 }
 

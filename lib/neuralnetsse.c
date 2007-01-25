@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.5 2007/01/16 19:05:04 Superfly_Jon Exp $
+ * $Id: neuralnetsse.c,v 1.6 2007/01/25 19:29:41 c_anthon Exp $
  */
 
 #include "config.h"
@@ -29,9 +29,7 @@
 #include "sse.h"
 #include "neuralnet.h"
 #include <string.h>
-#if DEBUG_SSE
-#include <assert.h>
-#endif
+#include <glib.h>
 
 #include <xmmintrin.h>
 #include <mm_malloc.h>
@@ -83,7 +81,7 @@ NNevalAction(NNState *pnState)
   }
 
   /* never reached */
-  assert(0);
+  g_assert_not_reached();
   return 0;   /* for the picky compiler */
 }
 
