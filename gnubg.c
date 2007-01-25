@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.672 2007/01/16 19:05:04 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.673 2007/01/25 09:45:08 jsegrave Exp $
  */
 
 #include "config.h"
@@ -4349,12 +4349,13 @@ CommandRollout( char *sz ) {
 	if (pm) {
 	  apOutput[ i ] = &pm->arEvalMove;
 	  apStdDev[ i ] = &pm->arEvalStdDev;
+	  apes[ i ] = &pm->esMove;
 	} else {
 	  apOutput[ i ] = &aarNoOutput;
 	  apStdDev[ i ] = &aarNoStdDev;
 	  apes[ i ] = &NoEs;
+	  memcpy (&NoEs.rc, &rcRollout, sizeof (rolloutcontext));
 	}
-	memcpy (&NoEs.rc, &rcRollout, sizeof (rolloutcontext));
 	apci[ i ] = &ci;
 	apCubeDecTop[ i ] = &false;
       }
