@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.306 2007/01/16 19:05:04 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.307 2007/01/31 11:52:18 c_anthon Exp $
  */
 
 #include "config.h"
@@ -699,7 +699,6 @@ EvalShutdown ( void ) {
 
 #ifdef USE_MULTITHREAD
 	int j;
-MT_Close();
 	for (j = 0; j < MAX_NUMTHREADS; j++)
 #endif
 	for (i = 0; i < 3; i++)
@@ -757,10 +756,6 @@ EvalInitialise( char *szWeights, char *szWeightsBinary,
 	int ret;
 
     if( !fInitialised ) {
-
-#ifdef USE_MULTITHREAD
-		MT_InitThreads();
-#endif
 
 #if USE_SSE_VECTORIZE
 		if (SSE_Supported())

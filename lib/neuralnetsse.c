@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.6 2007/01/25 19:29:41 c_anthon Exp $
+ * $Id: neuralnetsse.c,v 1.7 2007/01/31 11:52:18 c_anthon Exp $
  */
 
 #include "config.h"
@@ -33,6 +33,7 @@
 
 #include <xmmintrin.h>
 #include <mm_malloc.h>
+#include <glib.h>
 
 #define HIDDEN_NODES 128
 
