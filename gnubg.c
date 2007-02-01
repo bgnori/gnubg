@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.674 2007/01/31 11:52:18 c_anthon Exp $
+ * $Id: gnubg.c,v 1.675 2007/02/01 12:15:31 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4078,7 +4078,9 @@ Shutdown( void ) {
   FreeMatch();
   ClearMatch();
 
+#if USE_MULTITHREAD
   MT_Close();
+#endif
   EvalShutdown();
 
 #if USE_PYTHON
