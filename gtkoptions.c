@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.43 2007/01/16 19:05:04 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.44 2007/02/02 19:17:00 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -52,7 +52,7 @@
 static void SetSoundSettings();
 static void AddSoundWidgets(GtkWidget *container);
 #endif
-#ifdef USE_MULTITHREAD
+#if USE_MULTITHREAD
 #include "multithread.h"
 #endif
 
@@ -1324,7 +1324,7 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
     
     gtk_box_pack_start (GTK_BOX (pwvbox), table, FALSE, FALSE, 3);
 
-#ifdef USE_MULTITHREAD
+#if USE_MULTITHREAD
     pwev = gtk_event_box_new();
 	gtk_event_box_set_visible_window(GTK_EVENT_BOX(pwev), FALSE);
     gtk_box_pack_start( GTK_BOX( pwvbox ), pwev, FALSE, FALSE, 0 );
@@ -1558,7 +1558,7 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
     UserCommand(sz); 
   }
 
-#ifdef USE_MULTITHREAD
+#if USE_MULTITHREAD
   if((n = (int)pow->padjThreads->value) != (int)MT_GetNumThreads()) {
     sprintf(sz, "set threads %d", n );
     UserCommand(sz); 

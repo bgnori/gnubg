@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.675 2007/02/01 12:15:31 c_anthon Exp $
+ * $Id: gnubg.c,v 1.676 2007/02/02 19:17:00 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -92,7 +92,7 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #if USE_BOARD3D
 #include "fun3d.h"
 #endif
-#ifdef USE_MULTITHREAD
+#if USE_MULTITHREAD
 #include "multithread.h"
 #endif
 
@@ -1799,7 +1799,7 @@ command cER = {
     { "theorywindow", CommandSetTheoryWindow, N_("Display game theory in window"),
       szONOFF, &cOnOff },
 #endif
-#ifdef USE_MULTITHREAD
+#if USE_MULTITHREAD
     { "threads", CommandSetThreads, N_("Set the number of calculation threads"),
       szSIZE, NULL },
 #endif
@@ -5506,7 +5506,7 @@ extern void CommandSaveSettings( char *szParam ) {
     EvalCacheStats( NULL, &cCache, NULL, NULL );
     fprintf( pf, "set cache %d\n", cCache );
 
-#ifdef USE_MULTITHREAD
+#if USE_MULTITHREAD
     fprintf( pf, "set threads %d\n", MT_GetNumThreads() );
 #endif
 
@@ -7264,7 +7264,7 @@ main (int argc, char *argv[])
                  _("Initialising"), _("neural nets"), 500 );
 #endif    
 
-#ifdef USE_MULTITHREAD
+#if USE_MULTITHREAD
 		MT_InitThreads();
 #endif
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.264 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: set.c,v 1.265 2007/02/02 19:17:00 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -82,7 +82,7 @@
 #if USE_BOARD3D
 #include "fun3d.h"
 #endif
-#ifdef USE_MULTITHREAD
+#if USE_MULTITHREAD
 #include "multithread.h"
 #endif
 
@@ -714,7 +714,7 @@ extern void CommandSetCache( char *sz ) {
 
 }
 
-#ifdef USE_MULTITHREAD
+#if USE_MULTITHREAD
 extern void CommandSetThreads( char *sz )
 {
     int n;

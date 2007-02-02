@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.15 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: gtkmovelist.c,v 1.16 2007/02/02 19:17:00 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -332,7 +332,8 @@ move *MoveListGetMove(const hintdata *phd, GList *pl)
 	GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(phd->pwMoves));
 
 	gboolean check = gtk_tree_model_get_iter(model, &iter, (GtkTreePath*)(pl->data));
-	g_assert(check);
+	if (check == 0)
+		printf("Error in move list!\n");
 
 	if (showWLTree)
 		col = 0;
