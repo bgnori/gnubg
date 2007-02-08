@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.28 2006/12/02 22:12:48 c_anthon Exp $
+ * $Id: progress.c,v 1.29 2007/02/08 19:59:38 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1005,7 +1005,7 @@ GTKRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
     /* why doesn't type casting work? */
     gsz = g_strdup_printf( "%d/%d (%.0f%%)" ,
 		    iGame + 1 , prc->nTrials, 100 * frac );
-    prp->nGamesDone = iGame + 1;
+    prp->nGamesDone = iGame;
      
     gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR( prp->pwRolloutProgress),
 		    frac );
@@ -1164,7 +1164,7 @@ TextRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
 
   /* write progress 1/10th trial */
 
-  if ( iGame == prp->iNextGame && iAlternative == prp->iNextAlternative ) {
+  if ( iGame >= prp->iNextGame && iAlternative == prp->iNextAlternative ) {
 
     if ( ! iAlternative )
       outputl( "" );

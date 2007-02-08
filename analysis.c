@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.171 2007/02/02 19:17:00 Superfly_Jon Exp $
+ * $Id: analysis.c,v 1.172 2007/02/08 19:59:38 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1070,9 +1070,14 @@ AnalyzeMove (moverecord *pmr, matchstate *pms, const list *plParentGame,
 
 static int NumberMovesGame ( list *plGame );
 
-static int
-AnalyzeGame ( list *plGame )
 #if USE_MULTITHREAD
+
+static void UpdateProgressBar()
+{
+	ProgressValue(MT_GetDoneTasks());
+}
+
+static int AnalyzeGame ( list *plGame )
 {
 	int result;
 	unsigned int i;
@@ -1141,7 +1146,7 @@ AnalyzeGame ( list *plGame )
 	}
 	g_assert(pl->plNext == plGame);
 
-	result = MT_WaitForTasks();
+	result = MT_WaitForTasks(UpdateProgressBar, 250);
 
 	fnTick = fnOld;
 
@@ -1150,7 +1155,10 @@ AnalyzeGame ( list *plGame )
 
     return result;
 }
+
 #else
+
+static int AnalyzeGame ( list *plGame )
 {
     list *pl;
     moverecord *pmr;

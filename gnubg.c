@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.676 2007/02/02 19:17:00 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.677 2007/02/08 19:59:38 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -232,10 +232,12 @@ evalcontext ecTD = { FALSE, 0, FALSE, TRUE, 0.0 };
     { { 0,  8, 0.16f }, { -1, 0, 0 }, { 0, 2, 0.04f }, { -1, 0, 0 } } , \
   }
 
+void *rngctxRollout = NULL;
+
 #if defined (REDUCTION_CODE)
 void *rngctxRollout = NULL;
 rolloutcontext rcRollout =
-{ 
+{
   {
 	/* player 0/1 cube decision */
         { TRUE, 0, 0, TRUE, 0.0 },
@@ -343,7 +345,6 @@ rolloutcontext rcRollout =
 } 
 #else /* REDUCTION_CODE */
 
-void *rngctxRollout = NULL;
 rolloutcontext rcRollout =
 { 
   {
@@ -6648,7 +6649,7 @@ ProgressStartValue ( char *sz, int iMax ) {
 extern void
 ProgressValue ( int iValue ) {
 
-  if ( !fShowProgress )
+  if ( !fShowProgress || iProgressValue == iValue )
     return;
 
   iProgressValue = iValue;
