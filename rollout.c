@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.157 2007/02/08 19:59:38 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.158 2007/02/09 17:41:34 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -41,9 +41,7 @@
 #include "rollout.h"
 #include <glib/gi18n.h>
 #include "format.h"
-#if USE_MULTITHREAD
 #include "multithread.h"
-#endif
 
 int log_rollouts = 0;
 static FILE *logfp;
