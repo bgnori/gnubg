@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.308 2007/02/02 19:17:00 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.309 2007/02/11 21:20:31 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2712,7 +2712,7 @@ FindBestMoveInEval(NNState *nnStates, int const nDice0, int const nDice1, int an
 
 #if defined(PRUNE_CACHE)
 {
-	  evalcache ec, *pec;
+	  evalcache ec;
 	  unsigned long l;
 	  memcpy(ec.auchKey, pm->auch, sizeof(ec.auchKey));
 	  ec.nEvalContext = 0;
@@ -2793,7 +2793,7 @@ FindBestMoveInEval(NNState *nnStates, int const nDice0, int const nDice1, int an
       PositionFromKey(anBoard, pm->auch);
       SwapSides(anBoard);
       {
-	evalcache ec, *pec;
+	evalcache ec;
 	unsigned long l;
 	memcpy(ec.auchKey, pm->auch, sizeof(ec.auchKey));
 	ec.nEvalContext =  pci->fMove << 14;
@@ -3093,7 +3093,7 @@ static int
 EvaluatePositionCache( NNState *nnStates, int anBoard[ 2 ][ 25 ], float arOutput[],
                        const cubeinfo* pci, const evalcontext* pecx,
 		       int nPlies, positionclass pc ) {
-    evalcache ec, *pec;
+    evalcache ec;
     unsigned long l;
     /* This should be a part of the code that is called in all
        time-consuming operations at a relatively steady rate, so is a
@@ -6049,7 +6049,7 @@ EvaluatePositionCubeful3( NNState *nnStates, int anBoard[ 2 ][ 25 ],
 
   int ici;
   int fAll = TRUE;
-  evalcache ec, *pecx;
+  evalcache ec;
   unsigned long l;
 
   if( !cCache || ( pec->rNoise != 0.0f && !pec->fDeterministic ) )

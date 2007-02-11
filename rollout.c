@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.158 2007/02/09 17:41:34 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.159 2007/02/11 21:20:31 c_anthon Exp $
  */
 
 #include <config.h>
@@ -973,7 +973,7 @@ extern void RolloutLoopMT()
 	int active_alternatives;
 	unsigned int i, j;
 	int alt;
-	rolloutcontext *prc;
+	rolloutcontext *prc = NULL;
 	perArray dicePerms;
 	dicePerms.nPermutationSeed = -1;
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffdump.c,v 1.4 2006/12/06 23:12:51 c_anthon Exp $
+ * $Id: bearoffdump.c,v 1.5 2007/02/11 21:20:31 c_anthon Exp $
  */
 
 #include "config.h"
@@ -34,6 +34,19 @@ char *aszRNG[ 1 ];
 char *aszSkillType[ 1 ];
 int exsExport;
 int ap;
+
+extern void MT_Lock(long *lock)
+{
+}
+
+extern void MT_Unlock(long *lock)
+{
+}
+
+extern int MT_GetThreadID()
+{
+  return (0);
+}
 
 extern bearoffcontext *
 BearoffInitBuiltin ( void ) {
