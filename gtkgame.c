@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.622 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.623 2007/02/13 19:26:18 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -2286,8 +2286,6 @@ extern void RunGTK( GtkWidget *pwSplash )
 	    
 		PushSplash ( pwSplash, 
 					_("Rendering"), _("Board"), 0 );
-
-		ShowBoard();
 
 		GTKAllowStdin();
 	    
