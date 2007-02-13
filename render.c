@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.57 2006/12/19 11:03:49 c_anthon Exp $
+ * $Id: render.c,v 1.58 2007/02/13 19:49:17 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1716,7 +1716,7 @@ extern void RenderChequers( renderdata *prd, unsigned char *puch0,
     int ix, iy, in, fx, fy, i;
     float x, y, z, x_loop, y_loop, diffuse, specular_x, specular_o, cos_theta,
 	r, x1, y1, len;
-    
+
 #define BUFX( y, x, i ) puch0[ ( (y) * size + (x) ) * 4 + (i) ]
 #define BUFO( y, x, i ) puch1[ ( (y) * size + (x) ) * 4 + (i) ]
 
@@ -2607,10 +2607,10 @@ extern void CalculateArea( renderdata *prd, unsigned char *puch, int nStride,
 			      n > 0, x, y, cx, cy );
 	}
     }
-    
+
     /* draw dice */
     for( i = 0; i < 2; i++ )
-	if( intersects( x, y, cx, cy, anDicePosition[ i ][ 0 ] * prd->nSize,
+	if( anDice[i] && intersects( x, y, cx, cy, anDicePosition[ i ][ 0 ] * prd->nSize,
 			anDicePosition[ i ][ 1 ] * prd->nSize, 
 			DIE_WIDTH * prd->nSize,
 			DIE_HEIGHT * prd->nSize ) ) {
