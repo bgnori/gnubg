@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.168 2007/01/31 11:52:18 c_anthon Exp $
+## $Id: Makefile.am,v 1.169 2007/02/14 09:04:30 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -7,8 +7,8 @@ ACLOCAL_AMFLAGS = -I m4
 ## threads
 if USE_MULTITHREAD
 THREAD_SOURCES = multithread.c multithread.h
-THREAD_INCS = @GTHREAD_CFLAGS@ @PTHREAD_CFLAGS@
-THREAD_LIBS = @GTHREAD_LIBS@ @PTHREAD_LIBS@
+THREAD_INCS = @GTHREAD_CFLAGS@
+THREAD_LIBS = @GTHREAD_LIBS@
 else
 THREAD_SOURCES =
 THREAD_INCS =
