@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.8 2007/02/15 18:05:32 Superfly_Jon Exp $
+ * $Id: speed.c,v 1.9 2007/02/15 18:29:51 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -72,7 +72,7 @@ void RunEvals()
 
 #if USE_MULTITHREAD
 	MT_Release();
-	MT_Sync();
+	MT_SyncStart();
 #else
 	t = get_time();
 #endif
@@ -83,7 +83,7 @@ void RunEvals()
 	}
 
 #if USE_MULTITHREAD
-	if ((t = MT_Sync()) != 0)
+	if ((t = MT_SyncEnd()) != 0)
 		timeTaken += t;
 #else
 	timeTaken += (get_time() - t);
