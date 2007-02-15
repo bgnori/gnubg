@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.265 2007/02/02 19:17:00 Superfly_Jon Exp $
+ * $Id: set.c,v 1.266 2007/02/15 18:05:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -719,11 +719,17 @@ extern void CommandSetThreads( char *sz )
 {
     int n;
 
-    if( ( n = ParseNumber( &sz ) ) < 0 ) {
+    if( ( n = ParseNumber( &sz ) ) <= 0 ) {
 	outputl( _("You must specify the number of threads to use.") );
 
 	return;
     }
+	if (n > MAX_NUMTHREADS)
+	{
+		outputf( _("%d is the maximum number of threads supported"), MAX_NUMTHREADS );
+		output("\n");
+		return;
+	}
 
 	MT_SetNumThreads(n);
 	outputf( _("The number of threads has been set to %d.\n"), n );

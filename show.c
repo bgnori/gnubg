@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.213 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: show.c,v 1.214 2007/02/15 18:05:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1129,6 +1129,18 @@ extern void CommandShowKleinman( char *sz ) {
         outputf (_("Cubeless Winning Chance (%s on roll): %.4f\n"), 
                  ap[ ms.fMove ].szName, fKC );
  }
+
+#if USE_MULTITHREAD
+extern void CommandShowThreads(char *sz)
+{
+	int c = MT_GetNumThreads();
+	if (c == 1)
+		outputf(_("1 calculation thread."));
+	else
+		outputf(_("%d calculation threads."), c);
+	output ( "\n" );
+}
+#endif
 
 extern void CommandShowThorp( char *sz ) {
 

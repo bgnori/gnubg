@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.677 2007/02/08 19:59:38 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.678 2007/02/15 18:05:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1952,6 +1952,10 @@ command cER = {
     { "temperaturemap", CommandShowTemperatureMap, 
       N_("Show temperature map (graphic overview of dice distribution)"), 
       NULL, NULL },
+#if USE_MULTITHREAD
+    { "threads", CommandShowThreads, N_("Show number of calculation threads"),
+	NULL, NULL },
+#endif
     { "thorp", CommandShowThorp, N_("Calculate Thorp Count for "
       "position"), szOPTPOSITION, NULL },
 #if USE_TIMECONTROL
@@ -2117,6 +2121,9 @@ char *aszBuildInfo[] = {
     N_("  /dev/dsp"),
 #endif
 #endif /* USE_SOUND */
+#if USE_MULTITHREAD
+    N_("Multiple threads supported."),
+#endif
     NULL,
 };
 
