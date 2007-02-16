@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.678 2007/02/15 18:05:32 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.679 2007/02/16 17:59:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -235,7 +235,6 @@ evalcontext ecTD = { FALSE, 0, FALSE, TRUE, 0.0 };
 void *rngctxRollout = NULL;
 
 #if defined (REDUCTION_CODE)
-void *rngctxRollout = NULL;
 rolloutcontext rcRollout =
 {
   {

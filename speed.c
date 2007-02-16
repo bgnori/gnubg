@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.10 2007/02/15 18:38:55 Superfly_Jon Exp $
+ * $Id: speed.c,v 1.11 2007/02/16 17:59:03 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -92,7 +92,7 @@ void RunEvals()
 
 extern void CommandCalibrate( char *sz )
 {
-	int i, iIter, n = -1, c = 0;
+	int i, iIter, n = -1;
 #if USE_GTK
     void *pcc = NULL;
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.214 2007/02/15 18:05:32 Superfly_Jon Exp $
+ * $Id: show.c,v 1.215 2007/02/16 17:59:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -61,6 +61,7 @@
 #include <glib.h>
 #endif
 #include "openurl.h"
+#include "multithread.h"
 
 extern char *aszCopying[], *aszWarranty[]; /* from copying.c */
 
