@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.11 2007/02/16 17:59:03 Superfly_Jon Exp $
+ * $Id: speed.c,v 1.12 2007/02/17 09:41:50 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -152,7 +152,7 @@ extern void CommandCalibrate( char *sz )
 		if (timeTaken == 0)
 			spd = 0;
 		else
-			spd = iIter * EVALS_PER_ITERATION * CLOCKS_PER_SEC / timeTaken;
+			spd = iIter * (EVALS_PER_ITERATION * CLOCKS_PER_SEC / timeTaken);
 #if USE_GTK
 		if( fX )
 			GTKCalibrationUpdate(pcc, spd);
