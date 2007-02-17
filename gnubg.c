@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.679 2007/02/16 17:59:03 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.680 2007/02/17 09:42:08 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2294,10 +2294,12 @@ NextTokenGeneral( char **ppch, const char *szTokens ) {
 
     *pchSave = 0;
 
+#ifndef NDEBUG
     g_assert( pchSave <= pchEnd );
     g_assert( *ppch <= pchEnd );
     g_assert( pch <= pchEnd );
-    
+#endif
+
     return pch;
 
 }
