@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.280 2007/02/16 17:59:03 Superfly_Jon Exp $
+ * $Id: play.c,v 1.281 2007/02/18 17:35:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3048,7 +3048,7 @@ CommandMove( char *sz ) {
 	    anBoardNew[ 1 ][ i ] = ms.anBoard[ 1 ][ i ];
 	}
 	
-	for( i = 0; i < c; i++ ) {
+	for( i = 0; (int)i < c; i++ ) {
 	    anBoardNew[ 1 ][ an[ i << 1 ] - 1 ]--;
 	    if( an[ ( i << 1 ) | 1 ] > 0 ) {
 		anBoardNew[ 1 ][ an[ ( i << 1 ) | 1 ] - 1 ]++;

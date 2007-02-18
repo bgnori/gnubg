@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.29 2007/02/08 19:59:38 Superfly_Jon Exp $
+ * $Id: progress.c,v 1.30 2007/02/18 17:35:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -984,7 +984,7 @@ GTKRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
 
     }
 
-    if (fShowRanks && iGame > 1) {
+    if (fShowRanks && iGame > 2) {
 	  sprintf (sz, "%d %s", nRank, fStopped ? "s" : "r");
 	  SetRolloutText(prp, iAlternative * 2, i + 1, sz);
 	  if (nRank != 1)

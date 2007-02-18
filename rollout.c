@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.160 2007/02/13 18:00:06 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.161 2007/02/18 17:35:02 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -974,6 +974,7 @@ extern void RolloutLoopMT()
 	unsigned int i, j;
 	int alt;
 	rolloutcontext *prc = NULL;
+	int cubeDec = (ro_alternatives == 2) && (&ro_apes[0]->rc == &ro_apes[1]->rc);
 	perArray dicePerms;
 	dicePerms.nPermutationSeed = -1;
 
@@ -1031,7 +1032,7 @@ extern void RolloutLoopMT()
       }
 
       if( fInterrupt )
-        break;
+        return;
 
 	  MT_Exclusive();
 
@@ -1066,12 +1067,14 @@ extern void RolloutLoopMT()
         aarSigma[ alt ][ j ] = (float)sqrt( aarVariance[ alt ][ j ] / ( prc->nGamesDone + 1 ) );
       } /* for (j = 0; j < NUM_ROLLOUT_OUTPUTS; j++ ) */
 
-      prc->nGamesDone++;
+	  if (!cubeDec || alt == 1)
+		  prc->nGamesDone++;
 
 	  MT_Release();
 
     } /* for (alt = 0; alt < ro_alternatives; ++alt) */
-    /* we've rolled everything out for this trial, check stopping
+
+	/* we've rolled everything out for this trial, check stopping
        conditions
     */
     /* Stop rolling out moves whose Equity is more than a user selected
@@ -1387,7 +1390,7 @@ fnTick = NULL;
       /* initialise internal variables */
       for (j = 0; j < NUM_ROLLOUT_OUTPUTS; ++j) {
         aarResult[ alt ][ j ] = aarVariance[ alt ][ j ] =
-          aarMu[ alt ][ j ] = 0.0f;
+          aarMu[ alt ][ j ] = aarSigma[ alt ][ j ] = 0.0f;
       }
     }
 	else
