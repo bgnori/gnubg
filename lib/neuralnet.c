@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.45 2007/02/08 11:33:31 c_anthon Exp $
+ * $Id: neuralnet.c,v 1.46 2007/02/20 22:36:11 jsegrave Exp $
  */
 
 #include "config.h"
@@ -954,6 +954,10 @@ int CheckSSE()
 {
 	int result = 0;
 
+#ifdef __x86_64
+	result = 1;
+#else
+
 	asm (
 		/* Check if cpuid is supported (can bit 21 of flags be changed) */
 		"mov $1, %%eax\n\t"
@@ -1003,6 +1007,7 @@ int CheckSSE()
 "4:"
 
 			: "=b"(result) : : "%eax", "%ecx", "%edx");
+#endif
 	
 	switch (result)
 	{
