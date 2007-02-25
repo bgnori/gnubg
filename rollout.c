@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.161 2007/02/18 17:35:02 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.162 2007/02/25 14:57:24 jsegrave Exp $
  */
 
 #include <config.h>
@@ -1092,7 +1092,7 @@ extern void RolloutLoopMT()
         /* 1) For each move, calculate the cubeful (or cubeless if
            that's what we're doing) equity  */
 
-        if (rcRollout.fCubeful) {
+        if (ro_apes[0]->ec.fCubeful) {
           v = aarMu[ alt ][ OUTPUT_CUBEFUL_EQUITY ];
           s = aarSigma[ alt ][ OUTPUT_CUBEFUL_EQUITY ];
           
