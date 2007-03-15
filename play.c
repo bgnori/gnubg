@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.282 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: play.c,v 1.283 2007/03/15 23:06:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1793,7 +1793,7 @@ extern int NextTurn( int fPlayNext ) {
 #if USE_GTK
     if( fX ) {
 	if( nNextTurn ) {
-	    gtk_idle_remove( nNextTurn );
+	    g_source_remove( nNextTurn );
 	    nNextTurn = 0;
 	} else
 	    return -1;
@@ -1969,7 +1969,7 @@ extern int NextTurn( int fPlayNext ) {
 #if USE_GTK
     if( fX ) {
 	if( !ComputerTurn() && !nNextTurn )
-	    nNextTurn = gtk_idle_add( NextTurnNotify, NULL );
+	    nNextTurn = g_idle_add( NextTurnNotify, NULL );
     } else
 #endif
 	fNextTurn = !ComputerTurn();
@@ -1983,7 +1983,7 @@ extern void TurnDone( void ) {
 #if USE_GTK
     if( fX ) {
 	if( !nNextTurn )
-	    nNextTurn = gtk_idle_add( NextTurnNotify, NULL );
+	    nNextTurn = g_idle_add( NextTurnNotify, NULL );
     } else
 #endif
 	fNextTurn = TRUE;

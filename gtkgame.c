@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.624 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.625 2007/03/15 23:06:45 c_anthon Exp $
  */
 
 #include <config.h>
@@ -2444,7 +2444,7 @@ TutorRethink ( GtkWidget *pw, void *unused ) {
 
 extern int GtkTutor ( char *sz )
 {
-    int f = FALSE, fRestoreNextTurn;
+    int f = FALSE;
     GtkWidget *pwTutorDialog, *pwOK, *pwCancel, *pwEndTutor,
           *pwButtons, *pwPrompt, *pwHint;
 
@@ -2485,15 +2485,15 @@ extern int GtkTutor ( char *sz )
     
     /* This dialog should be REALLY modal -- disable "next turn" idle
        processing and stdin handler, to avoid reentrancy problems. */
-    if( ( fRestoreNextTurn = nNextTurn ) )
-      gtk_idle_remove( nNextTurn );
+    if( nNextTurn ) 
+      g_source_remove( nNextTurn );
     
     GTKDisallowStdin();
     gtk_main();
     GTKAllowStdin();
     
-    if( fRestoreNextTurn )
-      nNextTurn = gtk_idle_add( NextTurnNotify, NULL );
+    if( nNextTurn ) 
+      nNextTurn = g_idle_add( NextTurnNotify, NULL );
     
     /* if tutor mode was disabled, update the checklist */
     if ( !fTutor) {
