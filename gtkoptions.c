@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.44 2007/02/02 19:17:00 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.45 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #include <config.h>
@@ -225,7 +225,7 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
     GtkWidget *pw, *pwn, *pwp, *pwvbox, *pwhbox, *pwev, *pwm, *pwf, *pwb,
 	*pwAnimBox, *pwFrame, *pwBox, *pwSpeed, *pwScale, *pwhoriz,
 	*pwLabelFile, *table, *label;
-    int cCache;
+    unsigned int cCache;
     int i, nRandom;
 
     BoardData *bd = BOARD( pwBoard )->board_data;
@@ -1364,7 +1364,7 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
 
   char sz[128];
   int n;
-  int cCache;
+  unsigned int cCache;
   int i;
   char *pch;
   gchar *filename, *command, *tmp, *newfolder;
@@ -1452,8 +1452,7 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
 
   gtk_label_get( GTK_LABEL( pow->pwPathSconyers15x15Disk ), &pch );
   if ( pch && *pch ) {
-    if ( ! szPathSconyers15x15Disk || 
-         strcmp( pch, szPathSconyers15x15Disk ) ) {
+    if ( strcmp( pch, szPathSconyers15x15Disk ) ) {
       sprintf( sz, "set bearoff sconyers 15x15 disk path \"%s\"",
                pch );
       UserCommand( sz );
@@ -1462,8 +1461,7 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
 
   gtk_label_get( GTK_LABEL( pow->pwPathSconyers15x15DVD ), &pch );
   if ( pch && *pch ) {
-    if ( ! szPathSconyers15x15DVD || 
-         strcmp( pch, szPathSconyers15x15DVD ) ) {
+    if ( strcmp( pch, szPathSconyers15x15DVD ) ) {
       sprintf( sz, "set bearoff sconyers 15x15 dvd path \"%s\"",
                pch );
       UserCommand( sz );
@@ -1796,10 +1794,10 @@ OptionsSet( optionswidget *pow) {
                                 fSconyers15x15Disk );
 
   gtk_label_set( GTK_LABEL( pow->pwPathSconyers15x15DVD ),
-                 szPathSconyers15x15DVD ? szPathSconyers15x15DVD : "" );
+                 szPathSconyers15x15DVD );
 
   gtk_label_set( GTK_LABEL( pow->pwPathSconyers15x15Disk ),
-                 szPathSconyers15x15Disk ? szPathSconyers15x15Disk : "" );
+                 szPathSconyers15x15Disk);
 
 
 }

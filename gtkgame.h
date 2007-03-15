@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.110 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.111 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -100,14 +100,14 @@ extern void GTKBearoffProgress( int i );
 extern void GTKDumpStatcontext( int game );
 extern void GTKEval( char *szOutput );
 extern void 
-GTKHint( movelist *pmlOrig, const int iMove );
+GTKHint( movelist *pmlOrig, const unsigned int iMove );
 extern void GTKCubeHint( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
 			 float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
 			 const evalsetup *pes );
 
 extern void GTKSet( void *p );
 extern void GTKUpdateAnnotations( void );
-extern int GTKGetManualDice( int an[ 2 ] );
+extern int GTKGetManualDice( unsigned int an[ 2 ] );
 extern void GTKShowVersion( void );
 extern void GTKShowCalibration( void );
 extern void *GTKCalibrationStart( void ),

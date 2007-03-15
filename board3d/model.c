@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: model.c,v 1.12 2006/12/26 11:22:06 Superfly_Jon Exp $
+* $Id: model.c,v 1.13 2007/03/15 22:10:58 c_anthon Exp $
 */
 
 /*lint -esym(818, pMod, pOcc) */
@@ -260,11 +260,12 @@ static void AddEdge(OccModel* pMod, const winged_edge* we)
 	{
 		winged_edge *we0 = &g_array_index(pMod->edges, winged_edge, i);
 		/* facingness different between polys on edge! */
-		assert((we0->e[0] != we->e[0] || we0->e[1] != we->e[1]) && "facingness different between polys on edge!");
+		g_assert((we0->e[0] != we->e[0] || we0->e[1] != we->e[1]));
 
 		if(we0->e[0] == we->e[1]  && we0->e[1] == we->e[0])
 		{
-			assert((we0->w[1] == -1) && "triple edge! bad...");
+			/*  triple edge! bad... */
+			g_assert((we0->w[1] == -1));
 
 			we0->w[1] = we->w[0]; /* pair the edge and return */
 			return;
@@ -452,7 +453,7 @@ void addCylinder(Occluder* pOcc, float x, float y, float z, float r, float d, un
 	float *xPts = (float *)malloc(sizeof(float) * numSteps);
 	float *yPts = (float *)malloc(sizeof(float) * numSteps);
 	unsigned int i;
-	assert(xPts && yPts);
+	g_assert(xPts && yPts);
 
 	for (i = 0; i < numSteps; i++)
 	{
@@ -488,7 +489,7 @@ void addHalfTube(Occluder* pOcc, float r, float h, unsigned int numSteps)
 	float *xPts = (float *)malloc(sizeof(float) * (numSteps + 1));
 	float *yPts = (float *)malloc(sizeof(float) * (numSteps + 1));
 	unsigned int i;
-	assert(xPts && yPts);
+	g_assert(xPts && yPts);
 
 	for (i = 0; i <= numSteps; i++)
 	{
@@ -556,7 +557,7 @@ void addDice(Occluder* pOcc, float size)
 	float *xPts = (float *)malloc(sizeof(float) * numSteps);
 	float *yPts = (float *)malloc(sizeof(float) * numSteps);
 	unsigned int i, c, f;
-	assert(xPts && yPts);
+	g_assert(xPts && yPts);
 
 	for (i = 0; i < numSteps; i++)
 	{

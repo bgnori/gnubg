@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.16 2004/07/11 14:46:42 kaoru Exp $
+ * $Id: dice.h,v 1.17 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #ifndef _DICE_H_
@@ -48,7 +48,7 @@ extern int
 RNGSystemSeed( const rng rngx, void *p, int *pnSeed );
 
 extern int 
-RollDice( int anDice[ 2 ], const rng rngx, void *rngctx );
+RollDice( unsigned int anDice[ 2 ], const rng rngx, void *rngctx );
 
 #if HAVE_LIBGMP
 extern int InitRNGSeedLong( char *sz, rng rng, void *rngctx );

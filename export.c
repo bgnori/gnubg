@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.39 2006/12/26 11:22:06 Superfly_Jon Exp $
+ * $Id: export.c,v 1.40 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -151,7 +151,7 @@ GenerateImage (renderimages * pri, renderdata * prd,
 	       const int nSize, const int nSizeX, const int nSizeY,
 	       const int nOffsetX, const int nOffsetY,
 	       const int fMove, const int fTurn, const int fCube,
-	       const int anDice[2], const int nCube, const int fDoubled,
+	       const unsigned int anDice[2], const int nCube, const int fDoubled,
 	       const int fCubeOwner)
 {
 

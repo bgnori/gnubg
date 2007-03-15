@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: postscript.c,v 1.48 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: postscript.c,v 1.49 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -554,7 +554,7 @@ static void
 PostScriptPipCounts ( FILE *pf, int anBoard[ 2 ][ 25 ], int fMove ) {
 
   int an[ 2 ][ 25 ];
-  int anPips[ 2 ];
+  unsigned int anPips[ 2 ];
 
   memcpy ( an, anBoard, sizeof ( an ) );
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.50 2006/12/07 00:00:17 c_anthon Exp $
+ * $Id: dice.c,v 1.51 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -173,7 +173,7 @@ static int
 ReadDiceFile( rngcontext *rngctx );
 
 
-static int GetManualDice( int anDice[ 2 ] ) {
+static int GetManualDice( unsigned int anDice[ 2 ] ) {
 
   char *sz, *pz;
   int i;
@@ -955,7 +955,7 @@ getDiceRandomDotOrg ( void ) {
 #endif /* HAVE_SOCKETS */
 
 
-extern int RollDice( int anDice[ 2 ], const rng rngx, void *p ) {
+extern int RollDice( unsigned int anDice[ 2 ], const rng rngx, void *p ) {
 
     rngcontext *rngctx = (rngcontext *) p;
 

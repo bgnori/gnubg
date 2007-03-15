@@ -16,14 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: onechequer.h,v 1.4 2004/01/03 13:35:08 uid65656 Exp $
+ * $Id: onechequer.h,v 1.5 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #ifndef _ONECHEQUER_H_
 #define _ONECHEQUER_H_
 
 extern float
-GWCFromPipCount( const int anPips[ 2 ], float *arMu, float *arSigma );
+GWCFromPipCount( const unsigned int anPips[ 2 ], float *arMu, float *arSigma );
 
 extern float
 GWCFromMuSigma( const float arMu[ 2 ], const float arSigma[ 2 ] );

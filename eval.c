@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.309 2007/02/11 21:20:31 c_anthon Exp $
+ * $Id: eval.c,v 1.310 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1943,6 +1943,13 @@ CalculateCrashedInputs(int anBoard[2][25], float arInput[])
   
     CalculateHalfInputs( anBoard[0], anBoard[1], b);
   }
+}
+
+extern void swap_us( unsigned int *p0, unsigned int *p1 ) {
+    unsigned int n = *p0;
+
+    *p0 = *p1;
+    *p1 = n;
 }
 
 extern void swap( int *p0, int *p1 ) {
@@ -4042,7 +4049,7 @@ FindnSaveBestMoves( movelist *pml,
 
 extern int KeithCount(int anBoard[2][25], int *pnL, int *pnT)
 {
-    int anPips[2];
+    unsigned int anPips[2];
     int i, x;
     int pn[2];
     PipCount(anBoard, anPips);
@@ -4065,7 +4072,7 @@ ThorpCount( int anBoard[ 2 ][ 25 ], int *pnLeader, int *pnTrailer ) {
   
   int anCovered[2], anMenLeft[2];
   int x;
-  int anPips[ 2 ];
+  unsigned int anPips[ 2 ];
 
   PipCount( anBoard, anPips );
 
@@ -4109,7 +4116,7 @@ ThorpCount( int anBoard[ 2 ][ 25 ], int *pnLeader, int *pnTrailer ) {
 }
   
   
-extern int PipCount( int anBoard[ 2 ][ 25 ], int anPips[ 2 ] ) {
+extern int PipCount( int anBoard[ 2 ][ 25 ], unsigned int anPips[ 2 ] ) {
 
     int i;
     
@@ -4630,8 +4637,8 @@ extern int EvalCacheResize( unsigned int cNew ) {
     return CacheResize( &cEval, cNew );
 }
 
-extern int EvalCacheStats( int *pcUsed, int *pcSize, int *pcLookup,
-			   int *pcHit ) {
+extern int EvalCacheStats( unsigned int *pcUsed, unsigned int *pcSize, unsigned int *pcLookup,
+			   unsigned int *pcHit ) {
     if( pcSize )
 	*pcSize = cCache;
 	    
@@ -5579,7 +5586,7 @@ EvalEfficiency( int anBoard[2][25], positionclass pc ){
 
   case CLASS_RACE:
     {
-      int anPips[2];
+      unsigned int anPips[2];
 
       float rEff;
 

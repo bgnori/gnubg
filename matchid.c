@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.c,v 1.12 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: matchid.c,v 1.13 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #include <glib.h>
@@ -141,7 +141,7 @@ extern char
 
 
 extern char*
-MatchID ( const int anDice[ 2 ],
+MatchID ( const unsigned int anDice[ 2 ],
           const int fTurn,
           const int fResigned,
           const int fDoubled,

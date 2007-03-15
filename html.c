@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.175 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: html.c,v 1.176 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -161,7 +161,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.175 2007/01/05 22:01:02 Superfly_Jon Exp $ */\n",
+           "/* $Id: html.c,v 1.176 2007/03/15 22:10:57 c_anthon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -562,7 +562,7 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
                     const htmlexportcss hecss ) {
 
   int anBoard[ 2 ][ 25 ];
-  int anPips[ 2 ];
+  unsigned int anPips[ 2 ];
   int acOff[ 2 ];
   int i, j;
   char sz[ 1024 ];
@@ -816,7 +816,7 @@ printHTMLBoardF2H ( FILE *pf, matchstate *pms, int fTurn,
                      "b-xdie4", "b-xdie5", "b-xdie6" };
 
   int anBoard[ 2 ][ 25 ];
-  int anPips[ 2 ];
+  unsigned int anPips[ 2 ];
 
   memcpy ( anBoard, pms->anBoard, sizeof ( anBoard ) );
 
@@ -1187,7 +1187,7 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   int i, j;
 
   int anBoard[ 2 ][ 25 ];
-  int anPips[ 2 ];
+  unsigned int anPips[ 2 ];
   int acOff[ 2 ];
 
   memcpy ( anBoard, pms->anBoard, sizeof ( anBoard ) );
@@ -1841,7 +1841,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.175 $";
+  const char szVersion[] = "$Revision: 1.176 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1921,7 +1921,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.175 $";
+  const char szVersion[] = "$Revision: 1.176 $";
   int iMajor, iMinor;
   char *pc;
 

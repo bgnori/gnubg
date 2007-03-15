@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.105 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: sgf.c,v 1.106 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -979,7 +979,7 @@ static void RestoreDoubleAnalysis(property * pp,
 
 
 static void RestoreMoveAnalysis(property * pp, int fPlayer,
-				movelist * pml, int *piMove,
+				movelist * pml, unsigned int *piMove,
 				evalsetup * pesChequer,
 				const matchstate * pms)
 {

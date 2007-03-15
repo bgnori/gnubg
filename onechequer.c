@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: onechequer.c,v 1.7 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: onechequer.c,v 1.8 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -169,7 +169,7 @@ GWCFromDist( const float arDist0[], const float arDist1[], const int n ) {
  */
 
 extern float
-GWCFromPipCount( const int anPips[ 2 ], float *arMu, float *arSigma ) {
+GWCFromPipCount( const unsigned int anPips[ 2 ], float *arMu, float *arSigma ) {
 
   float *table;
   float aarDist[ 2 ][ 32 ];

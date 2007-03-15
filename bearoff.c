@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.47 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.48 2007/03/15 22:10:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1094,7 +1094,7 @@ BearoffDumpOneSided ( bearoffcontext *pbc, int anBoard[ 2 ][ 25 ], char *sz ) {
   int i;
   float aarProb[ 2 ][ 32 ], aarGammonProb[ 2 ][ 32 ];
   int f0, f1, f2, f3;
-  int anPips[ 2 ];
+  unsigned int anPips[ 2 ];
   const float x = ( 2 * 3 + 3 * 4 + 4 * 5 + 4 * 6 + 6 * 7 +
               5* 8  + 4 * 9 + 2 * 10 + 2 * 11 + 1 * 12 + 
               1 * 16 + 1 * 20 + 1 * 24 ) / 36.0f;

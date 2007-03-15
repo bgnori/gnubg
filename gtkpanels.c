@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.34 2006/12/10 21:49:33 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.35 2007/03/15 22:10:57 c_anthon Exp $
 */
 
 #include "config.h"
@@ -243,7 +243,7 @@ void UpdateTheoryData(BoardData* bd, int UpdateType, int points[2][25])
 		if (ms.gs != GAME_NONE)
 		{
 			int diff;
-			int anPip[ 2 ];
+			unsigned int anPip[ 2 ];
 			PipCount(points, anPip);
 
 			diff = anPip[0] - anPip[1];
@@ -301,7 +301,7 @@ void UpdateTheoryData(BoardData* bd, int UpdateType, int points[2][25])
 		if (ms.gs != GAME_NONE)
 		{
 			float fKC;
-			int anPip[ 2 ];
+			unsigned int anPip[ 2 ];
 			PipCount(points, anPip);
 
 			fKC = KleinmanCount(anPip[1], anPip[0]);

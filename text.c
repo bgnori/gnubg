@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.76 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: text.c,v 1.77 2007/03/15 22:10:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -61,7 +61,7 @@ printTextBoard ( FILE *pf, const matchstate *pms ) {
 #else
     char *apch[ 7 ] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
 #endif
-  int anPips[ 2 ];
+  unsigned int anPips[ 2 ];
 
   memcpy ( anBoard, pms->anBoard, sizeof ( anBoard ) );
 
@@ -263,7 +263,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.76 $";
+  const char szVersion[] = "$Revision: 1.77 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
