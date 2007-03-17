@@ -16,11 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.46 2007/02/20 22:36:11 jsegrave Exp $
+ * $Id: neuralnet.c,v 1.47 2007/03/17 09:05:13 Superfly_Jon Exp $
  */
 
 #include "config.h"
-#include "common.h"
 
 #include <glib.h>
 #include <errno.h>
@@ -343,11 +342,11 @@ NNevalAction(NNState *pnState)
       /* context hit!  use the previously computed base */
       return NNEVAL_FROMBASE;
     }
-  }
+	}
 
   /* never reached */
   g_assert(0);
-  return 0;   /* for the picky compiler */
+  return NNEVAL_NONE;   /* for the picky compiler */
 }
 
 extern int NeuralNetCreate( neuralnet *pnn, unsigned int cInput, unsigned int cHidden,

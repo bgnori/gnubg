@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.283 2007/03/15 23:06:45 c_anthon Exp $
+ * $Id: play.c,v 1.284 2007/03/17 09:05:13 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -351,8 +351,10 @@ printf("ApplyMoveRecord(%d, %d.%d): state:%d, turn: %d, ts0: (%d.%d), ts1: (%d.%
 	/* If this is the movegameinfo of a game being replayed, hit the 
 	 * clock for the first roll (the dice roll is collapsed into the move */
         if (&(pmr->g) == pmgi)
-            pms->fMove = pms->fTurn = 
-              ((moverecord *) (plGame->plNext->plNext->p))->fPlayer;
+		{
+			moverecord *m = (moverecord *)(plGame->plNext->plNext->p);
+			pms->fMove = pms->fTurn = m ? m->fPlayer : 0;
+		}
 #endif
 	break;
 	

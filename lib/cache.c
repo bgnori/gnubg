@@ -2,7 +2,7 @@
  * cache.c
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.c,v 1.6 2007/02/13 23:26:18 Superfly_Jon Exp $
+ * $Id: cache.c,v 1.7 2007/03/17 09:05:13 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -81,11 +81,11 @@ CacheCreate(cache* pc, unsigned int s)
   return 0;
 }
 
-unsigned long GetHashKey(int hashMask, const cacheNode* e)
+static unsigned long GetHashKey(unsigned long hashMask, const cacheNode* e)
 {
   ub4 a = 0x9e3779b9;  /* the golden ratio; an arbitrary value */
   ub4 b = a;
-  ub4 c = 11 + e->nEvalContext;
+  ub4 c = 11 + (unsigned int)e->nEvalContext;
 
   c += ((ub4)e->auchKey[9]<<16);
   c += ((ub4)e->auchKey[8]<<8);
@@ -145,7 +145,7 @@ unsigned int CacheLookup(cache* pc, const cacheNode* e, float *arOut, float *arC
     return CACHEHIT;
 }
 
-void CacheAdd(cache* pc, cacheNode* e, unsigned long l)
+void CacheAdd(cache* pc, const cacheNode* e, unsigned long l)
 {
 	MT_Lock(&pc->locks[l]);
 
@@ -159,7 +159,7 @@ void CacheAdd(cache* pc, cacheNode* e, unsigned long l)
 #endif
 }
 
-void CacheAddNoKey(cache* pc, cacheNode* e)
+void CacheAddNoKey(cache* pc, const cacheNode* e)
 {
 	CacheAdd(pc, e, GetHashKey(pc->hashMask, e));
 }
@@ -192,7 +192,7 @@ CacheResize( cache *pc, unsigned int cNew )
 }
 
 void
-CacheStats(cache* pc, unsigned int* pcLookup, unsigned int* pcHit, unsigned int* pcUsed)
+CacheStats(const cache* pc, unsigned int* pcLookup, unsigned int* pcHit, unsigned int* pcUsed)
 {
 #if CACHE_STATS
    if ( pcLookup )
@@ -201,7 +201,7 @@ CacheStats(cache* pc, unsigned int* pcLookup, unsigned int* pcHit, unsigned int*
    if ( pcHit )
       *pcHit = pc->cHit;
 
-    if( pcUsed )
+   if( pcUsed )
       *pcUsed = pc->nAdds;
 #else
    if ( pcLookup )

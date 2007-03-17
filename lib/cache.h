@@ -2,7 +2,7 @@
  * cache.h
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.h,v 1.9 2007/02/13 18:00:06 Superfly_Jon Exp $
+ * $Id: cache.h,v 1.10 2007/03/17 09:05:13 Superfly_Jon Exp $
  */
 
 #ifndef _CACHE_H_
@@ -27,7 +27,7 @@ typedef struct _cache
   int *locks;
   
   unsigned int size;
-  unsigned int hashMask;
+  unsigned long hashMask;
 
 #if CACHE_STATS
   unsigned int nAdds;
@@ -40,14 +40,14 @@ typedef struct _cache
 int CacheCreate(cache* pc, unsigned int size);
 int CacheResize(cache *pc, unsigned int cNew);
 
-#define CACHEHIT (unsigned int)-1
+#define CACHEHIT ((unsigned int)-1)
 /* returns a value which is passed to CacheAdd (if a miss) */
 unsigned int CacheLookup(cache* pc, const cacheNode* e, float *arOut, float *arCubeful);
 
-void CacheAdd(cache* pc, cacheNode* e, unsigned long l);
-void CacheAddNoKey(cache* pc, cacheNode* e);
+void CacheAdd(cache* pc, const cacheNode* e, unsigned long l);
+void CacheAddNoKey(cache* pc, const cacheNode* e);
 void CacheFlush(const cache* pc);
 void CacheDestroy(const cache* pc);
-void CacheStats( cache* pc, unsigned int* pcLookup, unsigned int* pcHit, unsigned int* pcUsed);
+void CacheStats(const cache* pc, unsigned int* pcLookup, unsigned int* pcHit, unsigned int* pcUsed);
 
 #endif

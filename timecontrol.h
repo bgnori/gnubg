@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: timecontrol.h,v 1.11 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: timecontrol.h,v 1.12 2007/03/17 09:05:13 Superfly_Jon Exp $
  */
 
 #ifndef _TIMECONTROL_H_
@@ -59,8 +59,9 @@ extern void HitGameClock(matchstate *pms);
  * @param pms pointer to matchstate
  * @param tvp timestamp for hit
  * @return how many penalty points to apply
+ NB. Return not checked anywhere so set to void (needs to be looked at)
  */
-extern int CheckGameClock(matchstate *pms, struct timeval *tvp);
+extern void CheckGameClock(matchstate *pms, struct timeval *tvp);
 
 /* Make a formatted string for the given player.
  * @param ptl pointer to  time to format

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.h,v 1.6 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: gtkcolour.h,v 1.7 2007/03/17 09:05:13 Superfly_Jon Exp $
  */
 
 #ifndef _GTKCOLOUR_H_
@@ -40,10 +40,10 @@ typedef struct UpdateDetails_T
 	GtkWidget* preview;
 	GtkWidget** parentPreview;
 	int opacity;
-	TextureType texture;
+	TextureType textureType;
 } UpdateDetails;
 
-GtkWidget* gtk_colour_picker_new3d(Material* pMat, int opacity, TextureType texture);
+GtkWidget* gtk_colour_picker_new3d(Material* pMat, int opacity, TextureType textureType);
 #endif
 
 #define GTK_TYPE_COLOUR_PICKER (gtk_colour_picker_get_type())
