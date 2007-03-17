@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.215 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.216 2007/03/17 15:42:48 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -59,9 +59,10 @@
 #define HINT_TIME 150
 
 animation animGUI = ANIMATE_SLIDE;
-int nGUIAnimSpeed = 4, fGUIBeep = TRUE,
+int fGUIBeep = TRUE,
     fGUIHighDieFirst = TRUE, fGUIIllegal = FALSE,
     fGUIShowPips = TRUE, fGUIDragTargetHelp = TRUE, fGUIShowEPCs = TRUE;
+unsigned int nGUIAnimSpeed = 4;
 
 static GtkVBoxClass *parent_class = NULL;
 

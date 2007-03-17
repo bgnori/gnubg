@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.284 2007/03/17 09:05:13 Superfly_Jon Exp $
+ * $Id: play.c,v 1.285 2007/03/17 15:42:48 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -115,7 +115,7 @@ NewMoveRecord( void ) {
   pmr->mt = -1;
   pmr->sz = NULL;
   pmr->fPlayer = 0;
-  pmr->anDice[ 0 ] = pmr->anDice[ 1 ] = -1;
+  pmr->anDice[ 0 ] = pmr->anDice[ 1 ] = 0;
   pmr->lt = LUCK_NONE;
   pmr->rLuck = (float)ERR_VAL;
   pmr->esChequer.et = EVAL_NONE;
@@ -3237,14 +3237,14 @@ extern void SetMatchDate( matchinfo *pmi ) {
 
 extern void CommandNewMatch( char *sz ) {
 
-    int n;
+    unsigned int n;
 
     if( !sz || !*sz )
 	n = nDefaultLength;
     else
 	n = ParseNumber( &sz );
 
-    if( n < 1 ) {
+    if( n == 0 ) {
 	outputl( _("You must specify a valid match length (1 or longer).") );
 
 	return;
@@ -4610,7 +4610,7 @@ OptimumRoll ( int anBoard[ 2 ][ 25 ],
   rollequity are[ 21 ];
   float r;
 
-  anDice[ 0 ] = anDice[ 1 ] = -1;
+  anDice[ 0 ] = anDice[ 1 ] = 0;
 
   for( i = 1, k = 0; i <= 6; i++ )
     for( j = 1; j <= i; j++, ++k ) {

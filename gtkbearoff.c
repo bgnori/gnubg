@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkbearoff.c,v 1.19 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: gtkbearoff.c,v 1.20 2007/03/17 15:42:48 Superfly_Jon Exp $
  */
 
 #include <config.h>
@@ -100,7 +100,7 @@ BearoffUpdated( GtkWidget *pw, bearoffwidget *pbw ) {
 
   if ( f ) 
     /* player on roll */
-    pbw->ms.anDice[ 0 ] = pbw->ms.anDice[ 1 ] = -1;
+    pbw->ms.anDice[ 0 ] = pbw->ms.anDice[ 1 ] = 0;
   else
     /* player has rolled */
     for ( i = 0; i < 2; ++i )
