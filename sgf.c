@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.106 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: sgf.c,v 1.107 2007/03/20 23:24:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1705,7 +1705,7 @@ static void WriteEvalContext(FILE * pf, const evalcontext * pec)
 
 static void
 WriteMoveFilters(FILE * pf,
-		 const movefilter mf[MAX_FILTER_PLIES][MAX_FILTER_PLIES],
+		 movefilter mf[MAX_FILTER_PLIES][MAX_FILTER_PLIES],
 		 int nPlies)
 {
     int i;

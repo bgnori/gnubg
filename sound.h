@@ -16,18 +16,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sound.h,v 1.12 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: sound.h,v 1.13 2007/03/20 23:24:58 c_anthon Exp $
  */
 
 #ifndef _SOUND_H_
 #define _SOUND_H_
 
-#if USE_SOUND
 
 typedef enum _gnubgsound {
   /* start & exit of gnubg */
   SOUND_START = 0,     
-  SOUND_EXIT,          
   /* commands */
   SOUND_AGREE,
   SOUND_DOUBLE,
@@ -54,26 +52,10 @@ typedef enum _gnubgsound {
   NUM_SOUNDS
 } gnubgsound;
 
-typedef enum _soundsystem {
-  SOUND_SYSTEM_ARTSC = 0,
-  SOUND_SYSTEM_COMMAND,
-  SOUND_SYSTEM_ESD,
-  SOUND_SYSTEM_NORMAL,
-  SOUND_SYSTEM_WINDOWS,
-  SOUND_SYSTEM_QUICKTIME,
-
-  NUM_SOUND_SYSTEMS
-} soundsystem;
-
 extern char *aszSoundDesc[ NUM_SOUNDS ];
 extern char *aszSoundCommand[ NUM_SOUNDS ];
 
 extern char szSoundCommand[ 80 ];
-
-extern char *aszSoundSystem[ NUM_SOUND_SYSTEMS ];
-extern char *aszSoundSystemCommand[ NUM_SOUND_SYSTEMS ];
-
-extern soundsystem ssSoundSystem;
 
 extern int fSound;
 
@@ -82,20 +64,11 @@ playSound ( const gnubgsound gs );
 extern void SoundFlushCache( const gnubgsound gs );
 extern void SoundWait( void );
 
-#ifdef SIGIO
-extern RETSIGTYPE SoundSIGIO( int idSignal );
-#endif
-
 extern char *GetDefaultSoundFile(int sound);
-extern int playSoundFile(const gnubgsound gs, char *file);
+extern void playSoundFile(char *file);
 extern void SetSoundFile(const gnubgsound gs, const char *szFilename);
 extern char *GetSoundFile(gnubgsound sound);
+extern char *sound_get_command(void);
+extern char *sound_set_command(const char *sz);
 
-#else /* USE_SOUND */
-
-#define playSound(a) 
-#define SoundWait()
 #endif
-
-
-#endif /* _SOUND_H_ */

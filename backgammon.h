@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.332 2007/03/20 18:37:54 c_anthon Exp $
+ * $Id: backgammon.h,v 1.333 2007/03/20 23:24:58 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -398,7 +398,7 @@ extern int fConfirm, fConfirmSave;
 extern float rAlpha, rAnneal, rThreshold, arLuckLevel[ LUCK_VERYGOOD + 1 ],
     arSkillLevel[ N_SKILLS ], rEvalsPerSec;
 extern int nThreadPriority;
-extern unsigned int fCheat;
+extern int fCheat;
 extern unsigned int afCheatRoll[ 2 ];
 extern int fGotoFirstGame;
 extern int fSconyers15x15DVD;
@@ -1068,13 +1068,7 @@ extern void CommandAccept( char * ),
     CommandSetSeed( char * ),
     CommandSetSGFFolder(char *sz),
     CommandSetSoundEnable ( char * ),
-    CommandSetSoundSystemArtsc ( char * ),
     CommandSetSoundSystemCommand ( char * ),
-    CommandSetSoundSystemESD ( char * ),
-    CommandSetSoundSystemNAS ( char * ),
-    CommandSetSoundSystemNormal ( char * ),
-    CommandSetSoundSystemWindows ( char * ),
-    CommandSetSoundSystemQuickTime ( char * ),
     CommandSetSoundSoundAgree ( char * ),
     CommandSetSoundSoundAnalysisFinished ( char * ),
     CommandSetSoundSoundBotDance ( char * ),

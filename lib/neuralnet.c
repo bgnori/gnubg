@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.47 2007/03/17 09:05:13 Superfly_Jon Exp $
+ * $Id: neuralnet.c,v 1.48 2007/03/20 23:24:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -940,7 +940,7 @@ extern int NeuralNetSaveBinary( const neuralnet *pnn, FILE *pf ) {
 }
 #if USE_SSE_VECTORIZE
 
-#if defined(_MSC_VER) || defined(DISABLE_SSE_TEST)
+#if defined(_MSC_VER) || defined(DISABLE_SSE_TEST) || __x86_64
 
 int SSE_Supported()
 {
@@ -951,10 +951,15 @@ int SSE_Supported()
 
 int CheckSSE()
 {
-	int result = 0;
+        int result;
+#ifdef __APPLE__
 
-#ifdef __x86_64
-	result = 1;
+#include <sys/sysctl.h>
+    size_t length = sizeof( result );
+    int error = sysctlbyname("hw.optional.sse", &result, &length, NULL, 0);
+    if ( 0 != error ) result = 0;
+    return result;
+
 #else
 
 	asm (
@@ -1007,7 +1012,7 @@ int CheckSSE()
 
 			: "=b"(result) : : "%eax", "%ecx", "%edx");
 #endif
-	
+
 	switch (result)
 	{
 	case -1:
