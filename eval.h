@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.137 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: eval.h,v 1.138 2007/03/20 15:50:34 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -634,7 +634,7 @@ isMissedDouble ( float arDouble[],
                  const int fDouble, 
                  const cubeinfo *pci );
 
-extern int
+extern unsigned int
 locateMove ( int anBoard[ 2 ][ 25 ], 
              const int anMove[ 8 ], const movelist *pml );
 

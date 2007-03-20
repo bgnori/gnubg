@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.310 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: eval.c,v 1.311 2007/03/20 15:50:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -7321,11 +7321,11 @@ isMissedDouble ( float arDouble[],
                  
 
 
-extern int
+extern unsigned int
 locateMove ( int anBoard[ 2 ][ 25 ], 
              const int anMove[ 8 ], const movelist *pml ) {
 
-  int i;
+  unsigned int i;
   unsigned char auch[ 10 ];
   unsigned char key[ 10 ];
 
@@ -7341,7 +7341,7 @@ locateMove ( int anBoard[ 2 ][ 25 ],
 
   }
 
-  return -1;
+  return 0;
 
 }
 
