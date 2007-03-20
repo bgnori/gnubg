@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.170 2007/03/16 01:36:27 c_anthon Exp $
+## $Id: Makefile.am,v 1.171 2007/03/20 18:37:54 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -8,7 +8,7 @@ ACLOCAL_AMFLAGS = -I m4
 
 
 
-SUBDIRS = lib doc met po m4 xpm sounds board3d textures scripts flags fonts non-src
+SUBDIRS = lib doc met po m4 xpm sounds board3d textures scripts flags fonts non-src .
 
 bin_PROGRAMS = gnubg makebearoff makehyper bearoffdump
 noinst_PROGRAMS = makeweights makebearoff1
@@ -55,7 +55,7 @@ endif
 if USE_GTK
 gnubg_SOURCES += gtkboard.c gtkboard.h gtkgame.c gtkgame.h gtkfile.c gtkfile.h \
 		 gtkprefs.c gtkprefs.h gtk-multiview.c gtk-multiview.h gtktheory.c \
-		 gtktheory.h gtktexi.c gtktexi.h gtkexport.c gtkexport.h gtkcube.c gtkcube.h \
+		 gtktheory.h gtkexport.c gtkexport.h gtkcube.c gtkcube.h \
 		 gtkchequer.c gtkchequer.h gtkrace.c gtkrace.h gtkmovefilter.c \
 		 gtkmovefilter.h gtkmet.c gtkmet.h gtkcolour.c gtkcolour.h gtksplash.c \
 		 gtksplash.h gtkrolls.c gtkrolls.h gtktempmap.c gtktempmap.h gtkbearoff.c \

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.331 2007/03/17 15:42:48 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.332 2007/03/20 18:37:54 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -829,6 +829,7 @@ extern void CommandAccept( char * ),
     CommandSetBearoffSconyers15x15DiskPath( char * ),
     CommandSetBoard( char * ),
     CommandSetBeavers( char * ),
+    CommandSetBrowser( char * ),
     CommandSetCache( char * ),
     CommandSetCalibration( char * ),
     CommandSetCheatEnable ( char * ),
@@ -1159,7 +1160,7 @@ extern void CommandAccept( char * ),
     CommandShowKeith( char * ),
     CommandShowKleinman( char * ),
     CommandShowLang( char * ),
-    CommandShowManualGUI( char * ),
+    CommandShowManualAbout( char * ),
     CommandShowManualWeb( char * ),
     CommandShowMarketWindow( char * ),
     CommandShowMatchInfo( char * ),

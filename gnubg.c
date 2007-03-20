@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.683 2007/03/17 15:42:48 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.684 2007/03/20 18:37:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -95,6 +95,7 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #if USE_MULTITHREAD
 #include "multithread.h"
 #endif
+#include "openurl.h"
 
 #if defined(MSDOS) || defined(__MSDOS__) || defined(WIN32)
 #define NO_BACKSLASH_ESCAPES 1
@@ -1675,6 +1676,8 @@ command cER = {
       szVALUE, NULL },
     { "board", CommandSetBoard, N_("Set up the board in a particular "
       "position"), szPOSITION, NULL },
+    { "browser", CommandSetBrowser, 
+      N_("Set web browser"), szOPTCOMMAND, NULL },
     { "cache", CommandSetCache, N_("Set the size of the evaluation cache"),
       szSIZE, NULL },
     { "calibration", CommandSetCalibration,
@@ -1825,10 +1828,9 @@ command cER = {
       N_("Compute statistics for every game in the session"), NULL, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acShowManual[] = {
-#if USE_GTK
-    { "gui", CommandShowManualGUI, N_("Show manual in GUI"), NULL, NULL },
-#endif /* USE_GTK */
-    { "web", CommandShowManualWeb, N_("Show manual in web browser"), 
+    { "about", CommandShowManualAbout, N_("Show all about gnu backgammon in a web browser"), 
+      NULL, NULL },
+    { "web", CommandShowManualWeb, N_("Show manual in a web browser"), 
       NULL, NULL },
     { NULL, NULL, NULL, NULL, NULL }
 }, acShow[] = {
@@ -5766,6 +5768,8 @@ extern void CommandSaveSettings( char *szParam ) {
     
 
 #endif /* USE_SOUND */
+
+    fprintf( pf, "set browser %s\n", get_web_browser());
 
     fprintf( pf, "set priority nice %d\n", nThreadPriority );
 

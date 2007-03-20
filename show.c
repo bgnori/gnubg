@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.216 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: show.c,v 1.217 2007/03/20 18:37:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -45,6 +45,7 @@
 #include "positionid.h"
 #include "boarddim.h"
 #include "credits.h"
+#include "path.h"
 
 #if USE_GTK
 #include "gtkboard.h"
@@ -2493,22 +2494,13 @@ CommandShowEPC( char *sz ) {
 
 
 extern void
-CommandShowManualWeb( char *sz ) {
-
-  OpenURL( "http://www.gnubg.org/win32/gnubg/gnubg.html" );
-
+CommandShowManualWeb (char *sz)
+{
+  OpenURL (PathSearch ("doc/gnubg.html", szDataDirectory));
 }
 
-#if USE_GTK
 extern void
-CommandShowManualGUI( char *sz ) {
-
-  if ( fX ) {
-    GTKShowManual();
-  }
-  else
-    outputl( _("`show manual gui' does not work in command line mode.\n"
-               "Please use `show manual web' instead.") );
-
+CommandShowManualAbout (char *sz)
+{
+  OpenURL (PathSearch ("doc/allabout.html", szDataDirectory));
 }
-#endif /* USE_GTK */
