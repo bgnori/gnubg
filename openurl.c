@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.15 2007/03/20 18:37:54 c_anthon Exp $
+ * $Id: openurl.c,v 1.16 2007/03/21 23:37:11 c_anthon Exp $
  */
 #include "config.h"
 #include <stdio.h>
@@ -39,7 +39,7 @@ get_web_browser (void)
 {
   const gchar *pch;
 #ifdef WIN32
-  if (!web_browser)
+  if (!web_browser || !*web_browser)
     return NULL;
 #endif
   if (web_browser && *web_browser)
@@ -66,17 +66,19 @@ set_web_browser (const char *sz)
 extern void
 OpenURL (const char *szURL)
 {
-  gchar *command;
-  GError *error = NULL;
   gchar *browser = get_web_browser ();
 #ifdef WIN32
   if (!(browser) || !(*browser))
     {
-      ShellExecute (NULL, TEXT ("open"), szURL, NULL, ".\\",
+      gchar *url =g_strdup_printf("file://%s", szURL);
+      ShellExecute (NULL, TEXT ("open"), url, NULL, ".\\",
 		    SW_SHOWMAXIMIZED);
+      g_free(url);
       return;
     }
 #else
+  gchar *command;
+  GError *error = NULL;
   command = g_strdup_printf ("%s %s", browser, szURL);
   if (!g_spawn_command_line_async (command, &error))
     {
