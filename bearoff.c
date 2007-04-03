@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.48 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: bearoff.c,v 1.49 2007/04/03 22:07:38 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1888,7 +1888,7 @@ fnd ( const float x, const float mu, const float sigma  ) {
 
      float xm = ( x - mu ) / sigma;
 
-     return 1.0f / (float)(( sigma * sqrt ( 2.0 * PI ) ) * exp ( - xm * xm / 2.0 ));
+     return 1.0f / ( sigma * sqrt ( 2.0 * PI ) ) * ((float)(exp ( - xm * xm / 2.0 )));
 
    }
 
