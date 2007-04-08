@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.311 2007/03/20 15:50:34 c_anthon Exp $
+ * $Id: eval.c,v 1.312 2007/04/08 11:42:39 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4047,11 +4047,10 @@ FindnSaveBestMoves( movelist *pml,
 
 }
 
-extern int KeithCount(int anBoard[2][25], int *pnL, int *pnT)
+extern int KeithCount(int anBoard[2][25], int pn[2])
 {
     unsigned int anPips[2];
     int i, x;
-    int pn[2];
     PipCount(anBoard, anPips);
     for (i = 0; i < 2; i++) {
 	pn[i] = anPips[i];
@@ -4062,8 +4061,6 @@ extern int KeithCount(int anBoard[2][25], int *pnL, int *pnT)
 	    if (!anBoard[i][x])
 		pn[i]++;
     }
-    *pnT = pn[0];
-    *pnL = pn[1];
     return 0;
 }
 
