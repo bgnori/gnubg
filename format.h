@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.h,v 1.6 2007/03/17 15:42:48 Superfly_Jon Exp $
+ * $Id: format.h,v 1.7 2007/04/08 16:46:20 c_anthon Exp $
  */
 
 #ifndef _FORMAT_H_
@@ -59,23 +59,23 @@ OutputEquityScale ( const float r, const cubeinfo *pci,
 extern char *
 OutputRolloutResult ( const char *szIndent,
                       char asz[][ 1024 ],
-                      const float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
-                      const float aarStdDev[][ NUM_ROLLOUT_OUTPUTS ],
+                      float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
+                      float aarStdDev[][ NUM_ROLLOUT_OUTPUTS ],
                       const cubeinfo aci[],
                       const int cci,
                       const int fCubeful );
 
 extern char *
-OutputCubeAnalysisFull ( const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
-                         const float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+OutputCubeAnalysisFull ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                         float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                          const evalsetup* pes, const cubeinfo* pci,
                          int fDouble, int fTake,
                          skilltype stDouble,
                          skilltype stTake );
 
 extern char *
-OutputCubeAnalysis ( const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
-                     const float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+OutputCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                     float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                      const evalsetup* pes, const cubeinfo* pci );
 
 extern char *

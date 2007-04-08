@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.36 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: latex.c,v 1.37 2007/04/08 16:46:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -351,8 +351,8 @@ static void PrintLaTeXComment( FILE *pf, char *pch ) {
 
 static void 
 PrintLaTeXCubeAnalysis( FILE *pf, const matchstate* pms, int fPlayer,
-                        const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
-                        const float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                        float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                        float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                         const evalsetup *pes ) { 
   
     cubeinfo ci;
@@ -424,8 +424,8 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 		PrintLaTeXBoard( pf, &msExport, pmr->fPlayer );
 	    
 	    PrintLaTeXCubeAnalysis( pf, &msExport, pmr->fPlayer,
-				    GCCCONSTAHACK pmr->CubeDecPtr->aarOutput,
-				    GCCCONSTAHACK pmr->CubeDecPtr->aarStdDev,
+				     pmr->CubeDecPtr->aarOutput,
+				     pmr->CubeDecPtr->aarStdDev,
                                     &pmr->CubeDecPtr->esDouble );
             /* FIXME: output cube skill */
 
@@ -459,8 +459,8 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 	    PrintLaTeXBoard( pf, &msExport, pmr->fPlayer );
 
 	    PrintLaTeXCubeAnalysis(pf, &msExport, pmr->fPlayer,
-				   GCCCONSTAHACK pmr->CubeDecPtr->aarOutput, 
-				   GCCCONSTAHACK pmr->CubeDecPtr->aarStdDev, 
+				    pmr->CubeDecPtr->aarOutput, 
+				    pmr->CubeDecPtr->aarStdDev, 
 				   &pmr->CubeDecPtr->esDouble );
 
 	    /* FIXME what about beavers? */

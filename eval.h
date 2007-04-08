@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.139 2007/04/08 11:42:40 c_anthon Exp $
+ * $Id: eval.h,v 1.140 2007/04/08 16:46:20 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -525,14 +525,9 @@ se_eq2mwc ( const float rEq, const cubeinfo *ci );
 extern char 
 *FormatEval ( char *sz, evalsetup *pes );
 
-/* For some reason, gcc complains when 2d non-const array is passed as
-   const array
-*/
-#define GCCCONSTAHACK (const float (*)[NUM_ROLLOUT_OUTPUTS])
-
 extern cubedecision
 FindCubeDecision ( float arDouble[],
-                   const float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
+                   float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
 		   const cubeinfo *pci );
 
 extern int
@@ -579,7 +574,7 @@ extern char
 
 extern cubedecision
 FindBestCubeDecision ( float arDouble[], 
-                       const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                       float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                        const cubeinfo *pci );
 
 extern int
@@ -609,7 +604,7 @@ getMatchPoints ( float aaarPoints[ 2 ][ 4 ][ 2 ],
 extern void
 getCubeDecisionOrdering ( int aiOrder[ 3 ],
                           float arDouble[ 4 ], 
-                          const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+                          float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                           const cubeinfo* pci );
 
 extern float
@@ -630,7 +625,7 @@ isCloseCubedecision ( const float arDouble[] );
 
 extern int
 isMissedDouble ( float arDouble[], 
-                 const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
+                 float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                  const int fDouble, 
                  const cubeinfo *pci );
 

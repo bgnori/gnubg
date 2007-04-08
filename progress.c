@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.30 2007/02/18 17:35:02 Superfly_Jon Exp $
+ * $Id: progress.c,v 1.31 2007/04/08 16:46:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1171,8 +1171,10 @@ TextRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
 
     pch = OutputRolloutResult( NULL, 
                                (char(*) [1024]) prp->ppch[ iAlternative ], 
-                               GCCCONSTAHACK aarOutput[ iAlternative ],
-                               GCCCONSTAHACK aarStdDev[ iAlternative ],
+                               ( float (*)[NUM_ROLLOUT_OUTPUTS] )
+                                aarOutput[ iAlternative ],
+                                ( float (*)[NUM_ROLLOUT_OUTPUTS] )
+                                aarStdDev[ iAlternative ],
                                &aci[ iAlternative ], 1, prc->fCubeful );
 
     if ( fShowRanks && iGame > 1 ) {

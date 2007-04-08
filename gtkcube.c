@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.50 2006/12/06 23:12:52 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.51 2007/04/08 16:46:20 c_anthon Exp $
  */
 
 #include <config.h>
@@ -94,8 +94,8 @@ OutputPercentsTable( const float ar[] )
 
 static GtkWidget*
 TakeAnalysis( const movetype mt, 
-	      const float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
-	      const float aarStdDev[][ NUM_ROLLOUT_OUTPUTS ],
+	      float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
+	      float aarStdDev[][ NUM_ROLLOUT_OUTPUTS ],
 	      const evalsetup* pes,
 	      const matchstate* pms ) {
 
@@ -384,8 +384,8 @@ TakeAnalysis( const movetype mt,
  */
 
 static GtkWidget*
-CubeAnalysis( const float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
-	      const float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+CubeAnalysis( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
+	      float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 	      const evalsetup *pes,
 	      const matchstate* pms,
 	      const int fDouble ) {
@@ -643,8 +643,8 @@ UpdateCubeAnalysis ( cubehintdata *pchd ) {
   switch ( pchd->mt ) {
   case MOVE_NORMAL:
   case MOVE_DOUBLE:
-    pw = CubeAnalysis ( GCCCONSTAHACK pchd->aarOutput,
-                        GCCCONSTAHACK pchd->aarStdDev,
+    pw = CubeAnalysis (  pchd->aarOutput,
+                         pchd->aarStdDev,
                         pchd->pes,
                         &pchd->ms,
                         pchd->mt );
@@ -653,8 +653,8 @@ UpdateCubeAnalysis ( cubehintdata *pchd ) {
   case MOVE_DROP:
   case MOVE_TAKE:
     pw = TakeAnalysis ( pchd->mt,
-                        GCCCONSTAHACK pchd->aarOutput,
-                        GCCCONSTAHACK pchd->aarStdDev,
+                         pchd->aarOutput,
+                         pchd->aarStdDev,
                         pchd->pes,
                         &pchd->ms );
     break;
@@ -848,8 +848,8 @@ GetContent ( cubehintdata *pchd ) {
 
   GetMatchStateCubeInfo ( &ci, &pchd->ms );
 
-  pc = OutputCubeAnalysis ( GCCCONSTAHACK pchd->aarOutput,
-                            GCCCONSTAHACK pchd->aarStdDev,
+  pc = OutputCubeAnalysis (  pchd->aarOutput,
+                             pchd->aarStdDev,
                             pchd->pes,
                             &ci );
 
@@ -1032,8 +1032,8 @@ CreateCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   case MOVE_NORMAL:
   case MOVE_DOUBLE:
 
-    pchd->pwFrame = CubeAnalysis ( GCCCONSTAHACK aarOutput,
-				   GCCCONSTAHACK aarStdDev, pes, 
+    pchd->pwFrame = CubeAnalysis (  aarOutput,
+				    aarStdDev, pes, 
                                    &pchd->ms,
                                    mt == MOVE_DOUBLE );
     break;
@@ -1042,8 +1042,8 @@ CreateCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   case MOVE_DROP:
 
     pchd->pwFrame = TakeAnalysis ( mt, 
-                                   GCCCONSTAHACK aarOutput,
-                                   GCCCONSTAHACK aarStdDev,
+                                    aarOutput,
+                                    aarStdDev,
                                    pes,
                                    &pchd->ms );
     break;

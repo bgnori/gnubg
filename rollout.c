@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.164 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: rollout.c,v 1.165 2007/04/08 16:46:20 c_anthon Exp $
  */
 
 #include <config.h>
@@ -468,7 +468,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
                                       pecCube[ pci->fMove ], 0 ) < 0 ) 
             return -1;
 
-          cd = FindCubeDecision ( arDouble, GCCCONSTAHACK aar, pci );
+          cd = FindCubeDecision ( arDouble,  aar, pci );
 
           switch ( cd ) {
 

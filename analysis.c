@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.172 2007/02/08 19:59:38 Superfly_Jon Exp $
+ * $Id: analysis.c,v 1.173 2007/04/08 16:46:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -362,7 +362,7 @@ updateStatcontext(statcontext*       psc,
          fAnalyseCube && pmgi->fCubeUse ) {
 
       FindCubeDecision( arDouble, 
-                        GCCCONSTAHACK pmr->CubeDecPtr->aarOutput, &ci );
+                        pmr->CubeDecPtr->aarOutput, &ci );
 
       psc->anTotalCube[ pmr->fPlayer ]++;
 
@@ -480,7 +480,7 @@ updateStatcontext(statcontext*       psc,
          pmr->CubeDecPtr->esDouble.et != EVAL_NONE ) {
 
       FindCubeDecision( arDouble, 
-                        GCCCONSTAHACK pmr->CubeDecPtr->aarOutput, &ci );
+                        pmr->CubeDecPtr->aarOutput, &ci );
 
       rSkill = arDouble[ OUTPUT_TAKE ] <
         arDouble[ OUTPUT_DROP ] ?
@@ -522,7 +522,7 @@ updateStatcontext(statcontext*       psc,
          pmr->CubeDecPtr->esDouble.et != EVAL_NONE ) {
 
       FindCubeDecision( arDouble, 
-                        GCCCONSTAHACK pmr->CubeDecPtr->aarOutput, &ci );
+                        pmr->CubeDecPtr->aarOutput, &ci );
 
       psc->anTotalCube[ pmr->fPlayer ]++;
       psc->anTake[ pmr->fPlayer ]++;
@@ -552,7 +552,7 @@ updateStatcontext(statcontext*       psc,
         pmr->CubeDecPtr->esDouble.et != EVAL_NONE ) {
 	  
       FindCubeDecision( arDouble, 
-                        GCCCONSTAHACK pmr->CubeDecPtr->aarOutput, &ci );
+                        pmr->CubeDecPtr->aarOutput, &ci );
 
       psc->anTotalCube[ pmr->fPlayer ]++;
       psc->anPass[ pmr->fPlayer ]++;
@@ -712,7 +712,7 @@ AnalyzeMove (moverecord *pmr, matchstate *pms, const list *plParentGame,
 					aarStdDev, sizeof ( aarStdDev ) );
 			}
 
-			FindCubeDecision( arDouble, GCCCONSTAHACK pmr->CubeDecPtr->aarOutput, &ci );
+			FindCubeDecision( arDouble, pmr->CubeDecPtr->aarOutput, &ci );
 
 			rSkill = arDouble[ OUTPUT_NODOUBLE ] - arDouble[ OUTPUT_OPTIMAL ];
 			pmr->stCube = Skill( rSkill );
@@ -837,7 +837,7 @@ AnalyzeMove (moverecord *pmr, matchstate *pms, const list *plParentGame,
 						sizeof ( aarStdDev ) );
 				}
 
-				FindCubeDecision ( arDouble, GCCCONSTAHACK aarOutput, &ci );
+				FindCubeDecision ( arDouble,  aarOutput, &ci );
 				if (doubleError)
 					*doubleError = arDouble[ OUTPUT_TAKE ] - arDouble[ OUTPUT_DROP ];
 

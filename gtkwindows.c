@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.13 2007/03/15 23:06:45 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.14 2007/04/08 16:46:20 c_anthon Exp $
  */
 
 #include <config.h>
@@ -119,7 +119,10 @@ extern GtkWidget *GTKCreateDialog(const char *szTitle, const dialogtype dt,
 	gtk_box_pack_start(GTK_BOX(pwHbox), pwPixmap, FALSE, FALSE, 0);
 
 	cbData = (CallbackStruct*)malloc(sizeof(CallbackStruct));
-	cbData->DialogFun = (void*)okFun;
+
+    typedef void (*dialog_func_ty)(GtkWidget *, void*);
+    cbData->DialogFun = (dialog_func_ty) okFun;
+
 	cbData->data = okFunData;
 	g_signal_connect(pwDialog, "response", GTK_SIGNAL_FUNC(DialogResponse), cbData);
 

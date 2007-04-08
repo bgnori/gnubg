@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.176 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: html.c,v 1.177 2007/04/08 16:46:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -161,7 +161,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.176 2007/03/15 22:10:57 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.177 2007/04/08 16:46:20 c_anthon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1841,7 +1841,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.176 $";
+  const char szVersion[] = "$Revision: 1.177 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1921,7 +1921,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.176 $";
+  const char szVersion[] = "$Revision: 1.177 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -1996,12 +1996,12 @@ HTMLPrintCubeAnalysisTable ( FILE *pf,
 
   if ( pes->et == EVAL_NONE ) return; /* no evaluation */
 
-  cd = FindCubeDecision ( arDouble, GCCCONSTAHACK aarOutput, pci );
+  cd = FindCubeDecision ( arDouble,  aarOutput, pci );
 
   fActual = fDouble > 0;
   fClose = isCloseCubedecision ( arDouble ); 
   fMissed =  fDouble > -1 &&
-    isMissedDouble ( arDouble, GCCCONSTAHACK aarOutput, fDouble, pci );
+    isMissedDouble ( arDouble,  aarOutput, fDouble, pci );
 
   fDisplay = 
     ( fActual && exsExport.afCubeDisplay[ EXPORT_CUBE_ACTUAL ] ) ||
@@ -2228,7 +2228,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf,
 
   }
 
-  getCubeDecisionOrdering ( ai, arDouble, GCCCONSTAHACK aarOutput, pci );
+  getCubeDecisionOrdering ( ai, arDouble,  aarOutput, pci );
 
   for ( i = 0; i < 3; i++ ) {
 

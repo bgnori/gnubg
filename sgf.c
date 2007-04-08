@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.107 2007/03/20 23:24:58 c_anthon Exp $
+ * $Id: sgf.c,v 1.108 2007/04/08 16:46:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1745,7 +1745,7 @@ static void WriteRolloutContext(FILE * pf, const rolloutcontext * prc)
 	WriteEvalContext(pf, &prc->aecChequer[i]);
 	if (prc->aecChequer[i].nPlies) {
 	    fprintf(pf, " filt%d ", i);
-	    WriteMoveFilters(pf, prc->aaamfChequer[i],
+	    WriteMoveFilters(pf, (movefilter (*)[4])prc->aaamfChequer[i],
 			     prc->aecChequer[i].nPlies);
 	}
     }
@@ -1759,7 +1759,7 @@ static void WriteRolloutContext(FILE * pf, const rolloutcontext * prc)
 	WriteEvalContext(pf, &prc->aecChequerLate[i]);
 	if (prc->aecChequerLate[i].nPlies) {
 	    fprintf(pf, " latefilt%d ", i);
-	    WriteMoveFilters(pf, prc->aaamfLate[i],
+	    WriteMoveFilters(pf, (movefilter (*)[4])prc->aaamfLate[i],
 			     prc->aecChequerLate[i].nPlies);
 	}
     }
