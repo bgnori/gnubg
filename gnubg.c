@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.688 2007/04/09 22:45:33 c_anthon Exp $
+ * $Id: gnubg.c,v 1.689 2007/04/09 23:23:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4028,7 +4028,7 @@ extern void PromptForExit( void ) {
 #endif
 
 #if HAVE_LIBREADLINE
-        write_history( gnubg_hist_file );
+        write_history( gnubg_histfile );
 #endif /* HAVE_READLINE */
 
 #if USE_GTK
