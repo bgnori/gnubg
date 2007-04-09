@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.220 2007/04/08 16:46:20 c_anthon Exp $
+ * $Id: show.c,v 1.221 2007/04/09 22:45:33 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1203,7 +1203,6 @@ extern void CommandShow8912(char *sz)
   unsigned int anPips[ 2 ];
   float arMu[ 2 ];
   float arSigma[ 2 ];
-  int i, j;
   float r;
   float ahead;
 

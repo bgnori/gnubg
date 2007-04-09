@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.62 2007/04/08 16:46:20 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.63 2007/04/09 22:45:33 c_anthon Exp $
  */
 
 #include "config.h"
@@ -28,11 +28,6 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <signal.h>
-
-#if HAVE_LIBREADLINE
-#include <readline/history.h>
-#include <readline/readline.h>
-#endif
 
 #include "eval.h"
 #include "matchequity.h"
@@ -2421,33 +2416,6 @@ PyMethodDef gnubgMethods[] = {
 
 };
 
-#if HAVE_LIBREADLINE
-
-#if 0
-static char *
-PythonReadline( char *p ) {
-
-  char *pch;
-  int l;
-
-  pch = (char *) readline( p );
-
-  l = pch ? strlen( pch ) : 0;
-
-  pch = (char *) realloc( pch, l + 1 );
-
-  if( l )
-    strcat( pch, "\n" );
-  else
-    strcpy( pch, "" );
-
-  return pch;
-
-}
-#endif
-
-#endif
-
 extern void
 PythonInitialise( const char *szDir ) {
 
@@ -2477,11 +2445,6 @@ PythonInitialise( const char *szDir ) {
   /* ensure that python know about our gnubg module */
   Py_InitModule( "gnubg", gnubgMethods );
   PyRun_SimpleString( "import gnubg\n" );
-
-#if HAVE_LIBREADLINE
-  /* FIXME: implement switching of readline contexts 
-     PyOS_ReadlineFunctionPointer = PythonReadline; */
-#endif
 
   /* run gnubg.py start up script */
   pch = g_strdup( "gnubg.py" );

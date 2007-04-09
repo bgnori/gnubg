@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.334 2007/04/08 11:42:39 c_anthon Exp $
+ * $Id: backgammon.h,v 1.335 2007/04/09 22:45:33 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -588,10 +588,6 @@ extern void ProcessInput( char* sz );
 #endif
 extern void HideAllPanels ( gpointer *p, guint n, GtkWidget *pw );
 extern void ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw );
-#endif
-
-#if HAVE_LIBREADLINE
-extern int fReadline;
 #endif
 
 extern int

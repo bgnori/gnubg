@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.14 2007/04/08 16:46:20 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.15 2007/04/09 22:45:33 c_anthon Exp $
  */
 
 #include <config.h>
@@ -31,6 +31,7 @@
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
 #include "gtktoolbar.h"
+typedef void (*dialog_func_ty)(GtkWidget *, void*);
 
 static char *aszStockItem[ NUM_DIALOG_TYPES ] =
 {
@@ -95,12 +96,10 @@ extern GtkWidget *GTKCreateDialog(const char *szTitle, const dialogtype dt,
 		parent = gtk_widget_get_toplevel(parent);
 	if (parent && !GTK_WIDGET_REALIZED(parent))
 		parent = NULL;
-	if (parent != NULL && (flags & DIALOG_FLAG_MODAL))
-	{
-		if ((flags & DIALOG_FLAG_NOTIDY) == 0)
-			gtk_signal_connect(GTK_OBJECT(pwDialog), "destroy", GTK_SIGNAL_FUNC(quitter), parent);
+	if (parent != NULL)
 		gtk_window_set_transient_for(GTK_WINDOW(pwDialog), GTK_WINDOW(parent));
-	}
+        if (flags & DIALOG_FLAG_MODAL)
+			gtk_signal_connect(GTK_OBJECT(pwDialog), "destroy", GTK_SIGNAL_FUNC(quitter), parent);
 
 	pag = gtk_accel_group_new();
 	gtk_window_add_accel_group(GTK_WINDOW(pwDialog), pag);
@@ -120,7 +119,6 @@ extern GtkWidget *GTKCreateDialog(const char *szTitle, const dialogtype dt,
 
 	cbData = (CallbackStruct*)malloc(sizeof(CallbackStruct));
 
-    typedef void (*dialog_func_ty)(GtkWidget *, void*);
     cbData->DialogFun = (dialog_func_ty) okFun;
 
 	cbData->data = okFunData;
