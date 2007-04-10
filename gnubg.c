@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.689 2007/04/09 23:23:23 c_anthon Exp $
+ * $Id: gnubg.c,v 1.690 2007/04/10 14:41:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6850,7 +6850,7 @@ static void setup_readline()
 }
 
 #ifndef USE_GTK
-static void PushSplash(char *unused, char *heading, char *message)
+static void PushSplash(char *unused, char *heading, char *message, int wait)
 {
 }
 #endif
@@ -6987,7 +6987,7 @@ int main(int argc, char *argv[])
 #if USE_GTK
 	GtkWidget *pwSplash = NULL;
 #else
-        char *pwSplash = NULL
+        char *pwSplash = NULL;
 #endif
 	char *pchMatch = NULL;
 
