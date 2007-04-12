@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.30 2007/03/17 09:05:13 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.31 2007/04/12 15:26:47 oysteijo Exp $
 */
 
 #include "inc3d.h"
@@ -161,7 +161,7 @@ static void UpdatePreviewBar(const Material* pMat, GdkPixmap *pixmap)
 	gc = gdk_gc_new(pixmap);
 	gdk_draw_rgb_image(pixmap, gc, 0, 0, PREVIEW_WIDTH, PREVIEW_HEIGHT, GDK_RGB_DITHER_MAX,
 					  auch, PREVIEW_WIDTH * 3 );
-	gdk_gc_unref( gc );
+	g_object_unref( gc );
 }
 
 static void UpdateColourPreview(void *notused)
@@ -342,7 +342,7 @@ static gboolean OkClicked(GtkWidget *pw, const UpdateDetails* pDetails)
 	gc = gdk_gc_new(pDetails->pixmap);
 	gdk_draw_rgb_image(pDetails->pixmap, gc, 0, 0, PREVIEW_WIDTH, PREVIEW_HEIGHT, GDK_RGB_DITHER_MAX,
 						auch, PREVIEW_WIDTH * 3 );
-	gdk_gc_unref( gc );
+	g_object_unref( gc );
 
 	gtk_widget_queue_draw(pDetails->preview);
 	UpdatePreview(0);
