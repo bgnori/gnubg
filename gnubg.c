@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.691 2007/04/12 15:02:58 c_anthon Exp $
+ * $Id: gnubg.c,v 1.692 2007/04/17 07:14:24 c_anthon Exp $
  */
 
 #include "config.h"
@@ -7367,6 +7367,12 @@ extern void CommandSwapPlayers ( char *sz ) {
   strcpy ( ap[ 0 ].szName, ap[ 1 ].szName );
   strcpy ( ap[ 1 ].szName, pc );
   free ( pc );
+
+  /* swap player ratings */
+
+  pc = mi.pchRating[ 0 ];
+  mi.pchRating[ 0 ] = mi.pchRating[ 1 ];
+  mi.pchRating[ 1 ] = pc;
 
   /* swap current matchstate */
 
