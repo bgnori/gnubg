@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.h,v 1.4 2003/08/24 20:40:29 oysteijo Exp $
+ * $Id: gtktoolbar.h,v 1.5 2007/04/18 21:18:07 c_anthon Exp $
  */
 
 #ifndef _GTKTOOLBAR_H_
@@ -59,5 +59,6 @@ ToolbarSetClockwise( GtkWidget *pwToolbar, const int f );
 extern GtkWidget *
 image_from_xpm_d ( char **xpm, GtkWidget *pw );
 
+extern void click_edit();
 
 #endif /* _GTKTOOLBAR_H_ */

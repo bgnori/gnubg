@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.32 2007/04/08 11:42:40 c_anthon Exp $
+ * $Id: gtktoolbar.c,v 1.33 2007/04/18 21:18:07 c_anthon Exp $
  */
 
 #include <config.h>
@@ -169,23 +169,29 @@ ToolbarToggleClockwise( GtkWidget *pw, toolbarwidget *ptw ) {
 
 }
 
+extern void click_edit()
+{
+        toolbarwidget *ptw = gtk_object_get_user_data ( GTK_OBJECT ( pwToolbar ) );
+        gtk_button_clicked( GTK_BUTTON( ptw->pwEdit ));
+}
 
 int editing = FALSE;
 
-static void
-ToolbarToggleEdit( GtkWidget *pw, toolbarwidget *ptw ) {
+static void ToolbarToggleEdit(GtkWidget * pw, toolbarwidget * ptw)
+{
 
-  BoardData *pbd = BOARD( pwBoard )->board_data;
+	BoardData *pbd = BOARD(pwBoard)->board_data;
 
-  if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( ptw->pwEdit ) ))
-  { /* Undo any partial move that may have been made when entering edit mode */
-    Undo();
-    editing = TRUE;
-  }
-  else
-    editing = FALSE;
+	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(ptw->pwEdit))) {
+		editing = TRUE;
+		if (ms.gs == GAME_NONE)
+                        edit_new(nDefaultLength);
+		/* Undo any partial move that may have been made when entering edit mode */
+		Undo();
+	} else
+		editing = FALSE;
 
-  board_edit( pbd );
+	board_edit(pbd);
 }
 
 extern int

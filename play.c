@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.286 2007/04/08 16:46:20 c_anthon Exp $
+ * $Id: play.c,v 1.287 2007/04/18 21:18:07 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3253,9 +3253,8 @@ extern void CommandNewMatch( char *sz ) {
 	n = ParseNumber( &sz );
 
     if( n == 0 ) {
-	outputl( _("You must specify a valid match length (1 or longer).") );
-
-	return;
+        CommandNewSession(NULL);
+        return;
     }
 
     /* Check that match equity table is large enough */

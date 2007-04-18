@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.270 2007/04/08 16:46:20 c_anthon Exp $
+ * $Id: set.c,v 1.271 2007/04/18 21:18:07 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3256,12 +3256,6 @@ extern void CommandSetMatchEvent( char *sz ) {
 extern void CommandSetMatchLength( char *sz ) {
 
     unsigned int n = ParseNumber( &sz );
-
-    if( n < 1 ) {
-	outputl( _("You must specify a valid match length (1 or longer).") );
-
-	return;
-    }
 
     nDefaultLength = n;
 

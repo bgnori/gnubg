@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.48 2007/03/20 23:24:58 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.49 2007/04/18 21:18:07 c_anthon Exp $
  */
 
 #include <config.h>
@@ -775,7 +775,7 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
 			gtk_label_new( _("Default match length:") ),
 			FALSE, FALSE, 0);
 
-    pow->padjLength = GTK_ADJUSTMENT( gtk_adjustment_new (nDefaultLength, 1,
+    pow->padjLength = GTK_ADJUSTMENT( gtk_adjustment_new (nDefaultLength, 0,
 							  99, 1, 1, 1 ) );
     pw = gtk_spin_button_new (GTK_ADJUSTMENT (pow->padjLength),
 			      1, 0);
