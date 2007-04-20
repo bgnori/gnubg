@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.24 2007/04/12 18:47:01 oysteijo Exp $
+ * $Id: gtkfile.c,v 1.25 2007/04/20 16:02:45 c_anthon Exp $
  */
 
 #include <config.h>
@@ -33,6 +33,7 @@
 #include <ctype.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
+#include <glib/gstdio.h>
 
 #include "gtkfile.h"
 #include "gtkgame.h"
@@ -74,13 +75,14 @@ FileFormat file_format[] = {
 gint n_file_formats = G_N_ELEMENTS(file_format);
 
 static char *
-GetFilename (int CheckForCurrent)
+GetFilename (int CheckForCurrent, int format)
 {
   char *sz, tstr[15];
   time_t t;
 
   if (CheckForCurrent && szCurrentFileName && *szCurrentFileName)
-    sz = g_strdup_printf ("%s.sgf", szCurrentFileName);
+    sz = g_strdup_printf ("%s.%s", szCurrentFileName,
+		    file_format[format].extension);
   else
     {
       if (mi.nYear)
@@ -256,7 +258,7 @@ SaveCommon (guint f, gchar * prompt)
   static gint last_export_type = 0;
   static gchar *last_save_folder = NULL;
   static gchar *last_export_folder = NULL;
-  gchar *fn = GetFilename (TRUE);
+  gchar *fn = GetFilename (TRUE, last_export_format);
   gchar *folder = NULL;
 
   if (f == 1)
@@ -822,7 +824,7 @@ GTKSave (gpointer * p, guint n, GtkWidget * pw)
 static void
 BatchAnalyse( gpointer elem, gpointer user_data){
 
-	gchar *fn, *sg, *cmd = NULL;
+	gchar *cmd = NULL;
 	gchar *filename = (gchar *) elem;
 	FilePreviewData *fdp = ReadFilePreview(filename);
 
@@ -840,7 +842,7 @@ BatchAnalyse( gpointer elem, gpointer user_data){
 		cmd = g_strdup_printf ("import %s \"%s\"", fdp->format->clname, filename);
 	}
 	if (cmd){
-		char *fn = GetFilename(FALSE);	
+		char *fn = GetFilename(FALSE, 0);	
 		gchar *savecmd = g_strdup_printf("save match \"%s\"", fn);
 	   UserCommand (cmd);
        g_printf("Analysing file: %s ... \n", filename );
