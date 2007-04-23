@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.25 2007/04/20 16:02:45 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.26 2007/04/23 11:53:57 c_anthon Exp $
  */
 
 #include <config.h>
@@ -81,7 +81,7 @@ GetFilename (int CheckForCurrent, int format)
   time_t t;
 
   if (CheckForCurrent && szCurrentFileName && *szCurrentFileName)
-    sz = g_strdup_printf ("%s.%s", szCurrentFileName,
+    sz = g_strdup_printf ("%s%s", szCurrentFileName,
 		    file_format[format].extension);
   else
     {
