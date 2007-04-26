@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.314 2007/04/26 21:58:10 c_anthon Exp $
+ * $Id: eval.c,v 1.315 2007/04/26 22:05:41 c_anthon Exp $
  */
 
 #include "config.h"
@@ -272,7 +272,6 @@ static int cCache;
 volatile int fInterrupt = FALSE, fAction = FALSE;
 void ( *fnAction )( void ) = NULL, ( *fnTick )( void ) = NULL;
 static int iTick;
-int fEgyptian = FALSE;
 
 /* variation of backgammon used by gnubg */
 
@@ -3533,13 +3532,6 @@ static void SaveMoves( movelist *pml, int cMoves, int cPip, int anMoves[],
     int i, j;
     move *pm;
     unsigned char auch[ 10 ];
-
-	if (fEgyptian)
-	{	/* Check no point has more than 5 chequers */
-		for (i = 1; i < 25; i++)
-			if (anBoard[0][i] > 5 || anBoard[1][i] > 5)
-				return;
-	}
 
 	if( fPartial ) {
 	/* Save all moves, even incomplete ones */

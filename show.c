@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.222 2007/04/26 21:58:10 c_anthon Exp $
+ * $Id: show.c,v 1.223 2007/04/26 22:05:41 c_anthon Exp $
  */
 
 #include "config.h"
@@ -737,15 +737,6 @@ extern void CommandShowEvaluation( char *sz ) {
     ShowMoveFilters ( aamfEval );
     outputl( _("    Cube decisions:") );
     ShowEvalSetup ( &esEvalCube );
-
-}
-
-extern void CommandShowEgyptian( char *sz ) {
-
-    if ( fEgyptian )
-      outputl( _("Sessions are played with the Egyptian rule.") );
-    else
-      outputl( _("Sessions are played without the Egyptian rule.") );
 
 }
 

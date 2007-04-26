@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.50 2007/04/26 21:58:10 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.51 2007/04/26 22:05:41 c_anthon Exp $
  */
 
 #include <config.h>
@@ -63,7 +63,7 @@ typedef struct _optionswidget {
             *pwTutorEvalHint, *pwTutorEvalAnalysis;
   GtkAdjustment *padjCubeBeaver, *padjCubeAutomatic, *padjLength;
   GtkWidget *pwCubeUsecube, *pwCubeJacoby, *pwCubeInvert;
-  GtkWidget *pwGameClockwise, *pwGameEgyptian;
+  GtkWidget *pwGameClockwise;
   GtkWidget *apwVariations[ NUM_VARIATIONS ];
   GtkWidget *pwOutputMWC, *pwOutputGWC, *pwOutputMWCpst;
   GtkWidget *pwConfStart, *pwConfOverwrite;
@@ -303,15 +303,6 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
 
                                                                 
 
-    pow->pwGameEgyptian = gtk_check_button_new_with_label(
-	_("Forbid more than five chequers on a point"));
-    gtk_box_pack_start (GTK_BOX (pwvbox), pow->pwGameEgyptian,
-			FALSE, FALSE, 0);
-    gtk_tooltips_set_tip( ptt, pow->pwGameEgyptian,
-			  _("Don't allow players to place more than five "
-			    "chequers on a point.  This is sometimes known "
-			    "as the Egyptian rule."), NULL );
-    
     /* Cube options */
     pwp = gtk_alignment_new( 0, 0, 0, 0 );
     gtk_container_set_border_width( GTK_CONTAINER( pwp ), 4 );
@@ -1205,7 +1196,6 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
   CHECKUPDATE(pow->pwCubeInvert,fInvertMET, "set invert met %s")
 
   CHECKUPDATE(pow->pwGameClockwise,fClockwise, "set clockwise %s")
-  CHECKUPDATE(pow->pwGameEgyptian,fEgyptian, "set egyptian %s")
 
   for ( i = 0; i < NUM_VARIATIONS; ++i ) 
     if( gtk_toggle_button_get_active( 
@@ -1485,9 +1475,6 @@ OptionsSet( optionswidget *pow) {
   for ( i = 0; i < NUM_VARIATIONS; ++i )
     gtk_toggle_button_set_active ( GTK_TOGGLE_BUTTON( pow->apwVariations[ i ] ),
                                    bgvDefault == i );
-
-  gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pow->pwGameEgyptian ),
-                                fEgyptian );
 
   if (rngCurrent == RNG_MANUAL)
      gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pow->pwDiceManual ),

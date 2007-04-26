@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.272 2007/04/26 21:58:10 c_anthon Exp $
+ * $Id: set.c,v 1.273 2007/04/26 22:05:41 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2681,18 +2681,6 @@ extern void CommandSetTurn( char *sz ) {
 #endif /* USE_GTK */
     
     outputf( _("`%s' is now on roll.\n"), ap[ i ].szName );
-}
-
-extern void CommandSetEgyptian( char *sz ) {
-
-    if( SetToggle( "egyptian", &fEgyptian, sz,
-                   _("Will use the Egyptian rule."),
-                   _("Will not use the Egyptian rule.") ) ) {
-        outputl( _("Note: most likely the database and weights are not "
-                 "tuned for Egyptian play.\nRegenerating them with "
-                 "the rule set may give better results.") );
-        return;
-    } ;
 }
 
 extern void CommandSetJacoby( char *sz ) {
