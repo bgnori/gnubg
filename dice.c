@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.51 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: dice.c,v 1.52 2007/04/26 21:07:06 c_anthon Exp $
  */
 
 #include "config.h"
@@ -784,15 +784,9 @@ RNGSystemSeed( const rng rngx, void *p, int *pnSeed ) {
     }
 
     if( !f ) {
-#if HAVE_GETTIMEOFDAY
-	struct timeval tv;
-	struct timezone tz;
-
-	if( !gettimeofday( &tv, &tz ) )
+	    GTimeVal tv;
+	    g_get_current_time(&tv);
 	    n = tv.tv_sec ^ tv.tv_usec;
-	else
-#endif
-	    n = time( NULL );
     }
 
     InitRNGSeed( n, rngx, rngctx );
