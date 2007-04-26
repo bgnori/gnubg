@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.631 2007/04/20 16:02:45 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.632 2007/04/26 21:58:10 c_anthon Exp $
  */
 
 #include <config.h>
@@ -202,11 +202,9 @@ typedef enum _gnubgcommand {
     CMD_SET_MESSAGE_ON,
     CMD_SET_TURN_0,
     CMD_SET_TURN_1,
-    CMD_SHOW_BEAROFF,
     CMD_SHOW_CALIBRATION,
     CMD_SHOW_COPYING,
     CMD_SHOW_ENGINE,
-    CMD_SHOW_EPC,
     CMD_SHOW_EXPORT,
     CMD_SHOW_MARKETWINDOW,
     CMD_SHOW_MATCHEQUITYTABLE,
@@ -284,11 +282,9 @@ static char *aszCommands[ NUM_CMDS ] = {
     "set message on",
     NULL, /* set turn 0 */
     NULL, /* set turn 1 */
-    "show bearoff",
     "show calibration",
     "show copying",
     "show engine",
-    "show epc",
     "show export",
     "show marketwindow",
     "show matchequitytable",
@@ -1977,10 +1973,6 @@ GtkItemFactoryEntry aife[] = {
 	{ N_("/_Analyse/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_Analyse/_Race Theory"), 
           NULL, Command, CMD_SHOW_KLEINMAN, NULL },
-	{ N_("/_Analyse/Bearoff Databases"), NULL, Command, 
-          CMD_SHOW_BEAROFF, NULL },
-	{ N_("/_Analyse/Effective Pip Count"), NULL, Command, 
-          CMD_SHOW_EPC, NULL },
 	{ N_("/_Analyse/-"), NULL, NULL, 0, "<Separator>" },
 	{ N_("/_Analyse/_Market window"), NULL, Command, CMD_SHOW_MARKETWINDOW,
 	  NULL },

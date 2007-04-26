@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.271 2007/04/18 21:18:07 c_anthon Exp $
+ * $Id: set.c,v 1.272 2007/04/26 21:58:10 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4303,76 +4303,6 @@ CommandSetCubeEfficiencyRaceCoefficient( char *sz ) {
   else
     outputl( _("Cube efficiency race coefficient must be larger than 0.") );
 
-}
-
-
-extern void
-CommandSetBearoffSconyers15x15DVDEnable( char *sz ) {
-
-  SetToggle( "bearoff sconyers 15x15 dvd enable", 
-             &fSconyers15x15DVD, sz, 
-             _("Enable use of Hugh Sconyers' full bearoff "
-               "databases (browse only)"),
-             _("Disable use of Hugh Sconyers' full bearoff "
-               "databases (browse only)") );
-
-}
-
-extern void
-CommandSetBearoffSconyers15x15DVDPath( char *sz ) {
-
-  sz = NextToken( &sz );
-
-  if ( ! sz || ! *sz ) {
-    outputl ( _("You must specify a path.") );
-    return;
-  }
-
-  strcpy( szPathSconyers15x15DVD, sz );
-
-  outputf( _("Path to Hugh Sconyers' full bearoff databases on DVD is: %s\n"),
-           szPathSconyers15x15DVD );
-
-  /* update path in bearoffcontext */
-
-  if ( pbc15x15_dvd ) {
-    if ( pbc15x15_dvd->szDir )
-      free( pbc15x15_dvd->szDir );
-    pbc15x15_dvd->szDir = strdup( sz );
-  }
-  
-}
-
-extern void
-CommandSetBearoffSconyers15x15DiskEnable( char *sz ) {
-
-  CommandNotImplemented ( NULL );
-  SetToggle( "bearoff sconyers 15x15 disk enable", 
-             &fSconyers15x15Disk, sz, 
-             _("Enable use of Hugh Sconyers' full bearoff "
-               "databases for analysis and evaluations"),
-             _("Disable use of Hugh Sconyers' full bearoff "
-               "databases for analysis and evaluations") );
-
-}
-
-extern void
-CommandSetBearoffSconyers15x15DiskPath( char *sz ) {
-
-  CommandNotImplemented ( NULL );
-
-  sz = NextToken( &sz );
-
-  if ( ! sz || ! *sz ) {
-    outputl ( _("You must specify a path.") );
-    return;
-  }
-
-  strcpy( szPathSconyers15x15Disk, sz );
-
-  outputf( _("Path to Hugh Sconyers' full bearoff databases on disk is: %s\n"),
-           szPathSconyers15x15Disk );
-  
 }
 
 

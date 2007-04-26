@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.335 2007/04/09 22:45:33 c_anthon Exp $
+ * $Id: backgammon.h,v 1.336 2007/04/26 21:58:10 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -401,10 +401,6 @@ extern int nThreadPriority;
 extern int fCheat;
 extern unsigned int afCheatRoll[ 2 ];
 extern int fGotoFirstGame;
-extern int fSconyers15x15DVD;
-extern char szPathSconyers15x15DVD[ BIG_PATH ];      
-extern int fSconyers15x15Disk;
-extern char szPathSconyers15x15Disk[ BIG_PATH ];      
 extern char szLang[ 32 ];   
 
 extern char *szCurrentFileName, *szCurrentFolder;
@@ -819,10 +815,6 @@ extern void CommandAccept( char * ),
     CommandSetAutoGame( char * ),
     CommandSetAutoMove( char * ),
     CommandSetAutoRoll( char * ),
-    CommandSetBearoffSconyers15x15DVDEnable( char * ),
-    CommandSetBearoffSconyers15x15DVDPath( char * ),
-    CommandSetBearoffSconyers15x15DiskEnable( char * ),
-    CommandSetBearoffSconyers15x15DiskPath( char * ),
     CommandSetBoard( char * ),
     CommandSetBeavers( char * ),
     CommandSetBrowser( char * ),
@@ -1197,6 +1189,11 @@ extern void CommandAccept( char * ),
     CommandSwapPlayers ( char * ),
     CommandTake( char * );
 
+extern void show_kleinman( int an[2][25], char *sz);
+extern void show_8912(int anBoard[2][25], char *sz);
+extern void show_keith( int an[2][25], char *sz);
+extern void show_bearoff( int an[2][25], char *sz);
+extern void show_thorp( int an[2][25], char *sz);
 
 extern int fTutor, fTutorCube, fTutorChequer, nTutorSkillCurrent;
 

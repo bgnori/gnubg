@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.13 2006/06/22 22:50:29 Superfly_Jon Exp $
+ * $Id: bearoff.h,v 1.14 2007/04/26 21:58:10 c_anthon Exp $
  */
 
 #ifndef _BEAROFF_H_
@@ -27,7 +27,6 @@
 typedef enum _bearoffcreator {
   BEAROFF_GNUBG,
   BEAROFF_EXACT_BEAROFF,
-  BEAROFF_SCONYERS,
   BEAROFF_UNKNOWN,
   NUM_BEAROFFS
 } bearoffcreator;
@@ -37,15 +36,6 @@ typedef enum _bearofftype {
   BEAROFF_TWOSIDED,
   BEAROFF_HYPERGAMMON
 } bearofftype;
-
-typedef enum _hsdatabase {
-  HS_15x15_ON_DISK,
-  HS_15x15_ON_DVDS,
-  NUM_HSS
-} hsdatabase;
-
-typedef char *diskjockeyfunc( const char *szMsg, const int fChange,
-                              const char *szMissingFile );
 
 typedef struct _bearoffcontext {
 
@@ -72,11 +62,6 @@ typedef struct _bearoffcontext {
   unsigned char *puchA;
   /* two sided dbs */
   int fCubeful;    /* cubeful equities included */
-  /* Hugh Sconyers' databases */
-  hsdatabase hsdb; /* which of Hugh's databases */
-  diskjockeyfunc *pfDJ; /* pointer to function */
-  int nCurrentFile;/* the number of the current file */
-
   void *p;        /* pointer to data */
 
   hash *ph;        /* cache */
@@ -92,9 +77,6 @@ enum _bearoffoptions {
   BO_MUST_BE_ONE_SIDED = 2,
   BO_MUST_BE_TWO_SIDED = 4,
   BO_HEURISTIC         = 8,
-  BO_SCONYERS_15x15    = 16,
-  BO_ON_DISK           = 32, /* database must be on disk */
-  BO_ON_DVDS           = 64  /* database may be on DVD */
 };
 
 extern bearoffcontext *
