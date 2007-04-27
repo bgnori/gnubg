@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.696 2007/04/27 08:53:10 c_anthon Exp $
+ * $Id: gnubg.c,v 1.697 2007/04/27 12:58:26 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5174,12 +5174,12 @@ extern void CommandSaveSettings( char *szParam ) {
 		    ((TutorSkill == SKILL_VERYBAD) ? "very bad" :
 		     (TutorSkill == SKILL_BAD) ? "bad" : "doubtful"),
 		    fConfirm ? "on" : "off",
-		    fConfirmSave ? "on" : "off",
-		    fCubeUse ? "on" : "off",
+                    fConfirmSave ? "on" : "off",
+                    fCubeUse ? "on" : "off",
 #if USE_GTK
-		    nDelay
+                    nDelay,
 #endif
-			    );
+                    fDisplay ? "on" : "off");
 
     SaveEvalSetupSettings ( pf, "set evaluation chequerplay", &esEvalChequer );
     SaveEvalSetupSettings ( pf, "set evaluation cubedecision", &esEvalCube );
