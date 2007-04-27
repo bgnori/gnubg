@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.273 2007/04/26 22:05:41 c_anthon Exp $
+ * $Id: set.c,v 1.274 2007/04/27 08:53:11 c_anthon Exp $
  */
 
 #include "config.h"
@@ -77,9 +77,6 @@
 
 #include "sound.h"
 
-#if USE_TIMECONTROL
-#include "timecontrol.h"
-#endif
 #if USE_BOARD3D
 #include "fun3d.h"
 #endif
@@ -2668,10 +2665,6 @@ extern void CommandSetTurn( char *sz ) {
     fNextTurn = FALSE;
     ms.anDice[ 0 ] = ms.anDice[ 1 ] = 0;
 
-#if USE_TIMECONTROL
-    CheckGameClock(&ms, 0);
-    HitGameClock(&ms);
-#endif
 
     UpdateSetting( &ms.fTurn );
 

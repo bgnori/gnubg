@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.52 2007/03/21 23:37:11 c_anthon Exp $
+ * $Id: sound.c,v 1.53 2007/04/27 08:53:11 c_anthon Exp $
  */
 
 #include <config.h>
@@ -63,10 +63,6 @@ char *aszSoundDesc[ NUM_SOUNDS ] = {
   N_("Bot wins game"),
   N_("Bot wins match"),
   N_("Analysis is finished")
-#if USE_TIMECONTROL
-  , N_("Human time expires")
-  , N_("Bot time expires")
-#endif
 };
 
 char *aszSoundCommand[ NUM_SOUNDS ] = {
@@ -87,10 +83,6 @@ char *aszSoundCommand[ NUM_SOUNDS ] = {
   "botwinsgame",
   "botwinsmatch",
   "analysisfinished"
-#if USE_TIMECONTROL
-  , "humantimeout"
-  , "bottimeout"
-#endif
 };
 
 int fSound = TRUE;
@@ -227,10 +219,6 @@ extern char *GetDefaultSoundFile(int sound)
   "sounds/gameover.wav",
   "sounds/matchover.wav",
   "sounds/fanfare.wav"
-#if USE_TIMECONTROL
-  , "sounds/humantimeout.wav"
-  , "sounds/bottimeout.wav"
-#endif
   };
 
 	return aszDefaultSound[sound];

@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.173 2007/04/26 21:58:10 c_anthon Exp $
+## $Id: Makefile.am,v 1.174 2007/04/27 08:53:10 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -34,10 +34,6 @@ gnubg_SOURCES = credits.h credits.c copying.c backgammon.h gnubg.c \
 
 if USE_MULTITHREAD
 gnubg_SOURCES +=  multithread.c multithread.h
-endif
-
-if USE_TIMECONTROL
-gnubg_SOURCES += timecontrol.h timecontrol.c tctutorial.h
 endif
 
 if COMPILE_BR1

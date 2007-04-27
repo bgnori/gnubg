@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.63 2007/04/09 22:45:33 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.64 2007/04/27 08:53:10 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1574,21 +1574,6 @@ PyGameStats(const statcontext* sc, const int fIsMatch, const int nMatchTo)
       DictSetItemSteal(p[side], "dice", d);
     }
   }
-
-#if USE_TIMECONTROL
-  {
-     int side;
-     for ( side = 0; side < 2; ++side ) {
-        PyObject *d =
-            Py_BuildValue( "{s:i,s:f,s:f}",
-                           "time-penalty", sc->anTimePenalties[ side ],
-                           "time-penalty-skill", sc->aarTimeLoss[ side ][ 0 ],
-                           "time-penalty-cost", sc->aarTimeLoss[ side ][ 1 ] );
-
-         DictSetItemSteal( p[ side ], "time", d );
-      }
-  }
-#endif /* USE_TIMECONTROL */
 
   /* advantage */
 

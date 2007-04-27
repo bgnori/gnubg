@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.78 2007/04/08 16:46:20 c_anthon Exp $
+ * $Id: text.c,v 1.79 2007/04/27 08:53:11 c_anthon Exp $
  */
 
 #include "config.h"
@@ -36,9 +36,6 @@
 #include "positionid.h"
 #include "matchid.h"
 #include "record.h"
-#if USE_TIMECONTROL
-#include "timecontrol.h"
-#endif
 
 #include <glib/gi18n.h>
 
@@ -55,12 +52,7 @@ printTextBoard ( FILE *pf, const matchstate *pms ) {
   char szBoard[ 2048 ];
   char sz[ 32 ], szCube[ 32 ], szPlayer0[ MAX_NAME_LEN + 3 ], szPlayer1[ MAX_NAME_LEN + 3 ],
     szScore0[ 35 ], szScore1[ 35 ], szMatch[ 35 ];
-#if USE_TIMECONTROL
-    char szTime0[20], szTime1[20];
-    char *apch[ 9 ] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
-#else
     char *apch[ 7 ] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
-#endif
   unsigned int anPips[ 2 ];
 
   memcpy ( anBoard, pms->anBoard, sizeof ( anBoard ) );
@@ -124,13 +116,6 @@ printTextBoard ( FILE *pf, const matchstate *pms ) {
     }
   }
     
-#if USE_TIMECONTROL
-  apch[7] = apch[8] = 0;
-  if (ms.gc.pc[0].tc.timing != TC_NONE)
-    apch[7] = FormatClock(&ms.tvTimeleft[0], szTime0);
-  if (ms.gc.pc[1].tc.timing != TC_NONE)
-    apch[8] = FormatClock(&ms.tvTimeleft[1], szTime1);
-#endif
 
 
   if( pms->fResigned )
@@ -263,7 +248,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.78 $";
+  const char szVersion[] = "$Revision: 1.79 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );

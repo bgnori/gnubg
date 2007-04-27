@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.223 2007/04/26 22:05:41 c_anthon Exp $
+ * $Id: show.c,v 1.224 2007/04/27 08:53:11 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2353,19 +2353,6 @@ CommandShowMatchResult( char *sz ) {
             
 }
 
-#if USE_TIMECONTROL
-
-#include "tctutorial.h"
-
-extern void CommandShowTCTutorial( char *sz ) {
-#if USE_GTK
-    if ( fX )	/* This should be converted to texi and added to the manual */
-	ShowList( aszTcTutorial, _("Time Control Tutorial"), NULL );
-    else
-#endif
-	ShowPaged(aszTcTutorial);
-}
-#endif
 
 
 extern void

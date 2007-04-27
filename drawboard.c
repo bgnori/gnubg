@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.39 2006/12/06 23:12:51 c_anthon Exp $
+ * $Id: drawboard.c,v 1.40 2007/04/27 08:53:10 c_anthon Exp $
  */
 
 #include "config.h"
@@ -137,12 +137,6 @@ static char *DrawBoardStd( char *sz, int anBoard[ 2 ][ 25 ], int fRoll,
         if( y < 2 && asz[ y + 1 ] )
             for( pchIn = asz[ y + 1 ]; *pchIn; pchIn++ )
                 *pch++ = *pchIn;
-#if USE_TIMECONTROL
-	if ((y==3) && asz[7])
-            for( pchIn = asz[ 7 ]; *pchIn; pchIn++ )
-                *pch++ = *pchIn;
-#endif
-
         *pch++ = '\n';
     }
 
@@ -256,11 +250,6 @@ static char *DrawBoardStd( char *sz, int anBoard[ 2 ][ 25 ], int fRoll,
             for( pchIn = asz[ 5 - y ]; *pchIn; pchIn++ )
                 *pch++ = *pchIn;
         
-#if USE_TIMECONTROL
-	if ((y==3) && asz[8])
-            for( pchIn = asz[ 8 ]; *pchIn; pchIn++ )
-                *pch++ = *pchIn;
-#endif
         *pch++ = '\n';
     }
 

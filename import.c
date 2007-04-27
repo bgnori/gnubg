@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.116 2007/03/21 23:37:11 c_anthon Exp $
+ * $Id: import.c,v 1.117 2007/04/27 08:53:11 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2694,19 +2694,6 @@ static void ImportTMGGame( FILE *pf, int i, int nLength, int n0, int n1,
 
         case TMG_OUT_OF_TIME:
 	case TMG_OUT_OF_TIME_1:
-#if USE_TIMECONTROL
-          pmr = NewMoveRecord();
-          pmr->mt = MOVE_TIME;
-          pmr->fPlayer = fPlayer;
-          /* pmr->t.tl[ 0 ] = pmr->t.tl[ 1 ] = 0; */
-          pmr->t.nPoints = ms.nMatchTo;
-
-          AddMoveRecord( pmr );
-
-          goto finished;
-#else
-          /* ignore ??? */
-#endif /* USE_TIMECONTROL */
           break;
 
         default:

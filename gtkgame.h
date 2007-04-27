@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.113 2007/04/18 21:18:07 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.114 2007/04/27 08:53:11 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -168,11 +168,6 @@ GTKReadNumber( char *szTitle, char *szPrompt, int nDefault,
 
 extern void Undo();
 
-#if USE_TIMECONTROL
-extern void GTKAddTimeControl( char *szName) ;
-extern void GTKRemoveTimeControl( char *szName) ;
-extern void GTKCheckTimeControl( const char *szName) ;
-#endif
 
 extern void SetToolbarStyle(int value);
 
