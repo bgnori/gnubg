@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.37 2007/04/08 16:46:20 c_anthon Exp $
+ * $Id: latex.c,v 1.38 2007/04/28 23:20:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -507,10 +507,6 @@ static void ExportGameLaTeX( FILE *pf, list *plGame ) {
 	    /* ignore */
 	    break;
 
-	case MOVE_TIME:
-		/* ignore */
-		break;
-	    
 	case MOVE_SETBOARD:
 	case MOVE_SETCUBEVAL:
 	case MOVE_SETCUBEPOS:

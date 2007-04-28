@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.288 2007/04/27 08:53:11 c_anthon Exp $
+ * $Id: play.c,v 1.289 2007/04/28 23:20:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -452,8 +452,6 @@ printf("ApplyMoveRecord(%d, %d.%d): state:%d, turn: %d, ts0: (%d.%d), ts1: (%d.%
 	pms->fDoubled = FALSE;
 	pms->fTurn = pms->fMove;
 	break;
-    case MOVE_TIME:
-      break;
     }
 
 }
@@ -631,7 +629,6 @@ fAddingMoveRecord=1;
     case MOVE_SETBOARD:
     case MOVE_SETCUBEVAL:
     case MOVE_SETCUBEPOS:
-    case MOVE_TIME:
 	break;
 	
     default:

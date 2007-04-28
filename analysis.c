@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.174 2007/04/27 08:53:10 c_anthon Exp $
+ * $Id: analysis.c,v 1.175 2007/04/28 23:20:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1736,7 +1736,6 @@ updateStatisticsMove( const moverecord* pmr,
 
   case MOVE_TAKE:
   case MOVE_DROP:
-  case MOVE_TIME:
 
     updateStatcontext ( psc, pmr, pms, plGame );
     break;

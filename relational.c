@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.29 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: relational.c,v 1.30 2007/04/28 23:20:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -355,7 +355,6 @@ int MoveAnalysed(moverecord *pmr, matchstate *pms, list *plGame,
 	GetMatchStateCubeInfo( &ci, pms );
 	break;
 
-    case MOVE_TIME: 
     case MOVE_SETBOARD:	  
     case MOVE_SETCUBEVAL:
     case MOVE_SETCUBEPOS:

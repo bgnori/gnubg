@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.697 2007/04/27 12:58:26 c_anthon Exp $
+ * $Id: gnubg.c,v 1.698 2007/04/28 23:20:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4148,9 +4148,6 @@ static void ExportGameJF( FILE *pf, list *plGame, int iGame,
 	case MOVE_SETDICE:
 	    /* ignore */
 	    break;
-	case MOVE_TIME:
-	    /* ignore */
-	    break;
 	case MOVE_SETBOARD:
 	case MOVE_SETCUBEVAL:
 	case MOVE_SETCUBEPOS:
@@ -7030,7 +7027,6 @@ swapGame ( list *plGame ) {
     case MOVE_NORMAL:
     case MOVE_RESIGN:
     case MOVE_SETDICE:
-    case MOVE_TIME:
 
       pmr->fPlayer = ! pmr->fPlayer;
       break;

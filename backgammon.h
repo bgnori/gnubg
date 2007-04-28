@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.337 2007/04/27 08:53:10 c_anthon Exp $
+ * $Id: backgammon.h,v 1.338 2007/04/28 23:20:23 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -88,7 +88,6 @@ typedef enum _movetype {
     MOVE_SETDICE,
     MOVE_SETCUBEVAL,
     MOVE_SETCUBEPOS,
-    MOVE_TIME
 } movetype;
 
 
