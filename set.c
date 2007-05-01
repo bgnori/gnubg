@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.274 2007/04/27 08:53:11 c_anthon Exp $
+ * $Id: set.c,v 1.275 2007/05/01 22:04:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2944,7 +2944,7 @@ extern void CommandSetMET( char *sz ) {
     return;
   }
 
-  InitMatchEquity ( sz, szDataDirectory );
+  InitMatchEquity ( sz );
   /* Cubeful evaluation get confused withh entries from another table */
   EvalCacheFlush();
 

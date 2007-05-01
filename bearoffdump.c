@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffdump.c,v 1.5 2007/02/11 21:20:31 c_anthon Exp $
+ * $Id: bearoffdump.c,v 1.6 2007/05/01 22:04:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -122,7 +122,7 @@ main( int argc, char **argv ) {
     printf( "Position number : %d\n", id );
   }
 
-  if (  ! ( pbc = BearoffInit ( filename, NULL, BO_NONE, NULL ) ) ) {
+  if (  ! ( pbc = BearoffInit ( filename, BO_NONE, NULL ) ) ) {
     printf( "Failed to initialise bearoff database %s\n", filename );
     exit(-1);
   }

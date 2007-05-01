@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.141 2007/04/26 21:58:10 c_anthon Exp $
+ * $Id: eval.h,v 1.142 2007/05/01 22:04:51 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -64,11 +64,6 @@ typedef enum {
   OUTPUT_DROP,
   N_CUBEFUL_OUTPUTS
 } CubefulOutputs;
-
-#define GNUBG_WEIGHTS "gnubg.weights"
-#define GNUBG_WEIGHTS_BINARY "gnubg.wd"
-#define GNUBG_BEAROFF "gnubg.bd"
-#define GNUBG_BEAROFF_OS "gnubg_os.bd"
 
 /* A trivial upper bound on the number of (complete or incomplete)
  * legal moves of a single roll: if all 15 chequers are spread out,
@@ -361,7 +356,7 @@ typedef enum  {
 extern int
 EvalInitialise( char *szWeights, char *szWeightsBinary,
 		int fNoBearoff, 
-                const char *szDir, int nSize,
+                int nSize,
 		void (*pfProgress)( int ) );
 
 extern int

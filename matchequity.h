@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.h,v 1.19 2006/07/04 16:46:15 c_anthon Exp $
+ * $Id: matchequity.h,v 1.20 2007/05/01 22:04:52 c_anthon Exp $
  */
 
 
@@ -79,7 +79,7 @@ getMEAtScore( const int nScore0, const int nScore1, const int nMatchTo,
 /* Initialise match equity table */
 
 void
-InitMatchEquity ( const char *szFileName, const char *szDir );
+InitMatchEquity ( const char *szFileName );
 
 /* Get double points */
 

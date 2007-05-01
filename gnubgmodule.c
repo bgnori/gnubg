@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.64 2007/04/27 08:53:10 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.65 2007/05/01 22:04:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -31,7 +31,6 @@
 
 #include "eval.h"
 #include "matchequity.h"
-#include "path.h"
 #include "positionid.h"
 #include "analysis.h"
 #include "md5.h"
@@ -2402,7 +2401,7 @@ PyMethodDef gnubgMethods[] = {
 };
 
 extern void
-PythonInitialise( const char *szDir ) {
+PythonInitialise() {
 
   char *pch;
   static char workingDir[BIG_PATH];

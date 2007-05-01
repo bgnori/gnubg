@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.13 2007/03/17 09:05:13 Superfly_Jon Exp $
+* $Id: font3d.c,v 1.14 2007/05/01 22:04:52 c_anthon Exp $
 */
 
 #include "inc3d.h"
@@ -90,7 +90,7 @@ int BuildFont3d(BoardData3d* bd3d)
 
 	free(bd3d->numberFont);
 	bd3d->numberFont = (OGLFont*)malloc(sizeof(OGLFont));
-	file = PathSearch(FONT_VERA, szDataDirectory);
+	file = g_build_filename(PKGDATADIR, FONT_VERA, NULL);
 	if (!CreateOGLFont(ftLib, bd3d->numberFont, file, FONT_PITCH, FONT_SIZE, FONT_HEIGHT_RATIO))
 	{
 		g_print("Failed to create font %s\n", file);
@@ -100,7 +100,7 @@ int BuildFont3d(BoardData3d* bd3d)
 
 	free(bd3d->cubeFont);
 	bd3d->cubeFont = (OGLFont*)malloc(sizeof(OGLFont));
-	file = PathSearch(FONT_VERA_SERIF_BOLD, szDataDirectory);
+	file = g_build_filename(PKGDATADIR, FONT_VERA_SERIF_BOLD, NULL);
 	if (!CreateOGLFont(ftLib, bd3d->cubeFont, file, CUBE_FONT_PITCH, CUBE_FONT_SIZE, CUBE_FONT_HEIGHT_RATIO))
 	{
 		g_print("Failed to create font %s\n", file);

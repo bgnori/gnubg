@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.633 2007/04/27 08:53:11 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.634 2007/05/01 22:04:51 c_anthon Exp $
  */
 
 #include <config.h>
@@ -62,7 +62,6 @@
 #include "gtkfile.h"
 #include "matchequity.h"
 #include "openurl.h"
-#include "path.h"
 #include "positionid.h"
 #include "record.h"
 #include "sound.h"
@@ -2013,7 +2012,6 @@ extern void InitGTK( int *argc, char ***argv )
 
     gtk_rc_add_default_file( PKGDATADIR "/gnubg.gtkrc" );
     gtk_rc_add_default_file( sz );
-    gtk_rc_add_default_file( "gnubg.gtkrc" );
     g_free(sz);
 
     fX = gtk_init_check( argc, argv ); 
@@ -8983,17 +8981,17 @@ GtkWidget *GetFlagWidget(char *language, char *langCode, char *flagfilename)
 	if (flagfilename)
 	{
 
-                file = PathSearch(flagfilename, szDataDirectory);
+                file = g_build_filename(PKGDATADIR, flagfilename, NULL);
 		pixbuf = gdk_pixbuf_new_from_file(file, &pix_error);
 
 		if (pix_error)
-			g_print("Failed to open flag: %s\n", file);
+			outputerrf("Failed to open flag: %s\n", file);
 		else
 		{
 			image = gtk_image_new_from_pixbuf(pixbuf);
 			gtk_box_pack_start (GTK_BOX (vbox), image, FALSE, FALSE, 0);
 		}
-                free(file);
+                g_free(file);
 	}
 	lab1 = gtk_label_new(NULL);
 	gtk_widget_set_size_request(lab1, 80, -1);

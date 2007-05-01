@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.10 2005/02/10 10:31:12 Superfly_Jon Exp $
+ * $Id: gnubgmodule.h,v 1.11 2007/05/01 22:04:51 c_anthon Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
@@ -35,7 +35,7 @@
 #include "config.h"
 
 extern void
-PythonInitialise( const char *szDir );
+PythonInitialise();
 
 extern void
 PythonShutdown();

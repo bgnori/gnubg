@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.14 2007/04/26 21:58:10 c_anthon Exp $
+ * $Id: bearoff.h,v 1.15 2007/05/01 22:04:51 c_anthon Exp $
  */
 
 #ifndef _BEAROFF_H_
@@ -48,7 +48,6 @@ typedef struct _bearoffcontext {
   int nChequers;  /* number of chequers for one-sided database */
   int fInMemory;  /* Is database entirely read into memory? */
   int fMalloc;    /* is data malloc'ed? */
-  char *szDir;    /* directory */
   char *szFilename; /* filename */
 
   /* one sided dbs */
@@ -80,8 +79,7 @@ enum _bearoffoptions {
 };
 
 extern bearoffcontext *
-BearoffInit ( const char *szFilename, const char *szDir,
-              const int bo, void (*p)() );
+BearoffInit ( const char *szFilename, const int bo, void (*p)() );
 
 extern bearoffcontext *
 BearoffInitBuiltin ( void );

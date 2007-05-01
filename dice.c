@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.52 2007/04/26 21:07:06 c_anthon Exp $
+ * $Id: dice.c,v 1.53 2007/05/01 22:04:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -97,7 +97,6 @@
 #include "isaac.h"
 #include <glib/gi18n.h>
 #include "external.h"
-#include "path.h"
 
 #if USE_GTK
 #include "gtkgame.h"
@@ -1173,7 +1172,7 @@ OpenDiceFile( void *p, const char *sz ) {
 
   strcpy( rngctx->szDiceFilename, sz );
 
-  return ( rngctx->hDice = PathOpen( sz, NULL, 0 ) );
+  return ( rngctx->hDice = open(sz, O_RDONLY));
 
 }
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.224 2007/04/27 08:53:11 c_anthon Exp $
+ * $Id: show.c,v 1.225 2007/05/01 22:04:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -46,7 +46,6 @@
 #include "positionid.h"
 #include "boarddim.h"
 #include "credits.h"
-#include "path.h"
 
 #if USE_GTK
 #include "gtkboard.h"
@@ -2081,10 +2080,10 @@ CommandShowSound ( char *sz ) {
 	  char *sound = GetSoundFile(i);
     if (!*sound)
       outputf ( _("   %-30.30s : no sound\n"),
-                gettext ( aszSoundDesc[ i ] ) );
+                gettext ( sound_description[ i ] ) );
     else
       outputf ( _("   %-30.30s : \"%s\"\n"),
-                gettext ( aszSoundDesc[ i ] ),
+                gettext ( sound_description[ i ] ),
                 sound);
   }
 }
@@ -2355,14 +2354,16 @@ CommandShowMatchResult( char *sz ) {
 
 
 
-extern void
-CommandShowManualWeb (char *sz)
+extern void CommandShowManualWeb (char *sz)
 {
-  OpenURL (PathSearch ("doc/gnubg.html", szDataDirectory));
+	char *path = g_build_filename(PKGDATADIR, "doc", "gnubg.html", NULL);
+	OpenURL (path);
+	g_free(path);
 }
 
-extern void
-CommandShowManualAbout (char *sz)
+extern void CommandShowManualAbout (char *sz)
 {
-  OpenURL (PathSearch ("doc/allabout.html", szDataDirectory));
+	char *path = g_build_filename(PKGDATADIR, "doc", "allabout.html", NULL);
+	OpenURL (path);
+	g_free(path);
 }

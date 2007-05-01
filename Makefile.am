@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.174 2007/04/27 08:53:10 c_anthon Exp $
+## $Id: Makefile.am,v 1.175 2007/05/01 22:04:51 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -24,7 +24,7 @@ gnubg_SOURCES = credits.h credits.c copying.c backgammon.h gnubg.c \
 		 latex.c postscript.c html.c export.h matchid.c \
 		 matchid.h text.c export.c sound.h record.c record.h \
 		 osr.c osr.h bearoffgammon.c bearoffgammon.h bearoff.c \
-		 bearoff.h path.c path.h \
+		 bearoff.h \
 		 render.c render.h htmlimages.c speed.c \
 		 renderprefs.c renderprefs.h boardpos.c boardpos.h \
 		 progress.c progress.h format.c format.h formatgs.c \
@@ -70,7 +70,7 @@ endif
 UTILSOURCES = eval.h eval.c positionid.h positionid.c \
 	pub_eval.c matchequity.c matchequity.h matchid.h matchid.c \
 	getopt.c getopt.h getopt1.c osr.c osr.h \
-        bearoffgammon.c bearoffgammon.h bearoff.c bearoff.h path.c path.h \
+        bearoffgammon.c bearoffgammon.h bearoff.c bearoff.h \
 	format.c format.h mec.h mec.c
 
 makebearoff_SOURCES = makebearoff.c $(UTILSOURCES)

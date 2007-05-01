@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.178 2007/04/28 23:20:23 c_anthon Exp $
+ * $Id: html.c,v 1.179 2007/05/01 22:04:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -36,7 +36,6 @@
 #include "positionid.h"
 #include "matchid.h"
 #include "record.h"
-#include "path.h"
 #include "formatgs.h"
 
 #include <glib/gi18n.h>
@@ -161,7 +160,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.178 2007/04/28 23:20:23 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.179 2007/05/01 22:04:52 c_anthon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1841,7 +1840,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.178 $";
+  const char szVersion[] = "$Revision: 1.179 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1921,7 +1920,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.178 $";
+  const char szVersion[] = "$Revision: 1.179 $";
   int iMajor, iMinor;
   char *pc;
 

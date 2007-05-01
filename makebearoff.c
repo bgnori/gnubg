@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.39 2007/04/08 16:46:20 c_anthon Exp $
+ * $Id: makebearoff.c,v 1.40 2007/05/01 22:04:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1512,9 +1512,9 @@ usage ( char *arg0 ) {
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.39 $\n" );
+  printf ( "makebearoff $Revision: 1.40 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.39 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.40 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1658,7 +1658,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.39 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.40 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1720,7 +1720,7 @@ extern int main( int argc, char **argv ) {
     }
 
     if ( szOldBearoff &&
-         ! ( pbc = BearoffInit ( szOldBearoff, NULL, BO_NONE, NULL ) ) ) {
+         ! ( pbc = BearoffInit ( szOldBearoff, BO_NONE, NULL ) ) ) {
       dsplerr ( _("Error initialising old bearoff database!\n" ) );
       exit( 2 );
     }
@@ -1786,7 +1786,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.39 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.40 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"
@@ -1814,7 +1814,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf(127, "Initialising old bearoff database." );
 #endif
     if ( szOldBearoff &&
-         ! ( pbc = BearoffInit ( szOldBearoff, NULL, BO_NONE, NULL ) ) ) {
+         ! ( pbc = BearoffInit ( szOldBearoff, BO_NONE, NULL ) ) ) {
       dsplerr ( _("Error initialising old bearoff database!\n" ) );
       exit( 2 );
     }

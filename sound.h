@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sound.h,v 1.14 2007/04/27 08:53:11 c_anthon Exp $
+ * $Id: sound.h,v 1.15 2007/05/01 22:04:52 c_anthon Exp $
  */
 
 #ifndef _SOUND_H_
@@ -48,8 +48,8 @@ typedef enum _gnubgsound {
   NUM_SOUNDS
 } gnubgsound;
 
-extern char *aszSoundDesc[ NUM_SOUNDS ];
-extern char *aszSoundCommand[ NUM_SOUNDS ];
+extern char *sound_description[ NUM_SOUNDS ];
+extern char *sound_command[ NUM_SOUNDS ];
 
 extern char szSoundCommand[ 80 ];
 
