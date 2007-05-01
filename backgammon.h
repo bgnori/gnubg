@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.339 2007/05/01 22:04:51 c_anthon Exp $
+ * $Id: backgammon.h,v 1.340 2007/05/01 23:15:51 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1090,5 +1090,10 @@ ShowEPC( int anBoard[ 2 ][ 25 ] );
 
 extern void SetupLanguage(char *newLangCode);
 extern void SaveRolloutSettings ( FILE *pf, char *sz, rolloutcontext *prc );
+
+#ifdef WIN32
+extern char * getInstallDir( void );
+#define PKGDATADIR getInstallDir()
+#endif
 
 #endif

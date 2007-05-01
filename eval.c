@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.317 2007/05/01 23:15:51 c_anthon Exp $
+ * $Id: eval.c,v 1.318 2007/05/01 23:20:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -817,17 +817,14 @@ extern int EvalInitialise(char *szWeights, char *szWeightsBinary,
 	if( !pbc1 )
 	    pbc1 = BearoffInit( gnubg_bearoff_os, BO_IN_MEMORY, NULL );
 	g_free(gnubg_bearoff_os);
-      g_free(gnubg_bearoff_os);
 
 	if( !pbc1 )
 	    pbc1 = BearoffInit ( NULL, BO_HEURISTIC, pfProgress );
 	
 	/* read two-sided db from gnubg.bd */
 	gnubg_bearoff = g_build_filename(PKGDATADIR, "gnubg_ts0.bd", NULL);
-      gnubg_bearoff = g_build_filename(PKGDATADIR, "gnubg_ts0.bd", NULL);
-	g_free(gnubg_bearoff);
 	pbc2 = BearoffInit ( gnubg_bearoff, BO_IN_MEMORY | BO_MUST_BE_TWO_SIDED, NULL );
-      g_free(gnubg_bearoff);
+        g_free(gnubg_bearoff);
 	
 	if ( ! pbc2 )
 	    fprintf ( stderr, 

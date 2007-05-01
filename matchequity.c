@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.65 2007/05/01 22:04:52 c_anthon Exp $
+* $Id: matchequity.c,v 1.66 2007/05/01 23:15:52 c_anthon Exp $
 */
 
 #include "config.h"
@@ -34,7 +34,6 @@
 #include <stdarg.h>
 
 #include "list.h"
-#include "path.h"
 #include "mec.h"
 
 #if HAVE_LIBXML2
@@ -55,6 +54,7 @@ extern double erf( double x );
 
 #include "eval.h"
 #include "matchequity.h"
+#include "backgammon.h"
 #include <glib/gi18n.h>
 
 

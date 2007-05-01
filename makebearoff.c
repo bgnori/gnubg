@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.40 2007/05/01 22:04:52 c_anthon Exp $
+ * $Id: makebearoff.c,v 1.41 2007/05/01 23:15:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -45,6 +45,22 @@ DlgProc (HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);
 
 HWND hdlg;
 int CancelPressed = FALSE;
+
+extern char * getInstallDir( void ) {
+
+  char buf[_MAX_PATH];
+  char *p;
+  static char *ret = NULL;
+  if (ret)
+	  return (ret);
+  GetModuleFileName(NULL, buf, sizeof(buf));
+  p = MAX(strrchr(buf, '/'), strrchr(buf, '\\'));
+  if (p)
+	  *p = '\0';
+  ret = g_strdup(buf);
+  return ret;
+}
+
 #endif
 
 typedef struct _xhashent {
@@ -1512,9 +1528,9 @@ usage ( char *arg0 ) {
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.40 $\n" );
+  printf ( "makebearoff $Revision: 1.41 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.40 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.41 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1658,7 +1674,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.40 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.41 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1786,7 +1802,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.40 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.41 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"

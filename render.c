@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.59 2007/05/01 22:04:52 c_anthon Exp $
+ * $Id: render.c,v 1.60 2007/05/01 23:15:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2038,7 +2038,7 @@ extern void RenderCubeFaces( renderdata *prd, unsigned char *puch,
     int fFreetype = FALSE;
     char *file;
     
-    file = g_build_filename(PKGDATADIR, FONT_VERA_SERIF_BOLD, FONT_VERA, NULL);
+    file = g_build_filename(PKGDATADIR, FONT_VERA_SERIF_BOLD, NULL);
     if( !FT_New_Face( ftl, file, 0, &ftf ) &&
 	!FT_Set_Pixel_Sizes( ftf, 0, 4.5 * prd->nSize ) ) {
 	fFreetype = TRUE;
