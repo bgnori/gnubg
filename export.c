@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.40 2007/03/15 22:10:57 c_anthon Exp $
+ * $Id: export.c,v 1.41 2007/05/04 08:23:07 c_anthon Exp $
  */
 
 #include "config.h"
@@ -25,6 +25,7 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
+#include <string.h>
 
 #if HAVE_LIBPNG
 #include <png.h>

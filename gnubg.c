@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.700 2007/05/01 23:15:51 c_anthon Exp $
+ * $Id: gnubg.c,v 1.701 2007/05/04 08:23:07 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6834,12 +6834,6 @@ int main(int argc, char *argv[])
                 LoadRCFiles();
         }
 
-	if (pchMatch) {
-		PushSplash(pwSplash,
-			   _("Loading"), _("Specified Match"), 500);
-			CommandLoadMatch(pchMatch);
-	}
-
 	fflush(stdout);
 	fflush(stderr);
 	/* start-up sound */
@@ -6854,6 +6848,10 @@ int main(int argc, char *argv[])
                 exit(EXIT_SUCCESS);
         }
 #endif
+
+	if (pchMatch)
+		CommandLoadMatch(pchMatch);
+
         /* -c option given */
 	if (pchCommands) {
 		fInteractive = FALSE;
