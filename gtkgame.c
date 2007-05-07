@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.635 2007/05/01 23:15:52 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.636 2007/05/07 21:32:25 c_anthon Exp $
  */
 
 #include <config.h>
@@ -2007,8 +2007,6 @@ extern void InitGTK( int *argc, char ***argv )
     int anBoardTemp[ 2 ][ 25 ];
     int i;
     char *sz;
-
-    gtk_set_locale ();
 
     sz = g_build_filename(PKGDATADIR,  "gnubg.gtkrc", NULL);
     gtk_rc_add_default_file( sz  );
