@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.13 2007/05/04 14:57:45 c_anthon Exp $
+ * $Id: makehyper.c,v 1.14 2007/05/09 20:13:28 c_anthon Exp $
  */
 
 #include "config.h"
@@ -59,6 +59,7 @@ extern int MT_GetThreadID()
 }
 
 #if WIN32
+#include <windows.h>
 extern char * getInstallDir( void ) {
 
   char buf[_MAX_PATH];
