@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.702 2007/05/07 21:32:25 c_anthon Exp $
+ * $Id: gnubg.c,v 1.703 2007/05/13 23:11:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -7436,7 +7436,23 @@ extern char * locale_to_utf8 ( const char *sz) {
     }
     return ret;
 }
-
+#ifdef WIN32 
+/* WIN32 setlocale must be manipulated through putenv to be gettext compatible */
+void SetupLanguage (char *newLangCode)
+{
+	static char *org_lang=NULL;
+	char *lang;
+	if (!org_lang)
+		org_lang = g_win32_getlocale();
+	if (!newLangCode || !strcmp (newLangCode, "system") || !strcmp (newLangCode, ""))
+		lang = g_strdup_printf("LANG=%s", org_lang);
+	else
+		lang = g_strdup_printf("LANG=%s", newLangCode);
+	putenv(lang); 	 
+	g_free(lang);
+	setlocale(LC_ALL, "");
+}
+#else
 void SetupLanguage (char *newLangCode)
 {
 	if (!newLangCode || !strcmp (newLangCode, "system") || !strcmp (newLangCode, ""))
@@ -7444,3 +7460,4 @@ void SetupLanguage (char *newLangCode)
 	else
 		setlocale (LC_ALL, newLangCode);
 }
+#endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.275 2007/05/01 22:04:52 c_anthon Exp $
+ * $Id: set.c,v 1.276 2007/05/13 23:11:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4306,23 +4306,12 @@ CommandSetRatingOffset( char *sz ) {
 
 extern void CommandSetLang( char *sz )
 {
-    if( !sz || !*sz ) {
-	outputl( _( "You must give `system' or a language code "
-		    "as an argument." ) );
-	return;
-    }
-
-    if( strlen( sz ) > 31 )
-	sz[ 31 ] = 0;
-
-    if( ! strcmp( sz, szLang ) ) {
-	outputf( _("The current language preference is already set to "
-		   "%s.\n"), sz );
-	return;
-    }
-
-    strcpy( szLang, sz );
-	SetupLanguage(szLang);
+	if( sz) {
+		if( strlen( sz ) > 31 )
+			sz[ 31 ] = 0;
+		strcpy( szLang, sz );
+	}
+	SetupLanguage(sz);
 
 #if USE_GTK
 	if (fX)
