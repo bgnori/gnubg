@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.14 2007/05/09 20:13:28 c_anthon Exp $
+ * $Id: makehyper.c,v 1.15 2007/05/13 23:19:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -570,7 +570,7 @@ WriteProb ( FILE *pf, const float r ) {
 
 
 static void
-WriteFile ( const char *szFilename, const hyperequity ahe[], 
+WriteHyperFile ( const char *szFilename, const hyperequity ahe[], 
             const int nC ) {
 
   int nPos = Combination( 25 + nC, nC );
@@ -775,7 +775,7 @@ main ( int argc, char **argv ) {
 
       sprintf ( szFilename, "%s.tmp", szOutput );
       if ( rNorm > rEpsilon )
-        WriteFile ( szFilename, aheEquity, nC );
+        WriteHyperFile ( szFilename, aheEquity, nC );
       else
         unlink( szFilename );
 
@@ -790,7 +790,7 @@ main ( int argc, char **argv ) {
 
   time ( &t0 );
 
-  WriteFile ( szOutput, aheEquity, nC );
+  WriteHyperFile ( szOutput, aheEquity, nC );
 
   time ( &t1 );
 
