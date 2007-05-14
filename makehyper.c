@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.15 2007/05/13 23:19:51 c_anthon Exp $
+ * $Id: makehyper.c,v 1.16 2007/05/14 10:23:42 c_anthon Exp $
  */
 
 #include "config.h"
@@ -36,48 +36,10 @@
 #include <locale.h>
 #include "bearoff.h"
 #include "drawboard.h"
+#include "util.h"
 
 static cubeinfo ci;
 static cubeinfo ciJacoby;
-
-/* ugly fixes */
-char *aszRNG[]; 
-char *aszSkillType[ 1 ]; 
-int exsExport;
-int ap;
-extern void MT_Lock(long *lock)
-{
-}
-
-extern void MT_Unlock(long *lock)
-{
-}
-
-extern int MT_GetThreadID()
-{
-  return (0);
-}
-
-#if WIN32
-#include <windows.h>
-extern char * getInstallDir( void ) {
-
-  char buf[_MAX_PATH];
-  char *p;
-  static char *ret = NULL;
-  if (ret)
-	  return (ret);
-  GetModuleFileName(NULL, buf, sizeof(buf));
-  p = MAX(strrchr(buf, '/'), strrchr(buf, '\\'));
-  if (p)
-	  *p = '\0';
-  ret = g_strdup(buf);
-  return ret;
-}
-#endif
-
-
-/* end ugly fixes */
 
 typedef enum _hyperclass {
   HYPER_OVER,

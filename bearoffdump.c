@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffdump.c,v 1.6 2007/05/01 22:04:51 c_anthon Exp $
+ * $Id: bearoffdump.c,v 1.7 2007/05/14 10:23:42 c_anthon Exp $
  */
 
 #include "config.h"
@@ -28,34 +28,8 @@
 #include "getopt.h"
 #include "positionid.h"
 #include "bearoff.h"
+#include "util.h"
 
-/* ugly fixes */
-char *aszRNG[ 1 ];
-char *aszSkillType[ 1 ];
-int exsExport;
-int ap;
-
-extern void MT_Lock(long *lock)
-{
-}
-
-extern void MT_Unlock(long *lock)
-{
-}
-
-extern int MT_GetThreadID()
-{
-  return (0);
-}
-
-extern bearoffcontext *
-BearoffInitBuiltin ( void ) {
-
-  printf ( "Make makebearoff build (avoid resursive rules Makefile :-)\n" );
-  return NULL;
-
-}
-/* end ugly fixes */
 
 static void
 show_usage( const char *arg0 ) {
