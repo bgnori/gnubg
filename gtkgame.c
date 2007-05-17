@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.638 2007/05/13 23:11:02 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.639 2007/05/17 13:57:02 c_anthon Exp $
  */
 
 #include <config.h>
@@ -7665,10 +7665,8 @@ extern void *GTKCalibrationStart( void ) {
 
     GtkWidget *pwDialog, *pwhbox, *pwResult;
     
-    /* FIXME should be modal but presently causes crash and/or killing of the
-     * main window. FLAG_NOTIDY is not used for anything. */
     pwDialog = GTKCreateDialog( _("GNU Backgammon - Calibration"), DT_INFO,
-		NULL, DIALOG_FLAG_NOTIDY, GTK_SIGNAL_FUNC( CalibrationCancel ), NULL );
+		NULL, DIALOG_FLAG_MODAL | DIALOG_FLAG_NOTIDY, GTK_SIGNAL_FUNC( CalibrationCancel ), NULL );
     gtk_container_add( GTK_CONTAINER( DialogArea( pwDialog, DA_MAIN ) ),
 		       pwhbox = gtk_hbox_new( FALSE, 8 ) );
     gtk_container_set_border_width( GTK_CONTAINER( pwhbox ), 8 );

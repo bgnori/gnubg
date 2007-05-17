@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matrix.c,v 1.12 2007/03/20 18:37:54 c_anthon Exp $
+* $Id: matrix.c,v 1.13 2007/05/17 13:57:02 c_anthon Exp $
 */
 
 #include "inc3d.h"
@@ -29,7 +29,7 @@ void setIdMatrix(float m[4][4])
 	copyMatrix(m, id);
 }
 
-void mult_matrix_vec(const float mat[4][4], const float src[4], float dst[4])
+void mult_matrix_vec(float mat[4][4], const float src[4], float dst[4])
 {
     dst[0] = (src[0] * mat[0][0] + src[1] * mat[0][1] +
 		src[2] * mat[0][2] + src[3] * mat[0][3]);
