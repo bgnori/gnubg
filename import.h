@@ -15,20 +15,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- * $Id: import.h,v 1.11 2006/11/26 16:04:42 c_anthon Exp $
+ * $Id: import.h,v 1.12 2007/05/23 15:15:17 c_anthon Exp $
  */
 
 #ifndef _IMPORT_H_
 #define _IMPORT_H_
 
-extern int ImportJF( FILE * fp, char *szFileName);
-extern int ImportMat( FILE *fp, char *szFilename );
-extern int ImportOldmoves( FILE *pf, char *szFilename );
-extern int ImportSGG( FILE *pf, char *szFilename );
-extern int ImportTMG( FILE *pf, const char *szFilename );
-extern int ImportBKG( FILE *pf, const char *szFilename );
-extern int ImportSnowieTxt( FILE *pf );
-extern int ImportGAM( FILE *pf, char *szFilename );
-extern int ConvertPartyGammonFileToMat(FILE *partyFP, FILE *matFP);
-
+extern void CommandImportBKG(char *);
+extern void CommandImportEmpire(char *);
+extern void CommandImportJF(char *);
+extern void CommandImportMat(char *);
+extern void CommandImportOldmoves(char *);
+extern void CommandImportParty(char *);
+extern void CommandImportSGG(char *);
+extern void CommandImportSnowieTxt(char *);
+extern void CommandImportTMG(char *);
+extern void CommandImportAuto(char *);
 #endif

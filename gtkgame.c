@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.639 2007/05/17 13:57:02 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.640 2007/05/23 15:15:17 c_anthon Exp $
  */
 
 #include <config.h>
@@ -47,6 +47,7 @@
 
 #include "analysis.h"
 #include "backgammon.h"
+#include "sgf.h"
 #include "dice.h"
 #include "drawboard.h"
 #include "gtkboard.h"

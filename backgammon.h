@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.340 2007/05/01 23:15:51 c_anthon Exp $
+ * $Id: backgammon.h,v 1.341 2007/05/23 15:15:16 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -452,9 +452,9 @@ extern void ProgressValue ( int iValue );
 extern void ProgressValueAdd ( int iValue );
 extern void ProgressEnd( void );
 
+extern void UserCommand( char* sz );
 #if USE_GTK
 extern gint NextTurnNotify( gpointer p );
-extern void UserCommand( char* sz );
 extern void HandleXAction( void );
 #if HAVE_LIBREADLINE
 extern int fReadingCommand;
@@ -577,52 +577,15 @@ extern void CommandAccept( char * ),
     CommandDrop( char * ),
     CommandEval( char * ),
     CommandEq2MWC( char * ),
-    CommandExportGameGam( char * ),
-    CommandExportGameHtml( char * ),
-    CommandExportGameLaTeX( char * ),
-    CommandExportGamePDF( char * ),
-    CommandExportGamePostScript( char * ),
-    CommandExportGameText( char * ),
-    CommandExportGameEquityEvolution ( char * ),
-    CommandExportHTMLImages ( char * ),
-    CommandExportMatchMat( char * ),
-    CommandExportMatchHtml( char * ),
-    CommandExportMatchLaTeX( char * ),
-    CommandExportMatchPDF( char * ),
-    CommandExportMatchPostScript( char * ),
-    CommandExportMatchText( char * ),
-    CommandExportMatchEquityEvolution ( char * ),
-    CommandExportMatchSGG( char * ),
-    CommandExportMatchTMG( char * ),
-    CommandExportPositionEPS( char * ),
-    CommandExportPositionPNG( char * ),
-    CommandExportPositionJF( char * ),
-    CommandExportPositionHtml( char * ),
-    CommandExportPositionText( char * ),
-    CommandExportPositionGammOnLine ( char * ),
-    CommandExportPositionGOL2Clipboard ( char * ),
-    CommandExportPositionSnowieTxt( char * ),
     CommandExternal( char * ),
     CommandFirstGame( char * ),
     CommandFirstMove( char * ),
     CommandHelp( char * ),
     CommandHint( char * ),
     CommandHistory( char * ),
-    CommandImportBKG( char * ),
-	CommandImportEmpire( char * ),
-    CommandImportJF( char * ),
-    CommandImportMat( char * ),
-    CommandImportOldmoves( char * ),
-	CommandImportParty( char * ),
-    CommandImportSGG( char * ),
-    CommandImportSnowieTxt( char * ),
-    CommandImportTMG( char * ),
     CommandListGame( char * ),
     CommandListMatch( char * ),
     CommandLoadCommands( char * ),
-    CommandLoadGame( char * ),
-    CommandLoadMatch( char * ),
-    CommandLoadPosition( char * ),
     CommandLoadPython( char * ),
     CommandMove( char * ),
     CommandMWC2Eq( char * ),
@@ -658,11 +621,6 @@ extern void CommandAccept( char * ),
     CommandResign( char * ),
     CommandRoll( char * ),
     CommandRollout( char * ),
-    CommandSaveGame( char * ),
-    CommandSaveMatch( char * ),
-    CommandSavePosition( char * ),
-    CommandSaveSettings( char * ),
-    CommandSaveWeights( char * ),
     CommandSetAnalysisChequerplay( char * ),
     CommandSetAnalysisCube( char * ),
     CommandSetAnalysisCubedecision( char * ),

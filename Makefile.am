@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.176 2007/05/14 10:23:42 c_anthon Exp $
+## $Id: Makefile.am,v 1.177 2007/05/23 15:15:16 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -30,7 +30,7 @@ gnubg_SOURCES = credits.h credits.c copying.c backgammon.h gnubg.c \
 		 progress.c progress.h format.c format.h formatgs.c \
 		 formatgs.h boarddim.h timer.c external_y.y \
 		 external_l.l openurl.c openurl.h mec.h \
-		 mec.c relational.h relational.c common.h sound.c
+		 mec.c relational.h relational.c common.h sound.c file.c file.h
 
 if USE_MULTITHREAD
 gnubg_SOURCES +=  multithread.c multithread.h

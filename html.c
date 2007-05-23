@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.179 2007/05/01 22:04:52 c_anthon Exp $
+ * $Id: html.c,v 1.180 2007/05/23 15:15:17 c_anthon Exp $
  */
 
 #include "config.h"
@@ -160,7 +160,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.179 2007/05/01 22:04:52 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.180 2007/05/23 15:15:17 c_anthon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1840,7 +1840,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.179 $";
+  const char szVersion[] = "$Revision: 1.180 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1920,7 +1920,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.179 $";
+  const char szVersion[] = "$Revision: 1.180 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3814,8 +3814,7 @@ ExportPositionGammOnLine( FILE *pf )
 }
 
 
-extern void
-CommandExportPositionGammOnLine ( char *sz ) {
+extern void CommandExportPositionGammOnLine ( char *sz ) {
 
     FILE *pf;
     
@@ -3850,8 +3849,7 @@ CommandExportPositionGammOnLine ( char *sz ) {
 }
 
 
-extern void
-CommandExportPositionGOL2Clipboard( char *sz ) {
+extern void CommandExportPositionGOL2Clipboard( char *sz ) {
 
     char *szClipboard;
     long l;
