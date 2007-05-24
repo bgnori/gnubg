@@ -15,16 +15,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: file.c,v 1.2 2007/05/23 21:18:50 c_anthon Exp $
+ * $Id: file.c,v 1.3 2007/05/24 08:20:04 c_anthon Exp $
  */
 
 #include "config.h"
+#include "backgammon.h"
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <string.h>
 #include <stdlib.h>
 //#include <glib/gstdio.h>
-#include "backgammon.h"
 #include "file.h"
 
 /* char *extension; char *description; char *clname;

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.18 2007/05/18 19:03:26 c_anthon Exp $
+ * $Id: openurl.c,v 1.19 2007/05/24 08:20:04 c_anthon Exp $
  */
 #include "config.h"
 #include <stdio.h>
@@ -71,7 +71,7 @@ extern void OpenURL(const char *szURL)
 	if (!(browser) || !(*browser)) {
 #ifdef WIN32
 		int win_error;
-		gchar *url = g_strdup_printf("file://%s", szURL);
+		gchar *url = g_filename_to_uri(szURL, NULL, NULL);
 		win_error =
 		    (int) ShellExecute(NULL, TEXT("open"), url, NULL,
 				       ".\\", SW_SHOWNORMAL);
