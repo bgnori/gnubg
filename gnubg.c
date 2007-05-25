@@ -16,10 +16,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.704 2007/05/23 15:15:16 c_anthon Exp $
+ * $Id: gnubg.c,v 1.705 2007/05/25 15:58:37 c_anthon Exp $
  */
 
 #include "config.h"
+#include <stdlib.h>
+#if HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+#include <errno.h>
+#include <stdio.h>
 
 #if USE_PYTHON
 #include <gnubgmodule.h>
@@ -6977,6 +6983,7 @@ extern char * locale_from_utf8 ( const char *sz) {
     ret = g_locale_from_utf8 (sz, strlen(sz), NULL, NULL, &error);
     if (error) {
         printf("locale_from_utf8 failed\nfrom '%s'\nto\n '%s'\nThe error was: %s\n", sz, ret, error -> message);
+	g_error_free(error);
     }
     return ret;
 }
@@ -6987,6 +6994,7 @@ extern char * locale_to_utf8 ( const char *sz) {
     ret = g_locale_to_utf8 (sz, strlen(sz), NULL, NULL, &error);
     if (error) {
         printf("locale_to_utf8 failed\nfrom '%s'\nto '%s'\nThe reason was, %s\n", sz, ret, error -> message);
+	g_error_free(error);
     }
     return ret;
 }

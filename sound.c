@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.54 2007/05/01 22:04:52 c_anthon Exp $
+ * $Id: sound.c,v 1.55 2007/05/25 15:58:38 c_anthon Exp $
  */
 
 #include <config.h>
@@ -157,23 +157,20 @@ playSoundFile (char *file)
 	  Sleep (1);		/* Wait (1ms) for current sound to finish */
       }
 #endif
-    free (file);
 }
 
-extern void
-playSound ( const gnubgsound gs )
+extern void playSound ( const gnubgsound gs )
 {
-	char *sound = GetSoundFile(gs);
+	char *sound;
 
-    if ( ! fSound )
-	/* no sounds for this user */
-	return;
-    
-    if ( ! *sound )
-	/* no sound defined for event */
-	return;
-
-	playSoundFile( sound );
+	if ( ! fSound )
+		/* no sounds for this user */
+		return;
+	
+	sound = GetSoundFile(gs);
+	if ( *sound )
+		playSoundFile( sound );
+	g_free(sound);
 }
 
 

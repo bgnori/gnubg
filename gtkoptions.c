@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.52 2007/05/01 22:04:51 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.53 2007/05/25 15:58:38 c_anthon Exp $
  */
 
 #include <config.h>
@@ -1578,6 +1578,7 @@ void SoundDefaultClicked(GtkWidget *widget, gpointer userdata)
 	char *defaultSound = GetDefaultSoundFile(selSound);
 	SoundSkipUpdate = TRUE;
 	gtk_entry_set_text(GTK_ENTRY(soundPath), defaultSound);
+	g_free(soundDetails[selSound].Path);
 	soundDetails[selSound].Path = g_strdup(defaultSound);
 }
 
@@ -1591,7 +1592,11 @@ void SoundEnabledClicked(GtkWidget *widget, gpointer userdata)
 	gtk_widget_set_sensitive(soundPathButton, enabled);
 	gtk_widget_set_sensitive(soundPlayButton, enabled);
 	gtk_widget_set_sensitive(soundDefaultButton, enabled);
-	if (enabled && !*soundDetails[selSound].Path)
+	if (!enabled) {
+		g_free(soundDetails[selSound].Path);
+		soundDetails[selSound].Path = g_strdup("");
+	}
+	else if (!*soundDetails[selSound].Path)
 		SoundDefaultClicked(0, 0);
 }
 
@@ -1637,6 +1642,7 @@ void SoundChangePathClicked(GtkWidget *widget, gpointer userdata)
 		lastSoundFolder = g_path_get_dirname(filename);
 		SoundSkipUpdate = TRUE;
 		gtk_entry_set_text(GTK_ENTRY(soundPath), filename);
+		g_free(soundDetails[selSound].Path);
 		soundDetails[selSound].Path = filename;
 	}
 }
