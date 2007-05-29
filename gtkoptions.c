@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.53 2007/05/25 15:58:38 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.54 2007/05/29 18:37:47 c_anthon Exp $
  */
 
 #include <config.h>
@@ -952,16 +952,6 @@ static GtkWidget *OptionsPages( optionswidget *pow ) {
                             "rec.games.backgammon :-)" ), NULL );
 
     ManualDiceToggled( NULL, pow );
-
-    /* Bearoff options */
-
-    pwp = gtk_alignment_new( 0, 0, 0, 0 );
-    gtk_container_set_border_width( GTK_CONTAINER( pwp ), 4 );
-    gtk_notebook_append_page( GTK_NOTEBOOK( pwn ), pwp,
-			      gtk_label_new( _("Bearoff") ) );
-
-    pwvbox = gtk_vbox_new( FALSE, 0 );
-    gtk_container_add( GTK_CONTAINER( pwp ), pwvbox );
 
     /* Other options */
     pwp = gtk_alignment_new( 0, 0, 0, 0 );
