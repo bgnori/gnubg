@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.58 2007/05/31 20:28:51 c_anthon Exp $
+ * $Id: sound.c,v 1.59 2007/05/31 22:02:00 c_anthon Exp $
  */
 
 #include <config.h>
@@ -110,7 +110,7 @@ playSoundFile (char *file)
     GError *error = NULL;
     if (!g_file_test(file, G_FILE_TEST_EXISTS))
     {
-            outputf("The sound file (%s) couldn't be found", file);
+            outputf(_("The sound file (%s) doesn't exist.\n"), file);
             return;
     }
 
@@ -119,7 +119,7 @@ playSoundFile (char *file)
 	  command = g_strdup_printf ("%s %s", sound_cmd, file);
 	  if (!g_spawn_command_line_async (command, &error))
 	    {
-		outputf ("sound command (%s) could not be launched: %s\n",
+		outputf (_("sound command (%s) could not be launched: %s\n"),
 			    command, error->message);
 		g_error_free (error);
 	    }

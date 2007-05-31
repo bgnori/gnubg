@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.706 2007/05/31 21:23:44 c_anthon Exp $
+ * $Id: gnubg.c,v 1.707 2007/05/31 22:02:00 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1587,7 +1587,11 @@ command cER = {
       N_("Set whether beavers are allowed in money game or not"), 
       szVALUE, NULL },
     { "board", CommandSetBoard, N_("Set up the board in a particular "
-      "position"), szPOSITION, NULL },
+      "position. Accepted formats are:\n"
+      " set board =2 (sets the board to match the second position in the hint list.)\n"
+      " set board simple 3 2 4 0 -3 -5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2\n"
+      " set board 4PPgASjgc/ABMA (sets the board to match the position id.)\n"
+	      ), szPOSITION, NULL },
     { "browser", CommandSetBrowser, 
       N_("Set web browser"), szOPTCOMMAND, NULL },
     { "cache", CommandSetCache, N_("Set the size of the evaluation cache"),
