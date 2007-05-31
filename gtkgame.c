@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.640 2007/05/23 15:15:17 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.641 2007/05/31 20:28:51 c_anthon Exp $
  */
 
 #include <config.h>
@@ -2822,7 +2822,7 @@ extern int edit_new(int length)
 		fDisplay = fDisplay_save;
 	} else {
 		outputerrf(_
-			   ("Edit new position only allowed with human and gnubg players"));
+			   ("Edit new position only allowed with human and computer players"));
 	}
 	outputoff();
 	for (i = 0; i < 2; i++) {
