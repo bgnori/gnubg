@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.20 2007/05/31 22:29:38 c_anthon Exp $
+ * $Id: openurl.c,v 1.21 2007/05/31 22:42:17 c_anthon Exp $
  */
 #include "config.h"
 #include <stdio.h>
@@ -82,7 +82,7 @@ extern void OpenURL(const char *szURL)
 		return;
 #endif
 	}
-	command = g_strdup_printf("%s %s", browser, szURL);
+	command = g_strdup_printf("'%s' '%s'", browser, szURL);
 	if (!g_spawn_command_line_async(command, &error)) {
 		outputerrf(_("Browser couldn't open file (%s): %s\n"),
 			   command, error->message);
