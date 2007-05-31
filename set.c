@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.276 2007/05/13 23:11:02 c_anthon Exp $
+ * $Id: set.c,v 1.277 2007/05/31 22:29:38 c_anthon Exp $
  */
 
 #include "config.h"
@@ -734,15 +734,11 @@ extern void CommandSetThreads( char *sz )
 }
 #endif
 
-extern void
-CommandSetBrowser ( char *sz ) {
+extern void CommandSetBrowser ( char *sz ) {
 
-  if ( ! sz || ! *sz ) {
-    outputl ( _("You must specify a command. "
-                "See `help set sound system command'") );
-    return;
-  }
-  set_web_browser(NextToken( &sz ));
+	if ( ! sz || ! *sz )
+		set_web_browser("");
+	set_web_browser(NextToken( &sz ));
 }
 
 extern void CommandSetCalibration( char *sz ) {

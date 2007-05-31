@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.226 2007/05/25 15:58:38 c_anthon Exp $
+ * $Id: show.c,v 1.227 2007/05/31 22:29:38 c_anthon Exp $
  */
 
 #include "config.h"
@@ -963,6 +963,11 @@ ShowAuthors( const credEntry ace[], const char *title ) {
   outputc( '\n' );
   outputc( '\n' );
 
+}
+
+extern void CommandShowBrowser( char *sz )
+{
+	outputf(_("The current browser is %s\n"), get_web_browser());
 }
 
 extern void CommandShowBuildInfo( char *sz )
