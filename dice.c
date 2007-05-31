@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.53 2007/05/01 22:04:51 c_anthon Exp $
+ * $Id: dice.c,v 1.54 2007/05/31 21:23:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -174,7 +174,8 @@ ReadDiceFile( rngcontext *rngctx );
 
 static int GetManualDice( unsigned int anDice[ 2 ] ) {
 
-  char *sz, *pz;
+  char *pz;
+  char *sz=NULL;
   int i;
 
 #if USE_GTK
@@ -197,6 +198,7 @@ static int GetManualDice( unsigned int anDice[ 2 ] ) {
       sz = GetInput( _("Enter dice: ") );
 
       if( fInterrupt ) {
+          g_free( sz );
 	  anDice[ 0 ] = anDice[ 1 ] = 0;
 	  return -1;
       }
@@ -219,7 +221,7 @@ static int GetManualDice( unsigned int anDice[ 2 ] ) {
 	  pz++;
       }
 
-      free( sz );
+      g_free( sz );
       return 0;
   }
 }
