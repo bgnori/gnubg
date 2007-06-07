@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.710 2007/06/01 18:36:48 c_anthon Exp $
+ * $Id: gnubg.c,v 1.711 2007/06/07 22:08:41 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5395,7 +5395,7 @@ extern char *GetInput( char *szPrompt )
 
 #if HAVE_LIBREADLINE
     if( fInteractive ) {
-        char *prompt;
+	char *prompt;
 	/* Using readline, but not X. */
 	if( fInterrupt )
 	    return NULL;
@@ -6725,7 +6725,11 @@ DisectPath (char *path, char *extension, char **name, char **folder)
 {
   char *fnn, *pc;
   if (!path)
-    return;
+  {
+	  *folder = NULL;
+	  *name = NULL;
+	  return;
+  }
   *folder = g_path_get_dirname (path);
   fnn = g_path_get_basename (path);
   pc = strrchr (fnn, '.');

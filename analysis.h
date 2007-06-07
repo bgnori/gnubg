@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.38 2007/04/27 08:53:10 c_anthon Exp $
+ * $Id: analysis.h,v 1.39 2007/06/07 22:08:41 c_anthon Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -148,5 +148,7 @@ getMWCFromError ( const statcontext* psc, float aaaar[ 3 ][ 2 ][ 2 ][ 2 ] );
 
 extern skilltype
 Skill( float r );
+
+extern int MatchAnalysed();
 
 #endif
