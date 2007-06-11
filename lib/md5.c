@@ -22,14 +22,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: md5.c,v 1.7 2006/12/26 11:22:06 Superfly_Jon Exp $
+ * $Id: md5.c,v 1.8 2007/06/11 19:01:13 c_anthon Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
    under Term 3 of the GNU LGPL) by Gary Wong for distribution
    with GNU Backgammon. */
 
-# include <config.h>
+#include "config.h"
 
 #if STDC_HEADERS
 # include <stdlib.h>

@@ -44,9 +44,10 @@
 
    (1) #UNDEF main(), and other unused functions.
    (2) make mt and mti parameters
-   $Id: mt19937ar.c,v 1.4 2006/12/26 11:22:06 Superfly_Jon Exp $
+   $Id: mt19937ar.c,v 1.5 2007/06/11 19:01:13 c_anthon Exp $
 */
 
+#include "config.h"
 #include "mt19937ar.h"
 /* Period parameters */  
 /* #define N 624 */

@@ -2,9 +2,10 @@
  * heap.c
  *
  * by Gary Wong, 1997
- * $Id: heap.c,v 1.7 2006/12/26 11:22:06 Superfly_Jon Exp $
+ * $Id: heap.c,v 1.8 2007/06/11 19:01:13 c_anthon Exp $
  */
 
+#include "config.h"
 #include <stddef.h>
 #include <stdlib.h>
 

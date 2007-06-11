@@ -16,10 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boardpos.c,v 1.10 2007/01/07 22:29:24 Superfly_Jon Exp $
+ * $Id: boardpos.c,v 1.11 2007/06/11 19:01:09 c_anthon Exp $
  */
 
-#include <config.h>
+#include "config.h"
 
 #include <glib.h>
 #include <stdlib.h>

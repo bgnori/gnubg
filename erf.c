@@ -19,9 +19,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: erf.c,v 1.3 2002/03/21 18:55:54 gtw Exp $
+ * $Id: erf.c,v 1.4 2007/06/11 19:01:09 c_anthon Exp $
  */
  
+#include "config.h"
 #include <math.h>
 
 extern double erf( double x ) {

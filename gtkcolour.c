@@ -16,10 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.c,v 1.16 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: gtkcolour.c,v 1.17 2007/06/11 19:01:10 c_anthon Exp $
  */
 
-#include <config.h>
+#include "config.h"
 
 #include <gtk/gtk.h>
 #include <string.h>
@@ -159,8 +159,8 @@ static void gtk_colour_picker_init( GtkColourPicker *pcp ) {
     pcp->pwDraw = gtk_drawing_area_new();
     gtk_drawing_area_size( GTK_DRAWING_AREA( pcp->pwDraw ), 32, 16 );
 
-    gtk_signal_connect( GTK_OBJECT( pcp->pwDraw ), "realize",
-			GTK_SIGNAL_FUNC( realize ), pcp );    
+    g_signal_connect( G_OBJECT( pcp->pwDraw ), "realize",
+			G_CALLBACK( realize ), pcp );    
     gtk_container_add( GTK_CONTAINER( pcp ), pcp->pwDraw );
     gtk_widget_show( pcp->pwDraw );
 }	
@@ -172,14 +172,14 @@ static void gtk_colour_picker_new_dialog( GtkColourPicker *pcp ) {
     gtk_color_selection_set_has_opacity_control( COLOUR_SEL( pcp ), pcp->hasOpacity);
 	gtk_color_selection_set_color( COLOUR_SEL( pcp ), pcp->arColour );
 
-    gtk_signal_connect( GTK_OBJECT( COLOUR_SEL( pcp ) ), "color-changed",
-			GTK_SIGNAL_FUNC( colour_changed ), pcp );    
-    gtk_signal_connect( GTK_OBJECT( COLOUR_SEL_DIA( pcp ) ), "delete-event",
-			GTK_SIGNAL_FUNC( delete_event ), pcp );
-    gtk_signal_connect( GTK_OBJECT( COLOUR_SEL_DIA( pcp )->ok_button ),
-			"clicked", GTK_SIGNAL_FUNC( ok ), pcp );
-    gtk_signal_connect( GTK_OBJECT( COLOUR_SEL_DIA( pcp )->cancel_button ),
-			"clicked", GTK_SIGNAL_FUNC( cancel ), pcp );
+    g_signal_connect( G_OBJECT( COLOUR_SEL( pcp ) ), "color-changed",
+			G_CALLBACK( colour_changed ), pcp );    
+    g_signal_connect( G_OBJECT( COLOUR_SEL_DIA( pcp ) ), "delete-event",
+			G_CALLBACK( delete_event ), pcp );
+    g_signal_connect( G_OBJECT( COLOUR_SEL_DIA( pcp )->ok_button ),
+			"clicked", G_CALLBACK( ok ), pcp );
+    g_signal_connect( G_OBJECT( COLOUR_SEL_DIA( pcp )->cancel_button ),
+			"clicked", G_CALLBACK( cancel ), pcp );
 }
 
 static void clicked( GtkButton *pb ) {

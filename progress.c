@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.35 2007/06/07 22:08:41 c_anthon Exp $
+ * $Id: progress.c,v 1.36 2007/06/11 19:01:11 c_anthon Exp $
  */
 
 #include "config.h"
@@ -814,8 +814,8 @@ GTKRolloutProgressStart( const cubeinfo *pci, const int n,
   pwGrab = prp->pwRolloutDialog;
     
   prp->nRolloutSignal = 
-    gtk_signal_connect( GTK_OBJECT( prp->pwRolloutDialog ),
-                        "destroy", GTK_SIGNAL_FUNC( RolloutCancel ), prp );
+    g_signal_connect( G_OBJECT( prp->pwRolloutDialog ),
+                        "destroy", G_CALLBACK( RolloutCancel ), prp );
 
   /* Buttons */
 
@@ -832,11 +832,11 @@ GTKRolloutProgressStart( const cubeinfo *pci, const int n,
     
   /* Setup signal */
 
-  gtk_signal_connect( GTK_OBJECT( prp->pwRolloutStop ), "clicked",
-                      GTK_SIGNAL_FUNC( RolloutStop ), prp );
+  g_signal_connect( G_OBJECT( prp->pwRolloutStop ), "clicked",
+                      G_CALLBACK( RolloutStop ), prp );
     
-  gtk_signal_connect( GTK_OBJECT( prp->pwRolloutViewStat ), "clicked",
-                      GTK_SIGNAL_FUNC( GTKViewRolloutStatistics ), prp );
+  g_signal_connect( G_OBJECT( prp->pwRolloutViewStat ), "clicked",
+                      G_CALLBACK( GTKViewRolloutStatistics ), prp );
 
   pwVbox = gtk_vbox_new( FALSE, 4 );
 	
@@ -1077,10 +1077,10 @@ static void GTKRolloutProgressEnd( void **pp ) {
                                     gsz );
     g_free( gsz );
 
-    gtk_signal_disconnect( GTK_OBJECT( prp->pwRolloutDialog ), 
+    g_signal_handler_disconnect( G_OBJECT( prp->pwRolloutDialog ), 
                            prp->nRolloutSignal );
-    gtk_signal_connect( GTK_OBJECT( prp->pwRolloutDialog ), "destroy",
-                        GTK_SIGNAL_FUNC( gtk_main_quit ), NULL );
+    g_signal_connect( G_OBJECT( prp->pwRolloutDialog ), "destroy",
+                        G_CALLBACK( gtk_main_quit ), NULL );
 
     GTKDisallowStdin();
     gtk_main();

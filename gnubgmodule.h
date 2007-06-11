@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.11 2007/05/01 22:04:51 c_anthon Exp $
+ * $Id: gnubgmodule.h,v 1.12 2007/06/11 19:01:09 c_anthon Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
@@ -32,7 +32,6 @@
 #undef HAVE_SETVBUF
 #undef HAVE_LIMITS_H
 #undef HAVE_FSTAT
-#include "config.h"
 
 extern void
 PythonInitialise();

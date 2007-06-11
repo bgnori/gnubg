@@ -18,9 +18,10 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matrix.c,v 1.13 2007/05/17 13:57:02 c_anthon Exp $
+* $Id: matrix.c,v 1.14 2007/06/11 19:01:12 c_anthon Exp $
 */
 
+#include "config.h"
 #include "inc3d.h"
 
 void setIdMatrix(float m[4][4])

@@ -15,13 +15,14 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * $Id: gtk-multiview.c,v 1.5 2006/10/26 17:02:31 Superfly_Jon Exp $
+ * $Id: gtk-multiview.c,v 1.6 2007/06/11 19:01:09 c_anthon Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
    under Term 3 of the GNU LGPL) by Gary Wong for distribution
    with GNU Backgammon. */
 
+#include "config.h"
 #include <gtk/gtk.h>
 #include "gtk-multiview.h"
 

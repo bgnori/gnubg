@@ -18,13 +18,11 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.32 2007/05/01 23:15:52 c_anthon Exp $
+* $Id: inc3d.h,v 1.33 2007/06/11 19:01:12 c_anthon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
 
-
-#include "config.h"
 
 #include <math.h>
 #include <stdio.h>

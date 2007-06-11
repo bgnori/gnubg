@@ -2,9 +2,10 @@
  * list.c
  *
  * by Gary Wong, 1996
- * $Id: list.c,v 1.8 2006/12/26 11:22:06 Superfly_Jon Exp $
+ * $Id: list.c,v 1.9 2007/06/11 19:01:13 c_anthon Exp $
  */
 
+#include "config.h"
 #include "list.h"
 #include <stddef.h>
 #include <stdlib.h>

@@ -16,10 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.24 2007/04/26 21:58:10 c_anthon Exp $
+ * $Id: gtkrace.c,v 1.25 2007/06/11 19:01:11 c_anthon Exp $
  */
 
-#include <config.h>
+#include "config.h"
 
 #include <gtk/gtk.h>
 
@@ -269,8 +269,8 @@ OSRPage ( int anBoard[ 2 ][ 25 ], racewidget *prw ) {
 				gtk_button_new_with_label( _( "Roll out" ) ),
                       TRUE, TRUE, 4 );
 
-  gtk_signal_connect( GTK_OBJECT( prw->pwRollout ), "clicked", 
-                      GTK_SIGNAL_FUNC( PerformOSR ), prw );
+  g_signal_connect( G_OBJECT( prw->pwRollout ), "clicked", 
+                      G_CALLBACK( PerformOSR ), prw );
 
   /* separator */
 

@@ -2,10 +2,10 @@
  * cache.c
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.c,v 1.7 2007/03/17 09:05:13 Superfly_Jon Exp $
+ * $Id: cache.c,v 1.8 2007/06/11 19:01:13 c_anthon Exp $
  */
 
-#include <config.h>
+#include "config.h"
 
 #include <stddef.h>
 #include <stdlib.h>

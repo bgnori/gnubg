@@ -18,9 +18,10 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.19 2007/03/17 09:05:13 Superfly_Jon Exp $
+* $Id: graph.c,v 1.20 2007/06/11 19:01:12 c_anthon Exp $
 */
 
+#include "config.h"
 #include "inc3d.h"
 
 #include "renderprefs.h"
@@ -323,10 +324,10 @@ GtkWidget* StatGraph(GraphData* pgd)
 		pgd->maxY = .5f;
 
 	gtk_widget_set_events(pw, GDK_EXPOSURE_MASK | GDK_BUTTON_PRESS_MASK);
-	gtk_signal_connect(GTK_OBJECT(pw), "button_press_event", GTK_SIGNAL_FUNC(graph_button_press_event), pgd);
-	gtk_signal_connect(GTK_OBJECT(pw), "realize", GTK_SIGNAL_FUNC(realize), pgd);
-	gtk_signal_connect(GTK_OBJECT(pw), "configure_event", GTK_SIGNAL_FUNC(configure_event), pgd);
-	gtk_signal_connect(GTK_OBJECT(pw), "expose_event", GTK_SIGNAL_FUNC(expose_event), pgd);
+	g_signal_connect(G_OBJECT(pw), "button_press_event", G_CALLBACK(graph_button_press_event), pgd);
+	g_signal_connect(G_OBJECT(pw), "realize", G_CALLBACK(realize), pgd);
+	g_signal_connect(G_OBJECT(pw), "configure_event", G_CALLBACK(configure_event), pgd);
+	g_signal_connect(G_OBJECT(pw), "expose_event", G_CALLBACK(expose_event), pgd);
 
 	return pw;
 }

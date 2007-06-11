@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.121 2006/06/29 09:39:41 c_anthon Exp $
+# $Id: credits.sh,v 1.122 2007/06/11 19:01:09 c_anthon Exp $
 # 
 
 column < /dev/null || exit 0
@@ -223,6 +223,7 @@ cat > credits.c <<EOF
 /* Do not modify this file!  It is created automatically by credits.sh.
    Modify credits.sh instead. */
 
+#include "config.h"
 #include <glib/gi18n.h>
 #include "credits.h"
 

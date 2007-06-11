@@ -18,9 +18,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.l,v 1.10 2006/06/29 09:39:41 c_anthon Exp $
+ * $Id: external_l.l,v 1.11 2007/06/11 19:01:09 c_anthon Exp $
  */
 
+#include "config.h"
 #include <string.h>
 
 #include "external_y.h"

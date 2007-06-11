@@ -5,9 +5,10 @@
  *
  * modified by Gary Wong for GNU Backgammon, 1999
  *
- * $Id: pub_eval.c,v 1.2 2006/09/21 22:24:06 Superfly_Jon Exp $
+ * $Id: pub_eval.c,v 1.3 2007/06/11 19:01:11 c_anthon Exp $
  */
 
+#include "config.h"
 static float wr[122] = {
     .00000f, -.17160f, .27010f, .29906f, -.08471f, .00000f, -1.40375f,
     -1.05121f, .07217f, -.01351f, .00000f, -1.29506f, -2.16183f, .13246f,

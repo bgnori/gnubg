@@ -8,11 +8,12 @@ MODIFIED:
   991209: modified for inclusion with GNU Backgammon by Gary Wong  
 ------------------------------------------------------------------------------
 
-  $Id: isaac.c,v 1.5 2007/03/17 09:05:13 Superfly_Jon Exp $
+  $Id: isaac.c,v 1.6 2007/06/11 19:01:13 c_anthon Exp $
 */
 
 /*lint --e{661,662}	 Ignore warnings of out of bounds array access (as ok) */
 
+#include "config.h"
 #include "isaac.h"
 
 #define ind(mm,x)  ((mm)[((x)>>2)&(RANDSIZ-1)])

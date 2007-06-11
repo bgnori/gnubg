@@ -20,10 +20,10 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.59 2007/05/31 22:02:00 c_anthon Exp $
+ * $Id: sound.c,v 1.60 2007/06/11 19:01:12 c_anthon Exp $
  */
 
-#include <config.h>
+#include "config.h"
 
 #include "backgammon.h"
 #include <glib.h>

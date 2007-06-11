@@ -16,12 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.c,v 1.4 2007/05/24 08:20:04 c_anthon Exp $
+ * $Id: util.c,v 1.5 2007/06/11 19:01:12 c_anthon Exp $
  */
 char *aszRNG[1]; 
 char *aszSkillType[ 1 ]; 
 int exsExport;
 int ap;
+#include "config.h"
 #if WIN32
 #include <windows.h>
 #include <glib.h>
