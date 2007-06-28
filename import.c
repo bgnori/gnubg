@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.118 2007/05/23 15:15:17 c_anthon Exp $
+ * $Id: import.c,v 1.119 2007/06/28 19:21:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2444,24 +2444,25 @@ ParseTMGOptions ( const char *sz, matchinfo *pmi, int *pfCrawfordRule,
 }
 
 
-static int
-ParseTMGGame ( const char *sz,
-               int *piGame, int *pn0, int *pn1, int *pfCrawford,
-               const int nLength ) {
+static int ParseTMGGame(const char *sz, int *piGame, int *pn0, int *pn1,
+			int *pfCrawford, const int nLength)
+{
 
-  int i = sscanf ( sz, "Game %d: %d-%d", piGame, pn0, pn1 ) == 3;
+	static int post_crawford = FALSE;
+	int i = sscanf(sz, "Game %d: %d-%d", piGame, pn0, pn1) == 3;
 
-  if ( !i )
-    return FALSE;
+	if (!i)
+		return FALSE;
 
-  if ( nLength ) {
-    if ( ! *pfCrawford ) 
-      *pfCrawford = ( *pn0 == ( nLength - 1 ) ) || ( *pn1 == ( nLength - 1 ) );
-    else
-      *pfCrawford = FALSE;
-  }
+	if (nLength) {
+		if (!post_crawford)
+			post_crawford = *pfCrawford = (*pn0 == (nLength - 1))
+			    || (*pn1 == (nLength - 1));
+		else
+			*pfCrawford = FALSE;
+	}
 
-  return TRUE;
+	return TRUE;
 
 }
                
