@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.145 2007/06/11 19:01:11 c_anthon Exp $
+ * $Id: gtkprefs.c,v 1.146 2007/07/01 11:05:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -136,7 +136,9 @@ read_board_designs ( void ) {
   GList *plUser, *plSystem, *plFinal;
   gchar *sz;
 
-  plSystem = ParseBoardDesigns ( "boards.xml", FALSE );
+  sz = g_build_filename(PKGDATADIR, "boards.xml", NULL);
+  plSystem = ParseBoardDesigns ( sz, FALSE );
+  g_free ( sz );
 
   sz = g_build_filename(szHomeDirectory, "boards.xml", NULL);
   plUser = ParseBoardDesigns ( sz, TRUE );
@@ -1953,7 +1955,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.145 2007/06/11 19:01:11 c_anthon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.146 2007/07/01 11:05:45 c_anthon Exp $\n"
           "\n"
           " -->\n"
           "\n"
