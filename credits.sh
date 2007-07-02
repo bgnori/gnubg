@@ -5,7 +5,7 @@
 # by Gary Wong <gtw@gnu.org>, 1998, 1999, 2000, 2001, 2002, 2003, 2004
 #
 # This program is free software; you can redistribute it and/or modify
-# it under the terms of version 2 of the GNU General Public License as
+# it under the terms of version 3 or later of the GNU General Public License as
 # published by the Free Software Foundation.
 #
 # This program is distributed in the hope that it will be useful,
@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.122 2007/06/11 19:01:09 c_anthon Exp $
+# $Id: credits.sh,v 1.123 2007/07/02 13:56:10 ace Exp $
 # 
 
 column < /dev/null || exit 0
