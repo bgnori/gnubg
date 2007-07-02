@@ -4,7 +4,7 @@
 # by Jon Kinsey <Jon_Kinsey@hotmail.com>, 2004
 #
 # This program is free software; you can redistribute it and/or modify
-# it under the terms of version 2 of the GNU General Public License as
+# it under the terms of version 3 or later of the GNU General Public License as
 # published by the Free Software Foundation.
 #
 # This program is distributed in the hope that it will be useful,
@@ -16,7 +16,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: batch.py,v 1.3 2006/05/22 21:46:59 ace Exp $
+# $Id: batch.py,v 1.4 2007/07/02 12:50:12 ace Exp $
 
 """
  batch.py -- batch import and analysis of multiple files using gnubg

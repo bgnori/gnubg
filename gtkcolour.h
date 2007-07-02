@@ -4,7 +4,7 @@
  * by Gary Wong <gtw@gnu.org>, 2002.
  *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of version 2 of the GNU General Public License as
+ * it under the terms of version 3 or later of the GNU General Public License as
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.h,v 1.7 2007/03/17 09:05:13 Superfly_Jon Exp $
+ * $Id: gtkcolour.h,v 1.8 2007/07/02 12:43:38 ace Exp $
  */
 
 #ifndef _GTKCOLOUR_H_

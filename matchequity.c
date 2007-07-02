@@ -7,7 +7,7 @@
 *
 *
 * This program is free software; you can redistribute it and/or modify
-* it under the terms of version 2 of the GNU General Public License as
+* it under the terms of version 3 or later of the GNU General Public License as
 * published by the Free Software Foundation.
 *
 * This program is distributed in the hope that it will be useful,
@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.66 2007/05/01 23:15:52 c_anthon Exp $
+* $Id: matchequity.c,v 1.67 2007/07/02 12:43:25 ace Exp $
 */
 
 #include "config.h"
@@ -1375,7 +1375,7 @@ static int readMET ( metdata *pmd, const char *szFileName ) {
    * validate document 
    */
 
-/* libxml2 version 2.4.3 introduced xml catalogs, it dates 25th august 2001 ... */
+/* libxml2 version 3 or later.4.3 introduced xml catalogs, it dates 25th august 2001 ... */
 /* older versions used SGML format catalogs, but it's not clear when the default behaviour changed */
   {
 	  xmlValidCtxtPtr ctxt;

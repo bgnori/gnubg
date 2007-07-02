@@ -11,7 +11,7 @@
 
    This program is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
-   Free Software Foundation; either version 2, or (at your option) any
+   Free Software Foundation; either version 3 or later, or (at your option) any
    later version.
 
    This program is distributed in the hope that it will be useful,
@@ -23,7 +23,7 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
    USA.  
-   $Id: getopt.c,v 1.5 2007/06/11 19:01:09 c_anthon Exp $
+   $Id: getopt.c,v 1.6 2007/07/02 12:43:22 ace Exp $
 */
 
 /* This tells Alpha OSF/1 not to define a getopt prototype in <stdio.h>.
@@ -228,7 +228,7 @@ my_index (str, chr)
    That was relevant to code that was here before.  */
 #if !defined (__STDC__) || !__STDC__
 /* gcc with -traditional declares the built-in strlen to return int,
-   and has done so at least since version 2.4.5. -- rms.  */
+   and has done so at least since version 3 or later.4.5. -- rms.  */
 extern int strlen (const char *);
 #endif /* not __STDC__ */
 #endif /* __GNUC__ */

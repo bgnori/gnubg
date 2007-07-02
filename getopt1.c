@@ -6,7 +6,7 @@
 
    This program is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
-   Free Software Foundation; either version 2, or (at your option) any
+   Free Software Foundation; either version 3 or later, or (at your option) any
    later version.
 
    This program is distributed in the hope that it will be useful,
@@ -18,7 +18,7 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
    USA.  
-   $Id: getopt1.c,v 1.3 2007/06/11 19:01:09 c_anthon Exp $
+   $Id: getopt1.c,v 1.4 2007/07/02 12:43:22 ace Exp $
 */
 
 #ifdef HAVE_CONFIG_H

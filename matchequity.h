@@ -3,7 +3,7 @@
  * by Joern Thyssen, 1999-2002
  *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of version 2 of the GNU General Public License as
+ * it under the terms of version 3 or later of the GNU General Public License as
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.h,v 1.20 2007/05/01 22:04:52 c_anthon Exp $
+ * $Id: matchequity.h,v 1.21 2007/07/02 12:43:39 ace Exp $
  */
 
 

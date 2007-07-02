@@ -5,7 +5,7 @@
  * (after inspiration from osr.cc from fibs2html <fibs2html.sourceforge.net>
  *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of version 2 of the GNU General Public License as
+ * it under the terms of version 3 or later of the GNU General Public License as
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.21 2007/05/31 22:42:17 c_anthon Exp $
+ * $Id: openurl.c,v 1.22 2007/07/02 12:43:25 ace Exp $
  */
 #include "config.h"
 #include <stdio.h>

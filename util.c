@@ -4,7 +4,7 @@
  * by Christian Anthon 2007
  *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of version 2 of the GNU General Public License as
+ * it under the terms of version 3 or later of the GNU General Public License as
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.c,v 1.5 2007/06/11 19:01:12 c_anthon Exp $
+ * $Id: util.c,v 1.6 2007/07/02 12:43:26 ace Exp $
  */
 char *aszRNG[1]; 
 char *aszSkillType[ 1 ]; 

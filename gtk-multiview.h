@@ -2,7 +2,7 @@
  * Copyright (C) 2000  Jonathan Blandford
  *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of version 2 of the GNU General Public License as
+ * it under the terms of version 3 or later of the GNU General Public License as
  * published by the Free Software Foundation.
  *
  * This library is distributed in the hope that it will be useful,
@@ -15,7 +15,7 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * $Id: gtk-multiview.h,v 1.2 2006/10/27 19:44:41 Superfly_Jon Exp $
+ * $Id: gtk-multiview.h,v 1.3 2007/07/02 12:43:39 ace Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted

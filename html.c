@@ -4,7 +4,7 @@
  * by Joern Thyssen  <jthyssen@dk.ibm.com>, 2002
  *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of version 2 of the GNU General Public License as
+ * it under the terms of version 3 or later of the GNU General Public License as
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.180 2007/05/23 15:15:17 c_anthon Exp $
+ * $Id: html.c,v 1.181 2007/07/02 12:43:24 ace Exp $
  */
 
 #include "config.h"
@@ -160,7 +160,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.180 2007/05/23 15:15:17 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.181 2007/07/02 12:43:24 ace Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1840,7 +1840,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.180 $";
+  const char szVersion[] = "$Revision: 1.181 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1920,7 +1920,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.180 $";
+  const char szVersion[] = "$Revision: 1.181 $";
   int iMajor, iMinor;
   char *pc;
 

@@ -5,7 +5,7 @@
  * Analysis move list control
  *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of version 2 of the GNU General Public License as
+ * it under the terms of version 3 or later of the GNU General Public License as
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.h,v 1.2 2007/01/05 22:01:02 Superfly_Jon Exp $
+ * $Id: gtkmovelistctrl.h,v 1.3 2007/07/02 12:43:39 ace Exp $
  */
 
 #ifndef _GTKMOVELISTCTRL_H_

@@ -4,7 +4,7 @@
  * by Gary Wong <gary@cs.arizona.edu>, 1999.
  *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of version 2 of the GNU General Public License as
+ * it under the terms of version 3 or later of the GNU General Public License as
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.23 2004/07/25 19:25:40 kaoru Exp $
+ * $Id: rollout.h,v 1.24 2007/07/02 12:43:40 ace Exp $
  */
 
 #ifndef _ROLLOUT_H_
