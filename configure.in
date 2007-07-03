@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-AC_REVISION($Revision: 1.171 $)
+AC_REVISION($Revision: 1.172 $)
 AC_INIT([GNU Backgammon],[0.16-devel],[bug-gnubg@gnu.org],[gnubg])
 AC_CONFIG_SRCDIR(gnubg.c)
 AM_INIT_AUTOMAKE
@@ -161,8 +161,6 @@ AC_CHECK_FUNCS(atanf, , AC_DEFINE(atanf, atan, [set atanf to atan if undefined])
 AC_CHECK_FUNCS(cosf, , AC_DEFINE(cosf, cos, [set cosf to cos if undefined]),)
 AC_CHECK_FUNCS(sinf, , AC_DEFINE(sinf, sin, [set sinf to sin if undefined]),)
 AC_CHECK_FUNCS(tanf, , AC_DEFINE(tanf, tan, [set tanf to tan if undefined]),)
-
-AC_REPLACE_FUNCS(erf)
 
 dnl
 dnl Checks for declarations
