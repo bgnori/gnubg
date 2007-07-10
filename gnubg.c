@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.713 2007/07/10 15:23:20 c_anthon Exp $
+ * $Id: gnubg.c,v 1.714 2007/07/10 15:25:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -7077,8 +7077,6 @@ char *SetupLanguage (char *newLangCode)
 
 	if (!org_lang)
 		org_lang=g_strdup(setlocale(LC_ALL, ""));
-
-	g_print("org_lang %s\n", org_lang);
 
 	if (!newLangCode || !strcmp (newLangCode, "system") || !strcmp (newLangCode, ""))
 	{
