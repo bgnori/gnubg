@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.319 2007/07/02 12:43:22 ace Exp $
+ * $Id: eval.c,v 1.320 2007/07/11 13:39:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -871,14 +871,16 @@ extern int EvalInitialise(char *szWeights, char *szWeightsBinary,
 			    perror( szWeightsBinary );
 		    }
 	    }
-	    fclose( pfWeights );
+	    if (pfWeights)
+		    fclose( pfWeights );
+	    pfWeights = NULL;
     }
 
     if( !fReadWeights && szWeights ) {
 	    h = open( szWeights, O_RDONLY);
 	    if (h)
 		    pfWeights = fdopen( h, "r" );
-	    if (!binary_weights_failed(szWeights, pfWeights))
+	    if (!weights_failed(szWeights, pfWeights))
 	    {
 		    if( !( fReadWeights =
 					    !NeuralNetLoad( &nnContact, pfWeights ) &&
@@ -892,7 +894,9 @@ extern int EvalInitialise(char *szWeights, char *szWeightsBinary,
 			    perror( szWeights );
 
 	    }
-	    fclose( pfWeights );
+	    if (pfWeights)
+		    fclose( pfWeights );
+	    pfWeights = NULL;
     }
 
     if( fReadWeights ) {
