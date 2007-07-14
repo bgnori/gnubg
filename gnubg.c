@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.714 2007/07/10 15:25:23 c_anthon Exp $
+ * $Id: gnubg.c,v 1.715 2007/07/14 20:48:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1498,6 +1498,8 @@ command cER = {
     N_("Bot wins game"), szOPTFILENAME, &cFilename },
   { "botwinsmatch", CommandSetSoundSoundBotWinMatch, 
     N_("Bot wins match"), szOPTFILENAME, &cFilename },
+  { "chequer", CommandSetSoundSoundChequer, 
+    N_("Chequer movement"), szOPTFILENAME, &cFilename },
   { "double", CommandSetSoundSoundDouble, 
     N_("Double"), szOPTFILENAME, &cFilename },
   { "drop", CommandSetSoundSoundDrop, 

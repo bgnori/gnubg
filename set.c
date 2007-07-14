@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.279 2007/07/10 15:23:21 c_anthon Exp $
+ * $Id: set.c,v 1.280 2007/07/14 20:48:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3794,11 +3794,6 @@ CommandSetSoundEnable ( char *sz ) {
 /* sound system */
 extern void
 CommandSetSoundSystemCommand ( char *sz ) {
-  if ( ! sz || ! *sz ) {
-    outputl ( _("You must specify a command. "
-                "See `help set sound system command'") );
-    return;
-  }
   sound_set_command(sz);
 }
 
@@ -3834,6 +3829,13 @@ extern void
 CommandSetSoundSoundBotWinMatch ( char *sz ) {
 
   SetSoundFile ( SOUND_BOT_WIN_MATCH, NextToken ( &sz ) );
+
+}
+
+extern void
+CommandSetSoundSoundChequer ( char *sz ) {
+
+  SetSoundFile ( SOUND_CHEQUER, NextToken ( &sz ) );
 
 }
 
