@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff1.c,v 1.10 2007/07/02 12:43:24 ace Exp $
+ * $Id: makebearoff1.c,v 1.11 2007/07/14 20:45:14 c_anthon Exp $
  */
 
 #include "config.h"
@@ -31,7 +31,6 @@
 
 #include "eval.h"
 #include "positionid.h"
-#include "getopt.h"
 #include <glib/gi18n.h>
 #include "bearoff.h"
 
@@ -57,7 +56,7 @@ PrintPre ( FILE *pf ) {
          " * along with this program; if not, write to the Free Software\n"
          " * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
          " *\n"
-         " * $Id: makebearoff1.c,v 1.10 2007/07/02 12:43:24 ace Exp $\n"
+         " * $Id: makebearoff1.c,v 1.11 2007/07/14 20:45:14 c_anthon Exp $\n"
          " */\n"
          "\n\n\n"
          "#include <stdio.h>\n"
@@ -127,13 +126,6 @@ PrintCode ( FILE *pf ) {
 
 
 static void
-usage ( char *arg0 ) {
-
-  printf ( "usage:\n" );
-
-}
-
-static void
 version ( void ) {
 
   printf ( "version:\n" );
@@ -150,35 +142,23 @@ main ( int argc, char **argv ) {
   char ac[ 128 ];
   int n, i;
 
-  static struct option ao[] = {
-    { "output", required_argument, NULL, 'o' },
-    { "input", required_argument, NULL, 'i' },
-    { "help", no_argument, NULL, 'h' },
-    { "version", no_argument, NULL, 'v' },
-    { NULL, 0, NULL, 0 }
+  GOptionEntry ao[] = {
+    {"intput", 'i', 0, G_OPTION_ARG_FILENAME, &szInput,
+      N_("Input file"), NULL},
+    {"output", 'o', 0, G_OPTION_ARG_FILENAME, &szOutput,
+      N_("Input file"), NULL},
+    {NULL}
   };
+  GError *error = NULL;
+  GOptionContext *context;
 
-  while ( ( ch = getopt_long ( argc, argv, "o:i:hv", ao, NULL ) ) !=
-          (char) -1 ) {
-    switch ( ch ) {
-    case 'o': /* output file */
-      szOutput = strdup ( optarg );
-      break;
-    case 'i': /* input file */
-      szInput = strdup ( optarg );
-      break;
-    case 'h': /* help */
-      usage ( argv[ 0 ] );
-      exit ( 0 );
-      break;
-    case 'v': /* version */
-      version ();
-      exit ( 0 );
-      break;
-    default:
-      usage ( argv[ 0 ] );
-      exit ( 1 );
-    }
+  context = g_option_context_new(NULL);
+  g_option_context_add_main_entries(context, ao, PACKAGE);
+  g_option_context_parse(context, &argc, &argv, &error);
+  g_option_context_free(context);
+  if (error) {
+  	g_printerr("%s\n", error->message);
+  	exit(EXIT_FAILURE);
   }
 
   if ( ! szOutput || ! strcmp ( szOutput, "-" ) )
