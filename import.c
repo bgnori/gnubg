@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.121 2007/07/02 12:43:24 ace Exp $
+ * $Id: import.c,v 1.122 2007/07/14 20:51:29 c_anthon Exp $
  */
 
 #include "config.h"
@@ -486,10 +486,10 @@ ExpandMatMove ( int anBoard[ 2 ][ 25 ], int anMove[ 8 ], int *pc,
 
       int an[ 8 ];
 
-      /* consolidated move */
+      /* consolidated move, e.g. 61: 11/4. Let's hope that the notation cannot
+       * be as bad as 61: 11/4* meaning 11/5* 5/4 */
 
       for ( i = 0; i < 2; ++i ) {
-
         an[ 0 ] = anMove[ 0 ];
         an[ 1 ] = an[ 0 ] - anDice[ i ];
         
@@ -498,6 +498,10 @@ ExpandMatMove ( int anBoard[ 2 ][ 25 ], int anMove[ 8 ], int *pc,
 
         an[ 4 ] = -1;
         an[ 5 ] = -1;
+
+	/* no hits on the first part of the move*/
+	if (anBoard[0][23-an[1]] != 0)
+		continue;
 
         if ( IsValidMove ( anBoard, an ) ) {
           memcpy ( anMove, an, sizeof ( an ) );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.43 2007/07/02 12:43:22 ace Exp $
+ * $Id: export.c,v 1.44 2007/07/14 20:51:29 c_anthon Exp $
  */
 
 #include "config.h"
@@ -700,7 +700,8 @@ static void ExportGameJF( FILE *pf, list *plGame, int iGame,
                 anScore[ !pmr->fPlayer ] += pmr->r.nResigned * nFileCube;
             break;
 	case MOVE_SETDICE:
-	    /* ignore */
+	    /* Could be rolled dice just before resign */
+	    sprintf( sz, "%d%d: ", pmr->anDice[ 0 ], pmr->anDice[ 1 ] );
 	    break;
 	case MOVE_SETBOARD:
 	case MOVE_SETCUBEVAL:
