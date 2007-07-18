@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.23 2007/07/18 12:41:57 c_anthon Exp $
+* $Id: gtkgamelist.c,v 1.24 2007/07/18 21:26:28 c_anthon Exp $
 */
 
 #include "config.h"
@@ -34,6 +34,9 @@
 #include "drawboard.h"
 #include "positionid.h"
 #include "gtkgame.h"
+#if USE_BOARD3D
+#include "fun3d.h"
+#endif
 
 static int gtk_compare_fonts(GtkStyle* psOne, GtkStyle* psTwo)
 {

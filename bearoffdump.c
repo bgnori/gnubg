@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffdump.c,v 1.9 2007/07/14 20:45:14 c_anthon Exp $
+ * $Id: bearoffdump.c,v 1.10 2007/07/18 21:26:28 c_anthon Exp $
  */
 
 #include "config.h"
@@ -33,7 +33,7 @@
 extern int
 main( int argc, char **argv ) {
 
-  char ch, *filename, *szPosID = NULL;
+  char *filename, *szPosID = NULL;
   int id = 0;
   bearoffcontext *pbc;
   char sz[ 4096 ];

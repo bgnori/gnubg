@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.18 2007/07/14 20:45:14 c_anthon Exp $
+ * $Id: makehyper.c,v 1.19 2007/07/18 21:26:28 c_anthon Exp $
  */
 
 #include "config.h"
@@ -586,7 +586,6 @@ main ( int argc, char **argv ) {
   time_t t0, t1, t2, t3;
   char *szOutput = NULL;
   char *szRestart = NULL;
-  char ch;
   int fCheckPoint = TRUE;
   int show_version=0;
 

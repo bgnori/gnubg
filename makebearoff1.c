@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff1.c,v 1.11 2007/07/14 20:45:14 c_anthon Exp $
+ * $Id: makebearoff1.c,v 1.12 2007/07/18 21:26:28 c_anthon Exp $
  */
 
 #include "config.h"
@@ -56,7 +56,7 @@ PrintPre ( FILE *pf ) {
          " * along with this program; if not, write to the Free Software\n"
          " * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n"
          " *\n"
-         " * $Id: makebearoff1.c,v 1.11 2007/07/14 20:45:14 c_anthon Exp $\n"
+         " * $Id: makebearoff1.c,v 1.12 2007/07/18 21:26:28 c_anthon Exp $\n"
          " */\n"
          "\n\n\n"
          "#include <stdio.h>\n"
@@ -125,20 +125,12 @@ PrintCode ( FILE *pf ) {
 }
 
 
-static void
-version ( void ) {
-
-  printf ( "version:\n" );
-
-}
-
 extern int
 main ( int argc, char **argv ) {
 
   char *szOutput = NULL;
   char *szInput = NULL;
   FILE *pfOut, *pfIn;
-  char ch;
   char ac[ 128 ];
   int n, i;
 
