@@ -18,11 +18,13 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.34 2007/07/02 12:47:12 ace Exp $
+* $Id: widget3d.c,v 1.35 2007/07/18 12:41:58 c_anthon Exp $
 */
 
 #include "config.h"
 #include "inc3d.h"
+
+gboolean gtk_gl_init_success = FALSE;
 
 extern GdkGLConfig *getGlConfig()
 {
@@ -52,7 +54,7 @@ static void Draw(const BoardData* bd)
 static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *notused, void* data)
 {
 	BoardData *bd = (BoardData*)data;
-	if (bd->rd->fDisplayType == DT_3D)
+	if (display_is_3d(bd->rd))
 	{
 		static int oldHeight = -1, oldWidth = -1;
 		int width = widget->allocation.width, height = widget->allocation.height;
@@ -161,7 +163,7 @@ extern void CreateGLWidget(BoardData* bd)
 
 void InitGTK3d(int *argc, char ***argv)
 {
-	gtk_gl_init(argc, argv);
+	gtk_gl_init_success = gtk_gl_init_check(argc, argv);
 
 	/* Call LoadTextureInfo to get texture details from textures.txt */
 	LoadTextureInfo(TRUE);

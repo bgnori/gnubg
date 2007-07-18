@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.37 2007/07/02 12:43:23 ace Exp $
+* $Id: gtkpanels.c,v 1.38 2007/07/18 12:41:57 c_anthon Exp $
 */
 
 #include "config.h"
@@ -840,7 +840,7 @@ ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 
 	/* Hide for smoother appearance */
 #if USE_BOARD3D
-	if (bd->rd->fDisplayType == DT_3D)
+	if (display_is_3d(bd->rd))
 		gtk_widget_hide(GetDrawingArea3d(bd->bd3d));
 	else
 #endif
@@ -867,7 +867,7 @@ ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 	SwapBoardToPanel(TRUE);
 
 #if USE_BOARD3D
-	if (bd->rd->fDisplayType == DT_3D)
+	if (display_is_3d(bd->rd))
 		gtk_widget_show(GetDrawingArea3d(bd->bd3d));
 	else
 #endif
@@ -885,7 +885,7 @@ HideAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 
 	/* Hide for smoother appearance */
 #if USE_BOARD3D
-	if (bd->rd->fDisplayType == DT_3D)
+	if (display_is_3d(bd->rd))
 		gtk_widget_hide(GetDrawingArea3d(bd->bd3d));
 	else
 #endif
@@ -918,7 +918,7 @@ HideAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 	SetMainWindowSize();
 
 #if USE_BOARD3D
-	if (bd->rd->fDisplayType == DT_3D)
+	if (display_is_3d(bd->rd))
 		gtk_widget_show(GetDrawingArea3d(bd->bd3d));
 	else
 #endif

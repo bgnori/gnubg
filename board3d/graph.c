@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.21 2007/07/02 12:47:12 ace Exp $
+* $Id: graph.c,v 1.22 2007/07/18 12:41:58 c_anthon Exp $
 */
 
 #include "config.h"
@@ -150,7 +150,7 @@ static void DrawColourBar(int playerCol, float x, float y, float first, float se
 	renderdata *prd = GetMainAppearance();
 	for (i = 0; i < 4; i++)
 	{
-		if (prd->fDisplayType == DT_2D)
+		if (display_is_2d(prd))
 			col[i] = (float)prd->aarColour[playerCol][i];
 		else
 			col[i] = prd->ChequerMat[playerCol].ambientColour[i];

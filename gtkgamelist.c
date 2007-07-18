@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.22 2007/07/02 12:43:23 ace Exp $
+* $Id: gtkgamelist.c,v 1.23 2007/07/18 12:41:57 c_anthon Exp $
 */
 
 #include "config.h"
@@ -122,7 +122,7 @@ void GameListSelectRow(GtkCList *pcl, gint y, gint x, GdkEventButton *pev, gpoin
        ms.anDice[ 1 ] = pmr->anDice[ 1 ];
    }
 #if USE_BOARD3D
-	if (bd->rd->fDisplayType == DT_3D)
+	if (display_is_3d(bd->rd))
 	{	/* Make sure dice are shown (and not rolled) */
 		bd->diceShown = DICE_ON_BOARD;
 		bd->diceRoll[0] = !ms.anDice[0];

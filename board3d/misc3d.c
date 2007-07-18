@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.69 2007/07/02 12:47:12 ace Exp $
+* $Id: misc3d.c,v 1.70 2007/07/18 12:41:58 c_anthon Exp $
 */
 
 #include "config.h"
@@ -26,6 +26,7 @@
 #include "renderprefs.h"
 #include "sound.h"
 #include "export.h"
+#include "gtkgame.h"
 
 static int stopNextTime;
 static int slide_move;
@@ -343,7 +344,7 @@ void FindTexture(TextureInfo** textureInfo, char* file)
 
 	*textureInfo = 0;
 	/* Only warn user if in 3d */
-	if (GetMainAppearance()->fDisplayType == DT_3D)
+	if (display_is_3d(GetMainAppearance()))
 		g_print("Texture %s not in texture info file\n", file);
 }
 
@@ -2392,4 +2393,22 @@ extern void DrawScene3d(const BoardData3d* bd3d)
 extern int Animating3d(const BoardData3d* bd3d)
 {
 	return (bd3d->shakingDice || bd3d->moving);
+}
+
+extern gboolean display_is_3d (renderdata *prd)
+{
+	gint fdt = prd -> fDisplayType;
+	g_assert( fdt == DT_2D ||  fdt == DT_3D);
+	g_assert( fdt == DT_2D || gtk_gl_init_success);
+	if (fdt == DT_3D)
+		return TRUE;
+	else
+		return FALSE;
+}
+
+extern gboolean display_is_2d (renderdata *prd)
+{
+	gint fdt = prd -> fDisplayType;
+	g_assert( fdt == DT_2D ||  fdt == DT_3D);
+	return( fdt == DT_2D ? TRUE : FALSE);
 }
