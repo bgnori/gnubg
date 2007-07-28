@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.169 2007/07/18 21:26:28 c_anthon Exp $
+ * $Id: rollout.c,v 1.170 2007/07/28 22:44:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1295,7 +1295,7 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
   unsigned int j;
   int alt;
   unsigned int i;
-  unsigned int nFirstTrial;
+  int nFirstTrial;
   int trialsDone;
   rolloutcontext *prc = NULL, rcRolloutSave;
   evalsetup *pes;
@@ -1351,7 +1351,7 @@ fnTick = NULL;
 		log_name = NULL;
 
   cGames = rcRollout.nTrials;
-  nFirstTrial = ~0;
+  nFirstTrial = 0;
 
   for ( alt = 0; alt < alternatives; ++alt) {
     pes = apes[ alt ];
@@ -1387,7 +1387,7 @@ fnTick = NULL;
       memcpy (prc, &rcRollout, sizeof (rolloutcontext));
       prc->nGamesDone = 0;
       prc->nSkip = 0;
-      nFirstTrial = ~0;
+      nFirstTrial = 0;
       altGameCount[alt] = 0;
 
       if (aarsStatistics) {
@@ -1624,7 +1624,7 @@ RolloutGeneral( int (* apBoard[])[ 2 ][ 25 ],
   }
 
   cGames = rcRollout.nTrials;
-  nFirstTrial = ~0 ;
+  nFirstTrial = 0 ;
 
   for ( alt = 0; alt < alternatives; ++alt) {
     pes = apes[ alt ];
