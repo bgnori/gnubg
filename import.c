@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.122 2007/07/14 20:51:29 c_anthon Exp $
+ * $Id: import.c,v 1.123 2007/07/29 06:29:26 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3808,18 +3808,19 @@ extern void CommandImportAuto(char *sz)
 	}
 	fdp = ReadFilePreview(sz);
 
-	if (!fdp || !fdp->format) {
+	if (!fdp) {
 		outputerrf(_("%s is not a backgammon file"), sz);
 		g_free(fdp);
 		return;
 	}
-	if (fdp->format == &file_format[0]) {
+	if (fdp->type == IMPORT_SGF) {
 		cmd = g_strdup_printf("load match \"%s\"", sz);
 	} else {
 		cmd =
 		    g_strdup_printf("import %s \"%s\"",
-				    fdp->format->clname, sz);
+				    import_format[fdp->type].clname, sz);
 	}
 	HandleCommand(cmd, acTop);
 	g_free(cmd);
+	g_free(fdp);
 }
