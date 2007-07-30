@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.170 2007/07/28 22:44:58 c_anthon Exp $
+ * $Id: rollout.c,v 1.171 2007/07/30 22:32:25 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1465,13 +1465,7 @@ fnTick = NULL;
 	ro_fInvert = fInvert;
 	ro_NextTrail = nFirstTrial;
 
-	for (i = 0; i < MT_GetNumThreads(); i++)
-	{	/* Get each thread to run through the rollout trials */
-		Task *pt = (Task*)malloc(sizeof(Task));
-		pt->type = TT_ROLLOUTLOOP;
-		pt->pLinkedTask = NULL;
-		MT_AddTask((Task*)pt);
-	}
+	mt_add_tasks(MT_GetNumThreads(), TT_ROLLOUTLOOP, NULL);
 
 	ro_pfProgress = pfProgress;
 	ro_pUserData = pUserData;

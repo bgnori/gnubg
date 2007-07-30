@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.16 2007/07/02 12:43:26 ace Exp $
+ * $Id: speed.c,v 1.17 2007/07/30 22:32:25 c_anthon Exp $
  */
 
 #include "config.h"
@@ -137,13 +137,7 @@ extern void CommandCalibrate( char *sz )
 			break;
 
 #if USE_MULTITHREAD
-		for (i = 0; i < MT_GetNumThreads(); i++)
-		{
-			Task *pt = (Task*)malloc(sizeof(Task));
-			pt->type = TT_RUNCALIBRATIONEVALS;
-			pt->pLinkedTask = NULL;
-			MT_AddTask((Task*)pt);
-		}
+		mt_add_tasks(MT_GetNumThreads(), TT_RUNCALIBRATIONEVALS, NULL);
 		MT_WaitForTasks(NULL, 0);
 		iIter += MT_GetNumThreads();
 #else

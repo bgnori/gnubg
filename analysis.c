@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.178 2007/07/02 12:43:21 ace Exp $
+ * $Id: analysis.c,v 1.179 2007/07/30 22:32:24 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1034,7 +1034,7 @@ static int AnalyzeGame ( list *plGame )
 				pt = pParentTask;
 				pParentTask = NULL;
 			}
-			MT_AddTask((Task*)pt);
+			MT_AddTask((Task*)pt, TRUE);
 		}
 
 		FixMatchState(&msAnalyse, pmr);
