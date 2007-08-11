@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.70 2007/07/18 12:41:58 c_anthon Exp $
+* $Id: misc3d.c,v 1.71 2007/08/11 18:28:47 c_anthon Exp $
 */
 
 #include "config.h"
@@ -2338,11 +2338,15 @@ void GenerateImage3d(renderdata *prd, const char* szName,
 	unsigned int nSize, unsigned int nSizeX, unsigned int nSizeY)
 {
 	unsigned char *puch;
-	BoardData* bd = BOARD(pwBoard)->board_data;
+	BoardData *bd = BOARD(pwBoard)->board_data;
 	BoardData bdpw;
 	renderdata rd;
-	GdkPixmap *ppm = gdk_pixmap_new(NULL, (int)(nSizeX * nSize), (int)(nSizeY * nSize), 24);
+	GError *error = NULL;
+	GdkPixmap *ppm;
 	void *glpixPreview;
+	GdkPixbuf *pixbuf;
+	gint depth = gdk_gl_config_get_depth(getglconfigSingle());
+	ppm = gdk_pixmap_new(NULL, (int) (nSizeX * nSize), (int) (nSizeY * nSize), depth);
 
 	/* Copy current settings */
 	CopyAppearance(&rd);
@@ -2361,9 +2365,14 @@ void GenerateImage3d(renderdata *prd, const char* szName,
 	/* Draw board */
 	RenderBoard3d(&bdpw, prd, glpixPreview, puch);
 
-	if (!WritePNG(szName, puch, nSizeX * nSize * 3, nSizeX * nSize, nSizeY * nSize))
-		g_print("WritePNG failed!\n");
-
+	pixbuf = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE(ppm),
+					      NULL, 0, 0, 0, 0, -1, -1);
+	gdk_pixbuf_save(pixbuf, szName, "png", &error, NULL);
+	if (error) {
+		outputerrf("png failed: %s\n", error->message);
+		g_error_free(error);
+	}
+	g_object_unref(pixbuf);
 	g_object_unref(ppm);
 	free(puch);
 }
