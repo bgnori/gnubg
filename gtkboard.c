@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.221 2007/07/18 12:41:56 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.222 2007/08/11 18:58:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3115,10 +3115,10 @@ extern void board_animate( Board *board, int move[ 8 ], int player )
 #endif
 {    
     if( animGUI == ANIMATE_BLINK )
-	n = gtk_timeout_add( 0x300 >> nGUIAnimSpeed, board_blink_timeout,
+	n = g_timeout_add( 0x300 >> nGUIAnimSpeed, board_blink_timeout,
 			     board );
     else /* ANIMATE_SLIDE */
-	n = gtk_timeout_add( 0x100 >> nGUIAnimSpeed, board_slide_timeout,
+	n = g_timeout_add( 0x100 >> nGUIAnimSpeed, board_slide_timeout,
 			     board );
 
     while( !animation_finished ) {

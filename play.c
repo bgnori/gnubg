@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.291 2007/07/18 12:41:57 c_anthon Exp $
+ * $Id: play.c,v 1.292 2007/08/11 18:58:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -705,9 +705,9 @@ static void ResetDelayTimer( void ) {
 
     if( fX && nDelay && fDisplay ) {
       if( nTimeout )
-        gtk_timeout_remove( nTimeout );
+        g_source_remove( nTimeout );
 
-	nTimeout = gtk_timeout_add( nDelay, DelayTimeout, NULL );
+	nTimeout = g_timeout_add( nDelay, DelayTimeout, NULL );
     }
 }
 #else
@@ -2395,7 +2395,7 @@ extern void CommandDouble( char *sz ) {
 #if USE_GTK
     /* There's no point delaying here. */
     if( nTimeout ) {
-	gtk_timeout_remove( nTimeout );
+	g_source_remove( nTimeout );
 	nTimeout = 0;
     }
 #endif
@@ -2908,7 +2908,7 @@ CommandMove( char *sz ) {
 #if USE_GTK
 		/* There's no point delaying here. */
 		if( nTimeout ) {
-		    gtk_timeout_remove( nTimeout );
+		    g_source_remove( nTimeout );
 		    nTimeout = 0;
 		}
 		
