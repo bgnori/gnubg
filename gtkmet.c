@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.18 2007/07/02 12:43:23 ace Exp $
+ * $Id: gtkmet.c,v 1.19 2007/08/12 08:46:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -95,11 +95,12 @@ UpdateAllTables ( metwidget *pmw ) {
   mettable *pmt;
   int i;
 
-  pmt = (mettable*)gtk_object_get_user_data ( GTK_OBJECT ( pmw->pwPreCrawford ) );
+  pmt = (mettable*)g_object_get_data ( G_OBJECT ( pmw->pwPreCrawford ),
+		  "mettable" );
   UpdateTable ( pmt, aafMET, &miCurrent, pmw->nMatchTo, pmw->nMatchTo, FALSE );
 
   for ( i = 0; i < 2; ++i ) {
-    pmt = (mettable*)gtk_object_get_user_data ( GTK_OBJECT ( pmw->apwPostCrawford[ i ] ) );
+    pmt = (mettable*)g_object_get_data ( G_OBJECT ( pmw->apwPostCrawford[ i ] ), "mettable" );
     UpdateTable ( pmt, (float (*)[ MAXSCORE ]) aafMETPostCrawford[ i ], 
                   &miCurrent, pmw->nMatchTo, 1, TRUE );
   }
@@ -193,7 +194,7 @@ static GtkWidget
                                   GTK_POLICY_AUTOMATIC,
                                   GTK_POLICY_AUTOMATIC );
 
-  gtk_object_set_data_full ( GTK_OBJECT ( pwBox ), "user_data", pmt, g_free );
+  g_object_set_data_full ( G_OBJECT ( pwBox ), "mettable", pmt, g_free );
 
   return pwBox;
 

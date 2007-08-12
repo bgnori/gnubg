@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.53 2007/07/02 12:43:23 ace Exp $
+ * $Id: gtkcube.c,v 1.54 2007/08/12 08:46:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -777,7 +777,7 @@ EvalCube ( cubehintdata *pchd, evalcontext *pec ) {
 static void
 CubeAnalysisEvalPly ( GtkWidget *pw, cubehintdata *pchd ) {
 
-  char *szPly = (char*)gtk_object_get_data ( GTK_OBJECT ( pw ), "user_data" );
+  char *szPly = (char*)g_object_get_data ( G_OBJECT ( pw ), "ply" );
   evalcontext ec = {0, 0, 0, TRUE, 0.0};
 
   ec.fCubeful = esAnalysisCube.ec.fCubeful;
@@ -923,7 +923,7 @@ CreateCubeAnalysisTools ( cubehintdata *pchd ) {
     g_signal_connect( G_OBJECT( pwply ), "clicked",
                         G_CALLBACK( CubeAnalysisEvalPly ), pchd );
 
-    gtk_object_set_data_full ( GTK_OBJECT ( pwply ), "user_data", sz, g_free );
+    g_object_set_data_full ( G_OBJECT ( pwply ), "ply", sz, g_free );
 
     sz = g_strdup_printf ( _("Evaluate play on cubeful %d-ply"), i );
     gtk_tooltips_set_tip ( GTK_TOOLTIPS ( pt ), pwply, sz, sz );
@@ -1071,7 +1071,8 @@ CreateCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   gtk_box_pack_start ( GTK_BOX ( pwx ), pwhb,
                      FALSE, FALSE, 0 );
 
-  gtk_object_set_data_full( GTK_OBJECT( pw ), "user_data", 
+  /* hook to free cubehintdata on widget destruction */
+  g_object_set_data_full( G_OBJECT( pw ), "cubehintdata", 
                             pchd, free );
 
 

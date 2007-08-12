@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.20 2007/07/02 12:43:24 ace Exp $
+ * $Id: gtkrolls.c,v 1.21 2007/08/12 08:46:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -358,7 +358,9 @@ GTKShowRolls ( const gint nDepth, evalcontext *pec, matchstate *pms ) {
   vbox = gtk_vbox_new ( FALSE, 8 );
   gtk_container_set_border_width ( GTK_CONTAINER ( vbox ), 8);
   gtk_container_add ( GTK_CONTAINER (DialogArea( prw->pDialog, DA_MAIN ) ), vbox );
-  gtk_object_set_data_full ( GTK_OBJECT ( vbox ), "user_data",
+
+  /* hook to free rollswidget on widget destruction */
+  g_object_set_data_full ( G_OBJECT ( vbox ), "rollswidget",
                              prw, g_free );
 
   /* scrolled window to hold tree widget */
