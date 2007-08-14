@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.179 2007/08/01 18:58:07 c_anthon Exp $
+## $Id: Makefile.am,v 1.180 2007/08/14 13:11:36 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -100,7 +100,7 @@ BR1DATA = gnubg_os0.bd
 endif
 
 pkgdata_DATA = gnubg_ts0.bd gnubg.wd boards.xml \
-	$(BR1DATA) $(BOARD3DDATA) gnubg.game.sql gnubg.gtkrc gnubg.svg
+	$(BR1DATA) $(BOARD3DDATA) gnubg.game.sql gnubg.gtkrc gnubg.svg gnubg.png
 
 
 distcheck-hook:
