@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.180 2007/08/14 13:11:36 c_anthon Exp $
+## $Id: Makefile.am,v 1.181 2007/08/15 09:04:50 c_anthon Exp $
 
 localedir = $(datadir)/locale
 
@@ -112,7 +112,7 @@ EXTRA_DIST = config.rpath  userrng.c copying.awk gnubg.6 \
 	external_l.c external_y.c external_y.h sgfp.c sgfp.h sgfl.c \
 	external_l.l external_y.y sgf.l sgf.y \
 	ABOUT-NLS boards.xml gnubg.game.sql autogen.sh gnubg.weights\
-	textures.txt
+	textures.txt gnubg.png gnubg.svg
 
 
 DISTCLEANFILES=gnubg.wd
