@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.116 2007/07/18 12:41:57 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.117 2007/08/31 21:41:02 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -76,6 +76,7 @@ extern void GTKThaw( void );
 extern void GTKSuspendInput();
 extern void GTKResumeInput();
 
+extern int init_gtk_ok(void);
 extern void InitGTK( int *argc, char ***argv );
 extern void RunGTK( GtkWidget *pwSplash, char *commands, char *python_script, char *match );
 extern void GTKAllowStdin( void );

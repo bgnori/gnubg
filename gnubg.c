@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.717 2007/07/18 21:26:28 c_anthon Exp $
+ * $Id: gnubg.c,v 1.718 2007/08/31 21:41:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5519,7 +5519,7 @@ extern void output( const char *sz )
 	return;
     
 #if USE_GTK
-    if( fX ) {
+    if( fX && init_gtk_ok() ) {
 	GTKOutput( g_strdup( sz ) );
 	return;
     }
@@ -5539,7 +5539,7 @@ extern void outputl( const char *sz )
 	return;
     
 #if USE_GTK
-    if( fX ) {
+    if( fX && init_gtk_ok() ) {
 	int cch;
 	char *pch;
 
@@ -5622,7 +5622,7 @@ extern void outputerrv( const char *sz, va_list val )
        fflush( stdout );
     putc( '\n', stderr );
 #if USE_GTK
-    if( fX )
+    if( fX && init_gtk_ok() )
 	GTKOutputErr( szFormatted );
 #endif
     g_free( szFormatted );
@@ -5636,7 +5636,7 @@ extern void outputx( void )
 	return;
 
 #if USE_GTK
-    if( fX )
+    if( fX && init_gtk_ok() )
 	GTKOutputX();
 #endif
 }
@@ -5649,7 +5649,7 @@ extern void outputnew( void )
 	return;
     
 #if USE_GTK
-    if( fX )
+    if( fX && init_gtk_ok() )
 	GTKOutputNew();
 #endif
 }
