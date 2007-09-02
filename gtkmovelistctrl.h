@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.h,v 1.3 2007/07/02 12:43:39 ace Exp $
+ * $Id: gtkmovelistctrl.h,v 1.4 2007/09/02 20:27:02 c_anthon Exp $
  */
 
 #ifndef _GTKMOVELISTCTRL_H_
@@ -57,9 +57,10 @@ struct _CustomCellRendererMovelistClass
 	GtkCellRendererClass parent_class;
 };
 
+extern GtkCellRenderer * custom_cell_renderer_movelist_new (void);
 
-GType                custom_cell_renderer_movelist_get_type (void);
-GtkCellRenderer     *custom_cell_renderer_movelist_new (void);
-void custom_cell_renderer_invalidate_size();
+extern GtkStyle *psHighlight;
+extern float rBest;
 
+extern void custom_cell_renderer_invalidate_size(void);
 #endif /* _custom_cell_renderer_movelistbar_included_ */

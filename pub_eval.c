@@ -18,10 +18,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: pub_eval.c,v 1.4 2007/07/02 16:03:14 ace Exp $
+ * $Id: pub_eval.c,v 1.5 2007/09/02 20:27:03 c_anthon Exp $
  */
 
 #include "config.h"
+#include "eval.h"
 static float wr[122] = {
     .00000f, -.17160f, .27010f, .29906f, -.08471f, .00000f, -1.40375f,
     -1.05121f, .07217f, -.01351f, .00000f, -1.29506f, -2.16183f, .13246f,

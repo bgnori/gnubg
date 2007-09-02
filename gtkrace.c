@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.26 2007/07/02 12:43:24 ace Exp $
+ * $Id: gtkrace.c,v 1.27 2007/09/02 20:27:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -37,11 +37,6 @@
 #include "format.h"
 #include "gtkwindows.h"
 
-#if !HAVE_ERF
-extern double erf(double x);
-#endif
-
-
 typedef struct _epcwidget {
 	GtkWidget *apwEPC[2];
 	GtkWidget *apwWastage[2];
@@ -55,7 +50,7 @@ typedef struct _racewidget {
 	int fMove;
 } racewidget;
 
-GtkWidget *monospace_text(const char *szOutput)
+static GtkWidget *monospace_text(const char *szOutput)
 {
 
 	GtkWidget *pwText;

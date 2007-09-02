@@ -18,10 +18,11 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: timer.c,v 1.9 2007/07/02 12:43:26 ace Exp $
+* $Id: timer.c,v 1.10 2007/09/02 20:27:04 c_anthon Exp $
 */
 
 #include "config.h"
+#include "backgammon.h"
 #include <time.h>
 #if HAVE_SYS_TIME_H
 #include <sys/time.h>
@@ -64,7 +65,7 @@ double get_time()
 
 #if 1
 
-double get_time()
+double get_time(void)
 {	/* Return elapsed time in milliseconds */
 	struct timeval tv;
 	gettimeofday(&tv, 0);

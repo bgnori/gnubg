@@ -18,15 +18,16 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.35 2007/07/18 12:41:58 c_anthon Exp $
+* $Id: widget3d.c,v 1.36 2007/09/02 20:27:05 c_anthon Exp $
 */
 
 #include "config.h"
 #include "inc3d.h"
+#include "misc3d.h"
 
 gboolean gtk_gl_init_success = FALSE;
 
-extern GdkGLConfig *getGlConfig()
+extern GdkGLConfig *getGlConfig(void)
 {
 	static GdkGLConfig *glconfig = NULL;
 	if (!glconfig)
@@ -169,7 +170,7 @@ void InitGTK3d(int *argc, char ***argv)
 	LoadTextureInfo(TRUE);
 }
 
-void Init3d()
+void Init3d(void)
 {	/* May be called several times - only init on first call */
 	static int initilized = FALSE;
 	if (initilized)
@@ -306,7 +307,7 @@ static void SetupPreview(const BoardData* bd, renderdata* prd)
 
 static GdkGLConfig *glconfigSingle = NULL;
 
-GdkGLConfig *getglconfigSingle()
+extern GdkGLConfig *getglconfigSingle(void)
 {
 	if (!glconfigSingle)
 		glconfigSingle = gdk_gl_config_new_by_mode((GdkGLConfigMode)(GDK_GL_MODE_RGB | GDK_GL_MODE_DEPTH | GDK_GL_MODE_SINGLE | GDK_GL_MODE_STENCIL));

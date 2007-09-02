@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.37 2007/08/12 08:46:50 c_anthon Exp $
+ * $Id: gtktoolbar.c,v 1.38 2007/09/02 20:27:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -168,7 +168,7 @@ ToolbarToggleClockwise( GtkWidget *pw, toolbarwidget *ptw ) {
 
 }
 
-extern void click_edit()
+extern void click_edit(void)
 {
         toolbarwidget *ptw = g_object_get_data ( G_OBJECT ( pwToolbar ), "toolbarwidget" );
         gtk_button_clicked( GTK_BUTTON( ptw->pwEdit ));

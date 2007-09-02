@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.30 2007/07/18 12:41:58 c_anthon Exp $
+ * $Id: renderprefs.c,v 1.31 2007/09/02 20:27:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -375,7 +375,7 @@ SetWood (char *sz, woodtype * pbw)
 #endif
 
 #if USE_BOARD3D
-displaytype check_for_board3d (char *szValue)
+static displaytype check_for_board3d (char *szValue)
 {
 	if (*szValue == '2')
 		return DT_2D;

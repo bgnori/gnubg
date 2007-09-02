@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.292 2007/08/11 18:58:44 c_anthon Exp $
+ * $Id: play.c,v 1.293 2007/09/02 20:27:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -724,7 +724,7 @@ extern void AddGame( moverecord *pmr ) {
 #endif
 }
 
-void DiceRolled()
+static void DiceRolled(void)
 {
 	playSound ( SOUND_ROLL );
     

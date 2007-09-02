@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.32 2007/07/29 06:29:26 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.33 2007/09/02 20:27:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -312,7 +312,7 @@ static GtkWidget* import_types_combo(void)
 }
 
 
-void do_import_file(gint import_type, gchar * fn)
+static void do_import_file(gint import_type, gchar * fn)
 {
 	gchar *cmd = NULL;
 

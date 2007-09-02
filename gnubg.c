@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.719 2007/08/31 22:39:16 c_anthon Exp $
+ * $Id: gnubg.c,v 1.720 2007/09/02 20:27:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2008,7 +2008,7 @@ char *aszBuildInfo[] = {
     NULL,
 };
 
-char *GetBuildInfoString()
+extern char *GetBuildInfoString(void)
 {
 	static char **ppch = aszBuildInfo;
 

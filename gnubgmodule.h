@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.13 2007/07/02 12:43:38 ace Exp $
+ * $Id: gnubgmodule.h,v 1.14 2007/09/02 20:27:01 c_anthon Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
@@ -33,11 +33,9 @@
 #undef HAVE_LIMITS_H
 #undef HAVE_FSTAT
 
-extern void
-PythonInitialise();
+extern void PythonInitialise(void);
 
-extern void
-PythonShutdown();
+extern void PythonShutdown(void);
 
 extern PyObject *PythonMatchChecksum( PyObject* self, PyObject *args );
 

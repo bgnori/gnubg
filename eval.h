@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.143 2007/07/02 12:43:38 ace Exp $
+ * $Id: eval.h,v 1.144 2007/09/02 20:27:01 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -646,5 +646,8 @@ baseInputs(int anBoard[2][25], float arInput[]);
 
 extern void 
 CalculateRaceInputs(int anBoard[2][25], float inputs[]);
+
+/* From pub_eval.c: */
+extern float pubeval( int race, int pos[] );
 
 #endif

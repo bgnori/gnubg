@@ -18,12 +18,13 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.54 2007/07/02 12:47:12 ace Exp $
+* $Id: drawboard3d.c,v 1.55 2007/09/02 20:27:04 c_anthon Exp $
 */
 
 #include "config.h"
 #include "inc3d.h"
 #include "boardpos.h"
+#include "misc3d.h"
 
 /* Used to calculate correct viewarea for board/fov angles */
 typedef struct _viewArea
@@ -42,30 +43,6 @@ static int LogCube( const int n )
 	if( n <= ( 1 << i ) )
 		return i < 6 ? i : 0;
 }
-
-/* Helper functions in misc3d */
-void cylinder(float radius, float height, unsigned int accuracy, const Texture* texture);
-void circle(float radius, float height, unsigned int accuracy);
-void circleRev(float radius, float height, unsigned int accuracy);
-void circleTex(float radius, float height, unsigned int accuracy, const Texture* texture);
-void circleRevTex(float radius, float height, unsigned int accuracy, const Texture* texture);
-void circleOutlineOutward(float radius, float height, unsigned int accuracy);
-void circleOutline(float radius, float height, unsigned int accuracy);
-void drawBox(int boxType, float x, float y, float z, float w, float h, float d, const Texture* texture);
-void drawCube(float size);
-void drawRect(float x, float y, float z, float w, float h, const Texture* texture);
-void drawSplitRect(float x, float y, float z, float w, float h, const Texture* texture);
-void drawChequeredRect(float x, float y, float z, float w, float h, int across, int down, const Texture* texture);
-void QuarterCylinder(float radius, float len, unsigned int accuracy, const Texture* texture);
-void QuarterCylinderSplayed(float radius, float len, unsigned int accuracy, const Texture* texture);
-void QuarterCylinderSplayedRev(float radius, float len, unsigned int accuracy, const Texture* texture);
-void drawCornerEigth(float ** const *boardPoints, float radius, unsigned int accuracy);
-void calculateEigthPoints(float ****boardPoints, float radius, unsigned int accuracy);
-
-/* Other functions */
-void initPath(Path* p, const float start[3]);
-void addPathSegment(Path* p, PathType type, const float point[3]);
-void initDT(diceTest* dt, int x, int y, int z);
 
 /* All the board element sizes - based on base_unit size */
 
@@ -130,8 +107,8 @@ void initDT(diceTest* dt, int x, int y, int z);
 /* Slight offset from surface - avoid using unless necessary */
 #define LIFT_OFF (base_unit / 50.0f)
 
-float getBoardWidth() {return TOTAL_WIDTH;}
-float getBoardHeight() {return TOTAL_HEIGHT;}
+float getBoardWidth(void) {return TOTAL_WIDTH;}
+float getBoardHeight(void) {return TOTAL_HEIGHT;}
 float getDiceSize(const renderdata* prd) {return prd->diceSize * base_unit;}
 
 static void TidyShadows(BoardData3d* bd3d)

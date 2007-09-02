@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.32 2007/07/02 12:43:25 ace Exp $
+ * $Id: relational.c,v 1.33 2007/09/02 20:27:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -123,7 +123,7 @@ static void Disconnect(PyObject *r)
 	Py_DECREF(r);
 }
 
-extern int RelationalMatchExists()
+extern int RelationalMatchExists(void)
 {
   int ret = -1;
   PyObject *v, *r;
@@ -153,7 +153,7 @@ extern int RelationalMatchExists()
   return ret;
 }
 
-int GameOver()
+static int GameOver(void)
 {
   	int anFinalScore[2];
 	int nMatch;
@@ -723,7 +723,7 @@ extern void FreeRowset(RowSet* pRow)
 	pRow->widths = NULL;
 }
 
-void MallocRowset(RowSet* pRow, int rows, int cols)
+static void MallocRowset(RowSet* pRow, int rows, int cols)
 {
 	int i;
 	pRow->widths = malloc(cols * sizeof(int));
@@ -740,7 +740,7 @@ void MallocRowset(RowSet* pRow, int rows, int cols)
 	pRow->rows = rows;
 }
 
-extern int UpdateQuery(char *sz)
+static int UpdateQuery(char *sz)
 {
 	PyObject *v, *r;
 

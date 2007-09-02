@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.23 2007/07/02 12:43:22 ace Exp $
+ * $Id: format.c,v 1.24 2007/09/02 20:27:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -160,7 +160,7 @@ OutputEvalContext ( const evalcontext *pec, const int fChequer ) {
            n = index of predefined setting if it's a match or
                if the eval context matches and it's 0 ply
  */
-extern int
+static int
 GetPredefinedChequerplaySetting( const evalcontext *pec,
                                  movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] ) {
 
@@ -224,7 +224,7 @@ GetPredefinedChequerplaySetting( const evalcontext *pec,
   return -1;
 }
 
-extern char *
+static char *
 OutputMoveFilterPly( const char *szIndent, 
                      const int nPlies,
                      movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] ) {

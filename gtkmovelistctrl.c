@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.10 2007/07/02 12:43:23 ace Exp $
+ * $Id: gtkmovelistctrl.c,v 1.11 2007/09/02 20:27:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -30,8 +30,6 @@
 #include "string.h"
 
 
-extern float rBest;
-extern GtkStyle *psHighlight;
 GdkColor wlCol;
 
 static void     custom_cell_renderer_movelist_init       (CustomCellRendererMovelist      *cellprogress);
@@ -69,7 +67,7 @@ static   gpointer parent_class;
  *
  ***************************************************************************/
 
-GType
+static GType
 custom_cell_renderer_movelist_get_type (void)
 {
   static GType cell_progress_type = 0;
@@ -232,7 +230,7 @@ custom_cell_renderer_movelist_new (void)
 
 static int fontheight = -1, minWidth;
 
-void custom_cell_renderer_invalidate_size()
+extern void custom_cell_renderer_invalidate_size(void)
 {
 	fontheight = -1;
 }

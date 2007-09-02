@@ -8,31 +8,6 @@
  *
  * Your should supply two functions setseed and getrandom:
  */
-#ifdef UNDEF
-
-extern void setseed ( unsigned long int seed );
-extern long int getrandom ( void );
-
-extern void setseed ( unsigned long int seed ) {
-
-  /* Fill in your function that sets seed */
-
-}
-
-extern long int getrandom ( void ) {
-
-  /* 
-   * Fill in your RNG...
-   * Function that return a (pseudo-)random 
-   * long int.
-   * Examples could be:
-   * - The FIBS dice code
-   * - Get random numbers from <URI:"http://www.random.org">
-   *   (see further below)
-   */
-
-}
-#endif
 /*
  *
  * by Joern Thyssen, 1999
@@ -50,7 +25,7 @@ extern long int getrandom ( void ) {
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: userrng.c,v 1.6 2007/07/02 12:43:26 ace Exp $
+ * $Id: userrng.c,v 1.7 2007/09/02 20:27:04 c_anthon Exp $
  */
 
 #if HAVE_CONFIG_H
@@ -68,8 +43,6 @@ extern long int getrandom ( void ) {
 #include <unistd.h>
 #include <string.h>
 
-extern void setseed ( unsigned long int seed );
-extern long int getrandom ( void );
 
 extern void setseed ( unsigned long int seed ) {
 

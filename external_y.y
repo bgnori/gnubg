@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_y.y,v 1.12 2007/07/02 13:50:09 ace Exp $
+ * $Id: external_y.y,v 1.13 2007/09/02 20:27:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -143,7 +143,7 @@ exterror( const char *s ) {
 }
 
 static void
-reset_command() {
+reset_command(void) {
 
   ec.ct = COMMAND_NONE;
   ec.nPlies = 0;

@@ -16,13 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.c,v 1.6 2007/07/02 12:43:26 ace Exp $
+ * $Id: util.c,v 1.7 2007/09/02 20:27:04 c_anthon Exp $
  */
 char *aszRNG[1]; 
 char *aszSkillType[ 1 ]; 
 int exsExport;
 int ap;
 #include "config.h"
+#include "util.h"
 #if WIN32
 #include <windows.h>
 #include <glib.h>
@@ -52,7 +53,7 @@ extern void MT_Unlock(long *lock)
 {
 }
 
-extern int MT_GetThreadID()
+extern int MT_GetThreadID(void)
 {
   return (0);
 }

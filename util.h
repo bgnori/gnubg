@@ -16,10 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.h,v 1.2 2007/07/02 12:43:40 ace Exp $
+ * $Id: util.h,v 1.3 2007/09/02 20:27:04 c_anthon Exp $
  */
 
-extern int MT_GetThreadID();
+extern int MT_GetThreadID(void);
 extern void MT_Unlock(long *lock);
 extern void MT_Lock(long *lock);
 extern char * getInstallDir( void );

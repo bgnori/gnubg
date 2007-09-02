@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.55 2007/07/02 12:43:22 ace Exp $
+ * $Id: dice.c,v 1.56 2007/09/02 20:27:00 c_anthon Exp $
  */
 
 #include "config.h"
@@ -439,7 +439,7 @@ static int BBSCheckInitialSeed( rngcontext *rngctx ) {
 }
 #endif
 
-extern void
+static void
 PrintRNGWarning( void ) {
 
   outputl( _("WARNING: this number may not be correct if the same \n"

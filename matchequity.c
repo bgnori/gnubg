@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.67 2007/07/02 12:43:25 ace Exp $
+* $Id: matchequity.c,v 1.68 2007/09/02 20:27:03 c_anthon Exp $
 */
 
 #include "config.h"
@@ -40,10 +40,6 @@
 #include <libxml/tree.h>
 #include <libxml/parser.h>
 #include <libxml/catalog.h>
-#endif
-
-#if !HAVE_ERF
-extern double erf( double x );
 #endif
 
 #define DELTA         0.08

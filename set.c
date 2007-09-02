@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.281 2007/08/31 21:41:03 c_anthon Exp $
+ * $Id: set.c,v 1.282 2007/09/02 20:27:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -619,7 +619,7 @@ extern void CommandSetAutoRoll( char *sz ) {
                _("Will not automatically roll the dice.") );
 }
 
-int CorrectNumberOfChequers(int anBoard[2][25], int numCheq)
+static int CorrectNumberOfChequers(int anBoard[2][25], int numCheq)
 {    /* Check players don't have too many chequers (esp. for hypergammon) */
 	int ac[2], i;
 	ac[0] = ac[1] = 0;
@@ -2759,7 +2759,7 @@ extern void CommandSetPostCrawford( char *sz ) {
 }
 
 #if USE_GTK
-warnings ParseWarning(char* str)
+static warnings ParseWarning(char* str)
 {
 	int i;
 

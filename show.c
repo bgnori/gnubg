@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.229 2007/07/10 15:23:21 c_anthon Exp $
+ * $Id: show.c,v 1.230 2007/09/02 20:27:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -63,7 +63,6 @@
 #include "openurl.h"
 #include "multithread.h"
 
-extern char *aszCopying[], *aszWarranty[]; /* from copying.c */
 
 static void ShowMoveFilter ( const movefilter *pmf, const int ply) {
   
@@ -1101,10 +1100,6 @@ extern void CommandShowWarranty( char *sz ) {
 	ShowPaged( aszWarranty );
 }
 
-
-#if !HAVE_ERF
-extern double erf( double x );
-#endif
 
 extern void show_kleinman( int an[2][25], char *sz)
 {

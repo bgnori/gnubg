@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.33 2007/07/02 12:47:12 ace Exp $
+* $Id: gtkcolour3d.c,v 1.34 2007/09/02 20:27:05 c_anthon Exp $
 */
 
 #include "config.h"
@@ -441,12 +441,12 @@ static void UpdateColour3d(GtkWidget *notused, UpdateDetails* pDetails)
 	gtk_main();
 }
 
-void ResetPreviews()
+extern void ResetPreviews(void)
 {
 	curDetail = 0;
 }
 
-int GetPreviewId()
+extern int GetPreviewId(void)
 {
 	return curDetail - 1;
 }
@@ -457,7 +457,7 @@ void UpdateColPreview(int ID)
 	gtk_widget_queue_draw(details[ID].preview);
 }
 
-void UpdateColPreviews()
+extern void UpdateColPreviews(void)
 {
 	int i;
 	for (i = 0; i < curDetail; i++)

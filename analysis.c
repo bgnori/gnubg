@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.179 2007/07/30 22:32:24 c_anthon Exp $
+ * $Id: analysis.c,v 1.180 2007/09/02 20:27:00 c_anthon Exp $
  */
 
 #include "config.h"
@@ -968,10 +968,20 @@ AnalyzeMove (moverecord *pmr, matchstate *pms, const list *plParentGame,
 /* used by mulithread code */
 static int progress_offset;
 
-static int NumberMovesGame ( list *plGame );
+static int
+NumberMovesGame ( list *plGame ) {
+
+  int nMoves = 0;
+  list *pl;
+
+  for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) 
+    nMoves++;
+
+  return nMoves;
+
+}
 
 #if USE_MULTITHREAD
-
 
 static void UpdateProgressBar()
 {
@@ -1211,19 +1221,6 @@ static int CheckSettings( void ) {
     }
 
     return 0;
-}
-
-static int
-NumberMovesGame ( list *plGame ) {
-
-  int nMoves = 0;
-  list *pl;
-
-  for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) 
-    nMoves++;
-
-  return nMoves;
-
 }
 
 
@@ -1495,20 +1492,6 @@ getMWCFromError ( const statcontext *psc, float aaaar[ 3 ][ 2 ][ 2 ][ 2 ] ) {
 
     }
 }
-
-extern float
-calcFibsRating( const float rMWC, const int nMatchTo ) {
-
-  float r;
-
-  r = 0.50f - rMWC;
-  if ( r < 0.0f )
-    r = 0.0f;
-
-  return 2100 + relativeFibsRating( r, nMatchTo );
-
-}
-
 
 extern void
 DumpStatcontext ( char *szOutput, const statcontext *psc, const char * pl, const char * op, const char * sz,
@@ -2158,7 +2141,7 @@ static int GameAnalysed(list * plGame)
 	return TRUE;
 }
 
-extern int MatchAnalysed()
+extern int MatchAnalysed(void)
 {
 	list *pl;
 

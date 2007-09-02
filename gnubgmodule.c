@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.66 2007/07/02 12:43:22 ace Exp $
+ * $Id: gnubgmodule.c,v 1.67 2007/09/02 20:27:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -147,7 +147,7 @@ static int
 PyToCubeInfo( PyObject *p, cubeinfo *pci ) {
 
   PyObject *pyKey, *pyValue;
-  int iPos = 0;
+  ssize_t iPos = 0;
   char *pchKey;
   static char *aszKeys[] = {
     "jacoby", "crawford", "move", "beavers", "cube", "matchto",
@@ -252,7 +252,7 @@ static int
 PyToEvalContext( PyObject *p, evalcontext *pec ) {
 
   PyObject *pyKey, *pyValue;
-  int iPos = 0;
+  ssize_t iPos = 0;
   char *pchKey;
   static char *aszKeys[] = {
     "cubeful", "plies", "reduced", "deterministic", "noise", NULL };
@@ -738,7 +738,7 @@ PythonEq2mwc( PyObject* self UNUSED_PARAM, PyObject *args ) {
 
 #define STRBUF_SIZE 1024
 
-void AddString(list* buffers, char* str)
+static void AddString(list* buffers, char* str)
 {
 	list* pCurrent = buffers->plPrev;
 	if (!pCurrent->p || strlen(str) + strlen(pCurrent->p) > STRBUF_SIZE)
@@ -750,7 +750,7 @@ void AddString(list* buffers, char* str)
 	strcat(pCurrent->p, str);
 }
 
-extern char* GameAsString()
+static char* GameAsString()
 {
 	char *ret;
 	int size;
@@ -2401,7 +2401,7 @@ PyMethodDef gnubgMethods[] = {
 };
 
 extern void
-PythonInitialise() {
+PythonInitialise(void) {
 
   char *pch;
   static char workingDir[BIG_PATH];

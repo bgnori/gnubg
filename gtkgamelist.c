@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.24 2007/07/18 21:26:28 c_anthon Exp $
+* $Id: gtkgamelist.c,v 1.25 2007/09/02 20:27:02 c_anthon Exp $
 */
 
 #include "config.h"
@@ -38,6 +38,9 @@
 #include "fun3d.h"
 #endif
 
+static GtkWidget *pwGameList;
+static GtkStyle *psGameList, *psCurrent, *psCubeErrors[3], *psChequerErrors[3], *psLucky[LUCK_VERYGOOD + 1];
+
 static int gtk_compare_fonts(GtkStyle* psOne, GtkStyle* psTwo)
 {
 	return pango_font_description_equal(psOne->font_desc, psTwo->font_desc);
@@ -47,9 +50,6 @@ static void gtk_set_font(GtkStyle* psStyle, GtkStyle* psValue)
 {
 	psStyle->font_desc = pango_font_description_copy(psValue->font_desc);
 }
-
-GtkWidget *pwGameList;
-GtkStyle *psGameList, *psCurrent, *psCubeErrors[3], *psChequerErrors[3], *psLucky[LUCK_VERYGOOD + 1];
 
 typedef struct _gamelistrow {
     moverecord *apmr[ 2 ]; /* moverecord entries for each column */
@@ -61,7 +61,7 @@ extern void GTKClearMoveRecord( void ) {
     gtk_clist_clear( GTK_CLIST( pwGameList ) );
 }
 
-void GameListSelectRow(GtkCList *pcl, gint y, gint x, GdkEventButton *pev, gpointer p)
+static void GameListSelectRow(GtkCList *pcl, gint y, gint x, GdkEventButton *pev, gpointer p)
 {
 #if USE_BOARD3D
     BoardData *bd = BOARD( pwBoard )->board_data;
@@ -142,7 +142,7 @@ void GameListSelectRow(GtkCList *pcl, gint y, gint x, GdkEventButton *pev, gpoin
     ShowBoard();
 }
 
-extern void GL_SetNames()
+extern void GL_SetNames(void)
 {
     gtk_clist_set_column_title( GTK_CLIST( pwGameList ), 1, 
                                 ( ap[0].szName ));
@@ -150,7 +150,7 @@ extern void GL_SetNames()
                                 ( ap[1].szName ));
 }
 
-void SetColourIfDifferent(GdkColor cOrg[5], GdkColor cNew[5], GdkColor cDefault[5])
+static void SetColourIfDifferent(GdkColor cOrg[5], GdkColor cNew[5], GdkColor cDefault[5])
 {
 	int i;
 	for (i = 0; i < 5; i++)
@@ -160,7 +160,7 @@ void SetColourIfDifferent(GdkColor cOrg[5], GdkColor cNew[5], GdkColor cDefault[
 	}
 }
 
-void UpdateStyle(GtkStyle *psStyle, GtkStyle *psNew, GtkStyle *psDefault)
+static void UpdateStyle(GtkStyle *psStyle, GtkStyle *psNew, GtkStyle *psDefault)
 {
 	/* Only set changed attributes */
 	SetColourIfDifferent(psStyle->fg, psNew->fg, psDefault->fg);
@@ -213,7 +213,7 @@ void GetStyleFromRCFile(GtkStyle** ppStyle, char* name, GtkStyle* psBase)
 	gtk_widget_destroy(temp);
 }
 
-GtkWidget* GL_Create()
+extern GtkWidget* GL_Create(void)
 {
     GtkStyle *ps;
     gint nMaxWidth; 
@@ -310,7 +310,7 @@ static int AddMoveRecordRow( void )
     return row;
 }
 
-void AddStyle(GtkStyle **ppsComb, GtkStyle *psNew)
+static void AddStyle(GtkStyle **ppsComb, GtkStyle *psNew)
 {
 	if (!*ppsComb)
 		*ppsComb = psNew;
@@ -321,7 +321,7 @@ void AddStyle(GtkStyle **ppsComb, GtkStyle *psNew)
 	}
 }
 
-void SetCellColour(int row, int col, moverecord *pmr)
+static void SetCellColour(int row, int col, moverecord *pmr)
 {
 	GtkStyle *pStyle = NULL;
 
@@ -525,7 +525,6 @@ extern void GTKPopMoveRecord( moverecord *pmr ) {
 extern void GL_Freeze( void ) {
     gtk_clist_freeze( GTK_CLIST( pwGameList ) );
 }
-extern void GTKSetMoveRecord( moverecord *pmr );
 
 extern void GL_Thaw( void ) {
     gtk_clist_thaw( GTK_CLIST( pwGameList ) );

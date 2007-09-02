@@ -18,15 +18,15 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.22 2007/07/18 12:41:58 c_anthon Exp $
+* $Id: graph.c,v 1.23 2007/09/02 20:27:05 c_anthon Exp $
 */
 
 #include "config.h"
 #include "inc3d.h"
+#include "misc3d.h"
 
 #include "renderprefs.h"
 
-extern GdkGLConfig *getGlConfig(void);
 
 struct _GraphData
 {
@@ -338,7 +338,7 @@ void SetNumGames(GraphData* pgd, unsigned int numGames)
 	pgd->data = Alloc3d(numGames + 1, 2, 2);
 }
 
-GraphData *CreateGraphData()
+extern GraphData *CreateGraphData(void)
 {
 	return (GraphData*)malloc(sizeof(GraphData));
 }
