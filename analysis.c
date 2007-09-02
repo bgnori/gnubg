@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.180 2007/09/02 20:27:00 c_anthon Exp $
+ * $Id: analysis.c,v 1.181 2007/09/02 23:21:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -983,7 +983,7 @@ NumberMovesGame ( list *plGame ) {
 
 #if USE_MULTITHREAD
 
-static void UpdateProgressBar()
+static void UpdateProgressBar(void)
 {
 	ProgressValue(progress_offset + MT_GetDoneTasks());
 }
@@ -1044,6 +1044,7 @@ static int AnalyzeGame ( list *plGame )
 				pt = pParentTask;
 				pParentTask = NULL;
 			}
+			g_debug("add task: analysis");
 			MT_AddTask((Task*)pt, TRUE);
 		}
 
@@ -1057,6 +1058,7 @@ static int AnalyzeGame ( list *plGame )
 	}
 	g_assert(pl->plNext == plGame);
 
+	g_debug("wait for all task: analysis");
 	result = MT_WaitForTasks(UpdateProgressBar, 250);
 
 	fnTick = fnOld;
