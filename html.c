@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.183 2007/07/30 22:32:24 c_anthon Exp $
+ * $Id: html.c,v 1.184 2007/09/03 09:41:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -160,7 +160,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.183 2007/07/30 22:32:24 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.184 2007/09/03 09:41:03 c_anthon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1840,7 +1840,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.183 $";
+  const char szVersion[] = "$Revision: 1.184 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1920,7 +1920,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.183 $";
+  const char szVersion[] = "$Revision: 1.184 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3877,6 +3877,8 @@ extern void CommandExportPositionGOL2Clipboard( char *sz ) {
     char *szClipboard;
     long l;
     FILE *pf;
+    char *tmpfile;
+    int tmpd;
 
     if( ms.gs == GAME_NONE ) {
       outputl( _("No game in progress (type `new game' to start one).") );
@@ -3885,7 +3887,9 @@ extern void CommandExportPositionGOL2Clipboard( char *sz ) {
     
     /* get tmp file name */
 
-    if ( ! ( pf = tmpfile() ) ) {
+    tmpd = g_file_open_tmp(NULL, &tmpfile, NULL); 
+    if ( tmpd < 0 || ! ( pf = fdopen(tmpd, "w+" ))) {
+	    g_free(tmpfile);
       outputerr("temporary file");
       return;
     }
@@ -3920,6 +3924,7 @@ extern void CommandExportPositionGOL2Clipboard( char *sz ) {
     free( szClipboard );
 
     fclose( pf );
-
+    g_unlink(tmpfile);
+    g_free(tmpfile);
 }
 

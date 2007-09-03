@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.26 2007/07/02 12:43:25 ace Exp $
+ * $Id: record.c,v 1.27 2007/09/03 09:41:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -187,11 +187,11 @@ static int RecordRead( FILE **ppfOut, char **ppchOut, playerrecord apr[ 2 ] ) {
     char *sz = g_build_filename(szHomeDirectory, GNUBGPR, NULL);
     if ( !( tmpfile = g_file_open_tmp("gnubgprXXXXXX", ppchOut, NULL) ) || ! (*ppfOut = fdopen( tmpfile, "w" ))) {
 	outputerr( *ppchOut );
-	free( *ppchOut );
+	g_free( *ppchOut );
 	return -1;
     }
 
-    if( fputs( "# %Version: 2 ($Revision: 1.26 $)\n", *ppfOut ) < 0 ) {
+    if( fputs( "# %Version: 2 ($Revision: 1.27 $)\n", *ppfOut ) < 0 ) {
 	outputerr( *ppchOut );
 	free( *ppchOut );
 	return -1;
