@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.124 2007/09/02 20:27:03 c_anthon Exp $
+ * $Id: import.c,v 1.125 2007/09/12 12:04:42 ace Exp $
  */
 
 #include "config.h"
@@ -3520,8 +3520,8 @@ static int ConvertPartyGammonFileToMat(FILE *partyFP, FILE *matFP)
 			WritePartyGame(matFP, pGame->gameStr);
 			pts = pGame->s2 - s2 + pGame->s1 - s1;
 			fprintf(matFP, "Wins %d point%s\n\n", pts, (pts == 1) ? "" : "s");
-			s1 += pGame->s1;
-			s2 += pGame->s2;
+			s1 = pGame->s1;
+			s2 = pGame->s2;
 			free(pGame->gameStr);
 			free(pGame);
 		}
