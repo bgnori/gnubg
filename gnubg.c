@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.721 2007/09/02 23:21:15 c_anthon Exp $
+ * $Id: gnubg.c,v 1.722 2007/09/13 13:03:11 w2vy Exp $
  */
 
 #include "config.h"
@@ -4121,8 +4121,8 @@ static void LoadCommands( FILE *pf, char *szFile ) {
 	/* FIXME shouldn't restart sys calls on signals during this fgets */
 	fgets( sz, sizeof( sz ), pf );
 
-	if( ( pch = strchr( sz, '\n' ) ) )
-	    *pch = 0;
+	if( ( pch = strchr( sz, '\n' ) ) ) *pch = 0;
+	if( ( pch = strchr( sz, '\r' ) ) ) *pch = 0;
 
 	if( ferror( pf ) ) {
 	    outputerr( szFile );
@@ -5445,8 +5445,8 @@ extern char *GetInput( char *szPrompt )
 	PromptForExit();
     }
     
-    if( ( pch = strchr( sz, '\n' ) ) )
-	*pch = 0;
+    if( ( pch = strchr( sz, '\n' ) ) ) *pch = 0;
+    if( ( pch = strchr( sz, '\r' ) ) ) *pch = 0;
     
     pchConverted = locale_to_utf8(sz);
     free( sz );
@@ -6104,8 +6104,8 @@ static void init_language(char **lang)
 			szTemp[0] = 0;
 			fgets(szTemp, sizeof(szTemp), pf);
 
-			if ((pch = strchr(szTemp, '\n')))
-				*pch = 0;
+			if ((pch = strchr(szTemp, '\n'))) *pch = 0;
+			if ((pch = strchr(szTemp, '\r'))) *pch = 0;
 
 			if (ferror(pf)) {
 				outputerr(szFile);
