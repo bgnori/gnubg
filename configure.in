@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-AC_REVISION($Revision: 1.174 $)
+AC_REVISION($Revision: 1.175 $)
 AC_INIT([GNU Backgammon],[0.16-devel],[bug-gnubg@gnu.org],[gnubg])
 AC_CONFIG_SRCDIR(gnubg.c)
 AM_INIT_AUTOMAKE
@@ -208,18 +208,6 @@ if test "x$az_python_cspec" != "x"; then
         AC_DEFINE(USE_PYTHON,1,[Define if you want to use Python inside gnubg])
         AM_CONDITIONAL(USE_PYTHON, test "$no_python" != "yes" )
 fi
-
-dnl
-dnl obsolete: bearoff database
-dnl
-
-bearoff_database=external
-AM_CONDITIONAL(EXTERNAL_BR1, test "$bearoff_database" = "external")
-AM_CONDITIONAL(COMPILE_BR1, test "$bearoff_database" = "static")
-if test "$bearoff_database" = "static"; then
-  AC_DEFINE(USE_BUILTIN_BEAROFF,1,[Define if you have a bearoff database to link to GNU Backgammon])
-fi
-
 
 dnl
 dnl windows Sounds
