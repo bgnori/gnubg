@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.722 2007/09/13 13:03:11 w2vy Exp $
+ * $Id: gnubg.c,v 1.723 2007/09/14 07:53:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -7082,19 +7082,25 @@ char * SetupLanguage (char *newLangCode)
 char *SetupLanguage (char *newLangCode)
 {
 	static char *org_lang=NULL;
+	char *result=NULL;
 
 	if (!org_lang)
-		org_lang=g_strdup(setlocale(LC_ALL, ""));
-
-	if (!newLangCode || !strcmp (newLangCode, "system") || !strcmp (newLangCode, ""))
 	{
-		g_setenv("LC_ALL", org_lang, TRUE);
-		return(setlocale (LC_ALL, org_lang));
+		if (!(org_lang=g_strdup(setlocale(LC_ALL, ""))))
+			org_lang="C";
 	}
-	else
+
+	if (newLangCode && *newLangCode && strcmp (newLangCode, "system") != 0)
 	{
 		g_setenv("LC_ALL", newLangCode, TRUE);
-		return(setlocale (LC_ALL, newLangCode));
+		result = setlocale (LC_ALL, newLangCode);
 	}
+
+	if (!result)
+	{
+		g_setenv("LC_ALL", org_lang, TRUE);
+		result = setlocale (LC_ALL, org_lang);
+	}
+	return(result);
 }
 #endif

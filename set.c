@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.282 2007/09/02 20:27:04 c_anthon Exp $
+ * $Id: set.c,v 1.283 2007/09/14 07:53:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4304,20 +4304,9 @@ CommandSetRatingOffset( char *sz ) {
 
 extern void CommandSetLang( char *sz )
 {
-	char *new_lang = NULL;
-
 	g_free(szLang);
 	szLang = (sz) ? g_strdup(sz) : g_strdup(""); 
-
-	new_lang = SetupLanguage(szLang);
-
-	if (!new_lang)
-	{
-		outputerrf(_("Language change to '%s' failed"), szLang);
-		g_free(szLang);
-		szLang=NULL;
-		return;
-	}
+	SetupLanguage(szLang);
 
 #if USE_GTK
 	if (fX)
