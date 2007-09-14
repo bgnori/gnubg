@@ -16,15 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.h,v 1.8 2007/07/02 12:43:38 ace Exp $
+ * $Id: gtkcolour.h,v 1.9 2007/09/14 11:30:48 c_anthon Exp $
  */
 
 #ifndef _GTKCOLOUR_H_
 #define _GTKCOLOUR_H_
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
 
 #if USE_BOARD3D
 #include "render.h"
@@ -96,8 +92,5 @@ gtk_colour_picker_set_colour( GtkColourPicker *pcp, gdouble *ar );
 extern void
 gtk_colour_picker_get_colour( GtkColourPicker *pcp, gdouble *ar );
     
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
 
 #endif

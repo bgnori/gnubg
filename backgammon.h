@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.346 2007/09/02 20:27:00 c_anthon Exp $
+ * $Id: backgammon.h,v 1.347 2007/09/14 11:30:48 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -56,6 +56,7 @@ typedef enum _playertype {
     PLAYER_EXTERNAL, PLAYER_HUMAN, PLAYER_GNU, PLAYER_PUBEVAL
 } playertype;
 
+#define MAX_NAME_LEN 32
 typedef struct _player {
   /* For all player types: */
   char szName[ MAX_NAME_LEN ];
@@ -1044,4 +1045,5 @@ extern char* CheckCommand(char *sz, command *ac);
 extern char *aszCopying[], *aszWarranty[]; /* from copying.c */
 extern command *FindHelpCommand( command *pcBase, char *sz,
 				 char *pchCommand, char *pchUsage );
+extern double get_time(void);
 #endif

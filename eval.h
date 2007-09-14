@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.144 2007/09/02 20:27:01 c_anthon Exp $
+ * $Id: eval.h,v 1.145 2007/09/14 11:30:48 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -25,14 +25,6 @@
 #include "dice.h"
 #include "bearoff.h"
 #include "neuralnet.h"
-
-#ifndef FALSE
-#define FALSE 0
-#endif
-
-#ifndef TRUE
-#define TRUE 1
-#endif
 
 #define WEIGHTS_VERSION "0.15"
 #define WEIGHTS_VERSION_BINARY 0.15f

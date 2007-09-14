@@ -18,15 +18,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffgammon.h,v 1.7 2007/07/02 12:43:38 ace Exp $
+ * $Id: bearoffgammon.h,v 1.8 2007/09/14 11:30:48 c_anthon Exp $
  */
 
 #if !defined( BEAROFFGAMMON_H )
 #define BEAROFFGAMMON_H
-
-#if defined( __GNUG__ )
-#pragma interface
-#endif
 
 /* pack for space */
 struct GammonProbs {
@@ -36,24 +32,12 @@ struct GammonProbs {
   unsigned int p0 : 8;   /*  0 - 36 */
 };
 
-#if defined( __cplusplus )
-extern "C" {
-#endif
-
 extern struct GammonProbs*
 getBearoffGammonProbs(int b[6]);
 
 extern long*
 getRaceBGprobs(int board[6]);
 
-#if defined( __cplusplus )
-static unsigned int const RBG_NPROBS = 5;
-#else
 #define RBG_NPROBS 5
-#endif
-
-#if defined( __cplusplus )
-}
-#endif
 
 #endif

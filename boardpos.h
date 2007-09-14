@@ -16,16 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boardpos.h,v 1.4 2007/07/02 12:43:38 ace Exp $
+ * $Id: boardpos.h,v 1.5 2007/09/14 11:30:48 c_anthon Exp $
  */
 
 #ifndef _BOARDPOS_H_
 #define _BOARDPOS_H_
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
 
 #define POINT_UNUSED0 28 /* the top unused bearoff tray */
 #define POINT_UNUSED1 29 /* the bottom unused bearoff tray */
@@ -63,8 +58,4 @@ extern void
 ResignPosition( const int resigned, int *px, int *py, int *porient );
 
     
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-
 #endif

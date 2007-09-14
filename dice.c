@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.56 2007/09/02 20:27:00 c_anthon Exp $
+ * $Id: dice.c,v 1.57 2007/09/14 11:30:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -138,7 +138,7 @@ typedef struct _rngcontext {
 
   /* RNG_FILE */
   int hDice;
-  char szDiceFilename[ BIG_PATH ];
+  char *szDiceFilename;
 
   /* RNG_ISAAC */
   randctx rc;
@@ -799,17 +799,11 @@ RNGSystemSeed( const rng rngx, void *p, int *pnSeed ) {
 
 }
 
-/* Returns TRUE if /dev/urandom was available, or FALSE if system clock was
-   used. */
 extern void *InitRNG( int *pnSeed, int *pfInitFrom,
                       const int fSet, const rng rngx ) {
 
     int f = FALSE;
-    rngcontext *rngctx;
-
-    if ( ! ( rngctx = malloc( sizeof *rngctx ) ) )
-      return NULL;
-
+    rngcontext *rngctx =  g_new0(rngcontext, 1);
     /* misc. initialisation */
 
     /* Mersenne-Twister */
@@ -1172,7 +1166,8 @@ OpenDiceFile( void *p, const char *sz ) {
 
   rngcontext *rngctx = (rngcontext *) p;
 
-  strcpy( rngctx->szDiceFilename, sz );
+  g_free(rngctx->szDiceFilename); /*initialized to NULL*/
+  rngctx->szDiceFilename = g_strdup(sz);
 
   return ( rngctx->hDice = open(sz, O_RDONLY));
 

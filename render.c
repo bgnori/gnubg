@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.65 2007/09/02 20:27:03 c_anthon Exp $
+ * $Id: render.c,v 1.66 2007/09/14 11:30:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2405,7 +2405,7 @@ static void RenderArrow(unsigned char* puch, double arColour[4], int nSize, int 
 	if (!up)
 	{	/* Rotate by 180 degrees */
 		cairo_translate(cr, .5, .5);
-		cairo_rotate(cr, PI);
+		cairo_rotate(cr, G_PI);
 		cairo_translate(cr, -.5, -.5);
 	}
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.31 2007/09/02 20:27:03 c_anthon Exp $
+ * $Id: renderprefs.c,v 1.32 2007/09/14 11:30:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -477,10 +477,10 @@ int c, fValueError = FALSE;
     else if (rElevation > 90.0f)
       rElevation = 90.0f;
 
-    prd->arLight[2] = sinf (rElevation / 180 * PI);
-    prd->arLight[0] = cosf (rAzimuth / 180 * PI) *
+    prd->arLight[2] = sinf (rElevation / 180 * G_PI);
+    prd->arLight[0] = cosf (rAzimuth / 180 * G_PI) *
       sqrt (1.0 - prd->arLight[2] * prd->arLight[2]);
-    prd->arLight[1] = sinf (rAzimuth / 180 * PI) *
+    prd->arLight[1] = sinf (rAzimuth / 180 * G_PI) *
       sqrt (1.0 - prd->arLight[2] * prd->arLight[2]);
   }
   else if (!strncasecmp (szParam, "shape", c)) {
@@ -664,10 +664,10 @@ RenderPreferencesCommand (renderdata * prd, char *sz)
   gchar buf2[G_ASCII_DTOSTR_BUF_SIZE];
   gchar buf3[G_ASCII_DTOSTR_BUF_SIZE];
   
-  float rElevation = asinf (prd->arLight[2]) * 180 / PI;
+  float rElevation = asinf (prd->arLight[2]) * 180 / G_PI;
   float rAzimuth = (fabs (prd->arLight[2] - 1.0f) < 1e-5) ? 0.0f :
     acosf (prd->arLight[0] / sqrt (1.0 - prd->arLight[2] *
-           prd->arLight[2])) * 180 / PI;
+           prd->arLight[2])) * 180 / G_PI;
 
   if (prd->arLight[1] < 0)
     rAzimuth = 360 - rAzimuth;

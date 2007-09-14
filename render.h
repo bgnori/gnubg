@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.28 2007/07/02 12:43:40 ace Exp $
+ * $Id: render.h,v 1.29 2007/09/14 11:30:48 c_anthon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -35,10 +35,6 @@ struct _Material
 	Texture* pTexture;
 };
 #endif
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
 
 typedef enum _woodtype {
     WOOD_ALDER, WOOD_ASH, WOOD_BASSWOOD, WOOD_BEECH, WOOD_CEDAR,
@@ -196,9 +192,5 @@ extern void CalculateArea( renderdata *prd, unsigned char *puch, int nStride,
                            int anArrowPosition[ 2 ],
 			   int fPlaying, int nPlayer,
 			   int x, int y, int cx, int cy );
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
 
 #endif
