@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.183 2007/09/14 21:44:58 c_anthon Exp $
+## $Id: Makefile.am,v 1.184 2007/09/15 12:31:31 c_anthon Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -182,6 +182,12 @@ sgfl.c: sgf.l
 
 sgf.c: sgfp.c sgfp.h sgfl.c
 	@true
+
+#
+##external_l.c includes external_y.h and automake doesn't track this dependency
+#
+external_l.c: external_l.l external_y.h external_y.c
+	$(am__skiplex) $(SHELL) $(YLWRAP) $< $(LEX_OUTPUT_ROOT).c $@ -- $(LEXCOMPILE)
 
 #
 ##credits.c target
