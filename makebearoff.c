@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.46 2007/09/24 20:58:35 c_anthon Exp $
+ * $Id: makebearoff.c,v 1.47 2007/09/25 20:08:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -692,6 +692,7 @@ generate_os ( const int nOS, const int fHeader,
     if ( tmpd < 0 || ! ( pfTmp = fdopen(tmpd, "w+b" ))) {
       perror("temporary file tmpfile");
       g_free(tmpfile);
+      return;
     }
 
   }
@@ -1292,6 +1293,7 @@ generate_ts ( const int nTSP, const int nTSC,
     if ( tmpd < 0 || ! ( pfTmp = fdopen(tmpd, "w+b" ))) {
       perror("temporary file tmpfile");
       g_free(tmpfile);
+      return;
     }
 
     /* initialise xhash */
@@ -1433,9 +1435,9 @@ generate_ts ( const int nTSP, const int nTSC,
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.46 $\n" );
+  printf ( "makebearoff $Revision: 1.47 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.46 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.47 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1565,7 +1567,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.46 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.47 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1693,7 +1695,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.46 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.47 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"
