@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.652 2007/09/27 20:54:49 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.653 2007/09/27 21:27:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2615,7 +2615,7 @@ static void AnalysisCheckToggled( GtkWidget *pw, analysiswidget *paw ) {
 
 static GtkWidget *AnalysisPage( analysiswidget *paw ) {
 
-  char *aszSkillLabel[N_SKILLS] = { N_("Doubtful:"), N_("Bad:"), N_("Very bad:") };
+  char *aszSkillLabel[3] = { N_("Doubtful:"), N_("Bad:"), N_("Very bad:") };
   char *aszLuckLabel[4] = { N_("Very lucky:"), N_("Lucky:"),
 	  N_("Unlucky:"), N_("Very unlucky:") };
   int i;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: formatgs.c,v 1.19 2007/09/27 20:54:48 c_anthon Exp $
+ * $Id: formatgs.c,v 1.20 2007/09/27 21:27:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -144,7 +144,7 @@ formatGS( const statcontext *psc, const int nMatchTo,
   case FORMATGS_CHEQUER: 
     {
 
-      static int ai[ 5 ] = { SKILL_NONE, SKILL_DOUBTFUL,
+      static int ai[ 4 ] = { SKILL_NONE, SKILL_DOUBTFUL,
                              SKILL_BAD, SKILL_VERYBAD };
       static char *asz[] = {
         N_("Unmarked moves"),
@@ -162,7 +162,7 @@ formatGS( const statcontext *psc, const int nMatchTo,
       list = g_list_append( list, numberEntry( _("Unforced moves"),
                                                psc->anUnforcedMoves[ 0 ],
                                                psc->anUnforcedMoves[ 1 ] ) );
-      for ( i = 0; i < 5; ++i )
+      for ( i = 0; i < 4; ++i )
         list = g_list_append( list, 
                               numberEntry( gettext( asz[ i ] ),
                                            psc->anMoves[ 0 ][ ai[ i ] ],
