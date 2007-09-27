@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.187 2007/09/27 14:21:42 c_anthon Exp $
+## $Id: Makefile.am,v 1.188 2007/09/27 22:35:56 c_anthon Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -70,7 +70,6 @@ gnubg_SOURCES = \
 		play.c \
 		positionid.c \
 		positionid.h \
-		postscript.c \
 		progress.c \
 		progress.h \
 		pub_eval.c \
@@ -91,6 +90,8 @@ gnubg_SOURCES = \
 		sgfp.c \
 		sgfp.h \
 		show.c \
+		simpleboard.c \
+		simpleboard.h \
 		sound.c \
 		sound.h \
 		speed.c \

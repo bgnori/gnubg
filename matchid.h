@@ -16,13 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.h,v 1.5 2007/07/02 12:43:39 ace Exp $
+ * $Id: matchid.h,v 1.6 2007/09/27 22:35:57 c_anthon Exp $
  */
 
 #ifndef _MATCHID_H_
 #define _MATCHID_H_
 
-#include "backgammon.h"
+//#include "backgammon.h"
 
 extern int
 LogCube ( const int n );

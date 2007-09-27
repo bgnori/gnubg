@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.725 2007/09/27 20:54:48 c_anthon Exp $
+ * $Id: gnubg.c,v 1.726 2007/09/27 22:35:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -656,12 +656,6 @@ command cER = {
       &cFilename },
     { "latex", CommandExportGameLaTeX, N_("Records a log of the game in LaTeX "
       "format"), szFILENAME, &cFilename },
-    { "pdf", CommandExportGamePDF, N_("Records a log of the game in the "
-      "Portable Document Format"), szFILENAME, &cFilename },
-    { "postscript", CommandExportGamePostScript, 
-      N_("Records a log of the game "
-      "in PostScript format"), szFILENAME, &cFilename },
-    { "ps", CommandExportGamePostScript, NULL, szFILENAME, &cFilename },
     { "text", CommandExportGameText, N_("Export a log of the game in text format"), 
       szFILENAME, &cFilename },
     { NULL, NULL, NULL, NULL, NULL }
@@ -677,12 +671,6 @@ command cER = {
     { "latex", CommandExportMatchLaTeX, 
       N_("Records a log of the match in LaTeX "
       "format"), szFILENAME, &cFilename },
-    { "pdf", CommandExportMatchPDF, N_("Records a log of the match in the "
-      "Portable Document Format"), szFILENAME, &cFilename },
-    { "postscript", CommandExportMatchPostScript, 
-      N_("Records a log of the match "
-      "in PostScript format"), szFILENAME, &cFilename },
-    { "ps", CommandExportMatchPostScript, NULL, szFILENAME, &cFilename },
     { "text", CommandExportMatchText, 
       N_("Records a log of the match in text format"), 
       szFILENAME, &cFilename },
@@ -696,8 +684,12 @@ command cER = {
       N_("Copy the current position in .html format to clipboard"
          "(special for GammOnLine)"), 
       szFILENAME, &cFilename },
-    { "eps", CommandExportPositionEPS, N_("Save the current position in "
-      "Encapsulated PostScript format"), szFILENAME, &cFilename },
+    { "ps", CommandExportPositionPS, N_("Save the current position in "
+      "PostScript format"), szFILENAME, &cFilename },
+    { "pdf", CommandExportPositionPDF, N_("Save the current position in "
+      "PDF format"), szFILENAME, &cFilename },
+    { "svg", CommandExportPositionSVG, N_("Save the current position in "
+      "SVG format"), szFILENAME, &cFilename },
     { "html", CommandExportPositionHtml,
       N_("Save the current position in .html format"), 
       szFILENAME, &cFilename },
@@ -720,11 +712,6 @@ command cER = {
       &cFilename },
     { "latex", CommandExportMatchLaTeX, N_("Records a log of the session in "
       "LaTeX format"), szFILENAME, &cFilename },
-    { "pdf", CommandExportMatchPDF, N_("Records a log of the session in the "
-      "Portable Document Format"), szFILENAME, &cFilename },
-    { "postscript", CommandExportMatchPostScript, N_("Records a log of the "
-      "session in PostScript format"), szFILENAME, &cFilename },
-    { "ps", CommandExportMatchPostScript, NULL, szFILENAME, &cFilename },
     { "text", CommandExportMatchText,
       N_("Records a log of the session in text format"),
       szFILENAME, &cFilename },

@@ -16,13 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.16 2007/07/02 12:43:38 ace Exp $
+ * $Id: bearoff.h,v 1.17 2007/09/27 22:35:56 c_anthon Exp $
  */
 
 #ifndef _BEAROFF_H_
 #define _BEAROFF_H_
-
-#include <hash.h>
 
 typedef enum _bearoffcreator {
   BEAROFF_GNUBG,
@@ -62,8 +60,6 @@ typedef struct _bearoffcontext {
   /* two sided dbs */
   int fCubeful;    /* cubeful equities included */
   void *p;        /* pointer to data */
-
-  hash *ph;        /* cache */
 
   unsigned long int nReads; /* number of reads */
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.174 2007/09/19 20:16:07 c_anthon Exp $
+ * $Id: rollout.c,v 1.175 2007/09/27 22:35:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1069,7 +1069,7 @@ extern void RolloutLoopMT(void)
       {
 	      fNoMore[alt] = TRUE;
 	      if (altGameCount[alt] > cGames)
-		      outputerrf("Too many rollouts done for alternative %d. This is a bug. Please report as many details as possible to bug-gnubg@gnu.org");
+		      outputerrf("Too many rollouts done for alternative %d. This is a bug. Please report as many details as possible to bug-gnubg@gnu.org", alt);
       }
       /* For normal alternatives nGamesDone and altGameCount will be equal.
        * For cube decisions, however, the two may differ by the number of

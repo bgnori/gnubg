@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.653 2007/09/27 21:27:04 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.654 2007/09/27 22:35:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -682,7 +682,6 @@ SkillMenu(skilltype stSelect, char* szAnno)
   skilltype st;
     
   for( st = SKILL_VERYBAD; st < N_SKILLS; st++ ) {
-    {
       const char* l = aszSkillType[st] ? gettext(aszSkillType[st]) : "";
       GtkWidget* pwItem = gtk_menu_item_new_with_label(l);
     
@@ -691,7 +690,6 @@ SkillMenu(skilltype stSelect, char* szAnno)
       g_signal_connect( G_OBJECT( pwItem ), "activate",
 			  G_CALLBACK( SkillMenuActivate ),
 			  GINT_TO_POINTER( st ) );
-    }
   }
     
   gtk_widget_show_all( pwMenu );
