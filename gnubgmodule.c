@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.68 2007/09/14 11:30:48 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.69 2007/09/27 20:54:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1212,7 +1212,6 @@ skillString(skilltype const st, int const ignoreNone)
     case SKILL_BAD:         return "bad";
     case SKILL_DOUBTFUL:    return "doubtful";
     case SKILL_NONE:        return ignoreNone ? 0 : "unmarked";
-    case SKILL_GOOD:        return "good";
   }
   g_assert(0);
   return 0;

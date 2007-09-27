@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: formatgs.c,v 1.18 2007/07/02 12:43:22 ace Exp $
+ * $Id: formatgs.c,v 1.19 2007/09/27 20:54:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -144,11 +144,10 @@ formatGS( const statcontext *psc, const int nMatchTo,
   case FORMATGS_CHEQUER: 
     {
 
-      static int ai[ 5 ] = { SKILL_NONE, SKILL_GOOD, SKILL_DOUBTFUL,
+      static int ai[ 5 ] = { SKILL_NONE, SKILL_DOUBTFUL,
                              SKILL_BAD, SKILL_VERYBAD };
       static char *asz[] = {
         N_("Unmarked moves"),
-        N_("Moves marked good"),
         N_("Moves marked doubtful"),
         N_("Moves marked bad"),
         N_("Moves marked very bad") };

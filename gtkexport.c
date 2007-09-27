@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.33 2007/07/02 12:43:23 ace Exp $
+ * $Id: gtkexport.c,v 1.34 2007/09/27 20:54:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -49,9 +49,6 @@ static char *aszMovesDisplay[] = {
     N_("Show for moves marked 'bad'"),
     N_("Show for moves marked 'doubtful'"),
     N_("Show for unmarked moves"),
-/*     N_("Show for moves marked 'interesting'"), */
-/*     N_("Show for moves marked 'good'"), */
-/*     N_("Show for moves marked 'very good'")  */
   };
 
 #define NUM_MOVES (sizeof(aszMovesDisplay)/sizeof(aszMovesDisplay[0]))
@@ -61,9 +58,6 @@ static char *aszCubeDisplay[] = {
     N_("Show for cube decisions marked 'bad'"),
     N_("Show for cube decisions marked 'doubtful'"),
     N_("Show for unmarked cube decisions"),
-    0, /*     N_("Show for cube decisions marked 'interesting'"), */
-    0, /*     N_("Show for cube decisions marked 'good'"), */
-    0, /*     N_("Show for cube decisions marked 'very good'"), */
     N_("Show for actual cube decisions"),
     N_("Show for missed doubles"),
     N_("Show for close cube decisions") };
@@ -285,9 +279,6 @@ SetExportCommands ( const exportsetup *pexsOrig,
               "cube parameters rollout" );
 
   for ( i = 0; i < N_SKILLS; ++i ) {
-    if ( i == SKILL_GOOD ) {
-      continue;
-    }
     if ( i == SKILL_NONE ) {
       CHECKFLAG ( pexsOrig, pexsNew, afCubeDisplay[ i ], 
                   "cube display unmarked" );

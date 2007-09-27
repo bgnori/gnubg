@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.230 2007/09/02 20:27:04 c_anthon Exp $
+ * $Id: show.c,v 1.231 2007/09/27 20:54:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -427,10 +427,6 @@ extern void CommandShowAnalysis( char *sz ) {
 	     "  +%.3f %s\n"
 	     "  -%.3f %s\n"
 	     "  -%.3f %s\n",
-/* 	     arSkillLevel[ SKILL_VERYGOOD ],  */
-/*              gettext ( aszSkillType[ SKILL_VERYGOOD ] ), */
-/*              arSkillLevel[ SKILL_GOOD ],  */
-/*              gettext ( aszSkillType[ SKILL_GOOD ] ), */
 	     arSkillLevel[ SKILL_DOUBTFUL ], 
              gettext ( aszSkillType[ SKILL_DOUBTFUL ] ),
 	     arSkillLevel[ SKILL_BAD ], 

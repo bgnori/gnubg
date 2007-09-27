@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.41 2007/09/02 20:27:00 c_anthon Exp $
+ * $Id: analysis.h,v 1.42 2007/09/27 20:54:48 c_anthon Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -33,12 +33,11 @@ typedef enum _skilltype {
   SKILL_BAD,
   SKILL_DOUBTFUL,
   SKILL_NONE,
-  SKILL_GOOD
 } skilltype;
 
-#define badSkill(st)  ((st) != SKILL_NONE && (st) != SKILL_GOOD)
+#define badSkill(st)  ((st) < SKILL_NONE)
 
-#define N_SKILLS (SKILL_GOOD + 1)
+#define N_SKILLS (SKILL_NONE + 1)
 
 typedef struct _statcontext {
   int fMoves, fCube, fDice; /* which statistics have been computed? */
