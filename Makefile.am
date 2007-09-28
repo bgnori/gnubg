@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.188 2007/09/27 22:35:56 c_anthon Exp $
+## $Id: Makefile.am,v 1.189 2007/09/28 11:05:32 c_anthon Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -115,7 +115,7 @@ gnubg_SOURCES += gtkboard.c gtkboard.h gtkgame.c gtkgame.h gtkfile.c gtkfile.h \
 		 gtkmovefilter.h gtkmet.c gtkmet.h gtkcolour.c gtkcolour.h gtksplash.c \
 		 gtksplash.h gtkrolls.c gtkrolls.h gtktempmap.c gtktempmap.h \
 		 gtkoptions.h gtkoptions.c gtktoolbar.h gtktoolbar.c \
-		 gtkgamelist.c gtkpanels.c gtkmovelist.c gtkmovelistctrl.c gtkmovelistctrl.h \
+		 gtkgamelist.c gtkpanels.c gtkpanels.h gtkmovelist.c gtkmovelistctrl.c gtkmovelistctrl.h \
 		 gtkwindows.c gtkwindows.h
 if USE_PYTHON
 gnubg_SOURCES += gtkrelational.c gtkrelational.h
