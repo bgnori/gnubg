@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.284 2007/09/27 20:54:49 c_anthon Exp $
+ * $Id: set.c,v 1.285 2007/09/29 21:12:38 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2542,50 +2542,6 @@ extern void CommandSetSeed( char *sz ) {
 
     SetSeed ( rngCurrent, rngctxCurrent, sz );
 
-}
-
-extern void CommandSetTrainingAlpha( char *sz ) {
-
-    float r = (float)ParseReal( &sz );
-
-    if( r <= 0.0f || r > 1.0f ) {
-	outputl( _("You must specify a value for alpha which is greater than\n"
-		 "zero, and no more than one.") );
-	return;
-    }
-
-    rAlpha = r;
-    outputf( _("Alpha set to %f.\n"), r );
-}
-
-extern void CommandSetTrainingAnneal( char *sz ) {
-
-    double r = ParseReal( &sz );
-
-    if( r == ERR_VAL ) {
-	outputl( _("You must specify a valid annealing rate.") );
-	return;
-    }
-
-    rAnneal = (float)r;
-    outputf( _("Annealing rate set to %f.\n"), r );
-}
-
-extern void CommandSetTrainingThreshold( char *sz ) {
-
-    float r = (float)ParseReal( &sz );
-
-    if( r < 0.0f ) {
-	outputl( _("You must specify a valid error threshold.") );
-	return;
-    }
-
-    rThreshold = r;
-
-    if( rThreshold )
-	outputf( _("Error threshold set to %f.\n"), r );
-    else
-	outputl( _("Error threshold disabled.") );
 }
 
 extern void CommandSetToolbar( char *sz )

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.231 2007/09/27 20:54:49 c_anthon Exp $
+ * $Id: show.c,v 1.232 2007/09/29 21:12:38 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1499,21 +1499,6 @@ extern void CommandShowOutput( char *sz ) {
       outputf( fOutputRawboard ? 
                _("Boards will be shown in raw format.\n") :
                _("Boards will be shown in ASCII.\n") );
-}
-
-extern void CommandShowTraining( char *sz ) {
-
-    outputf( _("Learning rate (alpha) %f,\n"), rAlpha );
-
-    if( rAnneal )
-	outputf( _("Annealing rate %f,\n"), rAnneal );
-    else
-	outputl( _("Annealing disabled,") );
-
-    if( rThreshold )
-	outputf( _("Error threshold %f.\n"), rThreshold );
-    else
-	outputl( _("Error threshold disabled.") );
 }
 
 extern void CommandShowVersion( char *sz )

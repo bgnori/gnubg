@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.145 2007/09/14 11:30:48 c_anthon Exp $
+ * $Id: eval.h,v 1.146 2007/09/29 21:12:37 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -390,10 +390,6 @@ FindnSaveBestMoves( movelist *pml,
 extern int 
 FindPubevalMove( int nDice0, int nDice1, int anBoard[ 2 ][ 25 ],
 		 int anMove[ 8 ], const bgvariation bgv );
-
-extern int 
-TrainPosition( int anBoard[ 2 ][ 25 ], float arDesired[], float rAlpha,
-	       float rAnneal, const bgvariation bgv );
 
 extern int 
 PipCount( int anBoard[ 2 ][ 25 ], unsigned int anPips[ 2 ] );

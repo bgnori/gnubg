@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.654 2007/09/27 22:35:57 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.655 2007/09/29 21:12:38 c_anthon Exp $
  */
 
 #include "config.h"
@@ -199,8 +199,6 @@ typedef enum _gnubgcommand {
     CMD_SHOW_WARRANTY,
     CMD_SWAP_PLAYERS,
     CMD_TAKE,
-    CMD_TRAIN_DATABASE,
-    CMD_TRAIN_TD,
     NUM_CMDS
 } gnubgcommand;
    
@@ -275,8 +273,6 @@ static char *aszCommands[ NUM_CMDS ] = {
     "show warranty",
     "swap players",
     "take",
-    "train database",
-    "train td"
 };
 enum { TOGGLE_GAMELIST = NUM_CMDS + 1, TOGGLE_ANALYSIS, TOGGLE_COMMENTARY, TOGGLE_MESSAGE, TOGGLE_THEORY, TOGGLE_COMMAND };
 
