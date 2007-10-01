@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.189 2007/09/28 11:05:32 c_anthon Exp $
+## $Id: Makefile.am,v 1.190 2007/10/01 21:08:58 c_anthon Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -11,7 +11,7 @@ bin_PROGRAMS = gnubg makebearoff makehyper bearoffdump makeweights
 #
 INCLUDES = -I$(srcdir)/lib -I$(srcdir)/board3d @LIBXML2_CFLAGS@ \
 	   -DLOCALEDIR=\"$(localedir)\" @FREETYPE2_CFLAGS@ @PYTHON_CSPEC@ @GLIB_CFLAGS@ \
-	   @LIBPNG_CFLAGS@ @GTK_CFLAGS@ @CAIRO_CFLAGS@ @GTHREAD_CFLAGS@ @ESD_CFLAGS@ \
+	   @LIBPNG_CFLAGS@ @GTK_CFLAGS@ @CAIRO_CFLAGS@ @PANGOCAIRO_CFLAGS@ @GTHREAD_CFLAGS@ @ESD_CFLAGS@ \
 	   @WINMMSND_CFLAGS@ @GTKGLEXT_CFLAGS@
 
 #
@@ -125,7 +125,7 @@ endif
 #
 ##linkpath for gnubg
 #
-gnubg_LDADD = -Llib lib/libevent.la @GTK_LIBS@ @LIBPNG_LIBS@ @CAIRO_LIBS@ \
+gnubg_LDADD = -Llib lib/libevent.la @GTK_LIBS@ @LIBPNG_LIBS@ @CAIRO_LIBS@ @PANGOCAIRO_LIBS@ \
 	      @GTHREAD_LIBS@ @ESD_LIBS@ \
 	      @WINMMSND_LIBS@ @LTLIBOBJS@ @LTLIBINTL@ @LIBXML2_LIBS@ \
 	      @FREETYPE2_LIBS@ @PYTHON_LSPEC@ @GLIB_LIBS@ @LIBPNG_LIBS@
