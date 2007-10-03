@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.182 2007/09/27 20:54:48 c_anthon Exp $
+ * $Id: analysis.c,v 1.183 2007/10/03 17:24:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1254,6 +1254,7 @@ extern void CommandAnalyseGame( char *sz ) {
   
   nMoves = NumberMovesGame ( plGame );
 
+  progress_offset = 0;
   ProgressStartValue( _("Analysing game; move:"), nMoves );
     
   AnalyzeGame( plGame );

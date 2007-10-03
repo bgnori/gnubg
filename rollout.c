@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.175 2007/09/27 22:35:57 c_anthon Exp $
+ * $Id: rollout.c,v 1.176 2007/10/03 17:24:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1254,12 +1254,10 @@ extern void RolloutLoopMT(void)
       } /* alt = 0; alt < ro_alternatives; ++alt) */
 
     } /* if (rcRollout.fStopOnSTD && (i >= rcRollout.nMinimumGames)) */
-    if (((active_alternatives < 2) && rcRollout.fStopOnJsd) || !err_too_big)
-      break;
-
 	MT_Release();
 	g_debug("exclusive release: rollout cycle update");
-
+	if (((active_alternatives < 2) && rcRollout.fStopOnJsd) || !err_too_big)
+		break;
 	}
 }
 
