@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.294 2007/09/27 20:54:49 c_anthon Exp $
+ * $Id: play.c,v 1.295 2007/10/03 17:00:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -573,17 +573,8 @@ fAddingMoveRecord=1;
 
     moverecord *pmr = pv, *pmrOld;
 
-    g_assert( pmr->esChequer.et >= EVAL_NONE &&
-            pmr->esChequer.et <= EVAL_ROLLOUT );
-    g_assert( pmr->CubeDecPtr->esDouble.et >= EVAL_NONE &&
-            pmr->CubeDecPtr->esDouble.et <= EVAL_ROLLOUT );
     g_assert( pmr->fPlayer >= 0 && pmr->fPlayer <= 1 );
     g_assert( pmr->ml.cMoves < MAX_MOVES );
-    g_assert( pmr->lt >= LUCK_VERYBAD && pmr->lt <= LUCK_VERYGOOD );
-    g_assert( 0 <= pmr->stCube && pmr->stCube < N_SKILLS );
-    g_assert( pmr->CubeDecPtr->esDouble.et >= EVAL_NONE &&
-            pmr->CubeDecPtr->esDouble.et <= EVAL_ROLLOUT );
-
     switch( pmr->mt ) {
     case MOVE_GAMEINFO:
 	g_assert( pmr->g.nMatch >= 0 );
@@ -595,23 +586,18 @@ fAddingMoveRecord=1;
 	}
 	if( !pmr->g.fCrawford )
 	    g_assert( !pmr->g.fCrawfordGame );
-        g_assert ( pmr->g.bgv >= VARIATION_STANDARD &&
-                 pmr->g.bgv < NUM_VARIATIONS );
 	
 	break;
 	
     case MOVE_NORMAL:
 	if( pmr->ml.cMoves )
 	    g_assert( pmr->n.iMove <= pmr->ml.cMoves );
-	g_assert( 0 <= pmr->n.stMove && pmr->n.stMove < N_SKILLS );
 	break;
 	
 	break;
 	
     case MOVE_RESIGN:
 	g_assert( pmr->r.nResigned >= 1 && pmr->r.nResigned <= 3 );
-        g_assert( pmr->r.esResign.et >= EVAL_NONE &&
-                pmr->r.esResign.et <= EVAL_ROLLOUT );
 	break;
 	
     case MOVE_DOUBLE:

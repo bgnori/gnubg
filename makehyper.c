@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.20 2007/07/19 22:05:00 c_anthon Exp $
+ * $Id: makehyper.c,v 1.21 2007/10/03 17:00:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -603,7 +603,7 @@ main ( int argc, char **argv ) {
 	    "Print version info and exit", NULL},
     { "outfile", 'f', 0, G_OPTION_ARG_STRING, &szOutput, 
 	    "Required output filename", "filename"}, 
-    { NULL}
+    { NULL, 0, 0, 0, NULL, NULL, NULL}
   };
 
   GError *error = NULL;

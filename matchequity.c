@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.68 2007/09/02 20:27:03 c_anthon Exp $
+* $Id: matchequity.c,v 1.69 2007/10/03 17:00:49 c_anthon Exp $
 */
 
 #include "config.h"
@@ -55,7 +55,7 @@
 
 
 #if (LIBXML_VERSION > 20412)
-const static xmlChar* XML_PUBLIC_ID = BAD_CAST "-//GNU Backgammon//DTD Match Equity Tables//EN";
+static const xmlChar* XML_PUBLIC_ID = BAD_CAST "-//GNU Backgammon//DTD Match Equity Tables//EN";
 #endif
 
 typedef struct _parameter {

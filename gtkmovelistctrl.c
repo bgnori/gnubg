@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.11 2007/09/02 20:27:02 c_anthon Exp $
+ * $Id: gtkmovelistctrl.c,v 1.12 2007/10/03 17:00:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -87,6 +87,7 @@ custom_cell_renderer_movelist_get_type (void)
       sizeof (CustomCellRendererMovelist),
       0,                                                        /* n_preallocs */
       (GInstanceInitFunc) custom_cell_renderer_movelist_init,
+      NULL
     };
 
     /* Derive from GtkCellRenderer */

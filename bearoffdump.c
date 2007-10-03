@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffdump.c,v 1.10 2007/07/18 21:26:28 c_anthon Exp $
+ * $Id: bearoffdump.c,v 1.11 2007/10/03 17:00:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -47,7 +47,7 @@ main( int argc, char **argv ) {
       "index", NULL},
     {"posid", 'p', 0, G_OPTION_ARG_STRING, &szPosID,
       "Position ID", NULL},
-    {NULL}
+    {NULL, 0, 0, 0, NULL, NULL, NULL}
   };
   GError *error = NULL;
   GOptionContext *context;
