@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.349 2007/09/29 21:12:37 c_anthon Exp $
+ * $Id: backgammon.h,v 1.350 2007/10/18 14:27:52 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1026,6 +1026,7 @@ extern void SaveRolloutSettings ( FILE *pf, char *sz, rolloutcontext *prc );
 
 #ifdef WIN32
 extern char * getInstallDir( void );
+#undef PKGDATADIR
 #define PKGDATADIR getInstallDir()
 #endif
 

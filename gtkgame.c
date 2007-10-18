@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.656 2007/10/03 17:00:48 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.657 2007/10/18 14:27:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3986,6 +3986,7 @@ extern void InitGTK( int *argc, char ***argv )
 #endif
 }
 
+#ifndef WIN32
 static gint python_run_file (gpointer file)
 { 
         g_assert(file);
@@ -3998,6 +3999,7 @@ static gint python_run_file (gpointer file)
         g_free(file);
         return FALSE;
 }
+#endif
 
 enum {RE_NONE, RE_LANGUAGE_CHANGE};
 

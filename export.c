@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.46 2007/10/01 21:08:58 c_anthon Exp $
+ * $Id: export.c,v 1.47 2007/10/18 14:27:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -50,6 +50,7 @@
 #include "simpleboard.h"
 #endif
 
+#if HAVE_CAIRO
 static gchar *export_get_filename (char *sz)
 {
 	gchar *filename=NULL;
@@ -75,7 +76,6 @@ static gchar *export_get_filename (char *sz)
 	}
 	return filename;
 }
-#if HAVE_CAIRO
 #define SIMPLE_BOARD_WIDTH 210.0/25.4*72.0
 #define SIMPLE_BOARD_HEIGHT 297.0/25.4*72.0
 
