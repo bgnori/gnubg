@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.728 2007/10/03 17:00:48 c_anthon Exp $
+ * $Id: gnubg.c,v 1.729 2007/10/18 14:29:01 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -747,6 +747,8 @@ command cER = {
     { "empire", CommandImportEmpire, N_("Import a GammonEmpire game file"),
       szFILENAME, &cFilename },
     { "party", CommandImportParty, N_("Import a PartyGammon game file"),
+      szFILENAME, &cFilename },
+    { "bgroom", CommandImportBGRoom, N_("Import a BackGammonRoom game file"),
       szFILENAME, &cFilename },
     { "pos", CommandImportJF, 
       N_("Import a Jellyfish position file"), szFILENAME,

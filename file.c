@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: file.c,v 1.6 2007/09/27 22:35:56 c_anthon Exp $
+ * $Id: file.c,v 1.7 2007/10/18 14:29:01 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -53,6 +53,7 @@ ImportFormat import_format[] = {
 	{IMPORT_TMG, ".tmg", N_("True Moneygames"), "tmg"},
 	{IMPORT_EMPIRE, ".gam", N_("GammonEmpire Game"), "empire"},
 	{IMPORT_PARTY, ".gam", N_("PartyGammon Game"), "party"},
+	{IMPORT_BGROOM, ".bgf", N_("BackGammonRoom Game"), "bgroom"},
 	{N_IMPORT_TYPES, NULL, N_("Unknown file format"), NULL}
 };
 
@@ -353,6 +354,23 @@ static int IsPARFile(FileHelper * fh)
 	return FALSE;
 }
 
+int IsBGRFile(FileHelper *fh)
+{
+	fhReset(fh);
+	fhSkipWS(fh);
+
+	if (fhReadStringNC(fh, "bgf version"))
+	{
+		fhSkipWS(fh);
+		if (!fhReadString(fh, "1.2"))
+			printf("Unexpected version of bgroom file!\n");
+
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
 extern FilePreviewData *ReadFilePreview(char *filename)
 {
 	FilePreviewData *fpd = g_new0(FilePreviewData, 1);
@@ -381,6 +399,8 @@ extern FilePreviewData *ReadFilePreview(char *filename)
 		fpd->type = IMPORT_EMPIRE;
 	else if (IsPARFile(fh))
 		fpd->type = IMPORT_PARTY;
+	else if (IsBGRFile(fh))
+		fpd->type = IMPORT_BGROOM;
 
 	CloseFileHelper(fh);
 	return fpd;
