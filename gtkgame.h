@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.119 2007/09/02 20:27:02 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.120 2007/10/23 10:40:17 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -35,25 +35,6 @@ extern GtkWidget* pwBoard;
 extern int fX, fNeedPrompt;
 extern unsigned int nDelay;
 extern guint nNextTurn; /* GTK idle function */
-
-#define NUM_CMD_HISTORY 10
-struct CommandEntryData_T
-{
-	GtkWidget *pwEntry, *pwHelpText, *cmdEntryCombo;
-	int showHelp;
-	char* cmdHistory[NUM_CMD_HISTORY];
-	int numHistory;
-	int completing;
-	int modal;
-	char* cmdString;
-};
-
-extern gboolean CommandKeyPress(GtkWidget *widget, GdkEventKey *event, struct CommandEntryData_T *pData);
-extern void CommandTextChange(GtkEntry *entry, struct CommandEntryData_T *pData);
-extern void CommandOK( GtkWidget *pw, struct CommandEntryData_T *pData );
-extern void ShowHelpToggled(GtkWidget *widget, struct CommandEntryData_T *pData);
-extern gboolean CommandFocusIn(GtkWidget *widget, GdkEventFocus *event, struct CommandEntryData_T *pData);
-extern void PopulateCommandHistory(struct CommandEntryData_T *pData);
 
 extern GtkWidget *pwMain, *pwMenuBar;
 extern GtkWidget *pwToolbar;
@@ -246,7 +227,6 @@ extern GtkWidget *pwMoveAnalysis;
 extern GdkColor wlCol;
 extern GtkItemFactory *pif;
 extern void ShowMove ( hintdata *phd, const int f );
-extern struct CommandEntryData_T cedPanel;
 extern GtkWidget *pom;
 extern GtkWidget *hpaned;
 #endif
