@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.126 2007/10/18 14:29:01 Superfly_Jon Exp $
+ * $Id: import.c,v 1.127 2007/10/24 15:18:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3830,7 +3830,7 @@ extern void CommandImportAuto(char *sz)
 #define BGR_STRING "BGF version"
 int moveNum;
 
-void OutputMove(FILE *fpOut, int side, char *outBuf)
+static void OutputMove(FILE *fpOut, int side, char *outBuf)
 {
 	if ((side == 0) || (moveNum == 1))
 	{
@@ -3845,7 +3845,7 @@ void OutputMove(FILE *fpOut, int side, char *outBuf)
 		fprintf(fpOut, "%s\n", outBuf);
 }
 
-extern int ConvertBackGammonRoomFileToMat(FILE *bgrFP, FILE *matFP)
+static int ConvertBackGammonRoomFileToMat(FILE *bgrFP, FILE *matFP)
 {
 	char player1[100], player2[100];
 	int p1Score = 0, p2Score = 0;

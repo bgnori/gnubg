@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.34 2007/09/27 20:54:49 c_anthon Exp $
+ * $Id: relational.c,v 1.35 2007/10/24 15:18:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -60,7 +60,7 @@ LoadDatabasePy( void ) {
 
 }
 
-static PyObject *Connect()
+static PyObject *Connect(void)
 {
 	PyObject *m, *d, *v, *r;
 

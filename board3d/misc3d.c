@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.73 2007/09/14 11:30:49 c_anthon Exp $
+* $Id: misc3d.c,v 1.74 2007/10/24 15:18:36 c_anthon Exp $
 */
 
 #include "config.h"
@@ -124,7 +124,7 @@ static void CheckNormal()
 }
 #endif
 
-void CheckOpenglError()
+void CheckOpenglError(void)
 {
 	GLenum glErr = glGetError();
 	if (glErr != GL_NO_ERROR)
@@ -1684,7 +1684,7 @@ static void RationalizeBox(ClipBox* pCb)
 	pCb->yy = (float)(midY + maxYoff);
 }
 
-void RestrictiveRedraw()
+void RestrictiveRedraw(void)
 {
 	numRestrictFrames = -1;
 }
@@ -2289,7 +2289,7 @@ void ClearTextures(BoardData3d* bd3d)
 	bd3d->numTextures = 0;
 }
 
-void DeleteTextureList()
+void DeleteTextureList(void)
 {
 	g_list_free(textures);
 }

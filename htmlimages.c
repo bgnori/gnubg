@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.38 2007/07/02 12:43:24 ace Exp $
+ * $Id: htmlimages.c,v 1.39 2007/10/24 15:18:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ static void WriteBorder(char* file, unsigned char *auchSrc, unsigned char *auchB
 	Write(file, auchLabel, BOARD_WIDTH * s, BORDER_HEIGHT * s);
 }
 
-static void WriteImages()
+static void WriteImages(void)
 {
 	int i, j, k;
 	imagesWritten = 0;
@@ -602,7 +602,7 @@ static void WriteImages()
 			imagesWritten, NUM_IMAGES);
 }
 
-static void RenderObjects()
+static void RenderObjects(void)
 {
 	int clockwise;
 	renderdata rd;
@@ -669,7 +669,7 @@ static char* GetFilenameBase(char* sz)
 	return szFile;
 }
 
-static void AllocObjects()
+static void AllocObjects(void)
 {
 	int i, j, k;
 
@@ -710,7 +710,7 @@ static void AllocObjects()
 		asRefract[i] = malloc((CHEQUER_WIDTH * s * CHEQUER_HEIGHT * s) * sizeof(short));
 }
 
-static void TidyObjects()
+static void TidyObjects(void)
 {
 	int i, j, k;
 	free(auchMidlb);

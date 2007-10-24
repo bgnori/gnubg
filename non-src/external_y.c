@@ -130,7 +130,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_y.c,v 1.4 2007/09/27 14:21:42 c_anthon Exp $
+ * $Id: external_y.c,v 1.5 2007/10/24 15:18:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -147,7 +147,7 @@ extern int exterror(const char *s);
 
 extcmd ec; 
 
-static void reset_command();
+static void reset_command(void);
 
 void ( *ExtErrorHandler )( const char *, const char *, const int ) = NULL;
 

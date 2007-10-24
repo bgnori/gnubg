@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.285 2007/09/29 21:12:38 c_anthon Exp $
+ * $Id: set.c,v 1.286 2007/10/24 15:18:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2862,7 +2862,7 @@ extern void CommandSetOutputWinPC( char *sz ) {
 	       _("Game winning chances will be shown as probabilities.") );
 }
 
-static void SetInvertMET()
+static void SetInvertMET(void)
 {
     invertMET();
     /* Clear any stored results to stop previous table causing problems */

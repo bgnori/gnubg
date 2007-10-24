@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.658 2007/10/23 10:40:17 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.659 2007/10/24 15:18:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3902,7 +3902,7 @@ extern void InitGTK(int *argc, char ***argv)
 #include "xpm/question.xpm"
 	char *sz;
 	GtkIconFactory *pif;
-	GdkAtom cb = gdk_atom_intern("CLIPBOARD", TRUE);
+	GdkAtom cb;
 	BoardData *bd;
 
 	fX = gtk_init_check(argc, argv);

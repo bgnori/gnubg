@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.49 2007/10/03 17:00:49 c_anthon Exp $
+ * $Id: makebearoff.c,v 1.50 2007/10/24 15:18:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -176,8 +176,7 @@ XhashAdd ( xhash *ph, const unsigned int iKey,
 
 
 static void *
-XhashLookup ( xhash *ph, const unsigned int iKey,
-             void **data ) {
+XhashLookup ( xhash *ph, const unsigned int iKey ) {
 
 
   int l = XhashPosition ( ph, iKey );
@@ -187,7 +186,7 @@ XhashLookup ( xhash *ph, const unsigned int iKey,
   if ( ph->phe[ l ].p && ph->phe[ l ].iKey == iKey ) {
     /* hit */
     ++ph->nHits;
-    return (*data = ph->phe[ l].p);
+    return (ph->phe[ l].p);
   }
   else
     /* miss */
@@ -470,9 +469,10 @@ static void BearOff( int nId, int nPoints,
                   pusj[ 32 ] = 0xFFFF;
 
                 }
-                else if ( ! XhashLookup ( ph, j, (void **) &pusj ) ) {
+                else if ( ! (pusj = XhashLookup ( ph, j))) {
                   /* look up in file generated so far */
-                  OSLookup ( j, nPoints, pusj = ausj, fGammon, fCompress,
+		  pusj = ausj;
+                  OSLookup ( j, nPoints, pusj, fGammon, fCompress,
                              pfOutput, pfTmp );
 
                   XhashAdd ( ph, j, pusj, fGammon ? 128 : 64 );
@@ -847,8 +847,9 @@ NDBearoff ( const int iPos, const int nPoints, float ar[ 4 ], xhash *ph,
 
         j = PositionBearoff ( anBoardTemp[ 1 ], nPoints, 15 );
 
-        if ( ! XhashLookup ( ph, j, (void **) &prj ) ) {
-          NDBearoff ( j, nPoints, prj = arj, ph, pbc );
+        if ( ! (prj = XhashLookup ( ph, j ))) {
+	  prj = arj;
+          NDBearoff ( j, nPoints, prj, ph, pbc );
           XhashAdd ( ph, j, prj, 16 );
         }
 
@@ -1175,16 +1176,15 @@ static void BearOff2( int nUs, int nThem,
 		g_assert( j < nUs ); 
 
                 if ( ! nThem ) {
-                  psij = asij;
                   asij[ 0 ] = asij[ 1 ] = asij[ 2 ] = asij[ 3 ] = EQUITY_P1;
                 }
                 else if ( ! j ) {
-                  psij = asij;
                   asij[ 0 ] = asij[ 1 ] = asij[ 2 ] = asij[ 3 ] = EQUITY_M1;
                 }
-                if ( ! XhashLookup ( ph, n * nThem + j, (void **) &psij ) ) {
+                if ( ! (psij = XhashLookup ( ph, n * nThem + j)) ) {
                   /* lookup in file */
-                  TSLookup ( nThem, j, nTSP, nTSC, psij = asij, n,
+		  psij = asij;
+                  TSLookup ( nThem, j, nTSP, nTSC, psij, n,
                              fCubeful, pfTmp );
                   XhashAdd ( ph, n * nThem + j, psij, fCubeful ? 8 : 2 );
                 }
@@ -1434,9 +1434,9 @@ generate_ts ( const int nTSP, const int nTSC,
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.49 $\n" );
+  printf ( "makebearoff $Revision: 1.50 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.49 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.50 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1566,7 +1566,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.49 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.50 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1694,7 +1694,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.49 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.50 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"

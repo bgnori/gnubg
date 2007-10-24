@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.34 2007/09/02 20:27:05 c_anthon Exp $
+* $Id: gtkcolour3d.c,v 1.35 2007/10/24 15:18:36 c_anthon Exp $
 */
 
 #include "config.h"
@@ -69,7 +69,7 @@ void SetPreviewLightLevel(const int levels[3])
 	memcpy(previewLightLevels, levels, sizeof(int[3]));
 }
 
-static void SetupLight()
+static void SetupLight(void)
 {
 	float al[4], dl[4], sl[4];
 	float lp[4] = {PREVIEW_WIDTH / 2, PREVIEW_HEIGHT / 2, 50, 1};
@@ -189,7 +189,7 @@ static void UpdateColourPreview(void *notused)
 	gtk_widget_queue_draw(pwPreview);
 }
 
-static void SetupColourPreview()
+static void SetupColourPreview(void)
 {
 	InitGL(0);
 	glClearColor(0.f, 0.f, 0.f, 1.f);
@@ -211,7 +211,7 @@ GdkGLConfig *getglconfigSingle(void);
 static GdkGLPixmap *glpixmap;
 static GdkGLContext *glPixmapContext = NULL;
 
-static void CreatePreview()
+static void CreatePreview(void)
 {
 	GdkGLDrawable *gldrawable;
 	glpixmap = gdk_pixmap_set_gl_capability(xppm, getglconfigSingle(), NULL);

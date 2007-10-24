@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.18 2007/08/12 08:46:50 c_anthon Exp $
+ * $Id: gtksplash.c,v 1.19 2007/10/24 15:18:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -41,7 +41,7 @@ typedef struct _gtksplash {
 
 
 extern GtkWidget *
-CreateSplash () {
+CreateSplash (void) {
 
   gtksplash *pgs;
   GtkWidget *pwvbox, *pwFrame, *pwb;

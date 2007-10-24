@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.225 2007/09/02 20:27:01 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.226 2007/10/24 15:18:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3477,15 +3477,17 @@ static void board_realize( GtkWidget *board )
 
 extern void board_set_position(GtkWidget * pw, BoardData * bd)
 {
-	char *sz = g_strdup_printf("set board %s",
-				   gtk_entry_get_text(GTK_ENTRY
-						      (bd->position_id)));
+	int editing;
+	char *sz;
+	const char *tmp;
+
 	if (ms.gs != GAME_PLAYING)
 		SetMatchID("cIkaAAAAAAAA");
-	int editing = ToolbarIsEditing(pwToolbar);
-
+	editing = ToolbarIsEditing(pwToolbar);
 	if (editing)
 		click_edit();
+	tmp = gtk_entry_get_text(GTK_ENTRY(bd->position_id));
+	sz = g_strdup_printf("set board %s", tmp);
 	UserCommand(sz);
 	g_free(sz);
 	if (editing)
@@ -3494,14 +3496,15 @@ extern void board_set_position(GtkWidget * pw, BoardData * bd)
 
 extern void board_set_matchid(GtkWidget * pw, BoardData * bd)
 {
-	int editing = ToolbarIsEditing(pwToolbar);
+	int editing;
+	char *sz;
+	const char *tmp;
 
+	editing = ToolbarIsEditing(pwToolbar);
 	if (editing)
 		click_edit();
-
-	char *sz = g_strdup_printf("set matchid %s",
-				   gtk_entry_get_text(GTK_ENTRY
-						      (bd->match_id)));
+	tmp = gtk_entry_get_text(GTK_ENTRY(bd->match_id));
+	sz = g_strdup_printf("set matchid %s", tmp);
 	UserCommand(sz);
 	g_free(sz);
 	if (editing)
@@ -4147,7 +4150,7 @@ extern GtkType board_get_type( void )
 }
 
 
-static int GetSetSize()
+static int GetSetSize(void)
 {
 	return gdk_screen_width() / 170;
 }
