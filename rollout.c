@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.177 2007/10/26 18:43:25 c_anthon Exp $
+ * $Id: rollout.c,v 1.178 2007/10/26 18:44:11 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1068,7 +1068,7 @@ extern void RolloutLoopMT(void)
       if (altGameCount[alt] >= cGames)
       {
 	      fNoMore[alt] = TRUE;
-	      if (altGameCount[alt] >= cGames)
+	      if (altGameCount[alt] > cGames)
 		      g_warning("Too many rollouts done for alternative %d. This is a bug. Please report as many details as possible to bug-gnubg@gnu.org", alt);
       }
       /* For normal alternatives nGamesDone and altGameCount will be equal.
