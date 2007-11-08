@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.82 2007/09/27 22:35:58 c_anthon Exp $
+ * $Id: text.c,v 1.83 2007/11/08 00:33:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -169,7 +169,7 @@ TextBoardHeader ( GString *gsz, const matchstate *pms,
     /* chequer play decision */
 
     g_string_append_printf(gsz,
-              _(" %s to play %d%d"),
+              _(" %s to play %d%d\n\n"),
               ap[ pms->fMove ].szName,
               pms->anDice[ 0 ], pms->anDice[ 1 ] 
             );
@@ -245,7 +245,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.82 $";
+  const char szVersion[] = "$Revision: 1.83 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
