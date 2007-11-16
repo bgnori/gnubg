@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.35 2007/09/27 22:35:57 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.36 2007/11/16 21:13:17 c_anthon Exp $
  */
 
 #include "config.h"
@@ -316,7 +316,7 @@ static void do_import_file(gint import_type, gchar * fn)
 
 }
 
-extern void GTKOpen(gpointer * p, guint n, GtkWidget * pw)
+extern void GTKOpen(gpointer p, guint n, GtkWidget * pw)
 {
 	GtkWidget *fc;
 	GtkWidget *type_combo;
@@ -354,12 +354,12 @@ extern void GTKOpen(gpointer * p, guint n, GtkWidget * pw)
 	gtk_widget_destroy(fc);
 }
 
-extern void GTKExport (gpointer * p, guint n, GtkWidget * pw)
+extern void GTKExport (gpointer p, guint n, GtkWidget * pw)
 {
   SaveCommon (N_EXPORT_TYPES, _("Export to foreign formats"));
 }
 
-extern void GTKSave (gpointer * p, guint n, GtkWidget * pw)
+extern void GTKSave (gpointer p, guint n, GtkWidget * pw)
 {
   SaveCommon (1, _("Save in native gnubg .sgf format"));
 }
@@ -575,7 +575,7 @@ static void batch_create_dialog_and_run(GSList * filenames)
 	gtk_widget_set_sensitive(ok_button, TRUE);
 }
 
-extern void GTKBatchAnalyse(gpointer * p, guint n, GtkWidget * pw)
+extern void GTKBatchAnalyse(gpointer p, guint n, GtkWidget * pw)
 {
 	gchar *folder = NULL;
 	GSList *filenames = NULL;

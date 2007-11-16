@@ -15,21 +15,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- * $Id: import.h,v 1.14 2007/10/18 14:29:01 Superfly_Jon Exp $
+ * $Id: import.h,v 1.15 2007/11/16 21:13:18 c_anthon Exp $
  */
 
 #ifndef _IMPORT_H_
 #define _IMPORT_H_
 
-extern void CommandImportBGRoom(char *);
-extern void CommandImportBKG(char *);
-extern void CommandImportEmpire(char *);
-extern void CommandImportJF(char *);
-extern void CommandImportMat(char *);
-extern void CommandImportOldmoves(char *);
-extern void CommandImportParty(char *);
-extern void CommandImportSGG(char *);
-extern void CommandImportSnowieTxt(char *);
-extern void CommandImportTMG(char *);
-extern void CommandImportAuto(char *);
 #endif

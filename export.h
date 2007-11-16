@@ -16,11 +16,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.29 2007/09/27 22:35:56 c_anthon Exp $
+ * $Id: export.h,v 1.30 2007/11/16 21:13:17 c_anthon Exp $
  */
 
 #include "render.h"
 #include "list.h"
+#include <glib.h>
 
 #ifndef _EXPORT_H_
 #define _EXPORT_H_
@@ -108,32 +109,6 @@ void GenerateImage3d(renderdata * prd, const char *szName,
 		     unsigned int nSizeY);
 #endif
 
-extern void CommandExportGameGam(char *);
-extern void CommandExportGameHtml(char *);
-extern void CommandExportGameLaTeX(char *);
-extern void CommandExportGamePDF(char *);
-extern void CommandExportGameText(char *);
-extern void CommandExportGameEquityEvolution(char *);
-extern void CommandExportHTMLImages(char *);
-extern void CommandExportMatchMat(char *);
-extern void CommandExportMatchHtml(char *);
-extern void CommandExportMatchLaTeX(char *);
-extern void CommandExportMatchPDF(char *);
-extern void CommandExportMatchText(char *);
-extern void CommandExportMatchEquityEvolution(char *);
-extern void CommandExportMatchSGG(char *);
-extern void CommandExportMatchTMG(char *);
-extern void CommandExportPositionEPS(char *);
-extern void CommandExportPositionPNG(char *);
-extern void CommandExportPositionJF(char *);
-extern void CommandExportPositionHtml(char *);
-extern void CommandExportPositionText(char *);
-extern void CommandExportPositionGammOnLine(char *);
-extern void CommandExportPositionGOL2Clipboard(char *);
-extern void CommandExportPositionSnowieTxt(char *);
-extern void CommandExportPositionSVG(char *sz);
-extern void CommandExportPositionPDF(char *sz);
-extern void CommandExportPositionPS(char *sz);
 extern void TextAnalysis(GString * gsz, matchstate * pms,
 			 moverecord * pmr);
 extern void TextPrologue(GString * gsz, const matchstate * pms,

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.295 2007/10/03 17:00:49 c_anthon Exp $
+ * $Id: play.c,v 1.296 2007/11/16 21:13:18 c_anthon Exp $
  */
 
 #include "config.h"
@@ -856,7 +856,7 @@ static void ShowAutoMove( int anBoard[ 2 ][ 25 ], int anMove[ 8 ] ) {
 		 FormatMove( sz, anBoard, anMove ) );
 }
 
-extern int ComputerTurn( void ) {
+static int ComputerTurn( void ) {
 
   moverecord *pmr;
   cubeinfo ci;
@@ -1532,6 +1532,19 @@ extern int ComputerTurn( void ) {
   return -1;
 }
 
+static void TurnDone( void ) {
+
+#if USE_GTK
+    if( fX ) {
+	if( !nNextTurn )
+	    nNextTurn = g_idle_add( NextTurnNotify, NULL );
+    } else
+#endif
+	fNextTurn = TRUE;
+
+    outputx();
+}
+
 extern void CancelCubeAction( void ) {
     
     if( ms.fDoubled ) {
@@ -1786,18 +1799,6 @@ extern int NextTurn( int fPlayNext ) {
     return 0;
 }
 
-extern void TurnDone( void ) {
-
-#if USE_GTK
-    if( fX ) {
-	if( !nNextTurn )
-	    nNextTurn = g_idle_add( NextTurnNotify, NULL );
-    } else
-#endif
-	fNextTurn = TRUE;
-
-    outputx();
-}
 
 extern void CommandAccept( char *sz ) {
 

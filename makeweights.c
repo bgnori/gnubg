@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.14 2007/11/04 11:07:34 Superfly_Jon Exp $
+ * $Id: makeweights.c,v 1.15 2007/11/16 21:13:18 c_anthon Exp $
  */
 
 #include "config.h"
@@ -33,7 +33,7 @@
 static void 
 usage (char *prog) {
   fprintf (stderr, "Usage: %s [[-f] outputfile [inputfile]]\n"
-	  "  outputfile: Output to file instead of stdout\n",
+	  "  outputfile: Output to file instead of stdout\n"
 	  "  inputfile: Input from file instead of stdin\n",
 	   prog);
 
