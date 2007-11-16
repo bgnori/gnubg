@@ -16,16 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.351 2007/11/16 21:13:17 c_anthon Exp $
+ * $Id: backgammon.h,v 1.352 2007/11/16 22:33:31 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
 #define _BACKGAMMON_H_
 
-#include "list.h"
 #include "analysis.h"
 #include "eval.h"
-#include "common.h"
 
 #define MAX_CUBE ( 1 << 12 )
 #define MAX_NAME_LEN 32

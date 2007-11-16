@@ -16,11 +16,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.25 2007/09/02 20:27:03 c_anthon Exp $
+ * $Id: rollout.h,v 1.26 2007/11/16 22:33:32 c_anthon Exp $
  */
 
 #ifndef _ROLLOUT_H_
 #define _ROLLOUT_H_
+#include "eval.h"
 
 #define MAXHIT 50 /* for statistics */
 #define STAT_MAXCUBE 10

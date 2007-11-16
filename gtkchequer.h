@@ -16,11 +16,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.h,v 1.12 2007/09/02 20:27:01 c_anthon Exp $
+ * $Id: gtkchequer.h,v 1.13 2007/11/16 22:33:31 c_anthon Exp $
  */
 
 #ifndef _GTKCHEQUER_H_
 #define _GTKCHEQUER_H_
+#include "backgammon.h"
 
 typedef struct _hintdata {
   GtkWidget *pwMoves;     /* the movelist */

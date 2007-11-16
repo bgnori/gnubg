@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.41 2007/10/23 10:40:17 c_anthon Exp $
+* $Id: gtkpanels.c,v 1.42 2007/11/16 22:33:31 c_anthon Exp $
 */
 
 #include "config.h"
@@ -1068,7 +1068,7 @@ void DockPanels(void)
 
 
 extern void
-ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw )
+ShowAllPanels ( gpointer p, guint n, GtkWidget *pw )
 {
 	BoardData *bd = BOARD( pwBoard )->board_data;
 	int i;
@@ -1113,7 +1113,7 @@ ShowAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 }
 
 extern void
-HideAllPanels ( gpointer *p, guint n, GtkWidget *pw )
+HideAllPanels ( gpointer p, guint n, GtkWidget *pw )
 {
 	BoardData *bd = BOARD( pwBoard )->board_data;
 	int i;
@@ -1163,7 +1163,7 @@ HideAllPanels ( gpointer *p, guint n, GtkWidget *pw )
 		gtk_widget_show(bd->drawing_area);
 }
 
-extern void ToggleDockPanels( gpointer *p, guint n, GtkWidget *pw )
+extern void ToggleDockPanels( gpointer p, guint n, GtkWidget *pw )
 {
 	int newValue = GTK_CHECK_MENU_ITEM( pw )->active;
 	if (fDockPanels != newValue)
