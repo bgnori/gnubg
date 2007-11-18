@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.50 2007/10/24 15:18:35 c_anthon Exp $
+ * $Id: makebearoff.c,v 1.51 2007/11/18 06:22:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1141,9 +1141,9 @@ static void BearOff2( int nUs, int nThem,
     /* look for position in bearoff file */
 
     if ( pbc && isBearoff ( pbc, anBoard ) ) {
-      unsigned short int nUsL = 
+      unsigned int nUsL = 
         PositionBearoff ( anBoard[ 1 ], pbc->nPoints, pbc->nChequers );
-      unsigned short int nThemL = 
+      unsigned int nThemL = 
         PositionBearoff ( anBoard[ 0 ], pbc->nPoints, pbc->nChequers );
       int nL = Combination ( pbc->nPoints + pbc->nChequers, pbc->nPoints );
       unsigned int iPos = nUsL * nL + nThemL;
@@ -1434,9 +1434,9 @@ generate_ts ( const int nTSP, const int nTSC,
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.50 $\n" );
+  printf ( "makebearoff $Revision: 1.51 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.50 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.51 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1566,7 +1566,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.50 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.51 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1694,7 +1694,7 @@ extern int main( int argc, char **argv ) {
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.50 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.51 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"

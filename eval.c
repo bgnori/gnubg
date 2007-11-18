@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.324 2007/11/17 10:31:34 c_anthon Exp $
+ * $Id: eval.c,v 1.325 2007/11/18 06:22:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -787,9 +787,12 @@ extern void EvalInitialise(char *szWeights, char *szWeightsBinary,
 		/* hyper-gammon databases */
 
 		for (i = 0; i < 3; ++i) {
+			char *fn;
 			char sz[10];
 			sprintf(sz, "hyper%1d.bd", i + 1);
-			apbcHyper[i] = BearoffInit(sz, BO_NONE, NULL);
+			fn = g_build_filename(PKGDATADIR, sz, NULL);
+			apbcHyper[i] = BearoffInit(fn, BO_NONE, NULL);
+			g_free(fn);
 		}
 
 	}
@@ -3055,9 +3058,9 @@ extern int
 PerfectCubeful ( bearoffcontext *pbc, 
                  int anBoard[ 2 ][ 25 ], float arEquity[] ) {
 
-  unsigned short int nUs = 
+  unsigned int nUs = 
     PositionBearoff ( anBoard[ 1 ], pbc->nPoints, pbc->nChequers );
-  unsigned short int nThem = 
+  unsigned int nThem = 
     PositionBearoff ( anBoard[ 0 ], pbc->nPoints, pbc->nChequers );
   int n = Combination ( pbc->nPoints + pbc->nChequers, pbc->nPoints );
   unsigned int iPos = nUs * n + nThem;
@@ -6026,7 +6029,7 @@ EvaluatePositionCubeful4( NNState *nnStates, int anBoard[ 2 ][ 25 ],
          pc == CLASS_HYPERGAMMON3 ) {
 
       bearoffcontext *pbc = apbcHyper[ pc - CLASS_HYPERGAMMON1 ];
-      unsigned short int nUs, nThem, iPos;
+      unsigned int nUs, nThem, iPos;
       int n;
 
       if (!pbc)
