@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.732 2007/11/17 10:31:34 c_anthon Exp $
+ * $Id: gnubg.c,v 1.733 2007/11/18 11:38:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4742,10 +4742,6 @@ extern void CommandSaveSettings( char *szParam )
 	    
 	case PLAYER_HUMAN:
 	    fprintf( pf, "set player %d human\n", i );
-	    break;
-	    
-	case PLAYER_PUBEVAL:
-	    fprintf( pf, "set player %d pubeval\n", i );
 	    break;
 	    
 	case PLAYER_EXTERNAL:

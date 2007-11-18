@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.147 2007/11/17 10:31:34 c_anthon Exp $
+ * $Id: eval.h,v 1.148 2007/11/18 11:38:49 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -384,10 +384,6 @@ FindnSaveBestMoves( movelist *pml,
                     movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] );
 
 extern int 
-FindPubevalMove( int nDice0, int nDice1, int anBoard[ 2 ][ 25 ],
-		 int anMove[ 8 ], const bgvariation bgv );
-
-extern int 
 PipCount( int anBoard[ 2 ][ 25 ], unsigned int anPips[ 2 ] );
 
 extern int 
@@ -630,8 +626,5 @@ baseInputs(int anBoard[2][25], float arInput[]);
 
 extern void 
 CalculateRaceInputs(int anBoard[2][25], float inputs[]);
-
-/* From pub_eval.c: */
-extern float pubeval( int race, int pos[] );
 
 #endif

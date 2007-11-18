@@ -16,12 +16,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.352 2007/11/16 22:33:31 c_anthon Exp $
+ * $Id: backgammon.h,v 1.353 2007/11/18 11:38:48 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
 #define _BACKGAMMON_H_
-
+#include <stdarg.h>
 #include "analysis.h"
 #include "eval.h"
 
@@ -43,7 +43,7 @@ typedef struct _command {
 } command;
 
 typedef enum _playertype {
-	PLAYER_EXTERNAL, PLAYER_HUMAN, PLAYER_GNU, PLAYER_PUBEVAL
+	PLAYER_HUMAN, PLAYER_GNU, PLAYER_EXTERNAL, 
 } playertype;
 
 typedef struct _player {

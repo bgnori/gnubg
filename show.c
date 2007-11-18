@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.232 2007/09/29 21:12:38 c_anthon Exp $
+ * $Id: show.c,v 1.233 2007/11/18 11:38:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -847,9 +847,6 @@ extern void CommandShowPlayer( char *sz ) {
             ShowMoveFilters ( ap[ i ].aamf );
             outputl( _("    Cube decisions:") );
             ShowEvalSetup ( &ap[ i ].esCube );
-	    break;
-	case PLAYER_PUBEVAL:
-	    outputl( _("pubeval\n") );
 	    break;
 	case PLAYER_HUMAN:
 	    outputl( _("human\n") );
