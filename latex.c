@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.40 2007/10/03 17:00:49 c_anthon Exp $
+ * $Id: latex.c,v 1.41 2007/12/12 23:08:18 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -375,9 +375,9 @@ static char *PlayerSymbol( int fPlayer ) {
     return fPlayer ? "\\textbullet{}" : "\\textopenbullet{}";
 }
 
-static void ExportGameLaTeX( FILE *pf, list *plGame ) {
+static void ExportGameLaTeX( FILE *pf, listOLD *plGame ) {
     
-    list *pl;
+    listOLD *pl;
     moverecord *pmr;
     matchstate msExport;
     int fTook = FALSE;
@@ -563,7 +563,7 @@ extern void CommandExportGameLaTeX( char *sz ) {
 extern void CommandExportMatchLaTeX( char *sz ) {
     
     FILE *pf;
-    list *pl;
+    listOLD *pl;
 
     sz = NextToken( &sz );
     

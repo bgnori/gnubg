@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.57 2007/09/14 11:30:48 c_anthon Exp $
+ * $Id: dice.c,v 1.58 2007/12/12 23:08:14 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -748,7 +748,7 @@ CloseRNG( const rng rngx, void *p ) {
 
 
 extern int
-RNGSystemSeed( const rng rngx, void *p, int *pnSeed ) {
+RNGSystemSeed( const rng rngx, void *p, unsigned long *pnSeed ) {
 
   int h;
   int f = FALSE;
@@ -799,11 +799,12 @@ RNGSystemSeed( const rng rngx, void *p, int *pnSeed ) {
 
 }
 
-extern void *InitRNG( int *pnSeed, int *pfInitFrom,
+extern void *InitRNG( unsigned long *pnSeed, int *pfInitFrom,
                       const int fSet, const rng rngx ) {
 
     int f = FALSE;
     rngcontext *rngctx =  g_new0(rngcontext, 1);
+
     /* misc. initialisation */
 
     /* Mersenne-Twister */

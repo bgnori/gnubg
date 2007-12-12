@@ -16,10 +16,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.h,v 1.3 2007/09/02 20:27:04 c_anthon Exp $
+ * $Id: util.h,v 1.4 2007/12/12 23:08:21 Superfly_Jon Exp $
  */
 
-extern int MT_GetThreadID(void);
-extern void MT_Unlock(long *lock);
-extern void MT_Lock(long *lock);
+#ifndef _UTIL_H_
+#define _UTIL_H_
+
+typedef int TanBoard[2][25];
+
 extern char * getInstallDir( void );
+extern void PrintSystemError(const char* message);
+
+#endif

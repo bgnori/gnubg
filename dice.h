@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.18 2007/07/02 12:43:38 ace Exp $
+ * $Id: dice.h,v 1.19 2007/12/12 23:08:14 Superfly_Jon Exp $
  */
 
 #ifndef _DICE_H_
@@ -36,7 +36,7 @@ extern rng rngCurrent;
 extern void *rngctxCurrent;
 
 
-extern void *InitRNG( int *pnSeed, int *pfInitFrom,
+extern void *InitRNG( unsigned long *pnSeed, int *pfInitFrom,
                       const int fSet, const rng rngx );
 extern void
 CloseRNG( const rng rngx, void *rngctx );
@@ -45,7 +45,7 @@ extern void PrintRNGSeed( const rng rngx, void *rngctx );
 extern void PrintRNGCounter( const rng rngx, void *rngctx );
 extern void InitRNGSeed( int n, const rng rngx, void *rngctx );
 extern int
-RNGSystemSeed( const rng rngx, void *p, int *pnSeed );
+RNGSystemSeed( const rng rngx, void *p, unsigned long *pnSeed );
 
 extern int 
 RollDice( unsigned int anDice[ 2 ], const rng rngx, void *rngctx );

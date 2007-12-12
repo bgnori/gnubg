@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.9 2007/07/02 12:46:38 ace Exp $
+ * $Id: neuralnetsse.c,v 1.10 2007/12/12 23:08:22 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -134,8 +134,8 @@ Evaluate128( const neuralnet *pnn, const float arInput[], float ar[],
 }
 
 
-extern int NeuralNetEvaluate128( const neuralnet *pnn, float arInput[],
-			      float arOutput[], NNState *pnState )
+extern int NeuralNetEvaluate128( const neuralnet *pnn, /*lint -e{818}*/ float arInput[],
+			      float arOutput[], NNState *notused )
 {
     SSE_ALIGN(float ar[HIDDEN_NODES]);
 #if DEBUG_SSE

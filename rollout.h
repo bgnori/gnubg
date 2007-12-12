@@ -16,12 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.26 2007/11/16 22:33:32 c_anthon Exp $
+ * $Id: rollout.h,v 1.27 2007/12/12 23:08:20 Superfly_Jon Exp $
  */
 
 #ifndef _ROLLOUT_H_
 #define _ROLLOUT_H_
-#include "eval.h"
 
 #define MAXHIT 50 /* for statistics */
 #define STAT_MAXCUBE 10
@@ -89,7 +88,7 @@ extern int
 GeneralEvaluation ( float arOutput[ NUM_ROLLOUT_OUTPUTS ], 
                     float arStdDev[ NUM_ROLLOUT_OUTPUTS ], 
                     rolloutstat arsStatistics[ 2 ],
-                    int anBoard[ 2 ][ 25 ],
+                    TanBoard anBoard,
                     const cubeinfo* pci, const evalsetup* pes,
                     rolloutprogressfunc* pfRolloutProgress,
                     void *pUserData );
@@ -98,7 +97,7 @@ extern int
 GeneralEvaluationR ( float arOutput[ NUM_ROLLOUT_OUTPUTS ],
                      float arStdDev[ NUM_ROLLOUT_OUTPUTS ],
                      rolloutstat arsStatistics[ 2 ],
-                     int anBoard[ 2 ][ 25 ],
+                     TanBoard anBoard,
                      const cubeinfo* pci, const rolloutcontext* prc,
                      rolloutprogressfunc *pfRolloutProgress,
                      void *pUserData );
@@ -107,7 +106,7 @@ extern int
 GeneralCubeDecision ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                       float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                       rolloutstat aarsStatistics[ 2 ][ 2 ],
-                      int anBoard[ 2 ][ 25 ],
+                      TanBoard anBoard,
                       cubeinfo *pci, evalsetup *pes,
                       rolloutprogressfunc *pfRolloutProgress,
                       void *pUserData );
@@ -117,7 +116,7 @@ extern int
 GeneralCubeDecisionR ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                        float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ], 
                        rolloutstat aarsStatistics[ 2 ][ 2 ],
-                       int anBoard[ 2 ][ 25 ],
+                       TanBoard anBoard,
                        cubeinfo *pci, rolloutcontext *prc, evalsetup *pes,
                        rolloutprogressfunc *pfRolloutProgress,
                        void *pUserData );
@@ -132,7 +131,7 @@ printRolloutstat ( char *sz, const rolloutstat *prs,
 
 extern int
 getResignation ( float arResign[ NUM_ROLLOUT_OUTPUTS ],
-                 int anBoard[ 2 ][ 25 ],
+                 TanBoard anBoard,
                  const cubeinfo* pci, 
                  const evalsetup* pesResign );
 

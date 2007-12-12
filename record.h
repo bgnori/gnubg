@@ -16,23 +16,24 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.h,v 1.7 2007/07/02 12:43:40 ace Exp $
+ * $Id: record.h,v 1.8 2007/12/12 23:08:19 Superfly_Jon Exp $
  */
 
 #ifndef RECORD_H
 #define RECORD_H
 
 typedef enum _expaverage {
-    EXPAVG_TOTAL, EXPAVG_20, EXPAVG_100, EXPAVG_500, NUM_AVG
+    EXPAVG_TOTAL, EXPAVG_20, EXPAVG_100, EXPAVG_500
 } expaverage;
+#define NUM_AVG ((int)EXPAVG_500 + 1)
 
 typedef struct _playerrecord {
     char szName[ MAX_NAME_LEN ];
     int cGames;
-    float arErrorChequerplay[ NUM_AVG ];
-    float arErrorCube[ NUM_AVG ];
-    float arErrorCombined[ NUM_AVG ];
-    float arLuck[ NUM_AVG ];
+    double arErrorChequerplay[ NUM_AVG ];
+    double arErrorCube[ NUM_AVG ];
+    double arErrorCombined[ NUM_AVG ];
+    double arLuck[ NUM_AVG ];
 } playerrecord;
 
 extern int RecordReadItem( FILE *pf, char *pch, playerrecord *ppr );

@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.29 2007/07/02 12:43:24 ace Exp $
+ * $Id: gtktempmap.c,v 1.30 2007/12/12 23:08:18 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -93,7 +93,7 @@ TempMapEquities( evalcontext *pec, matchstate *pms,
 
   int i, j;
   float arOutput[ NUM_ROLLOUT_OUTPUTS ];
-  int anBoard[ 2 ][ 25 ];
+  TanBoard anBoard;
   int aaan[ 6 ][ 6 ][ 8 ];
   float aar[ 6 ][ 6 ];
   cubeinfo ci;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.38 2007/09/02 20:27:02 c_anthon Exp $
+ * $Id: gtktoolbar.c,v 1.39 2007/12/12 23:08:18 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -184,7 +184,7 @@ static void ToolbarToggleEdit(GtkWidget * pw, toolbarwidget * ptw)
 	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(ptw->pwEdit))) {
 		editing = TRUE;
 		if (ms.gs == GAME_NONE)
-                        edit_new(nDefaultLength);
+			edit_new(nDefaultLength);
 		/* Undo any partial move that may have been made when entering edit mode */
 		Undo();
 	} else

@@ -16,11 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.29 2007/09/14 11:30:48 c_anthon Exp $
+ * $Id: render.h,v 1.30 2007/12/12 23:08:19 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
 #define _RENDER_H_
+
+#include "util.h"
 
 #if USE_BOARD3D
 #include "types3d.h"
@@ -182,7 +184,7 @@ RenderBoardLabels( renderdata *prd,
 extern void FreeImages( renderimages *pri );
     
 extern void CalculateArea( renderdata *prd, unsigned char *puch, int nStride,
-			   renderimages *pri, int anBoard[ 2 ][ 25 ],
+			   renderimages *pri, TanBoard anBoard,
 			   int anOff[ 2 ], int anDice[ 2 ],
 			   int anDicePosition[ 2 ][ 2 ],
 			   int fDiceColour, int anCubePosition[ 2 ],

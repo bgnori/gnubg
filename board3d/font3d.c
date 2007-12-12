@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.16 2007/07/02 12:47:12 ace Exp $
+* $Id: font3d.c,v 1.17 2007/12/12 23:08:21 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -97,7 +97,7 @@ int BuildFont3d(BoardData3d* bd3d)
 		g_print("Failed to create font %s\n", file);
 		return 0;
 	}
-	free(file);
+	g_free(file);
 
 	free(bd3d->cubeFont);
 	bd3d->cubeFont = (OGLFont*)malloc(sizeof(OGLFont));
@@ -107,7 +107,7 @@ int BuildFont3d(BoardData3d* bd3d)
 		g_print("Failed to create font %s\n", file);
 		return 0;
 	}
-	free(file);
+	g_free(file);
 
 	return !FT_Done_FreeType(ftLib);
 }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.h,v 1.9 2007/09/14 11:30:48 c_anthon Exp $
+ * $Id: gtkcolour.h,v 1.10 2007/12/12 23:08:16 Superfly_Jon Exp $
  */
 
 #ifndef _GTKCOLOUR_H_
@@ -87,7 +87,7 @@ extern void
 gtk_colour_picker_set_has_opacity_control(GtkColourPicker *pcp, gboolean f );
 
 extern void
-gtk_colour_picker_set_colour( GtkColourPicker *pcp, gdouble *ar );
+gtk_colour_picker_set_colour( GtkColourPicker *pcp, const gdouble *ar );
 
 extern void
 gtk_colour_picker_get_colour( GtkColourPicker *pcp, gdouble *ar );

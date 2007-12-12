@@ -15,13 +15,15 @@
  * neuralnet.h
  *
  * by Gary Wong, 1998
- * $Id: neuralnet.h,v 1.19 2007/11/17 10:31:34 c_anthon Exp $
+ * $Id: neuralnet.h,v 1.20 2007/12/12 23:08:22 Superfly_Jon Exp $
  */
 
 #ifndef _NEURALNET_H_
 #define _NEURALNET_H_
-#include "common.h"
+
 #include <stdio.h>
+#include "common.h"
+
 typedef struct _neuralnet {
 	unsigned int cInput;
 	unsigned int cHidden;
@@ -66,4 +68,5 @@ extern int NeuralNetLoad(neuralnet * pnn, FILE * pf);
 extern int NeuralNetLoadBinary(neuralnet * pnn, FILE * pf);
 extern int NeuralNetSaveBinary(const neuralnet * pnn, FILE * pf);
 extern int SSE_Supported(void);
+
 #endif

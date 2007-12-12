@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.51 2007/11/17 10:31:34 c_anthon Exp $
+ * $Id: neuralnet.c,v 1.52 2007/12/12 23:08:22 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -28,7 +28,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#ifndef WIN32
 #include <stdlib.h>
+#endif
 
 #include "neuralnet.h"
 #include "sse.h"
@@ -224,10 +226,8 @@ static inline NNEvalType NNevalAction(NNState *pnState)
       return NNEVAL_FROMBASE;
     }
 	}
-
-  /* never reached */
-  g_assert(0);
-  return NNEVAL_NONE;   /* for the picky compiler */
+	/* never reached */
+	return NNEVAL_NONE;   /* for the picky compiler */
 }
 
 extern int NeuralNetCreate( neuralnet *pnn, unsigned int cInput, unsigned int cHidden,

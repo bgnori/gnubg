@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.121 2007/11/16 22:33:31 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.122 2007/12/12 23:08:17 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -64,7 +64,7 @@ extern GtkWidget *StatsPixmapButton(GdkColormap * pcmap, char **xpm,
 extern int ArePanelsDocked(void);
 extern int ArePanelsShowing(void);
 extern int DockedPanelsShowing(void);
-extern int edit_new(int length);
+extern int edit_new(unsigned int length);
 extern int GetPanelWidth(gnubgwindow panel);
 extern int GTKGetManualDice(unsigned int an[2]);
 extern int GTKGetMove(int anMove[8]);

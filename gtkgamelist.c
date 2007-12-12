@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.25 2007/09/02 20:27:02 c_anthon Exp $
+* $Id: gtkgamelist.c,v 1.26 2007/12/12 23:08:17 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -39,7 +39,7 @@
 #endif
 
 static GtkWidget *pwGameList;
-static GtkStyle *psGameList, *psCurrent, *psCubeErrors[3], *psChequerErrors[3], *psLucky[LUCK_VERYGOOD + 1];
+static GtkStyle *psGameList, *psCurrent, *psCubeErrors[3], *psChequerErrors[3], *psLucky[N_LUCKS];
 
 static int gtk_compare_fonts(GtkStyle* psOne, GtkStyle* psTwo)
 {
@@ -68,8 +68,8 @@ static void GameListSelectRow(GtkCList *pcl, gint y, gint x, GdkEventButton *pev
 #endif
     gamelistrow *pglr;
     moverecord *pmr, *pmrPrev = NULL;
-    list *pl;
-    
+    listOLD *pl;
+
     if( x < 1 || x > 2 )
     	return;
 
@@ -115,7 +115,7 @@ static void GameListSelectRow(GtkCList *pcl, gint y, gint x, GdkEventButton *pev
     	return;
     
     plLastMove = pl;
-    
+
     CalculateBoard();
 
     if ( pmr && pmr->mt == MOVE_NORMAL ) {

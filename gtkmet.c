@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.19 2007/08/12 08:46:50 c_anthon Exp $
+ * $Id: gtkmet.c,v 1.20 2007/12/12 23:08:17 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -26,10 +26,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <glib.h>
 
 #include "backgammon.h"
-#include "eval.h"
 #include "gtkgame.h"
 #include <glib/gi18n.h>
 #include "matchequity.h"
@@ -55,7 +53,7 @@ typedef struct _metwidget {
 static void
 UpdateTable ( mettable *pmt, 
               float aafMET[ MAXSCORE ][ MAXSCORE ],
-              metinfo *pmi,
+              const metinfo *pmi,
               const int nRows, const int nCols, const int fInvert ) {
 
 #define STRINGLENGTH 64

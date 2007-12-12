@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.67 2007/10/03 17:00:49 c_anthon Exp $
+ * $Id: render.c,v 1.68 2007/12/12 23:08:19 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1528,7 +1528,7 @@ RenderLabels( renderdata *prd, unsigned char *puch, int nStride,
                 g_free(file);
 		return;
 	}
-    free(file);
+    g_free(file);
 
     if( FT_Set_Pixel_Sizes( ftf, 0, prd->nSize * 5 / 2 ) )
 	{
@@ -2495,7 +2495,7 @@ static void DrawChequers( renderdata *prd, unsigned char *puch, int nStride,
 }
 
 extern void CalculateArea( renderdata *prd, unsigned char *puch, int nStride,
-			   renderimages *pri, int anBoard[ 2 ][ 25 ],
+			   renderimages *pri, TanBoard anBoard,
 			   int *anOff, int anDice[ 2 ],
 			   int anDicePosition[ 2 ][ 2 ],
 			   int fDiceColour, int anCubePosition[ 2 ],

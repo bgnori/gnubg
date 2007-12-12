@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.36 2007/11/16 21:13:17 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.37 2007/12/12 23:08:16 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -40,7 +40,7 @@
 #include "gtkwindows.h"
 #include "file.h"
 
-static void FilterAdd (char *fn, char *pt, GtkFileChooser * fc)
+static void FilterAdd (const char *fn, const char *pt, GtkFileChooser * fc)
 {
   GtkFileFilter *aff = gtk_file_filter_new ();
   gtk_file_filter_set_name (aff, fn);

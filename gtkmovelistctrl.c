@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.12 2007/10/03 17:00:49 c_anthon Exp $
+ * $Id: gtkmovelistctrl.c,v 1.13 2007/12/12 23:08:17 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -28,6 +28,7 @@
 #include "drawboard.h"
 #include "gtkchequer.h"
 #include "string.h"
+#include <glib/gi18n.h>
 
 
 GdkColor wlCol;
@@ -260,7 +261,7 @@ custom_cell_renderer_movelist_get_size (GtkCellRenderer *cell,
 {
 	gint calc_width;
 	gint calc_height;
-	char buf[20];
+	char buf[100];
 
 	if (fontheight == -1)
 	{	/* Calculate sizes (if not known) */
@@ -302,7 +303,8 @@ custom_cell_renderer_movelist_get_size (GtkCellRenderer *cell,
 		g_object_unref (layout);
 		_s_a = logical_rect.width;
 
-		layout = gtk_widget_create_pango_layout (widget, "Cubeless 3-ply");
+		sprintf(buf, "%s 3-ply", _("Cubeless"));
+		layout = gtk_widget_create_pango_layout (widget, buf);
 		pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 		g_object_unref (layout);
 		_s_b = logical_rect.width;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.h,v 1.5 2007/07/02 12:43:40 ace Exp $
+ * $Id: sgf.h,v 1.6 2007/12/12 23:08:20 Superfly_Jon Exp $
  */
 
 #ifndef _SGF_H_
@@ -27,7 +27,7 @@
 
 typedef struct _property {
 	char ach[2];		/* 2 character tag; ach[ 1 ] = 0 for 1 character tags */
-	list *pl;		/* Values */
+	listOLD *pl;		/* Values */
 } property;
 
 extern void (*SGFErrorHandler) (char *szMessage, int fParseError);
@@ -42,7 +42,7 @@ extern void (*SGFErrorHandler) (char *szMessage, int fParseError);
 
    If there are any errors in the file, SGFParse calls SGFErrorHandler
    (if set), or complains to stderr (otherwise). */
-extern list *SGFParse(FILE * pf);
+extern listOLD *SGFParse(FILE * pf);
 
 /* The following properties are defined for GNU Backgammon SGF files:
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sound.h,v 1.16 2007/07/02 12:43:40 ace Exp $
+ * $Id: sound.h,v 1.17 2007/12/12 23:08:20 Superfly_Jon Exp $
  */
 
 #ifndef _SOUND_H_
@@ -48,10 +48,8 @@ typedef enum _gnubgsound {
   NUM_SOUNDS
 } gnubgsound;
 
-extern char *sound_description[ NUM_SOUNDS ];
-extern char *sound_command[ NUM_SOUNDS ];
-
-extern char szSoundCommand[ 80 ];
+extern const char *sound_description[ NUM_SOUNDS ];
+extern const char *sound_command[ NUM_SOUNDS ];
 
 extern int fSound;
 
@@ -60,11 +58,11 @@ playSound ( const gnubgsound gs );
 extern void SoundFlushCache( const gnubgsound gs );
 extern void SoundWait( void );
 
-extern char *GetDefaultSoundFile(int sound);
+extern char *GetDefaultSoundFile(gnubgsound sound);
 extern void playSoundFile(char *file);
 extern void SetSoundFile(const gnubgsound gs, const char *szFilename);
 extern char *GetSoundFile(gnubgsound sound);
-extern char *sound_get_command(void);
+extern const char *sound_get_command(void);
 extern char *sound_set_command(const char *sz);
 
 #endif

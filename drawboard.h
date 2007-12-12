@@ -16,32 +16,34 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.h,v 1.12 2007/07/02 12:43:38 ace Exp $
+ * $Id: drawboard.h,v 1.13 2007/12/12 23:08:15 Superfly_Jon Exp $
  */
 
 #ifndef _DRAWBOARD_H_
 #define _DRAWBOARD_H_
 
+#include "util.h"
+
 extern int fClockwise; /* Player 1 moves clockwise */
 
-extern char *DrawBoard( char *pch, int anBoard[ 2 ][ 25 ], int fRoll,
+extern char *DrawBoard( char *pch, TanBoard anBoard, int fRoll,
                         char *asz[], char *szMatchID, int nChequers );
 /* Fill the buffer pch with a representation of the move anMove, assuming
    the board looks like anBoard.  pch must have room for 28 characters plus
    a trailing 0 (consider the move `bar/24* 23/22* 21/20* 19/18*'). */
-extern char *FormatMove( char *pch, int anBoard[ 2 ][ 25 ], int anMove[ 8 ] );
-extern char *FormatMovePlain( char *pch, int anBoard[ 2 ][ 25 ],
+extern char *FormatMove( char *pch, const TanBoard anBoard, int anMove[ 8 ] );
+extern char *FormatMovePlain( char *pch, TanBoard anBoard,
                               int anMove[ 8 ] );
 extern int ParseMove( char *pch, int an[ 8 ] );
 extern void CanonicalMoveOrder( int an[] );
 /* Fill the buffer pch with a FIBS "boardstyle 3" description of the game. */
-extern char *FIBSBoard( char *pch, int anBoard[ 2 ][ 25 ], int fRoll,
+extern char *FIBSBoard( char *pch, TanBoard anBoard, int fRoll,
 			char *szPlayer, char *szOpp, int nMatchTo,
 			int nScore, int nOpponent, int nDice0, int nDice1,
 			int nCube, int fCubeOwner, int fDoubled, int fTurn,
 			int fCrawford, int nChequers );
 /* Read a FIBS "boardstyle 3" description from pch. */
-extern int ParseFIBSBoard( char *pch, int anBoard[ 2 ][ 25 ],
+extern int ParseFIBSBoard( char *pch, TanBoard anBoard,
 			   char *szPlayer, char *szOpp, int *pnMatchTo,
 			   int *pnScore, int *pnScoreOpponent,
 			   int anDice[ 2 ], int *pnCube, int *pfCubeOwner,

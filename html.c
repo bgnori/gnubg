@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.185 2007/09/27 22:35:57 c_anthon Exp $
+ * $Id: html.c,v 1.186 2007/12/12 23:08:18 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -162,7 +162,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.185 2007/09/27 22:35:57 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.186 2007/12/12 23:08:18 Superfly_Jon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -562,7 +562,7 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
                     const char *szImageDir, const char *szExtension,
                     const htmlexportcss hecss ) {
 
-  int anBoard[ 2 ][ 25 ];
+  TanBoard anBoard;
   unsigned int anPips[ 2 ];
   int acOff[ 2 ];
   int i, j;
@@ -816,7 +816,7 @@ printHTMLBoardF2H ( FILE *pf, matchstate *pms, int fTurn,
   char *aszDieX[] = { "b-xdie1", "b-xdie2", "b-xdie3",
                      "b-xdie4", "b-xdie5", "b-xdie6" };
 
-  int anBoard[ 2 ][ 25 ];
+  TanBoard anBoard;
   unsigned int anPips[ 2 ];
 
   memcpy ( anBoard, pms->anBoard, sizeof ( anBoard ) );
@@ -1187,7 +1187,7 @@ printHTMLBoardGNU ( FILE *pf, matchstate *pms, int fTurn,
   char szAlt[ 1000 ];
   int i, j;
 
-  int anBoard[ 2 ][ 25 ];
+  TanBoard anBoard;
   unsigned int anPips[ 2 ];
   int acOff[ 2 ];
 
@@ -1842,7 +1842,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.185 $";
+  const char szVersion[] = "$Revision: 1.186 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1922,7 +1922,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.185 $";
+  const char szVersion[] = "$Revision: 1.186 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3253,14 +3253,14 @@ HTMLDumpPlayerRecords ( FILE *pf, const htmlexportcss hecss ) {
  *
  */
 
-static void ExportGameHTML ( FILE *pf, list *plGame, const char *szImageDir,
+static void ExportGameHTML ( FILE *pf, listOLD *plGame, const char *szImageDir,
 			     const char *szExtension,
 			     const htmlexporttype het,
 			     const htmlexportcss hecss,
 			     const int iGame, const int fLastGame,
 			     char *aszLinks[ 4 ] )
 {
-    list *pl;
+    listOLD *pl;
     moverecord *pmr;
     matchstate msExport;
     matchstate msOrig;
@@ -3402,9 +3402,9 @@ static void ExportGameHTML ( FILE *pf, list *plGame, const char *szImageDir,
  */
 
 extern int
-getGameNumber ( const list *plGame ) {
+getGameNumber ( const listOLD *plGame ) {
 
-  list *pl;
+  listOLD *pl;
   int iGame;
 
   for( pl = lMatch.plNext, iGame = 0; pl != &lMatch; 
@@ -3429,9 +3429,9 @@ getGameNumber ( const list *plGame ) {
  */
 
 extern int
-getMoveNumber ( const list *plGame, const void *p ) {
+getMoveNumber ( const listOLD *plGame, const void *p ) {
 
-  list *pl;
+  listOLD *pl;
   int iMove;
 
   for( pl = plGame->plNext, iMove = 0; pl != plGame; 
@@ -3597,7 +3597,7 @@ HTMLFilename ( const char *szBase, const int iGame ) {
 extern void CommandExportMatchHtml( char *sz ) {
     
     FILE *pf;
-    list *pl;
+    listOLD *pl;
     int nGames;
     char *aszLinks[ 4 ], *filenames[4];
     char *szCurrent;

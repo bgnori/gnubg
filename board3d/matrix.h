@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matrix.h,v 1.8 2007/07/02 12:47:12 ace Exp $
+* $Id: matrix.h,v 1.9 2007/12/12 23:08:21 Superfly_Jon Exp $
 */
 
 void setIdMatrix(float m[4][4]);
@@ -29,5 +29,5 @@ void makeInverseRotateMatrixX(float m[4][4], float degRot);
 void makeInverseRotateMatrixY(float m[4][4], float degRot);
 void makeInverseRotateMatrixZ(float m[4][4], float degRot);
 
-void mult_matrix_vec(float mat[4][4], const float src[4], float dst[4]);
-void matrixmult(float m[4][4], float b[4][4]);
+void mult_matrix_vec(const float mat[4][4], const float src[4], float dst[4]);
+void matrixmult(float m[4][4], const float b[4][4]);

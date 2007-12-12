@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.83 2007/09/02 20:27:01 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.84 2007/12/12 23:08:16 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -115,7 +115,7 @@ static void MoveListRolloutClicked(GtkWidget *pw, hintdata *phd)
 extern void ShowMove ( hintdata *phd, const int f )
 {
   char *sz;
-  int anBoard[ 2 ][ 25 ];
+  TanBoard anBoard;
 	if ( f )
 	{
 		move *pm;
@@ -377,7 +377,7 @@ MoveListMove ( GtkWidget *pw, hintdata *phd )
 	move m;
 	move *pm;
 	char szMove[ 40 ];
-	int anBoard[ 2 ][ 25 ];
+	TanBoard anBoard;
 	GList *plSelList = MoveListGetSelectionList(phd);
 	if (!plSelList)
 		return;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.83 2007/11/08 00:33:52 c_anthon Exp $
+ * $Id: text.c,v 1.84 2007/12/12 23:08:20 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -32,7 +32,6 @@
 #include "drawboard.h"
 #include "export.h"
 #include "format.h"
-#include "eval.h"
 #include "positionid.h"
 #include "matchid.h"
 #include "record.h"
@@ -45,7 +44,7 @@
 static void
 printTextBoard ( FILE *pf, const matchstate *pms ) {
 
-  int anBoard[ 2 ][ 25 ];
+  TanBoard anBoard;
   char szBoard[ 2048 ];
   char sz[ 32 ], szCube[ 32 ], szPlayer0[ MAX_NAME_LEN + 3 ], szPlayer1[ MAX_NAME_LEN + 3 ],
     szScore0[ 35 ], szScore1[ 35 ], szMatch[ 35 ];
@@ -147,7 +146,7 @@ printTextBoard ( FILE *pf, const matchstate *pms ) {
 
 extern void 
 TextBoardHeader ( GString *gsz, const matchstate *pms, 
-                  const int iGame, const int iMove ) {
+                  const int notused/*iGame*/, const int iMove ) {
 
   if ( iMove >= 0 )
     g_string_append_printf(gsz, _("Move number %d: "), iMove + 1 );
@@ -245,7 +244,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.83 $";
+  const char szVersion[] = "$Revision: 1.84 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -772,10 +771,10 @@ TextDumpPlayerRecords ( FILE *pf ) {
  *
  */
 
-static void ExportGameText ( FILE *pf, list *plGame, 
+static void ExportGameText ( FILE *pf, listOLD *plGame, 
                              const int iGame, const int fLastGame ) {
 
-    list *pl;
+    listOLD *pl;
     moverecord *pmr;
     matchstate msExport;
     matchstate msOrig;
@@ -952,7 +951,7 @@ extern void CommandExportGameText( char *sz ) {
 extern void CommandExportMatchText( char *sz ) {
     
     FILE *pf;
-    list *pl;
+    listOLD *pl;
     int nGames;
     char *szCurrent;
     int i;
