@@ -15,7 +15,7 @@
  * cache.c
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.c,v 1.10 2007/09/02 20:27:05 c_anthon Exp $
+ * $Id: cache.c,v 1.11 2007/12/13 22:37:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -23,9 +23,9 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+#ifndef WIN32
 #include <stdio.h>
-
-#include <assert.h>
+#endif
 
 #include "cache.h"
 

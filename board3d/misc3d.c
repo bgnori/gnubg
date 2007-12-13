@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.75 2007/12/12 23:08:21 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.76 2007/12/13 22:37:04 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -186,10 +186,8 @@ extern int extensionSupported(const char *extension)
 			fGetExtStr wglGetExtensionsStringARB;
 			wglGetExtensionsStringARB = (fGetExtStr)wglGetProcAddress("wglGetExtensionsStringARB");
 			if (!wglGetExtensionsStringARB)
-			{
-				wglExtString = "no wgl extenstions";
 				return FALSE;
-			}
+
 			wglExtString = wglGetExtensionsStringARB(wglGetCurrentDC());
 		}
 		if (strstr(wglExtString, extension) != 0)

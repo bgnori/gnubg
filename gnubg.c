@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.735 2007/12/13 21:43:43 c_anthon Exp $
+ * $Id: gnubg.c,v 1.736 2007/12/13 22:37:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -6060,8 +6060,6 @@ static void PushSplash(char *unused, char *heading, char *message, int wait)
 
 static void init_nets(int nNewWeights, int fNoBearoff)
 {
-	int n;
-
 	char *gnubg_weights = g_build_filename(PKGDATADIR, "gnubg.weights", NULL);
 	char *gnubg_weights_binary =  g_build_filename(PKGDATADIR, "gnubg.wd", NULL);
 	EvalInitialise(gnubg_weights, gnubg_weights_binary, fNoBearoff, 
