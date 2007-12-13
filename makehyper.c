@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.21 2007/10/03 17:00:49 c_anthon Exp $
+ * $Id: makehyper.c,v 1.22 2007/12/13 21:43:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -35,7 +35,6 @@
 #include <locale.h>
 #include "bearoff.h"
 #include "drawboard.h"
-#include "util.h"
 
 static cubeinfo ci;
 static cubeinfo ciJacoby;

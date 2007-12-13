@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.194 2007/12/12 14:41:40 c_anthon Exp $
+## $Id: Makefile.am,v 1.195 2007/12/13 21:43:43 c_anthon Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -99,6 +99,8 @@ gnubg_SOURCES = \
 		speed.h \
 		text.c \
 		timer.c
+		util.h \
+		util.c 
 
 if USE_MULTITHREAD
 gnubg_SOURCES +=  multithread.c

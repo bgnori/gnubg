@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.42 2007/12/12 23:08:15 Superfly_Jon Exp $
+ * $Id: drawboard.c,v 1.43 2007/12/13 21:43:43 c_anthon Exp $
  */
 
 #include "config.h"
@@ -597,7 +597,7 @@ extern void CanonicalMoveOrder( int an[] ) {
     qsort( an, i, sizeof( int ) << 1, CompareMoves );
 }
 
-extern char *FormatMove( char *sz, const TanBoard anBoard, int anMove[ 8 ] ) {
+extern char *FormatMove( char *sz, TanBoard anBoard, int anMove[ 8 ] ) {
 
     char *pch = sz;
     int aanMove[ 4 ][ 4 ], *pnSource[ 4 ], *pnDest[ 4 ], i, j;

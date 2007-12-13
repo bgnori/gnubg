@@ -16,13 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.18 2007/12/12 23:08:14 Superfly_Jon Exp $
+ * $Id: bearoff.h,v 1.19 2007/12/13 21:43:43 c_anthon Exp $
  */
 
 #ifndef _BEAROFF_H_
 #define _BEAROFF_H_
 
-#include "util.h"
+#include "gnubg-types.h"
 
 typedef enum _bearoffcreator {
   BEAROFF_GNUBG,
@@ -66,7 +66,6 @@ typedef struct _bearoffcontext {
   unsigned long int nReads; /* number of reads */
 
 } bearoffcontext;
-
 
 enum _bearoffoptions {
   BO_NONE              = 0,

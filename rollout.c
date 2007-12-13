@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.179 2007/12/12 23:08:19 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.180 2007/12/13 21:43:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -103,7 +103,7 @@ static void board_to_sgf (const int anBoard[25], int direction) {
     
 
 static void log_game_start (const char *name, const cubeinfo *pci, int fCubeful,
-		     const TanBoard anBoard) {
+		     TanBoard anBoard) {
   time_t     t = time (0);
   struct tm  *now = localtime (&t);
   const char *rule;
@@ -277,7 +277,7 @@ static int RolloutDice( int iTurn, int iGame,
 
 
 static void
-ClosedBoard ( int afClosedBoard[ 2 ], const TanBoard anBoard ) {
+ClosedBoard ( int afClosedBoard[ 2 ], TanBoard anBoard ) {
 
   int i, j, n;
 

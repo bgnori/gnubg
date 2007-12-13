@@ -1,7 +1,7 @@
 /*
- * util.h
+ * gnubg-types.h
  *
- * by Christian Anthon 2007
+ * by Christian Anthon
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of version 3 or later of the GNU General Public License as
@@ -16,13 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.h,v 1.5 2007/12/13 21:43:44 c_anthon Exp $
+ * $Id: gnubg-types.h,v 1.1 2007/12/13 21:43:44 c_anthon Exp $
  */
 
-#ifndef _UTIL_H_
-#define _UTIL_H_
-#ifdef WIN32
-extern char * getInstallDir( void );
-extern void PrintSystemError(const char* message);
+#ifndef _GNUBG_TYPES_H_
+#define _GNUBG_TYPES_H_
+typedef int TanBoard[2][25];
 #endif
-#endif
+
+
+

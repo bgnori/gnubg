@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.23 2007/12/12 23:08:18 Superfly_Jon Exp $
+ * $Id: gtkrolls.c,v 1.24 2007/12/13 21:43:43 c_anthon Exp $
  */
 
 #include "config.h"
@@ -48,7 +48,7 @@ typedef struct _rollswidget {
 
 static void
 add_level ( GtkTreeStore *model, GtkTreeIter *iter,
-            const int n, const TanBoard anBoard,
+            const int n, TanBoard anBoard,
             evalcontext *pec, cubeinfo *pci,
             const gboolean fInvert,
             float arOutput[ NUM_ROLLOUT_OUTPUTS ] ) {

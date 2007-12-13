@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffdump.c,v 1.11 2007/10/03 17:00:48 c_anthon Exp $
+ * $Id: bearoffdump.c,v 1.12 2007/12/13 21:43:43 c_anthon Exp $
  */
 
 #include "config.h"
@@ -27,8 +27,6 @@
 #include <stdlib.h>
 #include "positionid.h"
 #include "bearoff.h"
-#include "util.h"
-
 
 extern int
 main( int argc, char **argv ) {

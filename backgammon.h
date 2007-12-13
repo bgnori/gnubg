@@ -16,12 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.354 2007/12/12 23:08:14 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.355 2007/12/13 21:43:43 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
 #define _BACKGAMMON_H_
 
+#include "gnubg-types.h"
 #include <stdarg.h>
 #include "analysis.h"
 #include "eval.h"
@@ -30,6 +31,7 @@
 #define MAX_NAME_LEN 32
 #define VERSION_STRING "GNU Backgammon " VERSION
 #define GNUBG_CHARSET "UTF-8"
+
 
 typedef struct _command {
 	/* Command name (NULL indicates end of list) */

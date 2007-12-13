@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.734 2007/12/12 23:08:15 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.735 2007/12/13 21:43:43 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6307,8 +6307,10 @@ int main(int argc, char *argv[])
 	fflush(stdout);
 	fflush(stderr);
 
+#if USE_MULTITHREAD
 	/* Make sure threads started */
 	MT_StartThreads();
+#endif
 
 	/* start-up sound */
 	playSound(SOUND_START);

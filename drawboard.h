@@ -16,13 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.h,v 1.13 2007/12/12 23:08:15 Superfly_Jon Exp $
+ * $Id: drawboard.h,v 1.14 2007/12/13 21:43:43 c_anthon Exp $
  */
 
 #ifndef _DRAWBOARD_H_
 #define _DRAWBOARD_H_
 
-#include "util.h"
+#include "gnubg-types.h"
 
 extern int fClockwise; /* Player 1 moves clockwise */
 
@@ -31,7 +31,7 @@ extern char *DrawBoard( char *pch, TanBoard anBoard, int fRoll,
 /* Fill the buffer pch with a representation of the move anMove, assuming
    the board looks like anBoard.  pch must have room for 28 characters plus
    a trailing 0 (consider the move `bar/24* 23/22* 21/20* 19/18*'). */
-extern char *FormatMove( char *pch, const TanBoard anBoard, int anMove[ 8 ] );
+extern char *FormatMove( char *pch, TanBoard anBoard, int anMove[ 8 ] );
 extern char *FormatMovePlain( char *pch, TanBoard anBoard,
                               int anMove[ 8 ] );
 extern int ParseMove( char *pch, int an[ 8 ] );

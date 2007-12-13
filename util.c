@@ -16,20 +16,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.c,v 1.8 2007/12/12 23:08:20 Superfly_Jon Exp $
+ * $Id: util.c,v 1.9 2007/12/13 21:43:44 c_anthon Exp $
  */
 
 #include "config.h"
-#include "util.h"
 #if WIN32
+#include "util.h"
 #include <windows.h>
 #include <stdlib.h>
 #include <glib.h>
-
-char *aszRNG[1]; 
-char *aszSkillType[ 1 ]; 
-int exsExport;
-int ap;
 
 extern char * getInstallDir( void )
 {
@@ -64,10 +59,5 @@ extern void PrintSystemError(const char* message)
 
 		LocalFree(lpMsgBuf);
 	}
-}
-#else
-extern void PrintSystemError(const char* message)
-{
-	printf("Unknown system error while %s!\n", message);
 }
 #endif

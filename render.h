@@ -16,13 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.30 2007/12/12 23:08:19 Superfly_Jon Exp $
+ * $Id: render.h,v 1.31 2007/12/13 21:43:44 c_anthon Exp $
  */
 
 #ifndef _RENDER_H_
 #define _RENDER_H_
 
-#include "util.h"
+#include "gnubg-types.h"
 
 #if USE_BOARD3D
 #include "types3d.h"
