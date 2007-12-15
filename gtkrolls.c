@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.24 2007/12/13 21:43:43 c_anthon Exp $
+ * $Id: gtkrolls.c,v 1.25 2007/12/15 20:36:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -32,6 +32,7 @@
 
 #include "format.h"
 #include "gtkwindows.h"
+#include "gtkrolls.h"
 
 typedef struct _rollswidget {
 

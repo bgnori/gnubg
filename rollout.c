@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.180 2007/12/13 21:43:44 c_anthon Exp $
+ * $Id: rollout.c,v 1.181 2007/12/15 20:36:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -817,10 +817,6 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
                       ! pci->fMove, pci->nMatchTo,
                       pci->anScore, pci->fCrawford,
                       pci->fJacoby, pci->fBeavers, pci->bgv );
-
-        g_assert ( cUnfinished >= 0 );
-
-
       }
     }
 

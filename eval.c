@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.328 2007/12/13 22:37:03 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.329 2007/12/15 20:36:56 c_anthon Exp $
  */
 
 #include "config.h"
@@ -484,7 +484,7 @@ const char *aszDoubleTypes[ NUM_DOUBLE_TYPES ] = {
   N_("Raccoon")
 };
 
-void PrintError(const char* str)
+static void PrintError(const char* str)
 {
 	g_printerr("%s: %s", str, strerror(errno));
 }

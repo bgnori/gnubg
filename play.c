@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.298 2007/12/12 23:08:19 Superfly_Jon Exp $
+ * $Id: play.c,v 1.299 2007/12/15 20:36:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -856,7 +856,7 @@ static void ShowAutoMove( TanBoard anBoard, int anMove[ 8 ] ) {
 		 FormatMove( sz, anBoard, anMove ) );
 }
 
-extern int ComputerTurn( void ) {
+static int ComputerTurn( void ) {
 
   moverecord *pmr;
   cubeinfo ci;

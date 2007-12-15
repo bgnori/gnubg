@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.736 2007/12/13 22:37:04 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.737 2007/12/15 20:36:56 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5733,7 +5733,7 @@ ProgressValueAdd ( int iValue ) {
 }
 
 
-extern void Progress( void )
+static void Progress( void )
 {
 
     static int i = 0;

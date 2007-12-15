@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.662 2007/12/12 23:08:16 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.663 2007/12/15 20:36:56 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5565,7 +5565,8 @@ extern void SetRollouts( gpointer p, guint n, GtkWidget *pwIgnore )
     }
 
     if( abs(rw.rcRollout.nSeed) != abs(rcRollout.nSeed) ) {
-      sprintf( sz, "set rollout seed %d", rw.rcRollout.nSeed );
+	    /* seed may be unsigned long int */
+      sprintf( sz, "set rollout seed %u", (unsigned int)rw.rcRollout.nSeed );
       UserCommand( sz );
     }
 

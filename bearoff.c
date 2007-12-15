@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.56 2007/12/13 21:43:43 c_anthon Exp $
+ * $Id: bearoff.c,v 1.57 2007/12/15 20:36:56 c_anthon Exp $
  */
 
 #include "config.h"
@@ -273,7 +273,7 @@ static unsigned char *HeuristicDatabase( void (*pfProgress)() ) {
 }
 
 
-void ReadBearoffFile(bearoffcontext *pbc, unsigned int offset, unsigned char *buf, unsigned int nBytes)
+static void ReadBearoffFile(bearoffcontext *pbc, unsigned int offset, unsigned char *buf, unsigned int nBytes)
 {
 #if USE_MULTITHREAD
 	MT_Exclusive();

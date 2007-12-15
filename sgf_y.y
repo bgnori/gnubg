@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.y,v 1.15 2007/12/13 21:43:44 c_anthon Exp $
+ * $Id: sgf_y.y,v 1.1 2007/12/15 20:36:58 c_anthon Exp $
  */
 
 %{
@@ -81,6 +81,8 @@ static char *Concatenate( listOLD *pl ) {
 }
 
 %}
+
+%name-prefix="sgf"
 
 /* There are 2 shift/reduce conflicts caused by ambiguities at which level
    error handling should be performed (GameTreeSeq, Sequence, and

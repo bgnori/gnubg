@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.l,v 1.7 2007/07/02 13:42:32 ace Exp $
+ * $Id: sgf_l.l,v 1.1 2007/12/15 20:36:58 c_anthon Exp $
  */
 
 %{
@@ -26,7 +26,7 @@
 #include <string.h>
 
 #include "sgf.h"
-#include "sgfp.h"
+#include "sgf_y.h"
 #include <glib/gi18n.h>
 
 extern int _SGFWarning( char * );
@@ -47,12 +47,14 @@ static int error( char *s ) {
 #define YY_FATAL_ERROR(m) error(m)
 %}
 
+%option noyywrap
+%option prefix="sgf"
 %option 8bit
 %option nodefault
 %option ecs
 %option fast
 %option noread
-%option noyywrap
+%option outfile="lex.yy.c"
 
 %option noinput
 %option nounput

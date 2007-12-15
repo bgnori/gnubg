@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.24 2007/09/02 20:27:01 c_anthon Exp $
+ * $Id: format.c,v 1.25 2007/12/15 20:36:56 c_anthon Exp $
  */
 
 #include "config.h"
@@ -382,14 +382,14 @@ OutputRolloutContext ( const char *szIndent, const evalsetup *pes ) {
 
   if ( prc->fRotate ) 
     sprintf ( strchr ( sz, 0 ),
-              _(", %s dice gen. with seed %d and quasi-random dice\n"),
+              _(", %s dice gen. with seed %u and quasi-random dice\n"),
               gettext( aszRNG[ prc->rngRollout ] ),
-              prc->nSeed );
+              (unsigned int)prc->nSeed ); /* seed may be unsigned long int */
   else
     sprintf ( strchr ( sz, 0 ),
-              _(", %s dice generator with seed %d\n"),
+              _(", %s dice generator with seed %u\n"),
               gettext( aszRNG[ prc->rngRollout ] ),
-              prc->nSeed );
+              (unsigned int)prc->nSeed ); /* seed may be unsigned long int */
 
    if ( ( prc->fStopOnJsd || prc->fStopMoveOnJsd || prc->fStopOnSTD )
         && szIndent && *szIndent )
