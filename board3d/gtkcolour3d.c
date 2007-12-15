@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.36 2007/12/12 23:08:21 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.37 2007/12/15 20:26:06 c_anthon Exp $
 */
 
 #include "config.h"
@@ -219,29 +219,14 @@ static void CreatePreview(void)
 	gldrawable = GDK_GL_DRAWABLE(glpixmap);
 	glPixmapContext = gdk_gl_context_new(gldrawable, NULL, FALSE, GDK_GL_RGBA_TYPE);
 
-	if (!gdk_gl_drawable_gl_begin (gldrawable, glPixmapContext))
-		return;
-
 	SetupColourPreview();
-
-	gdk_gl_drawable_gl_end (gldrawable);
 }
 
 static void RenderPreview(Material* pMat, unsigned char* buf)
 {
-	/*** OpenGL BEGIN ***/
-	GdkGLDrawable *gldrawable = GDK_GL_DRAWABLE(glpixmap);
-
-	if (!gdk_gl_drawable_gl_begin (gldrawable, glPixmapContext))
-		return;
-
 	SetupLight();
 	Draw(pMat);
-
 	glReadPixels(0, 0, PREVIEW_WIDTH, PREVIEW_HEIGHT, GL_RGB, GL_UNSIGNED_BYTE, buf);
-
-	gdk_gl_drawable_gl_end(gldrawable);
-	/*** OpenGL END ***/
 }
 
 static void TextureChange(void)
