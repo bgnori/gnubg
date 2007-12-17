@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.196 2007/12/15 20:36:56 c_anthon Exp $
+## $Id: Makefile.am,v 1.197 2007/12/17 14:08:55 c_anthon Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -144,7 +144,7 @@ UTILSOURCES = eval.h eval.c positionid.h positionid.c \
 	matchequity.c matchequity.h matchid.h matchid.c \
 	osr.c osr.h \
         bearoffgammon.c bearoffgammon.h bearoff.c bearoff.h \
-	format.c format.h mec.h mec.c util.c util.h
+	mec.h mec.c util.c util.h
 
 makebearoff_SOURCES = makebearoff.c $(UTILSOURCES)
 makebearoff_LDADD = -Llib lib/libevent.la  @GLIB_LIBS@ @LIBXML2_LIBS@

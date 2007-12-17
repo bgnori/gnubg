@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.664 2007/12/17 14:05:45 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.665 2007/12/17 14:08:56 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4216,14 +4216,14 @@ extern int GtkTutor ( char *sz )
     return f;
 }
 
-extern void GTKOutput( char *sz ) {
+extern void GTKOutput( const char *sz ) {
 
     if( !sz || !*sz )
 	return;
     
     cchOutput += strlen( sz );
 
-    ListInsert( &lOutput, sz );
+    ListInsert( &lOutput, (char *)sz );
 }
 
 extern void GTKOutputX( void ) {
@@ -4278,11 +4278,11 @@ extern void GTKOutputX( void ) {
     g_free( sz );
 }
 
-extern void GTKOutputErr( char *sz ) {
+extern void GTKOutputErr( const char *sz ) {
 
     GtkTextBuffer *buffer;
     GtkTextIter iter;
-    GTKMessage( sz, DT_ERROR );
+    GTKMessage( (char*)sz, DT_ERROR );
     
     if (PanelShowing(WINDOW_MESSAGE)) {
       buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(pwMessageText));

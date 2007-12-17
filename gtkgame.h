@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.122 2007/12/12 23:08:17 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.123 2007/12/17 14:08:56 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -105,8 +105,8 @@ extern void GTKHelp(char *sz);
 extern void GTKHint(movelist * pmlOrig, const unsigned int iMove);
 extern void GTKMatchInfo(void);
 extern void GTKNew(void);
-extern void GTKOutput(char *sz);
-extern void GTKOutputErr(char *sz);
+extern void GTKOutput(const char *sz);
+extern void GTKOutputErr(const char *sz);
 extern void GTKOutputNew(void);
 extern void GTKOutputX(void);
 extern void GTKPopGame(int c);
