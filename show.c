@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.235 2007/12/15 20:36:58 c_anthon Exp $
+ * $Id: show.c,v 1.236 2007/12/17 14:05:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -270,8 +270,8 @@ ShowRollout ( const rolloutcontext *prc ) {
   outputl ( prc->fInitial ?
             _("Rollout as opening move enabled.") :
             _("Rollout as opening move disabled.") );
-  outputf ( _("%s dice generator with seed %u.\n"),
-            gettext ( aszRNG[ prc->rngRollout ] ), (unsigned int)prc->nSeed );
+  outputf ( _("%s dice generator with seed %lu.\n"),
+            gettext ( aszRNG[ prc->rngRollout ] ), prc->nSeed );
             
   /* see if the players settings are the same */
   if (EvalCmp (prc->aecChequer, prc->aecChequer + 1, 1) ||

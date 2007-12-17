@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.112 2007/12/15 20:36:57 c_anthon Exp $
+ * $Id: sgf.c,v 1.113 2007/12/17 14:05:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1672,7 +1672,7 @@ static void WriteRolloutContext(FILE * pf, const rolloutcontext * prc)
 
     int i;
 
-    fprintf(pf, "RC %d %d %d %d %d %d %d %d %d %d \"%s\" %u ",
+    fprintf(pf, "RC %d %d %d %d %d %d %d %d %d %d \"%s\" %lu ",
 	    prc->fCubeful,
 	    prc->fVarRedn,
 	    prc->fInitial,
@@ -1682,7 +1682,7 @@ static void WriteRolloutContext(FILE * pf, const rolloutcontext * prc)
 	    prc->nTruncate,
 	    prc->fTruncBearoff2,
 	    prc->fTruncBearoffOS,
-	    prc->nLate, aszRNG[prc->rngRollout], (unsigned int)prc->nSeed);
+	    prc->nLate, aszRNG[prc->rngRollout], prc->nSeed);
 
     for (i = 0; i < 2; i++) {
 	fprintf(pf, " cube%d ", i);
