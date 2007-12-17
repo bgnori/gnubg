@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.738 2007/12/17 14:08:55 c_anthon Exp $
+ * $Id: gnubg.c,v 1.739 2007/12/17 14:49:38 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6547,15 +6547,14 @@ int main(int argc, char *argv[])
 	/* start-up sound */
 	playSound(SOUND_START);
 
-	g_print("test g_print\n");
-	g_printerr("test g_printerr\n");
-
-
 #if USE_GTK
 	if (fX)
         {
-		g_set_print_handler(&GTKOutput);
-		g_set_printerr_handler(&GTKOutputErr);
+		if (!fTTY)
+		{
+			g_set_print_handler(&GTKOutput);
+			g_set_printerr_handler(&GTKOutputErr);
+		}
 		RunGTK(pwSplash, pchCommands, pchPythonScript, pchMatch);
                 Shutdown();
                 exit(EXIT_SUCCESS);
