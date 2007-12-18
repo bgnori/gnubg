@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.288 2007/12/12 23:08:20 Superfly_Jon Exp $
+ * $Id: set.c,v 1.289 2007/12/18 13:15:39 c_anthon Exp $
  */
 
 #include "config.h"
@@ -716,7 +716,7 @@ extern void CommandSetThreads( char *sz )
 
 extern void CommandSetVsync3d( char * sz )
 {
-#if USE_BOARD3D
+#if defined(WIN32) && USE_BOARD3D
 	SetToggle( "vsync", &fSync, sz, _("Set vsync on."), _("Set vsync off.") );
 	if (setVSync(fSync) == FALSE)
 	{
@@ -731,7 +731,7 @@ extern void CommandSetVsync3d( char * sz )
 	}
 	fSync = (fSync != 0) ? 1 : 0;	/* Set to 1 or 0, (-1 == not set) */
 #else
-	outputl("This function is for the 3d board only");
+	outputl(_("This function is for the MS Windows 3d board only"));
 #endif
 }
 

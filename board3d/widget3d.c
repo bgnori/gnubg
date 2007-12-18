@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.37 2007/12/12 23:08:22 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.38 2007/12/18 13:15:40 c_anthon Exp $
 */
 
 #include "config.h"
@@ -84,12 +84,13 @@ static void realize_3d(GtkWidget *widget, void* data)
 	preDraw3d(bd, bd->bd3d, bd->rd);
 	/* Make sure viewing area is correct (in preview) */
 	SetupViewingVolume3d(bd, bd->bd3d, bd->rd);
-
+#ifdef WIN32
 	if (fResetSync)
 	{
 		fResetSync = FALSE;
 		(void)setVSync(fSync);
 	}
+#endif
 
 	gdk_gl_drawable_gl_end(gldrawable);
 }
