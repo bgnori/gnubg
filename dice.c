@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.59 2007/12/17 14:08:55 c_anthon Exp $
+ * $Id: dice.c,v 1.60 2007/12/18 21:48:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -35,6 +35,10 @@
 #endif
 #include <stdlib.h>
 #include "string.h"
+
+#ifdef WIN32
+#include <io.h>
+#endif
 
 #include "dice.h"
 #include "md5.h"

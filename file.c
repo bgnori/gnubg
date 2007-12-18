@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: file.c,v 1.9 2007/12/12 23:08:15 Superfly_Jon Exp $
+ * $Id: file.c,v 1.10 2007/12/18 21:48:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -60,7 +60,7 @@ ImportFormat import_format[] = {
 
 typedef struct _FileHelper {
 	FILE *fp;
-	unsigned int dataRead;
+	size_t dataRead;
 	unsigned int dataPos;
 	char *data;
 } FileHelper;
@@ -98,7 +98,7 @@ static void fhReset(FileHelper * fh)
 
 static void fhDataGetChar(FileHelper * fh)
 {
-	unsigned int numRead;
+	size_t numRead;
 	if (fh->dataPos < fh->dataRead)
 		return;
 

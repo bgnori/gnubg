@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrelational.c,v 1.9 2007/11/16 22:33:31 c_anthon Exp $
+ * $Id: gtkrelational.c,v 1.10 2007/12/18 21:48:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -814,7 +814,7 @@ static void RelationalQuery(GtkWidget * pw, GtkWidget * pwVbox)
 
 	pch = GetText(GTK_TEXT_VIEW(pwQueryText));
 
-	if (!strncasecmp("select ", pch, strlen("select ")))
+	if (!StrNCaseCmp("select ", pch, strlen("select ")))
 		query = pch + strlen("select ");
 	else
 		query = pch;
@@ -1193,4 +1193,7 @@ extern void GtkManageRelationalEnvs(gpointer p, guint n, GtkWidget * pw)
 	gtk_main();
 	GTKAllowStdin();
 }
+#else
+/* Avoid no code warning */
+extern int dummy;
 #endif

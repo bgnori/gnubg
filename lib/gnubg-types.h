@@ -16,13 +16,18 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg-types.h,v 1.1 2007/12/13 21:43:44 c_anthon Exp $
+ * $Id: gnubg-types.h,v 1.2 2007/12/18 21:48:07 Superfly_Jon Exp $
  */
 
 #ifndef _GNUBG_TYPES_H_
 #define _GNUBG_TYPES_H_
+
 typedef int TanBoard[2][25];
+
+#ifdef USE_CONST_ARRAY
+#define ARRAY_CONST const
+#else
+#define ARRAY_CONST
 #endif
 
-
-
+#endif

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.36 2007/12/18 13:15:40 c_anthon Exp $
+* $Id: inc3d.h,v 1.37 2007/12/18 21:48:06 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -157,15 +157,6 @@ struct _BoardData3d
 	GLuint diceList, DCList, pieceList;
 	GLUquadricObj *qobjTex, *qobj;
 
-	/* Define nurbs surface - for flag */
-	GLUnurbsObj *flagNurb;
-	#define S_NUMPOINTS 4
-	#define S_NUMKNOTS (S_NUMPOINTS * 2)
-	#define T_NUMPOINTS 2
-	#define T_NUMKNOTS (T_NUMPOINTS * 2)
-	/* Control points for the flag. The Z values are modified to make it wave */
-	float ctlpoints[S_NUMPOINTS][T_NUMPOINTS][3];
-
 	/* Shadow casters */
 	Occluder Occluders[NUM_OCC];
 	float shadow_light_position[4];
@@ -184,6 +175,18 @@ struct _BoardData3d
 	char* textureName[MAX_TEXTURES];
 	int numTextures;
 	unsigned int dotTexture;	/* Holds texture used to draw dots on dice */
+};
+
+struct _Flag3d
+{
+	/* Define nurbs surface - for flag */
+	GLUnurbsObj *flagNurb;
+	#define S_NUMPOINTS 4
+	#define S_NUMKNOTS (S_NUMPOINTS * 2)
+	#define T_NUMPOINTS 2
+	#define T_NUMKNOTS (T_NUMPOINTS * 2)
+	/* Control points for the flag. The Z values are modified to make it wave */
+	float ctlpoints[S_NUMPOINTS][T_NUMPOINTS][3];
 };
 
 /* Define relative sizes of objects from arbitrary unit .05 */

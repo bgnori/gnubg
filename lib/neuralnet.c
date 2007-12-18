@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.52 2007/12/12 23:08:22 Superfly_Jon Exp $
+ * $Id: neuralnet.c,v 1.53 2007/12/18 21:48:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -520,7 +520,7 @@ extern int NeuralNetLoad( neuralnet *pnn, FILE *pf )
 	int nTrained;
     float *pr;
 
-    if( fscanf( pf, "%d %d %d %d %f %f\n", &pnn->cInput, &pnn->cHidden,
+    if( fscanf( pf, "%u %u %u %d %f %f\n", &pnn->cInput, &pnn->cHidden,
 		&pnn->cOutput, &nTrained, &pnn->rBetaHidden,
 		&pnn->rBetaOutput ) < 5 || pnn->cInput < 1 ||
 	pnn->cHidden < 1 || pnn->cOutput < 1 || nTrained < 0 ||

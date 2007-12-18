@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.38 2007/12/18 13:15:40 c_anthon Exp $
+* $Id: widget3d.c,v 1.39 2007/12/18 21:48:07 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -161,6 +161,7 @@ void InitGTK3d(int *argc, char ***argv)
 	gtk_gl_init_success = gtk_gl_init_check(argc, argv);
 	/* Call LoadTextureInfo to get texture details from textures.txt */
 	LoadTextureInfo();
+	SetupFlag();
 }
 
 /* This doesn't seem to work even on windows anymore... */

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.57 2007/12/15 20:36:56 c_anthon Exp $
+ * $Id: bearoff.c,v 1.58 2007/12/18 21:48:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -48,6 +48,7 @@
 #include "common.h"
 
 #if WIN32
+#include <io.h>
 #define BINARY O_BINARY
 #else
 #define BINARY 0
@@ -1041,7 +1042,7 @@ BearoffClose ( bearoffcontext **ppbc ) {
     free ( (*ppbc)->p );
 
   if ( (*ppbc)->szFilename )
-    free( (*ppbc)->szFilename );
+    g_free( (*ppbc)->szFilename );
 
   if ( (*ppbc)->ah ) {
     int i;
@@ -1201,7 +1202,7 @@ BearoffInit ( const char *szFilename,
     pbc->fHeuristic = TRUE;
     pbc->fMalloc = TRUE;
     pbc->p = HeuristicDatabase ( p );
-    pbc->szFilename = szFilename ? strdup( szFilename ) : NULL;
+    pbc->szFilename = szFilename ? g_strdup( szFilename ) : NULL;
 
     return pbc;
     
@@ -1261,7 +1262,7 @@ BearoffInit ( const char *szFilename,
   else
     pbc->bc = BEAROFF_UNKNOWN;
 
-  pbc->szFilename = szFilename ? strdup( szFilename ) : NULL;
+  pbc->szFilename = szFilename ? g_strdup( szFilename ) : NULL;
 
   switch ( pbc->bc ) {
 
@@ -1388,7 +1389,7 @@ BearoffInit ( const char *szFilename,
       pbc->fHeuristic = FALSE;
       pbc->fMalloc = FALSE;
       pbc->p = NULL;
-      pbc->szFilename = szFilename ? strdup( szFilename ) : NULL;
+      pbc->szFilename = szFilename ? g_strdup( szFilename ) : NULL;
 
       iOffset = 0;
       nSize = -1;

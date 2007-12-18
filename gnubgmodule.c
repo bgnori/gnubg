@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.71 2007/12/12 23:08:16 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.72 2007/12/18 21:48:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -415,7 +415,7 @@ PythonCommand( PyObject* self UNUSED_PARAM, PyObject *args ) {
   if ( ! PyArg_ParseTuple( args, "s:command", &pch ) )
     return NULL;
 
-  sz = strdup( pch );
+  sz = g_strdup( pch );
 
   PortableSignal( SIGINT, HandleInterrupt, &sh, FALSE );
   HandleCommand( sz, acTop );

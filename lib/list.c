@@ -15,10 +15,11 @@
  * list.c
  *
  * by Gary Wong, 1996
- * $Id: list.c,v 1.11 2007/12/12 23:08:22 Superfly_Jon Exp $
+ * $Id: list.c,v 1.12 2007/12/18 21:48:07 Superfly_Jon Exp $
  */
 
-#include "config.h"
+/* No configuration used in this file
+#include "config.h" */
 #include "list.h"
 #include <stddef.h>
 #include <stdlib.h>

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.355 2007/12/13 21:43:43 c_anthon Exp $
+ * $Id: backgammon.h,v 1.356 2007/12/18 21:48:02 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -35,18 +35,18 @@
 
 typedef struct _command {
 	/* Command name (NULL indicates end of list) */
-	char *sz;
+	const char *sz;
 	/* Command handler; NULL to use default subcommand handler */
 	void (*pf) (char *);
 	/* Documentation; NULL for abbreviations */
-	char *szHelp;
-	char *szUsage;
+	const char *szHelp;
+	const char *szUsage;
 	/* List of subcommands (NULL if none) */
 	struct _command *pc;
 } command;
 
 typedef enum _playertype {
-	PLAYER_HUMAN, PLAYER_GNU, PLAYER_EXTERNAL, 
+	PLAYER_HUMAN, PLAYER_GNU, PLAYER_EXTERNAL
 } playertype;
 
 typedef struct _player {

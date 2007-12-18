@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.55 2007/12/12 23:08:15 Superfly_Jon Exp $
+ * $Id: external.c,v 1.56 2007/12/18 21:48:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -25,6 +25,7 @@
 
 #include <signal.h>
 #include <glib.h>
+#include <glib/gstdio.h>
 
 #if HAVE_UNISTD_H
 #include <unistd.h>
@@ -227,12 +228,12 @@ static void ExternalUnbind( char *sz ) {
 	/* it was a TCP socket; no cleanup necessary */
 	return;
 
-    unlink( sz );
+    g_unlink( sz );
 }
 #endif /* HAVE_SOCKETS */
 
 #if HAVE_SOCKETS
-extern int ExternalRead( int h, char *pch, int cch ) {
+extern int ExternalRead( int h, char *pch, size_t cch ) {
 
     char *p = pch, *pEnd;
     int n;
@@ -293,7 +294,7 @@ extern int ExternalRead( int h, char *pch, int cch ) {
 #endif /* HAVE_SOCKETS */
 
 #if HAVE_SOCKETS
-extern int ExternalWrite( int h, char *pch, int cch ) {
+extern int ExternalWrite( int h, char *pch, size_t cch ) {
 
     char *p = pch;
     int n;

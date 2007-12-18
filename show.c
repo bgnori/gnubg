@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.236 2007/12/17 14:05:45 c_anthon Exp $
+ * $Id: show.c,v 1.237 2007/12/18 21:48:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -981,7 +981,7 @@ extern void CommandShowBuildInfo( char *sz )
 
 extern void CommandShowScoreSheet( char *sz )
 {
-	int i, width1, width2;
+	size_t i, width1, width2;
 	char *data[2];
 	listOLD *pl;
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.39 2007/09/02 20:27:03 c_anthon Exp $
+ * $Id: progress.c,v 1.40 2007/12/18 21:48:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -402,9 +402,9 @@ GTKStatPageBearoff ( const rolloutstat *prs, const int cGames ) {
 
   /* column titles */
 
-  aszColumnTitle[ 0 ] = strdup ( "" );
+  aszColumnTitle[ 0 ] = g_strdup ( "" );
   for ( i = 0; i < 2; i++ )
-    aszColumnTitle[ i + 1 ] = strdup ( ap[ i ].szName );
+    aszColumnTitle[ i + 1 ] = g_strdup ( ap[ i ].szName );
 
   /* table with results */
 
@@ -484,9 +484,9 @@ GTKStatPageClosedOut ( const rolloutstat *prs, const int cGames ) {
 
   /* column titles */
 
-  aszColumnTitle[ 0 ] = strdup ( "" );
+  aszColumnTitle[ 0 ] = g_strdup ( "" );
   for ( i = 0; i < 2; i++ )
-    aszColumnTitle[ i + 1 ] = strdup ( ap[ i ].szName );
+    aszColumnTitle[ i + 1 ] = g_strdup ( ap[ i ].szName );
 
   /* table with results */
 
@@ -561,9 +561,9 @@ GTKStatPageHit ( const rolloutstat *prs, const int cGames ) {
 
   /* column titles */
 
-  aszColumnTitle[ 0 ] = strdup ( "" );
+  aszColumnTitle[ 0 ] = g_strdup ( "" );
   for ( i = 0; i < 2; i++ )
-    aszColumnTitle[ i + 1 ] = strdup ( ap[ i ].szName );
+    aszColumnTitle[ i + 1 ] = g_strdup ( ap[ i ].szName );
 
   /* table with results */
 

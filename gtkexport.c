@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.34 2007/09/27 20:54:49 c_anthon Exp $
+ * $Id: gtkexport.c,v 1.35 2007/12/18 21:48:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -181,7 +181,7 @@ ExportGetValues ( exportwidget *pew, exportsetup *pexs ) {
   /* html */
 
   pexs->szHTMLPictureURL = 
-    strdup ( gtk_entry_get_text( GTK_ENTRY( pew->pwHTMLPictureURL ) ) );
+    g_strdup ( gtk_entry_get_text( GTK_ENTRY( pew->pwHTMLPictureURL ) ) );
 
   pexs->het = (htmlexporttype)gtk_option_menu_get_history (GTK_OPTION_MENU (pew->pwHTMLType));
 

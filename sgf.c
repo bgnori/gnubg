@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.113 2007/12/17 14:05:45 c_anthon Exp $
+ * $Id: sgf.c,v 1.114 2007/12/18 21:48:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -162,7 +162,7 @@ static void CopyName(int i, char *sz)
 
     /* FIXME sanity check the name as in CommandSetPlayerName */
 
-    pc = strdup(sz);
+    pc = g_strdup(sz);
 
     if (strlen(pc) > 31)
 	pc[31] = 0;
@@ -356,7 +356,7 @@ static void RestoreRules(xmovegameinfo * pmgi, const char *sz)
 
     /* split string at colons */
 
-    pch = strdup(sz);
+    pch = g_strdup(sz);
 
     pchx = strtok(pch, ":");
     while (pchx) {
@@ -532,7 +532,7 @@ static void RestoreRolloutTrials(unsigned int *piTrials, const char *sz)
     if (!pc)
 	return;
 
-    sscanf(pc, "Trials %d", piTrials);
+    sscanf(pc, "Trials %ud", piTrials);
 
 }
 
@@ -654,7 +654,7 @@ RestoreRolloutRolloutContext(rolloutcontext * prc, const char *sz)
     if (!pc)
 	return;
 
-    sscanf(pc, "RC %d %d %d %hu %u \"%[^\"]\" %ld %d %d %d",
+    sscanf(pc, "RC %d %d %d %hu %u \"%[^\"]\" %lu %d %d %d",
 	   &fCubeful,
 	   &fVarRedn,
 	   &fInitial,
@@ -680,7 +680,6 @@ RestoreRolloutRolloutContext(rolloutcontext * prc, const char *sz)
 
 static void RestoreRollout(move * pm, const char *sz)
 {
-
     unsigned int n;
 
     pm->esMove.et = EVAL_ROLLOUT;
@@ -788,7 +787,7 @@ RestoreExtendedRolloutContext(rolloutcontext * prc, const char *sz)
     if (!pc)
 	return;
 
-    if (sscanf(pc, "RC %d %d %d %d %d %d %hu %d %d %hu \"%[^\"]\" %ld",
+    if (sscanf(pc, "RC %d %d %d %d %d %d %hu %d %d %hu \"%[^\"]\" %lu",
 	       &fCubeful,
 	       &fVarRedn,
 	       &fInitial,
