@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffdump.c,v 1.12 2007/12/13 21:43:43 c_anthon Exp $
+ * $Id: bearoffdump.c,v 1.13 2007/12/18 13:13:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -27,6 +27,24 @@
 #include <stdlib.h>
 #include "positionid.h"
 #include "bearoff.h"
+
+#if USE_MULTITHREAD
+extern int MT_GetThreadID(void);
+extern void MT_Release(void);
+extern void MT_Exclusive(void);
+extern int MT_GetThreadID(void)
+{
+  return (0);
+}
+extern void MT_Release(void)
+{
+  return;
+}
+extern void MT_Exclusive(void)
+{
+  return;
+}
+#endif
 
 extern int
 main( int argc, char **argv ) {
