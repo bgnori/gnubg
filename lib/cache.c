@@ -15,7 +15,7 @@
  * cache.c
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.c,v 1.14 2007/12/18 21:48:07 Superfly_Jon Exp $
+ * $Id: cache.c,v 1.15 2007/12/19 09:34:24 c_anthon Exp $
  */
 
 #include "config.h"
@@ -34,19 +34,19 @@
 
 #ifdef GLIB_THREADS
 
-static void cache_unlock(volatile cache* pc, volatile unsigned long lock)
+static void cache_unlock(volatile evalCache* pc, volatile unsigned long lock)
 {
 	(void)MT_SafeDec(&pc->locks[lock]);
 	(void)MT_SafeDec(&pc->locks[lock+1]);
 }
 
-static int cache_addlock(volatile cache* pc, volatile unsigned long lock)
+static int cache_addlock(volatile evalCache* pc, volatile unsigned long lock)
 {
 	int r1 = MT_SafeInc(&pc->locks[lock]);
 	int r2 = MT_SafeInc(&pc->locks[lock+1]);
 	return (r1 > 1 || r2 > 1);
 }
-static int cache_lock(volatile cache* pc, volatile unsigned long lock)
+static int cache_lock(volatile evalCache* pc, volatile unsigned long lock)
 {
 	while (cache_addlock(pc, lock))
 		cache_unlock(pc, lock);
