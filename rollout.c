@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.182 2007/12/18 21:48:05 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.183 2007/12/25 09:07:29 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -493,7 +493,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
 				/* update statistics */
 			if( aarsStatistics )
-				(void)MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acDoubleTake[ LogCube ( pci->nCube ) ]); 
+				MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acDoubleTake[ LogCube ( pci->nCube ) ]); 
 
 			SetCubeInfo ( pci, 2 * pci->nCube, ! pci->fMove, pci->fMove, pci->nMatchTo,
 							pci->anScore, pci->fCrawford, pci->fJacoby, pci->fBeavers, pci->bgv );
@@ -531,8 +531,8 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
 			if( aarsStatistics )
 				{
-					(void)MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acDoubleDrop[ LogCube ( pci->nCube ) ]); 
-					(void)MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acWin[ LogCube ( pci->nCube )]);
+					MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acDoubleDrop[ LogCube ( pci->nCube ) ]); 
+					MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acWin[ LogCube ( pci->nCube )]);
 				};
 
             break;
@@ -724,8 +724,8 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 #if 0
 	  printf ("Game %d Turn %d Player %d hit\n",iGame, iTurn, pci->fMove);
 #endif
-          (void)MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].nOpponentHit);
-          (void)MT_SafeAdd(&aarsStatistics[ ici ][ pci->fMove ].rOpponentHitMove, iTurn);
+          MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].nOpponentHit);
+          MT_SafeAdd(&aarsStatistics[ ici ][ pci->fMove ].rOpponentHitMove, iTurn);
           afHit[ pci->fMove ] = TRUE;
 
         }
@@ -748,8 +748,8 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 	  nPipsDice = anDice[ 0 ] + anDice[ 1 ];
 	  if ( anDice[ 0 ] == anDice[ 1 ] ) nPipsDice *= 2;
 
-	  (void)MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].nBearoffMoves);
-	  (void)MT_SafeAdd(&aarsStatistics[ ici ][ pci->fMove ].nBearoffPipsLost, nPipsDice - ( nPipsBefore - nPipsAfter ));
+	  MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].nBearoffMoves);
+	  MT_SafeAdd(&aarsStatistics[ ici ][ pci->fMove ].nBearoffPipsLost, nPipsDice - ( nPipsBefore - nPipsAfter ));
 
 	}
 
@@ -763,8 +763,8 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 	  ClosedBoard ( afClosedBoard, aanBoard[ ici ] );
 
 	  if ( afClosedBoard[ pci->fMove ] ) {
-	    (void)MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].nOpponentClosedOut);
-	    (void)MT_SafeAdd(&aarsStatistics[ ici ][ pci->fMove ].rOpponentClosedOutMove, iTurn);
+	    MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].nOpponentClosedOut);
+	    MT_SafeAdd(&aarsStatistics[ ici ][ pci->fMove ].rOpponentClosedOutMove, iTurn);
 	    afClosedOut[ pci->fMove ] = TRUE;
 	  }
 
@@ -797,13 +797,13 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 	  if( aarsStatistics )
 	      switch ( GameStatus ( aanBoard[ ici ], pci->bgv ) ) {
 	      case 1:
-		  (void)MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acWin[ LogCube ( pci->nCube )]);
+		  MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acWin[ LogCube ( pci->nCube )]);
 		  break;
 	      case 2:
-		  (void)MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acWinGammon[ LogCube ( pci->nCube )]);
+		  MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acWinGammon[ LogCube ( pci->nCube )]);
 		  break;
 	      case 3:
-		  (void)MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acWinBackgammon[ LogCube ( pci->nCube )]);
+		  MT_SafeInc(&aarsStatistics[ ici ][ pci->fMove ].acWinBackgammon[ LogCube ( pci->nCube )]);
 		  break;
 	      }
 
@@ -990,7 +990,7 @@ extern void RolloutLoopMT(void)
 
   /* ============ begin rollout loop ============= */
 
-	while ((i = MT_SafeInc(&ro_NextTrail) - 1) < cGames)
+	while ((i = MT_SafeIncValue(&ro_NextTrail) - 1) < cGames)
 	{
     active_alternatives = ro_alternatives;
     err_too_big = 1;

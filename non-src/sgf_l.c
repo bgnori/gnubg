@@ -115,7 +115,7 @@ typedef unsigned int flex_uint32_t;
 
 #if __STDC__
 
-/*#define YY_USE_CONST*/
+#define YY_USE_CONST
 
 #endif	/* __STDC__ */
 #endif	/* ! __cplusplus */
@@ -1006,7 +1006,7 @@ char *sgftext;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf_l.c,v 1.2 2007/12/18 21:48:07 Superfly_Jon Exp $
+ * $Id: sgf_l.c,v 1.3 2007/12/25 09:07:29 Superfly_Jon Exp $
  */
 #line 23 "sgf_l.l"
 #include "config.h"
