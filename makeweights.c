@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.17 2007/12/18 21:48:04 Superfly_Jon Exp $
+ * $Id: makeweights.c,v 1.18 2007/12/29 14:32:31 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -27,7 +27,6 @@
 #include <string.h>
 #include <glib/gi18n.h>
 #include <locale.h>
-
 #include "eval.h" /* for WEIGHTS_VERSION */
 
 static void 
@@ -51,7 +50,7 @@ extern int main( int argc, char *argv[] )
 	if (argc > 1)
 	{
 		int arg = 1;
-		if (!strcmp (argv[1], "-f"))
+		if (!StrCaseCmp (argv[1], "-f"))
 			arg++;	/* Skip */
 
 		if (argc > arg + 2)
@@ -83,7 +82,7 @@ extern int main( int argc, char *argv[] )
 		return EXIT_FAILURE;
     }
 
-    if (strcmp( szFileVersion, WEIGHTS_VERSION ) )
+    if (StrCaseCmp( szFileVersion, WEIGHTS_VERSION ) )
 	{
 		fprintf( stderr, _("%s: incorrect weights version\n"
 							"(version %s is required, "

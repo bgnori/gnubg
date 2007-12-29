@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.31 2007/12/12 23:08:15 Superfly_Jon Exp $
+ * $Id: export.h,v 1.32 2007/12/29 14:32:29 Superfly_Jon Exp $
  */
 
 #include "render.h"
@@ -109,7 +109,7 @@ void GenerateImage3d(renderdata * prd, const char *szName,
 		     unsigned int nSizeY);
 #endif
 
-extern void TextAnalysis(GString * gsz, matchstate * pms,
+extern void TextAnalysis(GString * gsz, const matchstate * pms,
 			 moverecord * pmr);
 extern void TextPrologue(GString * gsz, const matchstate * pms,
 			 const int iGame);

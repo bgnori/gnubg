@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.44 2007/12/18 21:48:03 Superfly_Jon Exp $
+* $Id: gtkpanels.c,v 1.45 2007/12/29 14:32:30 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -257,7 +257,7 @@ static void CreateMessageWindow( void )
 GtkWidget *pwTheoryList = NULL;
 
 
-void UpdateTheoryData(BoardData* bd, int UpdateType, TanBoard points)
+void UpdateTheoryData(BoardData* bd, int UpdateType, const TanBoard points)
 {
 	char* pc;
 

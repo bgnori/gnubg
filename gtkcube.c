@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.55 2007/10/08 13:46:56 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.56 2007/12/29 14:32:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -722,7 +722,7 @@ CubeAnalysisRollout ( GtkWidget *pw, cubehintdata *pchd ) {
   RolloutProgressStart( &ci, 2, aarsStatistics, &pes->rc, asz, &p );
 
   if ( GeneralCubeDecisionR ( aarOutput, aarStdDev, aarsStatistics,
-                              pchd->ms.anBoard, &ci, 
+                              (ConstTanBoard)pchd->ms.anBoard, &ci, 
 			      &pes->rc, pes,
                               RolloutProgress, p ) < 0 ) {
     RolloutProgressEnd( &p );
@@ -755,7 +755,7 @@ EvalCube ( cubehintdata *pchd, evalcontext *pec ) {
   
   ProgressStart( _("Considering cube action...") );
 
-  if ( GeneralCubeDecisionE ( aarOutput, pchd->ms.anBoard, &ci, 
+  if ( GeneralCubeDecisionE ( aarOutput, (ConstTanBoard)pchd->ms.anBoard, &ci, 
                               pec, 0 ) < 0 ) {
     ProgressEnd();
     return;

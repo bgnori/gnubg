@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.h,v 1.25 2007/12/18 21:48:04 Superfly_Jon Exp $
+ * $Id: positionid.h,v 1.26 2007/12/29 14:32:31 Superfly_Jon Exp $
  */
 
 #ifndef _POSITIONID_H_
@@ -24,8 +24,8 @@
 
 #include "gnubg-types.h"
 
-extern void PositionKey( ARRAY_CONST TanBoard anBoard, unsigned char auchKey[ 10 ] );
-extern char *PositionID( ARRAY_CONST TanBoard anBoard );
+extern void PositionKey( const TanBoard anBoard, unsigned char auchKey[ 10 ] );
+extern char *PositionID( const TanBoard anBoard );
 extern char *PositionIDFromKey( const unsigned char auchKey[ 10 ] );
 
 extern 
@@ -45,10 +45,10 @@ PositionFromBearoff(int anBoard[], unsigned int usID,
 extern unsigned short PositionIndex(int g, const int anBoard[6]);
 
 extern int EqualKeys( const unsigned char auch0[ 10 ], const unsigned char auch1[ 10 ] );
-extern int EqualBoards( ARRAY_CONST TanBoard anBoard0, ARRAY_CONST TanBoard anBoard1 );
+extern int EqualBoards( const TanBoard anBoard0, const TanBoard anBoard1 );
 
 /* Return 1 for valid position, 0 for not */
-extern int CheckPosition( ARRAY_CONST TanBoard anBoard );
+extern int CheckPosition( const TanBoard anBoard );
 
 extern void ClosestLegalPosition( TanBoard anBoard );
 

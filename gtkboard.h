@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.84 2007/12/12 23:08:16 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.85 2007/12/29 14:32:30 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -149,11 +149,11 @@ extern void InitBoardPreview(BoardData *bd);
 extern int animate_player, *animate_move_list, animation_finished;
 
 enum TheoryTypes{TT_PIPCOUNT = 1, TT_EPC = 2, TT_RETURNHITS = 4, TT_KLEINCOUNT = 8};
-void UpdateTheoryData(BoardData* bd, int UpdateTypes, TanBoard points);
+void UpdateTheoryData(BoardData* bd, int UpdateTypes, const TanBoard points);
 
 extern void read_board( BoardData *bd, TanBoard points );
-extern void update_position_id( BoardData *bd, TanBoard points );
-extern void update_pipcount ( BoardData *bd, TanBoard points );
+extern void update_position_id( BoardData *bd, const TanBoard points );
+extern void update_pipcount ( BoardData *bd, const TanBoard points );
 extern void write_board ( BoardData *bd, TanBoard anBoard );
 extern void board_beep( BoardData *bd );
 extern void Confirm( BoardData *bd );

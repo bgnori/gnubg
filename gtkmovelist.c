@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.19 2007/09/02 20:27:02 c_anthon Exp $
+ * $Id: gtkmovelist.c,v 1.20 2007/12/29 14:32:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -226,7 +226,7 @@ if (!psHighlight)
 				dice[1] = pmr->anDice[1];
 			}
 		}
-		GenerateMoves(&ml, ms.anBoard, dice[0], dice[1], FALSE);
+		GenerateMoves(&ml, msBoard(), dice[0], dice[1], FALSE);
 		if (i < ml.cMoves - 1)
 			rankKnown = 0;
 	}
@@ -273,7 +273,7 @@ if (!psHighlight)
     }
 	
 	gtk_list_store_set(store, &iter, ML_COL_MOVE + offset,
-                        FormatMove( sz, ms.anBoard,
+                        FormatMove( sz, msBoard(),
                                     pml->amMoves[ i ].anMove ), -1);
 
 	/* highlight row */

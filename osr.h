@@ -16,14 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.h,v 1.4 2007/12/12 23:08:19 Superfly_Jon Exp $
+ * $Id: osr.h,v 1.5 2007/12/29 14:32:31 Superfly_Jon Exp $
  */
 
 #ifndef _OSR_H_
 #define _OSR_H_
 
 extern void
-raceProbs ( TanBoard anBoard, const int nGames,
+raceProbs ( const TanBoard anBoard, const int nGames,
             float arOutput[ NUM_OUTPUTS ],
             float arMu[ 2 ] );
 

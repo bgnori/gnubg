@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.13 2007/12/12 23:08:17 Superfly_Jon Exp $
+ * $Id: gtkmovelistctrl.c,v 1.14 2007/12/29 14:32:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -451,7 +451,7 @@ custom_cell_renderer_movelist_render (GtkCellRenderer *cell,
 	pango_font_description_set_weight(pfd, PANGO_WEIGHT_BOLD);
 	pango_layout_set_font_description (layout, pfd);
 
-	pango_layout_set_text(layout, FormatMove(buf, ms.anBoard, cellprogress->pml->anMove ), -1);
+	pango_layout_set_text(layout, FormatMove(buf, msBoard(), cellprogress->pml->anMove ), -1);
 	gdk_draw_layout_with_colors(window, gc, cell_area->x + x, cell_area->y + y, layout, pFontCol, 0);
 
 	pango_font_description_set_weight(pfd, PANGO_WEIGHT_NORMAL);

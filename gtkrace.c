@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.28 2007/12/12 23:08:17 Superfly_Jon Exp $
+ * $Id: gtkrace.c,v 1.29 2007/12/29 14:32:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -193,9 +193,9 @@ PerformOSR ( GtkWidget *pw, racewidget *prw ) {
   float arMu[ 2 ];
   gchar *pch;
 
-  raceProbs ( prw->anBoard, nTrials, ar, arMu );
+  raceProbs ( (ConstTanBoard)prw->anBoard, nTrials, ar, arMu );
 
-  PipCount( prw->anBoard, anPips );
+  PipCount( (ConstTanBoard)prw->anBoard, anPips );
   
   for ( i = 0; i < 5; ++i ) {
     if( fOutputWinPC )

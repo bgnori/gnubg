@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.30 2007/12/12 23:08:18 Superfly_Jon Exp $
+ * $Id: gtktempmap.c,v 1.31 2007/12/29 14:32:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -131,7 +131,7 @@ TempMapEquities( evalcontext *pec, matchstate *pms,
       SwapSides ( anBoard );
       ci.fMove = ! ci.fMove;
 
-      if ( GeneralEvaluationE ( arOutput, anBoard, &ci, pec ) < 0 ) {
+      if ( GeneralEvaluationE ( arOutput, (ConstTanBoard)anBoard, &ci, pec ) < 0 ) {
         ProgressEnd();
         return -1;
       }
@@ -278,7 +278,7 @@ UpdateTempMapEquities( tempmapwidget *ptmw ) {
           g_strdup_printf( "%s [%s]", 
                            GetEquityString( ptmw->atm[ m ].aarEquity[ i ][ j ],
                                             &ci, ptmw->fInvert ), 
-                           FormatMove( szMove, ptmw->atm[ m ].pms->anBoard, 
+                           FormatMove( szMove, (ConstTanBoard)ptmw->atm[ m ].pms->anBoard, 
                                        ptmw->atm[ m ].aaanMove[ i ][ j ] ) );
                            
 
@@ -363,7 +363,7 @@ ExposeQuadrant( GtkWidget *pw, GdkEventExpose *pev, tempmapwidget *ptmw ) {
 
     char szMove[ 100 ];
 
-    FormatMove( szMove, ptmw->atm[ m ].pms->anBoard, 
+    FormatMove( szMove, (ConstTanBoard)ptmw->atm[ m ].pms->anBoard, 
                 ptmw->atm[ m ].aaanMove[ i ][ j ] );
     gtk_draw_string( pw->style, pw->window, GTK_STATE_NORMAL,
                      10, 30, szMove );

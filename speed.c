@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.20 2007/12/18 21:48:05 Superfly_Jon Exp $
+ * $Id: speed.c,v 1.21 2007/12/29 14:32:31 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -86,7 +86,7 @@ extern void RunEvals(void)
 
 	for( i = 0; i < EVALS_PER_ITERATION; i++ )
 	{
-		EvaluatePosition( NULL, aanBoard[ i ], ar, &ciCubeless, NULL );
+		EvaluatePosition( NULL, (ConstTanBoard)aanBoard[ i ], ar, &ciCubeless, NULL );
 	}
 
 #if USE_MULTITHREAD

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.56 2007/12/18 21:48:03 Superfly_Jon Exp $
+ * $Id: external.c,v 1.57 2007/12/29 14:32:29 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -414,7 +414,7 @@ ExtEvaluation( extcmd *pec ) {
     if ( !fTurn )
       SwapSides( anBoard );
 
-    if ( GeneralEvaluationE( arOutput, anBoard, &ci, &ec ) )
+    if ( GeneralEvaluationE( arOutput, (ConstTanBoard)anBoard, &ci, &ec ) )
       return NULL;
 
     if ( nMatchTo ) {
@@ -494,7 +494,7 @@ ExtFIBSBoard( extcmd *pec ) {
 
       /* take decision */
       if( GeneralCubeDecision( aarOutput, aarStdDev,
-                               aarsStatistics, anBoard, &ci,
+                               aarsStatistics, (ConstTanBoard)anBoard, &ci,
                                &esEvalCube, NULL, NULL ) < 0 )
         return NULL;
 	  
@@ -552,7 +552,7 @@ ExtFIBSBoard( extcmd *pec ) {
     } else {
       /* double decision */
       if( GeneralCubeDecision( aarOutput, aarStdDev,
-                               aarsStatistics, anBoard, &ci,
+                               aarsStatistics, (ConstTanBoard)anBoard, &ci,
                                &esEvalCube, NULL, NULL ) < 0 )
         return NULL;
 		

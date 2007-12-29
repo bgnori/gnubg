@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.37 2007/12/15 20:26:06 c_anthon Exp $
+* $Id: gtkcolour3d.c,v 1.38 2007/12/29 14:32:32 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -209,16 +209,8 @@ static void SetupColourPreview(void)
 	glLoadIdentity();
 }
 
-static GdkGLPixmap *glpixmap;
-static GdkGLContext *glPixmapContext = NULL;
-
 static void CreatePreview(void)
 {
-	GdkGLDrawable *gldrawable;
-	glpixmap = gdk_pixmap_set_gl_capability(xppm, getglconfigSingle(), NULL);
-	gldrawable = GDK_GL_DRAWABLE(glpixmap);
-	glPixmapContext = gdk_gl_context_new(gldrawable, NULL, FALSE, GDK_GL_RGBA_TYPE);
-
 	SetupColourPreview();
 }
 

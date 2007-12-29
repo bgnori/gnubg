@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.h,v 1.15 2007/12/18 21:48:02 Superfly_Jon Exp $
+ * $Id: drawboard.h,v 1.16 2007/12/29 14:32:28 Superfly_Jon Exp $
  */
 
 #ifndef _DRAWBOARD_H_
@@ -26,12 +26,12 @@
 
 extern int fClockwise; /* Player 1 moves clockwise */
 
-extern char *DrawBoard( char *pch, TanBoard anBoard, int fRoll,
+extern char *DrawBoard( char *pch, const TanBoard anBoard, int fRoll,
                         char *asz[], char *szMatchID, int nChequers );
 /* Fill the buffer pch with a representation of the move anMove, assuming
    the board looks like anBoard.  pch must have room for 28 characters plus
    a trailing 0 (consider the move `bar/24* 23/22* 21/20* 19/18*'). */
-extern char *FormatMove( char *pch, ARRAY_CONST TanBoard anBoard, int anMove[ 8 ] );
+extern char *FormatMove( char *pch, const TanBoard anBoard, int anMove[ 8 ] );
 extern char *FormatMovePlain( char *pch, TanBoard anBoard,
                               int anMove[ 8 ] );
 extern int ParseMove( char *pch, int an[ 8 ] );

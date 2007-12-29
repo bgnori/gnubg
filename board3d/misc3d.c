@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.78 2007/12/18 21:48:06 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.79 2007/12/29 14:32:32 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -1786,7 +1786,7 @@ void RestrictiveDrawFrame(const float pos[3], float width, float height, float d
 	}
 }
 
-void RestrictiveRender(const BoardData *bd, BoardData3d *bd3d, const renderdata *prd)
+void RestrictiveRender(const BoardData *bd, const BoardData3d *bd3d, const renderdata *prd)
 {
 	GLint viewport[4];
 	glGetIntegerv (GL_VIEWPORT, viewport);
@@ -1983,7 +1983,7 @@ static int idleAnimate(BoardData3d* bd3d)
 
 			/* Update pip-count mid move */
 			read_board(bd, points);
-			update_pipcount(bd, points);
+			update_pipcount(bd, (ConstTanBoard)points);
 
 			PlaceMovingPieceRotation(bd, bd3d, moveDest, moveStart);
 

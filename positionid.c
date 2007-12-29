@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.39 2007/12/18 21:48:04 Superfly_Jon Exp $
+ * $Id: positionid.c,v 1.40 2007/12/29 14:32:31 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -60,7 +60,7 @@ addBits(unsigned char auchKey[10], int const bitPos, int const nBits)
 }
 
 extern void
-PositionKey(ARRAY_CONST TanBoard anBoard, unsigned char auchKey[10])
+PositionKey(const TanBoard anBoard, unsigned char auchKey[10])
 {
   int i, iBit = 0;
   const int* j;
@@ -110,7 +110,7 @@ extern char *PositionIDFromKey( const unsigned char auchKey[ 10 ] ) {
     return szID;
 }
 
-extern char *PositionID( ARRAY_CONST TanBoard anBoard ) {
+extern char *PositionID( const TanBoard anBoard ) {
 
     unsigned char auch[ 10 ];
     
@@ -120,7 +120,7 @@ extern char *PositionID( ARRAY_CONST TanBoard anBoard ) {
 }
 
 extern int
-CheckPosition( ARRAY_CONST TanBoard anBoard )
+CheckPosition( const TanBoard anBoard )
 {
     int ac[ 2 ], i;
 
@@ -268,7 +268,7 @@ PositionFromID(TanBoard anBoard, const char* pchEnc)
 
   PositionFromKey( anBoard, auchKey );
 
-  return CheckPosition( anBoard );
+  return CheckPosition( (ConstTanBoard)anBoard );
 }
 
 extern int 
@@ -283,7 +283,7 @@ EqualKeys( const unsigned char auch0[ 10 ], const unsigned char auch1[ 10 ] ) {
     return 1;
 }
  
-extern int EqualBoards( ARRAY_CONST TanBoard anBoard0, ARRAY_CONST TanBoard anBoard1 ) {
+extern int EqualBoards( const TanBoard anBoard0, const TanBoard anBoard1 ) {
 
     int i;
 

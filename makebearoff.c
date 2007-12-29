@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.56 2007/12/18 21:48:04 Superfly_Jon Exp $
+ * $Id: makebearoff.c,v 1.57 2007/12/29 14:32:31 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -230,9 +230,9 @@ OSLookup ( const unsigned int iPos,
   if ( fCompress ) {
 
     unsigned char ac[ 128 ];
-    int i, j;
+    unsigned int i, j;
     long iOffset;
-    int nBytes;
+    size_t nBytes;
     unsigned int ioff, nz, ioffg, nzg;
     unsigned short int us;
 
@@ -468,7 +468,7 @@ static void BearOff( int nId, int nPoints,
 	    
     for( anRoll[ 0 ] = 1; anRoll[ 0 ] <= 6; anRoll[ 0 ]++ )
 	for( anRoll[ 1 ] = 1; anRoll[ 1 ] <= anRoll[ 0 ]; anRoll[ 1 ]++ ) {
-	    GenerateMoves( &ml, anBoard, anRoll[ 0 ], anRoll[ 1 ], FALSE );
+	    GenerateMoves( &ml, (ConstTanBoard)anBoard, anRoll[ 0 ], anRoll[ 1 ], FALSE );
 
 	    usBest = 0xFFFFFFFF; iBest = -1;
             usGammonBest = 0xFFFFFFFF; iGammonBest = -1;
@@ -849,7 +849,7 @@ NDBearoff ( const int iPos, const int nPoints, float ar[ 4 ], xhash *ph,
   for ( d0 = 1; d0 <= 6; ++d0 ) 
     for ( d1 = 1; d1 <= d0; ++d1 ) {
 
-      GenerateMoves ( &ml, anBoard, d0, d1, FALSE );
+      GenerateMoves ( &ml, (ConstTanBoard)anBoard, d0, d1, FALSE );
 
       rBest = 1e10;
       rGammonBest = 1e10;
@@ -1156,7 +1156,7 @@ static void BearOff2( int nUs, int nThem,
 
     /* look for position in bearoff file */
 
-    if ( pbc && isBearoff ( pbc, anBoard ) ) {
+    if ( pbc && isBearoff ( pbc, (ConstTanBoard)anBoard ) ) {
       unsigned short int nUsL = 
         PositionBearoff ( anBoard[ 1 ], pbc->nPoints, pbc->nChequers );
       unsigned short int nThemL = 
@@ -1173,11 +1173,11 @@ static void BearOff2( int nUs, int nThem,
       return;
     }
 
-    aiTotal[ 0 ] = aiTotal[ 1 ] = aiTotal[ 2 ] = aiTotal[ 3 ] = 0.0;
+    aiTotal[ 0 ] = aiTotal[ 1 ] = aiTotal[ 2 ] = aiTotal[ 3 ] = 0;
     
     for( anRoll[ 0 ] = 1; anRoll[ 0 ] <= 6; anRoll[ 0 ]++ )
 	for( anRoll[ 1 ] = 1; anRoll[ 1 ] <= anRoll[ 0 ]; anRoll[ 1 ]++ ) {
-	    GenerateMoves( &ml, anBoard, anRoll[ 0 ], anRoll[ 1 ], FALSE );
+	    GenerateMoves( &ml, (ConstTanBoard)anBoard, anRoll[ 0 ], anRoll[ 1 ], FALSE );
 
             asiBest [ 0 ] = asiBest[ 1 ] = 
               asiBest[ 2 ] = asiBest [ 3 ] = -0xFFFF;
@@ -1447,9 +1447,9 @@ generate_ts ( const int nTSP, const int nTSC,
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.56 $\n" );
+  printf ( "makebearoff $Revision: 1.57 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.56 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.57 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1566,7 +1566,7 @@ extern int main( int argc, char **argv )
       exit ( 2 );
     }
 #if WIN32 
-    hdlg = CreateDialog(NULL, MAKEINTRESOURCE (DLG_MAKEBEAROFF), NULL, DlgProc);
+    hdlg = CreateDialog(NULL, MAKEINTRESOURCE (DLG_MAKEBEAROFF), NULL, (DLGPROC)DlgProc);
     /* error if NULL */
     for (i = 0; i < 9; i++)
        SendDlgItemMessage(hdlg, 101 + i, WM_SETTEXT, 0, (LPARAM) aszOS[i]);
@@ -1581,7 +1581,7 @@ extern int main( int argc, char **argv )
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.56 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.57 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1691,7 +1691,7 @@ extern int main( int argc, char **argv )
     r = n;
     r = r * r * ( fCubeful ? 8.0 : 2.0 );
 #if WIN32 
-    hdlg = CreateDialog(NULL, MAKEINTRESOURCE (DLG_MAKEBEAROFF), NULL, DlgProc);
+    hdlg = CreateDialog(NULL, MAKEINTRESOURCE (DLG_MAKEBEAROFF), NULL, (DLGPROC)DlgProc);
     /* error if NULL */
     for (i = 0; i < 11; i++)
        SendDlgItemMessage(hdlg, 101 + i, WM_SETTEXT, 0, (LPARAM) aszTS[i]);
@@ -1709,7 +1709,7 @@ extern int main( int argc, char **argv )
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.56 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.57 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"
