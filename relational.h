@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.h,v 1.6 2007/09/02 20:27:03 c_anthon Exp $
+ * $Id: relational.h,v 1.7 2008/01/01 19:44:13 Superfly_Jon Exp $
  */
 
 #ifndef _RELATIONAL_H_
@@ -24,18 +24,15 @@
 
 typedef struct _RowSet
 {
-	int cols, rows;
+	size_t cols, rows;
 	char ***data;
-	int *widths;
+	size_t *widths;
 } RowSet;
 
-extern int env_deleted;
 extern int RelationalMatchExists(void);
-extern void RelationalUpdatePlayerDetails(int player_id, const char* newName,
+extern int RelationalUpdatePlayerDetails(int player_id, const char* newName,
 										  const char* newNotes);
 extern int RunQuery(RowSet* pRow, char *sz);
 extern void FreeRowset(RowSet* pRow);
-extern void RelationalLinkNick(char* nick, char* env, char* player);
 
-extern int env_added;	/* Horrid flag to see if next function worked... */
 #endif /* _RELATIONAL_H_ */

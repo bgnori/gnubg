@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.115 2007/12/29 14:32:31 Superfly_Jon Exp $
+ * $Id: sgf.c,v 1.116 2008/01/01 19:44:13 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -169,7 +169,7 @@ static void CopyName(int i, char *sz)
 
     strcpy(ap[i].szName, pc);
 
-    free(pc);
+    g_free(pc);
 
 }
 
@@ -350,7 +350,6 @@ static void RestoreText(char *sz, char **ppch)
 
 static void RestoreRules(xmovegameinfo * pmgi, const char *sz)
 {
-
     char *pch;
     char *pchx;
 
@@ -382,8 +381,7 @@ static void RestoreRules(xmovegameinfo * pmgi, const char *sz)
 
     }
 
-    free(pch);
-
+    g_free(pch);
 }
 
 
