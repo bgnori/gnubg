@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.185 2007/12/29 14:32:28 Superfly_Jon Exp $
+ * $Id: analysis.c,v 1.186 2008/01/04 18:40:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1042,7 +1042,7 @@ static int AnalyzeGame ( listOLD *plGame )
 				pt = pParentTask;
 				pParentTask = NULL;
 			}
-			g_debug("add task: analysis");
+			multi_debug("add task: analysis");
 			MT_AddTask((Task*)pt, TRUE);
 		}
 
@@ -1056,7 +1056,7 @@ static int AnalyzeGame ( listOLD *plGame )
 	}
 	g_assert(pl->plNext == plGame);
 
-	g_debug("wait for all task: analysis");
+	multi_debug("wait for all task: analysis");
 	result = MT_WaitForTasks(UpdateProgressBar, 250);
 
 	fnTick = fnOld;
