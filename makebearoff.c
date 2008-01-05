@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.57 2007/12/29 14:32:31 Superfly_Jon Exp $
+ * $Id: makebearoff.c,v 1.58 2008/01/05 19:51:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -61,10 +61,6 @@ extern void MT_Exclusive(void)
 {
   return;
 }
-#ifndef GLIB_THREADS
-extern void MT_Lock(int *lock) {}
-extern void MT_Unlock(int *lock) {}
-#endif
 #endif
 
 typedef struct _xhashent {
@@ -1447,9 +1443,9 @@ generate_ts ( const int nTSP, const int nTSC,
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.57 $\n" );
+  printf ( "makebearoff $Revision: 1.58 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.57 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.58 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1581,7 +1577,7 @@ extern int main( int argc, char **argv )
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.57 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.58 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1709,7 +1705,7 @@ extern int main( int argc, char **argv )
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.57 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.58 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"
