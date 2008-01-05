@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.332 2007/12/29 14:32:28 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.333 2008/01/05 12:09:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3010,12 +3010,13 @@ EvaluatePositionCache( NNState *nnStates, const TanBoard anBoard, float arOutput
     /* This should be a part of the code that is called in all
        time-consuming operations at a relatively steady rate, so is a
        good choice for a callback function. */
+#if !USE_MULTITHREAD
     if( ++iTick >= 0x400 ) {
 	iTick = 0;
 	if( fnTick )
 	    fnTick();
     }
-
+#endif
     if( !cCache || ( pecx->rNoise != 0.0f && !pecx->fDeterministic ) )
 	/* non-deterministic noisy evaluations; cannot cache */
 	return EvaluatePositionFull( nnStates, anBoard, arOutput, pci, pecx, nPlies,
