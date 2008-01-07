@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.742 2008/01/01 19:44:12 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.743 2008/01/07 20:16:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2303,7 +2303,7 @@ extern int ParsePosition( TanBoard an, char **ppch, char *pchDesc )
     /* FIXME allow more formats, e.g. FIBS "boardstyle 3" */
 
     if( !ppch || !( pch = NextToken( ppch ) ) ) { 
-	memcpy( an, msBoard(), sizeof( an ) );
+	memcpy( an, msBoard(), sizeof(TanBoard) );
 
 	if( pchDesc )
 	    strcpy( pchDesc, _("Current position") );
@@ -2835,7 +2835,7 @@ extern void ShowBoard( void )
 	return;
     }
 
-	memcpy( an, msBoard(), sizeof( an ) );
+	memcpy( an, msBoard(), sizeof(TanBoard) );
 	if( !ms.fMove )
 		SwapSides( an );
 
@@ -4293,7 +4293,7 @@ extern void CommandCopy (char *sz)
 	}
     }
 
-  memcpy ( anBoardTemp, msBoard(), sizeof ( anBoardTemp ) );
+  memcpy ( anBoardTemp, msBoard(), sizeof(TanBoard) );
 
   if ( ! ms.fMove )
     SwapSides ( anBoardTemp );

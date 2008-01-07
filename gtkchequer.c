@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.85 2007/12/29 14:32:30 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.86 2008/01/07 20:16:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -128,7 +128,7 @@ extern void ShowMove ( hintdata *phd, const int f )
 
 		MoveListFreeSelectionList(plSelList);
 
-		memcpy ( anBoard, msBoard(), sizeof ( anBoard ) );
+		memcpy ( anBoard, msBoard(), sizeof(TanBoard) );
 		ApplyMove ( anBoard, pm->anMove, FALSE );
 
 		UpdateMove( ( BOARD( pwBoard ) )->board_data, anBoard );
@@ -387,7 +387,7 @@ MoveListMove ( GtkWidget *pw, hintdata *phd )
 
 	memcpy(&m, pm, sizeof(move));
 
-	memcpy ( anBoard, msBoard(), sizeof ( anBoard ) );
+	memcpy ( anBoard, msBoard(), sizeof(TanBoard) );
 	ApplyMove ( anBoard, m.anMove, FALSE );
 
 	if ( ! ms.fMove )

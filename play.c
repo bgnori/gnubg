@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.301 2007/12/29 14:32:31 Superfly_Jon Exp $
+ * $Id: play.c,v 1.302 2008/01/07 20:16:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1117,7 +1117,7 @@ static int ComputerTurn( void ) {
       /* Don't use the global board for this call, to avoid
 	 race conditions with updating the board and aborting the
 	 move with an interrupt. */
-      memcpy( anBoardMove, msBoard(), sizeof( anBoardMove ) );
+      memcpy( anBoardMove, msBoard(), sizeof(TanBoard) );
 
       /* Consider resigning -- no point wasting time over the decision,
          so only evaluate at 0 plies. */
@@ -1349,7 +1349,7 @@ static int ComputerTurn( void ) {
 	  DiceRolled();      
 	 }
 
-      memcpy( anBoardTemp, msBoard(), sizeof anBoardTemp );
+      memcpy( anBoardTemp, msBoard(), sizeof(TanBoard) );
       if ( !ms.fMove )
         SwapSides( anBoardTemp );
 

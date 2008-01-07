@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.228 2007/12/29 14:32:29 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.229 2008/01/07 20:16:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1996,7 +1996,7 @@ extern gboolean board_button_press(GtkWidget *board, GdkEventButton *event,
              show forced move */
           TanBoard anBoard;
           
-          memcpy ( anBoard, msBoard(), sizeof anBoard );
+          memcpy ( anBoard, msBoard(), sizeof(TanBoard) );
 
           bd->drag_colour = bd->turn;
           bd->drag_point = -1;
