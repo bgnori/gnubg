@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.49 2007/12/29 14:32:29 Superfly_Jon Exp $
+ * $Id: export.c,v 1.50 2008/01/08 19:43:09 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -783,7 +783,7 @@ extern void CommandExportPositionJF (char *sz)
    * before the move was done, such that undo should be possible. It's
    * possible to save just the current board twice as done below. */
 
-  memcpy (anBoard, msBoard(), 2 * 25 * sizeof (int));
+  memcpy (anBoard, msBoard(), sizeof(TanBoard));
 
   if (!ms.fMove)
     SwapSides (anBoard);

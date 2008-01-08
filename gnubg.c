@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.743 2008/01/07 20:16:03 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.744 2008/01/08 19:43:09 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -76,10 +76,7 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "credits.h"
 #include "external.h"
 #include "neuralnet.h"
-
-#if USE_PYTHON
 #include "gnubgmodule.h"
-#endif
 
 #if HAVE_SOCKETS
 #if HAVE_SYS_SOCKET_H
@@ -4081,8 +4078,8 @@ CommandRollout( char *sz ) {
 }
 
 
-static void LoadCommands( FILE *pf, char *szFile ) {
-    
+static void LoadCommands( FILE *pf, char *szFile )
+{
     char sz[ 2048 ], *pch;
 
     outputpostpone();
@@ -5786,8 +5783,8 @@ static void Progress( void )
     fflush( stdout );
 }
 
-static void CallbackProgress( void ) {
-
+static void CallbackProgress( void )
+{
 #if USE_GTK
 	if( fX )
 	{
@@ -7108,8 +7105,6 @@ EPC( const TanBoard anBoard, float *arEPC, float *arMu, float *arSigma,
 
   /* code not reachable */
   return -1;
-
-
 }
 
 #if HAVE_LIBREADLINE
