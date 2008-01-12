@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.670 2008/01/01 19:44:12 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.671 2008/01/12 22:35:18 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3503,8 +3503,13 @@ GtkItemFactoryEntry aife[] = {
 	{ N_("/_File/Generate _HTML Images..."), NULL, ExportHTMLImages, 0,
 	  NULL, NULL },
 	{ N_("/_File/-"), NULL, NULL, 0, "<Separator>", NULL },
-	{ N_("/_File/_Quit"), "<control>Q", Command, CMD_QUIT,
-		"<StockItem>", GTK_STOCK_QUIT
+	{ 
+#ifdef WIN32
+		N_("/_File/E_xit"),
+#else
+		N_("/_File/_Quit"),
+#endif
+		"<control>Q", Command, CMD_QUIT, "<StockItem>", GTK_STOCK_QUIT
 	},
 	{ N_("/_Edit"), NULL, NULL, 0, "<Branch>", NULL },
 	{ N_("/_Edit/_Undo"), "<control>Z", Undo, 0, 
