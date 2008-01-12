@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.291 2007/12/29 14:32:31 Superfly_Jon Exp $
+ * $Id: set.c,v 1.292 2008/01/12 23:42:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3734,6 +3734,13 @@ CommandSetSoundSoundDrop ( char *sz ) {
 
   SetSoundFile ( SOUND_DROP, NextToken ( &sz ) );
 
+}
+
+extern void
+CommandSetSoundSoundExit ( char *sz ) { 	 
+	  	 
+	   SetSoundFile ( SOUND_EXIT, NextToken ( &sz ) ); 	 
+	  	 
 }
 
 extern void
