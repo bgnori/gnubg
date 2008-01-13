@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffdump.c,v 1.13 2007/12/18 13:13:52 c_anthon Exp $
+ * $Id: bearoffdump.c,v 1.14 2008/01/13 00:09:24 c_anthon Exp $
  */
 
 #include "config.h"
@@ -56,7 +56,7 @@ main( int argc, char **argv ) {
   int n;
   int nUs;
   int nThem;
-  int anBoard[ 2 ][ 25 ];
+  TanBoard anBoard;
 
   GOptionEntry ao[] = {
     {"index", 'n', 0, G_OPTION_ARG_INT, &id,
@@ -138,7 +138,7 @@ main( int argc, char **argv ) {
   /* dump req. position */
 
   *sz = 0;
-  BearoffDump( pbc, anBoard, sz );
+  BearoffDump( pbc, (ConstTanBoard)anBoard, sz );
   puts( sz );
 
   BearoffClose( &pbc );

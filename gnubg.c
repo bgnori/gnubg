@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.745 2008/01/12 23:42:52 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.746 2008/01/13 00:09:24 c_anthon Exp $
  */
 
 #include "config.h"
@@ -550,7 +550,6 @@ static char szDICE[] = N_("<die> <die>"),
                       "[<num. of extra moves to accept> <tolerance>]"),
     szNAME[] = N_("<name>"),
     szNAMEOPTENV[] = N_("<name> [env]"),
-    szRENAME[] = N_("<name> <newname>"),
     szLANG[] = N_("system|<language code>"),
     szONOFF[] = N_("on|off"),
     szOPTCOMMAND[] = N_("[command]"),
