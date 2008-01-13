@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.l,v 1.12 2007/07/02 13:50:09 ace Exp $
+ * $Id: external_l.l,v 1.13 2008/01/13 08:07:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -26,7 +26,7 @@
 
 #include "external_y.h"
 
-extern int extparse();
+extern int extparse(void);
 
 int prc_lineno = 1;
 void escapes(const char *cp, char *tp);

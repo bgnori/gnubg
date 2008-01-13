@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.20 2007/12/29 14:32:28 Superfly_Jon Exp $
+ * $Id: bearoff.h,v 1.21 2008/01/13 08:07:52 c_anthon Exp $
  */
 
 #ifndef _BEAROFF_H_
@@ -75,7 +75,7 @@ enum _bearoffoptions {
   BO_HEURISTIC         = 8
 };
 
-extern bearoffcontext *BearoffInit ( const char *szFilename, const int bo, void (*p)() );
+extern bearoffcontext *BearoffInit ( const char *szFilename, const int bo, void (*p)(int) );
 
 extern bearoffcontext *BearoffInitBuiltin ( void );
 

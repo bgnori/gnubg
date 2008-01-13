@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.746 2008/01/13 00:09:24 c_anthon Exp $
+ * $Id: gnubg.c,v 1.747 2008/01/13 08:07:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -197,7 +197,7 @@ matchstate ms = {
     TRUE, /* fJacoby */
     GAME_NONE /* gs */
 };
-ConstTanBoard msBoard() {return (ConstTanBoard)ms.anBoard;}
+ConstTanBoard msBoard(void) {return (ConstTanBoard)ms.anBoard;}
 
 matchinfo mi;
 

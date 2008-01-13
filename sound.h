@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sound.h,v 1.18 2008/01/12 23:42:52 Superfly_Jon Exp $
+ * $Id: sound.h,v 1.19 2008/01/13 08:07:53 c_anthon Exp $
  */
 
 #ifndef _SOUND_H_
@@ -65,6 +65,6 @@ extern void SetSoundFile(const gnubgsound gs, const char *szFilename);
 extern char *GetSoundFile(gnubgsound sound);
 extern const char *sound_get_command(void);
 extern char *sound_set_command(const char *sz);
-extern void SetExitSoundOff();
+extern void SetExitSoundOff(void);
 
 #endif

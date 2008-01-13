@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.671 2008/01/12 22:35:18 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.672 2008/01/13 08:07:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6946,7 +6946,7 @@ static void StatsNextGame( GtkWidget *pw, char *szCommand )
 }
 
 extern GtkWidget *StatsPixmapButton(GdkColormap *pcmap, char **xpm,
-				void (*fn)())
+				void (*fn)(GtkWidget*, char*))
 {
     GdkPixmap *ppm;
     GdkBitmap *pbm;

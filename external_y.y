@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_y.y,v 1.14 2007/10/24 15:18:34 c_anthon Exp $
+ * $Id: external_y.y,v 1.15 2008/01/13 08:07:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -29,7 +29,7 @@
 
 #include "external.h"
 
-extern int extlex();
+extern int extlex(void);
 extern int exterror(const char *s);
 
 extcmd ec; 

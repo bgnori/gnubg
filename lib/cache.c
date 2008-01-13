@@ -15,7 +15,7 @@
  * cache.c
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.c,v 1.18 2008/01/05 19:51:32 Superfly_Jon Exp $
+ * $Id: cache.c,v 1.19 2008/01/13 08:07:53 c_anthon Exp $
  */
 
 #include "config.h"
@@ -38,7 +38,7 @@
 
 #define cache_unlock(pc, l) MT_SafeDec(&pc->locks[l])
 
-void WaitForLock(evalCache* pc, unsigned long lock)
+static void WaitForLock(evalCache* pc, unsigned long lock)
 {
 	do
 	{

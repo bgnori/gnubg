@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.358 2008/01/01 19:44:12 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.359 2008/01/13 08:07:51 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -330,7 +330,7 @@ extern int fResetSync;
 #endif
 extern matchinfo mi;
 extern matchstate ms;
-extern ConstTanBoard msBoard();
+extern ConstTanBoard msBoard(void);
 extern movefilter aamfAnalysis[MAX_FILTER_PLIES][MAX_FILTER_PLIES];
 extern movefilter aamfEval[MAX_FILTER_PLIES][MAX_FILTER_PLIES];
 extern player ap[2];

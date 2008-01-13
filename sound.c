@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.64 2008/01/13 00:09:24 c_anthon Exp $
+ * $Id: sound.c,v 1.65 2008/01/13 08:07:53 c_anthon Exp $
  */
 
 #include "config.h"
@@ -258,7 +258,7 @@ extern char *sound_set_command(const char *sz)
 	return sound_cmd;
 }
 
-extern void SetExitSoundOff()
+extern void SetExitSoundOff(void)
 {
 	sound_file[SOUND_EXIT] = g_strdup("");
 }
