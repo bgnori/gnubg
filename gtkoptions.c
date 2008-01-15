@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.61 2008/01/15 18:08:51 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.62 2008/01/15 22:22:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1440,8 +1440,8 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
   CHECKUPDATE(pow->pwGameClockwise,fClockwise, "set clockwise %s")
 
   for ( i = 0; i < NUM_VARIATIONS; ++i ) 
-    if( gtk_toggle_button_get_active( 
-              GTK_TOGGLE_BUTTON( pow->apwVariations[ i ] ) ) && bgvDefault != i ) {
+    if( gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON( pow->apwVariations[ i ] ) ) && bgvDefault != (int)i )
+	{
       sprintf( sz, "set variation %s", aszVariationCommands[ i ] );
       UserCommand( sz );
       break;
@@ -1716,7 +1716,7 @@ OptionsSet( optionswidget *pow) {
 
   for ( i = 0; i < NUM_VARIATIONS; ++i )
     gtk_toggle_button_set_active ( GTK_TOGGLE_BUTTON( pow->apwVariations[ i ] ),
-                                   bgvDefault == i );
+                                   bgvDefault == (int)i );
 
   if (rngCurrent == RNG_MANUAL)
      gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pow->pwDiceManual ),

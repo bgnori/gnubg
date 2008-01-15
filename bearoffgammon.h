@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffgammon.h,v 1.9 2007/12/29 14:32:28 Superfly_Jon Exp $
+ * $Id: bearoffgammon.h,v 1.10 2008/01/15 22:22:44 Superfly_Jon Exp $
  */
 
 #if !defined( BEAROFFGAMMON_H )
@@ -33,10 +33,9 @@ struct GammonProbs {
 };
 
 extern struct GammonProbs*
-getBearoffGammonProbs(const int b[6]);
+getBearoffGammonProbs(const unsigned int b[6]);
 
-extern long*
-getRaceBGprobs(int board[6]);
+extern long *getRaceBGprobs(const unsigned int board[6]);
 
 #define RBG_NPROBS 5
 

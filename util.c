@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.c,v 1.11 2007/12/19 09:34:24 c_anthon Exp $
+ * $Id: util.c,v 1.12 2008/01/15 22:22:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -24,7 +24,6 @@
 #include <glib.h>
 #include <stdlib.h>
 #include <string.h>
-#include <errno.h>
 #if WIN32
 #include <windows.h>
 

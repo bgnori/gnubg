@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.335 2008/01/15 18:08:50 c_anthon Exp $
+ * $Id: eval.c,v 1.336 2008/01/15 22:22:44 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -625,12 +625,12 @@ EvalShutdown ( void ) {
 
   /* close bearoff databases */
 
-  BearoffClose( &pbc1 );
-  BearoffClose( &pbc2 );
-  BearoffClose( &pbcOS );
-  BearoffClose( &pbcTS );
+  BearoffClose( pbc1 );
+  BearoffClose( pbc2 );
+  BearoffClose( pbcOS );
+  BearoffClose( pbcTS );
   for ( i = 0; i < 3; ++i )
-    BearoffClose( &apbcHyper[ i ] );
+    BearoffClose( apbcHyper[ i ] );
 
   /* destroy neural nets */
 
@@ -709,7 +709,7 @@ int (*NeuralNetEvaluateFn)( const neuralnet *pnn, float arInput[],
 			      float arOutput[], NNState *pnState) = 0;
 
 extern void EvalInitialise(char *szWeights, char *szWeightsBinary,
-			   int fNoBearoff, void (*pfProgress) (int))
+			   int fNoBearoff, void (*pfProgress) (unsigned int))
 {
 	FILE *pfWeights = NULL;
 	int i, fReadWeights = FALSE;

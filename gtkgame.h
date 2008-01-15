@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.124 2008/01/13 08:07:52 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.125 2008/01/15 22:22:45 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -51,7 +51,7 @@ extern GtkWidget *hpaned;
 extern GtkWidget *pom;
 extern moverecord *pmrCurAnn;
 
-extern char *ReturnHits(int anBoard[2][25]);
+extern char *ReturnHits(TanBoard anBoard);
 extern gboolean ShowGameWindow(void);
 extern gint MoveListClearSelection(GtkWidget * pw, GdkEventSelection * pes,
 				   hintdata * phd);

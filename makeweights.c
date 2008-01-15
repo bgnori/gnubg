@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.18 2007/12/29 14:32:31 Superfly_Jon Exp $
+ * $Id: makeweights.c,v 1.19 2008/01/15 22:22:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -24,7 +24,6 @@
 #include <neuralnet.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <glib/gi18n.h>
 #include <locale.h>
 #include "eval.h" /* for WEIGHTS_VERSION */
@@ -70,9 +69,13 @@ extern int main( int argc, char *argv[] )
 		}
     }
 
-    setlocale (LC_ALL, "C");
-    bindtextdomain (PACKAGE, LOCALEDIR);
-    textdomain (PACKAGE);
+    if (!setlocale (LC_ALL, "C") || 
+		!bindtextdomain (PACKAGE, LOCALEDIR) || 
+		!textdomain (PACKAGE))
+	{
+		perror ("seting locale failed");
+		exit (1);
+	}
 
     /* generate weights */
     

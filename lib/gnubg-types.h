@@ -16,13 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg-types.h,v 1.3 2007/12/29 14:32:32 Superfly_Jon Exp $
+ * $Id: gnubg-types.h,v 1.4 2008/01/15 22:22:46 Superfly_Jon Exp $
  */
 
 #ifndef _GNUBG_TYPES_H_
 #define _GNUBG_TYPES_H_
 
-typedef int TanBoard[2][25];
-typedef const int (*ConstTanBoard)[25];
+typedef unsigned int TanBoard[2][25];
+typedef const unsigned int (*ConstTanBoard)[25];
 
 #endif

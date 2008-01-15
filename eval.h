@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.150 2007/12/29 14:32:29 Superfly_Jon Exp $
+ * $Id: eval.h,v 1.151 2008/01/15 22:22:44 Superfly_Jon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -346,7 +346,7 @@ typedef enum  {
      ( ( (pci)->fCubeOwner == (pci)->fMove ) ? arEquity[ 0 ] : arEquity[ 3 ] ) )
 
 extern void EvalInitialise( char *szWeights, char *szWeightsBinary,
-		int fNoBearoff, void (*pfProgress)( int ) );
+		int fNoBearoff, void (*pfProgress)( unsigned int ) );
 
 extern int EvalShutdown( void );
 

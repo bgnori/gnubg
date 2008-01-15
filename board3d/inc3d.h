@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.37 2007/12/18 21:48:06 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.38 2008/01/15 22:22:46 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -62,7 +62,6 @@ extern GdkGLConfig *getglconfigSingle(void);	/* Odd function needs to be defined
 
 /* float versions (to quiet compiler warnings) */
 #define powi(arg1, arg2) (int)pow((double)(arg1), (double)(arg2))
-#define fabsf(arg) (float)fabs((double)(arg))
 
 /* Clipping planes */
 #define zNear .1

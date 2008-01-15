@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.186 2008/01/15 19:48:20 c_anthon Exp $
+ * $Id: rollout.c,v 1.187 2008/01/15 22:22:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -317,7 +317,7 @@ aarOutput array(s) contain results
 */
 
 static int
-BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
+BasicCubefulRollout ( unsigned int aanBoard[][ 2 ][ 25 ],
                       float aarOutput[][ NUM_ROLLOUT_OUTPUTS ], 
                       int iTurn, int iGame,
                       const cubeinfo aci[], int afCubeDecTop[], unsigned int cci,
@@ -341,7 +341,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
   float arDouble[ NUM_CUBEFUL_OUTPUTS ];
   float aar[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
 
-  int aiBar[ 2 ];
+  unsigned int aiBar[ 2 ];
 
   int afClosedOut[ 2 ] = { FALSE, FALSE };
   int afHit[ 2 ] = { FALSE, FALSE };
@@ -364,7 +364,7 @@ BasicCubefulRollout ( int aanBoard[][ 2 ][ 25 ],
 
   evalcontext aecVarRedn[ 2 ];
   float arMean[ NUM_ROLLOUT_OUTPUTS ];
-  int aaanBoard[ 6 ][ 6 ][ 2 ][ 25 ];
+  unsigned int aaanBoard[ 6 ][ 6 ][ 2 ][ 25 ];
   int aanMoves[ 6 ][ 6 ][ 8 ];
   float aaar[ 6 ][ 6 ][ NUM_ROLLOUT_OUTPUTS ];
 
@@ -1566,7 +1566,7 @@ RolloutGeneral( ConstTanBoard *apBoard,
                 int fInvert, int fCubeRollout,
                 rolloutprogressfunc *pfProgress, void *pUserData ) {   
   
-  int (* aanBoardEval )[ 2 ][ 25 ] = 
+  unsigned int (* aanBoardEval )[ 2 ][ 25 ] = 
     g_alloca( alternatives * 50 * sizeof( int ) );
   float (* aar )[ NUM_ROLLOUT_OUTPUTS ] = 
 	g_alloca( alternatives * NUM_ROLLOUT_OUTPUTS * sizeof ( float ) );

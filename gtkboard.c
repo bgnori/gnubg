@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.230 2008/01/15 18:08:50 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.231 2008/01/15 22:22:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -170,14 +170,14 @@ static void write_points ( gint points[ 28 ], const gint turn, const gint
     points[ i ] = 0;
 
   /* Opponent on bar */
-  points[ 0 ] = -an[ 0 ][ 24 ];
+  points[ 0 ] = -(int)an[ 0 ][ 24 ];
 
   /* Board */
   for( i = 0; i < 24; i++ ) {
     if ( an[ 1 ][ i ] )
       points[ i + 1 ] = an[ 1 ][ i ];
     if ( an[ 0 ][ i ] )
-      points[ 24 - i ] = -an[ 0 ][ i ];
+      points[ 24 - i ] = -(int)an[ 0 ][ i ];
   }
 
   /* Player on bar */
