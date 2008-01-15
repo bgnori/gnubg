@@ -16,12 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.360 2008/01/15 18:08:50 c_anthon Exp $
+ * $Id: backgammon.h,v 1.361 2008/01/15 19:48:20 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
 #define _BACKGAMMON_H_
 
+#include <sys/types.h>
 #include "gnubg-types.h"
 #include <stdarg.h>
 #include "analysis.h"

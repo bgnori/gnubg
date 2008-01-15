@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.40 2008/01/01 19:44:13 Superfly_Jon Exp $
+ * $Id: relational.c,v 1.41 2008/01/15 19:48:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -670,7 +670,7 @@ extern int RunQuery(RowSet* pRow, char *sz)
 extern void CommandRelationalSelect(char *sz)
 {
 #if !USE_GTK
-	int i, j;
+	uint i, j;
 #endif
 	RowSet r;
 
@@ -697,7 +697,7 @@ extern void CommandRelationalSelect(char *sz)
 		if (i == 1)
 		{	/* Underline headings */
 			char* line, *p;
-			int k;
+			uint k;
 			int totalwidth = 0;
 			for (k = 0; k < r.cols; k++)
 			{
