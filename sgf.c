@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.116 2008/01/01 19:44:13 Superfly_Jon Exp $
+ * $Id: sgf.c,v 1.117 2008/01/15 18:08:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1856,7 +1856,7 @@ static void WriteMoveAnalysis(FILE * pf, int fPlayer, movelist * pml,
 			      int iMove)
 {
 
-    int i;
+    uint i;
     gchar buffer[G_ASCII_DTOSTR_BUF_SIZE];
 
     fprintf(pf, "A[%d]", iMove);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.131 2007/12/29 14:32:30 Superfly_Jon Exp $
+ * $Id: import.c,v 1.132 2008/01/15 18:08:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -480,7 +480,7 @@ ExpandMatMove ( const TanBoard anBoard, int anMove[ 8 ], int *pc,
 
   if ( anDice[ 0 ] != anDice[ 1 ] ) {
     
-    if ( ( anMove[ 0 ] - anMove[ 1 ] ) == ( anDice[ 0 ] + anDice[ 1 ] ) ) {
+    if ( (uint)( anMove[ 0 ] - anMove[ 1 ] ) == ( anDice[ 0 ] + anDice[ 1 ] ) ) {
 
       int an[ 8 ];
 
@@ -2030,14 +2030,14 @@ GetValue( const char *sz, char *szValue ) {
 }
 
 static void
-ParseSGGDate ( const char *sz, int *pnDay, int *pnMonth, int *pnYear ) {
+ParseSGGDate ( const char *sz, uint *pnDay, uint *pnMonth, uint *pnYear ) {
 
   static char *aszMonths[] = {
     "January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December" };
   int i;
   char szMonth[ 80 ];
-  int nDay, nYear;
+  uint nDay, nYear;
   int n;
   
 

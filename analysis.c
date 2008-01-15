@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.186 2008/01/04 18:40:52 Superfly_Jon Exp $
+ * $Id: analysis.c,v 1.187 2008/01/15 18:08:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1992,7 +1992,7 @@ static int MoveAnalysed(moverecord * pmr, matchstate * pms, listOLD * plGame,
 		ApplyMove(anBoardMove, pmr->n.anMove, FALSE);
 		PositionKey((ConstTanBoard)anBoardMove, auch);
 
-		if (pmr->esChequer.et == EVAL_NONE && pmr->n.iMove != -1)
+		if (pmr->esChequer.et == EVAL_NONE && pmr->n.iMove != UINT_MAX)
 			return FALSE;
 
 		break;

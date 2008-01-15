@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.24 2008/01/13 00:09:24 c_anthon Exp $
+ * $Id: makehyper.c,v 1.25 2008/01/15 18:08:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -131,7 +131,8 @@ HyperOver ( const TanBoard anBoard, float ar[ NUM_OUTPUTS ], const int nC ) {
 static void
 StartGuessHyper ( hyperequity ahe[], const int nC, bearoffcontext *pbc ) {
 
-  int i, j, k;
+  int i, j;
+  uint k;
   int nPos = Combination( 25 + nC, nC );
   TanBoard anBoard;
 
@@ -314,7 +315,8 @@ HyperEquity ( const int nUs, const int nThem,
   TanBoard anBoard;
   TanBoard anBoardTemp;
   movelist ml;
-  int i, j, k;
+  int i, j;
+  uint k;
   int nUsNew, nThemNew;
   hyperequity heBest;
   hyperequity heOld;

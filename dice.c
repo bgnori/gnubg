@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.60 2007/12/18 21:48:02 Superfly_Jon Exp $
+ * $Id: dice.c,v 1.61 2008/01/15 18:08:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -568,7 +568,7 @@ static void InitRNGSeedMP( mpz_t n, rng rng, void *p ) {
     case RNG_ISAAC: {
 	ub4 *achState;
 	size_t cb;
-	int i;
+	uint i;
 
 	achState = mpz_export( NULL, &cb, -1, sizeof( ub4 ), 0, 0, n );
 	

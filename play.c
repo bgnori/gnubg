@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.302 2008/01/07 20:16:04 Superfly_Jon Exp $
+ * $Id: play.c,v 1.303 2008/01/15 18:08:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -118,7 +118,7 @@ NewMoveRecord( void ) {
   /* movenormal */
   pmr->n.stMove = SKILL_NONE;
   pmr->n.anMove[ 0 ] = pmr->n.anMove[ 1 ] = -1;
-  pmr->n.iMove = -1;
+  pmr->n.iMove = UINT_MAX;
 
   /* moveresign */
   pmr->r.esResign.et = EVAL_NONE;
@@ -4147,7 +4147,7 @@ getCurrentMoveRecord ( int *pfHistory ) {
       mrHint.rLuck = (float)ERR_VAL;
       mrHint.n.stMove = SKILL_NONE;
 
-      mrHint.n.iMove = -1;
+      mrHint.n.iMove = UINT_MAX;
       mrHint.n.anMove[ 0 ] = -1;
 
 #if USE_GTK

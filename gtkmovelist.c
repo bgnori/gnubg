@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.20 2007/12/29 14:32:30 Superfly_Jon Exp $
+ * $Id: gtkmovelist.c,v 1.21 2008/01/15 18:08:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -238,7 +238,7 @@ if (!psHighlight)
 
 	if (showWLTree)
 	{
-		gtk_list_store_set(store, &iter, 1, rankKnown ? i + 1 : -1, -1);
+		gtk_list_store_set(store, &iter, 1, rankKnown ? (int)i + 1 : -1, -1);
 		goto skipoldcode;
 	}
 	else
