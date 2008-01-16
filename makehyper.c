@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.25 2008/01/15 18:08:51 c_anthon Exp $
+ * $Id: makehyper.c,v 1.26 2008/01/16 16:16:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -84,7 +84,7 @@ int aiNorm[ 10 ];
 
 
 static hyperclass
-ClassifyHyper ( int anBoard[ 2 ][ 25 ] ) {
+ClassifyHyper ( TanBoard anBoard ) {
 
   int i;
   int nOppBack, nBack;

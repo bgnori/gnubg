@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.51 2008/01/15 22:22:44 Superfly_Jon Exp $
+ * $Id: export.c,v 1.52 2008/01/16 16:16:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -795,10 +795,9 @@ extern void CommandExportPositionJF (char *sz)
   /* Board */
   for (i = 24; i > 0; i--)
     {
-      WriteInt16 (fp, anBoard[0][24 - i] ?
-		  -(int)anBoard[0][24 - i] + 20 : anBoard[1][i - 1] + 20);
-      WriteInt16 (fp, anBoard[0][24 - i] ?
-		  -(int)anBoard[0][24 - i] + 20 : anBoard[1][i - 1] + 20);
+		int point = (int)anBoard[0][24 - i];
+		WriteInt16 (fp, (point > 0 ? -point : (int)anBoard[1][i - 1]) + 20);
+		WriteInt16 (fp, (point > 0 ? -point : (int)anBoard[1][i - 1]) + 20);
     }
   /* Player on bar */
   WriteInt16 (fp, -(int)anBoard[0][24] + 20);

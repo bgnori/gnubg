@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.187 2008/01/15 22:22:45 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.188 2008/01/16 16:16:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -85,9 +85,10 @@ log_move (const int *anMove, int side, int die0, int die1) {
      
 }
 
-static void board_to_sgf (const int anBoard[25], int direction) {
-  int	i, j;
-  int   c = direction > 0 ? 'a' : 'x';
+static void board_to_sgf (const unsigned int anBoard[25], int direction)
+{
+  unsigned int i, j;
+  int c = direction > 0 ? 'a' : 'x';
 
   for (i = 0; i < 24; ++i) {
     for (j = 0; j < anBoard[i]; ++j)

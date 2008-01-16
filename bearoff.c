@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.61 2008/01/15 22:22:44 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.62 2008/01/16 16:16:44 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -36,8 +36,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
+#include <errno.h>
 #if HAVE_SYS_STAT_H
 #include <sys/stat.h>
+#endif
+#if USE_MULTITHREAD
+#include "multithread.h"
 #endif
 
 #if WIN32
@@ -1301,14 +1305,14 @@ extern bearoffcontext *BearoffInit(const char *szFilename, const int bo, void (*
       
       l = MakeInt((unsigned char)sz[8], (unsigned char)sz[9], (unsigned char)sz[10], (unsigned char)sz[11]);
       m = MakeInt((unsigned char)sz[12], (unsigned char)sz[13], (unsigned char)sz[14], (unsigned char)sz[15]);
-      printf ( "nBottom %ld\n", l );
-      printf ( "nTop %ld\n", m );
+      printf ( "nBottom %d\n", l );
+      printf ( "nTop %d\n", m );
 
       if ( m != l ) {
         fprintf ( stderr, _("GNU Backgammon can only read ExactBearoff "
                             "databases with an\n"
                             "equal number of chequers on both sides\n"
-                            "(read: botton %ld, top %ld)\n"),
+                            "(read: botton %d, top %d)\n"),
                   l, m );
       }
 

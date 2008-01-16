@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.60 2008/01/15 22:22:45 Superfly_Jon Exp $
+ * $Id: makebearoff.c,v 1.61 2008/01/16 16:16:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -417,7 +417,7 @@ static void BearOff( int nId, uint nPoints,
     unsigned int usGammonBest;
     unsigned short int ausGammonBest[ 32 ];
     int iGammonBest;
-    int nBack;
+    unsigned int nBack;
 
     /* get board for given position */
 
@@ -826,7 +826,7 @@ NDBearoff ( const int iPos, const uint nPoints, float ar[ 4 ], xhash *ph,
     for ( ii = 24; ii >= 0 && ! anBoard[ 1 ][ ii ]; --ii )
       ;
 
-    if ( ii < pbc->nPoints ) {
+    if ( ii < (int)pbc->nPoints ) {
       unsigned int nPosID = PositionBearoff ( anBoard[ 1 ], 
                                               pbc->nPoints, pbc->nChequers );
       BearoffDist ( pbc, nPosID, NULL, NULL, ar, NULL, NULL );
@@ -1446,9 +1446,9 @@ generate_ts ( const int nTSP, const int nTSC,
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.60 $\n" );
+  printf ( "makebearoff $Revision: 1.61 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.60 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.61 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1580,7 +1580,7 @@ extern int main( int argc, char **argv )
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.60 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.61 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1708,7 +1708,7 @@ extern int main( int argc, char **argv )
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.60 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.61 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"

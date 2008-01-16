@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.25 2008/01/15 22:22:45 Superfly_Jon Exp $
+ * $Id: osr.c,v 1.26 2008/01/16 16:16:45 Superfly_Jon Exp $
  */
 
 #include <stdio.h>
@@ -106,22 +106,19 @@ chequersout ( unsigned int anBoard[ 25 ] ) {
 
 }
 
-static int
-checkboard ( unsigned int anBoard[ 25 ] ) {
-
-  int i;
+static int checkboard ( unsigned int anBoard[ 25 ] )
+{
+  int i, c = 0;
 
   for ( i = 0; i < 25; ++i )
-    if ( anBoard[ i ] < 0 )
-      return 0;
+	  c += anBoard[ i ];
 
-  return 1;
+  return (c == 15);
 
 }
 
-static void
-FindBestMoveOSR2 ( unsigned int anBoard[ 25 ], const int anDice[ 2 ], int *pnOut ) {
-
+static void FindBestMoveOSR2 ( unsigned int anBoard[ 25 ], const int anDice[ 2 ], int *pnOut )
+{
   int ifar, inear, iboth;
   int iused = 0;
   int i, j, lc;

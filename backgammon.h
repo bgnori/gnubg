@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.362 2008/01/15 22:22:44 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.363 2008/01/16 16:16:44 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_

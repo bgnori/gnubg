@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.75 2008/01/07 20:16:03 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.76 2008/01/16 16:16:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -70,7 +70,7 @@ Board1ToPy( int anBoard [ 25 ] ) {
 
 
 static int
-PyToBoard1( PyObject* p, int anBoard[ 25 ] )
+PyToBoard1( PyObject* p, unsigned int anBoard[ 25 ] )
 {
   if( PySequence_Check(p) && PySequence_Size(p) == 25 ) {
     int j;
@@ -951,7 +951,7 @@ PythonPositionBearoff( PyObject* self UNUSED_PARAM, PyObject *args )
   PyObject *pyBoard = NULL;
   int nChequers = 15;
   int nPoints = 6;
-  int anBoard[ 25 ];
+  unsigned int anBoard[ 25 ];
 
   memcpy( anBoard, msBoard(), sizeof(TanBoard) );
 
@@ -965,10 +965,9 @@ PythonPositionBearoff( PyObject* self UNUSED_PARAM, PyObject *args )
   return PyInt_FromLong( PositionBearoff( anBoard, nPoints, nChequers ) );
 }
 
-static PyObject *
-PythonPositionFromBearoff( PyObject* self UNUSED_PARAM, PyObject *args ) {
-
-  int anBoard[ 25 ];
+static PyObject *PythonPositionFromBearoff( PyObject* self UNUSED_PARAM, PyObject *args )
+{
+  unsigned int anBoard[ 25 ];
   int iPos = 0;
   int nChequers = 15;
   int nPoints = 6;
