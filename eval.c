@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.337 2008/01/16 16:16:45 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.338 2008/01/16 22:49:22 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -510,7 +510,7 @@ static void ComputeTable0( void )
   }
 }
 
-static int Escapes( const int anBoard[ 25 ], int n ) {
+static int Escapes( const unsigned int anBoard[ 25 ], int n ) {
     
     int i, af = 0;
     
@@ -549,7 +549,7 @@ static void ComputeTable1( void )
   }
 }
 
-static int Escapes1( const int anBoard[ 25 ], int n ) {
+static int Escapes1( const unsigned int anBoard[ 25 ], int n ) {
     
     int i, af = 0;
     

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.132 2008/01/15 18:08:51 c_anthon Exp $
+ * $Id: import.c,v 1.133 2008/01/16 22:49:22 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2045,7 +2045,7 @@ ParseSGGDate ( const char *sz, uint *pnDay, uint *pnMonth, uint *pnYear ) {
   *pnMonth = 1;
   *pnYear = 1900;
 
-  if ( ( n = sscanf ( sz, "%*s %s %d, %d", szMonth, &nDay, &nYear ) ) != 3 ) 
+  if ( ( n = sscanf ( sz, "%*s %s %ud, %ud", szMonth, &nDay, &nYear ) ) != 3 ) 
     return;
 
   *pnDay = nDay;
@@ -2372,7 +2372,7 @@ ParseTMGOptions ( const char *sz, matchinfo *pmi, int *pfCrawfordRule,
 
   case 6: /* Startdate */
 
-    if ( ( sscanf ( sz, "Startdate: %d-%d-%d", 
+    if ( ( sscanf ( sz, "Startdate: %ud-%ud-%ud", 
                     &pmi->nYear, &pmi->nMonth, &pmi->nDay ) ) != 3 ) 
       pmi->nYear = pmi->nMonth = pmi->nDay = 0;
     return 0;
