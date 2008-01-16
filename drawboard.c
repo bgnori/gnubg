@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.47 2008/01/16 16:16:45 Superfly_Jon Exp $
+ * $Id: drawboard.c,v 1.48 2008/01/16 21:02:42 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -961,7 +961,7 @@ extern char *FIBSBoard( char *pch, TanBoard anBoard, int fRoll,
     for( i = 0; i < 24; i++ )
 	{
 		int point = (int)anBoard[ 0 ][ 23 - i ];
-	sprintf( strchr( sz, 0 ), "%d:", (point > 0) ? point
+	sprintf( strchr( sz, 0 ), "%d:", (point > 0) ?
 		 -point : (int)anBoard[ 1 ][ i ] );
 	}
 
