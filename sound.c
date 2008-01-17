@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.65 2008/01/13 08:07:53 c_anthon Exp $
+ * $Id: sound.c,v 1.66 2008/01/17 22:28:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -208,7 +208,7 @@ extern char *GetDefaultSoundFile(gnubgsound sound)
   "sounds/fanfare.wav"
   };
 
-	return g_build_filename(PKGDATADIR, aszDefaultSound[sound], NULL);
+	return BuildFilename(aszDefaultSound[sound]);
 }
 
 extern char *GetSoundFile(gnubgsound sound)
@@ -220,7 +220,7 @@ extern char *GetSoundFile(gnubgsound sound)
 	if (g_path_is_absolute(sound_file[sound]))
 		return g_strdup(sound_file[sound]);
 
-	return g_build_filename(PKGDATADIR, sound_file[sound], NULL);
+	return BuildFilename(sound_file[sound]);
 }
 
 extern void SetSoundFile(gnubgsound sound, const char *file)

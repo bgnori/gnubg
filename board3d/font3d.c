@@ -18,11 +18,12 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.17 2007/12/12 23:08:21 Superfly_Jon Exp $
+* $Id: font3d.c,v 1.18 2008/01/17 22:28:05 Superfly_Jon Exp $
 */
 
 #include "config.h"
 #include "inc3d.h"
+#include "util.h"
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -91,7 +92,7 @@ int BuildFont3d(BoardData3d* bd3d)
 
 	free(bd3d->numberFont);
 	bd3d->numberFont = (OGLFont*)malloc(sizeof(OGLFont));
-	file = g_build_filename(PKGDATADIR, FONT_VERA, NULL);
+	file = BuildFilename(FONT_VERA);
 	if (!CreateOGLFont(ftLib, bd3d->numberFont, file, FONT_PITCH, FONT_SIZE, FONT_HEIGHT_RATIO))
 	{
 		g_print("Failed to create font %s\n", file);
@@ -101,7 +102,7 @@ int BuildFont3d(BoardData3d* bd3d)
 
 	free(bd3d->cubeFont);
 	bd3d->cubeFont = (OGLFont*)malloc(sizeof(OGLFont));
-	file = g_build_filename(PKGDATADIR, FONT_VERA_SERIF_BOLD, NULL);
+	file = BuildFilename(FONT_VERA_SERIF_BOLD);
 	if (!CreateOGLFont(ftLib, bd3d->cubeFont, file, CUBE_FONT_PITCH, CUBE_FONT_SIZE, CUBE_FONT_HEIGHT_RATIO))
 	{
 		g_print("Failed to create font %s\n", file);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.h,v 1.6 2007/12/18 21:48:06 Superfly_Jon Exp $
+ * $Id: util.h,v 1.7 2008/01/17 22:28:05 Superfly_Jon Exp $
  */
 
 #ifndef _UTIL_H_
@@ -25,7 +25,15 @@
 #include "stdio.h"
 
 #ifdef WIN32
-extern char * getInstallDir( void );
+#define BuildFilename(file) g_build_filename(getInstallDir(), file, NULL)
+#define BuildFilename2(file1, file2) g_build_filename(getInstallDir(), file1, file2, NULL)
+#else
+#define BuildFilename(file) g_build_filename(PKGDATADIR, file, NULL)
+#define BuildFilename2(file1, file2) g_build_filename(PKGDATADIR, file1, file2, NULL)
+#endif
+
+#ifdef WIN32
+extern char *getInstallDir( void );
 extern void PrintSystemError(const char* message);
 #endif
 

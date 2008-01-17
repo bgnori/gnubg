@@ -16,12 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.19 2008/01/15 22:22:45 Superfly_Jon Exp $
+ * $Id: makeweights.c,v 1.20 2008/01/17 22:28:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
 
-#include <neuralnet.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <glib/gi18n.h>

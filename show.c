@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.239 2008/01/07 20:16:04 Superfly_Jon Exp $
+ * $Id: show.c,v 1.240 2008/01/17 22:28:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -30,7 +30,6 @@
 #include <glib.h>
 #include <ctype.h>
 #include <math.h>
-
 
 #include "backgammon.h"
 #include "drawboard.h"
@@ -46,6 +45,7 @@
 #include "positionid.h"
 #include "boarddim.h"
 #include "credits.h"
+#include "util.h"
 
 #if USE_GTK
 #include "gtkboard.h"
@@ -2337,14 +2337,14 @@ CommandShowMatchResult( char *sz ) {
 
 extern void CommandShowManualWeb (char *sz)
 {
-	char *path = g_build_filename(PKGDATADIR, "doc", "gnubg.html", NULL);
+	char *path = BuildFilename2("doc", "gnubg.html");
 	OpenURL (path);
 	g_free(path);
 }
 
 extern void CommandShowManualAbout (char *sz)
 {
-	char *path = g_build_filename(PKGDATADIR, "doc", "allabout.html", NULL);
+	char *path = BuildFilename2("doc", "allabout.html");
 	OpenURL (path);
 	g_free(path);
 }

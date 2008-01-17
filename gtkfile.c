@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.37 2007/12/12 23:08:16 Superfly_Jon Exp $
+ * $Id: gtkfile.c,v 1.38 2008/01/17 22:28:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -39,6 +39,7 @@
 #include "gtkgame.h"
 #include "gtkwindows.h"
 #include "file.h"
+#include "util.h"
 
 static void FilterAdd (const char *fn, const char *pt, GtkFileChooser * fc)
 {
@@ -88,7 +89,7 @@ char *programdir, *pc, *tmp;
     gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (fc), name);
 
 #if WIN32
-  programdir = g_strdup(PKGDATADIR);
+  programdir = g_strdup(getInstallDir());
   if ((pc = strrchr(programdir, G_DIR_SEPARATOR)) != NULL) {
           *pc = '\0';
 

@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.71 2007/12/18 21:48:04 Superfly_Jon Exp $
+* $Id: matchequity.c,v 1.72 2008/01/17 22:28:05 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -35,6 +35,7 @@
 
 #include "list.h"
 #include "mec.h"
+#include "util.h"
 
 #if HAVE_LIBXML2
 #include <libxml/tree.h>
@@ -1341,11 +1342,10 @@ static int readMET ( metdata *pmd, const char *szFileName ) {
 	  doc = xmlParseFile( szFileName );
   else
   {
-	  char *tmp = g_build_filename(PKGDATADIR, szFileName, NULL);
+	  char *tmp = BuildFilename(szFileName);
 	  doc = xmlParseFile( tmp );
 	  g_free(tmp);
   }
-
 
   /* check root */
 
@@ -1373,7 +1373,7 @@ static int readMET ( metdata *pmd, const char *szFileName ) {
 	  /* load catalog */
 
 	  xmlInitializeCatalog();
-	  pch = g_build_filename(PKGDATADIR, "met", "catalog.xml", NULL);
+	  pch = BuildFilename2("met", "catalog.xml");
 	  if (xmlLoadCatalog(pch))
 	  {
 		  g_print ( _("Error reading %s. File not found or parse error."), pch );

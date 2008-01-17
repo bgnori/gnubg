@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.363 2008/01/16 16:16:44 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.364 2008/01/17 22:28:03 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -499,12 +499,6 @@ extern void UpdateStoredCube(float aarOutput[2][NUM_ROLLOUT_OUTPUTS],
 			     const matchstate * pms);
 extern void UpdateStoredMoves(const movelist * pml,
 			      const matchstate * pms);
-
-#ifdef WIN32
-extern char *getInstallDir(void);
-#undef PKGDATADIR
-#define PKGDATADIR getInstallDir()
-#endif
 
 extern void CommandAccept(char *);
 extern void CommandAgree(char *);

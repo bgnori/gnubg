@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.151 2007/12/12 23:08:17 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.152 2008/01/17 22:28:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -47,6 +47,7 @@
 #include "renderprefs.h"
 #include "boarddim.h"
 #include "gtkwindows.h"
+#include "util.h"
 
 #if USE_BOARD3D
 #include "fun3d.h"
@@ -136,7 +137,7 @@ read_board_designs ( void ) {
   GList *plUser, *plSystem, *plFinal;
   gchar *sz;
 
-  sz = g_build_filename(PKGDATADIR, "boards.xml", NULL);
+  sz = BuildFilename("boards.xml");
   plSystem = ParseBoardDesigns ( sz, FALSE );
   g_free ( sz );
 
@@ -1956,7 +1957,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.151 2007/12/12 23:08:17 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.152 2008/01/17 22:28:05 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"

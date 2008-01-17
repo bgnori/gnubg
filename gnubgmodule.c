@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.76 2008/01/16 16:16:45 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.77 2008/01/17 22:28:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -34,6 +34,7 @@
 #include "positionid.h"
 #include "analysis.h"
 #include "md5.h"
+#include "util.h"
 
 #define UNUSED_PARAM __attribute__ ((unused))
 
@@ -57,7 +58,7 @@ BoardToPy( const TanBoard anBoard )
 }
 
 static PyObject *
-Board1ToPy( int anBoard [ 25 ] ) {
+Board1ToPy( unsigned int anBoard [ 25 ] ) {
   unsigned int k;
   PyObject* b = PyTuple_New(25);
   
