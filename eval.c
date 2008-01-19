@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.339 2008/01/17 22:28:03 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.340 2008/01/19 20:46:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2084,7 +2084,7 @@ ClassifyPosition( const TanBoard anBoard, const bgvariation bgv )
           return CLASS_CRASHED;
         } else {
           if( board[0] > 1 ) {
-            if( (tot - board[0]) <= N ) {
+            if( tot <= (N + board[0]) ) {
               return CLASS_CRASHED;
             } else {
               if( board[1] > 1 && (1 + tot - (board[0] + board[1])) <= N ) {
@@ -2092,7 +2092,7 @@ ClassifyPosition( const TanBoard anBoard, const bgvariation bgv )
               }
             }
           } else {
-            if( ((int)tot - (board[1] - 1)) <= (int)N ) {
+            if( tot <= (N + (board[1] - 1))) {
               return CLASS_CRASHED;
             }
           }
