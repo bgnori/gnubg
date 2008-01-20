@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.231 2008/01/15 22:22:45 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.232 2008/01/20 23:38:08 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2525,7 +2525,7 @@ static gint board_set( Board *board, const gchar *board_text, const gint
     gint failed = 0;
     
     int *match_settings[ 3 ]; 
-    uint old_dice[ 2 ];
+    unsigned int old_dice[ 2 ];
 
     match_settings[ 0 ] = &bd->match_to;
     match_settings[ 1 ] = &bd->score;

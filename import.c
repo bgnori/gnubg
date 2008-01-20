@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.133 2008/01/16 22:49:22 Superfly_Jon Exp $
+ * $Id: import.c,v 1.134 2008/01/20 23:38:08 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2030,14 +2030,14 @@ GetValue( const char *sz, char *szValue ) {
 }
 
 static void
-ParseSGGDate ( const char *sz, uint *pnDay, uint *pnMonth, uint *pnYear ) {
+ParseSGGDate ( const char *sz, unsigned int *pnDay, unsigned int *pnMonth, unsigned int *pnYear ) {
 
   static char *aszMonths[] = {
     "January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December" };
   int i;
   char szMonth[ 80 ];
-  uint nDay, nYear;
+  unsigned int nDay, nYear;
   int n;
   
 

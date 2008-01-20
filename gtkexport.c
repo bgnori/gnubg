@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.36 2008/01/15 18:08:51 c_anthon Exp $
+ * $Id: gtkexport.c,v 1.37 2008/01/20 23:38:08 c_anthon Exp $
  */
 
 #include "config.h"
@@ -111,7 +111,7 @@ typedef struct _exportwidget {
 static void
 ExportGetValues ( exportwidget *pew, exportsetup *pexs ) {
 
-  uint i;
+  unsigned int i;
 
   /* include */
   
@@ -356,7 +356,7 @@ static void
 ExportSet ( exportwidget *pew ) {
 
   exportsetup *pexs = pew->pexs;
-  uint i;
+  unsigned int i;
 
   /* include */
 
@@ -467,7 +467,7 @@ GTKShowExport ( exportsetup *pexs ) {
   
   GtkWidget *pw;
 
-  uint i;
+  unsigned int i;
 
   exportwidget *pew;
 

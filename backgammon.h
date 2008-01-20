@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.364 2008/01/17 22:28:03 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.365 2008/01/20 23:38:07 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -211,9 +211,9 @@ typedef struct _matchinfo {	/* SGF match information */
 	char *pchPlace;
 	char *pchAnnotator;
 	char *pchComment;	/* malloc()ed, or NULL if unknown */
-	uint nYear;
-	uint nMonth;
-	uint nDay;		/* 0 for nYear means date unknown */
+ unsigned int nYear;
+ unsigned int nMonth;
+ unsigned int nDay;		/* 0 for nYear means date unknown */
 } matchinfo;
 
 typedef struct _storedmoves {

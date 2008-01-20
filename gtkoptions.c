@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.62 2008/01/15 22:22:45 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.63 2008/01/20 23:38:08 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1382,7 +1382,7 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
   char sz[128];
   unsigned int n;
   unsigned int cCache;
-  uint i;
+  unsigned int i;
   gchar *filename, *command, *tmp, *newfolder;
   const gchar *new_browser;
   BoardData *bd = BOARD( pwBoard )->board_data;
@@ -1674,7 +1674,7 @@ static void OptionsOK( GtkWidget *pw, optionswidget *pow ){
 static void 
 OptionsSet( optionswidget *pow) {
 
-  uint i;
+  unsigned int i;
 
   gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( pow->pwAutoBearoff ),
                                 fAutoBearoff );

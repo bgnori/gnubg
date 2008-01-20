@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.61 2008/01/16 16:16:45 Superfly_Jon Exp $
+ * $Id: makebearoff.c,v 1.62 2008/01/20 23:38:08 c_anthon Exp $
  */
 
 #include "config.h"
@@ -396,7 +396,7 @@ RollsOS ( const unsigned short int aus[ 32 ] ) {
 
 }
 
-static void BearOff( int nId, uint nPoints, 
+static void BearOff( int nId, unsigned int nPoints, 
                      unsigned short int aOutProb[ 64 ],
                      const int fGammon,
                      xhash *ph, bearoffcontext *pbc,
@@ -404,7 +404,7 @@ static void BearOff( int nId, uint nPoints,
                      FILE *pfOutput, FILE *pfTmp ) {
 
     int iBest, iMode, j, anRoll[ 2 ], aProb[ 64 ];
-    uint i;
+    unsigned int i;
 	TanBoard anBoard, anBoardTemp;
     movelist ml;
     int k;
@@ -561,7 +561,7 @@ WriteOS ( const unsigned short int aus[ 32 ],
           const int fCompress, FILE *output ) {
 
   unsigned int iIdx, nNonZero;
-  uint j;
+  unsigned int j;
 
   if ( fCompress )
     CalcIndex ( aus, &iIdx, &nNonZero );
@@ -787,14 +787,14 @@ generate_os ( const int nOS, const int fHeader,
 
 
 static void
-NDBearoff ( const int iPos, const uint nPoints, float ar[ 4 ], xhash *ph,
+NDBearoff ( const int iPos, const unsigned int nPoints, float ar[ 4 ], xhash *ph,
             bearoffcontext *pbc) {
 
   int d0, d1;
   movelist ml;
   TanBoard anBoard, anBoardTemp;
   int ii, j, k;
-  uint i;
+  unsigned int i;
   int iBest;
   float rBest;
   float rMean;
@@ -1117,7 +1117,7 @@ static void BearOff2( int nUs, int nThem,
                       xhash *ph, bearoffcontext *pbc, FILE *pfTmp ) {
 
     int j, anRoll[ 2 ];
-    uint i;
+    unsigned int i;
 	TanBoard anBoard, anBoardTemp;
     movelist ml;
     int aiBest[ 4 ];
@@ -1446,9 +1446,9 @@ generate_ts ( const int nTSP, const int nTSC,
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.61 $\n" );
+  printf ( "makebearoff $Revision: 1.62 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.61 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.62 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1580,7 +1580,7 @@ extern int main( int argc, char **argv )
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.61 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.62 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1708,7 +1708,7 @@ extern int main( int argc, char **argv )
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.61 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.62 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"
