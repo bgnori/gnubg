@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.341 2008/01/20 23:38:07 c_anthon Exp $
+ * $Id: eval.c,v 1.342 2008/01/20 23:51:53 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3804,7 +3804,7 @@ FindnSaveBestMoves( movelist *pml,
       
       k = pml->cMoves;
       /* we check for mFilter->Accept < 0 above */
-      pml->cMoves = MIN((uint)mFilter->Accept, pml->cMoves );
+      pml->cMoves = MIN((unsigned int)mFilter->Accept, pml->cMoves );
 
       {
 	unsigned int limit = MIN(k, pml->cMoves + mFilter->Extra);

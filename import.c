@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.134 2008/01/20 23:38:08 c_anthon Exp $
+ * $Id: import.c,v 1.135 2008/01/20 23:51:53 c_anthon Exp $
  */
 
 #include "config.h"
@@ -480,7 +480,7 @@ ExpandMatMove ( const TanBoard anBoard, int anMove[ 8 ], int *pc,
 
   if ( anDice[ 0 ] != anDice[ 1 ] ) {
     
-    if ( (uint)( anMove[ 0 ] - anMove[ 1 ] ) == ( anDice[ 0 ] + anDice[ 1 ] ) ) {
+    if ( (unsigned int)( anMove[ 0 ] - anMove[ 1 ] ) == ( anDice[ 0 ] + anDice[ 1 ] ) ) {
 
       int an[ 8 ];
 

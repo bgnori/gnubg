@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.751 2008/01/20 23:38:07 c_anthon Exp $
+ * $Id: gnubg.c,v 1.752 2008/01/20 23:51:53 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2371,7 +2371,7 @@ extern int ParsePosition( TanBoard an, char **ppch, char *pchDesc )
             return -1;
 	}
 
-	if( (uint)i > sm.ml.cMoves ) {
+	if ((unsigned int)i > sm.ml.cMoves ) {
 	    outputf( _("Move =%d is out of range.\n"), i );
 	    return -1;
 	}

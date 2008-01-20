@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.64 2008/01/15 22:22:45 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.65 2008/01/20 23:51:53 c_anthon Exp $
 */
 
 #include "config.h"
@@ -2264,7 +2264,7 @@ NTH_STATIC void drawPick(const BoardData* bd)
 	for (i = 0; i < 28; i++)
 	{
 		glLoadName(i);
-		for (j = 1; j <= (uint)ABS(bd->points[i]); j++)
+		for (j = 1; j <= (unsigned int)ABS(bd->points[i]); j++)
 			drawPiece(bd->bd3d, i, j);
 	}
 
@@ -3382,7 +3382,7 @@ void updatePieceOccPos(const BoardData* bd, BoardData3d* bd3d)
 
 	for (i = 0; i < 28; i++)
 	{
-		for (j = 1; j <= (uint)ABS(bd->points[i]); j++)
+		for (j = 1; j <= (unsigned int)ABS(bd->points[i]); j++)
 		{
 			if (p > LAST_PIECE)
 				break;	/* Found all pieces */
