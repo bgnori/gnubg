@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.20 2008/01/17 22:28:05 Superfly_Jon Exp $
+ * $Id: gtksplash.c,v 1.21 2008/02/02 23:51:47 c_anthon Exp $
  */
 
 #include "config.h"
@@ -113,7 +113,7 @@ DestroySplash ( GtkWidget *pwSplash ) {
 
 #ifndef WIN32
   /* Don't bother with these pauses on windows? */
-  g_usleep ( 1000 * 1000 );
+  g_usleep ( 250 * 1000 );
 #endif
 
   gtk_widget_destroy ( pwSplash );
