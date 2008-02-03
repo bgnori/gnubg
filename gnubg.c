@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.753 2008/02/02 23:51:47 c_anthon Exp $
+ * $Id: gnubg.c,v 1.754 2008/02/03 00:05:42 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4197,7 +4197,9 @@ extern void CommandLoadPython(char *sz)
 	pf = fopen(path, "r");
 
 	if (pf) {
-		PyRun_AnyFile(pf, path);
+		if (PyRun_AnyFile(pf, path) != 0)
+			outputerrf(_("An error occured while running the "
+						"python file %s\n"), path);
 		fclose(pf);
 	} else
 		outputerr(path);
