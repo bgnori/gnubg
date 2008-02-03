@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrelational.c,v 1.11 2008/01/01 19:44:13 Superfly_Jon Exp $
+ * $Id: gtkrelational.c,v 1.12 2008/02/03 15:37:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -603,7 +603,7 @@ extern void GtkShowRelational(gpointer p, guint n, GtkWidget * pw)
 					     QUERY_BORDER);
 	gtk_text_view_set_editable(GTK_TEXT_VIEW(pwQueryText), TRUE);
 	gtk_box_pack_start(GTK_BOX(pwVbox), pwQueryText, FALSE, FALSE, 0);
-	gtk_widget_set_usize(pwQueryText, 250, 80);
+	gtk_widget_set_size_request(pwQueryText, 250, 80);
 
 	pwHbox = gtk_hbox_new(FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(pwVbox), pwHbox, FALSE, FALSE, 0);

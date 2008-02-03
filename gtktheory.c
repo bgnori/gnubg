@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.43 2007/12/29 14:32:30 Superfly_Jon Exp $
+ * $Id: gtktheory.c,v 1.44 2008/02/03 15:37:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -970,7 +970,7 @@ GTKShowTheory ( const int fActivePage ) {
 			 gtk_drawing_area_new() );
       gtk_widget_set_name( ptw->apwGraph[ i ], "gnubg-doubling-window-graph" );
       gtk_container_set_border_width( GTK_CONTAINER( pwAlign ), 4 );
-      gtk_widget_set_usize( ptw->apwGraph[ i ], -1, 48 );
+      gtk_widget_set_size_request( ptw->apwGraph[ i ], -1, 48 );
       g_signal_connect( G_OBJECT( ptw->apwGraph[ i ] ), "expose_event",
 			  G_CALLBACK( GraphExpose ), ptw );
   }
