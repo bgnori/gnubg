@@ -16,29 +16,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.14 2007/09/02 20:27:01 c_anthon Exp $
+ * $Id: gnubgmodule.h,v 1.15 2008/02/06 22:47:57 Superfly_Jon Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
 #define _PYTHONMODULE_H_
 
-#if USE_PYTHON
-
-/* Python.h defines HAVE_FSTAT (2.3) and HAVE_SETVBUF (2.4) so ignore and redefine below */
-#undef HAVE_SETVBUF
-#undef HAVE_LIMITS_H
-#undef HAVE_FSTAT
-#include <Python.h>
-#undef HAVE_SETVBUF
-#undef HAVE_LIMITS_H
-#undef HAVE_FSTAT
-
 extern void PythonInitialise(void);
-
 extern void PythonShutdown(void);
-
-extern PyObject *PythonMatchChecksum( PyObject* self, PyObject *args );
-
-#endif /* USE_PYTHON */
+extern void PythonRun(const char *sz);
+extern int LoadPythonFile(const char *sz);
 
 #endif /* _PYTHONMODULE_H_ */

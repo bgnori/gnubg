@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.365 2008/01/20 23:38:07 c_anthon Exp $
+ * $Id: backgammon.h,v 1.366 2008/02/06 22:47:54 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -405,6 +405,7 @@ extern void outputon(void);
 /* Like strncpy, except it does the right thing */
 extern char *strcpyn(char *szDest, const char *szSrc, int cch);
 
+extern char *GetMatchCheckSum();
 extern char *CheckCommand(char *sz, command * ac);
 extern char *FormatMoveHint(char *sz, const matchstate * pms, movelist * pml,
 			    int i, int fRankKnown, int fDetailProb,
@@ -608,8 +609,8 @@ extern void CommandReject(char *);
 extern void CommandRelationalAddMatch(char *);
 extern void CommandRelationalEraseAll(char *);
 extern void CommandRelationalErase(char *);
-extern void CommandRelationalHelp(char *);
 extern void CommandRelationalSelect(char *);
+extern void CommandRelationalSetup(char *);
 extern void CommandRelationalShowDetails(char *);
 extern void CommandRelationalShowPlayers(char *);
 extern void CommandRelationalTest(char *);

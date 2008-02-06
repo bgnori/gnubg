@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.21 2007/12/18 21:48:04 Superfly_Jon Exp $
+ * $Id: gtkwindows.c,v 1.22 2008/02/06 22:47:57 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -263,18 +263,19 @@ static void GetInputOk( GtkWidget *pw, GtkWidget *pwEntry )
     gtk_widget_destroy(gtk_widget_get_toplevel(pw));
 }
 
-extern char* GTKGetInput(char* title, char* prompt)
+extern char* GTKGetInput(char* title, char* prompt, GtkWidget *parent)
 {
 	GtkWidget *pwDialog, *pwHbox, *pwEntry;
 	pwEntry = gtk_entry_new();
 	inputString = NULL;
-	pwDialog = GTKCreateDialog(title, DT_QUESTION, NULL, DIALOG_FLAG_MODAL, G_CALLBACK(GetInputOk), pwEntry );
+	pwDialog = GTKCreateDialog(title, DT_QUESTION, parent, DIALOG_FLAG_MODAL, G_CALLBACK(GetInputOk), pwEntry );
 
 	gtk_container_add(GTK_CONTAINER(DialogArea(pwDialog, DA_MAIN)), 
 		pwHbox = gtk_hbox_new(FALSE, 0));
 
 	gtk_box_pack_start(GTK_BOX(pwHbox), gtk_label_new(prompt), FALSE, FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(pwHbox), pwEntry, FALSE, FALSE, 0);
+	gtk_entry_set_activates_default(GTK_ENTRY(pwEntry), TRUE);
 	gtk_widget_grab_focus(pwEntry);
 
 	gtk_widget_show_all( pwDialog );

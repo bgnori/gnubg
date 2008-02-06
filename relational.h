@@ -16,11 +16,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.h,v 1.7 2008/01/01 19:44:13 Superfly_Jon Exp $
+ * $Id: relational.h,v 1.8 2008/02/06 22:47:58 Superfly_Jon Exp $
  */
 
 #ifndef _RELATIONAL_H_
 #define _RELATIONAL_H_
+
+#include <stddef.h>
+#include <sys/types.h>
+
+#define DB_VERSION 1
 
 typedef struct _RowSet
 {
@@ -29,10 +34,11 @@ typedef struct _RowSet
 	size_t *widths;
 } RowSet;
 
-extern int RelationalMatchExists(void);
-extern int RelationalUpdatePlayerDetails(int player_id, const char* newName,
-										  const char* newNotes);
-extern int RunQuery(RowSet* pRow, char *sz);
+extern RowSet* RunQuery(char *sz);
+extern RowSet* MallocRowset(size_t rows, size_t cols);
 extern void FreeRowset(RowSet* pRow);
+extern int RelationalUpdatePlayerDetails(int player_id, const char* newName, const char* newNotes);
+
+extern float Ratio(float a, int b);
 
 #endif /* _RELATIONAL_H_ */
