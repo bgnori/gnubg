@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.45 2008/02/07 09:21:43 c_anthon Exp $
+ * $Id: relational.c,v 1.46 2008/02/07 22:29:36 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -473,6 +473,17 @@ extern RowSet* MallocRowset(size_t rows, size_t cols)
 	return pRow;
 }
 
+extern void SetRowsetData(RowSet *rs, size_t row, size_t col, const char *data)
+{
+	size_t size = strlen(data);
+
+	rs->data[row][col] = malloc(strlen(data) + 1);
+	strcpy(rs->data[row][col], data);
+
+	if (row == 0 || size > rs->widths[col])
+		rs->widths[col] = size;
+}
+
 const char *TestDB(DBProviderType dbType)
 {
 	char *ret = NULL;
@@ -484,7 +495,7 @@ const char *TestDB(DBProviderType dbType)
 	/* Check main table is present */
 	rs = pdb->Select("COUNT(*) from session");
 	if (rs)
-	{	// Success
+	{	/* Success */
 		FreeRowset(rs);
 	}
 	else
