@@ -19,13 +19,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.3 2008/02/07 22:29:36 Superfly_Jon Exp $
+ * $Id: dbprovider.c,v 1.4 2008/02/08 22:12:33 c_anthon Exp $
  */
 
 #include "config.h"
 
 #include <glib.h>
 #include <glib/gstdio.h>
+#include <string.h>
 #include "dbprovider.h"
 #include "gnubgmodule.h"
 #include "backgammon.h"
@@ -508,7 +509,6 @@ void SQLiteDisconnect(void)
 RowSet *SQLiteSelect(const char* str)
 {
 	int i, row, ret;
-	char *zErrMsg;
 	char *buf = g_strdup_printf("Select %s;", str);
 	RowSet *rs = NULL;
 
@@ -533,7 +533,7 @@ RowSet *SQLiteSelect(const char* str)
 		{
 			row++;
 			for (i = 0; i < numCols; i++)
-				SetRowsetData(rs, row, i, sqlite3_column_text(pStmt, i));
+				SetRowsetData(rs, row, i, (const char*)sqlite3_column_text(pStmt, i));
 		}
 	}
 	if (ret != SQLITE_OK)
