@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-AC_REVISION($Revision: 1.180 $)
+AC_REVISION($Revision: 1.181 $)
 AC_INIT([GNU Backgammon],[0.16-devel],[bug-gnubg@gnu.org],[gnubg])
 AC_CONFIG_SRCDIR(gnubg.c)
 AM_INIT_AUTOMAKE
@@ -100,6 +100,7 @@ PKG_CHECK_MODULES(LIBPNG, [libpng12], AC_DEFINE(HAVE_LIBPNG, 1, Define if you ha
 PKG_CHECK_MODULES(ESD, [esound], AC_DEFINE(HAVE_ESD, 1, Define if you have esound), [AC_MSG_WARN("No esound support")])
 PKG_CHECK_MODULES(CAIRO, [cairo >= 1.2], AC_DEFINE(HAVE_CAIRO,1,Define if you want to use libcairo), [AC_MSG_WARN("No cairo support")])
 PKG_CHECK_MODULES(PANGOCAIRO, [pangocairo >= 1.0], AC_DEFINE(HAVE_PANGOCAIRO,1,Define if you want to use pangocairo), [AC_MSG_WARN("No pangocairo support")])
+PKG_CHECK_MODULES(SQLITE, [sqlite3], AC_DEFINE(HAVE_SQLITE,1,Define if you want to use sqlite), [AC_MSG_WARN("No sqlite support")])
 
 dnl
 dnl Checks for libraries.
