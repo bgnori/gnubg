@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.47 2008/02/09 14:01:41 Superfly_Jon Exp $
+ * $Id: relational.c,v 1.48 2008/02/09 22:56:58 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -833,14 +833,15 @@ extern void CommandRelationalSelect(char *sz)
 	FreeRowset(rs);
 }
 
-extern int RelationalUpdatePlayerDetails(int player_id, const char* newName, const char* newNotes)
+extern int RelationalUpdatePlayerDetails(const char* oldName, const char* newName, const char* newNotes)
 {
 	int ret = FALSE;
-	int exist_id;
+	int exist_id, player_id;
 	DBProvider *pdb;
 	if ((pdb = ConnectToDB(dbProviderType)) == NULL)
 		return FALSE;
 
+	player_id = GetPlayerId(pdb, oldName);
 	exist_id = GetPlayerId(pdb, newName);
 	if (exist_id != player_id && exist_id != -1)
 	{	/* Can't change the name to an existing one */
