@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.86 2007/12/29 14:32:31 Superfly_Jon Exp $
+ * $Id: text.c,v 1.87 2008/02/10 22:24:55 c_anthon Exp $
  */
 
 #include "config.h"
@@ -246,7 +246,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.86 $";
+  const char szVersion[] = "$Revision: 1.87 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -974,7 +974,7 @@ extern void CommandExportMatchText( char *sz ) {
 
     for( pl = lMatch.plNext, i = 0; pl != &lMatch; pl = pl->plNext, i++ ) {
 
-      szCurrent = HTMLFilename ( sz, i );
+      szCurrent = filename_from_iGame ( sz, i );
 
       if ( !i ) {
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.32 2007/12/29 14:32:29 Superfly_Jon Exp $
+ * $Id: export.h,v 1.33 2008/02/10 22:24:55 c_anthon Exp $
  */
 
 #include "render.h"
@@ -93,12 +93,7 @@ typedef struct _exportsetup {
 
 extern exportsetup exsExport;
 
-extern int getGameNumber(const listOLD * plGame);
-
-extern int getMoveNumber(const listOLD * plGame, const void *p);
-
-extern char *HTMLFilename(const char *szBase, const int iGame);
-
+extern char *filename_from_iGame(const char *szBase, const int iGame);
 extern int WritePNG(const char *sz, unsigned char *puch,
 		    unsigned int nStride, unsigned int nSizeX,
 		    unsigned int nSizeY);
