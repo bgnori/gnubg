@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.67 2008/02/10 11:24:00 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.68 2008/02/15 12:04:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1757,7 +1757,7 @@ OptionsSet( optionswidget *pow) {
                                 fStyledGamelist );
 }
 
-void OptionsPageChange(GtkNotebook *notebook, GtkNotebookPage *page, gint tabNumber, gpointer notused)
+static void OptionsPageChange(GtkNotebook *notebook, GtkNotebookPage *page, gint tabNumber, gpointer notused)
 {
 	if (tabNumber == relPage && !relPageActivated)
 	{

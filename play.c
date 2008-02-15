@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.306 2008/02/10 22:24:55 c_anthon Exp $
+ * $Id: play.c,v 1.307 2008/02/15 12:04:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4493,7 +4493,7 @@ static void AddString(listOLD* buffers, char* str)
 	strcat(pCurrent->p, str);
 }
 
-char *GetMatchCheckSum(void)
+extern char *GetMatchCheckSum(void)
 {
 	static char auchHex[33];
 	unsigned char auch[16];

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.h,v 1.7 2008/01/17 22:28:05 Superfly_Jon Exp $
+ * $Id: util.h,v 1.8 2008/02/15 12:04:35 c_anthon Exp $
  */
 
 #ifndef _UTIL_H_
@@ -34,9 +34,9 @@
 
 #ifdef WIN32
 extern char *getInstallDir( void );
-extern void PrintSystemError(const char* message);
 #endif
 
+extern void PrintSystemError(const char* message);
 extern void PrintError(const char* message);
 extern FILE *GetTemporaryFile(const char *nameTemplate, char **retName);
 

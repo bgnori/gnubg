@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.367 2008/02/10 22:24:54 c_anthon Exp $
+ * $Id: backgammon.h,v 1.368 2008/02/15 12:04:35 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -405,7 +405,7 @@ extern void outputon(void);
 /* Like strncpy, except it does the right thing */
 extern char *strcpyn(char *szDest, const char *szSrc, int cch);
 
-extern char *GetMatchCheckSum();
+extern char *GetMatchCheckSum(void);
 extern char *CheckCommand(char *sz, command * ac);
 extern char *FormatMoveHint(char *sz, const matchstate * pms, movelist * pml,
 			    int i, int fRankKnown, int fDetailProb,
