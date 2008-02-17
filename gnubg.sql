@@ -16,7 +16,7 @@
 -- along with this program; if not, write to the Free Software
 -- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 --
--- $Id: gnubg.sql,v 1.12 2008/02/14 07:58:09 Superfly_Jon Exp $
+-- $Id: gnubg.sql,v 1.13 2008/02/17 12:26:24 c_anthon Exp $
 --
 
 -- Table: control
@@ -158,6 +158,7 @@ CREATE TABLE matchstat (
    ,overall_rating                    INTEGER NOT NULL
    ,actual_result                     FLOAT   NOT NULL
    ,luck_adjusted_result              FLOAT   NOT NULL
+   ,snowie_moves                      INTEGER NOT NULL
    ,snowie_error_rate_per_move        FLOAT   NOT NULL
    -- for matches only
    ,luck_based_fibs_rating_diff       FLOAT           
@@ -293,6 +294,7 @@ CREATE TABLE gamestat (
    ,overall_rating                    INTEGER NOT NULL
    ,actual_result                     FLOAT   NOT NULL
    ,luck_adjusted_result              FLOAT   NOT NULL
+   ,snowie_moves                      INTEGER NOT NULL
    ,snowie_error_rate_per_move        FLOAT   NOT NULL
    -- for matches only
    ,luck_based_fibs_rating_diff       FLOAT           

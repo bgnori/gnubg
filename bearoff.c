@@ -16,10 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.62 2008/01/16 16:16:44 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.63 2008/02/17 12:26:24 c_anthon Exp $
  */
 
 #include "config.h"
+#if USE_MULTITHREAD
+/*must be first here because of strange warning from mingw*/
+#include "multithread.h"
+#endif
 
 #if HAVE_UNISTD_H
 #include <unistd.h>
@@ -39,9 +43,6 @@
 #include <errno.h>
 #if HAVE_SYS_STAT_H
 #include <sys/stat.h>
-#endif
-#if USE_MULTITHREAD
-#include "multithread.h"
 #endif
 
 #if WIN32

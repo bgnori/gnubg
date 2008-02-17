@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.78 2008/02/06 22:47:57 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.79 2008/02/17 12:26:24 c_anthon Exp $
  */
 
 #include "config.h"
@@ -748,7 +748,7 @@ PythonEq2mwc( PyObject* self UNUSED_PARAM, PyObject *args ) {
 
 }
 
-extern PyObject *PythonMatchChecksum( PyObject* self UNUSED_PARAM, PyObject *args )
+static PyObject *PythonMatchChecksum( PyObject* self UNUSED_PARAM, PyObject *args )
 {
 	return PyString_FromString(GetMatchCheckSum());
 }
