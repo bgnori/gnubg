@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.6 2008/02/17 12:26:24 c_anthon Exp $
+ * $Id: dbprovider.c,v 1.7 2008/02/20 22:57:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -518,7 +518,7 @@ RowSet *SQLiteSelect(const char* str)
 			ret = SQLITE_OK;
 	}
 	if (ret != SQLITE_OK)
-		outputerrf("SQL error: %s\n", sqlite3_errmsg(connection));
+		outputerrf("SQL error: %s\nfrom '%s'", sqlite3_errmsg(connection), str);
 
 	sqlite3_finalize(pStmt);
 	return rs;
@@ -530,7 +530,7 @@ int SQLiteUpdateCommand(const char* str)
 	int ret = sqlite3_exec(connection, str, NULL, NULL, &zErrMsg);
 	if (ret != SQLITE_OK)
 	{
-		outputerrf("SQL error: %s\n", zErrMsg);
+		outputerrf("SQL error: %s\nfrom '%s'", zErrMsg, str);
 		sqlite3_free(zErrMsg);
 	}
 	return (ret == SQLITE_OK);
