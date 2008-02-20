@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.151 2008/01/15 22:22:44 Superfly_Jon Exp $
+ * $Id: eval.h,v 1.152 2008/02/20 22:57:48 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -468,11 +468,6 @@ EvalOver( const TanBoard anBoard, float arOutput[], const bgvariation bgv, NNSta
 
 extern float
 KleinmanCount (int nPipOnRoll, int nPipNotOnRoll);
-
-extern int 
-EvaluatePositionCubeful( TanBoard anBoard, float arCfOutput[],
-                         float arClOutput[ NUM_OUTPUTS ],
-                         cubeinfo *pci, evalcontext *pec, int nPlies );
 
 extern int
 GetDPEq ( int *pfCube, float *prDPEq, const cubeinfo *pci );
