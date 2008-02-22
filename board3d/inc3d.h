@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.38 2008/01/15 22:22:46 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.39 2008/02/22 20:31:20 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -153,7 +153,7 @@ struct _BoardData3d
 	float modelMatrix[16];
 
 	/* Display list ids and quadratics */
-	GLuint diceList, DCList, pieceList;
+	GLuint diceList, DCList, pieceList, piecePickList;
 	GLUquadricObj *qobjTex, *qobj;
 
 	/* Shadow casters */
