@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.86 2008/01/07 20:16:04 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.87 2008/02/24 10:39:40 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -224,24 +224,25 @@ EvalMoves ( hintdata *phd, evalcontext *pec )
 	if (!plSelList)
 		return;
 
-  GetMatchStateCubeInfo( &ci, &ms );
+	GetMatchStateCubeInfo( &ci, &ms );
   
-  ProgressStart( _("Evaluating positions...") );
-
 	for(pl = plSelList; pl; pl = pl->next)
 	{
-    if ( ScoreMove (NULL, MoveListGetMove(phd, pl), &ci, pec, pec->nPlies ) < 0 ) {
-      ProgressEnd ();
-		MoveListFreeSelectionList(plSelList);
-      return;
-    }
+		scoreData sd;
+		sd.pm = MoveListGetMove(phd, pl);
+		sd.pci = &ci;
+		sd.pec = pec;
 
-    /* Calling RefreshMoveList here requires some extra work, as
-       it may reorder moves */
+		if (RunAsyncProcess((AsyncFun)asyncScoreMove, &sd, _("Evaluating positions...")) != ASR_OK)
+		{
+			MoveListFreeSelectionList(plSelList);
+			return;
+		}
 
-    MoveListUpdate ( phd );
-
-  }
+		/* Calling RefreshMoveList here requires some extra work, as
+		it may reorder moves */
+		MoveListUpdate ( phd );
+	}
 	MoveListFreeSelectionList(plSelList);
 
   MoveListClearSelection(0, 0, phd);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.187 2008/01/15 18:08:50 c_anthon Exp $
+ * $Id: analysis.c,v 1.188 2008/02/24 10:39:40 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -997,8 +997,10 @@ static int AnalyzeGame ( listOLD *plGame )
 	unsigned int numMoves = NumberMovesGame(plGame);
 	AnalyseMoveTask *pt = NULL, *pParentTask = NULL;
 
+#if !USE_MULTITHREAD
 	void ( *fnOld )( void ) = fnTick;
 	fnTick = NULL;
+#endif
 
 	/* Analyse first move record (gameinfo) */
 	g_assert( pmr->mt == MOVE_GAMEINFO );
@@ -1059,8 +1061,9 @@ static int AnalyzeGame ( listOLD *plGame )
 	multi_debug("wait for all task: analysis");
 	result = MT_WaitForTasks(UpdateProgressBar, 250);
 
+#if !USE_MULTITHREAD
 	fnTick = fnOld;
-
+#endif
 	if (result == -1)
 		IniStatcontext( psc );
 
@@ -1663,24 +1666,24 @@ CommandShowStatisticsGame ( char *sz )
 extern void
 CommandAnalyseMove ( char *sz )
 {
-  matchstate msx;
-
   if( ms.gs == GAME_NONE ) {
     outputl( _("No game in progress (type `new game' to start one).") );
     return;
   }
 
-  if ( plLastMove && plLastMove->plNext && plLastMove->plNext->p ) {
-
-    ProgressStart( _("Analysing move...") );
-
-    /* analyse move */
+  if ( plLastMove && plLastMove->plNext && plLastMove->plNext->p )
+  {	/* analyse move */
+    moveData md;
+	matchstate msx;
 
     memcpy ( &msx, &ms, sizeof ( matchstate ) );
-    AnalyzeMove ( plLastMove->plNext->p, &msx, plGame, NULL, 
-                  &esAnalysisChequer, &esAnalysisCube, aamfAnalysis, 
-                  NULL, NULL );
-    ProgressEnd();
+
+	md.pmr = plLastMove->plNext->p;
+	md.pms = &msx;
+	md.pesChequer = &esAnalysisChequer;
+	md.pesCube = &esAnalysisCube;
+	md.aamf = aamfAnalysis;
+	RunAsyncProcess((AsyncFun)asyncAnalyzeMove, &md, _("Analysing move..."));
 
 #if USE_GTK
   if( fX )

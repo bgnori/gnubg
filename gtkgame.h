@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.125 2008/01/15 22:22:45 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.126 2008/02/24 10:39:40 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -112,7 +112,7 @@ extern void GTKOutputX(void);
 extern void GTKPopGame(int c);
 extern void GTKPopMoveRecord(moverecord * pmr);
 extern void GTKProgressEnd(void);
-extern void GTKProgressStart(char *sz);
+extern void GTKProgressStart(const char *sz);
 extern void GTKProgressStartValue(char *sz, int iMax);
 extern void GTKProgressValue(int fValue, int iMax);
 extern void GTKProgress(void);
