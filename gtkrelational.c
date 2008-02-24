@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrelational.c,v 1.20 2008/02/17 12:26:24 c_anthon Exp $
+ * $Id: gtkrelational.c,v 1.21 2008/02/24 22:44:35 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -654,6 +654,7 @@ static void DelDBClicked(GtkButton *button, gpointer dbList)
 			gtk_list_store_remove(GTK_LIST_STORE(dbStore), &selected_iter);
 			optionsValid = FALSE;
 			gtk_widget_set_sensitive(deldb, FALSE);
+			gtk_label_set_text(GTK_LABEL(helptext), _("Database successfully removed"));
 		}
 		else
 			gtk_label_set_text(GTK_LABEL(helptext), _("Failed to delete database!"));
@@ -785,6 +786,7 @@ extern void GtkShowRelational(gpointer p, guint n, GtkWidget * pw)
 		GTKMessage(_("No data in database"), DT_INFO);
 		return;
 	}
+	pdb->Disconnect();
 
 	pwDialog = GTKCreateDialog(_("GNU Backgammon - Relational Database"),
 			    DT_INFO, NULL, DIALOG_FLAG_MODAL | DIALOG_FLAG_MINMAXBUTTONS, NULL, NULL);
