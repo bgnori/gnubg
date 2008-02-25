@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.678 2008/02/20 22:51:04 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.679 2008/02/25 11:12:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5806,7 +5806,7 @@ static void SetMouseCursor(GdkCursorType cursorType)
 		gdk_window_set_cursor(pwMain->window, NULL);
 }
 
-extern void GTKProgressStart( char *sz )
+extern void GTKProgressStart( const char *sz )
 {
     if( sz )
 		gtk_statusbar_push( GTK_STATUSBAR( pwStatus ), idProgress, sz );
