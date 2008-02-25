@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.189 2008/02/10 22:24:55 c_anthon Exp $
+ * $Id: html.c,v 1.190 2008/02/25 22:18:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -165,7 +165,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.189 2008/02/10 22:24:55 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.190 2008/02/25 22:18:50 c_anthon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1686,7 +1686,7 @@ HTMLBoardHeader ( FILE *pf, const matchstate *pms,
 
     fprintf ( pf,
               _(" %s doubles to %d"),
-              ap[ pms->fMove ].szName,
+              ap[ !pms->fTurn ].szName,
               pms->nCube * 2
             );
 
@@ -1832,7 +1832,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.189 $";
+  const char szVersion[] = "$Revision: 1.190 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1912,7 +1912,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.189 $";
+  const char szVersion[] = "$Revision: 1.190 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2349,6 +2349,9 @@ HTMLPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
                         const htmlexporttype het, const htmlexportcss hecss ) {
 
   cubeinfo ci;
+  /* we need to remember the double type to be able to do the right
+   * thing for beavers and racoons */
+  static doubletype dt = DT_NORMAL;
 
   GetMatchStateCubeInfo ( &ci, pms );
 
@@ -2363,11 +2366,18 @@ HTMLPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
                                  pmr->fPlayer,
                                  &pmr->CubeDecPtr->esDouble, &ci, FALSE, -1,
                                  pmr->stCube, SKILL_NONE, hecss );
+    dt = DT_NORMAL;
 
     break;
 
   case MOVE_DOUBLE:
 
+    dt = DoubleType ( pms->fDoubled, pms->fMove, pms->fTurn );
+    if (dt != DT_NORMAL)
+    {
+	    fprintf ( pf, "<p><span %s> Cannot analyse doubles nor raccoons!</span></p>\n", GetStyle ( CLASS_BLUNDER, hecss ));
+	    break;
+    }
     HTMLPrintCubeAnalysisTable ( pf, 
                                  pmr->CubeDecPtr->aarOutput, 
 				 pmr->CubeDecPtr->aarStdDev,
@@ -2383,6 +2393,12 @@ HTMLPrintCubeAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
     /* cube analysis from double, {take, drop, beaver} */
 
+    if (dt != DT_NORMAL)
+    {
+	    dt = DT_NORMAL;
+	    fprintf ( pf, "<p><span %s> Cannot analyse doubles nor raccoons!</span></p>\n", GetStyle ( CLASS_BLUNDER, hecss ));
+	    break;
+    }
     HTMLPrintCubeAnalysisTable ( pf, 
                                  pmr->CubeDecPtr->aarOutput, 
 				 pmr->CubeDecPtr->aarStdDev,
@@ -3313,6 +3329,7 @@ static void ExportGameHTML ( FILE *pf, listOLD *plGame, const char *szImageDir,
 
         break;
 
+      case MOVE_DOUBLE:
       case MOVE_TAKE:
       case MOVE_DROP:
 
