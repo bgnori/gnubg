@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.h,v 1.6 2007/12/12 23:08:20 Superfly_Jon Exp $
+ * $Id: sgf.h,v 1.7 2008/02/25 14:14:22 c_anthon Exp $
  */
 
 #ifndef _SGF_H_
@@ -116,11 +116,4 @@ extern listOLD *SGFParse(FILE * pf);
    WT (GI) - white team (general SGF) (not currently used)
    
 */
-extern void CommandLoadGame(char *);
-extern void CommandLoadMatch(char *);
-extern void CommandLoadPosition(char *);
-extern void CommandSaveGame(char *);
-extern void CommandSaveMatch(char *);
-extern void CommandSavePosition(char *);
-extern void CommandSaveSettings(char *);
 #endif
