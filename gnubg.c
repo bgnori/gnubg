@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.760 2008/02/25 14:14:22 c_anthon Exp $
+ * $Id: gnubg.c,v 1.761 2008/02/26 22:55:09 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1998,6 +1998,9 @@ const char *szHomeDirectory;
 char *aszBuildInfo[] = {
 #if USE_PYTHON
     N_ ("Python supported."),
+#endif
+#if HAVE_SQLITE
+    N_ ("SQLite database supported."),
 #endif
 #if USE_GTK
     N_ ("Window system supported."),
@@ -7224,7 +7227,7 @@ int RunAsyncProcess(AsyncFun fn, void *data, const char *msg)
 	ProgressStart(msg);
 	
 #if USE_MULTITHREAD
-	ret = MT_WaitForTasks(Progress, 0);
+	ret = MT_WaitForTasks(Progress, 100);
 #else
 	ret = fn(data);	/* Just call function in single threaded build */
 #endif
