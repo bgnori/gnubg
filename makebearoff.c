@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.63 2008/02/15 12:04:35 c_anthon Exp $
+ * $Id: makebearoff.c,v 1.64 2008/02/26 11:36:21 c_anthon Exp $
  */
 
 #include "config.h"
@@ -660,6 +660,9 @@ generate_os ( const int nOS, const int fHeader,
   FILE *pfTmp = NULL;
   unsigned int npos;
   char *tmpfile;
+#ifndef WIN32
+  int fTTY = isatty(STDERR_FILENO);
+#endif
 
 #if WIN32
   HINSTANCE hInstance = (HINSTANCE) GetModuleHandle(NULL);
@@ -737,7 +740,7 @@ generate_os ( const int nOS, const int fHeader,
     if (CancelPressed)
       break;
 #else
-    if (!(i % 100))
+    if (!(i % 100) && fTTY)
       fprintf (stderr, "1:%d/%d        \r", i, n);
 #endif
 
@@ -932,6 +935,9 @@ generate_nd ( const int nPoints,const int nHashSize, const int fHeader,
   int i, j;
   char sz[ 41 ];
   float ar[ 4 ];
+#ifndef WIN32
+  int fTTY = isatty(STDERR_FILENO);
+#endif
 
   xhash h;
 #if WIN32
@@ -991,7 +997,7 @@ generate_nd ( const int nPoints,const int nHashSize, const int fHeader,
     if (!((i+1) % 100))
       SendMessage(hwndPB, PBM_STEPIT, 0, 0);
 #else
-    if (!(i % 100))
+    if (!(i % 100) && fTTY)
       fprintf (stderr, "1:%d/%d        \r", i, n);
 #endif
 
@@ -1288,6 +1294,9 @@ generate_ts ( const int nTSP, const int nTSC,
     FILE *pfTmp;
     unsigned char ac[ 8 ];
     char *tmpfile;
+#ifndef WIN32
+  int fTTY = isatty(STDERR_FILENO);
+#endif
 
 #if WIN32
   HINSTANCE hInstance = (HINSTANCE) GetModuleHandle(NULL);
@@ -1365,7 +1374,8 @@ generate_ts ( const int nTSP, const int nTSC,
 #if WIN32
       SendMessage(hwndPB, PBM_STEPIT, 0, 0);
 #else
-      fprintf( stderr, "%d/%d     \r", iPos, n * n );
+      if (fTTY)
+	      fprintf( stderr, "%d/%d     \r", iPos, n * n );
 #endif
     }
 
@@ -1391,7 +1401,8 @@ generate_ts ( const int nTSP, const int nTSC,
 #if WIN32
       SendMessage(hwndPB, PBM_STEPIT, 0, 0);
 #else
-      fprintf( stderr, "%d/%d     \r", iPos, n * n );
+      if (fTTY)
+	      fprintf( stderr, "%d/%d     \r", iPos, n * n );
 #endif
     }
 
@@ -1447,9 +1458,9 @@ generate_ts ( const int nTSP, const int nTSC,
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.63 $\n" );
+  printf ( "makebearoff $Revision: 1.64 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.63 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.64 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1581,7 +1592,7 @@ extern int main( int argc, char **argv )
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.63 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.64 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1709,7 +1720,7 @@ extern int main( int argc, char **argv )
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.63 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.64 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"
