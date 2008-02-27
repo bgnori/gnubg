@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.8 2008/02/25 15:57:26 c_anthon Exp $
+ * $Id: dbprovider.c,v 1.9 2008/02/27 22:40:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -62,9 +62,9 @@ static void SQLiteDisconnect(void);
 static RowSet *SQLiteSelect(const char* str);
 static int SQLiteUpdateCommand(const char* str);
 static void SQLiteCommit(void);
-static GList *SQLiteGetDatabaseList(const char *user, const char *password);
-static int SQLiteDeleteDatabase(const char *dbfilename, const char *user, const char *password);
 #endif
+static int SQLiteDeleteDatabase(const char *dbfilename, const char *user, const char *password);
+static GList *SQLiteGetDatabaseList(const char *user, const char *password);
 
 #if NUM_PROVIDERS
 DBProvider providers[NUM_PROVIDERS] =
@@ -266,6 +266,14 @@ RowSet *PySelect(const char* str)
 {
 	PyObject *rs;
 	char *buf = g_strdup_printf("PySelect(\"%s\")", str);
+	/* Remove any new lines from query string */
+	char *ppch = buf;
+	while (*ppch)
+	{
+      if (strchr( "\t\n\r\v\f", *ppch ) )
+		  *ppch = ' ';
+	  ppch++;
+	}
 
 	/* Run select */
 	rs = PyRun_String(buf, Py_eval_input, pdict, pdict);
