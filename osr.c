@@ -18,8 +18,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.29 2008/02/07 22:29:36 Superfly_Jon Exp $
+ * $Id: osr.c,v 1.30 2008/02/28 14:15:51 c_anthon Exp $
  */
+
+/*! \file osr.c
+    \brief one-sided race rollouts
+*/
+
 
 #include <stdio.h>
 #include <glib.h>
@@ -99,14 +104,16 @@ static unsigned int chequersout(const unsigned int anBoard[25])
 	return n;
 }
 
+/*! \brief checks that we haven't moved too many checkers of any point on the board
+ * but board need not contain all 15 checkers */
 static int checkboard(const unsigned int anBoard[25])
 {
-	unsigned int i, c = 0;
+	unsigned int i;
 
 	for (i = 0; i < 25; i++)
-		c += anBoard[ i ];
-
-	return (c == 15);
+		if (anBoard[i] > 15)
+			return 0;
+	return 1;
 }
 
 static void FindBestMoveOSR2 ( unsigned int anBoard[ 25 ], const int anDice[ 2 ], unsigned int *pnOut )
