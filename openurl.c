@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.23 2007/12/12 23:08:19 Superfly_Jon Exp $
+ * $Id: openurl.c,v 1.24 2008/02/29 22:04:03 Superfly_Jon Exp $
  */
 #include "config.h"
 #include <stdio.h>
@@ -72,7 +72,7 @@ extern void OpenURL(const char *szURL)
 		int win_error;
 		gchar *url = g_filename_to_uri(szURL, NULL, NULL);
 		win_error =
-		    (int) ShellExecute(NULL, TEXT("open"), url, NULL,
+			(int) ShellExecute(NULL, TEXT("open"), url ? url : szURL, NULL,
 				       ".\\", SW_SHOWNORMAL);
 		if (win_error < 33)
 			outputerrf(_("Failed to perform default action on "
