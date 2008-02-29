@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.39 2007/12/18 21:48:07 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.40 2008/02/29 19:20:33 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -314,7 +314,6 @@ void *CreatePreviewBoard3d(const BoardData* bd, GdkPixmap *ppm)
 void RenderBoard3d(const BoardData* bd, renderdata* prd, void *glpixmap, unsigned char* buf)
 {
 	GLint viewport[4];
-	/*** OpenGL BEGIN ***/
 	GdkGLDrawable *gldrawable = GDK_GL_DRAWABLE((GdkGLPixmap *)glpixmap);
 
 	if (!gdk_gl_drawable_gl_begin (gldrawable, glPixmapContext))
@@ -328,5 +327,4 @@ void RenderBoard3d(const BoardData* bd, renderdata* prd, void *glpixmap, unsigne
 	glReadPixels(0, 0, viewport[2], viewport[3], GL_RGB, GL_UNSIGNED_BYTE, buf);
 
 	gdk_gl_drawable_gl_end(gldrawable);
-	/*** OpenGL END ***/
 }

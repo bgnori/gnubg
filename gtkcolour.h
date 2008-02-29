@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcolour.h,v 1.10 2007/12/12 23:08:16 Superfly_Jon Exp $
+ * $Id: gtkcolour.h,v 1.11 2008/02/29 19:20:33 Superfly_Jon Exp $
  */
 
 #ifndef _GTKCOLOUR_H_
@@ -31,8 +31,8 @@
 
 typedef struct UpdateDetails_T
 {
-	Material* pMat;
-	GdkPixmap* pixmap;
+	Material mat;
+	Material *pBoardMat;
 	GtkWidget* preview;
 	GtkWidget** parentPreview;
 	int opacity;
