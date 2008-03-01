@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.66 2008/02/22 20:31:19 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.67 2008/03/01 12:15:00 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -3453,9 +3453,8 @@ void updatePieceOccPos(const BoardData* bd, BoardData3d* bd3d)
 	}
 	if (p == LAST_PIECE)
 	{
-		updateMovingPieceOccPos(bd, bd3d);
-		draw_shadow_volume_extruded_edges(&bd3d->Occluders[p], bd3d->shadow_light_position, GL_QUADS);
 		bd3d->Occluders[p].rotator = 0;
+		updateMovingPieceOccPos(bd, bd3d);
 	}
 }
 
