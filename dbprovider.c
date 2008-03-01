@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.9 2008/02/27 22:40:51 Superfly_Jon Exp $
+ * $Id: dbprovider.c,v 1.10 2008/03/01 12:15:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -140,7 +140,8 @@ void RelationalSaveSettings(FILE *pf)
 	int i;
 	fprintf(pf, "relational setup storegamestats=%s\n", storeGameStats ? "yes" : "no");
 	
-	fprintf(pf, "relational setup dbtype=%s\n", providers[dbProviderType].shortname);
+	if (dbProviderType != INVALID_PROVIDER)
+		fprintf(pf, "relational setup dbtype=%s\n", providers[dbProviderType].shortname);
 	for (i = 0; i < NUM_PROVIDERS; i++)
 	{
 		DBProvider* pdb = GetDBProvider(i);
