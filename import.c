@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.135 2008/01/20 23:51:53 c_anthon Exp $
+ * $Id: import.c,v 1.136 2008/03/02 21:39:13 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1902,8 +1902,7 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
               szComment = g_strdup ( sz );
             else {
               szComment = 
-                (char *) realloc ( szComment,
-                                   strlen ( sz ) + strlen ( szComment ) + 1 );
+                (char *) g_realloc ( szComment, (gulong)strlen ( sz ) + strlen ( szComment ) + 1 );
               strcat ( szComment, sz );
             }
 
@@ -1940,7 +1939,7 @@ static void ImportSGGGame( FILE *pf, int i, int nLength, int n0, int n1,
     /* garbage collect */
 
     if ( szComment )
-      free ( szComment );
+      g_free ( szComment );
 
 }
 

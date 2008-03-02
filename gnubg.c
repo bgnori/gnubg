@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.761 2008/02/26 22:55:09 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.762 2008/03/02 21:39:12 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -6691,7 +6691,7 @@ extern void CommandSwapPlayers ( char *sz )
   pc = g_strdup ( ap[ 0 ].szName );
   strcpy ( ap[ 0 ].szName, ap[ 1 ].szName );
   strcpy ( ap[ 1 ].szName, pc );
-  free ( pc );
+  g_free ( pc );
 
   /* swap player ratings */
 
