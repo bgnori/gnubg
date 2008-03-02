@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.308 2008/02/24 10:39:40 Superfly_Jon Exp $
+ * $Id: play.c,v 1.309 2008/03/02 21:18:29 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -724,10 +724,11 @@ static void DiceRolled(void)
 
 }
 
-static int NewGame( void ) {
-
-    moverecord *pmr;
-    int fError;
+static int NewGame( void )
+{
+	moverecord *pmr;
+	int fError;
+	listOLD *plOldGame = plGame;
     
     if( !fRecord && !ms.nMatchTo && lMatch.plNext->p ) {
 	/* only recording the active game of a session; discard any others */
@@ -789,7 +790,8 @@ static int NewGame( void ) {
 
 	free( plGame );
 	ListDelete( lMatch.plPrev );
-	plGame = plLastMove = 0;
+	plGame = plOldGame;
+	plLastMove = 0;
 	return -1;
     }
     
@@ -2856,8 +2858,8 @@ CommandMove( char *sz ) {
     outputl( _("Illegal move.") );
 }
 
-extern void CommandNewGame( char *sz ) {
-
+extern void CommandNewGame( char *sz )
+{
     if( ms.nMatchTo && ( ms.anScore[ 0 ] >= ms.nMatchTo ||
 			 ms.anScore[ 1 ] >= ms.nMatchTo ) ) {
 	outputl( _("The match is already over.") );
