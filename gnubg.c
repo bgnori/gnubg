@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.762 2008/03/02 21:39:12 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.763 2008/03/03 22:36:57 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4678,6 +4678,7 @@ extern void CommandSaveSettings( char *szParam )
 	     "set gui illegal %s\n"
 	     "set gui showids %s\n"
 	     "set gui showpips %s\n"
+	     "set gui showepc %s\n"
 	     "set gui dragtargethelp %s\n"
 		 "set gui usestatspanel %s\n"
 		 "set gui movelistdetail %s\n",
@@ -4688,6 +4689,7 @@ extern void CommandSaveSettings( char *szParam )
 	     fGUIIllegal ? "on" : "off",
 	     GetMainAppearance()->fShowIDs ? "on" : "off",
 	     fGUIShowPips ? "on" : "off",
+	     fGUIShowEPCs ? "on" : "off",
 	     fGUIDragTargetHelp ? "on" : "off",
 		 fGUIUseStatsPanel ? "on" : "off",
 		 showMoveListDetail ? "on" : "off");
