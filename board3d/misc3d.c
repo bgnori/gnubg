@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.80 2008/01/17 22:28:05 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.81 2008/03/04 22:40:07 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -1014,6 +1014,25 @@ void circle(float radius, float height, unsigned int accuracy)
 	for (i = 0; i <= accuracy; i++)
 	{
 		glVertex3f(sinf(angle) * radius, cosf(angle) * radius, height);
+		angle -= step;
+	}
+	glEnd();
+}
+
+void circleSloped(float radius, float startHeight, float endHeight, unsigned int accuracy)
+{	/* Draw a disc in sloping z plane */
+	unsigned int i;
+	float angle, step;
+
+	step = (2 * (float)G_PI) / accuracy;
+	angle = 0;
+	glNormal3f(0.f, 0.f, 1.f);
+	glBegin(GL_TRIANGLE_FAN);
+	glVertex3f(0.f, 0.f, startHeight);
+	for (i = 0; i <= accuracy; i++)
+	{
+		float height = ((cosf(angle) + 1) / 2) * (endHeight - startHeight);
+		glVertex3f(sinf(angle) * radius, cosf(angle) * radius, startHeight + height);
 		angle -= step;
 	}
 	glEnd();
