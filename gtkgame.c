@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.679 2008/02/25 11:12:57 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.680 2008/03/04 22:33:17 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -621,7 +621,7 @@ extern void CommentaryChanged( GtkWidget *pw, GtkTextBuffer *buffer ) {
        to update the text (which is probably inconvenient for the user). */
 
     if( pmrAnnotation->sz )
-	free( pmrAnnotation->sz );
+	g_free( pmrAnnotation->sz );
     
     gtk_text_buffer_get_bounds (buffer, &begin, &end);
     pch = gtk_text_buffer_get_text(buffer, &begin, &end, FALSE);
