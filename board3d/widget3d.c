@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.41 2008/03/05 19:16:34 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.42 2008/03/05 22:28:38 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -275,24 +275,22 @@ int DoAcceleratedCheck(const BoardData3d* bd3d, GtkWidget* pwParent)
 
 void RenderToBuffer3d(const BoardData* bd, BoardData3d* bd3d, int width, int height, unsigned char* buf)
 {
-	GLint viewport[4];
 	TRcontext *tr;
 	GtkWidget *widget = bd3d->drawing_area3d;
 	GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
+	int fSaveBufs = bd3d->fBuffers;
 	if (!gdk_gl_drawable_gl_begin(gldrawable, gtk_widget_get_gl_context(widget)))
 		return;
 
-	viewport[2] = width;
-	viewport[3] = height;
-
+	/* Sort out tile rendering stuff */
 	tr = trNew();
 	#define BORDER 10
 	trTileSize(tr, widget->allocation.width, widget->allocation.height, BORDER);
 	trImageSize(tr, width, height);
 	trImageBuffer(tr, GL_RGB, GL_UNSIGNED_BYTE, buf);
 
+	/* Sort out viewing perspective */
 	glViewport(0, 0, width, height);
-
 	SetupViewingVolume3d(bd, bd3d, bd->rd);
 
 	if (bd->rd->planView)
@@ -300,12 +298,16 @@ void RenderToBuffer3d(const BoardData* bd, BoardData3d* bd3d, int width, int hei
 	else
 		trFrustum(tr, -bd3d->horFrustrum, bd3d->horFrustrum, -bd3d->vertFrustrum, bd3d->vertFrustrum, zNear, zFar);
 
+	bd3d->fBuffers = FALSE;	/* Turn this off whilst drawing */
+
 	/* Draw tiles */
 	do
 	{
 		trBeginTile(tr);
 		Draw3d(bd);
 	} while (trEndTile(tr));
+
+	bd3d->fBuffers = fSaveBufs;
 
 	trDelete(tr);
 
