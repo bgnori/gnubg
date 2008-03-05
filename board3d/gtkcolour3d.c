@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.40 2008/02/29 19:20:33 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.41 2008/03/05 19:16:33 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -51,8 +51,6 @@ static int curDetail;
 /* World sizes */
 #define STRIP_WIDTH 100
 #define STRIP_HEIGHT 10.f
-
-static unsigned char auch[PREVIEW_WIDTH * PREVIEW_HEIGHT * 3];
 
 static int previewLightLevels[3];
 

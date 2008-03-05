@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.39 2008/02/22 20:31:20 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.40 2008/03/05 19:16:33 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -57,8 +57,6 @@
 #include "drawboard.h"	/* for fClockwise decl */
 
 #include <glib/gi18n.h>
-
-extern GdkGLConfig *getglconfigSingle(void);	/* Odd function needs to be defined here */
 
 /* float versions (to quiet compiler warnings) */
 #define powi(arg1, arg2) (int)pow((double)(arg1), (double)(arg2))
