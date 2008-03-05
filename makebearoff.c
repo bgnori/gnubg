@@ -16,13 +16,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.64 2008/02/26 11:36:21 c_anthon Exp $
+ * $Id: makebearoff.c,v 1.65 2008/03/05 19:14:42 Superfly_Jon Exp $
  */
 
 #include "config.h"
 
 #include <glib.h>
-#include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,6 +36,7 @@
 #include "bearoff.h"
 #include "util.h"
 #include "multithread.h"
+#include <glib/gi18n.h>
 
 #if WIN32
 #include <windows.h>
@@ -1458,9 +1458,9 @@ generate_ts ( const int nTSP, const int nTSC,
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.64 $\n" );
+  printf ( "makebearoff $Revision: 1.65 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.64 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.65 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1592,7 +1592,7 @@ extern int main( int argc, char **argv )
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.64 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.65 $" );
 #else
     fprintf ( stderr, 
               _("One-sided database:\n"
@@ -1720,7 +1720,7 @@ extern int main( int argc, char **argv )
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.64 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.65 $" );
 #else 
     fprintf ( stderr,
               _("Two-sided database:\n"
