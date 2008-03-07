@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.681 2008/03/06 22:11:11 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.682 2008/03/07 16:28:47 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -584,8 +584,6 @@ extern void GTKSetCube( gpointer p, guint n, GtkWidget *pw ) {
     if( an[ 0 ] < 0 )
 	return;
 
-    outputoff();
-
     valChanged = (1 << an[ 0 ] != ms.nCube);
     if (valChanged) {
 	sprintf( sz, "set cube value %d", 1 << an[ 0 ] );
@@ -599,8 +597,6 @@ extern void GTKSetCube( gpointer p, guint n, GtkWidget *pw ) {
 	} else
 	    UserCommand( "set cube centre" );
     }
-    
-    outputon();
 }
 
 static int fAutoCommentaryChange;
