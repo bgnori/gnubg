@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.18 2008/01/17 22:28:05 Superfly_Jon Exp $
+* $Id: font3d.c,v 1.19 2008/03/07 16:35:56 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -527,8 +527,19 @@ extern void glPrintPointNumbers(const BoardData3d* bd3d, const char *text)
 extern void glPrintCube(const BoardData3d* bd3d, const char *text)
 {
 	/* Align horizontally and vertically */
-	glTranslatef(-getTextLen3d(bd3d->cubeFont, text) / 2.0f, -bd3d->cubeFont->height / 2.0f, 0.f);
+	float saveScale = 0;
+	float heightOffset = -bd3d->cubeFont->height;
+	if (strlen(text) > 1)
+	{	/* Make font smaller for 2 digit cube numbers */
+		saveScale = bd3d->cubeFont->scale;
+		bd3d->cubeFont->scale *= CUBE_TWODIGIT_FACTOR;
+		heightOffset *= CUBE_TWODIGIT_FACTOR;
+	}
+	glTranslatef(-getTextLen3d(bd3d->cubeFont, text) / 2.0f, heightOffset / 2.0f, 0.f);
 	RenderString3d(bd3d->cubeFont, text);
+
+	if (strlen(text) > 1)
+		bd3d->cubeFont->scale = saveScale;
 }
 
 extern void glPrintNumbersRA(const BoardData3d* bd3d, const char *text)

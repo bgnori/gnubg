@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.40 2008/03/05 19:16:33 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.41 2008/03/07 16:35:56 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -202,6 +202,8 @@ struct _Flag3d
 #define NO_TEXTURE_STRING _("No texture")
 
 #define HINGE_SEGMENTS 6.f
+
+#define CUBE_TWODIGIT_FACTOR .9f
 
 /* Draw board parts (boxes) specially */
 enum /*boxType*/ {BOX_ALL = 0, BOX_NOSIDES = 1, BOX_NOENDS = 2, BOX_SPLITTOP = 4, BOX_SPLITWIDTH = 8};
