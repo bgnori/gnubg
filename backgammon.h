@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.370 2008/02/25 14:14:21 c_anthon Exp $
+ * $Id: backgammon.h,v 1.371 2008/03/07 21:30:47 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -727,7 +727,7 @@ extern void CommandSetCubeValue(char *);
 extern void CommandSetDelay(char *);
 extern void CommandSetDice(char *);
 extern void CommandSetDisplay(char *);
-extern void CommandSetDisplayPanels(char *);
+extern void CommandSetPanels(char *);
 extern void CommandSetDockPanels(char *);
 extern void CommandSetEvalChequerplay(char *);
 extern void CommandSetEvalCubedecision(char *);
@@ -947,6 +947,8 @@ extern void CommandSetVariationStandard(char *);
 extern void CommandSetVsync3d(char *);
 extern void CommandSetWarning(char *);
 extern void CommandShow8912(char *);
+extern void CommandShowPanels(char *);
+extern void CommandShowPostCrawford(char *);
 extern void CommandShowAnalysis(char *);
 extern void CommandShowAutomatic(char *);
 extern void CommandShowBearoff(char *);

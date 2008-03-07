@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.682 2008/03/07 16:28:47 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.683 2008/03/07 21:30:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1519,7 +1519,7 @@ static void ToolbarStyle(gpointer    callback_data,
 
 GtkClipboard *clipboard = NULL;
 
-int isActive(const void *item, const void *data)
+static int isActive(const void *item, const void *data)
 {
 	if (gtk_window_is_active(GTK_WINDOW(item)))
 		return 0;
@@ -1527,7 +1527,7 @@ int isActive(const void *item, const void *data)
 		return 1;
 }
 
-GtkWidget *GetFocusedWidget()
+static GtkWidget *GetFocusedWidget(void)
 {
 	GList *windows = gtk_window_list_toplevels();
 	/* Find widget that has focus */

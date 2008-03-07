@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.47 2008/02/03 15:37:36 c_anthon Exp $
+* $Id: gtkpanels.c,v 1.48 2008/03/07 21:30:48 c_anthon Exp $
 */
 
 #include "config.h"
@@ -1454,7 +1454,7 @@ CommandSetGeometryMax ( char *sz )
 		setWindowGeometry(pwoSetPanel);
 }
 
-extern void CommandSetDisplayPanels( char *sz ) {
+extern void CommandSetPanels( char *sz ) {
 
   SetToggle ("panels", &fDisplayPanels, sz, 
   _("Game list, Annotation and Message panels/windows will be displayed."),
@@ -1470,7 +1470,7 @@ extern void CommandSetDisplayPanels( char *sz ) {
     
 }
 
-extern void CommandShowDisplayPanels( char *sz ) {
+extern void CommandShowPanels( char *sz ) {
 	if (fDisplayPanels)
 	  outputf( _("Game list, Annotation and Message panels/windows "
 		        "will be displayed."));
