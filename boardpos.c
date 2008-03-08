@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boardpos.c,v 1.14 2008/03/08 13:42:42 Superfly_Jon Exp $
+ * $Id: boardpos.c,v 1.15 2008/03/08 15:10:57 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -54,7 +54,7 @@ PointArea( const int fClockwise, const int nSize,
            int *px, int *py, int *pcx, int *pcy ) {
 
     /* max chequer in column */
-    int c_chequer = ( !n || n == 25 ) ? 3 : 5;
+    int c_chequer = ( n == 0 || n == 25 ) ? 3 : 5;
     
     *px = positions[ fClockwise ][ n ][ 0 ] * nSize;
     *py = positions[ fClockwise ][ n ][ 1 ] * nSize;
