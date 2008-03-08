@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.40 2007/12/18 21:48:04 Superfly_Jon Exp $
+ * $Id: htmlimages.c,v 1.41 2008/03/08 09:17:39 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -108,7 +108,7 @@ static void DrawArrow(int side, int player)
 #if USE_GTK
 {
 	int x, y;
-	ArrowPosition(side /* rd.fClockwise */, s, &x, &y);
+	ArrowPosition(side /* rd.fClockwise */, player, s, &x, &y);
 
 	AlphaBlendClip2( auchMidlb, boardStride,
 				x, y,
@@ -621,7 +621,7 @@ static void RenderObjects(void)
 	RenderChequerLabels( &rd, auchChequerLabels, CHEQUER_LABEL_WIDTH * s * 3 );
 
 #if USE_GTK
-	RenderArrows( &rd, auchArrow[0], auchArrow[1], s * ARROW_WIDTH * 4 );
+	RenderArrows( &rd, auchArrow[0], auchArrow[1], s * ARROW_WIDTH * 4, rd.fClockwise );
 #endif
 
 	/* Render numbers in both directions */

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boarddim.h,v 1.9 2007/09/14 11:30:48 c_anthon Exp $
+ * $Id: boarddim.h,v 1.10 2008/03/08 09:17:39 Superfly_Jon Exp $
  */
 
 #ifndef _BOARDDIM_H_
@@ -27,7 +27,7 @@
 #define CHEQUER_WIDTH     6
 #define DIE_WIDTH         7
 #define CUBE_WIDTH        8
-#define ARROW_WIDTH       5
+#define ARROW_WIDTH       3
 #define HINGE_HEIGHT     12
 #define HINGE_WIDTH       2
 
