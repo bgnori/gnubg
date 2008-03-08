@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boardpos.h,v 1.6 2008/03/08 09:17:39 Superfly_Jon Exp $
+ * $Id: boardpos.h,v 1.7 2008/03/08 13:42:42 Superfly_Jon Exp $
  */
 
 #ifndef _BOARDPOS_H_
@@ -45,7 +45,7 @@ PointArea( const int fClockwise, const int nSize,
 
 extern void
 CubePosition( const int crawford_game, const int cube_use,
-              const int doubled, const int cube_owner,
+              const int doubled, const int cube_owner, int fClockwise,
               int *px, int *py, int *porient );
 
 extern void ArrowPosition( const int clockwise, int turn, const int nSize, int *px, int *py );

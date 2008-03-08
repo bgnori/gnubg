@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.54 2008/03/08 09:17:39 Superfly_Jon Exp $
+ * $Id: export.c,v 1.55 2008/03/08 13:42:42 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -593,7 +593,7 @@ GenerateImage (renderimages * pri, renderdata * prd,
     cube_owner = 0;
 
 
-  CubePosition( FALSE, fCube, doubled, cube_owner,
+  CubePosition( FALSE, fCube, doubled, cube_owner, fClockwise,
                 &anCubePosition[ 0 ], &anCubePosition[ 1 ], &nOrient );
 
   /* calculate dice position */

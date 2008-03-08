@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boardpos.c,v 1.13 2008/03/08 09:17:39 Superfly_Jon Exp $
+ * $Id: boardpos.c,v 1.14 2008/03/08 13:42:42 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -75,25 +75,39 @@ PointArea( const int fClockwise, const int nSize,
 }
 
 
-extern void
-CubePosition( const int crawford_game, const int cube_use,
-              const int doubled, const int cube_owner,
-              int *px, int *py, int *porient ) {
-
-    if( crawford_game || !cube_use ) {
-	/* no cube */
-	if( px ) *px = NO_CUBE;
-	if( py ) *py = NO_CUBE;
-	if( porient ) *porient = -1;
-    } else if( doubled ) {
-      if( px ) *px = (doubled > 0) ? CUBE_RIGHT_X: CUBE_LEFT_X;
-	if( py ) *py = CUBE_CENTRE_Y;
-	if( porient ) *porient = doubled;
-    } else {
-	if( px ) *px = CUBE_CENTRE_X;
-	if( py ) *py = (cube_owner < 0)  ? CUBE_OWN_1_Y :
-	               (cube_owner == 0) ? CUBE_CENTRE_Y :  CUBE_OWN_0_Y;
-	if( porient ) *porient = cube_owner;
+/* Determine the position and rotation of the cube; *px and *py return the
+   position (in board units -- multiply by nSize to get
+   pixels) and *porient returns the rotation (1 = facing the top, 0 = facing
+   the side, -1 = facing the bottom). */
+extern void CubePosition( const int crawford_game, const int cube_use,
+              const int doubled, const int cube_owner, int fClockwise,
+              int *px, int *py, int *porient )
+{
+    if( crawford_game || !cube_use )
+	{
+		/* no cube */
+		if( px ) *px = NO_CUBE;
+		if( py ) *py = NO_CUBE;
+		if( porient ) *porient = -1;
+    }
+	else if( doubled )
+	{
+		if( px ) *px = (doubled > 0) ? CUBE_RIGHT_X: CUBE_LEFT_X;
+		if( py ) *py = CUBE_CENTRE_Y;
+		if( porient ) *porient = doubled;
+    }
+	else
+	{
+		if( px )
+		{
+			if (fClockwise)
+				*px = BOARD_WIDTH - BEAROFF_INSIDE - CUBE_TRAY_X;
+			else
+				*px = CUBE_TRAY_X;
+		}
+		if( py ) *py = (cube_owner < 0)  ? CUBE_OWN_1_Y :
+						(cube_owner == 0) ? CUBE_CENTRE_Y :  CUBE_OWN_0_Y;
+		if( porient ) *porient = cube_owner;
     }
 
 }

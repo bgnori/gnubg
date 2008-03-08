@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boarddim.h,v 1.10 2008/03/08 09:17:39 Superfly_Jon Exp $
+ * $Id: boarddim.h,v 1.11 2008/03/08 13:42:42 Superfly_Jon Exp $
  */
 
 #ifndef _BOARDDIM_H_
@@ -26,7 +26,7 @@
 /* fundamental constants */
 #define CHEQUER_WIDTH     6
 #define DIE_WIDTH         7
-#define CUBE_WIDTH        8
+#define CUBE_WIDTH        6
 #define ARROW_WIDTH       3
 #define HINGE_HEIGHT     12
 #define HINGE_WIDTH       2
@@ -123,7 +123,7 @@
 
 #define CUBE_RIGHT_X  (BEAROFF_WIDTH + (PLAY_WIDTH - CUBE_WIDTH) / 2)
 #define CUBE_LEFT_X   (BOARD_WIDTH - CUBE_RIGHT_X)
-#define CUBE_CENTRE_X ((BOARD_WIDTH - CUBE_WIDTH) / 2)
+#define CUBE_TRAY_X (BEAROFF_LEFT_X + (BEAROFF_INSIDE - CUBE_WIDTH) / 2)
 #define PLAY_HEIGHT   (BOARD_HEIGHT - 2 * BORDER_HEIGHT )
 #define CUBE_CENTRE_Y (BORDER_HEIGHT + (PLAY_HEIGHT - CUBE_HEIGHT) / 2)
 #define CUBE_OWN_1_Y  (BOARD_HEIGHT - CUBE_HEIGHT - BORDER_HEIGHT)
