@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: file.c,v 1.11 2008/02/10 22:24:55 c_anthon Exp $
+ * $Id: file.c,v 1.12 2008/03/09 12:03:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -70,7 +70,7 @@ typedef struct _FileHelper {
 static FileHelper *OpenFileHelper(const char *filename)
 {
 	FileHelper *fh;
-	if (!g_file_test(filename, G_FILE_TEST_EXISTS))
+	if (!g_file_test(filename, G_FILE_TEST_EXISTS) || g_file_test(filename, G_FILE_TEST_IS_DIR))
 		return NULL;	/* File not found */
 
 	fh = g_new(FileHelper, 1);
@@ -374,13 +374,13 @@ static int IsBGRFile(FileHelper *fh)
 
 extern FilePreviewData *ReadFilePreview(const char *filename)
 {
-	FilePreviewData *fpd = g_new0(FilePreviewData, 1);
+	FilePreviewData *fpd;
 	FileHelper *fh = OpenFileHelper(filename);
-
-	fpd -> type = N_IMPORT_TYPES;
-
 	if (!fh)
-		return(fpd);
+		return NULL;
+
+	fpd = g_new0(FilePreviewData, 1);
+	fpd -> type = N_IMPORT_TYPES;
 
 	if (IsSGFFile(fh))
 		fpd->type = IMPORT_SGF;
