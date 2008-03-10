@@ -19,14 +19,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.h,v 1.5 2007/11/16 21:13:18 c_anthon Exp $
+ * $Id: gtkfile.h,v 1.6 2008/03/10 09:32:12 Superfly_Jon Exp $
  */
 
 #ifndef _GTKFILE_H_
 #define _GTKFILE_H_
 extern void GTKOpen (gpointer p, guint n, GtkWidget * pw);
 extern void GTKSave (gpointer p, guint n, GtkWidget * pw);
-extern void GTKExport (gpointer p, guint n, GtkWidget * pw);
 extern char *GTKFileSelect (gchar * prompt, gchar * extension, gchar * folder,
 			    gchar * name, GtkFileChooserAction action);
 extern void SetDefaultFileName (char *path);

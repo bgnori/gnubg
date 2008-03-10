@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.39 2008/03/09 12:03:04 Superfly_Jon Exp $
+ * $Id: gtkfile.c,v 1.40 2008/03/10 09:32:12 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -412,14 +412,9 @@ extern void GTKOpen(gpointer p, guint n, GtkWidget * pw)
 	gtk_widget_destroy(fc);
 }
 
-extern void GTKExport (gpointer p, guint n, GtkWidget * pw)
-{
-  SaveCommon (N_EXPORT_TYPES, _("Export to foreign formats"));
-}
-
 extern void GTKSave (gpointer p, guint n, GtkWidget * pw)
 {
-  SaveCommon (1, _("Save in native gnubg .sgf format"));
+  SaveCommon (N_EXPORT_TYPES, _("Save or export to file"));
 }
 
 enum {

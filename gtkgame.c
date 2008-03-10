@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.684 2008/03/09 12:03:04 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.685 2008/03/10 09:32:12 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3435,7 +3435,6 @@ GtkItemFactoryEntry aife[] = {
 	{ N_("/_File/_Save..."), "<control>S", GTKSave, 0, 
 		"<StockItem>", GTK_STOCK_SAVE
 	},
-	{ N_("/_File/_Export..."), NULL, GTKExport, 0, NULL, NULL },
 	{ N_("/_File/-"), NULL, NULL, 0, "<Separator>", NULL },
 	{ 
 #ifdef WIN32
@@ -6461,8 +6460,6 @@ extern void GTKSet( void *p ) {
 
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget( pif,
 				"/File/Save..." ), plGame != NULL );
-	gtk_widget_set_sensitive( gtk_item_factory_get_widget( pif,
-	                        "/File/Export..." ), plGame != NULL );
 	
 	enable_sub_menu( gtk_item_factory_get_widget( pif, "/Game" ),
 			 ms.gs == GAME_PLAYING );
