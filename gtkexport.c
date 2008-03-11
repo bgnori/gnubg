@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.39 2008/03/09 12:01:27 Superfly_Jon Exp $
+ * $Id: gtkexport.c,v 1.40 2008/03/11 13:54:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -451,7 +451,7 @@ SizeChanged ( GtkAdjustment *adj, GtkWidget *pwSize ) {
 
 }
 
-static void ExportHTMLImages()
+static void ExportHTMLImages(void)
 {
 	GtkWidget *fc;
 	gchar *message, *expfolder, *folder, *command;
