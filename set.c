@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.293 2008/02/25 14:14:22 c_anthon Exp $
+ * $Id: set.c,v 1.294 2008/03/12 22:56:35 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1362,26 +1362,25 @@ extern void CommandSetPlayerExternal( char *sz ) {
 	return;
     }
 
-    while( connect( h, psa, cb ) < 0 ) {
-	if( errno == EINTR ) {
-	    if( fAction )
-		fnAction();
-
-	    if( fInterrupt ) {
+    while( connect( h, psa, cb ) < 0 )
+	{
+		if( errno == EINTR )
+		{
+			if( fInterrupt ) 
+			{
+				closesocket( h );
+				free( psa );
+				free( pch );
+				return;
+			}
+			continue;
+		}
+			
+		SockErr( pch );
 		closesocket( h );
 		free( psa );
 		free( pch );
 		return;
-	    }
-	    
-	    continue;
-	}
-	
-	SockErr( pch );
-	closesocket( h );
-	free( psa );
-	free( pch );
-	return;
     }
     
     ap[ iPlayerSet ].pt = PLAYER_EXTERNAL;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.87 2008/02/24 10:39:40 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.88 2008/03/12 22:56:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -79,9 +79,6 @@ static void MoveListRolloutClicked(GtkWidget *pw, hintdata *phd)
 
 	GTKSetCurrentParent(pw);
   RolloutProgressStart( &ci, c, NULL, &rcRollout, asz, &p );
-
-  if ( fAction )
-    HandleXAction();
 
   res = ScoreMoveRollout ( ppm, (const cubeinfo**)ppci, c, RolloutProgress, p );
 

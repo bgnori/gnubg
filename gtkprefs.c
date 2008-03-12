@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.154 2008/02/29 19:20:33 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.155 2008/03/12 22:56:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1236,12 +1236,9 @@ static void DoTestPerformance(GtkWidget *pw, GtkWidget* board)
 
 	BoardPrefsOK(pw, board);
 
-	while (gtk_events_pending())
-	    gtk_main_iteration();
+	ProcessGtkEvents();
 
-	SuspendInput();
 	fps = TestPerformance3d(bd);
-	ResumeInput();
 
 	if (fps >= 30)
 		msg = _("3d Performance is very fast.\n");
@@ -1956,7 +1953,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.154 2008/02/29 19:20:33 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.155 2008/03/12 22:56:34 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2080,13 +2077,10 @@ DesignAddTitle ( boarddesign *pbde ) {
   /* show dialog */
 
   gtk_widget_grab_focus( pwDesignAddTitle );
-  gtk_widget_show_all( pwDialog );
 
   DesignAddChanged ( NULL, pwDialog );
   
-  GTKDisallowStdin();
-  gtk_main();
-  GTKAllowStdin();
+  GTKRunDialog(pwDialog);
 }
 
 static void WriteDesignString(boarddesign *pbde, renderdata *prd)
@@ -3079,8 +3073,6 @@ extern void BoardPreferences(GtkWidget *pwBoard)
 
 	SetTitle();
 
-    gtk_widget_show_all( pwDialog );
-
 #if USE_BOARD3D
 	DisplayCorrectBoardType(bd, bd->bd3d, bd->rd);
 	redrawChange = FALSE;
@@ -3090,7 +3082,7 @@ extern void BoardPreferences(GtkWidget *pwBoard)
 	gtk_notebook_set_page(GTK_NOTEBOOK(pwNotebook), NUM_NONPREVIEW_PAGES);
 
 	fUpdate = TRUE;
-    gtk_main();
+	GTKRunDialog(pwDialog);
 }
 
 extern void BoardPreferencesStart( GtkWidget *pwBoard ) {

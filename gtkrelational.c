@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrelational.c,v 1.21 2008/02/24 22:44:35 Superfly_Jon Exp $
+ * $Id: gtkrelational.c,v 1.22 2008/03/12 22:56:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -941,11 +941,7 @@ extern void GtkShowRelational(gpointer p, guint n, GtkWidget * pw)
 
 	gtk_container_add(GTK_CONTAINER(DialogArea(pwDialog, DA_MAIN)), pwn);
 
-	gtk_widget_show_all(pwDialog);
-
-	GTKDisallowStdin();
-	gtk_main();
-	GTKAllowStdin();
+	GTKRunDialog(pwDialog);
 }
 
 extern void GtkShowQuery(RowSet * pRow)
@@ -959,9 +955,5 @@ extern void GtkShowQuery(RowSet * pRow)
 	gtk_container_add(GTK_CONTAINER(DialogArea(pwDialog, DA_MAIN)),
 			  GetRelList(pRow));
 
-	gtk_widget_show_all(pwDialog);
-
-	GTKDisallowStdin();
-	gtk_main();
-	GTKAllowStdin();
+	GTKRunDialog(pwDialog);
 }

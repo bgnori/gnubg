@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.40 2008/03/11 13:54:54 c_anthon Exp $
+ * $Id: gtkexport.c,v 1.41 2008/03/12 22:56:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -893,10 +893,7 @@ extern void GTKShowExport ( exportsetup *pexs )
 
   /* show dialog */
 
-  gtk_widget_show_all( pwDialog );
   ExportSet ( pew );
 
-  GTKDisallowStdin();
-  gtk_main();
-  GTKAllowStdin();
+  GTKRunDialog(pwDialog);
 }

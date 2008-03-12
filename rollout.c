@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.190 2008/02/24 10:39:41 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.191 2008/03/12 22:56:35 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -731,9 +731,6 @@ BasicCubefulRollout ( unsigned int aanBoard[][ 2 ][ 25 ],
 
         }
 
-        if( fAction )
-          fnAction();
-    
         if( fInterrupt )
           return -1;
 
@@ -1319,10 +1316,6 @@ RolloutGeneral( ConstTanBoard *apBoard,
   int nIsCubeful = 0;
   int fOutputMWCSave = fOutputMWC;
 
-#if !USE_MULTITHREAD
-	void ( *fnOld )( void ) = fnTick;
-	fnTick = NULL;
-#endif
   show_jsds = 1;
 
 	ajiJSD = g_alloca ( alternatives * sizeof ( jsdinfo ));
@@ -1493,10 +1486,6 @@ RolloutGeneral( ConstTanBoard *apBoard,
 
 	/* Make sure final output is upto date */
 	UpdateProgress();
-
-#if !USE_MULTITHREAD
-fnTick = fnOld;
-#endif
 
   if (log_rollouts && log_name) {
     free (log_name);

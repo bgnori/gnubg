@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.57 2007/12/29 14:32:29 Superfly_Jon Exp $
+ * $Id: external.c,v 1.58 2008/03/12 22:56:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -241,9 +241,9 @@ extern int ExternalRead( int h, char *pch, size_t cch ) {
     psighandler sh;
 #endif
     
-    while( cch ) {
-	if( fAction )
-	    fnAction();
+    while( cch )
+	{
+		ProcessGtkEvents();
 
 	if( fInterrupt )
 	    return -1;
@@ -302,12 +302,12 @@ extern int ExternalWrite( int h, char *pch, size_t cch ) {
     psighandler sh;
 #endif
 
-    while( cch ) {
-	if( fAction )
-	    fnAction();
+    while( cch )
+	{
+		ProcessGtkEvents();
 
-	if( fInterrupt )
-	    return -1;
+		if( fInterrupt )
+			return -1;
 
 #ifndef WIN32
 	PortableSignal( SIGPIPE, SIG_IGN, &sh, FALSE );
@@ -626,10 +626,11 @@ listenloop:
 
       /* Must set length when using windows */
       saLen = sizeof(struct sockaddr);
-      while( ( hPeer = accept( h, (struct sockaddr*)&saRemote, &saLen ) ) < 0 ) {
-	if( errno == EINTR ) {
-          if( fAction )
-            fnAction();
+      while( ( hPeer = accept( h, (struct sockaddr*)&saRemote, &saLen ) ) < 0 )
+	  {
+		if( errno == EINTR )
+		{
+			ProcessGtkEvents();
 
           if( fInterrupt ) {
             closesocket( h );

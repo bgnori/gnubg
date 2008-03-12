@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.83 2008/03/07 16:35:56 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.84 2008/03/12 22:56:35 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2096,7 +2096,7 @@ static int idleAnimate(BoardData3d* bd3d)
 void RollDice3d(BoardData *bd, BoardData3d* bd3d, const renderdata *prd)
 {	/* animate the dice roll if not below board */
 	setDicePos(bd, bd3d);
-	SuspendInput();
+	GTKSuspendInput();
 
 	if (prd->animateRoll)
 	{
@@ -2122,15 +2122,13 @@ void RollDice3d(BoardData *bd, BoardData3d* bd3d, const renderdata *prd)
 	{
 		/* Show dice on board */
 		gtk_widget_queue_draw(bd3d->drawing_area3d);
-		while(gtk_events_pending())
-			gtk_main_iteration();	
+		ProcessGtkEvents();
 	}
-	ResumeInput();
+	GTKResumeInput();
 }
 
 void AnimateMove3d(BoardData *bd, BoardData3d *bd3d)
 {
-	SuspendInput();
 	slide_move = 0;
 	bd3d->moving = 1;
 
@@ -2138,8 +2136,9 @@ void AnimateMove3d(BoardData *bd, BoardData3d *bd3d)
 
 	stopNextTime = 0;
 	setIdleFunc(bd, idleAnimate);
+	GTKSuspendInput();
 	gtk_main();
-	ResumeInput();
+	GTKResumeInput();
 }
 
 NTH_STATIC int idleWaveFlag(BoardData3d* bd3d)

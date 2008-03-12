@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.45 2008/02/24 10:39:40 Superfly_Jon Exp $
+ * $Id: gtktheory.c,v 1.46 2008/03/12 22:56:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -996,15 +996,11 @@ GTKShowTheory ( const int fActivePage ) {
 
   /* show dialog */
 
-  gtk_widget_show_all( pwDialog );
-
   ResetTheory ( NULL, ptw );
   TheoryUpdated ( NULL, ptw );
   
   gtk_notebook_set_page ( GTK_NOTEBOOK ( pwNotebook ), fActivePage ? 2 /* prices */ : 0 /* market */ );
 
-  GTKDisallowStdin();
-  gtk_main();
-  GTKAllowStdin();
+  GTKRunDialog(pwDialog);
 }
 

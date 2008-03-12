@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.126 2008/02/24 10:39:40 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.127 2008/03/12 22:56:34 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -138,7 +138,6 @@ extern void GTKTextWindow(const char *szOutput, const char *title,
 			  const int type);
 extern void GTKThaw(void);
 extern void GTKUpdateAnnotations(void);
-extern void HandleXAction(void);
 extern void HideAllPanels(gpointer p, guint n, GtkWidget * pw);
 extern void HintDoubleClick(GtkTreeView * treeview, GtkTreePath * path,
 			    GtkTreeViewColumn * col, hintdata * phd);

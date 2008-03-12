@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.188 2008/02/24 10:39:40 Superfly_Jon Exp $
+ * $Id: analysis.c,v 1.189 2008/03/12 22:56:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -997,11 +997,6 @@ static int AnalyzeGame ( listOLD *plGame )
 	unsigned int numMoves = NumberMovesGame(plGame);
 	AnalyseMoveTask *pt = NULL, *pParentTask = NULL;
 
-#if !USE_MULTITHREAD
-	void ( *fnOld )( void ) = fnTick;
-	fnTick = NULL;
-#endif
-
 	/* Analyse first move record (gameinfo) */
 	g_assert( pmr->mt == MOVE_GAMEINFO );
 	if	(AnalyzeMove(pmr, &msAnalyse, plGame, psc,
@@ -1061,9 +1056,6 @@ static int AnalyzeGame ( listOLD *plGame )
 	multi_debug("wait for all task: analysis");
 	result = MT_WaitForTasks(UpdateProgressBar, 250);
 
-#if !USE_MULTITHREAD
-	fnTick = fnOld;
-#endif
 	if (result == -1)
 		IniStatcontext( psc );
 

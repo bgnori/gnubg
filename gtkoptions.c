@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.69 2008/02/27 20:24:07 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.70 2008/03/12 22:56:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1800,11 +1800,9 @@ extern void GTKSetOptions( void )
  		        pwOptions = OptionsPages( &ow ) );
   g_signal_connect(G_OBJECT(pwOptions), "switch-page", G_CALLBACK(OptionsPageChange), NULL);
 
-  gtk_widget_show_all( pwDialog );
-
   OptionsSet ( &ow );
  
-  gtk_main();
+  GTKRunDialog(pwDialog);
 }
 
 static void SoundOK(GtkWidget *pw, void *dummy)
@@ -1821,6 +1819,5 @@ extern void GTKSound(void)
 
 	AddSoundWidgets(DialogArea(pwDialog, DA_MAIN));
 
-	gtk_widget_show_all(pwDialog);
-	gtk_main();
+	GTKRunDialog(pwDialog);
 }

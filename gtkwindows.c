@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.24 2008/03/03 21:46:10 Superfly_Jon Exp $
+ * $Id: gtkwindows.c,v 1.25 2008/03/12 22:56:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -273,16 +273,12 @@ GTKMessage( char *sz, dialogtype dt )
     gtk_window_set_default_size( GTK_WINDOW( pwDialog ), -1, MIN(400,
                             req.height+50) );
 
-    gtk_widget_show_all( pwDialog );
-
     /* This dialog should be REALLY modal -- disable "next turn" idle
        processing and stdin handler, to avoid reentrancy problems. */
     if( nNextTurn ) 
       g_source_remove( nNextTurn );
 	    
-    GTKDisallowStdin();
-    gtk_main();
-    GTKAllowStdin();
+	GTKRunDialog(pwDialog);
 
     if( nNextTurn ) 
       nNextTurn = g_idle_add( NextTurnNotify, NULL );
@@ -317,11 +313,8 @@ extern char* GTKGetInput(char* title, char* prompt, GtkWidget *parent)
 	gtk_entry_set_activates_default(GTK_ENTRY(pwEntry), TRUE);
 	gtk_widget_grab_focus(pwEntry);
 
-	gtk_widget_show_all( pwDialog );
+	GTKRunDialog(pwDialog);
 
-	GTKDisallowStdin();
-	gtk_main();
-	GTKAllowStdin();
 	return inputString;
 }
 
@@ -358,10 +351,14 @@ extern void GTKShowWarning(warnings warning, GtkWidget *pwParent)
 		gtk_tooltips_set_tip(ptt, pwTick, _("If set, this message won't appear again"), 0);
 		gtk_box_pack_start( GTK_BOX( pwv ), pwTick, TRUE, TRUE, 0 );
 
-		gtk_widget_show_all( pwDialog );
-
-		GTKDisallowStdin();
-		gtk_main();
-		GTKAllowStdin();
+		GTKRunDialog(pwDialog);
 	}
+}
+
+extern void GTKRunDialog(GtkWidget *dialog)
+{
+	GTKDisallowStdin();
+	gtk_widget_show_all(dialog);
+	gtk_main();
+	GTKAllowStdin();
 }

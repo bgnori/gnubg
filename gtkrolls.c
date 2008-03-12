@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.27 2007/12/29 14:32:30 Superfly_Jon Exp $
+ * $Id: gtkrolls.c,v 1.28 2008/03/12 22:56:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -405,11 +405,8 @@ GTKShowRolls ( const gint nDepth, evalcontext *pec, matchstate *pms ) {
   }
   
   gtk_window_set_default_size( GTK_WINDOW( prw->pDialog ), 560, 400 ); 
-  gtk_widget_show_all( prw->pDialog );
   g_signal_connect( G_OBJECT( prw->pDialog ), "delete_event",
                       G_CALLBACK(RollsClose), prw );	/* In case closed mid calculation */
 
-  GTKDisallowStdin();
-  gtk_main();
-  GTKAllowStdin();
+  GTKRunDialog(prw->pDialog);
 }

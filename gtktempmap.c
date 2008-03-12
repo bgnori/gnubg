@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.31 2007/12/29 14:32:30 Superfly_Jon Exp $
+ * $Id: gtktempmap.c,v 1.32 2008/03/12 22:56:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -792,6 +792,5 @@ GTKShowTempMap( const matchstate ams[], const int n,
   gtk_window_set_default_size( GTK_WINDOW( pwDialog ), 400, 500 ); 
   gtk_object_weakref( GTK_OBJECT( pwDialog ), DestroyDialog, ptmw );
 
-  gtk_widget_show_all( pwDialog );
-	gtk_main();
+  GTKRunDialog(pwDialog);
 }

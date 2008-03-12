@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.21 2008/02/02 23:51:47 c_anthon Exp $
+ * $Id: gtksplash.c,v 1.22 2008/03/12 22:56:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -97,8 +97,7 @@ CreateSplash (void) {
 
   gtk_widget_show_all ( GTK_WIDGET ( pgs->pwWindow ) );
 
-  while( gtk_events_pending() )
-    gtk_main_iteration();
+  ProcessGtkEvents();
 
   return pgs->pwWindow;
 
@@ -137,8 +136,7 @@ PushSplash ( GtkWidget *pwSplash,
   gtk_label_set_text ( GTK_LABEL ( pgs->apwStatus[ 0 ] ), szText0 );
   gtk_label_set_text ( GTK_LABEL ( pgs->apwStatus[ 1 ] ), szText1 );
 
-  while( gtk_events_pending() )
-    gtk_main_iteration();
+  ProcessGtkEvents();
 
 #ifndef WIN32
   /* Don't bother with these pauses on windows? */
