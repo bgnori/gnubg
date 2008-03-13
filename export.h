@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.h,v 1.33 2008/02/10 22:24:55 c_anthon Exp $
+ * $Id: export.h,v 1.34 2008/03/13 18:15:57 Superfly_Jon Exp $
  */
 
 #include "render.h"
@@ -99,9 +99,7 @@ extern int WritePNG(const char *sz, unsigned char *puch,
 		    unsigned int nSizeY);
 
 #if USE_BOARD3D
-void GenerateImage3d(renderdata * prd, const char *szName,
-		     unsigned int nSize, unsigned int nSizeX,
-		     unsigned int nSizeY);
+void GenerateImage3d(const char *szName, unsigned int nSize, unsigned int nSizeX, unsigned int nSizeY);
 #endif
 
 extern void TextAnalysis(GString * gsz, const matchstate * pms,

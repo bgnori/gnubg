@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.22 2008/03/12 22:56:34 Superfly_Jon Exp $
+ * $Id: gtksplash.c,v 1.23 2008/03/13 18:15:57 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -27,10 +27,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "backgammon.h"
 #include "eval.h"
 #include "gtksplash.h"
 #include "gtktoolbar.h"
+#include "gtkgame.h"
 #include <glib/gi18n.h>
 
 
