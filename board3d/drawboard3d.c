@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.70 2008/03/08 15:10:58 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.71 2008/03/13 18:15:08 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -175,7 +175,7 @@ static void preDrawPiece0(const renderdata* prd, int display)
 	}
 	else
 	{
-		circleSloped(radius, 0, PIECE_DEPTH, prd->curveAccuracy);
+		circleSloped(radius, 0.f, PIECE_DEPTH, prd->curveAccuracy);
 		return;
 	}
 	/* Draw side of piece */
@@ -282,7 +282,7 @@ static void preDrawPiece1(const renderdata* prd, int display)
 	}
 	else
 	{
-		circleSloped(pieceRad, 0, PIECE_DEPTH, prd->curveAccuracy);
+		circleSloped(pieceRad, 0.f, PIECE_DEPTH, prd->curveAccuracy);
 		return;
 	}
 

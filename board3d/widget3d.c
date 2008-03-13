@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.42 2008/03/05 22:28:38 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.43 2008/03/13 18:15:09 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -273,7 +273,7 @@ int DoAcceleratedCheck(const BoardData3d* bd3d, GtkWidget* pwParent)
 		return 1;
 }
 
-void RenderToBuffer3d(const BoardData* bd, BoardData3d* bd3d, int width, int height, unsigned char* buf)
+void RenderToBuffer3d(const BoardData* bd, BoardData3d* bd3d, unsigned int width, unsigned int height, unsigned char* buf)
 {
 	TRcontext *tr;
 	GtkWidget *widget = bd3d->drawing_area3d;
@@ -290,7 +290,7 @@ void RenderToBuffer3d(const BoardData* bd, BoardData3d* bd3d, int width, int hei
 	trImageBuffer(tr, GL_RGB, GL_UNSIGNED_BYTE, buf);
 
 	/* Sort out viewing perspective */
-	glViewport(0, 0, width, height);
+	glViewport(0, 0, (int)width, (int)height);
 	SetupViewingVolume3d(bd, bd3d, bd->rd);
 
 	if (bd->rd->planView)
