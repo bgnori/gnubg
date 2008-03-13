@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.h,v 1.7 2007/09/02 20:27:02 c_anthon Exp $
+ * $Id: gtktoolbar.h,v 1.8 2008/03/13 20:45:00 Superfly_Jon Exp $
  */
 
 #ifndef _GTKTOOLBAR_H_
@@ -33,9 +33,6 @@ typedef enum _toolbarcontrol {
 
 extern GtkWidget *
 ToolbarNew ( void );
-
-extern GtkWidget *
-ToolbarGetStopParent ( GtkWidget *pwToolbar );
 
 extern toolbarcontrol
 ToolbarUpdate ( GtkWidget *pwToolbar,

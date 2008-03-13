@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.765 2008/03/12 22:56:33 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.766 2008/03/13 20:44:59 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -5122,8 +5122,6 @@ extern void Prompt( void )
 	return;
 #endif
 
-    ProgressEnd();
-    
     g_print( FormatPrompt() );
     fflush( stdout );    
 }
