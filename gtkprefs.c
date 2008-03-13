@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.156 2008/03/13 20:57:48 c_anthon Exp $
+ * $Id: gtkprefs.c,v 1.157 2008/03/13 22:00:53 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1950,7 +1950,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.156 2008/03/13 20:57:48 c_anthon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.157 2008/03/13 22:00:53 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -3008,6 +3008,15 @@ static void ChangePage(GtkNotebook *notebook, GtkNotebookPage *page,
 #endif
 }
 
+static void pref_dialog_map(GtkWidget *window, BoardData *bd)
+{
+#if USE_BOARD3D
+	DisplayCorrectBoardType(bd, bd->bd3d, bd->rd);
+	redrawChange = FALSE;
+	bd->rd->quickDraw = FALSE;
+#endif
+}
+
 extern void BoardPreferences(GtkWidget *pwBoard)
 {
 	GtkWidget *pwDialog, *pwHbox;
@@ -3070,13 +3079,9 @@ extern void BoardPreferences(GtkWidget *pwBoard)
 
 	SetTitle();
 
-#if USE_BOARD3D
-	DisplayCorrectBoardType(bd, bd->bd3d, bd->rd);
-	redrawChange = FALSE;
-	bd->rd->quickDraw = FALSE;
-#endif
-
 	gtk_notebook_set_page(GTK_NOTEBOOK(pwNotebook), NUM_NONPREVIEW_PAGES);
+
+	g_signal_connect(pwDialog, "map", G_CALLBACK(pref_dialog_map), bd);
 
 	fUpdate = TRUE;
 	GTKRunDialog(pwDialog);
