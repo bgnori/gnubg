@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.372 2008/03/12 22:56:32 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.373 2008/03/14 13:07:52 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1013,7 +1013,7 @@ extern void CommandTake(char *);
 extern int getGameNumber(const listOLD * plGame);
 extern int getMoveNumber(const listOLD * plGame, const void *p);
 
-extern void ProcessGtkEvents();
+extern void ProcessGtkEvents(void);
 #if !USE_MULTITHREAD
 extern void CallbackProgress( void );
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.766 2008/03/13 20:44:59 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.767 2008/03/14 13:07:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5172,7 +5172,6 @@ extern void ProcessInput( char *sz)
 	fNeedPrompt = TRUE;
     else {
 	    char *sz = locale_from_utf8(FormatPrompt());
-	    ProgressEnd();
 	    rl_callback_handler_install( sz, ProcessInput );
 	    g_free(sz);
 	    fReadingCommand = TRUE;
@@ -5245,7 +5244,6 @@ extern gint NextTurnNotify( gpointer p )
 #if HAVE_LIBREADLINE
 	if( fInteractive ) {
 	    char *sz = locale_from_utf8(FormatPrompt());
-	    ProgressEnd();
 	    rl_callback_handler_install( sz, ProcessInput );
 	    g_free(sz);
 	    fReadingCommand = TRUE;
@@ -7155,7 +7153,7 @@ int asyncCubeDecision(decisionData *pdd)
 	return ASR_OK;
 }
 
-int RunAsyncProcess(AsyncFun fn, void *data, const char *msg)
+extern int RunAsyncProcess(AsyncFun fn, void *data, const char *msg)
 {
 	int ret;
 #if USE_MULTITHREAD
@@ -7180,7 +7178,7 @@ int RunAsyncProcess(AsyncFun fn, void *data, const char *msg)
 	return ret;
 }
 
-extern void ProcessGtkEvents()
+extern void ProcessGtkEvents(void)
 {
 #if USE_GTK
 	if (fX)
