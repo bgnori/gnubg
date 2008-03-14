@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.767 2008/03/14 13:07:52 c_anthon Exp $
+ * $Id: gnubg.c,v 1.768 2008/03/14 18:53:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4853,11 +4853,7 @@ extern void CommandSaveSettings( char *szParam )
        g_ascii_formatd(buf, G_ASCII_DTOSTR_BUF_SIZE, "%f", rRatingOffset ));
 	/* warnings */
 #if USE_GTK
-	for (i = 0; i < WARN_NUM_WARNINGS; i++)
-	{
-		if (!warningEnabled[i])
-			fprintf(pf, "set warning %s off\n", warningNames[i]);
-	}
+	WriteWarnings(pf);
 #endif
 	/* Save toolbar style */
 	fprintf(pf, "set toolbar %d\n", nToolbarStyle);

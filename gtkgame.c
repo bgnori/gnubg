@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.690 2008/03/13 20:44:59 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.691 2008/03/14 18:53:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -113,23 +113,6 @@ extern gint gtk_option_menu_get_history (GtkOptionMenu *option_menu) {
 	return -1;
 }
 #endif
-
-
-char* warningStrings[WARN_NUM_WARNINGS] =
-{
-	N_("Press escape to exit full screen mode"),
-	N_("This option will speed up the 3d drawing, but may not work correctly on all machines"),
-	N_("Drawing shadows is only supported on the latest graphics cards\n"
-		"Disable this option if performance is poor"),
-	N_("No hardware accelerated graphics card found, performance may be slow"),
-	N_("Interupt the current process?")
-};
-
-char* warningNames[WARN_NUM_WARNINGS] =
-{"fullscreenexit", "quickdraw", "shadows", "unaccelerated", "stop"};
-
-int warningEnabled[WARN_NUM_WARNINGS] = {TRUE, TRUE, TRUE, TRUE, TRUE};
-int warningQuestion[WARN_NUM_WARNINGS] = {FALSE, FALSE, FALSE, FALSE, TRUE};
 
 /* Enumeration to be used as index to the table of command strings below
    (since GTK will only let us put integers into a GtkItemFactoryEntry,
@@ -317,6 +300,7 @@ int fTTY = TRUE;
 int fGUISetWindowPos = TRUE;
 int frozen = FALSE;
 static GString *output_str = NULL;
+static int fullScreenOnStartup = FALSE;
 
 static guint nStdin, nDisabledCount = 1;
 
@@ -1668,7 +1652,10 @@ static void DoFullScreenMode(gpointer p, guint n, GtkWidget * pw)
 				(pif, "/View/Full screen"))->active;
 
 	if (fFullScreen) {
-		GTKShowWarning(WARN_FULLSCREEN_EXIT, NULL);
+		if (!fullScreenOnStartup)
+			GTKShowWarning(WARN_FULLSCREEN_EXIT, NULL);
+		else
+			fullScreenOnStartup = FALSE;
 
 		bd->rd->fShowGameInfo = FALSE;
 
@@ -3834,10 +3821,8 @@ extern void RunGTK( GtkWidget *pwSplash, char *commands, char *python_script, ch
 
 		if (fFullScreen)
 		{	/* Change to full screen (but hide warning) */
-			int temp = warningEnabled[WARN_FULLSCREEN_EXIT];
-			warningEnabled[WARN_FULLSCREEN_EXIT] = FALSE;
+			fullScreenOnStartup = TRUE;
 			FullScreenMode(TRUE);
-			warningEnabled[WARN_FULLSCREEN_EXIT] = temp;
 		}
 
                 if (match)
