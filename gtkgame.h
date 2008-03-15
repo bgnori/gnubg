@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.127 2008/03/12 22:56:34 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.128 2008/03/15 10:16:27 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -166,7 +166,7 @@ extern void ShowList(char *asz[], char *szTitle, GtkWidget * pwParent);
 extern void ShowMove(hintdata * phd, const int f);
 extern void SwapBoardToPanel(int ToPanel);
 extern void ToggleDockPanels(gpointer p, guint n, GtkWidget * pw);
-extern void Undo(void);
+extern void GTKUndo(void);
 extern void UserCommand(char *sz);
 
 #if HAVE_LIBREADLINE

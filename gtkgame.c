@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.691 2008/03/14 18:53:07 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.692 2008/03/15 10:16:27 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1547,15 +1547,24 @@ static void PythonShell(gpointer p, guint n, GtkWidget * pw)
 	g_free(pch);
 }
 
-extern void Undo(void)
+extern void GTKUndo(void)
 {
+	BoardData *bd = BOARD( pwBoard )->board_data;
+
 #if USE_BOARD3D
 	RestrictiveRedraw();
 #endif
 
+	if (bd->drag_point >= 0)
+	{	/* Drop piece */
+		GdkEventButton dummyEvent;
+		dummyEvent.x = dummyEvent.y = 0;
+		board_button_release(pwBoard, &dummyEvent, bd);
+	}
+
 	ShowBoard();
 
-        UpdateTheoryData(BOARD( pwBoard )->board_data, TT_RETURNHITS, msBoard());
+	UpdateTheoryData(bd, TT_RETURNHITS, msBoard());
 }
 
 #if USE_BOARD3D
@@ -3300,7 +3309,7 @@ GtkItemFactoryEntry aife[] = {
 		"<control>Q", Command, CMD_QUIT, "<StockItem>", GTK_STOCK_QUIT
 	},
 	{ N_("/_Edit"), NULL, NULL, 0, "<Branch>", NULL },
-	{ N_("/_Edit/_Undo"), "<control>Z", Undo, 0, 
+	{ N_("/_Edit/_Undo"), "<control>Z", GTKUndo, 0, 
 		"<StockItem>", GTK_STOCK_UNDO
 	},
 	{ N_("/_Edit/-"), NULL, NULL, 0, "<Separator>", NULL },

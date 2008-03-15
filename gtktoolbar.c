@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.42 2008/03/13 20:45:00 Superfly_Jon Exp $
+ * $Id: gtktoolbar.c,v 1.43 2008/03/15 10:16:28 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -183,7 +183,7 @@ static void ToolbarToggleEdit(GtkWidget * pw, toolbarwidget * ptw)
 		if (ms.gs == GAME_NONE)
 			edit_new(nDefaultLength);
 		/* Undo any partial move that may have been made when entering edit mode */
-		Undo();
+		GTKUndo();
 	} else
 		editing = FALSE;
 
@@ -389,7 +389,7 @@ ToolbarNew ( void ) {
   gtk_toolbar_append_space(GTK_TOOLBAR(pwToolbar));
   
   /* reset button */
-  TB_BUTTON_ADD(ptw->pwReset, stock_undo_xpm, _("Undo"), Undo,
+  TB_BUTTON_ADD(ptw->pwReset, stock_undo_xpm, _("Undo"), GTKUndo,
 		  NULL, 
                   _("Undo moves"),
 		  NULL) ;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.236 2008/03/12 22:56:33 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.237 2008/03/15 10:16:27 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1763,7 +1763,7 @@ static void ShowBoardPopup(GdkEventButton* event)
 		menu_item = gtk_menu_item_new_with_label ("Undo Move");
 		gtk_menu_shell_append(GTK_MENU_SHELL(boardMenu), menu_item);
 		gtk_widget_show(menu_item);
-		g_signal_connect(G_OBJECT(menu_item), "activate", G_CALLBACK(Undo), NULL);
+		g_signal_connect(G_OBJECT(menu_item), "activate", G_CALLBACK(GTKUndo), NULL);
 
 		menu_item = gtk_menu_item_new();
 		gtk_menu_shell_append(GTK_MENU_SHELL(boardMenu), menu_item);
