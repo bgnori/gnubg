@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.189 2008/03/12 22:56:32 Superfly_Jon Exp $
+ * $Id: analysis.c,v 1.190 2008/03/15 12:58:14 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1586,19 +1586,14 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * pl, const
                asz[ 0 ], asz[ 1 ], asz[ 2 ] );
       
     }
-    
-    strcat( szOutput, "\n\n" );
-    
+
+	strcat( szOutput, "\n\n" );
     freeGS( list );
-
   }
-
 }
 
-
-extern void
-CommandShowStatisticsMatch ( char *sz ) {
-
+extern void CommandShowStatisticsMatch ( char *sz )
+{
     char szOutput[4096];
 
     updateStatisticsMatch ( &lMatch );
