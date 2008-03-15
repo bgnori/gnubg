@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.58 2008/03/12 22:56:33 Superfly_Jon Exp $
+ * $Id: external.c,v 1.59 2008/03/15 10:17:23 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -623,6 +623,8 @@ listenloop:
 	return;
       }
       outputf( _("Waiting for a connection from %s...\n"), sz);
+      outputx();
+      ProcessGtkEvents();
 
       /* Must set length when using windows */
       saLen = sizeof(struct sockaddr);
@@ -654,6 +656,8 @@ listenloop:
 
       outputf( _("Accepted connection from %s.\n"), 
                  inet_ntoa( saRemote.sin_addr ) );
+      outputx();
+      ProcessGtkEvents();
 
       while( !ExternalRead( hPeer, szCommand, sizeof( szCommand ) ) ) {
 
