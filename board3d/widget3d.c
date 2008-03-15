@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.44 2008/03/14 22:43:51 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.45 2008/03/15 10:15:31 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -123,12 +123,10 @@ static gboolean expose_event_3d(GtkWidget *widget, GdkEventExpose *exposeEvent, 
 				RestrictiveDrawFrameWindow(exposeEvent->area.x, widget->allocation.height - exposeEvent->area.y - exposeEvent->area.height, exposeEvent->area.width, exposeEvent->area.height);
 			}
 
-			if (numRestrictFrames > 0)
-			{	/* Draw updated region directly to screen */
-				glDrawBuffer(GL_FRONT);
-				RestrictiveRender(bd, bd->bd3d, bd->rd);
-				glFlush();
-			}
+			/* Draw updated regions directly to screen */
+			glDrawBuffer(GL_FRONT);
+			RestrictiveRender(bd, bd->bd3d, bd->rd);
+			glFlush();
 		}
 		else
 		{	/* Full screen redraw (to back buffer and then swap) */
