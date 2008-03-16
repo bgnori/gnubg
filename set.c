@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.295 2008/03/14 18:53:08 Superfly_Jon Exp $
+ * $Id: set.c,v 1.296 2008/03/16 16:16:11 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2460,25 +2460,42 @@ extern void CommandSetScore( char *sz ) {
 #endif /* USE_GTK */
 }
 
-extern void CommandSetSeed( char *sz ) {
-
+extern void CommandSetSeed( char *sz )
+{
     SetSeed ( rngCurrent, rngctxCurrent, sz );
-
 }
 
 extern void CommandSetToolbar( char *sz )
 {
-	int n = ParseNumber( &sz );
-
-	if (n != 0 && n != 1 && n != 2)
+    if (!StrCaseCmp( "on", sz ) || !StrCaseCmp( "off", sz ))
 	{
-		outputl(_("You must specify either 0, 1 or 2"));
-		return;
-	}
 #if USE_GTK
-	if (fX)
-	  SetToolbarStyle(n);
+		if (!StrCaseCmp( "on", sz ))
+		{
+			if (!fToolbarShowing)
+				ShowToolbar();
+		}
+		else
+		{
+			if (fToolbarShowing)
+				HideToolbar();
+		}
 #endif
+	}
+	else
+	{
+		int n = ParseNumber( &sz );
+
+		if (n != 0 && n != 1 && n != 2)
+		{
+			outputl(_("You must specify either 0, 1 or 2"));
+			return;
+		}
+#if USE_GTK
+		if (fX)
+		  SetToolbarStyle(n);
+#endif
+	}
 }
 
 extern void CommandSetTurn( char *sz ) {

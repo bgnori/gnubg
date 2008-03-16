@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.768 2008/03/14 18:53:07 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.769 2008/03/16 16:16:10 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4857,6 +4857,8 @@ extern void CommandSaveSettings( char *szParam )
 #endif
 	/* Save toolbar style */
 	fprintf(pf, "set toolbar %d\n", nToolbarStyle);
+	if (!fToolbarShowing)
+		fputs("set toolbar off\n", pf);
 
 	/* Save gamelist style on/off (if not set - default is set) */
 	if (!fStyledGamelist)

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.128 2008/03/15 10:16:27 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.129 2008/03/16 16:16:11 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -46,6 +46,7 @@ extern int fNeedPrompt;
 extern int frozen;
 extern int fTTY;
 extern int fX;
+extern int fToolbarShowing;
 extern unsigned int nDelay;
 extern GtkWidget *hpaned;
 extern GtkWidget *pom;
@@ -168,6 +169,8 @@ extern void SwapBoardToPanel(int ToPanel);
 extern void ToggleDockPanels(gpointer p, guint n, GtkWidget * pw);
 extern void GTKUndo(void);
 extern void UserCommand(char *sz);
+extern void ShowToolbar(void);
+extern void HideToolbar(void);
 
 #if HAVE_LIBREADLINE
 extern int fReadingCommand;
