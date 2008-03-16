@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.h,v 1.8 2008/03/13 20:45:00 Superfly_Jon Exp $
+ * $Id: gtktoolbar.h,v 1.9 2008/03/16 09:48:37 Superfly_Jon Exp $
  */
 
 #ifndef _GTKTOOLBAR_H_
@@ -57,5 +57,6 @@ extern GtkWidget *
 image_from_xpm_d ( char **xpm, GtkWidget *pw );
 
 extern void click_edit(void);
+extern void click_swapdirection(void);
 
 #endif /* _GTKTOOLBAR_H_ */
