@@ -355,7 +355,7 @@ void sgffree (void *  );
 
 /* Begin user sect3 */
 
-#define sgfwrap() 1
+#define sgfwrap(n) 1
 #define YY_SKIP_YYWRAP
 
 typedef unsigned char YY_CHAR;
@@ -1006,7 +1006,7 @@ char *sgftext;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf_l.c,v 1.3 2007/12/25 09:07:29 Superfly_Jon Exp $
+ * $Id: sgf_l.c,v 1.4 2008/03/16 20:59:37 c_anthon Exp $
  */
 #line 23 "sgf_l.l"
 #include "config.h"
@@ -1054,6 +1054,35 @@ static int error( char *s ) {
 #endif
 
 static int yy_init_globals (void );
+
+/* Accessor methods to globals.
+   These are made visible to non-reentrant scanners for convenience. */
+
+int sgflex_destroy (void );
+
+int sgfget_debug (void );
+
+void sgfset_debug (int debug_flag  );
+
+YY_EXTRA_TYPE sgfget_extra (void );
+
+void sgfset_extra (YY_EXTRA_TYPE user_defined  );
+
+FILE *sgfget_in (void );
+
+void sgfset_in  (FILE * in_str  );
+
+FILE *sgfget_out (void );
+
+void sgfset_out  (FILE * out_str  );
+
+int sgfget_leng (void );
+
+char *sgfget_text (void );
+
+int sgfget_lineno (void );
+
+void sgfset_lineno (int line_number  );
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -1190,7 +1219,7 @@ YY_DECL
     
 #line 67 "sgf_l.l"
 
-#line 1194 "sgf_l.c"
+#line 1223 "sgf_l.c"
 
 	if ( !(yy_init) )
 		{
@@ -1339,7 +1368,7 @@ YY_RULE_SETUP
 #line 100 "sgf_l.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1343 "sgf_l.c"
+#line 1372 "sgf_l.c"
 			case YY_STATE_EOF(INITIAL):
 			case YY_STATE_EOF(value):
 				yyterminate();

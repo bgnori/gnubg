@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.126 2007/09/27 14:21:42 c_anthon Exp $
+# $Id: credits.sh,v 1.127 2008/03/16 20:59:37 c_anthon Exp $
 # 
 
 column < /dev/null || exit 0
@@ -253,7 +253,7 @@ cat > credits.c <<EOF
 #include <glib/gi18n.h>
 #include "credits.h"
 
-char aszCOPYRIGHT[] = N_("Copyright, 1999-2004 by Gary Wong, 2004-2007 GNU Backgammon is the legal property of its authors.");
+char aszCOPYRIGHT[] = N_("Copyright, 1999-2004 by Gary Wong, 2004-2007 GNU Backgammon is the legal\nproperty of its authors.");
 
 credEntry ceAuthors[] = {
 EOF

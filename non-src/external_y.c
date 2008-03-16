@@ -130,7 +130,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_y.c,v 1.8 2008/01/13 08:07:53 c_anthon Exp $
+ * $Id: external_y.c,v 1.9 2008/03/16 20:59:37 c_anthon Exp $
  */
 
 #include "config.h"

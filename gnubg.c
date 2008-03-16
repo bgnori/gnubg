@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.769 2008/03/16 16:16:10 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.770 2008/03/16 20:59:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5825,15 +5825,12 @@ static void version(void)
 
 	char *pch;
 	g_print(_(VERSION_STRING));
-	g_print("\n%s\n", _(aszCOPYRIGHT));
-	g_print(_("GNU Backgammon is free software, covered by the GNU "
-		 "General Public License\n"
-		 "version 3 or later, and you are welcome to change it and/or "
-		 "distribute copies of it\n"
-		 "under certain conditions.  Type \"show copying\" to see "
-		 "the conditions.\n"
-		 "There is absolutely no warranty for GNU Backgammon.  "
-		 "Type \"show warranty\" for\n" "details.\n\n"));
+	g_print("\n\n%s\n\n", _(aszCOPYRIGHT));
+	g_print(_("GNU Backgammon is free software, covered by the GNU General Public License\n"
+		      "version 3 or later, and you are welcome to change it and/or distribute\n"
+			  "copies of it under certain conditions.  Type \"show copying\" to see the\n"
+			  "conditions. There is absolutely no warranty for GNU Backgammon. Type \n"
+			  "\"show warranty\" for details.\n\n"));
 
 	while ((pch = GetBuildInfoString()))
 		g_print("%s\n", gettext(pch));
