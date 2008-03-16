@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.296 2008/03/16 16:16:11 Superfly_Jon Exp $
+ * $Id: set.c,v 1.297 2008/03/16 21:02:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1163,13 +1163,11 @@ extern void CommandSetGUIIllegal( char *sz ) {
 	       _("Chequers may not be dragged to illegal points.") );
 }
 
-extern void CommandSetGUIShowIDs( char *sz ) {
-
-    if( SetToggle( "gui showids", &GetMainAppearance()->fShowIDs, sz,
-		   _("The position and match IDs will be shown above the "
-		     "board."),
-		   _("The position and match IDs will not be shown.") ) )
-	UpdateSetting( &GetMainAppearance()->fShowIDs );
+extern void CommandSetGUIShowIDs(char *sz)
+{
+    SetToggle("gui showids", &GetMainAppearance()->fShowIDs, sz,
+	      _("The position and match IDs will be shown above the board."),
+	      _("The position and match IDs will not be shown."));
 }
 
 extern void CommandSetGUIDragTargetHelp( char *sz ) {
