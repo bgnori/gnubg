@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.44 2008/03/16 09:48:36 Superfly_Jon Exp $
+ * $Id: gtktoolbar.c,v 1.45 2008/03/16 16:56:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -60,9 +60,6 @@ typedef struct _toolbarwidget {
   GtkWidget *pwButtonClockwise; /* button for clockwise */
 
 } toolbarwidget;
-
-/* Hack this for now to stop re-entering - should be fixed when menu switched to actions */
-static int inCallback = FALSE;
 
 static void ButtonClicked( GtkWidget *pw, char *sz ) {
 
