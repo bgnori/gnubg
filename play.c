@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.310 2008/03/12 22:56:35 Superfly_Jon Exp $
+ * $Id: play.c,v 1.311 2008/03/17 21:39:58 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2878,8 +2878,8 @@ extern void CommandNewGame( char *sz )
     fComputing = FALSE;
 }
 
-extern void ClearMatch( void ) {
-
+extern void ClearMatch( void )
+{
     char ***pppch;
     static char **appch[] = { &mi.pchRating[ 0 ], &mi.pchRating[ 1 ],
 			      &mi.pchEvent, &mi.pchRound, &mi.pchPlace,
@@ -2896,7 +2896,7 @@ extern void ClearMatch( void ) {
 
     for( pppch = appch; *pppch; pppch++ )
 	if( **pppch ) {
-	    free( **pppch );
+	    g_free( **pppch );
 	    **pppch = NULL;
 	}
 
@@ -2919,16 +2919,17 @@ extern void SetMatchDate( matchinfo *pmi ) {
     pmi->nDay = ptm->tm_mday;
 }
 
-extern void CommandNewMatch( char *sz ) {
-
+extern void CommandNewMatch( char *sz )
+{
     unsigned int n;
 
     if( !sz || !*sz )
-	n = nDefaultLength;
+		n = nDefaultLength;
     else
-	n = ParseNumber( &sz );
+		n = ParseNumber( &sz );
 
-    if( n == 0 ) {
+    if( n == 0 )
+	{
         CommandNewSession(NULL);
         return;
     }
@@ -2946,7 +2947,7 @@ extern void CommandNewMatch( char *sz ) {
     if( ms.gs == GAME_PLAYING && fConfirm ) {
 	if( fInterrupt )
 	    return;
-	    
+
 	if( !GetInputYN( _("Are you sure you want to start a new match, "
 			 "and discard the game in progress? ") ) )
 	    return;
