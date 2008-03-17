@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.297 2008/03/16 21:02:03 c_anthon Exp $
+ * $Id: set.c,v 1.298 2008/03/17 21:39:58 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3013,11 +3013,10 @@ extern void CommandSetAnalysisMoveFilter( char *sz ) {
 
   
 
-extern void 
-SetMatchInfo( char **ppch, char *sz, char *szMessage ) {
-
+extern void SetMatchInfo( char **ppch, char *sz, char *szMessage )
+{
     if( *ppch )
-	free( *ppch );
+	g_free( *ppch );
 
     if( sz && *sz ) {
 	*ppch = g_strdup( sz );
