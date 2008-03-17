@@ -554,7 +554,7 @@ char *exttext;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.c,v 1.11 2008/03/16 20:59:37 c_anthon Exp $
+ * $Id: external_l.c,v 1.12 2008/03/17 11:35:33 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1946,6 +1946,7 @@ void escapes(const char *cp, char *tp)
     *tp = '\0';
 }
 
+extern void ExtStartParse(const char* szCommand);
 void ExtStartParse(const char* szCommand)
 {
 	YY_BUFFER_STATE buf_state;
