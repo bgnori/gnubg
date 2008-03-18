@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoffdump.c,v 1.15 2008/01/16 16:16:45 Superfly_Jon Exp $
+ * $Id: bearoffdump.c,v 1.16 2008/03/18 22:51:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -27,11 +27,10 @@
 #include <stdlib.h>
 #include "positionid.h"
 #include "bearoff.h"
+#include "multithread.h"
+#include "backgammon.h"
 
 #if USE_MULTITHREAD
-extern int MT_GetThreadID(void);
-extern void MT_Release(void);
-extern void MT_Exclusive(void);
 extern int MT_GetThreadID(void)
 {
   return (0);
@@ -43,6 +42,10 @@ extern void MT_Release(void)
 extern void MT_Exclusive(void)
 {
   return;
+}
+#else
+extern void CallbackProgress(void)
+{
 }
 #endif
 

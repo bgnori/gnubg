@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.770 2008/03/16 20:59:36 c_anthon Exp $
+ * $Id: gnubg.c,v 1.771 2008/03/18 22:51:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4854,11 +4854,11 @@ extern void CommandSaveSettings( char *szParam )
 	/* warnings */
 #if USE_GTK
 	WriteWarnings(pf);
-#endif
 	/* Save toolbar style */
 	fprintf(pf, "set toolbar %d\n", nToolbarStyle);
 	if (!fToolbarShowing)
 		fputs("set toolbar off\n", pf);
+#endif
 
 	/* Save gamelist style on/off (if not set - default is set) */
 	if (!fStyledGamelist)
