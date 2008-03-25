@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.10 2008/03/01 12:15:30 Superfly_Jon Exp $
+ * $Id: dbprovider.c,v 1.11 2008/03/25 13:31:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -552,6 +552,7 @@ static void SQLiteCommit(void)
 }
 #endif
 
+#if NUM_PROVIDERS
 GList *SQLiteGetDatabaseList(const char *user, const char *password)
 {
 	GList *glist = NULL;
@@ -586,3 +587,4 @@ int SQLiteDeleteDatabase(const char *dbfilename, const char *user, const char *p
 	g_free(name), g_free(filename);
 	return (ret == 0);
 }
+#endif
