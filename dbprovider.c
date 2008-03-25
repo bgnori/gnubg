@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.11 2008/03/25 13:31:44 c_anthon Exp $
+ * $Id: dbprovider.c,v 1.12 2008/03/25 13:33:27 c_anthon Exp $
  */
 
 #include "config.h"
@@ -63,10 +63,10 @@ static RowSet *SQLiteSelect(const char* str);
 static int SQLiteUpdateCommand(const char* str);
 static void SQLiteCommit(void);
 #endif
-static int SQLiteDeleteDatabase(const char *dbfilename, const char *user, const char *password);
-static GList *SQLiteGetDatabaseList(const char *user, const char *password);
 
 #if NUM_PROVIDERS
+static int SQLiteDeleteDatabase(const char *dbfilename, const char *user, const char *password);
+static GList *SQLiteGetDatabaseList(const char *user, const char *password);
 DBProvider providers[NUM_PROVIDERS] =
 {
 #if HAVE_SQLITE
