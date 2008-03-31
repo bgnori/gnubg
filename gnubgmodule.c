@@ -16,13 +16,17 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.79 2008/02/17 12:26:24 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.80 2008/03/31 10:59:00 c_anthon Exp $
  */
 
 #include "config.h"
 
 #if USE_PYTHON
 #include "gnubgmodule.h"
+#ifdef WIN32
+/* needed for mingw inclusion of Python.h */
+#include <stdint.h>
+#endif
 #include <Python.h>
 #endif
 #include "backgammon.h"
