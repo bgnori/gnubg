@@ -19,12 +19,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.12 2008/03/25 13:33:27 c_anthon Exp $
+ * $Id: dbprovider.c,v 1.13 2008/03/31 10:59:00 c_anthon Exp $
  */
 
 #include "config.h"
 #if USE_PYTHON
 #include "gnubgmodule.h"
+#ifdef WIN32
+/* needed for mingw inclusion of Python.h */
+#include <stdint.h>
+#endif
 #include <Python.h>
 #endif
 #include <glib.h>
