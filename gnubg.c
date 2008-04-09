@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.771 2008/03/18 22:51:34 c_anthon Exp $
+ * $Id: gnubg.c,v 1.772 2008/04/09 21:21:59 mdpetch Exp $
  */
 
 #include "config.h"
@@ -2020,12 +2020,12 @@ char *aszBuildInfo[] = {
 #if HAVE_SOCKETS
     N_("External commands supported."),
 #endif
-#ifdef WIN32
+#if defined(WIN32)
     N_("Windows sound system supported."),
-#else
-#if HAVE_ESD
+#elif defined(__APPLE__)
+    N_("Apple QuickTime sound system supported."),
+#elif HAVE_ESD
     N_("ESD sound system supported."),
-#endif
 #endif
 #if USE_MULTITHREAD
     N_("Multiple threads supported."),
