@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.68 2008/04/09 21:21:58 mdpetch Exp $
+ * $Id: sound.c,v 1.69 2008/04/13 20:42:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -321,10 +321,15 @@ extern char *GetSoundFile(gnubgsound sound)
 {
 	if (!sound_file[sound])
 		return GetDefaultSoundFile(sound);
+
 	if (!(*sound_file[sound]))
 		return g_strdup("");
-	if (g_path_is_absolute(sound_file[sound]))
+
+	if (g_file_test(sound_file[sound], G_FILE_TEST_EXISTS))
 		return g_strdup(sound_file[sound]);
+
+	if (g_path_is_absolute(sound_file[sound]))
+		return GetDefaultSoundFile(sound);
 
 	return BuildFilename(sound_file[sound]);
 }
