@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.72 2008/01/17 22:28:05 Superfly_Jon Exp $
+* $Id: matchequity.c,v 1.73 2008/04/13 20:42:23 c_anthon Exp $
 */
 
 #include "config.h"
@@ -1337,15 +1337,11 @@ static int readMET ( metdata *pmd, const char *szFileName ) {
 
   fError = 0;
 
+  if (!g_file_test(szFileName, G_FILE_TEST_EXISTS))
+	  return -1;
+
   /* parse document */
-  if (g_file_test(szFileName, G_FILE_TEST_EXISTS))
-	  doc = xmlParseFile( szFileName );
-  else
-  {
-	  char *tmp = BuildFilename(szFileName);
-	  doc = xmlParseFile( tmp );
-	  g_free(tmp);
-  }
+  doc = xmlParseFile( szFileName );
 
   /* check root */
 
