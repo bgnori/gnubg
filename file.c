@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: file.c,v 1.12 2008/03/09 12:03:04 Superfly_Jon Exp $
+ * $Id: file.c,v 1.13 2008/04/13 21:10:09 c_anthon Exp $
  */
 
 #include "config.h"
@@ -303,12 +303,18 @@ static int IsTXTFile(FileHelper * fh)
 
 static int IsJFPFile(FileHelper * fh)
 {
-	fhReset(fh);
-	if ((fhReadNextChar(fh) == 126) && (fhReadNextChar(fh) == '\0') &&
-	    (fhReadNextChar(fh) == '\0') && (fhReadNextChar(fh) == '\0'))
-		return TRUE;
+	char firstbyte;
 
-	return FALSE;
+       	fhReset(fh);
+
+	firstbyte = fhReadNextChar(fh);
+	if (firstbyte < 124 || firstbyte > 126)
+		return FALSE;
+
+	if ((fhReadNextChar(fh) == '\0'))
+		return TRUE;
+	else
+		return FALSE;
 }
 
 static int IsBKGFile(FileHelper * fh)
