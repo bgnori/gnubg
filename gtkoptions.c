@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.71 2008/03/13 21:17:38 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.72 2008/04/15 21:11:08 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -412,8 +412,7 @@ static GtkWidget *OptionsPages( optionswidget *pow )
 	N_("The rand() generator specified by ANSI C (typically linear "
 	   "congruential)"),
 	N_("Blum, Blum and Shub's verifiably strong generator"),
-	N_("The random() non-linear additive feedback generator from 4.3BSD "
-	   "Unix"),
+	N_("The random() non-linear additive feedback generator from 4.3 BSD Unix"),
 	N_("Bob Jenkin's Indirection, Shift, Accumulate, Add and Count "
 	   "cryptographic generator"),
 	N_("A generator based on the Message Digest 5 algorithm"),
@@ -1185,9 +1184,7 @@ static GtkWidget *OptionsPages( optionswidget *pow )
                             "sequence, (b) learn to control your temper "
                             "while things are going bad, (c) learn to play "
                             "very good or very bad rolls, or "
-                            "(d) just have fun. "
-                            "Oh, BTW, don't tell the trolls in "
-                            "rec.games.backgammon :-)" ), NULL );
+                            "(d) just have fun. " ), NULL );
 
     ManualDiceToggled( NULL, pow );
 
