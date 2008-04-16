@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.72 2008/04/15 21:11:08 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.73 2008/04/16 19:03:59 c_anthon Exp $
  */
 
 #include "config.h"
@@ -277,7 +277,7 @@ static void SoundChangePathClicked(GtkWidget *widget, gpointer userdata)
 
 static void SoundPlayClicked(GtkWidget *widget, gpointer userdata)
 {
-        playSoundFile(soundDetails[selSound].Path);
+        playSoundFile(soundDetails[selSound].Path, FALSE);
 }
 
 static void

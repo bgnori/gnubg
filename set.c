@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.299 2008/04/15 21:00:20 Superfly_Jon Exp $
+ * $Id: set.c,v 1.300 2008/04/16 19:03:59 c_anthon Exp $
  */
 
 #include "config.h"
@@ -724,16 +724,16 @@ extern void CommandSetClockwise( char *sz ) {
                _("Player 1 moves anticlockwise (and "
                  "player 0 moves clockwise).") );
     
-#if USE_BOARD3D
-{
-	BoardData *bd = BOARD(pwBoard)->board_data;
-	RestrictiveRedraw();
-	RerenderBase(bd->bd3d);
-}
-#endif
 #if USE_GTK
     if( fX )
+    {
+	BoardData *bd = BOARD(pwBoard)->board_data;
 	ShowBoard();
+#if USE_BOARD3D
+	RestrictiveRedraw();
+	RerenderBase(bd->bd3d);
+#endif
+    }
 #endif /* USE_GTK */
 }
 
