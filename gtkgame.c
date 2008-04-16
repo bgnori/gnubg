@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.699 2008/03/17 21:39:58 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.700 2008/04/16 19:03:59 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1211,8 +1211,8 @@ static gboolean main_delete( GtkWidget *pw ) {
 
     getWindowGeometry(WINDOW_MAIN);
     
-    UserCommand( "quit" );
-    
+    PromptForExit();
+
     return TRUE;
 }
 
