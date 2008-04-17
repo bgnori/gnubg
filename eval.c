@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.344 2008/04/16 20:07:28 c_anthon Exp $
+ * $Id: eval.c,v 1.345 2008/04/17 05:30:41 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4331,7 +4331,7 @@ FindBestCubeDecision ( float arDouble[],
            arDouble[ OUTPUT_TAKE ] >= -2.0 &&
            arDouble[ OUTPUT_TAKE ] <= 0.0 
            && pci->fBeavers ) {
-        if ( arDouble[ OUTPUT_TAKE ] * 2.0 >= arDouble[OUTPUT_NODOUBLE] ) {
+        if ( arDouble[ OUTPUT_TAKE ] * 2.0 < arDouble[OUTPUT_NODOUBLE] ) {
           /*not a double if we can beaver*/
           return NODOUBLE_BEAVER;
         }
