@@ -20,20 +20,22 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.70 2008/04/16 19:03:59 c_anthon Exp $
+ * $Id: sound.c,v 1.71 2008/04/17 09:08:34 mdpetch Exp $
  */
 
 #include "config.h"
 
 #include <glib.h>
-#include <glib/gi18n.h>
 #include <string.h>
 #include <stdlib.h>
 
 #include "backgammon.h"
+#include <glib/gi18n.h>
+
 #if USE_GTK
 #include "gtkgame.h"
 #endif
+
 
 #if defined(WIN32)
 /* for PlaySound */
@@ -340,7 +342,11 @@ extern void playSound ( const gnubgsound gs )
 		g_free(sound);
 		return;
 	}
+#if USE_GTK
 	if (!fX || gs == SOUND_EXIT)
+#else
+	if (gs == SOUND_EXIT)
+#endif
 		playSoundFile( sound, TRUE );
 	else 
 		playSoundFile( sound, FALSE );
