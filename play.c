@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.311 2008/03/17 21:39:58 Superfly_Jon Exp $
+ * $Id: play.c,v 1.312 2008/04/20 18:38:38 c_anthon Exp $
  */
 
 #include "config.h"
@@ -972,8 +972,7 @@ static int ComputerTurn( void ) {
 	  if (RunAsyncProcess((AsyncFun)asyncCubeDecision, &dd, _("Considering cube action...")) != ASR_OK)
 		  return -1;
 
-      UpdateStoredCube( dd.aarOutput, dd.aarStdDev, 
-                        &ap[ ms.fTurn ].esCube, &ms );
+      UpdateStoredCube( dd.aarOutput, dd.aarStdDev, &ap[ ms.fTurn ].esCube, &ms );
 
       cd = FindCubeDecision ( arDouble,  dd.aarOutput, &ci );
 
@@ -1183,8 +1182,7 @@ static int ComputerTurn( void ) {
 		  if (RunAsyncProcess((AsyncFun)asyncCubeDecision, &dd, _("Considering cube action...")) != ASR_OK)
 			return -1;
 
-          UpdateStoredCube( dd.aarOutput, dd.aarStdDev, 
-                            &ap[ ms.fTurn ].esCube, &ms );
+          UpdateStoredCube( dd.aarOutput, dd.aarStdDev, &ap[ ms.fTurn ].esCube, &ms );
 
           cd = FindCubeDecision ( arDouble,  dd.aarOutput, &ci );
 
@@ -2129,7 +2127,7 @@ extern void CommandDecline( char *sz ) {
 
 static skilltype GoodDouble (int fisRedouble, moverecord *pmr )
 {
-  float arDouble[ 4 ], aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+  float arDouble[ 4 ];
   cubeinfo ci;
   cubedecision cd;
   float rDeltaEquity;
@@ -2178,21 +2176,21 @@ static skilltype GoodDouble (int fisRedouble, moverecord *pmr )
   /* update analysis for hint */
 
   ec2es ( &es, dd.pec );
-  UpdateStoredCube ( aarOutput, aarOutput /* whatever */, &es, &ms );
+  UpdateStoredCube ( dd.aarOutput, dd.aarStdDev, &es, &ms );
 
   /* store cube decision for annotation */
 
   ec2es ( &pmr->CubeDecPtr->esDouble, dd.pec );
-  memcpy ( pmr->CubeDecPtr->aarOutput, aarOutput, 
+  memcpy ( pmr->CubeDecPtr->aarOutput, dd.aarOutput, 
 	   2 * NUM_ROLLOUT_OUTPUTS * sizeof ( float ) );
 
-  memset ( pmr->CubeDecPtr->aarStdDev, 0,
+  memcpy ( pmr->CubeDecPtr->aarStdDev, dd.aarStdDev,
 	   2 * NUM_ROLLOUT_OUTPUTS * sizeof ( float ) );
   pmr->stCube = SKILL_NONE;
 
   /* find skill */
 
-  cd = FindCubeDecision ( arDouble,  aarOutput, &ci );  
+  cd = FindCubeDecision ( arDouble,  dd.aarOutput, &ci );  
 
   switch ( cd ) {
 	case NODOUBLE_TAKE:
@@ -2317,7 +2315,7 @@ extern void CommandDouble( char *sz ) {
 
 static skilltype ShouldDrop (int fIsDrop, moverecord *pmr)
 {
-    float arDouble[ 4 ], aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+    float arDouble[ 4 ];
     cubeinfo ci;
 	cubedecision cd;
     float rDeltaEquity;
@@ -2363,21 +2361,19 @@ static skilltype ShouldDrop (int fIsDrop, moverecord *pmr)
         /* stored cube decision for hint */
 
         ec2es ( &es, dd.pec );
-        UpdateStoredCube ( aarOutput,
-                           aarOutput, /* whatever */
-                           &es, &ms );
+        UpdateStoredCube ( dd.aarOutput, dd.aarStdDev, &es, &ms );
 	    
         /* store cube decision for annotation */
 
         ec2es ( &pmr->CubeDecPtr->esDouble, dd.pec );
-        memcpy ( pmr->CubeDecPtr->aarOutput, aarOutput, 
+        memcpy ( pmr->CubeDecPtr->aarOutput, dd.aarOutput, 
                  2 * NUM_ROLLOUT_OUTPUTS * sizeof ( float ) );
-        memset ( pmr->CubeDecPtr->aarStdDev, 0,
+        memcpy ( pmr->CubeDecPtr->aarStdDev, dd.aarStdDev,
                  2 * NUM_ROLLOUT_OUTPUTS * sizeof ( float ) );
         pmr->stCube = SKILL_NONE;
 
 	    
-	cd = FindCubeDecision ( arDouble,  aarOutput, &ci );  
+	cd = FindCubeDecision ( arDouble,  dd.aarOutput, &ci );  
 
 	switch ( cd ) {
 	case DOUBLE_TAKE:
@@ -3683,7 +3679,7 @@ extern void CommandResign( char *sz ) {
 
 static skilltype ShouldDouble ( void ) {
 
-    float arDouble[ 4 ], aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ];
+    float arDouble[ 4 ];
     cubeinfo ci;
     cubedecision cd;
     float rDeltaEquity;
@@ -3727,12 +3723,10 @@ static skilltype ShouldDouble ( void ) {
         /* stored cube decision for hint */
 
         ec2es ( &es, dd.pec );
-        UpdateStoredCube ( aarOutput,
-                           aarOutput, /* whatever */
-                           &es, &ms );
+        UpdateStoredCube ( dd.aarOutput, dd.aarStdDev, &es, &ms );
 
 	    
-	cd = FindCubeDecision ( arDouble,  aarOutput, &ci );  
+	cd = FindCubeDecision ( arDouble,  dd.aarOutput, &ci );  
 
 	switch ( cd ) {
 	case DOUBLE_TAKE:
