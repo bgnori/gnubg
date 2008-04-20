@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.300 2008/04/16 19:03:59 c_anthon Exp $
+ * $Id: set.c,v 1.301 2008/04/20 21:28:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1206,6 +1206,14 @@ extern void CommandSetGUIShowPips( char *sz ) {
 	UpdateSetting( &fGUIShowPips );
 }
 
+extern void CommandSetGUIShowWastage(char *sz)
+{
+
+	if (SetToggle("gui showepcs", &fGUIShowWastage, sz,
+		      _("The effective pip counts (EPCs) will be shown below the board."),
+		      _ ("The effective pip counts (EPCs) will not be shown.")))
+		UpdateSetting(&fGUIShowWastage);
+}
 extern void CommandSetGUIShowEPCs( char *sz ) {
 
     if( SetToggle( "gui showepcs", &fGUIShowEPCs, sz,
