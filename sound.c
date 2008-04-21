@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.71 2008/04/17 09:08:34 mdpetch Exp $
+ * $Id: sound.c,v 1.72 2008/04/21 09:06:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -344,12 +344,12 @@ extern void playSound ( const gnubgsound gs )
 	}
 #if USE_GTK
 	if (!fX || gs == SOUND_EXIT)
-#else
-	if (gs == SOUND_EXIT)
-#endif
 		playSoundFile( sound, TRUE );
 	else 
 		playSoundFile( sound, FALSE );
+#else
+	playSoundFile( sound, TRUE );
+#endif
 
 	g_free(sound);
 }
