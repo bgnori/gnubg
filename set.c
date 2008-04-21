@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.301 2008/04/20 21:28:35 c_anthon Exp $
+ * $Id: set.c,v 1.302 2008/04/21 09:06:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1282,6 +1282,11 @@ extern void CommandSetGUIShowIDs( char *sz ) {
     NoGUI();
 }
 
+extern void CommandSetGUIShowWastage( char *sz ) {
+
+    NoGUI();
+}
+ 
 extern void CommandSetGUIShowEPCs( char *sz ) {
 
     NoGUI();

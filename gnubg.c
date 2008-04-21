@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.774 2008/04/20 21:28:34 c_anthon Exp $
+ * $Id: gnubg.c,v 1.775 2008/04/21 09:06:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6324,6 +6324,9 @@ int main(int argc, char *argv[])
 #endif
 
 #if HAVE_GSTREAMER
+	/* gstreamer needs to init threads, regardless if we use them */
+	if (!g_thread_supported ())
+		g_thread_init (NULL);
 	  g_option_context_add_group (context, gst_init_get_option_group ());
 #endif
 
