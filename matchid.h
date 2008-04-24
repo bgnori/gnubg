@@ -16,12 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.h,v 1.7 2007/12/12 23:08:18 Superfly_Jon Exp $
+ * $Id: matchid.h,v 1.8 2008/04/24 22:06:46 c_anthon Exp $
  */
 
 #ifndef _MATCHID_H_
 #define _MATCHID_H_
 
+#define L_MATCHID 12
 extern int
 LogCube ( const int n );
 

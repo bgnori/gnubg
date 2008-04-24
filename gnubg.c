@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.775 2008/04/21 09:06:52 c_anthon Exp $
+ * $Id: gnubg.c,v 1.776 2008/04/24 22:06:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -575,6 +575,7 @@ static char szDICE[] = N_("<die> <die>"),
     szTRIALS[] = N_("<trials>"),
     szVALUE[] = N_("<value>"),
     szMATCHID[] = N_("<matchid>"),
+    szGNUBGID[] = N_("<gnubgid>"),
     szURL[] = N_("<URL>"),
     szMAXERR[] = N_("<fraction>"),
     szMINGAMES[] = N_("<minimum games to rollout>"),
@@ -1688,6 +1689,7 @@ command cER = {
     { "matchequitytable", CommandSetMET,
       N_("Read match equity table from XML file"), szFILENAME, &cFilename },
     { "matchid", CommandSetMatchID, N_("set Match ID"), szMATCHID, NULL },
+    { "gnubgid", CommandSetGNUBgID, N_("set gnubg ID"), szGNUBGID, NULL },
     { "matchinfo", NULL, N_("Record auxiliary match information"), NULL,
       acSetMatchInfo },
     { "matchlength", CommandSetMatchLength,

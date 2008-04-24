@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.86 2008/04/20 21:28:35 c_anthon Exp $
+ * $Id: gtkboard.h,v 1.87 2008/04/24 22:06:46 c_anthon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -82,11 +82,10 @@ extern unsigned int convert_point( int i, int player );
 /* private data */
 typedef struct _BoardData {
     GtkWidget *drawing_area, *dice_area, *table, *wmove,
-	*position_id, *reset, *edit, *name0, *name1, *score0, *score1, 
+	*gnubg_id, *reset, *edit, *name0, *name1, *score0, *score1, 
 	*crawford, *widget, *key0, *key1, *stop, *stopparent, 
 	*doub, *lname0, *lname1,
-	*lscore0, *lscore1, *mname0, *mname1, *mscore0, *mscore1, *play,
-        *match_id;
+	*lscore0, *lscore1, *mname0, *mname1, *mscore0, *mscore1, *play;
     GtkWidget *mmatch, *lmatch, *match;
     GtkAdjustment *amatch, *ascore0, *ascore1;
     GtkWidget *roll;
@@ -151,24 +150,27 @@ extern int animate_player, *animate_move_list, animation_finished;
 enum TheoryTypes{TT_PIPCOUNT = 1, TT_EPC = 2, TT_RETURNHITS = 4, TT_KLEINCOUNT = 8};
 void UpdateTheoryData(BoardData* bd, int UpdateTypes, const TanBoard points);
 
-extern void read_board( BoardData *bd, TanBoard points );
-extern void update_position_id( BoardData *bd, const TanBoard points );
-extern void update_pipcount ( BoardData *bd, const TanBoard points );
-extern void write_board ( BoardData *bd, TanBoard anBoard );
-extern void board_beep( BoardData *bd );
-extern void Confirm( BoardData *bd );
-extern int update_move(BoardData *bd);
-extern gboolean place_chequer_or_revert(BoardData *bd, int dest);
-extern gboolean LegalDestPoints( BoardData *bd, int iDestPoints[4] );
-extern void InitBoardData(BoardData* bd);
-extern gboolean board_button_press(GtkWidget *board, GdkEventButton *event, BoardData* bd);
-extern gboolean board_motion_notify(GtkWidget *widget, GdkEventMotion *event, BoardData* bd);
-extern gboolean board_button_release(GtkWidget *board, GdkEventButton *event, BoardData* bd);
-extern void RollDice2d(BoardData* bd);
+extern void read_board(BoardData * bd, TanBoard points);
+extern void update_gnubg_id(BoardData * bd, const TanBoard points);
+extern void update_pipcount(BoardData * bd, const TanBoard points);
+extern void write_board(BoardData * bd, TanBoard anBoard);
+extern void board_beep(BoardData * bd);
+extern void Confirm(BoardData * bd);
+extern int update_move(BoardData * bd);
+extern gboolean place_chequer_or_revert(BoardData * bd, int dest);
+extern gboolean LegalDestPoints(BoardData * bd, int iDestPoints[4]);
+extern void InitBoardData(BoardData * bd);
+extern gboolean board_button_press(GtkWidget * board,
+				   GdkEventButton * event, BoardData * bd);
+extern gboolean board_motion_notify(GtkWidget * widget,
+				    GdkEventMotion * event,
+				    BoardData * bd);
+extern gboolean board_button_release(GtkWidget * board,
+				     GdkEventButton * event,
+				     BoardData * bd);
+extern void RollDice2d(BoardData * bd);
 extern void DestroyPanel(gnubgwindow window);
-extern void board_set_matchid( GtkWidget *pw, BoardData *bd );
-extern void board_set_position( GtkWidget *pw, BoardData *bd );
-
+extern void board_set_gnubg_id(GtkWidget * pw, BoardData * bd);
 extern void
 DrawDie( GdkDrawable *pd, 
          unsigned char *achDice[ 2 ], unsigned char *achPip[ 2 ],

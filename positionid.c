@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.41 2008/01/15 22:22:45 Superfly_Jon Exp $
+ * $Id: positionid.c,v 1.42 2008/04/24 22:06:46 c_anthon Exp $
  */
 
 #include "config.h"
@@ -84,7 +84,7 @@ PositionKey(const TanBoard anBoard, unsigned char auchKey[10])
 extern char *PositionIDFromKey( const unsigned char auchKey[ 10 ] ) {
 
     const unsigned char *puch = auchKey;
-    static char szID[ 15 ];
+    static char szID[ L_POSITIONID + 1 ];
     char *pch = szID;
     static char aszBase64[ 65 ] =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -235,18 +235,21 @@ extern unsigned char Base64( const unsigned char ch )
     if( ch == '+' )
         return 62;
 
-    return 63;
+    if( ch == '/' )
+        return 63;
+
+    return 255;
 }
 
 extern int
 PositionFromID(TanBoard anBoard, const char* pchEnc)
 {
-  unsigned char auchKey[ 10 ], ach[ 15 ], *pch = ach, *puch = auchKey;
+  unsigned char auchKey[ 10 ], ach[ L_POSITIONID +1 ], *pch = ach, *puch = auchKey;
   int i;
 
-  memset ( ach, 0, 15 );
+  memset ( ach, 0, L_POSITIONID +1 );
 
-  for( i = 0; i < 14 && pchEnc[ i ]; i++ )
+  for( i = 0; i < L_POSITIONID && pchEnc[ i ]; i++ )
     pch[ i ] = Base64( (unsigned char)pchEnc[ i ] );
 
   for( i = 0; i < 3; i++ ) {
