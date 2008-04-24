@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.c,v 1.15 2007/12/12 23:08:18 Superfly_Jon Exp $
+ * $Id: matchid.c,v 1.16 2008/04/24 22:06:46 c_anthon Exp $
  */
 
 #include "config.h"
@@ -113,7 +113,7 @@ extern char
 *MatchIDFromKey( unsigned char auchKey[ 9 ] ) {
 
     unsigned char *puch = auchKey;
-    static char szID[ 13 ];
+    static char szID[ L_MATCHID + 1 ];
     char *pch = szID;
     static char aszBase64[] =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -249,13 +249,13 @@ MatchFromID ( int anDice[ 2 ],
 
   unsigned char auchKey[ 9 ];
   unsigned char *puch = auchKey;
-  unsigned char ach[ 13 ];
+  unsigned char ach[ L_MATCHID + 1 ];
   unsigned char *pch = ach;
   int i;
 
   memset(ach, 0, sizeof(ach));
   /* decode base64 into key */
-  for( i = 0; i < 12 && szMatchID[ i ]; i++ )
+  for( i = 0; i < L_MATCHID && szMatchID[ i ]; i++ )
     pch[ i ] = Base64( (unsigned char)szMatchID[ i ] );
 
   for( i = 0; i < 3; i++ ) {
