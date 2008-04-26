@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.80 2008/03/31 10:59:00 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.81 2008/04/26 17:12:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2343,7 +2343,7 @@ extern void PythonInitialise(void)
 {
   char *working_dir = g_get_current_dir();
 
-#if WIN32
+#ifdef WIN32
 {	/* Setup python to look in the pythonlib directory if present */
 	char *python_dir;
 	python_dir = g_build_filename(working_dir, "/PythonLib", NULL);

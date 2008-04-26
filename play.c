@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.312 2008/04/20 18:38:38 c_anthon Exp $
+ * $Id: play.c,v 1.313 2008/04/26 17:12:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -132,9 +132,6 @@ NewMoveRecord( void ) {
 static int
 CheatDice ( unsigned int anDice[ 2 ], matchstate *pms, const int fBest );
 
-
-extern void EvaluateRoll ( float ar[ NUM_ROLLOUT_OUTPUTS ], int nDie1, int nDie2, const TanBoard anBoard, 
-                    const cubeinfo *pci, const evalcontext *pec);
 
 #if USE_GTK
 #include "gtkgame.h"

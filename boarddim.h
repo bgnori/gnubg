@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boarddim.h,v 1.11 2008/03/08 13:42:42 Superfly_Jon Exp $
+ * $Id: boarddim.h,v 1.12 2008/04/26 17:12:02 c_anthon Exp $
  */
 
 #ifndef _BOARDDIM_H_
@@ -135,7 +135,5 @@
                       2 * CHEQUER_HEIGHT - HINGE_HEIGHT - 1)
 #define HINGE_TOP_Y ((BOARD_HEIGHT + CUBE_HEIGHT) / 2 + \
                      2 * CHEQUER_HEIGHT + 1)
-
-extern int positions[ 2 ][ 30 ][ 3 ];
 
 #endif /* _BOARDDIM_H_ */

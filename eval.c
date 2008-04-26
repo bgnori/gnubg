@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.345 2008/04/17 05:30:41 c_anthon Exp $
+ * $Id: eval.c,v 1.346 2008/04/26 17:12:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -47,7 +47,7 @@
 #include "erf.inc"	/* No erf on msdev so include code here... */
 #endif
 
-#if WIN32
+#ifdef WIN32
 #define BINARY O_BINARY
 #else
 #define BINARY 0
@@ -749,7 +749,7 @@ extern void EvalInitialise(char *szWeights, char *szWeightsBinary,
 
     if( ! fNoBearoff )
 	{
-#if USE_BUILTIN_BEAROFF
+#ifdef USE_BUILTIN_BEAROFF
 			/* read one-sided db from gnubg.bd */
 		pbc1 = BearoffInitBuiltin();
 #endif

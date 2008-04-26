@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_y.y,v 1.15 2008/01/13 08:07:52 c_anthon Exp $
+ * $Id: external_y.y,v 1.16 2008/04/26 17:12:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -158,7 +158,7 @@ reset_command(void) {
 }
 
 
-#if EXTERNAL_TEST
+#ifdef EXTERNAL_TEST
 
 extern int
 main( int argc, char *argv[] ) {

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.21 2008/01/15 18:08:51 c_anthon Exp $
+ * $Id: gtkmovelist.c,v 1.22 2008/04/26 17:12:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -53,8 +53,6 @@ enum
   ML_COL_FGCOL,
   ML_COL_DATA
 } ;
-
-void MoveListUpdate ( const hintdata *phd );
 
 extern void MoveListCreate(hintdata *phd)
 {
