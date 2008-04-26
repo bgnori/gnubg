@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.40 2008/03/10 09:32:12 Superfly_Jon Exp $
+ * $Id: gtkfile.c,v 1.41 2008/04/26 17:12:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -52,7 +52,7 @@ static void FilterAdd (const char *fn, const char *pt, GtkFileChooser * fc)
 static GtkWidget * GnuBGFileDialog (gchar * prompt, gchar * folder, gchar * name,
 		 GtkFileChooserAction action)
 {
-#if WIN32
+#ifdef WIN32
 char *programdir, *pc, *tmp;
 #endif
   GtkWidget *fc;
@@ -88,7 +88,7 @@ char *programdir, *pc, *tmp;
   if (name && *name)
     gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (fc), name);
 
-#if WIN32
+#ifdef WIN32
   programdir = g_strdup(getInstallDir());
   if ((pc = strrchr(programdir, G_DIR_SEPARATOR)) != NULL) {
           *pc = '\0';

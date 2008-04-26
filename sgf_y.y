@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf_y.y,v 1.5 2008/02/09 14:01:41 Superfly_Jon Exp $
+ * $Id: sgf_y.y,v 1.6 2008/04/26 17:12:05 c_anthon Exp $
  */
 
 %{
@@ -180,7 +180,7 @@ extern listOLD *SGFParse( FILE *pf ) {
     return plCollection;
 }
 	
-#if SGFTEST
+#ifdef SGFTEST
 
 #include <mcheck.h>
 	

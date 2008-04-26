@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.119 2008/01/20 23:38:08 c_anthon Exp $
+ * $Id: sgf.c,v 1.120 2008/04/26 17:12:05 c_anthon Exp $
  */
 
 #include "config.h"
@@ -595,7 +595,7 @@ static void RestoreEvalContext(evalcontext * pec, char *pc)
 	pec->fDeterministic = strtol(pc, &pc, 10);
 	pec->rNoise = g_ascii_strtod(pc, &pc);
 	fUsePrune = strtol(pc, &pc, 10);
-#if !REDUCTION_CODE
+#ifndef REDUCTION_CODE
 	pec->fUsePrune = fUsePrune;
 #endif
     }

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.54 2008/04/06 20:34:33 c_anthon Exp $
+ * $Id: neuralnet.c,v 1.55 2008/04/26 17:12:05 c_anthon Exp $
  */
 
 #include "config.h"
@@ -613,7 +613,7 @@ extern int NeuralNetSaveBinary( const neuralnet *pnn, FILE *pf )
 }
 #if USE_SSE_VECTORIZE
 
-#if defined(_MSC_VER) || defined(DISABLE_SSE_TEST) || __x86_64
+#if defined(_MSC_VER) || defined(DISABLE_SSE_TEST)
 
 int SSE_Supported()
 {

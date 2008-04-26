@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.19 2008/03/07 16:35:56 Superfly_Jon Exp $
+* $Id: font3d.c,v 1.20 2008/04/26 17:12:05 c_anthon Exp $
 */
 
 #include "config.h"
@@ -398,7 +398,7 @@ static void PopulateContour(GArray *contour, const FT_Vector* points, const char
 
 /* Unfortunately the glu library doesn't define this callback type precisely
  so it may well cause problems on different platforms / opengl implementations */
-#if WIN32
+#ifdef WIN32
 /* Need to set the callback calling convention for windows */
 #define TESS_CALLBACK APIENTRY
 #else

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.63 2008/02/17 12:26:24 c_anthon Exp $
+ * $Id: bearoff.c,v 1.64 2008/04/26 17:12:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -45,7 +45,7 @@
 #include <sys/stat.h>
 #endif
 
-#if WIN32
+#ifdef WIN32
 #include <io.h>
 #else
 #define O_BINARY 0

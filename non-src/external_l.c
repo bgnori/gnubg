@@ -554,7 +554,7 @@ char *exttext;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.c,v 1.12 2008/03/17 11:35:33 c_anthon Exp $
+ * $Id: external_l.c,v 1.13 2008/04/26 17:12:05 c_anthon Exp $
  */
 
 #include "config.h"
