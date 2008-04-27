@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.62 2008/01/20 23:38:07 c_anthon Exp $
+ * $Id: dice.c,v 1.63 2008/04/27 20:18:42 c_anthon Exp $
  */
 
 #include "config.h"
@@ -51,7 +51,7 @@
 #endif
 
 
-char *aszRNG[ NUM_RNGS ] = {
+const char *aszRNG[ NUM_RNGS ] = {
    N_ ("ANSI"),
    N_ ("Blum, Blum and Shub"),
    N_ ("BSD"),
@@ -132,7 +132,7 @@ static void InitRNGBBS( rngcontext *rngctx ) {
     }
 }
 
-extern int InitRNGBBSModulus( char *sz, void *p ) {
+extern int InitRNGBBSModulus( const char *sz, void *p ) {
 
     rngcontext *rngctx = (rngcontext *) p;
 
@@ -871,7 +871,7 @@ extern int RollDice( unsigned int anDice[ 2 ], const rng rngx, void *p ) {
  *   from user input
  */
 
-extern int UserRNGOpen( void *p, char *sz ) {
+extern int UserRNGOpen( void *p, const char *sz ) {
 
   char *error;
   char *szCWD;

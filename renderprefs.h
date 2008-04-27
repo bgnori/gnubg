@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.h,v 1.6 2007/07/02 12:43:40 ace Exp $
+ * $Id: renderprefs.h,v 1.7 2008/04/27 20:18:51 c_anthon Exp $
  */
 
 #ifndef _RENDERPREFS_H_
@@ -26,11 +26,11 @@
 #include "render.h"
 #endif
 
-extern char *aszWoodName[];
+extern const char *aszWoodName[];
 extern renderdata* GetMainAppearance(void);
 extern void CopyAppearance(renderdata* prd);
 
-extern void RenderPreferencesParam( renderdata *prd, char *szParam,
+extern void RenderPreferencesParam( renderdata *prd, const char *szParam,
 				   char *szValue );
 extern char *RenderPreferencesCommand( renderdata *prd, char *sz );
 

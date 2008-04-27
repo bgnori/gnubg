@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.87 2008/04/26 17:12:05 c_anthon Exp $
+* $Id: misc3d.c,v 1.88 2008/04/27 20:18:52 c_anthon Exp $
 */
 
 #include "config.h"
@@ -404,7 +404,7 @@ void FindNamedTexture(TextureInfo** textureInfo, char* name)
 		g_print("Texture %s not in texture info file\n", name);
 }
 
-void FindTexture(TextureInfo** textureInfo, char* file)
+void FindTexture(TextureInfo** textureInfo, const char* file)
 {
 	GList *pl;
 	for (pl = textures; pl; pl = pl->next)

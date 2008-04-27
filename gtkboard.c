@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.239 2008/04/24 22:06:46 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.240 2008/04/27 20:18:46 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3148,7 +3148,7 @@ static void update_buttons( BoardData *bd )
 }
 
 extern gint game_set( Board *board, TanBoard points, int roll,
-		      gchar *name, gchar *opp_name, gint match,
+		      const gchar *name, const gchar *opp_name, gint match,
 		      gint score, gint opp_score, gint die0, gint die1,
 		      gint computer_turn, gint nchequers )
 {

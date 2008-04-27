@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.h,v 1.16 2007/12/29 14:32:28 Superfly_Jon Exp $
+ * $Id: drawboard.h,v 1.17 2008/04/27 20:18:43 c_anthon Exp $
  */
 
 #ifndef _DRAWBOARD_H_
@@ -38,7 +38,7 @@ extern int ParseMove( char *pch, int an[ 8 ] );
 extern void CanonicalMoveOrder( int an[] );
 /* Fill the buffer pch with a FIBS "boardstyle 3" description of the game. */
 extern char *FIBSBoard( char *pch, TanBoard anBoard, int fRoll,
-			char *szPlayer, char *szOpp, int nMatchTo,
+			const char *szPlayer, const char *szOpp, int nMatchTo,
 			int nScore, int nOpponent, int nDice0, int nDice1,
 			int nCube, int fCubeOwner, int fDoubled, int fTurn,
 			int fCrawford, int nChequers );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.81 2008/04/26 17:12:03 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.82 2008/04/27 20:18:46 c_anthon Exp $
  */
 
 #include "config.h"
@@ -157,7 +157,7 @@ PyToCubeInfo( PyObject *p, cubeinfo *pci ) {
   PyObject *pyKey, *pyValue;
   size_t iPos = 0;
   char *pchKey;
-  static char *aszKeys[] = {
+  static const char *aszKeys[] = {
     "jacoby", "crawford", "move", "beavers", "cube", "matchto",
     "bgv", "cubeowner", "score", "gammonprice", NULL };
   int iKey;
@@ -269,7 +269,7 @@ PyToEvalContext( PyObject *p, evalcontext *pec ) {
   PyObject *pyKey, *pyValue;
   ssize_t iPos = 0;
   char *pchKey;
-  static char *aszKeys[] = {
+  static const char *aszKeys[] = {
     "cubeful", "plies", "reduced", "deterministic", "noise", NULL };
   int iKey;
   int i;
@@ -1979,7 +1979,7 @@ PythonMatch(PyObject* self UNUSED_PARAM, PyObject* args, PyObject* keywds)
   }
 
   {
-    char* v[] = { "Standard", "Nackgammon", "Hypergammon1", "Hypergammon2",
+    const char* v[] = { "Standard", "Nackgammon", "Hypergammon1", "Hypergammon2",
 		  "Hypergammon3" };
 
     addProperty(matchInfoDict, "variation", v[g->bgv]);

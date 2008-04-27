@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.51 2008/02/15 16:01:31 c_anthon Exp $
+ * $Id: drawboard.c,v 1.52 2008/04/27 20:18:43 c_anthon Exp $
  */
 
 #include "config.h"
@@ -927,7 +927,7 @@ extern int ParseMove( char *pch, int an[ 8 ] ) {
  */
 
 extern char *FIBSBoard( char *pch, TanBoard anBoard, int fRoll,
-			char *szPlayer, char *szOpp, int nMatchTo,
+			const char *szPlayer, const char *szOpp, int nMatchTo,
 			int nScore, int nOpponent, int nDice0, int nDice1,
 			int nCube, int fCubeOwner, int fDoubled, int fTurn,
 			int fCrawford, int nChequers ) {

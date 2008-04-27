@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.130 2008/03/16 16:56:45 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.131 2008/04/27 20:18:49 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -164,12 +164,12 @@ extern void SetToolbarStyle(int value);
 extern void setWindowGeometry(gnubgwindow window);
 extern void ShowAllPanels(gpointer p, guint n, GtkWidget * pw);
 extern void ShowHidePanel(gnubgwindow panel);
-extern void ShowList(char *asz[], char *szTitle, GtkWidget * pwParent);
+extern void ShowList(char *asz[], const char *szTitle, GtkWidget * pwParent);
 extern void ShowMove(hintdata * phd, const int f);
 extern void SwapBoardToPanel(int ToPanel);
 extern void ToggleDockPanels(gpointer p, guint n, GtkWidget * pw);
 extern void GTKUndo(void);
-extern void UserCommand(char *sz);
+extern void UserCommand(const char *sz);
 extern void ShowToolbar(void);
 extern void HideToolbar(void);
 

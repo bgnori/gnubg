@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.20 2007/12/17 14:08:55 c_anthon Exp $
+ * $Id: dice.h,v 1.21 2008/04/27 20:18:42 c_anthon Exp $
  */
 
 #ifndef _DICE_H_
@@ -28,7 +28,7 @@ typedef enum _rng {
     NUM_RNGS
 } rng;
 
-extern char *aszRNG[ NUM_RNGS ];
+extern const char *aszRNG[ NUM_RNGS ];
 
 extern char szDiceFilename[];
 
@@ -52,14 +52,14 @@ RollDice( unsigned int anDice[ 2 ], const rng rngx, void *rngctx );
 
 #if HAVE_LIBGMP
 extern int InitRNGSeedLong( char *sz, rng rng, void *rngctx );
-extern int InitRNGBBSModulus( char *sz, void *rngctx );
+extern int InitRNGBBSModulus( const char *sz, void *rngctx );
 extern int InitRNGBBSFactors( char *sz0, char *sz1, void *rngctx );
 #endif
 
 
 #if HAVE_LIBDL
 extern int
-UserRNGOpen( void *p, char *sz );
+UserRNGOpen( void *p, const char *sz );
 #endif /* HAVE_LIBDL */
 
 extern int

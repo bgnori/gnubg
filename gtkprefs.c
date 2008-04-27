@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.157 2008/03/13 22:00:53 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.158 2008/04/27 20:18:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -882,7 +882,7 @@ static GtkWidget *BoardPage( BoardData *bd ) {
     gdouble ar[ 4 ];
     int i, j;
     GtkWidget *pwx;
-    static char *asz[ 4 ] = {
+    static const char *asz[ 4 ] = {
 	N_("Background colour:"),
 	NULL,
 	N_("First point colour:"),
@@ -945,7 +945,7 @@ static GtkWidget *BorderPage( BoardData *bd ) {
     GtkWidget *pw;
     gdouble ar[ 4 ];
     int i;
-    static char *aszWood[] = {
+    static const char *aszWood[] = {
 	N_ ("Alder"), 
         N_ ("Ash"), 
         N_ ("Basswood"), 
@@ -1950,7 +1950,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.157 2008/03/13 22:00:53 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.158 2008/04/27 20:18:49 c_anthon Exp $\n"
           "\n"
           " -->\n"
           "\n"
