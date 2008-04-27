@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.41 2008/03/12 22:56:35 Superfly_Jon Exp $
+ * $Id: progress.c,v 1.42 2008/04/27 20:18:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -102,7 +102,7 @@ static void FreeTextList(rolloutprogress *prp)
 	free(prp->pListText);
 }
 
-static void SetRolloutText(rolloutprogress *prp, int x, int y, char* sz)
+static void SetRolloutText(rolloutprogress *prp, int x, int y, const char* sz)
 {	/* Cache set text to reduce flicker (and speed things up a bit) */
 	if (!prp->pListText[x][y] || strcmp(prp->pListText[x][y - 1], sz))
 	{
@@ -763,7 +763,7 @@ GTKRolloutProgressStart( const cubeinfo *pci, const int n,
                          rolloutcontext *prc,
                          char asz[][ 40 ], void **pp ) {
     
-  static char *aszTitle[] = {
+  static const char *aszTitle[] = {
     NULL,
     N_("Win"), 
     N_("Win (g)"), 
@@ -773,7 +773,8 @@ GTKRolloutProgressStart( const cubeinfo *pci, const int n,
     N_("Cubeless"), 
     N_("Cubeful"),
 	N_("Rank/no. JSDs")
-  }, *aszEmpty[] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
+  }; 
+  char *aszEmpty[] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
   char *aszTemp[ 9 ];
   gchar *sz;
   int i;

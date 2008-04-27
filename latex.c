@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.43 2008/02/25 22:18:50 c_anthon Exp $
+ * $Id: latex.c,v 1.44 2008/04/27 20:18:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -31,7 +31,7 @@
 #include "format.h"
 #include <glib/gi18n.h>
 
-static char*aszLuckTypeLaTeXAbbr[] = { "$--$", "$-$", "", "$+$", "$++$" };
+static const char*aszLuckTypeLaTeXAbbr[] = { "$--$", "$-$", "", "$+$", "$++$" };
 
 static void Points1_12( FILE *pf, int y ) {
 
@@ -370,7 +370,7 @@ PrintLaTeXCubeAnalysis( FILE *pf, const matchstate* pms, int fPlayer,
     fputs( "\\end{verbatim}\\end{quote}}\n", pf );    
 }
 
-static char *PlayerSymbol( int fPlayer ) {
+static const char *PlayerSymbol( int fPlayer ) {
 
     return fPlayer ? "\\textbullet{}" : "\\textopenbullet{}";
 }

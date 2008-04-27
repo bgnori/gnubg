@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.27 2007/12/29 14:32:29 Superfly_Jon Exp $
+ * $Id: format.c,v 1.28 2008/04/27 20:18:43 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1237,7 +1237,7 @@ DumpPosition(const TanBoard anBoard, char *szOutput,
 	int j;
 	cubedecision cd;
 	evalcontext ec;
-	static char *aszEvaluator[] = {
+	static const char *aszEvaluator[] = {
 		N_("OVER"),
 		N_("HYPERGAMMON-1"),
 		N_("HYPERGAMMON-2"),
