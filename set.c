@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.305 2008/04/27 20:18:52 c_anthon Exp $
+ * $Id: set.c,v 1.306 2008/04/29 20:46:31 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3262,13 +3262,11 @@ CommandSetExportMovesProb ( char *sz ) {
 }
 
 static int *pParameter;
-static const char *szParameter;
 
 extern void
 CommandSetExportMovesParameters ( char *sz ) {
 
   pParameter = exsExport.afMovesParameters;
-  szParameter = "moves";
   HandleCommand ( sz, acSetExportParameters );
 
 }
@@ -3287,7 +3285,6 @@ CommandSetExportCubeParameters ( char *sz ) {
 
 
   pParameter = exsExport.afCubeParameters;
-  szParameter = "cube";
   HandleCommand ( sz, acSetExportParameters );
 
 }
