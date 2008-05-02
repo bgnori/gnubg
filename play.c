@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.314 2008/04/27 20:18:50 c_anthon Exp $
+ * $Id: play.c,v 1.315 2008/05/02 22:09:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2241,14 +2241,11 @@ extern void CommandDouble( char *sz ) {
 	return;
     }
 
-    if( ms.fDoubled ) {
-	outputl( _("The `double' command is for offering the cube, not "
-		 "accepting it.  Use\n`redouble' to immediately offer the "
-		 "cube back at a higher value.") );
-
-	return;
+    if (ms.fDoubled) {
+	    UserCommand("redouble");
+	    return;
     }
-    
+
     if( ms.fTurn != ms.fMove ) {
 	outputl( _("You are only allowed to double if you are on roll.") );
 
