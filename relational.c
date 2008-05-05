@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.53 2008/04/27 20:18:51 c_anthon Exp $
+ * $Id: relational.c,v 1.54 2008/05/05 14:31:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -736,7 +736,7 @@ extern void CommandRelationalShowDetails (char *sz)
 extern void CommandRelationalShowPlayers( char *sz )
 {
 	/* Use the Select command */
-	UserCommand("relational select name AS Player FROM player ORDER BY name");
+	CommandRelationalSelect("name AS Player FROM player ORDER BY name");
 }
 
 extern void CommandRelationalErase(char *sz)

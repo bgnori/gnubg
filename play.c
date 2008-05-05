@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.315 2008/05/02 22:09:32 c_anthon Exp $
+ * $Id: play.c,v 1.316 2008/05/05 14:31:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2242,7 +2242,7 @@ extern void CommandDouble( char *sz ) {
     }
 
     if (ms.fDoubled) {
-	    UserCommand("redouble");
+	    CommandRedouble(NULL);
 	    return;
     }
 
