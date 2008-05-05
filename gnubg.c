@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.778 2008/04/27 20:18:45 c_anthon Exp $
+ * $Id: gnubg.c,v 1.779 2008/05/05 14:31:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5199,55 +5199,49 @@ extern void ProcessInput(char *sz)
 #endif
 
 /* Handle a command as if it had been typed by the user. */
-extern void UserCommand( const char *szCommand )
+extern void UserCommand(const char *szCommand)
 {
+	char *sz;
 
-#if HAVE_LIBREADLINE
-    int nOldEnd;
+	g_return_if_fail(szCommand);
+	g_return_if_fail(*szCommand);
+	/* Unfortunately we need to copy the command, because it might be in
+	   read-only storage and HandleCommand might want to modify it. */
+	sz = g_strdup(szCommand);
+#ifndef WIN32
+	if (!fTTY || !fInteractive)
 #endif
-    int cch = strlen( szCommand ) + 1;
-    char *sz = (char*) g_alloca(cch * sizeof(char));
-    
-    /* Unfortunately we need to copy the command, because it might be in
-       read-only storage and HandleCommand might want to modify it. */
-    strcpy( sz, szCommand );
+       	{
+		fInterrupt = FALSE;
+		HandleCommand(sz, acTop);
+		g_free(sz);
+		ResetInterrupt();
+		return;
+	}
 
-    if( !fTTY ) {
-	fInterrupt = FALSE;
-	HandleCommand( sz, acTop );
-	ResetInterrupt();
-	return;
-    }
-
-    /* Note that the command is always echoed to stdout; the output*()
-       functions are bypassed. */
+	/* Note that the command is always echoed to stdout; the output*()
+	   functions are bypassed. */
 #if HAVE_LIBREADLINE
-    if( fInteractive ) {
-	nOldEnd = rl_end;
-	rl_end = 0;
+	rl_end = 0; /* crashes without this line */
 	rl_redisplay();
 	g_print("%s\n", sz);
-	ProcessInput( sz);
+	ProcessInput(sz);
+	g_free(sz);
 	return;
-    }
-#endif
-
-    if( fInteractive ) {
-	putchar( '\n' );
+#elif !defined(WIN32)
+	g_print("\n");
 	Prompt();
 	g_print("%s\n", sz);
-    }
-    
-    fInterrupt = FALSE;
-    
-    HandleCommand( sz, acTop );
-
-    ResetInterrupt();
-    
-    if( nNextTurn )
-	Prompt();
-    else
-	fNeedPrompt = TRUE;
+	fInterrupt = FALSE;
+	HandleCommand(sz, acTop);
+	g_free(sz);
+	ResetInterrupt();
+	if (nNextTurn)
+		Prompt();
+	else
+		fNeedPrompt = TRUE;
+	return;
+#endif
 }
 
 extern gint NextTurnNotify( gpointer p )
@@ -6385,7 +6379,7 @@ int main(int argc, char *argv[])
 		InitGTK(&argc, &argv);
         if (fX)
         {
-                fTTY = !fNoTTY;
+                fTTY = !fNoTTY && isatty(STDIN_FILENO) && isatty(STDOUT_FILENO);
                 fInteractive = fShowProgress = TRUE;
                 if (fSplash)
                         pwSplash = CreateSplash();
