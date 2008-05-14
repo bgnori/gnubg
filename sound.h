@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sound.h,v 1.20 2008/04/16 19:03:59 c_anthon Exp $
+ * $Id: sound.h,v 1.21 2008/05/14 08:20:28 c_anthon Exp $
  */
 
 #ifndef _SOUND_H_
@@ -24,40 +24,40 @@
 
 
 typedef enum _gnubgsound {
-  /* start & exit of gnubg */
-  SOUND_START = 0,
-  SOUND_EXIT,
-  /* commands */
-  SOUND_AGREE,
-  SOUND_DOUBLE,
-  SOUND_DROP,
-  SOUND_CHEQUER,
-  SOUND_MOVE,
-  SOUND_REDOUBLE,
-  SOUND_RESIGN,
-  SOUND_ROLL,
-  SOUND_TAKE,
-  /* events */
-  SOUND_HUMAN_DANCE,
-  SOUND_HUMAN_WIN_GAME,
-  SOUND_HUMAN_WIN_MATCH,
-  SOUND_BOT_DANCE,
-  SOUND_BOT_WIN_GAME,
-  SOUND_BOT_WIN_MATCH,
-  SOUND_ANALYSIS_FINISHED,
-  /* number of sounds */
-  NUM_SOUNDS
+	/* start & exit of gnubg */
+	SOUND_START = 0,
+	SOUND_EXIT,
+	/* commands */
+	SOUND_AGREE,
+	SOUND_DOUBLE,
+	SOUND_DROP,
+	SOUND_CHEQUER,
+	SOUND_MOVE,
+	SOUND_REDOUBLE,
+	SOUND_RESIGN,
+	SOUND_ROLL,
+	SOUND_TAKE,
+	/* events */
+	SOUND_HUMAN_DANCE,
+	SOUND_HUMAN_WIN_GAME,
+	SOUND_HUMAN_WIN_MATCH,
+	SOUND_BOT_DANCE,
+	SOUND_BOT_WIN_GAME,
+	SOUND_BOT_WIN_MATCH,
+	SOUND_ANALYSIS_FINISHED,
+	/* number of sounds */
+	NUM_SOUNDS
 } gnubgsound;
 
-extern const char *sound_description[ NUM_SOUNDS ];
-extern const char *sound_command[ NUM_SOUNDS ];
+extern const char *sound_description[NUM_SOUNDS];
+extern const char *sound_command[NUM_SOUNDS];
 
 extern int fSound;
+extern int fQuiet;
 
-extern void
-playSound ( const gnubgsound gs );
-extern void SoundFlushCache( const gnubgsound gs );
-extern void SoundWait( void );
+extern void playSound(const gnubgsound gs);
+extern void SoundFlushCache(const gnubgsound gs);
+extern void SoundWait(void);
 
 extern char *GetDefaultSoundFile(gnubgsound sound);
 extern void playSoundFile(char *file, gboolean sync);
