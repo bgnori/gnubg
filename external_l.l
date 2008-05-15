@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.l,v 1.14 2008/03/17 11:35:33 c_anthon Exp $
+ * $Id: external_l.l,v 1.15 2008/05/15 09:23:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -38,6 +38,7 @@ void escapes(const char *cp, char *tp);
 %option 7bit
 %option case-insensitive
 %option outfile="lex.yy.c"
+%option noinput
 
 NUMSTR -?[0-9]+
 
