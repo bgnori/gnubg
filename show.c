@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.241 2008/04/27 20:18:52 c_anthon Exp $
+ * $Id: show.c,v 1.242 2008/06/04 18:29:24 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1059,7 +1059,7 @@ extern void CommandShowScoreSheet( char *sz )
 		}
 		sprintf(data[0], "%d", score[0]);
 		sprintf(data[1], "%d", score[1]);
-		outputf("%*s | %s\n", width1, data[0], data[1]);
+		outputf("%*s | %s\n", (int)width1, data[0], data[1]);
 	}
 
 	free(data[0]);

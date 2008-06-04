@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.13 2008/03/31 10:59:00 c_anthon Exp $
+ * $Id: dbprovider.c,v 1.14 2008/06/04 18:29:24 c_anthon Exp $
  */
 
 #include "config.h"
@@ -347,7 +347,7 @@ RowSet* ConvertPythonToRowset(PyObject *v)
 
 		if (!e)
 		{
-			outputf(_("Error getting item no %d\n"), i);
+			outputf(_("Error getting item no %zu\n"), i);
 			continue;
 		}
 
@@ -361,7 +361,7 @@ RowSet* ConvertPythonToRowset(PyObject *v)
 				
 				if (!e2)
 				{
-					outputf(_("Error getting sub item no (%d, %d)\n"), i, j);
+					outputf(_("Error getting sub item no (%zu, %zu)\n"), i, j);
 					continue;
 				}
 				if (PyUnicode_Check(e2))
@@ -385,7 +385,7 @@ RowSet* ConvertPythonToRowset(PyObject *v)
 		}
 		else
 		{
-			outputf(_("Item no. %d is not a sequence\n"), i);
+			outputf(_("Item no. %zu is not a sequence\n"), i);
 		}
 
 		Py_DECREF(e);
