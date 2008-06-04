@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.76 2008/06/04 12:26:59 c_anthon Exp $
+ * $Id: render.c,v 1.77 2008/06/04 21:51:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2416,7 +2416,9 @@ static void RenderArrow(unsigned char* puch, double arColour[4], int nSize, int 
 
 	cairo_set_line_width (cr, AR_LINE_WIDTH);
 
-	cairo_set_source_rgba (cr, 1, 1, 1, 0);
+	/* clean the canvas */
+	cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
+	cairo_set_source_rgba (cr, 0, 0, 0, 0);
 	cairo_rectangle(cr, 0, 0, 1, 1);
 	cairo_fill(cr);
 
