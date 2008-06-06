@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.c,v 1.15 2008/04/26 17:12:05 c_anthon Exp $
+ * $Id: util.c,v 1.16 2008/06/06 15:43:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -50,6 +50,14 @@ extern char * getInstallDir( void )
 	}
   }
   return ret;
+}
+
+extern char *getDocDir(void)
+{
+	static char *docdir = NULL;
+	if (!docdir)
+		docdir = g_build_filename(getInstallDir(), "doc", NULL);
+	return docdir;
 }
 
 extern void PrintSystemError(const char* message)
