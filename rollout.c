@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.193 2008/06/07 21:11:35 c_anthon Exp $
+ * $Id: rollout.c,v 1.194 2008/06/07 21:16:47 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1038,7 +1038,7 @@ extern void RolloutLoopMT(void)
 			MT_Exclusive();
 			altGameCount[alt]++;
 			if (altGameCount[alt] > cGames || fNoMore[alt]) {
-				altGameCount[alt] = cGames;
+				altGameCount[alt]--;
 				multi_debug("exclusive release: alternative is already done");
 				MT_Release();
 				continue;
