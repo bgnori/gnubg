@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.705 2008/05/04 19:54:10 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.706 2008/06/08 22:16:38 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3662,21 +3662,38 @@ static void CreateMainWindow(void)
 
 static void gnubg_set_default_icon(void)
 {
-	 gchar *iconA, *iconB;
-	 GError *error=NULL;
-	
-	iconA = BuildFilename("gnubg.svg");
-	iconB = BuildFilename("gnubg.png");
-	gtk_window_set_default_icon_from_file(iconA, &error);
-	if (error)
-	{
-		gtk_window_set_default_icon_from_file(iconB, NULL);
-		g_error_free(error);
-	}
-	g_free(iconA);
-	g_free(iconB);
-}
+	/* win32 uses the ico file for this */
+	/* adapted from pidgin */
+#ifndef _WIN32
+	GList *icons = NULL;
+	GdkPixbuf *icon = NULL;
+	char *ip;
+	int i;
+	struct {
+		const char *dir;
+		const char *fn;
+	} is[] = {
+	       	{"16x16", "gnubg.png"},
+	       	{"24x24", "gnubg.png"},
+	       	{"32x32", "gnubg.png"},
+	       	{"48x48", "gnubg.png"}
+	};
 
+	for (i = 0; i < G_N_ELEMENTS(is); i++) {
+		ip = g_build_filename(DATADIR, "icons", "hicolor", is[i].dir, "apps", is[i].fn, NULL);
+		icon = gdk_pixbuf_new_from_file(ip, NULL);
+		g_free(ip);
+		if (icon)
+			icons = g_list_append(icons, icon);
+		/* fail silently */
+
+	}
+	gtk_window_set_default_icon_list(icons);
+
+	g_list_foreach(icons, (GFunc) g_object_unref, NULL);
+	g_list_free(icons);
+#endif
+}
 extern void InitGTK(int *argc, char ***argv)
 {
 #include "xpm/gnu.xpm"
