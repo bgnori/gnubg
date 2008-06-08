@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.194 2008/06/07 21:16:47 c_anthon Exp $
+ * $Id: rollout.c,v 1.195 2008/06/08 06:27:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1054,15 +1054,14 @@ extern void RolloutLoopMT(void)
 				float rMuNew, rDelta;
 
 				aarResult[alt][j] += aar[j];
-				rMuNew = (float) aarResult[alt][j] / (altGameCount[alt] + 1);
+				rMuNew = (float) aarResult[alt][j] / (altGameCount[alt]);
 
-				if (altGameCount[alt] > 0) {	/* for i == 0 aarVariance is not defined */
+				if (altGameCount[alt] > 1) {	/* for i == 0 aarVariance is not defined */
 
 					rDelta = rMuNew - aarMu[alt][j];
 
 					aarVariance[alt][j] =
-					    aarVariance[alt][j] * (1.0 - 1.0 / altGameCount[alt]) + (altGameCount[alt] +
-												     1) * rDelta *
+					    aarVariance[alt][j] * (1.0 - 1.0 / (altGameCount[alt] - 1)) + (altGameCount[alt]) * rDelta *
 					    rDelta;
 				}
 
@@ -1075,7 +1074,7 @@ extern void RolloutLoopMT(void)
 						aarMu[alt][j] = 1.0f;
 				}
 
-				aarSigma[alt][j] = (float) sqrt(aarVariance[alt][j] / (altGameCount[alt] + 1));
+				aarSigma[alt][j] = (float) sqrt(aarVariance[alt][j] / (altGameCount[alt]));
 			}	/* for (j = 0; j < NUM_ROLLOUT_OUTPUTS; j++ ) */
 
 			/* For normal alternatives nGamesDone and altGameCount will be equal. For cube decisions,
