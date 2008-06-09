@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.706 2008/06/08 22:16:38 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.707 2008/06/09 16:01:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5827,12 +5827,18 @@ static void GtkShowEngine(GtkWidget * pwWidget)
 
 extern void GTKShowVersion( void )
 {
-#include "xpm/gnubg-big.xpm"
 	GtkWidget *pwDialog, *pwButtonBox, *pwButton;
+	GtkWidget *image;
+	gchar *fn;
 
-	pwDialog = GTKCreateDialog(_("About GNU Backgammon"), DT_INFO, NULL,
-		DIALOG_FLAG_MODAL | DIALOG_FLAG_CUSTOM_PICKMAP | DIALOG_FLAG_CLOSEBUTTON, NULL, gnubg_big_xpm);
+	pwDialog = GTKCreateDialog(_("About GNU Backgammon"), DT_CUSTOM, NULL, DIALOG_FLAG_MODAL | DIALOG_FLAG_CLOSEBUTTON, NULL, NULL);
 	gtk_window_set_resizable(GTK_WINDOW(pwDialog), FALSE);
+
+	fn = g_build_filename(PKGDATADIR, "pixmaps", "gnubg-big.png", NULL);
+	image = gtk_image_new_from_file(fn);
+	g_free(fn);
+	gtk_misc_set_padding(GTK_MISC(image), 8, 8 );
+	gtk_box_pack_start(GTK_BOX(DialogArea(pwDialog, DA_MAIN)), image, FALSE, FALSE, 0 );
 
 	/* Buttons on right side */
 	pwButtonBox = gtk_vbox_new( FALSE, 0 );

@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.28 2008/04/29 20:48:11 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.29 2008/06/09 16:01:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -74,7 +74,8 @@ static char *aszStockItem[ NUM_DIALOG_TYPES ] =
 	GTK_STOCK_DIALOG_WARNING,
 	GTK_STOCK_DIALOG_ERROR,
 	GTK_STOCK_DIALOG_GNU,
-	GTK_STOCK_DIALOG_GNU_QUESTION
+	GTK_STOCK_DIALOG_GNU_QUESTION,
+	NULL
 };
 
 static void quitter(GtkWidget *widget, GtkWidget *parent)
@@ -179,15 +180,12 @@ extern GtkWidget *GTKCreateDialog(const char *szTitle, const dialogtype dt,
 	pwHbox = gtk_hbox_new(FALSE, 0);
     gtk_container_add( GTK_CONTAINER( GTK_DIALOG( pwDialog )->vbox ), pwHbox );
 
-	if (flags & DIALOG_FLAG_CUSTOM_PICKMAP)
-	{
-		pwPixmap = image_from_xpm_d ((char**)okFunData, pwDialog);
-		okFunData = NULL;	/* Don't use pixmap below */
-	}
-	else
+    if (dt != DT_CUSTOM)
+    {
 	    pwPixmap = gtk_image_new_from_stock( aszStockItem[ dt ], GTK_ICON_SIZE_DIALOG );
-    gtk_misc_set_padding( GTK_MISC( pwPixmap ), 8, 8 );
-	gtk_box_pack_start(GTK_BOX(pwHbox), pwPixmap, FALSE, FALSE, 0);
+	    gtk_misc_set_padding( GTK_MISC( pwPixmap ), 8, 8 );
+	    gtk_box_pack_start(GTK_BOX(pwHbox), pwPixmap, FALSE, FALSE, 0);
+    }
 
 	cbData = (CallbackStruct*)malloc(sizeof(CallbackStruct));
 
@@ -275,7 +273,7 @@ extern int GTKMessage(char *sz, dialogtype dt)
 #define MAXWINSIZE 400
 #define MAXSTRLEN 200
 	int answer = FALSE;
-	static char *aszTitle[NUM_DIALOG_TYPES - 1] = {
+	static char *aszTitle[NUM_DIALOG_TYPES - 2] = {
 		N_("GNU Backgammon - Message"),
 		N_("GNU Backgammon - Question"),
 		N_("GNU Backgammon - Warning"),	/* are you sure */
