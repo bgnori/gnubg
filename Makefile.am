@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.207 2008/06/08 22:16:38 c_anthon Exp $
+## $Id: Makefile.am,v 1.208 2008/06/09 07:25:45 c_anthon Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -162,14 +162,14 @@ makeweights_LDADD = -Llib lib/libevent.la @GLIB_LIBS@
 ##files to be installed in the datadir
 #
 pkgdata_DATA = gnubg_ts0.bd gnubg.wd boards.xml \
-	gnubg_os0.bd textures.txt gnubg.sql gnubg.gtkrc gnubg.svg gnubg.png
+	gnubg_os0.bd textures.txt gnubg.sql gnubg.gtkrc
 
 #
 ##files to add to the tarball when 'make dist'
 #
 EXTRA_DIST = config.rpath  userrng.c copying.awk gnubg.gtkrc credits.sh \
 	$(BUILT_SOURCES) ABOUT-NLS boards.xml gnubg.sql autogen.sh \
-	gnubg.weights textures.txt gnubg.png gnubg.svg corecount.c \
+	gnubg.weights textures.txt corecount.c \
 	external_y.h sgf_y.h
 
 #
