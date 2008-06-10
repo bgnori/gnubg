@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.707 2008/06/09 16:01:20 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.708 2008/06/10 08:09:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -82,8 +82,6 @@
 #if USE_BOARD3D
 #include "fun3d.h"
 #endif
-
-#include "xpm/stock_stop_16.xpm"
 
 #define KEY_ESCAPE -229
 
@@ -3634,7 +3632,7 @@ static void CreateMainWindow(void)
 			G_CALLBACK( TextPopped ), NULL );
 
 	pwStopTest = gtk_button_new();
-	gtk_container_add(GTK_CONTAINER(pwStopTest), image_from_xpm_d (stock_stop_16_xpm, pwStopTest));
+	gtk_container_add(GTK_CONTAINER(pwStopTest), gtk_image_new_from_stock(GTK_STOCK_STOP, GTK_ICON_SIZE_SMALL_TOOLBAR));
 	gtk_widget_set_sensitive(pwStopTest, FALSE);
 	gtk_box_pack_start( GTK_BOX( pwHbox ), pwStopTest, FALSE, FALSE, 0 );
 	g_signal_connect(G_OBJECT(pwStopTest), "clicked", G_CALLBACK( Stop ), NULL );
