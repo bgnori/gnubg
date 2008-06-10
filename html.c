@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.192 2008/04/27 20:18:49 c_anthon Exp $
+ * $Id: html.c,v 1.193 2008/06/10 21:00:49 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -165,7 +165,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.192 2008/04/27 20:18:49 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.193 2008/06/10 21:00:49 Superfly_Jon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1832,7 +1832,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.192 $";
+  const char szVersion[] = "$Revision: 1.193 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1912,7 +1912,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.192 $";
+  const char szVersion[] = "$Revision: 1.193 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3415,7 +3415,7 @@ OpenCSS( const char *sz ) {
   
   pchCSS = g_build_filename(pchBase, "gnubg.css", NULL );
 
-  if ( !access( pchCSS, R_OK ) ) {
+  if ( !_access( pchCSS, R_OK ) ) {
     /* file exists */
     outputf( _("gnubg.css is not written since it already exist in \"%s\"\n"),
              pchBase );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.708 2008/06/10 08:09:16 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.709 2008/06/10 21:00:49 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -378,7 +378,7 @@ static void StdinReadNotify( gpointer p, gint h, GdkInputCondition cond ) {
     
 	
     if( feof( stdin ) ) {
-	if( !isatty( STDIN_FILENO ) )
+	if( !_isatty( STDIN_FILENO ) )
 	    exit( EXIT_SUCCESS );
 	
 	PromptForExit();

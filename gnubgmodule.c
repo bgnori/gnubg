@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.82 2008/04/27 20:18:46 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.83 2008/06/10 21:00:48 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -25,7 +25,9 @@
 #include "gnubgmodule.h"
 #ifdef WIN32
 /* needed for mingw inclusion of Python.h */
+#ifndef _MSC_VER
 #include <stdint.h>
+#endif
 #endif
 #include <Python.h>
 #endif
