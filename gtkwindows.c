@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.30 2008/06/10 20:25:41 Superfly_Jon Exp $
+ * $Id: gtkwindows.c,v 1.31 2008/06/10 21:00:49 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -244,7 +244,7 @@ extern GtkWidget *DialogArea( GtkWidget *pw, dialogarea da )
 		return pwChild;
 	
     default:
-		abort();
+		return NULL;
     }
 }
 

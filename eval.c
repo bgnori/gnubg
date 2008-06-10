@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.346 2008/04/26 17:12:02 c_anthon Exp $
+ * $Id: eval.c,v 1.347 2008/06/10 21:00:48 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1898,7 +1898,7 @@ MaxTurns( int id )
       return i;
   }
 
-  abort();
+  return -1;
 }
 
 extern void

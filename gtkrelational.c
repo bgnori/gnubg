@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrelational.c,v 1.23 2008/03/27 23:46:16 c_anthon Exp $
+ * $Id: gtkrelational.c,v 1.24 2008/06/10 21:00:49 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -801,7 +801,7 @@ extern void GtkShowRelational(gpointer p, guint n, GtkWidget * pw)
 *******************************************************/
 
 	pwPaned = gtk_vpaned_new();
-	gtk_paned_set_position(GTK_PANED(pwPaned), REL_DIALOG_HEIGHT*0.6);
+	gtk_paned_set_position(GTK_PANED(pwPaned), (int)(REL_DIALOG_HEIGHT*0.6));
 	gtk_notebook_append_page(GTK_NOTEBOOK(pwn), pwPaned,
 				 gtk_label_new(_("Players")));
 	pwVbox = gtk_vbox_new(FALSE, 0);
