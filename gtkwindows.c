@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.29 2008/06/09 16:01:20 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.30 2008/06/10 20:25:41 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -293,6 +293,7 @@ extern int GTKMessage(char *sz, dialogtype dt)
 
 	pwText = gtk_text_view_new ();
 	gtk_text_view_set_editable(GTK_TEXT_VIEW(pwText), FALSE);
+	gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(pwText), FALSE);
 	buffer = gtk_text_buffer_new (NULL);
 	gtk_text_buffer_set_text(buffer, sz, -1);
 	gtk_text_view_set_buffer (GTK_TEXT_VIEW (pwText), buffer);
