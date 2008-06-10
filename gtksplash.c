@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.23 2008/03/13 18:15:57 Superfly_Jon Exp $
+ * $Id: gtksplash.c,v 1.24 2008/06/10 08:09:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -46,8 +46,8 @@ CreateSplash (void) {
   gtksplash *pgs;
   GtkWidget *pwvbox, *pwFrame, *pwb;
   GtkWidget *pwImage;
+  gchar *fn;
   int i;
-#include "xpm/gnubg-big.xpm"
 
   pgs = (gtksplash *) g_malloc ( sizeof ( gtksplash ) );
 
@@ -71,7 +71,9 @@ CreateSplash (void) {
 
   /* image */
 
-  pwImage = image_from_xpm_d ( gnubg_big_xpm, GTK_WIDGET ( pgs->pwWindow ) );
+  fn = g_build_filename(PKGDATADIR, "pixmaps", "gnubg-big.png", NULL);
+  pwImage = gtk_image_new_from_file(fn);
+  g_free(fn);
   gtk_box_pack_start ( GTK_BOX ( pwvbox ), pwImage, FALSE, FALSE, 0 );
 
   gtk_box_pack_start( GTK_BOX( pwvbox ),
