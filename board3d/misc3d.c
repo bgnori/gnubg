@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.89 2008/06/10 21:00:50 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.90 2008/06/11 13:07:43 c_anthon Exp $
 */
 
 #include "config.h"
@@ -418,7 +418,7 @@ void FindTexture(TextureInfo** textureInfo, const char* file)
 	}
 	{	/* Not in texture list, see if old texture on disc */
 		char *szFile = BuildFilename(file);
-		if (szFile && !_access(szFile, R_OK))
+		if (szFile && g_file_test(szFile, G_FILE_TEST_IS_REGULAR))
 		{
 			/* Add entry for unknown texture */
 			TextureInfo text;

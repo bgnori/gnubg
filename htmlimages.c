@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.45 2008/06/10 21:00:49 Superfly_Jon Exp $
+ * $Id: htmlimages.c,v 1.46 2008/06/11 13:07:43 c_anthon Exp $
  */
 
 #include "config.h"
@@ -652,13 +652,16 @@ static char* GetFilenameBase(char* sz)
 		return 0;
 	}
 
-	if (_access(sz, R_OK))
+	if (g_file_test(sz, G_FILE_TEST_EXISTS))
 	{
-		if( g_mkdir( sz, 0777) < 0 )
-		{
-			outputerr ( sz );
-			return 0;
-		}
+		outputerrf(_("Cannot create htmlimages: %s already exists!"), sz);
+		return 0;
+	}
+
+	if( g_mkdir( sz, 0777) < 0 )
+	{
+		outputerr ( sz );
+		return 0;
 	}
 
 	szFile = malloc( strlen( sz ) + 32 );
