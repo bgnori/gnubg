@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.22 2008/01/15 22:22:44 Superfly_Jon Exp $
+ * $Id: bearoff.h,v 1.23 2008/06/11 22:21:54 c_anthon Exp $
  */
 
 #ifndef _BEAROFF_H_
@@ -26,7 +26,6 @@
 
 typedef enum _bearoffcreator {
   BEAROFF_GNUBG,
-  BEAROFF_EXACT_BEAROFF,
   BEAROFF_UNKNOWN
 } bearoffcreator;
 
