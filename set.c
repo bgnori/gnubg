@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.306 2008/04/29 20:46:31 c_anthon Exp $
+ * $Id: set.c,v 1.307 2008/06/11 14:34:46 c_anthon Exp $
  */
 
 #include "config.h"
@@ -233,7 +233,7 @@ static void SetRNG( rng *prng, void **rngctx, rng rngNew, char *szSeed ) {
           return;
         }
 
-        if ( OpenDiceFile( *rngctx, sz ) < 0 ) {
+        if ( !OpenDiceFile( *rngctx, sz )) {
           outputf( _("File %s does not exist or is not readable"), sz );
           return;
         }
