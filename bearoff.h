@@ -16,20 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.23 2008/06/11 22:21:54 c_anthon Exp $
+ * $Id: bearoff.h,v 1.24 2008/06/12 08:24:16 c_anthon Exp $
  */
 
 #ifndef _BEAROFF_H_
 #define _BEAROFF_H_
 
 #include "gnubg-types.h"
-
-typedef enum _bearoffcreator {
-  BEAROFF_GNUBG,
-  BEAROFF_UNKNOWN
-} bearoffcreator;
-
-#define N_BEAROFFS ((int)BEAROFF_UNKNOWN + 1)
 
 typedef enum _bearofftype {
   BEAROFF_ONESIDED,
@@ -40,10 +33,7 @@ typedef enum _bearofftype {
 typedef struct _bearoffcontext
 {
   int h;          /* file handle */
-  int *ah;        /* list of file descriptors */
-  int nFiles;     /* number of file descriptors */
   bearofftype bt; /* type of bearoff database */
-  bearoffcreator bc; /* creator of database */
   unsigned int nPoints;    /* number of points covered by database */
   unsigned int nChequers;  /* number of chequers for one-sided database */
   int fInMemory;  /* Is database entirely read into memory? */
