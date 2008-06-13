@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.h,v 1.24 2008/06/12 08:24:16 c_anthon Exp $
+ * $Id: bearoff.h,v 1.25 2008/06/13 11:09:47 c_anthon Exp $
  */
 
 #ifndef _BEAROFF_H_
@@ -24,7 +24,10 @@
 
 #include "gnubg-types.h"
 
+#include <glib.h>
+
 typedef enum _bearofftype {
+	BEAROFF_INVALID,
   BEAROFF_ONESIDED,
   BEAROFF_TWOSIDED,
   BEAROFF_HYPERGAMMON
@@ -32,25 +35,20 @@ typedef enum _bearofftype {
 
 typedef struct _bearoffcontext
 {
-  int h;          /* file handle */
+  FILE *pf;          /* file pointer */
   bearofftype bt; /* type of bearoff database */
   unsigned int nPoints;    /* number of points covered by database */
   unsigned int nChequers;  /* number of chequers for one-sided database */
-  int fInMemory;  /* Is database entirely read into memory? */
-  int fMalloc;    /* is data malloc'ed? */
   char *szFilename; /* filename */
-
   /* one sided dbs */
   int fCompressed; /* is database compressed? */
   int fGammon;     /* gammon probs included */
   int fND;         /* normal distibution instead of exact dist? */
   int fHeuristic;  /* heuristic database? */
-  int nOffsetBuffer;
-  unsigned char *puchBuffer;
-  unsigned char *puchA;
   /* two sided dbs */
   int fCubeful;    /* cubeful equities included */
-  void *p;        /* pointer to data */
+  GMappedFile *map;
+  unsigned char *p;        /* pointer to data in memory */
 
   unsigned long int nReads; /* number of reads */
 

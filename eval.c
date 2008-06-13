@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.347 2008/06/10 21:00:48 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.348 2008/06/13 11:09:47 c_anthon Exp $
  */
 
 #include "config.h"
@@ -777,11 +777,15 @@ extern void EvalInitialise(char *szWeights, char *szWeightsBinary,
 					"You can also generate other bearoff databases; see\n"
 					"README for more details\n\n" );
 
+		gnubg_bearoff_os = BuildFilename("gnubg_os.bd");
 		/* init one-sided db */
-		pbcOS = BearoffInit ( "gnubg_os.bd", BO_NONE, NULL );
+		pbcOS = BearoffInit ( gnubg_bearoff_os, BO_IN_MEMORY, NULL );
+		g_free(gnubg_bearoff_os);
 
+		gnubg_bearoff = BuildFilename("gnubg_ts.bd");
 		/* init two-sided db */
-		pbcTS = BearoffInit ( "gnubg_ts.bd", BO_NONE, NULL );
+		pbcTS = BearoffInit ( gnubg_bearoff, BO_IN_MEMORY, NULL );
+		g_free(gnubg_bearoff);
 
 			/* hyper-gammon databases */
 
