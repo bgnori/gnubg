@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtksplash.c,v 1.24 2008/06/10 08:09:16 c_anthon Exp $
+ * $Id: gtksplash.c,v 1.25 2008/06/14 22:12:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -27,6 +27,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "util.h"
 #include "eval.h"
 #include "gtksplash.h"
 #include "gtktoolbar.h"
