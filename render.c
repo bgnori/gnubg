@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.77 2008/06/04 21:51:03 c_anthon Exp $
+ * $Id: render.c,v 1.78 2008/06/15 10:00:58 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2394,6 +2394,7 @@ static void Copy_RGB_to_RGBA( unsigned char *puchDest, int nDestStride,
 #if USE_GTK
 static void RenderArrow(unsigned char* puch, double arColour[4], int nSize, int left)
 {
+#if HAVE_CAIRO
 	cairo_surface_t* surface = cairo_image_surface_create_for_data (puch, CAIRO_FORMAT_ARGB32,
 												nSize * ARROW_WIDTH,
 												nSize * ARROW_HEIGHT,
@@ -2438,6 +2439,7 @@ static void RenderArrow(unsigned char* puch, double arColour[4], int nSize, int 
 
 	cairo_destroy (cr);
 	cairo_surface_destroy(surface);
+#endif
 }
 
 extern void RenderArrows( renderdata *prd, unsigned char* puch0,
