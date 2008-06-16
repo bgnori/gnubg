@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.68 2008/06/13 11:09:47 c_anthon Exp $
+ * $Id: bearoff.c,v 1.69 2008/06/16 21:20:42 Superfly_Jon Exp $
  */
 #include "config.h"
 #if USE_MULTITHREAD
@@ -844,7 +844,7 @@ extern void BearoffClose(bearoffcontext * pbc)
 	if (pbc->szFilename)
 		g_free(pbc->szFilename);
 
-	free(pbc);
+	g_free(pbc);
 }
 
 static void ReadIntoMemory ( bearoffcontext *pbc )
