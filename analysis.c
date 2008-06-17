@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.192 2008/06/17 20:57:01 Superfly_Jon Exp $
+ * $Id: analysis.c,v 1.193 2008/06/17 21:15:20 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -986,7 +986,7 @@ static void UpdateProgressBar(void)
 	ProgressValue(progress_offset + MT_GetDoneTasks());
 }
 
-int AnalyseMoveMT(Task *task)
+void AnalyseMoveMT(Task *task)
 {
 	AnalyseMoveTask *amt = (AnalyseMoveTask *)task;
     float doubleError;
@@ -1000,7 +1000,6 @@ int AnalyseMoveMT(Task *task)
     {    /* Need to analyze take/drop decision in sequence */
         AnalyseMoveMT(task->pLinkedTask);
     }
-	return 0;
 }
 
 static int AnalyzeGame ( listOLD *plGame )
@@ -1031,7 +1030,7 @@ static int AnalyzeGame ( listOLD *plGame )
 		if (!pParentTask)
 			pt = (AnalyseMoveTask*)malloc(sizeof(AnalyseMoveTask));
 
-		pt->task.fun = AnalyseMoveMT;
+		pt->task.fun = (AsyncFun)AnalyseMoveMT;
 		pt->task.data = pt;
 		pt->task.pLinkedTask = NULL;
 		pt->pmr = pmr;
