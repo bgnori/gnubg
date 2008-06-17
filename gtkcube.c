@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.57 2008/02/24 10:39:40 Superfly_Jon Exp $
+ * $Id: gtkcube.c,v 1.58 2008/06/17 20:57:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -756,7 +756,7 @@ static void EvalCube ( cubehintdata *pchd, evalcontext *pec )
 	dd.pci = &ci;
 	dd.pec = pec;
 	dd.pes = NULL;
-	if (RunAsyncProcess((AsyncFun)asyncCubeDecisionE, &dd, _("Considering cube action...")) != ASR_OK)
+	if (RunAsyncProcess(asyncCubeDecisionE, &dd, _("Considering cube action...")) != 0)
 		return;
 
   /* save evaluation */

@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.75 2008/04/29 20:44:17 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.76 2008/06/17 20:57:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1359,8 +1359,6 @@ static GtkWidget *OptionsPages( optionswidget *pow )
     gtk_tooltips_set_tip (ptt, pwev,
 			  _("The number of threads to use in multi-threaded operations,"
 			  " this should be set to the number of logical processing units avaliable"), NULL );
-
-	gtk_widget_set_sensitive(pw, MT_Enabled());
 #endif
     /* return notebook */
 
