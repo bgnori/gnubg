@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.46 2008/06/17 14:33:52 c_anthon Exp $
+ * $Id: gtktoolbar.c,v 1.47 2008/06/17 19:14:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -302,6 +302,7 @@ ToolbarNew ( void ) {
   g_object_set_data_full ( G_OBJECT ( vbox_toolbar ), "toolbarwidget",
                              ptw, g_free );
   pwToolbar = gtk_toolbar_new ();
+  gtk_toolbar_set_icon_size(GTK_TOOLBAR(pwToolbar), GTK_ICON_SIZE_LARGE_TOOLBAR);
   gtk_toolbar_set_orientation ( GTK_TOOLBAR ( pwToolbar ),
                                 GTK_ORIENTATION_HORIZONTAL );
   gtk_toolbar_set_style ( GTK_TOOLBAR ( pwToolbar ),
@@ -384,7 +385,7 @@ ToolbarNew ( void ) {
   /* edit button */
   ptw->pwEdit = gtk_toggle_button_new();
   pwvbox = gtk_vbox_new(FALSE, 0);
-  gtk_container_add(GTK_CONTAINER(pwvbox), gtk_image_new_from_stock(GTK_STOCK_EDIT, gtk_toolbar_get_icon_size(GTK_TOOLBAR(pwToolbar))));
+  gtk_container_add(GTK_CONTAINER(pwvbox), gtk_image_new_from_stock(GTK_STOCK_EDIT, GTK_ICON_SIZE_LARGE_TOOLBAR));
   gtk_container_add(GTK_CONTAINER(pwvbox), gtk_label_new(_("Edit")));
   gtk_container_add(GTK_CONTAINER(ptw->pwEdit), pwvbox);
   g_signal_connect(G_OBJECT(ptw->pwEdit), "toggled", G_CALLBACK(ToolbarToggleEdit), NULL);
