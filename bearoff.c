@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.69 2008/06/16 21:20:42 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.70 2008/06/17 14:35:02 c_anthon Exp $
  */
 #include "config.h"
 #if USE_MULTITHREAD
@@ -929,6 +929,7 @@ extern bearoffcontext *BearoffInit(const char *szFilename, const int bo, void (*
 
 	if (!g_file_test(szFilename, G_FILE_TEST_IS_REGULAR)) {
 		/* fail silently */
+		errno = 0;
 		goto invaliddb;
 	}
 
