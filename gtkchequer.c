@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.89 2008/03/14 13:07:53 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.90 2008/06/17 20:57:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -230,7 +230,7 @@ EvalMoves ( hintdata *phd, evalcontext *pec )
 		sd.pci = &ci;
 		sd.pec = pec;
 
-		if (RunAsyncProcess((AsyncFun)asyncScoreMove, &sd, _("Evaluating positions...")) != ASR_OK)
+		if (RunAsyncProcess((AsyncFun)asyncScoreMove, &sd, _("Evaluating positions...")) != 0)
 		{
 			MoveListFreeSelectionList(plSelList);
 			return;

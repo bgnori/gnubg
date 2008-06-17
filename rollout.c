@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.195 2008/06/08 06:27:01 c_anthon Exp $
+ * $Id: rollout.c,v 1.196 2008/06/17 20:57:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -973,7 +973,7 @@ int ro_fInvert;
 int ro_NextTrail;
 unsigned int *altGameCount;
 
-extern void RolloutLoopMT(void)
+extern void RolloutLoopMT(void *unused)
 {
 	TanBoard aanBoardEval;
 	float aar[NUM_ROLLOUT_OUTPUTS];
@@ -1459,7 +1459,7 @@ RolloutGeneral( ConstTanBoard *apBoard,
 	ro_NextTrail = nFirstTrial;
 
 	multi_debug("rollout adding tasks");
-	mt_add_tasks(MT_GetNumThreads(), TT_ROLLOUTLOOP, NULL);
+	mt_add_tasks(MT_GetNumThreads(), RolloutLoopMT, NULL, NULL);
 
 	ro_pfProgress = pfProgress;
 	ro_pUserData = pUserData;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.46 2008/03/12 22:56:34 Superfly_Jon Exp $
+ * $Id: gtktheory.c,v 1.47 2008/06/17 20:57:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -602,7 +602,7 @@ PlyClicked( GtkWidget *pw, theorywidget *ptw ) {
   dd.pci = &ci;
   dd.pec = &ec;
 
-  if (RunAsyncProcess((AsyncFun)asyncGammonRates, &dd, _("Evaluating gammon percentages")) != ASR_OK)
+  if (RunAsyncProcess((AsyncFun)asyncGammonRates, &dd, _("Evaluating gammon percentages")) != 0)
   {
     fInterrupt = FALSE;
 	return;

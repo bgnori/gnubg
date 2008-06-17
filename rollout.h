@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.28 2007/12/29 14:32:31 Superfly_Jon Exp $
+ * $Id: rollout.h,v 1.29 2008/06/17 20:57:03 Superfly_Jon Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -150,5 +150,5 @@ extern int
 ScoreMoveGeneral ( move *pm, const cubeinfo* pci, const evalsetup* pes,
                    rolloutprogressfunc* pfRolloutProgress, void* pUserData );
 
-extern void RolloutLoopMT(void);
+extern void RolloutLoopMT(void *unused);
 #endif

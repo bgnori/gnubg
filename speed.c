@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.21 2007/12/29 14:32:31 Superfly_Jon Exp $
+ * $Id: speed.c,v 1.22 2008/06/17 20:57:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -44,7 +44,7 @@
 randctx rc;
 double timeTaken;
 
-extern void RunEvals(void)
+extern void RunEvals(void *unused)
 {
 	int aanBoard[ EVALS_PER_ITERATION ][ 2 ][ 25 ];
     int i, j, k;
@@ -144,11 +144,11 @@ extern void CommandCalibrate( char *sz )
 			break;
 
 #if USE_MULTITHREAD
-		mt_add_tasks(MT_GetNumThreads(), TT_RUNCALIBRATIONEVALS, NULL);
+		mt_add_tasks(MT_GetNumThreads(), RunEvals, NULL, NULL);
 		MT_WaitForTasks(NULL, 0);
 		iIter += MT_GetNumThreads();
 #else
-		RunEvals();
+		RunEvals(NULL);
 		iIter++;
 #endif
 
