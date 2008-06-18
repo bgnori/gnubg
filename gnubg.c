@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.782 2008/06/17 20:57:02 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.783 2008/06/18 17:30:43 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -7161,7 +7161,9 @@ extern int RunAsyncProcess(AsyncFun fn, void *data, const char *msg)
 #if USE_MULTITHREAD
 	ret = MT_WaitForTasks(Progress, 100);
 #else
-	ret = fn(data);	/* Just call function in single threaded build */
+	asyncRet = 0;
+	fn(data);	/* Just call function in single threaded build */
+	ret = asyncRet;
 #endif
 
 	ProgressEnd();
