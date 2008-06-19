@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.70 2008/06/17 14:35:02 c_anthon Exp $
+ * $Id: bearoff.c,v 1.71 2008/06/19 19:56:43 c_anthon Exp $
  */
 #include "config.h"
 #if USE_MULTITHREAD
@@ -278,7 +278,7 @@ static void ReadBearoffFile(const bearoffcontext *pbc, unsigned int offset, unsi
 	MT_Exclusive();
 #endif
 
-	if ((fseek(pbc->pf, (long)offset, SEEK_SET ) < 0) || (fread(buf, 1, nBytes, pbc->pf ) < (int)nBytes))
+	if ((fseek(pbc->pf, (long)offset, SEEK_SET ) < 0) || (fread(buf, 1, nBytes, pbc->pf ) < nBytes))
 	{
 		if (errno)
 			perror("OS bearoff database");
