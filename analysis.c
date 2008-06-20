@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.193 2008/06/17 21:15:20 Superfly_Jon Exp $
+ * $Id: analysis.c,v 1.194 2008/06/20 19:35:56 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -988,17 +988,20 @@ static void UpdateProgressBar(void)
 
 void AnalyseMoveMT(Task *task)
 {
-	AnalyseMoveTask *amt = (AnalyseMoveTask *)task;
+	AnalyseMoveTask *amt;
     float doubleError;
+
+analyzeDouble:
+	amt = (AnalyseMoveTask *)task;
     if (AnalyzeMove(amt->pmr, &amt->ms, amt->plGame, amt->psc,
                 &esAnalysisChequer, &esAnalysisCube, aamfAnalysis,
                 afAnalysePlayers, &doubleError ) < 0 )
-    {
         MT_AbortTasks();
-    }
-    if (task->pLinkedTask)
+
+	if (task->pLinkedTask)
     {    /* Need to analyze take/drop decision in sequence */
-        AnalyseMoveMT(task->pLinkedTask);
+		task = task->pLinkedTask;
+		goto analyzeDouble;
     }
 }
 
