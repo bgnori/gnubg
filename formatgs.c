@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: formatgs.c,v 1.24 2008/04/27 20:18:44 c_anthon Exp $
+ * $Id: formatgs.c,v 1.25 2008/06/23 23:08:00 c_anthon Exp $
  */
 
 #include "config.h"
@@ -599,11 +599,14 @@ formatGS( const statcontext *psc, const int nMatchTo,
           aasz[ 0 ] = g_strdup( gettext( asz[ i ][ 1 ] ) );
       
           for ( j = 0; j < 2; ++j ) 
-            aasz[ j + 1 ] = 
-              g_strdup_printf( "%*.*f",
-                               fOutputDigits + 3, fOutputDigits,
-                               1.95996f * sqrt( af[ i ][ 1 ][ j ] / psc->nGames ) );
-
+	  {
+		  float ci = 1.95996f * sqrt( af[ i ][ 1 ][ j ] / psc->nGames );
+		  float max = af[i][0][j]+ci;
+		  float min = af[i][0][j]-ci;
+		  aasz[ j + 1 ] = g_strdup_printf( "%*.*f - %*.*f",
+				  fOutputDigits + 3, fOutputDigits, min,
+				  fOutputDigits + 3, fOutputDigits, max );
+	  }
           list = g_list_append( list, aasz );
 
         }
