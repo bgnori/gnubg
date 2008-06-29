@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.18 2008/03/12 22:56:34 Superfly_Jon Exp $
+ * $Id: gtkmovefilter.c,v 1.19 2008/06/29 20:14:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -479,7 +479,7 @@ SettingsMenuActivate ( GtkWidget *pwItem,
 
 
 static void
-ClickButton ( GtkWidget *pw, movefilterwidget *pmfw ) {
+ModifyClickButton ( GtkWidget *pw, movefilterwidget *pmfw ) {
 
   int fOK;
   GtkWidget *pwDialog;
@@ -566,7 +566,7 @@ MoveFilterWidget ( movefilter *pmf, int *pfOK,
 
   
   g_signal_connect( G_OBJECT ( pwButton ), "clicked",
-                       G_CALLBACK ( ClickButton ), pmfw );
+                       G_CALLBACK ( ModifyClickButton ), pmfw );
 
   /* save movefilterwidget */
 

@@ -15,13 +15,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: file.c,v 1.13 2008/04/13 21:10:09 c_anthon Exp $
+ * $Id: file.c,v 1.14 2008/06/29 20:14:49 Superfly_Jon Exp $
  */
 
 #include "config.h"
 #include "backgammon.h"
 #include <glib.h>
-#include <glib/gi18n.h>
+#include "gnubgi18n.h"
 #ifndef _MSC_VER
 #include <string.h>
 #include <stdlib.h>
@@ -427,7 +427,7 @@ extern char *GetFilename(int CheckForCurrent, ExportType type)
 				mi.nMonth, mi.nDay);
 		else {
 			t = time(NULL);
-			if (strftime(tstr, 14, _("%Y-%m-%d-%H%M"), localtime(&t)) == 0)
+			if (strftime(tstr, 14, "%Y-%m-%d-%H%M", localtime(&t)) == 0)
 				 *tstr='\0';
 		}
 		sz = g_strdup_printf("%s-%s_%dp_%s.sgf", ap[0].szName,

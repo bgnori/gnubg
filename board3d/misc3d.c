@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.90 2008/06/11 13:07:43 c_anthon Exp $
+* $Id: misc3d.c,v 1.91 2008/06/29 20:14:52 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -35,6 +35,7 @@
 #endif
 #include "misc3d.h"
 #include "util.h"
+#include <glib/gi18n.h>
 
 #define MAX_FRAMES 10
 #define DOT_SIZE 32
