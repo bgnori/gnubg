@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.307 2008/06/11 14:34:46 c_anthon Exp $
+ * $Id: set.c,v 1.308 2008/06/29 20:14:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -298,7 +298,7 @@ SetMoveFilter(char* sz,
   pmfFilter = &aamf[ply-1][level];
 
   if ((accept = ParseNumber( &sz ) ) == INT_MIN ) {
-	outputf (N_ ("You must specify a number of moves to accept (or a negative number to skip "
+	outputf (N_("You must specify a number of moves to accept (or a negative number to skip "
 			 "this level) -- try help set %s movefilter"), szSetCommand);
 	return;
   }
@@ -312,7 +312,7 @@ SetMoveFilter(char* sz,
 
   if ( ( ( extras = ParseNumber( &sz ) ) < 0 )  || 
 	   ( ( tolerance = (float)ParseReal( &sz ) ) < 0.0 )) {
-	outputf (N_ ("You must set a count of extra moves and a search tolerance "
+	outputf (N_("You must set a count of extra moves and a search tolerance "
 				 "-- try help set %s movefilter"), 
 			 szSetCommand);
 	return;
@@ -1213,7 +1213,7 @@ extern void CommandSetGUIShowWastage(char *sz)
 
 	if (SetToggle("gui showepcs", &fGUIShowWastage, sz,
 		      _("The effective pip counts (EPCs) will be shown below the board."),
-		      _ ("The effective pip counts (EPCs) will not be shown.")))
+		      _("The effective pip counts (EPCs) will not be shown.")))
 		UpdateSetting(&fGUIShowWastage);
 }
 extern void CommandSetGUIShowEPCs( char *sz ) {
@@ -2838,10 +2838,14 @@ extern void CommandSetMET( char *sz ) {
     SetInvertMET();
 }
 
-
-
-extern void
-CommandSetEvalParamType ( char *sz ) {
+extern void CommandSetEvalParamType ( char *sz )
+{
+const char *aszEvalType[] = 
+   { 
+     N_("No evaluation"), 
+     N_("Neural net evaluation"), 
+     N_("Rollout")
+   };
 
   switch ( sz[ 0 ] ) {
     
@@ -2863,7 +2867,6 @@ CommandSetEvalParamType ( char *sz ) {
 
   outputf ( _("%s will now use %s.\n"),
             szSet, gettext ( aszEvalType[ pesSet->et ] ) );
-
 }
 
 

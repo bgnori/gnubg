@@ -16,14 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: formatgs.c,v 1.26 2008/06/24 16:32:00 Superfly_Jon Exp $
+ * $Id: formatgs.c,v 1.27 2008/06/29 20:14:50 Superfly_Jon Exp $
  */
 
 #include "config.h"
 #include "backgammon.h"
 
 #include <glib.h>
-#include <glib/gi18n.h>
+#include "gnubgi18n.h"
 
 #include "formatgs.h"
 #include "format.h"
@@ -34,12 +34,36 @@
 
 static char *total_text(int nMatchTo)
 {
-    return nMatchTo ? _("EMG (MWC)") : _("EMG (Points)");
+	static char *emgMWC = NULL, *emgPoints = NULL;
+	if (nMatchTo)
+	{
+		if (!emgMWC)
+			emgMWC = g_strdup_printf("%s (%s)", _("EMG"), _("MWC"));
+		return emgMWC;
+	}
+	else
+	{
+		if (!emgPoints)
+			emgPoints = g_strdup_printf("%s (%s)", _("EMG"), _("Points"));
+		return emgPoints;
+	}
 }
 
 static char *rate_text(int nMatchTo)
 {
-    return nMatchTo ? _("mEMG (MWC)") : _("mEMG (Points)");
+	static char *memgMWC = NULL, *memgPoints = NULL;
+	if (nMatchTo)
+	{
+		if (!memgMWC)
+			memgMWC = g_strdup_printf("%s (%s)", _("mEMG"), _("MWC"));
+		return memgMWC;
+	}
+	else
+	{
+		if (!memgPoints)
+			memgPoints = g_strdup_printf("%s (%s)", _("mEMG"), _("Points"));
+		return memgPoints;
+	}
 }
 
 static char **
@@ -386,7 +410,7 @@ formatGS( const statcontext *psc, const int nMatchTo,
       for ( i = 0; i < 2; ++i )
         if ( psc->anTotalMoves[ i ] )
           aasz[ i + 1 ] =
-            g_strdup( gettext ( aszLuckRating[ getLuckRating( psc->arLuck[ i ][ 0 ] / psc->anTotalMoves[ i ] ) ] ) );
+            g_strdup( aszLuckRating[ getLuckRating( psc->arLuck[ i ][ 0 ] / psc->anTotalMoves[ i ] ) ] );
         else 
           aasz[ i + 1 ] = g_strdup( _("n/a") );
 

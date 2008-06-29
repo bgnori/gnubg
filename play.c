@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.317 2008/06/17 20:57:02 Superfly_Jon Exp $
+ * $Id: play.c,v 1.318 2008/06/29 20:14:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -48,9 +48,9 @@
 #endif
 
 const char *aszGameResult[] = { 
-  N_ ("single game"), 
-  N_ ("gammon"), 
-  N_ ("backgammon") 
+  N_("single game"), 
+  N_("gammon"), 
+  N_("backgammon") 
 };
 const char *aszSkillType[] = { 
   N_("very bad"), 

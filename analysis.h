@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.43 2007/12/12 23:08:14 Superfly_Jon Exp $
+ * $Id: analysis.h,v 1.44 2008/06/29 20:14:48 Superfly_Jon Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -97,7 +97,7 @@ typedef enum {
 #define N_RATINGS ((int)RAT_UNDEFINED + 1)
 
 extern const char* aszRating [ N_RATINGS ];
-extern const char* aszLuckRating[ 7 ];
+extern const char* aszLuckRating[ N_LUCKS ];
 
 extern int afAnalysePlayers[ 2 ];
 
@@ -115,7 +115,7 @@ updateStatisticsGame ( const listOLD* plGame );
 extern void
 updateStatisticsMatch ( listOLD* plMatch );
 
-extern int getLuckRating(float rLuck);
+extern lucktype getLuckRating(float rLuck);
 
 extern float
 relativeFibsRating(float r, int n);

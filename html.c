@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.194 2008/06/11 13:07:42 c_anthon Exp $
+ * $Id: html.c,v 1.195 2008/06/29 20:14:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -145,10 +145,10 @@ const char *aszHTMLExportCSSCommand[ NUM_HTML_EXPORT_CSS ] = {
 /* text for links on html page */
 
 static const char *aszLinkText[] = {
-  N_ ("[First Game]"), 
-  N_ ("[Previous Game]"), 
-  N_ ("[Next Game]"), 
-  N_ ("[Last Game]") };
+  N_("[First Game]"), 
+  N_("[Previous Game]"), 
+  N_("[Next Game]"), 
+  N_("[Last Game]") };
 
 static const char*
 bullet = "&bull; ";
@@ -165,7 +165,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.194 2008/06/11 13:07:42 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.195 2008/06/29 20:14:51 Superfly_Jon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1832,7 +1832,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.194 $";
+  const char szVersion[] = "$Revision: 1.195 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1912,7 +1912,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.194 $";
+  const char szVersion[] = "$Revision: 1.195 $";
   int iMajor, iMinor;
   char *pc;
 

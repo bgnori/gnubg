@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.47 2008/06/17 20:57:02 Superfly_Jon Exp $
+ * $Id: gtktheory.c,v 1.48 2008/06/29 20:14:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -253,19 +253,19 @@ TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
   GtkTextIter iter;
 
   const char *aszMoneyPointLabel[] = {
-    N_ ("Take Point (TP)"),
-    N_ ("Beaver Point (BP)"),
-    N_ ("Raccoon Point (RP)"),
-    N_ ("Initial Double Point (IDP)"),
-    N_ ("Redouble Point (RDP)"),
-    N_ ("Cash Point (CP)"),
-    N_ ("Too Good point (TG)") };
+    N_("Take Point (TP)"),
+    N_("Beaver Point (BP)"),
+    N_("Raccoon Point (RP)"),
+    N_("Initial Double Point (IDP)"),
+    N_("Redouble Point (RDP)"),
+    N_("Cash Point (CP)"),
+    N_("Too Good point (TG)") };
 
   const char *aszMatchPlayLabel[] = {
-    N_ ("Take Point (TP)"),
-    N_ ("Double point (DP)"),
-    N_ ("Cash Point (CP)"),
-    N_ ("Too Good point (TG)") };
+    N_("Take Point (TP)"),
+    N_("Double point (DP)"),
+    N_("Cash Point (CP)"),
+    N_("Too Good point (TG)") };
 
   /* get values */
 

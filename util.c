@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.c,v 1.18 2008/06/13 11:09:47 c_anthon Exp $
+ * $Id: util.c,v 1.19 2008/06/29 20:14:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -27,10 +27,15 @@
 #ifdef WIN32
 #include <windows.h>
 
+/* Some variables to get make* tools compiling */
 char *aszRNG[1]; 
 char *aszSkillType[ 1 ]; 
 int exsExport;
 int ap;
+const char *aszRatingList;
+const char *aszLuckRatingList;
+const char *aszLuckRating;
+const char *aszRating;
 
 extern char * getInstallDir( void )
 {

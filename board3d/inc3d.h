@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.41 2008/03/07 16:35:56 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.42 2008/06/29 20:14:52 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -55,8 +55,6 @@
 
 #include "model.h"
 #include "drawboard.h"	/* for fClockwise decl */
-
-#include <glib/gi18n.h>
 
 /* float versions (to quiet compiler warnings) */
 #define powi(arg1, arg2) (int)pow((double)(arg1), (double)(arg2))

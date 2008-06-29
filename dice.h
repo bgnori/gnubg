@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.22 2008/06/11 14:34:47 c_anthon Exp $
+ * $Id: dice.h,v 1.23 2008/06/29 20:14:49 Superfly_Jon Exp $
  */
 
 #ifndef _DICE_H_
@@ -25,7 +25,7 @@
 #include <stdio.h>
 
 typedef enum _rng {
-    RNG_ANSI, RNG_BBS, RNG_BSD, RNG_ISAAC, RNG_MANUAL, RNG_MD5, RNG_MERSENNE, 
+    RNG_MANUAL, RNG_ANSI, RNG_BBS, RNG_BSD, RNG_ISAAC, RNG_MD5, RNG_MERSENNE, 
     RNG_RANDOM_DOT_ORG, RNG_USER, RNG_FILE,
     NUM_RNGS
 } rng;

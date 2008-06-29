@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.712 2008/06/19 20:11:28 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.713 2008/06/29 20:14:50 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -7339,8 +7339,7 @@ extern void GTKRecordShow( FILE *pfIn, char *szFile, char *szPlayer ) {
 				EXPAVG_TOTAL ] ) ] ) );
 	
 	gtk_clist_set_text( GTK_CLIST( pwList ), i, 21,
-			    gettext ( aszLuckRating[ getLuckRating( (float)pr.arLuck[
-				EXPAVG_TOTAL ] / 20 ) ] ) );
+			    aszLuckRating[ getLuckRating( (float)pr.arLuck[EXPAVG_TOTAL ] / 20 ) ] );
 	
 	if( !CompareNames( pr.szName, szPlayer ) )
 	    gtk_clist_select_row( GTK_CLIST( pwList ), i, 0 );
