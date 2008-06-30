@@ -16,14 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: formatgs.c,v 1.27 2008/06/29 20:14:50 Superfly_Jon Exp $
+ * $Id: formatgs.c,v 1.28 2008/06/30 21:22:58 c_anthon Exp $
  */
 
 #include "config.h"
 #include "backgammon.h"
 
 #include <glib.h>
-#include "gnubgi18n.h"
+#include <glib/gi18n.h>
 
 #include "formatgs.h"
 #include "format.h"
@@ -226,7 +226,7 @@ formatGS( const statcontext *psc, const int nMatchTo,
       for ( i = 0; i < 2; ++i )
         if ( psc->anUnforcedMoves[ i ] )
           aasz[ i + 1 ] =
-            g_strdup( gettext ( aszRating[ GetRating( aaaar[ CHEQUERPLAY ][ PERMOVE ][ i ][ NORMALISED ] ) ] ) );
+            g_strdup( Q_(aszRating[ GetRating( aaaar[ CHEQUERPLAY ][ PERMOVE ][ i ][ NORMALISED ] ) ] ) );
         else 
           aasz[ i + 1 ] = g_strdup( _("n/a") );
 
@@ -342,7 +342,7 @@ formatGS( const statcontext *psc, const int nMatchTo,
       for ( i = 0; i < 2; ++i )
         if ( psc->anCloseCube[ i ] )
           aasz[ i + 1 ] =
-            g_strdup( gettext ( aszRating[ GetRating( aaaar[ CUBEDECISION ][ PERMOVE ][ i ][ NORMALISED ] ) ] ) );
+            g_strdup( Q_ ( aszRating[ GetRating( aaaar[ CUBEDECISION ][ PERMOVE ][ i ][ NORMALISED ] ) ] ) );
         else 
           aasz[ i + 1 ] = g_strdup( _("n/a") );
 
@@ -410,7 +410,7 @@ formatGS( const statcontext *psc, const int nMatchTo,
       for ( i = 0; i < 2; ++i )
         if ( psc->anTotalMoves[ i ] )
           aasz[ i + 1 ] =
-            g_strdup( aszLuckRating[ getLuckRating( psc->arLuck[ i ][ 0 ] / psc->anTotalMoves[ i ] ) ] );
+            g_strdup( Q_(aszLuckRating[ getLuckRating( psc->arLuck[ i ][ 0 ] / psc->anTotalMoves[ i ] ) ]) );
         else 
           aasz[ i + 1 ] = g_strdup( _("n/a") );
 
@@ -479,7 +479,7 @@ formatGS( const statcontext *psc, const int nMatchTo,
         for ( i = 0; i < 2; ++i )
           if ( psc->anCloseCube[ i ] + psc->anUnforcedMoves[ i ] )
             aasz[ i + 1 ] =
-              g_strdup( gettext ( aszRating[ GetRating( aaaar[ COMBINED ][ PERMOVE ][ i ][ NORMALISED ] ) ] ) );
+              g_strdup( Q_ ( aszRating[ GetRating( aaaar[ COMBINED ][ PERMOVE ][ i ][ NORMALISED ] ) ] ) );
           else 
             aasz[ i + 1 ] = g_strdup( _("n/a") );
 

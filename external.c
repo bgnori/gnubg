@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.61 2008/06/29 20:14:49 Superfly_Jon Exp $
+ * $Id: external.c,v 1.62 2008/06/30 21:22:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -104,7 +104,7 @@
 #include "drawboard.h"
 #include "external.h"
 #include "rollout.h"
-#include "gnubgi18n.h"
+#include <glib/gi18n.h>
 
 #if HAVE_SOCKETS
 /* Stuff for the yacc/lex parser */
@@ -622,7 +622,7 @@ listenloop:
 	ExternalUnbind( sz );
 	return;
       }
-      outputf( "%s\n", _("Waiting for a connection from %s..."), sz);
+      outputf( _("Waiting for a connection from %s...\n"), sz);
       outputx();
       ProcessGtkEvents();
 
@@ -654,7 +654,7 @@ listenloop:
 
       /* print info about remove client */
 
-      outputf( "%s\n", _("Accepted connection from %s."),
+      outputf(_("Accepted connection from %s.\n"),
                  inet_ntoa( saRemote.sin_addr ) );
       outputx();
       ProcessGtkEvents();
