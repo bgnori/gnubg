@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.67 2008/06/30 21:22:58 c_anthon Exp $
+ * $Id: dice.c,v 1.68 2008/06/30 21:38:50 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -393,7 +393,7 @@ static void
 PrintRNGSeedNormal( int n ) {
 
   g_print( _("The current seed is") );
-  g_print( " %d.\n"), n );
+  g_print( " %d.\n", n );
 
 }
 #endif /* HAVE_LIBGMP */
