@@ -16,14 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.29 2008/06/29 20:14:50 Superfly_Jon Exp $
+ * $Id: format.c,v 1.30 2008/06/30 21:22:58 c_anthon Exp $
  */
 
 #include "config.h"
 #include "backgammon.h"
 
 #include <glib.h>
-#include "gnubgi18n.h"
+#include <glib/gi18n.h>
 #include <string.h>
 
 #include "eval.h"
@@ -149,7 +149,7 @@ OutputEvalContext ( const evalcontext *pec, const int fChequer ) {
     if ( ! cmp_evalcontext ( &aecSettings[ i ], pec ) ) {
       sprintf ( pc = strchr ( sz, 0 ),
                 " [%s]",
-                gettext ( aszSettings[ i ] ) );
+                Q_ ( aszSettings[ i ] ) );
       break;
     }
 
@@ -310,7 +310,7 @@ OutputEvalContextsForRollout( char *sz, const char *szIndent,
 
       sprintf( strchr( sz, 0 ),
                "%s: %s ", _("Play"),
-               ( j < 0 ) ? "" : gettext ( aszSettings[ j ] ) );
+               ( j < 0 ) ? "" : Q_ ( aszSettings[ j ] ) );
 
       strcat( sz, OutputEvalContext ( &aecChequer[ i ], TRUE ) );
       strcat( sz, "\n" );

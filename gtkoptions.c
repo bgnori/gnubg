@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.77 2008/06/29 20:14:51 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.78 2008/06/30 21:22:59 c_anthon Exp $
  */
 
 #include "config.h"
@@ -446,7 +446,7 @@ static GtkWidget *OptionsPages( optionswidget *pow )
       N_("Play 3-chequer hypergammon (i.e., gammon and backgammons possible)")
     };
 
-    const char **ppch, **ppchTip;
+    char **ppch;
     GtkWidget *pw, *pwn, *pwp, *pwvbox, *pwhbox, *pwev, *pwf, *pwb,
 	*pwAnimBox, *pwFrame, *pwBox, *pwSpeed, *pwScale, *pwhoriz,
 	*pwLabelFile, *table, *label;
