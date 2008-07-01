@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.308 2008/06/29 20:14:51 Superfly_Jon Exp $
+ * $Id: set.c,v 1.309 2008/07/01 22:06:55 c_anthon Exp $
  */
 
 #include "config.h"
@@ -757,9 +757,26 @@ extern void CommandSetAppearance( char *sz ) {
 #endif /* USE_GTK */
 }
 
+extern void CommandSetConfirmDefault( char *sz ) {
+
+	if (!sz || !*sz) 
+	{
+		outputf("Needs an argument!\n");
+		return;
+	}
+	if (strcmp(sz, "yes") == 0)
+		nConfirmDefault = 1;
+	else if(strcmp(sz, "no") == 0) 
+		nConfirmDefault = 0;
+	else if(strcmp(sz, "ask") == 0) 
+		nConfirmDefault = -1;
+	else
+		outputf(_("Invalid argument\n"));
+}
+
 extern void CommandSetConfirmNew( char *sz ) {
     
-    SetToggle( "confirm new", &fConfirm, sz, 
+    SetToggle( "confirm new", &fConfirmNew, sz, 
                _("Will ask for confirmation before "
                  "aborting games in progress."), 
                _("Will not ask for confirmation "

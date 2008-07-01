@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.121 2008/04/27 20:18:52 c_anthon Exp $
+ * $Id: sgf.c,v 1.122 2008/07/01 22:06:55 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1432,7 +1432,7 @@ extern void CommandLoadGame(char *sz)
     }
 
     if ((pl = LoadCollection(sz))) {
-	if (ms.gs == GAME_PLAYING && fConfirm) {
+	if (ms.gs == GAME_PLAYING && fConfirmNew) {
 	    if (fInterrupt)
 		return;
 
@@ -1491,7 +1491,7 @@ extern void CommandLoadPosition(char *sz)
     }
 
     if ((pl = LoadCollection(sz))) {
-	if (ms.gs == GAME_PLAYING && fConfirm) {
+	if (ms.gs == GAME_PLAYING && fConfirmNew) {
 	    if (fInterrupt)
 		return;
 
@@ -1549,7 +1549,7 @@ extern void CommandLoadMatch(char *sz)
     if ((pl = LoadCollection(sz))) {
 	/* FIXME make sure the root nodes have MI properties; if not,
 	   we're loading a session. */
-	if (ms.gs == GAME_PLAYING && fConfirm) {
+	if (ms.gs == GAME_PLAYING && fConfirmNew) {
 	    if (fInterrupt)
 		return;
 
