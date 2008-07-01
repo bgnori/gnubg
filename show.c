@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.243 2008/06/06 15:43:01 c_anthon Exp $
+ * $Id: show.c,v 1.244 2008/07/01 22:06:55 c_anthon Exp $
  */
 
 #include "config.h"
@@ -625,21 +625,25 @@ extern void CommandShowCommands( char *sz ) {
     ShowCommands( acTop, "" );
 }
 
-extern void CommandShowConfirm( char *sz ) {
+extern void CommandShowConfirm(char *sz)
+{
 
-    if( fConfirm )
-	outputl( _("GNU Backgammon will ask for confirmation before "
-	       "aborting games in progress.") );
-    else
-	outputl( _("GNU Backgammon will not ask for confirmation "
-	       "before aborting games in progress.") );
+	if (nConfirmDefault == -1)
+		outputl(_("GNU Backgammon will ask for confirmation."));
+	else if (nConfirmDefault == 1)
+		outputl(_("GNU Backgammon will answer yes to questions."));
+	else
+		outputl(_("GNU Backgammon will answer no to questions."));
 
-    if( fConfirmSave )
-	outputl( _("GNU Backgammon will ask for confirmation before "
-	       "overwriting existing files.") );
-    else
-	outputl( _("GNU Backgammon will not ask for confirmation "
-	       "overwriting existing files.") );
+	if (fConfirmNew)
+		outputl(_("GNU Backgammon will ask for confirmation before " "aborting games in progress."));
+	else
+		outputl(_("GNU Backgammon will not ask for confirmation " "before aborting games in progress."));
+
+	if (fConfirmSave)
+		outputl(_("GNU Backgammon will ask for confirmation before " "overwriting existing files."));
+	else
+		outputl(_("GNU Backgammon will not ask for confirmation " "overwriting existing files."));
 
 }
 

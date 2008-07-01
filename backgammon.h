@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.378 2008/06/30 21:22:57 c_anthon Exp $
+ * $Id: backgammon.h,v 1.379 2008/07/01 22:06:54 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -355,7 +355,8 @@ extern int fAutoMove;
 extern int fAutoRoll;
 extern int fCheat;
 extern int fComputing;
-extern int fConfirm;
+extern int nConfirmDefault;
+extern int fConfirmNew;
 extern int fConfirmSave;
 extern int fCubeEqualChequer;
 extern int fPlayersAreSame;
@@ -705,6 +706,7 @@ extern void CommandSetCheatPlayer(char *);
 extern void CommandSetCheatPlayerRoll(char *);
 extern void CommandSetClockwise(char *);
 extern void CommandSetCommandWindow(char *);
+extern void CommandSetConfirmDefault(char *);
 extern void CommandSetConfirmNew(char *);
 extern void CommandSetConfirmSave(char *);
 extern void CommandSetCrawford(char *);
