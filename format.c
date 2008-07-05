@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.30 2008/06/30 21:22:58 c_anthon Exp $
+ * $Id: format.c,v 1.31 2008/07/05 22:01:13 c_anthon Exp $
  */
 
 #include "config.h"
@@ -319,7 +319,7 @@ OutputEvalContextsForRollout( char *sz, const char *szIndent,
 
     }
     else {
-      sz += sprintf ( sz, "%s: ", _("Play") );
+      sprintf ( strchr( sz, 0 ), "%s: ", _("Play") );
       strcat ( sz, OutputEvalContext ( &aecChequer[ i ], FALSE ) );
       strcat ( sz, "\n" );
     }
@@ -327,7 +327,7 @@ OutputEvalContextsForRollout( char *sz, const char *szIndent,
     if ( szIndent && *szIndent )
       strcat ( sz, szIndent );
 
-    sz += sprintf ( sz, "%s: ", _("Cube") );
+    sprintf ( strchr( sz, 0 ), "%s: ", _("Cube") );
     strcat ( sz, OutputEvalContext ( &aecCube[ i ], FALSE ) );
     strcat ( sz, "\n" );
 
