@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.71 2008/03/13 18:15:08 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.72 2008/07/06 20:49:06 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -128,6 +128,8 @@ static void TidyShadows(BoardData3d* bd3d)
 
 void Tidy3dObjects(BoardData3d* bd3d, const renderdata *prd)
 {
+	bd3d->shadowsInitialised = FALSE;
+
 	glDeleteLists(bd3d->pieceList, 1);
 	glDeleteLists(bd3d->diceList, 1);
 	glDeleteLists(bd3d->piecePickList, 1);
@@ -3503,9 +3505,12 @@ void updateHingeOccPos(BoardData3d* bd3d, int show3dHinges)
 
 void updateOccPos(const BoardData* bd)
 {	/* Make sure shadows are in correct place */
-	updateCubeOccPos(bd, bd->bd3d);
-	updateDiceOccPos(bd, bd->bd3d);
-	updatePieceOccPos(bd, bd->bd3d);
+	if (ShadowsInitilised(bd->bd3d))
+	{
+		updateCubeOccPos(bd, bd->bd3d);
+		updateDiceOccPos(bd, bd->bd3d);
+		updatePieceOccPos(bd, bd->bd3d);
+	}
 }
 
 static void MakeShadowModel(const BoardData *bd, BoardData3d *bd3d, const renderdata *prd)
