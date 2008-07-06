@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.786 2008/07/01 22:06:54 c_anthon Exp $
+ * $Id: gnubg.c,v 1.787 2008/07/06 22:22:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3982,7 +3982,10 @@ extern int GetInputYN( char *szPrompt )
     char *pch;
 
     if (nConfirmDefault != -1)
+    {
+	    outputf("%s %s\n", szPrompt, nConfirmDefault ? _("yes") : _("no"));
 	    return nConfirmDefault;
+    }
 
     if (!fInteractive)
 	    return FALSE;
