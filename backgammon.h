@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.379 2008/07/01 22:06:54 c_anthon Exp $
+ * $Id: backgammon.h,v 1.380 2008/07/07 11:00:03 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -398,7 +398,7 @@ extern unsigned int cAnalysisMoves;
 extern unsigned int cAutoDoubles;
 extern unsigned int nBeavers;
 extern unsigned int nDefaultLength;
-extern void *rngctxRollout;
+extern rngcontext *rngctxRollout;
 
 extern command acAnnotateMove[];
 extern command acSet[];
