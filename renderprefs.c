@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.35 2008/04/27 20:18:51 c_anthon Exp $
+ * $Id: renderprefs.c,v 1.36 2008/07/07 20:45:56 mormegil Exp $
  */
 
 #include "config.h"
@@ -661,10 +661,10 @@ RenderPreferencesCommand (renderdata * prd, char *sz)
   gchar buf2[G_ASCII_DTOSTR_BUF_SIZE];
   gchar buf3[G_ASCII_DTOSTR_BUF_SIZE];
   
-  float rElevation = asinf (prd->arLight[2]) * 180 / G_PI;
+  float rElevation = (float)(asinf (prd->arLight[2]) * 180 / G_PI);
   float rAzimuth = (fabs (prd->arLight[2] - 1.0f) < 1e-5) ? 0.0f :
-    acosf (prd->arLight[0] / sqrt (1.0 - prd->arLight[2] *
-           prd->arLight[2])) * 180 / G_PI;
+    (float)(acosf (prd->arLight[0] / sqrt (1.0 - prd->arLight[2] *
+            prd->arLight[2])) * 180 / G_PI);
 
   if (prd->arLight[1] < 0)
     rAzimuth = 360 - rAzimuth;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.714 2008/06/30 21:22:59 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.715 2008/07/07 20:45:55 mormegil Exp $
  */
 
 #include "config.h"
@@ -5177,7 +5177,7 @@ extern void SetRollouts( gpointer p, guint n, GtkWidget *pwIgnore )
   GTKRunDialog(pwDialog);
 
   if( fOK || saveAs ) {
-    int fCubeful;
+    unsigned int fCubeful;
     outputoff();
 
     if((fCubeful = rw.rcRollout.fCubeful) != rcRollout.fCubeful ) {
