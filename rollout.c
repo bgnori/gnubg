@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.197 2008/07/06 22:23:49 c_anthon Exp $
+ * $Id: rollout.c,v 1.198 2008/07/07 07:52:46 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1336,8 +1336,8 @@ RolloutGeneral(ConstTanBoard * apBoard,
 
 	/* quasi random dice may not be thread safe when we need to skip
 	 * some rolls for initial positions */
-	if (fInitial)
-		fRotate = FALSE;
+	if (rcRollout.fInitial)
+		rcRollout.fRotate = FALSE;
 
 	/* initialise internal variables and figure out what the first trial will be */
 
