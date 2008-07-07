@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.244 2008/07/01 22:06:55 c_anthon Exp $
+ * $Id: show.c,v 1.245 2008/07/07 20:45:56 mormegil Exp $
  */
 
 #include "config.h"
@@ -63,6 +63,9 @@
 #include "openurl.h"
 #include "multithread.h"
 
+#ifdef WIN32
+#include <io.h>
+#endif
 
 static void ShowMoveFilter ( const movefilter *pmf, const int ply) {
   

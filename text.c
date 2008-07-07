@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.88 2008/02/25 22:18:51 c_anthon Exp $
+ * $Id: text.c,v 1.89 2008/07/07 20:45:57 mormegil Exp $
  */
 
 #include "config.h"
@@ -246,7 +246,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.88 $";
+  const char szVersion[] = "$Revision: 1.89 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -703,8 +703,8 @@ TextMatchInfo ( FILE *pf, const matchinfo *pmi ) {
     tmx.tm_year = pmi->nYear - 1900;
     tmx.tm_mon = pmi->nMonth - 1;
     tmx.tm_mday = pmi->nDay;
-    strftime ( sz, sizeof ( sz ), _("%B %d, %Y"), &tmx );
-    fprintf ( pf, _("Date: %s\n"), sz ); 
+    strftime ( sz, sizeof ( sz ), _("%x"), &tmx );
+    fprintf ( pf, _("Date: %s\n"), sz );
 
   }
   /* else fputs ( _("Date: n/a\n"), pf ); */
