@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.787 2008/07/06 22:22:15 c_anthon Exp $
+ * $Id: gnubg.c,v 1.788 2008/07/07 11:00:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -279,7 +279,7 @@ evalcontext ecTD = { FALSE, 0, FALSE, TRUE, 0.0 };
     { { 0,  8, 0.16f }, { -1, 0, 0 }, { 0, 2, 0.04f }, { -1, 0, 0 } } , \
   }
 
-void *rngctxRollout = NULL;
+rngcontext *rngctxRollout = NULL;
 
 #if defined (REDUCTION_CODE)
 rolloutcontext rcRollout =
@@ -2892,7 +2892,7 @@ static void LoadRCFiles(void)
 
 
 static void
-SaveRNGSettings ( FILE *pf, const char *sz, rng rngCurrent, void *rngctx ) {
+SaveRNGSettings ( FILE *pf, const char *sz, rng rngCurrent, rngcontext *rngctx ) {
 
     switch( rngCurrent ) {
     case RNG_ANSI:

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.23 2008/06/29 20:14:49 Superfly_Jon Exp $
+ * $Id: dice.h,v 1.24 2008/07/07 11:00:03 Superfly_Jon Exp $
  */
 
 #ifndef _DICE_H_
@@ -30,32 +30,29 @@ typedef enum _rng {
     NUM_RNGS
 } rng;
 
+typedef struct _rngcontext rngcontext;
+
 extern const char *aszRNG[ NUM_RNGS ];
-
 extern char szDiceFilename[];
-
 extern rng rngCurrent;
-extern void *rngctxCurrent;
+extern rngcontext *rngctxCurrent;
 
+rngcontext *CopyRNGContext(rngcontext *rngctx);
 
-extern void *InitRNG( unsigned long *pnSeed, int *pfInitFrom,
-                      const int fSet, const rng rngx );
-extern void
-CloseRNG( const rng rngx, void *rngctx );
-extern void DestroyRNG( const rng rngx, void **rngctx );
-extern void PrintRNGSeed( const rng rngx, void *rngctx );
-extern void PrintRNGCounter( const rng rngx, void *rngctx );
-extern void InitRNGSeed( int n, const rng rngx, void *rngctx );
-extern int
-RNGSystemSeed( const rng rngx, void *p, unsigned long *pnSeed );
+extern void *InitRNG( unsigned long *pnSeed, int *pfInitFrom, const int fSet, const rng rngx );
+extern void CloseRNG( const rng rngx, rngcontext *rngctx );
+extern void DestroyRNG( const rng rngx, rngcontext **rngctx );
+extern void PrintRNGSeed( const rng rngx, rngcontext *rngctx );
+extern void PrintRNGCounter( const rng rngx, rngcontext *rngctx );
+extern void InitRNGSeed( int n, const rng rngx, rngcontext *rngctx );
+extern int RNGSystemSeed( const rng rngx, void *p, unsigned long *pnSeed );
 
-extern int 
-RollDice( unsigned int anDice[ 2 ], const rng rngx, void *rngctx );
+extern int RollDice( unsigned int anDice[ 2 ], const rng rngx, rngcontext *rngctx );
 
 #if HAVE_LIBGMP
-extern int InitRNGSeedLong( char *sz, rng rng, void *rngctx );
-extern int InitRNGBBSModulus( const char *sz, void *rngctx );
-extern int InitRNGBBSFactors( char *sz0, char *sz1, void *rngctx );
+extern int InitRNGSeedLong( char *sz, rng rng, rngcontext *rngctx );
+extern int InitRNGBBSModulus( const char *sz, rngcontext *rngctx );
+extern int InitRNGBBSFactors( char *sz0, char *sz1, rngcontext *rngctx );
 #endif
 
 
@@ -64,13 +61,13 @@ extern int
 UserRNGOpen( void *p, const char *sz );
 #endif /* HAVE_LIBDL */
 
-extern FILE *OpenDiceFile( void *rngctx, const char *sz );
+extern FILE *OpenDiceFile( rngcontext *rngctx, const char *sz );
 
 extern void
-CloseDiceFile( void *rngctx );
+CloseDiceFile( rngcontext *rngctx );
 
 extern char *
-GetDiceFileName( void *rngctx );
+GetDiceFileName( rngcontext *rngctx );
 
 extern void dice_init_callback(int (*rdo_callback) (void),
 				int (*gmd_callback) (unsigned int[2]));
