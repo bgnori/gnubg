@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.196 2008/06/30 21:22:57 c_anthon Exp $
+ * $Id: analysis.c,v 1.197 2008/07/09 13:00:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -981,7 +981,7 @@ static void UpdateProgressBar(void)
 	ProgressValue(progress_offset + MT_GetDoneTasks());
 }
 
-void AnalyseMoveMT(Task *task)
+static void AnalyseMoveMT(Task *task)
 {
 	AnalyseMoveTask *amt;
     float doubleError;

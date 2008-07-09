@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.69 2008/07/07 11:00:03 Superfly_Jon Exp $
+ * $Id: dice.c,v 1.70 2008/07/09 13:00:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -70,7 +70,7 @@ rngcontext *rngctxCurrent = NULL;
 static int (*getDiceRandomDotOrg) (void);
 static int (*GetManualDice) (unsigned int[2]);
 
-typedef struct _rngcontext {
+struct _rngcontext {
 
   /* RNG_USER */
 #if HAVE_LIBDL
@@ -111,7 +111,7 @@ typedef struct _rngcontext {
 #endif
   int n; /* seed */
 
-} rngcontext;
+};
   
 
 static int
