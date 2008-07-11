@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.36 2008/07/07 20:45:56 mormegil Exp $
+ * $Id: renderprefs.c,v 1.37 2008/07/11 22:28:19 c_anthon Exp $
  */
 
 #include "config.h"
@@ -669,7 +669,7 @@ RenderPreferencesCommand (renderdata * prd, char *sz)
   if (prd->arLight[1] < 0)
     rAzimuth = 360 - rAzimuth;
 
-  sprintf (sz, g_strdup_printf ("set appearance board=#%02X%02X%02X;%s ",
+  strcpy(sz, g_strdup_printf ("set appearance board=#%02X%02X%02X;%s ",
         prd->aanBoardColour[0][0],
         prd->aanBoardColour[0][1],
         prd->aanBoardColour[0][2],
