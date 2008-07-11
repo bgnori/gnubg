@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.245 2008/07/07 20:45:56 mormegil Exp $
+ * $Id: show.c,v 1.246 2008/07/11 22:28:19 c_anthon Exp $
  */
 
 #include "config.h"
@@ -952,7 +952,7 @@ ShowAuthors( const credEntry ace[], const char *title ) {
 
   int i;
 
-  outputf( title );
+  outputf("%s", title );
   outputc( '\n' );
   
   for ( i = 0; ace[ i ].Name; ++i ) {
@@ -1148,7 +1148,7 @@ extern void CommandShowKleinman(char *sz)
 	}
 #endif
 	show_kleinman(an, out);
-	outputf(out);
+	outputf("%s",out);
 }
 
 #if USE_MULTITHREAD
@@ -1204,7 +1204,7 @@ extern void CommandShowThorp(char *sz)
 	}
 #endif
 	show_thorp(an, out);
-	g_print(out);
+	g_print("%s", out);
 
 }
 

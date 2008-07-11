@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.351 2008/07/07 20:45:54 mormegil Exp $
+ * $Id: eval.c,v 1.352 2008/07/11 22:28:19 c_anthon Exp $
  */
 
 #include "config.h"
@@ -648,11 +648,11 @@ static int binary_weights_failed(char * filename, FILE * weights)
 
 	if (!weights)
 	{
-		g_print(filename);
+		g_print("%s", filename);
 		return -1;
 	}
 	if (fread(&r, sizeof r, 1, weights) < 1) {
-		g_print(filename);
+		g_print("%s", filename);
 		return -2;
 	}
 	if (r != WEIGHTS_MAGIC_BINARY) {
@@ -661,7 +661,7 @@ static int binary_weights_failed(char * filename, FILE * weights)
 		return -3;
 	}
 	if (fread(&r, sizeof r, 1, weights) < 1) {
-		g_print(filename);
+		g_print("%s", filename);
 		return -4;
 	}
 	if (r != WEIGHTS_VERSION_BINARY)
@@ -682,7 +682,7 @@ static int weights_failed(char * filename, FILE * weights)
 	char file_version[16];
 	if (!weights)
 	{
-		g_print(filename);
+		g_print("%s", filename);
 		return -1;
 	}
 
