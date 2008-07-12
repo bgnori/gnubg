@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.h,v 1.7 2008/04/27 20:18:51 c_anthon Exp $
+ * $Id: renderprefs.h,v 1.8 2008/07/12 07:13:20 c_anthon Exp $
  */
 
 #ifndef _RENDERPREFS_H_
@@ -32,7 +32,7 @@ extern void CopyAppearance(renderdata* prd);
 
 extern void RenderPreferencesParam( renderdata *prd, const char *szParam,
 				   char *szValue );
-extern char *RenderPreferencesCommand( renderdata *prd, char *sz );
+extern GString *RenderPreferencesCommand( renderdata *prd );
 
 #if USE_BOARD3D
 char *WriteMaterial(Material* pMat);
