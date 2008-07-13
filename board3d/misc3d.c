@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.91 2008/06/29 20:14:52 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.92 2008/07/13 19:09:35 c_anthon Exp $
 */
 
 #include "config.h"
@@ -36,6 +36,7 @@
 #include "misc3d.h"
 #include "util.h"
 #include <glib/gi18n.h>
+#include <glib/gstdio.h>
 
 #define MAX_FRAMES 10
 #define DOT_SIZE 32
@@ -452,7 +453,7 @@ void LoadTextureInfo(void)
 	textures = NULL;
 
 	szFile = BuildFilename(TEXTURE_FILE );
-	fp = fopen(szFile, "r");
+	fp = g_fopen(szFile, "r");
 	g_free(szFile);
 	if (!fp)
 	{

@@ -15,12 +15,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: file.c,v 1.15 2008/06/30 21:22:58 c_anthon Exp $
+ * $Id: file.c,v 1.16 2008/07/13 19:09:34 c_anthon Exp $
  */
 
 #include "config.h"
 #include "backgammon.h"
 #include <glib.h>
+#include <glib/gstdio.h>
 #include <glib/gi18n.h>
 #ifndef _MSC_VER
 #include <string.h>
@@ -74,7 +75,7 @@ static FileHelper *OpenFileHelper(const char *filename)
 		return NULL;	/* File not found */
 
 	fh = g_new(FileHelper, 1);
-	fh->fp = fopen(filename, "r");
+	fh->fp = g_fopen(filename, "r");
 	if (!fh->fp) {		/* Failed to open file */
 		g_free(fh);
 		return NULL;

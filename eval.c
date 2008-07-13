@@ -16,13 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.352 2008/07/11 22:28:19 c_anthon Exp $
+ * $Id: eval.c,v 1.353 2008/07/13 19:09:34 c_anthon Exp $
  */
 
 #include "config.h"
 #include "backgammon.h"
 
 #include <glib.h>
+#include <glib/gstdio.h>
 #include <glib/gi18n.h>
 #include <string.h>
 #include <errno.h>
@@ -804,7 +805,7 @@ extern void EvalInitialise(char *szWeights, char *szWeightsBinary,
 
     if( szWeightsBinary)
     { 
-		pfWeights = fopen(szWeightsBinary, "rb");
+		pfWeights = g_fopen(szWeightsBinary, "rb");
 	    if (!binary_weights_failed(szWeightsBinary, pfWeights))
 	    {
 		    if( !fReadWeights && !( fReadWeights =
@@ -825,7 +826,7 @@ extern void EvalInitialise(char *szWeights, char *szWeightsBinary,
 
     if( !fReadWeights && szWeights )
 	{
-		pfWeights = fopen(szWeights, "r");
+		pfWeights = g_fopen(szWeights, "r");
 	    if (!weights_failed(szWeights, pfWeights))
 	    {
 		    if( !( fReadWeights =
