@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.195 2008/06/29 20:14:51 Superfly_Jon Exp $
+ * $Id: html.c,v 1.196 2008/07/13 19:09:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -165,7 +165,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.195 2008/06/29 20:14:51 Superfly_Jon Exp $ */\n",
+           "/* $Id: html.c,v 1.196 2008/07/13 19:09:34 c_anthon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1832,7 +1832,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.195 $";
+  const char szVersion[] = "$Revision: 1.196 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1912,7 +1912,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.195 $";
+  const char szVersion[] = "$Revision: 1.196 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3420,7 +3420,7 @@ OpenCSS( const char *sz ) {
              pchBase );
     pf = NULL;
   }
-  else if ( ! ( pf = fopen( pchCSS, "w" ) ) ) {
+  else if ( ! ( pf = g_fopen( pchCSS, "w" ) ) ) {
     outputerr( pchCSS );
   }
 
@@ -3469,7 +3469,7 @@ extern void CommandExportGameHtml( char *sz ) {
 
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
-    else if( !( pf = fopen( sz, "w" ) ) ) {
+    else if( !( pf = g_fopen( sz, "w" ) ) ) {
 	outputerr( sz );
 	return;
     }
@@ -3562,7 +3562,7 @@ extern void CommandExportMatchHtml( char *sz ) {
 
       if( !strcmp( szCurrent, "-" ) )
 	pf = stdout;
-      else if( !( pf = fopen( szCurrent, "w" ) ) ) {
+      else if( !( pf = g_fopen( szCurrent, "w" ) ) ) {
 	outputerr( szCurrent );
 		for ( j = 0; j < 4; j++ )
 		  free (filenames [ j ] );
@@ -3621,7 +3621,7 @@ extern void CommandExportPositionHtml( char *sz ) {
 
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
-    else if( !( pf = fopen( sz, "w" ) ) ) {
+    else if( !( pf = g_fopen( sz, "w" ) ) ) {
 	outputerr( sz );
 	return;
     }
@@ -3765,7 +3765,7 @@ extern void CommandExportPositionGammOnLine ( char *sz ) {
 
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
-    else if( !( pf = fopen( sz, "w" ) ) ) {
+    else if( !( pf = g_fopen( sz, "w" ) ) ) {
 	outputerr( sz );
 	return;
     }

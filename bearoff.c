@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.74 2008/07/11 22:28:18 c_anthon Exp $
+ * $Id: bearoff.c,v 1.75 2008/07/13 19:09:34 c_anthon Exp $
  */
 #include "config.h"
 #if USE_MULTITHREAD
@@ -29,6 +29,7 @@
 #endif
 
 #include <glib.h>
+#include <glib/gstdio.h>
 #include <glib/gi18n.h>
 #include "bearoffgammon.h"
 #include "eval.h"
@@ -892,7 +893,7 @@ extern bearoffcontext *BearoffInit(const char *szFilename, const int bo, void (*
 	}
 
 
-	if (!(pbc->pf = fopen(szFilename, "rb"))) {
+	if (!(pbc->pf = g_fopen(szFilename, "rb"))) {
 		g_printerr("%s\n", _("Invalid or nonexistent database"));
 		goto invaliddb;
 	}

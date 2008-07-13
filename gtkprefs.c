@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.158 2008/04/27 20:18:49 c_anthon Exp $
+ * $Id: gtkprefs.c,v 1.159 2008/07/13 19:09:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1950,7 +1950,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.158 2008/04/27 20:18:49 c_anthon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.159 2008/07/13 19:09:34 c_anthon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2446,7 +2446,7 @@ static void ExportDesign ( GtkWidget *pw, gpointer data )
 
 	/* write designs to file */
 
-	if ( ! ( pf = fopen ( szFile, "w+" ) ) ) {
+	if ( ! ( pf = g_fopen ( szFile, "w+" ) ) ) {
 		outputerr ( szFile );
 		free_board_design( pbde, NULL );
 		g_free ( pch );

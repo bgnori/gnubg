@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.83 2008/06/10 21:00:48 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.84 2008/07/13 19:09:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -34,6 +34,7 @@
 #include "backgammon.h"
 
 #include <glib.h>
+#include <glib/gstdio.h>
 #include <signal.h>
 
 #include "eval.h"
@@ -2429,7 +2430,7 @@ extern int LoadPythonFile(const char *sz)
 		return FALSE;
 	}
 
-	pf = fopen(path, "r");
+	pf = g_fopen(path, "r");
 
 	if (pf)
 	{

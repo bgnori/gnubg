@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.201 2008/07/11 20:52:18 c_anthon Exp $
+ * $Id: rollout.c,v 1.202 2008/07/13 19:09:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <glib.h>
+#include <glib/gstdio.h>
 #include <time.h>
 
 #include "backgammon.h"
@@ -130,7 +131,7 @@ static FILE *log_game_start(const char *name, const cubeinfo * pci, int fCubeful
 		}
 	}
 
-	if ((logfp = fopen(name, "w")) == 0)
+	if ((logfp = g_fopen(name, "w")) == 0)
 		return NULL;
 
 	fprintf(logfp, "(;FF[4]GM[6]CA[UTF-8]AP[GNU Backgammon:0.14-devel]MI"

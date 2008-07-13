@@ -16,12 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.28 2008/03/18 22:51:34 c_anthon Exp $
+ * $Id: makehyper.c,v 1.29 2008/07/13 19:09:35 c_anthon Exp $
  */
 
 #include "config.h"
 
 #include <glib.h>
+#include <glib/gstdio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -226,7 +227,7 @@ StartFromDatabase( hyperequity ahe[], const int nC,
   int i, j, k;
   float r;
 
-  if ( ! ( pf = fopen ( szFilename, "r+b" ) ) ) {
+  if ( ! ( pf = g_fopen ( szFilename, "r+b" ) ) ) {
     perror ( szFilename );
     exit(2);
   }
@@ -563,7 +564,7 @@ WriteHyperFile ( const char *szFilename, const hyperequity ahe[],
   FILE *pf;
 
   
-  if ( ! ( pf = fopen ( szFilename, "w+b" ) ) ) {
+  if ( ! ( pf = g_fopen ( szFilename, "w+b" ) ) ) {
     perror ( szFilename );
     return;
   }

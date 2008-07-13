@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.44 2008/04/27 20:18:50 c_anthon Exp $
+ * $Id: latex.c,v 1.45 2008/07/13 19:09:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -30,6 +30,7 @@
 #include "export.h"
 #include "format.h"
 #include <glib/gi18n.h>
+#include <glib/gstdio.h>
 
 static const char*aszLuckTypeLaTeXAbbr[] = { "$--$", "$-$", "", "$+$", "$++$" };
 
@@ -563,7 +564,7 @@ extern void CommandExportGameLaTeX( char *sz ) {
 
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
-    else if( !( pf = fopen( sz, "w" ) ) ) {
+    else if( !( pf = g_fopen( sz, "w" ) ) ) {
 	outputerr( sz );
 	return;
     }
@@ -599,7 +600,7 @@ extern void CommandExportMatchLaTeX( char *sz ) {
 
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
-    else if( !( pf = fopen( sz, "w" ) ) ) {
+    else if( !( pf = g_fopen( sz, "w" ) ) ) {
 	outputerr( sz );
 	return;
     }
