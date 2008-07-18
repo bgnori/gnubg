@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.380 2008/07/07 11:00:03 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.381 2008/07/18 16:16:17 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -34,6 +34,7 @@
 #define VERSION_STRING "GNU Backgammon " VERSION
 #define GNUBG_CHARSET "UTF-8"
 
+const gchar *intro_string;
 typedef struct _command {
 	/* Command name (NULL indicates end of list) */
 	const char *sz;

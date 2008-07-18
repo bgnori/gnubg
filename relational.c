@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.55 2008/07/13 19:09:35 c_anthon Exp $
+ * $Id: relational.c,v 1.56 2008/07/18 16:16:18 c_anthon Exp $
  */
 
 #include "config.h"
@@ -724,7 +724,7 @@ extern void CommandRelationalShowDetails (char *sz)
 #if USE_GTK
   if (fX)
     {
-      GTKTextWindow (output, _("Player statistics"), DT_INFO);
+      GTKTextWindow (output, _("Player statistics"), DT_INFO, NULL);
     }
   else
 #endif
