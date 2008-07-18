@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.246 2008/07/11 22:28:19 c_anthon Exp $
+ * $Id: show.c,v 1.247 2008/07/18 16:16:18 c_anthon Exp $
  */
 
 #include "config.h"
@@ -654,7 +654,7 @@ extern void CommandShowCopying( char *sz ) {
 
 #if USE_GTK
     if( fX )
-	ShowList( aszCopying, _("Copying"), NULL );
+	ShowList( aszCopying, _("Copying"), NULL);
     else
 #endif
 	ShowPaged( aszCopying );
@@ -1094,7 +1094,7 @@ extern void CommandShowWarranty( char *sz ) {
 
 #if USE_GTK
     if( fX )
-	ShowList( aszWarranty, _("Warranty"), NULL );
+	ShowList( aszWarranty, _("Warranty"), NULL);
     else
 #endif
 	ShowPaged( aszWarranty );
@@ -1517,7 +1517,7 @@ extern void CommandShowVersion( char *sz )
 
 	outputl( gettext ( VERSION_STRING ) );
 	outputc( '\n' );
-	ShowAuthors( ceAuthors, _("Written by:") );
+	ShowAuthors( ceAuthors, _("AUTHORS") );
 }
 
 extern void CommandShowMarketWindow ( char * sz ) {
