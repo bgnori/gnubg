@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.75 2008/07/13 19:09:34 c_anthon Exp $
+ * $Id: bearoff.c,v 1.76 2008/07/19 22:02:12 c_anthon Exp $
  */
 #include "config.h"
 #if USE_MULTITHREAD
@@ -41,6 +41,9 @@
 #if HAVE_SYS_STAT_H
 #include <sys/stat.h>
 #endif
+
+#define HEURISTIC_C 6
+#define HEURISTIC_P 6
 
 static int setGammonProb(const TanBoard anBoard, unsigned int bp0, unsigned int bp1, float* g0, float* g1)
 {
@@ -210,7 +213,7 @@ static unsigned int HeuristicBearoff( unsigned int anBoard[ 6 ], const unsigned 
 			anBoard[ n - (int)anDice[ i ] ]++;
 	}
 
-    return PositionBearoff( anBoard, 6, 15 );
+    return PositionBearoff( anBoard, HEURISTIC_P, HEURISTIC_C );
 }
 
 static void GenerateBearoff( unsigned char *p, unsigned int nId )
@@ -225,7 +228,7 @@ static void GenerateBearoff( unsigned char *p, unsigned int nId )
     for( anRoll[ 0 ] = 1; anRoll[ 0 ] <= 6; anRoll[ 0 ]++ )
 	for( anRoll[ 1 ] = 1; anRoll[ 1 ] <= anRoll[ 0 ]; anRoll[ 1 ]++ )
 	{
-	    PositionFromBearoff( anBoard, nId, 6, 15 );
+	    PositionFromBearoff( anBoard, nId, HEURISTIC_P, HEURISTIC_C );
 	    iBest = HeuristicBearoff( anBoard, anRoll );
 
 	    g_assert( iBest < nId );
@@ -870,8 +873,8 @@ extern bearoffcontext *BearoffInit(const char *szFilename, const int bo, void (*
 
 	if (bo & (int) BO_HEURISTIC) {
 		pbc->bt = BEAROFF_ONESIDED;
-		pbc->nPoints = 6;
-		pbc->nChequers = 6;
+		pbc->nPoints = HEURISTIC_P;
+		pbc->nChequers = HEURISTIC_C;
 		pbc->fHeuristic = TRUE;
 		pbc->p = HeuristicDatabase(p);
 		return pbc;

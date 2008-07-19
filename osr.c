@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.30 2008/02/28 14:15:51 c_anthon Exp $
+ * $Id: osr.c,v 1.31 2008/07/19 22:02:13 c_anthon Exp $
  */
 
 /*! \file osr.c
@@ -634,7 +634,7 @@ rollOSR ( const int nGames, const unsigned int anBoard[ 25 ], const int nOut,
 
     /* get prob. from bearoff1 */
 
-    getBearoffProbs ( PositionBearoff ( an, 6, 15 ), anProb );
+    getBearoffProbs ( PositionBearoff ( an, pbc1->nPoints, pbc1->nChequers ), anProb );
 
     for ( i = 0; i < 32; ++i )
       arProbs[ MIN( n + i, nMaxProbs - 1 ) ] += anProb[ i ] / 65535.0f;
@@ -721,7 +721,7 @@ osp ( const unsigned int anBoard[ 25 ], const int nGames,
     for ( i = 0; i < MAX_PROBS; ++i )
       arProbs[ i ] = 0.0f;
 
-    getBearoffProbs ( PositionBearoff ( anBoard, 6, 15 ), anProb );
+    getBearoffProbs ( PositionBearoff ( anBoard, pbc1->nPoints, pbc1->nChequers), anProb );
 
     for ( i = 0; i < 32; ++i ) {
       n = MIN( i, MAX_PROBS - 1 );
@@ -769,7 +769,7 @@ bgProb ( const unsigned int anBoard[ 25 ],
       
       /* FIXME: this ignores chequers on the bar */
 
-      getBearoffProbs ( PositionBearoff ( anBoard + 18, 6, 15 ), anProb );
+      getBearoffProbs ( PositionBearoff ( anBoard + 18, pbc1->nPoints, pbc1->nChequers ), anProb );
 
       for ( i = 0; i < nMaxProbs; ++i ) {
 
