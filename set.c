@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.309 2008/07/01 22:06:55 c_anthon Exp $
+ * $Id: set.c,v 1.310 2008/07/23 09:36:17 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4139,15 +4139,22 @@ CommandSetRatingOffset( char *sz ) {
 
 extern void CommandSetLang( char *sz )
 {
+	char *result;
 	g_free(szLang);
-	szLang = (sz) ? g_strdup(sz) : g_strdup(""); 
-	SetupLanguage(szLang);
+	szLang = (sz && *sz) ? g_strdup(sz) : g_strdup("system"); 
+	result = SetupLanguage(szLang);
 
+	if (result)
+	{
 #if USE_GTK
 	if (fX)
 		GtkChangeLanguage();
+	else
 #endif
-
+		outputf(_("Locale is now '%s'"), result);
+	}
+	else
+		outputerrf(_("Locale '%s' not supported by C library.\n"), sz);
 }
 
 extern void CommandSetPanelWidth( char *sz )
