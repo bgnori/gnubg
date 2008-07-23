@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.716 2008/07/18 16:16:17 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.717 2008/07/23 09:36:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3029,9 +3029,11 @@ static gboolean FlagClicked(GtkWidget *pw, GdkEventButton *event, void* dummy)
 	gtk_frame_set_shadow_type(GTK_FRAME(gtk_bin_get_child(GTK_BIN(pw))), GTK_SHADOW_ETCHED_OUT);
 	gtk_widget_modify_bg(eb, GTK_STATE_NORMAL, &pwMain->style->bg[GTK_STATE_SELECTED]);
 
-	/* Immediately translate this dialog */
-	SetupLanguage((char*)g_object_get_data(G_OBJECT(curSel), "lang"));
-	SetLangDialogText();
+	if (SetupLanguage((char *) g_object_get_data(G_OBJECT(curSel), "lang")))
+		/* Immediately translate this dialog */
+		SetLangDialogText();
+	else
+		outputerrf(_("Locale '%s' not supported by C library."), (char *) g_object_get_data(G_OBJECT(curSel), "lang"));
 
 	gtk_widget_set_sensitive(DialogArea(pwLangDialog, DA_OK), TRUE);
 
