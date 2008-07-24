@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.90 2008/06/17 20:57:02 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.91 2008/07/24 09:37:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -107,6 +107,7 @@ static void MoveListRolloutClicked(GtkWidget *pw, hintdata *phd)
   free ( ai );
 
   MoveListUpdate ( phd );
+  SetAnnotation(pmrCurAnn);
 }
 
 extern void ShowMove ( hintdata *phd, const int f )
@@ -253,7 +254,7 @@ EvalMoves ( hintdata *phd, evalcontext *pec )
   free ( ai );
 
   MoveListUpdate ( phd );
-
+  SetAnnotation(pmrCurAnn);
 }
 
 static void

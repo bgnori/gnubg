@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.30 2008/03/12 22:56:34 Superfly_Jon Exp $
+ * $Id: gtkrace.c,v 1.31 2008/07/24 09:37:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -391,7 +391,7 @@ GTKShowRace ( TanBoard anBoard ) {
   /* show dialog */
 
   PerformOSR ( NULL, prw );
-  gtk_notebook_set_page ( GTK_NOTEBOOK ( pwNotebook ), 0 );
+  gtk_notebook_set_current_page ( GTK_NOTEBOOK ( pwNotebook ), 0 );
 
   GTKRunDialog(pwDialog);
 }
