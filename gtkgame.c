@@ -16,14 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.718 2008/07/24 09:37:50 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.719 2008/07/29 11:46:33 c_anthon Exp $
  */
 
 #include "config.h"
 
 #include <glib.h>
 #include <glib/gstdio.h>
-#include <glib/gi18n.h>
 #include <fcntl.h>
 #include <math.h>
 #include <stdio.h>
@@ -61,7 +60,6 @@
 #include "gtkprefs.h"
 #include "gtksplash.h"
 #include "gtkrelational.h"
-#include <glib/gi18n.h>
 #include "gtkfile.h"
 #include "matchequity.h"
 #include "openurl.h"

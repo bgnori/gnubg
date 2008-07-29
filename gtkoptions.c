@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.79 2008/07/01 22:06:54 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.80 2008/07/29 11:46:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -36,7 +36,6 @@
 #include "eval.h"
 #include "dice.h"
 #include "gtkgame.h"
-#include <glib/gi18n.h>
 #include "gtkfile.h"
 #include "sound.h"
 #include "drawboard.h"

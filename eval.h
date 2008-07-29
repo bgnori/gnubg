@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.154 2008/04/15 21:11:08 Superfly_Jon Exp $
+ * $Id: eval.h,v 1.155 2008/07/29 11:46:32 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -557,7 +557,7 @@ extern void
 getMatchPoints ( float aaarPoints[ 2 ][ 4 ][ 2 ],
                  int afAutoRedouble[ 2 ],
                  int afDead[ 2 ],
-                 cubeinfo *pci,
+                 const cubeinfo *pci,
                  float aarRates[ 2 ][ 2 ] );
 
 extern void

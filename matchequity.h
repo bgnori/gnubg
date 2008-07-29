@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchequity.h,v 1.21 2007/07/02 12:43:39 ace Exp $
+ * $Id: matchequity.h,v 1.22 2008/07/29 11:46:35 c_anthon Exp $
  */
 
 
@@ -84,7 +84,7 @@ InitMatchEquity ( const char *szFileName );
 /* Get double points */
 
 extern int
-GetPoints ( float arOutput [ 5 ], cubeinfo *pci, float arCP[ 2 ] );
+GetPoints ( float arOutput [ 5 ], const cubeinfo *pci, float arCP[ 2 ] );
 
 extern float
 GetDoublePointDeadCube ( float arOutput [ 5 ], cubeinfo *pci );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.59 2008/07/13 19:09:34 c_anthon Exp $
+ * $Id: export.c,v 1.60 2008/07/29 11:46:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -24,7 +24,6 @@
 
 #include <glib.h>
 #include <glib/gstdio.h>
-#include <glib/gi18n.h>
 #include <glib/gprintf.h>
 #include <stdlib.h>
 #include <string.h>

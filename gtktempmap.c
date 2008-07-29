@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.33 2008/04/26 17:12:04 c_anthon Exp $
+ * $Id: gtktempmap.c,v 1.34 2008/07/29 11:46:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -36,7 +36,6 @@
 #include "gtktempmap.h"
 #include "gtkgame.h"
 #include "drawboard.h"
-#include <glib/gi18n.h>
 #include "format.h"
 #include "render.h"
 #include "renderprefs.h"

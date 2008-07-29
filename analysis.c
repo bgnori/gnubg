@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.197 2008/07/09 13:00:16 c_anthon Exp $
+ * $Id: analysis.c,v 1.198 2008/07/29 11:46:31 c_anthon Exp $
  */
 
 #include "config.h"
@@ -24,7 +24,6 @@
 #include <glib.h>
 #include <string.h>
 #include <stdlib.h>
-#include <glib/gi18n.h>
 
 #include "backgammon.h"
 #include "drawboard.h"

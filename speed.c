@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.22 2008/06/17 20:57:03 Superfly_Jon Exp $
+ * $Id: speed.c,v 1.23 2008/07/29 11:46:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -26,7 +26,6 @@
 #else
 #include "backgammon.h"
 #endif
-#include <glib/gi18n.h>
 #if USE_MULTITHREAD
 #include "multithread.h"
 #endif

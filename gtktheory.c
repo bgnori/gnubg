@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.50 2008/07/28 22:31:46 c_anthon Exp $
+ * $Id: gtktheory.c,v 1.51 2008/07/29 11:46:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -31,7 +31,6 @@
 #include "backgammon.h"
 #include "eval.h"
 #include "gtktheory.h"
-#include <glib/gi18n.h>
 #include "matchequity.h"
 #include "gtkwindows.h"
 

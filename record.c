@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: record.c,v 1.32 2008/05/06 08:05:58 c_anthon Exp $
+ * $Id: record.c,v 1.33 2008/07/29 11:46:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -27,7 +27,6 @@
 #include <string.h>
 #include <errno.h>
 #include <glib.h>
-#include <glib/gi18n.h>
 #include <glib/gstdio.h>
 
 #if USE_GTK
@@ -214,7 +213,7 @@ static int RecordRead(FILE ** ppfOut, char **ppchOut, playerrecord apr[2])
 	if (ppfOut == NULL)
 		return -1;
 
-	if (fputs("# %Version: 2 ($Revision: 1.32 $)\n", *ppfOut) < 0) {
+	if (fputs("# %Version: 2 ($Revision: 1.33 $)\n", *ppfOut) < 0) {
 		outputerr(*ppchOut);
 		g_free(*ppchOut);
 		return -1;

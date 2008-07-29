@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.62 2008/06/30 21:22:58 c_anthon Exp $
+ * $Id: external.c,v 1.63 2008/07/29 11:46:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -104,7 +104,6 @@
 #include "drawboard.h"
 #include "external.h"
 #include "rollout.h"
-#include <glib/gi18n.h>
 
 #if HAVE_SOCKETS
 /* Stuff for the yacc/lex parser */

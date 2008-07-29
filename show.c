@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.247 2008/07/18 16:16:18 c_anthon Exp $
+ * $Id: show.c,v 1.248 2008/07/29 11:46:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -39,7 +39,6 @@
 #include "dice.h"
 #include "matchequity.h"
 #include "matchid.h"
-#include <glib/gi18n.h>
 #include "sound.h"
 #include "osr.h"
 #include "positionid.h"
