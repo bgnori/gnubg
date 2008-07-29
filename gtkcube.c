@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.59 2008/06/17 21:15:20 Superfly_Jon Exp $
+ * $Id: gtkcube.c,v 1.60 2008/07/29 11:46:33 c_anthon Exp $
  */
 
 #include "config.h"
@@ -34,7 +34,6 @@
 #include "gtkgame.h"
 #include "gtkcube.h"
 #include "gtkwindows.h"
-#include <glib/gi18n.h>
 #include "progress.h"
 #include "format.h"
 

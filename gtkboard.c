@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.240 2008/04/27 20:18:46 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.241 2008/07/29 11:46:33 c_anthon Exp $
  */
 
 #include "config.h"
@@ -40,7 +40,6 @@
 #include "renderprefs.h"
 #include "sound.h"
 #include "matchid.h"
-#include <glib/gi18n.h>
 #include "boardpos.h"
 #include "matchequity.h"
 #include "gtktoolbar.h"

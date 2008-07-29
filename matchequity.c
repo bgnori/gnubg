@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.74 2008/07/07 20:45:56 mormegil Exp $
+* $Id: matchequity.c,v 1.75 2008/07/29 11:46:35 c_anthon Exp $
 */
 
 #include "config.h"
@@ -56,7 +56,6 @@
 #include "eval.h"
 #include "matchequity.h"
 #include "backgammon.h"
-#include <glib/gi18n.h>
 
 static const xmlChar* XML_PUBLIC_ID = BAD_CAST "-//GNU Backgammon//DTD Match Equity Tables//EN";
 
@@ -431,7 +430,7 @@ initMETZadeh ( float aafMET[ MAXSCORE ][ MAXSCORE ],
 }
 
 extern int
-GetPoints ( float arOutput [ 5 ], cubeinfo *pci, float arCP[ 2 ] ) {
+GetPoints ( float arOutput [ 5 ], const cubeinfo *pci, float arCP[ 2 ] ) {
 
   /*
    * Input:

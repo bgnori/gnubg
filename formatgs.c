@@ -16,14 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: formatgs.c,v 1.29 2008/07/02 10:14:51 c_anthon Exp $
+ * $Id: formatgs.c,v 1.30 2008/07/29 11:46:32 c_anthon Exp $
  */
 
 #include "config.h"
 #include "backgammon.h"
 
 #include <glib.h>
-#include <glib/gi18n.h>
 
 #include "formatgs.h"
 #include "format.h"

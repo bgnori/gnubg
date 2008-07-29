@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.90 2008/07/13 19:09:35 c_anthon Exp $
+ * $Id: text.c,v 1.91 2008/07/29 11:46:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -37,7 +37,6 @@
 #include "matchid.h"
 #include "record.h"
 
-#include <glib/gi18n.h>
 
 
 /* "Color" of chequers */
@@ -247,7 +246,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.90 $";
+  const char szVersion[] = "$Revision: 1.91 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );

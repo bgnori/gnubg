@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.38 2008/07/12 07:13:19 c_anthon Exp $
+ * $Id: renderprefs.c,v 1.39 2008/07/29 11:46:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -27,7 +27,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <glib.h>
-#include <glib/gi18n.h>
 #include "render.h"
 #include "renderprefs.h"
 #if USE_GTK

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.29 2008/07/13 19:09:35 c_anthon Exp $
+ * $Id: makehyper.c,v 1.30 2008/07/29 11:46:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -34,7 +34,6 @@
 
 #include "eval.h"
 #include "positionid.h"
-#include <glib/gi18n.h>
 #include <locale.h>
 #include "bearoff.h"
 #include "drawboard.h"

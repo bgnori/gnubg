@@ -17,14 +17,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: openurl.c,v 1.24 2008/02/29 22:04:03 Superfly_Jon Exp $
+ * $Id: openurl.c,v 1.25 2008/07/29 11:46:35 c_anthon Exp $
  */
 #include "config.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "backgammon.h"
 #include <glib.h>
-#include <glib/gi18n.h>
 #include "openurl.h"
 #ifdef WIN32
 #include "windows.h"

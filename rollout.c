@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.202 2008/07/13 19:09:35 c_anthon Exp $
+ * $Id: rollout.c,v 1.203 2008/07/29 11:46:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -37,7 +37,6 @@
 #endif
 #include "matchid.h"
 #include "positionid.h"
-#include <glib/gi18n.h>
 #include "format.h"
 #include "multithread.h"
 #include "rollout.h"

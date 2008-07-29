@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.71 2008/07/11 22:28:19 c_anthon Exp $
+ * $Id: dice.c,v 1.72 2008/07/29 11:46:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -44,7 +44,6 @@
 #include "md5.h"
 #include "mt19937ar.h"
 #include "isaac.h"
-#include <glib/gi18n.h>
 #include <glib/gstdio.h>
 
 #if USE_GTK

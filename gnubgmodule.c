@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.84 2008/07/13 19:09:34 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.85 2008/07/29 11:46:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -42,7 +42,6 @@
 #include "positionid.h"
 #include "analysis.h"
 #include "util.h"
-#include <glib/gi18n.h>
 
 #if USE_PYTHON
 

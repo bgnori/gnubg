@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.794 2008/07/23 09:36:16 c_anthon Exp $
+ * $Id: gnubg.c,v 1.795 2008/07/29 11:46:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -66,7 +66,6 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "sgf.h"
 #include "export.h"
 #include "import.h"
-#include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <locale.h>
 #include "matchequity.h"
