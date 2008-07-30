@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.52 2008/07/30 11:22:48 c_anthon Exp $
+* $Id: gtkpanels.c,v 1.53 2008/07/30 15:02:59 c_anthon Exp $
 */
 
 #include "config.h"
@@ -29,6 +29,7 @@
 #include <string.h>
 #include "gtkboard.h"
 #include "gtkgame.h"
+#include "gtktoolbar.h"
 #include "positionid.h"
 #if USE_BOARD3D
 #include "fun3d.h"

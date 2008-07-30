@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.28 2008/07/29 11:46:33 c_anthon Exp $
+* $Id: gtkgamelist.c,v 1.29 2008/07/30 15:02:59 c_anthon Exp $
 */
 
 #include "config.h"
@@ -415,7 +415,7 @@ extern void GTKSetMoveRecord( moverecord *pmr ) {
 	GtkWidget* pwWin = GetPanelWidget(WINDOW_HINT);
     if (pwWin)
 	{
-		hintdata *phd = gtk_object_get_user_data(GTK_OBJECT(pwWin));
+		hintdata *phd = g_object_get_data(G_OBJECT(pwWin), "user_data");
 		phd->fButtonsValid = FALSE;
 		CheckHintButtons(phd);
 	}

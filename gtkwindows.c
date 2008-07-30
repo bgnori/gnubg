@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.33 2008/07/30 11:22:48 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.34 2008/07/30 15:03:00 c_anthon Exp $
  */
 
 #include "config.h"
@@ -30,7 +30,6 @@
 #include "gtkgame.h"
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
-#include "gtktoolbar.h"
 typedef void (*dialog_func_ty)(GtkWidget *, void*);
 
 typedef struct _Warning
