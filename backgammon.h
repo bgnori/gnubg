@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.382 2008/07/29 11:46:31 c_anthon Exp $
+ * $Id: backgammon.h,v 1.383 2008/07/30 18:29:31 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -28,7 +28,6 @@
 #include "analysis.h"
 #include "eval.h"
 #include "rollout.h"
-#include <glib/gi18n.h>
 
 #define MAX_CUBE ( 1 << 12 )
 #define MAX_NAME_LEN 32
@@ -423,6 +422,9 @@ extern command acTop[];
 extern command cFilename;
 extern command cOnOff;
 
+#ifdef _LIBINTL_H
+#warning "libintl.h already included expect warnings under mingw"
+#endif
 /* Write a string to stdout/status bar/popup window */
 extern void output(const char *sz);
 /* Write a string to stdout/status bar/popup window, and append \n */
@@ -455,6 +457,8 @@ extern void outputnew(void);
 extern void outputoff(void);
 /* Enable output */
 extern void outputon(void);
+/* now we can include libintl.h */
+#include <glib/gi18n.h>
 /* Like strncpy, except it does the right thing */
 extern char *strcpyn(char *szDest, const char *szSrc, int cch);
 
