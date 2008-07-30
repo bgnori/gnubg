@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.32 2008/07/23 09:36:17 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.33 2008/07/30 11:22:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -397,7 +397,7 @@ extern int GTKShowWarning(warningType warning, GtkWidget *pwParent)
 		g_free(buf);
 		pwTick = gtk_check_button_new();
 		gtk_container_add(GTK_CONTAINER(pwTick), label);
-		gtk_tooltips_set_tip(ptt, pwTick, _("If set, this message won't appear again"), 0);
+		gtk_widget_set_tooltip_text(pwTick, _("If set, this message won't appear again"));
 		gtk_box_pack_start( GTK_BOX( pwv ), pwTick, TRUE, TRUE, 0 );
 		gtk_widget_grab_focus(DialogArea(pwDialog, DA_OK));
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.241 2008/07/29 11:46:33 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.242 2008/07/30 11:22:47 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3745,7 +3745,7 @@ static GtkWidget *chequer_key_new( int iPlayer, Board *board )
 			G_CALLBACK( key_press ), iPlayer ? pw : NULL );
 
     sprintf( sz, _("Set player %d on roll."), iPlayer );
-    gtk_tooltips_set_tip( ptt, pw, sz, NULL );
+    gtk_widget_set_tooltip_text(pw, sz);
 
     return pw;
 }
