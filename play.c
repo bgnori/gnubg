@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.320 2008/07/29 11:46:35 c_anthon Exp $
+ * $Id: play.c,v 1.321 2008/07/30 10:52:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -702,23 +702,19 @@ extern void AddGame( moverecord *pmr ) {
 
 static void DiceRolled(void)
 {
-	playSound ( SOUND_ROLL );
-    
+	playSound(SOUND_ROLL);
+
 #if USE_GTK
-	if (fX && fDisplay)
-	{
+	if (fX) {
 		BoardData *bd = BOARD(pwBoard)->board_data;
 		/* Make sure dice are updated */
 		bd->diceRoll[0] = 0;
 		bd->diceShown = DICE_ROLLING;
 		ShowBoard();
-	}
-	if ( ! fX )
-#else
-	if (fDisplay)
+	} else
 #endif
+	if (fDisplay)
 		ShowBoard();
-
 }
 
 static int NewGame( void )
