@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.34 2008/07/29 11:46:34 c_anthon Exp $
+ * $Id: gtktempmap.c,v 1.35 2008/07/30 11:22:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -285,8 +285,7 @@ UpdateTempMapEquities( tempmapwidget *ptmw ) {
                   ptmw->atm[ m ].aarEquity[ i ][ j ], rMin, rMax, 
                   ptmw->fInvert );
 
-        gtk_tooltips_set_tip( ptt, ptmw->atm[ m ].aapwe[ i ][ j ], sz,
-                              "" );
+        gtk_widget_set_tooltip_text(ptmw->atm[ m ].aapwe[ i ][ j ], sz);
         g_free( sz );
         gtk_widget_queue_draw( ptmw->atm[ m ].aapwDA[ i ][ j ] ); 
 
@@ -295,10 +294,9 @@ UpdateTempMapEquities( tempmapwidget *ptmw ) {
     SetStyle( ptmw->atm[ m ].pwAverage,
               ptmw->atm[ m ].rAverage, rMin, rMax, ptmw->fInvert );
 
-    gtk_tooltips_set_tip( ptt, ptmw->atm[ m ].pweAverage,
+    gtk_widget_set_tooltip_text(ptmw->atm[ m ].pweAverage,
                           GetEquityString( ptmw->atm[ m ].rAverage, 
-                                           &ci, ptmw->fInvert ),
-                          "" );
+                                           &ci, ptmw->fInvert ));
     gtk_widget_queue_draw( ptmw->atm[ m ].pwAverage );
 
   }
