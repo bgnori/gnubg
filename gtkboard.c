@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.243 2008/07/30 15:02:58 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.244 2008/08/06 07:45:17 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4196,8 +4196,8 @@ extern GtkWidget *board_cube_widget( Board *board )
 		for( x = 0; x <= N_CUBES_IN_WIDGET-1; x++ )
 		{
 			pwCube = gtk_drawing_area_new();
-			g_object_set_data( G_OBJECT( pwCube ),
-							GINT_TO_POINTER(( y * N_CUBES_IN_WIDGET + x )), "user_data" );
+			g_object_set_data( G_OBJECT( pwCube ), "user_data",
+							GINT_TO_POINTER(( y * N_CUBES_IN_WIDGET + x )));
 			gtk_drawing_area_size( GTK_DRAWING_AREA( pwCube ),
 						CUBE_WIDTH * setSize,
 						CUBE_HEIGHT * setSize );
@@ -4307,8 +4307,8 @@ extern GtkWidget *board_dice_widget( Board *board )
 		for( x = 0; x < 6; x++ )
 		{
 			pwDice = gtk_drawing_area_new();
-			g_object_set_data( G_OBJECT( pwDice ),
-							GINT_TO_POINTER(( y * 6 + x )), "user_data" );
+			g_object_set_data( G_OBJECT( pwDice ), "user_data",
+							GINT_TO_POINTER(( y * 6 + x )));
 			gtk_drawing_area_size( GTK_DRAWING_AREA( pwDice ),
 						2 * DIE_WIDTH * setSize,
 						DIE_HEIGHT * setSize );
