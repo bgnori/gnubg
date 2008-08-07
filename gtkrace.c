@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.33 2008/07/29 11:46:34 c_anthon Exp $
+ * $Id: gtkrace.c,v 1.34 2008/08/07 13:25:22 c_anthon Exp $
  */
 
 #include "config.h"
@@ -245,6 +245,7 @@ static GtkWidget *do_rollout_view(void)
 	gtk_list_store_append(store, &iter);
 	gtk_list_store_set(GTK_LIST_STORE(store), &iter, 0, _("Rollout"), -1);
 	view = gtk_tree_view_new_with_model(GTK_TREE_MODEL(store));
+	g_object_unref(store);
 	renderer = gtk_cell_renderer_text_new();
 	for (i = 0; i < 6; i++) {
 		gtk_tree_view_insert_column_with_attributes(GTK_TREE_VIEW(view), -1, gettext(aszTitle[i]),
