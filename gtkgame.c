@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.721 2008/07/30 15:02:59 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.722 2008/08/07 13:25:21 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6022,6 +6022,7 @@ extern void GTKCommandShowCredits(GtkWidget * pw, GtkWidget * pwParent)
 
 	/* create tree view */
 	treeview = gtk_tree_view_new_with_model(GTK_TREE_MODEL(store));
+	g_object_unref(store);
 	renderer = gtk_cell_renderer_text_new();
 	column = gtk_tree_view_column_new_with_attributes(_("Contributers"), renderer, "text", 0, NULL);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), column);

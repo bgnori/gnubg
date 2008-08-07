@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.51 2008/07/29 11:46:34 c_anthon Exp $
+ * $Id: gtktheory.c,v 1.52 2008/08/07 13:25:22 c_anthon Exp $
  */
 
 #include "config.h"
@@ -243,6 +243,7 @@ static void do_mw_views(theorywidget * ptw)
 		g_print("adding store %i\n", i);
 		store = gtk_list_store_new(3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 		ptw->apwMW[i] = gtk_tree_view_new_with_model(GTK_TREE_MODEL(store));
+		g_object_unref(store);
 		renderer = gtk_cell_renderer_text_new();
 		gtk_tree_view_insert_column_with_attributes(GTK_TREE_VIEW(ptw->apwMW[i]), -1, "", renderer,
 							    "text", 0, NULL);
