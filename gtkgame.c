@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.722 2008/08/07 13:25:21 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.723 2008/08/07 13:30:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5418,7 +5418,7 @@ extern void GTKEval( char *szOutput ) {
     GTKTextWindow( szOutput,  _("GNU Backgammon - Evaluation"), DT_INFO, NULL);
 }
 
-static void DestroyHint( gpointer p ) {
+static void DestroyHint( gpointer p, GObject *obj ) {
 
   movelist *pml = p;
 
@@ -5463,7 +5463,7 @@ extern void GTKCubeHint( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
     gtk_widget_grab_focus( DialogArea( pwHint, DA_OK ) );
     
     setWindowGeometry(WINDOW_HINT);
-    gtk_object_weakref( GTK_OBJECT( pwHint ), DestroyHint, NULL );
+    g_object_weak_ref( G_OBJECT( pwHint ), DestroyHint, NULL );
     
     gtk_window_set_default_size(GTK_WINDOW(pwHint), 400, 300);
     
@@ -5575,7 +5575,7 @@ GTKHint( movelist *pmlOrig, const unsigned int iMove)
                        pwMoves );
 
     setWindowGeometry(WINDOW_HINT);
-    gtk_object_weakref( GTK_OBJECT( pwHint ), DestroyHint, pml );
+    g_object_weak_ref( G_OBJECT( pwHint ), DestroyHint, pml );
 
 	if (!IsPanelDocked(WINDOW_HINT))
 		gtk_window_set_default_size(GTK_WINDOW(pwHint), 400, 300);

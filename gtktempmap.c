@@ -20,7 +20,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.36 2008/07/30 15:03:00 c_anthon Exp $
+ * $Id: gtktempmap.c,v 1.37 2008/08/07 13:30:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -475,7 +475,7 @@ ShowBestMoveToggled( GtkWidget *pw, tempmapwidget *ptmw ) {
 
 
 static void
-DestroyDialog( gpointer p ) {
+DestroyDialog( gpointer p, GObject *obj ) {
 
   tempmapwidget *ptmw = (tempmapwidget *) p;
   int i;
@@ -777,7 +777,7 @@ GTKShowTempMap( const matchstate ams[], const int n,
   /* modality */
 
   gtk_window_set_default_size( GTK_WINDOW( pwDialog ), 400, 500 ); 
-  gtk_object_weakref( GTK_OBJECT( pwDialog ), DestroyDialog, ptmw );
+  g_object_weak_ref( G_OBJECT( pwDialog ), DestroyDialog, ptmw );
 
   GTKRunDialog(pwDialog);
 }
