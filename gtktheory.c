@@ -16,11 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.52 2008/08/07 13:25:22 c_anthon Exp $
+ * $Id: gtktheory.c,v 1.53 2008/08/10 06:43:23 c_anthon Exp $
  */
 
 #include "config.h"
-#define GTK_DISABLE_DEPRECATED 1
 
 #include <gtk/gtk.h>
 
@@ -507,7 +506,6 @@ static void GraphExpose( GtkWidget *pwGraph, GdkEventExpose *pev,
     char sz[ 4 ];
     PangoLayout *layout = gtk_widget_create_pango_layout(pwGraph, NULL);
     
-    g_print("cx %d cy %d\n", cx, cy);
     pango_layout_set_font_description(layout,pango_font_description_from_string("sans 7"));
 
     /* FIXME: The co-ordinates used in this function should be determined
