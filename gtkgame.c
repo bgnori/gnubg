@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.724 2008/08/11 08:50:21 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.725 2008/08/11 10:39:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3880,7 +3880,6 @@ extern void RunGTK( GtkWidget *pwSplash, char *commands, char *python_script, ch
 			python_script = NULL;
 		}
 
-	gui_up_and_running = TRUE;
 		gtk_main();
 
 		if (reasonExited == RE_LANGUAGE_CHANGE)
