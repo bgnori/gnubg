@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.85 2008/07/29 11:46:32 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.86 2008/08/11 08:50:21 c_anthon Exp $
  */
 
 #include "config.h"
@@ -521,7 +521,7 @@ PythonEvaluate( PyObject* self UNUSED_PARAM, PyObject *args ) {
 
   if ( GeneralEvaluationE( arOutput, (ConstTanBoard)anBoard, &ci, &ec ) ) {
     PyErr_SetString( PyExc_StandardError, 
-                     _("interupted/errro in GeneralEvaluateE") );
+                     _("interupted/errno in GeneralEvaluateE") );
     return NULL;
   }
 

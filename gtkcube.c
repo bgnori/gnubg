@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.61 2008/07/30 15:02:59 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.62 2008/08/11 08:50:21 c_anthon Exp $
  */
 
 #include "config.h"
@@ -59,7 +59,7 @@ OutputPercentsTable( const float ar[] )
     GtkWidget *pw;
     int i;
     static gchar *headings[] = { N_("Win"), N_("W(g)"), N_("W(bg)"),
-                                 N_("-"), N_("Lose"), N_("L(g)"), N_("L(bg)") };
+                                 "-", N_("Lose"), N_("L(g)"), N_("L(bg)") };
     pwTable = gtk_table_new ( 2, 7, FALSE );
     
     for (i = 0; i < 7; i++)
