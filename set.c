@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.311 2008/07/29 11:46:35 c_anthon Exp $
+ * $Id: set.c,v 1.312 2008/08/11 08:50:22 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3585,7 +3585,7 @@ static void _set_tutor_skill (skilltype Skill, int skillno, char *skill) {
 
   nTutorSkillCurrent = skillno;
   TutorSkill = Skill;
-  outputf ( _("Tutor warnings will be give for play marked `%s'.\n"), skill);
+  outputf ( _("Tutor warnings will be given for play marked `%s'.\n"), skill);
 }
 
 extern void CommandSetTutorSkillDoubtful( char * sz) {
