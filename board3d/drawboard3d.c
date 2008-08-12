@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.72 2008/07/06 20:49:06 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.73 2008/08/12 18:23:47 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -134,6 +134,9 @@ void Tidy3dObjects(BoardData3d* bd3d, const renderdata *prd)
 	glDeleteLists(bd3d->diceList, 1);
 	glDeleteLists(bd3d->piecePickList, 1);
 	glDeleteLists(bd3d->DCList, 1);
+
+	FreeNumberFont(bd3d->numberFont);
+	FreeNumberFont(bd3d->cubeFont);
 
 	gluDeleteQuadric(bd3d->qobjTex);
 	gluDeleteQuadric(bd3d->qobj);
@@ -622,7 +625,7 @@ NTH_STATIC void drawDCNumbers(const BoardData* bd, const diceTest* dt)
 			glPushMatrix();
 			glTranslatef(0.f, 0.f, depth + (nice ? 0 : LIFT_OFF));
 
-			glPrintCube(bd->bd3d, sides[side]);
+			glPrintCube(bd->bd3d->cubeFont, sides[side]);
 
 			glPopMatrix();
 			if (nice)
@@ -1141,7 +1144,7 @@ static void DrawNumbers(const BoardData* bd, int sides)
 				n = 25 - n;
 
 			sprintf(num, "%d", n);
-			glPrintPointNumbers(bd->bd3d, num);
+			glPrintPointNumbers(bd->bd3d->numberFont, num);
 			glPopMatrix();
 		}
 	}
@@ -1169,7 +1172,7 @@ static void DrawNumbers(const BoardData* bd, int sides)
 				n = 25 - n;
 
 			sprintf(num, "%d", n);
-			glPrintPointNumbers(bd->bd3d, num);
+			glPrintPointNumbers(bd->bd3d->numberFont, num);
 			glPopMatrix();
 		}
 	}
@@ -3285,7 +3288,7 @@ NTH_STATIC void renderFlag(const BoardData *bd, const BoardData3d *bd3d, unsigne
 		glScalef(1.3f, 1.3f, 1.f);
 
 		glLineWidth(.5f);
-		glPrintCube(bd3d, flagValue);
+		glPrintCube(bd3d->cubeFont, flagValue);
 
 		glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
 	}
