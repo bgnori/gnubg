@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.34 2008/07/30 15:03:00 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.35 2008/08/12 18:30:27 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -171,8 +171,9 @@ extern GtkWidget *GTKCreateDialog(const char *szTitle, const dialogtype dt,
 		gtk_window_present(GTK_WINDOW(parent));
 	if (parent != NULL)
 		gtk_window_set_transient_for(GTK_WINDOW(pwDialog), GTK_WINDOW(parent));
-        if (flags & DIALOG_FLAG_MODAL && !( flags & DIALOG_FLAG_NOTIDY))
-			g_signal_connect(G_OBJECT(pwDialog), "destroy", G_CALLBACK(quitter), parent);
+
+	if ((flags & DIALOG_FLAG_MODAL) && !(flags & DIALOG_FLAG_NOTIDY))
+		g_signal_connect(G_OBJECT(pwDialog), "destroy", G_CALLBACK(quitter), parent);
 
 	pag = gtk_accel_group_new();
 	gtk_window_add_accel_group(GTK_WINDOW(pwDialog), pag);
