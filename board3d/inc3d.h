@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.42 2008/06/29 20:14:52 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.43 2008/08/12 18:23:48 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -69,6 +69,19 @@ typedef enum _BoardState
 {
 	BOARD_CLOSED, BOARD_CLOSING, BOARD_OPENING, BOARD_OPEN
 } BoardState;
+
+/* Font info */
+
+#define FONT_PITCH 24
+#define FONT_SIZE (base_unit / 20.0f)
+#define FONT_HEIGHT_RATIO 1.f
+
+#define CUBE_FONT_PITCH 34
+#define CUBE_FONT_SIZE (base_unit / 24.0f)
+#define CUBE_FONT_HEIGHT_RATIO 1.25f
+
+#define FONT_VERA "fonts/Vera.ttf"
+#define FONT_VERA_SERIF_BOLD "fonts/VeraSeBd.ttf"
 
 /* Animation paths */
 #define MAX_PATHS 3
