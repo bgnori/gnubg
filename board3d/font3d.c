@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.21 2008/08/12 18:23:47 Superfly_Jon Exp $
+* $Id: font3d.c,v 1.22 2008/08/25 11:52:35 c_anthon Exp $
 */
 
 #include "config.h"
@@ -85,9 +85,10 @@ int CreateNumberFont(OGLFont **ppFont, const char *fontFile, int pitch, float si
 	*ppFont = (OGLFont*)malloc(sizeof(OGLFont));
 
 	filename = BuildFilename(fontFile);
-	if (!CreateOGLFont(ftLib, *ppFont, fontFile, pitch, size, heightRatio))
+	if (!CreateOGLFont(ftLib, *ppFont, filename, pitch, size, heightRatio))
 	{
-		g_print("Failed to create font %s\n", filename);
+		outputerrf(_("Failed to create font from (%s)\n"), filename);
+		g_free(filename);
 		return 0;
 	}
 	g_free(filename);
@@ -106,9 +107,10 @@ int CreateFontText(OGLFont **ppFont, const char *text, const char *fontFile, int
 	*ppFont = (OGLFont*)malloc(sizeof(OGLFont));
 
 	filename = BuildFilename(fontFile);
-	if (!RenderText(text, ftLib, *ppFont, fontFile, pitch, size, heightRatio))
+	if (!RenderText(text, ftLib, *ppFont, filename, pitch, size, heightRatio))
 	{
-		g_print("Failed to create font %s\n", filename);
+		outputerrf(_("Failed to create font from (%s)\n"), filename);
+		g_free(filename);
 		return 0;
 	}
 	g_free(filename);
