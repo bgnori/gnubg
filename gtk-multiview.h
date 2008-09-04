@@ -15,7 +15,7 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * $Id: gtk-multiview.h,v 1.5 2007/12/12 23:08:16 Superfly_Jon Exp $
+ * $Id: gtk-multiview.h,v 1.6 2008/09/04 13:19:20 c_anthon Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
@@ -26,10 +26,11 @@
 #define __GTK_MULTIVIEW_H__
 
 #define GTK_TYPE_MULTIVIEW			(gtk_multiview_get_type ())
-#define GTK_MULTIVIEW(obj)			(GTK_CHECK_CAST ((obj), GTK_TYPE_MULTIVIEW, GtkMultiview))
-#define GTK_MULTIVIEW_CLASS(klass)		(GTK_CHECK_CLASS_CAST ((klass), GTK_TYPE_MULTIVIEW, GtkMultiviewClass))
-#define GTK_IS_MULTIVIEW(obj)			(GTK_CHECK_TYPE ((obj), GTK_TYPE_MULTIVIEW))
-#define GTK_IS_MULTIVIEW_CLASS(klass)		(GTK_CHECK_CLASS_TYPE ((obj), GTK_TYPE_MULTIVIEW))
+#define GTK_MULTIVIEW(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MULTIVIEW, GtkMultiview))
+#define GTK_MULTIVIEW_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MULTIVIEW, GtkMultiviewClass))
+#define GTK_IS_MULTIVIEW(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MULTIVIEW))
+#define GTK_IS_MULTIVIEW_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((obj), GTK_TYPE_MULTIVIEW))
+#define GTK_MULTIVIEW_GET_CLASS(obj)  		(G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_MULTIVIEW, GtkMultiviewClass))
 
 
 typedef struct _GtkMultiview       GtkMultiview;
