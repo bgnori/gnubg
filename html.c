@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.197 2008/07/29 11:46:34 c_anthon Exp $
+ * $Id: html.c,v 1.198 2008/09/14 20:47:06 c_anthon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.197 2008/07/29 11:46:34 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.198 2008/09/14 20:47:06 c_anthon Exp $ */\n",
            pf );
 
     fputs( _("/* This file is distributed as a part of the "
@@ -1831,7 +1831,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.197 $";
+  const char szVersion[] = "$Revision: 1.198 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1911,7 +1911,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.197 $";
+  const char szVersion[] = "$Revision: 1.198 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3145,7 +3145,7 @@ HTMLMatchInfo ( FILE *pf, const matchinfo *pmi,
     tmx.tm_year = pmi->nYear - 1900;
     tmx.tm_mon = pmi->nMonth - 1;
     tmx.tm_mday = pmi->nDay;
-    strftime ( sz, sizeof ( sz ), _("%B %d, %Y"), &tmx );
+    strftime ( sz, sizeof ( sz ), "%B %d, %Y", &tmx );
     HTMLPrintMI( pf, _("Date"), sz );
   }
 

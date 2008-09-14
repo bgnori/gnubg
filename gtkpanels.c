@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.53 2008/07/30 15:02:59 c_anthon Exp $
+* $Id: gtkpanels.c,v 1.54 2008/09/14 20:47:06 c_anthon Exp $
 */
 
 #include "config.h"
@@ -1354,7 +1354,7 @@ extern void CommandSetMessage( char *sz ) {
 
 	SetToggle("message", &woPanel[WINDOW_MESSAGE].showing, sz,
 		_("Show window with messages"),
-		_("Do not show window with message."));
+		_("Do not show window with messages."));
 }
 
 extern void CommandSetTheoryWindow( char *sz ) {

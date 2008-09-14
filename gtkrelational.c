@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrelational.c,v 1.27 2008/08/07 13:25:22 c_anthon Exp $
+ * $Id: gtkrelational.c,v 1.28 2008/09/14 20:47:06 c_anthon Exp $
  */
 
 #include "config.h"
@@ -563,9 +563,9 @@ void CheckDatabase(const char *database)
 	
 		char *dbString, *buf, *buf2 = NULL;
 		if (version < DB_VERSION)
-			dbString = _("This database is from an old version of gnubg and cannot be used");
+			dbString = _("This database is from an old version of GNU Backgammon and cannot be used");
 		else if (version > DB_VERSION)
-			dbString = _("This database is from a new version of gnubg and cannot be used");
+			dbString = _("This database is from a new version of GNU Backgammon and cannot be used");
 		else
 		{
 			if (matchcount < 0)

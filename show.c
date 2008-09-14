@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.248 2008/07/29 11:46:36 c_anthon Exp $
+ * $Id: show.c,v 1.249 2008/09/14 20:47:06 c_anthon Exp $
  */
 
 #include "config.h"
@@ -549,8 +549,7 @@ extern void CommandShowDelay( char *sz ) {
     else
 	outputl( _("No delay is being used.") );
 #else
-    outputl( _("The `show delay' command applies only when using a window "
-	  "system.") );
+    outputl( _("The `show delay' command applies only when using the GUI"));
 #endif
 }
 
@@ -1811,7 +1810,7 @@ extern void CommandShowMarketWindow ( char * sz ) {
       N_("Initial Double Point (IDP)"),
       N_("Redouble Point (RDP)"),
       N_("Cash Point (CP)"),
-      N_("Too good Point (TP)")
+      N_("Too good Point (TGP)")
     };
 
     float aaarPoints[ 2 ][ 7 ][ 2 ];

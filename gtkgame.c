@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.725 2008/08/11 10:39:04 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.726 2008/09/14 20:47:05 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3522,9 +3522,9 @@ GtkItemFactoryEntry aife[] = {
 	{ N_("/_Help"), NULL, NULL, 0, "<Branch>", NULL },
 	{ N_("/_Help/_Commands"), NULL, Command, CMD_HELP, NULL, NULL },
 	{ N_("/_Help/-"), NULL, NULL, 0, "<Separator>", NULL },
-	{ N_("/_Help/gnubg M_anual (all about)"), NULL, Command, 
+	{ N_("/_Help/M_anual (all about)"), NULL, Command, 
           CMD_SHOW_MANUAL_ABOUT, NULL, NULL },
-	{ N_("/_Help/gnubg _Manual (web)"), NULL, Command, 
+	{ N_("/_Help/_Manual (web)"), NULL, Command, 
           CMD_SHOW_MANUAL_WEB, NULL, NULL },
 	{ N_("/_Help/-"), NULL, NULL, 0, "<Separator>", NULL },
 	{ N_("/_Help/_About gnubg"), NULL, Command, CMD_SHOW_VERSION,

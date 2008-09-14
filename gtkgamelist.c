@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.30 2008/08/11 08:50:21 c_anthon Exp $
+* $Id: gtkgamelist.c,v 1.31 2008/09/14 20:47:05 c_anthon Exp $
 */
 
 #include "config.h"
@@ -276,7 +276,7 @@ extern GtkWidget* GL_Create(void)
 	nMaxWidth = logical_rect.width;
     gtk_clist_set_column_width( GTK_CLIST( pwGameList ), 0, nMaxWidth );
 
-	layout = gtk_widget_create_pango_layout(pwGameList, _(" (set board AAAAAAAAAAAAAA)"));
+	layout = gtk_widget_create_pango_layout(pwGameList, " (set board AAAAAAAAAAAAAA)");
 	pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 	g_object_unref (layout);
 	nMaxWidth = logical_rect.width;
