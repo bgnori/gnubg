@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.91 2008/07/29 11:46:36 c_anthon Exp $
+ * $Id: text.c,v 1.92 2008/09/14 20:47:06 c_anthon Exp $
  */
 
 #include "config.h"
@@ -246,7 +246,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.91 $";
+  const char szVersion[] = "$Revision: 1.92 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -703,7 +703,7 @@ TextMatchInfo ( FILE *pf, const matchinfo *pmi ) {
     tmx.tm_year = pmi->nYear - 1900;
     tmx.tm_mon = pmi->nMonth - 1;
     tmx.tm_mday = pmi->nDay;
-    strftime ( sz, sizeof ( sz ), _("%x"), &tmx );
+    strftime ( sz, sizeof ( sz ), "%x", &tmx );
     fprintf ( pf, _("Date: %s\n"), sz );
 
   }
@@ -903,17 +903,9 @@ static void ExportGameText ( FILE *pf, listOLD *plGame,
 
       /* print game result */
 
-      if ( pmgi->nPoints > 1 )
-        fprintf ( pf, 
-                  _("%s wins %d points\n\n"),
+        fprintf ( pf, ngettext("%s wins %d point", "%s wins %d points",  pmgi->nPoints), 
                   ap[ pmgi->fWinner ].szName, 
                   pmgi->nPoints );
-      else
-        fprintf ( pf, 
-                  _("%s wins %d point\n\n"),
-                  ap[ pmgi->fWinner ].szName,
-                  pmgi->nPoints );
-
     }
 
     if ( psc ) {
