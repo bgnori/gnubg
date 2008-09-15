@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-AC_REVISION($Revision: 1.197 $)
+AC_REVISION($Revision: 1.198 $)
 AC_INIT([GNU Backgammon],[0.9.0],[bug-gnubg@gnu.org],[gnubg])
 AC_CANONICAL_BUILD
 AC_CANONICAL_HOST
@@ -223,10 +223,11 @@ AM_CONDITIONAL(USE_GTK, test "$no_gtk" != "yes" )
 AM_CONDITIONAL(USE_BOARD3D, test "$no_board3d" != "yes" )
 
 if test "$no_gtk" == "no"; then
-  AC_PATH_PROG(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource, true)
+  AC_PATH_PROG(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource, no)
   if test "x$GDK_PIXBUF_CSOURCE" = xno; then
     AC_MSG_WARN(Could not find gdk-pixbuf-csource in your PATH, cannot rebuild pixmaps)
   fi
+  AM_CONDITIONAL(FOUND_GDK_PIXBUF_CSOURCE, test "x$GDK_PIXBUF_CSOURCE" != xno )
 fi
 
 dnl
