@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.45 2008/09/02 21:07:43 c_anthon Exp $
+* $Id: gtkcolour3d.c,v 1.46 2008/09/17 19:57:00 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -172,9 +172,9 @@ static void UpdateColourPreview(void)
 	gtk_color_button_get_array(GTK_COLOR_BUTTON(pcpSpecular), specular);
 
 	tempTexture = col3d.textureInfo;	/* Remeber texture, as setupmat resets it */
-	SetupMat(&col3d, ambient[0], ambient[1], ambient[2],
-		diffuse[0], diffuse[1], diffuse[2],
-		specular[0], specular[1], specular[2],
+	SetupMat(&col3d, (float)ambient[0], (float)ambient[1], (float)ambient[2],
+		(float)diffuse[0], (float)diffuse[1], (float)diffuse[2],
+		(float)specular[0], (float)specular[1], (float)specular[2],
 		(int)padjShine->value, opacityValue);
 	col3d.textureInfo = tempTexture;
 
