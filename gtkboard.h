@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.88 2008/04/27 20:18:47 c_anthon Exp $
+ * $Id: gtkboard.h,v 1.89 2008/09/19 21:55:27 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -132,6 +132,7 @@ typedef struct _BoardData {
     gint redoubles; /* number of instant redoubles allowed */
 	int DragTargetHelp;	/* Currently showing draw targets? */
 	int iTargetHelpPoints[4];	/* Drag target position */
+	int grayBoard;	/* Show board grayed when editing */
 
 #if USE_BOARD3D
 	BoardData3d *bd3d;	/* extra members for 3d board */
