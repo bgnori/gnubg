@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.312 2008/08/11 08:50:22 c_anthon Exp $
+ * $Id: set.c,v 1.313 2008/09/20 22:45:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -731,8 +731,11 @@ extern void CommandSetClockwise( char *sz ) {
 	BoardData *bd = BOARD(pwBoard)->board_data;
 	ShowBoard();
 #if USE_BOARD3D
-	RestrictiveRedraw();
-	RerenderBase(bd->bd3d);
+	if (display_is_3d(bd->rd))
+	{
+		RestrictiveRedraw();
+		RerenderBase(bd->bd3d);
+	}
 #endif
     }
 #endif /* USE_GTK */
