@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.80 2008/09/21 17:39:19 Superfly_Jon Exp $
+ * $Id: render.c,v 1.81 2008/09/22 22:01:59 c_anthon Exp $
  */
 
 #include "config.h"
@@ -746,9 +746,6 @@ static float WoodHash( float r ) {
 
     return fabs( frexp( x * 131073.1294427 + n, &n ) ) * 2 - 1;
 }
-
-extern void GrayScaleColC(char *pCols);
-extern int showingGray;
 
 static void WoodPixel( float x, float y, float z, unsigned char auch[ 3 ],
 		       woodtype wt ) {
