@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.81 2008/09/22 22:01:59 c_anthon Exp $
+ * $Id: render.c,v 1.82 2008/09/23 15:30:05 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1031,9 +1031,10 @@ static void WoodPixel( float x, float y, float z, unsigned char auch[ 3 ],
     default:
 	g_assert( FALSE );
     }
-
+#if USE_GTK
 	if (showingGray)
 		GrayScaleColC(auch);
+#endif
 }
 
 static void RenderFrameWood( renderdata *prd, unsigned char *puch,
