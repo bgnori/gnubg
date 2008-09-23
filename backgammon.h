@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.383 2008/07/30 18:29:31 c_anthon Exp $
+ * $Id: backgammon.h,v 1.384 2008/09/23 10:46:36 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -795,6 +795,7 @@ extern void CommandSetGeometryTheory(char *);
 extern void CommandSetGeometryWidth(char *);
 extern void CommandSetGNUBgID(char *);
 extern void CommandSetGotoFirstGame(char *);
+extern void CommandSetGUIGrayEdit(char *);
 extern void CommandSetGUIAnimationBlink(char *);
 extern void CommandSetGUIAnimationNone(char *);
 extern void CommandSetGUIAnimationSlide(char *);

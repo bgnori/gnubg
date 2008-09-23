@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.90 2008/09/22 22:01:59 c_anthon Exp $
+ * $Id: gtkboard.h,v 1.91 2008/09/23 10:46:36 c_anthon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -49,9 +49,16 @@ typedef enum _animation {
 } animation;
 
 extern animation animGUI;
-extern int fGUIBeep, fGUIHighDieFirst,
-    fGUIIllegal, fGUIShowPips, fGUISetWindowPos,
-    fGUIDragTargetHelp, fGUIUseStatsPanel, fGUIShowEPCs, fGUIShowWastage;
+extern int fGUIBeep;
+extern int fGUIHighDieFirst;
+extern int fGUIIllegal;
+extern int fGUIShowPips;
+extern int fGUISetWindowPos;
+extern int fGUIDragTargetHelp;
+extern int fGUIUseStatsPanel;
+extern int fGUIShowEPCs;
+extern int fGUIShowWastage;
+extern int fGUIGrayEdit;
 extern unsigned int nGUIAnimSpeed;
 
 struct _BoardData;      /* Forward declaration for use in Board */
