@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.313 2008/09/20 22:45:15 c_anthon Exp $
+ * $Id: set.c,v 1.314 2008/09/23 10:46:37 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1164,6 +1164,14 @@ extern void CommandSetGUIBeep( char *sz ) {
 	       _("GNU Backgammon will beep on illegal input."),
 	       _("GNU Backgammon will not beep on illegal input.") );
 }
+
+extern void CommandSetGUIGrayEdit( char *sz ) {
+
+    SetToggle( "gui grayedit", &fGUIGrayEdit, sz,
+	       _("Board will be grayedit in edit mode."),
+	       _("Board will not change color in edit mode.") );
+}
+
 
 extern void CommandSetGUIDiceArea( char *sz ) {
 
