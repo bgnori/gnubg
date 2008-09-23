@@ -16,11 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrelational.c,v 1.28 2008/09/14 20:47:06 c_anthon Exp $
+ * $Id: gtkrelational.c,v 1.29 2008/09/23 20:00:47 c_anthon Exp $
  */
 
 #include "config.h"
-#define GTK_DISABLE_DEPRECATED 1
 #include "backgammon.h"
 #include <gtk/gtk.h>
 #include <string.h>

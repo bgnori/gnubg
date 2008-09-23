@@ -16,11 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.34 2008/08/07 13:25:22 c_anthon Exp $
+ * $Id: gtkrace.c,v 1.35 2008/09/23 20:00:47 c_anthon Exp $
  */
 
 #include "config.h"
-#define GTK_DISABLE_DEPRECATED 1
 #include <gtk/gtk.h>
 
 #include <stdio.h>

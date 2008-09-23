@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.22 2008/07/30 15:02:59 c_anthon Exp $
+ * $Id: gtkmovefilter.c,v 1.23 2008/09/23 20:00:47 c_anthon Exp $
  */
 
 #include "config.h"
@@ -45,7 +45,7 @@ typedef struct _movefilterwidget {
 
   /* callback for the parent */
 
-  GtkSignalFunc pfChanged;
+  GCallback pfChanged;
   gpointer userdata;
 
 } movefilterwidget;
@@ -507,7 +507,7 @@ ModifyClickButton ( GtkWidget *pw, movefilterwidget *pmfw ) {
 
 extern GtkWidget *
 MoveFilterWidget ( movefilter *pmf, int *pfOK,
-                   GtkSignalFunc pfChanged, gpointer userdata ) {
+                   GCallback pfChanged, gpointer userdata ) {
 
   GtkWidget *pwFrame;
   movefilterwidget *pmfw;

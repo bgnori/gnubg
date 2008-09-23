@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.35 2008/08/12 18:30:27 Superfly_Jon Exp $
+ * $Id: gtkwindows.c,v 1.36 2008/09/23 20:00:47 c_anthon Exp $
  */
 
 #include "config.h"
@@ -147,8 +147,8 @@ static void dialog_mapped(GtkWidget *window, gpointer data)
 	}
 }
 
-extern GtkWidget *GTKCreateDialog(const char *szTitle, const dialogtype dt, 
-	 GtkWidget *parent, int flags, GtkSignalFunc okFun, void *okFunData)
+extern GtkWidget *GTKCreateDialog(const char *szTitle, const dialogtype dt,
+				  GtkWidget * parent, int flags, GCallback okFun, void *okFunData)
 {
 	CallbackStruct* cbData;
     GtkWidget *pwDialog, *pwHbox, *pwPixmap;
