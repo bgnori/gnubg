@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.92 2008/09/14 20:47:06 c_anthon Exp $
+ * $Id: text.c,v 1.93 2008/09/23 15:41:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -180,7 +180,7 @@ TextBoardHeader ( GString *gsz, const matchstate *pms,
     /* take decision */
 
     g_string_append_printf(gsz,
-              _(" %s doubles to %d"),
+              _(" %s doubles to %d\n\n"),
               ap[ !(pms->fTurn) ].szName,
               pms->nCube * 2
             );
@@ -190,7 +190,7 @@ TextBoardHeader ( GString *gsz, const matchstate *pms,
     /* cube decision */
 
     g_string_append_printf(gsz,
-              _(" %s on roll, cube decision?"),
+              _(" %s on roll, cube decision?\n\n"),
               ap[ pms->fMove ].szName );
 
 }
@@ -246,7 +246,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.92 $";
+  const char szVersion[] = "$Revision: 1.93 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
