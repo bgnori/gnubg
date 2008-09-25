@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.356 2008/09/14 20:47:05 c_anthon Exp $
+ * $Id: eval.c,v 1.357 2008/09/25 09:25:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -28,10 +28,6 @@
 #include <errno.h>
 #include <cache.h>
 #include <fcntl.h>
-#if HAVE_SYS_MMAN_H
-#include <sys/mman.h>
-#endif
-
 #include "isaac.h"
 #include <md5.h>
 #include "bearoffgammon.h"
