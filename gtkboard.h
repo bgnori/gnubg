@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.91 2008/09/23 10:46:36 c_anthon Exp $
+ * $Id: gtkboard.h,v 1.92 2008/09/25 12:00:31 c_anthon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -71,8 +71,6 @@ typedef struct _BoardClass {
     GtkVBoxClass parent_class;
 } BoardClass;
 
-extern void GrayScaleColC(unsigned char *pCols);
-extern int showingGray;
 extern GtkType board_get_type( void );    
 extern GtkWidget *board_new(renderdata* prd);
 extern GtkWidget *board_cube_widget( Board *board );
