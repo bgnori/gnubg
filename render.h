@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.32 2008/03/08 09:17:40 Superfly_Jon Exp $
+ * $Id: render.h,v 1.33 2008/09/25 12:00:31 c_anthon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -116,6 +116,9 @@ typedef struct _renderimages {
     unsigned char *auchArrow[ 2 ];
     unsigned char *achLabels[ 2 ];
 } renderimages;
+
+extern void GrayScaleColC(unsigned char *pCols);
+extern int showingGray;
 
 extern void RenderInitialise( void );
 extern void RenderFinalise( void );
