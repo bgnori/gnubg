@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.726 2008/09/14 20:47:05 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.727 2008/09/29 10:18:37 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3458,6 +3458,7 @@ GtkItemFactoryEntry aife[] = {
 		"<StockItem>", GTK_STOCK_ADD
 	},
 	{ N_("/_Analyse/-"), NULL, NULL, 0, "<Separator>", NULL },
+        { N_("/_Analyse/Relational database"), NULL, NULL, 0, "<Branch>", NULL },
     { N_("/_Analyse/Relational database/Add match or session"), NULL,
         GtkRelationalAddMatch, 0,
 	"<StockItem>", GTK_STOCK_ADD},
