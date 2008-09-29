@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.93 2008/09/23 15:41:45 c_anthon Exp $
+ * $Id: text.c,v 1.94 2008/09/29 10:00:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -246,7 +246,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.93 $";
+  const char szVersion[] = "$Revision: 1.94 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -756,17 +756,14 @@ TextDumpPlayerRecords ( FILE *pf ) {
 
   fputs ( _("Statistics from player records:\n\n" ), pf );
   
-  fputs ( _("                                Short-term  "
-            "Long-term   Total        Total\n"
-            "                                error rate  "
-            "error rate  error rate   luck\n"
-            "Name                            Cheq. Cube  "
-            "Cheq. Cube  Cheq. Cube   rate Games\n"), pf );
+  fprintf(pf, "%-31s %-11s %-11s %-12s %-6s %10s\n", "", _("Short-term"), _("Long-term"), _("Total"), _("Total"), "");
+  fprintf(pf, "%-31s %-11s %-11s %-12s %-6s %10s\n", "", _("error rate"), _("error rate"), _("error rate"), _("luck"), "");
+  fprintf(pf, "%-31s %-11s %-11s %-12s %-6s %10s\n", "Name", _("Cheq. Cube"),_("Cheq. Cube"),_("Cheq. Cube"), _("rate"), _("Games"));
 
   for ( i = 0; i < 2; ++i ) 
     if ( af[ i ] ) 
       fprintf( pf, 
-               "%-31s %5.3f %5.3f %5.3f %5.3f %5.3f %5.3f %6.3f %4d\n",
+	      "%-31s %5.3f %5.3f %5.3f %5.3f %5.3f %5.3f %6.3f %11d\n",
                apr[ i ].szName, apr[ i ].arErrorChequerplay[ EXPAVG_20 ],
                apr[ i ].arErrorCube[ EXPAVG_20 ],
                apr[ i ].arErrorChequerplay[ EXPAVG_100 ],
