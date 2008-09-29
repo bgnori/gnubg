@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.250 2008/09/29 10:00:51 c_anthon Exp $
+ * $Id: show.c,v 1.251 2008/09/29 15:18:31 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2176,9 +2176,9 @@ CommandShowCheat( char *sz ) {
 extern void CommandShowCubeEfficiency(char *sz)
 {
 	outputf(_("Parameters for cube evaluations:\n"));
-	outputf("%s :7.4f\n", _("Cube efficiency for crashed positions"), rCrashedX);
-	outputf("%s :7.4f\n", _("Cube efficiency for contact positions"), rContactX);
-	outputf("%s :7.4f\n", _("Cube efficiency for one sided bearoff positions"), rOSCubeX);
+	outputf("%s :%7.4f\n", _("Cube efficiency for crashed positions"), rCrashedX);
+	outputf("%s :%7.4f\n", _("Cube efficiency for contact positions"), rContactX);
+	outputf("%s :%7.4f\n", _("Cube efficiency for one sided bearoff positions"), rOSCubeX);
 	outputf("%s * %.5f + %.5f\n", _("Cube efficiency for race: x = pips"), rRaceFactorX, rRaceCoefficientX);
 	outputf(_("(min value %.4f, max value %.4f)\n"), rRaceMin, rRaceMax);
 }
