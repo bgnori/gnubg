@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.28 2008/03/12 22:56:34 Superfly_Jon Exp $
+ * $Id: gtkrolls.c,v 1.29 2008/09/29 10:00:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -106,7 +106,7 @@ add_level ( GtkTreeStore *model, GtkTreeIter *iter,
       if ( fInvert )
         InvertEvaluationR ( ar, &ci );
 
-      sprintf ( szRoll, _("%d%d"), n0 + 1, n1 + 1 );
+      sprintf ( szRoll, "%d%d", n0 + 1, n1 + 1 );
       FormatMove ( szMove, anBoard, anMove );
 
       szEquity = OutputMWC ( ar[ OUTPUT_CUBEFUL_EQUITY ], 
