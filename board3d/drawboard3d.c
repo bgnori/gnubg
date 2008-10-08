@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.75 2008/09/20 22:45:15 c_anthon Exp $
+* $Id: drawboard3d.c,v 1.76 2008/10/08 10:24:13 c_anthon Exp $
 */
 
 #include "config.h"
@@ -3809,6 +3809,7 @@ void drawBoard(const BoardData *bd, const BoardData3d *bd3d, const renderdata *p
 }
 
 extern int renderingBase;
+#ifdef WIN32
 extern void drawBasePreRender(const BoardData *bd, const BoardData3d *bd3d, const renderdata *prd)
 {
 	if (bd->rd->showShadows)
@@ -3819,7 +3820,6 @@ extern void drawBasePreRender(const BoardData *bd, const BoardData3d *bd3d, cons
 	}
 	else
 		drawBoardBase(bd, bd3d, prd);
-#ifdef WIN32
 	SaveBufferRegion(bd3d->wglBuffer, 0, 0, bd3d->drawing_area3d->allocation.width, bd3d->drawing_area3d->allocation.height);
-#endif
 }
+#endif

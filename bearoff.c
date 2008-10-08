@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.76 2008/07/19 22:02:12 c_anthon Exp $
+ * $Id: bearoff.c,v 1.77 2008/10/08 10:24:11 c_anthon Exp $
  */
 #include "config.h"
 #if USE_MULTITHREAD
@@ -828,23 +828,6 @@ static void ReadIntoMemory ( bearoffcontext *pbc )
  * The second long must be 100
  *
  */
-
-extern bearoffcontext *
-BearoffAlloc( void ) {
-
-  bearoffcontext *pbc;
-
-  pbc = g_new0(bearoffcontext, 1);
-  pbc->fCompressed = TRUE;
-  pbc->fGammon = TRUE;
-  pbc->fND = FALSE;
-  pbc->fCubeful = TRUE;
-  pbc->map = NULL;
-  pbc->p = NULL;
-
-  return pbc;
-
-}
 
 static unsigned int MakeInt(unsigned char a, unsigned char b, unsigned char c, unsigned char d)
 {
