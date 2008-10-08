@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.93 2008/08/12 18:23:48 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.94 2008/10/08 10:24:13 c_anthon Exp $
 */
 
 #include "config.h"
@@ -740,13 +740,6 @@ void Set3dSettings(renderdata *prdnew, const renderdata *prd)
 	memcpy(&prdnew->HingeMat, &prd->HingeMat, sizeof(Material));
 	memcpy(&prdnew->PointNumberMat, &prd->PointNumberMat, sizeof(Material));
 	memcpy(&prdnew->BackGroundMat, &prd->BackGroundMat, sizeof(Material));
-}
-
-void CopySettings3d(const BoardData* from, BoardData* to)
-{	/* Just copy the whole thing (for now?) */
-	memcpy(to, from, sizeof(BoardData));
-	/* Shallow copy, so reset allocated data */
-	to->bd3d->boardPoints = 0;
 }
 
 /* Return v position, d distance along path segment */

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.727 2008/09/29 10:18:37 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.728 2008/10/08 10:24:12 c_anthon Exp $
  */
 
 #include "config.h"
@@ -94,27 +94,6 @@ char *newLang;
 
 /* Hack this for now to stop re-entering - should be fixed when menu switched to actions */
 int inCallback = FALSE;
-
-#ifndef HAVE_GTK_OPTION_MENU_GET_HISTORY
-extern gint gtk_option_menu_get_history (GtkOptionMenu *option_menu) {
-    
-    GtkWidget *active_widget;
-  
-    if (!GTK_IS_OPTION_MENU (option_menu))
-		return -1;
-
-    if (option_menu->menu) {
-	active_widget = gtk_menu_get_active (GTK_MENU (option_menu->menu));
-
-	if (active_widget)
-	    return g_list_index (GTK_MENU_SHELL (option_menu->menu)->children,
-				 active_widget);
-	else
-	    return -1;
-    } else
-	return -1;
-}
-#endif
 
 /* Enumeration to be used as index to the table of command strings below
    (since GTK will only let us put integers into a GtkItemFactoryEntry,
