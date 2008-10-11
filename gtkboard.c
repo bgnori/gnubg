@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.250 2008/10/05 05:53:53 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.251 2008/10/11 20:54:44 Superfly_Jon Exp $
  */
 
 /*! \file gtkboard.c
@@ -3203,9 +3203,9 @@ void GrayScaleColC(unsigned char *pCols)
 	tmp[1] = pCols[1] + 128.0f;
 	tmp[2] = pCols[2] + 128.0f;
 	gs = ((tmp[0] + tmp[1] + tmp[2]) / 3.0f) * 2.0f;
-	pCols[0] = (tmp[0] + gs) / 3.0f - 128.0f;
-	pCols[1] = (tmp[1] + gs) / 3.0f - 128.0f;
-	pCols[2] = (tmp[2] + gs) / 3.0f - 128.0f;
+	pCols[0] = (unsigned char)((tmp[0] + gs) / 3.0f - 128.0f);
+	pCols[1] = (unsigned char)((tmp[1] + gs) / 3.0f - 128.0f);
+	pCols[2] = (unsigned char)((tmp[2] + gs) / 3.0f - 128.0f);
 }
 
 /* Create all of the size/colour-dependent pixmaps. */
