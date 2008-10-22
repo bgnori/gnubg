@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.21 2008/07/13 19:09:35 c_anthon Exp $
+ * $Id: makeweights.c,v 1.22 2008/10/22 19:46:08 c_anthon Exp $
  */
 
 #include "config.h"
@@ -94,7 +94,11 @@ extern int main( int argc, char *argv[] )
 		return EXIT_FAILURE;
     }
 	
-    fwrite( ar, sizeof( ar[ 0 ] ), 2, output );
+    if (fwrite( ar, sizeof( ar[ 0 ] ), 2, output ) != 2)
+    {
+	    fprintf(stderr, "Failed to write neural net!");
+	    return EXIT_FAILURE;
+    }
 
     for( c = 0; !feof(input); c++ )
 	{

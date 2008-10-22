@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.70 2008/09/29 10:00:50 c_anthon Exp $
+ * $Id: makebearoff.c,v 1.71 2008/10/22 19:46:08 c_anthon Exp $
  */
 
 #include "config.h"
@@ -762,7 +762,7 @@ generate_os ( const int nOS, const int fHeader,
   if ( fCompress ) {
 
     char ac[ 256 ];
-    int n;
+    unsigned int n;
 #ifdef WIN32
     dlgprintf(127, "Rewriting to compressed database." );
 #endif
@@ -772,7 +772,16 @@ generate_os ( const int nOS, const int fHeader,
     rewind ( pfTmp );
 
     while ( ! feof ( pfTmp ) && ( n = fread ( ac, 1, sizeof ( ac ), pfTmp ) ) )
-      fwrite ( ac, 1, n, output );
+    {
+	    if (fwrite ( ac, 1, n, output ) != n)
+	    {
+		    fprintf(stderr, "failed writing to '%s'\n", tmpfile);
+		    exit(3);
+	    }
+    }
+
+    if (ferror( pfTmp))
+	    exit(3);
 
     fclose ( pfTmp );
 
@@ -1434,12 +1443,16 @@ generate_ts ( const int nTSP, const int nTSC,
 
     for ( i = 0; i < n; ++i ){ 
       for ( j = 0; j < n; ++j ) {
+	      unsigned int count = fCubeful ? 8 : 2;
 
         k = CalcPosition ( i, j, n );
 
-        fseek ( pfTmp, ( fCubeful ? 8 : 2 ) * k, SEEK_SET );
-        fread ( ac, 1, fCubeful ? 8 : 2, pfTmp );
-        fwrite ( ac, 1, fCubeful ? 8 : 2, output );
+        fseek ( pfTmp, count * k, SEEK_SET );
+        if (fread ( ac, 1, count, pfTmp ) != count || fwrite ( ac, 1, count, output ) != count)
+	{
+		fprintf(stderr, "failed to read from or write to database file\n");
+		exit(3);
+	}
       }
 #ifdef WIN32
       SendMessage(hwndPB, PBM_STEPIT, 0, 0);
@@ -1462,9 +1475,9 @@ generate_ts ( const int nTSP, const int nTSC,
 static void
 version ( void ) {
 #ifndef WIN32
-  printf ( "makebearoff $Revision: 1.70 $\n" );
+  printf ( "makebearoff $Revision: 1.71 $\n" );
 #else
-  MessageBox( NULL, "makebearoff $Revision: 1.70 $\n", "Makebearoff", MB_OK );
+  MessageBox( NULL, "makebearoff $Revision: 1.71 $\n", "Makebearoff", MB_OK );
 #endif
 }
 
@@ -1596,7 +1609,7 @@ extern int main( int argc, char **argv )
     dlgprintf( 123, "%d", nHashSize);
     dlgprintf( 124, "%s", szOldBearoff ? "yes" : "no");
     dlgprintf(130, "Generating one-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.70 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.71 $" );
 #else
     fprintf ( stderr, "%-37s\n", _("One-sided database"));
     fprintf ( stderr, "%-37s: %12d\n", _("Number of points"), nOS);
@@ -1707,7 +1720,7 @@ extern int main( int argc, char **argv )
     dlgprintf(125, "" );
     dlgprintf(126, "" );
     dlgprintf(130, "Generating two-sided bearoff database. Please wait." );
-    dlgprintf(131, "makebearoff $Revision: 1.70 $" );
+    dlgprintf(131, "makebearoff $Revision: 1.71 $" );
 #else 
     fprintf ( stderr, "%-37s\n", _("Two-sided database:\n"));
     fprintf ( stderr, "%-37s: %12d\n", _("Number of points"), nTSP);
