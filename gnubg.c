@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.799 2008/09/29 10:00:49 c_anthon Exp $
+ * $Id: gnubg.c,v 1.800 2008/10/22 19:12:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2707,65 +2707,59 @@ CommandRollout( char *sz ) {
 }
 
 
-static void LoadCommands( FILE *pf, char *szFile )
+static void LoadCommands(FILE * pf, char *szFile)
 {
-    char sz[ 2048 ], *pch;
+	char sz[2048], *pch;
 
-    outputpostpone();
-    
-    for(;;) {
-	sz[ 0 ] = 0;
-	
-	/* FIXME shouldn't restart sys calls on signals during this fgets */
-	fgets( sz, sizeof( sz ), pf );
+	outputpostpone();
 
-	if( ( pch = strchr( sz, '\n' ) ) ) *pch = 0;
-	if( ( pch = strchr( sz, '\r' ) ) ) *pch = 0;
+	for (;;) {
+		sz[0] = 0;
 
-	if( ferror( pf ) ) {
-	    outputerr( szFile );
-	    outputresume();
-	    return;
-	}
-	
-	if( feof( pf ) || fInterrupt ) {
-	    outputresume();
-	    return;
-	}
+		/* FIXME shouldn't restart sys calls on signals during this fgets */
+		fgets(sz, sizeof(sz), pf);
 
-	if( *sz == '#' ) /* Comment */
-	    continue;
+		if ((pch = strchr(sz, '\n')))
+			*pch = 0;
+		if ((pch = strchr(sz, '\r')))
+			*pch = 0;
+
+		if (ferror(pf)) {
+			outputerr(szFile);
+			outputresume();
+			return;
+		}
+
+		if (feof(pf) || fInterrupt) {
+			outputresume();
+			return;
+		}
+
+		if (*sz == '#')	/* Comment */
+			continue;
 
 #if USE_PYTHON
 
-        if ( ! strcmp( sz, ">" ) ) {
+		if (!strcmp(sz, ">")) {
 
-          /* Python escape. */
+			/* Python escape. */
 
-          /* Ideally we should be able to handle both
-           * > print 1+1
-           * and
-           * >
-           * print 1+1
-           * sys.exit()
-           *
-           * but so far we only handle the latter...
-           */
+			/* Ideally we should be able to handle both > print 1+1 and > print 1+1 sys.exit() but so far
+			   we only handle the latter... */
 
-          g_assert( FALSE ); /* FIXME... */
-          
-          continue;
+			g_assert(FALSE);	/* FIXME... */
 
-        }
+			continue;
 
-#endif /* USE_PYTHON */
+		}
+#endif				/* USE_PYTHON */
 
-	HandleCommand( sz, acTop );
+		HandleCommand(sz, acTop);
 
-	/* FIXME handle NextTurn events? */
-    }
-    
-    outputresume();
+		/* FIXME handle NextTurn events? */
+	}
+
+	outputresume();
 }
 
 extern void CommandLoadPython(char *sz)
@@ -5669,6 +5663,7 @@ extern char *locale_from_utf8(const char *sz)
 	return ret;
 }
 #endif
+
 extern char *locale_to_utf8(const char *sz)
 {
 	char *ret;
