@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.31 2008/09/29 10:00:50 c_anthon Exp $
+ * $Id: makehyper.c,v 1.32 2008/10/22 19:46:08 c_anthon Exp $
  */
 
 #include "config.h"
@@ -234,7 +234,11 @@ StartFromDatabase( hyperequity ahe[], const int nC,
   for ( i = 0; i < nPos; ++i )
     for ( j = 0; j < nPos; ++j ) {
 
-      fread( ac, 1, 28, pf );
+      if (fread( ac, 1, 28, pf ) != 28)
+      {
+	      perror(szFilename);
+	      exit(EXIT_FAILURE);
+      }
 
       for ( k = 0; k < NUM_OUTPUTS; ++k ) {
         us = ac[ 3 * k ] | ( ac[ 3 * k + 1 ] ) << 8 | ( ac[ 3 * k + 2 ] ) << 16;

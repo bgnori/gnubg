@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.728 2008/10/08 10:24:12 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.729 2008/10/22 19:46:07 c_anthon Exp $
  */
 
 #include "config.h"
@@ -351,22 +351,19 @@ static void StdinReadNotify( gpointer p, gint h, GdkInputCondition cond ) {
     while( nNextTurn )
 	NextTurnNotify( NULL );
     
-    sz[ 0 ] = 0;
-	
-    fgets( sz, sizeof( sz ), stdin );
-
-    if( ( pch = strchr( sz, '\n' ) ) )
-	*pch = 0;
-    
-	
-    if( feof( stdin ) ) {
+    if (fgets( sz, sizeof( sz ), stdin ) == NULL)
+    {
 	if( !isatty( STDIN_FILENO ) )
 	    exit( EXIT_SUCCESS );
 	
 	PromptForExit();
 	return;
-    }	
+    }
 
+    if( ( pch = strchr( sz, '\n' ) ) )
+	*pch = 0;
+    
+	
     fInterrupt = FALSE;
 
     HandleCommand( sz, acTop );
