@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.200 2008/10/22 19:46:08 c_anthon Exp $
+ * $Id: html.c,v 1.201 2008/10/23 10:55:33 c_anthon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.200 2008/10/22 19:46:08 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.201 2008/10/23 10:55:33 c_anthon Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1825,7 +1825,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.200 $";
+  const char szVersion[] = "$Revision: 1.201 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1905,7 +1905,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.200 $";
+  const char szVersion[] = "$Revision: 1.201 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3804,7 +3804,7 @@ extern void CommandExportPositionGOL2Clipboard( char *sz )
 
     szClipboard = (char *) malloc ( l + 1 );
 
-    if (fread( szClipboard, 1, l + 1, pf ) != (ulong) l+1)
+    if (fread( szClipboard, 1, l + 1, pf ) != (unsigned long) l+1)
     {
 	    outputerr("temporary file");
 	    free(szClipboard);
