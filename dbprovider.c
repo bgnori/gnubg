@@ -19,20 +19,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.18 2008/07/29 11:46:32 c_anthon Exp $
+ * $Id: dbprovider.c,v 1.19 2008/10/24 15:09:07 c_anthon Exp $
  */
 
 #include "config.h"
-#if USE_PYTHON
-#include "gnubgmodule.h"
-#ifdef WIN32
-/* needed for mingw inclusion of Python.h */
-#ifndef _MSC_VER
-#include <stdint.h>
-#endif
-#endif
-#include <Python.h>
-#endif
 #include <glib.h>
 #include <glib/gstdio.h>
 #include <string.h>
@@ -93,6 +83,87 @@ DBProvider providers[NUM_PROVIDERS] =
 #else
 DBProvider providers[1] = {{0, 0, 0, 0, 0, 0, 0, "No Providers", "No Providers", "No Providers", 0, 0, 0, 0, 0}};
 #endif
+
+extern RowSet* MallocRowset(size_t rows, size_t cols)
+{
+	size_t i;
+	RowSet* pRow = malloc(sizeof(RowSet));
+
+	pRow->widths = malloc(cols * sizeof(int));
+	memset(pRow->widths, 0, cols * sizeof(int));
+
+	pRow->data = malloc(rows * sizeof(char*));
+	for (i = 0; i < rows; i++)
+	{
+		pRow->data[i] = malloc(cols * sizeof(char*));
+		memset(pRow->data[i], 0, cols * sizeof(char*));
+	}
+
+	pRow->cols = cols;
+	pRow->rows = rows;
+
+	return pRow;
+}
+
+extern void SetRowsetData(RowSet *rs, size_t row, size_t col, const char *data)
+{
+	size_t size;
+	if (!data)
+		data = "";
+
+	rs->data[row][col] = malloc(strlen(data) + 1);
+	strcpy(rs->data[row][col], data);
+
+	size = strlen(data);
+	if (row == 0 || size > rs->widths[col])
+		rs->widths[col] = size;
+}
+
+extern void FreeRowset(RowSet* pRow)
+{
+	unsigned int i, j;
+	free(pRow->widths);
+
+	for (i = 0; i < pRow->rows; i++)
+	{
+		for (j = 0; j < pRow->cols; j++)
+		{
+			free (pRow->data[i][j]);
+		}
+		free(pRow->data[i]);
+	}
+	free(pRow->data);
+
+	pRow->cols = pRow->rows = 0;
+	pRow->data = NULL;
+	pRow->widths = NULL;
+}
+
+int RunQueryValue(DBProvider *pdb, const char *query)
+{
+	RowSet *rs;
+	rs = pdb->Select(query);
+	if (rs && rs->rows > 1)
+	{
+		int id = strtol (rs->data[1][0], NULL, 0);
+		FreeRowset(rs);
+		return id;
+	}
+	else
+		return -1;
+}
+
+extern RowSet* RunQuery(char *sz)
+{
+	DBProvider *pdb;
+	if ((pdb = ConnectToDB(dbProviderType)) != NULL)
+	{
+		RowSet *rs = pdb->Select(sz);
+		pdb->Disconnect();
+		return rs;
+	}
+	return NULL;
+}
 
 const char *GetProviderName(int i)
 {
