@@ -16,30 +16,20 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.h,v 1.11 2008/02/09 22:56:58 Superfly_Jon Exp $
+ * $Id: relational.h,v 1.12 2008/10/24 15:09:08 c_anthon Exp $
  */
 
 #ifndef _RELATIONAL_H_
 #define _RELATIONAL_H_
 
+#include <dbprovider.h>
 #include <stddef.h>
 #include <sys/types.h>
 
 #define DB_VERSION 1
 
-typedef struct _RowSet
-{
-	size_t cols, rows;
-	char ***data;
-	size_t *widths;
-} RowSet;
 
-extern RowSet* RunQuery(char *sz);
-extern RowSet* MallocRowset(size_t rows, size_t cols);
-extern void SetRowsetData(RowSet *rs, size_t row, size_t col, const char *data);
-extern void FreeRowset(RowSet* pRow);
 extern int RelationalUpdatePlayerDetails(const char* oldName, const char* newName, const char* newNotes);
-
 extern float Ratio(float a, int b);
 
 #endif /* _RELATIONAL_H_ */
