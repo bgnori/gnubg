@@ -16,10 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.803 2008/10/24 15:09:07 c_anthon Exp $
+ * $Id: gnubg.c,v 1.804 2008/11/01 13:33:22 c_anthon Exp $
  */
 
 #include "config.h"
+#include "gnubgmodule.h"
 
 #include <sys/types.h>
 #include <stdlib.h>
@@ -83,7 +84,6 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "credits.h"
 #include "external.h"
 #include "neuralnet.h"
-#include "gnubgmodule.h"
 #include "util.h"
 
 #if HAVE_SOCKETS

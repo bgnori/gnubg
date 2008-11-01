@@ -19,10 +19,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.19 2008/10/24 15:09:07 c_anthon Exp $
+ * $Id: dbprovider.c,v 1.20 2008/11/01 13:33:22 c_anthon Exp $
  */
 
 #include "config.h"
+
+#if USE_PYTHON
+#include "gnubgmodule.h"
+#endif
+
+#include <stdlib.h>
 #include <glib.h>
 #include <glib/gstdio.h>
 #include <string.h>
