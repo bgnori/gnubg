@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.729 2008/10/22 19:46:07 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.730 2008/11/09 23:19:18 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6222,7 +6222,7 @@ extern void GTKBearoffProgress( int i ) {
     gchar *gsz;
     
     if( !pwDialog ) {
-		pwDialog = GTKCreateDialog( _("GNU Backgammon"), DT_INFO, NULL, DIALOG_FLAG_MODAL, NULL, NULL );
+		pwDialog = GTKCreateDialog( _("GNU Backgammon"), DT_INFO, NULL, DIALOG_FLAG_MODAL|DIALOG_FLAG_NOTIDY, NULL, NULL );
 	gtk_window_set_role( GTK_WINDOW( pwDialog ), "progress" );
 	gtk_window_set_type_hint( GTK_WINDOW(pwDialog), GDK_WINDOW_TYPE_HINT_DIALOG );
 	g_signal_connect( G_OBJECT( pwDialog ), "destroy",
