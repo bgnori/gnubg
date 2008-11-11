@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.253 2008/11/10 22:40:31 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.254 2008/11/11 22:42:42 c_anthon Exp $
  */
 
 /*! \file gtkboard.c
@@ -314,6 +314,11 @@ static gboolean board_expose( GtkWidget *drawing_area, GdkEventExpose *event,
     free(puch);
     
     return TRUE;
+}
+
+extern void stop_board_expose(BoardData *bd)
+{
+	g_signal_handlers_disconnect_by_func(G_OBJECT( bd->drawing_area ), G_CALLBACK( board_expose ), bd );    
 }
 
 static void board_invalidate_rect( GtkWidget *drawing_area, int x, int y, int
@@ -3849,11 +3854,11 @@ static void board_init( Board *board )
 
 #if USE_BOARD3D
 	/* 3d board drawing area */
-    if (gtk_gl_init_success)
-    {
-	    CreateGLWidget(bd);
-	    gtk_container_add(GTK_CONTAINER(board), GetDrawingArea3d(bd->bd3d));
-    }
+    	gtk_gl_init_success = gtk_gl_init_success ? CreateGLWidget(bd) : FALSE;
+    	if (gtk_gl_init_success)
+    	{
+		gtk_container_add(GTK_CONTAINER(board), GetDrawingArea3d(bd->bd3d));
+	}
 	else
 		bd->bd3d = NULL;
 #endif

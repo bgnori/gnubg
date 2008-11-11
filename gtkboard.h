@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.92 2008/09/25 12:00:31 c_anthon Exp $
+ * $Id: gtkboard.h,v 1.93 2008/11/11 22:42:42 c_anthon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -185,5 +185,6 @@ DrawDie( GdkDrawable *pd,
          const int s, GdkGC *gc, int x, int y, int fColour, int n );
 
 extern int UpdateMove( BoardData *bd, TanBoard anBoard );
+extern void stop_board_expose(BoardData *bd);
 
 #endif

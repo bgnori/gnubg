@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.804 2008/11/01 13:33:22 c_anthon Exp $
+ * $Id: gnubg.c,v 1.805 2008/11/11 22:42:41 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2441,7 +2441,11 @@ extern void PromptForExit( void )
     
 #if USE_GTK
 	if (fX)
+	{
+		stop_board_expose(bd);
 		board_free_pixmaps(bd);
+	}
+
 #if USE_BOARD3D
 	if (fX && gtk_gl_init_success)
 		Tidy3dObjects(bd->bd3d, bd->rd);
