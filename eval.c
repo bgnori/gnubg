@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.357 2008/09/25 09:25:52 c_anthon Exp $
+ * $Id: eval.c,v 1.358 2008/11/11 11:00:55 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6152,7 +6152,7 @@ getCurrentGammonRates ( float aarRates[ 2 ][ 2 ],
                         float arOutput[],
                         const TanBoard anBoard,
                         cubeinfo *pci,
-                        evalcontext *pec ) {
+                        const evalcontext *pec ) {
 
   if( EvaluatePosition( NULL, anBoard, arOutput, pci, pec ) < 0 )
       return -1;

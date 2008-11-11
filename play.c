@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.324 2008/10/22 20:22:13 c_anthon Exp $
+ * $Id: play.c,v 1.325 2008/11/11 11:00:55 c_anthon Exp $
  */
 
 #include "config.h"
@@ -861,14 +861,15 @@ static int ComputerTurn( void ) {
 	  decisionData dd;
 
 #if defined (REDUCTION_CODE)
-      evalcontext ecResign = { FALSE, 0, 0, TRUE, 0.0 };
+      const evalcontext ecResign = { FALSE, 2, 0, TRUE, 0.0 };
 #else
-      evalcontext ecResign = { FALSE, 0, FALSE, TRUE, 0.0 };
+      const evalcontext ecResign = { FALSE, 2, FALSE, TRUE, 0.0 };
 #endif
      
 	  dd.pboard = msBoard();
 	  dd.pci = &ci;
 	  dd.pec = &ecResign;
+	  
       if (ms.anDice[0] > 0)
 	  {
           float t;

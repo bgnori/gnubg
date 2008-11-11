@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.385 2008/09/29 10:00:49 c_anthon Exp $
+ * $Id: backgammon.h,v 1.386 2008/11/11 11:00:55 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -236,7 +236,7 @@ typedef struct _decisionData
 	rolloutstat aarsStatistics[ 2 ][ 2 ];
 	float aarRates[ 2 ][ 2 ];
     cubeinfo* pci;
-	evalcontext *pec;
+	const evalcontext *pec;
 	evalsetup   *pes;
 	ConstTanBoard pboard;
 	char *szOutput;
