@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.316 2008/09/29 10:00:51 c_anthon Exp $
+ * $Id: set.c,v 1.317 2008/11/14 19:51:27 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4257,10 +4257,6 @@ extern void CommandSetGNUBgID(char *sz)
 			}
 			g_free(out);
 		}
-	}
-	if (!posid && !matchid) {
-		outputerrf(_("No valid GNUBG id's found"));
-		return;
 	}
 	if (!posid && !matchid) {
 		outputerrf(_("No valid GNUBG id's found"));
