@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.730 2008/11/09 23:19:18 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.731 2008/11/15 22:34:29 c_anthon Exp $
  */
 
 #include "config.h"
@@ -131,9 +131,6 @@ typedef enum _gnubgcommand {
     CMD_RECORD_SHOW,
     CMD_REJECT,
     CMD_RELATIONAL_ADD_MATCH,
-    CMD_RESIGN_N,
-    CMD_RESIGN_G,
-    CMD_RESIGN_B,
     CMD_ROLL,
     CMD_ROLLOUT,
     CMD_ROLLOUT_CUBE,
@@ -194,9 +191,6 @@ static const char *aszCommands[ NUM_CMDS ] = {
     "record show",
     "reject",
     "relational add match",
-    "resign normal",
-    "resign gammon",
-    "resign backgammon",
     "roll",
     "rollout",
     "rollout =cube",
@@ -3368,7 +3362,7 @@ GtkItemFactoryEntry aife[] = {
 	{ N_("/_Game/_Finish move"), "<control>F", FinishMove, 0, NULL, NULL },
 	{ N_("/_Game/-"), NULL, NULL, 0, "<Separator>", NULL },
 	{ N_("/_Game/_Double"), "<control>D", Command, CMD_DOUBLE, "<StockItem>", GNUBG_STOCK_DOUBLE },
-	{ N_("/_Game/Re_sign"), NULL, GTKResign, 0, NULL, NULL },
+	{ N_("/_Game/Re_sign"), NULL, GTKResign, 0, "<StockItem>", GNUBG_STOCK_RESIGN },
 	{ N_("/_Game/-"), NULL, NULL, 0, "<Separator>", NULL },
 	{ N_("/_Game/_Accept"), NULL, Command, CMD_ACCEPT, "<StockItem>", GNUBG_STOCK_ACCEPT },
 	{ N_("/_Game/Re_ject"), NULL, Command, CMD_REJECT, "<StockItem>", GNUBG_STOCK_REJECT },
