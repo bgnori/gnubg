@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-AC_REVISION($Revision: 1.208 $)
+AC_REVISION($Revision: 1.209 $)
 AC_INIT([GNU Backgammon],[0.90.0],[bug-gnubg@gnu.org],[gnubg])
 AC_CANONICAL_BUILD
 AC_CANONICAL_HOST
@@ -119,7 +119,7 @@ if test "x$have_freetype" = "xyes"; then
 	AC_DEFINE(HAVE_FREETYPE, 1, [Define if you have freetype2])
 fi
 
-if test "x$have_linpng" = "xyes"; then
+if test "x$have_libpng" = "xyes"; then
 	AC_DEFINE(HAVE_LIBPNG, 1, [Define if you have libpng])
 fi
 
