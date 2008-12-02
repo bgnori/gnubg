@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.53 2008/08/10 06:43:23 c_anthon Exp $
+ * $Id: gtktheory.c,v 1.54 2008/12/02 00:21:46 c_anthon Exp $
  */
 
 #include "config.h"
@@ -530,6 +530,7 @@ static void GraphExpose( GtkWidget *pwGraph, GdkEventExpose *pev,
 			      x + cx * i / 20 - width/2 /* FIXME */, y-height-1, layout );
 	}
     }
+    g_object_unref(layout);
 
     for( i = 0; i < 3; i++ )
 	ax[ i ] = (int)(x + cx * ptw->aar[ iPlayer ][ i ]);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.805 2008/11/11 22:42:41 c_anthon Exp $
+ * $Id: gnubg.c,v 1.806 2008/12/02 00:21:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5032,7 +5032,7 @@ int main(int argc, char *argv[])
 
 #if USE_PYTHON
 	PushSplash(pwSplash, _("Initialising"), _("Python"), 250);
-	PythonInitialise();
+	PythonInitialise(argv[0]);
 #endif
 
 	SetExitSoundOff();

@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.254 2008/11/11 22:42:42 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.255 2008/12/02 00:21:46 c_anthon Exp $
  */
 
 /*! \file gtkboard.c
@@ -100,6 +100,7 @@ extern GtkWidget *board_new(renderdata* prd)
 	bd->resigned = 0;
 	bd->diceShown = DICE_NOT_SHOWN;
 	bd->grayBoard = FALSE;
+	bd->turn = 0;
 
 	bd->x_dice[ 0 ] = bd->y_dice[ 0 ] = 0;
 	bd->x_dice[ 1 ] = bd->y_dice[ 1 ] = 0;
