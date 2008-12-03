@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.76 2008/10/08 10:24:13 c_anthon Exp $
+* $Id: drawboard3d.c,v 1.77 2008/12/03 10:59:58 c_anthon Exp $
 */
 
 #include "config.h"
@@ -181,6 +181,8 @@ static void preDrawPiece0(const renderdata* prd, int display)
 	else
 	{
 		circleSloped(radius, 0.f, PIECE_DEPTH, prd->curveAccuracy);
+		Free3d(p, prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1);
+		Free3d(n, prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1);
 		return;
 	}
 	/* Draw side of piece */

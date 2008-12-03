@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.72 2008/07/29 11:46:32 c_anthon Exp $
+ * $Id: dice.c,v 1.73 2008/12/03 10:59:56 c_anthon Exp $
  */
 
 #include "config.h"
@@ -686,6 +686,13 @@ extern void dice_init_callback(int (*rdo_callback) (void),
 	GetManualDice = gmd_callback;
 }
 
+extern void free_rngctx(rngcontext * rngctx)
+{
+#if HAVE_LIBGMP
+	mpz_clear(rngctx->nz);
+#endif
+	g_free(rngctx);
+}
 extern void *InitRNG( unsigned long *pnSeed, int *pfInitFrom,
 		const int fSet, const rng rngx)
 {

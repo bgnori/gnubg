@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.806 2008/12/02 00:21:45 c_anthon Exp $
+ * $Id: gnubg.c,v 1.807 2008/12/03 10:59:56 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2360,8 +2360,8 @@ Shutdown( void ) {
 
   RenderFinalise();
 
-  g_free(rngctxCurrent);
-  g_free(rngctxRollout);
+  free_rngctx(rngctxCurrent);
+  free_rngctx(rngctxRollout);
 
   FreeMatch();
   ClearMatch();
@@ -4979,6 +4979,7 @@ int main(int argc, char *argv[])
 	xmlMemSetup(g_free, wrap_xml_g_malloc, wrap_xml_g_realloc, g_strdup);
 #endif
 #endif
+
 
 	/* print version and exit if -v option given */
 	version();
