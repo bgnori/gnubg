@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.164 2008/09/17 19:57:00 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.165 2008/12/03 10:59:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -145,6 +145,8 @@ read_board_designs ( void ) {
   g_free ( sz );
 
   plFinal = g_list_concat ( plSystem, plUser );
+
+  g_list_free(plUser);
 
   return plFinal;
 
@@ -1966,7 +1968,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.164 2008/09/17 19:57:00 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.165 2008/12/03 10:59:57 c_anthon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -3461,9 +3463,11 @@ ParseBoardDesigns ( const char *szFile, const int fDeletable ) {
           return NULL;
 
   pxpc = xmlCreateMemoryParserCtxt ( contents, (int)size );
+  g_free(contents);
   if ( ! pxpc )
           return NULL;
 
+  xmlFree(pxpc->sax);
   pxpc->sax = &xsaxScan;
   pxpc->userData = &pc;
 
@@ -3473,6 +3477,9 @@ ParseBoardDesigns ( const char *szFile, const int fDeletable ) {
 
   if ( pc.err )
     free_board_designs ( pc.pl );
+
+  pxpc -> sax = NULL;
+  xmlFreeParserCtxt(pxpc);
 
   return pc.err ? NULL : pc.pl;
 
