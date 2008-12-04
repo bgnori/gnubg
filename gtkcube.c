@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.62 2008/08/11 08:50:21 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.63 2008/12/04 22:12:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -622,6 +622,7 @@ CubeAnalysis( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
       sz = g_strdup_printf ( "(%.1f%%)", 100.0 * r );
       pw = gtk_label_new ( sz );
+      g_free(sz);
       gtk_misc_set_alignment( GTK_MISC( pw ), 1, 0.5 );
 
       gtk_table_attach ( GTK_TABLE ( pwTable ), pw,
