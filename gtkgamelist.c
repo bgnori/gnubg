@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.32 2008/12/03 10:59:57 c_anthon Exp $
+* $Id: gtkgamelist.c,v 1.33 2008/12/04 22:12:16 c_anthon Exp $
 */
 
 #include "config.h"
@@ -47,6 +47,7 @@ static int gtk_compare_fonts(GtkStyle* psOne, GtkStyle* psTwo)
 
 static void gtk_set_font(GtkStyle* psStyle, GtkStyle* psValue)
 {
+	pango_font_description_free(psStyle->font_desc);
 	psStyle->font_desc = pango_font_description_copy(psValue->font_desc);
 }
 

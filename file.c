@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: file.c,v 1.17 2008/07/29 11:46:32 c_anthon Exp $
+ * $Id: file.c,v 1.18 2008/12/04 22:12:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -70,7 +70,7 @@ typedef struct _FileHelper {
 static FileHelper *OpenFileHelper(const char *filename)
 {
 	FileHelper *fh;
-	if (!g_file_test(filename, G_FILE_TEST_EXISTS) || g_file_test(filename, G_FILE_TEST_IS_DIR))
+	if (!filename || !g_file_test(filename, G_FILE_TEST_EXISTS) || g_file_test(filename, G_FILE_TEST_IS_DIR))
 		return NULL;	/* File not found */
 
 	fh = g_new(FileHelper, 1);
