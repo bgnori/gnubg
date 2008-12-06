@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.77 2008/12/03 10:59:58 c_anthon Exp $
+* $Id: drawboard3d.c,v 1.78 2008/12/06 21:25:45 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -164,8 +164,8 @@ static void preDrawPiece0(const renderdata* prd, int display)
 	float discradius = radius * 0.8f;
 	float lip = radius - discradius;
 	float height = PIECE_DEPTH - 2 * lip;
-	float ***p = Alloc3d(prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1, 3);
-	float ***n = Alloc3d(prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1, 3);
+	float ***p;
+	float ***n;
 
 	step = (2 * (float)G_PI) / prd->curveAccuracy;
 
@@ -181,8 +181,6 @@ static void preDrawPiece0(const renderdata* prd, int display)
 	else
 	{
 		circleSloped(radius, 0.f, PIECE_DEPTH, prd->curveAccuracy);
-		Free3d(p, prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1);
-		Free3d(n, prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1);
 		return;
 	}
 	/* Draw side of piece */
@@ -192,6 +190,9 @@ static void preDrawPiece0(const renderdata* prd, int display)
 	glPopMatrix();
 
 	/* Draw edges of piece */
+	p = Alloc3d(prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1, 3);
+	n = Alloc3d(prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1, 3);
+
 	angle2 = 0;
 	for (j = 0; j <= prd->curveAccuracy / 4; j++)
 	{
@@ -253,6 +254,9 @@ static void preDrawPiece0(const renderdata* prd, int display)
 		glEnd();
 	}
 
+	Free3d(p, prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1);
+	Free3d(n, prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1);
+
 	/* Anti-alias piece edges */
 	glLineWidth(1.f);
 	glEnable(GL_LINE_SMOOTH);
@@ -268,9 +272,6 @@ static void preDrawPiece0(const renderdata* prd, int display)
 
 	if (prd->ChequerMat[0].pTexture && prd->pieceTextureType == PTT_TOP)
 		glEnable(GL_TEXTURE_2D);	/* Re-enable texturing */
-
-	Free3d(p, prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1);
-	Free3d(n, prd->curveAccuracy + 1, prd->curveAccuracy / 4 + 1);
 }
 
 static void preDrawPiece1(const renderdata* prd, int display)
