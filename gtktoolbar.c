@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.50 2008/11/15 22:34:29 c_anthon Exp $
+ * $Id: gtktoolbar.c,v 1.51 2008/12/08 21:24:13 c_anthon Exp $
  */
 
 #include "config.h"
@@ -52,8 +52,9 @@ typedef struct _toolbarwidget {
   GtkWidget *pwDouble;
   GtkWidget *pwTake;       /* button for "Take" */
   GtkWidget *pwDrop;       /* button for "Drop" */
-  GtkWidget *pwResign;       /* button for "Play" */
-  GtkWidget *pwHint;      /* button for "Reset" */
+  GtkWidget *pwResign;       /* button for "Resign" */
+  GtkWidget *pwFinishGame;       /* button for "play game" */
+  GtkWidget *pwHint;      /* button for "Hint" */
   GtkWidget *pwReset;      /* button for "Reset" */
   GtkWidget *pwEdit;       /* button for "Edit" */
   GtkWidget *pwHideShowPanel; /* button hide/show panel */
@@ -329,11 +330,10 @@ ToolbarNew ( void ) {
   /* Resign button */
 	ptw->pwResign = gtk_toolbar_insert_stock(GTK_TOOLBAR(pwToolbar), GNUBG_STOCK_RESIGN, _("Resign the current game"), NULL, G_CALLBACK(GTKResign), NULL, -1);
 
-  /* play button */
-  
-  /* How often do you use the "play" button? I guess it's so seldom
-   * you won't mind using the pulldown menues */
-  
+  /* drop button */
+	ptw->pwFinishGame = gtk_toolbar_insert_stock(GTK_TOOLBAR(pwToolbar), GNUBG_STOCK_QUICK_GAME, _("Let computer finish the game"), NULL, G_CALLBACK(ButtonClicked), "quick game", -1);
+
+
   gtk_toolbar_append_space(GTK_TOOLBAR(pwToolbar));
   
   /* reset button */
