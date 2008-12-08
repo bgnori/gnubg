@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.73 2008/12/06 21:25:20 Superfly_Jon Exp $
+ * $Id: makebearoff.c,v 1.74 2008/12/08 10:28:47 c_anthon Exp $
  */
 
 #include "config.h"
@@ -24,7 +24,9 @@
 #include <glib.h>
 #include <glib/gstdio.h>
 #include <stdio.h>
+#ifdef WIN32
 #include <io.h>
+#endif
 #include <stdlib.h>
 #include <string.h>
 #if HAVE_UNISTD_H
@@ -1291,7 +1293,7 @@ generate_ts ( const int nTSP, const int nTSC,
 
 static void
 version ( void ) {
-  printf ( "makebearoff $Revision: 1.73 $\n" );
+  printf ( "makebearoff $Revision: 1.74 $\n" );
 }
 
 
