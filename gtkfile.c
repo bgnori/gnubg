@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.45 2008/12/09 16:03:20 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.46 2008/12/09 19:40:42 c_anthon Exp $
  */
 
 #include "config.h"
@@ -534,7 +534,6 @@ static GtkTreeModel *batch_create_model(GSList * filenames)
 		char *folder;
 		char *file;
 		char *filename = (char *) iter->data;
-		int ftype = N_IMPORT_TYPES;
 
 		gtk_list_store_append(store, &tree_iter);
 
