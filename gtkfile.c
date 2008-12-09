@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.44 2008/07/29 11:46:33 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.45 2008/12/09 16:03:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -82,9 +82,9 @@ char *programdir, *pc, *tmp;
   gtk_window_set_modal (GTK_WINDOW (fc), TRUE);
   gtk_window_set_transient_for (GTK_WINDOW (fc), GTK_WINDOW (pwMain));
 
-  if (folder && *folder)
+  if (folder && *folder && g_file_test(folder, G_FILE_TEST_IS_DIR))
     gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (fc), folder);
-  if (name && *name)
+  if (name && *name && g_file_test(name, G_FILE_TEST_EXISTS))
     gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (fc), name);
 
 #ifdef WIN32
@@ -534,16 +534,18 @@ static GtkTreeModel *batch_create_model(GSList * filenames)
 		char *folder;
 		char *file;
 		char *filename = (char *) iter->data;
+		int ftype = N_IMPORT_TYPES;
 
 		gtk_list_store_append(store, &tree_iter);
 
 		fpd = ReadFilePreview(filename);
-		if (!fpd)
-			continue;
-
-		desc = g_strdup(import_format[fpd->type].description);
+		if (fpd)
+			desc = g_strdup(import_format[fpd->type].description);
+		else
+			desc = g_strdup(import_format[N_IMPORT_TYPES].description);
 		g_free(fpd);
 		gtk_list_store_set(store, &tree_iter, COL_DESC, desc, -1);
+		g_free(desc);
 
 		DisectPath(filename, NULL, &file, &folder);
 		gtk_list_store_set(store, &tree_iter, COL_FILE, file, -1);
