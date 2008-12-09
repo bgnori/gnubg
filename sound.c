@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.76 2008/07/29 11:46:36 c_anthon Exp $
+ * $Id: sound.c,v 1.77 2008/12/09 00:37:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -210,8 +210,10 @@ static void PlaySoundGst(const char *fn, gboolean sync)
 		outputerrf("Failed to play sound file '%s'", fn);
 		gst_element_set_state(play, GST_STATE_NULL);
 		gst_object_unref(GST_OBJECT(play));
+		g_free(uri);
 		return;
 	}
+	g_free(uri);
 
 
 	bus = gst_pipeline_get_bus (GST_PIPELINE (play));
