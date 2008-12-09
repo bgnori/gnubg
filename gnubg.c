@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.808 2008/12/04 22:12:15 c_anthon Exp $
+ * $Id: gnubg.c,v 1.809 2008/12/09 00:37:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4396,15 +4396,19 @@ move_rc_files (void)
 
   newfile = g_build_filename (szHomeDirectory, "gnubgautorc", NULL);
   oldfile = g_build_filename (olddir, ".gnubgautorc", NULL);
-  g_rename (oldfile, newfile);
+  if (g_file_test(oldfile, G_FILE_TEST_IS_REGULAR) && !g_file_test(newfile, G_FILE_TEST_EXISTS))
+	  g_rename (oldfile, newfile);
   g_free (oldfile);
   g_free (newfile);
 
   newfile = g_build_filename (szHomeDirectory, "gnubgrc", NULL);
   oldfile = g_build_filename (olddir, ".gnubgrc", NULL);
-  g_rename (oldfile, newfile);
+  if (g_file_test(oldfile, G_FILE_TEST_IS_REGULAR) && !g_file_test(newfile, G_FILE_TEST_EXISTS))
+	  g_rename (oldfile, newfile);
   g_free (oldfile);
   g_free (newfile);
+
+  g_free(olddir);
 
 }
 
