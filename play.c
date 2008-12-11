@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.327 2008/12/09 00:40:30 c_anthon Exp $
+ * $Id: play.c,v 1.328 2008/12/11 15:30:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3352,13 +3352,17 @@ extern void CommandQuickGame(char *sz)
 	int fAutoGame_store = fAutoGame;
 	int fDisplay_store = fDisplay;
 	int fQuiet_store = fQuiet;
-	evalcontext ec_cheq_store[2] = { ap[0].esChequer.ec, ap[1].esChequer.ec };
-	evalcontext ec_cube_store[2] = { ap[0].esCube.ec, ap[1].esCube.ec };
 #if defined (REDUCTION_CODE)
 	const evalcontext ec_quick = { FALSE, 0, 0, TRUE, 0.0 };
 #else
 	const evalcontext ec_quick = { FALSE, 0, FALSE, TRUE, 0.0 };
 #endif
+	evalcontext ec_cheq_store[2];
+	evalcontext ec_cube_store[2];
+	ec_cheq_store[0] = ap[0].esChequer.ec;
+	ec_cheq_store[1] = ap[1].esChequer.ec;
+	ec_cube_store[0] = ap[0].esCube.ec;
+	ec_cube_store[1] = ap[1].esCube.ec;
 
 
 	if (ms.gs != GAME_PLAYING) {
