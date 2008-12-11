@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.736 2008/12/11 09:20:20 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.737 2008/12/11 22:12:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -107,7 +107,7 @@ typedef enum _gnubgcommand {
     CMD_ANALYSE_MOVE,
     CMD_ANALYSE_GAME,
     CMD_ANALYSE_MATCH,
-    CMD_QUICK_GAME,
+    CMD_END_GAME,
     CMD_DECLINE,
     CMD_DOUBLE,
     CMD_EVAL,
@@ -168,7 +168,7 @@ static const char *aszCommands[ NUM_CMDS ] = {
     "analyse move",
     "analyse game",
     "analyse match",
-    "quick game",
+    "end game",
     "decline",
     "double",
     "eval",
@@ -3376,7 +3376,7 @@ GtkItemFactoryEntry aife[] = {
 	{ N_("/_Game/-"), NULL, NULL, 0, "<Separator>", NULL },
 	{ N_("/_Game/Play computer turn"), NULL, Command, CMD_PLAY, NULL,
 		NULL },
-	{ N_("/_Game/_Quick Game"), "<control>G", Command, CMD_QUICK_GAME, "<StockItem>", GNUBG_STOCK_QUICK_GAME },
+	{ N_("/_Game/_End Game"), "<control>G", Command, CMD_END_GAME, "<StockItem>", GNUBG_STOCK_END_GAME },
 	{ N_("/_Game/-"), NULL, NULL, 0, "<Separator>", NULL },
 	{ N_("/_Game/Swap players"), NULL, Command, CMD_SWAP_PLAYERS, NULL,
 		NULL },

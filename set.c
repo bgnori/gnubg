@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.317 2008/11/14 19:51:27 c_anthon Exp $
+ * $Id: set.c,v 1.318 2008/12/11 22:12:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -110,7 +110,7 @@ SetSeed ( const rng rngx, void *rngctx, char *sz ) {
 	return;
     }
 
-    if( *sz ) {
+    if( sz && *sz ) {
 #if HAVE_LIBGMP
 	if( InitRNGSeedLong( sz, rngx, rngctx ) )
 	    outputl( _("You must specify a valid seed (see `help set "

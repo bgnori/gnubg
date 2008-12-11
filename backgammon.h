@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.387 2008/12/08 21:24:12 c_anthon Exp $
+ * $Id: backgammon.h,v 1.388 2008/12/11 22:12:51 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -650,7 +650,7 @@ extern void CommandNewMatch(char *);
 extern void CommandNewSession(char *);
 extern void CommandNext(char *);
 extern void CommandNotImplemented(char *);
-extern void CommandQuickGame(char *);
+extern void CommandEndGame(char *);
 extern void CommandPlay(char *);
 extern void CommandPrevious(char *);
 extern void CommandQuit(char *);
