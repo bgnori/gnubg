@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.329 2008/12/11 22:12:52 c_anthon Exp $
+ * $Id: play.c,v 1.330 2008/12/12 10:20:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1766,7 +1766,7 @@ extern void CommandAgree( char *sz ) {
 
     if (!move_is_last_in_match())
     {
-	    int answer = GetInputYN(_("The resignation is not the last move in the match.\n"
+	    int answer = GetInputYN(_("This is not the last move in the match.\n"
 				    "Continuing will destroy the remainder of the match. Continue?"));
 	    if (!answer)
 		    return;
