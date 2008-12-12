@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.257 2008/12/12 13:06:41 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.258 2008/12/12 13:42:41 c_anthon Exp $
  */
 
 /*! \file gtkboard.c
@@ -4118,7 +4118,8 @@ static void board_init( Board *board )
 static void board_class_init( BoardClass *c )
 {
 
-    parent_class = gtk_type_class( GTK_TYPE_VBOX );
+    parent_class = g_type_class_peek_parent(c);
+    g_assert(parent_class);
     
     ( (GtkWidgetClass *) c )->size_allocate = board_size_allocate;
     ( (GtkWidgetClass *) c )->size_request = board_size_request;
