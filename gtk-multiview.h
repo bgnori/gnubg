@@ -15,7 +15,7 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * $Id: gtk-multiview.h,v 1.6 2008/09/04 13:19:20 c_anthon Exp $
+ * $Id: gtk-multiview.h,v 1.7 2008/12/12 13:06:41 c_anthon Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
@@ -50,7 +50,7 @@ struct _GtkMultiviewClass
   GtkContainerClass parent_class;
 };
 
-GtkType    gtk_multiview_get_type      (void);
+GType    gtk_multiview_get_type      (void);
 GtkWidget *gtk_multiview_new           (void);
 void       gtk_multiview_prepend_child (GtkMultiview *multiview,
 					GtkWidget    *child);
