@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.37 2008/12/03 10:59:58 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.38 2008/12/12 22:32:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -62,6 +62,10 @@ Warning warnings[WARN_NUM_WARNINGS] =
 	{
 		N_("Interupt the current process?"),
 		"stop", TRUE, TRUE
+	},
+	{
+		N_("This will play to the end of the game automatically, do you want to continue?"),
+		"endgame", TRUE, TRUE
 	}
 };
 

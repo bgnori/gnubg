@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.95 2008/12/03 10:59:58 c_anthon Exp $
+* $Id: misc3d.c,v 1.96 2008/12/12 22:32:03 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2536,4 +2536,15 @@ extern void Draw3d(const BoardData* bd)
 		else
 			drawBoard(bd, bd->bd3d, bd->rd);
 	}
+}
+
+int diceRollingSave;
+void SuspendDiceRolling(renderdata *prd)
+{
+	diceRollingSave = prd->animateRoll;
+	prd->animateRoll = FALSE;
+}
+void ResumeDiceRolling(renderdata *prd)
+{
+	prd->animateRoll = diceRollingSave;
 }

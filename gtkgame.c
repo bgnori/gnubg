@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.737 2008/12/11 22:12:51 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.738 2008/12/12 22:32:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3511,9 +3511,13 @@ GtkItemFactoryEntry aife[] = {
 	}
 };
 
+extern int automaticTask;
+
 static void Stop( GtkWidget *pw, gpointer unused )
 {
-	if (!GTKShowWarning(WARN_STOP, pw))
+	if (automaticTask)
+		automaticTask = FALSE;
+	else if (!GTKShowWarning(WARN_STOP, pw))
 		return;
 
 	fInterrupt = TRUE;
