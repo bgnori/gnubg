@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.331 2008/12/12 22:32:03 Superfly_Jon Exp $
+ * $Id: play.c,v 1.332 2008/12/13 19:04:41 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3415,6 +3415,7 @@ extern void CommandEndGame(char *sz)
 	automaticTask = TRUE;
 #if USE_GTK
 	GTKSuspendInput();
+	ProcessGtkEvents();
 #endif
 
 	while (ms.gs == GAME_PLAYING && automaticTask)
