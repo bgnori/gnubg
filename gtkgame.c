@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.738 2008/12/12 22:32:02 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.739 2008/12/13 19:04:41 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -297,7 +297,10 @@ extern void GTKSuspendInput(void)
 		call, and won't allow commands like roll, move or double. */
 		grabbedWidget = pwGrab;
 		if (pwGrab == pwStopTest)
+		{
 			gtk_widget_set_sensitive(pwStopTest, TRUE);
+			gtk_widget_grab_focus(pwStopTest);
+		}
 		gtk_grab_add(pwGrab);
 		grabIdSignal = g_signal_connect_after(G_OBJECT(pwGrab),
 				"key-press-event", G_CALLBACK(gtk_true), NULL);
