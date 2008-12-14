@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.38 2008/12/12 22:32:03 Superfly_Jon Exp $
+ * $Id: gtkwindows.c,v 1.39 2008/12/14 20:25:26 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -64,7 +64,7 @@ Warning warnings[WARN_NUM_WARNINGS] =
 		"stop", TRUE, TRUE
 	},
 	{
-		N_("This will play to the end of the game automatically, do you want to continue?"),
+		N_("Play to the end of the game automatically?"),
 		"endgame", TRUE, TRUE
 	}
 };
