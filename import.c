@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.144 2008/12/09 16:03:20 c_anthon Exp $
+ * $Id: import.c,v 1.145 2008/12/14 17:42:29 c_anthon Exp $
  */
 
 #include "config.h"
@@ -42,6 +42,7 @@
 #include "import.h"
 #include "file.h"
 #include "positionid.h"
+#include "matchequity.h"
 
 static int
 ParseSnowieTxt( char *sz,  
@@ -1036,6 +1037,13 @@ static int ImportMatVariation( FILE *fp, char *szFilename, bgvariation bgVariati
         return -1;
       }
     }
+    if (nLength <0)
+    {
+	    outputerrf(_("Invalid match length %d found in mat file\n"), nLength);
+	    return -1;
+    }
+    else if (nLength > MAXSCORE)
+	    outputerrf(("GNU Backgammon doesn't support the match length(%d), maximum is %d. Proceeding anyway, but expect the roof to fall down!"), nLength, MAXSCORE);
 
 #if USE_GTK
 	if( fX )
