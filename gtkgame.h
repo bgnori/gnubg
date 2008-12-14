@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.134 2008/07/30 15:02:59 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.135 2008/12/14 20:15:06 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -25,6 +25,8 @@
 #include "backgammon.h"
 #include "gtkpanels.h"
 #include "gtkchequer.h"
+
+#define TOOLBAR_ACTION_OFFSET 10000
 
 extern GdkColor wlCol;
 extern GtkAccelGroup *pagMain;
