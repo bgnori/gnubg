@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.739 2008/12/13 19:04:41 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.740 2008/12/14 11:03:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3519,7 +3519,7 @@ extern int automaticTask;
 static void Stop( GtkWidget *pw, gpointer unused )
 {
 	if (automaticTask)
-		automaticTask = FALSE;
+		StopAutomaticPlay();
 	else if (!GTKShowWarning(WARN_STOP, pw))
 		return;
 
