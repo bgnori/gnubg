@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.333 2008/12/14 11:03:52 Superfly_Jon Exp $
+ * $Id: play.c,v 1.334 2008/12/14 11:44:16 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2265,7 +2265,7 @@ extern void CommandDouble( char *sz ) {
 	return;
     }
 
-    if (!move_is_last_in_match())
+	if (!move_is_last_in_match() && !automaticTask)
     {
 	    int answer = GetInputYN(_("The double is not the last move in the match.\n"
 				    "Continuing will destroy the remainder of the match. Continue?"));
@@ -2461,7 +2461,7 @@ extern void CommandDrop( char *sz ) {
 	return;
     }
 
-    if (!move_is_last_in_match())
+    if (!move_is_last_in_match() && !automaticTask)
     {
 	    int answer = GetInputYN(_("The drop is not the last move in the match.\n"
 				    "Continuing will destroy the remainder of the match. Continue?"));
@@ -3721,7 +3721,7 @@ extern void CommandRedouble( char *sz ) {
 	return;
     }
      
-    if (!move_is_last_in_match())
+    if (!move_is_last_in_match() && !automaticTask)
     {
 	    int answer = GetInputYN(_("The redouble is not the last move in the match.\n"
 				    "Continuing will destroy the remainder of the match. Continue?"));
@@ -4042,7 +4042,7 @@ extern void CommandTake( char *sz ) {
 	return;
     }
 
-    if (!move_is_last_in_match())
+    if (!move_is_last_in_match() && !automaticTask)
     {
 	    int answer = GetInputYN(_("The take is not the last move in the match.\n"
 				    "Continuing will destroy the remainder of the match. Continue?"));
