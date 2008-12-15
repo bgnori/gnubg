@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.742 2008/12/14 20:34:09 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.743 2008/12/15 15:50:35 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1628,6 +1628,7 @@ static void DoFullScreenMode(gpointer p, guint n, GtkWidget * pw)
 		gtk_widget_hide(GTK_WIDGET(bd->dice_area));
 		gtk_widget_hide(pwStatus);
 		gtk_widget_hide(pwProgress);
+		gtk_widget_hide(pwStop);
 
 		fFullScreen = FALSE;
 		HideAllPanels(NULL, 0, NULL);
@@ -1662,6 +1663,7 @@ static void DoFullScreenMode(gpointer p, guint n, GtkWidget * pw)
 			gtk_widget_show(GTK_WIDGET(bd->dice_area));
 		gtk_widget_show(pwStatus);
 		gtk_widget_show(pwProgress);
+		gtk_widget_show(pwStop);
 
 		GetFullscreenWindowSettings(&showingPanels,
 					    &bd->rd->fShowIDs, &maximised);
