@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.86 2008/12/11 09:20:21 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.87 2008/12/15 17:50:26 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -315,8 +315,7 @@ AddSoundWidgets (GtkWidget * container)
 	gtk_check_button_new_with_label (_("Enable sound effects"));
     gtk_box_pack_start (GTK_BOX (pwvboxTop), soundsEnabled, FALSE, FALSE, 0);
     gtk_widget_set_tooltip_text( soundsEnabled,
-			  _
-			  ("Have GNU Backgammon make sound effects when various events occur."));
+			  _("Have GNU Backgammon make sound effects when various events occur."));
     g_signal_connect(G_OBJECT (soundsEnabled), "toggled", G_CALLBACK (SoundToggled), NULL);
 #define SOUND_COL 0
     for (i = 0; i < NUM_SOUNDS; i++)
