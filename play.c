@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.334 2008/12/14 11:44:16 Superfly_Jon Exp $
+ * $Id: play.c,v 1.335 2008/12/15 09:24:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1495,7 +1495,7 @@ extern void CancelCubeAction( void ) {
 
 int automaticTask = FALSE;
 
-void StartAutomaicPlay()
+static void StartAutomaicPlay(void)
 {
 	if (ap[0].pt == PLAYER_GNU && ap[1].pt == PLAYER_GNU)
 	{
@@ -1507,7 +1507,7 @@ void StartAutomaicPlay()
 	}
 }
 
-void StopAutomaticPlay()
+extern void StopAutomaticPlay(void)
 {
 	if (automaticTask)
 	{
@@ -2876,7 +2876,7 @@ CommandMove( char *sz ) {
     outputl( _("Illegal move.") );
 }
 
-static void StartNewGame()
+static void StartNewGame(void)
 {
 	fComputing = TRUE;
 	NewGame();
