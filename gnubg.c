@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.810 2008/12/15 15:49:27 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.811 2008/12/15 17:51:44 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4467,7 +4467,7 @@ static void BearoffProgress( unsigned int i )
     fflush( stdout );
 }
 
-static void version(void)
+static void VersionMessage(void)
 {
 	g_print("%s\n%s\n",_(VERSION_STRING),  _(aszCOPYRIGHT));
 	g_print("%s", _(intro_string));
@@ -4992,9 +4992,8 @@ int main(int argc, char *argv[])
 #endif
 #endif
 
-
 	/* print version and exit if -v option given */
-	version();
+	VersionMessage();
 	if (show_version)
 		exit(EXIT_SUCCESS);
 
@@ -5013,7 +5012,7 @@ int main(int argc, char *argv[])
 	if (fX) {
 		fTTY = !fNoTTY && isatty(STDIN_FILENO) && isatty(STDOUT_FILENO);
 		fInteractive = fShowProgress = TRUE;
-		if (fSplash)
+		if (!fSplash)
 			pwSplash = CreateSplash();
 	} else
 #endif
