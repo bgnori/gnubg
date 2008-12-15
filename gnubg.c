@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.809 2008/12/09 00:37:36 c_anthon Exp $
+ * $Id: gnubg.c,v 1.810 2008/12/15 15:49:27 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2130,6 +2130,14 @@ static void HintResigned( void )
   static decisionData dd;
 
   GetMatchStateCubeInfo( &ci, &ms );
+
+#if USE_BOARD3D
+    if (fX)
+	{	/* Stop waving flag, otherwise hangs */
+		BoardData* bd = BOARD(pwBoard)->board_data;
+		StopIdle3d(bd, bd->bd3d);
+	}
+#endif
 
   /* evaluate current position */
 
