@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.15 2008/07/29 11:46:33 c_anthon Exp $
+ * $Id: gtkmovelistctrl.c,v 1.16 2008/12/16 22:10:57 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -273,7 +273,8 @@ custom_cell_renderer_movelist_get_size (GtkCellRenderer *cell,
 		pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 		g_object_unref (layout);
 		fontheight = logical_rect.height;
-		_s_A = _s_E = _s_B = _s_C = _s_D = fontheight / 5;
+		_s_A = _s_E = _s_C = _s_D = fontheight / 5;
+		_s_B = 0;	/* Pack lines quite closely */
 
 		_s_Z = logical_rect.width;
 
