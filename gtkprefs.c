@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.167 2008/12/17 22:51:11 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.168 2008/12/18 13:12:19 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2010,7 +2010,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.167 2008/12/17 22:51:11 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.168 2008/12/18 13:12:19 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -3116,7 +3116,7 @@ extern void BoardPreferencesDone( GtkWidget *pwBoard )
 
 		DisplayCorrectBoardType(bd, bd3d, prd);
 		if (display_is_3d(prd))
-			updateOccPos(bd);
+			UpdateShadows(bd->bd3d);
 		else
 			StopIdle3d(bd, bd->bd3d);
 

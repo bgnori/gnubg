@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.45 2008/09/17 19:57:00 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.46 2008/12/18 13:12:19 Superfly_Jon Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -171,6 +171,7 @@ struct _BoardData3d
 	int shadowsInitialised;
 	int fBasePreRendered;
 	int fBuffers;
+	int shadowsOutofDate;
 
 	float ***boardPoints;	/* Used for rounded corners */
 #ifdef WIN32

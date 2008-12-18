@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.259 2008/12/12 13:59:05 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.260 2008/12/18 13:12:18 Superfly_Jon Exp $
  */
 
 /*! \file gtkboard.c
@@ -3192,8 +3192,8 @@ extern gint game_set( Board *board, TanBoard points, int roll,
 #if USE_BOARD3D
 if (display_is_3d(bd->rd))
 {
+	UpdateShadows(bd->bd3d);
 	DrawScene3d(bd->bd3d);
-	updateOccPos(bd);	/* Make sure shadows are in correct place */
 }
 else
 #endif
@@ -4373,7 +4373,7 @@ extern void InitBoardData(BoardData* bd)
 		bd->diceShown = DICE_NOT_SHOWN;
 		bd->diceRoll[0] = bd->diceRoll[1] = 0;
 
-		updateOccPos(bd);
+		UpdateShadows(bd->bd3d);
 		updateFlagOccPos(bd, bd->bd3d);
 		SetupViewingVolume3d(bd, bd->bd3d, bd->rd);
 	}

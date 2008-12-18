@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.743 2008/12/15 15:50:35 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.744 2008/12/18 13:12:18 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1491,7 +1491,7 @@ SwitchDisplayMode( gpointer p, guint n, GtkWidget *pw )
 		/* Reset 3d settings */
 		MakeCurrent3d(bd3d);
 		preDraw3d(bd, bd3d, prd);
-		updateOccPos(bd);	/* Make sure shadows are in correct place */
+		UpdateShadows(bd->bd3d);
 		if (bd->diceShown == DICE_ON_BOARD)
 			setDicePos(bd, bd3d);	/* Make sure dice appear ok */
 		RestrictiveRedraw();

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.96 2008/12/12 22:32:03 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.97 2008/12/18 13:12:19 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2130,7 +2130,7 @@ void RollDice3d(BoardData *bd, BoardData3d* bd3d, const renderdata *prd)
 
 		setupDicePaths(bd, bd3d->dicePaths, bd3d->diceMovingPos, bd3d->diceRotation);
 		/* Make sure shadows are in correct place */
-		updateOccPos(bd);
+		UpdateShadows(bd->bd3d);
 		if (prd->quickDraw)
 		{	/* Mark this as the first frame (or -1 to indicate full draw in progress) */
 			if (numRestrictFrames == -1)
@@ -2396,6 +2396,7 @@ void InitBoard3d(BoardData *bd, BoardData3d *bd3d)
 			bd3d->pieceRotation[i][j] = rand() % 360;
 
 	bd3d->shadowsInitialised = FALSE;
+	bd3d->shadowsOutofDate = TRUE;
 	bd3d->State = BOARD_OPEN;
 	bd3d->moving = 0;
 	bd3d->shakingDice = 0;
