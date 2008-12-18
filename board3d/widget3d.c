@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.45 2008/03/15 10:15:31 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.46 2008/12/18 13:12:19 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -103,6 +103,11 @@ void MakeCurrent3d(const BoardData3d *bd3d)
 		g_print("gdk_gl_drawable_make_current failed!\n");
 }
 
+void UpdateShadows(BoardData3d* bd3d)
+{
+	bd3d->shadowsOutofDate = TRUE;
+}
+
 static gboolean expose_event_3d(GtkWidget *widget, GdkEventExpose *exposeEvent, const BoardData* bd)
 {
 	GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
@@ -110,6 +115,12 @@ static gboolean expose_event_3d(GtkWidget *widget, GdkEventExpose *exposeEvent, 
 		return TRUE;
 
 	CheckOpenglError();
+
+	if (bd->bd3d->shadowsOutofDate)
+	{	/* Update shadow positions */
+		bd->bd3d->shadowsOutofDate = TRUE;
+		updateOccPos(bd);
+	}
 
 #ifdef TEST_HARNESS
 	TestHarnessDraw(bd);
