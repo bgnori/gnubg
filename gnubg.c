@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.811 2008/12/15 17:51:44 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.812 2008/12/18 22:14:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3873,7 +3873,6 @@ extern void UserCommand(const char *szCommand)
 
 extern gint NextTurnNotify( gpointer p )
 {
-
     NextTurn( TRUE );
 
     ResetInterrupt();
@@ -4618,7 +4617,7 @@ static void setup_readline(void)
 #endif
 }
 
-#ifndef USE_GTK
+#if !USE_GTK
 static void PushSplash(char *unused, char *heading, char *message, int wait)
 {
 }

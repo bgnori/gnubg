@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.335 2008/12/15 09:24:45 c_anthon Exp $
+ * $Id: play.c,v 1.336 2008/12/18 22:14:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3446,12 +3446,14 @@ extern void CommandEndGame(char *sz)
 	fEndGame = TRUE;
 	outputnew();
 
+#if USE_GTK
 	do
 	{
 		UserCommand("play");
 		while (nNextTurn && automaticTask)
 			NextTurnNotify(NULL);
 	} while (ms.gs == GAME_PLAYING && automaticTask);
+#endif
 
 	outputx();
 	ap[0].pt = pt_store[0];
