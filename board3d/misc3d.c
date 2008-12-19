@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.97 2008/12/18 13:12:19 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.98 2008/12/19 10:20:45 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -340,12 +340,13 @@ void InitGL(const BoardData *bd)
 			static int UseBufferRegions = -1;
 			if (UseBufferRegions == -1)
 				UseBufferRegions = wglBufferInitialize();
-
+#if 0	/* Remove this until option added to control this */
 			if (UseBufferRegions == 1)
 			{
 				bd3d->wglBuffer = CreateBufferRegion(WGL_BACK_COLOR_BUFFER_BIT_ARB | WGL_DEPTH_BUFFER_BIT_ARB);
 				bd3d->fBuffers = (bd->bd3d->wglBuffer != NULL);
 			}
+#endif
 		}
 #endif
 	}
