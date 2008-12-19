@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.169 2008/12/18 15:40:11 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.170 2008/12/19 10:07:38 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2011,7 +2011,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.169 2008/12/18 15:40:11 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.170 2008/12/19 10:07:38 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -3038,6 +3038,7 @@ extern void BoardPreferences(GtkWidget *pwBoard)
 	pwPrevBoard = board_new(&rdPrefs);
 
 	bd = BOARD(pwPrevBoard)->board_data;
+	InitColourSelectionDialog();
 	InitBoardPreview(bd);
 	RollDice2d(bd);
 
