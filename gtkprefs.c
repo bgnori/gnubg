@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.170 2008/12/19 10:07:38 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.171 2008/12/22 17:00:05 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2011,7 +2011,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.170 2008/12/19 10:07:38 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.171 2008/12/22 17:00:05 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -3022,6 +3022,7 @@ static void pref_dialog_map(GtkWidget *window, BoardData *bd)
 	redrawChange = FALSE;
 	bd->rd->quickDraw = FALSE;
 #endif
+	SetTitle();	/* Make sure title selected properly */
 }
 
 extern void BoardPreferences(GtkWidget *pwBoard)
@@ -3085,8 +3086,6 @@ extern void BoardPreferences(GtkWidget *pwBoard)
 	g_signal_connect( G_OBJECT( pwDialog ), "destroy",
 			G_CALLBACK( BoardPrefsDestroy ), NULL );
 
-	gtk_widget_show_all(pwDialog);	/* Realise dialog as may need to scroll list in next line */
-	SetTitle();
 
 	gtk_notebook_set_current_page(GTK_NOTEBOOK(pwNotebook), NUM_NONPREVIEW_PAGES);
 
