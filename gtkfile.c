@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.46 2008/12/09 19:40:42 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.47 2008/12/23 16:41:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -84,7 +84,7 @@ char *programdir, *pc, *tmp;
 
   if (folder && *folder && g_file_test(folder, G_FILE_TEST_IS_DIR))
     gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (fc), folder);
-  if (name && *name && g_file_test(name, G_FILE_TEST_EXISTS))
+  if (name && *name)
     gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (fc), name);
 
 #ifdef WIN32
