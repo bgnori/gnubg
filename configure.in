@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-AC_REVISION($Revision: 1.209 $)
+AC_REVISION($Revision: 1.210 $)
 AC_INIT([GNU Backgammon],[0.90.0],[bug-gnubg@gnu.org],[gnubg])
 AC_CANONICAL_BUILD
 AC_CANONICAL_HOST
@@ -252,7 +252,7 @@ if test "$with_gtk" = "yes" && test "$no_gtk" = "yes"; then
 	AC_MSG_ERROR([gtk requested but not found])
 fi
 
-if test  "$with_board3d" != "no" && test "x$have_gtk" = "xyes" && test "x$have_gtkglext" = "xyes"; then
+if test  "$with_board3d" != "no" && test "$with_gtk" != "no" && test "x$have_gtk" = "xyes" && test "x$have_gtkglext" = "xyes"; then
 	AC_DEFINE(USE_BOARD3D,1, [Define if you want to use the 3d boards])
 	no_board3d="no"
 fi
