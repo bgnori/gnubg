@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.172 2008/12/23 10:20:54 c_anthon Exp $
+ * $Id: gtkprefs.c,v 1.173 2008/12/25 23:34:05 c_anthon Exp $
  */
 
 #include "config.h"
@@ -82,7 +82,6 @@ GtkAdjustment *padjDarkness, *padjAccuracy, *padjBoardAngle, *padjSkewFactor, *p
 	*padjLightLevelAmbient, *padjLightLevelDiffuse, *padjLightLevelSpecular,
 	*padjLightPosY, *padjLightPosZ, *padjDiceSize;
 	int redrawChange;
-	GtkTooltips *ptt;
 
 	int pc3dDiceId[2], pcChequer2;
 #endif
@@ -2011,7 +2010,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.172 2008/12/23 10:20:54 c_anthon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.173 2008/12/25 23:34:05 c_anthon Exp $\n"
           "\n"
           " -->\n"
           "\n"

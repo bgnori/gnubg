@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.55 2008/12/15 09:24:45 c_anthon Exp $
+ * $Id: gtktoolbar.c,v 1.56 2008/12/25 23:34:05 c_anthon Exp $
  */
 
 #include "config.h"
@@ -261,12 +261,10 @@ ToolbarUpdate ( GtkWidget *pwToolbar,
   return c;
 }
 
-static GtkTooltips *ptt;
-
 static GtkWidget* ToolbarAddButton(GtkToolbar *pwToolbar, const char *stockID, const char *tooltip, GtkSignalFunc callback, void *data)
 {
 	GtkToolItem* but = gtk_tool_button_new_from_stock(stockID);
-	gtk_tool_item_set_tooltip(but, ptt, tooltip, NULL);
+	gtk_widget_set_tooltip_text(GTK_WIDGET(but), tooltip);
 	gtk_toolbar_insert(GTK_TOOLBAR(pwToolbar), but, -1);
 
 	g_signal_connect(G_OBJECT(but), "clicked", callback, data);
@@ -277,7 +275,7 @@ static GtkWidget* ToolbarAddButton(GtkToolbar *pwToolbar, const char *stockID, c
 static GtkWidget* ToolbarAddWidget(GtkToolbar *pwToolbar, GtkWidget *pWidget, const char *tooltip)
 {
 	GtkToolItem* ti = gtk_tool_item_new();
-	gtk_tool_item_set_tooltip(ti, ptt, tooltip, NULL);
+	gtk_widget_set_tooltip_text(GTK_WIDGET(ti), tooltip);
 	gtk_container_add(GTK_CONTAINER(ti), pWidget);
 
 	gtk_toolbar_insert(GTK_TOOLBAR(pwToolbar), ti, -1);
@@ -304,8 +302,6 @@ extern GtkWidget *ToolbarNew(void)
 	/* 
 	* Create toolbar 
 	*/
-
-	ptt = gtk_tooltips_new();
 
 	ptw = (toolbarwidget *) g_malloc ( sizeof ( toolbarwidget ) );
 
