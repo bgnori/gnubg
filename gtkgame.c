@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.744 2008/12/18 13:12:18 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.745 2008/12/28 21:55:35 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3502,8 +3502,9 @@ static void CreateMainWindow(void)
 
     gtk_item_factory_set_translate_func ( pif, GTKTranslate, NULL, NULL );
 
-    gtk_item_factory_create_items( pif, sizeof( aife ) / sizeof( aife[ 0 ] ),
-				   aife, NULL );
+    gtk_item_factory_create_items( pif, sizeof( aife ) / sizeof( aife[ 0 ] ), aife, NULL );
+	/* Tick default toolbar style */
+	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(gtk_item_factory_get_widget_by_action(pif, nToolbarStyle + TOOLBAR_ACTION_OFFSET)), TRUE);
     gtk_window_add_accel_group( GTK_WINDOW( pwMain ), pagMain );
 
     gtk_box_pack_start( GTK_BOX( pwVbox ),
