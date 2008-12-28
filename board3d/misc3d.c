@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.99 2008/12/28 21:06:18 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.100 2008/12/28 21:15:35 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2275,7 +2275,7 @@ void CloseBoard3d(BoardData *bd, BoardData3d *bd3d, renderdata *prd)
 
 	/* Random logo */
 	SetupSimpleMat(&bd3d->logoMat, 1.f, 1.f, 1.f);
-	SetTexture(bd3d, &bd3d->logoMat, TEXTURE_PATH"logo2.bmp");
+	SetTexture(bd3d, &bd3d->logoMat, TEXTURE_PATH"logo.png");
 
 	animStartTime = get_time();
 	bd3d->perOpen = 0;
