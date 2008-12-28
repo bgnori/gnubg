@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.98 2008/12/19 10:20:45 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.99 2008/12/28 21:06:18 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2201,6 +2201,11 @@ static int idleCloseBoard(BoardData3d* bd3d)
 	if (bd3d->State == BOARD_CLOSED)
 	{	/* finished */
 		StopIdle3d(bd, bd->bd3d);
+#ifdef WIN32
+		Sleep(1000);
+#else
+		sleep(1);
+#endif
 		gtk_main_quit();
 
 		return 1;
@@ -2269,10 +2274,8 @@ void CloseBoard3d(BoardData *bd, BoardData3d *bd3d, renderdata *prd)
 	bd3d->State = BOARD_CLOSING;
 
 	/* Random logo */
-	if (rand() % 2)
-		SetTexture(bd3d, &bd3d->logoMat, TEXTURE_PATH"logo.bmp");
-	else
-		SetTexture(bd3d, &bd3d->logoMat, TEXTURE_PATH"logo2.bmp");
+	SetupSimpleMat(&bd3d->logoMat, 1.f, 1.f, 1.f);
+	SetTexture(bd3d, &bd3d->logoMat, TEXTURE_PATH"logo2.bmp");
 
 	animStartTime = get_time();
 	bd3d->perOpen = 0;
@@ -2406,7 +2409,6 @@ void InitBoard3d(BoardData *bd, BoardData3d *bd3d)
 	bd3d->fBasePreRendered = FALSE;
 
 	SetupSimpleMat(&bd3d->gapColour, 0.f, 0.f, 0.f);
-	SetupSimpleMat(&bd3d->logoMat, 1.f, 1.f, 1.f);
 	SetupMat(&bd3d->flagMat, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 50, 0.f);
 	SetupMat(&bd3d->flagNumberMat, 0.f, 0.f, .4f, 0.f, 0.f, .4f, 1.f, 1.f, 1.f, 100, 1.f);
 
