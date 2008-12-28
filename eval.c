@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.358 2008/11/11 11:00:55 c_anthon Exp $
+ * $Id: eval.c,v 1.359 2008/12/28 00:20:24 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5699,7 +5699,7 @@ EvaluatePositionCubeful4( NNState *nnStates, const TanBoard anBoard,
          pc == CLASS_HYPERGAMMON3 ) {
 
       bearoffcontext *pbc = apbcHyper[ pc - CLASS_HYPERGAMMON1 ];
-      unsigned short int nUs, nThem, iPos;
+      unsigned int nUs, nThem, iPos;
       int n;
 
       if (!pbc)
