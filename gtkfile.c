@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.47 2008/12/23 16:41:48 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.48 2008/12/28 20:49:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -224,6 +224,7 @@ static void SaveCommon (guint f, gchar * prompt)
 
   if (gtk_dialog_run (GTK_DIALOG (so.fc)) == GTK_RESPONSE_ACCEPT)
     {
+		SaveOptionsCallBack (so.fc, &so);
       fn = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (so.fc));
       if (fn)
 	{
