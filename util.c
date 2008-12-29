@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.c,v 1.22 2008/12/28 23:09:25 c_anthon Exp $
+ * $Id: util.c,v 1.23 2008/12/29 13:42:17 c_anthon Exp $
  */
 
 #include "config.h"
@@ -24,11 +24,6 @@
 #include <glib.h>
 #include <stdlib.h>
 #include <string.h>
-#include <glib/gstdio.h>
-
-#if HAVE_UNISTD_H
-#include <unistd.h>
-#endif
 
 #ifdef WIN32
 #include <windows.h>
@@ -98,19 +93,20 @@ extern FILE *GetTemporaryFile(const char *nameTemplate, char **retName)
 {
 	FILE *pf;
 	int tmpd = g_file_open_tmp(nameTemplate, retName, NULL);
-
 	if (tmpd < 0) {
 		PrintError("creating temporary file");
 		return NULL;
 	}
-	close(tmpd);
-
-	pf = g_fopen(*retName, "wb+");
+#ifndef WIN32
+	pf = fdopen(tmpd, "w+");
+#else
+	pf = fopen(*retName, "wb+");
+#endif
 
 	if (pf == NULL) {
 		g_free(retName);
 		PrintError("opening temporary file");
-	}
-
-	return pf;
+		return NULL;
+	} else
+		return pf;
 }
