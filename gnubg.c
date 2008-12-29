@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.814 2008/12/29 23:44:53 c_anthon Exp $
+ * $Id: gnubg.c,v 1.815 2008/12/29 23:55:53 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2373,6 +2373,10 @@ Shutdown( void ) {
 
   FreeMatch();
   ClearMatch();
+
+#if USE_GTK
+  MoveListDestroy();
+#endif
 
 #if USE_MULTITHREAD
   MT_Close();
