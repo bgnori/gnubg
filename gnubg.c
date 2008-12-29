@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.812 2008/12/18 22:14:52 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.813 2008/12/29 10:57:27 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4925,7 +4925,7 @@ int main(int argc, char *argv[])
 		 N_("Do not read .gnubgrc and .gnubgautorc commands"),
 		 NULL},
 		{"splash", 'S', 0, G_OPTION_ARG_NONE, &fSplash,
-		 N_("Don't show gtk splash screen"), NULL},
+		 N_("Show gtk splash screen"), NULL},
 		{"tty", 't', 0, G_OPTION_ARG_NONE, &fNoX,
 		 N_("Start the command line instead of using the graphical interface"), NULL},
 		{"version", 'v', 0, G_OPTION_ARG_NONE, &show_version,
@@ -5011,7 +5011,7 @@ int main(int argc, char *argv[])
 	if (fX) {
 		fTTY = !fNoTTY && isatty(STDIN_FILENO) && isatty(STDOUT_FILENO);
 		fInteractive = fShowProgress = TRUE;
-		if (!fSplash)
+		if (fSplash)
 			pwSplash = CreateSplash();
 	} else
 #endif
