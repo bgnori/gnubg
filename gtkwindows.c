@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.40 2008/12/19 10:07:39 Superfly_Jon Exp $
+ * $Id: gtkwindows.c,v 1.41 2008/12/30 10:51:01 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -66,6 +66,10 @@ Warning warnings[WARN_NUM_WARNINGS] =
 	{
 		N_("Play to the end of the game automatically?"),
 		"endgame", TRUE, TRUE
+	},
+	{
+		N_("Automatically perform correct resignation?"),
+		"resign", TRUE, TRUE
 	}
 };
 
