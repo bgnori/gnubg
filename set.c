@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.319 2008/12/19 10:20:12 Superfly_Jon Exp $
+ * $Id: set.c,v 1.320 2008/12/30 23:49:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -137,7 +137,7 @@ SetSeed ( const rng rngx, void *rngctx, char *sz ) {
                _("Seed initialised by system clock.") );
 }
 
-static void SetRNG( rng *prng, void **rngctx, rng rngNew, char *szSeed ) {
+extern void SetRNG( rng *prng, void **rngctx, rng rngNew, char *szSeed ) {
 
     if( *prng == rngNew && !*szSeed ) {
 	outputf( _("You are already using the %s generator.\n"),
