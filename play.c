@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.340 2008/12/30 10:51:01 Superfly_Jon Exp $
+ * $Id: play.c,v 1.341 2008/12/30 23:49:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3481,7 +3481,7 @@ extern void CommandEndGame(char *sz)
 	if (manual_dice)
 	{
 		outputoff();
-		CommandSetRNGMersenne(NULL);
+	    SetRNG( &rngCurrent, &rngctxCurrent, RNG_MERSENNE, "" );
 		outputon();
 	}
 
@@ -3528,7 +3528,7 @@ extern void CommandEndGame(char *sz)
 	if (manual_dice)
 	{
 		outputoff();
-		CommandSetRNGManual(NULL);
+		SetRNG( &rngCurrent, &rngctxCurrent, RNG_MANUAL, "" );
 		outputon();
 	}
 
