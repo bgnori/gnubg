@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.339 2008/12/30 00:02:17 Superfly_Jon Exp $
+ * $Id: play.c,v 1.340 2008/12/30 10:51:01 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -870,12 +870,20 @@ static void get_eq_before_resign(cubeinfo *pci, decisionData *pdd)
 	}
 }
 
-static int check_resigns(cubeinfo * pci, int resigned)
+extern int check_resigns(cubeinfo * pci)
 {
 	float rEqBefore, rEqAfter;
 	const float max_cost = 0.05f;
 	const float max_gain = 1e-6f;
 	decisionData dd;
+	cubeinfo ci;
+	int resigned = 1;
+
+	if (pci == NULL)
+	{
+		GetMatchStateCubeInfo( &ci, &ms );
+		pci = &ci;
+	}
 
 	get_eq_before_resign(pci, &dd);
 	do
@@ -913,8 +921,8 @@ static int ComputerTurn( void ) {
   case PLAYER_GNU:
 	  if( ms.fResigned ) {
 		  int resign;
-		  if (ms.fResigned ==-1)
-			  resign = check_resigns(&ci, 1);
+		  if (ms.fResigned == -1)
+			  resign = check_resigns(&ci);
 		  else
 		  {
 			  float rEqBefore, rEqAfter;

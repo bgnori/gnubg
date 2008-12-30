@@ -17,11 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
-<<<<<<< gtkgame.c
- * $Id: gtkgame.c,v 1.748 2008/12/30 10:51:00 Superfly_Jon Exp $
-=======
- * $Id: gtkgame.c,v 1.748 2008/12/30 10:51:00 Superfly_Jon Exp $
->>>>>>> 1.746
+ * $Id: gtkgame.c,v 1.749 2008/12/30 10:51:44 Superfly_Jon Exp $
  */
 
 #include "config.h"
