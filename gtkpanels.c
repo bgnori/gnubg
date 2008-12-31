@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.54 2008/09/14 20:47:06 c_anthon Exp $
+* $Id: gtkpanels.c,v 1.55 2008/12/31 10:40:18 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -775,6 +775,8 @@ static void SelectGame(GtkWidget * pw, void *p)
 	return;
 
     i = gtk_combo_box_get_active(GTK_COMBO_BOX(pw));
+	if (i == -1)
+		return;
     for (pl = lMatch.plNext; i && pl->plNext->p; i--, pl = pl->plNext);
 
     if (pl->p == plGame)
