@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.815 2008/12/29 23:55:53 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.816 2009/01/02 14:39:43 mdpetch Exp $
  */
 
 #include "config.h"
@@ -3289,7 +3289,7 @@ extern void CommandSaveSettings( char *szParam )
 
     fprintf( pf, "set cheat enable %s\n", fCheat ? "on" : "off" );
     for ( i = 0; i < 2; ++i )
-      fprintf( pf, "set cheat player %d roll %d\n", i, afCheatRoll[ i ] );
+      fprintf( pf, "set cheat player %d roll %d\n", i, afCheatRoll[ i ] + 1);
                
 
 #if USE_GTK
