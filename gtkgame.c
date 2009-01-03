@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.750 2009/01/03 10:07:25 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.751 2009/01/03 22:55:29 c_anthon Exp $
  */
 
 #include "config.h"
@@ -7615,7 +7615,7 @@ extern void GTKResign(gpointer p, guint n, GtkWidget * pw)
 	GTKRunDialog(pwDialog);
 }
 
-extern void MoveListDestroy()
+extern void MoveListDestroy(void)
 {
 	if (pwMoveAnalysis)
 	{
