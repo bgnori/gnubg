@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.136 2008/12/29 23:55:53 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.137 2009/01/03 22:55:30 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -178,6 +178,7 @@ extern void GTKUndo(void);
 extern void UserCommand(const char *sz);
 extern void ShowToolbar(void);
 extern void HideToolbar(void);
+extern void MoveListDestroy(void);
 
 #if HAVE_LIBREADLINE
 extern int fReadingCommand;

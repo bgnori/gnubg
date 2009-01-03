@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.83 2008/12/30 18:14:54 Superfly_Jon Exp $
+ * $Id: render.c,v 1.84 2009/01/03 22:55:30 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2395,7 +2395,7 @@ static void Copy_RGB_to_RGBA( unsigned char *puchDest, int nDestStride,
 }
 
 #if USE_GTK
-double Higlight(double c)
+static double Highlight(double c)
 {
 	if (c < .75)
 		return c + .25;
@@ -2445,7 +2445,7 @@ static void RenderArrow(unsigned char* puch, double arColour[4], int nSize, int 
 
 	cairo_set_source_rgba (cr, arColour[2], arColour[1], arColour[0], 1);
 	cairo_fill_preserve (cr);
-	cairo_set_source_rgba (cr, Higlight(arColour[2]), Higlight(arColour[1]), Higlight(arColour[0]), 1);
+	cairo_set_source_rgba (cr, Highlight(arColour[2]), Highlight(arColour[1]), Highlight(arColour[0]), 1);
 	cairo_stroke(cr);
 
 	cairo_destroy (cr);
