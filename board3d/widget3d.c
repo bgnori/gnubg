@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.46 2008/12/18 13:12:19 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.47 2009/01/03 10:08:01 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -118,7 +118,7 @@ static gboolean expose_event_3d(GtkWidget *widget, GdkEventExpose *exposeEvent, 
 
 	if (bd->bd3d->shadowsOutofDate)
 	{	/* Update shadow positions */
-		bd->bd3d->shadowsOutofDate = TRUE;
+		bd->bd3d->shadowsOutofDate = FALSE;
 		updateOccPos(bd);
 	}
 
