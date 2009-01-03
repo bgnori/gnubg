@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.342 2009/01/03 22:55:30 c_anthon Exp $
+ * $Id: play.c,v 1.343 2009/01/03 23:01:10 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3481,7 +3481,7 @@ extern void CommandEndGame(char *sz)
 	if (manual_dice)
 	{
 		outputoff();
-		SetRNG( &rngCurrent, &rngctxCurrent, RNG_MERSENNE, "" );
+		SetRNG( &rngCurrent, rngctxCurrent, RNG_MERSENNE, "" );
 		outputon();
 	}
 
