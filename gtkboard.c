@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.261 2008/12/29 23:44:53 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.262 2009/01/03 21:29:08 Superfly_Jon Exp $
  */
 
 /*! \file gtkboard.c
@@ -110,6 +110,8 @@ extern GtkWidget *board_new(renderdata* prd)
 	bd->x_dice[ 1 ] = bd->y_dice[ 1 ] = 0;
 
 	InitialPos(bd);
+
+	bd->move_list.cMoves = 0;
 
 	return board;
 }
