@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.816 2009/01/02 14:39:43 mdpetch Exp $
+ * $Id: gnubg.c,v 1.817 2009/01/08 11:29:21 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3989,7 +3989,7 @@ extern int GetInputYN( char *szPrompt )
     }
 
     if (!fInteractive)
-	    return FALSE;
+	    return TRUE;
 
 #if USE_GTK
     if( fX )
