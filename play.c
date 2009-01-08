@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.344 2009/01/08 11:29:21 c_anthon Exp $
+ * $Id: play.c,v 1.345 2009/01/08 22:10:11 c_anthon Exp $
  */
 
 #include "config.h"
@@ -638,7 +638,7 @@ static gboolean move_not_last_in_match_ok(void)
 {
 	if (automaticTask)
 		return TRUE;
-	if (!move_is_last_in_match())
+	if (move_is_last_in_match())
 		return TRUE;
 
 	return GetInputYN(_("The current move is not the last in the match.\n"
