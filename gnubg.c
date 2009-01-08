@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.817 2009/01/08 11:29:21 c_anthon Exp $
+ * $Id: gnubg.c,v 1.818 2009/01/08 20:37:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5082,7 +5082,7 @@ int main(int argc, char *argv[])
 #endif
 
 	if (pchMatch)
-		CommandLoadMatch(pchMatch);
+		CommandImportAuto(pchMatch);
 
 	/* -c option given */
 	if (pchCommands) {

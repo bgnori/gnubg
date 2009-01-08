@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.751 2009/01/03 22:55:29 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.752 2009/01/08 20:37:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3794,7 +3794,7 @@ extern void RunGTK( GtkWidget *pwSplash, char *commands, char *python_script, ch
 
         if (match)
         {
-                CommandLoadMatch(match);
+                CommandImportAuto(match);
                 g_free(match);
                 match = NULL;
         }
@@ -4093,6 +4093,7 @@ static void ToolButtonPressed( GtkWidget *pw, newwidget *pnw ) {
   gtk_widget_destroy( gtk_widget_get_toplevel( pw ) );
   UserCommand(sz);
 }
+
 extern int edit_new(unsigned int length)
 {
 	char sz[40];
