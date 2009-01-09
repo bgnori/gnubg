@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.78 2008/12/05 09:32:16 c_anthon Exp $
+ * $Id: bearoff.c,v 1.79 2009/01/09 10:30:31 c_anthon Exp $
  */
 #include "config.h"
 #if USE_MULTITHREAD
@@ -544,9 +544,9 @@ extern void BearoffStatus(const bearoffcontext *pbc, char *sz)
 	else
 	{
 		if (pbc->p)
-			sprintf(buf, _("In memory %d-sided bearoff database evaluator"), BEAROFF_ONESIDED ? 1 : 2);
+			sprintf(buf, _("In memory %d-sided bearoff database evaluator"), pbc->bt);
 		else
-			sprintf(buf, _("On disk %d-sided bearoff database evaluator"), BEAROFF_ONESIDED ? 1 : 2);
+			sprintf(buf, _("On disk %d-sided bearoff database evaluator"), pbc->bt);
 
 	}
 	sz += sprintf(sz, " * %s\n", buf);
