@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.321 2009/01/03 22:55:30 c_anthon Exp $
+ * $Id: set.c,v 1.322 2009/01/09 12:01:22 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2577,6 +2577,12 @@ extern void CommandSetTurn( char *sz ) {
     ms.fTurn = ms.fMove = i;
     CancelCubeAction();
     fNextTurn = FALSE;
+#if USE_GTK
+    if (fX) {
+	    BoardData *bd = BOARD(pwBoard)->board_data;
+	    bd->diceRoll[0] = bd->diceRoll[1] = 0;
+    }
+#endif
     ms.anDice[ 0 ] = ms.anDice[ 1 ] = 0;
 
 
