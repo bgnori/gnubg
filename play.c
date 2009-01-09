@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.345 2009/01/08 22:10:11 c_anthon Exp $
+ * $Id: play.c,v 1.346 2009/01/09 13:08:21 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4212,6 +4212,7 @@ SetMatchID ( const char *szMatchID ) {
   pmr->g.fCubeUse = ms.fCubeUse;
   IniStatcontext( &pmr->g.sc );
   AddMoveRecord( pmr );
+  AddGame(pmr);
 
   ms.gs = gs;
   ms.fMove = fMove;
