@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.h,v 1.4 2007/07/02 12:43:40 ace Exp $
+ * $Id: progress.h,v 1.5 2009/01/11 20:36:32 c_anthon Exp $
  */
 
 #ifndef _PROGRESS_H_
@@ -41,6 +41,7 @@ RolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
 				 const float rJsd,
 				 const int fStopped,
 				 const int fShowRanks,
+				 int fCubeRollout,
                  void *pUserData );
 
 extern void

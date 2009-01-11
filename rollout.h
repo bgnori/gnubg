@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.30 2008/10/08 10:24:13 c_anthon Exp $
+ * $Id: rollout.h,v 1.31 2009/01/11 20:36:32 c_anthon Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -70,6 +70,7 @@ typedef void
 						const float rJsd,
 						const int fStopped,
 						const int fShowRanks,
+						int fCubeRollout,
                         void *pUserData );
 
 extern int
