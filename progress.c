@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.44 2008/12/18 20:26:04 Superfly_Jon Exp $
+ * $Id: progress.c,v 1.45 2009/01/11 20:36:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -907,6 +907,7 @@ GTKRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
 					const float rJsd,
 					const int fStopped,
 					const int fShowRanks,
+					int fCubeRollout,
                     rolloutprogress *prp ) {
 
 	static int maxGames = 0;
@@ -953,9 +954,12 @@ GTKRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
     }
 
     if (fShowRanks && iGame > 1) {
-	  sprintf (sz, "%d %s", nRank, fStopped ? "s" : "r");
+	    if (fCubeRollout)
+		    sprintf (sz, "%s", fStopped ? "s" : "r");
+	    else
+		    sprintf (sz, "%d %s", nRank, fStopped ? "s" : "r");
 	  SetRolloutText(prp, iAlternative * 2, i + 1, sz);
-	  if (nRank != 1)
+	  if (nRank != 1 || fCubeRollout)
 	    sprintf( sz,  "%5.3f", rJsd);
 	  else
 	    strcpy (sz, " ");
@@ -1111,6 +1115,7 @@ TextRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
                      const float rJsd,
                      const int fStopped,
                      const int fShowRanks,
+		     int fCubeRollout,
                      rolloutprogress *prp ) {
 
   char *pch, *pc;
@@ -1136,7 +1141,10 @@ TextRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
       pc = strrchr( pch, '\n' );
       *pc = 0;
 
-      sprintf( pc, " %d%c", nRank, fStopped ? 's' : 'r' );
+      if (fCubeRollout)
+	      sprintf( pc, " %c", fStopped ? 's' : 'r' );
+      else
+	      sprintf( pc, " %d%c", nRank, fStopped ? 's' : 'r' );
 
       if ( nRank != 1 )
         sprintf( strchr( pc, 0 ), " %5.3f\n", rJsd );
@@ -1234,6 +1242,7 @@ RolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
                  const float rJsd,
                  const int fStopped,
                  const int fShowRanks,
+		 int fCubeRollout,
                  void *pUserData ) {
 
   if ( ! fShowProgress )
@@ -1242,13 +1251,13 @@ RolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
 #if USE_GTK
   if ( fX ) {
     GTKRolloutProgress( aarOutput, aarStdDev, prc, aci, iGame, iAlternative, 
-                        nRank, rJsd, fStopped, fShowRanks, pUserData );
+                        nRank, rJsd, fStopped, fShowRanks, fCubeRollout, pUserData );
     return;
   }
 #endif /* USE_GTK */
 
   TextRolloutProgress( aarOutput, aarStdDev, prc, aci, iGame, iAlternative, 
-                       nRank, rJsd, fStopped, fShowRanks, pUserData );
+                       nRank, rJsd, fStopped, fShowRanks, fCubeRollout, pUserData );
 
 }
 
