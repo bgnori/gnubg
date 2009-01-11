@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.347 2009/01/10 23:08:31 c_anthon Exp $
+ * $Id: play.c,v 1.348 2009/01/11 00:08:13 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4161,6 +4161,12 @@ SetMatchID ( const char *szMatchID ) {
 	  outputx();
 	  return;
 
+  }
+
+  if (fDoubled)
+  {
+	  outputerrf(_("I'm sorry, but SetMatchID cannot handle positions where a double has been offered"));
+	  return;
   }
 
   if (nMatchTo == 1)
