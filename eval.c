@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.359 2008/12/28 00:20:24 c_anthon Exp $
+ * $Id: eval.c,v 1.360 2009/01/22 22:42:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2876,7 +2876,7 @@ EvaluatePositionFull( NNState *nnStates, const TanBoard anBoard, float arOutput[
     if( acef[ pc ]( anBoard, arOutput, pci->bgv, nnStates ) )
       return -1;
 
-    if( pec->rNoise )
+    if( pec->rNoise && pc != CLASS_OVER )
 	for( i = 0; i < NUM_OUTPUTS; i++ )
 	    arOutput[ i ] += Noise( pec, anBoard, i );
     
@@ -5733,7 +5733,7 @@ EvaluatePositionCubeful4( NNState *nnStates, const TanBoard anBoard,
       if( EvaluatePosition ( nnStates, anBoard, arOutput, pciMove, NULL ) )
         return -1;
       
-      if( pec->rNoise )
+      if( pec->rNoise && pc != CLASS_OVER )
         for( i = 0; i < NUM_OUTPUTS; i++ )
           arOutput[ i ] += Noise( pec, anBoard, i );
 

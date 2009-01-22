@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.207 2009/01/17 21:11:10 c_anthon Exp $
+ * $Id: rollout.c,v 1.208 2009/01/22 22:42:49 c_anthon Exp $
  */
 
 #include "config.h"
@@ -395,6 +395,8 @@ BasicCubefulRollout ( unsigned int aanBoard[][ 2 ][ 25 ],
 	    aecZero[i].nPlies = 0;
 	    if (aecVarRedn[i].nPlies)
 		    aecVarRedn[i].nPlies--;
+	    aecZero[i].fDeterministic = aecVarRedn[i].fDeterministic = 1;
+	    aecZero[i].rNoise = aecVarRedn[i].rNoise = 0.0f;
     }
 
   }
@@ -645,7 +647,8 @@ BasicCubefulRollout ( unsigned int aanBoard[][ 2 ][ 25 ],
           /* Find best move */
 
           if ( pecChequer[ pci->fMove ]->nPlies ||
-               prc->fCubeful != pecChequer[ pci->fMove ]->fCubeful )
+               prc->fCubeful != pecChequer[ pci->fMove ]->fCubeful ||
+	       pecChequer[pci->fMove]->rNoise)
 
             /* the user requested n-ply (n>0). Another call to
                FindBestMove is required */
