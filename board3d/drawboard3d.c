@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.78 2008/12/06 21:25:45 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.79 2009/01/23 08:35:05 c_anthon Exp $
 */
 
 #include "config.h"
@@ -3390,6 +3390,7 @@ static void updateDieOccPos(const BoardData* bd, const BoardData3d* bd3d, Occlud
 			copyMatrix(pOcc->invMat, id);
 		}
 	}
+	if (ShadowsInitilised(bd3d))
 	draw_shadow_volume_extruded_edges(pOcc, bd3d->shadow_light_position, GL_QUADS);
 }
 
@@ -3411,6 +3412,7 @@ NTH_STATIC void updateCubeOccPos(const BoardData* bd, BoardData3d* bd3d)
 	makeInverseTransposeMatrix(bd3d->Occluders[OCC_CUBE].invMat, bd3d->Occluders[OCC_CUBE].trans);
 
 	bd3d->Occluders[OCC_CUBE].show = (bd->cube_use && !bd->crawford_game);
+	if (ShadowsInitilised(bd3d))
 	draw_shadow_volume_extruded_edges(&bd3d->Occluders[OCC_CUBE], bd3d->shadow_light_position, GL_QUADS);
 }
 
@@ -3438,6 +3440,7 @@ void updateMovingPieceOccPos(const BoardData* bd, BoardData3d* bd3d)
 		else
 			makeInverseTransposeMatrix(bd3d->Occluders[LAST_PIECE].invMat, bd3d->Occluders[LAST_PIECE].trans);
 	}
+	if (ShadowsInitilised(bd3d))
 	draw_shadow_volume_extruded_edges(&bd3d->Occluders[LAST_PIECE], bd3d->shadow_light_position, GL_QUADS);
 }
 
@@ -3471,6 +3474,7 @@ void updatePieceOccPos(const BoardData* bd, BoardData3d* bd3d)
 				makeInverseTransposeMatrix(bd3d->Occluders[p].invMat, bd3d->Occluders[p].trans);
 				bd3d->Occluders[p].rotator = 0;
 			}
+	if (ShadowsInitilised(bd3d))
 			draw_shadow_volume_extruded_edges(&bd3d->Occluders[p], bd3d->shadow_light_position, GL_QUADS);
 
 			p++;
@@ -3519,6 +3523,7 @@ void updateFlagOccPos(const BoardData* bd, BoardData3d* bd3d)
 			}
 			flag.ctlpoints[1][0][2] = p1x;
 		}
+	if (ShadowsInitilised(bd3d))
 		draw_shadow_volume_extruded_edges(&bd3d->Occluders[OCC_FLAG], bd3d->shadow_light_position, GL_QUADS);
 	}
 	else
@@ -3529,6 +3534,8 @@ void updateFlagOccPos(const BoardData* bd, BoardData3d* bd3d)
 
 void updateHingeOccPos(BoardData3d* bd3d, int show3dHinges)
 {
+	if (!ShadowsInitilised(bd3d))
+		return;
 	bd3d->Occluders[OCC_HINGE1].show = bd3d->Occluders[OCC_HINGE2].show = show3dHinges;
 	draw_shadow_volume_extruded_edges(&bd3d->Occluders[OCC_HINGE1], bd3d->shadow_light_position, GL_QUADS);
 	draw_shadow_volume_extruded_edges(&bd3d->Occluders[OCC_HINGE2], bd3d->shadow_light_position, GL_QUADS);
@@ -3547,6 +3554,8 @@ void updateOccPos(const BoardData* bd)
 static void MakeShadowModel(const BoardData *bd, BoardData3d *bd3d, const renderdata *prd)
 {
 	int i;
+	if (!ShadowsInitilised(bd3d))
+		return;
 	TidyShadows(bd3d);
 
 	initOccluder(&bd3d->Occluders[OCC_BOARD]);
