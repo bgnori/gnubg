@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.391 2009/01/03 22:55:29 c_anthon Exp $
+ * $Id: backgammon.h,v 1.392 2009/01/24 20:41:45 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -568,6 +568,7 @@ extern void CommandAnalyseClearMove(char *);
 extern void CommandAnalyseGame(char *);
 extern void CommandAnalyseMatch(char *);
 extern void CommandAnalyseMove(char *);
+extern void CommandAnalyseRolloutMove(char *);
 extern void CommandAnalyseSession(char *);
 extern void CommandAnnotateAccept(char *);
 extern void CommandAnnotateAddComment(char *);
