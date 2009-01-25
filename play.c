@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.348 2009/01/11 00:08:13 c_anthon Exp $
+ * $Id: play.c,v 1.349 2009/01/25 15:25:10 c_anthon Exp $
  */
 
 #include "config.h"
@@ -784,6 +784,8 @@ static int NewGame( void )
     if( fInterrupt || fError ) {
 	    PopGame(plGame, TRUE);
 	    plGame = plGame_store;
+	    if (!plGame)
+		    return -1;
 	    ChangeGame( plGame );
 	    if (plLastMove_store)
 	    {
@@ -3064,8 +3066,7 @@ extern void CommandNewMatch( char *sz )
 	ShowBoard();
 #endif
 
-    if( fAutoGame )
-	CommandNewGame( NULL );
+    CommandNewGame( NULL );
 }
 
 extern void CommandNewSession( char *sz ) {
@@ -3102,8 +3103,7 @@ extern void CommandNewSession( char *sz ) {
 	ShowBoard();
 #endif
     
-    if( fAutoGame )
-	CommandNewGame( NULL );
+    CommandNewGame( NULL );
 }
 
 static void UpdateGame( int fShowBoard ) {
