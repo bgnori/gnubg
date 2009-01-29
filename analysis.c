@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.200 2009/01/24 20:41:44 c_anthon Exp $
+ * $Id: analysis.c,v 1.201 2009/01/29 08:10:20 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2149,6 +2149,7 @@ extern void CommandAnalyseRolloutMove(char *sz)
 	moverecord *pmr;
 	gint n;
 	GSList *list = NULL, *pl = NULL;
+	int j;
 
 	if (!sz || !*sz) {
 		outputerrf("No moves given");
@@ -2197,12 +2198,12 @@ extern void CommandAnalyseRolloutMove(char *sz)
 
 	outputf(_("Rolling out %d moves:"), c);
 
-	for (pl = list; pl; pl = g_slist_next(pl)) {
-		outputf(" %d", c);
+	for (pl = list, j=0; pl; pl = g_slist_next(pl), j++) {
 		int i = GPOINTER_TO_INT(pl->data) - 1;
-		m = ppm[i] = &pmr->ml.amMoves[i];
-		ppci[i] = &ci;
-		FormatMove(asz[i], msBoard(), m->anMove);
+		outputf(" %d", i+1);
+		m = ppm[j] = &pmr->ml.amMoves[i];
+		ppci[j] = &ci;
+		FormatMove(asz[j], msBoard(), m->anMove);
 	}
 	outputl("");
 
