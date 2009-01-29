@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.79 2009/01/09 10:30:31 c_anthon Exp $
+ * $Id: bearoff.c,v 1.80 2009/01/29 08:08:27 c_anthon Exp $
  */
 #include "config.h"
 #if USE_MULTITHREAD
@@ -575,7 +575,7 @@ extern void BearoffStatus(const bearoffcontext *pbc, char *sz)
 			: _("database does not include gammon distributions"));
 		break;
 	default:
-		g_assert_not_reached();
+		break;
 	}
 	sprintf(buf, _("number of reads: %lu"), pbc->nReads);
 	sprintf(sz, "   - %s\n", buf);
