@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.93 2008/07/30 15:02:58 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.94 2009/01/31 14:23:42 c_anthon Exp $
  */
 
 #include "config.h"
@@ -419,7 +419,7 @@ static void MoveListCopy(GtkWidget *pw, hintdata *phd)
 {
   char *pc = MoveListCopyData(phd);
   if ( pc )
-    TextToClipboard( pc );
+	  GTKTextWindow(pc, _("Move details"), DT_INFO, NULL);
 }
 
 static GtkWidget *

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.35 2008/10/08 10:24:12 c_anthon Exp $
+ * $Id: format.c,v 1.36 2009/01/31 14:23:42 c_anthon Exp $
  */
 
 #include "config.h"
@@ -734,7 +734,7 @@ OutputCubeAnalysisFull ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
     /* missed double */
 
-    sprintf ( pc = strchr ( sz, 0 ), "%s (%s)!",
+    sprintf ( pc = strchr ( sz, 0 ), "%s (%s)!\n",
               _("Alert: missed double"),
               OutputEquityDiff ( arDouble[ OUTPUT_NODOUBLE ], 
                                  ( arDouble[ OUTPUT_TAKE ] > 
@@ -757,7 +757,7 @@ OutputCubeAnalysisFull ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
     /* wrong take */
 
-    sprintf ( pc = strchr ( sz, 0 ), "%s (%s)!",
+    sprintf ( pc = strchr ( sz, 0 ), "%s (%s)!\n",
               _("Alert: wrong take"),
               OutputEquityDiff ( arDouble[ OUTPUT_DROP ],
                                  arDouble[ OUTPUT_TAKE ],
@@ -777,7 +777,7 @@ OutputCubeAnalysisFull ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
     /* wrong pass */
 
-    sprintf ( pc = strchr ( sz, 0 ), "%s (%s)!",
+    sprintf ( pc = strchr ( sz, 0 ), "%s (%s)!\n",
               _("Alert: wrong pass"),
               OutputEquityDiff ( arDouble[ OUTPUT_TAKE ],
                                  arDouble[ OUTPUT_DROP ],
@@ -801,7 +801,7 @@ OutputCubeAnalysisFull ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
     /* wrong double */
 
-    sprintf ( pc = strchr ( sz, 0 ), "%s (%s)!",
+    sprintf ( pc = strchr ( sz, 0 ), "%s (%s)!\n",
               _("Alert: wrong double"),
               OutputEquityDiff ( ( arDouble[ OUTPUT_TAKE ] > 
                                    arDouble[ OUTPUT_DROP ] ) ? 
