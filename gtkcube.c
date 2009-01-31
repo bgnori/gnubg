@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.63 2008/12/04 22:12:16 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.64 2009/01/31 14:23:42 c_anthon Exp $
  */
 
 #include "config.h"
@@ -882,7 +882,7 @@ CubeAnalysisCopy ( GtkWidget *pw, cubehintdata *pchd ) {
   char *pc =  GetContent ( pchd );
 
   if ( pc )
-    TextToClipboard( pc );
+	  GTKTextWindow(pc, _("Cube details"), DT_INFO, NULL);
 
 }
 
