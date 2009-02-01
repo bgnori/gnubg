@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.47 2008/07/29 11:46:34 c_anthon Exp $
+ * $Id: htmlimages.c,v 1.48 2009/02/01 15:48:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -646,18 +646,12 @@ static char* GetFilenameBase(char* sz)
 
 	if( !sz || !*sz )
 	{
-		outputf( _("You must specify a file to export to (see `%s')\n" ),
+		outputf( _("You must specify a directory to export to (see `%s')\n" ),
 			"help export htmlimages" );
 		return 0;
 	}
 
-	if (g_file_test(sz, G_FILE_TEST_EXISTS))
-	{
-		outputerrf(_("Cannot create htmlimages: %s already exists!"), sz);
-		return 0;
-	}
-
-	if( g_mkdir( sz, 0777) < 0 )
+	if (!g_file_test(sz, G_FILE_TEST_IS_DIR) && g_mkdir( sz, 0777) < 0 )
 	{
 		outputerr ( sz );
 		return 0;
