@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.818 2009/01/08 20:37:48 c_anthon Exp $
+ * $Id: gnubg.c,v 1.819 2009/02/03 10:56:21 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1835,9 +1835,8 @@ extern void CommandHelp( char *sz )
     }
 
     if( pc->pc && pc->pc->sz ) {
-	outputl( pc == &cTop ? _("Available commands") :
-		 _("Available subcommands") );
-	outputc(':');
+	outputl( pc == &cTop ? _("Available commands:") :
+		 _("Available subcommands:") );
 
 	pc = pc->pc;
 	
