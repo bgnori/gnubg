@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.392 2009/01/24 20:41:45 c_anthon Exp $
+ * $Id: backgammon.h,v 1.393 2009/02/03 20:45:22 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1033,3 +1033,4 @@ extern void CallbackProgress( void );
 #endif
 extern void SetRNG( rng *prng, rngcontext *rngctx, rng rngNew, char *szSeed );
 extern int check_resigns(cubeinfo * pci);
+extern int quick_roll(void);
