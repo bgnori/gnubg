@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.350 2009/02/01 16:00:49 c_anthon Exp $
+ * $Id: play.c,v 1.351 2009/02/03 20:45:22 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1824,7 +1824,7 @@ extern int NextTurn( int fPlayNext ) {
     fComputing = FALSE;
     return 0;
 }
-
+#if USE_GTK
 extern int quick_roll(void)
 {
 	if (ms.gs == GAME_NONE && move_is_last_in_match())
@@ -1847,6 +1847,7 @@ extern int quick_roll(void)
 	}
 	return 1;
 }
+#endif
 
 
 extern void CommandAccept( char *sz ) {
