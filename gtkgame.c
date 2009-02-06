@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.753 2009/01/10 20:17:30 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.754 2009/02/06 13:04:39 c_anthon Exp $
  */
 
 #include "config.h"
@@ -132,7 +132,6 @@ typedef enum _gnubgcommand {
     CMD_RELATIONAL_ADD_MATCH,
     CMD_ROLL,
     CMD_ROLLOUT,
-    CMD_ROLLOUT_CUBE,
     CMD_SAVE_SETTINGS,
     CMD_SET_ANNOTATION_ON,
     CMD_SET_APPEARANCE,
@@ -192,7 +191,6 @@ static const char *aszCommands[ NUM_CMDS ] = {
     "relational add match",
     "roll",
     "rollout",
-    "rollout =cube",
     "save settings",
     "set annotation on",
     NULL, /* set appearance */
@@ -3340,8 +3338,6 @@ GtkItemFactoryEntry aife[] = {
 	{ N_("/_Analyse/_Hint"), "<control>H", Command, CMD_HINT,
 		"<StockItem>", GNUBG_STOCK_HINT},
 	{ N_("/_Analyse/_Rollout"), NULL, Command, CMD_ROLLOUT, NULL, NULL },
-	{ N_("/_Analyse/Rollout _cube decision"), 
-          NULL, Command, CMD_ROLLOUT_CUBE, NULL, NULL },
 	{ N_("/_Analyse/-"), NULL, NULL, 0, "<Separator>", NULL },
 	{ N_("/_Analyse/Analyse move"), 
           NULL, Command, CMD_ANALYSE_MOVE, NULL, NULL },
