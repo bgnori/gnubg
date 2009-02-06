@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.351 2009/02/03 20:45:22 c_anthon Exp $
+ * $Id: play.c,v 1.352 2009/02/06 10:09:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4349,11 +4349,13 @@ getCurrentMoveRecord ( int *pfHistory ) {
   /* FIXME: introduce a mrHint that "Hint" and "Eval" fills */
 
   if ( plLastMove && plLastMove->plNext && plLastMove->plNext->p ) {
-    *pfHistory = TRUE;
+	  if (pfHistory)
+		  *pfHistory = TRUE;
     return plLastMove->plNext->p;
   }
   else {
-    *pfHistory = FALSE;
+	  if (pfHistory)
+		  *pfHistory = FALSE;
 
     if ( ! cmp_matchstate ( &ms, &sm.ms ) ) {
 
