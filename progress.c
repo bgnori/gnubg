@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.47 2009/02/06 10:09:54 c_anthon Exp $
+ * $Id: progress.c,v 1.48 2009/02/06 13:04:40 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1121,9 +1121,13 @@ TextRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
   char *pch, *pc;
   time_t t;
 
-  /* write progress 1/10th trial */
-
-  if ( fInterrupt || (iGame >= prp->iNextGame && iAlternative == prp->iNextAlternative )) {
+  /* write progress 1/10th trial or just when called if mt */
+#if USE_MULTITHREAD
+  if (TRUE)
+#else
+  if ( fInterrupt || (iGame >= prp->iNextGame && iAlternative == prp->iNextAlternative ))
+#endif
+  {
 
     if ( ! iAlternative )
       outputl( "" );
