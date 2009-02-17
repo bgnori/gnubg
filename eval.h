@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.156 2008/11/11 11:00:55 c_anthon Exp $
+ * $Id: eval.h,v 1.157 2009/02/17 23:22:39 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -272,6 +272,12 @@ extern const char *aszSettings[ NUM_SETTINGS ];
 extern const char *aszMoveFilterSettings[ NUM_MOVEFILTER_SETTINGS ];
 extern movefilter aaamfMoveFilterSettings[ NUM_MOVEFILTER_SETTINGS ][ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ];
 
+typedef enum
+{
+	CMARK_NONE,
+	CMARK_ROLLOUT,
+} CMark;
+
 typedef struct {
   int anMove[ 8 ];
   unsigned char auch[ 10 ];
@@ -282,6 +288,7 @@ typedef struct {
   float arEvalMove[ NUM_ROLLOUT_OUTPUTS ];
   float arEvalStdDev[ NUM_ROLLOUT_OUTPUTS ];
   evalsetup esMove;
+  CMark cmark;
 } move;
 
 

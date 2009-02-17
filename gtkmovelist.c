@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.26 2009/02/02 17:09:55 c_anthon Exp $
+ * $Id: gtkmovelist.c,v 1.27 2009/02/17 23:22:40 c_anthon Exp $
  */
 
 #include "config.h"
@@ -233,9 +233,9 @@ if (!psHighlight)
 	}
 
 	if (rankKnown)
-      sprintf( sz, "%d", i + 1 );
+      sprintf( sz, "%s%d", pml->amMoves[i].cmark ? "+" : "", i + 1 );
     else
-      strcpy( sz, "??" );
+      sprintf( sz, "%s??", pml->amMoves[i].cmark ? "+" : "" );
 
 	if (showWLTree)
 	{

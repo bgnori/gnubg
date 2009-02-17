@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.48 2009/02/06 13:04:40 c_anthon Exp $
+ * $Id: progress.c,v 1.49 2009/02/17 23:22:40 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1024,43 +1024,48 @@ GTKRolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
     return;
 }
 
-static void GTKRolloutProgressEnd( void **pp ) {
-    
-    gchar *gsz;
+static void GTKRolloutProgressEnd(void **pp, gboolean destroy)
+{
 
-    rolloutprogress *prp = *pp;
+	gchar *gsz;
 
-    fInterrupt = FALSE;
+	rolloutprogress *prp = *pp;
 
-    pwGrab = pwOldGrab;
+	fInterrupt = FALSE;
 
-    FreeTextList(prp);
+	pwGrab = pwOldGrab;
 
-    /* if they cancelled the rollout early, 
-       prp->pwRolloutDialog has already been destroyed */
-    if( !prp->pwRolloutDialog ) {
-        g_free( *pp );
-        return;
-    }
+	FreeTextList(prp);
 
-    gtk_widget_set_sensitive( prp->pwRolloutOK, TRUE );
-    gtk_widget_set_sensitive( prp->pwRolloutStop, FALSE );
-    gtk_widget_set_sensitive( prp->pwRolloutViewStat, TRUE );
+	/* if they cancelled the rollout early, prp->pwRolloutDialog has
+	   already been destroyed */
+	if (!prp->pwRolloutDialog) {
+		g_free(*pp);
+		return;
+	}
 
-    gsz = g_strdup_printf( _("Finished (%d trials)") , prp->nGamesDone);
-    gtk_progress_bar_set_text( GTK_PROGRESS_BAR( prp->pwRolloutProgress ), gsz );
-    g_free( gsz );
+	gtk_widget_set_sensitive(prp->pwRolloutOK, TRUE);
+	gtk_widget_set_sensitive(prp->pwRolloutStop, FALSE);
+	gtk_widget_set_sensitive(prp->pwRolloutViewStat, TRUE);
 
-    g_signal_handler_disconnect( G_OBJECT( prp->pwRolloutDialog ), 
-                           prp->nRolloutSignal );
-    g_signal_connect( G_OBJECT( prp->pwRolloutDialog ), "destroy",
-                        G_CALLBACK( gtk_main_quit ), NULL );
+	gsz = g_strdup_printf(_("Finished (%d trials)"), prp->nGamesDone);
+	gtk_progress_bar_set_text(GTK_PROGRESS_BAR(prp->pwRolloutProgress),
+				  gsz);
+	g_free(gsz);
 
-	gtk_main();
+	g_signal_handler_disconnect(G_OBJECT(prp->pwRolloutDialog),
+				    prp->nRolloutSignal);
+	if (destroy)
+		gtk_widget_destroy(prp->pwRolloutDialog);
+	else {
+		g_signal_connect(G_OBJECT(prp->pwRolloutDialog), "destroy",
+				 G_CALLBACK(gtk_main_quit), NULL);
+		gtk_main();
+	}
 
-    prp->pwRolloutProgress = NULL;
+	prp->pwRolloutProgress = NULL;
 
-    g_free( *pp );
+	g_free(*pp);
 }
 
 
@@ -1266,14 +1271,14 @@ RolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
 }
 
 extern void
-RolloutProgressEnd( void **pp ) {
+RolloutProgressEnd( void **pp, gboolean destroy ) {
 
   if ( ! fShowProgress )
     return;
 
 #if USE_GTK
   if ( fX ) {
-    GTKRolloutProgressEnd( pp );
+    GTKRolloutProgressEnd( pp, destroy );
     return;
   }
 #endif /* USE_GTK */
