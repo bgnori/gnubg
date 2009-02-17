@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.820 2009/02/06 13:04:39 c_anthon Exp $
+ * $Id: gnubg.c,v 1.821 2009/02/17 23:22:39 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2518,7 +2518,7 @@ extern void CommandRollout(char *sz)
 	SetCubeInfo(&ci, ms.nCube, ms.fCubeOwner, ms.fMove, ms.nMatchTo, ms.anScore, ms.fCrawford, ms.fJacoby, nBeavers, ms.bgv);
 	RolloutProgressStart(&ci, 1, NULL, &rcRollout, asz, &p);
 	GeneralEvaluationR(arOutput, arStdDev, arsStatistics, anBoard, &ci, &rcRollout, RolloutProgress, p);
-	RolloutProgressEnd(&p);
+	RolloutProgressEnd(&p, FALSE);
 
 }
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.352 2009/02/06 10:09:54 c_anthon Exp $
+ * $Id: play.c,v 1.353 2009/02/17 23:22:40 c_anthon Exp $
  */
 
 #include "config.h"
@@ -115,6 +115,7 @@ NewMoveRecord( void ) {
   pmr->nAnimals = 0;
   pmr->CubeDecPtr = &pmr->CubeDec;
   pmr->CubeDecPtr->esDouble.et = EVAL_NONE;
+  pmr->CubeDecPtr->cmark = CMARK_NONE;
   pmr->stCube = SKILL_NONE;
   pmr->ml.cMoves = 0;
   pmr->ml.amMoves = NULL;
@@ -3130,7 +3131,7 @@ extern void CommandNewSession( char *sz ) {
     CommandNewGame( NULL );
 }
 
-static void UpdateGame( int fShowBoard ) {
+extern void UpdateGame( int fShowBoard ) {
     
     UpdateSetting( &ms.nCube );
     UpdateSetting( &ms.fCubeOwner );
@@ -3163,7 +3164,7 @@ static int GameIndex( listOLD *plGame ) {
 }
 #endif
 
-extern void ChangeGame( listOLD *plGameNew ) {
+extern void ChangeGame(const listOLD *plGameNew ) {
 
 #if USE_GTK
     listOLD *pl;
@@ -3175,7 +3176,7 @@ extern void ChangeGame( listOLD *plGameNew ) {
 		return;
 	}
     
-	plLastMove = ( plGame = plGameNew )->plNext;
+	plLastMove = ( plGame = (listOLD *)plGameNew )->plNext;
     
 #if USE_GTK
     if( fX ) {

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.360 2009/01/22 22:42:48 c_anthon Exp $
+ * $Id: eval.c,v 1.361 2009/02/17 23:22:38 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3471,6 +3471,7 @@ static void SaveMoves( movelist *pml, unsigned int cMoves, unsigned int cPip, in
 
     pm->cMoves = cMoves;
     pm->cPips = cPip;
+    pm->cmark = CMARK_NONE;
 
     for ( i = 0; i < NUM_OUTPUTS; i++ )
       pm->arEvalMove[ i ] = 0.0;

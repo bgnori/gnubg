@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.h,v 1.4 2007/07/02 12:43:39 ace Exp $
+ * $Id: gtkcube.h,v 1.5 2009/02/17 23:22:39 c_anthon Exp $
  */
 
 #ifndef _GTKCUBE_H_
@@ -26,6 +26,6 @@ extern GtkWidget *
 CreateCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                      float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
                      evalsetup *pes,
-                     const movetype mt );
+                     const movetype mt, CMark *pcmark );
 
 #endif

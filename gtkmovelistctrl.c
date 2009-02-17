@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.16 2008/12/16 22:10:57 Superfly_Jon Exp $
+ * $Id: gtkmovelistctrl.c,v 1.17 2009/02/17 23:22:40 c_anthon Exp $
  */
 
 #include "config.h"
@@ -410,9 +410,9 @@ custom_cell_renderer_movelist_render (GtkCellRenderer *cell,
 	/* First line of control */
 
 	if (cellprogress->rank > 0)
-		sprintf(buf, "%d", cellprogress->rank);
+		sprintf(buf, "%d%s", cellprogress->rank, cellprogress->pml->cmark ? "+" : "");
 	else
-		strcpy(buf, "??");
+		sprintf(buf, "??%s", cellprogress->pml->cmark ? "+" : "");
 
 	pango_layout_set_text(layout, buf, -1);
 	pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
