@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.95 2009/02/17 23:22:39 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.96 2009/02/22 22:43:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -686,11 +686,11 @@ extern int CheckHintButtons(hintdata * phd)
 }
 
 extern GtkWidget *
-CreateMoveList( movelist *pml, unsigned int *piHighlight, const int fButtonsValid,
+CreateMoveList( moverecord *pmr, const int fButtonsValid,
                 const int fDestroyOnMove, const int fDetails )
 {
     GtkWidget *pw;
-    GtkWidget *pwHBox, *mlt;
+    GtkWidget *pwVBox, *mlt;
 
     hintdata *phd = (hintdata *) malloc ( sizeof ( hintdata ) );
 
@@ -698,8 +698,11 @@ CreateMoveList( movelist *pml, unsigned int *piHighlight, const int fButtonsVali
        the move list. */
     g_assert( ms.fMove == 0 || ms.fMove == 1 );
 
-    phd->piHighlight = piHighlight;
-    phd->pml = pml;
+    if (pmr->n.iMove >0 && pmr->n.iMove< pmr->ml.cMoves)
+	    phd->piHighlight = &pmr->n.iMove;
+    else
+	    phd->piHighlight = NULL;
+    phd->pml = &pmr->ml;
     phd->fButtonsValid = fButtonsValid;
     phd->fDestroyOnMove = fDestroyOnMove;
     phd->pwMove = NULL;
@@ -713,18 +716,15 @@ CreateMoveList( movelist *pml, unsigned int *piHighlight, const int fButtonsVali
                                     GTK_POLICY_AUTOMATIC );
     gtk_container_add(GTK_CONTAINER(pw), phd->pwMoves);
 
-    pwHBox = gtk_vbox_new ( FALSE, 0 );  /* Variable name does not match 
-					    actual widget */
-
-    gtk_box_pack_start ( GTK_BOX ( pwHBox ), pw, TRUE, TRUE, 0 );
-    gtk_box_pack_end ( GTK_BOX ( pwHBox ),
+    pwVBox = gtk_vbox_new ( FALSE, 0 );
+    gtk_box_pack_start ( GTK_BOX ( pwVBox ), pw, TRUE, TRUE, 0 );
+    gtk_box_pack_end ( GTK_BOX ( pwVBox ),
                        mlt,
                        FALSE, FALSE, 0 );
 
-    g_object_set_data_full( G_OBJECT( pwHBox ), "user_data", 
-                              phd, free );
+    g_object_set_data_full( G_OBJECT( pwVBox ), "user_data", phd, free );
 
 	CheckHintButtons(phd);
 
-    return pwHBox;
+    return pwVBox;
 }

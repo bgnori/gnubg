@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.61 2008/10/22 19:23:38 c_anthon Exp $
+ * $Id: export.c,v 1.62 2009/02/22 22:43:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -203,6 +203,7 @@ static int draw_cairo_pages(cairo_t * cairo, listOLD * game_ptr)
 	int iMove = 0;
 	int iGame = 0;
 	int page;
+	listOLD *pl_hint = NULL;
 
 	IniStatcontext(&scTotal);
 	updateStatisticsGame(game_ptr);
@@ -216,6 +217,8 @@ static int draw_cairo_pages(cairo_t * cairo, listOLD * game_ptr)
 	psc = &pmr->g.sc;
 	AddStatcontext(psc, &scTotal);
 	iGame = getGameNumber(game_ptr);
+	if (game_is_last(plGame))
+		pl_hint = game_add_pmr_hint(game_ptr);
 	for (pl = pl->plNext, page = 1; pl != game_ptr;
 	     pl = pl->plNext, page++) {
 		export_boards(pl->p, &msExport, &iMove, iGame, cairo);
@@ -232,6 +235,8 @@ static int draw_cairo_pages(cairo_t * cairo, listOLD * game_ptr)
 		cairo_translate(cairo, 0, -SIMPLE_BOARD_HEIGHT / 2.0);
 		cairo_show_page(cairo);
 	}
+	if (pl_hint)
+		game_remove_pmr_hint(pl_hint);
 	return 1;
 }
 

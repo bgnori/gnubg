@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.203 2008/12/21 10:45:04 Superfly_Jon Exp $
+ * $Id: html.c,v 1.204 2009/02/22 22:43:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.203 2008/12/21 10:45:04 Superfly_Jon Exp $ */\n",
+           "/* $Id: html.c,v 1.204 2009/02/22 22:43:02 c_anthon Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1825,7 +1825,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.203 $";
+  const char szVersion[] = "$Revision: 1.204 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1905,7 +1905,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.203 $";
+  const char szVersion[] = "$Revision: 1.204 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3267,11 +3267,15 @@ static void ExportGameHTML ( FILE *pf, listOLD *plGame, const char *szImageDir,
     statcontext *psc = NULL;
     static statcontext scTotal;
     xmovegameinfo *pmgi = NULL;
+    listOLD *pl_hint;
 
     if ( ! iGame )
       IniStatcontext ( &scTotal );
 
     updateStatisticsGame ( plGame );
+
+    if (game_is_last(plGame))
+	    pl_hint = game_add_pmr_hint(plGame);
 
     for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) {
 
@@ -3351,6 +3355,9 @@ static void ExportGameHTML ( FILE *pf, listOLD *plGame, const char *szImageDir,
       ApplyMoveRecord ( &msExport, plGame, pmr );
 
     }
+
+    if (pl_hint)
+	    game_remove_pmr_hint(pl_hint);
 
     if( pmgi && pmgi->fWinner != -1 ) {
 

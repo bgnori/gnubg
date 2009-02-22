@@ -16,11 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.h,v 1.15 2009/02/17 23:22:39 c_anthon Exp $
+ * $Id: gtkchequer.h,v 1.16 2009/02/22 22:43:01 c_anthon Exp $
  */
 
 #ifndef _GTKCHEQUER_H_
 #define _GTKCHEQUER_H_
+
+#include "backgammon.h"
 
 typedef struct _hintdata {
   GtkWidget *pwMoves;     /* the movelist */
@@ -41,7 +43,7 @@ typedef struct _hintdata {
 } hintdata;
 
 extern GtkWidget *
-CreateMoveList( movelist *pml, unsigned int *piHighlight, 
+CreateMoveList( moverecord *pmr,
                 const int fButtonsValid, const int fDestroyOnMove,
                 const int fDetails );
 

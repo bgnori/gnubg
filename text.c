@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.94 2008/09/29 10:00:51 c_anthon Exp $
+ * $Id: text.c,v 1.95 2009/02/22 22:43:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -246,7 +246,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.94 $";
+  const char szVersion[] = "$Revision: 1.95 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -799,11 +799,15 @@ static void ExportGameText ( FILE *pf, listOLD *plGame,
     static statcontext scTotal;
     xmovegameinfo *pmgi = NULL;
     GString *gsz;
+    listOLD *pl_hint = NULL;
 
     if ( ! iGame )
       IniStatcontext ( &scTotal );
 
     updateStatisticsGame ( plGame );
+
+    if (game_is_last(plGame))
+	    pl_hint = game_add_pmr_hint(plGame);
 
     for( pl = plGame->plNext; pl != plGame; pl = pl->plNext ) {
 
@@ -895,6 +899,9 @@ static void ExportGameText ( FILE *pf, listOLD *plGame,
       ApplyMoveRecord ( &msExport, plGame, pmr );
 
     }
+    
+    if (pl_hint)
+	    game_remove_pmr_hint(pl_hint);
 
     if( pmgi && pmgi->fWinner != -1 ) {
 
