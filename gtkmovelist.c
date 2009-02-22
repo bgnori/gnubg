@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.27 2009/02/17 23:22:40 c_anthon Exp $
+ * $Id: gtkmovelist.c,v 1.28 2009/02/22 22:43:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -290,9 +290,6 @@ skipoldcode:	/* Messy as 3 copies of code at moment... */
 	gtk_tree_model_iter_next(GTK_TREE_MODEL(store), &iter);
   }
 
-
-  /* update storedmoves global struct */
-  UpdateStoredMoves ( pml, &ms );
 }
 
 extern GList *MoveListGetSelectionList(const hintdata *phd)

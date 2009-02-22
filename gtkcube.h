@@ -16,16 +16,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.h,v 1.5 2009/02/17 23:22:39 c_anthon Exp $
+ * $Id: gtkcube.h,v 1.6 2009/02/22 22:43:01 c_anthon Exp $
  */
 
 #ifndef _GTKCUBE_H_
 #define _GTKCUBE_H_
 
-extern GtkWidget *
-CreateCubeAnalysis ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
-                     float aarStdDev[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
-                     evalsetup *pes,
-                     const movetype mt, CMark *pcmark );
+extern GtkWidget *CreateCubeAnalysis (moverecord *pmr, matchstate *pms);
 
 #endif

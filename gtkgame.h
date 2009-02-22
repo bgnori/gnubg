@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.137 2009/01/03 22:55:30 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.138 2009/02/22 22:43:02 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -100,16 +100,14 @@ extern void GTKCalibrationUpdate(void *context, float rEvalsPerSec);
 extern void GtkChangeLanguage(void);
 extern void GTKClearMoveRecord(void);
 extern void GTKCommandShowCredits(GtkWidget * pw, GtkWidget * parent);
-extern void GTKCubeHint(float aarOutput[2][NUM_ROLLOUT_OUTPUTS],
-			float aarStdDev[2][NUM_ROLLOUT_OUTPUTS],
-			const evalsetup * pes);
+extern void GTKCubeHint(moverecord *pmr, matchstate *pms );
 extern void GTKDelay(void);
 extern void GTKDisallowStdin(void);
 extern void GTKDumpStatcontext(int game);
 extern void GTKEval(char *szOutput);
 extern void GTKFreeze(void);
 extern void GTKHelp(char *sz);
-extern void GTKHint(movelist * pmlOrig, const unsigned int iMove);
+extern void GTKHint(moverecord *pmr);
 extern void GTKMatchInfo(void);
 extern void GTKNew(void);
 extern void GTKOutput(const char *sz);

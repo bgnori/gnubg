@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.322 2009/01/09 12:01:22 c_anthon Exp $
+ * $Id: set.c,v 1.323 2009/02/22 22:43:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2826,8 +2826,7 @@ static void SetInvertMET(void)
     invertMET();
     /* Clear any stored results to stop previous table causing problems */
     EvalCacheFlush();
-    InvalidateStoredMoves();
-    InvalidateStoredCube();
+    pmr_hint_destroy();
 }
 
 extern void CommandSetMET( char *sz ) {
