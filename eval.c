@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.361 2009/02/17 23:22:38 c_anthon Exp $
+ * $Id: eval.c,v 1.362 2009/02/22 09:13:06 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3356,7 +3356,7 @@ se_eq2mwc ( const float rEq, const cubeinfo *pci ) {
 
 
 
-static int 
+extern int 
 ApplySubMove( TanBoard anBoard, 
               const int iSrc, const int nRoll,
               const int fCheckLegal ) {
