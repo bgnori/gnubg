@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.157 2009/02/17 23:22:39 c_anthon Exp $
+ * $Id: eval.h,v 1.158 2009/02/22 09:13:06 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -420,9 +420,11 @@ extern int
 GenerateMoves( movelist *pml, const TanBoard anBoard,
                int n0, int n1, int fPartial );
 
-extern int 
-ApplyMove( TanBoard anBoard, const int anMove[ 8 ],
-           const int fCheckLegal );
+extern int ApplySubMove(TanBoard anBoard, const int iSrc, const int nRoll,
+			const int fCheckLegal);
+
+extern int ApplyMove(TanBoard anBoard, const int anMove[8],
+		     const int fCheckLegal);
 
 extern positionclass 
 ClassifyPosition( const TanBoard anBoard, const bgvariation bgv );
