@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.822 2009/02/22 22:43:01 c_anthon Exp $
+ * $Id: gnubg.c,v 1.823 2009/02/23 20:26:06 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2436,7 +2436,7 @@ extern void CommandRollout(char *sz)
 	float arOutput [ NUM_ROLLOUT_OUTPUTS ];
 	float arStdDev [ NUM_ROLLOUT_OUTPUTS ];
 	rolloutstat arsStatistics[ 2 ];
-	const TanBoard anBoard;
+	TanBoard anBoard;
 	cubeinfo ci;
 	char asz[1][40];
 	void *p;
@@ -2860,7 +2860,6 @@ extern void CommandSaveSettings( char *szParam )
 {
     FILE *pf;
     int i;
-    unsigned int cCache; 
     char *szFile;
     char szTemp[ 4096 ];
     GString *gst;
@@ -2976,8 +2975,7 @@ extern void CommandSaveSettings( char *szParam )
 	     fAutoRoll ? "on" : "off",
 	     nBeavers );
 
-    EvalCacheStats( NULL, &cCache, NULL, NULL );
-    fprintf( pf, "set cache %d\n", cCache );
+    fprintf( pf, "set cache %d\n", GetEvalCacheEntries() );
 
 #if USE_MULTITHREAD
     fprintf( pf, "set threads %d\n", MT_GetNumThreads() );

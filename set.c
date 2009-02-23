@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.323 2009/02/22 22:43:02 c_anthon Exp $
+ * $Id: set.c,v 1.324 2009/02/23 20:26:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -624,20 +624,20 @@ static int CheckCubeAllowed( void ) {
     return 0;
 }
 
-extern void CommandSetCache( char *sz ) {
+extern void CommandSetCache(char *sz)
+{
+	int n;
+	if ((n = ParseNumber(&sz)) < 0)
+	{
+		outputl( _("You must specify the number of cache entries to use.") );
+		return;
+	}
 
-    int n;
-
-    if( ( n = ParseNumber( &sz ) ) < 0 ) {
-	outputl( _("You must specify the number of cache entries to use.") );
-
-	return;
-    }
-
-    if( EvalCacheResize( n ) )
-	    outputerr( "EvalCacheResize" );
-    else 
-	    outputf(ngettext("The position cache has been sized to %d entry.\n", "The position cache has been sized to %d entries.\n", n), n);
+	n = EvalCacheResize(n);
+	if (n != -1)
+		outputf(ngettext("The position cache has been sized to %d entry.\n", "The position cache has been sized to %d entries.\n", n), n);
+	else 
+		outputerr( "EvalCacheResize" );
 }
 
 #if USE_MULTITHREAD
