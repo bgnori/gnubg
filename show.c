@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.251 2008/09/29 15:18:31 c_anthon Exp $
+ * $Id: show.c,v 1.252 2009/02/23 20:26:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -552,7 +552,7 @@ extern void CommandShowCache( char *sz ) {
     unsigned int c, cHit;
     unsigned int cLookup;
 
-    EvalCacheStats( &c, NULL, &cLookup, &cHit );
+    EvalCacheStats( &c, &cLookup, &cHit );
 
     outputf( _("%d cache entries have been used.  %d lookups, %d hits"),
 	    c, cLookup, cHit );

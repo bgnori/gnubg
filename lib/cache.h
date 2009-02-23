@@ -15,7 +15,7 @@
  * cache.h
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.h,v 1.12 2007/12/18 21:48:07 Superfly_Jon Exp $
+ * $Id: cache.h,v 1.13 2009/02/23 20:26:07 Superfly_Jon Exp $
  */
 
 #ifndef _CACHE_H_
@@ -28,7 +28,10 @@
 typedef struct _cacheNode {
   unsigned char auchKey[10];
   int nEvalContext;
-  float ar[7 /*NUM_ROLLOUT_OUTPUTS*/];
+  float ar[6];
+#if USE_MULTITHREAD
+  int lock;
+#endif
 } cacheNode;
 
 /* name used in eval.c */
@@ -37,7 +40,6 @@ typedef cacheNode evalcache;
 typedef struct _cache
 {
   cacheNode*	m;
-  int *locks;
   
   unsigned int size;
   unsigned long hashMask;
@@ -58,9 +60,10 @@ int CacheResize(evalCache *pc, unsigned int cNew);
 unsigned int CacheLookup(evalCache* pc, const cacheNode* e, float *arOut, float *arCubeful);
 
 void CacheAdd(evalCache* pc, const cacheNode* e, unsigned long l);
-void CacheAddNoKey(evalCache* pc, const cacheNode* e);
 void CacheFlush(const evalCache* pc);
 void CacheDestroy(const evalCache* pc);
 void CacheStats(const evalCache* pc, unsigned int* pcLookup, unsigned int* pcHit, unsigned int* pcUsed);
+
+unsigned long GetHashKey(unsigned long hashMask, const cacheNode* e);
 
 #endif

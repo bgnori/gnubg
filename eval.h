@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.158 2009/02/22 09:13:06 c_anthon Exp $
+ * $Id: eval.h,v 1.159 2009/02/23 20:26:06 Superfly_Jon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -291,7 +291,6 @@ typedef struct {
   CMark cmark;
 } move;
 
-
 extern int fInterrupt;
 extern cubeinfo ciCubeless;
 extern const char *aszEvalType[ (int)EVAL_ROLLOUT + 1 ];
@@ -414,7 +413,12 @@ extern int
 EvalCacheResize( unsigned int cNew );
 
 extern int 
-EvalCacheStats( unsigned int *pcUsed, unsigned int *pcSize, unsigned int *pcLookup, unsigned int *pcHit );
+EvalCacheStats( unsigned int *pcUsed, unsigned int *pcLookup, unsigned int *pcHit );
+
+extern double GetEvalCacheSize();
+void SetEvalCacheSize(unsigned int size);
+extern unsigned int GetEvalCacheEntries();
+extern int GetCacheMB(double size);
 
 extern int 
 GenerateMoves( movelist *pml, const TanBoard anBoard,
