@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.58 2008/12/29 21:08:02 c_anthon Exp $
+ * $Id: neuralnet.c,v 1.59 2009/02/23 20:22:28 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -24,7 +24,6 @@
 #include <glib.h>
 #include <errno.h>
 #include <isaac.h>
-#include <math.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>

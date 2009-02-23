@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.203 2009/02/17 23:22:38 c_anthon Exp $
+ * $Id: analysis.c,v 1.204 2009/02/23 20:21:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2254,7 +2254,7 @@ static void cmark_move_set(moverecord *pmr, gchar *sz, CMark cmark)
 
 	c = pmr->ml.cMoves;
 
-	while ((n = g_ascii_strtoll(sz, &sz, 10))) {
+	while ((n = (int)g_ascii_strtoll(sz, &sz, 10))) {
 		if (n > c) {
 			outputerrf("Only %d moves in movelist\n", c);
 			g_slist_free(list);

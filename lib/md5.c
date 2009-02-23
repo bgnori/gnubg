@@ -22,7 +22,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: md5.c,v 1.9 2007/07/02 12:46:38 ace Exp $
+ * $Id: md5.c,v 1.10 2009/02/23 20:22:28 Superfly_Jon Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
@@ -52,9 +52,9 @@
 
 #define READ( p ) \
     ( ( (unsigned char *) (p) )[ 0 ] | \
-      ( (unsigned char *) (p) )[ 1 ] << 8 | \
-      ( (unsigned char *) (p) )[ 2 ] << 16 | \
-      ( (unsigned char *) (p) )[ 3 ] << 24 )
+      ( (unsigned int)((unsigned char *) (p) )[ 1 ]) << 8 | \
+      ( (unsigned int)((unsigned char *) (p) )[ 2 ]) << 16 | \
+      ( (unsigned int)((unsigned char *) (p) )[ 3 ]) << 24 )
 
 /* This array contains the bytes used to pad the buffer to the next
    64-byte boundary.  (RFC 1321, 3.1: Step 1)  */
