@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.22 2008/08/25 11:52:35 c_anthon Exp $
+* $Id: font3d.c,v 1.23 2009/02/23 20:21:08 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -120,11 +120,13 @@ int CreateFontText(OGLFont **ppFont, const char *text, const char *fontFile, int
 void FreeNumberFont(OGLFont *ppFont)
 {
 	glDeleteLists(ppFont->glyphs, 10);
+	ppFont->glyphs = 0;
 }
 
 void FreeFontText(OGLFont *ppFont)
 {
 	glDeleteLists(ppFont->glyphs, 1);
+	ppFont->glyphs = 0;
 }
 
 static int RenderText(const char *text, FT_Library ftLib, OGLFont *pFont, const char *pPath, int pointSize, float scale, float heightRatio)
@@ -148,7 +150,8 @@ static int RenderText(const char *text, FT_Library ftLib, OGLFont *pFont, const 
 	while (*text)
 	{
 		/* Draw character */
-		unsigned int glyphIndex = FT_Get_Char_Index(face, *text);
+		FT_ULong charCode = (FT_ULong)(int)(*text);
+		unsigned int glyphIndex = FT_Get_Char_Index(face, charCode);
 		if (!glyphIndex)
 			return 0;
 
@@ -167,9 +170,11 @@ static int RenderText(const char *text, FT_Library ftLib, OGLFont *pFont, const 
 		/* Move on to next place */
 		if (*text)
 		{
+			unsigned int nextGlyphIndex;
 			int kern = 0;
 			FT_Vector kernAdvance;
-			unsigned int nextGlyphIndex = FT_Get_Char_Index(face, *text);
+			charCode = (FT_ULong)(int)(*text);
+			nextGlyphIndex = FT_Get_Char_Index(face, charCode);
 			if (nextGlyphIndex && !FT_Get_Kerning(face, glyphIndex, nextGlyphIndex, ft_kerning_unfitted, &kernAdvance))
 				kern = kernAdvance.x;
 				
