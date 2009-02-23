@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.66 2009/02/22 22:43:01 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.67 2009/02/23 19:56:08 c_anthon Exp $
  */
 
 #include "config.h"
@@ -732,6 +732,7 @@ static void EvalCube ( cubehintdata *pchd, evalcontext *pec )
 
   /* save evaluation */
 
+
   memcpy ( cdec->aarOutput, dd.aarOutput, 
            2 * NUM_ROLLOUT_OUTPUTS * sizeof ( float ) );
 
@@ -1036,6 +1037,7 @@ extern GtkWidget *CreateCubeAnalysis(moverecord *pmr, matchstate *pms)
 	GtkWidget *pw, *pwhb, *pwx;
 
 	pchd->pmr = pmr;
+	pchd->ms = *pms;
 	pchd->pw = pw = gtk_hbox_new(FALSE, 2);
 	switch (pmr->mt) {
 
