@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.47 2009/01/03 10:08:01 Superfly_Jon Exp $
+* $Id: widget3d.c,v 1.48 2009/02/23 20:21:09 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -108,7 +108,7 @@ void UpdateShadows(BoardData3d* bd3d)
 	bd3d->shadowsOutofDate = TRUE;
 }
 
-static gboolean expose_event_3d(GtkWidget *widget, GdkEventExpose *exposeEvent, const BoardData* bd)
+static gboolean expose_event_3d(GtkWidget *widget, const GdkEventExpose *exposeEvent, const BoardData* bd)
 {
 	GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 	if (!gdk_gl_drawable_gl_begin(gldrawable, gtk_widget_get_gl_context(widget)))
@@ -130,8 +130,9 @@ static gboolean expose_event_3d(GtkWidget *widget, GdkEventExpose *exposeEvent, 
 		if (numRestrictFrames >= 0)
 		{
 			if (numRestrictFrames == 0)
-			{	/* Redraw obscured part of window */
-				RestrictiveDrawFrameWindow(exposeEvent->area.x, widget->allocation.height - exposeEvent->area.y - exposeEvent->area.height, exposeEvent->area.width, exposeEvent->area.height);
+			{	/* Redraw obscured part of window - need to flip y co-ord */
+				RestrictiveDrawFrameWindow(exposeEvent->area.x, widget->allocation.height - (exposeEvent->area.y + exposeEvent->area.height),
+											exposeEvent->area.width, exposeEvent->area.height);
 			}
 
 			/* Draw updated regions directly to screen */
