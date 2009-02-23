@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makeweights.c,v 1.22 2008/10/22 19:46:08 c_anthon Exp $
+ * $Id: makeweights.c,v 1.23 2009/02/23 20:21:53 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -38,7 +38,7 @@ usage (char *prog) {
   exit (1);
 }
 
-extern int main( int argc, char *argv[] )
+extern int main( int argc, /*lint -e{818}*/char *argv[] )
 {
     neuralnet nn;
     char szFileVersion[ 16 ];

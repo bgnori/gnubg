@@ -17,11 +17,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.12 2008/12/29 21:08:02 c_anthon Exp $
+ * $Id: neuralnetsse.c,v 1.13 2009/02/23 20:22:28 Superfly_Jon Exp $
  */
 
 #include "config.h"
-#include "common.h"
 
 #if USE_SSE_VECTORIZE
 
@@ -35,7 +34,9 @@
 #endif
 
 #include <xmmintrin.h>
+#ifndef _MSC_VER
 #include <mm_malloc.h>
+#endif
 #include <glib.h>
 #include "sigmoid.h"
 

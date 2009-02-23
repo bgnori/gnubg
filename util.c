@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.c,v 1.25 2008/12/30 21:24:47 Superfly_Jon Exp $
+ * $Id: util.c,v 1.26 2009/02/23 20:21:53 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -67,7 +67,8 @@ extern void PrintSystemError(const char* message)
 		g_print("** Windows error while %s **\n", message);
 		g_print(": %s", (LPCTSTR)lpMsgBuf);
 
-		LocalFree(lpMsgBuf);
+		if (LocalFree(lpMsgBuf) != NULL)
+			g_print("LocalFree() failed\n");
 	}
 }
 #else
@@ -94,6 +95,7 @@ FILE *fdopen(int, const char *);
 #ifndef WIN32
 #define TEMP_g_file_open_tmp g_file_open_tmp
 #else
+#include <io.h>
 #include <fcntl.h>
 #include <errno.h>
 
@@ -145,15 +147,17 @@ int TEMP_g_mkstemp(char *tmpl)
   return -1;
 }
 
-int TEMP_g_file_open_tmp (const char *tmpl, char      **name_used, GError    **error)
+int TEMP_g_file_open_tmp (const char *tmpl, char      **name_used, GError    **notused)
 {
-  char *sep = "";
+  const char *sep = "";
+  char test;
   const char *tmpdir = g_get_tmp_dir ();
 
   if (tmpl == NULL)
     tmpl = ".XXXXXX";
 
-  if (!G_IS_DIR_SEPARATOR (tmpdir [strlen (tmpdir) - 1]))
+  test = tmpdir [strlen (tmpdir) - 1];
+  if (!G_IS_DIR_SEPARATOR (test))
     sep = G_DIR_SEPARATOR_S;
 
   *name_used = g_strconcat (tmpdir, sep, tmpl, NULL);

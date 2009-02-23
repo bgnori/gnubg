@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.63 2008/07/29 11:46:32 c_anthon Exp $
+ * $Id: external.c,v 1.64 2009/02/23 20:21:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -129,7 +129,8 @@ void OutputWin32SocketError(const char* action)
 		(LPTSTR) &lpMsgBuf, 0, NULL) != 0)
 	{
 		outputerrf("%s (%s):\n%s", _("Windows socket error"), action, (LPCTSTR)lpMsgBuf);
-		LocalFree(lpMsgBuf);
+		if (LocalFree(lpMsgBuf) != NULL)
+			g_print("LocalFree() failed\n");
 	}
 }
 #endif

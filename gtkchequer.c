@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.96 2009/02/22 22:43:01 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.97 2009/02/23 20:21:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -203,7 +203,8 @@ static void MoveListCmarkClicked(GtkWidget *pw, hintdata *phd)
 	for (pl = plSelList; pl; pl = pl->next) {
 
 		move *m = MoveListGetMove(phd, pl);
-		all_marked = MIN(m->cmark, all_marked);
+		if (m->cmark == CMARK_NONE)
+			all_marked = FALSE;
 	}
 	new_mark = all_marked ? 0 : 1;
 	for (pl = plSelList; pl; pl = pl->next) {
