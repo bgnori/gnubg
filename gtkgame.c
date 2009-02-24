@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.756 2009/02/22 22:43:01 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.757 2009/02/24 21:41:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4140,6 +4140,10 @@ extern int edit_new(unsigned int length)
 	fAutoGame = TRUE;
 	fDisplay = FALSE;
 
+#if USE_BOARD3D
+	SuspendDiceRolling(bd->rd);
+#endif
+
 	if (manual_dice)
 	{
 		outputoff();
@@ -4149,6 +4153,10 @@ extern int edit_new(unsigned int length)
 
 	sprintf(sz, "new match %d", length);
 	UserCommand(sz);
+
+#if USE_BOARD3D
+	ResumeDiceRolling(bd->rd);
+#endif
 
 	if (manual_dice)
 	{
