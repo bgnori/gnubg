@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.363 2009/02/23 20:26:06 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.364 2009/02/24 09:59:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4144,7 +4144,7 @@ EvalCacheFlush(void)
   CacheFlush( & cEval );
 }
 
-extern double GetEvalCacheSize()
+extern double GetEvalCacheSize(void)
 {
 	if (cEval.size == 0)
 		return 0;
@@ -4167,7 +4167,7 @@ extern void SetEvalCacheSize(unsigned int size)
 	EvalCacheResize((size == 0) ? 0 : (unsigned int)pow(2, size + 16));
 }
 
-extern unsigned int GetEvalCacheEntries()
+extern unsigned int GetEvalCacheEntries(void)
 {
 	return cCache;
 }

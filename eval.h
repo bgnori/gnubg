@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.159 2009/02/23 20:26:06 Superfly_Jon Exp $
+ * $Id: eval.h,v 1.160 2009/02/24 09:59:51 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -415,9 +415,9 @@ EvalCacheResize( unsigned int cNew );
 extern int 
 EvalCacheStats( unsigned int *pcUsed, unsigned int *pcLookup, unsigned int *pcHit );
 
-extern double GetEvalCacheSize();
+extern double GetEvalCacheSize(void);
 void SetEvalCacheSize(unsigned int size);
-extern unsigned int GetEvalCacheEntries();
+extern unsigned int GetEvalCacheEntries(void);
 extern int GetCacheMB(double size);
 
 extern int 
