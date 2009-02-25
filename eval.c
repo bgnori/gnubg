@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.364 2009/02/24 09:59:51 c_anthon Exp $
+ * $Id: eval.c,v 1.365 2009/02/25 11:10:10 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4177,7 +4177,7 @@ extern int GetCacheMB(double size)
 	if (size == 0)
 		return 0;
 	else
-		return (int)((pow(2, size + 16) * sizeof(cacheNode)) / (1024 * 1024));
+		return (int)((pow(2, size + 15) * sizeof(cacheNode)) / (1024 * 1024));
 }
 
 extern int EvalCacheResize(unsigned int cNew)
