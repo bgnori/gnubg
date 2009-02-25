@@ -15,7 +15,7 @@
  * cache.h
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.h,v 1.14 2009/02/24 11:28:56 Superfly_Jon Exp $
+ * $Id: cache.h,v 1.15 2009/02/25 11:10:17 Superfly_Jon Exp $
  */
 
 #ifndef _CACHE_H_
@@ -32,7 +32,8 @@ typedef struct _cacheNodeDetail {
 } cacheNodeDetail;
 
 typedef struct _cacheNode {
-  cacheNodeDetail nd;
+  cacheNodeDetail nd_primary;
+  cacheNodeDetail nd_secondary;
 #if USE_MULTITHREAD
   int lock;
 #endif
@@ -43,7 +44,7 @@ typedef cacheNodeDetail evalcache;
 
 typedef struct _cache
 {
-  cacheNode*	m;
+  cacheNode*	entries;
   
   unsigned int size;
   unsigned long hashMask;
