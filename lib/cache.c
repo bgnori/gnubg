@@ -15,7 +15,7 @@
  * cache.c
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.c,v 1.23 2009/02/25 11:10:16 Superfly_Jon Exp $
+ * $Id: cache.c,v 1.24 2009/03/01 20:01:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -90,7 +90,7 @@ int CacheCreate(evalCache* pc, unsigned int s)
 	pc->size = (s < pc->size) ? 2 * s : s;
 	pc->hashMask = (pc->size >> 1) - 1;
 
-	pc->entries = (cacheNode*)malloc(pc->size / 2 * sizeof(*pc->entries));
+	pc->entries = (cacheNode*)malloc((pc->size / 2) * sizeof(*pc->entries));
 	if (pc->entries == 0)
 		return -1;
 

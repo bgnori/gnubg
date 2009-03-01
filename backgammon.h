@@ -16,15 +16,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.397 2009/02/23 20:21:52 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.398 2009/03/01 20:01:48 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
 #define _BACKGAMMON_H_
 
-#include <sys/types.h>
-#include "gnubg-types.h"
-#include <stdarg.h>
 #include "analysis.h"
 #include "eval.h"
 #include "rollout.h"
@@ -34,7 +31,7 @@
 #define VERSION_STRING "GNU Backgammon " VERSION
 #define GNUBG_CHARSET "UTF-8"
 
-extern const gchar *intro_string;
+extern const char *intro_string;
 typedef struct _command {
 	/* Command name (NULL indicates end of list) */
 	const char *sz;

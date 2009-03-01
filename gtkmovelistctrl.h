@@ -17,15 +17,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.h,v 1.4 2007/09/02 20:27:02 c_anthon Exp $
+ * $Id: gtkmovelistctrl.h,v 1.5 2009/03/01 20:01:50 Superfly_Jon Exp $
  */
 
 #ifndef _GTKMOVELISTCTRL_H_
 #define _GTKMOVELISTCTRL_H_
 
-#include <gtk/gtk.h>
-
-#include "eval.h"
 
 /* Some boilerplate GObject type check and type cast macros.
 *  'klass' is used here instead of 'class', because 'class'

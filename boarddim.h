@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boarddim.h,v 1.12 2008/04/26 17:12:02 c_anthon Exp $
+ * $Id: boarddim.h,v 1.13 2009/03/01 20:01:48 Superfly_Jon Exp $
  */
 
 #ifndef _BOARDDIM_H_
@@ -119,14 +119,14 @@
 /* x and y coordinates of cube when not available/doubling/owned/centred */
 #define NO_CUBE -32768
 /* width of board between tray and bar */
-#define PLAY_WIDTH   ((BOARD_WIDTH - 2 * BEAROFF_WIDTH - BAR_WIDTH) / 2)
+#define PLAY_WIDTH   (((BOARD_WIDTH - (2 * BEAROFF_WIDTH)) - BAR_WIDTH) / 2)
 
 #define CUBE_RIGHT_X  (BEAROFF_WIDTH + (PLAY_WIDTH - CUBE_WIDTH) / 2)
-#define CUBE_LEFT_X   (BOARD_WIDTH - CUBE_RIGHT_X)
+#define CUBE_LEFT_X   (BOARD_WIDTH - (CUBE_RIGHT_X))
 #define CUBE_TRAY_X (BEAROFF_LEFT_X + (BEAROFF_INSIDE - CUBE_WIDTH) / 2)
 #define PLAY_HEIGHT   (BOARD_HEIGHT - 2 * BORDER_HEIGHT )
 #define CUBE_CENTRE_Y (BORDER_HEIGHT + (PLAY_HEIGHT - CUBE_HEIGHT) / 2)
-#define CUBE_OWN_1_Y  (BOARD_HEIGHT - CUBE_HEIGHT - BORDER_HEIGHT)
+#define CUBE_OWN_1_Y  (BOARD_HEIGHT - (CUBE_HEIGHT + BORDER_HEIGHT))
 #define CUBE_OWN_0_Y  (BORDER_HEIGHT)
 #define CUBE_RESIGN_LEFT_X   (CUBE_LEFT_X - CHEQUER_WIDTH)
 #define CUBE_RESIGN_RIGHT_X  (CUBE_RIGHT_X + CHEQUER_WIDTH)
