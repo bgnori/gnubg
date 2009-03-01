@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.824 2009/02/23 20:34:34 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.825 2009/03/01 20:01:49 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -173,7 +173,7 @@ int fReadingCommand;
 #endif
 #endif
 
-const gchar *intro_string = N_("This program comes with ABSOLUTELY NO WARRANTY; for details type\n"
+const char *intro_string = N_("This program comes with ABSOLUTELY NO WARRANTY; for details type\n"
 			       "`show warranty'.\n"
 			       "This is free software, and you are welcome to redistribute it\n"
 			       "under certain conditions; type `show copying' for details.\n");

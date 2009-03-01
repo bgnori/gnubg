@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.160 2009/02/24 09:59:51 c_anthon Exp $
+ * $Id: eval.h,v 1.161 2009/03/01 20:01:49 Superfly_Jon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -275,7 +275,7 @@ extern movefilter aaamfMoveFilterSettings[ NUM_MOVEFILTER_SETTINGS ][ MAX_FILTER
 typedef enum
 {
 	CMARK_NONE,
-	CMARK_ROLLOUT,
+	CMARK_ROLLOUT
 } CMark;
 
 typedef struct {
@@ -464,7 +464,7 @@ extern void
 swap_us( unsigned int *p0, unsigned int *p1 );
 
 extern void 
-swap( int *p0, int *p1 );
+swap( unsigned int *p0, unsigned int *p1 );
 
 extern void 
 SanityCheck( const TanBoard anBoard, float arOutput[] );

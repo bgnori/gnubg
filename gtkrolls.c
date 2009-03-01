@@ -16,20 +16,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.29 2008/09/29 10:00:50 c_anthon Exp $
+ * $Id: gtkrolls.c,v 1.30 2009/03/01 20:01:50 Superfly_Jon Exp $
  */
 
 #include "config.h"
 
 #include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 #include "gtkgame.h"
-
 #include "drawboard.h"
-#include <glib/gi18n.h>
-
 #include "format.h"
 #include "gtkwindows.h"
 #include "gtkrolls.h"

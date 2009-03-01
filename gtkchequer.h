@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.h,v 1.16 2009/02/22 22:43:01 c_anthon Exp $
+ * $Id: gtkchequer.h,v 1.17 2009/03/01 20:01:50 Superfly_Jon Exp $
  */
 
 #ifndef _GTKCHEQUER_H_
@@ -53,4 +53,5 @@ CheckHintButtons( hintdata *phd );
 extern void MoveListRefreshSize(void);
 extern GtkWidget* pwDetails;
 extern int showMoveListDetail;
+
 #endif
