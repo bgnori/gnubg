@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.24 2009/03/01 20:01:52 Superfly_Jon Exp $
+ * $Id: speed.c,v 1.25 2009/03/02 09:43:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -34,6 +34,7 @@
 #endif
 
 #include <isaac.h>
+#include "speed.h"
 
 #define EVALS_PER_ITERATION 1024
 
