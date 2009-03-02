@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.25 2009/02/23 20:21:08 Superfly_Jon Exp $
+* $Id: graph.c,v 1.26 2009/03/02 23:01:31 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -54,11 +54,10 @@ static gboolean graph_button_press_event(void)
 	return FALSE;
 }
 
-static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *notused, const GraphData* gd)
+static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *UNUSED(eventDetails), const GraphData* gd)
 {
 	int width, height;
 	float maxY, maxX;
-
 	GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 
 	if (!gdk_gl_drawable_gl_begin(gldrawable, gtk_widget_get_gl_context(widget)))
@@ -84,7 +83,7 @@ static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *notused, c
 	return TRUE;
 }
 
-static void realize(GtkWidget *widget, void* notused)
+static void realize(GtkWidget *widget, const GraphData* UNUSED(gd))
 {
 	GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 
@@ -275,7 +274,7 @@ static void DrawGraph(const GraphData *gd)
 	glEnd();
 }
 
-static gboolean expose_event(GtkWidget *widget, GdkEventExpose *notused, const GraphData* gd)
+static gboolean expose_event(GtkWidget *widget, GdkEventExpose *UNUSED(eventDetails), const GraphData* gd)
 {
 	GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 
@@ -294,7 +293,7 @@ static gboolean expose_event(GtkWidget *widget, GdkEventExpose *notused, const G
 	return TRUE;
 }
 
-static void destroy_event(GtkWidget *notused, void *notused2)
+static void destroy_event(GtkWidget *UNUSED(widget), void *UNUSED(data))
 {
 	if (numberFont != NULL)
 	{

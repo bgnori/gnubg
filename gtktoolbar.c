@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.57 2008/12/28 21:55:35 Superfly_Jon Exp $
+ * $Id: gtktoolbar.c,v 1.58 2009/03/02 23:01:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -62,13 +62,13 @@ typedef struct _toolbarwidget {
 
 } toolbarwidget;
 
-static void ButtonClicked( GtkWidget *pw, char *sz ) {
+static void ButtonClicked( GtkWidget *UNUSED(pw), char *sz ) {
 
     UserCommand( sz );
 }
 
 
-static void ButtonClickedYesNo( GtkWidget *pw, char *sz ) {
+static void ButtonClickedYesNo( GtkWidget *UNUSED(pw), char *sz ) {
 
   if ( ms.fResigned ) {
     UserCommand ( ! strcmp ( sz, "yes" ) ? "accept" : "decline" );
@@ -99,10 +99,9 @@ image_from_xpm_d ( char **xpm, GtkWidget *pw ) {
 
 }
 
-static GtkWidget *
-toggle_button_from_images( GtkWidget *pwImageOff,
-                           GtkWidget *pwImageOn, char *sz ) {
-
+static GtkWidget *toggle_button_from_images( GtkWidget *pwImageOff,
+                           GtkWidget *pwImageOn, char *sz )
+{
   GtkWidget **aapw;
   GtkWidget *pwm = gtk_multiview_new();
   GtkWidget *pw = gtk_toggle_button_new();
@@ -208,9 +207,8 @@ static void ToolbarToggleEdit(GtkWidget *pw)
 	board_edit(pbd);
 }
 
-extern int
-ToolbarIsEditing( GtkWidget *pwToolbar ) {
-
+extern int ToolbarIsEditing(GtkWidget *UNUSED(pwToolbar))
+{
   return editing;
 }
 

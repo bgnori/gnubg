@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.23 2009/02/23 20:21:08 Superfly_Jon Exp $
+* $Id: font3d.c,v 1.24 2009/03/02 23:01:31 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -490,7 +490,7 @@ static void TESS_CALLBACK tcbError(GLenum error)
 	g_print("Tesselation error! (%d)\n", error);
 }
 
-static void TESS_CALLBACK tcbVertex(void* data, Mesh* notused)
+static void TESS_CALLBACK tcbVertex(void* data, Mesh* UNUSED(pMesh))
 {
 	double* vertex = (double*)data;
 	Point newPoint;
@@ -502,7 +502,7 @@ static void TESS_CALLBACK tcbVertex(void* data, Mesh* notused)
 	g_array_append_val(curTess.tessPoints, newPoint);
 }
 
-static void TESS_CALLBACK tcbCombine(const double coords[3], void* notused/*vertex_data*/[4], GLfloat notused2/*weight*/[4], void** outData)
+static void TESS_CALLBACK tcbCombine(const double coords[3], const double *UNUSED(vertex_data[4]), GLfloat UNUSED(weight[4]), void** outData)
 {
 	/* Just return vertex position (colours etc. not required) */
 	Point *newEle = (Point*)malloc(sizeof(Point));
@@ -513,7 +513,7 @@ static void TESS_CALLBACK tcbCombine(const double coords[3], void* notused/*vert
 	*outData = newEle;
 }
 
-static void TESS_CALLBACK tcbBegin(GLenum type, Mesh* notused)
+static void TESS_CALLBACK tcbBegin(GLenum type, Mesh* pMesh)
 {
 	curTess.tessPoints = g_array_new(FALSE, FALSE, sizeof(Point));
 	curTess.meshType = type;

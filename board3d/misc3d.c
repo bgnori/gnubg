@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.101 2009/02/23 20:21:09 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.102 2009/03/02 23:01:31 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2379,7 +2379,7 @@ void ClearTextures(BoardData3d* bd3d)
 	bd3d->numTextures = 0;
 }
 
-static void free_texture(gpointer data, gpointer notused)
+static void free_texture(gpointer data, gpointer UNUSED(userdata))
 {
 	free(data);
 }

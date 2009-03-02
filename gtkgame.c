@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.757 2009/02/24 21:41:33 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.758 2009/03/02 23:01:29 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3742,8 +3742,7 @@ extern void RunGTK( GtkWidget *pwSplash, char *commands, char *python_script, ch
 		GTKSet( &ms.gs );
 		GTKSet( &GetMainAppearance()->fShowIDs);
 	    
-		PushSplash ( pwSplash, 
-					_("Rendering"), _("Board"), 0 );
+		PushSplash ( pwSplash, _("Rendering"), _("Board") );
 
 		GTKAllowStdin();
 	    
