@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.24 2009/03/02 23:01:31 Superfly_Jon Exp $
+* $Id: font3d.c,v 1.25 2009/03/02 23:20:31 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -513,7 +513,7 @@ static void TESS_CALLBACK tcbCombine(const double coords[3], const double *UNUSE
 	*outData = newEle;
 }
 
-static void TESS_CALLBACK tcbBegin(GLenum type, Mesh* pMesh)
+static void TESS_CALLBACK tcbBegin(GLenum type, Mesh* UNUSED(pMesh))
 {
 	curTess.tessPoints = g_array_new(FALSE, FALSE, sizeof(Point));
 	curTess.meshType = type;
