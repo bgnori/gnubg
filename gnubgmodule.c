@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.90 2009/03/01 20:01:49 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.91 2009/03/02 09:43:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -24,6 +24,8 @@
 #include "gnubgmodule.h"
 #include "backgammon.h"
 #include <signal.h>
+#include <glib.h>
+#include <glib/gstdio.h>
 
 #include "eval.h"
 #include "matchequity.h"

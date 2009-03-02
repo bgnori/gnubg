@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.366 2009/03/01 20:01:48 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.367 2009/03/02 09:43:51 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1866,7 +1866,7 @@ extern void swap_us( unsigned int *p0, unsigned int *p1 ) {
     *p1 = n;
 }
 
-extern void swap( unsigned int *p0, unsigned int *p1 ) {
+extern void swap( int *p0, int *p1 ) {
     int n = *p0;
 
     *p0 = *p1;
