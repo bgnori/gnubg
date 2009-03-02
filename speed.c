@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.25 2009/03/02 09:43:52 c_anthon Exp $
+ * $Id: speed.c,v 1.26 2009/03/02 23:01:31 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -41,7 +41,7 @@
 randctx rc;
 double timeTaken;
 
-extern void RunEvals(void *notused)
+extern void RunEvals(void *UNUSED(notused))
 {
 	int aanBoard[ EVALS_PER_ITERATION ][ 2 ][ 25 ];
     int i, j, k;

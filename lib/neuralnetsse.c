@@ -17,10 +17,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.13 2009/02/23 20:22:28 Superfly_Jon Exp $
+ * $Id: neuralnetsse.c,v 1.14 2009/03/02 23:01:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
+#include "common.h"
 
 #if USE_SSE_VECTORIZE
 
@@ -137,10 +138,11 @@ Evaluate128( const neuralnet *pnn, const float arInput[], float ar[],
 }
 
 
-extern int NeuralNetEvaluate128( const neuralnet *pnn, /*lint -e{818}*/ float arInput[],
-			      float arOutput[], NNState *notused )
+extern int NeuralNetEvaluate128(const neuralnet *pnn, /*lint -e{818}*/ float arInput[],
+			      float arOutput[], NNState * UNUSED(pnState))
 {
     SSE_ALIGN(float ar[HIDDEN_NODES]);
+
 #if DEBUG_SSE
 	/* Not 64bit robust (pointer truncation) - causes strange crash */
     assert(sse_aligned(ar));

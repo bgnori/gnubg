@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.60 2009/01/22 11:44:37 c_anthon Exp $
+ * $Id: relational.c,v 1.61 2009/03/02 23:01:31 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -443,7 +443,7 @@ static void AddGames(DBProvider *pdb, int session_id, int player_id0, int player
 	}
 }
 
-extern void CommandRelationalAddMatch( char *sz )
+extern void CommandRelationalAddMatch( char *UNUSED(sz) )
 {
 	DBProvider *pdb;
 	char *buf, *buf2, *date;
@@ -558,7 +558,7 @@ const char *TestDB(DBProviderType dbType)
 	return ret;
 }
 
-extern void CommandRelationalTest( char *sz )
+extern void CommandRelationalTest( char *UNUSED(sz) )
 {
 	const char *err = TestDB(dbProviderType);
 	if (err == NULL)
@@ -685,7 +685,7 @@ extern void CommandRelationalShowDetails (char *sz)
     }
 }
 
-extern void CommandRelationalShowPlayers( char *sz )
+extern void CommandRelationalShowPlayers( char *UNUSED(sz) )
 {
 	/* Use the Select command */
 	CommandRelationalSelect("name AS Player FROM player ORDER BY name");
@@ -741,7 +741,7 @@ extern void CommandRelationalErase(char *sz)
 	pdb->Disconnect();
 }
 
-extern void CommandRelationalEraseAll(char *sz)
+extern void CommandRelationalEraseAll(char *UNUSED(sz))
 {
 	DBProvider *pdb;
 

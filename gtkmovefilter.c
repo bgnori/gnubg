@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.24 2008/10/08 10:24:12 c_anthon Exp $
+ * $Id: gtkmovefilter.c,v 1.25 2009/03/02 23:01:29 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -133,7 +133,7 @@ MoveFilterSetupGetValues ( movefilter *pmf, movefiltersetupwidget *pmfsw ) {
 
 
 static void
-AcceptChanged ( GtkWidget *pw, movefiltersetupwidget *pmfsw ) {
+AcceptChanged ( GtkWidget *UNUSED(pw), movefiltersetupwidget *pmfsw ) {
 
   int fFound;
   int i;
@@ -205,7 +205,7 @@ SetupSettingsMenuActivate ( GtkWidget *pwItem,
 
 static GtkWidget *
 MoveFilterPage ( const int i, const int j,
-                 movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ],
+                 movefilter UNUSED(aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ]),
                  movefiltersetupwidget *pmfsw ) {
 
   GtkWidget *pwPage;
@@ -506,7 +506,7 @@ ModifyClickButton ( GtkWidget *pw, movefilterwidget *pmfw ) {
 
 
 extern GtkWidget *
-MoveFilterWidget ( movefilter *pmf, int *pfOK,
+MoveFilterWidget ( movefilter *pmf, int *UNUSED(pfOK),
                    GCallback pfChanged, gpointer userdata ) {
 
   GtkWidget *pwFrame;

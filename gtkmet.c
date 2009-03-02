@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.24 2009/03/02 09:43:51 c_anthon Exp $
+ * $Id: gtkmet.c,v 1.25 2009/03/02 23:01:29 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -184,7 +184,7 @@ static GtkWidget *GTKWriteMET(const unsigned int nRows, const unsigned int nCols
 
 }
 
-static void invertMETlocal( GtkWidget *notused, const metwidget *pmw ){
+static void invertMETlocal( GtkWidget *UNUSED(widget), const metwidget *pmw ){
 
   if(fInvertMET)
     UserCommand( "set invert met off" );
@@ -219,8 +219,8 @@ extern void GTKShowMatchEquityTable( const unsigned int nMatchTo, const int anSc
   metwidget mw;
 
   mw.nMatchTo = nMatchTo;
-  mw.anAway[ 0 ] = (nMatchTo - anScore[ 0 ]) - 1;
-  mw.anAway[ 1 ] = (nMatchTo - anScore[ 1 ]) - 1;
+  mw.anAway[ 0 ] = (nMatchTo - (unsigned)anScore[ 0 ]) - 1;
+  mw.anAway[ 1 ] = (nMatchTo - (unsigned)anScore[ 1 ]) - 1;
 
   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pwInvertButton),
                                fInvertMET); 

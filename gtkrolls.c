@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.31 2009/03/02 09:43:51 c_anthon Exp $
+ * $Id: gtkrolls.c,v 1.32 2009/03/02 23:01:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -143,12 +143,11 @@ add_level ( GtkTreeStore *model, GtkTreeIter *iter,
 }
 
 
-static gint
-sort_func ( GtkTreeModel *model,
+static gint sort_func ( GtkTreeModel *model,
             GtkTreeIter *a,
             GtkTreeIter *b,
-            gpointer notused) {
-
+            gpointer UNUSED(data))
+{
   char *sz0, *sz1;
   float r0, r1;
 
@@ -313,7 +312,7 @@ static void CancelRolls(GtkWidget* pButton)
 	gtk_widget_set_sensitive(pButton, FALSE);
 }
 
-static gint RollsClose(GtkWidget *notused, GdkEvent *notused2, rollswidget *prw)
+static gint RollsClose(GtkWidget *UNUSED(widget), GdkEvent *UNUSED(eventDetails), rollswidget *prw)
 {
 	if (pwOldGrab != pwGrab)
 	{	/* Mid-depth change - wait for it to cancel */

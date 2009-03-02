@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.55 2008/12/03 11:07:31 c_anthon Exp $
+ * $Id: gtktheory.c,v 1.56 2009/03/02 23:01:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -90,9 +90,8 @@ typedef struct _theorywidget {
 } theorywidget;
 
 
-static void
-ResetTheory ( GtkWidget *pw, theorywidget *ptw ) {
-
+static void ResetTheory(GtkWidget *UNUSED(pw), theorywidget *ptw)
+{
   float aarRates[ 2 ][ 2 ];
 #if defined(REDUCTION_CODE)
   evalcontext ec = { FALSE, 0, 0, TRUE, 0.0 };
@@ -344,9 +343,8 @@ static void add_mw_match_rows(theorywidget * ptw, const cubeinfo * pci, float aa
 	}
 }
 
-static void
-TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
-
+static void TheoryUpdated(GtkWidget *UNUSED(pw), theorywidget *ptw)
+{
   cubeinfo ci;
   float aarRates[ 2 ][ 2 ];
 
@@ -493,7 +491,7 @@ TheoryUpdated ( GtkWidget *pw, theorywidget *ptw ) {
 
 }
 
-static void GraphExpose( GtkWidget *pwGraph, GdkEventExpose *pev,
+static void GraphExpose( GtkWidget *pwGraph, GdkEventExpose *UNUSED(pev),
 			 theorywidget *ptw ) {
     
     int i, x = 8, y = 12, cx = pwGraph->allocation.width - 16 - 1,
