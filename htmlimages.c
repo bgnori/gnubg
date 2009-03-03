@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: htmlimages.c,v 1.48 2009/02/01 15:48:57 c_anthon Exp $
+ * $Id: htmlimages.c,v 1.49 2009/03/03 12:53:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -619,7 +619,7 @@ static void RenderObjects(void)
 			asRefract[ 1 ], CHEQUER_WIDTH * s * 4 );
 	RenderChequerLabels( &rd, auchChequerLabels, CHEQUER_LABEL_WIDTH * s * 3 );
 
-#if USE_GTK
+#if USE_GTK && HAVE_CAIRO
 	RenderArrows( &rd, auchArrow[0], auchArrow[1], s * ARROW_WIDTH * 4, rd.fClockwise );
 #endif
 
