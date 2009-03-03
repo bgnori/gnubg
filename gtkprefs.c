@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.173 2008/12/25 23:34:05 c_anthon Exp $
+ * $Id: gtkprefs.c,v 1.174 2009/03/03 12:43:31 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2010,7 +2010,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.173 2008/12/25 23:34:05 c_anthon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.174 2009/03/03 12:43:31 c_anthon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -3134,6 +3134,7 @@ extern void BoardPreferencesDone( GtkWidget *pwBoard )
 
 #if USE_BOARD3D
 
+#if HAVE_LIBXML2
 static int IsWhiteColour3d(Material* pMat)
 {
 	return (pMat->ambientColour[0] == 1) && (pMat->ambientColour[1] == 1) && (pMat->ambientColour[2] == 1) &&
@@ -3147,6 +3148,7 @@ static int IsBlackColour3d(Material* pMat)
 		(pMat->diffuseColour[0] == 0) && (pMat->diffuseColour[1] == 0) && (pMat->diffuseColour[2] == 0) &&
 		(pMat->specularColour[0] == 0) && (pMat->specularColour[1] == 0) && (pMat->specularColour[2] == 0);
 }
+#endif
 
 void Default3dSettings(BoardData* bd)
 {	/* If no 3d settings loaded, set 3d appearance to first design */
