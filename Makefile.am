@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.213 2009/03/03 13:19:39 c_anthon Exp $
+## $Id: Makefile.am,v 1.214 2009/03/03 16:47:28 c_anthon Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -16,7 +16,7 @@ INCLUDES = -I$(srcdir)/lib -I$(srcdir)/board3d @LIBXML2_CFLAGS@ \
 	   @LIBPNG_CFLAGS@ @GTK_CFLAGS@ @CAIRO_CFLAGS@ @PANGOCAIRO_CFLAGS@ @GTHREAD_CFLAGS@ \
 	   @GTKGLEXT_CFLAGS@ @SQLITE_CFLAGS@ @GSTREAMER_CFLAGS@
 if USE_PYTHON
-INCLUDES += @PYTHON_CSPEC@ 
+INCLUDES += @PYTHON_INCLUDES@ 
 endif
 
 BUILT_SOURCES = sgf_y.c sgf_l.c copying.c credits.c external_l.c external_y.c
@@ -132,7 +132,7 @@ gnubg_LDADD = -L$(srcdir)/lib lib/libevent.la @GTK_LIBS@ @LIBPNG_LIBS@ @CAIRO_LI
 	      @LTLIBOBJS@ @LIBXML2_LIBS@ \
 	      @FREETYPE2_LIBS@ @GLIB_LIBS@ @LIBPNG_LIBS@ @SQLITE_LIBS@ @GSTREAMER_LIBS@
 if USE_PYTHON
-gnubg_LDADD += @PYTHON_LSPEC@ 
+gnubg_LDADD += @PYTHON_LIBS@ 
 endif
 if USE_BOARD3D
 gnubg_LDADD += -L$(srcdir)/board3d board3d/libboard3d.la @GTKGLEXT_LIBS@
