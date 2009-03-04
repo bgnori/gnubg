@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.398 2009/03/01 20:01:48 Superfly_Jon Exp $
+ * $Id: backgammon.h,v 1.399 2009/03/04 22:13:18 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -28,7 +28,10 @@
 
 #define MAX_CUBE ( 1 << 12 )
 #define MAX_NAME_LEN 32
-#define VERSION_STRING "GNU Backgammon " VERSION
+#ifndef BUILD_DATE
+#define BUILD_DATE " " __DATE__
+#endif
+#define VERSION_STRING "GNU Backgammon " VERSION BUILD_DATE
 #define GNUBG_CHARSET "UTF-8"
 
 extern const char *intro_string;
