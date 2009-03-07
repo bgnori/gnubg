@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: boardpos.c,v 1.16 2009/03/01 20:01:48 Superfly_Jon Exp $
+ * $Id: boardpos.c,v 1.17 2009/03/07 20:49:42 c_anthon Exp $
  */
 
 #include "config.h"
@@ -152,7 +152,7 @@ extern void ArrowPosition( const int clockwise, int turn, const int nSize, int *
 		if (turn == 1)
 			*py = Point_y + Point_dy;
 		else
-			*py = Point_y - (nSize * BORDER_WIDTH);//- 2 * nSize * ARROW_HEIGHT;
+			*py = Point_y - (nSize * BORDER_WIDTH);/*- 2 * nSize * ARROW_HEIGHT; */
 		/* Center arrow in border */
 		*py += (nSize * (BORDER_WIDTH - ARROW_HEIGHT)) / 2;
 	}

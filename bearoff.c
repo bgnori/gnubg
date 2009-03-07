@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.83 2009/03/03 12:43:31 c_anthon Exp $
+ * $Id: bearoff.c,v 1.84 2009/03/07 20:49:42 c_anthon Exp $
  */
 #include "config.h"
 #if USE_MULTITHREAD
@@ -38,9 +38,6 @@
 #include <string.h>
 #include <fcntl.h>
 #include <errno.h>
-#if HAVE_SYS_STAT_H
-#include <sys/stat.h>
-#endif
 
 #define HEURISTIC_C 15
 #define HEURISTIC_P 6

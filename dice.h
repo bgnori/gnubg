@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.25 2008/12/03 10:59:56 c_anthon Exp $
+ * $Id: dice.h,v 1.26 2009/03/07 20:49:43 c_anthon Exp $
  */
 
 #ifndef _DICE_H_
@@ -26,7 +26,7 @@
 
 typedef enum _rng {
     RNG_MANUAL, RNG_ANSI, RNG_BBS, RNG_BSD, RNG_ISAAC, RNG_MD5, RNG_MERSENNE, 
-    RNG_RANDOM_DOT_ORG, RNG_USER, RNG_FILE,
+    RNG_RANDOM_DOT_ORG, RNG_FILE,
     NUM_RNGS
 } rng;
 
@@ -55,12 +55,6 @@ extern int InitRNGSeedLong( char *sz, rng rng, rngcontext *rngctx );
 extern int InitRNGBBSModulus( const char *sz, rngcontext *rngctx );
 extern int InitRNGBBSFactors( char *sz0, char *sz1, rngcontext *rngctx );
 #endif
-
-
-#if HAVE_LIBDL
-extern int
-UserRNGOpen( void *p, const char *sz );
-#endif /* HAVE_LIBDL */
 
 extern FILE *OpenDiceFile( rngcontext *rngctx, const char *sz );
 

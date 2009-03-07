@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.90 2009/03/02 23:01:29 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.91 2009/03/07 20:49:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1523,10 +1523,6 @@ static void OptionsOK(GtkWidget *pw, optionswidget *pow)
         UserCommand("set rng random.org");
       break;
     case 7:
-      if (rngCurrent != RNG_USER)
-        UserCommand("set rng user");
-      break;
-    case 8:
       filename =
 	      GTKFileSelect (_("Select file with dice"), NULL, NULL, NULL,
 			      GTK_FILE_CHOOSER_ACTION_OPEN);

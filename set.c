@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.324 2009/02/23 20:26:07 Superfly_Jon Exp $
+ * $Id: set.c,v 1.325 2009/03/07 20:49:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -195,34 +195,6 @@ extern void SetRNG( rng *prng, rngcontext *rngctx, rng rngNew, char *szSeed ) {
 	abort();
 #endif /* HAVE_LIBGMP */
 	
-    case RNG_USER:
-	/* Load dynamic library with user RNG */
-#if HAVE_LIBDL
-	  {
-		char *sz = NULL;
-	
-		if( *szSeed ) {
-		  char *pch;
-	    
-		  for( pch = szSeed; isdigit( *pch ); pch++ )
-			;
-	    
-		  if( *pch && !isspace( *pch ) )
-			/* non-numeric char found; assume it's the user RNG file */
-			sz = NextToken( &szSeed );
-		}
-	
-		if ( !UserRNGOpen( rngctx, sz ? sz : "userrng.so" ) ) {
-		  outputf( _("You are still using the %s generator.\n"),
-				   gettext ( aszRNG[ *prng ] ) );
-		  return;
-		}
-	  }
-#else
-	abort();
-#endif /* HAVE_LIBDL */
-	break;
-
     case RNG_FILE: 
       {
         char *sz = NextToken( &szSeed );
@@ -1644,17 +1616,6 @@ extern void CommandSetRNGRandomDotOrg( char *sz ) {
                "support for sockets needed for fetching\n"
                "random numbers from <www.random.org>") );
 #endif /* HAVE_SOCKETS */
-
-}
-
-extern void CommandSetRNGUser( char *sz ) {
-
-#if HAVE_LIBDL
-    SetRNG( rngSet, rngctxSet, RNG_USER, sz );
-#else
-    outputl( _("This installation of GNU Backgammon was compiled without the "
-               "dynamic linking library needed for user RNG's.") );
-#endif /* HAVE_LIBDL */
 
 }
 

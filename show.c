@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.253 2009/03/02 23:01:31 Superfly_Jon Exp $
+ * $Id: show.c,v 1.254 2009/03/07 20:49:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -352,9 +352,7 @@ static void ShowPaged( char **ppch ) {
     struct winsize ws;
 #endif
 
-#if HAVE_ISATTY
     if( isatty( STDIN_FILENO ) ) {
-#endif
 #ifdef TIOCGWINSZ
 	if( !( ioctl( STDIN_FILENO, TIOCGWINSZ, &ws ) ) )
 	    nRows = ws.ws_row;
@@ -381,9 +379,7 @@ static void ShowPaged( char **ppch ) {
 		i = 0;
 	    }
 	}
-#if HAVE_ISATTY
     } else
-#endif
 	while( *ppch )
 	    outputl( *ppch++ );
 }
