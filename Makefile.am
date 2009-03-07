@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.214 2009/03/03 16:47:28 c_anthon Exp $
+## $Id: Makefile.am,v 1.215 2009/03/07 20:49:42 c_anthon Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -170,7 +170,7 @@ pkgdata_DATA = gnubg_ts0.bd gnubg.wd boards.xml \
 #
 ##files to add to the tarball when 'make dist'
 #
-EXTRA_DIST = config.rpath  userrng.c copying.awk gnubg.gtkrc credits.sh \
+EXTRA_DIST = config.rpath  copying.awk gnubg.gtkrc credits.sh \
 	$(BUILT_SOURCES) ABOUT-NLS boards.xml gnubg.sql autogen.sh \
 	gnubg.weights textures.txt corecount.c \
 	external_y.h sgf_y.h commands.inc

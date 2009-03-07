@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.145 2008/12/14 17:42:29 c_anthon Exp $
+ * $Id: import.c,v 1.146 2009/03/07 20:49:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -32,8 +32,6 @@
 #if HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
-#include <sys/stat.h>
-
 #include "backgammon.h"
 #include "drawboard.h"
 #if USE_GTK
@@ -118,7 +116,7 @@ ParseSetDate ( char *szFilename ) {
 #endif
     /* date could not be parsed out of filename, use last access date */
     if ( matchdate == NULL ) {
-        if ( stat( szFilename, &filestat ) == 0 ) {
+        if ( g_stat( szFilename, &filestat ) == 0 ) {
             matchdate = localtime ( &filestat.st_mtime );
         }
     }

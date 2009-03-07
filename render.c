@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.85 2009/03/03 12:53:57 c_anthon Exp $
+ * $Id: render.c,v 1.86 2009/03/07 20:49:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -122,11 +122,6 @@ int positions[ 2 ][ 30 ][ 3 ] = { {
 
 #if HAVE_FREETYPE
 FT_Library ftl;
-
-#if ( FREETYPE_MINOR < 1 ) || ( ( FREETYPE_MINOR == 1 ) && ( FREETYPE_PATCH < 3 ) )
-#define FT_GLYPH_FORMAT_BITMAP ft_glyph_format_bitmap
-#define FT_PIXEL_MODE_GRAY ft_pixel_mode_grays
-#endif
 #endif
 
 renderdata rdDefault = {

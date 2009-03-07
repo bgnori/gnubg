@@ -1,4 +1,4 @@
-//lint -e818
+/*lint -e818 */
 /*
  * gtkmovelistctrl.c
  * by Jon Kinsey, 2005
@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.19 2009/03/02 23:01:29 Superfly_Jon Exp $
+ * $Id: gtkmovelistctrl.c,v 1.20 2009/03/07 20:49:44 c_anthon Exp $
  */
 
 #include "config.h"
