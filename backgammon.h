@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.400 2009/03/07 20:49:42 c_anthon Exp $
+ * $Id: backgammon.h,v 1.401 2009/03/10 13:17:12 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -31,7 +31,7 @@
 #ifndef BUILD_DATE
 #define BUILD_DATE " " __DATE__
 #endif
-#define VERSION_STRING "GNU Backgammon " VERSION BUILD_DATE
+#define VERSION_STRING "GNU Backgammon " VERSION " " BUILD_DATE
 #define GNUBG_CHARSET "UTF-8"
 
 extern const char *intro_string;
