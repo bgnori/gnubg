@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.325 2009/03/07 20:49:45 c_anthon Exp $
+ * $Id: set.c,v 1.326 2009/03/10 18:10:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1197,29 +1197,32 @@ extern void CommandSetGUIMoveListDetail( char *sz )
 			_("Basic details will be shown in the move analysis") );
 }
 
-extern void CommandSetGUIShowPips( char *sz ) {
-
-    if( SetToggle( "gui showpips", &fGUIShowPips, sz,
-		   _("The pip counts will be shown below the board."),
-		   _("The pip counts will not be shown.") ) )
-	UpdateSetting( &fGUIShowPips );
-}
-
-extern void CommandSetGUIShowWastage(char *sz)
+extern void CommandSetGUIShowPipsNone(char *sz)
 {
-
-	if (SetToggle("gui showepcs", &fGUIShowWastage, sz,
-		      _("The effective pip counts (EPCs) will be shown below the board."),
-		      _("The effective pip counts (EPCs) will not be shown.")))
-		UpdateSetting(&fGUIShowWastage);
+	gui_show_pips = GUI_SHOW_PIPS_NONE;
+	outputf(_("The pip counts will not be shown."));
+	UpdateSetting(&gui_show_pips);
 }
-extern void CommandSetGUIShowEPCs( char *sz ) {
 
-    if( SetToggle( "gui showepcs", &fGUIShowEPCs, sz,
-		   _("The effective pip counts (EPCs) will be shown "
-                     "below the board."),
-		   _("The effective pip counts (EPCs) will not be shown.") ) )
-	UpdateSetting( &fGUIShowEPCs );
+extern void CommandSetGUIShowPipsPips(char *sz)
+{
+	gui_show_pips = GUI_SHOW_PIPS_PIPS;
+	outputf(_("Pip counts will be shown."));
+	UpdateSetting(&gui_show_pips);
+}
+
+extern void CommandSetGUIShowPipsEPC(char *sz)
+{
+	gui_show_pips = GUI_SHOW_PIPS_EPC;
+	outputf(_("Effective pip counts will be shown."));
+	UpdateSetting(&gui_show_pips);
+}
+
+extern void CommandSetGUIShowPipsWastage(char *sz)
+{
+	gui_show_pips = GUI_SHOW_PIPS_WASTAGE;
+	outputf(_("Pip wastage will be shown."));
+	UpdateSetting(&gui_show_pips);
 }
 
 extern void CommandSetGUIWindowPositions( char *sz ) {
@@ -1281,19 +1284,24 @@ extern void CommandSetGUIShowIDs( char *sz ) {
     NoGUI();
 }
 
-extern void CommandSetGUIShowWastage( char *sz ) {
-
-    NoGUI();
+extern void CommandSetGUIShowPipsNone(char *sz)
+{
+	NoGUI();
 }
- 
-extern void CommandSetGUIShowEPCs( char *sz ) {
 
-    NoGUI();
+extern void CommandSetGUIShowPipsPips(char *sz)
+{
+	NoGUI();
 }
- 
-extern void CommandSetGUIShowPips( char *sz ) {
 
-    NoGUI();
+extern void CommandSetGUIShowPipsEPC(char *sz)
+{
+	NoGUI();
+}
+
+extern void CommandSetGUIShowPipsWastage(char *sz)
+{
+	NoGUI();
 }
  
 extern void CommandSetGUIWindowPositions( char *sz ) {

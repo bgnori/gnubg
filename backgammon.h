@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.401 2009/03/10 13:17:12 c_anthon Exp $
+ * $Id: backgammon.h,v 1.402 2009/03/10 18:10:01 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -799,11 +799,12 @@ extern void CommandSetGUIDragTargetHelp(char *);
 extern void CommandSetGUIHighDieFirst(char *);
 extern void CommandSetGUIIllegal(char *);
 extern void CommandSetGUIMoveListDetail(char *);
-extern void CommandSetGUIShowEPCs(char *);
 extern void CommandSetGUIShowIDs(char *);
-extern void CommandSetGUIShowPips(char *);
+extern void CommandSetGUIShowPipsNone(char *);
+extern void CommandSetGUIShowPipsPips(char *);
+extern void CommandSetGUIShowPipsEPC(char *);
+extern void CommandSetGUIShowPipsWastage(char *);
 extern void CommandSetGUIUseStatsPanel(char *);
-extern void CommandSetGUIShowWastage(char *);
 extern void CommandSetGUIWindowPositions(char *);
 extern void CommandSetImportFolder(char *);
 extern void CommandSetInvertMatchEquityTable(char *);

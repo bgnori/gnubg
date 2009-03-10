@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.39 2008/07/29 11:46:35 c_anthon Exp $
+ * $Id: renderprefs.c,v 1.40 2009/03/10 18:10:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -419,9 +419,26 @@ int c, fValueError = FALSE;
   else if (!StrNCaseCmp (szParam, "show_ids", c))
     /* FIXME deprecated in favour of "set gui showids" */
     prd->fShowIDs = toupper (*szValue) == 'Y';
-  else if (!StrNCaseCmp (szParam, "show_pips", c))
-    /* FIXME deprecated in favour of "set gui showpips" */
-    fGUIShowPips = toupper (*szValue) == 'Y';
+  else if (!StrNCaseCmp (szParam, "show pips", c)) {
+    /* FIXME deprecated in favour of "set gui animation ..." */
+    switch (toupper (*szValue)) {
+    case 'N':
+      gui_show_pips = GUI_SHOW_PIPS_NONE;
+      break;
+    case 'P':
+      gui_show_pips = GUI_SHOW_PIPS_PIPS;
+      break;
+    case 'E':
+      gui_show_pips = GUI_SHOW_PIPS_EPC;
+      break;
+    case 'W':
+      gui_show_pips = GUI_SHOW_PIPS_WASTAGE;
+      break;
+    default:
+      animGUI = ANIMATE_NONE;
+      break;
+    }
+  }
   else if (!StrNCaseCmp (szParam, "illegal", c))
     /* FIXME deprecated in favour of "set gui illegal" */
     fGUIIllegal = toupper (*szValue) == 'Y';
