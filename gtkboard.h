@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.94 2008/12/12 13:06:41 c_anthon Exp $
+ * $Id: gtkboard.h,v 1.95 2009/03/10 18:10:02 c_anthon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -122,16 +122,18 @@ typedef enum _animation {
     ANIMATE_NONE, ANIMATE_BLINK, ANIMATE_SLIDE
 } animation;
 
+typedef enum _GuiShowPips {
+    GUI_SHOW_PIPS_NONE, GUI_SHOW_PIPS_PIPS, GUI_SHOW_PIPS_EPC, GUI_SHOW_PIPS_WASTAGE, N_GUI_SHOW_PIPS
+} GuiShowPips;
+
 extern animation animGUI;
 extern int fGUIBeep;
 extern int fGUIHighDieFirst;
 extern int fGUIIllegal;
-extern int fGUIShowPips;
+extern GuiShowPips gui_show_pips;
 extern int fGUISetWindowPos;
 extern int fGUIDragTargetHelp;
 extern int fGUIUseStatsPanel;
-extern int fGUIShowEPCs;
-extern int fGUIShowWastage;
 extern int fGUIGrayEdit;
 extern unsigned int nGUIAnimSpeed;
 

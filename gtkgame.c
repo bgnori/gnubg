@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.761 2009/03/10 13:17:13 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.762 2009/03/10 18:10:02 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6313,7 +6313,7 @@ extern void GTKSet( void *p ) {
 			gtk_widget_queue_resize(pwBoard);
 		}
 	}
-	else if( p == &fGUIShowPips )
+	else if( p == &gui_show_pips )
 		ShowBoard(); /* this is overkill, but it works */
 	else if (p == &fOutputWinPC)
 	{
