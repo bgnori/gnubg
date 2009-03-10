@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.760 2009/03/07 20:49:43 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.761 2009/03/10 13:17:13 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5745,7 +5745,7 @@ extern void GTKShowBuildInfo(GtkWidget *pw, GtkWidget *pwParent)
 
 	gtk_container_add( GTK_CONTAINER( DialogArea( pwDialog, DA_MAIN ) ), pwBox);
 
-	gtk_box_pack_start( GTK_BOX( pwBox ), SelectableLabel(pwDialog, "Version " VERSION), FALSE, FALSE, 4 );
+	gtk_box_pack_start( GTK_BOX( pwBox ), SelectableLabel(pwDialog, "Version " VERSION_STRING), FALSE, FALSE, 4 );
 
 	gtk_box_pack_start(GTK_BOX(pwBox), gtk_hseparator_new(), FALSE, FALSE, 4);
 
