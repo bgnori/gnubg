@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.205 2009/02/23 20:34:34 Superfly_Jon Exp $
+ * $Id: html.c,v 1.206 2009/03/12 21:10:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.205 2009/02/23 20:34:34 Superfly_Jon Exp $ */\n",
+           "/* $Id: html.c,v 1.206 2009/03/12 21:10:45 c_anthon Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1825,7 +1825,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.205 $";
+  const char szVersion[] = "$Revision: 1.206 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1905,7 +1905,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.205 $";
+  const char szVersion[] = "$Revision: 1.206 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3595,7 +3595,7 @@ extern void CommandExportPositionHtml( char *sz ) {
 
     FILE *pf;
     int fHistory;
-    moverecord *pmr = getCurrentMoveRecord ( &fHistory );
+    moverecord *pmr = get_current_moverecord ( &fHistory );
     int iMove;
 	
     sz = NextToken( &sz );
@@ -3675,7 +3675,7 @@ static void
 ExportPositionGammOnLine( FILE *pf )
 {
     int fHistory;
-    moverecord *pmr = getCurrentMoveRecord ( &fHistory );
+    moverecord *pmr = get_current_moverecord ( &fHistory );
     int iMove;
 
     fputs ( "\n<!-- Score -->\n\n", pf );

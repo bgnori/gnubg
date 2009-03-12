@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.62 2009/02/22 22:43:01 c_anthon Exp $
+ * $Id: export.c,v 1.63 2009/03/12 21:10:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -111,7 +111,7 @@ static moverecord *export_get_moverecord(int *game_nr, int *move_nr)
 	int history = 0;
 	moverecord *pmr = NULL;
 
-	pmr = getCurrentMoveRecord(&history);
+	pmr = get_current_moverecord(&history);
 	if (history)
 		*move_nr = getMoveNumber(plGame, pmr) - 1;
 	else if (plLastMove)

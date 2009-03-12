@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.254 2009/03/07 20:49:45 c_anthon Exp $
+ * $Id: show.c,v 1.255 2009/03/12 21:10:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1993,13 +1993,6 @@ extern void CommandShowTutor( char *UNUSED(sz) ) {
 	outputl( _("No warnings are given for \'doubtful\', \'bad\', or "
 			   "\'very bad\' chequer moves.") );
   
-  if (fTutorAnalysis)
-outputl(_("Tutor mode evaluates moves using the same settings as Analysis.") );
-  else
-	outputl(
-	_("Tutor mode evaluates moves using the same settings as Evaluation.") );
-
-
   switch (TutorSkill) {
   default:
   case SKILL_DOUBTFUL:

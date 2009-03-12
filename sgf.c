@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.126 2009/02/22 22:43:02 c_anthon Exp $
+ * $Id: sgf.c,v 1.127 2009/03/12 21:10:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2576,7 +2576,7 @@ extern void CommandSavePosition(char *sz)
     /* FIXME if the dice are not rolled, this should be done with a PL
        property (which is SaveGame()'s job) */
 
-    pmcu = getCurrentMoveRecord(NULL);
+    pmcu = get_current_moverecord(NULL);
     if (pmcu->ml.cMoves > 0 || pmcu->CubeDecPtr->esDouble.et != EVAL_NONE)
 	    ListInsert(&l, pmcu);
     else if (ms.anDice[0] > 0)

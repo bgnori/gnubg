@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.95 2009/02/22 22:43:02 c_anthon Exp $
+ * $Id: text.c,v 1.96 2009/03/12 21:10:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -246,7 +246,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.95 $";
+  const char szVersion[] = "$Revision: 1.96 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1023,7 +1023,7 @@ extern void CommandExportPositionText( char *sz ) {
 
     FILE *pf;
     int fHistory;
-    moverecord *pmr = getCurrentMoveRecord ( &fHistory );
+    moverecord *pmr = get_current_moverecord ( &fHistory );
     int iMove;
     GString *gsz;
 	
