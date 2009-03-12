@@ -16,14 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.59 2009/02/23 20:22:28 Superfly_Jon Exp $
+ * $Id: neuralnet.c,v 1.59.2.1 2009/03/12 23:39:49 c_anthon Exp $
  */
 
 #include "config.h"
 #include "common.h"
 #include <glib.h>
 #include <errno.h>
-#include <isaac.h>
+#include "isaac.h"
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
