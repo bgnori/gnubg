@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.762 2009/03/10 18:10:02 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.763 2009/03/12 21:10:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5428,7 +5428,7 @@ GTKHint( moverecord *pmr)
     /* create dialog */
 
 	pwHint = GTKCreateDialog( _("GNU Backgammon - Hint"), DT_INFO,
-			   NULL, DIALOG_FLAG_MODAL | DIALOG_FLAG_NOTIDY, G_CALLBACK( HintOK ), NULL );
+			   NULL, DIALOG_FLAG_NONE, G_CALLBACK( HintOK ), NULL );
 	SetPanelWidget(WINDOW_HINT, pwHint);
     
     gtk_container_add( GTK_CONTAINER( DialogArea( pwHint, DA_MAIN ) ), 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.326 2009/03/10 18:10:03 c_anthon Exp $
+ * $Id: set.c,v 1.327 2009/03/12 21:10:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3541,13 +3541,6 @@ extern void CommandSetTutorChequer( char * sz) {
   SetToggle ( "tutor-chequer", &fTutorChequer, sz,
 			  _("Include advice on chequer play in tutor mode."),
 			  _("Exclude advice on chequer play from tutor mode.") );
-}
-
-extern void CommandSetTutorEval( char * sz) {
-
-  SetToggle ( "tutor-eval", &fTutorAnalysis, sz,
-			  _("Use Analysis settings to generate advice."),
-			  _("Use Evaluation settings to generate advice.") );
 }
 
 static void _set_tutor_skill (skilltype Skill, int skillno, char *skill) {

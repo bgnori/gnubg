@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.402 2009/03/10 18:10:01 c_anthon Exp $
+ * $Id: backgammon.h,v 1.403 2009/03/12 21:10:44 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -360,7 +360,6 @@ extern int fRecord;
 extern int fShowProgress;
 extern int fStyledGamelist;
 extern int fTutor;
-extern int fTutorAnalysis;
 extern int fTutorChequer;
 extern int fTutorCube;
 extern int log_rollouts;
@@ -490,7 +489,7 @@ extern int ParsePlayer(char *sz);
 extern int ParsePosition(TanBoard an, char **ppch, char *pchDesc);
 extern int SetToggle(const char *szName, int *pf, char *sz, const char *szOn,
 		     const char *szOff);
-extern moverecord *getCurrentMoveRecord(int *pfHistory);
+extern moverecord *get_current_moverecord(int *pfHistory);
 extern moverecord *LinkToDouble(moverecord * pmr);
 extern moverecord *NewMoveRecord(void);
 extern void HandleInterrupt(int idSignal);
@@ -933,7 +932,6 @@ extern void CommandSetToolbar(char *);
 extern void CommandSetTurn(char *);
 extern void CommandSetTutorChequer(char *);
 extern void CommandSetTutorCube(char *);
-extern void CommandSetTutorEval(char *);
 extern void CommandSetTutorMode(char *);
 extern void CommandSetTutorSkillBad(char *);
 extern void CommandSetTutorSkillDoubtful(char *);
@@ -1012,8 +1010,9 @@ extern void CommandShowWarning(char *);
 extern void CommandShowWarranty(char *);
 extern void CommandSwapPlayers(char *);
 extern void CommandTake(char *);
-extern void HintChequer(char *sz, gboolean show);
-
+extern void hint_move(char *sz, gboolean show);
+extern void hint_double(int show, int did_double);
+extern void hint_take(int show, int did_take);
 extern int getGameNumber(const listOLD * plGame);
 extern int getMoveNumber(const listOLD * plGame, const void *p);
 extern int CheckGameExists(void);
