@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelistctrl.c,v 1.20 2009/03/07 20:49:44 c_anthon Exp $
+ * $Id: gtkmovelistctrl.c,v 1.21 2009/03/13 16:25:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -378,6 +378,8 @@ custom_cell_renderer_movelist_render (GtkCellRenderer *cell,
 	float *ar;
 	GdkColor *pFontCol, *fg;
 	PangoRectangle logical_rect;
+	char *cmark_sz;
+	char *highlight_sz;
 	cubeinfo ci;
 	GetMatchStateCubeInfo( &ci, &ms );
 	/*lint --e(641)*/
@@ -406,11 +408,12 @@ custom_cell_renderer_movelist_render (GtkCellRenderer *cell,
 	}
 
 	/* First line of control */
-
+        cmark_sz = cellprogress->pml->cmark ? "+" : "";
+        highlight_sz = (phd->piHighlight && cellprogress->rank - 1 == *phd->piHighlight ) ? "*" : "";
 	if (cellprogress->rank > 0)
-		sprintf(buf, "%d%s", cellprogress->rank, cellprogress->pml->cmark ? "+" : "");
+		sprintf(buf, "%d%s%s", cellprogress->rank, cmark_sz, highlight_sz );
 	else
-		sprintf(buf, "??%s", cellprogress->pml->cmark ? "+" : "");
+		sprintf(buf, "??%s%s", cmark_sz, highlight_sz);
 
 	pango_layout_set_text(layout, buf, -1);
 	pango_layout_get_pixel_extents (layout, NULL, &logical_rect);

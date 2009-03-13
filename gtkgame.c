@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.763 2009/03/12 21:10:44 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.764 2009/03/13 16:25:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -962,7 +962,7 @@ extern void SetAnnotation( moverecord *pmr ) {
 			      
 	    if( pmr->ml.cMoves ) 
               pwMoveAnalysis = CreateMoveList( pmr,
-                                               TRUE, TRUE, !IsPanelDocked(WINDOW_ANALYSIS));
+                                               TRUE, FALSE, !IsPanelDocked(WINDOW_ANALYSIS));
 
             if ( pwMoveAnalysis && pwCubeAnalysis ) {
               /* notebook with analysis */

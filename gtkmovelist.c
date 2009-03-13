@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.29 2009/03/02 23:01:29 Superfly_Jon Exp $
+ * $Id: gtkmovelist.c,v 1.30 2009/03/13 16:25:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -203,6 +203,7 @@ if (!psHighlight)
   {
     float *ar = pml->amMoves[ i ].arEvalMove;
 	int rankKnown;
+	char *highlight_sz;
 
 	if (showWLTree)
 		gtk_list_store_set(store, &iter, 0, pml->amMoves + i, -1);
@@ -232,10 +233,12 @@ if (!psHighlight)
 			rankKnown = 0;
 	}
 
+	highlight_sz = (phd->piHighlight && *phd->piHighlight == i) ? "*" : "";
+
 	if (rankKnown)
-      sprintf( sz, "%s%d", pml->amMoves[i].cmark ? "+" : "", i + 1 );
+      sprintf( sz, "%s%s%d", pml->amMoves[i].cmark ? "+" : "", highlight_sz, i + 1 );
     else
-      sprintf( sz, "%s??", pml->amMoves[i].cmark ? "+" : "" );
+      sprintf( sz, "%s%s??", pml->amMoves[i].cmark ? "+" : "", highlight_sz );
 
 	if (showWLTree)
 	{
