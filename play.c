@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.357 2009/03/12 21:10:45 c_anthon Exp $
+ * $Id: play.c,v 1.358 2009/03/13 09:28:21 c_anthon Exp $
  */
 
 #include "config.h"
@@ -486,6 +486,10 @@ static int PopMoveRecord( listOLD *plDelete ) {
 
 extern void AddMoveRecord( void *pv ) {
     moverecord *pmr = pv, *pmrOld;
+
+    /* various set commands calls AddMoveRecord, so we need to destroy the
+     * hint here. */
+    pmr_hint_destroy();
 
     g_assert( pmr->fPlayer >= 0 && pmr->fPlayer <= 1 );
     g_assert( pmr->ml.cMoves < MAX_MOVES );
