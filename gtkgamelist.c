@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkgamelist.c,v 1.33 2008/12/04 22:12:16 c_anthon Exp $
+* $Id: gtkgamelist.c,v 1.34 2009/03/13 23:52:29 c_anthon Exp $
 */
 
 #include "config.h"
@@ -118,7 +118,7 @@ static void GameListSelectRow(GtkCList *pcl, gint y, gint x, GdkEventButton *pev
 
     CalculateBoard();
 
-    if ( pmr && pmr->mt == MOVE_NORMAL ) {
+    if ( pmr && (pmr->mt == MOVE_NORMAL || pmr->mt == MOVE_SETDICE) ) {
        /* roll dice */
        ms.gs = GAME_PLAYING;
        ms.anDice[ 0 ] = pmr->anDice[ 0 ];

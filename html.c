@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.206 2009/03/12 21:10:45 c_anthon Exp $
+ * $Id: html.c,v 1.207 2009/03/13 23:52:29 c_anthon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.206 2009/03/12 21:10:45 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.207 2009/03/13 23:52:29 c_anthon Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1825,7 +1825,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.206 $";
+  const char szVersion[] = "$Revision: 1.207 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1905,7 +1905,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.206 $";
+  const char szVersion[] = "$Revision: 1.207 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2449,7 +2449,7 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
   /* print alerts */
 
-  if ( badSkill(pmr->n.stMove) ) {
+  if ( badSkill(pmr->n.stMove) && pmr->n.iMove < pmr->ml.cMoves) {
 
     /* blunder or error */
 

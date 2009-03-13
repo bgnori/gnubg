@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.358 2009/03/13 09:28:21 c_anthon Exp $
+ * $Id: play.c,v 1.359 2009/03/13 23:52:29 c_anthon Exp $
  */
 
 #include "config.h"
@@ -854,17 +854,12 @@ extern int check_resigns(cubeinfo * pci)
 static void copy_from_pmr_cur(moverecord *pmr)
 {
 	moverecord *pmr_cur;
-	float skill_score;
 	pmr_cur = get_current_moverecord(NULL);
 	if (pmr_cur->ml.cMoves > 0) {
 		if (pmr->ml.cMoves > 0)
 			free(pmr->ml.amMoves);
 		CopyMoveList(&pmr->ml, &pmr_cur->ml);
 		pmr->n.iMove = locateMove(msBoard(), pmr->n.anMove, &pmr->ml);
-		skill_score =
-		    pmr->ml.amMoves[pmr->n.iMove].rScore -
-		    pmr->ml.amMoves[0].rScore;
-		pmr->n.stMove = Skill(skill_score);
 	}
 
 	if (pmr_cur->CubeDecPtr->esDouble.et != EVAL_NONE) {
@@ -877,8 +872,9 @@ static void copy_from_pmr_cur(moverecord *pmr)
 		memcpy(&pmr->CubeDecPtr->esDouble,
 		       &pmr_cur->CubeDecPtr->esDouble,
 		       sizeof pmr->CubeDecPtr->esDouble);
-		pmr->stCube = pmr_cur->stCube;
 	}
+
+	find_skills(pmr, &ms, -1, -1);
 
 	/* even if pmr_cur != pmr_hint we won't need pmr_hint any more */
 	pmr_hint_destroy();

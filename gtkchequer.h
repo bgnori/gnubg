@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.h,v 1.17 2009/03/01 20:01:50 Superfly_Jon Exp $
+ * $Id: gtkchequer.h,v 1.18 2009/03/13 23:52:28 c_anthon Exp $
  */
 
 #ifndef _GTKCHEQUER_H_
@@ -35,6 +35,7 @@ typedef struct _hintdata {
   GtkWidget *pwShow; /* button for showing moves */
   GtkWidget *pwTempMap; /* button for showing temperature map */
   GtkWidget *pwCmark; /* button for marking*/
+  moverecord *pmr;
   movelist *pml;
   int fButtonsValid;
   int fDestroyOnMove;

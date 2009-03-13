@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.764 2009/03/13 16:25:48 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.765 2009/03/13 23:52:29 c_anthon Exp $
  */
 
 #include "config.h"
@@ -955,7 +955,7 @@ extern void SetAnnotation( moverecord *pmr ) {
 
             /* cube */
 
-            pwCubeAnalysis = CreateCubeAnalysis( pmr, &ms );
+            pwCubeAnalysis = CreateCubeAnalysis( pmr, &ms, -1, -1 );
 
 
             /* move */
@@ -1021,7 +1021,7 @@ extern void SetAnnotation( moverecord *pmr ) {
 
             if ( dt == DT_NORMAL ) {
 	    
-              if ( ( pw = CreateCubeAnalysis( pmr, &ms ) ) )
+              if ( ( pw = CreateCubeAnalysis( pmr, &ms, -1, -1 ) ) )
 		gtk_box_pack_start( GTK_BOX( pwAnalysis ), pw, FALSE,
 				    FALSE, 0 );
 
@@ -1056,7 +1056,7 @@ extern void SetAnnotation( moverecord *pmr ) {
 				0 );
 
             if ( tt == TT_NORMAL ) {
-              if ( ( pw = CreateCubeAnalysis( pmr, &ms ) ) )
+              if ( ( pw = CreateCubeAnalysis( pmr, &ms, -1, -1 ) ) )
 		gtk_box_pack_start( GTK_BOX( pwAnalysis ), pw, FALSE,
 				    FALSE, 0 );
             }
@@ -5313,7 +5313,7 @@ HintOK ( GtkWidget *pw, void *unused )
 	DestroyPanel(WINDOW_HINT);
 }
 
-extern void GTKCubeHint(moverecord *pmr, matchstate *pms ) {
+extern void GTKCubeHint(moverecord *pmr, matchstate *pms, int did_double, int did_take ) {
     
     GtkWidget *pw, *pwHint;
 
@@ -5324,7 +5324,7 @@ extern void GTKCubeHint(moverecord *pmr, matchstate *pms ) {
 			   NULL, DIALOG_FLAG_MODAL | DIALOG_FLAG_NOTIDY, G_CALLBACK( HintOK ), NULL );
 	SetPanelWidget(WINDOW_HINT, pwHint);
 
-    pw = CreateCubeAnalysis (pmr, pms);
+    pw = CreateCubeAnalysis (pmr, pms, did_double, did_take);
 
     gtk_container_add( GTK_CONTAINER( DialogArea( pwHint, DA_MAIN ) ),
                        pw );

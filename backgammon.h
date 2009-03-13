@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.403 2009/03/12 21:10:44 c_anthon Exp $
+ * $Id: backgammon.h,v 1.404 2009/03/13 23:52:28 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1013,6 +1013,7 @@ extern void CommandTake(char *);
 extern void hint_move(char *sz, gboolean show);
 extern void hint_double(int show, int did_double);
 extern void hint_take(int show, int did_take);
+extern void find_skills(moverecord *pmr, matchstate *pms, int did_double, int did_take);
 extern int getGameNumber(const listOLD * plGame);
 extern int getMoveNumber(const listOLD * plGame, const void *p);
 extern int CheckGameExists(void);
