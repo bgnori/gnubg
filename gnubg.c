@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.831 2009/03/13 23:52:28 c_anthon Exp $
+ * $Id: gnubg.c,v 1.832 2009/03/14 00:10:17 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2247,6 +2247,7 @@ extern void find_skills(moverecord *pmr, matchstate *pms, int did_double,
 	cubeinfo ci;
 	doubletype dt = DoubleType(pms->fDoubled, pms->fMove, pms->fTurn);
 	taketype tt = (taketype) dt;
+	GetMatchStateCubeInfo(&ci, pms);
 
 
 	if (pmr->mt != MOVE_NORMAL && pmr->mt != MOVE_DOUBLE
