@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.832 2009/03/14 00:10:17 c_anthon Exp $
+ * $Id: gnubg.c,v 1.833 2009/03/20 16:18:50 c_anthon Exp $
  */
 
 #include "config.h"
@@ -50,10 +50,6 @@ static char *gnubg_histfile;
 #include <readline/readline.h>
 static int fReadingOther;
 static char szCommandSeparators[] = " \t\n\r\v\f";
-#endif
-
-#if HAVE_GSTREAMER
-#include <gst/gst.h>
 #endif
 
 #include "analysis.h"
@@ -648,8 +644,8 @@ char const *aszBuildInfo[] = {
     N_("Windows sound system supported."),
 #elif defined(__APPLE__)
     N_("Apple QuickTime sound system supported."),
-#elif HAVE_GSTREAMER
-    N_("Gstreamer sound system supported."),
+#elif HAVE_CANBERRA
+    N_("libcanberra sound system supported."),
 #endif
 #if USE_MULTITHREAD
     N_("Multiple threads supported."),
@@ -4846,14 +4842,6 @@ int main(int argc, char *argv[])
 #if USE_GTK
 	g_option_context_add_group(context, gtk_get_option_group(FALSE));
 #endif
-
-#if HAVE_GSTREAMER
-	/* gstreamer needs to init threads, regardless if we use them */
-	if (!g_thread_supported())
-		g_thread_init(NULL);
-	g_option_context_add_group(context, gst_init_get_option_group());
-#endif
-
 
 	g_option_context_parse(context, &argc, &argv, &error);
 	g_option_context_free(context);
