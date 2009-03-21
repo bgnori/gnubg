@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg-types.h,v 1.4 2008/01/15 22:22:46 Superfly_Jon Exp $
+ * $Id: gnubg-types.h,v 1.5 2009/03/21 21:46:33 c_anthon Exp $
  */
 
 #ifndef _GNUBG_TYPES_H_
@@ -24,5 +24,41 @@
 
 typedef unsigned int TanBoard[2][25];
 typedef const unsigned int (*ConstTanBoard)[25];
+
+typedef enum _bgvariation {
+	VARIATION_STANDARD,	/* standard backgammon */
+	VARIATION_NACKGAMMON,	/* standard backgammon with nackgammon starting
+				   position */
+	VARIATION_HYPERGAMMON_1,	/* 1-chequer hypergammon */
+	VARIATION_HYPERGAMMON_2,	/* 2-chequer hypergammon */
+	VARIATION_HYPERGAMMON_3,	/* 3-chequer hypergammon */
+	NUM_VARIATIONS
+} bgvariation;
+
+typedef enum _gamestate {
+	GAME_NONE, GAME_PLAYING, GAME_OVER, GAME_RESIGNED, GAME_DROP
+} gamestate;
+
+typedef struct _matchstate {
+	TanBoard anBoard;
+	unsigned int anDice[2];	/* (0,0) for unrolled dice */
+	int fTurn;		/* who makes the next decision */
+	int fResigned;
+	int fResignationDeclined;
+	int fDoubled;
+	int cGames;
+	int fMove;		/* player on roll */
+	int fCubeOwner;
+	int fCrawford;
+	int fPostCrawford;
+	int nMatchTo;
+	int anScore[2];
+	int nCube;
+	unsigned int cBeavers;
+	bgvariation bgv;
+	int fCubeUse;
+	int fJacoby;
+	gamestate gs;
+} matchstate;
 
 #endif

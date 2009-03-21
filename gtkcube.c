@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.69 2009/03/13 23:52:29 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.70 2009/03/21 21:46:30 c_anthon Exp $
  */
 
 #include "config.h"
@@ -715,6 +715,7 @@ CubeAnalysisRollout ( GtkWidget *pw, cubehintdata *pchd ) {
   pes->et = EVAL_ROLLOUT;
 
   UpdateCubeAnalysis ( pchd );
+  ChangeGame(NULL);
 
 }
 
@@ -744,6 +745,7 @@ static void EvalCube ( cubehintdata *pchd, evalcontext *pec )
   memcpy ( &pes->ec, dd.pec, sizeof ( evalcontext ) );
 
   UpdateCubeAnalysis ( pchd );
+  ChangeGame(NULL);
 }
 
 static void
@@ -1033,7 +1035,7 @@ CreateCubeAnalysisTools ( cubehintdata *pchd ) {
 }
 
 
-extern GtkWidget *CreateCubeAnalysis(moverecord *pmr, matchstate *pms, int did_double, int did_take)
+extern GtkWidget *CreateCubeAnalysis(moverecord *pmr, const matchstate *pms, int did_double, int did_take)
 {
 
 	cubehintdata *pchd = g_new0(cubehintdata, 1);

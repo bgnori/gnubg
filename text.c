@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.96 2009/03/12 21:10:45 c_anthon Exp $
+ * $Id: text.c,v 1.97 2009/03/21 21:46:33 c_anthon Exp $
  */
 
 #include "config.h"
@@ -246,7 +246,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.96 $";
+  const char szVersion[] = "$Revision: 1.97 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -635,37 +635,8 @@ static void TextDumpStatcontext ( FILE *pf, const statcontext *psc,
 static void
 TextPrintComment ( FILE *pf, const moverecord *pmr ) {
 
-  char *sz = NULL;
+  char *sz = pmr->sz;
 
-  switch ( pmr->mt ) {
-
-  case MOVE_GAMEINFO:
-    sz = pmr->sz;
-    break;
-  case MOVE_DOUBLE:
-  case MOVE_TAKE:
-  case MOVE_DROP:
-    sz = pmr->sz;
-    break;
-  case MOVE_NORMAL:
-    sz = pmr->sz;
-    break;
-  case MOVE_RESIGN:
-    sz = pmr->sz;
-    break;
-  case MOVE_SETBOARD:
-    sz = pmr->sz;
-    break;
-  case MOVE_SETDICE:
-    sz = pmr->sz;
-    break;
-  case MOVE_SETCUBEVAL:
-    sz = pmr->sz;
-    break;
-  case MOVE_SETCUBEPOS:
-    sz = pmr->sz;
-    break;
-  }
 
   if ( sz ) {
 

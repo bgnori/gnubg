@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.c,v 1.17 2009/03/01 20:01:51 Superfly_Jon Exp $
+ * $Id: matchid.c,v 1.18 2009/03/21 21:46:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -235,7 +235,7 @@ MatchFromKey ( int anDice[ 2 ],
 
 
 extern int
-MatchFromID ( int anDice[ 2 ],
+MatchFromID ( unsigned int anDice[ 2 ],
               int *pfTurn,
               int *pfResigned,
               int *pfDoubled,

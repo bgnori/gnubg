@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.140 2009/03/13 23:52:29 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.141 2009/03/21 21:46:31 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -101,7 +101,7 @@ extern void GTKCalibrationUpdate(void *context, float rEvalsPerSec);
 extern void GtkChangeLanguage(void);
 extern void GTKClearMoveRecord(void);
 extern void GTKCommandShowCredits(GtkWidget * pw, GtkWidget * parent);
-extern void GTKCubeHint(moverecord *pmr, matchstate *pms, int did_double, int did_take );
+extern void GTKCubeHint(moverecord *pmr, const matchstate *pms, int did_double, int did_take );
 extern void GTKDelay(void);
 extern void GTKDisallowStdin(void);
 extern void GTKDumpStatcontext(int game);
@@ -143,7 +143,6 @@ extern void GTKTextToClipboard(const char *sz);
 extern void GTKTextWindow(const char *szOutput, const char *title,
 			  const int type, GtkWidget *parent);
 extern void GTKThaw(void);
-extern void GTKUpdateAnnotations(void);
 extern void HideAllPanels(gpointer p, guint n, GtkWidget * pw);
 extern void HintDoubleClick(GtkTreeView * treeview, GtkTreePath * path,
 			    GtkTreeViewColumn * col, hintdata * phd);

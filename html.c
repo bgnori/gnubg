@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.207 2009/03/13 23:52:29 c_anthon Exp $
+ * $Id: html.c,v 1.208 2009/03/21 21:46:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.207 2009/03/13 23:52:29 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.208 2009/03/21 21:46:32 c_anthon Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1825,7 +1825,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.207 $";
+  const char szVersion[] = "$Revision: 1.208 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1905,7 +1905,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.207 $";
+  const char szVersion[] = "$Revision: 1.208 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3004,37 +3004,7 @@ static void
 HTMLPrintComment ( FILE *pf, const moverecord *pmr,
                    const htmlexportcss hecss ) {
 
-  char *sz = NULL;
-
-  switch ( pmr->mt ) {
-
-  case MOVE_GAMEINFO:
-    sz = pmr->sz;
-    break;
-  case MOVE_DOUBLE:
-  case MOVE_TAKE:
-  case MOVE_DROP:
-    sz = pmr->sz;
-    break;
-  case MOVE_NORMAL:
-    sz = pmr->sz;
-    break;
-  case MOVE_RESIGN:
-    sz = pmr->sz;
-    break;
-  case MOVE_SETBOARD:
-    sz = pmr->sz;
-    break;
-  case MOVE_SETDICE:
-    sz = pmr->sz;
-    break;
-  case MOVE_SETCUBEVAL:
-    sz = pmr->sz;
-    break;
-  case MOVE_SETCUBEPOS:
-    sz = pmr->sz;
-    break;
-  }
+  char *sz = pmr->sz;
 
   if ( sz ) {
 

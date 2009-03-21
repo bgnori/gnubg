@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.162 2009/03/02 09:43:51 c_anthon Exp $
+ * $Id: eval.h,v 1.163 2009/03/21 21:46:29 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -165,15 +165,6 @@ typedef enum {
 /* enumeration of variations of backgammon
    (starting position and/or special rules) */
 
-typedef enum {
-  VARIATION_STANDARD,      /* standard backgammon */
-  VARIATION_NACKGAMMON,    /* standard backgammon with nackgammon starting
-                            position */
-  VARIATION_HYPERGAMMON_1, /* 1-chequer hypergammon */
-  VARIATION_HYPERGAMMON_2, /* 2-chequer hypergammon */
-  VARIATION_HYPERGAMMON_3, /* 3-chequer hypergammon */
-  NUM_VARIATIONS
-} bgvariation;
 
 extern bgvariation bgvDefault;
 
@@ -216,20 +207,28 @@ typedef struct {
 
 } evalsetup;
 
-typedef enum  {
-  DOUBLE_TAKE, DOUBLE_PASS, NODOUBLE_TAKE, TOOGOOD_TAKE, TOOGOOD_PASS,
-  DOUBLE_BEAVER, NODOUBLE_BEAVER,
-  REDOUBLE_TAKE, REDOUBLE_PASS, NO_REDOUBLE_TAKE,
-  TOOGOODRE_TAKE, TOOGOODRE_PASS,
-  NO_REDOUBLE_BEAVER,
-  NODOUBLE_DEADCUBE,     /* cube is dead (match play only) */
-  NO_REDOUBLE_DEADCUBE,     /* cube is dead (match play only) */
-  NOT_AVAILABLE, /* Cube not available */
-  OPTIONAL_DOUBLE_TAKE,
-  OPTIONAL_REDOUBLE_TAKE,
-  OPTIONAL_DOUBLE_BEAVER,
-  OPTIONAL_DOUBLE_PASS,
-  OPTIONAL_REDOUBLE_PASS
+typedef enum {
+	DOUBLE_TAKE,
+	DOUBLE_PASS,
+	NODOUBLE_TAKE,
+	TOOGOOD_TAKE,
+	TOOGOOD_PASS,
+	DOUBLE_BEAVER,
+	NODOUBLE_BEAVER,
+	REDOUBLE_TAKE,
+	REDOUBLE_PASS,
+	NO_REDOUBLE_TAKE,
+	TOOGOODRE_TAKE,
+	TOOGOODRE_PASS,
+	NO_REDOUBLE_BEAVER,
+	NODOUBLE_DEADCUBE,	/* cube is dead (match play only) */
+	NO_REDOUBLE_DEADCUBE,	/* cube is dead (match play only) */
+	NOT_AVAILABLE,		/* Cube not available */
+	OPTIONAL_DOUBLE_TAKE,
+	OPTIONAL_REDOUBLE_TAKE,
+	OPTIONAL_DOUBLE_BEAVER,
+	OPTIONAL_DOUBLE_PASS,
+	OPTIONAL_REDOUBLE_PASS
 } cubedecision;
 
 typedef enum {

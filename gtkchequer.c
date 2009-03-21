@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.99 2009/03/13 23:52:28 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.100 2009/03/21 21:46:30 c_anthon Exp $
  */
 
 #include "config.h"
@@ -107,6 +107,7 @@ static void MoveListRolloutClicked(GtkWidget *pw, hintdata *phd)
 
   MoveListUpdate ( phd );
   SetAnnotation(pmrCurAnn);
+  ChangeGame(NULL);
 }
 
 extern void ShowMove ( hintdata *phd, const int f )
@@ -279,6 +280,7 @@ EvalMoves ( hintdata *phd, evalcontext *pec )
   find_skills(phd->pmr, &ms, -1, -1);
   MoveListUpdate ( phd );
   SetAnnotation(pmrCurAnn);
+  ChangeGame(NULL);
 }
 
 static void

@@ -16,13 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.44 2008/06/29 20:14:48 Superfly_Jon Exp $
+ * $Id: analysis.h,v 1.45 2009/03/21 21:46:29 c_anthon Exp $
  */
 
 #ifndef _ANALYSIS_H_
 #define _ANALYSIS_H_
 
 #include "list.h"
+#include "gnubg-types.h"
 
 typedef enum _lucktype {
     LUCK_VERYBAD, LUCK_BAD, LUCK_NONE, LUCK_GOOD, LUCK_VERYGOOD
@@ -151,5 +152,8 @@ extern skilltype
 Skill( float r );
 
 extern int MatchAnalysed(void);
+extern float LuckAnalysis(const TanBoard anBoard, int n0, int n1,
+			  matchstate *pms);
+extern lucktype Luck( float r );
 
 #endif

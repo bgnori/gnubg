@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.h,v 1.8 2008/04/24 22:06:46 c_anthon Exp $
+ * $Id: matchid.h,v 1.9 2009/03/21 21:46:32 c_anthon Exp $
  */
 
 #ifndef _MATCHID_H_
@@ -43,7 +43,7 @@ extern char*
 MatchIDFromKey( unsigned char auchKey[ 8 ] );
 
 extern int
-MatchFromID ( int anDice[ 2 ],
+MatchFromID ( unsigned int anDice[ 2 ],
               int *pfTurn,
               int *pfResigned,
               int *pfDoubled,
