@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.70 2009/03/21 21:46:30 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.71 2009/03/22 22:36:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -48,6 +48,7 @@ typedef struct _cubehintdata {
   matchstate ms;
   int did_double;
   int did_take;
+  int hist;
 } cubehintdata;
 
 
@@ -715,7 +716,8 @@ CubeAnalysisRollout ( GtkWidget *pw, cubehintdata *pchd ) {
   pes->et = EVAL_ROLLOUT;
 
   UpdateCubeAnalysis ( pchd );
-  ChangeGame(NULL);
+  if (pchd->hist)
+	  ChangeGame(NULL);
 
 }
 
@@ -745,7 +747,8 @@ static void EvalCube ( cubehintdata *pchd, evalcontext *pec )
   memcpy ( &pes->ec, dd.pec, sizeof ( evalcontext ) );
 
   UpdateCubeAnalysis ( pchd );
-  ChangeGame(NULL);
+  if (pchd->hist)
+	  ChangeGame(NULL);
 }
 
 static void
@@ -1035,7 +1038,7 @@ CreateCubeAnalysisTools ( cubehintdata *pchd ) {
 }
 
 
-extern GtkWidget *CreateCubeAnalysis(moverecord *pmr, const matchstate *pms, int did_double, int did_take)
+extern GtkWidget *CreateCubeAnalysis(moverecord *pmr, const matchstate *pms, int did_double, int did_take, int hist)
 {
 
 	cubehintdata *pchd = g_new0(cubehintdata, 1);
@@ -1046,6 +1049,7 @@ extern GtkWidget *CreateCubeAnalysis(moverecord *pmr, const matchstate *pms, int
 	pchd->ms = *pms;
 	pchd->did_double = did_double;
 	pchd->did_take = did_take;
+	pchd->hist = hist;
 	pchd->pw = pw = gtk_hbox_new(FALSE, 2);
 	switch (pmr->mt) {
 

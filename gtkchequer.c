@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.100 2009/03/21 21:46:30 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.101 2009/03/22 22:36:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -106,8 +106,11 @@ static void MoveListRolloutClicked(GtkWidget *pw, hintdata *phd)
   free ( ai );
 
   MoveListUpdate ( phd );
-  SetAnnotation(pmrCurAnn);
-  ChangeGame(NULL);
+  if (phd->hist)
+  {
+	  SetAnnotation(pmrCurAnn);
+	  ChangeGame(NULL);
+  }
 }
 
 extern void ShowMove ( hintdata *phd, const int f )
@@ -279,8 +282,11 @@ EvalMoves ( hintdata *phd, evalcontext *pec )
 
   find_skills(phd->pmr, &ms, -1, -1);
   MoveListUpdate ( phd );
-  SetAnnotation(pmrCurAnn);
-  ChangeGame(NULL);
+  if (phd->hist)
+  {
+	  SetAnnotation(pmrCurAnn);
+	  ChangeGame(NULL);
+  }
 }
 
 static void
@@ -691,7 +697,7 @@ extern int CheckHintButtons(hintdata * phd)
 
 extern GtkWidget *
 CreateMoveList( moverecord *pmr, const int fButtonsValid,
-                const int fDestroyOnMove, const int fDetails )
+                const int fDestroyOnMove, const int fDetails, int hist )
 {
     GtkWidget *pw;
     GtkWidget *pwVBox, *mlt;
@@ -712,6 +718,7 @@ CreateMoveList( moverecord *pmr, const int fButtonsValid,
     phd->fDestroyOnMove = fDestroyOnMove;
     phd->pwMove = NULL;
     phd->fDetails = fDetails;
+    phd->hist = hist;
   mlt = CreateMoveListTools( phd );
 	MoveListCreate(phd);
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.835 2009/03/22 08:33:44 c_anthon Exp $
+ * $Id: gnubg.c,v 1.836 2009/03/22 22:36:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2306,7 +2306,7 @@ extern void hint_double(int show, int did_double)
 		if (hist)
 			ChangeGame(NULL);
 		if (show)
-			GTKCubeHint(pmr, &ms, did_double, -1);
+			GTKCubeHint(pmr, &ms, did_double, -1, hist);
 		return;
 	}
 #endif
@@ -2334,7 +2334,7 @@ extern void hint_take(int show, int did_take)
 		if (hist)
 			ChangeGame(NULL);
 		if (show)
-			GTKCubeHint(pmr, &ms, -1, did_take);
+			GTKCubeHint(pmr, &ms, -1, did_take, hist);
 		return;
 	}
 #endif
@@ -2393,7 +2393,7 @@ extern void hint_move(char *sz, gboolean show)
 		if (hist)
 		ChangeGame(NULL);
 		if (show)
-			GTKHint(pmr);
+			GTKHint(pmr, hist);
 		return;
 	} else
 #endif

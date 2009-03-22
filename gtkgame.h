@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.141 2009/03/21 21:46:31 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.142 2009/03/22 22:36:57 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -101,14 +101,14 @@ extern void GTKCalibrationUpdate(void *context, float rEvalsPerSec);
 extern void GtkChangeLanguage(void);
 extern void GTKClearMoveRecord(void);
 extern void GTKCommandShowCredits(GtkWidget * pw, GtkWidget * parent);
-extern void GTKCubeHint(moverecord *pmr, const matchstate *pms, int did_double, int did_take );
+extern void GTKCubeHint(moverecord *pmr, const matchstate *pms, int did_double, int did_take, int hist);
 extern void GTKDelay(void);
 extern void GTKDisallowStdin(void);
 extern void GTKDumpStatcontext(int game);
 extern void GTKEval(char *szOutput);
 extern void GTKFreeze(void);
 extern void GTKHelp(char *sz);
-extern void GTKHint(moverecord *pmr);
+extern void GTKHint(moverecord *pmr, int hist);
 extern void GTKMatchInfo(void);
 extern void GTKNew(void);
 extern void GTKOutput(const char *sz);
@@ -159,7 +159,7 @@ extern void PanelShow(gnubgwindow panel);
 extern void RefreshGeometries(void);
 extern void RunGTK(GtkWidget * pwSplash, char *commands,
 		   char *python_script, char *match);
-extern void SetAnnotation(moverecord * pmr);
+extern void SetAnnotation(moverecord *pmr);
 extern void SetEvaluation(gpointer p, guint n, GtkWidget * pw);
 extern void SetMET(GtkWidget * pw, gpointer p);
 extern void SetPanelWidget(gnubgwindow window, GtkWidget * pWin);
