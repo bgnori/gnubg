@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.834 2009/03/21 21:46:30 c_anthon Exp $
+ * $Id: gnubg.c,v 1.835 2009/03/22 08:33:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2390,7 +2390,6 @@ extern void hint_move(char *sz, gboolean show)
 
 #if USE_GTK
 	if (fX) {
-		printf("dice are now %d\n", ms.anDice[0]);
 		if (hist)
 		ChangeGame(NULL);
 		if (show)
