@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.767 2009/03/22 22:36:57 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.768 2009/03/23 08:54:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5118,7 +5118,7 @@ extern void GTKCubeHint(moverecord *pmr, const matchstate *pms, int did_double, 
 	gtk_widget_destroy(GetPanelWidget(WINDOW_HINT));
 
 	pwHint = GTKCreateDialog( _("GNU Backgammon - Hint"), DT_INFO,
-			   NULL, DIALOG_FLAG_MODAL | DIALOG_FLAG_NOTIDY, G_CALLBACK( HintOK ), NULL );
+			   NULL, DIALOG_FLAG_NOTIDY, G_CALLBACK( HintOK ), NULL );
 	SetPanelWidget(WINDOW_HINT, pwHint);
 
     pw = CreateCubeAnalysis (pmr, pms, did_double, did_take, hist);
