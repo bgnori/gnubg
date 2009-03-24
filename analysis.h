@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.h,v 1.45 2009/03/21 21:46:29 c_anthon Exp $
+ * $Id: analysis.h,v 1.46 2009/03/24 23:48:45 c_anthon Exp $
  */
 
 #ifndef _ANALYSIS_H_
@@ -106,9 +106,7 @@ extern ratingtype GetRating ( const float rError );
 extern void IniStatcontext ( statcontext* psc );
 extern void AddStatcontext ( const statcontext* pscA, statcontext* pscB );
 
-extern void
-DumpStatcontext ( char *szOutput, const statcontext *psc, const char * pl, const char * op, const char * sz,
-                  const int fIsMatch );
+extern void DumpStatcontext(char *szOutput, const statcontext *psc, const char *pl, const char *op, int nMatchTo);
 
 extern void
 updateStatisticsGame ( const listOLD* plGame );

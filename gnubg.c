@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.837 2009/03/24 23:42:16 c_anthon Exp $
+ * $Id: gnubg.c,v 1.838 2009/03/24 23:48:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -69,7 +69,6 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #include "renderprefs.h"
 #include "rollout.h"
 #include "sound.h"
-#include "record.h"
 #include "progress.h"
 #include "osr.h"
 #include "format.h"

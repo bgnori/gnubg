@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.208 2009/03/21 21:46:29 c_anthon Exp $
+ * $Id: analysis.c,v 1.209 2009/03/24 23:48:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1506,8 +1506,8 @@ getMWCFromError ( const statcontext *psc, float aaaar[ 3 ][ 2 ][ 2 ][ 2 ] ) {
 }
 
 extern void
-DumpStatcontext ( char *szOutput, const statcontext *psc, const char * pl, const char * op, const char * UNUSED(sz),
-                  const int fIsMatch ) {
+DumpStatcontext ( char *szOutput, const statcontext *psc, const char *pl, const char *op,
+                  int nMatchTo) {
 
   /* header */
 
@@ -1515,7 +1515,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * pl, const
            _("Player"), pl, op );
 
   if ( psc->fMoves ) {
-    GList *list = formatGS( psc, ms.nMatchTo, fIsMatch, FORMATGS_CHEQUER );
+    GList *list = formatGS( psc, nMatchTo, FORMATGS_CHEQUER );
     GList *pl;
 
     strcat( szOutput, _("Chequerplay statistics") );
@@ -1539,7 +1539,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * pl, const
 
 
   if ( psc->fDice ) {
-    GList *list = formatGS( psc, ms.nMatchTo, fIsMatch, FORMATGS_LUCK );
+    GList *list = formatGS( psc, nMatchTo, FORMATGS_LUCK );
     GList *pl;
 
     strcat( szOutput, _("Luck statistics") );
@@ -1563,7 +1563,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * pl, const
 
 
   if ( psc->fCube ) {
-    GList *list = formatGS( psc, ms.nMatchTo, fIsMatch, FORMATGS_CUBE );
+    GList *list = formatGS( psc, nMatchTo, FORMATGS_CUBE );
     GList *pl;
 
     strcat( szOutput, _("Cube statistics") );
@@ -1587,7 +1587,7 @@ DumpStatcontext ( char *szOutput, const statcontext *psc, const char * pl, const
 
   {
 
-    GList *list = formatGS( psc, ms.nMatchTo, fIsMatch, FORMATGS_OVERALL );
+    GList *list = formatGS( psc, nMatchTo, FORMATGS_OVERALL );
     GList *pl;
     
     strcat( szOutput, _("Overall statistics") );
@@ -1621,8 +1621,7 @@ extern void CommandShowStatisticsMatch ( char *UNUSED(sz) )
     }
 #endif
 
-    DumpStatcontext ( szOutput, &scMatch, ap[0].szName, ap[1].szName,
-                      _("Statistics for all games"), TRUE );
+    DumpStatcontext ( szOutput, &scMatch, ap[0].szName, ap[1].szName, ms.nMatchTo);
     outputl(szOutput);
 }
 
@@ -1658,8 +1657,7 @@ CommandShowStatisticsGame ( char *UNUSED(sz) )
   }
 #endif
 
-  DumpStatcontext ( szOutput, &pmr->g.sc, ap[0].szName, ap[1].szName,
-                    _("Statistics for current game"), FALSE );
+  DumpStatcontext ( szOutput, &pmr->g.sc, ap[0].szName, ap[1].szName, ms.nMatchTo);
   outputl( szOutput );
 }
 
