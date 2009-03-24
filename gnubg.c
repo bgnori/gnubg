@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.836 2009/03/22 22:36:57 c_anthon Exp $
+ * $Id: gnubg.c,v 1.837 2009/03/24 23:42:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2293,6 +2293,9 @@ extern void hint_double(int show, int did_double)
 
 	pmr = get_current_moverecord(&hist);
 
+	if (!pmr)
+		return;
+
 	if (hint_cube(pmr, &ci) < 0)
 		return;
 
@@ -2321,6 +2324,8 @@ extern void hint_take(int show, int did_take)
 
 	GetMatchStateCubeInfo(&ci, &ms);
 	pmr = get_current_moverecord(&hist);
+	if (!pmr)
+		return;
 	if (hint_cube(pmr, &ci) < 0)
 		return;
 
@@ -2355,6 +2360,8 @@ extern void hint_move(char *sz, gboolean show)
 	GetMatchStateCubeInfo(&ci, &ms);
 
 	pmr = get_current_moverecord(&hist);
+	if(!pmr)
+		return;
 
 	if (pmr->esChequer.et == EVAL_NONE) {
 		movelist ml;

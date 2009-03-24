@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.63 2009/03/12 21:10:44 c_anthon Exp $
+ * $Id: export.c,v 1.64 2009/03/24 23:42:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -112,6 +112,13 @@ static moverecord *export_get_moverecord(int *game_nr, int *move_nr)
 	moverecord *pmr = NULL;
 
 	pmr = get_current_moverecord(&history);
+
+	if (!pmr)
+	{
+		*move_nr = -1;
+		return NULL;
+	}
+
 	if (history)
 		*move_nr = getMoveNumber(plGame, pmr) - 1;
 	else if (plLastMove)
@@ -259,6 +266,11 @@ extern void CommandExportPositionSVG(char *sz)
 	if (!filename)
 		return;
 	pmr = export_get_moverecord(&game_nr, &move_nr);
+	if (!pmr)
+	{
+		outputerrf(_("Cannot create export for this move"));
+		return;
+	}
 	surface = cairo_svg_surface_create(filename, SIMPLE_BOARD_WIDTH,
 					   SIMPLE_BOARD_HEIGHT/2.0);
 	if (surface) {
@@ -289,6 +301,11 @@ extern void CommandExportPositionPDF(char *sz)
 	if (!filename)
 		return;
 	pmr = export_get_moverecord(&game_nr, &move_nr);
+	if (!pmr)
+	{
+		outputerrf(_("Cannot create export for this move"));
+		return;
+	}
 	surface = cairo_pdf_surface_create(filename, SIMPLE_BOARD_WIDTH,
 					   SIMPLE_BOARD_HEIGHT);
 	if (surface) {
@@ -319,6 +336,11 @@ extern void CommandExportPositionPS(char *sz)
 	if (!filename)
 		return;
 	pmr = export_get_moverecord(&game_nr, &move_nr);
+	if (!pmr)
+	{
+		outputerrf(_("Cannot create export for this move"));
+		return;
+	}
 
 	surface = cairo_ps_surface_create(filename, SIMPLE_BOARD_WIDTH,
 					  SIMPLE_BOARD_HEIGHT);

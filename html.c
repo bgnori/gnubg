@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.208 2009/03/21 21:46:32 c_anthon Exp $
+ * $Id: html.c,v 1.209 2009/03/24 23:42:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.208 2009/03/21 21:46:32 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.209 2009/03/24 23:42:16 c_anthon Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1825,7 +1825,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.208 $";
+  const char szVersion[] = "$Revision: 1.209 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1905,7 +1905,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.208 $";
+  const char szVersion[] = "$Revision: 1.209 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3565,12 +3565,12 @@ extern void CommandExportPositionHtml( char *sz ) {
 
     FILE *pf;
     int fHistory;
-    moverecord *pmr = get_current_moverecord ( &fHistory );
+    moverecord *pmr;
     int iMove;
 	
     sz = NextToken( &sz );
     
-    if( ms.gs == GAME_NONE ) {
+    if( ms.gs != GAME_NONE ) {
 	outputl( _("No game in progress (type `new game' to start one).") );
 	return;
     }
@@ -3580,7 +3580,7 @@ extern void CommandExportPositionHtml( char *sz ) {
 		 "position html').") );
 	return;
     }
-
+    pmr = get_current_moverecord ( &fHistory );
     if ( ! confirmOverwrite ( sz, fConfirmSave ) )
       return;
 
@@ -3646,6 +3646,12 @@ ExportPositionGammOnLine( FILE *pf )
 {
     int fHistory;
     moverecord *pmr = get_current_moverecord ( &fHistory );
+
+    if (!pmr)
+    {
+	    outputerrf(_("Unable to export this position"));
+	    return;
+    }
     int iMove;
 
     fputs ( "\n<!-- Score -->\n\n", pf );
