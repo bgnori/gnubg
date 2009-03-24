@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.360 2009/03/21 21:46:32 c_anthon Exp $
+ * $Id: play.c,v 1.361 2009/03/24 09:42:56 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3892,7 +3892,6 @@ extern void SetMatchID(const char *szMatchID)
 
 	/* make sure that the hint record has the player on turn */
 	pmr_cur = get_current_moverecord(NULL);
-	printf("pmr cur has player %d\n", pmr_cur->fPlayer);
 
 	ShowBoard();
 }
