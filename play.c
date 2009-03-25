@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.362 2009/03/24 23:42:16 c_anthon Exp $
+ * $Id: play.c,v 1.363 2009/03/25 21:34:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1328,7 +1328,13 @@ static int ComputerTurn( void ) {
 	  {
 		  free( pmr );
 		  return -1;
-      }
+	  }
+	  /* resorts the moves according to cubeful (if applicable),
+	   * cubeless and chequer on highest point to avoid some silly
+	   * looking moves */
+
+	  RefreshMoveList(&pmr->ml, NULL);
+
 
       /* make the move found above */
       if ( pmr->ml.cMoves ) {
