@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.267 2009/03/21 21:46:30 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.268 2009/03/25 10:49:17 c_anthon Exp $
  */
 
 /*! \file gtkboard.c
@@ -629,12 +629,12 @@ static void show_pip_pwe(BoardData *bd, const TanBoard points, GString *gst[4])
 	}
 	PipCount(points, anPip);
 	f = (bd->turn > 0);
-	g_string_append_printf(gst[0], " %d + %.2f = %.2f", anPip[!f],
-			       arEPC[!f] - anPip[!f], arEPC[!f]);
-	g_string_append_printf(gst[1], " %d + %.2f = %.2f", anPip[f],
-			       arEPC[f] - anPip[f], arEPC[f]);
-	g_string_append_printf(gst[2], _("PWE: "));
-	g_string_append_printf(gst[3], _("PWE: "));
+	g_string_append_printf(gst[0], " %d + %.2f = %.2f(%+.2f)", anPip[!f],
+			       arEPC[!f] - anPip[!f], arEPC[!f], arEPC[!f]-arEPC[f]);
+	g_string_append_printf(gst[1], " %d + %.2f = %.2f(%+.2f)", anPip[f],
+			       arEPC[f] - anPip[f], arEPC[f], arEPC[f]-arEPC[!f]);
+	g_string_append_printf(gst[2], _("EPC: "));
+	g_string_append_printf(gst[3], _("EPC: "));
 }
 
 extern void update_pipcount(BoardData *bd, const TanBoard points)
