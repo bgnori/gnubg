@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.63 2009/03/24 23:48:46 c_anthon Exp $
+ * $Id: relational.c,v 1.64 2009/03/25 10:07:40 c_anthon Exp $
  */
 
 #include "config.h"
@@ -447,9 +447,8 @@ extern void CommandRelationalAddMatch(char *sz)
 {
 	DBProvider *pdb;
 	char *buf, *buf2, *date;
-	char warnings[1024];
+	char warnings[1024] = "";
 	int session_id, existing_id, player_id0, player_id1;
-	*warnings = '\0';
 	char *arg = NULL;
 	gboolean quiet = FALSE;
 

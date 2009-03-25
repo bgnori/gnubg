@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.367 2009/03/02 09:43:51 c_anthon Exp $
+ * $Id: eval.c,v 1.368 2009/03/25 10:07:39 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2913,7 +2913,7 @@ EvalKey ( const evalcontext *pec, const int nPlies,
 	   ( pec->nReduced ) | 
            ( nPlies << 3 ) |
            ( pec->fCubeful << 6 ) | 
-           ( ( ( (int) ( pec->rNoise * 1000 ) ) && 0x00FF ) << 7 ) |
+           ( ( ( (int) ( pec->rNoise * 1000 ) ) & 0x00FF ) << 7 ) |
            ( pci->fMove << 14 ) );
 
   if ( nPlies || fCubefulEquity ) {
@@ -2963,7 +2963,7 @@ EvalKey ( const evalcontext *pec, const int nPlies,
   iKey = (
            ( nPlies ) |
            ( pec->fCubeful << 2 ) | 
-           ( ( ( (int) ( pec->rNoise * 1000 ) ) && 0x00FF ) << 3 ) |
+           ( ( ( (int) ( pec->rNoise * 1000 ) ) & 0x00FF ) << 3 ) |
            ( pci->fMove << 11 ) );
 
   if( nPlies )

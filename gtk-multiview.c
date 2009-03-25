@@ -15,7 +15,7 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * $Id: gtk-multiview.c,v 1.10 2008/12/12 13:06:41 c_anthon Exp $
+ * $Id: gtk-multiview.c,v 1.11 2009/03/25 10:07:40 c_anthon Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
@@ -29,7 +29,6 @@
 G_DEFINE_TYPE (GtkMultiview, gtk_multiview, GTK_TYPE_CONTAINER)
 
 
-static void    gtk_multiview_class_init    (GtkMultiviewClass *klass);
 static void    gtk_multiview_size_request  (GtkWidget         *widget,
 					    GtkRequisition    *requisition);
 static void    gtk_multiview_size_allocate (GtkWidget         *widget,
