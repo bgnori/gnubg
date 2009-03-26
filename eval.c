@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.369 2009/03/25 21:34:23 c_anthon Exp $
+ * $Id: eval.c,v 1.370 2009/03/26 10:52:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6742,8 +6742,8 @@ RefreshMoveList ( movelist *pml, int *ai ) {
 }
 
 
-extern void
-CopyMoveList ( movelist *pmlDest, const movelist *pmlSrc ) {
+extern void CopyMoveList ( movelist *pmlDest, const movelist *pmlSrc )
+{
 
   if ( pmlDest == pmlSrc )
     return;

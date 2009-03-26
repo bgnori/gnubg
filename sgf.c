@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.128 2009/03/24 23:42:17 c_anthon Exp $
+ * $Id: sgf.c,v 1.129 2009/03/26 10:52:07 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1878,7 +1878,7 @@ static void WriteMove(FILE * pf, int fPlayer, int anMove[])
 
 
 static void WriteMoveAnalysis(FILE * pf, int fPlayer, movelist * pml,
-			      int iMove)
+			      unsigned int iMove)
 {
 
     unsigned int i;
@@ -2273,6 +2273,12 @@ static void SaveGame(FILE * pf, listOLD * plGame)
 	pmr = pl->p;
 	switch (pmr->mt) {
 	case MOVE_NORMAL:
+		/* sanitise the move if from a hint record */
+		if ( pmr->ml.cMoves && pmr->n.iMove > pmr->ml.cMoves ) {
+			memcpy( pmr->n.anMove, pmr->ml.amMoves[ 0 ].anMove,
+					sizeof( pmr->n.anMove ) );
+			pmr->n.iMove = 0;
+		}
 	    fprintf(pf, "\n;%c[%d%d", pmr->fPlayer ? 'B' : 'W',
 		    pmr->anDice[0], pmr->anDice[1]);
 	    WriteMove(pf, pmr->fPlayer, pmr->n.anMove);

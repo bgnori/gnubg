@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.363 2009/03/25 21:34:23 c_anthon Exp $
+ * $Id: play.c,v 1.364 2009/03/26 10:52:05 c_anthon Exp $
  */
 
 #include "config.h"
@@ -506,6 +506,7 @@ static void copy_from_pmr_cur(moverecord *pmr, gboolean get_move, gboolean get_c
 		memcpy(&pmr->CubeDecPtr->esDouble,
 		       &pmr_cur->CubeDecPtr->esDouble,
 		       sizeof pmr->CubeDecPtr->esDouble);
+		pmr->CubeDecPtr->cmark = pmr_cur->CubeDecPtr->cmark;
 	}
 
 	find_skills(pmr, &ms, -1, -1);
@@ -4431,6 +4432,9 @@ getMoveNumber ( const listOLD *plGame, const void *p ) {
   for( pl = plGame->plNext, iMove = 0; pl != plGame; 
        pl = pl->plNext, iMove++ )
     if ( p == pl->p ) return iMove;
+
+  if (p == pmr_hint)
+	  return iMove;
 
   return -1;
 
