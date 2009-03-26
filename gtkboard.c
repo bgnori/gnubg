@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.268 2009/03/25 10:49:17 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.269 2009/03/26 12:56:50 c_anthon Exp $
  */
 
 /*! \file gtkboard.c
@@ -3221,8 +3221,6 @@ static void board_size_allocate( GtkWidget *board, GtkAllocation *allocation )
     && (display_is_2d(bd->rd))
 #endif
 	) {
-    update_move(bd);
-
       new_size = MIN( allocation->width / BOARD_WIDTH,
                       ( allocation->height - 2 ) / (BOARD_HEIGHT + DIE_HEIGHT ));    /* FIXME: is 89 correct? */
 
