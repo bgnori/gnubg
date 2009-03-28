@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.838 2009/03/24 23:48:45 c_anthon Exp $
+ * $Id: gnubg.c,v 1.839 2009/03/28 21:20:31 c_anthon Exp $
  */
 
 #include "config.h"
@@ -560,11 +560,10 @@ static char szDICE[] = N_("<die> <die>"),
     szFILTER[] = N_( "<ply> <num.xjoin to accept (0 = skip)> "
                       "[<num. of extra moves to accept> <tolerance>]"),
     szNAME[] = N_("<name>"),
-    szNAMEOPTENV[] = N_("<name> [env]"),
+    szQUIET[] = N_("[quiet]"),
     szLANG[] = N_("system|<language code>"),
     szONOFF[] = N_("on|off"),
     szOPTCOMMAND[] = N_("[command]"),
-    szOPTENVFORCE[] = N_("[env [force]]"),
     szOPTDEPTH[] = N_("[depth]"),
     szOPTFILENAME[] = N_("[filename]"),
     szOPTLENGTH[] = N_("[length]"),
