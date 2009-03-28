@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.364 2009/03/26 10:52:05 c_anthon Exp $
+ * $Id: play.c,v 1.365 2009/03/28 21:49:55 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2891,7 +2891,6 @@ extern void ChangeGame(listOLD *plGameNew)
 	}
 #endif
 	CalculateBoard();
-	UpdateGame(FALSE);
 	SetMoveRecord(plLastMove->p);
 	pmr_cur = get_current_moverecord(NULL);
 	if (pmr_cur) {
@@ -2906,6 +2905,7 @@ extern void ChangeGame(listOLD *plGameNew)
 			ms.anDice[1] = pmr_cur->anDice[1];
 		}
 	}
+	UpdateGame(FALSE);
 	ShowBoard();
 }
 
