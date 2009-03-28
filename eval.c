@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.370 2009/03/26 10:52:04 c_anthon Exp $
+ * $Id: eval.c,v 1.371 2009/03/28 21:13:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2737,10 +2737,10 @@ FindBestMoveInEval(NNState *nnStates, int const nDice0, int const nDice1, const 
 }
 #endif
 
-static int 
-EvaluatePositionFull( NNState *nnStates, const TanBoard anBoard, float arOutput[],
+static int EvaluatePositionFull( NNState *nnStates, const TanBoard anBoard, float arOutput[],
                       const cubeinfo* pci, const evalcontext* pec, unsigned int nPlies,
-                      positionclass pc ) {
+                      positionclass pc )
+{
   int i, n0, n1;
 #if defined( REDUCTION_CODE )
   int fUseReduction, r;
@@ -5772,7 +5772,6 @@ EvaluatePositionCubeful4( NNState *nnStates, const TanBoard anBoard,
     else if ( pc > CLASS_OVER && pc <= CLASS_PERFECT /* && ! pciMove->nMatchTo */ ) {
 
       if ( EvaluatePerfectCubeful ( anBoard, arEquity, pciMove->bgv ) ) {
-        printf( "return -1 EPC Cubeful4\n" );
         return -1;
       }
 
@@ -6932,27 +6931,22 @@ equal_movefilters ( movefilter aamf1[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ],
  *
  */
 
-extern doubletype
-DoubleType ( const int fDoubled, const int fMove, const int fTurn ) {
+extern doubletype DoubleType(const int fDoubled, const int fMove,
+			     const int fTurn)
+{
 
-  if ( fDoubled ) {
+	if (fDoubled) {
 
-    /* beaver or raccoon */
+		/* beaver or raccoon */
 
-    if(  fTurn != fMove )
-      /* beaver */
-      return DT_BEAVER;
-    else
-      /* raccoon */
-      return DT_RACCOON;
+		if (fTurn != fMove)
+			/* beaver */
+			return DT_BEAVER;
+		else
+			/* raccoon */
+			return DT_RACCOON;
 
-  }
-  else 
-    /* normal double */
-    return DT_NORMAL;
-
-  /* code unreachable */
-  return DT_NORMAL;
-
+	}
+	return DT_NORMAL;
 }
 
