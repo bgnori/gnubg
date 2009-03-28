@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.839 2009/03/28 21:20:31 c_anthon Exp $
+ * $Id: gnubg.c,v 1.840 2009/03/28 22:14:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2282,6 +2282,14 @@ extern void hint_double(int show, int did_double)
 	static cubeinfo ci;
 	moverecord *pmr;
 	int hist;
+	doubletype dt = DoubleType ( ms.fDoubled, ms.fMove, ms.fTurn );
+	if (dt != DT_NORMAL)
+	{
+		if (show)
+			outputerrf( _("This decision is part of beaver/raccoon sequence and cannot be hinted"));
+		return;
+	}
+
 	GetMatchStateCubeInfo(&ci, &ms);
 
 	if (!GetDPEq(NULL, NULL, &ci)) {
@@ -2319,6 +2327,13 @@ extern void hint_take(int show, int did_take)
 	static cubeinfo ci;
 	moverecord *pmr;
 	int hist;
+	taketype tt = (taketype) DoubleType ( ms.fDoubled, ms.fMove, ms.fTurn );
+        if ( tt != TT_NORMAL )
+	{
+		if (show)
+			outputerrf( _("This decision is part of beaver/raccoon sequence and cannot be hinted"));
+		return;
+	}
 
 	GetMatchStateCubeInfo(&ci, &ms);
 	pmr = get_current_moverecord(&hist);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.210 2009/03/26 10:52:02 c_anthon Exp $
+ * $Id: analysis.c,v 1.211 2009/03/28 22:14:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -313,6 +313,8 @@ updateStatcontext(statcontext*       psc,
   unsigned int i;
   float arDouble[ 4 ];
   const xmovegameinfo* pmgi = &((moverecord *) plGame->plNext->p)->g;
+  doubletype dt;
+  taketype tt;
 
   switch ( pmr->mt ) {
 
@@ -477,6 +479,10 @@ updateStatcontext(statcontext*       psc,
 
   case MOVE_DOUBLE:
 
+    dt = DoubleType(pms->fDoubled, pms->fMove, pms->fTurn);
+    if (dt != DT_NORMAL)
+	    break;
+
     GetMatchStateCubeInfo ( &ci, pms );
     if ( fAnalyseCube && pmgi->fCubeUse && 
          pmr->CubeDecPtr->esDouble.et != EVAL_NONE ) {
@@ -518,6 +524,10 @@ updateStatcontext(statcontext*       psc,
     break;
 
   case MOVE_TAKE:
+
+    tt = (taketype) DoubleType ( pms->fDoubled, pms->fMove, pms->fTurn );
+    if ( tt != TT_NORMAL )
+	    break;
 
     GetMatchStateCubeInfo ( &ci, pms );
     if ( fAnalyseCube && pmgi->fCubeUse && 
@@ -1045,9 +1055,9 @@ static int AnalyzeGame ( listOLD *plGame )
 
 		if (pmr->mt == MOVE_DOUBLE)
 		{
+			doubletype dt = DoubleType ( msAnalyse.fDoubled, msAnalyse.fMove, msAnalyse.fTurn );
 			moverecord *pNextmr = (moverecord *)pl->plNext->p;
-			if (pNextmr &&
-					(pNextmr->mt == MOVE_DROP || pNextmr->mt == MOVE_TAKE))
+			if (pNextmr && dt == DT_NORMAL)
 			{	/* Need to link the two tasks so executed together */
 				pParentTask = pt;
 				pt = (AnalyseMoveTask*)malloc(sizeof(AnalyseMoveTask));
