@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.255 2009/03/12 21:10:45 c_anthon Exp $
+ * $Id: show.c,v 1.256 2009/03/28 21:43:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2020,15 +2020,6 @@ extern void
 CommandShowSound ( char *UNUSED(sz) ) {
 
   int i;
-
-#if USE_GTK
-
-  if ( fX ) {
-    GTKSound();
-    return;
-  }
-
-#endif /* USE_GTK */
 
   outputf ( _("Sounds are enabled          : %s\n"),
             fSound ? _("yes") : _("no"));
