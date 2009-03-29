@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.210 2009/02/23 20:21:53 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.211 2009/03/29 13:56:27 c_anthon Exp $
  */
 
 #include "config.h"
@@ -217,7 +217,7 @@ static int nSkip;
 static int RolloutDice( int iTurn, int iGame,
                             int fInitial,
                             unsigned int anDice[ 2 ],
-                            const rng rngx,
+                            rng *rngx,
                             void *rngctx,
                             const int fRotate, const perArray *dicePerms ) {
 
@@ -562,7 +562,7 @@ BasicCubefulRollout ( unsigned int aanBoard[][ 2 ][ 25 ],
     /* Chequer play */
 
     if( RolloutDice( iTurn, iGame, prc->fInitial, anDice,
-                         prc->rngRollout, rngctxRollout, prc->fRotate, dicePerms ) < 0 )
+                         &prc->rngRollout, rngctxRollout, prc->fRotate, dicePerms ) < 0 )
       return -1;
 
     if( anDice[ 0 ] < anDice[ 1 ] )

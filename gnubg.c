@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.840 2009/03/28 22:14:58 c_anthon Exp $
+ * $Id: gnubg.c,v 1.841 2009/03/29 13:56:27 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5366,7 +5366,7 @@ CommandDiceRolls (char *sz) {
     n = ParseNumber( &pch );
 
     while (n-- > 0) {
-      RollDice( anDice, rngCurrent, rngctxCurrent );
+      RollDice( anDice, &rngCurrent, rngctxCurrent );
 
       printf( "%d %d\n", anDice[ 0 ], anDice[ 1 ] );
 
