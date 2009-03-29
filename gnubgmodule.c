@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.92 2009/03/29 19:28:09 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.93 2009/03/29 19:48:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -432,7 +432,7 @@ static PyObject *PythonCommand(PyObject * self UNUSED_PARAM, PyObject * args)
 	/* before we had 
 	 * if( ms.gs != GAME_NONE )
 	 * PythonNextTurn(0, 0);
-	 * which always run NextTurn(TRUE), and that isn't right/
+	 * which always run NextTurn(TRUE), and that isn't right */
 
 	outputx();
 	free(sz);
