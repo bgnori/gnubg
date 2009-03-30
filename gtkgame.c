@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.771 2009/03/30 08:48:54 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.772 2009/03/30 11:53:08 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3377,10 +3377,6 @@ extern void InitGTK(int *argc, char ***argv)
 	GtkIconFactory *pif;
 	GdkAtom cb;
 
-	fX = gtk_init_check(argc, argv);
-	if (!fX)
-		return;
-
 	sz = BuildFilename("gnubg.gtkrc");
 	gtk_rc_add_default_file(sz);
 	g_free(sz);
@@ -3392,6 +3388,10 @@ extern void InitGTK(int *argc, char ***argv)
 	sz = g_build_filename(szHomeDirectory, "gnubgmenurc", NULL);
 	gtk_accel_map_load(sz);
 	g_free(sz);
+
+	fX = gtk_init_check(argc, argv);
+	if (!fX)
+		return;
 
 	gnubg_stock_init();
 
