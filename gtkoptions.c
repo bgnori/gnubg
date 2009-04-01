@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.95 2009/03/28 21:43:58 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.96 2009/04/01 15:44:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1264,7 +1264,6 @@ static GtkWidget *OptionsPages(optionswidget *pow)
 	append_cube_options(pow);
 	append_tutor_options(pow);
 	append_display_options(pow);
-	append_display_options(pow);
 	append_match_options(pow);
 	append_sound_options(pow);
 	append_dice_options(pow);
@@ -1419,9 +1418,9 @@ static void OptionsOK(GtkWidget *pw, optionswidget *pow)
 	  if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pow->apwDice[i])))
 		  break;
   }
-  if (i < RNG_FILE) {
+  if (i < RNG_FILE && i != rngCurrent ) {
 	  UserCommand(set_rng_cmds[i]);
-  } else if (i == RNG_FILE) {
+  } else if (i == RNG_FILE && i != rngCurrent ) {
       filename = GTKFileSelect (_("Select file with dice"), NULL, NULL, NULL,
 			      GTK_FILE_CHOOSER_ACTION_OPEN);
       if (filename)
