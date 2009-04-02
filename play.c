@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.367 2009/04/02 20:36:09 c_anthon Exp $
+ * $Id: play.c,v 1.368 2009/04/02 21:35:16 c_anthon Exp $
  */
 
 #include "config.h"
@@ -769,15 +769,14 @@ static int NewGame( void )
     if( fInterrupt || fError ) {
 	    PopGame(plGame, TRUE);
 	    plGame = plGame_store;
+	    plLastMove = plLastMove_store;
 	    if (!plGame)
 		    return -1;
 	    ChangeGame( plGame );
-	    if (plLastMove_store)
-	    {
-		    plLastMove = plLastMove_store;
-		    CalculateBoard();
-		    SetMoveRecord(plLastMove ->p);
-	    }
+	    if (!plLastMove)
+		    return -1;
+	    CalculateBoard();
+	    SetMoveRecord(plLastMove ->p);
 	    ShowBoard();
 	    return -1;
     }
