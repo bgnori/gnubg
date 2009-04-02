@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.366 2009/03/29 13:56:27 c_anthon Exp $
+ * $Id: play.c,v 1.367 2009/04/02 20:36:09 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2885,8 +2885,10 @@ extern void ChangeGame(listOLD *plGameNew)
 			FixMatchState(&ms, pl->p);
 			ApplyMoveRecord(&ms, plGame, pl->p);
 		}
-
 		GTKSetGame(GameIndex(plGame));
+		/* we need to get the matchstate right before GTKThaw when
+		 * we are updating the current current game */
+		CalculateBoard();
 		GTKThaw();
 	}
 #endif
