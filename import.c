@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.146 2009/03/07 20:49:44 c_anthon Exp $
+ * $Id: import.c,v 1.147 2009/04/03 19:48:40 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3514,7 +3514,7 @@ typedef struct _PartyGame
 
 static int ConvertPartyGammonFileToMat(FILE *partyFP, FILE *matFP)
 {
-	PartyGame pg;
+	PartyGame pg = {-1, -1, NULL};
 	int matchLen = -1;
 	char p1[MAX_NAME_LEN], p2[MAX_NAME_LEN];
 	GList *games = NULL;

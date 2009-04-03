@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.93 2009/03/29 19:48:03 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.94 2009/04/03 19:48:39 c_anthon Exp $
  */
 
 #include "config.h"
@@ -146,7 +146,7 @@ static int
 PyToCubeInfo( PyObject *p, cubeinfo *pci ) {
 
   PyObject *pyKey, *pyValue;
-  size_t iPos = 0;
+  Py_ssize_t iPos = 0;
   char *pchKey;
   static const char *aszKeys[] = {
     "jacoby", "crawford", "move", "beavers", "cube", "matchto",
@@ -167,7 +167,7 @@ PyToCubeInfo( PyObject *p, cubeinfo *pci ) {
   ap[i++] = pci->anScore;
   ap[i++] = pci->arGammonPrice;
 
-  while( PyDict_Next( p, (int*)&iPos, &pyKey, &pyValue ) ) {
+  while( PyDict_Next( p, &iPos, &pyKey, &pyValue ) ) {
 
     if ( ! ( pchKey = PyString_AsString( pyKey ) ) )
       return -1;
@@ -258,14 +258,14 @@ static int
 PyToEvalContext( PyObject *p, evalcontext *pec ) {
 
   PyObject *pyKey, *pyValue;
-  ssize_t iPos = 0;
+  Py_ssize_t iPos = 0;
   char *pchKey;
   static const char *aszKeys[] = {
     "cubeful", "plies", "reduced", "deterministic", "noise", NULL };
   int iKey;
   int i;
   
-  while( PyDict_Next( p, (int*)&iPos, &pyKey, &pyValue ) ) {
+  while( PyDict_Next( p, &iPos, &pyKey, &pyValue ) ) {
 
     if ( ! ( pchKey = PyString_AsString( pyKey ) ) )
       return -1;

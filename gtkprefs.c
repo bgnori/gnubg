@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.175 2009/03/21 10:48:04 oysteijo Exp $
+ * $Id: gtkprefs.c,v 1.176 2009/04/03 19:48:40 c_anthon Exp $
  */
 
 #include "config.h"
@@ -681,7 +681,7 @@ extern void gtk_color_button_get_array(GtkColorButton *button, double array[4])
 	array[0] = (gdouble)color.red / 65535.0;
 	array[1] = (gdouble)color.green / 65535.0;
 	array[2] = (gdouble)color.blue / 65535.0;
-	array[3] = (gdouble)alpha / 65535;
+	array[3] = (gdouble)alpha / 65535.0;
 
 }
 
@@ -943,7 +943,7 @@ static GtkWidget *BoardPage( BoardData *bd ) {
 	apadjBoard[ j ] = GTK_ADJUSTMENT( gtk_adjustment_new(
             bd->rd->aSpeckle[ j ] / 128.0, 0, 1, 0.1, 0.1, 0 ) );
 
-	for( i = 0; i < 3; i++ )
+	for( i = 0; i < 4; i++ )
 	    ar[ i ] = bd->rd->aanBoardColour[ j ][ i ] / 255.0;
     
 	gtk_box_pack_start( GTK_BOX( pw ), pwhbox = gtk_hbox_new( FALSE, 0 ),
@@ -1991,7 +1991,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.175 2009/03/21 10:48:04 oysteijo Exp $\n"
+          "    $Id: gtkprefs.c,v 1.176 2009/04/03 19:48:40 c_anthon Exp $\n"
           "\n"
           " -->\n"
           "\n"

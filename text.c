@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.99 2009/03/24 23:48:46 c_anthon Exp $
+ * $Id: text.c,v 1.100 2009/04/03 19:48:40 c_anthon Exp $
  */
 
 #include "config.h"
@@ -104,7 +104,7 @@ printTextBoard ( FILE *pf, const matchstate *pms ) {
         cch = 20;
 		
       sprintf( szCube, _("%c: %*s (Cube: %d)"), pms->fCubeOwner ? 'X' :
-               'O', cch, ap[ pms->fCubeOwner ].szName, pms->nCube );
+               'O', (int)cch, ap[ pms->fCubeOwner ].szName, pms->nCube );
 
       apch[ pms->fCubeOwner ? 6 : 0 ] = szCube;
 
@@ -246,7 +246,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.99 $";
+  const char szVersion[] = "$Revision: 1.100 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
