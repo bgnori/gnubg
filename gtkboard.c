@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.270 2009/04/03 12:01:36 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.271 2009/04/03 20:09:08 c_anthon Exp $
  */
 
 /*! \file gtkboard.c
@@ -4053,20 +4053,18 @@ extern GtkWidget *board_cube_widget( Board *board )
 }
 
 
-static gboolean dice_widget_expose( GtkWidget *dice, GdkEventExpose *event,
-		BoardData *bd )
+static gboolean dice_widget_expose(GtkWidget *dice, GdkEventExpose * event, BoardData *bd)
 {
 
-    int setSize = bd->rd->nSize;
+	int setSize = bd->rd->nSize;
+	int n = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(dice), "user_data"));
 
-    int n = GPOINTER_TO_INT(g_object_get_data( G_OBJECT( dice ), "user_data" ));
+	DrawDie(dice->window, TTachDice, TTachPip, setSize, bd->gc_copy,
+		0, 0, ((n % 6) <= n / 6), n % 6 + 1);
+	DrawDie(dice->window, TTachDice, TTachPip, setSize, bd->gc_copy,
+		DIE_WIDTH * setSize, 0, ((n % 6) < n / 6), n / 6 + 1);
 
-    DrawDie( dice->window, TTachDice, TTachPip, setSize, bd->gc_copy,
-             0, 0, bd->turn > 0, n % 6 + 1 );
-    DrawDie( dice->window, TTachDice, TTachPip, setSize, bd->gc_copy,
-             DIE_WIDTH * setSize, 0, bd->turn > 0, n / 6 + 1 );
-
-    return TRUE;
+	return TRUE;
 }
 
 static gboolean dice_widget_press( GtkWidget *dice, GdkEvent *event, BoardData
