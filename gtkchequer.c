@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.101 2009/03/22 22:36:57 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.102 2009/04/03 12:01:36 c_anthon Exp $
  */
 
 #include "config.h"
@@ -407,7 +407,6 @@ MoveListMove ( GtkWidget *pw, hintdata *phd )
 	move m;
 	move *pm;
 	char szMove[ 40 ];
-	TanBoard anBoard;
 	GList *plSelList = MoveListGetSelectionList(phd);
 	if (!plSelList)
 		return;
@@ -416,15 +415,6 @@ MoveListMove ( GtkWidget *pw, hintdata *phd )
 	MoveListFreeSelectionList(plSelList);
 
 	memcpy(&m, pm, sizeof(move));
-
-	memcpy ( anBoard, msBoard(), sizeof(TanBoard) );
-	ApplyMove ( anBoard, m.anMove, FALSE );
-
-	if ( ! ms.fMove )
-	SwapSides ( anBoard );
-
-	sprintf ( szMove, "show fullboard %s", PositionID ( (ConstTanBoard)anBoard ) );
-	UserCommand ( szMove );
 
 	if ( phd->fDestroyOnMove )
 	/* Destroy widget on exit */
