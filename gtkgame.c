@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.772 2009/03/30 11:53:08 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.773 2009/04/05 15:17:57 c_anthon Exp $
  */
 
 #include "config.h"
@@ -6022,8 +6022,6 @@ extern void GTKSet( void *p ) {
 	    pif, CMD_ANALYSE_CLEAR_MATCH ), !ListEmpty( &lMatch ) );
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
 	    pif, CMD_SHOW_STATISTICS_MATCH ), !ListEmpty ( &lMatch ) );
-	//gtk_widget_hide(gtk_item_factory_get_widget_by_action(
-	 //   pif, CMD_RECORD_SHOW ), TRUE );
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
 	    pif, CMD_SHOW_MATCHEQUITYTABLE ), TRUE );
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget_by_action(
