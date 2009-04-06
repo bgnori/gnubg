@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.17 2008/12/02 00:21:46 c_anthon Exp $
+ * $Id: gnubgmodule.h,v 1.18 2009/04/06 05:52:20 mdpetch Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
@@ -30,6 +30,11 @@
 #endif
 #endif
 #include <Python.h>
+#if PY_VERSION_HEX < 0x02050000 && !defined(PY_SSIZE_T_MIN)
+typedef int Py_ssize_t;
+#define PY_SSIZE_T_MAX INT_MAX
+#define PY_SSIZE_T_MIN INT_MIN
+#endif
 #endif
 
 extern void PythonInitialise(char *argv0);
