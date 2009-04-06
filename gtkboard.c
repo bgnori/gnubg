@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.272 2009/04/05 15:17:57 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.273 2009/04/06 14:17:46 c_anthon Exp $
  */
 
 /*! \file gtkboard.c
@@ -4124,7 +4124,7 @@ extern GtkWidget *board_dice_widget(Board * board)
 	int pipStride = setSize * 3;
 	renderdata rd;
 
-	label = gtk_label_new(_("High die right (or buttom player wins opening roll)"));
+	label = gtk_label_new(_("High die right (or bottom player wins opening roll)"));
 	gtk_label_set_angle(GTK_LABEL(label), 90);
 	gtk_table_attach_defaults(GTK_TABLE(main_table), label, 0, 1, 1, 2);
 
