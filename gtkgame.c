@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.773 2009/04/05 15:17:57 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.774 2009/04/18 20:32:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3284,7 +3284,7 @@ static void CreateMainWindow(void)
 	   BOARD(pwBoard)->board_data);
 
    pwPanelHbox = gtk_hbox_new(FALSE, 0);
-   gtk_paned_add2(GTK_PANED(hpaned), pwPanelHbox);
+   gtk_paned_pack2(GTK_PANED(hpaned), pwPanelHbox, FALSE, FALSE);
    gtk_box_pack_start( GTK_BOX( pwPanelHbox ), pwPanelVbox = gtk_vbox_new( FALSE, 1 ), TRUE, TRUE, 0);
 
    DockPanels();

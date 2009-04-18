@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.211 2009/03/29 13:56:27 c_anthon Exp $
+ * $Id: rollout.c,v 1.212 2009/04/18 20:32:24 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1196,7 +1196,7 @@ extern void RolloutLoopMT(void *unused)
 				ajiJSD[1].rJSD = (float)fabs(ajiJSD[1].rEquity / ajiJSD[1].rJSD);
 				if (rcRollout.fStopOnJsd &&
 						(altGameCount[0] >= (rcRollout.nMinimumJsdGames - 1)) &&
-						rcRollout.rJsdLimit < MIN(ajiJSD[0].rJSD, ajiJSD[0].rJSD))
+						rcRollout.rJsdLimit < MIN(ajiJSD[0].rJSD, ajiJSD[1].rJSD))
 				{ 
 					fNoMore[0] = 1;
 					fNoMore[1] = 1;
