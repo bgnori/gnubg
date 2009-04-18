@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.102 2009/04/03 12:01:36 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.103 2009/04/18 21:46:35 c_anthon Exp $
  */
 
 #include "config.h"
@@ -105,6 +105,7 @@ static void MoveListRolloutClicked(GtkWidget *pw, hintdata *phd)
 
   free ( ai );
 
+  find_skills(phd->pmr, &ms, -1, -1);
   MoveListUpdate ( phd );
   if (phd->hist)
   {
