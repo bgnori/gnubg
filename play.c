@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.371 2009/04/18 21:46:35 c_anthon Exp $
+ * $Id: play.c,v 1.372 2009/04/20 15:49:31 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1839,22 +1839,22 @@ extern int quick_roll(void)
 	if (ms.gs == GAME_NONE && move_is_last_in_match())
 	{
 		UserCommand("new match");
-		return (ms.gs != GAME_NONE);
+		return (ms.gs == GAME_PLAYING);
 	}
 	if (ms.gs != GAME_PLAYING && move_is_last_in_match())
 	{
 		UserCommand("new game");
-		return (ms.gs != GAME_PLAYING);
+		return (ms.gs == GAME_PLAYING);
 	}
 	if (ms.gs != GAME_PLAYING)
 		/* we are not playing and the move isn't the last in the match */
-		return 1;
+		return 0;
 	if (!ms.anDice[0])
 	{
 		UserCommand("roll");
-		return (!ms.anDice[0]);
+		return (ms.anDice[0]);
 	}
-	return 1;
+	return 0;
 }
 #endif
 

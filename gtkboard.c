@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.273 2009/04/06 14:17:46 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.274 2009/04/20 15:49:30 c_anthon Exp $
  */
 
 /*! \file gtkboard.c
@@ -1638,7 +1638,7 @@ extern gboolean board_button_press(GtkWidget *board, GdkEventButton *event,
 
 	if (!bd->playing)
 	{
-		if (quick_roll() != 0)
+		if (quick_roll() == 0)
 			board_beep(bd);
 		return TRUE;
 	}
@@ -1807,8 +1807,16 @@ extern gboolean board_button_press(GtkWidget *board, GdkEventButton *event,
 
 		if (ap[ms.fTurn].pt != PLAYER_HUMAN && !editing)
 		{
-			UserCommand("play");
+			/* calling CommandPlay here may lead to crashes if
+			 * the click is in the small time frame between end
+			 * of player turn and next computer turn */
+			outputl( _("It is the computer's turn -- type `play' to force it to "
+				"move immediately.") );
+			outputx();
+
+			board_beep(bd);
 			bd->drag_point = -1;
+
 			return TRUE;
 		}
 
