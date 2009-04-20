@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.148 2009/04/15 17:52:25 c_anthon Exp $
+ * $Id: import.c,v 1.149 2009/04/20 23:09:12 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1054,6 +1054,9 @@ static int ImportMat(FILE * fp, char *szFilename)
 	    && !GetInputYN(_("Are you sure you want to import a saved match, "
 			     "and discard the game in progress? ")))
 		return -1;
+
+	FreeMatch();
+	ClearMatch();
 
 	for (bgv = VARIATION_STANDARD; bgv < NUM_VARIATIONS; bgv++) {
 		if (ImportMatVariation(fp, szFilename, bgv, FALSE) == 0)
