@@ -20,7 +20,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: osr.c,v 1.33 2009/03/02 09:43:51 c_anthon Exp $
+ * $Id: osr.c,v 1.34 2009/04/20 15:44:09 c_anthon Exp $
  */
 
 /*lint -e514*/
@@ -344,6 +344,9 @@ static void FindBestMoveOSR4(unsigned int anBoard[ 25 ], const unsigned int nDic
 
   }
 
+#if 0
+  /* this is broken or very very slow when the player has chequers in the
+   * 3rd or 4th quadrant */
   if (*pnOut > 0)
   {
     /* check for 4, 3, or 2 chequers move exactly into home quadrant */
@@ -367,6 +370,7 @@ static void FindBestMoveOSR4(unsigned int anBoard[ 25 ], const unsigned int nDic
       }
     }
   }
+#endif
 
   if ( *pnOut > 0 && nd > 0 )
   {

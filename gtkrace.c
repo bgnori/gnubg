@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.36 2009/03/02 23:01:30 Superfly_Jon Exp $
+ * $Id: gtkrace.c,v 1.37 2009/04/20 15:44:09 c_anthon Exp $
  */
 
 #include "config.h"
@@ -382,7 +382,9 @@ GTKShowRace ( TanBoard anBoard ) {
 
   /* show dialog */
 
-  PerformOSR ( NULL, prw );
+  /* OSR can take a long time for non-race positions */
+  if( ClassifyPosition( msBoard(), ms.bgv ) <= CLASS_RACE )
+	  PerformOSR ( NULL, prw );
   gtk_notebook_set_current_page ( GTK_NOTEBOOK ( pwNotebook ), 0 );
 
   GTKRunDialog(pwDialog);
