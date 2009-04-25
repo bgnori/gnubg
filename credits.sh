@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.131 2009/03/04 22:13:18 c_anthon Exp $
+# $Id: credits.sh,v 1.132 2009/04/25 20:03:47 c_anthon Exp $
 # 
 
 column < /dev/null || exit 0
@@ -49,6 +49,7 @@ Kaoru Takahashi
 Stein Kulseth
 Mike Petch
 Rod Roark
+Ingo Macherius
 EOF
 
 cat > $support <<EOF
@@ -252,7 +253,8 @@ cat > credits.c <<EOF
 #include <glib/gi18n.h>
 #include "credits.h"
 
-const char aszCOPYRIGHT[] =
+char aszCOPYRIGHT[] = N_("Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004 "
+			"by Gary Wong.\n"
     N_("Copyright (C) 2009 by Gary Wong and the AUTHORS; for details type \`show version'.");
 
 credEntry ceAuthors[] = {
