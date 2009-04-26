@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.214 2009/04/26 21:03:32 c_anthon Exp $
+ * $Id: rollout.c,v 1.215 2009/04/26 21:16:37 c_anthon Exp $
  */
 
 #include "config.h"
@@ -43,6 +43,7 @@
 
 int log_rollouts = 0;
 char *log_file_name = 0;
+unsigned int initial_game_count;
 
 /* make sgf files of rollouts if log_rollouts is true and we have a file 
  * name template to work with
@@ -968,7 +969,6 @@ int ro_fInvert;
 int ro_NextTrial;
 unsigned int *altGameCount;
 int *altTrialCount;
-unsigned int initial_game_count;
 
 extern void RolloutLoopMT(void *unused)
 {
@@ -1615,6 +1615,7 @@ RolloutGeneral( ConstTanBoard *apBoard,
 
   cGames = rcRollout.nTrials;
   nFirstTrial = 0 ;
+  initial_game_count =  0;
 
   for ( alt = 0; alt < alternatives; ++alt) {
     pes = apes[ alt ];
@@ -1666,6 +1667,7 @@ RolloutGeneral( ConstTanBoard *apBoard,
       unsigned int nGames = prc->nGamesDone;
       double r;
 
+      initial_game_count += nGames;
       /* make sure the saved rollout contexts are consistent for
 	 cubeful/not cubeful */
       prc->fCubeful = prc->aecCubeTrunc.fCubeful =
@@ -1801,7 +1803,7 @@ RolloutGeneral( ConstTanBoard *apBoard,
 
       if( updateProgress) {
         (*pfProgress)( aarMu, aarSigma, prc, aciLocal,
-                       i, alt, ajiJSD[ alt ].nRank + 1,
+                       initial_game_count, i, alt, ajiJSD[ alt ].nRank + 1,
 		       ajiJSD[ alt ].rJSD, fNoMore[ alt ], show_jsds, fCubeRollout,
 		       pUserData );
       }
@@ -1939,7 +1941,7 @@ RolloutGeneral( ConstTanBoard *apBoard,
     if( updateProgress) 
       for (alt = 0; alt < alternatives; ++alt) {
         (*pfProgress)( aarMu, aarSigma, prc, aciLocal,
-                       i, alt, ajiJSD[ alt ].nRank + 1,
+                       initial_game_count, i, alt, ajiJSD[ alt ].nRank + 1,
 					   ajiJSD[ alt ].rJSD, fNoMore[ alt ], show_jsds, fCubeRollout,
 					   pUserData );
       }
@@ -2010,7 +2012,7 @@ RolloutGeneral( ConstTanBoard *apBoard,
 	for (alt = 0; alt < alternatives; ++alt) {
 	 if (nGamesDone[ alt ] > 0)
 	(*pfProgress)( aarMu, aarSigma, prc, aciLocal,
-					MIN(i, cGames - 1), alt, ajiJSD[ alt ].nRank + 1,
+				initial_game_count, MIN(i, cGames - 1), alt, ajiJSD[ alt ].nRank + 1,
 					ajiJSD[ alt ].rJSD, fNoMore[ alt ], show_jsds, fCubeRollout,
 					pUserData );
 	}
