@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.h,v 1.9 2008/10/08 10:24:12 c_anthon Exp $
+ * $Id: format.h,v 1.10 2009/04/26 21:03:32 c_anthon Exp $
  */
 
 #ifndef _FORMAT_H_
@@ -41,7 +41,7 @@ extern char *
 OutputEquity ( const float r, const cubeinfo *pci, const int f );
 
 extern char *
-OutputRolloutContext ( const char *szIndent, const evalsetup *pes );
+OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc );
 
 extern char *
 OutputEvalContext ( const evalcontext *pec, const int fChequer );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.37 2009/03/02 23:01:28 Superfly_Jon Exp $
+ * $Id: format.c,v 1.38 2009/04/26 21:03:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -337,9 +337,8 @@ OutputEvalContextsForRollout( char *sz, const char *szIndent,
 
 
 extern char *
-OutputRolloutContext ( const char *szIndent, const evalsetup *pes ) {
+OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc ) {
 
-  const rolloutcontext *prc = &pes->rc;
   static char sz[ 1024 ];
 
   strcpy ( sz, "" );
@@ -977,7 +976,7 @@ OutputCubeAnalysis( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   }
 
   if ( pes->et == EVAL_ROLLOUT && exsExport.afCubeParameters[ 1 ] )
-    strcat ( sz, OutputRolloutContext ( NULL, pes ) );
+    strcat ( sz, OutputRolloutContext ( NULL, &pes->rc ) );
     
   return sz;
 }

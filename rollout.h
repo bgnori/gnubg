@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.h,v 1.31 2009/01/11 20:36:32 c_anthon Exp $
+ * $Id: rollout.h,v 1.32 2009/04/26 21:03:32 c_anthon Exp $
  */
 
 #ifndef _ROLLOUT_H_
@@ -64,6 +64,7 @@ typedef void
                         float arStdDev[][ NUM_ROLLOUT_OUTPUTS ],
                         const rolloutcontext *prc,
                         const cubeinfo aci[],
+			unsigned int initial_game_count,
                         const int iGame,
                         const int iAlternative,
 						const int nRank,

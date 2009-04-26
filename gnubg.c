@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.843 2009/04/24 20:00:47 c_anthon Exp $
+ * $Id: gnubg.c,v 1.844 2009/04/26 21:03:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1896,7 +1896,7 @@ extern char *FormatMoveHint( char *sz, const matchstate *pms, movelist *pml,
       case EVAL_ROLLOUT:
         strcat ( sz,
                  OutputRolloutContext ( "        ",
-                                        &pml->amMoves[ i ].esMove ) );
+                                        &pml->amMoves[ i ].esMove.rc ) );
         break;
 
       default:

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.211 2009/03/25 10:07:40 c_anthon Exp $
+ * $Id: html.c,v 1.212 2009/04/26 21:03:32 c_anthon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.211 2009/03/25 10:07:40 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.212 2009/04/26 21:03:32 c_anthon Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1818,7 +1818,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.211 $";
+  const char szVersion[] = "$Revision: 1.212 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1898,7 +1898,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.211 $";
+  const char szVersion[] = "$Revision: 1.212 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2287,7 +2287,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf,
 
   if ( pes->et == EVAL_ROLLOUT && exsExport.afCubeParameters[ 1 ] ) {
 
-    char *sz = g_strdup ( OutputRolloutContext ( NULL, pes ) );
+    char *sz = g_strdup ( OutputRolloutContext ( NULL, &pes->rc ) );
     char *pcS = sz, *pcE;
 
     while ( ( pcE = strstr ( pcS, "\n" ) ) ) {
@@ -2677,7 +2677,7 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
 
         case EVAL_ROLLOUT:
 		{
-          char *sz = g_strdup ( OutputRolloutContext ( NULL, pes ) );
+          char *sz = g_strdup ( OutputRolloutContext ( NULL, &pes->rc ) );
           char *pcS = sz, *pcE;
           
           while ( ( pcE = strstr ( pcS, "\n" ) ) ) {
