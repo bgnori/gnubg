@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.h,v 1.7 2009/04/26 21:03:32 c_anthon Exp $
+ * $Id: progress.h,v 1.8 2009/05/01 09:28:35 Superfly_Jon Exp $
  */
 
 #ifndef _PROGRESS_H_
@@ -35,7 +35,7 @@ RolloutProgress( float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
                  float aarStdDev[][ NUM_ROLLOUT_OUTPUTS ],
                  const rolloutcontext *prc,
                  const cubeinfo aci[],
-		 unsigned int initial_game_count,
+                 unsigned int initial_game_count,
                  const int iGame,
                  const int iAlternative,
 				 const int nRank,

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.c,v 1.27 2009/03/01 20:01:52 Superfly_Jon Exp $
+ * $Id: util.c,v 1.28 2009/05/01 09:28:35 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -24,7 +24,7 @@
 #include <glib.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "common.h"
 
 #ifdef WIN32
 #include <io.h>
@@ -150,7 +150,7 @@ int TEMP_g_mkstemp(char *tmpl)
   return -1;
 }
 
-int TEMP_g_file_open_tmp (const char *tmpl, char      **name_used, GError    **notused)
+int TEMP_g_file_open_tmp (const char *tmpl, char **name_used, GError **UNUSED(pError))
 {
   const char *sep = "";
   char test;

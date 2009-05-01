@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.408 2009/04/03 12:01:36 c_anthon Exp $
+ * $Id: backgammon.h,v 1.409 2009/05/01 09:28:34 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -74,7 +74,7 @@ typedef enum _movetype {
 	MOVE_SETBOARD,
 	MOVE_SETDICE,
 	MOVE_SETCUBEVAL,
-	MOVE_SETCUBEPOS,
+	MOVE_SETCUBEPOS
 } movetype;
 
 typedef struct _movegameinfo {

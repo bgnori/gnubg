@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.25 2009/03/02 23:01:29 Superfly_Jon Exp $
+ * $Id: gtkmet.c,v 1.26 2009/05/01 09:28:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -43,7 +43,7 @@ typedef struct _metwidget {
 
 
 static void UpdateTable ( const mettable *pmt, 
-              float met[ MAXSCORE ][ MAXSCORE ],
+              /*lint -e{818}*/float met[ MAXSCORE ][ MAXSCORE ],
               const metinfo *pmi,
               const unsigned int nRows, const unsigned int nCols, const int fInvert ) {
 
@@ -195,7 +195,7 @@ static void invertMETlocal( GtkWidget *UNUSED(widget), const metwidget *pmw ){
 }
 
 
-static void loadMET ( GtkWidget *notused, const metwidget *pmw ) {
+static void loadMET ( GtkWidget *UNUSED(widget), const metwidget *pmw ) {
 
   SetMET ( NULL, NULL );
 

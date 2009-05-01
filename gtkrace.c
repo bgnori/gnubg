@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.37 2009/04/20 15:44:09 c_anthon Exp $
+ * $Id: gtkrace.c,v 1.38 2009/05/01 09:28:35 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -28,7 +28,6 @@
 #include <math.h>
 
 #include "backgammon.h"
-#include "eval.h"
 #include "gtkrace.h"
 #include "osr.h"
 #include "format.h"
@@ -110,7 +109,7 @@ EffectivePipCount( const float arPips[ 2 ], const float arWastage[ 2 ],
   GtkWidget *pw;
   GtkWidget *pwFrame;
   gchar *sz;
-  int i;
+  unsigned int i;
 
   pwFrame = gtk_frame_new( _( "Effective pip count" ) );
 
@@ -178,7 +177,7 @@ EffectivePipCount( const float arPips[ 2 ], const float arWastage[ 2 ],
 static void
 PerformOSR ( GtkWidget *UNUSED(pw), racewidget *prw ) {
 
-  int nTrials = (int)prw->padjTrials->value;
+  unsigned int nTrials = (unsigned int)prw->padjTrials->value;
   float ar[ 5 ];
   int i, j;
   char sz[ 16 ];
@@ -328,6 +327,7 @@ GTKShowRace ( TanBoard anBoard ) {
   racewidget *prw;
 
   prw = malloc ( sizeof ( racewidget ) );
+  assert(prw != NULL);
   memcpy ( prw->anBoard, anBoard, 2 * 25 * sizeof ( int ) );
   prw->fMove = ms.fMove;
 

@@ -16,12 +16,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.84 2009/03/07 20:49:42 c_anthon Exp $
+ * $Id: bearoff.c,v 1.85 2009/05/01 09:28:34 Superfly_Jon Exp $
  */
 #include "config.h"
 #if USE_MULTITHREAD
 /*must be first here because of strange warning from mingw*/
 #include "multithread.h"
+#else
+#include "backgammon.h"
 #endif
 
 #if HAVE_UNISTD_H
@@ -29,11 +31,6 @@
 #endif
 
 #include <glib/gstdio.h>
-#include "bearoffgammon.h"
-#include "positionid.h"
-#include "bearoff.h"
-#include "eval.h"
-#include "backgammon.h"
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>

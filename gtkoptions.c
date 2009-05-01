@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.96 2009/04/01 15:44:32 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.97 2009/05/01 09:28:35 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1418,9 +1418,9 @@ static void OptionsOK(GtkWidget *pw, optionswidget *pow)
 	  if (gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pow->apwDice[i])))
 		  break;
   }
-  if (i < RNG_FILE && i != rngCurrent ) {
+  if (i < RNG_FILE && i != (unsigned int)rngCurrent ) {
 	  UserCommand(set_rng_cmds[i]);
-  } else if (i == RNG_FILE && i != rngCurrent ) {
+  } else if (i == RNG_FILE && i != (unsigned int)rngCurrent ) {
       filename = GTKFileSelect (_("Select file with dice"), NULL, NULL, NULL,
 			      GTK_FILE_CHOOSER_ACTION_OPEN);
       if (filename)

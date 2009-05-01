@@ -17,20 +17,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovelist.c,v 1.30 2009/03/13 16:25:48 c_anthon Exp $
+ * $Id: gtkmovelist.c,v 1.31 2009/05/01 09:28:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include <string.h>
-#include "eval.h"
-#include "gtkchequer.h"
-#include "backgammon.h"
-#include "format.h"
-#include "assert.h"
-#include "gtkmovelistctrl.h"
 #include "gtkgame.h"
+#include <string.h>
+
+#include "format.h"
+#include "gtkmovelistctrl.h"
 #include "drawboard.h"
 
 #define DETAIL_COLUMN_COUNT 11
@@ -55,7 +51,7 @@ enum
 
 extern void MoveListCreate(hintdata *phd)
 {
-    static char *aszTitleDetails[] = {
+    static const char *aszTitleDetails[] = {
 	N_("Rank"), 
         N_("Type"), 
         N_("Win"), 

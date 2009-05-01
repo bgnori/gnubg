@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.53 2009/04/26 21:03:32 c_anthon Exp $
+ * $Id: progress.c,v 1.54 2009/05/01 09:28:35 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -126,7 +126,7 @@ static time_t time_left(unsigned int n_games_todo, unsigned int n_games_done,
 	time_t t_now;
 	time(&t_now);
 	pt = ((float)n_games_todo) / (n_games_done - initial_game_count);
-	return pt * (t_now - t_start);
+	return (time_t)(pt * (t_now - t_start));
 }
 
 static char *
