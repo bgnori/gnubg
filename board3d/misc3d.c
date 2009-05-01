@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.102 2009/03/02 23:01:31 Superfly_Jon Exp $
+* $Id: misc3d.c,v 1.103 2009/05/01 09:13:02 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -33,7 +33,6 @@
 #ifdef WIN32
 #include "wglbuffer.h"
 #endif
-#include "misc3d.h"
 #include "util.h"
 #include <glib/gstdio.h>
 

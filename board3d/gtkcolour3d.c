@@ -18,12 +18,11 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.50 2009/03/07 20:49:45 c_anthon Exp $
+* $Id: gtkcolour3d.c,v 1.51 2009/05/01 09:13:02 Superfly_Jon Exp $
 */
 
 #include "config.h"
 #include "inc3d.h"
-#include "misc3d.h"
 
 #include "gtkprefs.h"
 
