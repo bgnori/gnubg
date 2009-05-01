@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.85 2009/05/01 09:28:34 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.86 2009/05/01 09:42:54 Superfly_Jon Exp $
  */
 #include "config.h"
 #if USE_MULTITHREAD
@@ -29,6 +29,9 @@
 #if HAVE_UNISTD_H
 #include <unistd.h>
 #endif
+
+#include "bearoffgammon.h"
+#include "positionid.h"
 
 #include <glib/gstdio.h>
 #include <stdlib.h>
