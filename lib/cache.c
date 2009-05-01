@@ -15,7 +15,7 @@
  * cache.c
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.c,v 1.24 2009/03/01 20:01:52 Superfly_Jon Exp $
+ * $Id: cache.c,v 1.25 2009/05/01 09:04:50 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -61,19 +61,6 @@ You can use this free for any purpose.  It has no warranty.
 
 typedef  unsigned long   ub4;
 
-#define hashmix(a,b,c) \
-{ \
-  a -= b; a -= c; a ^= (c>>13); \
-  b -= c; b -= a; b ^= (a<<8); \
-  c -= a; c -= b; c ^= (b>>13); \
-  a -= b; a -= c; a ^= (c>>12);  \
-  b -= c; b -= a; b ^= (a<<16); \
-  c -= a; c -= b; c ^= (b>>5); \
-  a -= b; a -= c; a ^= (c>>3);  \
-  b -= c; b -= a; b ^= (a<<10); \
-  c -= a; c -= b; c ^= (b>>15); \
-}
-
 int CacheCreate(evalCache* pc, unsigned int s)
 {
 #if CACHE_STATS
@@ -100,26 +87,26 @@ int CacheCreate(evalCache* pc, unsigned int s)
 
 extern unsigned long GetHashKey(unsigned long hashMask, const cacheNodeDetail* e)
 {
-  ub4 a = 0x9e3779b9;  /* the golden ratio; an arbitrary value */
-  ub4 b = a;
-  ub4 c = 11 + (unsigned int)e->nEvalContext;
+	ub4 a = 0x9e3779b9;  /* the golden ratio; an arbitrary value */
+	ub4 b = a;
+	ub4 c = 11 + (unsigned int)e->nEvalContext;
 
-  c += ((ub4)e->auchKey[9]<<16);
-  c += ((ub4)e->auchKey[8]<<8);
+	c = c + (*((short*)&e->auchKey[8]) << 8);
+	b = b + *((int*)&(e->auchKey[4]));
+	a = a + *((int*)&(e->auchKey[0]));
 
-  b += ((ub4)e->auchKey[7]<<24);
-  b += ((ub4)e->auchKey[6]<<16);
-  b += ((ub4)e->auchKey[5]<<8);
-  b += e->auchKey[4];
+	/* hashmix macro expanded here */
+	a = (a - b - c) ^ (c >> 13);
+	b = (b - c - a) ^ (a << 8);
+	c = (c - a - b) ^ (b >> 13);
+	a = (a - b - c) ^ (c >> 12);
+	b = (b - c - a) ^ (a << 16);
+	c = (c - a - b) ^ (b >> 5);
+	a = (a - b - c) ^ (c >> 3);
+	b = (b - c - a) ^ (a << 10);
+	c = (c - a - b) ^ (b >> 15);
 
-  a += ((ub4)e->auchKey[3]<<24);
-  a += ((ub4)e->auchKey[2]<<16);
-  a += ((ub4)e->auchKey[1]<<8);
-  a += e->auchKey[0];
-
-  hashmix(a,b,c);
-
-  return (c & hashMask);
+	return (c & hashMask);
 }
 
 unsigned int CacheLookup(evalCache* pc, const cacheNodeDetail* e, float *arOut, float *arCubeful)
