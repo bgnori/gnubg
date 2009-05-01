@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrace.c,v 1.38 2009/05/01 09:28:35 Superfly_Jon Exp $
+ * $Id: gtkrace.c,v 1.39 2009/05/01 19:51:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -327,7 +327,7 @@ GTKShowRace ( TanBoard anBoard ) {
   racewidget *prw;
 
   prw = malloc ( sizeof ( racewidget ) );
-  assert(prw != NULL);
+  g_assert(prw != NULL);
   memcpy ( prw->anBoard, anBoard, 2 * 25 * sizeof ( int ) );
   prw->fMove = ms.fMove;
 
