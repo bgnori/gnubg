@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.371 2009/03/28 21:13:57 c_anthon Exp $
+ * $Id: eval.c,v 1.372 2009/05/05 20:57:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4157,10 +4157,16 @@ extern char
   }
 }
 
+
 extern void
 EvalCacheFlush(void)
 {
   CacheFlush( & cEval );
+}
+
+void CommandClearCache(char *sz)
+{
+	EvalCacheFlush();
 }
 
 extern double GetEvalCacheSize(void)
