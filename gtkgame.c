@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.774 2009/04/18 20:32:23 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.775 2009/05/06 19:25:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2978,6 +2978,10 @@ GtkItemFactoryEntry aife[] = {
 	},
 	{ N_("/_File/_Save..."), "<control>S", GTKSave, 0, 
 		"<StockItem>", GTK_STOCK_SAVE
+	},
+	{ N_("/_File/-"), NULL, NULL, 0, "<Separator>", NULL },
+	{ N_("/_File/Open _Commands..."), NULL, GTKCommandsOpen, 0, 
+		"<StockItem>", GTK_STOCK_OPEN
 	},
 	{ N_("/_File/-"), NULL, NULL, 0, "<Separator>", NULL },
 	{ N_("/_File/Match information..."), NULL, GTKMatchInfo, 0, NULL,

@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.50 2009/03/22 21:09:41 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.51 2009/05/06 19:25:23 c_anthon Exp $
  */
 
 #include "config.h"
@@ -410,6 +410,20 @@ extern void GTKOpen(gpointer p, guint n, GtkWidget * pw)
 		g_free(last_import_folder);
 		last_import_folder = gtk_file_chooser_get_current_folder(GTK_FILE_CHOOSER(fc));
 		g_free(fn);
+	}
+	gtk_widget_destroy(fc);
+}
+
+extern void GTKCommandsOpen(gpointer p, guint n, GtkWidget *pw)
+{
+	gchar *filename = NULL;
+	GtkWidget *fc =
+	    GnuBGFileDialog(_("Open Commands file"), NULL, NULL, GTK_FILE_CHOOSER_ACTION_OPEN);
+
+	if (gtk_dialog_run(GTK_DIALOG(fc)) == GTK_RESPONSE_ACCEPT) {
+		filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(fc));
+		CommandLoadCommands(filename);
+		g_free(filename);
 	}
 	gtk_widget_destroy(fc);
 }
