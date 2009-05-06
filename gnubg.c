@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.844 2009/04/26 21:03:32 c_anthon Exp $
+ * $Id: gnubg.c,v 1.845 2009/05/06 13:46:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2167,11 +2167,10 @@ static skilltype double_skill(float aarOutput[][NUM_ROLLOUT_OUTPUTS],
 		break;
 
 	case TOOGOOD_PASS:
+	case TOOGOODRE_PASS:
 		eq = arDouble[OUTPUT_DROP] - arDouble[OUTPUT_NODOUBLE];
 		break;
-
 	default:
-	case TOOGOODRE_PASS:
 		break;
 	}
 	return Skill(eq);
