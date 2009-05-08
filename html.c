@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.212 2009/04/26 21:03:32 c_anthon Exp $
+ * $Id: html.c,v 1.213 2009/05/08 11:10:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.212 2009/04/26 21:03:32 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.213 2009/05/08 11:10:01 c_anthon Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1818,7 +1818,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.212 $";
+  const char szVersion[] = "$Revision: 1.213 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1898,7 +1898,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.212 $";
+  const char szVersion[] = "$Revision: 1.213 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2533,7 +2533,7 @@ HTMLPrintMoveAnalysis ( FILE *pf, matchstate *pms, moverecord *pmr,
       /* move no */
 
       if ( i != pmr->n.iMove || i != pmr->ml.cMoves - 1 || 
-           pmr->ml.cMoves == 1 ) 
+           pmr->ml.cMoves == 1 || i < exsExport.nMoves - 1 ) 
         fprintf ( pf, 
                   "<td %s>%d</td>\n", 
                   GetStyle ( CLASS_MOVENUMBER, hecss ), i + 1 );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.845 2009/05/06 13:46:03 c_anthon Exp $
+ * $Id: gnubg.c,v 1.846 2009/05/08 11:10:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1388,7 +1388,9 @@ static void DisplayAnalysis( moverecord *pmr ) {
 	    outputc( i == pmr->n.iMove ? '*' : ' ' );
 	    output( FormatMoveHint( szBuf, &ms, &pmr->ml, i,
 				    i != pmr->n.iMove ||
-				    i != pmr->ml.cMoves - 1, TRUE, TRUE ) );
+				    i != pmr->ml.cMoves - 1 ||
+                                    pmr->ml.cMoves == 1 ||
+                                    i < exsExport.nMoves - 1, TRUE, TRUE ) );
 
 	}
 	

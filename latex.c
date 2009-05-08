@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.47 2009/02/22 22:43:02 c_anthon Exp $
+ * $Id: latex.c,v 1.48 2009/05/08 11:10:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -396,6 +396,7 @@ static void ExportGameLaTeX( FILE *pf, listOLD *plGame ) {
 	switch( pmr->mt ) {
 	case MOVE_GAMEINFO:
 		dt = DT_NORMAL;
+            fputs ( "\\clearpage\n", pf );
             fputs ( "\\noindent{\\Large ", pf );
 	    if( pmr->g.nMatch )
 		fprintf( pf, _("%d point match (game %d)"), 
@@ -444,9 +445,8 @@ static void ExportGameLaTeX( FILE *pf, listOLD *plGame ) {
 
 	    /* FIXME use center and tabular environment instead of verbatim */
 	    fputs( "{\\footnotesize\\begin{verbatim}\n", pf );
-	    for( i = 0; i < pmr->ml.cMoves && i <= pmr->n.iMove; i++ ) {
-		if( i >= 5 /* FIXME allow user to choose limit */ &&
-		    i != pmr->n.iMove )
+	    for( i = 0; i < pmr->ml.cMoves; i++ ) {
+		if( i >= exsExport.nMoves && i != pmr->n.iMove )
 		    continue;
 
 		putc( i == pmr->n.iMove ? '*' : ' ', pf );
