@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.82 2009/05/01 09:13:02 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.83 2009/05/08 07:49:38 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -39,7 +39,7 @@ typedef struct _viewArea
 /* My logcube - more than 32 then return 0 (show 64) */
 static int LogCube( int n )
 {
-	int i = 1;
+	int i = 0;
 	while (n > (1 << i))
 		i++;
 
