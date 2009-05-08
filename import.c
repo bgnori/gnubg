@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.149 2009/04/20 23:09:12 c_anthon Exp $
+ * $Id: import.c,v 1.150 2009/05/08 12:30:21 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2671,13 +2671,7 @@ static void ImportTMGGame( FILE *pf, int i, int nLength, int n0, int n1,
             pmr = NewMoveRecord();
             pmr->mt = MOVE_RESIGN;
             pmr->fPlayer = ! fPlayer;
-            pmr->r.nResigned = atoi ( pch ) / ms.nCube;
-            if ( ! pmr->r.nResigned )
-              /* handle cases where the TMG file says "wins 1 point"
-                 but where the cube value is 2 or more. Typically the
-                 last game of a match */
-              pmr->r.nResigned = 1;
-              
+            pmr->r.nResigned = (atoi ( pch ) + ms.nCube - 1) / ms.nCube; /* rounding up */
             AddMoveRecord( pmr );
 
           }
