@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.85 2009/05/16 16:41:23 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.86 2009/05/16 16:43:23 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2664,21 +2664,11 @@ NTH_STATIC void drawPointPick(const BoardData *bd, void *data)
 
 /* 20 allows for 5 hit records (more than enough) */
 #define BUFSIZE 20
-<<<<<<< drawboard3d.c
 GLuint selectBuf[BUFSIZE];
 
 typedef void (*PickDrawFun)(const BoardData *bd, void *data);
-=======
-GLuint selectBuf[BUFSIZE];
->>>>>>> 1.84
-
-<<<<<<< drawboard3d.c
-int PickDraw(int x, int y, PickDrawFun drawFun, const BoardData *bd, void *data)
-=======
-typedef void (*PickDrawFun)(const BoardData *bd, void *data);
 
 int PickDraw(int x, int y, PickDrawFun drawFun, const BoardData *bd, void *data)
->>>>>>> 1.84
 {	/* Identify if anything is below point (x,y) */
 	BoardData3d *bd3d = bd->bd3d;
 	GLint hits;
