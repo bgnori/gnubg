@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.213 2009/05/08 11:10:01 c_anthon Exp $
+ * $Id: html.c,v 1.214 2009/06/10 15:01:49 mdpetch Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.213 2009/05/08 11:10:01 c_anthon Exp $ */\n",
+           "/* $Id: html.c,v 1.214 2009/06/10 15:01:49 mdpetch Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1818,7 +1818,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.213 $";
+  const char szVersion[] = "$Revision: 1.214 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1898,7 +1898,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.213 $";
+  const char szVersion[] = "$Revision: 1.214 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3470,7 +3470,7 @@ extern void CommandExportPositionHtml( char *sz ) {
 	
     sz = NextToken( &sz );
     
-    if( ms.gs != GAME_NONE ) {
+    if( ms.gs == GAME_NONE ) {
 	outputl( _("No game in progress (type `new game' to start one).") );
 	return;
     }
