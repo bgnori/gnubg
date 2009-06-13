@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.77 2009/06/12 22:16:20 Superfly_Jon Exp $
+* $Id: matchequity.c,v 1.78 2009/06/13 00:05:41 c_anthon Exp $
 */
 
 #include "config.h"
@@ -1491,36 +1491,6 @@ static void met_parser_error (GMarkupParseContext *context,
 {
     MatchEquityParser *parser = (MatchEquityParser *) user_data;
     g_warning("An error occured while parsing file: %s\n", parser->filename );
-}
-
-static void metparameters_free( metparameters *params )
-{
-    listOLD *l;
-    if ( !params ) return;
-	for ( l = &params->lParameters; l ; l = l->plNext ){
-		parameter *p = (parameter *) l->p;
-		g_free( p->szName );
-        g_free( p );
-    }
-
-	ListDelete( &params->lParameters );
-    
-    g_free( params->szName );
-    g_free( params );
-}
-
-void metdata_free( metdata *data )
-{
-    metparameters_free( &data->mpPreCrawford );
-
-    metparameters_free( &data->ampPostCrawford[0] );
-    metparameters_free( &data->ampPostCrawford[1] );
-
-    g_free( data->mi.szName );
-	g_free( data->mi.szFileName );
-    g_free( data->mi.szDescription );
-
-    g_free( data );
 }
 
 /*
