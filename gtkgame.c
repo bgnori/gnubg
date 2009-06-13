@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.775 2009/05/06 19:25:23 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.776 2009/06/13 16:45:04 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3049,7 +3049,7 @@ GtkItemFactoryEntry aife[] = {
 	  "/View/Toolbar/Text only", NULL },
 	{ N_("/_View/_Toolbar/_Both"), NULL, ToolbarStyle, TOOLBAR_ACTION_OFFSET + GTK_TOOLBAR_BOTH,
 	  "/View/Toolbar/Text only", NULL },
-	{ N_("/_View/Full screen"), NULL, DoFullScreenMode, 0, "<CheckItem>", NULL },
+	{ N_("/_View/Full screen"), "F11", DoFullScreenMode, 0, "<CheckItem>", NULL },
 	{ N_("/_View/-"), NULL, NULL, 0, "<Separator>", NULL },
 	{ N_("/_View/Play _Clockwise"), NULL, click_swapdirection, 0, "<CheckItem>", NULL },
 #if USE_BOARD3D
