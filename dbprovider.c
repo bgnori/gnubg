@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.21 2009/05/01 09:28:34 Superfly_Jon Exp $
+ * $Id: dbprovider.c,v 1.22 2009/06/17 08:03:38 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -88,6 +88,7 @@ DBProvider providers[NUM_PROVIDERS] =
 DBProvider providers[1] = {{0, 0, 0, 0, 0, 0, 0, "No Providers", "No Providers", "No Providers", 0, 0, 0, 0, 0}};
 #endif
 
+#if USE_PYTHON || HAVE_SQLITE
 static RowSet* MallocRowset(size_t rows, size_t cols)
 {
 	size_t i;
@@ -123,6 +124,7 @@ static void SetRowsetData(/*lint -e{818}*/RowSet *rs, size_t row, size_t col, co
 	if (row == 0 || size > rs->widths[col])
 		rs->widths[col] = size;
 }
+#endif
 
 extern void FreeRowset(RowSet* pRow)
 {
