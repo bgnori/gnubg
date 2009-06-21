@@ -16,13 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sigmoid.h,v 1.1 2008/09/27 20:29:25 c_anthon Exp $
+ * $Id: sigmoid.h,v 1.2 2009/06/21 21:23:08 c_anthon Exp $
  */
 
 #ifndef _SIGMOID_H
 #define _SIGMOID_H
 /* e[k] = exp(k/10) / 10 */
-static float e[100] = {
+static float e[101] = {
 0.10000000000000001f, 
 0.11051709180756478f, 
 0.12214027581601698f, 
@@ -123,6 +123,7 @@ static float e[100] = {
 1631.7607198015421f, 
 1803.3744927828525f, 
 1993.0370438230298f, 
+1993.0370438230298f /* one extra :-) */ 
 };
 
 /* Calculate an approximation to the sigmoid function 1 / ( 1 + e^x ).
@@ -161,5 +162,6 @@ static inline float sigmoid(float const xin)
 	    return 19930.370438230298f / 19931.370438230298f;	
     }
 }
+
 
 #endif
