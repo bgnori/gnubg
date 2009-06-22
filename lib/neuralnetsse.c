@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.15 2009/06/21 21:23:08 c_anthon Exp $
+ * $Id: neuralnetsse.c,v 1.16 2009/06/22 00:39:46 mdpetch Exp $
  */
 
 #include "config.h"
@@ -34,7 +34,12 @@
 #include <assert.h>
 #endif
 
-#include <emmintrin.h>
+#ifdef USE_SSE2 
+#include <emmintrin.h> 
+#else
+#include <xmmintrin.h> 
+#endif
+
 #ifndef _MSC_VER
 #include <mm_malloc.h>
 #endif
