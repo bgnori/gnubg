@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.276 2009/06/10 15:04:57 mdpetch Exp $
+ * $Id: gtkboard.c,v 1.277 2009/06/24 18:38:45 Superfly_Jon Exp $
  */
 
 /*! \file gtkboard.c
@@ -92,7 +92,7 @@ extern GtkWidget *board_new(renderdata* prd)
 	/* Initialize board data members */
 	BoardData *bd = BOARD(board)->board_data;
 	bd->rd = prd;
-	bd->rd->nSize = -1;
+	bd->rd->nSize = (unsigned int)-1;
 
 	bd->crawford_game = 0;
 	bd->cube = 1;
@@ -3642,7 +3642,7 @@ static void board_init( Board *board )
     bd->all_moves = NULL;
 
     gcval.function = GDK_AND;
-    gcval.foreground.pixel = ~0L; /* AllPlanes */
+    gcval.foreground.pixel = (guint32)~0L; /* AllPlanes */
     gcval.background.pixel = 0;
     bd->gc_and = gtk_gc_get( vis->depth, cmap, &gcval, GDK_GC_FOREGROUND |
 			     GDK_GC_BACKGROUND | GDK_GC_FUNCTION );

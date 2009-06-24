@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.75 2009/03/29 13:56:27 c_anthon Exp $
+ * $Id: dice.c,v 1.76 2009/06/24 18:38:44 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -588,7 +588,7 @@ RNGSystemSeed( const rng rngx, void *p, unsigned long *pnSeed ) {
 
   int f = FALSE;
   rngcontext *rngctx = (rngcontext *) p;
-  int n;
+  int n = 0;
 
 #if HAVE_LIBGMP
   int h;
@@ -818,8 +818,6 @@ uglyloop:
 
   }
   goto uglyloop;	/* This logic should be reconsidered */
-
-  return -1;
 
 }
 

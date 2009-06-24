@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.372 2009/05/05 20:57:34 c_anthon Exp $
+ * $Id: eval.c,v 1.373 2009/06/24 18:38:45 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3935,7 +3935,7 @@ extern float KleinmanCount (int nPipOnRoll, int nPipNotOnRoll)
   if (nSum > 4)
   {
 	rK = (double) (nDiff + 4) / (2 * sqrt( nSum - 4 ));
-	return 0.5f * (1.0f + (float)erf( rK ));
+	return 0.5f * (1.0f + erf( rK ));
   }
   else
 	  return 0.f;

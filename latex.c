@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.48 2009/05/08 11:10:01 c_anthon Exp $
+ * $Id: latex.c,v 1.49 2009/06/24 18:38:46 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -569,7 +569,7 @@ extern void CommandExportGameLaTeX( char *sz ) {
 
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
-    else if( !( pf = g_fopen( sz, "w" ) ) ) {
+    else if( ( pf = g_fopen( sz, "w" ) ) == 0 ) {
 	outputerr( sz );
 	return;
     }
@@ -605,7 +605,7 @@ extern void CommandExportMatchLaTeX( char *sz ) {
 
     if( !strcmp( sz, "-" ) )
 	pf = stdout;
-    else if( !( pf = g_fopen( sz, "w" ) ) ) {
+    else if( ( pf = g_fopen( sz, "w" ) ) == 0 ) {
 	outputerr( sz );
 	return;
     }
