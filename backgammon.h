@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.410 2009/05/05 20:57:34 c_anthon Exp $
+ * $Id: backgammon.h,v 1.411 2009/06/24 20:21:27 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -557,6 +557,7 @@ extern void CommandAnnotateVeryUnlucky(char *);
 extern void CommandCalibrate(char *);
 extern void CommandClearHint(char *);
 extern void CommandClearCache(char *);
+extern void CommandClearTurn(char *);
 extern void CommandCopy(char *);
 extern void CommandDecline(char *);
 extern void CommandDiceRolls(char *);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.330 2009/06/24 18:38:46 Superfly_Jon Exp $
+ * $Id: set.c,v 1.331 2009/06/24 20:21:27 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2553,7 +2553,7 @@ extern void CommandSetTurn( char *sz ) {
 #if USE_GTK
     if (fX) {
 	    BoardData *bd = BOARD(pwBoard)->board_data;
-	    bd->diceRoll[0] = bd->diceRoll[1] = 0;
+	    bd->diceRoll[0] = bd->diceRoll[1] = -1;
     }
 #endif
     ms.anDice[ 0 ] = ms.anDice[ 1 ] = 0;
