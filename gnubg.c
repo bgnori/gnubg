@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.848 2009/06/24 18:38:45 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.849 2009/06/25 20:52:46 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1257,10 +1257,7 @@ extern void HandleCommand( char *sz, command *ac )
 	    break;
 
     if( !pc->sz ) {
-	outputf( _("Unknown keyword `%s'."), pch );
-	output("\n");
-
-	outputx();
+	outputerrf( _("Unknown keyword `%s'.\n"), pch );
 	return;
     }
 
