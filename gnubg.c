@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.849 2009/06/25 20:52:46 c_anthon Exp $
+ * $Id: gnubg.c,v 1.850 2009/06/25 21:15:15 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -447,7 +447,7 @@ rolloutcontext rcRollout =
   /* evaltype */ \
   EVAL_EVAL, \
   /* evalcontext */ \
-  { TRUE, 0, TRUE, TRUE, 0.0 }, \
+  { TRUE, 0, FALSE, TRUE, 0.0 }, \
   /* rolloutcontext */ \
   { \
     { \
