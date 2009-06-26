@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.850 2009/06/25 21:15:15 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.851 2009/06/26 10:16:09 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1225,7 +1225,12 @@ extern void HandleCommand( char *sz, command *ac )
           while ( isspace( *sz ) )
             ++sz;
 
+#if USE_PYTHON
 		PythonRun(sz);
+#else
+	    outputl( _("This installation of GNU Backgammon was compiled without Python support.") );
+	    outputx();
+#endif
 		return;
         }
 
@@ -2482,7 +2487,9 @@ Shutdown( void ) {
 #endif
   EvalShutdown();
 
+#if USE_PYTHON
   PythonShutdown();
+#endif
 
 #if HAVE_SOCKETS
 #ifdef WIN32
@@ -2676,7 +2683,11 @@ extern void CommandLoadPython(char *sz)
 	sz = NextToken(&sz);
 
 	if (sz && *sz)
+#if USE_PYTHON
 		LoadPythonFile(sz);
+#else
+	outputl(_("This build of GNU Backgammon does not support Python"));
+#endif
 	else
 		outputl(_("You must specify a file to load from."));
 }

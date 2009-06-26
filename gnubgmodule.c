@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.94 2009/04/03 19:48:39 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.95 2009/06/26 10:16:09 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2367,16 +2367,11 @@ extern void PythonInitialise(char *argv0)
   LoadPythonFile("gnubg.py");
 }
 
-#endif /* USE_PYTHON */
-
 extern void PythonShutdown( void )
 {
-#if USE_PYTHON
   Py_Finalize();
-#endif
 }
 
-#if USE_PYTHON
 extern void PythonRun(const char *sz)
 {
 	if (*sz)
@@ -2389,16 +2384,7 @@ extern void PythonRun(const char *sz)
 		PyRun_AnyFile( stdin, NULL );
 	}
 }
-#else
-extern void PythonRun(const char *notused)
-{
-	    outputl( _("This installation of GNU Backgammon was compiled "
-		     "without Python support.") );
-	    outputx();
-}
-#endif
 
-#if USE_PYTHON
 extern int LoadPythonFile(const char *sz)
 {
 	FILE *pf;
@@ -2432,11 +2418,5 @@ extern int LoadPythonFile(const char *sz)
 	g_free(path);
 
 	return ret;
-}
-#else
-extern int LoadPythonFile(const char *notused)
-{
-	output(_("This build of GNU Backgammon does not support Python"));
-	return FALSE;
 }
 #endif

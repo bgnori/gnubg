@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.h,v 1.18 2009/04/06 05:52:20 mdpetch Exp $
+ * $Id: gnubgmodule.h,v 1.19 2009/06/26 10:16:09 Superfly_Jon Exp $
  */
 
 #ifndef _PYTHONMODULE_H_
@@ -25,9 +25,7 @@
 #if USE_PYTHON
 #ifdef WIN32
 /* needed for mingw inclusion of Python.h */
-#ifndef _MSC_VER
 #include <stdint.h>
-#endif
 #endif
 #include <Python.h>
 #if PY_VERSION_HEX < 0x02050000 && !defined(PY_SSIZE_T_MIN)
