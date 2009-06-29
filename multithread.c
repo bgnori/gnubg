@@ -6,7 +6,7 @@
  * Multithreaded operations
  *
  *
-/* This program is free software; you can redistribute it and/or modify
+ * This program is free software; you can redistribute it and/or modify
  * it under the terms of version 3 or later of the GNU General Public License as
  * published by the Free Software Foundation.
  *
@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  * 
- * $Id: multithread.c,v 1.65 2009/06/26 10:19:12 Superfly_Jon Exp $
+ * $Id: multithread.c,v 1.66 2009/06/29 19:28:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
