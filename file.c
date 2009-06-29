@@ -15,13 +15,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: file.c,v 1.20 2009/06/29 19:17:03 Superfly_Jon Exp $
+ * $Id: file.c,v 1.21 2009/06/29 19:47:16 Superfly_Jon Exp $
  */
 
 #include "config.h"
 #include "backgammon.h"
 #include <glib/gstdio.h>
 #include "file.h"
+#include <stdlib.h>
 
 ExportFormat export_format[] = {
 	{EXPORT_SGF, ".sgf", N_("Gnu Backgammon File"), "sgf", {TRUE, TRUE, TRUE}},	/*must be the first element */
