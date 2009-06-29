@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.60 2009/06/29 19:17:03 Superfly_Jon Exp $
+ * $Id: neuralnet.c,v 1.61 2009/06/29 19:30:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -528,11 +528,15 @@ static int CheckSSE(void)
 		"jp 4f\n\t"
 
 "2:"
-		/* Check if sse is supported (bit 25 in edx from cpuid 1) */
+		/* Check if sse is supported (bit 25/26 in edx from cpuid 1) */
 		"mov $1, %%eax\n\t"
 		"cpuid\n\t"
 		"mov $1, %%eax\n\t"
+#if USE_SSE2
+		"shl $26, %%eax\n\t"
+#else
 		"shl $25, %%eax\n\t"
+#endif
 		"test %%eax, %%edx\n\t"
 		"jnz 3f\n\t"
 		/* Not supported */

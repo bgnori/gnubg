@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.852 2009/06/29 19:17:03 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.853 2009/06/29 19:30:07 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -653,9 +653,17 @@ extern const char *GetBuildInfoString(void)
 		{
 			sseShown = 1;
 			if (SSE_Supported())
+#if USE_SSE2
+				return N_("SSE2 supported and available.");
+#else
 				return N_("SSE supported and available.");
+#endif
 			else
+#if USE_SSE2
+				return N_("SSE2 supported but not available.");
+#else
 				return N_("SSE supported but not available.");
+#endif
 		}
 		sseShown = 0;
 #endif
