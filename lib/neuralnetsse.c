@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.16 2009/06/22 00:39:46 mdpetch Exp $
+ * $Id: neuralnetsse.c,v 1.17 2009/06/29 19:17:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -40,9 +40,6 @@
 #include <xmmintrin.h> 
 #endif
 
-#ifndef _MSC_VER
-#include <mm_malloc.h>
-#endif
 #include <glib.h>
 #include "sigmoid.h"
 

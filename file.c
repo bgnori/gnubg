@@ -15,16 +15,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: file.c,v 1.19 2009/03/01 20:01:49 Superfly_Jon Exp $
+ * $Id: file.c,v 1.20 2009/06/29 19:17:03 Superfly_Jon Exp $
  */
 
 #include "config.h"
 #include "backgammon.h"
 #include <glib/gstdio.h>
-#ifndef _MSC_VER
-#include <string.h>
-#include <stdlib.h>
-#endif
 #include "file.h"
 
 ExportFormat export_format[] = {
