@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.17 2009/06/29 19:17:03 Superfly_Jon Exp $
+ * $Id: neuralnetsse.c,v 1.18 2009/06/30 10:30:40 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -47,18 +47,12 @@
 
 float *sse_malloc(size_t size)
 {
-	if (SSE_Supported())
-		return (float *)_mm_malloc(size, ALIGN_SIZE);
-	else
-		return (float *)malloc(size);
+	return (float *)_mm_malloc(size, ALIGN_SIZE);
 }
 
 void sse_free(float* ptr)
 {
-	if (SSE_Supported())
-		_mm_free(ptr);
-	else
-		free(ptr);
+	_mm_free(ptr);
 }
 
 #if USE_SSE2
