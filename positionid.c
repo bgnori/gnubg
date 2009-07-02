@@ -32,7 +32,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.44 2009/06/14 21:22:54 Superfly_Jon Exp $
+ * $Id: positionid.c,v 1.45 2009/07/02 17:23:09 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -292,18 +292,6 @@ PositionFromID(TanBoard anBoard, const char* pchEnc)
   PositionFromKey( anBoard, auchKey );
 
   return CheckPosition( (ConstTanBoard)anBoard );
-}
-
-extern int 
-EqualKeys( const unsigned char auch0[ 10 ], const unsigned char auch1[ 10 ] ) {
-
-    int i;
-
-    for( i = 0; i < 10; i++ )
-        if( auch0[ i ] != auch1[ i ] )
-            return 0;
-    
-    return 1;
 }
  
 extern int EqualBoards( const TanBoard anBoard0, const TanBoard anBoard1 ) {
