@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.780 2009/07/07 11:21:29 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.781 2009/07/10 12:47:27 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3498,6 +3498,9 @@ extern void RunGTK( GtkWidget *pwSplash, char *commands, char *python_script, ch
 
 		/* Show everything */
 		gtk_widget_show_all( pwMain );
+
+		/* Set the default arrow cursor in the stop window so obvious it can be clicked */
+		gdk_window_set_cursor(pwStop->window, gdk_cursor_new(GDK_ARROW));
 
 		/* Make sure toolbar looks correct */
 		{
