@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.56 2009/07/17 14:04:43 Superfly_Jon Exp $
+ * $Id: progress.c,v 1.57 2009/07/20 21:26:22 c_anthon Exp $
  */
 
 #include "config.h"
@@ -273,9 +273,7 @@ static GtkWidget *GTKStatPageWin ( const rolloutstat *prs, const int cGames ) {
 	gtk_box_pack_start(GTK_BOX(pw), pwLabel, FALSE, FALSE, 4);
 
 	/* create treeview */
-	g_print("a %d\n", cGamesCount);
 	model = create_win_model(prs, cGames, &cGamesCount);
-	g_print("b %d\n", cGamesCount);
 	treeview = gtk_tree_view_new_with_model(model);
 	g_object_unref(model);
 	add_stat_columns(GTK_TREE_VIEW(treeview), _("Cube"), headers, 3);
