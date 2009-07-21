@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.411 2009/06/24 20:21:27 c_anthon Exp $
+ * $Id: backgammon.h,v 1.412 2009/07/21 09:53:08 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -797,6 +797,7 @@ extern void CommandSetOutputDigits(char *);
 extern void CommandSetOutputErrorRateFactor(char *);
 extern void CommandSetOutputMatchPC(char *);
 extern void CommandSetOutputMWC(char *);
+extern void CommandSetOutputOutput(char *sz);
 extern void CommandSetOutputRawboard(char *);
 extern void CommandSetOutputWinPC(char *);
 extern void CommandSetPanelWidth(char *);
