@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.855 2009/07/21 09:53:08 c_anthon Exp $
+ * $Id: gnubg.c,v 1.856 2009/08/03 22:00:43 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4754,6 +4754,12 @@ int main(int argc, char *argv[])
 		 N_("Ignore tty input when using the graphical interface"), NULL},
 		{"debug", 'd', 0, G_OPTION_ARG_NONE, &debug,
 		 N_("Turn on debug"), NULL},
+		{"datadir", 'D', 0, G_OPTION_ARG_STRING, &datadir,
+		 N_("Specify location of general data"), NULL},
+		{"pkgdatadir", 'P', 0, G_OPTION_ARG_STRING, &pkg_datadir,
+		 N_("Specify location of program specific data"), NULL},
+		{"docdir", 'O', 0, G_OPTION_ARG_STRING, &docdir,
+		 N_("Specify location of program documentation"), NULL},
 		{NULL, 0, 0, 0, NULL, NULL, NULL}
 	};
 	GError *error = NULL;

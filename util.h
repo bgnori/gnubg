@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.h,v 1.10 2008/06/14 22:12:23 c_anthon Exp $
+ * $Id: util.h,v 1.11 2009/08/03 22:00:44 c_anthon Exp $
  */
 
 #ifndef _UTIL_H_
@@ -24,18 +24,15 @@
 
 #include "stdio.h"
 
-#ifdef WIN32
-#define DOCDIR getDocDir()
-#define PKGDATADIR getInstallDir()
-#endif
-
-#define BuildFilename(file) g_build_filename(PKGDATADIR, file, NULL)
-#define BuildFilename2(file1, file2) g_build_filename(PKGDATADIR, file1, file2, NULL)
-
-#ifdef WIN32
-extern char *getInstallDir( void );
+extern char *datadir;
+extern char *pkg_datadir;
+extern char *docdir;
+extern char *getDataDir( void );
+extern char *getPkgDataDir( void );
 extern char *getDocDir( void );
-#endif
+
+#define BuildFilename(file) g_build_filename(getPkgDataDir(), file, NULL)
+#define BuildFilename2(file1, file2) g_build_filename(getPkgDataDir(), file1, file2, NULL)
 
 extern void PrintSystemError(const char* message);
 extern void PrintError(const char* message);

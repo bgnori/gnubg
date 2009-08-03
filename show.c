@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.256 2009/03/28 21:43:58 c_anthon Exp $
+ * $Id: show.c,v 1.257 2009/08/03 22:00:44 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2302,14 +2302,14 @@ CommandShowMatchResult( char *UNUSED(sz) ) {
 
 extern void CommandShowManualWeb (char *UNUSED(sz))
 {
-	char *path = g_build_filename(DOCDIR, "gnubg.html", NULL);
+	char *path = g_build_filename(getDocDir(), "gnubg.html", NULL);
 	OpenURL (path);
 	g_free(path);
 }
 
 extern void CommandShowManualAbout (char *UNUSED(sz))
 {
-	char *path = g_build_filename(DOCDIR, "allabout.html", NULL);
+	char *path = g_build_filename(getDocDir(), "allabout.html", NULL);
 	OpenURL (path);
 	g_free(path);
 }
