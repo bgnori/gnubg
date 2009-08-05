@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.95 2009/06/26 10:16:09 Superfly_Jon Exp $
+ * $Id: gnubgmodule.c,v 1.96 2009/08/05 16:24:12 c_anthon Exp $
  */
 
 #include "config.h"
@@ -937,12 +937,13 @@ static PyObject *PythonPositionFromBearoff( PyObject* self UNUSED_PARAM, PyObjec
 #define CHARP_HACK
 #endif
 
-static inline void
-DictSetItemSteal(PyObject* dict, const char* key, PyObject* val)
+static void DictSetItemSteal(PyObject * dict, const char *key, PyObject * val)
 {
-  int const s = PyDict_SetItemString(dict, CHARP_HACK key, val);  
-  {                                                         g_assert( s == 0 ); }
-  Py_DECREF(val);
+	int const s = PyDict_SetItemString(dict, CHARP_HACK key, val);
+	{
+		g_assert(s == 0);
+	}
+	Py_DECREF(val);
 }
 
 typedef struct {
