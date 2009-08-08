@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.57 2009/07/20 21:26:22 c_anthon Exp $
+ * $Id: progress.c,v 1.58 2009/08/08 18:13:38 c_anthon Exp $
  */
 
 #include "config.h"
@@ -263,7 +263,7 @@ static GtkWidget *GTKStatPageWin ( const rolloutstat *prs, const int cGames ) {
 	GtkWidget *treeview;
 	GtkTreeModel *model;
 	char *headers[] = {N_("Win Single\n"), N_("Win Gammon\n"), N_("Win BG\n")};
-	int cGamesCount;
+	int cGamesCount = 0;
 	char *sz;
 
 	pw = gtk_vbox_new(FALSE, 0);
