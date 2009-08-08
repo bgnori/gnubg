@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.856 2009/08/03 22:00:43 c_anthon Exp $
+ * $Id: gnubg.c,v 1.857 2009/08/08 18:09:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2232,9 +2232,8 @@ extern void find_skills(moverecord *pmr, const matchstate *pms, int did_double,
 	taketype tt = (taketype) dt;
 	GetMatchStateCubeInfo(&ci, pms);
 
-
 	if (pmr->mt != MOVE_NORMAL && pmr->mt != MOVE_DOUBLE
-	    && pmr->mt != MOVE_TAKE) {
+	    && pmr->mt != MOVE_TAKE && pmr->mt != MOVE_DROP) {
 		pmr->n.stMove = SKILL_NONE;
 		pmr->stCube = SKILL_NONE;
 		return;
@@ -2246,7 +2245,7 @@ extern void find_skills(moverecord *pmr, const matchstate *pms, int did_double,
 	if (pmr->mt == MOVE_TAKE && tt != TT_NORMAL) {
 		pmr->stCube = SKILL_NONE;
 		return;
-	}
+	} 
 
 	if (did_double == FALSE)
 		pmr->stCube = no_double_skill(pmr->CubeDecPtr->aarOutput, &ci);
