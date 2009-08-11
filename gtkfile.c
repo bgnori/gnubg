@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.52 2009/06/25 20:52:46 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.53 2009/08/11 06:40:42 mdpetch Exp $
  */
 
 #include "config.h"
@@ -88,7 +88,7 @@ char *programdir, *pc, *tmp;
     gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (fc), name);
 
 #ifdef WIN32
-  programdir = g_strdup(getInstallDir());
+  programdir = g_strdup(getDataDir());
   if ((pc = strrchr(programdir, G_DIR_SEPARATOR)) != NULL) {
           *pc = '\0';
 

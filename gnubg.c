@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.857 2009/08/08 18:09:03 c_anthon Exp $
+ * $Id: gnubg.c,v 1.858 2009/08/11 06:40:41 mdpetch Exp $
  */
 
 #include "config.h"
@@ -4230,7 +4230,7 @@ move_rc_files (void)
    * their files moved.*/
   char *olddir, *oldfile, *newfile;
 #ifdef WIN32
-  olddir = g_strdup (getInstallDir());
+  olddir = g_strdup (getDataDir());
 #else
   olddir = g_build_filename (szHomeDirectory, "..", NULL);
 #endif
@@ -4800,7 +4800,7 @@ int main(int argc, char *argv[])
 #ifdef WIN32
 	/* data directory: initialise to the path where gnubg is installed */
 	{
-		const char *szDataDirectory = getInstallDir();
+		const char *szDataDirectory = getDataDir();
 		_chdir(szDataDirectory);
 	}
 #endif
