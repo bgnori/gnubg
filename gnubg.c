@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.858 2009/08/11 06:40:41 mdpetch Exp $
+ * $Id: gnubg.c,v 1.859 2009/08/11 20:48:25 c_anthon Exp $
  */
 
 #include "config.h"
@@ -225,7 +225,6 @@ int nConfirmDefault = -1;
 int nThreadPriority = 0;
 int nToolbarStyle = 2;
 unsigned int afCheatRoll[ 2 ] = { 0, 0 };
-unsigned int cAnalysisMoves = 1;
 unsigned int cAutoDoubles = 0;
 unsigned int nBeavers = 3;
 unsigned int nDefaultLength = 7;
@@ -561,7 +560,6 @@ static char szDICE[] = N_("<die> <die>"),
     szOPTDEPTH[] = N_("[depth]"),
     szOPTFILENAME[] = N_("[filename]"),
     szOPTLENGTH[] = N_("[length]"),
-    szOPTLIMIT[] = N_("[limit]"),
     szOPTMODULUSOPTSEED[] = N_("[modulus <modulus>|factors <factor> <factor>] "
 			       "[seed]"),
     szOPTNAME[] = N_("[name]"),
@@ -3030,7 +3028,6 @@ static void SaveAnalysisSettings(FILE * pf)
 	SaveEvalSetupSettings(pf, "set analysis cubedecision", &esAnalysisCube);
 	SaveMoveFilterSettings(pf, "set analysis movefilter", aamfAnalysis);
 	SaveEvalSettings(pf, "set analysis luckanalysis", &ecLuck);
-	fprintf(pf, "set analysis limit %d\n", cAnalysisMoves);
 	fprintf(pf, "set analysis threshold bad %s\n", aszThr[0]);
 	fprintf(pf, "set analysis threshold doubtful %s\n", aszThr[1]);
 	fprintf(pf, "set analysis threshold lucky %s\n", aszThr[2]);

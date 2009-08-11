@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.211 2009/03/28 22:14:58 c_anthon Exp $
+ * $Id: analysis.c,v 1.212 2009/08/11 20:48:25 c_anthon Exp $
  */
 
 #include "config.h"
@@ -752,25 +752,6 @@ AnalyzeMove (moverecord *pmr, matchstate *pms, const listOLD *plParentGame,
 			}
 		  
 			pmr->n.stMove = Skill( rChequerSkill );
-		  
-			if( cAnalysisMoves >= 2 &&
-			pmr->ml.cMoves > cAnalysisMoves ) {
-				/* There are more legal moves than we want;
-				throw some away. */
-				if( pmr->n.iMove >= cAnalysisMoves ) {
-					/* The move made wasn't in the top n; move it up so it
-					won't be discarded. */
-					memcpy( pmr->ml.amMoves + cAnalysisMoves - 1,
-						pmr->ml.amMoves + pmr->n.iMove,
-						sizeof( move ) );
-					pmr->n.iMove = cAnalysisMoves - 1;
-				}
-			      
-				pmr->ml.amMoves = (move *)realloc( pmr->ml.amMoves,
-								cAnalysisMoves * sizeof( move ) );
-				pmr->ml.cMoves = cAnalysisMoves;
-			}
-
 			pmr->esChequer = *pesChequer;
 		}
       

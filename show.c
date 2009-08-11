@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.257 2009/08/03 22:00:44 c_anthon Exp $
+ * $Id: show.c,v 1.258 2009/08/11 20:48:26 c_anthon Exp $
  */
 
 #include "config.h"
@@ -396,10 +396,6 @@ extern void CommandShowAnalysis( char *UNUSED(sz) ) {
 
     if( fAnalyseMove ) {
 	outputl( _("Chequer play will be analysed.") );
-	if( cAnalysisMoves < 2 )
-	    outputl( _("Every legal move will be analysed.") );
-	else
-	    outputf( _("Up to %d moves will be analysed.\n"), cAnalysisMoves );
     } else
 	outputl( _("Chequer play will not be analysed.") );
 

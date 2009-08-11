@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.412 2009/07/21 09:53:08 c_anthon Exp $
+ * $Id: backgammon.h,v 1.413 2009/08/11 20:48:25 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -355,7 +355,6 @@ extern rolloutcontext rcRollout;
 extern skilltype TutorSkill;
 extern statcontext scMatch;
 extern unsigned int afCheatRoll[2];
-extern unsigned int cAnalysisMoves;
 extern unsigned int cAutoDoubles;
 extern unsigned int nBeavers;
 extern unsigned int nDefaultLength;

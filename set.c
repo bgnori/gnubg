@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.331 2009/06/24 20:21:27 c_anthon Exp $
+ * $Id: set.c,v 1.332 2009/08/11 20:48:26 c_anthon Exp $
  */
 
 #include "config.h"
@@ -303,27 +303,6 @@ extern void CommandSetAnalysisCube( char *sz ) {
 		   _("Cube action will be analysed."),
 		   _("Cube action will not be analysed.") ) >= 0 )
 	UpdateSetting( &fAnalyseCube );
-}
-
-extern void CommandSetAnalysisLimit( char *sz ) {
-    
-    int n;
-    
-    if( ( n = ParseNumber( &sz ) ) <= 1 ) {
-	cAnalysisMoves = 1;
-	outputl( _("Every legal move will be analysed.") );
-    } else if( n >= 2 ) {
-	cAnalysisMoves = n;
-	outputf( _("Up to %d moves will be analysed.\n"), n );
-    } else {
-	outputl( _("If you specify a limit on the number of moves to analyse, "
-		 "it must be at least 2.") );
-	return;
-    }
-
-    if( !fAnalyseMove )
-	outputl( _("Note that no moves will be analysed until chequer "
-		 "play analysis is enabled\n(see `help set analysis moves').") );
 }
 
 extern void CommandSetAnalysisLuck( char *sz ) {
