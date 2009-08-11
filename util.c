@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: util.c,v 1.30 2009/08/11 06:23:46 mdpetch Exp $
+ * $Id: util.c,v 1.31 2009/08/11 08:13:00 c_anthon Exp $
  */
 
 #include "config.h"
@@ -84,21 +84,19 @@ extern char *getPkgDataDir(void)
 #ifndef WIN32
 		pkg_datadir = g_strdup(PKGDATADIR);
 #else
-		pkg_datadir = g_build_filename(getDataDir(), "doc", NULL);
+		pkg_datadir = g_build_filename(getDataDir(), NULL);
 #endif
 	return pkg_datadir;
 }
 
 extern char *getDocDir(void)
 {
-		g_print("docdir %s\n", docdir);
 	if (!docdir)
 #ifndef WIN32
 		docdir = g_strdup(DOCDIR);
 #else
 		docdir = g_build_filename(getDataDir(), "doc", NULL);
 #endif
-		g_print("docdir %s\n", docdir);
 	return docdir;
 }
 
