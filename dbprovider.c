@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.22 2009/06/17 08:03:38 Superfly_Jon Exp $
+ * $Id: dbprovider.c,v 1.23 2009/08/13 20:09:20 mdpetch Exp $
  */
 
 #include "config.h"
@@ -33,6 +33,7 @@
 #include <glib/gstdio.h>
 #include <string.h>
 #include "dbprovider.h"
+#include <assert.h>
 
 DBProviderType dbProviderType = (DBProviderType)0;
 int storeGameStats = TRUE;

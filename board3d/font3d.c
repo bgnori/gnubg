@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: font3d.c,v 1.25 2009/03/02 23:20:31 Superfly_Jon Exp $
+* $Id: font3d.c,v 1.26 2009/08/13 20:09:20 mdpetch Exp $
 */
 
 #include "config.h"
@@ -27,6 +27,7 @@
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
+#include <assert.h>
 
 struct _OGLFont
 {
