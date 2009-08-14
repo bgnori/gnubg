@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.212 2009/08/11 20:48:25 c_anthon Exp $
+ * $Id: analysis.c,v 1.213 2009/08/14 05:30:32 mdpetch Exp $
  */
 
 #include "config.h"
@@ -2254,7 +2254,14 @@ static void cmark_move_set(moverecord *pmr, gchar *sz, CMark cmark)
 
 	c = pmr->ml.cMoves;
 
+/* Mike Petch - This is a hack and is not thread safe under GLIB version < 2.12.5
+		Was added to allow cygwin to compile */
+
+#if GLIB_CHECK_VERSION(2,12,5)
 	while ((n = (int)g_ascii_strtoll(sz, &sz, 10)) != 0) {
+#else
+	while ((n = (int)strtoll(sz, &sz, 10)) != 0) {
+#endif
 		if (n > c) {
 			outputerrf("Only %d moves in movelist\n", c);
 			g_slist_free(list);
