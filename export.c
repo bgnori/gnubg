@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.64 2009/03/24 23:42:16 c_anthon Exp $
+ * $Id: export.c,v 1.65 2009/08/15 10:12:09 mdpetch Exp $
  */
 
 #include "config.h"
@@ -42,7 +42,7 @@
 #include "boardpos.h"
 #include "boarddim.h"
 
-#if HAVE_CAIRO
+#if HAVE_PANGOCAIRO
 #include <cairo.h>
 #include <cairo-svg.h>
 #include <cairo-pdf.h>
