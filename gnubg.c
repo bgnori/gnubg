@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.861 2009/08/22 07:55:33 c_anthon Exp $
+ * $Id: gnubg.c,v 1.862 2009/08/22 20:42:19 c_anthon Exp $
  */
 
 #include "config.h"
@@ -158,6 +158,7 @@ int fReadingCommand;
 #endif
 #endif
 
+static int loading_rc = FALSE;
 static int foutput_on = TRUE;
 const char *intro_string =
     N_("This program comes with ABSOLUTELY NO WARRANTY; for details type `show warranty'.\n"
@@ -1251,7 +1252,7 @@ extern void HandleCommand( char *sz, command *ac )
 	if( !StrNCaseCmp( pch, pc->sz, cch ) )
 	    break;
 
-    if( !pc->sz ) {
+    if( !pc->sz && !loading_rc) {
 	outputerrf( _("Unknown keyword `%s'.\n"), pch );
 	return;
     }
@@ -2797,6 +2798,7 @@ static void LoadRCFiles(void)
 {
 	char *sz, *szz;
 
+	loading_rc = TRUE;
 	outputoff();
 	sz = g_build_filename(szHomeDirectory, "gnubgautorc", NULL);
 	szz = g_strdup_printf("'%s'", sz);
@@ -2813,6 +2815,7 @@ static void LoadRCFiles(void)
 	g_free(szz);
 
 	outputon();
+	loading_rc = TRUE;
 }
 
 
