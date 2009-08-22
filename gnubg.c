@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.860 2009/08/21 16:24:35 c_anthon Exp $
+ * $Id: gnubg.c,v 1.861 2009/08/22 07:55:33 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2225,7 +2225,7 @@ static skilltype move_skill(moverecord *pmr)
 {
 	move *move_i;
 	move *move_0;
-	if (pmr->n.iMove >= pmr->ml.cMoves || pmr->ml.amMoves)
+	if (pmr->n.iMove >= pmr->ml.cMoves || !pmr->ml.amMoves)
 		return SKILL_NONE;
 	move_i = &pmr->ml.amMoves[pmr->n.iMove];
 	move_0 = &pmr->ml.amMoves[0];
