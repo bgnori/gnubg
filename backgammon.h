@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.413 2009/08/11 20:48:25 c_anthon Exp $
+ * $Id: backgammon.h,v 1.414 2009/08/22 21:08:14 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -841,7 +841,6 @@ extern void CommandSetRolloutJsd(char *);
 extern void CommandSetRolloutJsdEnable(char *);
 extern void CommandSetRolloutJsdLimit(char *);
 extern void CommandSetRolloutJsdMinGames(char *);
-extern void CommandSetRolloutJsdMoveEnable(char *);
 extern void CommandSetRolloutLate(char *);
 extern void CommandSetRolloutLateChequerplay(char *);
 extern void CommandSetRolloutLateCubedecision(char *);

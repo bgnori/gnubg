@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.332 2009/08/11 20:48:26 c_anthon Exp $
+ * $Id: set.c,v 1.333 2009/08/22 21:08:14 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1732,22 +1732,11 @@ extern void
 CommandSetRolloutJsdEnable ( char *sz )
 {
   int s = prcSet->fStopOnJsd;
-  if( SetToggle( "stop rollout when one move appears "
-		 "to have a higher equity", &s, sz,
-	     _("Stop rollout based on JSDs"),
-		 _("Do not stop rollout based on JSDs")) != -1 ) {
+  if( SetToggle( "stop rollout of choices which appear to  "
+		 "to be worse with statistical certainty", &s, sz,
+		 _("Stop rollout of choices based on JSDs"),
+		 _("Do not stop rollout of moves choices on JSDs")) != -1 ) {
     prcSet->fStopOnJsd = s;
-  }
-}
-
-extern void CommandSetRolloutJsdMoveEnable ( char *sz ) {
-  int s = prcSet->fStopMoveOnJsd;
-  
-  if( SetToggle( "stop rollout of moves which appear to  "
-		 "to have a lowerer equity", &s, sz,
-		 _("Stop rollout of moves based on JSDs"),
-		 _("Do not stop rollout of moves based on JSDs")) != -1 ) {
-    prcSet->fStopMoveOnJsd = s;
   }
 }
 

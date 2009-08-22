@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.38 2009/04/26 21:03:32 c_anthon Exp $
+ * $Id: format.c,v 1.39 2009/08/22 21:08:14 c_anthon Exp $
  */
 
 #include "config.h"
@@ -392,13 +392,13 @@ OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc ) {
 
   strcat ( sz, "\n" );
 
-   if ( ( prc->fStopOnJsd || prc->fStopMoveOnJsd || prc->fStopOnSTD )
+   if ( ( prc->fStopOnJsd || prc->fStopOnSTD )
         && szIndent && *szIndent )
      strcat ( sz, szIndent );
 
     /* stop on std.err */
 
-   if ( prc->fStopOnSTD && !prc->fStopMoveOnJsd )
+   if ( prc->fStopOnSTD && !prc->fStopOnJsd )
    {
     sprintf( strchr( sz, 0 ),
              _("Stop when std.errs. are small enough: ratio "
@@ -408,7 +408,7 @@ OutputRolloutContext ( const char *szIndent, const rolloutcontext *prc ) {
    }
 
    /* stop on JSD */
-   if ( prc->fStopOnJsd || prc->fStopMoveOnJsd )
+   if ( prc->fStopOnJsd )
    {
      sprintf( strchr( sz, 0 ),
               _("Stop when best play is enough JSDs ahead: limit "
