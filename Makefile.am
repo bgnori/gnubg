@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.218 2009/08/08 11:45:02 c_anthon Exp $
+## $Id: Makefile.am,v 1.219 2009/08/30 20:56:32 Superfly_Jon Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -45,6 +45,7 @@ gnubg_SOURCES = \
 		dice.h \
 		drawboard.c \
 		drawboard.h \
+		evallock.c \
 		eval.c \
 		eval.h \
 		export.c \

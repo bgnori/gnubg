@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  * 
- * $Id: multithread.c,v 1.66 2009/06/29 19:28:33 Superfly_Jon Exp $
+ * $Id: multithread.c,v 1.67 2009/08/30 20:56:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -408,6 +408,26 @@ void MT_SetNumThreads(unsigned int num)
 			MT_CloseThreads();
 		td.numThreads = num;
 		MT_CreateThreads();
+		if (num == 1)
+		{	/* No locking in evals */
+			EvaluatePosition = EvaluatePositionNoLocking;
+			GeneralCubeDecisionE = GeneralCubeDecisionENoLocking;
+			GeneralEvaluationE = GeneralEvaluationENoLocking;
+			ScoreMove = ScoreMoveNoLocking;
+			FindBestMove = FindBestMoveNoLocking;
+			FindnSaveBestMoves = FindnSaveBestMovesNoLocking;
+			BasicCubefulRollout = BasicCubefulRolloutNoLocking;
+		}
+		else
+		{	/* Locking version of evals */
+			EvaluatePosition = EvaluatePositionWithLocking;
+			GeneralCubeDecisionE = GeneralCubeDecisionEWithLocking;
+			GeneralEvaluationE = GeneralEvaluationEWithLocking;
+			ScoreMove = ScoreMoveWithLocking;
+			FindBestMove = FindBestMoveWithLocking;
+			FindnSaveBestMoves = FindnSaveBestMovesWithLocking;
+			BasicCubefulRollout = BasicCubefulRolloutWithLocking;
+		}
 	}
 }
 
