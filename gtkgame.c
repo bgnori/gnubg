@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.786 2009/09/01 17:54:52 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.787 2009/09/01 19:13:55 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3119,7 +3119,7 @@ static void Stop( GtkWidget *pw, gpointer unused )
 	gtk_statusbar_push( GTK_STATUSBAR( pwStatus ), idOutput, _("Process interrupted") );
 }
 
-static gboolean StopAnyAnimations()
+static gboolean StopAnyAnimations(void)
 {
 	BoardData *bd = BOARD( pwBoard )->board_data;
 #if USE_BOARD3D

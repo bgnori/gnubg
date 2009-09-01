@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.381 2009/09/01 18:28:37 Superfly_Jon Exp $
+ * $Id: eval.c,v 1.382 2009/09/01 19:13:55 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5605,15 +5605,6 @@ NNState nnStatesStorage[MAX_NUMTHREADS][3];
 #else
 static NNState nnStatesStorage[3];
 #endif
-extern int CompareMoves(const move *pm0, const move *pm1);
-extern float EvalEfficiency( const TanBoard anBoard, positionclass pc );
-extern float Cl2CfMoney ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci, float rCubeX );
-extern float Cl2CfMatch ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci, float rCubeX );
-extern float Noise( const evalcontext* pec, const TanBoard anBoard, int iOutput );
-extern int EvalKey ( const evalcontext *pec, const int nPlies, const cubeinfo *pci, int fCubefulEquity );
-extern void MakeCubePos( const cubeinfo aciCubePos[], const int cci, const int fTop, cubeinfo aci[], const int fInvert );
-extern void GetECF3 ( float arCubeful[], int cci, float arCf[], cubeinfo aci[] );
-extern int EvaluatePerfectCubeful ( const TanBoard anBoard, float arEquity[], const bgvariation bgv );
 #endif
 
 static int GeneralEvaluationEPlied (NNState *nnStates, float arOutput [ NUM_ROLLOUT_OUTPUTS ],
@@ -6235,7 +6226,7 @@ GeneralEvaluationE( float arOutput [ NUM_ROLLOUT_OUTPUTS ],
 }
 
 
-extern int 
+static int 
 GeneralEvaluationEPliedCubeful ( NNState *nnStates, float arOutput [ NUM_ROLLOUT_OUTPUTS ],
                                  const TanBoard anBoard,
                                  const cubeinfo* pci, const evalcontext* pec,

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.165 2009/09/01 17:54:51 Superfly_Jon Exp $
+ * $Id: eval.h,v 1.166 2009/09/01 19:13:55 c_anthon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -604,4 +604,15 @@ baseInputs(const TanBoard anBoard, float arInput[]);
 extern void 
 CalculateRaceInputs(const TanBoard anBoard, float inputs[]);
 
+
+extern float Noise( const evalcontext* pec, const TanBoard anBoard, int iOutput );
+extern int CompareMoves(const move *pm0, const move *pm1);
+extern float EvalEfficiency( const TanBoard anBoard, positionclass pc );
+extern float Cl2CfMoney ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci, float rCubeX );
+extern float Cl2CfMatch ( float arOutput [ NUM_OUTPUTS ], cubeinfo *pci, float rCubeX );
+extern float Noise( const evalcontext* pec, const TanBoard anBoard, int iOutput );
+extern int EvalKey ( const evalcontext *pec, const int nPlies, const cubeinfo *pci, int fCubefulEquity );
+extern void MakeCubePos( const cubeinfo aciCubePos[], const int cci, const int fTop, cubeinfo aci[], const int fInvert );
+extern void GetECF3 ( float arCubeful[], int cci, float arCf[], cubeinfo aci[] );
+extern int EvaluatePerfectCubeful ( const TanBoard anBoard, float arEquity[], const bgvariation bgv );
 #endif
