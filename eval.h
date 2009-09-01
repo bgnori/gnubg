@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.164 2009/08/30 20:56:32 Superfly_Jon Exp $
+ * $Id: eval.h,v 1.165 2009/09/01 17:54:51 Superfly_Jon Exp $
  */
 
 #ifndef _EVAL_H_
@@ -96,12 +96,7 @@ typedef struct {
        classes */
     unsigned int fCubeful : 1; /* cubeful evaluation */
     unsigned int nPlies   : 3;
-#if defined( REDUCTION_CODE )
-    unsigned int nReduced : 3; /* this will need to be expanded if we add
-				  support for nReduced != 3 */
-#else
     unsigned int fUsePrune : 1;
-#endif
     unsigned int fDeterministic : 1;
     float        rNoise;       /* standard deviation */
 } evalcontext;
@@ -116,11 +111,7 @@ typedef struct {
    data is present in the file based on the version number
 */
 
-#if defined( REDUCTION_CODE )
-#define SGF_FORMAT_VER 2
-#else
 #define SGF_FORMAT_VER 3
-#endif
 
 typedef struct {
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.96 2009/08/05 16:24:12 c_anthon Exp $
+ * $Id: gnubgmodule.c,v 1.97 2009/09/01 17:54:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -239,16 +239,9 @@ PyToCubeInfo( PyObject *p, cubeinfo *pci ) {
 static PyObject*
 EvalContextToPy( const evalcontext* pec)
 {
-  return Py_BuildValue( "{s:i,s:i"
-#if defined( REDUCTION_CODE )
-			",s:i"
-#endif
-			",s:i,s:f}",
+  return Py_BuildValue( "{s:i,s:i,s:i,s:f}",
                         "cubeful", pec->fCubeful,
                         "plies", pec->nPlies,
-#if defined( REDUCTION_CODE )
-                        "reduced", pec->nReduced,
-#endif
                         "deterministic", pec->fDeterministic,
                         "noise", pec->rNoise );
 }
@@ -305,9 +298,6 @@ PyToEvalContext( PyObject *p, evalcontext *pec ) {
       else if ( iKey == 1 )
         pec->nPlies = ( i < 8 ) ? i : 7;
       else if ( iKey == 2 ) {
-#if defined( REDUCTION_CODE )
-        pec->nReduced = ( i < 8 ) ? i : 7;
-#endif
       } else 
         pec->fDeterministic = i ? 1 : 0;
 
@@ -402,9 +392,6 @@ PythonEvalContext( PyObject* self UNUSED_PARAM, PyObject *args ) {
 
   ec.fCubeful = fCubeful ? 1 : 0;
   ec.nPlies = ( nPlies < 8 ) ? nPlies : 7;
-#if defined( REDUCTION_CODE )
-  ec.nReduced = ( nReduced < 8 ) ? nReduced : 7;
-#endif
   ec.fDeterministic = fDeterministic ? 1 : 0;
   ec.rNoise = rNoise;
                            
@@ -975,12 +962,6 @@ diffContext(const evalcontext* c, PyMatchState* ms)
     if( c->nPlies != s->nPlies ) {
       DictSetItemSteal(context, "plies", PyInt_FromLong(c->nPlies));
     }
-
-#if defined( REDUCTION_CODE )
-    if( c->nReduced != s->nReduced ) {
-      DictSetItemSteal(context, "reduced", PyInt_FromLong(c->nReduced));
-    }
-#endif
 
     if( c->fDeterministic != s->fDeterministic ) {
       DictSetItemSteal(context, "deterministic",

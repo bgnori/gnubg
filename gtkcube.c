@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.72 2009/03/28 22:14:59 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.73 2009/09/01 17:54:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -762,11 +762,7 @@ CubeAnalysisEvalPly ( GtkWidget *pw, cubehintdata *pchd ) {
   evalcontext ec = {0, 0, 0, TRUE, 0.0};
 
   ec.fCubeful = esAnalysisCube.ec.fCubeful;
-#if defined( REDUCTION_CODE )
-  ec.nReduced = esAnalysisCube.ec.nReduced;
-#else
   ec.fUsePrune = esAnalysisCube.ec.fUsePrune;
-#endif
   ec.nPlies = atoi ( szPly );
 
   EvalCube ( pchd, &ec );

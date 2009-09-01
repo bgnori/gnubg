@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.56 2009/03/02 23:01:30 Superfly_Jon Exp $
+ * $Id: gtktheory.c,v 1.57 2009/09/01 17:54:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -93,14 +93,8 @@ typedef struct _theorywidget {
 static void ResetTheory(GtkWidget *UNUSED(pw), theorywidget *ptw)
 {
   float aarRates[ 2 ][ 2 ];
-#if defined(REDUCTION_CODE)
-  evalcontext ec = { FALSE, 0, 0, TRUE, 0.0 };
-#else
   evalcontext ec = { FALSE, 0, FALSE, TRUE, 0.0 };
-#endif
-  
   float arOutput[ NUM_OUTPUTS ];
-
   int i,j;
 
   /* get current gammon rates */
@@ -557,12 +551,7 @@ PlyClicked( GtkWidget *pw, theorywidget *ptw ) {
   int f = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pw ) );
   cubeinfo ci;
   decisionData dd;
-#if defined (REDUCTION_CODE)
-  evalcontext ec = { FALSE, 0, 0, TRUE, 0.0 };
-#else
   evalcontext ec = { FALSE, 0, FALSE, TRUE, 0.0 };
-#endif
-
   int i, j;
 
   if ( !f )

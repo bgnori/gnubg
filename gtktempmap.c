@@ -20,7 +20,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.43 2009/05/08 07:50:09 Superfly_Jon Exp $
+ * $Id: gtktempmap.c,v 1.44 2009/09/01 17:54:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -451,11 +451,8 @@ static void
 TempMapPlyToggled( GtkWidget *pw, tempmapwidget *ptmw ) {
 
   int *pi = (int *) g_object_get_data( G_OBJECT( pw ), "user_data" );
-#if defined(REDUCTION_CODE)
-  evalcontext ec = { TRUE, 0, 0, TRUE, 0.0 };
-#else
+
   evalcontext ec = { TRUE, 0, FALSE, TRUE, 0.0 };
-#endif
   
   if ( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( pw ) ) ) {
 
@@ -524,11 +521,7 @@ extern void
 GTKShowTempMap( const matchstate ams[], const int n,
                 const gchar *aszTitle[], const int fInvert ) {
 
-#if defined(REDUCTION_CODE)
-  evalcontext ec = { TRUE, 0, 0, TRUE, 0.0 };
-#else
   evalcontext ec = { TRUE, 0, FALSE, TRUE, 0.0 };
-#endif
 
   tempmapwidget *ptmw;
   int *pi;

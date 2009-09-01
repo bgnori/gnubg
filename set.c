@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.333 2009/08/22 21:08:14 c_anthon Exp $
+ * $Id: set.c,v 1.334 2009/09/01 17:54:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -967,7 +967,6 @@ CommandSetEvalCubeful( char *sz ) {
     pecSet->fCubeful = f;
 }
 
-#if !defined(REDUCTION_CODE)
 extern void 
 CommandSetEvalPrune( char *sz ) {
 
@@ -980,7 +979,6 @@ CommandSetEvalPrune( char *sz ) {
     SetToggle( szCommand, &f, sz, asz[ 0 ], asz[ 1 ] );
     pecSet->fUsePrune = f;
 }
-#endif
 
 extern void CommandSetEvalDeterministic( char *sz ) {
 
@@ -1033,47 +1031,6 @@ extern void CommandSetEvalPlies( char *sz ) {
 
     outputf( _("%s will use %d ply evaluation.\n"), szSet, pecSet->nPlies );
 }
-
-#if defined( REDUCTION_CODE )
-extern void CommandSetEvalReduced( char *sz ) {
-
-    int n = ParseNumber( &sz );
-
-    switch ( n ) {
-    case 0:
-    case 1:
-    case 21: 
-    case 100: /* full search */
-      pecSet->nReduced = 0;
-      break;
-    case 2:
-    case 50: /* 50% */
-      pecSet->nReduced = 2;
-      break;
-    case 4:
-    case 25: /* 25% */
-      pecSet->nReduced = 4;
-      break;
-    case 3:
-    case 33: /* 33% */
-      pecSet->nReduced = 3;
-      break;
-    default:
-      outputf( _("You must specify a valid number "
-                 "(see `help set %s reduced').\n"), szSetCommand );
-      return;
-      break;
-    }
-
-    outputf( _("%s will use %d%% speed multiple ply evaluation.\n"), 
-	     szSet, 
-	     pecSet->nReduced ? 100 / pecSet->nReduced : 100 );
-
-    if( !pecSet->nPlies )
-	outputl( _("(Note that this setting will have no effect until you "
-		 "choose evaluations with ply > 0.)") );
-}
-#endif
 
 #if USE_GTK
 extern void CommandSetGUIAnimationBlink( char *sz ) {

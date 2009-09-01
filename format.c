@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.39 2009/08/22 21:08:14 c_anthon Exp $
+ * $Id: format.c,v 1.40 2009/09/01 17:54:51 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -122,16 +122,9 @@ OutputEvalContext ( const evalcontext *pec, const int fChequer ) {
             pec->nPlies, _("ply"),
             ( ! fChequer || pec->fCubeful ) ? _("cubeful") : _("cubeless") );
 
-#if defined( REDUCTION_CODE )
-  if ( pec->nPlies == 2 ) 
-    sprintf ( pc = strchr ( sz, 0 ),
-              " %d%% speed",
-              (pec->nReduced) ? 100 / pec->nReduced : 100 );
-#else
   if( pec->fUsePrune ) {
     sprintf( pc = strchr ( sz, 0 ), " prune" );
   }
-#endif
 	    
   if ( fChequer && pec->nPlies ) {
     /* FIXME: movefilters!!! */

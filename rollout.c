@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.217 2009/08/30 20:56:32 Superfly_Jon Exp $
+ * $Id: rollout.c,v 1.218 2009/09/01 17:54:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -383,13 +383,9 @@ extern int BasicCubefulRollout ( unsigned int aanBoard[][ 2 ][ 25 ],
   int aanMoves[ 6 ][ 6 ][ 8 ];
   float aaar[ 6 ][ 6 ][ NUM_ROLLOUT_OUTPUTS ];
 
-#if defined(REDUCTION_CODE)
-  evalcontext ecCubeless0ply = { FALSE, 0, 0, TRUE, 0.0 };
-  evalcontext ecCubeful0ply = { TRUE, 0, 0, TRUE, 0.0 };
-#else
   evalcontext ecCubeless0ply = { FALSE, 0, FALSE, TRUE, 0.0 };
   evalcontext ecCubeful0ply = { TRUE, 0, FALSE, TRUE, 0.0 };
-#endif
+
   /* local pointers to the eval contexts to use */
   evalcontext *pecCube[2], *pecChequer[2];
 
