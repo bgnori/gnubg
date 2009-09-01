@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.277 2009/06/24 18:38:45 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.278 2009/09/01 17:24:48 Superfly_Jon Exp $
  */
 
 /*! \file gtkboard.c
@@ -2993,7 +2993,8 @@ extern gint game_set( Board *board, TanBoard points, int roll,
 	       opp_score, die0, die1, ms.nCube, ms.fCubeOwner, ms.fDoubled,
 	       ms.fTurn, ms.fCrawford, nchequers );
 
-    board_set( board, board_str, ms.fResigned ==-1 ? 0 : -bd->turn * ms.fResigned, ms.fCubeUse );
+	if (GTK_WIDGET_REALIZED(pwMain))
+		board_set( board, board_str, ms.fResigned ==-1 ? 0 : -bd->turn * ms.fResigned, ms.fCubeUse );
 
     /* FIXME update names, score, match length */
     if( bd->rd->nSize <= 0 )
