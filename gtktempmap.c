@@ -20,7 +20,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.44 2009/09/01 17:54:52 Superfly_Jon Exp $
+ * $Id: gtktempmap.c,v 1.45 2009/09/02 19:32:21 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -379,7 +379,7 @@ static void ExposeQuadrant(GtkWidget * pw, GdkEventExpose *UNUSED(pev), tempmapw
 		y = 2 +(pw->allocation.height - 4) / 10.0f;
 
 	description = pango_font_description_from_string("sans");
-	pango_font_description_set_size(description, pw->allocation.width * PANGO_SCALE / 8);
+	pango_font_description_set_size(description, pw->allocation.height * PANGO_SCALE / 8);
 	layout = gtk_widget_create_pango_layout(pw, NULL);
 	pango_layout_set_font_description(layout, description);
 	do
