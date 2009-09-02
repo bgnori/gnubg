@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.98 2009/08/29 20:19:58 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.99 2009/09/02 21:39:02 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -485,7 +485,6 @@ static void append_tutor_options(optionswidget *pow)
 	GtkWidget *pwp;
 	GtkWidget *pwvbox;
 	GtkWidget *pwf;
-	GtkWidget *pwb;
 	GtkWidget *pwev;
 	GtkWidget *pwhbox;
 	char **ppch;
@@ -517,11 +516,6 @@ static void append_tutor_options(optionswidget *pow)
 	gtk_box_pack_start(GTK_BOX(pwvbox), pow->pwTutorChequer, FALSE, FALSE, 0);
 	gtk_widget_set_tooltip_text(pow->pwTutorChequer,
 				    _("Use the tutor for chequer play decisions."));
-
-	gtk_box_pack_start(GTK_BOX(pwvbox), pwf, TRUE, TRUE, 0);
-	gtk_container_set_border_width(GTK_CONTAINER(pwf), 4);
-	pwb = gtk_vbox_new(FALSE, 0);
-	gtk_container_add(GTK_CONTAINER(pwf), pwb);
 
 	pwev = gtk_event_box_new();
 	gtk_event_box_set_visible_window(GTK_EVENT_BOX(pwev), FALSE);
