@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.104 2009/09/01 17:54:52 Superfly_Jon Exp $
+ * $Id: gtkchequer.c,v 1.105 2009/09/04 11:06:33 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -235,7 +235,9 @@ MoveListMWC ( GtkWidget *pw, hintdata *phd )
 
   gtk_toggle_button_set_active ( GTK_TOGGLE_BUTTON ( pw ), fOutputMWC );
 
+  /* Make sure display is up to date */
   MoveListUpdate ( phd );
+  SetAnnotation(pmrCurAnn);
 
 }
 
