@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.377 2009/09/01 17:54:52 Superfly_Jon Exp $
+ * $Id: play.c,v 1.378 2009/09/04 10:01:12 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3854,7 +3854,7 @@ extern void SetMatchID(const char *szMatchID)
 	int anScore[2];
 	unsigned int anDice[2];
 	int nMatchTo, fCubeOwner, fMove, fCrawford, nCube;
-	int fTurn, fDoubled, fResigned;
+	int fTurn, fDoubled, fResigned, oneAway;
 	gamestate gs;
 	char szID[15];
 	moverecord *pmr;
@@ -3903,9 +3903,9 @@ extern void SetMatchID(const char *szMatchID)
 	ms.nMatchTo = nMatchTo;
 	ms.anScore[0] = anScore[0];
 	ms.anScore[1] = anScore[1];
-	ms.fCrawford = fCrawford;
-	ms.fPostCrawford = !fCrawford &&
-	    ((anScore[0] == nMatchTo - 1) || (anScore[1] == nMatchTo - 1));
+	oneAway = (anScore[0] == nMatchTo - 1) || (anScore[1] == nMatchTo - 1);
+	ms.fCrawford = fCrawford && oneAway;
+	ms.fPostCrawford = !fCrawford && oneAway;
 	ms.bgv = bgvDefault;	/* FIXME: include bgv in match ID */
 	ms.fCubeUse = fCubeUse;	/* FIXME: include cube use in match ID */
 	ms.fJacoby = fJacoby;	/* FIXME: include Jacoby in match ID */

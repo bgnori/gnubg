@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.278 2009/09/01 17:24:48 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.279 2009/09/04 10:01:12 Superfly_Jon Exp $
  */
 
 /*! \file gtkboard.c
@@ -3448,7 +3448,7 @@ extern void board_edit( BoardData *bd )
 
           if ( nMatchToNew )
             for ( i = 0; i < 2; ++i )
-              if ( anScoreNew[ i ] > nMatchToNew )
+              if ( anScoreNew[ i ] >= nMatchToNew )
                 anScoreNew[ i ] = 0;
 	  if ( (bd->diceRoll[0] > 6) || (bd->diceRoll[1] > 6)) {
 	    bd->diceRoll[0] = bd->diceRoll[1] = 0;
