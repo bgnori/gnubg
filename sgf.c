@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.130 2009/09/01 17:54:52 Superfly_Jon Exp $
+ * $Id: sgf.c,v 1.131 2009/09/04 06:15:54 mdpetch Exp $
  */
 
 #include "config.h"
@@ -952,7 +952,7 @@ static void RestoreMarkedMoves(property * pp, movelist * pml)
 	int val;
 	char *pch = pp->pl->plNext->p;
 	while ((val = strtol(pch, &pch, 10))) {
-		if (val >= (int) pml->cMoves || val < 0)
+		if (val > (int) pml->cMoves || val < 1)
 			continue;
 		pml->amMoves[val-1].cmark = CMARK_ROLLOUT;
 	}
