@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.74 2009/09/17 17:39:52 Superfly_Jon Exp $
+ * $Id: gtkcube.c,v 1.75 2009/09/17 22:41:28 c_anthon Exp $
  */
 
 #include "config.h"
@@ -195,7 +195,13 @@ TakeAnalysis(cubehintdata *pchd) {
 
     case EVAL_ROLLOUT:
 
-      /* FIXME: */
+      pw = OutputPercentsTable( cdec->aarOutput[ 1 ] );
+      gtk_table_attach ( GTK_TABLE ( pwTable ), pw,
+                         0, 4, iRow, iRow + 1, 
+                         GTK_EXPAND | GTK_FILL, 
+                         GTK_EXPAND | GTK_FILL, 
+                         8, 4 );
+      iRow++;
 
       break;
 
