@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.73 2009/09/01 17:54:52 Superfly_Jon Exp $
+ * $Id: gtkcube.c,v 1.74 2009/09/17 17:39:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -772,7 +772,7 @@ CubeAnalysisEvalPly ( GtkWidget *pw, cubehintdata *pchd ) {
 static void
 CubeAnalysisEval ( GtkWidget *UNUSED(pw), cubehintdata *pchd ) {
 
-  EvalCube ( pchd, &esEvalCube.ec );
+  EvalCube ( pchd, &GetEvalCube()->ec );
 
 }
 
@@ -780,7 +780,7 @@ static void
 CubeAnalysisEvalSettings ( GtkWidget *pw, void *UNUSED(data) )
 {
 	GTKSetCurrentParent(pw);
-	SetEvaluation ( NULL, 0, NULL );
+	SetAnalysis ( NULL, 0, NULL );
 
   /* bring the dialog holding this button to the top */
   gtk_window_present ( GTK_WINDOW ( gtk_widget_get_toplevel( pw ) ) );

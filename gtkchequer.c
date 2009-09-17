@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.106 2009/09/12 19:43:12 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.107 2009/09/17 17:39:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -295,7 +295,7 @@ EvalMoves ( hintdata *phd, evalcontext *pec )
 static void
 MoveListEval ( GtkWidget *UNUSED(pw), hintdata *phd )
 {
-  EvalMoves ( phd, &esEvalChequer.ec );
+  EvalMoves ( phd, &GetEvalChequer()->ec );
 }
 
 static void
@@ -315,7 +315,7 @@ static void
 MoveListEvalSettings ( GtkWidget *pw, void *UNUSED(unused) )
 {
 	GTKSetCurrentParent(pw);
-  SetEvaluation ( NULL, 0, NULL );
+	SetAnalysis ( NULL, 0, NULL );
 
   /* bring the dialog holding this button to the top */
   gtk_window_present ( GTK_WINDOW ( gtk_widget_get_toplevel( pw ) ) );

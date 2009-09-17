@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.414 2009/08/22 21:08:14 c_anthon Exp $
+ * $Id: backgammon.h,v 1.415 2009/09/17 17:39:52 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -303,6 +303,9 @@ extern evalsetup esAnalysisChequer;
 extern evalsetup esAnalysisCube;
 extern evalsetup esEvalChequer;
 extern evalsetup esEvalCube;
+extern int fEvalSameAsAnalysis;
+extern evalsetup *GetEvalChequer();
+extern evalsetup *GetEvalCube();
 extern float arLuckLevel[N_LUCKS];
 extern float arSkillLevel[N_SKILLS];
 extern float rEvalsPerSec;
@@ -350,6 +353,8 @@ extern matchstate ms;
 extern ConstTanBoard msBoard(void);
 extern movefilter aamfAnalysis[MAX_FILTER_PLIES][MAX_FILTER_PLIES];
 extern movefilter aamfEval[MAX_FILTER_PLIES][MAX_FILTER_PLIES];
+typedef movefilter TmoveFilter[MAX_FILTER_PLIES][MAX_FILTER_PLIES];
+extern TmoveFilter *GetEvalMoveFilter();
 extern player ap[2];
 extern rolloutcontext rcRollout;
 extern skilltype TutorSkill;
@@ -706,6 +711,7 @@ extern void CommandSetEvalNoise(char *);
 extern void CommandSetEvalParamEvaluation(char *);
 extern void CommandSetEvalParamRollout(char *);
 extern void CommandSetEvalParamType(char *);
+extern void CommandSetEvalSameAsAnalysis(char *);
 extern void CommandSetEvalPlies(char *);
 extern void CommandSetEvalPrune(char *);
 extern void CommandSetEvalReduced(char *);

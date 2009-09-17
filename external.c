@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.66 2009/09/01 17:54:51 Superfly_Jon Exp $
+ * $Id: external.c,v 1.67 2009/09/17 17:39:52 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -492,7 +492,7 @@ ExtFIBSBoard( extcmd *pec ) {
       /* take decision */
       if( GeneralCubeDecision( aarOutput, aarStdDev,
                                aarsStatistics, (ConstTanBoard)anBoard, &ci,
-                               &esEvalCube, NULL, NULL ) < 0 )
+                               GetEvalCube(), NULL, NULL ) < 0 )
         return NULL;
 	  
       switch( FindCubeDecision( arDouble,  aarOutput, &ci )) {
@@ -540,8 +540,8 @@ ExtFIBSBoard( extcmd *pec ) {
       /* move */
       char szMove[ 64 ];
       if( FindBestMove( anMove, anDice[ 0 ], anDice[ 1 ],
-                        anBoard, &ci, &esEvalChequer.ec,
-                        aamfEval ) < 0 )
+                        anBoard, &ci, &GetEvalChequer()->ec,
+                        *GetEvalMoveFilter() ) < 0 )
         return NULL;
 
       FormatMovePlain( szMove, anBoardOrig, anMove );
@@ -550,7 +550,7 @@ ExtFIBSBoard( extcmd *pec ) {
       /* double decision */
       if( GeneralCubeDecision( aarOutput, aarStdDev,
                                aarsStatistics, (ConstTanBoard)anBoard, &ci,
-                               &esEvalCube, NULL, NULL ) < 0 )
+                               GetEvalCube(), NULL, NULL ) < 0 )
         return NULL;
 		
       switch( FindCubeDecision( arDouble,  aarOutput, &ci )) {

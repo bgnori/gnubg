@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.143 2009/03/25 10:07:40 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.144 2009/09/17 17:39:53 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -159,7 +159,7 @@ extern void RefreshGeometries(void);
 extern void RunGTK(GtkWidget * pwSplash, char *commands,
 		   char *python_script, char *match);
 extern void SetAnnotation(moverecord *pmr);
-extern void SetEvaluation(gpointer p, guint n, GtkWidget * pw);
+extern void SetAnalysis(gpointer p, guint n, GtkWidget * pw);
 extern void SetMET(GtkWidget * pw, gpointer p);
 extern void SetPanelWidget(gnubgwindow window, GtkWidget * pWin);
 extern void SetRollouts(gpointer p, guint n, GtkWidget * pw);

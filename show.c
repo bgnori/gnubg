@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.259 2009/09/01 17:54:53 Superfly_Jon Exp $
+ * $Id: show.c,v 1.260 2009/09/17 17:39:53 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -707,11 +707,11 @@ extern void CommandShowEvaluation( char *UNUSED(sz) ) {
 
     outputl( _("`eval' and `hint' will use:") );
     outputl( _("    Chequer play:") );
-    ShowEvalSetup ( &esEvalChequer );
+    ShowEvalSetup ( GetEvalChequer() );
     outputl( _("    Move filters:") );
-    ShowMoveFilters ( aamfEval );
+    ShowMoveFilters ( *GetEvalMoveFilter() );
     outputl( _("    Cube decisions:") );
-    ShowEvalSetup ( &esEvalCube );
+    ShowEvalSetup ( GetEvalCube() );
 
 }
 
@@ -1573,7 +1573,7 @@ extern void CommandShowMarketWindow ( char * sz ) {
     /* calculate them based on current position */
 
     if ( getCurrentGammonRates ( aarRates, arOutput, msBoard(), 
-                                 &ci, &esEvalCube.ec ) < 0 ) 
+                                 &ci, &GetEvalCube()->ec ) < 0 ) 
       return;
 
   }

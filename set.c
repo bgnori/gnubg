@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.335 2009/09/02 21:25:07 Superfly_Jon Exp $
+ * $Id: set.c,v 1.336 2009/09/17 17:39:53 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -2829,6 +2829,12 @@ CommandSetEvalParamRollout ( char *sz ) {
 
 }
 
+extern void CommandSetEvalSameAsAnalysis(char *sz)
+{
+    SetToggle( "eval sameasanalysis", &fEvalSameAsAnalysis, sz, 
+               _("Evaluation settings will be same as analysis settings."), 
+               _("Evaluation settings separate from analysis settings.") );
+}
 
 extern void
 CommandSetAnalysisPlayer( char *sz ) {
