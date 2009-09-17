@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.866 2009/09/17 17:39:52 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.867 2009/09/17 17:47:49 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4704,6 +4704,9 @@ int main(int argc, char *argv[])
 		const char *szDataDirectory = getDataDir();
 		_chdir(szDataDirectory);
 	}
+	/* Create a mutex so install can check if it's running */
+	CreateMutex(NULL, FALSE, "GNU Backgammon Mutex");
+
 #endif
 
 	/* print version and exit if -v option given */
