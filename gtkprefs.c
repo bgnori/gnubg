@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.177 2009/06/24 18:38:46 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.178 2009/09/18 08:41:34 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -232,9 +232,9 @@ static boarddesign* FindDesign (renderdata* prdDesign)
 {
 	int i;
 	renderdata rdTest;
-	for (i = 0; i < (int)(g_list_length(plBoardDesigns) - 1); i++)
+	for (i = 0; i < (int)g_list_length(plBoardDesigns); i++)
 	{
-		boarddesign *pbde = g_list_nth_data(plBoardDesigns, i + 1);
+		boarddesign *pbde = g_list_nth_data(plBoardDesigns, i);
 		if (pbde)
 		{
 			ParsePreferences(pbde, &rdTest);
@@ -1992,7 +1992,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.177 2009/06/24 18:38:46 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.178 2009/09/18 08:41:34 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
