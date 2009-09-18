@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.788 2009/09/17 17:39:52 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.789 2009/09/18 09:42:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2018,14 +2018,14 @@ typedef struct _AnalysisDetails
 	GtkWidget *pwCube, *pwChequer, *pwOptionMenu, *pwSettingWidgets;
 } AnalysisDetails;
 
-void DetailedAnalysisOK(GtkWidget *pw, AnalysisDetails *pDetails)
+static void DetailedAnalysisOK(GtkWidget *pw, AnalysisDetails *pDetails)
 {
   EvalOK(pDetails->pwChequer, pDetails->pwChequer);
   EvalOK(pDetails->pwCube, pDetails->pwCube);
   gtk_widget_destroy( gtk_widget_get_toplevel( pw ) );
 }
 
-int EvalDefaultSetting(evalcontext *pec, movefilter *pmf)
+static int EvalDefaultSetting(evalcontext *pec, movefilter *pmf)
 {
 	int i;
 	int fEval, fMoveFilter;
@@ -2059,7 +2059,7 @@ static void UpdateSummaryEvalMenuSetting(AnalysisDetails *pAnalDetails )
     gtk_option_menu_set_history ( GTK_OPTION_MENU ( pAnalDetails->pwOptionMenu ), setting );
 }
 
-void ShowDetailedAnalysis(GtkWidget *button, AnalysisDetails *pDetails)
+static void ShowDetailedAnalysis(GtkWidget *button, AnalysisDetails *pDetails)
 {
 	GtkWidget *pwvbox, *pwFrame, *pwDialog, *hbox;
 	pwDialog = GTKCreateDialog(pDetails->title,
@@ -2109,7 +2109,7 @@ static void SummaryMenuActivate(GtkWidget *pwItem, AnalysisDetails *pAnalDetails
     memcpy(pAnalDetails->mfCube, aaamfMoveFilterSettings[aiSettingsMoveFilter[selected]], sizeof(aaamfMoveFilterSettings[aiSettingsMoveFilter[selected]]));
 }
 
-GtkWidget *AddLevelSettings(GtkWidget *pwFrame, AnalysisDetails *pAnalDetails)
+static GtkWidget *AddLevelSettings(GtkWidget *pwFrame, AnalysisDetails *pAnalDetails)
 {
 	GtkWidget *vbox, *hbox, *pw2, *pwMenu, *pwItem, *pwDetails, *vboxSpacer;
 	int i;
@@ -2282,7 +2282,7 @@ static void HintSameToggled( GtkWidget *notused, analysiswidget *paw )
 	gtk_widget_set_sensitive(paw->pwCubeSummary, active);
 }
 
-AnalysisDetails *CreateEvalSettings(GtkWidget *pwParent, const char *title, evalcontext *pechequer, movefilter *pmfchequer, evalcontext *pecube, movefilter *pmfcube)
+static AnalysisDetails *CreateEvalSettings(GtkWidget *pwParent, const char *title, evalcontext *pechequer, movefilter *pmfchequer, evalcontext *pecube, movefilter *pmfcube)
 {
 	AnalysisDetails *pAnalDetail = malloc(sizeof(AnalysisDetails));
 	pAnalDetail->title = title;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.867 2009/09/17 17:47:49 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.868 2009/09/18 09:42:34 c_anthon Exp $
  */
 
 #include "config.h"
@@ -388,15 +388,15 @@ evalsetup esAnalysisCube = EVALSETUP;
 movefilter aamfEval[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] = MOVEFILTER;
 movefilter aamfAnalysis[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] = MOVEFILTER;
 
-evalsetup *GetEvalChequer()
+extern evalsetup *GetEvalChequer(void)
 {
 	return fEvalSameAsAnalysis ? &esAnalysisChequer : &esEvalChequer;
 }
-evalsetup *GetEvalCube()
+extern evalsetup *GetEvalCube(void)
 {
 	return fEvalSameAsAnalysis ? &esAnalysisCube : &esEvalCube;
 }
-TmoveFilter *GetEvalMoveFilter()
+extern TmoveFilter *GetEvalMoveFilter(void)
 {
 	return fEvalSameAsAnalysis ? &aamfAnalysis : &aamfEval;
 }
@@ -506,7 +506,7 @@ char const *aszBuildInfo[] = {
 #if USE_PYTHON
     N_("Python supported."),
 #endif
-#if HAVE_SQLITE
+#if USE_SQLITE
     N_("SQLite database supported."),
 #endif
 #if USE_GTK

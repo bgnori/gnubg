@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.219 2009/08/30 20:56:32 Superfly_Jon Exp $
+## $Id: Makefile.am,v 1.220 2009/09/18 09:42:34 c_anthon Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -14,7 +14,10 @@ bin_PROGRAMS = gnubg makebearoff makehyper bearoffdump makeweights
 INCLUDES = -I$(srcdir)/lib -I$(srcdir)/board3d \
 	   -DLOCALEDIR=\"$(localedir)\" @FREETYPE2_CFLAGS@ @GLIB_CFLAGS@ \
 	   @LIBPNG_CFLAGS@ @GTK_CFLAGS@ @CAIRO_CFLAGS@ @PANGOCAIRO_CFLAGS@ @GTHREAD_CFLAGS@ \
-	   @GTKGLEXT_CFLAGS@ @SQLITE_CFLAGS@ @CANBERRA_CFLAGS@
+	   @GTKGLEXT_CFLAGS@ @CANBERRA_CFLAGS@
+if USE_SQLITE
+INCLUDES += @SQLITE_CFLAGS@
+endif
 if USE_PYTHON
 INCLUDES += @PYTHON_INCLUDES@ 
 endif
@@ -131,7 +134,10 @@ endif
 gnubg_LDADD = -L$(srcdir)/lib lib/libevent.la @GTK_LIBS@ @LIBPNG_LIBS@ @CAIRO_LIBS@ @PANGOCAIRO_LIBS@ \
 	      @GTHREAD_LIBS@ \
 	      @LTLIBOBJS@ \
-	      @FREETYPE2_LIBS@ @GLIB_LIBS@ @LIBPNG_LIBS@ @SQLITE_LIBS@ @CANBERRA_LIBS@
+	      @FREETYPE2_LIBS@ @GLIB_LIBS@ @LIBPNG_LIBS@ @CANBERRA_LIBS@
+if USE_SQLITE
+gnubg_LDADD += @SQLITE_LIBS@
+endif
 if USE_PYTHON
 gnubg_LDADD += @PYTHON_LIBS@ 
 endif
