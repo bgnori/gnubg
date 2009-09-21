@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.416 2009/09/18 09:42:34 c_anthon Exp $
+ * $Id: backgammon.h,v 1.417 2009/09/21 07:43:43 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -460,7 +460,7 @@ extern int EvalCmp(const evalcontext *, const evalcontext *, const int);
 extern int getFinalScore(int *anScore);
 extern int GetInputYN(char *szPrompt);
 extern int GiveAdvice(skilltype Skill);
-extern int InternalCommandNext(int fMarkedMoves, int n);
+extern int InternalCommandNext(int mark, int cmark, int n);
 extern int NextTurn(int fPlayNext);
 extern int ParseKeyValue(char **ppch, char *apch[2]);
 extern int ParseNumber(char **ppch);
