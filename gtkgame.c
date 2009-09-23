@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.791 2009/09/23 21:16:54 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.792 2009/09/23 21:18:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5973,8 +5973,8 @@ extern void GTKSet( void *p ) {
 	/* Handle the game state. */
 	fAutoCommand = TRUE;
 
-	board_set_playing( BOARD( pwBoard ), ms.gs == GAME_PLAYING );
-        ToolbarSetPlaying( pwToolbar, ms.gs == GAME_PLAYING );
+	board_set_playing( BOARD( pwBoard ), plGame != NULL );
+        ToolbarSetPlaying( pwToolbar, plGame != NULL );
 
 	gtk_widget_set_sensitive( gtk_item_factory_get_widget( pif,
 				"/File/Save..." ), plGame != NULL );
