@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.790 2009/09/21 07:43:43 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.791 2009/09/23 21:16:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2234,12 +2234,15 @@ static void AnalysisOK( GtkWidget *pw, analysiswidget *paw ) {
 
   fEvalSameAsAnalysis = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(paw->pwHintSame));
 
-  SetEvalCommands( "set evaluation chequer eval", &paw->esEvalChequer.ec,
-               &GetEvalChequer()->ec );
-  SetEvalCommands( "set evaluation cubedecision eval", &paw->esEvalCube.ec,
-               &GetEvalCube()->ec );
-  SetMovefilterCommands ( "set evaluation movefilter",
-					   paw->aaEvalmf, *GetEvalMoveFilter() );
+  if (!fEvalSameAsAnalysis)
+  {
+	  SetEvalCommands( "set evaluation chequer eval", &paw->esEvalChequer.ec,
+			  &GetEvalChequer()->ec );
+	  SetEvalCommands( "set evaluation cubedecision eval", &paw->esEvalCube.ec,
+			  &GetEvalCube()->ec );
+	  SetMovefilterCommands ( "set evaluation movefilter",
+			  paw->aaEvalmf, *GetEvalMoveFilter() );
+  }
 
   gtk_widget_destroy( gtk_widget_get_toplevel( pw ) );
 
