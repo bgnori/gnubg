@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.868 2009/09/18 09:42:34 c_anthon Exp $
+ * $Id: gnubg.c,v 1.869 2009/09/23 21:09:31 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4049,20 +4049,20 @@ ProgressValueAdd ( int iValue ) {
 }
 
 
-static void Progress( void )
+static gboolean Progress( gpointer unused )
 {
     static int i = 0;
     static char ach[ 5 ] = "/-\\|";
    
     if( !fShowProgress )
-	return;
+	return FALSE;
 
     if( ProgressThrottle() )
-	return;
+	return TRUE;
 #if USE_GTK
     if( fX ) {
 	GTKProgress();
-	return;
+	return TRUE;
     }
 #endif
 
@@ -4070,6 +4070,7 @@ static void Progress( void )
     i &= 0x03;
     putchar( '\b' );
     fflush( stdout );
+    return TRUE;
 }
 
 #if !USE_MULTITHREAD
@@ -4092,7 +4093,7 @@ extern void CallbackProgress( void )
 #endif
 
     if( fInProgress && !iProgressMax )
-	Progress();
+	Progress(NULL);
 }
 #endif
 
