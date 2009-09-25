@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.88 2009/06/24 19:30:16 c_anthon Exp $
+* $Id: drawboard3d.c,v 1.89 2009/09/25 16:00:23 Superfly_Jon Exp $
 */
 
 #include "config.h"
@@ -2502,7 +2502,7 @@ static int NearestHit(int hits, const GLuint* ptr)
 			depth = (float) *ptr++ / 0x7fffffff;
 			ptr++;	/* Skip max depth value */
 			/* Ignore clicks on the board base as other objects must be closer */
-			if (*ptr >= POINT_DICE && depth < minDepth)
+			if (*ptr >= POINT_DICE && !(*ptr == POINT_LEFT || *ptr == POINT_RIGHT) && depth < minDepth)
 			{
 				minDepth = depth;
 				sel = (int)*ptr;
@@ -2703,7 +2703,7 @@ static int PickDraw(int x, int y, PickDrawFun drawFun, const BoardData *bd, void
 	hits = glRenderMode(GL_RENDER);
 
 	glMatrixMode(GL_PROJECTION);
-	glPopMatrix() ;
+	glPopMatrix();
 	glMatrixMode(GL_MODELVIEW);
 	
 	return hits;
