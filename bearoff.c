@@ -16,15 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.86 2009/05/01 09:42:54 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.87 2009/09/28 18:11:10 Superfly_Jon Exp $
  */
 #include "config.h"
-#if USE_MULTITHREAD
 /*must be first here because of strange warning from mingw*/
 #include "multithread.h"
-#else
+
 #include "backgammon.h"
-#endif
 
 #if HAVE_UNISTD_H
 #include <unistd.h>
@@ -275,9 +273,7 @@ static unsigned char *HeuristicDatabase( void (*pfProgress)(unsigned int) )
 
 static void ReadBearoffFile(const bearoffcontext *pbc, unsigned int offset, unsigned char *buf, unsigned int nBytes)
 {
-#if USE_MULTITHREAD
 	MT_Exclusive();
-#endif
 
 	if ((fseek(pbc->pf, (long)offset, SEEK_SET ) < 0) || (fread(buf, 1, nBytes, pbc->pf ) < nBytes))
 	{
@@ -290,9 +286,7 @@ static void ReadBearoffFile(const bearoffcontext *pbc, unsigned int offset, unsi
 		return;
 	}
 
-#if USE_MULTITHREAD
 	MT_Release();
-#endif
 }
 
 /* BEAROFF_GNUBG: read two sided bearoff database */
