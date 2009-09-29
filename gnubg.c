@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.869 2009/09/23 21:09:31 c_anthon Exp $
+ * $Id: gnubg.c,v 1.870 2009/09/29 22:09:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2523,7 +2523,7 @@ extern void CommandRollout(char *sz)
 	sprintf(asz[0], _("Current Position"));
 	memcpy(anBoard, msBoard(), sizeof(TanBoard));
 	SetCubeInfo(&ci, ms.nCube, ms.fCubeOwner, ms.fMove, ms.nMatchTo, ms.anScore, ms.fCrawford, ms.fJacoby, nBeavers, ms.bgv);
-	RolloutProgressStart(&ci, 1, NULL, &rcRollout, asz, &p);
+	RolloutProgressStart(&ci, 1, NULL, &rcRollout, asz, FALSE, &p);
 	GeneralEvaluationR(arOutput, arStdDev, arsStatistics, (ConstTanBoard)anBoard, &ci, &rcRollout, RolloutProgress, p);
 	RolloutProgressEnd(&p, FALSE);
 

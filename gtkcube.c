@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.75 2009/09/17 22:41:28 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.76 2009/09/29 22:09:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -703,7 +703,7 @@ CubeAnalysisRollout ( GtkWidget *pw, cubehintdata *pchd ) {
 
   FormatCubePositions( &ci, asz );
   GTKSetCurrentParent(pw);
-  RolloutProgressStart( &ci, 2, aarsStatistics, &pes->rc, asz, &p );
+  RolloutProgressStart( &ci, 2, aarsStatistics, &pes->rc, asz, FALSE, &p );
 
   if ( GeneralCubeDecisionR ( aarOutput, aarStdDev, aarsStatistics,
                               (ConstTanBoard)pchd->ms.anBoard, &ci, 
