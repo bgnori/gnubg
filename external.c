@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.67 2009/09/17 17:39:52 Superfly_Jon Exp $
+ * $Id: external.c,v 1.68 2009/10/01 21:05:53 c_anthon Exp $
  */
 
 #include "config.h"
@@ -244,7 +244,7 @@ extern int ExternalRead( int h, char *pch, size_t cch ) {
     
     while( cch )
 	{
-		ProcessGtkEvents();
+		ProcessEvents();
 
 	if( fInterrupt )
 	    return -1;
@@ -305,7 +305,7 @@ extern int ExternalWrite( int h, char *pch, size_t cch ) {
 
     while( cch )
 	{
-		ProcessGtkEvents();
+		ProcessEvents();
 
 		if( fInterrupt )
 			return -1;
@@ -620,7 +620,7 @@ listenloop:
       }
       outputf( _("Waiting for a connection from %s...\n"), sz);
       outputx();
-      ProcessGtkEvents();
+      ProcessEvents();
 
       /* Must set length when using windows */
       saLen = sizeof(struct sockaddr);
@@ -628,7 +628,7 @@ listenloop:
 	  {
 		if( errno == EINTR )
 		{
-			ProcessGtkEvents();
+			ProcessEvents();
 
           if( fInterrupt ) {
             closesocket( h );
@@ -653,7 +653,7 @@ listenloop:
       outputf(_("Accepted connection from %s.\n"),
                  inet_ntoa( saRemote.sin_addr ) );
       outputx();
-      ProcessGtkEvents();
+      ProcessEvents();
 
       while( !ExternalRead( hPeer, szCommand, sizeof( szCommand ) ) ) {
 

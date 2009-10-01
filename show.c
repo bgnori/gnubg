@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.260 2009/09/17 17:39:53 Superfly_Jon Exp $
+ * $Id: show.c,v 1.261 2009/10/01 21:05:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2294,4 +2294,15 @@ extern void CommandShowManualAbout (char *UNUSED(sz))
 	char *path = g_build_filename(getDocDir(), "allabout.html", NULL);
 	OpenURL (path);
 	g_free(path);
+}
+
+extern void CommandShowAutoSave(char *UNUSED(sz))
+{
+	outputf(ngettext
+		("Auto save frequency every %d minute\n", "Auto save every %d minutes\n",
+		 nAutoSaveTime), nAutoSaveTime);
+	outputf(fAutoSaveRollout ? _("Match will be autosaved during and after rollouts\n") :
+		_("Match will not be autosaved during and after rollouts\n"));
+	outputf(fAutoSaveAnalysis ? _("Match will be autosaved during and after analysis\n") :
+		_("Match will not be autosaved during and after analysis\n"));
 }

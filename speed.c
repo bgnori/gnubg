@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.26 2009/03/02 23:01:31 Superfly_Jon Exp $
+ * $Id: speed.c,v 1.27 2009/10/01 21:05:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -142,7 +142,7 @@ extern void CommandCalibrate( char *sz )
 
 #if USE_MULTITHREAD
 		mt_add_tasks(MT_GetNumThreads(), RunEvals, NULL, NULL);
-		(void)MT_WaitForTasks(NULL, 0);
+		(void)MT_WaitForTasks(NULL, 0, FALSE);
 		iIter += MT_GetNumThreads();
 #else
 		RunEvals(NULL);

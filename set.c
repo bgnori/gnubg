@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.336 2009/09/17 17:39:53 Superfly_Jon Exp $
+ * $Id: set.c,v 1.337 2009/10/01 21:05:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4184,3 +4184,35 @@ extern void CommandSetGNUBgID(char *sz)
 	g_free(posid);
 	g_free(matchid);
 }
+
+extern void CommandSetAutoSaveRollout(char *sz)
+{
+	SetToggle("autosave rollout", &fAutoSaveRollout, sz,
+		  _("Auto save during rollouts"), _("Don't auto save during rollouts"));
+}
+
+extern void CommandSetAutoSaveAnalysis(char *sz)
+{
+	SetToggle("autosave analysis", &fAutoSaveAnalysis, sz,
+		  _("Auto save after each analysed game"),
+		  _("Don't auto after each analysed game"));
+}
+
+extern void CommandSetAutoSaveConfirmDelete(char *sz)
+{
+	SetToggle("autosave confirm", &fAutoSaveConfirmDelete, sz,
+		  _("Prompt before deleting autosaves"), _("Delete autosaves automatically"));
+}
+
+extern void CommandSetAutoSaveTime(char *sz)
+{
+	int n = ParseNumber( &sz );
+
+	if (n < 1)
+	{
+		outputl(_("You must specify a positive autosave time in minutes"));
+		return;
+	}
+	nAutoSaveTime = n;
+}
+

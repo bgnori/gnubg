@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.220 2009/09/23 21:09:32 c_anthon Exp $
+ * $Id: rollout.c,v 1.221 2009/10/01 21:05:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1081,13 +1081,12 @@ extern void RolloutLoopMT(void *unused)
 		/* Stop rolling out moves whose Equity is more than a user selected multiple of the joint standard
 		   deviation of the equity difference with the best move in the list. */
 
-		multi_debug("exclusive lock: rollout cycle update");
-		MT_Exclusive();
-#if !USE_MUTITHREAD
-		while (g_main_context_pending(NULL))
-			g_main_context_iteration(NULL, TRUE);
+#if !USE_MULTITHREAD
+		ProcessEvents();
 #endif
 
+		multi_debug("exclusive lock: rollout cycle update");
+		MT_Exclusive();
 		if (show_jsds) {
 			float v, s, denominator;
 
@@ -1481,7 +1480,7 @@ RolloutGeneral(ConstTanBoard * apBoard,
 	ro_pUserData = pUserData;
 
 	multi_debug("rollout waiting for tasks to complete");
-	MT_WaitForTasks(UpdateProgress, 2000);
+	MT_WaitForTasks(UpdateProgress, 2000, fAutoSaveRollout);
 
 	/* Make sure final output is upto date */
 #if USE_GTK
