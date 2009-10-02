@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.60 2009/09/29 22:09:05 c_anthon Exp $
+ * $Id: progress.c,v 1.61 2009/10/02 10:34:46 mdpetch Exp $
  */
 
 #include "config.h"
@@ -757,7 +757,8 @@ GTKRolloutProgressStart( const cubeinfo *UNUSED(pci), const int n,
   prp->pwRolloutOK = DialogArea( prp->pwRolloutDialog, DA_OK );
 
   gtk_container_add( GTK_CONTAINER( pwButtons ), prp->pwRolloutStop );
-  gtk_container_add( GTK_CONTAINER( pwButtons ), prp->pwRolloutStopAll );
+  if (multiple)
+	gtk_container_add( GTK_CONTAINER( pwButtons ), prp->pwRolloutStopAll );
     
   if ( aars && (prc->nGamesDone == 0) )
     gtk_container_add( GTK_CONTAINER( pwButtons ), prp->pwRolloutViewStat );
