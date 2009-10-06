@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.337 2009/10/01 21:05:54 c_anthon Exp $
+ * $Id: set.c,v 1.338 2009/10/06 17:20:55 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4195,7 +4195,7 @@ extern void CommandSetAutoSaveAnalysis(char *sz)
 {
 	SetToggle("autosave analysis", &fAutoSaveAnalysis, sz,
 		  _("Auto save after each analysed game"),
-		  _("Don't auto after each analysed game"));
+		  _("Don't auto save after each analysed game"));
 }
 
 extern void CommandSetAutoSaveConfirmDelete(char *sz)
