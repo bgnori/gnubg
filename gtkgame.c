@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.797 2009/10/07 07:51:49 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.798 2009/10/07 13:35:20 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3224,11 +3224,14 @@ static gboolean StopAnyAnimations(void)
 {
 	BoardData *bd = BOARD( pwBoard )->board_data;
 #if USE_BOARD3D
-	if (display_is_3d(bd->rd) && Animating3d(bd->bd3d))
+	if (display_is_3d(bd->rd))
 	{
-		StopIdle3d(bd, bd->bd3d);
-		RestrictiveRedraw();
-		return TRUE;
+		if (Animating3d(bd->bd3d))
+		{
+			StopIdle3d(bd, bd->bd3d);
+			RestrictiveRedraw();
+			return TRUE;
+		}
 	}
 	else
 #endif

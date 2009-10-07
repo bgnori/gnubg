@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.279 2009/09/04 10:01:12 Superfly_Jon Exp $
+ * $Id: gtkboard.c,v 1.280 2009/10/07 13:35:20 Superfly_Jon Exp $
  */
 
 /*! \file gtkboard.c
@@ -72,7 +72,7 @@ int fGUIDragTargetHelp = TRUE;
 int fGUIGrayEdit = TRUE;
 
 unsigned int nGUIAnimSpeed = 4;
-int animate_player, *animate_move_list, animation_finished;
+int animate_player, *animate_move_list, animation_finished = TRUE;
 
 static GtkVBoxClass *parent_class = NULL;
 static randctx rc;
