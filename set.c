@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.338 2009/10/06 17:20:55 Superfly_Jon Exp $
+ * $Id: set.c,v 1.339 2009/10/07 10:18:27 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -692,22 +692,12 @@ extern void CommandSetClockwise( char *sz ) {
 #endif /* USE_GTK */
 }
 
-extern void CommandSetAppearance( char *sz ) {
-    
-    char *apch[ 2 ];
-    
+extern void CommandSetAppearance( char *sz )
+{
 #if USE_GTK
-    if( fX )
-	BoardPreferencesStart( pwBoard );
-#endif /* USE_GTK */
-    
-	while( ParseKeyValue( &sz, apch ) )
-		RenderPreferencesParam( GetMainAppearance(), apch[ 0 ], apch[ 1 ] );
-
-#if USE_GTK
-	if( fX )
-		BoardPreferencesDone( pwBoard );	    
-#endif /* USE_GTK */
+	if (fX)
+		SetBoardPreferences(pwBoard, sz);
+#endif
 }
 
 extern void CommandSetConfirmDefault( char *sz ) {
