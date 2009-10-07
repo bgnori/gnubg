@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.220 2009/10/01 21:05:53 c_anthon Exp $
+ * $Id: analysis.c,v 1.221 2009/10/07 19:17:46 c_anthon Exp $
  */
 
 #include "config.h"
@@ -723,24 +723,29 @@ AnalyzeMove (moverecord *pmr, matchstate *pms, const listOLD *plParentGame,
 			ApplyMove( anBoardMove, pmr->n.anMove, FALSE );
 			PositionKey ( (ConstTanBoard)anBoardMove, auch );
 		  
-				if ( cmp_evalsetup ( pesChequer,
-									&pmr->esChequer ) > 0 ) {
+			if (cmp_evalsetup(pesChequer, &pmr->esChequer) > 0) {
 
-				if( pmr->ml.cMoves )
-					free( pmr->ml.amMoves );
-		  
+				if (pmr->ml.cMoves)
+					free(pmr->ml.amMoves);
+
 				/* find best moves */
-		  
-				MT_Release();
-				if( FindnSaveBestMoves ( &(pmr->ml), pmr->anDice[ 0 ],
-										pmr->anDice[ 1 ],
-										(ConstTanBoard)pms->anBoard, auch, 
-										arSkillLevel[ SKILL_DOUBTFUL ],
-										&ci, &pesChequer->ec, aamf ) < 0 )
-						return -1;
-				MT_Exclusive();
 
+				{
+					movelist ml;
+					MT_Release();
+					if (FindnSaveBestMoves(&ml, pmr->anDice[0],
+								pmr->anDice[1],
+								(ConstTanBoard) pms->anBoard, auch,
+								arSkillLevel[SKILL_DOUBTFUL],
+								&ci, &pesChequer->ec, aamf) < 0)
+						return -1;
+					MT_Exclusive();
+					CopyMoveList(&ml, &pmr->ml);
+					if (ml.cMoves)
+						free(ml.amMoves);
 				}
+
+			}
 		  
 			for( pmr->n.iMove = 0; pmr->n.iMove < pmr->ml.cMoves;
 			pmr->n.iMove++ )
