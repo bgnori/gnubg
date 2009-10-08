@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.418 2009/10/01 21:05:53 c_anthon Exp $
+ * $Id: backgammon.h,v 1.419 2009/10/08 17:26:51 Superfly_Jon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -439,7 +439,7 @@ extern char *FormatPrompt(void);
 extern const char *GetBuildInfoString(void);
 extern char *GetInput(char *szPrompt);
 extern char *GetLuckAnalysis(const matchstate * pms, float rLuck);
-extern const char *GetMoveString(moverecord * pmr, int *pPlayer);
+extern const char *GetMoveString(moverecord * pmr, int *pPlayer, gboolean addSkillMarks);
 extern double get_time(void);
 extern char *locale_from_utf8(const char *sz);
 extern char *locale_to_utf8(const char *sz);
