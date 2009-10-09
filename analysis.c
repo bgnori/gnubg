@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.221 2009/10/07 19:17:46 c_anthon Exp $
+ * $Id: analysis.c,v 1.222 2009/10/09 13:47:52 c_anthon Exp $
  */
 
 #include "config.h"
@@ -740,7 +740,7 @@ AnalyzeMove (moverecord *pmr, matchstate *pms, const listOLD *plParentGame,
 								&ci, &pesChequer->ec, aamf) < 0)
 						return -1;
 					MT_Exclusive();
-					CopyMoveList(&ml, &pmr->ml);
+					CopyMoveList(&pmr->ml, &ml);
 					if (ml.cMoves)
 						free(ml.amMoves);
 				}
