@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.871 2009/10/01 21:05:54 c_anthon Exp $
+ * $Id: gnubg.c,v 1.872 2009/10/13 17:37:09 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3035,12 +3035,12 @@ static void SaveGUISettings(FILE * pf)
 	fprintf(pf, "set fullscreen %s\n", fFullScreen ? "on" : "off");
 	if (fFullScreen)
 	{
-		GetFullscreenWindowSettings(&dummy, &GetMainAppearance()->fShowIDs, &dummy);
-		fprintf(pf, "set gui showids %s\n", GetMainAppearance()->fShowIDs ? "on" : "off");
-		GetMainAppearance()->fShowIDs = FALSE;
+		GetFullscreenWindowSettings(&dummy, &fShowIDs, &dummy);
+		fprintf(pf, "set gui showids %s\n", fShowIDs ? "on" : "off");
+		fShowIDs = FALSE;
 	}
 	else
-		fprintf(pf, "set gui showids %s\n", GetMainAppearance()->fShowIDs ? "on" : "off");
+		fprintf(pf, "set gui showids %s\n", fShowIDs ? "on" : "off");
 
 	fprintf(pf, "set gui animation %s\n", aszAnimation[animGUI]);
 	fprintf(pf, "set gui animation speed %d\n", nGUIAnimSpeed);

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.144 2009/09/17 17:39:53 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.145 2009/10/13 17:37:09 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -46,6 +46,7 @@ extern GtkWidget *pwMoveAnalysis;
 extern GtkWidget *pwOldGrab;
 extern GtkWidget *pwPanelVbox;
 extern GtkWidget *pwToolbar;
+extern GtkWidget *pwGnubgID;
 extern guint nNextTurn;		/* GTK idle function */
 extern int fEndDelay;
 extern int fNeedPrompt;

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.33 2008/09/25 12:00:31 c_anthon Exp $
+ * $Id: render.h,v 1.34 2009/10/13 17:37:10 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -64,7 +64,6 @@ typedef struct _renderdata {
     int fHinges; /* TRUE if hinges should be drawn */
     int fLabels; /* TRUE if point numbers should be drawn */
     int fClockwise; /* orientation for board point numbers */
-    int fShowIDs; /* Position + match ids */
     int fDiceArea; /* Show dice below board */
     int fShowGameInfo;
     int fDynamicLabels; /* TRUE if the point numbers are dynamic, i.e.,

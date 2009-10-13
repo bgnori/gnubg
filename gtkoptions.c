@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.100 2009/10/01 21:05:54 c_anthon Exp $
+ * $Id: gtkoptions.c,v 1.101 2009/10/13 17:37:09 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -606,8 +606,8 @@ static void append_display_options(optionswidget *pow)
 				      "where the dice will land."));
 
 	pow->pwShowIDs =
-	    gtk_check_button_new_with_label(_("Show Position ID and Match ID above board"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pow->pwShowIDs), bd->rd->fShowIDs);
+	    gtk_check_button_new_with_label(_("Show Position ID in status bar"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pow->pwShowIDs), fShowIDs);
 	gtk_box_pack_start(GTK_BOX(pwvbox), pow->pwShowIDs, FALSE, FALSE, 0);
 	gtk_widget_set_tooltip_text(pow->pwShowIDs,
 				    _("One entry field will be shown above the board, "
@@ -1497,7 +1497,7 @@ static void OptionsOK(GtkWidget *pw, optionswidget *pow)
 
   CHECKUPDATE( pow->pwIllegal, fGUIIllegal, "set gui illegal %s" )
   CHECKUPDATE( pow->pwUseDiceIcon, bd->rd->fDiceArea, "set gui dicearea %s" )
-  CHECKUPDATE( pow->pwShowIDs, bd->rd->fShowIDs, "set gui showids %s" )
+  CHECKUPDATE( pow->pwShowIDs, fShowIDs, "set gui showids %s" )
   CHECKUPDATE( pow->pwHigherDieFirst, fGUIHighDieFirst, "set gui highdiefirst %s" )
   CHECKUPDATE( pow->pwSetWindowPos, fGUISetWindowPos,
 	       "set gui windowpositions %s" )

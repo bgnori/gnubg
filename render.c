@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.86 2009/03/07 20:49:44 c_anthon Exp $
+ * $Id: render.c,v 1.87 2009/10/13 17:37:10 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -145,7 +145,6 @@ renderdata rdDefault = {
     TRUE, /* fHinges */
     TRUE, /* fLabels */
     FALSE, /* fClockwise */
-    TRUE, /* position+match ids */
     FALSE, /* Dice area */
     TRUE, /* Show game info */
     TRUE,  /* dynamic labels */

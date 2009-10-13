@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: renderprefs.c,v 1.41 2009/04/24 20:00:47 c_anthon Exp $
+ * $Id: renderprefs.c,v 1.42 2009/10/13 17:37:10 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -416,9 +416,6 @@ int c, fValueError = FALSE;
   else if (!StrNCaseCmp (szParam, "diceicon", c))
     /* FIXME deprecated in favour of "set gui dicearea" */
     prd->fDiceArea = toupper (*szValue) == 'Y';
-  else if (!StrNCaseCmp (szParam, "show_ids", c))
-    /* FIXME deprecated in favour of "set gui showids" */
-    prd->fShowIDs = toupper (*szValue) == 'Y';
   else if (!StrNCaseCmp (szParam, "show pips", c)) {
     /* FIXME deprecated in favour of "set gui animation ..." */
     switch (toupper (*szValue)) {

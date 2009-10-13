@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.95 2009/03/10 18:10:02 c_anthon Exp $
+ * $Id: gtkboard.h,v 1.96 2009/10/13 17:37:09 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -61,14 +61,13 @@ typedef enum _DiceShown {
 /* private data */
 struct _BoardData {
 	GtkWidget *drawing_area, *dice_area, *table, *wmove,
-	    *gnubg_id, *reset, *edit, *name0, *name1, *score0, *score1,
+	    *reset, *edit, *name0, *name1, *score0, *score1,
 	    *crawford, *widget, *key0, *key1, *stop, *stopparent,
 	    *doub, *lname0, *lname1, *lscore0, *lscore1, *mname0, *mname1, *mscore0, *mscore1, *play;
 	GtkWidget *mmatch, *lmatch, *match;
 	GtkAdjustment *amatch, *ascore0, *ascore1;
 	GtkWidget *roll;
 	GtkWidget *take, *drop, *redouble;
-	GtkWidget *vbox_ids;
 	GtkWidget *pipcount0, *pipcount1;
 	GtkWidget *pipcountlabel0, *pipcountlabel1;
 
@@ -130,6 +129,7 @@ extern animation animGUI;
 extern int fGUIBeep;
 extern int fGUIHighDieFirst;
 extern int fGUIIllegal;
+extern int fShowIDs;
 extern GuiShowPips gui_show_pips;
 extern int fGUISetWindowPos;
 extern int fGUIDragTargetHelp;
@@ -184,7 +184,6 @@ extern gboolean board_button_release(GtkWidget * board,
 				     BoardData * bd);
 extern void RollDice2d(BoardData * bd);
 extern void DestroyPanel(gnubgwindow window);
-extern void board_set_gnubg_id(GtkWidget * pw, BoardData * bd);
 extern void
 DrawDie( GdkDrawable *pd, 
          unsigned char *achDice[ 2 ], unsigned char *achPip[ 2 ],

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.180 2009/10/07 10:18:26 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.181 2009/10/13 17:37:09 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1092,7 +1092,6 @@ static void BoardPrefsOK( GtkWidget *pw, GtkWidget *mainBoard )
 	}
 	board_free_pixmaps( bd );
 
-	rdPrefs.fShowIDs = bd->rd->fShowIDs;
 	rdPrefs.fDiceArea = bd->rd->fDiceArea;
 	rdPrefs.fShowGameInfo = bd->rd->fShowGameInfo;
 	rdPrefs.nSize = bd->rd->nSize;
@@ -1989,7 +1988,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.180 2009/10/07 10:18:26 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.181 2009/10/13 17:37:09 Superfly_Jon Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -3002,7 +3001,6 @@ extern void BoardPreferences(GtkWidget *pwBoard)
 
 	/* Set up board with current preferences, hide unwanted elements */
 	CopyAppearance(&rdPrefs);
-	rdPrefs.fShowIDs = FALSE;
 	rdPrefs.fDiceArea = FALSE;
 	rdPrefs.fShowGameInfo = FALSE;
 	/* Create preview board */
