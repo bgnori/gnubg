@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.803 2009/10/15 11:08:52 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.804 2009/10/15 11:17:57 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -3285,7 +3285,7 @@ static void CreateMainWindow(void)
 
 	pwGnubgID = gtk_label_new("");
 	gtk_container_add(GTK_CONTAINER(pwFrame), pwGnubgID);
-	gtk_container_set_border_width(GTK_CONTAINER pwFrame), 2);
+	gtk_container_set_border_width(GTK_CONTAINER(pwFrame), 2);
 
 	gtk_widget_set_tooltip_text(pwIDBox, _("This is a unique id for this position."
 		" Ctrl+C copies the current ID and Ctrl+V pastes an ID from the clipboard"));
