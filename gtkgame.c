@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.805 2009/10/16 18:05:26 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.806 2009/10/16 20:58:43 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1072,13 +1072,14 @@ extern void SetPanelWidth(int size)
 	}
 }
 
-extern void SwapBoardToPanel(int ToPanel)
+extern void SwapBoardToPanel(int ToPanel, int updateEvents)
 {	/* Show/Hide panel on right of screen */
 	if (ToPanel)
 	{
 		gtk_widget_reparent(pwEventBox, pwPanelGameBox);
 		gtk_widget_show(hpaned);
-		ProcessEvents();
+		if (updateEvents)
+			ProcessEvents();
 		gtk_widget_hide(pwGameBox);
 		gtk_paned_set_position(GTK_PANED(hpaned), pwMain->allocation.width - panelSize);
 
@@ -1099,7 +1100,8 @@ extern void SwapBoardToPanel(int ToPanel)
 
 		gtk_widget_reparent(pwEventBox, pwGameBox);
 		gtk_widget_show(pwGameBox);
-		ProcessEvents();
+		if (updateEvents)
+			ProcessEvents();
 		if (GTK_WIDGET_VISIBLE(hpaned))
 		{
 			panelSize = GetPanelSize();
@@ -1447,7 +1449,9 @@ static void DoFullScreenMode(gpointer p, guint n, GtkWidget * pw)
 		gtk_widget_hide(pwStop);
 
 		fFullScreen = FALSE;
-		HideAllPanels(NULL, 0, NULL);
+
+		DoHideAllPanels(FALSE);
+
 		fFullScreen = TRUE;
 		fShowIDs = FALSE;
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.145 2009/10/13 17:37:09 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.146 2009/10/16 20:58:43 Superfly_Jon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -170,7 +170,8 @@ extern void ShowAllPanels(gpointer p, guint n, GtkWidget * pw);
 extern void ShowHidePanel(gnubgwindow panel);
 extern void ShowList(char *asz[], const char *szTitle, GtkWidget *parent);
 extern void ShowMove(hintdata * phd, const int f);
-extern void SwapBoardToPanel(int ToPanel);
+extern void SwapBoardToPanel(int ToPanel, int updateEvents);
+extern void DoHideAllPanels(int updateEvents);
 extern void ToggleDockPanels(gpointer p, guint n, GtkWidget * pw);
 extern void GTKUndo(void);
 extern void UserCommand(const char *sz);
