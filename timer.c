@@ -18,11 +18,10 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: timer.c,v 1.13 2008/03/13 18:15:57 Superfly_Jon Exp $
+* $Id: timer.c,v 1.14 2009/10/18 11:09:08 Superfly_Jon Exp $
 */
 
 #include "config.h"
-#include "backgammon.h"
 #include <time.h>
 #if HAVE_SYS_TIME_H
 #include <sys/time.h>
