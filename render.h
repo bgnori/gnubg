@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.h,v 1.34 2009/10/13 17:37:10 Superfly_Jon Exp $
+ * $Id: render.h,v 1.35 2009/10/26 16:12:26 Superfly_Jon Exp $
  */
 
 #ifndef _RENDER_H_
@@ -173,7 +173,7 @@ extern void RenderCubeFaces( renderdata *prd, unsigned char *puch,
 			     int nStride, unsigned char *puchCube,
 			     int nStrideCube );
 extern void RenderDice( renderdata *prd, unsigned char *puch0,
-			unsigned char *puch1, int nStride );
+			unsigned char *puch1, int nStride, int alpha );
 extern void RenderPips( renderdata *prd, unsigned char *puch0,
 			unsigned char *puch1, int nStride );
 extern void RenderImages( renderdata *prd, renderimages *pri );
