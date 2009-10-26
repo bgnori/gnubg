@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.214 2009/06/10 15:01:49 mdpetch Exp $
+ * $Id: html.c,v 1.215 2009/10/26 16:08:30 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.214 2009/06/10 15:01:49 mdpetch Exp $ */\n",
+           "/* $Id: html.c,v 1.215 2009/10/26 16:08:30 Superfly_Jon Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1818,7 +1818,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.214 $";
+  const char szVersion[] = "$Revision: 1.215 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1898,7 +1898,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.214 $";
+  const char szVersion[] = "$Revision: 1.215 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3414,9 +3414,9 @@ extern void CommandExportMatchHtml( char *sz ) {
 
         if ( ! confirmOverwrite ( sz, fConfirmSave ) ) {
 		  for ( j = 0; j < 4; j++ )
-			free (filenames [ j ] );
+			g_free (filenames [ j ] );
 
-		  free ( szCurrent );
+		  g_free ( szCurrent );
           return;
 		}
 
@@ -3430,9 +3430,9 @@ extern void CommandExportMatchHtml( char *sz ) {
       else if( !( pf = g_fopen( szCurrent, "w" ) ) ) {
 	outputerr( szCurrent );
 		for ( j = 0; j < 4; j++ )
-		  free (filenames [ j ] );
+		  g_free (filenames [ j ] );
 
-		free ( szCurrent );
+		g_free ( szCurrent );
 	return;
       }
 
@@ -3443,9 +3443,9 @@ extern void CommandExportMatchHtml( char *sz ) {
                        aszLinks );
 
       for ( j = 0; j < 4; j++ )
-        free (filenames [ j ] );
+        g_free (filenames [ j ] );
 
-      free ( szCurrent );
+      g_free ( szCurrent );
 
       if( pf != stdout )
         fclose( pf );
