@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.807 2009/10/18 11:16:12 Superfly_Jon Exp $
+ * $Id: gtkgame.c,v 1.808 2009/10/26 16:09:27 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1313,6 +1313,10 @@ SwitchDisplayMode( gpointer p, guint n, GtkWidget *pw )
 		if (bd->diceShown == DICE_ON_BOARD)
 			setDicePos(bd, bd3d);	/* Make sure dice appear ok */
 		RestrictiveRedraw();
+
+		/* Needed for 2d dice+chequer widgets */
+		board_free_pixmaps(bd);
+		board_create_pixmaps(pwBoard, bd);
 	}
 	else
 	{
@@ -1327,6 +1331,8 @@ SwitchDisplayMode( gpointer p, guint n, GtkWidget *pw )
 
 	DisplayCorrectBoardType(bd, bd3d, prd);
 	SetSwitchModeMenuText();
+	/* Make sure chequers correct below board */
+	gtk_widget_queue_draw(bd->table);
 }
 
 #endif
