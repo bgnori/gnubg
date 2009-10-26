@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.872 2009/10/13 17:37:09 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.873 2009/10/26 16:07:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -4382,7 +4382,7 @@ static void init_nets(int nNewWeights, int fNoBearoff)
 	g_free(gnubg_weights_binary);
 }
 
-static int GetManualDice(unsigned int anDice[2])
+extern int GetManualDice(unsigned int anDice[2])
 {
 
 	char *pz;
@@ -4445,7 +4445,7 @@ static int GetManualDice(unsigned int anDice[2])
 
 #if HAVE_SOCKETS
 
-static int getDiceRandomDotOrg(void)
+extern int getDiceRandomDotOrg(void)
 {
 
 #define BUFLENGTH 500
@@ -4572,8 +4572,6 @@ static void init_rng(void)
 	   could happen if InitRNG had to use the current time as a seed) -- mix
 	   it up a little bit */
 	rcRollout.nSeed ^= 0x792A584B;
-
-	dice_init_callback(getDiceRandomDotOrg, GetManualDice);
 }
 
 #if defined(WIN32) && HAVE_SOCKETS

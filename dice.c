@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.c,v 1.76 2009/06/24 18:38:44 Superfly_Jon Exp $
+ * $Id: dice.c,v 1.77 2009/10/26 16:07:32 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -62,8 +62,8 @@ const char *aszRNG[ NUM_RNGS ] = {
 rng rngCurrent = RNG_MERSENNE;
 rngcontext *rngctxCurrent = NULL;
 
-static int (*getDiceRandomDotOrg) (void);
-static int (*GetManualDice) (unsigned int[2]);
+extern int getDiceRandomDotOrg(void);
+extern int GetManualDice(unsigned int anDice[2]);
 
 struct _rngcontext {
 
@@ -634,13 +634,6 @@ RNGSystemSeed( const rng rngx, void *p, unsigned long *pnSeed ) {
 
     return f;
 
-}
-
-extern void dice_init_callback(int (*rdo_callback) (void),
-				int (*gmd_callback) (unsigned int[2]))
-{
-	getDiceRandomDotOrg = rdo_callback;
-	GetManualDice = gmd_callback;
 }
 
 extern void free_rngctx(rngcontext * rngctx)

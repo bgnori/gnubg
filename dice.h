@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.27 2009/03/29 13:56:27 c_anthon Exp $
+ * $Id: dice.h,v 1.28 2009/10/26 16:07:32 Superfly_Jon Exp $
  */
 
 #ifndef _DICE_H_
@@ -64,6 +64,4 @@ CloseDiceFile( rngcontext *rngctx );
 extern char *
 GetDiceFileName( rngcontext *rngctx );
 
-extern void dice_init_callback(int (*rdo_callback) (void),
-				int (*gmd_callback) (unsigned int[2]));
 #endif
