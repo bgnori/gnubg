@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.152 2009/10/01 21:05:54 c_anthon Exp $
+ * $Id: import.c,v 1.153 2009/10/31 20:49:28 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3773,9 +3773,14 @@ extern void CommandImportAuto(char *sz)
 		outputerrf(_("You must specify a file to import (see `help " "import auto')."));
 		return;
 	}
+	if (!g_file_test(sz, G_FILE_TEST_EXISTS))
+	{
+		outputerrf(_("The file `%s' doesn't exist"), sz);
+		return;
+	}
 	fdp = ReadFilePreview(sz);
 	if (!fdp) {
-		outputerrf(_("%s is not a backgammon file"), sz);
+		outputerrf(_("`%s' is not a backgammon file"), sz);
 		g_free(fdp);
 		return;
 	} else if (fdp->type == N_IMPORT_TYPES) {

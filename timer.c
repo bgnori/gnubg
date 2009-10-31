@@ -18,11 +18,12 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: timer.c,v 1.14 2009/10/18 11:09:08 Superfly_Jon Exp $
+* $Id: timer.c,v 1.15 2009/10/31 20:49:28 c_anthon Exp $
 */
 
 #include "config.h"
 #include <time.h>
+#include <backgammon.h>
 #if HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
@@ -62,41 +63,12 @@ double get_time()
 
 #else
 
-#if 1
-
-double get_time(void)
+extern double get_time(void)
 {	/* Return elapsed time in milliseconds */
 	struct timeval tv;
 	gettimeofday(&tv, 0);
 
 	return tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }
-
-#else
-
-static double perFreq = 0;
-
-int setup_timer()
-{
-    perFreq = __get_clockfreq() / 1000.0;
-     return 1;
-}
-
-double get_time()
-{    /* Return elapsed time in milliseconds */
-    if (!perFreq)
-    {
-        if (!setup_timer())
-            return clock() / 1000.0;
-    }
-{
-    unsigned long long int val;
-    __asm__ __volatile__("rdtsc" : "=A" (val) : );
-
-    return val / perFreq;
-}
-}
-
-#endif
 
 #endif
