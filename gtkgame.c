@@ -17,12 +17,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.810 2009/10/31 20:49:28 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.811 2009/11/03 10:10:49 Superfly_Jon Exp $
  */
 
 #include "config.h"
 
 #include <glib.h>
+#include <ctype.h>
 #include <glib/gstdio.h>
 #include <fcntl.h>
 #include <math.h>
