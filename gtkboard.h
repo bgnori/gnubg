@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.h,v 1.97 2009/10/26 16:12:26 Superfly_Jon Exp $
+ * $Id: gtkboard.h,v 1.98 2009/11/03 17:46:32 Superfly_Jon Exp $
  */
 
 #ifndef _GTKBOARD_H_
@@ -142,8 +142,8 @@ extern GtkWidget *board_new(renderdata* prd);
 extern GtkWidget *board_cube_widget( Board *board );
 extern void DestroySetCube(GtkObject *po, GtkWidget *pw);
 extern void Copy3dDiceColour(renderdata* prd);
-extern GtkWidget *board_dice_widget( Board *board );
-extern void DestroySetDice(GtkObject *po, GtkWidget *pw);
+typedef enum {MT_STANDARD, MT_FIRSTMOVE, MT_EDIT} manualDiceType;
+extern GtkWidget *board_dice_widget( Board *board, manualDiceType mdt );
 extern gint game_set( Board *board, TanBoard points, int roll,
 		      const gchar *name, const gchar *opp_name, gint match,
 		      gint score, gint opp_score, gint die0, gint die1,
