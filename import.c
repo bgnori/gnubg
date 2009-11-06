@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.153 2009/10/31 20:49:28 c_anthon Exp $
+ * $Id: import.c,v 1.154 2009/11/06 20:53:53 Superfly_Jon Exp $
  */
 
 #include "config.h"
@@ -1030,8 +1030,8 @@ static int ImportMatVariation(FILE * fp, char *szFilename, bgvariation bgVariati
 
 #if USE_GTK
 	if (fX) {
-		GTKThaw();
 		GTKSet(ap);
+		GTKThaw();
 	}
 #endif
 
