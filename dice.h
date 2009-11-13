@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dice.h,v 1.28 2009/10/26 16:07:32 Superfly_Jon Exp $
+ * $Id: dice.h,v 1.29 2009/11/13 23:33:46 Superfly_Jon Exp $
  */
 
 #ifndef _DICE_H_
@@ -25,14 +25,15 @@
 #include <stdio.h>
 
 typedef enum _rng {
-    RNG_MANUAL, RNG_ANSI, RNG_BBS, RNG_BSD, RNG_ISAAC, RNG_MD5, RNG_MERSENNE, 
-    RNG_RANDOM_DOT_ORG, RNG_FILE,
+    RNG_ANSI, RNG_BBS, RNG_BSD, RNG_ISAAC, RNG_MD5, RNG_MERSENNE, 
+    RNG_MANUAL, RNG_RANDOM_DOT_ORG, RNG_FILE,
     NUM_RNGS
 } rng;
 
 typedef struct _rngcontext rngcontext;
 
 extern const char *aszRNG[ NUM_RNGS ];
+extern const char *aszRNGTip[ NUM_RNGS ];
 extern char szDiceFilename[];
 extern rng rngCurrent;
 extern rngcontext *rngctxCurrent;
