@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.102 2009/11/13 23:33:46 Superfly_Jon Exp $
+ * $Id: gtkoptions.c,v 1.103 2009/11/21 20:57:55 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1003,7 +1003,7 @@ static void append_dice_options(optionswidget *pow)
 			gtk_widget_set_tooltip_text(pow->apwDice[i], gettext(aszRNGTip[i]));
 			g_signal_connect(G_OBJECT(pow->apwDice[i]), "toggled", G_CALLBACK(DiceToggled), pow);
 		}
-		if (i >= 0 && i < NUM_RNGS - 3)
+		if (i < NUM_RNGS - 3)
 		{
 			if (i == 0)
 			{
@@ -1048,7 +1048,7 @@ static void append_dice_options(optionswidget *pow)
 			if (!((i == RNG_BSD && !bsd) || (i == RNG_BBS && !blumblum)))
 			{
 				gtk_combo_box_append_text(GTK_COMBO_BOX(pow->pwRngComboBox), aszRNG[i]);
-				if ((int)i == rngCurrent)
+				if (i == rngCurrent)
 					rngSelected = rngsAdded;
 				rngsAdded++;
 			}
