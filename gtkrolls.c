@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrolls.c,v 1.33 2009/06/13 17:25:53 Superfly_Jon Exp $
+ * $Id: gtkrolls.c,v 1.34 2009/11/24 20:54:37 c_anthon Exp $
  */
 
 #include "config.h"
@@ -127,7 +127,7 @@ add_level ( GtkTreeStore *model, GtkTreeIter *iter,
   /* add average equity */
 
   szEquity = OutputMWC ( arOutput[ OUTPUT_CUBEFUL_EQUITY ],  
-                         ! fInvert ? pci : &ci, TRUE );
+                         fInvert ? pci : &ci, TRUE );
 
   gtk_tree_store_append ( model, &child_iter, iter );
 
