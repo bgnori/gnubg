@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.215 2009/10/26 16:08:30 Superfly_Jon Exp $
+ * $Id: html.c,v 1.216 2009/12/12 15:30:18 c_anthon Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.215 2009/10/26 16:08:30 Superfly_Jon Exp $ */\n",
+           "/* $Id: html.c,v 1.216 2009/12/12 15:30:18 c_anthon Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1818,7 +1818,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.215 $";
+  const char szVersion[] = "$Revision: 1.216 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1898,7 +1898,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.215 $";
+  const char szVersion[] = "$Revision: 1.216 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3302,13 +3302,19 @@ static void check_for_html_images(gchar *path)
 {
 	gchar *folder;
 	gchar *img;
+	char *url = exsExport.szHTMLPictureURL;
 
-	folder  = g_path_get_dirname(path);
-	img = g_build_filename(folder, "html-images", NULL);
-	if (! g_file_test(img, G_FILE_TEST_EXISTS))
-		CommandExportHTMLImages(img);
-	g_free(img);
-	g_free(folder);
+	if (url && g_path_is_absolute(url)) {
+		if (!g_file_test(url, G_FILE_TEST_EXISTS))
+			CommandExportHTMLImages(url);
+	} else {
+		folder = g_path_get_dirname(path);
+		img = g_build_filename(folder, url, NULL);
+		if (!g_file_test(img, G_FILE_TEST_EXISTS))
+			CommandExportHTMLImages(img);
+		g_free(img);
+		g_free(folder);
+	}
 }
 
 
