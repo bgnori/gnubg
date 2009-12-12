@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.813 2009/11/30 18:56:21 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.814 2009/12/12 15:35:58 c_anthon Exp $
  */
 
 #include "config.h"
@@ -5167,6 +5167,11 @@ extern void
 GTKHint( moverecord *pmr, int hist)
 {
     GtkWidget *pwMoves, *pwHint;
+    if (!pmr || pmr->ml.cMoves < 1)
+    {
+	    outputerrf(_("There are no legal moves. Figure it out yourself."));
+	    return;
+    }
 
     if (GetPanelWidget(WINDOW_HINT))
 	gtk_widget_destroy(GetPanelWidget(WINDOW_HINT));
