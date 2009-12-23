@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.873 2009/10/26 16:07:32 Superfly_Jon Exp $
+ * $Id: gnubg.c,v 1.874 2009/12/23 21:36:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4462,7 +4462,7 @@ extern int getDiceRandomDotOrg(void)
 	struct sockaddr *psa;
 	char szHostname[80];
 	char szHTTP[] =
-	    "GET http://www.random.org/cgi-bin/randnum?num=500&min=0&max=5&col=1\n";
+	    "GET http://www.random.org/integers/?num=600&min=0&max=5&col=1&base=10&format=plain&rnd=new\n";
 	char acBuf[2048];
 
 	/* 
