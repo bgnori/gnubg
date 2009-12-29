@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.875 2009/12/29 14:24:32 mdpetch Exp $
+ * $Id: gnubg.c,v 1.876 2009/12/29 22:20:21 mdpetch Exp $
  */
 
 #include "config.h"
@@ -4470,7 +4470,7 @@ extern int getDiceRandomDotOrg(void)
 	char szHostname[80];
 	char szHTTP[] =
 	    "GET http://" RANDOMORGSITE  "/integers/?num=" BUFLENGTH_STR "&min=0&max=5&col=1&base=10&format=plain&rnd=new\n" \
-	    "User-Agent: GNUBG/" PACKAGE_VERSION " (email: " PACKAGE_BUGREPORT ")\n";
+	    "User-Agent: GNUBG/" VERSION " (email: " PACKAGE_BUGREPORT ")\n";
 
 	char acBuf[2048];
 
