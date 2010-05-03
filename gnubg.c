@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.877 2010/01/02 15:52:26 c_anthon Exp $
+ * $Id: gnubg.c,v 1.878 2010/05/03 11:33:22 plm Exp $
  */
 
 #include "config.h"
@@ -4778,7 +4778,7 @@ int main(int argc, char *argv[])
 	init_rng();
 
 	PushSplash(pwSplash, _("Initialising"), _("match equity table"));
-	met = BuildFilename2("met", "g11.xml");
+	met = BuildFilename2("met", "Rockwell-Kazaross.xml");
 	InitMatchEquity(met);
 	g_free(met);
 
