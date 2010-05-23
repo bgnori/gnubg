@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.60 2009/11/21 20:57:55 c_anthon Exp $
+* $Id: gtkpanels.c,v 1.61 2010/05/23 21:17:17 plm Exp $
 */
 
 #include "config.h"
@@ -714,8 +714,12 @@ extern void GTKAddGame(moverecord * pmr)
     GtkTreeModel *model;
     gint last_game;
 
-    sprintf(sz, _("Game %d: %d, %d"), pmr->g.i + 1, pmr->g.anScore[0],
-	    pmr->g.anScore[1]);
+    if (pmr->g.fCrawford && pmr->g.fCrawfordGame)
+        sprintf(sz, _("Game %d: %d, %d Crawford"), pmr->g.i + 1,
+		pmr->g.anScore[0], pmr->g.anScore[1]);
+    else
+        sprintf(sz, _("Game %d: %d, %d"), pmr->g.i + 1,
+		pmr->g.anScore[0], pmr->g.anScore[1]);
     gtk_combo_box_append_text(GTK_COMBO_BOX(game_select_combo), sz);
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(game_select_combo));
     last_game = gtk_tree_model_iter_n_children(model, NULL);
