@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.222 2009/12/29 18:59:00 c_anthon Exp $
+ * $Id: rollout.c,v 1.223 2010/05/23 20:30:39 plm Exp $
  */
 
 #include "config.h"
@@ -1094,11 +1094,8 @@ static void check_sds(int *active)
 		if (fNoMore[alt] || altGameCount[alt] < (rcRollout.nMinimumGames))
 			continue;
 		prc = &ro_apes[alt]->rc;
-		for (output = 0; output < NUM_ROLLOUT_OUTPUTS; output++) {
-			if (output < OUTPUT_EQUITY) {
-				v = fabs(aarMu[alt][output]);
-				s = fabs(aarSigma[alt][output]);
-			} else if (output == OUTPUT_EQUITY) {
+		for (output = OUTPUT_EQUITY; output < NUM_ROLLOUT_OUTPUTS; output++) {
+			if (output == OUTPUT_EQUITY) { /* cubeless */
 				if (!ms.nMatchTo) {	/* money game */
 					v = fabs(aarMu[alt][output]);
 					s = fabs(aarSigma[alt][output]);
@@ -1117,7 +1114,7 @@ static void check_sds(int *active)
 			} else {
 				if (!prc->fCubeful)
 					continue;
-
+				/* cubeful */
 				if (!ms.nMatchTo) {	/* money game */
 					v = fabs(aarMu[alt][output]);
 					s = fabs(aarSigma[alt][output]);
@@ -1128,11 +1125,11 @@ static void check_sds(int *active)
 				}
 			}
 
-			if ((v >= .0001) && (v * rcRollout.rStdLimit < s)) {
+			if (rcRollout.rStdLimit < s) {
 				err_too_big = 1;
 				break;
 			}
-		}		/* for (output = 0; output < NUM_ROLLOUT_OUTPUTS; output++) */
+		}		/* for (output = OUTPUT_EQUITY; output < NUM_ROLLOUT_OUTPUTS; output++) */
 
 		if (!err_too_big) {
 			fNoMore[alt] = 1;

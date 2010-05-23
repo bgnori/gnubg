@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.878 2010/05/03 11:33:22 plm Exp $
+ * $Id: gnubg.c,v 1.879 2010/05/23 20:30:39 plm Exp $
  */
 
 #include "config.h"
@@ -327,7 +327,7 @@ rolloutcontext rcRollout =
   RNG_MERSENNE, /* RNG */
   0,  /* seed */
   144,    /* minimum games  */
-  0.1,	  /* stop when std's are under 10% of value */
+  0.01,	  /* stop when std's are lower than 0.01 */
   144,    /* minimum games  */
   1.96,   /* stop when best has j.s.d. for 95% confidence */
   0,      /* nGamesDone */
@@ -380,7 +380,7 @@ rolloutcontext rcRollout =
   RNG_MERSENNE, /* RNG */ \
   0,  /* seed */ \
   144,    /* minimum games  */ \
-  0.1,	  /* stop when std's are under 10% of value */ \
+  0.01,	  /* stop when std's are lower than 0.01 */ \
   144,    /* minimum games  */ \
   1.96,   /* stop when best has j.s.d. for 95% confidence */ \
   0, \
