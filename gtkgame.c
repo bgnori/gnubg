@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.815 2010/05/23 20:30:39 plm Exp $
+ * $Id: gtkgame.c,v 1.816 2010/05/26 20:11:42 plm Exp $
  */
 
 #include "config.h"
@@ -3242,7 +3242,11 @@ static gboolean ContextMenu(GtkWidget *widget, GdkEventButton *event, GtkWidget*
 static void CreateMainWindow(void)
 {
 	GtkWidget *pwVbox, *pwHbox, *pwHbox2, *pwHandle, *pwPanelHbox, *pwStopButton, *idMenu, *menu_item, *pwFrame;
+#ifdef GTK_TARGET_OTHER_APP	/* gtk 2.12+ */
 	GtkTargetEntry fileDrop = {"text/uri-list", GTK_TARGET_OTHER_APP, 1};
+#else
+	GtkTargetEntry fileDrop = {"text/uri-list", 0, 1};
+#endif
 
     pwMain = gtk_window_new( GTK_WINDOW_TOPLEVEL );
     gtk_window_maximize(GTK_WINDOW(pwMain));
