@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.223 2010/05/23 20:30:39 plm Exp $
+ * $Id: rollout.c,v 1.224 2010/05/29 22:08:00 plm Exp $
  */
 
 #include "config.h"
@@ -1037,9 +1037,7 @@ static void check_jsds(int *active)
 						   these calculations any more so we'll change the minimum
 						   games to do */
 						fNoMore[ajiJSD[alt].nOrder] = 0;
-						if (rcRollout.nMinimumJsdGames <= altGameCount[alt])
-							rcRollout.nMinimumJsdGames =
-							    altGameCount[ajiJSD[alt].nOrder];
+						(*active)++;
 					}
 				}
 			}

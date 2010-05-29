@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.78 2009/06/13 00:05:41 c_anthon Exp $
+* $Id: matchequity.c,v 1.79 2010/05/29 22:08:00 plm Exp $
 */
 
 #include "config.h"
@@ -558,6 +558,11 @@ GetPoints ( float arOutput [ 5 ], const cubeinfo *pci, float arCP[ 2 ] ) {
     for ( k = 0; k < 2; k++ ) {
 
 
+
+      /* Live cube cash point for player */
+
+      if ( ( i < 2 * nCubeValue ) || ( j < 2 * nCubeValue ) ) {
+
       rDTL =
         ( 1.0f - arG[ ! k ] - arBG[ ! k ] ) * 
 		aarMETResults[k][k ? DTLP1 : DTLP0]
@@ -576,12 +581,10 @@ GetPoints ( float arOutput [ 5 ], const cubeinfo *pci, float arCP[ 2 ] ) {
 
       arCPDead[ k ][ n ] = ( rDTL - rDP ) / ( rDTL - rDTW );
 
-      /* Live cube cash point for player */
-
-      if ( ( i < 2 * nCubeValue ) || ( j < 2 * nCubeValue ) )
         /* The doubled cube is going to be dead */
         arCPLive[ k ][ n ] = arCPDead[ k ][ n ];
-      else {
+      
+      } else {
 
         /* Doubled cube is alive */
 
