@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.385 2009/09/23 21:09:31 c_anthon Exp $
+ * $Id: eval.c,v 1.386 2010/06/19 07:24:03 c_anthon Exp $
  */
 
 #include "config.h"
@@ -274,7 +274,7 @@ int anChequers[ NUM_VARIATIONS ] = { 15, 15, 1, 2, 3 };
 
 const char *aszVariations[ NUM_VARIATIONS ] = {
   N_("Standard backgammon"),
-  N_("Standard backgammon with Nackgammon starting position"),
+  N_("Nackgammon"),
   N_("1-chequer hypergammon"),
   N_("2-chequer hypergammon"),
   N_("3-chequer hypergammon") 
