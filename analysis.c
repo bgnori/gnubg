@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.223 2010/06/20 15:44:01 c_anthon Exp $
+ * $Id: analysis.c,v 1.224 2010/06/23 23:33:01 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2343,7 +2343,8 @@ static int cmark_move_rollout(moverecord *pmr, gboolean destroy)
 	ppm = g_new(move *, c);
 	ppci = g_new(cubeinfo *, c);
 	asz = (char (*)[40])g_malloc(40 * c);
-	memcpy(auch, pmr->ml.amMoves[pmr->n.iMove].auch, 10);
+	if (pmr->n.iMove != UINT_MAX)
+		memcpy(auch, pmr->ml.amMoves[pmr->n.iMove].auch, 10);
 	GetMatchStateCubeInfo(&ci, &ms);
 
 	for (pl = list, j = 0; pl; pl = g_slist_next(pl), j++) {
@@ -2363,13 +2364,14 @@ static int cmark_move_rollout(moverecord *pmr, gboolean destroy)
 
 	RefreshMoveList(&pmr->ml, NULL);
 
-	for (pmr->n.iMove = 0; pmr->n.iMove < pmr->ml.cMoves; pmr->n.iMove++)
-		if (EqualKeys(auch, pmr->ml.amMoves[pmr->n.iMove].auch)) {
-			pmr->n.stMove =
-			    Skill(pmr->ml.amMoves[pmr->n.iMove].rScore - pmr->ml.amMoves[0].rScore);
+	if (pmr->n.iMove != UINT_MAX)
+		for (pmr->n.iMove = 0; pmr->n.iMove < pmr->ml.cMoves; pmr->n.iMove++)
+			if (EqualKeys(auch, pmr->ml.amMoves[pmr->n.iMove].auch)) {
+				pmr->n.stMove =
+					Skill(pmr->ml.amMoves[pmr->n.iMove].rScore - pmr->ml.amMoves[0].rScore);
 
-			break;
-		}
+				break;
+			}
 #if USE_GTK
 	if (fX)
 		ChangeGame(NULL);
