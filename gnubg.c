@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.879 2010/05/23 20:30:39 plm Exp $
+ * $Id: gnubg.c,v 1.880 2010/06/25 08:53:45 c_anthon Exp $
  */
 
 #include "config.h"
@@ -487,6 +487,7 @@ static char szDICE[] = N_("<die> <die>"),
     szVALUE[] = N_("<value>"),
     szMATCHID[] = N_("<matchid>"),
     szGNUBGID[] = N_("<gnubgid>"),
+    szXGID[] = N_("<xgid>"),
     szURL[] = N_("<URL>"),
     szMAXERR[] = N_("<fraction>"),
     szMINGAMES[] = N_("<minimum games to rollout>"),
