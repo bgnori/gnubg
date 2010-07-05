@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.40 2009/09/01 17:54:51 Superfly_Jon Exp $
+ * $Id: format.c,v 1.41 2010/07/05 18:02:06 c_anthon Exp $
  */
 
 #include "config.h"
@@ -959,9 +959,9 @@ OutputCubeAnalysis( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
     }
 
-	sprintf(sz, "%s:\n", _("Rollout details"));
+	sprintf(strchr ( sz, 0 ), "\n%s:\n", _("Rollout details"));
 
-    strcat ( sz, 
+    strcat ( strchr ( sz, 0 ),
              OutputRolloutResult ( NULL, asz, aarOutput, aarStdDev,
                                    aci, 2, pes->rc.fCubeful ) );
              
@@ -969,7 +969,8 @@ OutputCubeAnalysis( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   }
 
   if ( pes->et == EVAL_ROLLOUT && exsExport.afCubeParameters[ 1 ] )
-    strcat ( sz, OutputRolloutContext ( NULL, &pes->rc ) );
+    strcat ( strchr ( sz, 0 ),
+    	OutputRolloutContext ( NULL, &pes->rc ) );
     
   return sz;
 }
