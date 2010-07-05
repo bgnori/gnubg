@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.381 2009/10/08 17:26:51 Superfly_Jon Exp $
+ * $Id: play.c,v 1.382 2010/07/05 17:41:21 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1554,15 +1554,14 @@ static void TurnDone( void ) {
 extern void CancelCubeAction( void ) {
     
     if( ms.fDoubled ) {
-	outputf( _("(%s's double has been cancelled.)\n"),
-		 ap[ ms.fMove ].szName );
 	ms.fDoubled = FALSE;
 
 	if( fDisplay )
 	    ShowBoard();
 
 	/* FIXME should fTurn be set to fMove? */
-	TurnDone(); /* FIXME is this right? */
+	/* TurnDone(); Removed. Causes problems when called during
+	 * analysematch */
 	/* FIXME delete all MOVE_DOUBLE records */
     }
 }
