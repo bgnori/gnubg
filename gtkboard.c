@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.285 2010/06/25 08:53:45 c_anthon Exp $
+ * $Id: gtkboard.c,v 1.286 2010/07/16 16:14:05 c_anthon Exp $
  */
 
 /*! \file gtkboard.c
@@ -2349,6 +2349,7 @@ static gint board_set( Board *board, const gchar *board_text, const gint
     int old_resigned;
     int old_xResign, old_yResign;
     int old_turn;
+    int old_diceShown;
     int redrawNeeded = 0;
     gint failed = 0;
     
@@ -2361,6 +2362,7 @@ static gint board_set( Board *board, const gchar *board_text, const gint
 
     old_dice[ 0 ] = bd->diceRoll[ 0 ];
     old_dice[ 1 ] = bd->diceRoll[ 1 ];
+    old_diceShown = bd->diceShown;
     old_turn = bd->turn;
     
     editing = bd->playing && ToolbarIsEditing( pwToolbar );
@@ -2495,7 +2497,8 @@ static gint board_set( Board *board, const gchar *board_text, const gint
 	    swap_us( bd->diceRoll, bd->diceRoll + 1 );
 
 	if (bd->diceRoll[0] != old_dice[0] ||
-		bd->diceRoll[1] != old_dice[1] ||
+		bd->diceRoll[1] != old_dice[1] || 
+		(bd->diceRoll[0] > 0 && old_diceShown == DICE_BELOW_BOARD) ||
 		editing)
 	{
 		redrawNeeded = 1;
