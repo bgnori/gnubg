@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: render.c,v 1.88 2009/10/26 16:12:26 Superfly_Jon Exp $
+ * $Id: render.c,v 1.89 2010/07/16 12:07:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -88,7 +88,7 @@ int positions[ 2 ][ 30 ][ 3 ] = { {
     { BEAROFF_LEFT_X, TOP_POINT_Y,  CHEQUER_WIDTH },  /* player 0 tray left */
     { BEAROFF_LEFT_X, BOT_POINT_Y, -CHEQUER_WIDTH }   /* player 1 tray left */
 }, {
-    { BAR_X, BAR_Y_0, CHEQUER_HEIGHT },      /* bar - player 0 */
+    { BAR_X, BAR_Y_1, -CHEQUER_HEIGHT },      /* bar - player 0 */
     { POINT_X(12), TOP_POINT_Y,  CHEQUER_HEIGHT }, 
     { POINT_X(11), TOP_POINT_Y,  CHEQUER_HEIGHT }, 
     { POINT_X(10), TOP_POINT_Y,  CHEQUER_HEIGHT }, 
@@ -113,7 +113,7 @@ int positions[ 2 ][ 30 ][ 3 ] = { {
     { POINT_X(15), BOT_POINT_Y, -CHEQUER_HEIGHT }, 
     { POINT_X(14), BOT_POINT_Y, -CHEQUER_HEIGHT }, 
     { POINT_X(13), BOT_POINT_Y, -CHEQUER_HEIGHT }, 
-    { BAR_X, BAR_Y_1, -(CHEQUER_HEIGHT) },        /* bar player 1 */
+    { BAR_X, BAR_Y_0, (CHEQUER_HEIGHT) },        /* bar player 1 */
     { BEAROFF_LEFT_X, TOP_POINT_Y,  CHEQUER_WIDTH },  /* player 0 tray left */
     { BEAROFF_LEFT_X, BOT_POINT_Y, -CHEQUER_WIDTH },  /* player 1 tray left */
     { BEAROFF_RIGHT_X, TOP_POINT_Y,  CHEQUER_WIDTH }, /* player 0 tray right */
