@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.342 2010/06/28 08:39:58 c_anthon Exp $
+ * $Id: set.c,v 1.343 2010/07/28 14:46:07 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4292,9 +4292,9 @@ static int SetXGID(char *sz)
 	CommandSetMatchID(matchid);
 	g_free(matchid);
 
-	posid = g_strdup(PositionID((ConstTanBoard)anBoard));
 	if (!fMove)
 		SwapSides(anBoard);
+	posid = g_strdup(PositionID((ConstTanBoard)anBoard));
 	CommandSetBoard(posid);
 	g_free(posid);
 
