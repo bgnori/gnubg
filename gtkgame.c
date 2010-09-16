@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.816 2010/05/26 20:11:42 plm Exp $
+ * $Id: gtkgame.c,v 1.817 2010/09/16 21:12:21 plm Exp $
  */
 
 #include "config.h"
@@ -4512,7 +4512,7 @@ RolloutPageGeneral (rolloutpagegeneral *prpw, rolloutwidget *prw) {
   pwv = gtk_vbox_new( FALSE, 0 );
   gtk_container_add( GTK_CONTAINER( pw ), pwv);
 
-  prpw->pwJsdDoStop = gtk_check_button_new_with_label (_( "Enable Stop on Jsd" ) );
+  prpw->pwJsdDoStop = gtk_check_button_new_with_label (_( "Enable Stop on JSD" ) );
   gtk_container_add( GTK_CONTAINER( pwv ), prpw->pwJsdDoStop );
   gtk_toggle_button_set_active ( GTK_TOGGLE_BUTTON ( prw->prwGeneral->pwJsdDoStop ), prw->rcRollout.fStopOnJsd);
   g_signal_connect( G_OBJECT( prw->prwGeneral->pwJsdDoStop ), "toggled", G_CALLBACK (JsdStopToggled), prw);
