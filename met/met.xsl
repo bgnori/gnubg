@@ -21,7 +21,7 @@
 
 
 
-     $Id: met.xsl,v 1.4 2007/07/03 22:05:00 c_anthon Exp $
+     $Id: met.xsl,v 1.5 2010/09/27 06:29:28 plm Exp $
 
  -->     
 
@@ -97,7 +97,14 @@
 
   <!-- convert to percentages -->
 
-  <xsl:value-of select="100.0 * current()" />
+  <xsl:choose>
+    <xsl:when test="current() >= 0.1">
+      <xsl:value-of select="format-number(100.0 * current(), '#0.0')" />
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="format-number(100.0 * current(), '#0.00')" />
+    </xsl:otherwise>
+  </xsl:choose>
 
   </xsl:template>
 
@@ -109,7 +116,7 @@
         <!-- table header -->
 
         <tr>
-        <th><![CDATA[&nbsp;]]></th>
+        <th></th>
         <xsl:for-each select="row[position()=1]/me">
         <th><xsl:number value="position()" />-away</th>
         </xsl:for-each>
@@ -118,9 +125,9 @@
         <xsl:for-each select="row">
         
            <tr>
-              <td><strong><xsl:number value="position()" />-away</strong></td>
+              <td align="right"><strong><xsl:number value="position()" />-away</strong></td>
            <xsl:for-each select="me">
-           <td><xsl:call-template name="me" /></td>
+           <td align="right"><xsl:call-template name="me" /></td>
            </xsl:for-each>
            </tr>
         </xsl:for-each>
