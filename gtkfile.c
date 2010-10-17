@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.55 2010/06/25 14:01:11 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.56 2010/10/17 11:45:48 plm Exp $
  */
 
 #include "config.h"
@@ -45,6 +45,7 @@ static void FilterAdd (const char *fn, const char *pt, GtkFileChooser * fc)
   GtkFileFilter *aff = gtk_file_filter_new ();
   gtk_file_filter_set_name (aff, fn);
   gtk_file_filter_add_pattern (aff, pt);
+  gtk_file_filter_add_pattern (aff, g_ascii_strup(pt, -1));
   gtk_file_chooser_add_filter (fc, aff);
 }
 
@@ -291,6 +292,7 @@ static void add_import_filters (GtkFileChooser *fc)
 	{
 		sg = g_strdup_printf ("*%s", import_format[i].extension);
 		gtk_file_filter_add_pattern (aff, sg);
+		gtk_file_filter_add_pattern (aff, g_ascii_strup(sg, -1));
 		g_free (sg);
 	}
 	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (fc), aff);
