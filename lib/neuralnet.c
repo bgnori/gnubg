@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.62 2009/08/18 14:51:13 mdpetch Exp $
+ * $Id: neuralnet.c,v 1.63 2010/10/29 20:29:57 plm Exp $
  */
 
 #include "config.h"
@@ -478,16 +478,21 @@ int SSE_Supported(void)
 
 #else
 
-#ifdef __APPLE__
+#if defined(__APPLE__) || defined(__FreeBSD__)
 #include <sys/sysctl.h>
 #endif
 
 static int CheckSSE(void)
 {
         int result;
-#ifdef __APPLE__
+#if defined(__APPLE__) || defined(__FreeBSD__)
     size_t length = sizeof( result );
+#if defined(__APPLE__)
     int error = sysctlbyname("hw.optional.sse", &result, &length, NULL, 0);
+#endif
+#if defined(__FreeBSD__)
+    int error = sysctlbyname("hw.instruction_sse", &result, &length, NULL, 0);
+#endif
     if ( 0 != error ) result = 0;
     return result;
 
