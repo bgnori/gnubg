@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.386 2010/06/19 07:24:03 c_anthon Exp $
+ * $Id: eval.c,v 1.387 2010/10/29 19:45:15 plm Exp $
  */
 
 #include "config.h"
@@ -3492,7 +3492,7 @@ FindBestCubeDecision ( float arDouble[],
 
   int f;
 
-  /* Check if cube is avaiable */
+  /* Check if cube is available */
 
   if ( ! GetDPEq ( NULL, NULL, pci ) ) {
 
@@ -4866,7 +4866,7 @@ MakeCubePos( const cubeinfo aciCubePos[], const int cci,
                     aciCubePos[ ici ].fBeavers,
                     aciCubePos[ ici ].bgv );
     else
-      /* mark cube position as unavaiable */
+      /* mark cube position as unavailable */
       aci[ i ].nCube = -1;
 
     i++;

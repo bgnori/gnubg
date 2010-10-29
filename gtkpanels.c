@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.61 2010/05/23 21:17:17 plm Exp $
+* $Id: gtkpanels.c,v 1.62 2010/10/29 19:45:15 plm Exp $
 */
 
 #include "config.h"
@@ -292,7 +292,7 @@ void UpdateTheoryData(BoardData* bd, int UpdateType, const TanBoard points)
 			float arEPC[ 2 ];
 
 			if ( EPC( points, arEPC, NULL, NULL, NULL, TRUE ) )
-			{	/* no EPCs avaiable */
+			{	/* no EPCs available */
 				gtk_clist_set_text(GTK_CLIST(pwTheoryList), 1, 1, "");
 			}
 			else

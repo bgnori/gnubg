@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.261 2009/10/01 21:05:54 c_anthon Exp $
+ * $Id: show.c,v 1.262 2010/10/29 19:45:15 plm Exp $
  */
 
 #include "config.h"
@@ -2244,7 +2244,7 @@ CommandShowMatchResult( char *UNUSED(sz) ) {
                    psc->arLuck[ 0 ][ 1 ] + psc->arLuck[ 1 ][ 1 ] );
       }
       else
-        outputf( _("%10d no info avaiable\n"), n );
+        outputf( _("%10d no info available\n"), n );
       
       r = psc->arActualResult[ 0 ];
       arSum[ 0 ] += r;
