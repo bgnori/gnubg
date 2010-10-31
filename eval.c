@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.387 2010/10/29 19:45:15 plm Exp $
+ * $Id: eval.c,v 1.388 2010/10/31 10:19:46 plm Exp $
  */
 
 #include "config.h"
@@ -607,7 +607,7 @@ extern void EvalInitialise(char *szWeights, char *szWeightsBinary,
 			g_critical(_("This version of GNU Backgammon is compiled with SSE support but this machine does not support SSE"));
 #endif
 
-		cCache = 0x1 << 17;
+		cCache = 0x1 << CACHE_SIZE_DEFAULT;
 		if( CacheCreate( &cEval, cCache ) )
 		{
 			PrintError( "CacheCreate" );
@@ -3318,8 +3318,8 @@ extern double GetEvalCacheSize(void)
 			return 0;
 		if (value < 17)
 			return .5;	/* Special case for old default 65536 */
-		if (value >= 22)
-			return 6;	/* Maximum value */
+		if (value >= CACHE_SIZE_GUIMAX)
+			return CACHE_SIZE_GUIMAX - 16;	/* Maximum value */
 		else
 			return value - 16;
 	}

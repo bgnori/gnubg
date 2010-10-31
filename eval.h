@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.166 2009/09/01 19:13:55 c_anthon Exp $
+ * $Id: eval.h,v 1.167 2010/10/31 10:19:45 plm Exp $
  */
 
 #ifndef _EVAL_H_
@@ -334,6 +334,10 @@ typedef enum  {
 #define N_CLASSES (CLASS_CONTACT + 1)
 
 #define CLASS_PERFECT CLASS_BEAROFF_TS
+
+/* Evaluation cache size is 2^SIZE entries */
+#define CACHE_SIZE_DEFAULT 19
+#define CACHE_SIZE_GUIMAX 23
 
 #define CFMONEY(arEquity,pci) \
    ( ( (pci)->fCubeOwner == -1 ) ? arEquity[ 2 ] : \
