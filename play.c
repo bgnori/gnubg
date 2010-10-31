@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.382 2010/07/05 17:41:21 c_anthon Exp $
+ * $Id: play.c,v 1.383 2010/10/31 15:50:38 plm Exp $
  */
 
 #include "config.h"
@@ -1337,8 +1337,6 @@ static int ComputerTurn( void ) {
       pmr->anDice[ 1 ] = ms.anDice[ 1 ];
       pmr->fPlayer = ms.fTurn;
       pmr->esChequer = ap[ ms.fTurn ].esChequer;
-      pmr->rLuck = LuckAnalysis(msBoard(), ms.anDice[0], ms.anDice[1], &ms);
-      pmr->lt = Luck(pmr->rLuck);
 
 
 	  fd.pml = &pmr->ml;
@@ -2645,8 +2643,6 @@ CommandMove( char *sz ) {
 		    free(pmr);
 		    return;
 	    }
-	    pmr->rLuck = LuckAnalysis(msBoard(), ms.anDice[0], ms.anDice[1], &ms);
-	    pmr->lt = Luck(pmr->rLuck);
     }
 
 #if USE_GTK
