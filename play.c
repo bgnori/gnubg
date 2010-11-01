@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.383 2010/10/31 15:50:38 plm Exp $
+ * $Id: play.c,v 1.384 2010/11/01 13:05:00 plm Exp $
  */
 
 #include "config.h"
@@ -3923,9 +3923,10 @@ extern void SetMatchID(const char *szMatchID)
 	}
 
 	if (fDoubled) {
-		outputerrf(_
-			   ("I'm sorry, but SetMatchID cannot handle positions where a double has been offered"));
-		return;
+		outputl(_("SetMatchID cannot handle positions where a double has been offered."));
+		outputf(_("Stepping back to the offering of the cube. "));
+		fMove = fTurn = !fTurn;
+		fDoubled = 0;
 	}
 
 	if (nMatchTo == 1)
