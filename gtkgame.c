@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.817 2010/09/16 21:12:21 plm Exp $
+ * $Id: gtkgame.c,v 1.818 2010/11/01 12:17:42 plm Exp $
  */
 
 #include "config.h"
@@ -1210,6 +1210,13 @@ static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *eCon, void
 static void NewClicked(gpointer  p, guint n, GtkWidget * pw)
 {
 	GTKNew();
+}
+
+static void CopyAsBGbase(gpointer p, guint n, GtkWidget * pw)
+{
+
+	UserCommand("export position backgammonbase2clipboard");
+
 }
 
 static void CopyAsGOL(gpointer p, guint n, GtkWidget * pw)
@@ -2964,6 +2971,8 @@ GtkItemFactoryEntry aife[] = {
 	  CommandCopy, 0, NULL, NULL },
 	{ N_("/_Edit/Copy as/GammOnLine (HTML)"), NULL,
 	  CopyAsGOL, 0, NULL, NULL },
+	{ N_("/_Edit/Copy as/BackgammonBase.com (URL)"), NULL,
+	  CopyAsBGbase, 0, NULL, NULL },
 
 	{ N_("/_Edit/_Paste Position ID"), "<control>V", PasteIDs, 0,
 		"<StockItem>", GTK_STOCK_PASTE},
