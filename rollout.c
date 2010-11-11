@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.224 2010/05/29 22:08:00 plm Exp $
+ * $Id: rollout.c,v 1.225 2010/11/11 17:17:02 plm Exp $
  */
 
 #include "config.h"
@@ -1167,7 +1167,7 @@ extern void RolloutLoopMT(void *unused)
 		for (alt = 0; alt < ro_alternatives; ++alt) {
 			unsigned int trial = MT_SafeIncValue(&altTrialCount[alt]) - 1;
 			/* skip this one if it's already finished */
-			if (fNoMore[alt] || (trial > this_trial - 1)) {
+			if (fNoMore[alt] || (trial > cGames)) {
 				MT_SafeDec(&altTrialCount[alt]);
 				continue;
 			}
