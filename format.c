@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.41 2010/07/05 18:02:06 c_anthon Exp $
+ * $Id: format.c,v 1.42 2010/11/11 16:50:22 plm Exp $
  */
 
 #include "config.h"
@@ -47,6 +47,7 @@ OutputRolloutResult( const char *szIndent,
 		     float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
 		     float aarStdDev[][ NUM_ROLLOUT_OUTPUTS ],
 		     const cubeinfo aci[],
+		     const int alt,
 		     const int cci,
 		     const int fCubeful ) {
 
@@ -75,7 +76,7 @@ OutputRolloutResult( const char *szIndent,
     strcat ( sz, OutputPercents ( aarOutput[ ici ], TRUE ) );
     strcat ( sz, " CL " );
     strcat ( sz, OutputEquityScale ( aarOutput[ ici ][ OUTPUT_EQUITY ], 
-                                     &aci[ ici ], &aci[ 0 ], TRUE ) );
+                                     &aci[ alt + ici ], &aci[ 0 ], TRUE ) );
 
     if ( fCubeful ) {
       strcat ( sz, " CF " );
@@ -94,7 +95,7 @@ OutputRolloutResult( const char *szIndent,
     strcat ( sz, OutputPercents ( aarStdDev[ ici ], FALSE ) );
     strcat ( sz, " CL " );
     strcat ( sz, OutputEquityScale ( aarStdDev[ ici ][ OUTPUT_EQUITY ], 
-                                     &aci[ ici ], &aci[ 0 ], FALSE ) );
+                                     &aci[ alt + ici ], &aci[ 0 ], FALSE ) );
 
     if ( fCubeful ) {
       strcat ( sz, " CF " );
@@ -963,7 +964,7 @@ OutputCubeAnalysis( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
 
     strcat ( strchr ( sz, 0 ),
              OutputRolloutResult ( NULL, asz, aarOutput, aarStdDev,
-                                   aci, 2, pes->rc.fCubeful ) );
+                                   aci, 0, 2, pes->rc.fCubeful ) );
              
 
   }

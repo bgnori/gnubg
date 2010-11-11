@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.h,v 1.10 2009/04/26 21:03:32 c_anthon Exp $
+ * $Id: format.h,v 1.11 2010/11/11 16:50:22 plm Exp $
  */
 
 #ifndef _FORMAT_H_
@@ -59,6 +59,7 @@ OutputRolloutResult ( const char *szIndent,
                       float aarOutput[][ NUM_ROLLOUT_OUTPUTS ],
                       float aarStdDev[][ NUM_ROLLOUT_OUTPUTS ],
                       const cubeinfo aci[],
+                      const int alt,
                       const int cci,
                       const int fCubeful );
 

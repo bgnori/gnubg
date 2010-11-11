@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.61 2009/10/02 10:34:46 mdpetch Exp $
+ * $Id: progress.c,v 1.62 2010/11/11 16:50:21 plm Exp $
  */
 
 #include "config.h"
@@ -1064,9 +1064,9 @@ static void TextRolloutProgress(float aarOutput[][NUM_ROLLOUT_OUTPUTS],
 
 	pch = OutputRolloutResult(NULL,
 				  (char (*)[1024])prp->ppch[iAlternative],
-				  (float (*)[NUM_ROLLOUT_OUTPUTS])
-				  aarOutput[iAlternative], (float (*)[NUM_ROLLOUT_OUTPUTS])
-				  aarStdDev[iAlternative], &aci[iAlternative], 1, prc->fCubeful);
+				  (float (*)[NUM_ROLLOUT_OUTPUTS]) aarOutput[iAlternative],
+				  (float (*)[NUM_ROLLOUT_OUTPUTS]) aarStdDev[iAlternative],
+				  &aci[0], iAlternative, 1, prc->fCubeful);
 
 	if (fShowRanks && iGame > 1) {
 

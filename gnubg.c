@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.880 2010/06/25 08:53:45 c_anthon Exp $
+ * $Id: gnubg.c,v 1.881 2010/11/11 16:50:22 plm Exp $
  */
 
 #include "config.h"
@@ -1767,6 +1767,7 @@ extern char *FormatMoveHint( char *sz, const matchstate *pms, movelist *pml,
                                        ( float (*)[NUM_ROLLOUT_OUTPUTS] )
                                        arStdDev,
                                        &ci,
+                                       0,
                                        1, 
                                        pml->amMoves[ i ].esMove.rc.fCubeful ) );
         break;
