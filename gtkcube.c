@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.76 2009/09/29 22:09:04 c_anthon Exp $
+ * $Id: gtkcube.c,v 1.77 2010/11/21 13:36:54 plm Exp $
  */
 
 #include "config.h"
@@ -1060,6 +1060,11 @@ extern GtkWidget *CreateCubeAnalysis(moverecord *pmr, const matchstate *pms, int
 	switch (pmr->mt) {
 
 	case MOVE_NORMAL:
+	case MOVE_SETDICE:
+		/*
+		   We're stepping back in the game record after rolling and
+		   asking for a hint on the missed cube decision, for instance
+		*/
 	case MOVE_DOUBLE:
 		if (dt == DT_NORMAL)
 			pchd->pwFrame = CubeAnalysis(pchd);
