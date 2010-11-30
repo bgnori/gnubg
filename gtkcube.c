@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.77 2010/11/21 13:36:54 plm Exp $
+ * $Id: gtkcube.c,v 1.78 2010/11/30 21:33:09 plm Exp $
  */
 
 #include "config.h"
@@ -637,6 +637,10 @@ static void UpdateCubeAnalysis(cubehintdata * pchd)
 
 	switch (pchd->pmr->mt) {
 	case MOVE_NORMAL:
+	case MOVE_SETDICE:
+	case MOVE_SETCUBEPOS:
+	case MOVE_SETCUBEVAL:
+		/* See CreateCubeAnalysis() for these  MOVE_SET* cases */
 	case MOVE_DOUBLE:
 		if (dt == DT_NORMAL)
 			pw = CubeAnalysis(pchd);
@@ -650,7 +654,6 @@ static void UpdateCubeAnalysis(cubehintdata * pchd)
 		break;
 
 	default:
-
 		g_assert(FALSE);
 		break;
 
@@ -1061,10 +1064,15 @@ extern GtkWidget *CreateCubeAnalysis(moverecord *pmr, const matchstate *pms, int
 
 	case MOVE_NORMAL:
 	case MOVE_SETDICE:
-		/*
-		   We're stepping back in the game record after rolling and
-		   asking for a hint on the missed cube decision, for instance
-		*/
+	  /*
+	    We're stepping back in the game record after rolling and
+	    asking for a hint on the missed cube decision, for instance
+	  */
+	case MOVE_SETCUBEPOS:
+	case MOVE_SETCUBEVAL:
+	  /*
+	    These two happen in cube decisions loaded from a .sgf file
+	  */
 	case MOVE_DOUBLE:
 		if (dt == DT_NORMAL)
 			pchd->pwFrame = CubeAnalysis(pchd);
