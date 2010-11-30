@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.27 2009/10/01 21:05:54 c_anthon Exp $
+ * $Id: speed.c,v 1.28 2010/11/30 21:28:23 plm Exp $
  */
 
 #include "config.h"
@@ -152,7 +152,7 @@ extern void CommandCalibrate( char *sz )
 		if (timeTaken == 0)
 			spd = 0;
 		else
-			spd = iIter * (EVALS_PER_ITERATION * CLOCKS_PER_SEC / timeTaken);
+			spd = iIter * (EVALS_PER_ITERATION * 1000 / timeTaken);
 #if USE_GTK
 		if( fX )
 			GTKCalibrationUpdate(pcc, (float)spd);
@@ -172,7 +172,7 @@ extern void CommandCalibrate( char *sz )
     if( timeTaken )
 	{
 		rEvalsPerSec = iIter * (float)(EVALS_PER_ITERATION *
-			CLOCKS_PER_SEC / timeTaken);
+			1000 / timeTaken);
 		outputf( "\rCalibration result: %.0f static evaluations/second.\n",
 				rEvalsPerSec );
     }
