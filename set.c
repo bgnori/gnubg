@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.344 2010/09/27 06:30:24 plm Exp $
+ * $Id: set.c,v 1.345 2010/12/16 21:47:39 plm Exp $
  */
 
 #include "config.h"
@@ -4134,7 +4134,7 @@ static int SetXGID(char *sz)
 
 	char *c;
 	int i;
-	char v[9][4];
+	char v[9][5];
 
 	for (i = 0; i < 9 && (c = strrchr(s, ':')); i++) {
 		strncpy(v[i], c + 1, 4);
