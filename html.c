@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.217 2010/11/01 12:17:43 plm Exp $
+ * $Id: html.c,v 1.218 2010/12/16 21:14:41 plm Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.217 2010/11/01 12:17:43 plm Exp $ */\n",
+           "/* $Id: html.c,v 1.218 2010/12/16 21:14:41 plm Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1818,7 +1818,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.217 $";
+  const char szVersion[] = "$Revision: 1.218 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1898,7 +1898,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.217 $";
+  const char szVersion[] = "$Revision: 1.218 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3729,7 +3729,7 @@ surlencode(char * dst, const char * to_encode)
    int i = 0;
    char * s = dst;
    unsigned char c;
-   while ( c = to_encode[i++] ) {
+   while ( (c = to_encode[i++]) ) {
            if( (c >= '0' && c <= '9')
            ||  (c >= 'A' && c <= 'Z')
            ||  (c >= 'a' && c <= 'z')
