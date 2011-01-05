@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.57 2009/09/01 17:54:52 Superfly_Jon Exp $
+ * $Id: gtktheory.c,v 1.58 2011/01/05 20:40:52 plm Exp $
  */
 
 #include "config.h"
@@ -687,7 +687,7 @@ GTKShowTheory ( const int fActivePage ) {
        gtk_adjustment_new ( 
                            1, 
                            1, 64,
-                           1, 10, 10 ) );
+                           1, 5, 0 ) );
 
     gtk_table_attach ( GTK_TABLE ( pwTable ),
                        gtk_spin_button_new ( ptw->apwScoreAway[ i ],
@@ -832,7 +832,7 @@ GTKShowTheory ( const int fActivePage ) {
 
       ptw->aapwRates[ i ][ j ] = GTK_ADJUSTMENT (
                              gtk_adjustment_new ( 0.0, 0.0, 100.0,
-                             0.01, 1.0, 1.0 ) );
+                             0.01, 1.0, 0 ) );
 
       gtk_table_attach ( GTK_TABLE ( pwTable ),
                          gtk_spin_button_new ( ptw->aapwRates[ i ][ j ], 

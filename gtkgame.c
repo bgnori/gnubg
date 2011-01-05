@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.818 2010/11/01 12:17:42 plm Exp $
+ * $Id: gtkgame.c,v 1.819 2011/01/05 20:40:52 plm Exp $
  */
 
 #include "config.h"
@@ -2378,7 +2378,7 @@ extern void SetAnalysis(gpointer p, guint n, GtkWidget * pw)
   
   for (i = 0; i < 3; i++){
     aw.apadjSkill[i] = 
-	  GTK_ADJUSTMENT( gtk_adjustment_new( 1, 0, 1, 0.01, 10, 0 ) );
+	  GTK_ADJUSTMENT( gtk_adjustment_new( 1, 0, 1, 0.01, 0.05, 0 ) );
 
     pwSpin = 
 	    gtk_spin_button_new (GTK_ADJUSTMENT (aw.apadjSkill[i]), 1, 2);
@@ -2406,7 +2406,7 @@ extern void SetAnalysis(gpointer p, guint n, GtkWidget * pw)
   
   for (i = 0; i < 4; i++){
     aw.apadjLuck[i] = 
-	  GTK_ADJUSTMENT( gtk_adjustment_new( 1, 0, 1, 0.01, 10, 0 ) );
+	  GTK_ADJUSTMENT( gtk_adjustment_new( 1, 0, 1, 0.01, 0.05, 0 ) );
 
     pwSpin = 
 	    gtk_spin_button_new (GTK_ADJUSTMENT (aw.apadjLuck[i]), 1, 2);
