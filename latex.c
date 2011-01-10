@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.49 2009/06/24 18:38:46 Superfly_Jon Exp $
+ * $Id: latex.c,v 1.50 2011/01/10 22:23:36 plm Exp $
  */
 
 #include "config.h"
@@ -452,7 +452,8 @@ static void ExportGameLaTeX( FILE *pf, listOLD *plGame ) {
 		putc( i == pmr->n.iMove ? '*' : ' ', pf );
 		FormatMoveHint( sz, &msExport, &pmr->ml, i,
 				i != pmr->n.iMove ||
-				i != pmr->ml.cMoves - 1, TRUE, TRUE );
+				i != pmr->ml.cMoves - 1 ||
+				i < exsExport.nMoves, TRUE, TRUE );
 		fputs( sz, pf );
 	    }
 	    fputs( "\\end{verbatim}}", pf );    

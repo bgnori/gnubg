@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: text.c,v 1.103 2010/05/08 20:27:09 plm Exp $
+ * $Id: text.c,v 1.104 2011/01/10 22:23:36 plm Exp $
  */
 
 #include "config.h"
@@ -246,7 +246,7 @@ TextEpilogue ( FILE *pf, const matchstate *pms ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.103 $";
+  const char szVersion[] = "$Revision: 1.104 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -505,7 +505,7 @@ TextPrintMoveAnalysis ( GString *gsz, const matchstate *pms, moverecord *pmr ) {
                              i != pmr->n.iMove ||
                              i != pmr->ml.cMoves - 1 ||
                              pmr->ml.cMoves == 1 ||
-                             i < exsExport.nMoves - 1,
+                             i < exsExport.nMoves,
                              exsExport.fMovesDetailProb,
                              exsExport.afMovesParameters 
                              [ pmr->ml.amMoves[ i ].esMove.et - 1 ] ) );

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.881 2010/11/11 16:50:22 plm Exp $
+ * $Id: gnubg.c,v 1.882 2011/01/10 22:23:36 plm Exp $
  */
 
 #include "config.h"
@@ -1282,7 +1282,7 @@ static void DisplayAnalysis( moverecord *pmr ) {
 				    i != pmr->n.iMove ||
 				    i != pmr->ml.cMoves - 1 ||
                                     pmr->ml.cMoves == 1 ||
-                                    i < exsExport.nMoves - 1, TRUE, TRUE ) );
+                                    i < exsExport.nMoves, TRUE, TRUE ) );
 
 	}
 	
