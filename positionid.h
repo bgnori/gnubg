@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.h,v 1.29 2009/07/02 17:23:09 Superfly_Jon Exp $
+ * $Id: positionid.h,v 1.30 2011/01/23 23:06:52 plm Exp $
  */
 
 #ifndef _POSITIONID_H_
@@ -45,7 +45,11 @@ extern void PositionFromBearoff(unsigned int anBoard[], unsigned int usID,
 
 extern unsigned short PositionIndex(unsigned int g, const unsigned int anBoard[6]);
 
-#define EqualKeys(k1, k2) (!memcmp(k1, k2, sizeof(char[10])))
+#define EqualKeys(k1, k2) (   k1[0]==k2[0] && k1[1]==k2[1] && k1[2]==k2[2] \
+			   && k1[3]==k2[3] && k1[4]==k2[4] && k1[5]==k2[5] \
+			   && k1[6]==k2[6] && k1[7]==k2[7] && k1[8]==k2[8] \
+			   && k1[9]==k2[9])
+
 extern int EqualBoards( const TanBoard anBoard0, const TanBoard anBoard1 );
 
 /* Return 1 for valid position, 0 for not */
