@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.422 2010/11/01 12:17:42 plm Exp $
+ * $Id: backgammon.h,v 1.423 2011/01/30 17:10:52 plm Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -575,6 +575,7 @@ extern void CommandEndGame(char *);
 extern void CommandEq2MWC(char *);
 extern void CommandEval(char *);
 extern void CommandExportGameGam(char *);
+extern void CommandExportGameSnowieTxt(char *);
 extern void CommandExportGameHtml(char *);
 extern void CommandExportGameLaTeX(char *);
 extern void CommandExportGamePDF(char *);
@@ -584,6 +585,7 @@ extern void CommandExportHTMLImages(char *);
 extern void CommandExportMatchHtml(char *);
 extern void CommandExportMatchLaTeX(char *);
 extern void CommandExportMatchMat(char *);
+extern void CommandExportMatchSnowieTxt(char *);
 extern void CommandExportMatchPDF(char *);
 extern void CommandExportMatchPS(char *);
 extern void CommandExportMatchText(char *);

@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: file.c,v 1.23 2010/10/17 11:50:34 plm Exp $
+ * $Id: file.c,v 1.24 2011/01/30 17:10:52 plm Exp $
  */
 
 #include "config.h"
@@ -41,7 +41,7 @@ ExportFormat export_format[] = {
 #if HAVE_PANGOCAIRO
 	{EXPORT_PS, ".ps", N_("Postscript"), "ps", {TRUE, TRUE, TRUE}},
 #endif
-	{EXPORT_SNOWIETXT, ".txt", N_("Snowie Text"), "snowietxt", {FALSE, FALSE, TRUE}},
+	{EXPORT_SNOWIETXT, ".txt", N_("Snowie Text"), "snowietxt", {TRUE, TRUE, TRUE}},
 #if HAVE_PANGOCAIRO
 	{EXPORT_SVG, ".svg", N_("SVG"), "svg", {FALSE, FALSE, TRUE}},
 #endif
