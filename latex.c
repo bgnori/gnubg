@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: latex.c,v 1.51 2011/01/10 22:33:04 plm Exp $
+ * $Id: latex.c,v 1.52 2011/02/02 18:38:29 c_anthon Exp $
  */
 
 #include "config.h"
@@ -222,7 +222,7 @@ static void PrintLaTeXBoard( FILE *pf, matchstate *pms, int fPlayer ) {
   etc...). Just to be safe, we escape everything but simple accented
   characters.
 */
-static void LaTeXEscape( FILE *pf, unsigned char *pch ) {
+static void LaTeXEscape( FILE *pf, char *pch ) {
 
     /* Translation table from GNU recode, by François Pinard. */
     static struct translation {

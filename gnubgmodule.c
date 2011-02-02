@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.100 2010/06/02 20:55:08 plm Exp $
+ * $Id: gnubgmodule.c,v 1.101 2011/02/02 18:38:29 c_anthon Exp $
  */
 
 #include "config.h"
@@ -875,10 +875,10 @@ PythonPositionBearoff( PyObject* self UNUSED_PARAM, PyObject *args )
                            &pyBoard, &nPoints, &nChequers ) )
     return NULL;
 
-  if ( pyBoard && !PyToBoard1( pyBoard, anBoard ) )
+  if ( pyBoard && !PyToBoard1( pyBoard, anBoard[0] ) )
     return NULL;
 
-  return PyInt_FromLong( PositionBearoff( anBoard, nPoints, nChequers ) );
+  return PyInt_FromLong( PositionBearoff( anBoard[0], nPoints, nChequers ) );
 }
 
 static PyObject *PythonPositionFromBearoff( PyObject* self UNUSED_PARAM, PyObject *args )
@@ -908,9 +908,9 @@ static PyObject *PythonPositionFromBearoff( PyObject* self UNUSED_PARAM, PyObjec
   }
 
   memset( anBoard, 0, sizeof(anBoard) );
-  PositionFromBearoff( anBoard, iPos, nPoints, nChequers );
+  PositionFromBearoff( anBoard[0], iPos, nPoints, nChequers );
 
-  return Board1ToPy( anBoard );
+  return Board1ToPy( anBoard[0] );
 }
 
 #if PY_MAJOR_VERSION < 2 || (PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION < 3)

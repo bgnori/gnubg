@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: bearoff.c,v 1.87 2009/09/28 18:11:10 Superfly_Jon Exp $
+ * $Id: bearoff.c,v 1.88 2011/02/02 18:38:29 c_anthon Exp $
  */
 #include "config.h"
 /*must be first here because of strange warning from mingw*/
@@ -791,7 +791,11 @@ extern void BearoffClose(bearoffcontext * pbc)
 #if (GLIB_MAJOR_VERSION > 2) || ((GLIB_MAJOR_VERSION > 1) && (GLIB_MINOR_VERSION > 7))
 	if (pbc->map)
 	{
+#if defined(G_DISABLE_DEPRECATED) && G_DISABLE_DEPRECATED
+		 g_mapped_file_unref(pbc->map);
+#else
 		 g_mapped_file_free(pbc->map);
+#endif
 		 pbc->p = NULL;
 	}
 #endif
