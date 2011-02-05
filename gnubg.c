@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.883 2011/01/14 11:22:29 mdpetch Exp $
+ * $Id: gnubg.c,v 1.884 2011/02/05 19:32:23 plm Exp $
  */
 
 #include "config.h"
@@ -465,6 +465,7 @@ static char szDICE[] = N_("<die> <die>"),
     szLANG[] = N_("system|<language code>"),
     szONOFF[] = N_("on|off"),
     szOPTCOMMAND[] = N_("[command]"),
+    szOPTDATE[] = N_("[yyyy-mm-dd]"),
     szOPTDEPTH[] = N_("[depth]"),
     szOPTFILENAME[] = N_("[filename]"),
     szOPTLENGTH[] = N_("[length]"),
