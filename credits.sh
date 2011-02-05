@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.134 2009/05/01 09:28:34 Superfly_Jon Exp $
+# $Id: credits.sh,v 1.135 2011/02/05 19:27:51 plm Exp $
 # 
 
 column < /dev/null || exit 0
@@ -430,3 +430,5 @@ sed -e 's/"/\\"/g' AUTHORS | sed -e 's/.*/"&\\n"/g' >> credits.c
 cat >> credits.c <<EOF
 ;
 EOF
+
+rm -f $authors $contributors $support $translations $credit $extra
