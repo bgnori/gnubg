@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.63 2011/02/05 17:57:54 c_anthon Exp $
+* $Id: gtkpanels.c,v 1.64 2011/02/06 22:10:00 c_anthon Exp $
 */
 
 #include "config.h"
@@ -829,12 +829,13 @@ static void CreateGameWindow( void ) {
 
 static void CreateHeadWindow(gnubgwindow panel, const char* sz, GtkWidget* pwWidge)
 {
-	#include "xpm/x.xpm"
 	GtkWidget* pwLab = gtk_label_new( sz );
 	GtkWidget* pwVbox = gtk_vbox_new(FALSE, 0);
 	GtkWidget* pwHbox = gtk_hbox_new(FALSE, 0);
 	GdkColormap *pcmap = gtk_widget_get_colormap( pwMain );
-	GtkWidget* pwX = StatsPixmapButton(pcmap, x_xpm, (void(*)(GtkWidget*, char*))woPanel[panel].hideFun);
+	GtkWidget* pwX = gtk_button_new();
+	gtk_button_set_image(GTK_BUTTON(pwX), gtk_image_new_from_stock(GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU));
+       	g_signal_connect(G_OBJECT(pwX), "clicked", G_CALLBACK(woPanel[panel].hideFun), NULL);
 
 	gtk_box_pack_start( GTK_BOX( pwVbox ), pwHbox, FALSE, FALSE, 0 );
 	gtk_box_pack_start( GTK_BOX( pwHbox ), pwLab, FALSE, FALSE, 10 );

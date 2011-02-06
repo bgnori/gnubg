@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.63 2009/12/12 14:27:03 c_anthon Exp $
+ * $Id: gtktoolbar.c,v 1.64 2011/02/06 22:10:00 c_anthon Exp $
  */
 
 #include "config.h"
@@ -90,22 +90,6 @@ static void ButtonClickedYesNo( GtkWidget *UNUSED(pw), char *sz ) {
 
 }
 
-
-extern GtkWidget *
-image_from_xpm_d ( char **xpm, GtkWidget *pw ) {
-
-  GdkPixmap *ppm;
-  GdkBitmap *mask;
-
-  ppm = gdk_pixmap_colormap_create_from_xpm_d( NULL,
-                 gtk_widget_get_colormap( pw ), &mask, NULL,
-                                               xpm );
-  if ( ! ppm )
-    return NULL;
-  
-  return gtk_pixmap_new( ppm, mask );
-
-}
 
 static GtkWidget *toggle_button_from_images( GtkWidget *pwImageOff,
                            GtkWidget *pwImageOn, char *sz )
@@ -316,9 +300,6 @@ extern GtkWidget *ToolbarNew(void)
 
 	toolbarwidget *ptw;
 
-#include "xpm/tb_anticlockwise.xpm"
-#include "xpm/tb_clockwise.xpm"
-    
 	/* 
 	* Create toolbar 
 	*/
@@ -386,8 +367,8 @@ extern GtkWidget *ToolbarNew(void)
 
 	/* direction of play */
 	ptw->pwButtonClockwise = toggle_button_from_images ( 
-		  image_from_xpm_d( tb_anticlockwise_xpm, pwToolbar),
-		  image_from_xpm_d( tb_clockwise_xpm, pwToolbar),
+			gtk_image_new_from_stock(GNUBG_STOCK_ANTI_CLOCKWISE, GTK_ICON_SIZE_LARGE_TOOLBAR),
+			gtk_image_new_from_stock(GNUBG_STOCK_CLOCKWISE, GTK_ICON_SIZE_LARGE_TOOLBAR),
                   _("Direction"));
 	g_signal_connect(G_OBJECT(ptw->pwButtonClockwise), "toggled", 
 		  G_CALLBACK( ToolbarToggleClockwise ), ptw );

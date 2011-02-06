@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.42 2009/02/06 13:04:40 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.43 2011/02/06 22:10:00 c_anthon Exp $
  */
 
 #include "config.h"
@@ -84,8 +84,6 @@ static char *aszStockItem[ NUM_DIALOG_TYPES ] =
 	GTK_STOCK_DIALOG_WARNING,
 	GTK_STOCK_DIALOG_WARNING,
 	GTK_STOCK_DIALOG_ERROR,
-	GTK_STOCK_DIALOG_GNU,
-	GTK_STOCK_DIALOG_GNU_QUESTION,
 	NULL
 };
 
@@ -286,13 +284,12 @@ extern int GTKMessage(char *sz, dialogtype dt)
 #define MAXWINSIZE 400
 #define MAXSTRLEN 200
 	int answer = FALSE;
-	static char *aszTitle[NUM_DIALOG_TYPES - 2] = {
+	static char *aszTitle[NUM_DIALOG_TYPES] = {
 		N_("GNU Backgammon - Message"),
 		N_("GNU Backgammon - Question"),
 		N_("GNU Backgammon - Warning"),	/* are you sure */
 		N_("GNU Backgammon - Warning"),
 		N_("GNU Backgammon - Error"),
-		N_("GNU Backgammon - Question"),
 	};
 	GtkWidget *pwDialog, *pwText, *sw, *frame;
 	GtkRequisition req;
