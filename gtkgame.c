@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.821 2011/02/06 22:10:00 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.822 2011/02/06 22:16:04 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3971,7 +3971,6 @@ static GtkWidget *NewWidget( newwidget *pnw)
 
      sz = g_strdup_printf(_("Start a new %d point match"), i);
      sprintf(stock, "gnubg-stock-new%d", i);
-     puts(stock);
      pwButtons = button_from_image(gtk_image_new_from_stock(stock, GTK_ICON_SIZE_LARGE_TOOLBAR));
      gtk_toolbar_append_widget( GTK_TOOLBAR( pwToolbar ),
                              pwButtons, sz, NULL );
