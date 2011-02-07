@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.822 2011/02/06 22:16:04 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.823 2011/02/07 10:53:59 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3930,7 +3930,6 @@ static void edit_new_clicked(GtkWidget * pw, newwidget * pnw)
 static GtkWidget *NewWidget( newwidget *pnw)
 {
   int i, j = 1 ;
-  char **apXPM[10];
   GtkWidget *pwVbox, *pwHbox, *pwLabel, *pwToolbar;
   GtkWidget *pwButtons, *pwFrame, *pwVbox2; 
   pwVbox = gtk_vbox_new(FALSE, 0);
@@ -5267,10 +5266,6 @@ extern void GTKShowScoreSheet( void )
 	GtkCellRenderer *renderer;
 	GtkTreeViewColumn *column;
 	GtkListStore *store;
-	PangoRectangle logical_rect;
-	PangoLayout *layout;
-	int width1, width2;
-	int i;
 	int numRows = 0;
 	char title[100];
 	listOLD *pl;
@@ -6226,7 +6221,6 @@ static void StatsNextGame( GtkWidget *pw, char *szCommand )
 static void AddNavigation(GtkWidget* pvbox)
 {
 	GtkWidget *phbox, *pm, *pw;
-	GdkColormap *pcmap;
     char sz[128];
     listOLD *pl;
 	phbox = gtk_hbox_new( FALSE, 0 ),
