@@ -15,7 +15,7 @@
  * neuralnet.h
  *
  * by Gary Wong, 1998
- * $Id: neuralnet.h,v 1.23 2009/06/30 10:30:40 Superfly_Jon Exp $
+ * $Id: neuralnet.h,v 1.24 2011/02/08 22:41:38 plm Exp $
  */
 
 #ifndef _NEURALNET_H_
@@ -59,7 +59,7 @@ typedef struct _NNState {
 extern int NeuralNetCreate(neuralnet *pnn, unsigned int cInput, unsigned int cHidden, unsigned int cOutput, float rBetaHidden, float rBetaOutput);
 extern void NeuralNetDestroy(neuralnet *pnn);
 extern int NeuralNetEvaluate(const neuralnet *pnn, float arInput[], float arOutput[], NNState *pnState);
-extern int NeuralNetEvaluate128(const neuralnet *pnn, float arInput[], float arOutput[], NNState *pnState);
+extern int NeuralNetEvaluateSSE(const neuralnet *pnn, float arInput[], float arOutput[], NNState *pnState);
 extern int NeuralNetResize(neuralnet *pnn, unsigned int cInput, unsigned int cHidden, unsigned int cOutput);
 extern int NeuralNetLoad(neuralnet *pnn, FILE *pf);
 extern int NeuralNetLoadBinary(neuralnet *pnn, FILE *pf);
