@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.146 2009/10/16 20:58:43 Superfly_Jon Exp $
+ * $Id: gtkgame.h,v 1.147 2011/02/08 18:19:09 c_anthon Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -68,8 +68,6 @@ extern gint NextTurnNotify(gpointer p);
 extern GList *MoveListGetSelectionList(const hintdata * phd);
 extern GtkWidget *GetPanelWidget(gnubgwindow window);
 extern GtkWidget *GL_Create(void);
-extern GtkWidget *StatsPixmapButton(GdkColormap * pcmap, char **xpm,
-				    void (*fn) (GtkWidget*, char*));
 extern int ArePanelsDocked(void);
 extern int ArePanelsShowing(void);
 extern int DockedPanelsShowing(void);
