@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.28 2011/02/08 17:28:55 c_anthon Exp $
+ * $Id: gtkmovefilter.c,v 1.29 2011/02/08 19:10:54 c_anthon Exp $
  */
 
 #include "config.h"
@@ -310,8 +310,6 @@ static GtkWidget *MoveFilterSetup(movefilter aamf[MAX_FILTER_PLIES][MAX_FILTER_P
 	movefiltersetupwidget *pmfsw;
 	GtkWidget *pwNotebook;
 	GtkWidget *pwvbox;
-	GtkWidget *pwMenu;
-	int *pi;
 
 	pwSetup = gtk_vbox_new(FALSE, 4);
 
@@ -479,9 +477,7 @@ extern GtkWidget *MoveFilterWidget(movefilter * pmf, int *UNUSED(pfOK),
 	movefilterwidget *pmfw;
 	GtkWidget *pw;
 	GtkWidget *pwButton;
-	GtkWidget *pwMenu;
 	int i;
-	int *pi;
 
 	pwFrame = gtk_frame_new(_("Move filter"));
 	pmfw = (movefilterwidget *) g_malloc(sizeof(movefilterwidget));
