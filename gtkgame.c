@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.825 2011/02/08 18:19:09 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.826 2011/02/08 18:57:56 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1700,12 +1700,9 @@ static GtkWidget *EvalWidget( evalcontext *pec, movefilter *pmf,
     GtkWidget *pwFrame, *pwFrame2;
     GtkWidget *pw2, *pw3;
 
-    GtkWidget *pwMenu;
-    GtkWidget *pwItem;
 
     GtkWidget *pwev;
     int i;
-    int *pi;
 
     if( pfOK )
 	*pfOK = FALSE;
@@ -2081,9 +2078,8 @@ static void SummaryMenuActivate(GtkComboBox *box, AnalysisDetails *pAnalDetails)
 
 static GtkWidget *AddLevelSettings(GtkWidget *pwFrame, AnalysisDetails *pAnalDetails)
 {
-	GtkWidget *vbox, *hbox, *pw2, *pwMenu, *pwItem, *pwDetails, *vboxSpacer;
+	GtkWidget *vbox, *hbox, *pw2, *pwDetails, *vboxSpacer;
 	int i;
-	int *pi;
 
 	vboxSpacer = gtk_vbox_new (FALSE, 0);
 	gtk_container_set_border_width ( GTK_CONTAINER ( vboxSpacer ), 8 );
@@ -2100,13 +2096,6 @@ static GtkWidget *AddLevelSettings(GtkWidget *pwFrame, AnalysisDetails *pAnalDet
 	gtk_box_pack_start(GTK_BOX(vbox), pw2, FALSE, FALSE, 0 );
 
 	/* option menu with selection of predefined settings */
-
-	pwMenu = gtk_menu_new ();
-
-	gtk_widget_set_tooltip_text(pwMenu,
-						  _("Select a predefined setting, ranging from "
-							"beginner's play to the grandmaster setting "
-							"that will test your patience"));
 
 	pAnalDetails->pwOptionMenu = gtk_combo_box_new_text();
 
