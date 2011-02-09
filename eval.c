@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.389 2011/02/08 22:36:28 plm Exp $
+ * $Id: eval.c,v 1.390 2011/02/09 08:00:18 plm Exp $
  */
 
 #include "config.h"
@@ -425,9 +425,11 @@ static void ComputeTable0( void )
 
 static int Escapes( const unsigned int anBoard[ 25 ], int n ) {
     
-    int i, af = 0;
+    int i, af = 0, m;
     
-    for( i = 0; i < 12 && i < n; i++ )
+    m = (n < 12) ? n : 12;
+
+    for( i = 0; i < m; i++ )
 		if( anBoard[ 24 + i - n ] > 1 )
 		    af |= ( 1 << i );
     
@@ -464,9 +466,11 @@ static void ComputeTable1( void )
 
 static int Escapes1( const unsigned int anBoard[ 25 ], int n ) {
     
-    int i, af = 0;
+    int i, af = 0, m;
     
-    for( i = 0; i < 12 && i < n; i++ )
+    m = (n < 12) ? n : 12;
+
+    for( i = 0; i < m; i++ )
 	if( anBoard[ 24 + i - n ] > 1 )
 	    af |= ( 1 << i );
     
