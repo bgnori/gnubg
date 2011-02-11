@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.135 2011/02/05 19:27:51 plm Exp $
+# $Id: credits.sh,v 1.136 2011/02/11 07:12:38 plm Exp $
 # 
 
 column < /dev/null || exit 0
@@ -67,8 +67,9 @@ Achim Mueller,German
 Hlynur Sigurgislason,Icelandic
 Renzo Campagna,Italian
 Yoshito Takeuchi,Japanese
+Mihai Varzaru,Romanian
+Dmitri I Gouliaev,Russian
 Akif Dinc,Turkish
-Dmitri I GOULIAEV,Russian
 EOF
 
 cat > $credit <<EOF
