@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.222 2011/02/08 19:30:44 c_anthon Exp $
+## $Id: Makefile.am,v 1.223 2011/02/13 17:09:18 plm Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -175,15 +175,21 @@ pkgdata_DATA = gnubg_ts0.bd gnubg.wd boards.xml \
 #
 ##files to add to the tarball when 'make dist'
 #
-EXTRA_DIST = config.rpath  copying.awk gnubg.gtkrc credits.sh \
+EXTRA_DIST = config.rpath  copying.awk gnubg.gtkrc credits.sh AUTHORS \
 	$(BUILT_SOURCES) ABOUT-NLS boards.xml gnubg.sql autogen.sh \
 	gnubg.weights textures.txt corecount.c \
 	external_y.h sgf_y.h commands.inc
 
 #
-##credits.c target
+# targets created by credits.sh
 #
 credits.c: credits.sh
+	cd $(srcdir) && $(SHELL) ./credits.sh
+
+credits.h: credits.sh
+	cd $(srcdir) && $(SHELL) ./credits.sh
+
+AUTHORS: credits.sh
 	cd $(srcdir) && $(SHELL) ./credits.sh
 
 #
@@ -217,5 +223,5 @@ gnubg_ts0.bd: makebearoff$(EXEEXT)
 	./makebearoff -t 6x6 -f $@
 endif
 
-MOSTLYCLEANFILES=sgf_y.c sgf_y.h sgf_l.c external_l.c external_l.h external_y.c external_y.h copying.c credits.c credits.h
+MOSTLYCLEANFILES=sgf_y.c sgf_y.h sgf_l.c external_l.c external_l.h external_y.c external_y.h copying.c credits.c credits.h AUTHORS
 DISTCLEANFILES=gnubg_os0.bd gnubg_ts0.bd gnubg.wd
