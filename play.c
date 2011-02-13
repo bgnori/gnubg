@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.384 2010/11/01 13:05:00 plm Exp $
+ * $Id: play.c,v 1.385 2011/02/13 16:35:58 plm Exp $
  */
 
 #include "config.h"
@@ -4333,7 +4333,6 @@ extern const char* GetMoveString(moverecord *pmr, int* pPlayer, gboolean addSkil
 		/* no need to list this */
 		break;
 
-
 	case MOVE_NORMAL:
 	*pPlayer = pmr->fPlayer;
 		pch = sz;
@@ -4410,13 +4409,13 @@ extern const char* GetMoveString(moverecord *pmr, int* pPlayer, gboolean addSkil
 
 	case MOVE_SETCUBEPOS:
 		*pPlayer = -1;
-		if( pmr->scp.fCubeOwner < 0 )
-			pch = " (set cube centre)";
+		if ( pmr->scp.fCubeOwner < 0 )
+		  sprintf( sz, " (set cube centre)");
 		else
-			sprintf( sz, " (set cube owner %s)",
-				ap[ pmr->scp.fCubeOwner ].szName );
+		  sprintf( sz, " (set cube owner %s)",
+			   ap[ pmr->scp.fCubeOwner ].szName );
 		pch = sz;
-	break;
+		break;
 
 	case MOVE_SETCUBEVAL:
 		*pPlayer = -1;
