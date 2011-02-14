@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.830 2011/02/14 20:13:48 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.831 2011/02/14 20:21:43 c_anthon Exp $
  */
 
 #include "config.h"
@@ -3076,9 +3076,6 @@ GtkItemFactoryEntry aife[] = {
 	{ N_("/_Settings/-"), NULL, NULL, 0, "<Separator>", NULL },
 	{ N_("/_Settings/_Options..."), NULL, SetOptions, 0, NULL, NULL },
 	{ N_("/_Settings/_Language..."), NULL, SetLanguage, 0, NULL, NULL },
-	{ N_("/_Settings/-"), NULL, NULL, 0, "<Separator>", NULL },
-	{ N_("/_Settings/_Save settings"), 
-          NULL, Command, CMD_SAVE_SETTINGS, NULL, NULL },
 	{ N_("/G_o"), NULL, NULL, 0, "<Branch>", NULL },
 	{ N_("/G_o/Previous marked move"), "<shift><control>Page_Up", Command, CMD_PREV_MARKED, "<StockItem>", GNUBG_STOCK_GO_PREV_MARKED },
 	{ N_("/G_o/Previous cmarked move"), "<shift>Page_Up", Command, CMD_PREV_CMARKED, "<StockItem>", GNUBG_STOCK_GO_PREV_CMARKED },
