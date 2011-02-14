@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.78 2010/11/30 21:33:09 plm Exp $
+ * $Id: gtkcube.c,v 1.79 2011/02/14 20:13:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -845,6 +845,7 @@ CubeAnalysisMWC ( GtkWidget *pw, cubehintdata *pchd ) {
     sprintf ( sz, "set output mwc %s", fOutputMWC ? "off" : "on" );
     
     UserCommand ( sz );
+    UserCommand("save settings");
   }
 
   gtk_toggle_button_set_active ( GTK_TOGGLE_BUTTON ( pw ), fOutputMWC );

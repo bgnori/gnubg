@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmet.c,v 1.26 2009/05/01 09:28:34 Superfly_Jon Exp $
+ * $Id: gtkmet.c,v 1.27 2011/02/14 20:13:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -191,6 +191,7 @@ static void invertMETlocal( GtkWidget *UNUSED(widget), const metwidget *pmw ){
   else
     UserCommand( "set invert met on" );
 
+  UserCommand("save settings");
   UpdateAllTables ( pmw );
 }
 

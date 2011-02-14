@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.43 2011/02/06 22:10:00 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.44 2011/02/14 20:13:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -378,6 +378,7 @@ WarningOK ( GtkWidget *pw, warningType warning )
 		char cmd[200];
 		sprintf(cmd, "set warning %s off", warnings[warning].warningName);
 		UserCommand(cmd);
+		UserCommand("save settings");
 	}
 	warningResult = TRUE;
 	gtk_widget_destroy(gtk_widget_get_toplevel(pw));

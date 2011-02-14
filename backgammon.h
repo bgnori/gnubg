@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.424 2011/02/08 19:30:44 c_anthon Exp $
+ * $Id: backgammon.h,v 1.425 2011/02/14 20:13:47 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -360,6 +360,7 @@ extern movefilter aamfEval[MAX_FILTER_PLIES][MAX_FILTER_PLIES];
 typedef movefilter TmoveFilter[MAX_FILTER_PLIES][MAX_FILTER_PLIES];
 extern TmoveFilter *GetEvalMoveFilter(void);
 extern player ap[2];
+extern char default_names[2][31];
 extern rolloutcontext rcRollout;
 extern skilltype TutorSkill;
 extern statcontext scMatch;
@@ -999,6 +1000,7 @@ extern void CommandShowWarning(char *);
 extern void CommandShowWarranty(char *);
 extern void CommandSwapPlayers(char *);
 extern void CommandTake(char *);
+extern void CommandSetDefaultNames(char *sz);
 extern void hint_move(char *sz, gboolean show);
 extern void hint_double(int show, int did_double);
 extern void hint_take(int show, int did_take);

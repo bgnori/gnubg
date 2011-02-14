@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.29 2011/02/08 19:10:54 c_anthon Exp $
+ * $Id: gtkmovefilter.c,v 1.30 2011/02/14 20:13:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -549,6 +549,7 @@ SetMovefilterCommands ( const char *sz,
       }
       
     }
+  UserCommand("save settings");
 
 }
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.884 2011/02/05 19:32:23 plm Exp $
+ * $Id: gnubg.c,v 1.885 2011/02/14 20:13:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -446,6 +446,8 @@ player ap[ 2 ] = {
     { "gnubg", PLAYER_GNU, EVALSETUP, EVALSETUP, MOVEFILTER, 0, NULL },
     { "user", PLAYER_HUMAN, EVALSETUP, EVALSETUP, MOVEFILTER, 0, NULL } 
 };
+
+char default_names[2][31] = {"gnubg", "user"};
 
 /* Usage strings */
 static char szDICE[] = N_("<die> <die>"),
@@ -3092,6 +3094,7 @@ static void SavePlayerSettings(FILE * pf)
 {
 	int i;
 	char szTemp[4096];
+	fprintf(pf, "set defaultnames \"%s\" \"%s\"\n", default_names[0], default_names[1]);
 	for (i = 0; i < 2; i++) {
 		fprintf(pf, "set player %d name %s\n", i, ap[i].szName);
 
@@ -4626,6 +4629,7 @@ static void init_defaults(void)
 	SetMatchDate(&mi);
 
 	strcpy(ap[1].szName, g_get_user_name());
+	strcpy(default_names[1], g_get_user_name());
 
 	ListCreate(&lMatch);
 	IniStatcontext(&scMatch);

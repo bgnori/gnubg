@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.108 2009/09/29 22:09:04 c_anthon Exp $
+ * $Id: gtkchequer.c,v 1.109 2011/02/14 20:13:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -231,6 +231,7 @@ MoveListMWC ( GtkWidget *pw, hintdata *phd )
     sprintf ( sz, "set output mwc %s", fOutputMWC ? "off" : "on" );
     
     UserCommand ( sz );
+    UserCommand("save settings");
   }
 
   gtk_toggle_button_set_active ( GTK_TOGGLE_BUTTON ( pw ), fOutputMWC );

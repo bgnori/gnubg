@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.104 2010/10/31 10:19:46 plm Exp $
+ * $Id: gtkoptions.c,v 1.105 2011/02/14 20:13:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1667,6 +1667,7 @@ switch(gtk_combo_box_get_active(GTK_COMBO_BOX(pow->pwShowPips)))
 	if (relPageActivated)
 		RelationalSaveOptions();
 
+  UserCommand("save settings");
   /* Destroy widget on exit */
   gtk_widget_destroy( gtk_widget_get_toplevel( pw ) );
 }

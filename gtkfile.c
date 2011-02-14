@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.56 2010/10/17 11:45:48 plm Exp $
+ * $Id: gtkfile.c,v 1.57 2011/02/14 20:13:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -243,6 +243,7 @@ static void SaveCommon (guint f, gchar * prompt)
 	  g_free (last_export_folder);
 	  last_export_folder = gtk_file_chooser_get_current_folder (GTK_FILE_CHOOSER (so.fc));
 	  UserCommand (cmd);
+	  UserCommand("save settings");
 	  g_free (cmd);
 	}
       g_free (fn);
@@ -403,6 +404,7 @@ extern void GTKOpen(gpointer p, guint n, GtkWidget * pw)
 			if (import_type == N_IMPORT_TYPES)
 			{	/* Load command file */
 				CommandLoadCommands(fn);
+				UserCommand("save settings");
 			}
 			else
 			{	/* Import as specific type */

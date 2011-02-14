@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.64 2011/02/06 22:10:00 c_anthon Exp $
+ * $Id: gtktoolbar.c,v 1.65 2011/02/14 20:13:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -165,6 +165,7 @@ static void ToolbarToggleClockwise( GtkWidget *pw, toolbarwidget *ptw )
     gchar *sz = g_strdup_printf( "set clockwise %s", f ? "on" : "off" );
     UserCommand( sz );
     g_free( sz );
+    UserCommand("save settings");
   }
 }
 

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.45 2009/03/02 23:01:28 Superfly_Jon Exp $
+ * $Id: gtkexport.c,v 1.46 2011/02/14 20:13:48 c_anthon Exp $
  */
 
 #include "config.h"
@@ -325,6 +325,7 @@ SetExportCommands ( const exportsetup *pexsOrig,
     UserCommand ( sz );
     g_free ( sz );
   }
+  UserCommand("save settings");
 }
 
 
@@ -495,6 +496,7 @@ static void ExportHTMLImages(void)
 						expfolder, "\"", NULL);
 				UserCommand(command);
 				g_free(command);
+				UserCommand("save settings");
 			}
 			g_free(expfolder);
 			g_free(folder);
