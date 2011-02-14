@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.81 2009/09/24 08:01:11 c_anthon Exp $
+ * $Id: sound.c,v 1.82 2011/02/14 17:07:15 c_anthon Exp $
  */
 
 #include "config.h"
@@ -208,6 +208,9 @@ void
 playSoundFile (char *file, /*lint -e{715}*/gboolean sync)
 {
     GError *error = NULL;
+#if HAVE_CANBERRA
+    static ca_context *canberracontext = NULL;
+#endif
     if (!g_file_test(file, G_FILE_TEST_EXISTS))
     {
             outputf(_("The sound file (%s) doesn't exist.\n"), file);
@@ -257,7 +260,16 @@ playSoundFile (char *file, /*lint -e{715}*/gboolean sync)
 #elif defined(__APPLE__)
 	PlaySound_QuickTime (file);
 #elif HAVE_CANBERRA
-	ca_context_play(ca_gtk_context_get(), 0, CA_PROP_MEDIA_FILENAME, file, NULL);
+	if (!canberracontext)
+	{
+#if USE_GTK
+		if (fX)
+			canberracontext = ca_gtk_context_get();
+		else
+#endif
+			ca_context_create(&canberracontext);
+	}
+	ca_context_play(canberracontext, 0, CA_PROP_MEDIA_FILENAME, file, NULL);
 #endif
 }
 
