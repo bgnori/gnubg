@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.168 2011/01/16 12:56:33 plm Exp $
+ * $Id: eval.h,v 1.169 2011/02/14 21:06:24 plm Exp $
  */
 
 #ifndef _EVAL_H_
@@ -235,6 +235,10 @@ typedef enum {
   NUM_DOUBLE_TYPES
 } doubletype;
 
+/*
+   TT_NA can happen if a single position was loaded from a sgf file.
+   To check for beavers, use "> TT_NORMAL", not "!= TT_NORMAL".
+*/
 typedef enum {
   TT_NA,
   TT_NORMAL,

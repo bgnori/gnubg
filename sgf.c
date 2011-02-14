@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.133 2010/05/23 20:30:39 plm Exp $
+ * $Id: sgf.c,v 1.134 2011/02/14 21:06:24 plm Exp $
  */
 
 #include "config.h"
@@ -1136,20 +1136,16 @@ static void RestoreNode(listOLD * pl)
 
 		pmr->mt = MOVE_TAKE;
 		pmr->fPlayer = fPlayer;
-		if (!LinkToDouble(pmr)) {
-		    free(pmr);
-		    continue;
-		}
+		LinkToDouble(pmr);
+
 	    } else if (!strcmp(pch, "drop")) {
 
 		pmr = NewMoveRecord();
 
 		pmr->mt = MOVE_DROP;
 		pmr->fPlayer = fPlayer;
-		if (!LinkToDouble(pmr)) {
-		    free(pmr);
-		    continue;
-		}
+		LinkToDouble(pmr);
+
 	    } else {
 
 		pmr = NewMoveRecord();
@@ -1469,6 +1465,7 @@ extern void CommandLoadGame(char *sz)
 
 #endif
 
+        /* FIXME : don't do this if we just loaded a single position */
 	if (fGotoFirstGame)
 	    CommandFirstGame(NULL);
 
@@ -1569,6 +1566,7 @@ extern void CommandLoadMatch(char *sz)
 
 	setDefaultFileName(sz);
 
+        /* FIXME : don't do this if we just loaded a single position */
 	if (fGotoFirstGame)
 	    CommandFirstGame(NULL);
 

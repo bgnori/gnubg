@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.224 2010/06/23 23:33:01 c_anthon Exp $
+ * $Id: analysis.c,v 1.225 2011/02/14 21:06:24 plm Exp $
  */
 
 #include "config.h"
@@ -522,7 +522,7 @@ updateStatcontext(statcontext*       psc,
   case MOVE_TAKE:
 
     tt = (taketype) DoubleType ( pms->fDoubled, pms->fMove, pms->fTurn );
-    if ( tt != TT_NORMAL )
+    if ( tt > TT_NORMAL )
 	    break;
 
     GetMatchStateCubeInfo ( &ci, pms );
@@ -837,7 +837,7 @@ AnalyzeMove (moverecord *pmr, matchstate *pms, const listOLD *plParentGame,
           break;
       
         tt = (taketype) DoubleType ( pms->fDoubled, pms->fMove, pms->fTurn );
-        if ( tt != TT_NORMAL )
+        if ( tt > TT_NORMAL )
           break;
 
 		if( fAnalyseCube && pmgi->fCubeUse && doubleError && (*doubleError != (float)ERR_VAL))
@@ -858,7 +858,7 @@ AnalyzeMove (moverecord *pmr, matchstate *pms, const listOLD *plParentGame,
           break;
       
         tt = (taketype) DoubleType ( pms->fDoubled, pms->fMove, pms->fTurn );
-        if ( tt != TT_NORMAL )
+        if ( tt > TT_NORMAL )
           break;
 
 		if( fAnalyseCube && pmgi->fCubeUse && doubleError && (*doubleError != (float)ERR_VAL) )
@@ -1989,7 +1989,7 @@ static int MoveAnalysed(moverecord * pmr, matchstate * pms, listOLD * plGame,
 
 		tt = (taketype) DoubleType(pms->fDoubled, pms->fMove,
 					   pms->fTurn);
-		if (tt != TT_NORMAL)
+		if (tt > TT_NORMAL)
 			break;
 
 		if (fAnalyseCube && pmgi->fCubeUse
@@ -2005,7 +2005,7 @@ static int MoveAnalysed(moverecord * pmr, matchstate * pms, listOLD * plGame,
 
 		tt = (taketype) DoubleType(pms->fDoubled, pms->fMove,
 					   pms->fTurn);
-		if (tt != TT_NORMAL)
+		if (tt > TT_NORMAL)
 			break;
 
 		if (pmr->CubeDecPtr->esDouble.et == EVAL_NONE)

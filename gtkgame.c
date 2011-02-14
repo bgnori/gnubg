@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.831 2011/02/14 20:21:43 c_anthon Exp $
+ * $Id: gtkgame.c,v 1.832 2011/02/14 21:06:24 plm Exp $
  */
 
 #include "config.h"
@@ -962,7 +962,7 @@ extern void SetAnnotation( moverecord *pmr) {
 	    gtk_box_pack_start( GTK_BOX( pwAnalysis ), pwBox, FALSE, FALSE,
 				0 );
 
-            if ( tt == TT_NORMAL ) {
+            if ( tt <= TT_NORMAL ) {
               if ( ( pw = CreateCubeAnalysis( pmr, &ms, -1, pmr->mt == MOVE_TAKE, TRUE ) ) )
 		gtk_box_pack_start( GTK_BOX( pwAnalysis ), pw, FALSE,
 				    FALSE, 0 );
