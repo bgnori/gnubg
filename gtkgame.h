@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.h,v 1.147 2011/02/08 18:19:09 c_anthon Exp $
+ * $Id: gtkgame.h,v 1.148 2011/02/16 19:43:38 plm Exp $
  */
 
 #ifndef _GTKGAME_H_
@@ -34,6 +34,10 @@ extern GtkAccelGroup *pagMain;
 #if (GTK_MAJOR_VERSION < 3) && (GTK_MINOR_VERSION < 12)
 extern GtkTooltips *ptt;
 #define gtk_widget_set_tooltip_text(pw,text) gtk_tooltips_set_tip(ptt, (pw), (text), NULL)
+#endif
+
+#if (GTK_MAJOR_VERSION < 3) && (GTK_MINOR_VERSION < 20)
+#define gtk_widget_get_realized(p)  GTK_WIDGET_REALIZED((p))
 #endif
 
 extern GtkWidget *pwAnalysis;
