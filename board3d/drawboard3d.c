@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.89 2009/09/25 16:00:23 Superfly_Jon Exp $
+* $Id: drawboard3d.c,v 1.90 2011/03/07 22:25:14 mdpetch Exp $
 */
 
 #include "config.h"
@@ -821,7 +821,10 @@ NTH_STATIC void drawDice(const BoardData* bd, int num)
 	SetupSimpleMat(&whiteMat, 1.f, 1.f, 1.f);
 
 	value = bd->diceRoll[num];
-	value--;	/* Zero based for array access */
+
+        /* During program startup value may be zero, if so don't draw */
+        if (!value) return;
+        value--;        /* Zero based for array access */
 
 	/* Get dice rotation */
 	if (bd->diceShown == DICE_BELOW_BOARD)
