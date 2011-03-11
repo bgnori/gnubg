@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.891 2011/03/10 19:06:00 mdpetch Exp $
+ * $Id: gnubg.c,v 1.892 2011/03/11 05:52:13 mdpetch Exp $
  */
 
 #include "config.h"
@@ -4548,9 +4548,9 @@ extern int getDiceRandomDotOrg(void)
 		   use recv instead */
 		if (!
 		    (nBytesRead =
-		     recv((SOCKET) h, acBuf, sizeof(acBuf), 0))) {
+		     recv((SOCKET) h, acBuf, sizeof(acBuf)-1, 0))) {
 #else
-		if (!(nBytesRead = read(h, acBuf, sizeof(acBuf)))) {
+		if (!(nBytesRead = read(h, acBuf, sizeof(acBuf)-1))) {
 #endif
 			SockErr("reading data");
 			closesocket(h);
