@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.84 2011/03/15 02:44:50 mdpetch Exp $
+ * $Id: sound.c,v 1.85 2011/03/15 05:15:51 mdpetch Exp $
  */
 
 #include "config.h"
@@ -161,14 +161,15 @@ void PlaySound_QuickTime (const char *cSoundFilename)
 #include <CoreAudio/CoreAudioTypes.h>
 #include <ApplicationServices/ApplicationServices.h>
 
-static int result;
 #define CoreAudioChkError(func,context) \
-	if ((result = func)!=0) \
 	{ \
-		fprintf (stderr, "Apple CoreAudio Error (" context "): %d\n", result); \
-		return; \
-	} 
-
+		int result; \
+		if ((result = func)!=0) \
+		{ \
+			fprintf (stderr, "Apple CoreAudio Error (" context "): %d\n", result); \
+			return; \
+		} \
+	}
 double CoreAudio_PrepareFileAU (AudioUnit *au, AudioStreamBasicDescription *fileFormat, 
 	AudioFileID audioFile);
 void CoreAudio_MakeSimpleGraph (AUGraph *theGraph, AudioUnit *fileAU, 
