@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.892 2011/03/11 05:52:13 mdpetch Exp $
+ * $Id: gnubg.c,v 1.893 2011/03/15 02:44:50 mdpetch Exp $
  */
 
 #include "config.h"
@@ -538,7 +538,9 @@ char const *aszBuildInfo[] = {
 #endif
 #if defined(WIN32)
     N_("Windows sound system supported."),
-#elif defined(__APPLE__) && !defined(__LP64__)
+#elif HAVE_APPLE_COREAUDIO
+    N_("Apple CoreAudio sound system supported."),
+#elif HAVE_APPLE_QUICKTIME
     N_("Apple QuickTime sound system supported."),
 #elif HAVE_CANBERRA
     N_("libcanberra sound system supported."),
