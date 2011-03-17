@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.102 2011/03/17 03:57:51 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.103 2011/03/17 17:35:41 mdpetch Exp $
  */
 
 #include "config.h"
@@ -930,13 +930,17 @@ PythonPositionID( PyObject* self UNUSED_PARAM, PyObject *args ) {
 
 static PyObject *
 PythonGnubgID( PyObject* self UNUSED_PARAM, PyObject *args ) {
-  char gnubgidBuf[48];
+  char *szGnubgID = NULL;
+  char *szPosID = NULL;
+  char *szMatchID = NULL;
+  PyObject *pyRetVal = NULL;
   PyObject *pyCubeInfo = NULL;
   PyObject *pyPosInfo = NULL;
   PyObject *pyBoard = NULL;
   cubeinfo ci;
   posinfo pi;
   TanBoard anBoard;
+  
   memcpy( anBoard, msBoard(), sizeof(TanBoard) );
   pi.anDice[0] = ms.anDice[0];
   pi.anDice[1] = ms.anDice[1];
@@ -977,13 +981,18 @@ PythonGnubgID( PyObject* self UNUSED_PARAM, PyObject *args ) {
   if ( pyPosInfo && PyToPosInfo( pyPosInfo, &pi ) )
     return NULL;
 
-  sprintf (gnubgidBuf, "%s:%s", PositionID( (ConstTanBoard)anBoard ),
-           MatchID ( pi.anDice, pi.fTurn, pi.fResigned, pi.fDoubled, ci.fMove,
-           ci.fCubeOwner, ci.fCrawford, ci.nMatchTo,
-           ci.anScore, ci.nCube, pi.gs ) );
-  
-  return PyString_FromString( gnubgidBuf );
+  szPosID = g_strdup (PositionID( (ConstTanBoard)anBoard ) );
+  szMatchID = g_strdup (MatchID ( pi.anDice, pi.fTurn, pi.fResigned, pi.fDoubled, 
+                        ci.fMove, ci.fCubeOwner, ci.fCrawford, ci.nMatchTo, 
+                        ci.anScore, ci.nCube, pi.gs ) );
+  szGnubgID = g_strjoin (":", szPosID, szMatchID);
+  pyRetVal = PyString_FromString( szGnubgID );
 
+  g_free (szPosID);
+  g_free (szMatchID);
+  g_free (szGnubgID);
+
+  return (pyRetVal);  
 }
 
 static PyObject *
