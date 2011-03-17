@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.104 2011/03/17 18:32:16 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.105 2011/03/17 20:20:13 mdpetch Exp $
  */
 
 #include "config.h"
@@ -962,7 +962,7 @@ PythonGnubgID( PyObject* self UNUSED_PARAM, PyObject *args ) {
   if ( pyBoard && (!pyPosInfo || !pyCubeInfo)) {
     PyErr_SetString( PyExc_TypeError, 
                      _("requires 0 or exactly 3 arguments (Board, Cube-Info dict, Pos-Info dict). "
-                       "(see gnubg.board(), gnubg.cubeinfo(), gnubg.posinfo() for an examples)") );
+                       "(see gnubg.board(), gnubg.cubeinfo(), gnubg.posinfo() for examples)") );
 	 return NULL;
   }
 
@@ -2462,7 +2462,7 @@ PyMethodDef gnubgMethods[] = {
     "        player doubled = 0/1, gamestate = 0-7, dice (tuple int, int)] \n"
     "    returns pos-info dictionary\n"
     "       pos-info = dictionary: 'dice'=>(int,int), 'turn'=>0/1\n"
-    "           'resigned'=>0/1, 'doubled'=>0/1, 'gamestat'=>(int)(0 to 7)\n" },
+    "           'resigned'=>0/1, 'doubled'=>0/1, 'gamestat'=>int (0 to 7)\n" },
   { "met", PythonMET, METH_VARARGS,
     "return the current match equity table\n"
     "   arguments: [max score]\n"
