@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.103 2011/03/17 17:35:41 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.104 2011/03/17 18:32:16 mdpetch Exp $
  */
 
 #include "config.h"
@@ -313,7 +313,7 @@ PyToPosInfo( PyObject *p, posinfo *ppi ) {
       /* unknown dict value */
       PyErr_SetString( PyExc_ValueError, 
                        _("invalid dict value in posinfo "
-                         "(see gnubg.cubeinfo() for an example)") );
+                         "(see gnubg.posinfo() for an example)") );
       return -1;
     }
 
