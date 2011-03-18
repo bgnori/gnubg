@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.833 2011/03/04 08:11:10 mdpetch Exp $
+ * $Id: gtkgame.c,v 1.834 2011/03/18 02:44:30 mdpetch Exp $
  */
 
 #include "config.h"
@@ -6009,7 +6009,7 @@ static void AddList(char *pStr, GtkWidget *view, const char *pTitle)
 			sprintf(strchr(pStr, 0), "%-37s ", sz ? sz : "");
 			gtk_tree_model_get(model, &iter, 1, &sz, -1);
 			sprintf(strchr(pStr, 0), "%-20s ", sz ? sz : "");
-			gtk_tree_model_get(model, &iter, 1, &sz, -1);
+			gtk_tree_model_get(model, &iter, 2, &sz, -1);
 			sprintf(strchr(pStr, 0), "%-20s\n", sz ? sz : "");
 		} while (gtk_tree_model_iter_next(model, &iter));
 	sprintf(strchr(pStr, 0), "\n");
