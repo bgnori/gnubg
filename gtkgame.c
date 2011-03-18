@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.835 2011/03/18 03:42:07 mdpetch Exp $
+ * $Id: gtkgame.c,v 1.836 2011/03/18 04:59:41 mdpetch Exp $
  */
 
 #include "config.h"
@@ -6274,7 +6274,7 @@ static GtkWidget *CreateList(void)
 		renderer = gtk_cell_renderer_text_new();
 		g_object_set(renderer, "xalign", 1.0, NULL);
 		column = gtk_tree_view_column_new_with_attributes("", renderer, "text", i, NULL);
-		gtk_tree_view_column_set_alignment  (column, 1.0);
+		gtk_tree_view_column_set_alignment  (column, 0.97);
 		gtk_tree_view_append_column(GTK_TREE_VIEW(view), column);
 	}
 	gtk_tree_view_column_set_title (gtk_tree_view_get_column (GTK_TREE_VIEW(view), 1), ap[0].szName); 
