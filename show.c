@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.262 2010/10/29 19:45:15 plm Exp $
+ * $Id: show.c,v 1.263 2011/03/19 21:08:40 plm Exp $
  */
 
 #include "config.h"
@@ -719,15 +719,15 @@ extern void CommandShowJacoby( char *UNUSED(sz) ) {
 
   if ( ! ms.nMatchTo )
     outputl( ms.fJacoby ? 
-             _("This money session is play with the Jacoby rule."
-               " Default is:") :
-             _("This money session is play without the Jacoby rule."
-               " Default is:") );
+             _("This money session is played with the Jacoby rule.")
+               :
+             _("This money session is played without the Jacoby rule.")
+               );
 
   if ( fJacoby ) 
-    outputl( _("Money sessions are played with the Jacoby rule.") );
+    outputl( _("New money sessions are played with the Jacoby rule.") );
   else
-    outputl( _("Money sessions are played without the Jacoby rule.") );
+    outputl( _("New money sessions are played without the Jacoby rule.") );
 
 }
 
