@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.105 2011/03/17 20:20:13 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.106 2011/03/19 19:41:27 mdpetch Exp $
  */
 
 #include "config.h"
@@ -2459,10 +2459,10 @@ PyMethodDef gnubgMethods[] = {
   { "posinfo", PythonPosInfo, METH_VARARGS,
     "Make a posinfo dictionary\n"
     "    arguments: [player on roll = 0/1, player resigned = 0/1, \n"
-    "        player doubled = 0/1, gamestate = 0-7, dice (tuple int, int)] \n"
+    "        player doubled = 0/1, gamestate = 0..7, dice = tuple(0..6, 0..6)] \n"
     "    returns pos-info dictionary\n"
-    "       pos-info = dictionary: 'dice'=>(int,int), 'turn'=>0/1\n"
-    "           'resigned'=>0/1, 'doubled'=>0/1, 'gamestat'=>int (0 to 7)\n" },
+    "       pos-info = dictionary: 'dice'=>tuple (int,int), 'turn'=>0/1\n"
+    "           'resigned'=>0/1, 'doubled'=>0/1, 'gamestate'=>int (0..7)\n" },
   { "met", PythonMET, METH_VARARGS,
     "return the current match equity table\n"
     "   arguments: [max score]\n"
