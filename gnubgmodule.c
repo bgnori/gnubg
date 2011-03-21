@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.108 2011/03/20 21:27:54 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.109 2011/03/21 03:49:50 mdpetch Exp $
  */
 
 #include "config.h"
@@ -36,15 +36,6 @@
 #if USE_PYTHON
 
 #define UNUSED_PARAM __attribute__ ((unused))
-
-typedef struct {
-	int anDice[ 2 ];
-	int fTurn;
-	int fResigned;
-	int fDoubled;
-	gamestate gs;   
-} posinfo;
-
 
 static PyObject *
 BoardToPy( const TanBoard anBoard )

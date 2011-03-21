@@ -16,13 +16,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.h,v 1.9 2009/03/21 21:46:32 c_anthon Exp $
+ * $Id: matchid.h,v 1.10 2011/03/21 03:49:50 mdpetch Exp $
  */
 
 #ifndef _MATCHID_H_
 #define _MATCHID_H_
 
 #define L_MATCHID 12
+
+typedef struct {
+        int anDice[ 2 ];
+        int fTurn;
+        int fResigned;
+        int fDoubled;
+        gamestate gs;
+} posinfo;
+
 extern int
 LogCube ( const int n );
 
