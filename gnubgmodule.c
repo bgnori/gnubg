@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.109 2011/03/21 03:49:50 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.110 2011/03/22 08:21:45 mdpetch Exp $
  */
 
 #include "config.h"
@@ -946,6 +946,9 @@ PythonGnubgID( PyObject* self UNUSED_PARAM, PyObject *args ) {
   ci.anScore[0] = ms.anScore[0];
   ci.anScore[1] = ms.anScore[1];
   ci.nCube = ms.nCube;
+#if USE_EXTENDEDMATCHID 
+  ci.fJacoby = ms.fJacoby;
+#endif
 
   if ( ! PyArg_ParseTuple( args, "|OOO:gnubgid", &pyBoard, &pyCubeInfo, &pyPosInfo ) )
     return NULL;
@@ -975,7 +978,12 @@ PythonGnubgID( PyObject* self UNUSED_PARAM, PyObject *args ) {
   szPosID = g_strdup (PositionID( (ConstTanBoard)anBoard ) );
   szMatchID = g_strdup (MatchID ( pi.anDice, pi.fTurn, pi.fResigned, pi.fDoubled, 
                         ci.fMove, ci.fCubeOwner, ci.fCrawford, ci.nMatchTo, 
+#if USE_EXTENDEDMATCHID 
+                        ci.anScore, ci.nCube, ci.fJacoby, pi.gs ) );
+#else                        
                         ci.anScore, ci.nCube, pi.gs ) );
+#endif
+                     
   szGnubgID = g_strjoin (":", szPosID, szMatchID, NULL);
   pyRetVal = PyString_FromString( szGnubgID );
 
@@ -1021,8 +1029,11 @@ PythonMatchID( PyObject* self UNUSED_PARAM, PyObject *args ) {
   else
     return PyString_FromString( MatchID ( pi.anDice, pi.fTurn, pi.fResigned, pi.fDoubled, ci.fMove,
 				ci.fCubeOwner, ci.fCrawford, ci.nMatchTo,
+#if USE_EXTENDEDMATCHID 
+				ci.anScore, ci.nCube, ci.fJacoby, pi.gs ) );
+#else
 				ci.anScore, ci.nCube, pi.gs ) );
-
+#endif
 }
 
 static PyObject *

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.386 2011/02/14 20:13:48 c_anthon Exp $
+ * $Id: play.c,v 1.387 2011/03/22 08:21:45 mdpetch Exp $
  */
 
 #include "config.h"
@@ -3893,6 +3893,9 @@ extern void SetMatchID(const char *szMatchID)
 	unsigned int anDice[2];
 	int nMatchTo, fCubeOwner, fMove, fCrawford, nCube;
 	int fTurn, fDoubled, fResigned, oneAway;
+#if USE_EXTENDEDMATCHID 
+	int fJacoby;
+#endif		
 	gamestate gs;
 	char szID[15];
 	moverecord *pmr;
@@ -3907,7 +3910,12 @@ extern void SetMatchID(const char *szMatchID)
 
 	if (MatchFromID(anDice, &fTurn, &fResigned, &fDoubled, &fMove,
 			&fCubeOwner, &fCrawford,
+#if USE_EXTENDEDMATCHID 
+			&nMatchTo, anScore, &nCube, &fJacoby, &gs, szMatchID) < 0) {
+#else
 			&nMatchTo, anScore, &nCube, &gs, szMatchID) < 0) {
+#endif
+			
 		outputf(_("Illegal match ID '%s'\n"), szMatchID);
 		outputf(_("Dice %d %d, "), anDice[0], anDice[1]);
 		outputf(_("player on roll %d (turn %d), "), fMove, fTurn);

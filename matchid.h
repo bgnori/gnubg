@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.h,v 1.10 2011/03/21 03:49:50 mdpetch Exp $
+ * $Id: matchid.h,v 1.11 2011/03/22 08:21:45 mdpetch Exp $
  */
 
 #ifndef _MATCHID_H_
@@ -46,10 +46,14 @@ MatchID ( const unsigned int anDice[ 2 ],
           const int nMatchTo,
           const int anScore[ 2 ],
           const int nCube,
+#if USE_EXTENDEDMATCHID 
+			 const int fJacoby,
+#endif          
+
           const gamestate gs );
 
 extern char*
-MatchIDFromKey( unsigned char auchKey[ 8 ] );
+MatchIDFromKey( unsigned char auchKey[ 9 ] );
 
 extern int
 MatchFromID ( unsigned int anDice[ 2 ],
@@ -62,6 +66,9 @@ MatchFromID ( unsigned int anDice[ 2 ],
               int *pnMatchTo,
               int anScore[ 2 ],
               int *pnCube,
+#if USE_EXTENDEDMATCHID 
+              int *pfJacoby,
+#endif  
               gamestate *pgs,
               const char *szMatchID );
 
@@ -76,6 +83,9 @@ MatchFromKey ( int anDice[ 2 ],
                int *pnMatchTo,
                int anScore[ 2 ],
                int *pnCube,
+#if USE_EXTENDEDMATCHID 
+               int *pfJacoby,
+#endif               
                gamestate *pgs,
                const unsigned char *auchKey );
 
