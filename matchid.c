@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.c,v 1.21 2011/03/22 08:21:45 mdpetch Exp $
+ * $Id: matchid.c,v 1.22 2011/03/23 00:57:26 mdpetch Exp $
  */
 
 #include "config.h"
@@ -216,7 +216,7 @@ MatchFromKey ( int anDice[ 2 ],
   GetBits ( auchKey, 36, 15, &anScore[ 0 ] );
   GetBits ( auchKey, 51, 15, &anScore[ 1 ] );
 #if USE_EXTENDEDMATCHID 
-  GetBits ( auchKey, 51, 15, pfJacoby );
+  GetBits ( auchKey, 66, 1, pfJacoby );
   *pfJacoby = !(*pfJacoby);
 #endif          
 

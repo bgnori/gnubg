@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.894 2011/03/20 22:02:27 plm Exp $
+ * $Id: gnubg.c,v 1.895 2011/03/23 00:57:25 mdpetch Exp $
  */
 
 #include "config.h"
@@ -971,6 +971,7 @@ extern void UpdateSettings( void )
     UpdateSetting( &ms.fTurn );
     UpdateSetting( &ms.nMatchTo );
     UpdateSetting( &ms.fCrawford );
+    UpdateSetting( &ms.fJacoby );
     UpdateSetting( &ms.gs );
     
     ShowBoard();
@@ -2726,6 +2727,8 @@ static void LoadRCFiles(void)
 	szz = g_strdup_printf("'%s'", sz);
 	if (g_file_test(sz, G_FILE_TEST_EXISTS))
 		CommandLoadCommands(szz);
+	
+	UpdateSettings();
 	g_free(sz);
 	g_free(szz);
 
