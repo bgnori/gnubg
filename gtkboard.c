@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.291 2011/03/23 05:27:45 mdpetch Exp $
+ * $Id: gtkboard.c,v 1.292 2011/03/23 05:28:38 mdpetch Exp $
  */
 
 /*! \file gtkboard.c
@@ -3413,7 +3413,7 @@ extern void board_edit( BoardData *bd )
     update_move( bd );
     update_buttons( bd );
 
-    if (bd->crawford) // && !bd->crawford_game)
+    if (bd->crawford) 
 	gtk_widget_set_sensitive(bd->crawford, f);
 
     if (bd->jacoby) 
