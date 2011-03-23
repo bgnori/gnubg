@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.110 2011/03/22 08:21:45 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.111 2011/03/23 03:26:56 mdpetch Exp $
  */
 
 #include "config.h"
@@ -281,7 +281,6 @@ PyToPosInfo( PyObject *p, posinfo *ppi ) {
   int iKey;
   void *ap[5];
   int *pi;
-  float *pf;
   int i = 0;
   ap[i++] = &ppi->fTurn;
   ap[i++] = &ppi->fResigned;
@@ -976,8 +975,8 @@ PythonGnubgID( PyObject* self UNUSED_PARAM, PyObject *args ) {
     return NULL;
 
   szPosID = g_strdup (PositionID( (ConstTanBoard)anBoard ) );
-  szMatchID = g_strdup (MatchID ( pi.anDice, pi.fTurn, pi.fResigned, pi.fDoubled, 
-                        ci.fMove, ci.fCubeOwner, ci.fCrawford, ci.nMatchTo, 
+  szMatchID = g_strdup (MatchID ( (unsigned int *)pi.anDice, pi.fTurn, pi.fResigned, 
+			pi.fDoubled, ci.fMove, ci.fCubeOwner, ci.fCrawford, ci.nMatchTo, 
 #if USE_EXTENDEDMATCHID 
                         ci.anScore, ci.nCube, ci.fJacoby, pi.gs ) );
 #else                        
@@ -1027,8 +1026,8 @@ PythonMatchID( PyObject* self UNUSED_PARAM, PyObject *args ) {
   if (!pyCubeInfo)
     return PyString_FromString( MatchIDFromMatchState ( &ms ) );
   else
-    return PyString_FromString( MatchID ( pi.anDice, pi.fTurn, pi.fResigned, pi.fDoubled, ci.fMove,
-				ci.fCubeOwner, ci.fCrawford, ci.nMatchTo,
+    return PyString_FromString( MatchID ( (unsigned int *)pi.anDice, pi.fTurn, pi.fResigned, 
+				pi.fDoubled, ci.fMove, ci.fCubeOwner, ci.fCrawford, ci.nMatchTo,
 #if USE_EXTENDEDMATCHID 
 				ci.anScore, ci.nCube, ci.fJacoby, pi.gs ) );
 #else

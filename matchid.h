@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: matchid.h,v 1.11 2011/03/22 08:21:45 mdpetch Exp $
+ * $Id: matchid.h,v 1.12 2011/03/23 03:26:56 mdpetch Exp $
  */
 
 #ifndef _MATCHID_H_
@@ -47,9 +47,8 @@ MatchID ( const unsigned int anDice[ 2 ],
           const int anScore[ 2 ],
           const int nCube,
 #if USE_EXTENDEDMATCHID 
-			 const int fJacoby,
+	  const int fJacoby,
 #endif          
-
           const gamestate gs );
 
 extern char*

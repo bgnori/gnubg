@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.289 2011/03/23 00:57:25 mdpetch Exp $
+ * $Id: gtkboard.c,v 1.290 2011/03/23 03:26:56 mdpetch Exp $
  */
 
 /*! \file gtkboard.c
@@ -3462,6 +3462,7 @@ extern void board_edit( BoardData *bd )
 	/* We need to query all the widgets before issuing any commands,
 	   since those commands have side effects which disturb other
 	   widgets. */
+	crawford = jacoby = FALSE;
 	if (bd->crawford)
   		crawford = gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( bd->crawford ) );
 	if (bd->jacoby)

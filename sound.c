@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.87 2011/03/20 21:15:49 mdpetch Exp $
+ * $Id: sound.c,v 1.88 2011/03/23 03:26:56 mdpetch Exp $
  */
 
 #include "config.h"
@@ -396,7 +396,7 @@ playSoundFile (char *file, /*lint -e{715}*/gboolean sync)
 	    }
 	  if (!soundDeviceAttached)
 	    {			/* No sound card found - disable sound */
-		g_print (_"No soundcard found - sounds disabled\n");
+		g_print (_("No soundcard found - sounds disabled\n"));
 		fSound = FALSE;
 		return;
 	    }
