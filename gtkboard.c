@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.297 2011/03/24 03:12:20 mdpetch Exp $
+ * $Id: gtkboard.c,v 1.298 2011/03/24 05:56:32 mdpetch Exp $
  */
 
 /*! \file gtkboard.c
@@ -3966,8 +3966,8 @@ static void board_init( Board *board )
     g_signal_connect( G_OBJECT( bd->crawford ), "toggled",
 	              G_CALLBACK( board_set_crawford ), bd );
     bd->jacoby = gtk_check_button_new_with_label( _("Jacoby"));
-    g_signal_connect( G_OBJECT( bd->jacoby ), "toggled",
-	              G_CALLBACK( board_set_jacoby ), bd );
+    /* g_signal_connect( G_OBJECT( bd->jacoby ), "toggled",
+	              G_CALLBACK( board_set_jacoby ), bd ); */
 
     bd->pwvboxcnt = gtk_event_box_new();
     if (ms.nMatchTo)
