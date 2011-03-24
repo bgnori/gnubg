@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.295 2011/03/23 23:47:42 mdpetch Exp $
+ * $Id: gtkboard.c,v 1.296 2011/03/24 02:34:52 mdpetch Exp $
  */
 
 /*! \file gtkboard.c
@@ -3510,7 +3510,7 @@ extern void board_edit( BoardData *bd )
 	}
 
 	if (jacoby != bd->jacoby_flag) {
-            bd->jacoby_flag = jacoby;
+            ms.fJacoby = bd->jacoby_flag = jacoby;
 	    bd->crawford_game = crawford = FALSE;
 	    sprintf( sz, "set crawford off " );
 	    changed = TRUE;
@@ -3546,7 +3546,6 @@ extern void board_edit( BoardData *bd )
                                          ms.gs ) );
           UserCommand( sz );
           g_free( sz );
-
         }
         else if( anScoreNew[ 0 ] != ms.anScore[ 0 ] ||
 	    anScoreNew[ 1 ] != ms.anScore[ 1 ] ) {
@@ -3554,6 +3553,9 @@ extern void board_edit( BoardData *bd )
           sprintf( sz, "set score %d %d", anScoreNew[ 0 ],
                    anScoreNew[ 1 ] );
           UserCommand( sz );
+          ms.anScore[0] = anScoreNew[0];
+          ms.anScore[1] = anScoreNew[1];
+
 	}  
 
 	/* Update if crawford was changed. */
