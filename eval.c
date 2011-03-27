@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.393 2011/03/22 21:34:48 plm Exp $
+ * $Id: eval.c,v 1.394 2011/03/27 21:51:34 plm Exp $
  */
 
 #include "config.h"
@@ -2953,17 +2953,18 @@ static void SaveMoves( movelist *pml, unsigned int cMoves, unsigned int cPip, in
 
 static int LegalMove( const TanBoard anBoard, int iSrc, int nPips ) {
 
-    int i, nBack = 0, iDest = iSrc - nPips;
+    int nBack;
+    const int iDest = iSrc - nPips;
 	
-	if (iDest >= 0)
+    if (iDest >= 0)
 	{ /* Here we can do the Chris rule check */
 		return ( anBoard[ 0 ][ 23 - iDest ] < 2 );
     }
     /* otherwise, attempting to bear off */
 
-    for( i = 1; i < 25; i++ )
-	if( anBoard[ 1 ][ i ] > 0 )
-	    nBack = i;
+    for( nBack = 24; nBack > 0; nBack-- )
+	if( anBoard[ 1 ][ nBack ] > 0 )
+	    break;
 
     return ( nBack <= 5 && ( iSrc == nBack || iDest == -1 ) );
 }
