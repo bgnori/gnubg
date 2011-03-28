@@ -20,7 +20,7 @@
  * File modified by Joern Thyssen <jthyssen@dk.ibm.com> for use with
  * GNU Backgammon.
  *
- * $Id: sound.c,v 1.88 2011/03/23 03:26:56 mdpetch Exp $
+ * $Id: sound.c,v 1.89 2011/03/28 17:23:16 mdpetch Exp $
  */
 
 #include "config.h"
@@ -112,7 +112,7 @@ void PlaySound_QuickTime (const char *cSoundFilename)
 
 	err = NativePathNameToFSSpec(cSoundFilename, &fsSoundFile, 0);    
     if (err != 0) {
-        ouputf( "PlaySound_QuickTime: error #%d, can't find %s.\n", err, cSoundFilename);
+        outputf( _("PlaySound_QuickTime: error #%d, can't find %s.\n"), err, cSoundFilename);
     }
     else {
         /* open movie (WAV or whatever) file */
