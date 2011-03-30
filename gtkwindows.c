@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.44 2011/02/14 20:13:48 c_anthon Exp $
+ * $Id: gtkwindows.c,v 1.45 2011/03/30 19:22:25 plm Exp $
  */
 
 #include "config.h"
@@ -72,7 +72,7 @@ Warning warnings[WARN_NUM_WARNINGS] =
 		"resign", TRUE, TRUE
 	},
 	{
-		N_("This action will roll out the current position before the dice are rolled. It is not possible to extend nor save this rollout?"),
+		N_("This action will roll out the current position before the dice are rolled.\nIt will not be possible to extend nor save this rollout."),
 		"rollout", TRUE, FALSE
 	}
 };
