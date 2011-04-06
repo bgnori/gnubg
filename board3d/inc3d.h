@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.47 2009/05/01 09:13:02 Superfly_Jon Exp $
+* $Id: inc3d.h,v 1.48 2011/04/06 23:42:53 mdpetch Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -39,11 +39,16 @@
 #include <windows.h>
 #endif
 
+#if defined(USE_APPLE_OPENGL)
+#include <gl.h>
+#include <glu.h>
+#else
 #include <GL/gl.h>
 #include <GL/glu.h>
+#endif
 
-#if !defined(WIN32)
-#include <GL/glx.h>	/* x-windows file */
+#if defined(HAVE_GL_GLX_H)
+#include <GL/glx.h>     /* x-windows file */
 #endif
 
 #include <gtk/gtkgl.h>
