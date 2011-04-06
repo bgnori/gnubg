@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.895 2011/03/23 00:57:25 mdpetch Exp $
+ * $Id: gnubg.c,v 1.896 2011/04/06 21:14:18 mdpetch Exp $
  */
 
 #include "config.h"
@@ -2622,7 +2622,19 @@ extern void CommandLoadCommands( char *sz )
 {
     FILE *pf;
 
+#if defined(WIN32)	
+    /* Make sure unquoted filenames are quoted before processing 
+       to allow proper support for filenames with spaces */
+    char *szz = NULL;
+    if (sz[0] != '"' && sz[0] != '\'') {
+      szz = g_strdup_printf("'%s'", sz);
+      sz = NextToken( &szz );
+    }
+    else
+      sz = NextToken( &sz );
+#else
     sz = NextToken( &sz );
+#endif    
     
     if( !sz || !*sz ) {
 	outputl( _("You must specify a file to load from.") );
@@ -2634,6 +2646,11 @@ extern void CommandLoadCommands( char *sz )
 	fclose( pf );
     } else
 	outputerr( sz );
+
+#if defined(WIN32)
+    if (szz)	
+      g_free(szz);
+#endif
 }
 
 
