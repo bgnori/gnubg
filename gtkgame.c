@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.838 2011/03/28 02:06:11 mdpetch Exp $
+ * $Id: gtkgame.c,v 1.839 2011/04/08 08:40:04 mdpetch Exp $
  */
 
 #include "config.h"
@@ -5938,6 +5938,8 @@ extern void GTKSet( void *p ) {
         gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( bd->crawford ), 
                                       ms.fCrawford );
 	ShowBoard(); /* this is overkill, but it works */
+    } else if( p == &ms.nCube ) {
+	ShowBoard(); /* this is overkill, but it works */ 
     } else if (IsPanelShowVar(WINDOW_ANNOTATION, p)) {
 	if (PanelShowing(WINDOW_ANNOTATION))
 		ShowHidePanel(WINDOW_ANNOTATION);

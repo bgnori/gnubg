@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.389 2011/03/28 02:06:12 mdpetch Exp $
+ * $Id: play.c,v 1.390 2011/04/08 08:40:05 mdpetch Exp $
  */
 
 #include "config.h"
@@ -2850,11 +2850,11 @@ extern void CommandNewSession( char *sz ) {
 
 extern void UpdateGame( int fShowBoard ) {
     
-    UpdateSetting( &ms.fCrawford );
     UpdateSetting( &ms.nCube );
     UpdateSetting( &ms.fCubeOwner );
     UpdateSetting( &ms.fTurn );
     UpdateSetting( &ms.gs );
+    UpdateSetting( &ms.fCrawford );
 
 #if USE_GTK
     if( fX || ( fShowBoard && fDisplay ) )
