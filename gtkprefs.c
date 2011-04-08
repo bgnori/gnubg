@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.182 2011/04/08 09:03:50 mdpetch Exp $
+ * $Id: gtkprefs.c,v 1.183 2011/04/08 09:51:57 mdpetch Exp $
  */
 
 #include "config.h"
@@ -1988,7 +1988,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.182 2011/04/08 09:03:50 mdpetch Exp $\n"
+          "    $Id: gtkprefs.c,v 1.183 2011/04/08 09:51:57 mdpetch Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2531,7 +2531,7 @@ static void RemoveDesign ( GtkWidget *pw, gpointer data )
 {
   GList *plBoardDesigns = (GList *) data;
   char prompt[200];
-  sprintf(prompt, _("Permently remove design %s?"), pbdeSelected->szTitle);
+  sprintf(prompt, _("Permanently remove design %s?"), pbdeSelected->szTitle);
   if (!GetInputYN(prompt))
 		return;
 
