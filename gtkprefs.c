@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.181 2009/10/13 17:37:09 Superfly_Jon Exp $
+ * $Id: gtkprefs.c,v 1.182 2011/04/08 09:03:50 mdpetch Exp $
  */
 
 #include "config.h"
@@ -1988,7 +1988,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.181 2009/10/13 17:37:09 Superfly_Jon Exp $\n"
+          "    $Id: gtkprefs.c,v 1.182 2011/04/08 09:03:50 mdpetch Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -2418,7 +2418,9 @@ static void ExportDesign ( GtkWidget *pw, gpointer data )
                                 GTKFileSelect(_("Export Design"), NULL, NULL, NULL,
                                         GTK_FILE_CHOOSER_ACTION_SAVE)) == 0) return;
 
+#if !defined(WIN32)
 	szFile = NextToken( &szFile );
+#endif
 
 	/* 
 	* Copy current design 
@@ -2487,8 +2489,9 @@ static void ImportDesign ( GtkWidget *pw, gpointer data )
         if ( (pch = szFile =
                                 GTKFileSelect(_("Import Design"), NULL, NULL, NULL,
                                         GTK_FILE_CHOOSER_ACTION_OPEN)) == 0) return;
-
+#if !defined(WIN32)
 	szFile = NextToken( &szFile );
+#endif
 
 	if ( ( new_designs = ParseBoardDesigns( szFile, TRUE ) ) == 0 ) {
 		/* no designs found */
