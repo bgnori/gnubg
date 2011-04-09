@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkexport.c,v 1.46 2011/02/14 20:13:48 c_anthon Exp $
+ * $Id: gtkexport.c,v 1.47 2011/04/09 21:36:44 plm Exp $
  */
 
 #include "config.h"
@@ -517,6 +517,8 @@ extern void GTKShowExport ( exportsetup *pexs )
 {
   GtkWidget *pwDialog;
 
+  GtkWidget *pwNotebook;
+
   GtkWidget *pwVBox;
   GtkWidget *pwFrame;
   GtkWidget *pwTable;
@@ -540,9 +542,16 @@ extern void GTKShowExport ( exportsetup *pexs )
   pwDialog = GTKCreateDialog ( _("GNU Backgammon - Export Settings"), DT_QUESTION,
 	  NULL, DIALOG_FLAG_MODAL, G_CALLBACK ( ExportOK ), pew );
 
-  pwTable = gtk_table_new ( 3, 2, FALSE );
-  gtk_container_add ( GTK_CONTAINER ( DialogArea ( pwDialog, DA_MAIN ) ),
-                      pwTable );
+  gtk_container_add( GTK_CONTAINER( DialogArea( pwDialog, DA_MAIN ) ),
+                     pwNotebook = gtk_notebook_new() );
+  gtk_container_set_border_width( GTK_CONTAINER( pwNotebook ), 4 );
+
+  /* first tab */
+
+  pwTable = gtk_table_new ( 2, 2, FALSE );
+
+  gtk_notebook_append_page( GTK_NOTEBOOK( pwNotebook ), pwTable,
+                            gtk_label_new ( _("Content" ) ) );
 
   /* include stuff */
 
@@ -741,13 +750,20 @@ extern void GTKShowExport ( exportsetup *pexs )
   }
                  
 
+  /* second tab */
+
+  pwTable = gtk_table_new ( 1, 2, FALSE );
+
+  gtk_notebook_append_page( GTK_NOTEBOOK( pwNotebook ), pwTable,
+                            gtk_label_new ( _("Style" ) ) );
+
   /* html */
 
   pwFrame = gtk_frame_new ( _("HTML export options") );
 
   gtk_container_set_border_width ( GTK_CONTAINER ( pwFrame ), 8 );
   gtk_table_attach ( GTK_TABLE ( pwTable ), pwFrame,
-                     0, 1, 2, 3,
+                     0, 1, 0, 1,
                      GTK_FILL, 
                      GTK_FILL, 
                      2, 2 );
@@ -805,7 +821,7 @@ extern void GTKShowExport ( exportsetup *pexs )
 
   gtk_container_set_border_width ( GTK_CONTAINER ( pwFrame ), 8 );
   gtk_table_attach ( GTK_TABLE ( pwTable ), pwFrame,
-                     1, 2, 2, 3,
+                     1, 2, 0, 1,
                      GTK_FILL, 
                      GTK_FILL, 
                      2, 2 );

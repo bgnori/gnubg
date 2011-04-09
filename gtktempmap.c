@@ -20,7 +20,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktempmap.c,v 1.47 2010/11/13 19:07:47 plm Exp $
+ * $Id: gtktempmap.c,v 1.48 2011/04/09 21:36:44 plm Exp $
  */
 
 #include "config.h"
@@ -556,8 +556,8 @@ GTKShowTempMap( const matchstate ams[], const int n,
 
   /* vbox to hold tree widget and buttons */
 
-  pwv = gtk_vbox_new ( FALSE, 8 );
-  gtk_container_set_border_width ( GTK_CONTAINER ( pwv ), 8);
+  pwv = gtk_vbox_new ( FALSE, 6 );
+  gtk_container_set_border_width ( GTK_CONTAINER ( pwv ), 6 );
   gtk_container_add ( GTK_CONTAINER (DialogArea( pwDialog, DA_MAIN ) ), pwv );
 
   /* calculate number of rows and columns */
@@ -762,9 +762,11 @@ GTKShowTempMap( const matchstate ams[], const int n,
 
   /* show-buttons */
 
-  pwh = gtk_hbox_new( FALSE, 4 );
-  gtk_box_pack_start( GTK_BOX( pwv ), pwh, FALSE, FALSE, 0 );
-  
+  if (n < 2) {
+	pwh = gtk_hbox_new( FALSE, 4 ); 
+	gtk_box_pack_start( GTK_BOX( pwv ), pwh, FALSE, FALSE, 0 );
+  }
+
   pw = gtk_check_button_new_with_label( _("Show equities") );
   gtk_toggle_button_set_active((GtkToggleButton *)pw, ptmw->fShowEquity);
   gtk_box_pack_end( GTK_BOX( pwh ), pw, FALSE, FALSE, 0 );
