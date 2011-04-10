@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: shadow.c,v 1.18 2007/12/29 14:32:32 Superfly_Jon Exp $
+* $Id: shadow.c,v 1.19 2011/04/10 22:33:32 mdpetch Exp $
 */
 
 #include "config.h"
@@ -34,7 +34,7 @@ extern int ShadowsInitilised(const BoardData3d *bd3d)
 void shadowInit(BoardData3d *bd3d, renderdata *prd)
 {
 	int i;
-	int stencilBits;
+	GLint stencilBits;
 
 	if (bd3d->shadowsInitialised)
 		return;
