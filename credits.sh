@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.137 2011/04/11 20:51:56 mdpetch Exp $
+# $Id: credits.sh,v 1.138 2011/04/13 22:37:22 plm Exp $
 # 
 
 column < /dev/null || exit 0
@@ -47,7 +47,7 @@ Nis Joergensen
 Petr Kadlec
 Kaoru Takahashi
 Stein Kulseth
-Phillipe Michel
+Philippe Michel
 Mike Petch
 Rod Roark
 Ingo Macherius
