@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.19 2011/02/08 22:36:28 plm Exp $
+ * $Id: neuralnetsse.c,v 1.20 2011/04/19 20:32:31 plm Exp $
  */
 
 #include "config.h"
@@ -127,7 +127,9 @@ EvaluateSSE( const neuralnet *pnn, const float arInput[], float ar[],
 	{
 		float const ari = arInput[i];
 
-		if (ari)
+		if (!ari)
+			prWeight += cHidden;
+		else
 		{
 			float *pr = ar;
 			if (ari == 1.0f)
@@ -153,8 +155,6 @@ EvaluateSSE( const neuralnet *pnn, const float arInput[], float ar[],
 				}
 			}
 		}
-		else
-			prWeight += cHidden;
     }
 
     if( saveAr)

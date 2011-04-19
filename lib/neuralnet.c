@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnet.c,v 1.65 2011/03/22 21:34:48 plm Exp $
+ * $Id: neuralnet.c,v 1.66 2011/04/19 20:32:31 plm Exp $
  */
 
 #include "config.h"
@@ -136,7 +136,9 @@ static void Evaluate( const neuralnet *pnn, const float arInput[], float ar[],
     for( i = 0; i < pnn->cInput; i++ ) {
 	float const ari = arInput[ i ];
 
-	if( ari ) {
+	if( !ari )
+            prWeight += cHidden;
+	else {
 	    float *pr = ar;
 
 	    if( ari == 1.0f )
@@ -145,8 +147,7 @@ static void Evaluate( const neuralnet *pnn, const float arInput[], float ar[],
 	    else
 		for( j = cHidden; j; j-- )
 		    *pr++ += *prWeight++ * ari;
-	} else
-	    prWeight += cHidden;
+	} 
     }
 
     if( saveAr)
@@ -183,7 +184,9 @@ static void EvaluateFromBase( const neuralnet *pnn, const float arInputDif[], fl
     for( i = 0; i < pnn->cInput; ++i ) {
 	float const ari = arInputDif[ i ];
 
-	if( ari ) {
+	if( !ari )
+	    prWeight += pnn->cHidden;
+	else {
 	    float *pr = ar;
 
 	    if( ari == 1.0f )
@@ -195,8 +198,7 @@ static void EvaluateFromBase( const neuralnet *pnn, const float arInputDif[], fl
             else
 	      for( j = pnn->cHidden; j; j-- )
 		*pr++ += *prWeight++ * ari;
-	} else
-	    prWeight += pnn->cHidden;
+	}
     }
     
     for( i = 0; i < pnn->cHidden; i++ )
