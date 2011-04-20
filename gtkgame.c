@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.840 2011/04/09 21:36:44 plm Exp $
+ * $Id: gtkgame.c,v 1.841 2011/04/20 19:03:16 plm Exp $
  */
 
 #include "config.h"
@@ -3123,8 +3123,9 @@ static void Stop( GtkWidget *pw, gpointer unused )
 
 static gboolean StopAnyAnimations(void)
 {
-	BoardData *bd = BOARD( pwBoard )->board_data;
 #if USE_BOARD3D
+	BoardData *bd = BOARD( pwBoard )->board_data;
+
 	if (display_is_3d(bd->rd))
 	{
 		if (Animating3d(bd->bd3d))
@@ -4313,7 +4314,7 @@ static void PlayersSameToggled( GtkWidget *pw, rolloutwidget *prw)
 static GtkWidget *
 RolloutPageGeneral (rolloutpagegeneral *prpw, rolloutwidget *prw) {
   GtkWidget *pwPage, *pw, *pwv;
-  GtkWidget *pwHBox, *pwVBox;
+  GtkWidget *pwHBox;
   GtkWidget *pwTable, *pwFrame;
 
   pwPage = gtk_vbox_new( FALSE, 0 );
