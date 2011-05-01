@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.390 2011/04/08 08:40:05 mdpetch Exp $
+ * $Id: play.c,v 1.391 2011/05/01 18:49:00 plm Exp $
  */
 
 #include "config.h"
@@ -609,6 +609,16 @@ extern void AddMoveRecord( void *pv ) {
 	}
 
     /* FIXME perform other elision (e.g. consecutive "set" records) */
+
+    /* Partial fix. For edited positions it would be nice to look
+       further back, but this is still an improvement */
+
+    if( pmr->mt >= MOVE_SETBOARD &&
+        ( pmrOld = plLastMove->p )->mt == pmr->mt &&
+        pmrOld->fPlayer == pmr->fPlayer )
+        {
+            PopMoveRecord( plLastMove );
+        }
 
 #if USE_GTK
     if( fX )
