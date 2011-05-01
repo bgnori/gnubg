@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: speed.c,v 1.28 2010/11/30 21:28:23 plm Exp $
+ * $Id: speed.c,v 1.29 2011/05/01 17:25:21 plm Exp $
  */
 
 #include "config.h"
@@ -117,7 +117,7 @@ extern void CommandCalibrate( char *sz )
 		}
 	}
 
-	if (clock() < 0)
+	if (clock() == (clock_t) -1)
 	{
 	    outputl( _("Calibration not available.") );
 		return;
