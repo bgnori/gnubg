@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.79 2010/05/29 22:08:00 plm Exp $
+* $Id: matchequity.c,v 1.80 2011/05/08 21:11:53 plm Exp $
 */
 
 #include "config.h"
@@ -36,10 +36,6 @@
 #include "list.h"
 #include "mec.h"
 #include "util.h"
-
-#ifdef NO_ERF
-#include "erf.inc"	/* No erf on msdev so include code here... */
-#endif
 
 #define DELTA         0.08
 #define DELTABAR      0.06

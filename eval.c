@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.395 2011/05/08 19:08:50 plm Exp $
+ * $Id: eval.c,v 1.396 2011/05/08 21:11:53 plm Exp $
  */
 
 #include "config.h"
@@ -76,10 +76,6 @@ f_GeneralEvaluationE GeneralEvaluationE = GeneralEvaluationENoLocking;
 #define EvaluatePositionCubeful4 EvaluatePositionCubeful4NoLocking
 #define CacheAdd CacheAddNoLocking
 #define CacheLookup CacheLookupNoLocking
-
-#ifdef NO_ERF
-#include "erf.inc"	/* No erf on msdev so include code here... */
-#endif
 
 static int EvaluatePositionCache( NNState *nnStates, const TanBoard anBoard, float arOutput[],
                        const cubeinfo* pci, const evalcontext* pecx,
