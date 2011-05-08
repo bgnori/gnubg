@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.169 2011/02/14 21:06:24 plm Exp $
+ * $Id: eval.h,v 1.170 2011/05/08 21:51:25 plm Exp $
  */
 
 #ifndef _EVAL_H_
@@ -280,7 +280,7 @@ typedef enum
 
 typedef struct {
   int anMove[ 8 ];
-  unsigned char auch[ 10 ];
+  positionkey key;
   unsigned int cMoves, cPips;
   /* scores for this move */
   float rScore, rScore2; 
@@ -384,7 +384,7 @@ EXP_LOCK_FUN(int, FindBestMove, int anMove[ 8 ], int nDice0, int nDice1,
 
 EXP_LOCK_FUN(int, FindnSaveBestMoves, movelist *pml,
                     int nDice0, int nDice1, const TanBoard anBoard,
-                    unsigned char *auchMove, const float rThr,
+                    positionkey *keyMove, const float rThr,
                     const cubeinfo* pci, const evalcontext* pec,
                     movefilter aamf[ MAX_FILTER_PLIES ][ MAX_FILTER_PLIES ] );
 
@@ -587,7 +587,7 @@ locateMove ( const TanBoard anBoard,
 
 extern int
 MoveKey ( const TanBoard anBoard, const int anMove[ 8 ], 
-          unsigned char auch[ 10 ] );
+          positionkey* pkey );
 
 extern int
 equal_movefilter ( const int i, 

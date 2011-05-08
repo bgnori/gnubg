@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.425 2011/02/14 20:13:47 c_anthon Exp $
+ * $Id: backgammon.h,v 1.426 2011/05/08 21:51:24 plm Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -129,7 +129,7 @@ typedef struct _moveresign {
 } xmoveresign;
 
 typedef struct _movesetboard {
-	unsigned char auchKey[10];	/* always stored as if player 0 was on roll */
+	positionkey key;	/* always stored as if player 0 was on roll */
 } xmovesetboard;
 
 typedef struct _movesetcubeval {
@@ -220,7 +220,7 @@ typedef struct _findData
 {
 	movelist *pml;
 	ConstTanBoard pboard;
-	unsigned char *auchMove;
+	positionkey *keyMove;
 	float rThr;
 	const cubeinfo* pci;
 	const evalcontext* pec;
