@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.112 2011/05/08 19:08:51 plm Exp $
+ * $Id: gnubgmodule.c,v 1.113 2011/05/08 20:18:14 plm Exp $
  */
 
 #include "config.h"
@@ -565,7 +565,7 @@ static PyObject *PythonCommand(PyObject * self UNUSED_PARAM, PyObject * args)
 	 * which always run NextTurn(TRUE), and that isn't right */
 
 	outputx();
-	free(sz);
+	g_free(sz);
 	PortableSignalRestore(SIGINT, &sh);
 	if (fInterrupt) {
 		raise(SIGINT);

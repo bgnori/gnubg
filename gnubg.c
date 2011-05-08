@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.897 2011/05/08 19:08:51 plm Exp $
+ * $Id: gnubg.c,v 1.898 2011/05/08 20:19:04 plm Exp $
  */
 
 #include "config.h"
@@ -4330,7 +4330,7 @@ static char *get_stdin_line(void)
 	}
 
 	fInterrupt = FALSE;
-    return g_strdup(sz);
+    return strdup(sz);
 }
 
 
@@ -4349,7 +4349,7 @@ static void run_cl(void)
 		{
 			line = get_stdin_line();
 			HandleCommand(line, acTop);
-			g_free(line);
+			free(line);
 		}
 		while (fNextTurn)
 			NextTurn(TRUE);
