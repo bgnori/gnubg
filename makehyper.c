@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makehyper.c,v 1.32 2008/10/22 19:46:08 c_anthon Exp $
+ * $Id: makehyper.c,v 1.33 2011/05/08 19:08:52 plm Exp $
  */
 
 #include "config.h"
@@ -382,7 +382,7 @@ HyperEquity ( const int nUs, const int nThem,
         
           for ( k = 0; k < ml.cMoves; ++k ) {
           
-            PositionFromKey ( anBoardTemp, ml.amMoves[ k ].auch );
+            PositionFromKey ( anBoardTemp, &ml.amMoves[ k ].key );
           
             nUsNew = PositionBearoff( anBoardTemp[ 1 ], 25, nC );
             nThemNew = PositionBearoff( anBoardTemp[ 0 ], 25, nC );

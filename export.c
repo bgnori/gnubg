@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.72 2011/01/30 17:10:52 plm Exp $
+ * $Id: export.c,v 1.73 2011/05/08 19:08:51 plm Exp $
  */
 
 #include "config.h"
@@ -1156,7 +1156,7 @@ static void ExportGameJF( FILE *pf, listOLD *plGame, int iGame, int withScore, i
 	if ( pmr->mt == MOVE_SETBOARD
 	     || pmr->mt == MOVE_SETCUBEVAL
 	     || pmr->mt == MOVE_SETCUBEPOS) {
-          PositionFromKey(anBoard, pmr->sb.auchKey);
+          PositionFromKey(anBoard, &pmr->sb.key);
 	  if (i & 1)
             SwapSides(anBoard);
 
@@ -1168,7 +1168,7 @@ static void ExportGameJF( FILE *pf, listOLD *plGame, int iGame, int withScore, i
 	    msExport.nCube = nFileCube;
 	    msExport.fMove = (i & 1);
 	    msExport.fTurn = (i & 1);
-	    PositionFromKey(msExport.anBoard, pmr->sb.auchKey);
+	    PositionFromKey(msExport.anBoard, &pmr->sb.key);
 	    msExport.anDice[0] = pnextmr->anDice[0];
 	    msExport.anDice[1] = pnextmr->anDice[1];
 	    if (i & 1)

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.156 2010/12/21 20:26:43 plm Exp $
+ * $Id: import.c,v 1.157 2011/05/08 19:08:51 plm Exp $
  */
 
 #include "config.h"
@@ -443,7 +443,7 @@ static int ImportJF( FILE * fp, char *szFileName) {
   pmr->mt = MOVE_SETBOARD;
   if( fTurn )
     SwapSides( anBoard );
-  PositionKey( (ConstTanBoard)anBoard, pmr->sb.auchKey );
+  PositionKey( (ConstTanBoard)anBoard, &pmr->sb.key );
   AddMoveRecord( pmr );
 
   /* cube value */
@@ -644,7 +644,7 @@ static void ParseMatMove( char *sz, int iPlayer, int *warned ) {
           pmr->mt = MOVE_SETBOARD;
           if( fTurn )
             SwapSides( anBoard );
-          PositionKey( (ConstTanBoard)anBoard, pmr->sb.auchKey );
+          PositionKey( (ConstTanBoard)anBoard, &pmr->sb.key );
           AddMoveRecord( pmr );
 
           return;
@@ -3216,7 +3216,7 @@ ImportSnowieTxt( FILE *pf ) {
   pmr->mt = MOVE_SETBOARD;
   if( ! fTurn )
       SwapSides( anBoard );
-  PositionKey( (ConstTanBoard)anBoard, pmr->sb.auchKey );
+  PositionKey( (ConstTanBoard)anBoard, &pmr->sb.key );
   AddMoveRecord( pmr );
 
   /* cube value */

@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.65 2011/02/07 10:53:59 c_anthon Exp $
+* $Id: gtkpanels.c,v 1.66 2011/05/08 19:08:51 plm Exp $
 */
 
 #include "config.h"
@@ -315,7 +315,7 @@ void UpdateTheoryData(BoardData* bd, int UpdateType, const TanBoard points)
 		pc = NULL;
 		if ( bd->valid_move )
 		{
-			PositionFromKey( anBoard, bd->valid_move->auch );
+			PositionFromKey( anBoard, &bd->valid_move->key );
 			pc = ReturnHits( anBoard );
 		}
 		if (pc)

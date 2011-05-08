@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.134 2011/02/14 21:06:24 plm Exp $
+ * $Id: sgf.c,v 1.135 2011/05/08 19:08:52 plm Exp $
  */
 
 #include "config.h"
@@ -1003,7 +1003,7 @@ static void RestoreMoveAnalysis(property * pp, int fPlayer,
 
 	memcpy(anBoardMove, pms->anBoard, sizeof(anBoardMove));
 	ApplyMove(anBoardMove, pm->anMove, FALSE);
-	PositionKey((ConstTanBoard)anBoardMove, pm->auch);
+	PositionKey((ConstTanBoard)anBoardMove, &pm->key);
 
 	pch = (char *) pc;
 	while (isspace(ch = *pch++)) {
@@ -1289,7 +1289,7 @@ static void RestoreNode(listOLD * pl)
 
 	pmr->mt = MOVE_SETBOARD;
 	ClosestLegalPosition(ms.anBoard);
-	PositionKey(msBoard(), pmr->sb.auchKey);
+	PositionKey(msBoard(), &pmr->sb.key);
     }
 
     if (pmr && ppC)
@@ -2277,7 +2277,7 @@ extern void SaveGame(FILE * pf, listOLD * plGame)
 	    break;
 
 	case MOVE_SETBOARD:
-	    PositionFromKey(anBoard, pmr->sb.auchKey);
+	    PositionFromKey(anBoard, &pmr->sb.key);
 
 	    fputs("\n;AE[a:y]", pf);
 
@@ -2485,7 +2485,7 @@ extern void CommandSavePosition(char *sz)
     pmsb->mt = MOVE_SETBOARD;
     if (ms.fMove)
 	SwapSides(ms.anBoard);
-    PositionKey(msBoard(), pmsb->sb.auchKey);
+    PositionKey(msBoard(), &pmsb->sb.key);
     if (ms.fMove)
 	SwapSides(ms.anBoard);
     ListInsert(&l, pmsb);

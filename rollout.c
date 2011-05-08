@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.226 2010/11/21 20:55:44 plm Exp $
+ * $Id: rollout.c,v 1.227 2011/05/08 19:08:51 plm Exp $
  */
 
 #include "config.h"
@@ -1888,7 +1888,7 @@ ScoreMoveRollout ( move **ppm, const cubeinfo** ppci, int cMoves,
     memcpy (aci + i, ppci[ i ], sizeof (cubeinfo));
     apCubeDecTop[ i ] = &fCubeDecTop;
 
-    PositionFromKey( anBoard[ i ], ppm[ i ]->auch );
+    PositionFromKey( anBoard[ i ], &ppm[ i ]->key );
       
     SwapSides( anBoard[ i ] );
 

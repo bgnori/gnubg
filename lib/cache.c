@@ -15,7 +15,7 @@
  * cache.c
  *
  * by Gary Wong, 1997-2000
- * $Id: cache.c,v 1.28 2011/02/05 19:48:47 plm Exp $
+ * $Id: cache.c,v 1.29 2011/05/08 19:08:50 plm Exp $
  */
 
 #include "config.h"
@@ -121,10 +121,10 @@ unsigned int CacheLookupWithLocking(evalCache* pc, const cacheNodeDetail* e, flo
 	cache_lock(pc, l);
 #endif
 	if (pc->entries[l].nd_primary.nEvalContext != e->nEvalContext ||
-		!EqualKeys(pc->entries[l].nd_primary.key.auch, e->key.auch))
+		!EqualKeys(pc->entries[l].nd_primary.key, e->key))
 	{	/* Not in primary slot */
 		if (pc->entries[l].nd_secondary.nEvalContext != e->nEvalContext ||
-			!EqualKeys(pc->entries[l].nd_secondary.key.auch, e->key.auch))
+			!EqualKeys(pc->entries[l].nd_secondary.key, e->key))
 		{	/* Cache miss */
 #if USE_MULTITHREAD
 			cache_unlock(pc, l);
@@ -163,10 +163,10 @@ unsigned int CacheLookupNoLocking(evalCache* pc, const cacheNodeDetail* e, float
 	++pc->cLookup;
 #endif
 	if (pc->entries[l].nd_primary.nEvalContext != e->nEvalContext ||
-		!EqualKeys(pc->entries[l].nd_primary.key.auch, e->key.auch))
+		!EqualKeys(pc->entries[l].nd_primary.key, e->key))
 	{	/* Not in primary slot */
 		if (pc->entries[l].nd_secondary.nEvalContext != e->nEvalContext ||
-			!EqualKeys(pc->entries[l].nd_secondary.key.auch, e->key.auch))
+			!EqualKeys(pc->entries[l].nd_secondary.key, e->key))
 		{	/* Cache miss */
 			return l;
 		}
