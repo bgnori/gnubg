@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.183 2011/04/08 09:51:57 mdpetch Exp $
+ * $Id: gtkprefs.c,v 1.184 2011/05/09 20:34:01 plm Exp $
  */
 
 #include "config.h"
@@ -1988,7 +1988,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.183 2011/04/08 09:51:57 mdpetch Exp $\n"
+          "    $Id: gtkprefs.c,v 1.184 2011/05/09 20:34:01 plm Exp $\n"
           "\n"
           " -->\n"
           "\n"
@@ -3347,18 +3347,27 @@ static GList *ParseBoardDesigns ( const char *szFile, const int fDeletable )
 
   /* create parser context */
 
-  if (!g_file_get_contents(szFile, &contents, &size, NULL))
+  if (!g_file_get_contents(szFile, &contents, &size, NULL)) {
+          g_free( parser->filename );
+          g_free( parser );
           return NULL;
+  }
 
   context = g_markup_parse_context_new( &markup_parser, 0, parser, NULL );
-  if ( ! context )
+  if ( ! context ) {
+          g_free( parser->filename );
+          g_free( parser );
           return NULL;
+  }
 
   /* parse document */
   if(!g_markup_parse_context_parse( context, contents, size, &error )){
 	g_warning("Error parsing XML: %s\n", error->message );
 	g_error_free( error );
         free_board_designs ( parser->designs );
+        g_markup_parse_context_free (context);
+	g_free( parser->filename );
+	g_free( parser );
 	return NULL;
   }
   g_markup_parse_context_free (context); 
