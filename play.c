@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.392 2011/05/08 19:08:51 plm Exp $
+ * $Id: play.c,v 1.393 2011/05/09 20:05:01 plm Exp $
  */
 
 #include "config.h"
@@ -2328,8 +2328,10 @@ extern void CommandDouble( char *sz ) {
 
     pmr->mt = MOVE_DOUBLE;
     pmr->fPlayer = ms.fTurn;
-    if ( fTutor && fTutorCube && !GiveAdvice( tutor_double(TRUE) ))
+    if ( fTutor && fTutorCube && !GiveAdvice( tutor_double(TRUE) )) {
+      free( pmr );
       return;
+    }
 
     if( fDisplay )
 	outputf( _("%s doubles.\n"), ap[ ms.fTurn ].szName );
