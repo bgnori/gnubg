@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: relational.c,v 1.65 2009/04/03 19:48:40 c_anthon Exp $
+ * $Id: relational.c,v 1.66 2011/05/09 20:53:02 plm Exp $
  */
 
 #include "config.h"
@@ -349,11 +349,15 @@ int CreateDatabase(DBProvider *pdb)
 {
 	char buffer[10240];
 	char *pBuf = buffer;
-	char *szFile = BuildFilename("gnubg.sql");
-	FILE *fp = g_fopen(szFile, "r");
 	char line[1024];
-	if (!fp)
+
+	gchar *szFile = BuildFilename("gnubg.sql");
+	FILE *fp = g_fopen(szFile, "r");
+
+	if (!fp) {
+		g_free(szFile);
 		return FALSE;
+		}
 
 	buffer[0] = '\0';
 	while (fgets(line, sizeof(line), fp) != NULL)
@@ -378,8 +382,11 @@ int CreateDatabase(DBProvider *pdb)
 				pBuf += len;
 				if (pLine[len - 1] == ';')
 				{
-					if (!pdb->UpdateCommand(buffer))
+					if (!pdb->UpdateCommand(buffer)) {
+						fclose(fp);
+						g_free(szFile);
 						return FALSE;
+						}
 					pBuf = buffer;
 					buffer[0] = '\0';
 				}
@@ -389,6 +396,8 @@ int CreateDatabase(DBProvider *pdb)
 	if (ferror(fp))
 	{
 		outputerr(szFile);
+		g_free(szFile);
+		fclose(fp);
 		return FALSE;
 	}
 	g_free(szFile);
