@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.221 2011/05/08 20:17:21 plm Exp $
+ * $Id: html.c,v 1.222 2011/05/09 20:40:10 plm Exp $
  */
 
 #include "config.h"
@@ -164,7 +164,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.221 2011/05/08 20:17:21 plm Exp $ */\n",
+           "/* $Id: html.c,v 1.222 2011/05/09 20:40:10 plm Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1818,7 +1818,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.221 $";
+  const char szVersion[] = "$Revision: 1.222 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1898,7 +1898,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.221 $";
+  const char szVersion[] = "$Revision: 1.222 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -3362,9 +3362,10 @@ extern void CommandExportGameHtml( char *sz ) {
     /* external stylesheet */
 
     if ( exsExport.hecss == HTML_EXPORT_CSS_EXTERNAL ) 
-      if ( ( pf = OpenCSS( sz ) ) )
+      if ( ( pf = OpenCSS( sz ) ) ) {
         WriteStyleSheet ( pf, exsExport.hecss );
-
+	fclose( pf );
+       }
 }
 
 
@@ -3460,9 +3461,10 @@ extern void CommandExportMatchHtml( char *sz ) {
     /* external stylesheet */
 
     if ( exsExport.hecss == HTML_EXPORT_CSS_EXTERNAL ) 
-      if ( ( pf = OpenCSS( sz ) ) )
+      if ( ( pf = OpenCSS( sz ) ) ) {
         WriteStyleSheet ( pf, exsExport.hecss );
-    
+        fclose( pf );
+      }
 }
 
 
@@ -3540,9 +3542,10 @@ extern void CommandExportPositionHtml( char *sz ) {
     /* external stylesheet */
 
     if ( exsExport.hecss == HTML_EXPORT_CSS_EXTERNAL ) 
-      if ( ( pf = OpenCSS( sz ) ) )
+      if ( ( pf = OpenCSS( sz ) ) ) {
         WriteStyleSheet ( pf, exsExport.hecss );
-
+        fclose( pf );
+      }
 }
 
 
