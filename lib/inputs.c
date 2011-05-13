@@ -15,11 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: inputs.c,v 1.1 2011/05/13 18:22:46 plm Exp $
+ * $Id: inputs.c,v 1.2 2011/05/13 19:00:43 plm Exp $
  */
 
 #include "config.h"
-#include "backgammon.h"
+#include "gnubg-types.h"
 #include "sse.h"
 
 #if USE_SSE_VECTORIZE
