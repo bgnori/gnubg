@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.57 2011/02/14 20:13:48 c_anthon Exp $
+ * $Id: gtkfile.c,v 1.58 2011/05/17 17:24:24 mdpetch Exp $
  */
 
 #include "config.h"
@@ -39,6 +39,10 @@
 #include "gtkwindows.h"
 #include "file.h"
 #include "util.h"
+
+/* Local Static Variables */
+
+static int fMatchCancelled = FALSE;
 
 static void FilterAdd (const char *fn, const char *pt, GtkFileChooser * fc)
 {
@@ -480,7 +484,6 @@ static gboolean batch_analyse(gchar *filename, char **result, gboolean add_to_db
 	gchar *cmd;
 	gchar *save = NULL;
 
-
 	if (!batch_create_save(filename, &save, result))
 		return FALSE;
 
@@ -509,10 +512,11 @@ static gboolean batch_analyse(gchar *filename, char **result, gboolean add_to_db
 	UserCommand("analysis clear match");
 	UserCommand("analyse match");
 
-	if (!MatchAnalysed())
+	if (fMatchCancelled)
 	{
 		*result = _("Cancelled");
 		g_free(save);
+		fMatchCancelled = FALSE;
 		return FALSE;
 	}
 
@@ -521,7 +525,7 @@ static gboolean batch_analyse(gchar *filename, char **result, gboolean add_to_db
 	g_free(cmd);
 	g_free(save);
 
-	if (add_to_db)
+	if (add_to_db && MatchAnalysed())
 	{
 		cmd = g_strdup("relational add match quiet");
 		UserCommand(cmd);
@@ -536,6 +540,8 @@ static void batch_do_all(gpointer batch_model, gboolean add_to_db)
 	gchar *result;
 	GtkTreeIter iter;
 	gboolean valid;
+	
+	fMatchCancelled = FALSE;
 
 	g_return_if_fail(batch_model != NULL);
 
@@ -563,17 +569,20 @@ static void batch_cancel (GtkWidget *pw, gpointer model)
 {
     pwGrab = pwOldGrab;
     fInterrupt = TRUE;
+    fMatchCancelled = TRUE;
 }
 
 
 static void batch_stop(GtkWidget * pw, gpointer p) 
 {
+	fMatchCancelled = TRUE;
 	fInterrupt = TRUE;
 	g_object_set_data(G_OBJECT(p), "cancelled", GINT_TO_POINTER(1));
 }
 
 static void batch_skip_file(GtkWidget * pw, gpointer p) 
 {
+	fMatchCancelled = TRUE;
 	fInterrupt = TRUE;
 }
 
