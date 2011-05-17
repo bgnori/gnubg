@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.841 2011/04/20 19:03:16 plm Exp $
+ * $Id: gtkgame.c,v 1.842 2011/05/17 22:05:19 mdpetch Exp $
  */
 
 #include "config.h"
@@ -1242,6 +1242,44 @@ static void CopyIDs(gpointer p, guint n, GtkWidget * pw)
 	GTKTextToClipboard(buffer);
 
 	gtk_statusbar_push( GTK_STATUSBAR( pwStatus ), idOutput, _("Position and Match IDs copied to the clipboard") );
+}
+
+static void CopyMatchID(gpointer p, guint n, GtkWidget * pw)
+{				/* Copy the position and match ids to the clipboard */
+	char buffer[1024];
+
+	if( ms.gs == GAME_NONE )
+	{
+		output( _("No game in progress.") );
+		outputx();
+		return;
+	}
+
+	sprintf(buffer, "%s %s\n",_("Match ID:"),
+		MatchIDFromMatchState(&ms));
+
+	GTKTextToClipboard(buffer);
+
+	gtk_statusbar_push( GTK_STATUSBAR( pwStatus ), idOutput, _("Match ID copied to the clipboard") );
+}
+
+static void CopyPositionID(gpointer p, guint n, GtkWidget * pw)
+{				/* Copy the position and match ids to the clipboard */
+	char buffer[1024];
+
+	if( ms.gs == GAME_NONE )
+	{
+		output( _("No game in progress.") );
+		outputx();
+		return;
+	}
+
+	sprintf(buffer, "%s %s\n", _("Position ID:"),
+		PositionID(msBoard()));
+
+	GTKTextToClipboard(buffer);
+
+	gtk_statusbar_push( GTK_STATUSBAR( pwStatus ), idOutput, _("Position ID copied to the clipboard") );
 }
 
 static void TogglePanel(gpointer p, guint n, GtkWidget * pw)
@@ -2908,9 +2946,10 @@ GtkItemFactoryEntry aife[] = {
 	},
 	{ N_("/_Edit/-"), NULL, NULL, 0, "<Separator>", NULL },
 
-	{ N_("/_Edit/_Copy Position ID"), "<control>C", CopyIDs, 0,
-		"<StockItem>", GTK_STOCK_COPY
-	},
+	{ N_("/_Edit/_Copy ID to Clipboard"), NULL, NULL, 0, "<Branch>", NULL },
+	{ N_("/_Edit/_Copy ID to Clipboard/GNUBG ID"), "<control>C", CopyIDs, 0, NULL, NULL }, 
+	{ N_("/_Edit/_Copy ID to Clipboard/Match ID"), "<control>M", CopyMatchID, 0, NULL, NULL },
+	{ N_("/_Edit/_Copy ID to Clipboard/Position ID"), "<control>P", CopyPositionID, 0, NULL, NULL },
 
 	{ N_("/_Edit/Copy as"), NULL, NULL, 0, "<Branch>", NULL },
 	{ N_("/_Edit/Copy as/Position as ASCII"), NULL,
@@ -2920,7 +2959,7 @@ GtkItemFactoryEntry aife[] = {
 	{ N_("/_Edit/Copy as/BackgammonBase.com (URL)"), NULL,
 	  CopyAsBGbase, 0, NULL, NULL },
 
-	{ N_("/_Edit/_Paste Position ID"), "<control>V", PasteIDs, 0,
+	{ N_("/_Edit/_Paste ID"), "<control>V", PasteIDs, 0,
 		"<StockItem>", GTK_STOCK_PASTE},
 
 	{ N_("/_Edit/-"), NULL, NULL, 0, "<Separator>", NULL },
