@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.58 2011/05/17 17:24:24 mdpetch Exp $
+ * $Id: gtkfile.c,v 1.59 2011/05/17 18:35:38 mdpetch Exp $
  */
 
 #include "config.h"
@@ -40,9 +40,9 @@
 #include "file.h"
 #include "util.h"
 
-/* Local Static Variables */
+/* Global Variables */
 
-static int fMatchCancelled = FALSE;
+int fMatchCancelled = FALSE;
 
 static void FilterAdd (const char *fn, const char *pt, GtkFileChooser * fc)
 {
@@ -746,6 +746,8 @@ static void batch_create_dialog_and_run(GSList * filenames, gboolean add_to_db)
 	g_signal_connect(G_OBJECT(stop_button), "clicked",
 			 G_CALLBACK(batch_stop), model);
 	gtk_widget_show_all(dialog);
+        GetInputYN(_("Do you wish to proceed?"));
+//                              "Continuing will destroy the remainder of the match. Continue?"));
 
 	batch_do_all(model, add_to_db);
 	
