@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrelational.c,v 1.30 2008/10/24 15:09:07 c_anthon Exp $
+ * $Id: gtkrelational.c,v 1.31 2011/05/17 19:47:48 mdpetch Exp $
  */
 
 #include "config.h"
@@ -784,7 +784,7 @@ extern void GtkShowRelational(gpointer p, guint n, GtkWidget * pw)
 	}
 	pdb->Disconnect();
 
-	pwDialog = GTKCreateDialog(_("GNU Backgammon - Relational Database"),
+	pwDialog = GTKCreateDialog(_("GNU Backgammon - Database"),
 			    DT_INFO, NULL, DIALOG_FLAG_MODAL | DIALOG_FLAG_MINMAXBUTTONS, NULL, NULL);
 
 #define REL_DIALOG_HEIGHT 600
