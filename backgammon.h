@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.426 2011/05/08 21:51:24 plm Exp $
+ * $Id: backgammon.h,v 1.427 2011/05/17 21:05:13 mdpetch Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1022,6 +1022,8 @@ extern gboolean save_autosave(gpointer unused);
 extern void delete_autosave(void);
 extern int get_input_discard(void);
 extern void SaveGame(FILE * pf, listOLD * plGame);
+
+extern int fMatchCancelled;
 
 extern void ProcessEvents(void);
 #if !USE_MULTITHREAD

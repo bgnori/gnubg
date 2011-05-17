@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.899 2011/05/17 18:35:38 mdpetch Exp $
+ * $Id: gnubg.c,v 1.900 2011/05/17 21:05:13 mdpetch Exp $
  */
 
 #include "config.h"
@@ -151,8 +151,6 @@ static char szCommandSeparators[] = " \t\n\r\v\f";
 #if defined(MSDOS) || defined(__MSDOS__) || defined(WIN32)
 #define NO_BACKSLASH_ESCAPES 1
 #endif
-
-extern int fMatchCancelled;
 
 #if USE_GTK
 int fX = FALSE; /* use X display */
