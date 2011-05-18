@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkfile.c,v 1.61 2011/05/17 21:05:13 mdpetch Exp $
+ * $Id: gtkfile.c,v 1.62 2011/05/18 00:51:55 mdpetch Exp $
  */
 
 #include "config.h"
@@ -40,9 +40,6 @@
 #include "file.h"
 #include "util.h"
 
-/* Global Variables */
-
-int fMatchCancelled = FALSE;
 
 static void FilterAdd (const char *fn, const char *pt, GtkFileChooser * fc)
 {
