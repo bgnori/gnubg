@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.223 2011/02/13 17:09:18 plm Exp $
+## $Id: Makefile.am,v 1.224 2011/06/07 20:31:18 plm Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -208,8 +208,8 @@ gnubg.wd:
 	@echo ' ** on the build system.  To create these files manually,'
 	@echo ' ** use commands like:'
 	@echo ' **   makeweights < gnubg.weights > gnubg.wd'
-	@echo ' **   makebearoff -o 6 -s 7999999 > gnubg_os0.bd'
-	@echo ' **   makebearoff -t 6x6 > gnubg_ts0.bd'
+	@echo ' **   makebearoff -o 6 -s 7999999 -f gnubg_os0.bd'
+	@echo ' **   makebearoff -t 6x6 -f gnubg_ts0.bd'
 	@echo ' ** on the host system.'
 else
 gnubg.wd: gnubg.weights makeweights$(EXEEXT)
