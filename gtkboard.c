@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.302 2011/05/08 19:08:51 plm Exp $
+ * $Id: gtkboard.c,v 1.303 2011/06/07 20:27:53 plm Exp $
  */
 
 /*! \file gtkboard.c
@@ -3225,7 +3225,6 @@ static void board_size_allocate( GtkWidget *board, GtkAllocation *allocation )
     guint old_size = bd->rd->nSize, new_size;
     GtkAllocation child_allocation;
     GtkRequisition requisition;
-    int cx;
     
     memcpy( &board->allocation, allocation, sizeof( GtkAllocation ) );
 
@@ -3279,7 +3278,7 @@ static void board_size_allocate( GtkWidget *board, GtkAllocation *allocation )
 #endif
 
     child_allocation.width = BOARD_WIDTH * bd->rd->nSize;
-    cx = child_allocation.x = allocation->x + ( ( allocation->width -
+    child_allocation.x = allocation->x + ( ( allocation->width -
 					     child_allocation.width ) >> 1 );
     child_allocation.height = BOARD_HEIGHT * bd->rd->nSize;
     child_allocation.y = allocation->y + ( ( allocation->height -
