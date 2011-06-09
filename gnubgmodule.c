@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.114 2011/06/09 05:34:57 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.115 2011/06/09 16:54:55 mdpetch Exp $
  */
 
 #include "config.h"
@@ -820,15 +820,15 @@ PythonDiceRolls( PyObject* self UNUSED_PARAM, PyObject *args ) {
   PyObject *pyDiceRoll;
   PyObject *pyDie1;
   PyObject *pyDie2;
-  unsigned long  n;
-  unsigned int   anDice[2];
-  int            dieidx, rollsidx;
+  long n;
+  unsigned int anDice[2];
+  int dieidx, rollsidx;
 
-  if ( ! PyArg_ParseTuple( args, "k:dicerolls", &n ) )
+  if ( ! PyArg_ParseTuple( args, "l:dicerolls", &n ) )
     return NULL;
 
   if ( n <= 0 ) {
-    PyErr_SetString( PyExc_ValueError, _("numner of rolls must be greater than 0" ) );
+    PyErr_SetString( PyExc_ValueError, _("number of rolls must be greater than 0" ) );
     return NULL;
   }
 
