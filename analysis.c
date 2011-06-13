@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.226 2011/05/08 19:08:50 plm Exp $
+ * $Id: analysis.c,v 1.227 2011/06/13 21:42:49 mdpetch Exp $
  */
 
 #include "config.h"
@@ -1767,16 +1767,7 @@ updateStatisticsMatch ( listOLD *plMatch ) {
 
 extern lucktype getLuckRating ( float rLuck )
 {
-  if ( rLuck < -0.06 )
-    return LUCK_VERYBAD;
-  else if ( rLuck < -0.02 )
-    return LUCK_BAD;
-  else if ( rLuck < +0.02 )
-    return LUCK_NONE;
-  else if ( rLuck < +0.06 )
-    return LUCK_GOOD;
-  else
-    return LUCK_VERYGOOD;
+	return Luck (rLuck);
 }
 
 static void
