@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.393 2011/05/09 20:05:01 plm Exp $
+ * $Id: play.c,v 1.394 2011/07/08 21:18:23 plm Exp $
  */
 
 #include "config.h"
@@ -2822,7 +2822,7 @@ extern void CommandNewMatch( char *sz )
 
 #if USE_GTK
     if( fX )
-	ShowBoard();
+	GTKSet(ap);
 #endif
 
     CommandNewGame( NULL );
