@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.842 2011/05/17 22:05:19 mdpetch Exp $
+ * $Id: gtkgame.c,v 1.843 2011/07/09 21:48:14 plm Exp $
  */
 
 #include "config.h"
@@ -1187,6 +1187,14 @@ static void PasteIDs(void)
 
 	UserCommand(sz);
 	g_free(sz);
+
+	strcpy(ap[0].szName,default_names[0]);
+	strcpy(ap[1].szName,default_names[1]);
+
+#if USE_GTK
+	if( fX )
+		GTKSet(ap);
+#endif /* USE_GTK */
 
 	if (editing)
 		click_edit();

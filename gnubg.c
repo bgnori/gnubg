@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.900 2011/05/17 21:05:13 mdpetch Exp $
+ * $Id: gnubg.c,v 1.901 2011/07/09 21:48:14 plm Exp $
  */
 
 #include "config.h"
@@ -4854,6 +4854,9 @@ int main(int argc, char *argv[])
 		PushSplash(pwSplash, _("Loading"), _("User Settings"));
 		LoadRCFiles();
 	}
+
+	strcpy(ap[0].szName,default_names[0]);
+	strcpy(ap[1].szName,default_names[1]);
 
 	fflush(stdout);
 	fflush(stderr);
