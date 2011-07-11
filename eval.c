@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.398 2011/05/18 00:51:55 mdpetch Exp $
+ * $Id: eval.c,v 1.399 2011/07/11 21:52:53 plm Exp $
  */
 
 #include "config.h"
@@ -24,6 +24,7 @@
 
 #include <glib.h>
 #include <glib/gstdio.h>
+#include <locale.h>
 #include <string.h>
 #include <errno.h>
 #include <cache.h>
@@ -711,6 +712,7 @@ extern void EvalInitialise(char *szWeights, char *szWeightsBinary,
 		pfWeights = g_fopen(szWeights, "r");
 	    if (!weights_failed(szWeights, pfWeights))
 	    {
+		setlocale (LC_ALL, "C");
 		    if( !( fReadWeights =
 					    !NeuralNetLoad( &nnContact, pfWeights ) &&
 					    !NeuralNetLoad( &nnRace, pfWeights ) &&
@@ -721,7 +723,7 @@ extern void EvalInitialise(char *szWeights, char *szWeightsBinary,
 					    !NeuralNetLoad( &nnpRace, pfWeights ) 
 			 ) )
 			    perror( szWeights );
-
+		setlocale (LC_ALL, "");
 	    }
 	    if (pfWeights)
 		    fclose( pfWeights );
