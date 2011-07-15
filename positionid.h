@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.h,v 1.32 2011/05/08 19:08:50 plm Exp $
+ * $Id: positionid.h,v 1.33 2011/07/15 22:09:59 plm Exp $
  */
 
 #ifndef _POSITIONID_H_
@@ -45,9 +45,9 @@ extern void PositionFromBearoff(unsigned int anBoard[], unsigned int usID,
 
 extern unsigned short PositionIndex(unsigned int g, const unsigned int anBoard[6]);
 
-#define EqualKeys(k1, k2) (k1.data[1]==k2.data[1]&&k1.data[2]==k2.data[2]&&k1.data[0]==k2.data[0])
+#define EqualKeys(k1, k2) (k1.data[0]==k2.data[0]&&k1.data[1]==k2.data[1]&&k1.data[2]==k2.data[2]&&k1.data[3]==k2.data[3]&&k1.data[4]==k2.data[4]&&k1.data[5]==k2.data[5]&&k1.data[6]==k2.data[6])
 
-#define CopyKey(ks, kd) kd.data[0]=ks.data[0],kd.data[1]=ks.data[1],kd.data[2]=ks.data[2]
+#define CopyKey(ks, kd) kd.data[0]=ks.data[0],kd.data[1]=ks.data[1],kd.data[2]=ks.data[2],kd.data[3]=ks.data[3],kd.data[4]=ks.data[4],kd.data[5]=ks.data[5],kd.data[6]=ks.data[6]
 
 extern int EqualBoards( const TanBoard anBoard0, const TanBoard anBoard1 );
 
