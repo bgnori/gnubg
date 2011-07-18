@@ -34,7 +34,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.49 2011/07/15 22:09:59 plm Exp $
+ * $Id: positionid.c,v 1.50 2011/07/18 21:22:20 plm Exp $
  */
 
 #include "config.h"
@@ -197,7 +197,7 @@ extern char *PositionIDFromKey( const positionkey *pkey ) {
 	oldpositionkey okey;
 
 	PositionFromKey(anBoard, pkey);
-	oldPositionKey(anBoard, &okey);
+	oldPositionKey((ConstTanBoard)anBoard, &okey);
 
 	return oldPositionIDFromKey(&okey);
 }
