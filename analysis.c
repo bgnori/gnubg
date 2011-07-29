@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.227 2011/06/13 21:42:49 mdpetch Exp $
+ * $Id: analysis.c,v 1.228 2011/07/29 17:22:16 mdpetch Exp $
  */
 
 #include "config.h"
@@ -1767,7 +1767,7 @@ updateStatisticsMatch ( listOLD *plMatch ) {
 
 extern lucktype getLuckRating ( float rLuck )
 {
-	return Luck (rLuck);
+	return Luck (rLuck * 10);
 }
 
 static void
