@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.901 2011/07/09 21:48:14 plm Exp $
+ * $Id: gnubg.c,v 1.902 2011/08/01 22:17:53 plm Exp $
  */
 
 #include "config.h"
@@ -5045,6 +5045,7 @@ swapGame ( listOLD *plGame ) {
       PositionFromKey(anBoard, &pmr->sb.key);
       SwapSides( anBoard );
       PositionKey( (ConstTanBoard)anBoard, &pmr->sb.key );
+      pmr->fPlayer = ! pmr->fPlayer;
       break;
 
     case MOVE_SETCUBEVAL:
@@ -5113,12 +5114,12 @@ extern void CommandSwapPlayers ( char *sz )
 /* GTKSet(ap) already does this. This just adds flicker.
     GTKRegenerateGames();
 */
-    ChangeGame(NULL);
   }
 #endif
 
-  ShowBoard();
+  ChangeGame(NULL);
 
+  ShowBoard();
 }
 
 
