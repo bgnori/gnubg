@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.303 2011/06/07 20:27:53 plm Exp $
+ * $Id: gtkboard.c,v 1.304 2011/08/03 20:48:58 plm Exp $
  */
 
 /*! \file gtkboard.c
@@ -3065,9 +3065,14 @@ if (display_is_3d(bd->rd))
 else
 #endif
 {
-    /* FIXME it's overkill to do this every time, but if we don't do it,
-       then "set turn <player>" won't redraw the dice in the other colour. */
-    gtk_widget_queue_draw( bd->dice_area );
+    extern int fJustSwappedPlayers;
+
+    if (fJustSwappedPlayers) {
+	if (ms.anDice[ 0 ] > 0)
+            RollDice2d(bd);
+        gtk_widget_queue_draw( bd->drawing_area );
+        fJustSwappedPlayers = FALSE;
+    }
 }
 
     return 0;
