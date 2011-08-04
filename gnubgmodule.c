@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.116 2011/07/18 02:43:50 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.117 2011/08/04 02:22:02 mdpetch Exp $
  */
 
 #include "config.h"
@@ -574,6 +574,55 @@ static PyObject *PythonCommand(PyObject * self UNUSED_PARAM, PyObject * args)
 
 	Py_INCREF(Py_None);
 	return Py_None;
+}
+
+static PyObject *PythonParseMove(PyObject * self UNUSED_PARAM, PyObject * args)
+{
+	PyObject *pyMoves;
+	PyObject *pyMove;
+	PyObject *pyMoveL;
+	PyObject *pyMoveR;
+	char *pch;
+	char *sz;
+	int an [8];
+	int nummoves;
+	int movesidx, moveidx;
+
+	if (!PyArg_ParseTuple(args, "s:moves", &pch))
+		return NULL;
+
+	sz = g_strdup(pch);
+	for( pch = sz; *pch; pch++ )
+		if( *pch == '-' )
+			*pch = '/';
+
+	nummoves = ParseMove( sz, an );
+	g_free(sz);
+
+	if (nummoves < 0)
+		return NULL;
+
+	if ( ! ( pyMoves = PyTuple_New( nummoves ) ) )
+		return NULL;
+
+	for ( movesidx = 0; movesidx < nummoves; movesidx++  ) {
+		pyMoveL = PyInt_FromLong(an [ movesidx * 2 ]);
+		pyMoveR = PyInt_FromLong(an [ movesidx * 2 + 1 ]);
+
+		if ( ! ( pyMove = PyTuple_New( 2 ) ) )
+			return NULL;
+
+		moveidx = 0;
+		if ( PyTuple_SetItem( pyMove, moveidx, pyMoveL ) < 0 )
+			return NULL;
+		if ( PyTuple_SetItem( pyMove, moveidx+1, pyMoveR ) < 0 )
+			return NULL;
+
+	    if ( PyTuple_SetItem( pyMoves, movesidx, pyMove ) < 0 )
+			return NULL;
+	}
+
+	return pyMoves;
 }
 
 
@@ -2532,6 +2581,10 @@ PyMethodDef gnubgMethods[] = {
     "        board, cube-info: see 'cfevaluate'\n"
     "        pos-info: see 'posinfo'\n"
     "    returns: GNUBGID as string" },
+  { "parsemove", PythonParseMove, METH_VARARGS,
+    "Parse move\n"
+    "    arguments: string containing move to parse\n"
+    "    returns: tuple of (tuple (int, int)) representing each move " },
   { "positionfromid", PythonPositionFromID, METH_VARARGS,
     "return board from position ID\n"
     "    arguments: [position ID as string]\n"
