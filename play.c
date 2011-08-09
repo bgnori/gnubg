@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.397 2011/08/07 09:10:17 mdpetch Exp $
+ * $Id: play.c,v 1.398 2011/08/09 22:58:49 mdpetch Exp $
  */
 
 #include "config.h"
@@ -1682,6 +1682,9 @@ extern int NextTurn( int fPlayNext ) {
 		if( fLastMove )
 		{
 			board_animate( BOARD( pwBoard ), anLastMove, fLastPlayer );
+			if (fInterrupt && ! automaticTask) 
+				fInterrupt = FALSE;
+
 			playSound ( SOUND_MOVE );
 			fLastMove = FALSE;
 		}
@@ -1789,7 +1792,6 @@ extern int NextTurn( int fPlayNext ) {
     g_assert( ms.gs == GAME_PLAYING );
     
     if( fDisplay || ap[ ms.fTurn ].pt == PLAYER_HUMAN ) {
-		fInterrupt = FALSE;
 		ShowBoard();
 	}
 
