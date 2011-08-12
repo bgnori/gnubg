@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.843 2011/07/09 21:48:14 plm Exp $
+ * $Id: gtkgame.c,v 1.844 2011/08/12 13:27:39 mdpetch Exp $
  */
 
 #include "config.h"
@@ -6831,6 +6831,7 @@ static void CallbackResign(GtkWidget *pw, gpointer data)
     const char *asz[3]= { "normal", "gammon", "backgammon" };
     char sz[20];
 
+	ms.anDice[0] = ms.anDice[1] = 0;
     sprintf(sz, "resign %s", asz[i]);
     gtk_widget_destroy( gtk_widget_get_toplevel( pw ) );
     UserCommand(sz);

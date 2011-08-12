@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.304 2011/08/03 20:48:58 plm Exp $
+ * $Id: gtkboard.c,v 1.305 2011/08/12 13:27:39 mdpetch Exp $
  */
 
 /*! \file gtkboard.c
@@ -1773,8 +1773,12 @@ extern gboolean board_button_press(GtkWidget *board, GdkEventButton *event,
 #endif
 	    bd->drag_point = -1;
 		if (event->button == 1)
-		{	/* Clicked on dice; end move. */
-			Confirm(bd);
+		{
+			if ( ms.gs == GAME_RESIGNED ) 
+				UserCommand ("new game");
+			else
+				/* Clicked on dice; end move. */
+				Confirm(bd);
 		}
 	    else 
 		{	/* Other buttons on dice swaps positions. */
