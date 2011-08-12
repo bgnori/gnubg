@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.398 2011/08/09 22:58:49 mdpetch Exp $
+ * $Id: play.c,v 1.399 2011/08/12 08:51:56 mdpetch Exp $
  */
 
 #include "config.h"
@@ -1730,9 +1730,13 @@ extern int NextTurn( int fPlayNext ) {
 			{
 		#if USE_BOARD3D
 				BoardData *bd = BOARD( pwBoard )->board_data;
-				if (ms.fResigned && display_is_3d(bd->rd))
+				if (ms.fResigned && display_is_3d(bd->rd)) 
 					StopIdle3d(bd, bd->bd3d);	/* Stop flag waving */
+
 		#endif
+				/* Clear the resignation flag */
+				ms.fResigned = 0;
+
 				ShowBoard();
 			}
 			else
