@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.399 2011/07/11 21:52:53 plm Exp $
+ * $Id: eval.c,v 1.400 2011/08/16 21:25:05 plm Exp $
  */
 
 #include "config.h"
@@ -325,7 +325,8 @@ const char *aszSettings[ NUM_SETTINGS ] = {
   N_ ("setting|expert"), 
   N_ ("setting|world class"),
   N_ ("setting|supremo"),
-  N_ ("setting|grandmaster") };
+  N_ ("setting|grandmaster"),
+  N_ ("setting|4ply") };
 
 /* which evaluation context does the predefined settings use */
 evalcontext aecSettings[ NUM_SETTINGS ] = {
@@ -337,6 +338,7 @@ evalcontext aecSettings[ NUM_SETTINGS ] = {
   { TRUE, 2, TRUE, TRUE, 0.0f }, /* world class */
   { TRUE, 2, TRUE, TRUE, 0.0f }, /* supremo */
   { TRUE, 3, TRUE, TRUE, 0.0f }, /* grand master */
+  { TRUE, 4, TRUE, TRUE, 0.0f }, /* 4ply */
 };
 
 /* which move filter does the predefined settings use */
@@ -348,7 +350,8 @@ int aiSettingsMoveFilter[ NUM_SETTINGS ] = {
   -1, /* expoert: n/a */
   2,  /* wc: normal */
   3,  /* supremo: large */
-  2,  /* grandmaster: normal */
+  3,  /* grandmaster: large */
+  3,  /* 4ply: large */
 };
 
 /* the predefined move filters */
