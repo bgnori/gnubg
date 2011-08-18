@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.225 2011/08/16 08:27:54 mdpetch Exp $
+## $Id: Makefile.am,v 1.226 2011/08/18 11:36:30 mdpetch Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -223,7 +223,7 @@ gnubg.wd:
 else
 gnubg.wd: gnubg.weights makeweights$(EXEEXT)
 	[ -s $@ ] || \
-	./makeweights < $< > $@
+	./makeweights -f $@ $< 
 gnubg_os0.bd: makebearoff$(EXEEXT)
 	[ -s $@ ] || \
 	./makebearoff -o 6 -s 7999999 -f $@
