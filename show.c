@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: show.c,v 1.263 2011/03/19 21:08:40 plm Exp $
+ * $Id: show.c,v 1.264 2011/08/18 21:15:27 plm Exp $
  */
 
 #include "config.h"
@@ -304,9 +304,14 @@ ShowRollout ( const rolloutcontext *prc ) {
   }
 
   if (prc->fStopOnSTD) {
-    outputf ( _("Rollouts may stop after %d games if the ratios |value/STD|\n"
-		"are all less than< %5.4f\n"), prc->nMinimumGames, 
-		prc->rStdLimit);
+    if (prc->fCubeful)
+      outputf ( _("Rollouts may stop after %d games if both ratios |equity/STD|\n"
+		"\t(cubeful and cubeless) are less than %5.4f\n"),
+		prc->nMinimumGames, prc->rStdLimit);
+    else
+      outputf ( _("Rollouts may stop after %d games if the ratio |equity/STD|"
+		" is less than %5.4f\n"),
+		prc->nMinimumGames, prc->rStdLimit);
   }
 }
 
