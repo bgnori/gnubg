@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.117 2011/08/04 02:22:02 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.118 2011/08/18 01:35:35 mdpetch Exp $
  */
 
 #include "config.h"
@@ -2754,6 +2754,7 @@ extern int LoadPythonFile(const char *sz)
 {
 	char *path = NULL;
 	char *cmd = NULL;
+	char *escpath = NULL;
 	int ret = FALSE;
 
 	if (g_file_test(sz, G_FILE_TEST_EXISTS))
@@ -2770,8 +2771,10 @@ extern int LoadPythonFile(const char *sz)
 		outputerrf("Python file (%s) not found\n", sz);
 		return FALSE;
 	}
-	cmd = g_strdup_printf("execfile('%s')", path);
+	escpath = g_strescape (path, NULL);
+	cmd = g_strdup_printf("execfile('%s')", escpath);
 	PyRun_SimpleString(cmd);
+	g_free(escpath);
 	g_free(path);
 	g_free(cmd);
 
