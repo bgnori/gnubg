@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.355 2011/08/16 21:54:57 plm Exp $
+ * $Id: set.c,v 1.356 2011/08/19 06:53:03 mdpetch Exp $
  */
 
 #include "config.h"
@@ -2565,11 +2565,11 @@ extern void CommandSetCrawford( char *sz ) {
       ms.fPostCrawford = !ms.fCrawford;
 
       if( ms.fCrawford )
-	  CancelCubeAction();
+	      CancelCubeAction();
       
       if( plGame && ( pmr = plGame->plNext->p ) && ( pmgi = &pmr->g ) ) {
-	  g_assert( pmr->mt == MOVE_GAMEINFO );
-	  pmgi->fCrawfordGame = ms.fCrawford;
+	      g_assert( pmr->mt == MOVE_GAMEINFO );
+	      pmgi->fCrawfordGame = ms.fCrawford;
       }
     } else {
 		if (ms.fCrawford)
@@ -2582,6 +2582,8 @@ extern void CommandSetCrawford( char *sz ) {
 		outputl( _("Cannot set whether this is the Crawford game\n"
 			"as none of the players are 1-away from winning.") );
     }
+	/* Clear previous data in the hint cache after toggling Crawford*/
+    pmr_hint_destroy();
   }
   else if ( !ms.nMatchTo ) 
       outputl( _("Cannot set Crawford play for money sessions.") );
