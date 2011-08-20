@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.903 2011/08/03 20:48:58 plm Exp $
+ * $Id: gnubg.c,v 1.904 2011/08/20 05:42:24 mdpetch Exp $
  */
 
 #include "config.h"
@@ -4653,6 +4653,9 @@ static char *matchfile_from_argv(char *sz)
 {
 	char *pchMatch;
 #ifdef WIN32
+	gsize br, bw;
+	gchar *utf8fn;
+
 	if (g_path_is_absolute(sz))
 		pchMatch = g_strdup_printf("'%s'", sz);
 	else {
@@ -4661,6 +4664,9 @@ static char *matchfile_from_argv(char *sz)
 		pchMatch = g_strdup_printf("'%s'", tmp);
 		g_free(tmp);
 	}
+	utf8fn = g_locale_to_utf8 (pchMatch, -1, &br, &bw, NULL);
+	g_free (pchMatch);
+	pchMatch = utf8fn;
 #else
 	pchMatch = g_strdup_printf("'%s'", sz);
 #endif
