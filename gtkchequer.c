@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.110 2011/08/20 15:14:50 mdpetch Exp $
+ * $Id: gtkchequer.c,v 1.111 2011/08/21 06:00:55 mdpetch Exp $
  */
 
 #include "config.h"
@@ -90,9 +90,14 @@ static void MoveListRolloutClicked(GtkWidget *pw, hintdata *phd)
 	if (res < 0)
 		return;
 
-  /* Calling RefreshMoveList here requires some extra work, as
-     it may reorder moves */
-  MoveListUpdate ( phd );
+    /* If the source widget has been destroyed do not attempt
+       to update the hint window*/
+    if ( ! gtk_widget_is_drawable(pw) )
+      return;
+
+    /* Calling RefreshMoveList here requires some extra work, as
+       it may reorder moves */
+    MoveListUpdate ( phd );
   }
 
   MoveListClearSelection(0, 0, phd);
