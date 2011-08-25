@@ -16,7 +16,7 @@
      is permitted in any medium provided the copyright notice and this
      permission notice are preserved.
 
-     $Id: Kazaross-XG2.xml,v 1.2 2011/08/25 05:44:29 mdpetch Exp $
+     $Id: Kazaross-XG2.xml,v 1.3 2011/08/25 05:50:53 mdpetch Exp $
 
  -->
 
@@ -27,7 +27,6 @@
     <length>25</length>
   </info>
 
-</met>
   <pre-crawford-table type="explicit">
     <row>
       <me>0.50000</me>
