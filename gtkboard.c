@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkboard.c,v 1.306 2011/08/31 00:50:40 mdpetch Exp $
+ * $Id: gtkboard.c,v 1.307 2011/08/31 19:36:34 mdpetch Exp $
  */
 
 /*! \file gtkboard.c
@@ -3244,11 +3244,9 @@ static void board_size_allocate( GtkWidget *board, GtkAllocation *allocation )
     guint old_size = bd->rd->nSize, new_size;
     GtkAllocation child_allocation;
     GtkRequisition requisition;
-    GtkAllocation bdallocation;
-    gtk_widget_get_allocation(board, &bdallocation);
-    
-    memcpy( &bdallocation, allocation, sizeof( GtkAllocation ) );
 
+    gtk_widget_set_allocation(board, allocation);
+    
     /* position ID, match ID: just below toolbar */
 
     if ( bd->rd->fShowGameInfo ) {
