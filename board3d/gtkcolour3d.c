@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkcolour3d.c,v 1.51 2009/05/01 09:13:02 Superfly_Jon Exp $
+* $Id: gtkcolour3d.c,v 1.52 2011/08/31 00:50:46 mdpetch Exp $
 */
 
 #include "config.h"
@@ -168,7 +168,7 @@ static void UpdateColourPreview(void)
 		return;
 
 	if (useOpacity)
-		opacityValue = (float)padjOpacity->value / 100.0f;
+		opacityValue = (float)gtk_adjustment_get_value(padjOpacity) / 100.0f;
 
 	gtk_color_button_get_array(GTK_COLOR_BUTTON(pcpAmbient), ambient);
 	gtk_color_button_get_array(GTK_COLOR_BUTTON(pcpDiffuse), diffuse);
@@ -178,7 +178,7 @@ static void UpdateColourPreview(void)
 	SetupMat(&col3d, (float)ambient[0], (float)ambient[1], (float)ambient[2],
 		(float)diffuse[0], (float)diffuse[1], (float)diffuse[2],
 		(float)specular[0], (float)specular[1], (float)specular[2],
-		(int)padjShine->value, opacityValue);
+		(int)gtk_adjustment_get_value(padjShine), opacityValue);
 	col3d.textureInfo = tempTexture;
 
 	gtk_widget_queue_draw(pwPreview);

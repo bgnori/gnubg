@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.226 2011/08/18 11:36:30 mdpetch Exp $
+## $Id: Makefile.am,v 1.227 2011/08/31 00:50:39 mdpetch Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -123,7 +123,8 @@ gnubg_SOURCES += gtkboard.c gtkboard.h gtkgame.c gtkgame.h gtkfile.c gtkfile.h \
 		 gtksplash.h gtkrolls.c gtkrolls.h gtktempmap.c gtktempmap.h \
 		 gtkoptions.h gtkoptions.c gtktoolbar.h gtktoolbar.c \
 		 gtkgamelist.c gtkpanels.c gtkpanels.h gtkmovelist.c gtkmovelistctrl.c gtkmovelistctrl.h \
-		 gtkwindows.c gtkwindows.h gtkrelational.c gtkrelational.h gnubgstock.c gnubgstock.h
+		 gtkwindows.c gtkwindows.h gtkrelational.c gtkrelational.h gnubgstock.c gnubgstock.h \
+		 gtkuidefs.h gtklocdefs.c gtklocdefs.h
 endif
 
 #

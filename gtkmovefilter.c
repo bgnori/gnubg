@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkmovefilter.c,v 1.30 2011/02/14 20:13:48 c_anthon Exp $
+ * $Id: gtkmovefilter.c,v 1.31 2011/08/31 00:50:42 mdpetch Exp $
  */
 
 #include "config.h"
@@ -114,11 +114,11 @@ MoveFilterSetupGetValues ( movefilter *pmf, const movefiltersetupwidget *pmfsw )
       f = gtk_toggle_button_get_active ( 
              GTK_TOGGLE_BUTTON ( pmfsw->aapwEnable[ i ][ j ] ) );
 
-      aamf[ i ][ j ].Accept = f ? (int)pmfsw->aapadjAccept[ i ][ j ]->value : -1;
+      aamf[ i ][ j ].Accept = f ? (int)gtk_adjustment_get_value( pmfsw->aapadjAccept[ i ][ j ] ) : -1;
       aamf[ i ][ j ].Extra = ( aamf[ i ][ j ].Accept >= 0 ) ? 
-        (int)pmfsw->aapadjExtra[ i ][ j ]->value : 0;
+        (int)gtk_adjustment_get_value( pmfsw->aapadjExtra[ i ][ j ] ) : 0;
       aamf[ i ][ j ].Threshold = ( aamf[ i ][ j ].Extra ) ? 
-      (float)pmfsw->aapadjThreshold[ i ][ j ]->value : 0;
+      (float)gtk_adjustment_get_value( pmfsw->aapadjThreshold[ i ][ j ] ) : 0;
 
     }
 

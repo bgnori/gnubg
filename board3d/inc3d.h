@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: inc3d.h,v 1.48 2011/04/06 23:42:53 mdpetch Exp $
+* $Id: inc3d.h,v 1.49 2011/08/31 00:50:46 mdpetch Exp $
 */
 #ifndef _INC3D_H_
 #define _INC3D_H_
@@ -52,7 +52,6 @@
 #endif
 
 #include <gtk/gtkgl.h>
-
 #include "fun3d.h"
 #include "matrix.h"
 #include "gtkwindows.h"

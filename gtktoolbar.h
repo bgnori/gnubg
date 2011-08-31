@@ -16,14 +16,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.h,v 1.10 2008/07/30 15:03:00 c_anthon Exp $
+ * $Id: gtktoolbar.h,v 1.11 2011/08/31 00:50:45 mdpetch Exp $
  */
 
 #ifndef _GTKTOOLBAR_H_
 #define _GTKTOOLBAR_H_
 
 #include "gtkboard.h"
+#if !(USE_GTKUIMANAGER)
 extern GtkItemFactory *pif;
+#endif
 
 typedef enum _toolbarcontrol { 
   C_NONE, 

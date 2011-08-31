@@ -18,14 +18,15 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.27 2009/05/01 09:13:02 Superfly_Jon Exp $
+* $Id: graph.c,v 1.28 2011/08/31 00:50:46 mdpetch Exp $
 */
+
 
 #include "config.h"
 #include "inc3d.h"
 
 #include "renderprefs.h"
-
+#include "gtklocdefs.h"
 
 struct _GraphData
 {
@@ -62,8 +63,10 @@ static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *UNUSED(eve
 	if (!gdk_gl_drawable_gl_begin(gldrawable, gtk_widget_get_gl_context(widget)))
 		return FALSE;
 
-	width = widget->allocation.width;
-	height = widget->allocation.height;
+	GtkAllocation allocation;
+	gtk_widget_get_allocation (widget, &allocation);
+	width = allocation.width;
+	height = allocation.height;
 	maxX = (float)gd->numGames * RES_WIDTH + RES_WIDTH + TOTAL_GAP;
 	modelWidth = maxX * (1 + NUM_WIDTH_PER);
 
