@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtklocdefs.h,v 1.1 2011/08/31 00:44:29 mdpetch Exp $
+ * $Id: gtklocdefs.h,v 1.2 2011/08/31 12:02:45 mdpetch Exp $
  */
 
 #ifndef _GTKLOCDEFS_H_
@@ -68,6 +68,7 @@
 
 
 extern void gtk_widget_get_allocation (GtkWidget *widget, GtkAllocation *allocation);
+extern void gtk_widget_set_allocation (GtkWidget *widget, const GtkAllocation *allocation);
 extern void gtk_cell_renderer_get_alignment (GtkCellRenderer *cell, gfloat *xalign, gfloat *yalign);
 extern void gtk_cell_renderer_set_padding (GtkCellRenderer *cell, gint xpad, gint ypad);
 #endif

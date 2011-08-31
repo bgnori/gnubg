@@ -15,7 +15,7 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * $Id: gtk-multiview.c,v 1.12 2011/08/31 00:50:40 mdpetch Exp $
+ * $Id: gtk-multiview.c,v 1.13 2011/08/31 12:02:45 mdpetch Exp $
  */
 
 /* License changed from the GNU LGPL to the GNU GPL (as permitted
@@ -115,14 +115,12 @@ gtk_multiview_size_allocate (GtkWidget     *widget,
   GtkMultiview *multiview;
   GList *tmp_list;
   GtkWidget *child;
-  GtkAllocation mvallocation;
   
   g_return_if_fail (widget != NULL);
   g_return_if_fail (GTK_IS_MULTIVIEW (widget));
 
   multiview = GTK_MULTIVIEW (widget);
-  gtk_widget_get_allocation (widget, &mvallocation);
-  mvallocation = *allocation;
+  gtk_widget_set_allocation (widget, allocation);
 
   tmp_list = multiview->children;
   while (tmp_list)

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtklocdefs.c,v 1.1 2011/08/31 00:44:29 mdpetch Exp $
+ * $Id: gtklocdefs.c,v 1.2 2011/08/31 12:02:45 mdpetch Exp $
  */
 
 
@@ -30,6 +30,11 @@
 void gtk_widget_get_allocation (GtkWidget *widget, GtkAllocation *allocation) 
 {
 	*allocation = widget->allocation;
+}
+
+void gtk_widget_set_allocation (GtkWidget *widget, const GtkAllocation *allocation)
+{
+	widget->allocation = *allocation;
 }
 
 void gtk_cell_renderer_get_alignment (GtkCellRenderer *cell, gfloat *xalign, gfloat *yalign)
