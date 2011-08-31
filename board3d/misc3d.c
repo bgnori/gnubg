@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: misc3d.c,v 1.108 2011/08/31 13:36:59 mdpetch Exp $
+* $Id: misc3d.c,v 1.109 2011/08/31 14:29:47 mdpetch Exp $
 */
 
 #include "config.h"
@@ -36,6 +36,7 @@
 #include "util.h"
 #include <glib/gstdio.h>
 #include <assert.h>
+#include "gtklocdefs.h"
 
 #define MAX_FRAMES 10
 #define DOT_SIZE 32

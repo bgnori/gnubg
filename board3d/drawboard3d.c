@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.92 2011/08/31 13:36:59 mdpetch Exp $
+* $Id: drawboard3d.c,v 1.93 2011/08/31 14:29:47 mdpetch Exp $
 */
 
 #include "config.h"
@@ -27,6 +27,7 @@
 #ifdef WIN32
 #include "wglbuffer.h"
 #endif
+#include "gtklocdefs.h"
 
 /* Used to calculate correct viewarea for board/fov angles */
 typedef struct _viewArea
