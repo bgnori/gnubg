@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: drawboard3d.c,v 1.91 2011/04/10 22:33:32 mdpetch Exp $
+* $Id: drawboard3d.c,v 1.92 2011/08/31 13:36:59 mdpetch Exp $
 */
 
 #include "config.h"
@@ -3965,6 +3965,9 @@ extern void drawBasePreRender(const BoardData *bd, const BoardData3d *bd3d, cons
 	}
 	else
 		drawBoardBase(bd, bd3d, prd);
-	SaveBufferRegion(bd3d->wglBuffer, 0, 0, bd3d->drawing_area3d->allocation.width, bd3d->drawing_area3d->allocation.height);
+
+	GtkAllocation allocation;
+	gtk_widget_get_allocation (bd3d->drawing_area3d, &allocation);
+	SaveBufferRegion(bd3d->wglBuffer, 0, 0, allocation.width, allocation.height);
 }
 #endif
