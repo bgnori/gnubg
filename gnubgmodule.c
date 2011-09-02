@@ -16,13 +16,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.118 2011/08/18 01:35:35 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.119 2011/09/02 13:33:27 mdpetch Exp $
  */
 
 #include "config.h"
 
 #include "gnubgmodule.h"
 #include "backgammon.h"
+#include "positionid.h"
+#include "drawboard.h"
+
 #include <signal.h>
 #include <glib.h>
 #include <glib/gstdio.h>

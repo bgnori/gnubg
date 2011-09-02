@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.h,v 1.33 2011/07/15 22:09:59 plm Exp $
+ * $Id: positionid.h,v 1.34 2011/09/02 13:33:28 mdpetch Exp $
  */
 
 #ifndef _POSITIONID_H_
@@ -59,6 +59,9 @@ extern void ClosestLegalPosition( TanBoard anBoard );
 extern unsigned int Combination ( const unsigned int n, const unsigned int r );
 
 extern unsigned char Base64( const unsigned char ch );
+
+extern void oldPositionFromKey(TanBoard anBoard, const oldpositionkey* pkey);
+extern void oldPositionKey(const TanBoard anBoard, oldpositionkey* pkey);
 
 #endif
 
