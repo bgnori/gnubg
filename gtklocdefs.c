@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtklocdefs.c,v 1.2 2011/08/31 12:02:45 mdpetch Exp $
+ * $Id: gtklocdefs.c,v 1.3 2011/09/02 21:48:56 mdpetch Exp $
  */
 
 
@@ -93,5 +93,14 @@ GtkWidget *get_statusbar_label (GtkStatusbar *statusbar)
 #endif
 }
 
+
+void toolbar_set_orientation (GtkToolbar *toolbar, GtkOrientation orientation)
+{
+#if GTK_CHECK_VERSION(2,16,0)
+	gtk_orientable_set_orientation( GTK_ORIENTABLE( toolbar ), orientation );
+#else
+	gtk_toolbar_set_orientation (toolbar, orientation);
+#endif
+}
 
 #endif

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktoolbar.c,v 1.66 2011/08/31 00:50:45 mdpetch Exp $
+ * $Id: gtktoolbar.c,v 1.67 2011/09/02 21:48:56 mdpetch Exp $
  */
 
 #include "config.h"
@@ -330,7 +330,7 @@ static GtkWidget* ToolbarAddButton(GtkToolbar *pwToolbar, const char *stockID, c
 	return GTK_WIDGET(but);
 }
 
-static GtkWidget* ToolbarAddWidget(GtkToolbar *pwToolbar, GtkWidget *pWidget, const char *tooltip)
+GtkWidget* ToolbarAddWidget(GtkToolbar *pwToolbar, GtkWidget *pWidget, const char *tooltip)
 {
 	GtkToolItem* ti = gtk_tool_item_new();
 	gtk_widget_set_tooltip_text(GTK_WIDGET(ti), tooltip);

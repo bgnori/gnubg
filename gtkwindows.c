@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkwindows.c,v 1.46 2011/08/31 00:50:45 mdpetch Exp $
+ * $Id: gtkwindows.c,v 1.47 2011/09/02 21:48:57 mdpetch Exp $
  */
 
 #include "config.h"
@@ -142,7 +142,7 @@ static void dialog_mapped(GtkWidget *window, gpointer data)
 
 	if (allocation.width > monitorrect.width || allocation.height > monitorrect.height)
 	{	/* Dialog bigger than window! (just show at top left) */
-	    gtk_widget_set_uposition(window, monitorrect.x, monitorrect.y);
+	    gtk_window_move (GTK_WINDOW (window), monitorrect.x, monitorrect.y);
 	}
 	else
 	{
@@ -156,7 +156,7 @@ static void dialog_mapped(GtkWidget *window, gpointer data)
 			rect.x = monitorrect.x + monitorrect.width - rect.width;
 		if (rect.y + rect.height > monitorrect.y + monitorrect.height)
 			rect.y = monitorrect.y + monitorrect.height - rect.height;
-		gtk_widget_set_uposition(window, rect.x, rect.y);
+	    gtk_window_move (GTK_WINDOW (window), rect.x, rect.y);
 	}
 }
 
