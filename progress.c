@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: progress.c,v 1.63 2011/02/08 18:57:56 c_anthon Exp $
+ * $Id: progress.c,v 1.64 2011/09/03 02:27:46 mdpetch Exp $
  */
 
 #include "config.h"
@@ -1084,7 +1084,8 @@ static void TextRolloutProgress(float aarOutput[][NUM_ROLLOUT_OUTPUTS],
 
 	}
 
-	prp->iNextAlternative = (++prp->iNextAlternative) % prp->n;
+	prp->iNextAlternative++;
+	prp->iNextAlternative = (prp->iNextAlternative) % prp->n;
 	if (iAlternative == (prp->n - 1))
 		prp->iNextGame += prc->nTrials / 10;
 
