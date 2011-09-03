@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtklocdefs.c,v 1.3 2011/09/02 21:48:56 mdpetch Exp $
+ * $Id: gtklocdefs.c,v 1.4 2011/09/03 23:25:27 mdpetch Exp $
  */
 
 
@@ -25,6 +25,12 @@
 #if (USE_GTK)
 #include <gtk/gtk.h>
 
+#if ! GTK_CHECK_VERSION(2,22,0)
+gint gdk_visual_get_depth (GdkVisual *visual)
+{
+	return visual->depth;
+}
+#endif
 
 #if ! GTK_CHECK_VERSION(2,18,0)
 void gtk_widget_get_allocation (GtkWidget *widget, GtkAllocation *allocation) 

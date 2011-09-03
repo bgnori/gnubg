@@ -13,10 +13,10 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
+ * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtklocdefs.h,v 1.4 2011/09/03 18:19:32 mdpetch Exp $
+ * $Id: gtklocdefs.h,v 1.5 2011/09/03 23:25:27 mdpetch Exp $
  */
 
 #ifndef _GTKLOCDEFS_H_
@@ -35,6 +35,10 @@
 #define gtk_combo_box_text_remove gtk_combo_box_remove_text
 #define gtk_combo_box_text_insert_text gtk_combo_box_insert_text
 #define GTK_COMBO_BOX_TEXT  GTK_COMBO_BOX
+#endif
+
+#if ! GTK_CHECK_VERSION(2,22,0)
+extern gint gdk_visual_get_depth (GdkVisual *visual);
 #endif
 
 #if ! GTK_CHECK_VERSION(2,20,0)
