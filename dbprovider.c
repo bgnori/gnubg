@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: dbprovider.c,v 1.26 2009/10/09 08:15:14 Superfly_Jon Exp $
+ * $Id: dbprovider.c,v 1.27 2011/09/03 03:09:41 mdpetch Exp $
  */
 
 #include "config.h"
@@ -403,7 +403,8 @@ static void PyCommit(void)
 RowSet* ConvertPythonToRowset(PyObject *v)
 {
 	RowSet *pRow;
-	Py_ssize_t row, col, i, j;
+	Py_ssize_t row, col;
+	int i, j;
 	if (!PySequence_Check(v))
 	{
 		outputerrf( _("invalid Python return") );
@@ -431,7 +432,7 @@ RowSet* ConvertPythonToRowset(PyObject *v)
 
 		if (!e)
 		{
-			outputf(_("Error getting item %zu\n"), i);
+			outputf(_("Error getting item %d\n"), i);
 			continue;
 		}
 
@@ -444,7 +445,7 @@ RowSet* ConvertPythonToRowset(PyObject *v)
 				
 				if (!e2)
 				{
-					outputf(_("Error getting sub item (%zu, %zu)\n"), i, j);
+					outputf(_("Error getting sub item (%d, %d)\n"), i, j);
 					continue;
 				}
 				if (PyUnicode_Check(e2))
@@ -468,7 +469,7 @@ RowSet* ConvertPythonToRowset(PyObject *v)
 		}
 		else
 		{
-			outputf(_("Item %zu is not a list\n"), i);
+			outputf(_("Item %d is not a list\n"), i);
 		}
 
 		Py_DECREF(e);
