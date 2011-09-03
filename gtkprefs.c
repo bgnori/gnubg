@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkprefs.c,v 1.185 2011/08/31 00:50:43 mdpetch Exp $
+ * $Id: gtkprefs.c,v 1.186 2011/09/03 20:03:41 mdpetch Exp $
  */
 
 #include "config.h"
@@ -1015,11 +1015,11 @@ static GtkWidget *BorderPage( BoardData *bd ) {
 								  _("Wooden") ),
 			FALSE, FALSE, 0 );
 
-    gtk_box_pack_start( GTK_BOX( pw ), pwWoodType = gtk_combo_box_new_text(),
+    gtk_box_pack_start( GTK_BOX( pw ), pwWoodType = gtk_combo_box_text_new(),
 			FALSE, FALSE, 4 );
 
 	for (bw = 0; bw < WOOD_PAINT; bw++)
-		gtk_combo_box_append_text(GTK_COMBO_BOX(pwWoodType), gettext(aszWood[bw]));
+		  gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(pwWoodType), gettext(aszWood[bw]));
 
 	if (bd->rd->wt == WOOD_PAINT)
 		gtk_combo_box_set_active(GTK_COMBO_BOX(pwWoodType), 0 );
@@ -1989,7 +1989,7 @@ WriteDesignHeader( const char *szFile, FILE *pf ) {
   time ( &t );
   fputs ( ctime ( &t ), pf );
   fputs ( "\n"
-          "    $Id: gtkprefs.c,v 1.185 2011/08/31 00:50:43 mdpetch Exp $\n"
+          "    $Id: gtkprefs.c,v 1.186 2011/09/03 20:03:41 mdpetch Exp $\n"
           "\n"
           " -->\n"
           "\n"
