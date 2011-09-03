@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkrelational.c,v 1.31 2011/05/17 19:47:48 mdpetch Exp $
+ * $Id: gtkrelational.c,v 1.32 2011/09/03 18:19:32 mdpetch Exp $
  */
 
 #include "config.h"
@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include "gtkrelational.h"
 #include "gtkwindows.h"
+#include "gtklocdefs.h"
 
 enum {
 	COLUMN_NICK,
@@ -687,9 +688,9 @@ extern GtkWidget *RelationalOptions(void)
 
 	g_signal_connect(dbList, "cursor-changed", G_CALLBACK(DBListSelected), NULL);
 
-	dbtype = gtk_combo_box_new_text();
+	dbtype = gtk_combo_box_text_new();
 	for (i = 0; i < NUM_PROVIDERS; i++)
-		gtk_combo_box_append_text(GTK_COMBO_BOX(dbtype), GetProviderName(i));
+		gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(dbtype), GetProviderName(i));
 	g_signal_connect(dbtype, "changed", G_CALLBACK(TypeChanged), dbList);
 
 	vb2 = gtk_vbox_new(FALSE, 0);
