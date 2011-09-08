@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.358 2011/08/31 13:36:59 mdpetch Exp $
+ * $Id: set.c,v 1.359 2011/09/08 21:18:39 plm Exp $
  */
 
 #include "config.h"
@@ -4419,14 +4419,14 @@ extern void CommandSetGNUBgID(char *sz)
 			break;
 	}
 	if (!posid && !matchid) {
-		outputerrf(_("No valid id's found"));
+		outputerrf(_("No valid IDs found"));
 		return;
 	}
 	if (matchid)
 		CommandSetMatchID(matchid);
 	if (posid)
 		CommandSetBoard(posid);
-	outputf(_("Setting GNUBG id %s:%s\n"), posid ? posid : "",
+	outputf(_("Setting GNUbg ID %s:%s\n"), posid ? posid : "",
 		matchid ? matchid : "");
 	g_free(posid);
 	g_free(matchid);
