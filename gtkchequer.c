@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkchequer.c,v 1.112 2011/08/21 06:32:23 mdpetch Exp $
+ * $Id: gtkchequer.c,v 1.113 2011/09/18 18:40:20 plm Exp $
  */
 
 #include "config.h"
@@ -81,7 +81,7 @@ static void MoveListRolloutClicked(GtkWidget *pw, hintdata *phd)
 
 	res = ScoreMoveRollout ( ppm, (const cubeinfo**)ppci, c, RolloutProgress, p );
 
-	RolloutProgressEnd( &p, TRUE );
+	RolloutProgressEnd( &p, FALSE );
 
 	free(asz);
 	free(ppm);
