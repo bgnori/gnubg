@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.400 2011/08/12 11:29:32 mdpetch Exp $
+ * $Id: play.c,v 1.401 2011/09/18 15:51:24 plm Exp $
  */
 
 #include "config.h"
@@ -2949,15 +2949,18 @@ extern void ChangeGame(listOLD *plGameNew)
 	SetMoveRecord(plLastMove->p);
 
 	/* The real last move, before get_current_moverecord()
-	   possibly adds a hint record */
+	   possibly adds an empty hint record. If it does and
+	   last move is a MOVE_SETxxx record, its fPlayer will
+	   be bogus and we will have to fix it */
+
 	pmr_cur = plLastMove->p;
 	reallastmt = pmr_cur->mt;
-	reallastplayer =  pmr_cur->fPlayer;
+	reallastplayer = pmr_cur->fPlayer;
 
 	pmr_cur = get_current_moverecord(NULL);
 
 	if (pmr_cur) {
-		if (reallastmt >= MOVE_SETBOARD)
+		if (reallastmt >= MOVE_SETBOARD && pmr_cur->ml.cMoves == 0)
 			pmr_cur->fPlayer = reallastplayer;
 		if (pmr_cur->fPlayer != ms.fTurn) {
 			char *sz =
