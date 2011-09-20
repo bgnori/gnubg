@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkcube.c,v 1.81 2011/08/21 06:32:23 mdpetch Exp $
+ * $Id: gtkcube.c,v 1.82 2011/09/20 00:16:32 mdpetch Exp $
  */
 
 #include "config.h"
@@ -37,7 +37,7 @@
 #include "gtkwindows.h"
 #include "progress.h"
 #include "format.h"
-
+#include "gtklocdefs.h"
 
 
 typedef struct _cubehintdata {
