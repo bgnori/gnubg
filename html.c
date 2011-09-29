@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.223 2011/09/27 23:34:29 mdpetch Exp $
+ * $Id: html.c,v 1.224 2011/09/29 19:34:52 mdpetch Exp $
  */
 
 #include "config.h"
@@ -168,7 +168,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.223 2011/09/27 23:34:29 mdpetch Exp $ */\n",
+           "/* $Id: html.c,v 1.224 2011/09/29 19:34:52 mdpetch Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -583,10 +583,10 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
   PipCount ( (ConstTanBoard)anBoard, anPips );
 
   /* Begin table  and print for player 0*/
-  fprintf ( pf, "<table><tr><th align=\"left\">%s<th align=\"right\">%d<tr><th align=\"center\" colspan=\"2\">", ap[ 0 ].szName,  anPips[ 1 ]);
+  fprintf ( pf, "<table style=\"page-break-inside: avoid\"><tr><th align=\"left\">%s</th><th align=\"right\">%d</th></tr>", ap[ 0 ].szName,  anPips[ 1 ]);
 
   /* avoid page break when printing */
-  fputs( "<p style=\"page-break-inside: avoid\">", pf );
+  fputs( "<tr><td align=\"center\" colspan=\"2\">", pf );
     
   /* 
    * Top row
@@ -727,13 +727,13 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
                szExtension, NULL, hecss, HTML_EXPORT_TYPE_BBS, 
                CLASS_BOARD_IMG );
 
-  fputs( "</p>\n", pf );
+  fputs( "</td></tr>\n", pf );
 
-  fprintf ( pf, "<tr><th align=\"left\">%s<th align=\"right\">%d<tr><th align=\"center\" colspan=\"2\">", ap[ 1 ].szName, anPips[ 0 ] );
+  fprintf ( pf, "<tr><th align=\"left\">%s</th><th align=\"right\">%d</th><th align=\"center\" colspan=\"2\"></th></tr>", ap[ 1 ].szName, anPips[ 0 ] );
 
   /* pip counts */
 
-  fputs ( "<p>", pf );
+  fputs ( "<tr><td><p>", pf );
 
 
   /* position ID Player 1 and end of table*/
@@ -741,12 +741,13 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
   fprintf( pf, "<span %s>", 
            GetStyle ( CLASS_POSITIONID, hecss ) );
 
-  fprintf ( pf, "%s <tt>%s</tt> %s <tt>%s</tt><br /></span></table>\n",
+  fprintf ( pf, "%s <tt>%s</tt> %s <tt>%s</tt><br /></span></p></td></tr></table>\n",
 	  _("Position ID:"),
             PositionID ( (ConstTanBoard)pms->anBoard ),
 	  _("Match ID:"),
             MatchIDFromMatchState ( pms ) );
 
+  fputs ( "\n", pf );
 
 }
 
@@ -1847,7 +1848,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.223 $";
+  const char szVersion[] = "$Revision: 1.224 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1927,7 +1928,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.223 $";
+  const char szVersion[] = "$Revision: 1.224 $";
   int iMajor, iMinor;
   char *pc;
 
