@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.224 2011/09/29 19:34:52 mdpetch Exp $
+ * $Id: html.c,v 1.225 2011/09/29 19:52:08 mdpetch Exp $
  */
 
 #include "config.h"
@@ -168,7 +168,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.224 2011/09/29 19:34:52 mdpetch Exp $ */\n",
+           "/* $Id: html.c,v 1.225 2011/09/29 19:52:08 mdpetch Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -746,8 +746,6 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
             PositionID ( (ConstTanBoard)pms->anBoard ),
 	  _("Match ID:"),
             MatchIDFromMatchState ( pms ) );
-
-  fputs ( "\n", pf );
 
 }
 
@@ -1848,7 +1846,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.224 $";
+  const char szVersion[] = "$Revision: 1.225 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1928,7 +1926,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.224 $";
+  const char szVersion[] = "$Revision: 1.225 $";
   int iMajor, iMinor;
   char *pc;
 
