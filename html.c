@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.225 2011/09/29 19:52:08 mdpetch Exp $
+ * $Id: html.c,v 1.226 2011/10/01 23:28:07 mdpetch Exp $
  */
 
 #include "config.h"
@@ -168,7 +168,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.225 2011/09/29 19:52:08 mdpetch Exp $ */\n",
+           "/* $Id: html.c,v 1.226 2011/10/01 23:28:07 mdpetch Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -733,7 +733,7 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
 
   /* pip counts */
 
-  fputs ( "<tr><td><p>", pf );
+  fputs ( "<tr><td align=\"center\" colspan=\"2\">", pf );
 
 
   /* position ID Player 1 and end of table*/
@@ -741,7 +741,7 @@ printHTMLBoardBBS ( FILE *pf, matchstate *pms, int fTurn,
   fprintf( pf, "<span %s>", 
            GetStyle ( CLASS_POSITIONID, hecss ) );
 
-  fprintf ( pf, "%s <tt>%s</tt> %s <tt>%s</tt><br /></span></p></td></tr></table>\n",
+  fprintf ( pf, "%s <tt>%s</tt> %s <tt>%s</tt><br /></span></td></tr></table>\n",
 	  _("Position ID:"),
             PositionID ( (ConstTanBoard)pms->anBoard ),
 	  _("Match ID:"),
@@ -1846,7 +1846,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.225 $";
+  const char szVersion[] = "$Revision: 1.226 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1926,7 +1926,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.225 $";
+  const char szVersion[] = "$Revision: 1.226 $";
   int iMajor, iMinor;
   char *pc;
 
