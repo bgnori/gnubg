@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.850 2011/09/08 21:18:40 plm Exp $
+ * $Id: gtkgame.c,v 1.851 2011/10/16 18:01:01 plm Exp $
  */
 
 #include "config.h"
@@ -7235,11 +7235,6 @@ GTKGetMove ( int anMove[ 8 ] ) {
   return 1;
 
 }
-
-typedef struct _recordwindowinfo {
-    GtkWidget *pwList, *pwTable, *apwStats[ 22 ];
-    int nRow;
-} recordwindowinfo;
 
 static void UpdateMatchinfo( const char *pch, const char *szParam, char **ppch ) {
 
