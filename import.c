@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.158 2011/09/08 21:03:12 plm Exp $
+ * $Id: import.c,v 1.159 2011/10/16 19:14:52 plm Exp $
  */
 
 #include "config.h"
@@ -908,11 +908,11 @@ ImportGame( FILE *fp, int iGame, int nLength, bgvariation bgVariation, int *warn
     pmr->g.nMatch = nLength;
     pmr->g.anScore[ 0 ] = n0;
     pmr->g.anScore[ 1 ] = n1;
-    pmr->g.fCrawford = TRUE; /* assume JF always uses Crawford rule */
+    pmr->g.fCrawford = (nLength > 0); /* assume JF always uses Crawford rule */
     if( ( pmr->g.fCrawfordGame = !fPostCrawford &&
 	  ( n0 == nLength - 1 ) ^ ( n1 == nLength - 1 ) ) )
 	fPostCrawford = TRUE;
-    pmr->g.fJacoby = fJacoby;
+    pmr->g.fJacoby = fJacoby && (nLength == 0);
     pmr->g.fWinner = -1;
     pmr->g.nPoints = 0;
     pmr->g.fResigned = FALSE;
