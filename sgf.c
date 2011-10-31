@@ -16,10 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: sgf.c,v 1.135 2011/05/08 19:08:52 plm Exp $
+ * $Id: sgf.c,v 1.136 2011/10/31 09:41:14 c_anthon Exp $
  */
 
 #include "config.h"
+#include "common.h"
 
 #include <glib.h>
 #include <glib/gstdio.h>
@@ -571,7 +572,7 @@ static void RestoreEvalContext(evalcontext * pec, char *pc)
 {
 
     int fUsePrune = 0;
-    int red = 0;
+    int red __attribute((unused)) = 0;
     int ver = CheckSGFVersion((const char **) &pc);
 
     InitEvalContext(pec);
@@ -870,9 +871,10 @@ static void RestoreDoubleAnalysis(property * pp,
 {
 
     char *pch = pp->pl->plNext->p;
-    int nReduced, fUsePrune = 0;
+    int nReduced __attribute((unused));
+    int fUsePrune = 0;
     /* leftovers from earlier formats */
-    float arUnused[4];
+    float arUnused[4] __attribute__((unused));
     int ver;
     int i, j;
 
@@ -968,7 +970,10 @@ static void RestoreMoveAnalysis(property * pp, int fPlayer,
     char *pch;
     char ch;
     move *pm;
-    int i, fDeterministic, nReduced, fUsePrune = 0;
+    int i;
+    int fDeterministic __attribute((unused));
+    int nReduced __attribute((unused));
+    int fUsePrune = 0;
     TanBoard anBoardMove;
     int ver;
     *piMove = atoi(pl->p);

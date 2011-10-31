@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtktheory.c,v 1.59 2011/08/31 00:50:44 mdpetch Exp $
+ * $Id: gtktheory.c,v 1.60 2011/10/31 09:41:13 c_anthon Exp $
  */
 
 #include "config.h"
@@ -490,12 +490,16 @@ static void GraphExpose( GtkWidget *pwGraph, GdkEventExpose *UNUSED(pev),
 			 theorywidget *ptw ) {
     
     GtkAllocation allocation;
-    gtk_widget_get_allocation (pwGraph, &allocation);
-
-    int i, x = 8, y = 12, cx = allocation.width - 16 - 1,
-	cy = allocation.height - 12, iPlayer, ax[ 3 ];
+    int i, x, y, cx, cy, iPlayer, ax[ 3 ];
     char sz[ 4 ];
-    PangoLayout *layout = gtk_widget_create_pango_layout(pwGraph, NULL);
+    PangoLayout *layout;
+
+    gtk_widget_get_allocation (pwGraph, &allocation);
+    x = 8;
+    y = 12;
+    cx = allocation.width - 16 - 1;
+    cy = allocation.height - 12;
+    layout = gtk_widget_create_pango_layout(pwGraph, NULL);
     
     pango_layout_set_font_description(layout,pango_font_description_from_string("sans 7"));
 
@@ -611,15 +615,6 @@ GTKShowTheory ( const int fActivePage ) {
   char sz[ 256 ];
   int *pi;
   PangoFontDescription *font_desc;
-
-  static char *aszTitles[] = {
-    NULL,
-    N_("Dead cube"),
-    NULL /* N_("Live cube") */,
-    N_("Fully live")
-  };
-  gchar *asz[ 4 ];
-    
 
   theorywidget *ptw;
 
@@ -897,9 +892,6 @@ GTKShowTheory ( const int fActivePage ) {
   gtk_notebook_append_page ( GTK_NOTEBOOK ( pwNotebook ),
                              pwVBox,
                              gtk_label_new ( _("Market window") ) );
-
-  for ( i = 0; i < 4; ++i )
-    asz[ i ] = aszTitles[ i ] ? gettext( aszTitles[ i ] ) : "";
 
   do_mw_views(ptw);
 

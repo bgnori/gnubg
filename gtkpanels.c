@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: gtkpanels.c,v 1.68 2011/09/03 18:19:32 mdpetch Exp $
+* $Id: gtkpanels.c,v 1.69 2011/10/31 09:41:13 c_anthon Exp $
 */
 
 #include "config.h"
@@ -814,9 +814,7 @@ static void CreateGameWindow( void ) {
     GtkWidget *psw = gtk_scrolled_window_new( NULL, NULL ),
 	*pvbox = gtk_vbox_new( FALSE, 0 ),
 	*phbox = gtk_hbox_new( FALSE, 0 );
-    GdkColormap *pcmap;
 
-    pcmap = gtk_widget_get_colormap( pwMain );
 	if (!woPanel[WINDOW_GAME].docked)
 	{
 		woPanel[WINDOW_GAME].pwWin = gtk_window_new( GTK_WINDOW_TOPLEVEL );

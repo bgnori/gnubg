@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: graph.c,v 1.28 2011/08/31 00:50:46 mdpetch Exp $
+* $Id: graph.c,v 1.29 2011/10/31 09:41:14 c_anthon Exp $
 */
 
 
@@ -58,12 +58,12 @@ static gboolean configure_event(GtkWidget *widget, GdkEventConfigure *UNUSED(eve
 {
 	int width, height;
 	float maxY, maxX;
+	GtkAllocation allocation;
 	GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 
 	if (!gdk_gl_drawable_gl_begin(gldrawable, gtk_widget_get_gl_context(widget)))
 		return FALSE;
 
-	GtkAllocation allocation;
 	gtk_widget_get_allocation (widget, &allocation);
 	width = allocation.width;
 	height = allocation.height;

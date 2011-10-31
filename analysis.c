@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: analysis.c,v 1.228 2011/07/29 17:22:16 mdpetch Exp $
+ * $Id: analysis.c,v 1.229 2011/10/31 09:41:09 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1892,7 +1892,6 @@ static int MoveAnalysed(moverecord * pmr, matchstate * pms, listOLD * plGame,
 	static TanBoard anBoardMove;
 	static positionkey key;
 	static cubeinfo ci;
-	static float rSkill, rChequerSkill;
 	static evalsetup esDouble;	/* shared between the
 					   double and subsequent take/drop */
 	doubletype dt;
@@ -1924,7 +1923,6 @@ static int MoveAnalysed(moverecord * pmr, matchstate * pms, listOLD * plGame,
 			pms->fMove = pmr->fPlayer;
 		}
 
-		rSkill = rChequerSkill = 0.0f;
 		GetMatchStateCubeInfo(&ci, pms);
 
 		/* cube action? */
@@ -2013,18 +2011,9 @@ static int MoveAnalysed(moverecord * pmr, matchstate * pms, listOLD * plGame,
 
 		if (pesCube->et != EVAL_NONE) {
 
-			int nResign;
 			float rBefore, rAfter;
 
 			GetMatchStateCubeInfo(&ci, pms);
-
-			if (cmp_evalsetup(pesCube, &pmr->r.esResign) > 0) {
-				nResign =
-				    getResignation(pmr->r.arResign,
-						   pms->anBoard, &ci,
-						   pesCube);
-
-			}
 
 			getResignEquities(pmr->r.arResign, &ci,
 					  pmr->r.nResigned, &rBefore,
@@ -2317,7 +2306,7 @@ static int cmark_move_rollout(moverecord *pmr, gboolean destroy)
 	move **ppm;
 	void *p;
 	GSList *list = NULL;
-	positionkey key;
+	positionkey key = {{0, 0, 0, 0, 0, 0}};
 
 	g_return_val_if_fail(pmr, -1);
 

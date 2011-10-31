@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.42 2010/11/11 16:50:22 plm Exp $
+ * $Id: format.c,v 1.43 2011/10/31 09:41:12 c_anthon Exp $
  */
 
 #include "config.h"
@@ -1154,11 +1154,10 @@ DumpPosition(const TanBoard anBoard, char *szOutput,
 	     int UNUSED(fOutputWinPC), int fOutputInvert, const char *szMatchID)
 {
 
-	float aarOutput[2][NUM_ROLLOUT_OUTPUTS], arDouble[4];
+	float aarOutput[2][NUM_ROLLOUT_OUTPUTS];
 	positionclass pc = ClassifyPosition(anBoard, pci->bgv);
 	int i, nPlies;
 	int j;
-	cubedecision cd;
 	evalcontext ec;
 	static const char *aszEvaluator[] = {
 		N_("Over"),
@@ -1225,10 +1224,6 @@ DumpPosition(const TanBoard anBoard, char *szOutput,
 			InvertEvaluationR(aarOutput[1], pci);
 			pci->fMove = !pci->fMove;
 		}
-
-		/* Calculate cube decision */
-
-		cd = FindCubeDecision(arDouble, aarOutput, pci);
 
 		/* Print %'s and equities */
 

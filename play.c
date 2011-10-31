@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.401 2011/09/18 15:51:24 plm Exp $
+ * $Id: play.c,v 1.402 2011/10/31 09:41:14 c_anthon Exp $
  */
 
 #include "config.h"
@@ -4378,9 +4378,9 @@ extern const char* GetMoveString(moverecord *pmr, int* pPlayer, gboolean addSkil
 {
     doubletype dt;
     static char sz[40];
-	const char* pch = NULL;
-	*pPlayer = 0;
-	TanBoard anBoard;
+    const char* pch = NULL;
+    TanBoard anBoard;
+    *pPlayer = 0;
 
 	switch( pmr->mt )
 	{

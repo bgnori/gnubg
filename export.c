@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: export.c,v 1.73 2011/05/08 19:08:51 plm Exp $
+ * $Id: export.c,v 1.74 2011/10/31 09:41:12 c_anthon Exp $
  */
 
 #include "config.h"
@@ -204,7 +204,6 @@ static int draw_cairo_pages(cairo_t * cairo, listOLD * game_ptr)
 	matchstate msExport;
 	static statcontext scTotal;
 	moverecord *pmr;
-	xmovegameinfo *pmgi = NULL;
 	statcontext *psc = NULL;
 	listOLD *pl;
 	int iMove = 0;
@@ -220,7 +219,6 @@ static int draw_cairo_pages(cairo_t * cairo, listOLD * game_ptr)
 	ApplyMoveRecord(&msExport, game_ptr, pmr);
 	g_assert(pmr->mt == MOVE_GAMEINFO);
 	msExport.gs = GAME_PLAYING;
-	pmgi = &pmr->g;
 	psc = &pmr->g.sc;
 	AddStatcontext(psc, &scTotal);
 	iGame = getGameNumber(game_ptr);

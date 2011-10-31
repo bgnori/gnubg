@@ -18,7 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: widget3d.c,v 1.51 2011/08/31 00:50:47 mdpetch Exp $
+* $Id: widget3d.c,v 1.52 2011/10/31 09:41:15 c_anthon Exp $
 */
 
 #include "config.h"
@@ -53,8 +53,10 @@ static gboolean configure_event_3d(GtkWidget *widget, GdkEventConfigure *UNUSED(
 	{
 		static int curHeight = -1, curWidth = -1;
 		GtkAllocation allocation;
+		int width, height;
 		gtk_widget_get_allocation (widget, &allocation);
-		int width = allocation.width, height = allocation.height;
+		width = allocation.width;
+	       	height = allocation.height;
 		if (width != curWidth || height != curHeight)
 		{
 			GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);

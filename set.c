@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.360 2011/10/16 15:32:51 plm Exp $
+ * $Id: set.c,v 1.361 2011/10/31 09:41:14 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2511,7 +2511,6 @@ extern void CommandSetTurn( char *sz ) {
     fNextTurn = FALSE;
 #if USE_GTK
     if (fX) {
-	    extern int fJustSwappedPlayers;
 
 	    BoardData *bd = BOARD(pwBoard)->board_data;
 	    bd->diceRoll[0] = bd->diceRoll[1] = -1;

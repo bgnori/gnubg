@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.427 2011/05/17 21:05:13 mdpetch Exp $
+ * $Id: backgammon.h,v 1.428 2011/10/31 09:41:11 c_anthon Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1037,3 +1037,6 @@ extern int getDiceRandomDotOrg(void);
 extern int GetManualDice(unsigned int anDice[2]);
 extern double get_time(void);
 #endif
+
+extern int fJustSwappedPlayers;
+

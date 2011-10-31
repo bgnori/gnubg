@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: makebearoff.c,v 1.77 2011/05/08 19:08:52 plm Exp $
+ * $Id: makebearoff.c,v 1.78 2011/10/31 09:41:13 c_anthon Exp $
  */
 
 #include "config.h"
@@ -385,7 +385,6 @@ static void BearOff( int nId, unsigned int nPoints,
 
     unsigned int usGammonBest;
     unsigned short int ausGammonBest[ 32 ];
-    int iGammonBest;
     unsigned int nBack;
 
     /* get board for given position */
@@ -437,7 +436,7 @@ static void BearOff( int nId, unsigned int nPoints,
 	    GenerateMoves( &ml, (ConstTanBoard)anBoard, anRoll[ 0 ], anRoll[ 1 ], FALSE );
 
 	    usBest = 0xFFFFFFFF; iBest = -1;
-            usGammonBest = 0xFFFFFFFF; iGammonBest = -1;
+            usGammonBest = 0xFFFFFFFF;
 	    
 	    for( i = 0; i < ml.cMoves; i++ ) {
 		PositionFromKey( anBoardTemp, &ml.amMoves[ i ].key );
@@ -476,7 +475,6 @@ static void BearOff( int nId, unsigned int nPoints,
                   
                 if ( fGammon && 
                      ( ( us = RollsOS ( pusj + 32 ) ) < usGammonBest ) ) {
-                  iGammonBest = j;
                   usGammonBest = us;
                   memcpy ( ausGammonBest, pusj + 32, 64 );
                 }
@@ -929,10 +927,7 @@ CubeEquity ( const short int siND, const short int siDT,
 static int
 CalcPosition ( const int i, const int j, const int n ) {
 
-  int max;
   int k;
-
-  max = ( i > j ) ? i : j;
 
   if ( i + j < n )
     k = ( i + j ) * ( i + j + 1 ) / 2 + j;
@@ -1291,7 +1286,7 @@ generate_ts ( const int nTSP, const int nTSC,
 
 static void
 version ( void ) {
-  printf ( "makebearoff $Revision: 1.77 $\n" );
+  printf ( "makebearoff $Revision: 1.78 $\n" );
 }
 
 

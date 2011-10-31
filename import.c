@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.159 2011/10/16 19:14:52 plm Exp $
+ * $Id: import.c,v 1.160 2011/10/31 09:41:13 c_anthon Exp $
  */
 
 #include "config.h"
@@ -2470,7 +2470,6 @@ static void ImportTMGGame( FILE *pf, int i, int nLength, int n0, int n1,
     char *pch;
     int c, fPlayer = 0, anRoll[ 2 ];
     moverecord *pmgi, *pmr;
-    int iMove;
     int j;
 
     typedef enum _tmgrecordtype {
@@ -2532,7 +2531,6 @@ static void ImportTMGGame( FILE *pf, int i, int nLength, int n0, int n1,
 
       if ( isdigit ( *pch ) || *pch == '-' ) {
 
-        iMove = abs ( atoi ( pch ) ); /* move number */
         fPlayer = ( *pch == '-' );    /* player: +n for player 0,
                                                  -n for player 1 */
         
