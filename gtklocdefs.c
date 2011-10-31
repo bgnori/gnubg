@@ -16,12 +16,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtklocdefs.c,v 1.5 2011/10/31 09:41:13 c_anthon Exp $
+ * $Id: gtklocdefs.c,v 1.6 2011/10/31 11:23:42 c_anthon Exp $
  */
 
 
 #include "config.h"
 #include "gtkgame.h"
+#include "gtklocdefs.h"
 
 #if (USE_GTK)
 #include <gtk/gtk.h>
@@ -69,7 +70,7 @@ GtkWidget *gtk_dialog_get_content_area (GtkDialog *dialog)
 	return ( dialog->vbox );
 }
 
-GtkWindow *gtk_widget_get_window (GtkWidget *widget)
+GdkWindow *gtk_widget_get_window (GtkWidget *widget)
 {
 	return (widget->window);
 }
@@ -82,6 +83,11 @@ gdouble gtk_adjustment_get_upper (GtkAdjustment *adjustment)
 void gtk_adjustment_set_upper (GtkAdjustment *adjustment, gdouble upper)
 {
 	adjustment->upper = upper;
+}
+
+guchar *gtk_selection_data_get_data(GtkSelectionData *data)
+{
+	return data->data;
 }
 
 #endif

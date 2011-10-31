@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtklocdefs.h,v 1.5 2011/09/03 23:25:27 mdpetch Exp $
+ * $Id: gtklocdefs.h,v 1.6 2011/10/31 11:23:42 c_anthon Exp $
  */
 
 #ifndef _GTKLOCDEFS_H_
@@ -87,9 +87,10 @@ extern void gtk_cell_renderer_set_padding (GtkCellRenderer *cell, gint xpad, gin
 
 extern GtkWidget *gtk_dialog_get_action_area (GtkDialog *dialog);
 extern GtkWidget *gtk_dialog_get_content_area (GtkDialog *dialog);
-extern GtkWindow *gtk_widget_get_window (GtkWidget *widget);
+extern GdkWindow *gtk_widget_get_window (GtkWidget *widget);
 extern gdouble gtk_adjustment_get_upper (GtkAdjustment *adjustment);
 extern void gtk_adjustment_set_upper (GtkAdjustment *adjustment, gdouble upper);
+guchar *gtk_selection_data_get_data(GtkSelectionData *data);
 
 #endif
 
