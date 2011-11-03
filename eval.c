@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.401 2011/08/20 21:07:12 plm Exp $
+ * $Id: eval.c,v 1.402 2011/11/03 21:32:40 plm Exp $
  */
 
 #include "config.h"
@@ -4456,7 +4456,7 @@ cmp_evalcontext ( const evalcontext *pec1, const evalcontext *pec2 ) {
 
   if ( pec1->rNoise > 0 ) {
 
-    if ( pec1->fDeterministic > pec2->fDeterministic )
+    if ( pec1->fDeterministic < pec2->fDeterministic )
       return -1;
     else if ( pec1->fDeterministic > pec2->fDeterministic )
       return +1;
