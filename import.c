@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: import.c,v 1.160 2011/10/31 09:41:13 c_anthon Exp $
+ * $Id: import.c,v 1.161 2011/11/03 21:47:26 plm Exp $
  */
 
 #include "config.h"
@@ -2152,8 +2152,6 @@ ParseSGGOptions ( const char *sz, matchinfo *pmi, int *pfCrawfordRule,
       break;
     
     *pfCubeUse = ! strcmp ( szTemp, "Yes" );
-    break;
-
     break;
 
   case 14:
