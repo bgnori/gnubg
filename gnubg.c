@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.904 2011/08/20 05:42:24 mdpetch Exp $
+ * $Id: gnubg.c,v 1.905 2011/12/06 23:16:48 plm Exp $
  */
 
 #include "config.h"
@@ -4492,7 +4492,7 @@ extern int GetManualDice(unsigned int anDice[2])
 
 #if HAVE_SOCKETS
 
-extern int getDiceRandomDotOrg(void)
+extern unsigned int getDiceRandomDotOrg(void)
 {
 
 #define RANDOMORGSITEPORT 80
@@ -4504,7 +4504,7 @@ extern int getDiceRandomDotOrg(void)
 #define EOH "\r\n\r\n"
 
 	static int nCurrent = -1;
-	static int anBuf[BUFLENGTH];
+	static unsigned int anBuf[BUFLENGTH];
 	static int nRead;
 	
 	int h;
@@ -4603,7 +4603,7 @@ extern int getDiceRandomDotOrg(void)
 		for (i = 0; i < nBytesRead && nRead < BUFLENGTH; i++) {
 
 			if ((startOfNums[i] >= '0') && (startOfNums[i] <= '5')) {
-				anBuf[nRead] = 1 + (int) (startOfNums[i] - '0');
+				anBuf[nRead] = 1 + (unsigned int) (startOfNums[i] - '0');
 				nRead++;
 			}
 

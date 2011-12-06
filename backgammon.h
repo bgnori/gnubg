@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: backgammon.h,v 1.428 2011/10/31 09:41:11 c_anthon Exp $
+ * $Id: backgammon.h,v 1.429 2011/12/06 23:16:48 plm Exp $
  */
 
 #ifndef _BACKGAMMON_H_
@@ -1033,7 +1033,7 @@ extern void SetRNG( rng *prng, rngcontext *rngctx, rng rngNew, char *szSeed );
 extern int check_resigns(cubeinfo * pci);
 extern int quick_roll(void);
 extern int board_in_list(const movelist *pml, const TanBoard old_board, const TanBoard board, int *an);
-extern int getDiceRandomDotOrg(void);
+extern unsigned int getDiceRandomDotOrg(void);
 extern int GetManualDice(unsigned int anDice[2]);
 extern double get_time(void);
 #endif
