@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: neuralnetsse.c,v 1.20 2011/04/19 20:32:31 plm Exp $
+ * $Id: neuralnetsse.c,v 1.21 2011/12/31 13:14:31 plm Exp $
  */
 
 #include "config.h"
@@ -83,7 +83,7 @@ static inline __m128 sigmoid_positive_ps( __m128 xin )
 	__m128 x1 = _mm_min_ps( xin, tens.ps );
 
 	x1 = _mm_mul_ps( x1, tens.ps );
-	i.i  = _mm_cvtps_epi32( x1 );
+	i.i  = _mm_cvttps_epi32( x1 );
  	ex_elem[0] = e[i.i32[0]];
 	ex_elem[1] = e[i.i32[1]];
 	ex_elem[2] = e[i.i32[2]];
@@ -92,7 +92,11 @@ static inline __m128 sigmoid_positive_ps( __m128 xin )
 	x1 = _mm_add_ps( x1, tens.ps );
 	x1 = _mm_mul_ps( x1, ex );
 	x1 = _mm_add_ps( x1, ones.ps ); 
+#ifdef __FAST_MATH__
 	return _mm_rcp_ps( x1 );
+#else
+	return _mm_div_ps( ones.ps, x1 );
+#endif
 }
 
 static inline __m128 sigmoid_ps( __m128 xin )
