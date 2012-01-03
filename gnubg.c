@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubg.c,v 1.905 2011/12/06 23:16:48 plm Exp $
+ * $Id: gnubg.c,v 1.906 2012/01/03 21:40:59 plm Exp $
  */
 
 #include "config.h"
@@ -834,8 +834,8 @@ extern int ParsePlayer( char *sz )
 
 
 /* Convert a string to a board array.  Currently allows the string to
-   be a position ID, "=n" notation, or empty (in which case the current
-   board is used).
+   be a position ID, a gnubg-nn position string, "=n" notation,
+   or empty (in which case the current board is used).
 
    The input string should be specified in *ppch; this string must be
    modifiable, and the pointer will be updated to point to the token
@@ -911,6 +911,18 @@ extern int ParsePosition( TanBoard an, char **ppch, char *pchDesc )
        return CheckPosition((ConstTanBoard)an) ? 0 : -1;
     }
 
+    if( strlen(pch) == 20) { /* gnubg-nn position string */
+	static oldpositionkey key;
+
+	for(i = 0; i < 10; ++i) {
+	   key.auch[i] = ((pch[2*i+0] - 'A') << 4) +  (pch[2*i+1] - 'A');
+	}
+
+	oldPositionFromKey( an, &key);
+
+	return 0;
+    }
+	
     if( !PositionFromID( an, pch ) ) {
 	outputl( _("Illegal position.") );
 	return -1;
