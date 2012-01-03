@@ -1,4 +1,4 @@
-/* $Id: */
+/* $Id: commands.inc,v 1.34 2012/01/03 21:43:00 plm Exp $ */
 
 /* All the commands are in this file */
 
