@@ -1,4 +1,4 @@
-## $Id: Makefile.am,v 1.227 2011/08/31 00:50:39 mdpetch Exp $
+## $Id: Makefile.am,v 1.228 2012/01/08 22:04:54 plm Exp $
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -99,9 +99,8 @@ gnubg_SOURCES = \
 		set.c \
 		sgf.c \
 		sgf.h \
-		sgf_l.c \
-		sgf_y.c \
-		sgf_y.h \
+		sgf_l.l \
+		sgf_y.y \
 		show.c \
 		simpleboard.c \
 		simpleboard.h \
