@@ -17,10 +17,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# $Id: credits.sh,v 1.139 2011/08/31 00:50:40 mdpetch Exp $
+# $Id: credits.sh,v 1.140 2012/01/08 22:42:47 plm Exp $
 # 
-
-column < /dev/null || exit 0
 
 authors=/tmp/auth.$$
 contributors=/tmp/cont.$$
@@ -353,14 +351,14 @@ cat > AUTHORS <<EOF
 
 EOF
 
-column -c 72 < $authors | expand | sed 's/^/    /' >> AUTHORS
+pr -3 -t < $authors | expand | sed 's/^/    /' >> AUTHORS
 
 cat >> AUTHORS <<EOF
  
                                    Support by:
 
 EOF
-cat $support | sed -e 's/^\(.*\),\(.*\)$/ \1 (\2)/g' | column -c 72 | expand | sed 's/^/    /' >> AUTHORS
+cat $support | sed -e 's/^\(.*\),\(.*\)$/ \1 (\2)/g' | pr -2 -t | expand | sed 's/^/    /' >> AUTHORS
 
 cat >> AUTHORS <<EOF
 
@@ -368,7 +366,7 @@ cat >> AUTHORS <<EOF
 
 EOF
 
-column -c 72 < $contributors | expand | sed 's/^/    /' >> AUTHORS
+pr -3 -t < $contributors | expand | sed 's/^/    /' >> AUTHORS
 
 cat >> AUTHORS <<EOF
 
@@ -376,7 +374,7 @@ cat >> AUTHORS <<EOF
 
 EOF
 
-cat $translations | sed -e 's/^\(.*\),\(.*\)$/ \1 (\2)/g' | column -c 72 | expand | sed 's/^/    /' >> AUTHORS
+cat $translations | sed -e 's/^\(.*\),\(.*\)$/ \1 (\2)/g' | pr -1 -t | expand | sed 's/^/    /' >> AUTHORS
 
 
 cat >> AUTHORS <<EOF
@@ -385,7 +383,7 @@ cat >> AUTHORS <<EOF
 
 EOF
 
-column -c 72 < $credit | expand | sed 's/^/    /' >> AUTHORS
+pr -3 -t < $credit | expand | sed 's/^/    /' >> AUTHORS
 
 cat >> AUTHORS <<'EOF'
 
@@ -396,7 +394,7 @@ cat >> AUTHORS <<'EOF'
 
 EOF
 
-column -c 72 < $extra | expand | sed 's/^/    /' >> AUTHORS
+pr -4 -t < $extra | expand | sed 's/^/    /' >> AUTHORS
 
 cat >> AUTHORS <<'EOF'                            
 
