@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gnubgmodule.c,v 1.119 2011/09/02 13:33:27 mdpetch Exp $
+ * $Id: gnubgmodule.c,v 1.120 2012/01/09 23:34:14 plm Exp $
  */
 
 #include "config.h"
@@ -244,7 +244,7 @@ SetPosInfo( posinfo *ppi, const int fTurn, const int fResigned,
                   const int fDoubled, const gamestate gs, const int anDice[ 2 ] ) {
     
     if( fTurn < 0 || fTurn > 1 || fResigned < 0 || fResigned > 1 || 
-    	  fResigned < 0 || fResigned > 1 || anDice[ 0 ] > 6 || anDice[ 0 ] < 0 ||
+    	  fDoubled < 0 || fDoubled > 1 || anDice[ 0 ] > 6 || anDice[ 0 ] < 0 ||
     	  anDice[ 1 ] > 6 || anDice[ 1 ] < 0 ||  gs > 7) {
 		memset(ppi, 0, sizeof(posinfo));
 		return -1;
