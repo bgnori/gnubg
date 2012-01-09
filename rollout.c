@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: rollout.c,v 1.228 2011/10/16 18:59:49 plm Exp $
+ * $Id: rollout.c,v 1.229 2012/01/09 22:59:19 plm Exp $
  */
 
 #include "config.h"
@@ -139,10 +139,10 @@ extern FILE *log_game_start(const char *name, const cubeinfo * pci, int fCubeful
 	if ((logfp = g_fopen(name, "w")) == 0)
 		return NULL;
 
-	fprintf(logfp, "(;FF[4]GM[6]CA[UTF-8]AP[GNU Backgammon:0.14-devel]MI"
+	fprintf(logfp, "(;FF[4]GM[6]CA[UTF-8]AP[GNU Backgammon:%s]MI"
 		"[length:%d][game:0][ws:%d][bs:%d][wtime:0][btime:0]"
 		"[wtimeouts:0][btimeouts:0]PW[White]PB[Black]DT[%d-%02d-%02d]"
-		"%s\n", pci->nMatchTo, pci->anScore[0], pci->anScore[1],
+		"%s\n", VERSION, pci->nMatchTo, pci->anScore[0], pci->anScore[1],
 		1900 + now->tm_year, 1 + now->tm_mon, now->tm_mday, rule);
 
 	/* set the rest of the things up */
