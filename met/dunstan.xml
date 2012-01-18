@@ -1,6 +1,6 @@
 <?xml version = "1.0"?>
 <!DOCTYPE met PUBLIC "-//GNU Backgammon//DTD Match Equity Tables//EN"
-                     "met.dme">
+                     "met.dtd">
 
 <!--
 
@@ -19,7 +19,7 @@
      In practice, it is a subset of the more recent Rockwell-Kazaross
      table and you should use the latter rather than this one.
 
-     $Id: dunstan.xml,v 1.2 2010/05/03 05:36:08 plm Exp $
+     $Id: dunstan.xml,v 1.3 2012/01/18 21:04:11 plm Exp $
 
  -->
 
