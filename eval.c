@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.403 2011/12/06 22:41:29 plm Exp $
+ * $Id: eval.c,v 1.404 2012/01/18 21:01:48 plm Exp $
  */
 
 #include "config.h"
@@ -3087,13 +3087,7 @@ static void StatusNeuralNet( neuralnet *pnn, char *szTitle, char *sz )
   sz += sprintf( sz, " * %s %s:\n", szTitle, _("neural network evaluator"));
   sprintf(buf, _("version %s, %d inputs, %d hidden units"),
 	  WEIGHTS_VERSION, pnn->cInput, pnn->cHidden);
-  sz += sprintf( sz, "   - %s", buf);
-  
-  if( pnn->nTrained > 1 )
-      sprintf( sz, _("trained on %d positions"), pnn->nTrained );
-
-  strcat( sz, ".\n\n" );
-
+  sz += sprintf( sz, "   - %s.\n\n", buf);
 }
 
 static void StatusRace( char *sz ) {
