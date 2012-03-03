@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: set.c,v 1.361 2011/10/31 09:41:14 c_anthon Exp $
+ * $Id: set.c,v 1.362 2012/03/03 21:45:08 plm Exp $
  */
 
 #include "config.h"
@@ -1015,14 +1015,10 @@ extern void CommandSetEvalPlies( char *sz ) {
 
     int n = ParseNumber( &sz );
 
-    if( n < 0 || n > 7 ) {
-	outputf( _("You must specify a valid number of plies to look ahead "
-		"(see `help set %s plies').\n"), szSetCommand );
-
-	return;
-    }
-
-    pecSet->nPlies = n;
+    if( n < 0 || n > 7 )
+	outputf( _("Valid numbers of plies to look ahead are 0 to 7.\n") );
+    else
+        pecSet->nPlies = n;
 
     outputf( _("%s will use %d ply evaluation.\n"), szSet, pecSet->nPlies );
 }
