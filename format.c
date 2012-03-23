@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: format.c,v 1.43 2011/10/31 09:41:12 c_anthon Exp $
+ * $Id: format.c,v 1.44 2012/03/23 16:51:42 plm Exp $
  */
 
 #include "config.h"
@@ -788,7 +788,7 @@ OutputCubeAnalysisFull ( float aarOutput[ 2 ][ NUM_ROLLOUT_OUTPUTS ],
   else
     r = arDouble[ OUTPUT_NODOUBLE ] - arDouble[ OUTPUT_TAKE ];
 
-  if ( fDouble > 0 && r > 0.0f ) {
+  if ( fDouble > 0 && fTake < 0 && r > 0.0f ) {
 
     fAnno = TRUE;
 

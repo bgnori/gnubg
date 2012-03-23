@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: html.c,v 1.226 2011/10/01 23:28:07 mdpetch Exp $
+ * $Id: html.c,v 1.227 2012/03/23 16:51:43 plm Exp $
  */
 
 #include "config.h"
@@ -168,7 +168,7 @@ WriteStyleSheet ( FILE *pf, const htmlexportcss hecss ) {
 
     fputs( "\n"
            "/* CSS Stylesheet for " VERSION_STRING " */\n"
-           "/* $Id: html.c,v 1.226 2011/10/01 23:28:07 mdpetch Exp $ */\n",
+           "/* $Id: html.c,v 1.227 2012/03/23 16:51:43 plm Exp $ */\n",
            pf );
 
     fputs( "/* This file is distributed as a part of the "
@@ -1846,7 +1846,7 @@ HTMLEpilogue ( FILE *pf, const matchstate *pms, char *aszLinks[ 4 ],
   int fFirst;
   int i;
 
-  const char szVersion[] = "$Revision: 1.226 $";
+  const char szVersion[] = "$Revision: 1.227 $";
   int iMajor, iMinor;
 
   iMajor = atoi ( strchr ( szVersion, ' ' ) );
@@ -1926,7 +1926,7 @@ HTMLEpilogueComment ( FILE *pf ) {
 
   time_t t;
 
-  const char szVersion[] = "$Revision: 1.226 $";
+  const char szVersion[] = "$Revision: 1.227 $";
   int iMajor, iMinor;
   char *pc;
 
@@ -2096,7 +2096,7 @@ HTMLPrintCubeAnalysisTable ( FILE *pf,
   else
     r = arDouble[ OUTPUT_NODOUBLE ] - arDouble[ OUTPUT_TAKE ];
 
-  if ( fDouble > 0 && r > 0.0f ) {
+  if ( fDouble > 0 && fTake < 0 && r > 0.0f ) {
 
     fAnno = TRUE;
 
