@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.854 2012/02/22 22:26:58 plm Exp $
+ * $Id: gtkgame.c,v 1.855 2012/03/25 15:12:22 plm Exp $
  */
 
 #include "config.h"
@@ -525,7 +525,7 @@ GtkWidget *pwAnalysis;
 GtkWidget *pwCommentary;
 static moverecord *pmrAnnotation;
 GtkAccelGroup *pagMain;
-#if (GTK_MAJOR_VERSION < 3) && (GTK_MINOR_VERSION < 12)
+#if ! GTK_CHECK_VERSION(2,12,0)
 GtkTooltips *ptt;
 #endif
 #if (USE_GTKUIMANAGER)
@@ -3991,7 +3991,7 @@ extern void InitGTK(int *argc, char ***argv)
 	pif = gtk_icon_factory_new();
 	gtk_icon_factory_add_default(pif);
 
-#if (GTK_MAJOR_VERSION < 3) && (GTK_MINOR_VERSION < 12)
+#if ! GTK_CHECK_VERSION(2,12,0)
 	ptt = gtk_tooltips_new();
 #endif
 
