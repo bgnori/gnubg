@@ -19,7 +19,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-* $Id: matchequity.c,v 1.81 2011/07/09 22:16:19 plm Exp $
+* $Id: matchequity.c,v 1.82 2012/03/28 21:25:29 mdpetch Exp $
 */
 
 #include "config.h"
@@ -27,7 +27,6 @@
 #include <glib.h>
 #include <glib/gprintf.h>
 #include <stdio.h>
-#include <glib.h>
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
