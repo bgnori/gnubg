@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external.c,v 1.68 2009/10/01 21:05:53 c_anthon Exp $
+ * $Id: external.c,v 1.69 2012/04/07 09:54:58 plm Exp $
  */
 
 #include "config.h"
@@ -138,7 +138,9 @@ void OutputWin32SocketError(const char* action)
 extern int ExternalSocket( struct sockaddr **ppsa, int *pcb, char *sz ) {
 
     int sock, f;
+#ifndef WIN32
     struct sockaddr_un *psun;
+#endif
     struct sockaddr_in *psin;
     struct hostent *phe;
     char *pch;
@@ -194,6 +196,7 @@ extern int ExternalSocket( struct sockaddr **ppsa, int *pcb, char *sz ) {
 	
 	*ppsa = (struct sockaddr *) psin;
     } else {
+#ifndef WIN32
 	/* Local domain socket. */
 	if( ( sock = socket( PF_LOCAL, SOCK_STREAM, 0 ) ) < 0 )
 	    return -1;
@@ -202,23 +205,16 @@ extern int ExternalSocket( struct sockaddr **ppsa, int *pcb, char *sz ) {
 	   sockaddr_un size, but this is a conservative estimate */
 	psun = malloc( *pcb = 16 + strlen( sz ) );
 	
-#ifndef WIN32
 	psun->sun_family = AF_LOCAL;
 	strcpy( psun->sun_path, sz );
+	*ppsa = (struct sockaddr *) psun;
 #else /* #ifndef WIN32 */
 	/* FIXME: what will we do on Windows? */
 	return -1;
 #endif /* #ifndef WIN32 */
-
-	*ppsa = (struct sockaddr *) psun;
     }
 
     return sock;
-
-#if 0 
-    g_assert( FALSE );
-#endif /* 0 */
-
 }
 #endif /* HAVE_SOCKETS */
 
@@ -288,9 +284,6 @@ extern int ExternalRead( int h, char *pch, size_t cch ) {
 
     p[ cch - 1 ] = 0;
     return 0;
-#if 0
-    g_assert( FALSE );
-#endif
 }
 #endif /* HAVE_SOCKETS */
 
@@ -341,9 +334,6 @@ extern int ExternalWrite( int h, char *pch, size_t cch ) {
     }
 
     return 0;
-#if 0
-    g_assert( FALSE );
-#endif
 }
 #endif /* HAVE_SOCKETS */
 
