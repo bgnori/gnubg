@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.54 2008/06/30 21:22:58 c_anthon Exp $
+ * $Id: drawboard.c,v 1.55 2012/04/18 15:58:28 mdpetch Exp $
  */
 
 #include "config.h"
@@ -31,6 +31,7 @@
 
 #include "drawboard.h"
 #include "positionid.h"
+#include "matchequity.h"
 
 int fClockwise = FALSE; /* Player 1 moves clockwise */
 
@@ -572,7 +573,7 @@ extern char *FormatMovePlain( char *sz, TanBoard anBoard,
     return sz;
 }
 
-static int CompareMoves( const void *p0, const void *p1 ) {
+static int CompareMovesSimple( const void *p0, const void *p1 ) {
 
     int n0 = *( (int *) p0 ), n1 = *( (int *) p1 );
 
@@ -589,7 +590,7 @@ extern void CanonicalMoveOrder( int an[] ) {
     for( i = 0; i < 4 && an[ 2 * i ] > -1; i++ )
 	;
     
-    qsort( an, i, sizeof( int ) << 1, CompareMoves );
+    qsort( an, i, sizeof( int ) << 1, CompareMovesSimple );
 }
 
 extern char *FormatMove( char *sz, const TanBoard anBoard, int anMove[ 8 ] ) {
@@ -613,7 +614,7 @@ extern char *FormatMove( char *sz, const TanBoard anBoard, int anMove[ 8 ] ) {
     }
     
     /* Order the moves in decreasing order of source point. */
-    qsort( aanMove, 4, 4 * sizeof( int ), CompareMoves );
+    qsort( aanMove, 4, 4 * sizeof( int ), CompareMovesSimple );
 
     /* Combine moves of a single chequer. */
     for( i = 0; i < 4; i++ )
@@ -989,6 +990,35 @@ extern int ParseFIBSBoard( char *pch, TanBoard anBoard,
     if( c < 0 )
 	return -1;
     pch += c;
+
+    /* FIBS has a maximum match length of 99.  Unlimited matches are 
+     * encoded with a match length of 9999.
+     *
+     * FIXME! Is 0 correct for money sessions here?
+     */
+    if ( *pnMatchTo == 9999 )
+        *pnMatchTo = 0;
+
+    if ( *pnMatchTo
+         && ( *pnMatchTo <= *pnScore || *pnMatchTo <= *pnScoreOpponent ))
+        return -1;
+
+    /* If the match length exceeds MAXSCORE we correct the match length
+     * to MAXSCORE and the scores to the closest equivalents.
+     */
+    if ( *pnMatchTo > MAXSCORE ) {
+        if ( *pnMatchTo - *pnScore > MAXSCORE )
+                *pnScore = 0;
+        else
+                *pnScore -= *pnMatchTo - MAXSCORE;
+
+        if ( *pnMatchTo - *pnScoreOpponent > MAXSCORE )
+                *pnScoreOpponent = 0;
+        else
+                *pnScoreOpponent -= *pnMatchTo - MAXSCORE;
+
+        *pnMatchTo = MAXSCORE;
+    }
 
     /* Opponent on bar */
     c = -1;
