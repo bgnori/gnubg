@@ -16,11 +16,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.h,v 1.171 2011/08/16 21:25:05 plm Exp $
+ * $Id: eval.h,v 1.172 2012/04/25 11:46:06 plm Exp $
  */
 
-#ifndef _EVAL_H_
-#define _EVAL_H_
+#ifndef EVAL_H
+#define EVAL_H
 
 #include "dice.h"
 #include "bearoff.h"
@@ -439,6 +439,8 @@ ClassifyPosition( const TanBoard anBoard, const bgvariation bgv );
 /* internal use only */
 extern int EvalBearoff1Full( const TanBoard anBoard,
                              float arOutput[] );
+extern void EvalRaceBG(const TanBoard anBoard, float arOutput[],
+			const bgvariation bgv );
 
 extern float
 Utility( float ar[ NUM_OUTPUTS ], const cubeinfo* pci );

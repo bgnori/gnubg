@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.405 2012/03/03 21:33:34 plm Exp $
+ * $Id: eval.c,v 1.406 2012/04/25 11:46:06 plm Exp $
  */
 
 #include "config.h"
@@ -2058,7 +2058,7 @@ raceBGprob(const TanBoard anBoard, int side, const bgvariation bgv)
   }
 }  
 
-extern int
+extern void
 EvalRaceBG(const TanBoard anBoard, float arOutput[], const bgvariation bgv )
 
 /* anBoard[1] is on roll */
