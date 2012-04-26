@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.56 2012/04/25 20:46:43 mdpetch Exp $
+ * $Id: drawboard.c,v 1.57 2012/04/26 17:02:09 mdpetch Exp $
  */
 
 #include "config.h"
@@ -1069,12 +1069,12 @@ extern int ParseFIBSBoard( char *pch, TanBoard anBoard,
      * Crawford detection.  This is rather tricky with FIBS board states
      * because FIBS sets both may-double flags to 1 in the Crawford game.
      *
-     * We have to inspect the last but one and last but two fields for that.
-     * The last but one field is the post-Crawford flag, the last but two
+     * We have to inspect the last and second last field for that.
+     * The last field is the post-Crawford flag, the second last
      * field is the non-Crawford flag.
      *
      * Until at least one of the players is 1-away, you cannot deduce whether
-     * the Crawford rule is in use or not.  Once that one of the opponents
+     * the Crawford rule is in use or not.  Once one of the players
      * is 1-away, the non-Crawford flag is set to 3 if the Crawford rule
      * is not in use; otherwise everything is still 0.
      *

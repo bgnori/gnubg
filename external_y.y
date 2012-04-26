@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_y.y,v 1.17 2012/04/26 01:15:20 mdpetch Exp $
+ * $Id: external_y.y,v 1.18 2012/04/26 17:02:24 mdpetch Exp $
  */
 
 #include "config.h"
@@ -95,7 +95,7 @@ optjacobyrule  : JACOBYRULE ON { ec.fJacobyRule = TRUE; }
 
 optcrawfordrule : CRAWFORDRULE ON { ec.fCrawfordRule = TRUE; }
                |  CRAWFORDRULE OFF { ec.fCrawfordRule = FALSE; }
-               |  /* empty */ { ec.fCrawfordRule = fAutoCrawford; }
+               |  /* empty */ { ec.fCrawfordRule = TRUE; }
                ;
 
 optplies       : PLIES NUMBER { ec.nPlies = $2; }
@@ -167,7 +167,7 @@ reset_command(void) {
   ec.fCubeful = 0;
   ec.nReduced = 0;
   ec.fUsePrune = 0;
-  ec.fCrawfordRule = fAutoCrawford;
+  ec.fCrawfordRule = 1;
   ec.fJacobyRule = fJacoby;
   free(ec.szFIBSBoard);
   ec.szFIBSBoard = NULL;
