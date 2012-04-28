@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkoptions.c,v 1.108 2011/09/03 18:19:32 mdpetch Exp $
+ * $Id: gtkoptions.c,v 1.109 2012/04/28 15:10:19 plm Exp $
  */
 
 #include "config.h"
@@ -118,7 +118,7 @@ typedef struct _optionswidget {
 	GtkAdjustment *padjDigits;
 	GtkWidget *pwDigits;
 	int fChanged;
-} optionswidget;;
+} optionswidget;
 
 typedef struct _SoundDetail
 {
