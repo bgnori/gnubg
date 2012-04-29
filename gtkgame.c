@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: gtkgame.c,v 1.856 2012/04/28 16:40:18 plm Exp $
+ * $Id: gtkgame.c,v 1.857 2012/04/29 21:01:59 plm Exp $
  */
 
 #include "config.h"
@@ -2447,9 +2447,9 @@ static void SummaryMenuActivate(GtkComboBox *box, AnalysisDetails *pAnalDetails)
   *pAnalDetails->esChequer = aecSettings[selected];
   *pAnalDetails->esCube = aecSettings[selected];
 
-  if (pAnalDetails->mfChequer)
+  if (pAnalDetails->mfChequer && aiSettingsMoveFilter[selected] >= 0)
     memcpy(pAnalDetails->mfChequer, aaamfMoveFilterSettings[aiSettingsMoveFilter[selected]], sizeof(aaamfMoveFilterSettings[aiSettingsMoveFilter[selected]]));
-  if (pAnalDetails->mfCube)
+  if (pAnalDetails->mfCube && aiSettingsMoveFilter[selected] >= 0)
     memcpy(pAnalDetails->mfCube, aaamfMoveFilterSettings[aiSettingsMoveFilter[selected]], sizeof(aaamfMoveFilterSettings[aiSettingsMoveFilter[selected]]));
 }
 
