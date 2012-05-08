@@ -34,7 +34,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: positionid.c,v 1.50 2011/07/18 21:22:20 plm Exp $
+ * $Id: positionid.c,v 1.51 2012/05/08 16:32:49 plm Exp $
  */
 
 #include "config.h"
@@ -389,10 +389,9 @@ extern unsigned int PositionBearoff(const unsigned int anBoard[], unsigned int n
 
     fBits = 1u << j;
     
-    for( i = 0; i < nPoints; i++ ) {
+    for( i = 0; i < nPoints - 1; i++ ) {
         j -= anBoard[ i ] + 1;
         fBits |= ( 1u << j );
-
     }
 
     return PositionF( fBits, nChequers + nPoints, nPoints );
@@ -446,7 +445,7 @@ extern unsigned short PositionIndex(unsigned int g, const unsigned int anBoard[6
 
   fBits = 1u << j;
     
-  for(i = 0; i < g; i++)
+  for(i = 0; i < g - 1; i++)
   {
     j -= anBoard[ i ] + 1;
     fBits |= ( 1u << j );
