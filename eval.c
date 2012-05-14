@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: eval.c,v 1.406 2012/04/25 11:46:06 plm Exp $
+ * $Id: eval.c,v 1.407 2012/05/14 05:58:55 gflohr Exp $
  */
 
 #include "config.h"
@@ -330,8 +330,8 @@ const char *aszSettings[ NUM_SETTINGS ] = {
 
 /* which evaluation context does the predefined settings use */
 evalcontext aecSettings[ NUM_SETTINGS ] = {
-  { TRUE, 0, FALSE, TRUE, 0.060f }, /* casual play */
-  { TRUE, 0, FALSE, TRUE, 0.050f }, /* beginner */
+  { TRUE, 0, FALSE, TRUE, 0.060f }, /* beginner */
+  { TRUE, 0, FALSE, TRUE, 0.050f }, /* casual player */
   { TRUE, 0, FALSE, TRUE, 0.040f }, /* intermediate */
   { TRUE, 0, FALSE, TRUE, 0.015f }, /* advanced */
   { TRUE, 0, FALSE, TRUE, 0.0f }, /* expert */
