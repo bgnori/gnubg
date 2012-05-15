@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.59 2012/05/14 22:07:46 gflohr Exp $
+ * $Id: drawboard.c,v 1.60 2012/05/15 06:56:33 gflohr Exp $
  */
 
 #include "config.h"
@@ -1043,6 +1043,16 @@ extern int ParseFIBSBoard( char *pch, TanBoard anBoard,
      */
     if( !nTurn || !nColor || !nDirection )
         return -1;
+
+    /* Check whether the cube was turned.  That is indicated by the
+     * pfDoubed flag for the "player" and by setting the may double
+     * flag to zero for both players for the opponent.  Actually
+     * we could completely ignore the pfDoubled flag but it could
+     * still help, when processing data from other sources than
+     * fibs.com.
+     */
+    if( !*pfDoubled && !fCanDouble && !fOppCanDouble )
+        *pfDoubled = 1;
 
     /* Opponent's turn? */
     if( nTurn * nColor < 0 ) {
