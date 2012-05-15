@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: play.c,v 1.405 2012/04/26 09:59:44 plm Exp $
+ * $Id: play.c,v 1.406 2012/05/15 17:18:01 mdpetch Exp $
  */
 
 #include "config.h"
@@ -3365,6 +3365,16 @@ extern void CommandEndGame(char *UNUSED(sz))
 	fDisplay = fDisplay_store;
 	fQuiet = fQuiet_store;
 	fEndGame = FALSE;
+
+	/* If the game ended in a resign then make sure the
+	   the state for the user truly reflects the game is over
+	   and that no further action from them is necessary */
+	if (ms.fResigned)
+	{
+		ms.fResigned = 0;
+		ShowBoard();
+	}
+
 	if (manual_dice)
 	{
 		outputoff();
