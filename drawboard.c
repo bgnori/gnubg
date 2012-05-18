@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: drawboard.c,v 1.60 2012/05/15 06:56:33 gflohr Exp $
+ * $Id: drawboard.c,v 1.61 2012/05/18 10:00:49 gflohr Exp $
  */
 
 #include "config.h"
@@ -1054,8 +1054,14 @@ extern int ParseFIBSBoard( char *pch, TanBoard anBoard,
     if( !*pfDoubled && !fCanDouble && !fOppCanDouble )
         *pfDoubled = 1;
 
+    int fMustSwap = 0;
+    if ( *pfDoubled )
+        fMustSwap = !fMustSwap;
+    if ( nTurn * nColor < 0 )
+        fMustSwap = !fMustSwap;
+
     /* Opponent's turn? */
-    if( nTurn * nColor < 0 ) {
+    if( fMustSwap ) {
         szTmp = szPlayer;
         szPlayer = szOpp;
         szOpp = szTmp;
@@ -1065,9 +1071,10 @@ extern int ParseFIBSBoard( char *pch, TanBoard anBoard,
         nTmp = fCanDouble;
         fCanDouble = fOppCanDouble;
         fOppCanDouble = nTmp;
-
-        nDirection = -nDirection;
     }
+
+    if ( nTurn * nColor < 0 )
+        nDirection = -nDirection;
     nColor = nTurn > 0 ? 1 : -1;
 
     for( i = 0; i < 24; ++i ) {
@@ -1094,6 +1101,10 @@ extern int ParseFIBSBoard( char *pch, TanBoard anBoard,
         n = anFIBSBoard[ 25 ];
         anBoard[ 0 ][ 24 ] = n < 0 ? -n : n;
     }
+
+    /* See https://savannah.gnu.org/bugs/?36485 for this.  */
+    if ( *pfDoubled )
+        SwapSides( anBoard );
 
     if( !anDice[ 0 ] && anOppDice[ 0 ]) {
         anDice[ 0 ] = anOppDice[ 0 ];
