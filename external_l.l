@@ -18,7 +18,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: external_l.l,v 1.16 2012/04/26 01:15:20 mdpetch Exp $
+ * $Id: external_l.l,v 1.17 2012/05/18 20:15:00 mdpetch Exp $
  */
 
 #include "config.h"
@@ -70,7 +70,7 @@ on              { return ON; }
 no              { return OFF; }
 off             { return OFF; }
 
-board:[[:alpha:]_]+:[[:alpha:]_]+(:{NUMSTR})+  { 
+board:[[:alnum:]_]+:[[:alnum:]_]+(:{NUMSTR})+  { 
 			char *buf = malloc( strlen( exttext ) + 1 );
 			escapes(exttext, buf);
 			extlval.sval = buf;
